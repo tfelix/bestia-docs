@@ -1,0 +1,138 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>World Generation · Bestia Game Documentation</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="# Welterzeugung"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="World Generation · Bestia Game Documentation"/><meta property="og:type" content="website"/><meta property="og:url" content="https://tfelix.github.io/bestia-docs/index.html"/><meta property="og:description" content="# Welterzeugung"/><meta property="og:image" content="https://tfelix.github.io/bestia-docs/img/docusaurus.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://tfelix.github.io/bestia-docs/img/docusaurus.png"/><link rel="shortcut icon" href="/bestia-docs/img/favicon.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/bestia-docs/css/main.css"/></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/bestia-docs/"><img class="logo" src="/bestia-docs/img/docusaurus.svg" alt="Bestia Game Documentation"/><h2 class="headerTitleWithLogo">Bestia Game Documentation</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/bestia-docs/docs/about-manifest.html" target="_self">Docs</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Server</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Introduction</h3><ul><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/about-manifest.html">About This Game</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/about-background.html">Background Story</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/about-design.html">Artwork and Design</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/about-lore.html">The Lore</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/about-mechanics.html">Game Mechanics</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/about-quests.html">Quests</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/about-resources.html">Resources</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Server</h3><ul><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/server.html">Server</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/server-architecture.html">Server Architecture</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/bestia-docs/docs/server-worldcreation.html">World Generation</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/server-npc-ai.html">Artificial Intelligence</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/server-scripts.html">Server Scripts</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/server-battlesystem.html">Battlesystem</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/server-streaming.html">Server Streaming</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/server-items.html">Battlesystem</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/server-routing.html">NPC Routing</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Client</h3><ul><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/client.html">Client</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/client-animation.html">Animations and Effects</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API</h3><ul><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/api.html">Bestia API</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Improvement Proposals</h3><ul><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/bip-about.html">Bestia Improvement Proposals (BIP)</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Appendix</h3><ul><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/bip-1.html">BIP 1 - ClientVars</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/bip-2.html">BIP 2 - Latency estimation</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/bip-3.html">BIP 3 - Debug mode</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/bip-4.html">BIP 4 - Dynamic Client UI</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/bip-5.html">BIP 5 - Translation Microservice</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/bip-6.html">BIP 6 - Conditional Component Sync</a></li></ul></div></div></section></div><script>
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">World Generation</h1></header><article><div><span><h1><a class="anchor" aria-hidden="true" id="welterzeugung"></a><a href="#welterzeugung" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Welterzeugung</h1>
+<h2><a class="anchor" aria-hidden="true" id="algorithmus"></a><a href="#algorithmus" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Algorithmus</h2>
+<ol>
+<li><p>Grundparameter</p></li>
+<li><p>Erstellung von Influencemaps</p></li>
+<li><p>Wasserspiegel festlegung</p></li>
+<li><p>Erzeuge die Wasser Maske</p></li>
+<li><p>Erzeuge von Gewässern und Flüsse</p></li>
+<li><p>Temperaturkorrektur</p></li>
+<li><p>Biom Zuordnung vornehmen</p></li>
+<li><p>Terrain Features verteilen und erzeugen</p></li>
+<li><p>Biom Optimierung</p></li>
+<li><p>Tilemap Erzeugung</p></li>
+<li><p>Biom Features</p></li>
+<li><p>Erzeugung der Städtekandidaten</p></li>
+<li><p>Erzeugung und Verteilung von Bodenschätzen</p></li>
+</ol>
+<h2><a class="anchor" aria-hidden="true" id="grundparameter"></a><a href="#grundparameter" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Grundparameter</h2>
+<p>Folgende Grundparameter werden zur Erzeugung einer Weltkarte benötigt:</p>
+<ul>
+<li><p>Gesamtpopulation P</p></li>
+<li><p>Weltgröße S (Abhängig von der Spielerzahl)</p></li>
+<li><p>Wassermasse/Landmasse WM (40-60% Wasser)</p></li>
+<li><p>Anzahl von Städten/Siedlungen Sn</p></li>
+<li><p>Mindestabstand von Siedlungen (4km - 6km) Sd</p></li>
+<li><p>Weltname</p></li>
+<li><p>Erzeugungsdatum</p></li>
+</ul>
+<p>Die Grundparameter werden als erster Schritt zufällig, basierend auf der durchschnittlich zu erwartenden Nutzerzahl generiert. Sie werden auch in der Datenbank abgespeichert.</p>
+<h2><a class="anchor" aria-hidden="true" id="influencemaps"></a><a href="#influencemaps" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Influencemaps</h2>
+<p>Folgende Influencemaps werden in der Größe der Weltkarte erstellt und über den <a href="https://de.wikipedia.org/wiki/Simplex_Noise">SimplexNoise </a>Algorithmus mit Rauschen gefüllt.</p>
+<ol start="14">
+<li><p>Höhenkarte: mH</p></li>
+<li><p>Temperaturkarte: mT</p></li>
+<li><p>Niederschlagskarte: mN</p></li>
+<li><p>Magiekarte: mM</p></li>
+<li><p>Populationsdichte: mP</p></li>
+</ol>
+<h2><a class="anchor" aria-hidden="true" id="terrain-features-post-biom"></a><a href="#terrain-features-post-biom" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Terrain Features (Post Biom)</h2>
+<p>Bestimmte, extravagante Features, die sich vor allem auf die Höhenstufen der Map niederschlagen werden hier zufällig verteilt. Die Wahrscheinlichkeitsverteilungen der Terrain Features sind häufig an bestimmte Biome gekoppelt. Da diese bereits bestimmt wurden, kann hier eine Prüfung auf bestimmte Features stattfinden. Bestimmte Feature sind:</p>
+<ul>
+<li><p>Seen</p></li>
+<li><p>Canyons</p></li>
+<li><p>Vulkane</p></li>
+<li><p>Gebirge</p></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="gewasser-und-flusse"></a><a href="#gewasser-und-flusse" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Gewässer und Flüsse</h2>
+<p>Dazu werden zufällig Wasser-Seeds verteilt und ein Flood Fill bis zur Küstenlinie durchgeführt. Der Wasserspiegel wird so lange angehoben, bis der Land/Wasser Parameter erfüllt ist. Sollte dies aus einem Grund nicht möglich sein. Gehe zu 1.</p>
+<h2><a class="anchor" aria-hidden="true" id="temperaturkorrektur"></a><a href="#temperaturkorrektur" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Temperaturkorrektur</h2>
+<p>Temperaturgradient auf mT aufbringen. Versehe die Temperaturkarte mit einem Gradienten um am Aquator eine höhere Temperatur zu erhalten wie an den Polen (Nord, Süd).</p>
+<h2><a class="anchor" aria-hidden="true" id="biom-zuordnung"></a><a href="#biom-zuordnung" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Biom Zuordnung</h2>
+<p>TBD</p>
+<h2><a class="anchor" aria-hidden="true" id="biom-optimierung"></a><a href="#biom-optimierung" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Biom Optimierung</h2>
+<p>Nachdem die Biome über die Zuweisungsregeln hart zugewiesen wurden, müssen mehrere Plausibilitätsfilter verwendet werden um eine saubere Erzeugung zu gewährleisten.</p>
+<p>TBD: Welche Filter müssen hier angewendet werden? Was kann denn falsch erzeugt werden?</p>
+<p>Erzeuge an den Biom Grenzen entsprechende Übergangsbiome.</p>
+<h2><a class="anchor" aria-hidden="true" id="tilemap-zuordnung"></a><a href="#tilemap-zuordnung" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tilemap Zuordnung</h2>
+<p>Jedes Biome besitzt ein gewisses Set an Tiles. Diese stammen aus einem oder mehreren Tilemaps (also eine Menge von GIDs). Zusätzlich existiert eine Reihe von weiteren Entities welche nach einer gewissen Wahrscheinlichkeit verteilt werden können (Bäume z.B.). Diese werden aber nicht immer einfach zufällig auf Koordianten platziert. Vielmehr kann es auch hier einen Top-Down Ansatz geben, der gewährleistet, dass eine ausreichend gute Verteilung der Features generiert wird.</p>
+<h2><a class="anchor" aria-hidden="true" id="biom-features"></a><a href="#biom-features" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Biom Features</h2>
+<p>Erzeuge entsprechende Strukturen innerhalb der Biome (siehe Tilemap Erzeugung). dazu gehört das Anlegen von Entities für Bäume, Pflanzen, hohes Gras, Steine, Felsen etc. Für jedes dieser Features existiert pro Biom eine oder mehrere Alternativen. Es gibt weiterhin eine Wahrscheinlichkeitsfunktion, die das Auftreten dieser Features innerhalb des Bioms regelt. Nach der Erzeugung werden alle Biome durchlaufen, diese Features so verteilt, dass ihre Positionierung innerhalb der bereits verteilten Tiles legal ist (keine Positionierung auf nicht begehbaren Felder etc.). Die Wahrscheinlichkeit für diese besonderen Orte ist in den Biomen gesteigert, bzw sie sind teilweise einzigartig für diese Biome. Folgende besondere Eigenschaften gelten für die verschiedenen Biome:</p>
+<h3><a class="anchor" aria-hidden="true" id="eistundra"></a><a href="#eistundra" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Eistundra</h3>
+<ul>
+<li><p>Alte Höhlensysteme</p></li>
+<li><p>Eistempel</p></li>
+<li><p>vermehrt Bodenschätze</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="walder"></a><a href="#walder" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Wälder</h3>
+<ul>
+<li><p>Alte Tempelanlagen</p></li>
+<li><p>Ruinen</p></li>
+<li><p>Alte, unbewohnte Dörfer</p></li>
+<li><p>Bewohnte Siedlungen</p></li>
+<li><p>Höhlen</p></li>
+<li><p>Grabstädten</p></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="stadtkandidaten"></a><a href="#stadtkandidaten" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Stadtkandidaten</h2>
+<p>Um eine Stadt bzw. Siedlung zu etablieren wird zunächst nach Kandidaten gesucht. Dabei werden folgende Kriterien für die nähere Umgebung genutzt:</p>
+<ul>
+<li><p>Rohstoffvorkommen</p></li>
+<li><p>Nähe zu einem Gewässer (Fluss oder Meer)</p></li>
+<li><p>Nahrungswege</p></li>
+<li><p>Handelswege</p></li>
+</ul>
+<p>Manche dieser Bedingungen haben Abhängigkeiten untereinander. So bestimmt die Anzahl der anderen Siedlungen in der Nähe die Anzahl der Handelswege. Der gesamte Entscheidungsbaum muss nicht zu 100% die beste Lösung finden, da davon ausgegangen werden kann, dass Menschen auch bei ihrem Städtebau nicht die beste Lösung finden.</p>
+<p>Folgende Voraussetzungen müssen gegeben sein:</p>
+<ul>
+<li>Karte mit Biom-Zuordnung muss generiert worden sein.</li>
+</ul>
+<p>Aufbauen auf der Weltkarte wird eine Influence Map erstellt. Wasserwege geben einen abfallenden Wert vor. Die Auflösung der Influence Map kann geringer sein als die eigentliche Karte. Auflösungen zwischen 100m und 1km erscheinen praktikabel. Folgende Punkte werden auf der Influence Map vergeben und summiert:</p>
+<ul>
+<li><p>Ist das Biom praktisch um Lebensmittel anzubauen?</p></li>
+<li><p>Sind natürliche Ressourcen in diesem Biom vorhanden?</p></li>
+<li><p>Wasser Biom in der Nähe gibt Punkte.</p></li>
+</ul>
+<p>Von der Influence Map müssen nun die Punkte entfernt werden die eindeutig keine Besiedlung ermöglichen. Folgende Punkte müssen auf 0 reduziert werden:</p>
+<ul>
+<li><p>Liegen im Wasser/Lava</p></li>
+<li><p>Liegen auf Gebirge</p></li>
+<li><p>Liegen im Wald</p></li>
+<li><p>Liegen in Gebieten mit sehr hoher Magie</p></li>
+</ul>
+<p>Bei allen verbleibenden Punkten muss überprüft werden ob es sich um ein lokales Maximum handelt. Diese Punkte werden zusammen mit ihrer Gewichtung in eine sortierte Liste aufgenommen. Dabei kann ein wandernder Durchschnitt berechnet werden und Werte unterhalb eines gewissen Schwellwertes verworfen werden.</p>
+<p>Koordinaten die dann zu nahe beieinander liegen (&lt; 3-6km) werden aus der Liste entfernt.</p>
+<p>Anhand der Punkte auf der Liste werden die Siedlungen berechnet. Zu 70% wird eine Stadt aus der oberen Hälfte der Liste der Reihe nach entnommen. Zu 30% wird eine Siedlung zufällig aus einem Kandidaten der unteren Listenhälfte entnommen bis die Anzahl der gewünschten Siedlungen erreicht ist oder die Liste erschöpft ist. Sollte ein Listenteil erschöpft sein, so wird jeweils vom anderen Listenteil mit dem gleichen Muster vorgegangen.</p>
+<p>Erzeugung von Städten</p>
+<ol>
+<li><p>Bestimmung der Anzahl der Gebäude anhand der Populationsmenge.</p></li>
+<li><p>Verteilen der Gebäude um den Stadtkern nach einer Gaußkurvenverteilung.</p></li>
+<li><p>Erzeugung der Gebäude-Innenräume nach: <a href="https://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_division_method">https://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_division_method</a></p></li>
+</ol>
+<h2><a class="anchor" aria-hidden="true" id="bodenschatze-ressourcen"></a><a href="#bodenschatze-ressourcen" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Bodenschätze &amp; Ressourcen</h2>
+<p>TBD. Zum Nutzen und Verwendung der einzelnen Bodenschätze, siehe Abschnitt <a href="#heading=h.qtftxg6zrzre">Ressourcen</a>.</p>
+<h2><a class="anchor" aria-hidden="true" id="weltzerstorung"></a><a href="#weltzerstorung" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Weltzerstörung</h2>
+<p>Die Welt soll durch das Herbeiführen von Rift Events strukturell geschwächt werden, bis sie mit einer weiteren Welt kollidiert. Die Spieler selbst bleiben bei solch einem Event relativ unbeschadet. Je nach Fraktion/Kult welcher die Spieler angehören wird es aber weitreichende Mali oder Boni geben. In der neu generierten Welt starten die Spieler wieder zunächst ohne Kult Zugehörigkeit.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/bestia-docs/docs/server-architecture.html">← Server Architecture</a><a class="docs-next button" href="/bestia-docs/docs/server-npc-ai.html">Artificial Intelligence →</a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#algorithmus">Algorithmus</a></li><li><a href="#grundparameter">Grundparameter</a></li><li><a href="#influencemaps">Influencemaps</a></li><li><a href="#terrain-features-post-biom">Terrain Features (Post Biom)</a></li><li><a href="#gewasser-und-flusse">Gewässer und Flüsse</a></li><li><a href="#temperaturkorrektur">Temperaturkorrektur</a></li><li><a href="#biom-zuordnung">Biom Zuordnung</a></li><li><a href="#biom-optimierung">Biom Optimierung</a></li><li><a href="#tilemap-zuordnung">Tilemap Zuordnung</a></li><li><a href="#biom-features">Biom Features</a><ul class="toc-headings"><li><a href="#eistundra">Eistundra</a></li><li><a href="#walder">Wälder</a></li></ul></li><li><a href="#stadtkandidaten">Stadtkandidaten</a></li><li><a href="#bodenschatze-ressourcen">Bodenschätze &amp; Ressourcen</a></li><li><a href="#weltzerstorung">Weltzerstörung</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/bestia-docs/" class="nav-home"><img src="/bestia-docs/img/docusaurus.svg" alt="Bestia Game Documentation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/bestia-docs/docs/en/about-manifest.html">Introduction</a><a href="/bestia-docs/docs/en/server.html">Server Documentation</a><a href="/bestia-docs/docs/en/client.html">Client Documentation</a></div><div><h5>Community</h5><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/bestiagame" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="https://github.com/tfelix/bestia-docs">GitHub</a></div></section><section class="copyright">Copyright © 2018 Thomas Felix</section></footer></div></body></html>

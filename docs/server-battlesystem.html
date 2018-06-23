@@ -1,0 +1,244 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Battlesystem · Bestia Game Documentation</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="# Battle system"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Battlesystem · Bestia Game Documentation"/><meta property="og:type" content="website"/><meta property="og:url" content="https://tfelix.github.io/bestia-docs/index.html"/><meta property="og:description" content="# Battle system"/><meta property="og:image" content="https://tfelix.github.io/bestia-docs/img/docusaurus.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://tfelix.github.io/bestia-docs/img/docusaurus.png"/><link rel="shortcut icon" href="/bestia-docs/img/favicon.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/bestia-docs/css/main.css"/></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/bestia-docs/"><img class="logo" src="/bestia-docs/img/docusaurus.svg" alt="Bestia Game Documentation"/><h2 class="headerTitleWithLogo">Bestia Game Documentation</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/bestia-docs/docs/about-manifest.html" target="_self">Docs</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Server</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Introduction</h3><ul><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/about-manifest.html">About This Game</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/about-background.html">Background Story</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/about-design.html">Artwork and Design</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/about-lore.html">The Lore</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/about-mechanics.html">Game Mechanics</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/about-quests.html">Quests</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/about-resources.html">Resources</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Server</h3><ul><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/server.html">Server</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/server-architecture.html">Server Architecture</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/server-worldcreation.html">World Generation</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/server-npc-ai.html">Artificial Intelligence</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/server-scripts.html">Server Scripts</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/bestia-docs/docs/server-battlesystem.html">Battlesystem</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/server-streaming.html">Server Streaming</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/server-items.html">Battlesystem</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/server-routing.html">NPC Routing</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Client</h3><ul><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/client.html">Client</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/client-animation.html">Animations and Effects</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API</h3><ul><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/api.html">Bestia API</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Improvement Proposals</h3><ul><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/bip-about.html">Bestia Improvement Proposals (BIP)</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Appendix</h3><ul><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/bip-1.html">BIP 1 - ClientVars</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/bip-2.html">BIP 2 - Latency estimation</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/bip-3.html">BIP 3 - Debug mode</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/bip-4.html">BIP 4 - Dynamic Client UI</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/bip-5.html">BIP 5 - Translation Microservice</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/bip-6.html">BIP 6 - Conditional Component Sync</a></li></ul></div></div></section></div><script>
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Battlesystem</h1></header><article><div><span><h1><a class="anchor" aria-hidden="true" id="battle-system"></a><a href="#battle-system" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Battle system</h1>
+<p>The battle or attack is performed in various stages. Equipments or Status effects either alter the DamageVars or expose certain hooks which are called during the damage calculation. In the case of the DamageVars this object is</p>
+<p>The attack itself either provides a script to completely manage the effect which takes place during cast or it provides certain callbacks for damage calculation stages which are getting called while applying the damage. The attack callbacks are:</p>
+<ul>
+<li><p>onHit - Called when the enemy was hit.</p></li>
+<li><p>onApplyDamage - Called when the damage is about to get applied</p></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="stages-of-a-battle"></a><a href="#stages-of-a-battle" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Stages of a battle</h2>
+<p>The stages of a battle are visualized in the following flow diagram.</p>
+<p>check if hit is possible</p>
+<ul>
+<li><p>needs los?</p>
+<ul>
+<li>is los present? no: abort attack</li>
+</ul></li>
+<li><p>needs mana?</p>
+<ul>
+<li>is mana present? no: abort attack. yes: subtract mana.</li>
+</ul></li>
+<li><p>Needs items/ammo?</p>
+<ul>
+<li>Is item/ammo present? no: abort attack. yes: substract item.</li>
+</ul></li>
+</ul>
+<p>calculate crit hit:</p>
+<ul>
+<li><p>Based on attacker and defender level and dex and direct crit modifier.</p></li>
+<li><p>0.02 * (atkLv / defLv) / 3 * (atkDex / defDex) / 2 * (atkAgi / defAgi) * critMod</p></li>
+<li><p>Capped: 0.01 and 0.95</p></li>
+<li><p>Critical hits triple the upcoming hitrate</p></li>
+<li><p>Magic attacks always hit</p></li>
+<li><p>Magic attacks can not crit.</p></li>
+</ul>
+<p>calculate actual hitrate</p>
+<ul>
+<li><p>Based on attacker hitrate and defender flee rate.</p></li>
+<li><p>Based on modifier for attacker and defender.</p></li>
+<li><p>ActualHit: 0.5 * hit / flee, capped at 0.05 and 1.</p></li>
+</ul>
+<p>check if the attack does land a critical hit</p>
+<p>check if the attack does land a hit depending on the hitrate.</p>
+<p>if the attack does miss display a MISS to the clients.</p>
+<p>if the attack does hit proceed with damage calculation.</p>
+<p>damage calculation</p>
+<p>create damage context</p>
+<p>create damage vars</p>
+<p>Abhängigkeiten der DamageVars beides ist eigentlich das selbe.</p>
+<ul>
+<li><p>Equipment</p></li>
+<li><p>Status Effekte</p></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="damage-formula"></a><a href="#damage-formula" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Damage formula</h2>
+<p>The damage calculation is roughly based on the system used by Ragnarök Online. In certain areas it is refined in order to better express the design philosophy of Bestia as well as be extensible. Modifier (MOD suffix) are float values representing percentage values (e.g. 0.25). Bonus mods are bigger than 1 (bonus 5% is 1.05) while reduction modifier are less than 1.</p>
+<p>The damage at the end is rounded down but the damage is capped at 0. The calculation of the BASE_ATK is rather complex and is explained inside a own section. The parts written in pink are variables provided by bonuses from equips, stats, buffs etc.</p>
+<p>Damage = floor(BASE_ATK * ATK_MOD * HARD_DEF_MOD * CRIT_MOD - SOFT_DEF)</p>
+<h3><a class="anchor" aria-hidden="true" id="base-atk"></a><a href="#base-atk" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>BASE_ATK</h3>
+<p>The base attack represents the attack strength of an entity. This attack strength is based on the status values important to perform the attack as well as the properties of the currently equipped weapon. Equipment might also alter the status values by which the base attack is indirectly influenced.</p>
+<p>The base attack is capped at a minimum of 1. Default formula for physical and magical melee and magic ranged attack:</p>
+<p>BASE_ATK = (2 * STATUS_ATK * VAR_MOD + WEAPON_ATK * VAR_MOD_RED + SKILL_ATK + BONUS_ATK) * ELEMENT_MOD * ELEMENT_BONUS_MOD</p>
+<p>For physical ranged attacks the formula is calculated as follows (ammo_atk is used):</p>
+<p>BASE_ATK = (2 * STATUS_ATK * VAR_MOD + WEAPON_ATK * VAR_MOD_RED + AMMO_ATK + SKILL_ATK + BONUS_ATK) * ELEMENT_MOD * ELEMENT_BONUS_MOD</p>
+<h3><a class="anchor" aria-hidden="true" id="status-atk"></a><a href="#status-atk" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>STATUS_ATK</h3>
+<p>The status attack value is determined by the capabilities of the character to attack and inflict damage. The formula is different for magic and physical based attacks.</p>
+<p>For <strong>physical melee</strong> attacks:</p>
+<p>STATUS_ATK = LV / 4 + STR + DEX / 5</p>
+<p>For <strong>physical ranged</strong> attacks:</p>
+<p>STATUS_ATK = LV/4 + DEX + STR / 5</p>
+<p>For <strong>magical attacks</strong> (melee and ranged):</p>
+<p>STATUS_ATK = LV/4 + INT + WILL / 5</p>
+<h3><a class="anchor" aria-hidden="true" id="var-mod"></a><a href="#var-mod" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>VAR_MOD</h3>
+<p>Is a variable status modifier. The variance is reduced as the DEX value rises. It is defined as:</p>
+<p>VAR_MOD = 1 - (RAND(1,0) * 0.15)</p>
+<h3><a class="anchor" aria-hidden="true" id="weapon-atk"></a><a href="#weapon-atk" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>WEAPON_ATK</h3>
+<p>The weapon attack value for physical attacks is given by:</p>
+<p>WEAPON_ATK = (BASE_ATK * QUALY_MOD + REFINE_BONUS) * SIZE_MOD * RACE_MOD * WEAPON_BONUS_MOD</p>
+<p>Where as the WEAPON_ATK value for magical attacks is given by:</p>
+<p>WEAPON_ATK = (BASE_ATK * QUALY_MOD + REFINE_BONUS) * RACE_MOD</p>
+<h3><a class="anchor" aria-hidden="true" id="qualy-mod"></a><a href="#qualy-mod" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>QUALY_MOD</h3>
+<p>The QUALY_MOD is a modification depending of the quality of the weapon. Each weapon has a quality rating which is basically not capped. But the max quali damage mod should converge to +30% at maximum.</p>
+<p>From this rating the mod damage is calculated as follow</p>
+<p>QUALI_MOD = QUALY / 100</p>
+<h3><a class="anchor" aria-hidden="true" id="size-mod"></a><a href="#size-mod" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>SIZE_MOD</h3>
+<p>The SIZE_MOD is determined between the size of the opponent and the type of the used weapon against him. The size mod is only applied when the attack is physically based.</p>
+<table>
+  <tr>
+    <td>Weapon size</td>
+    <td>Enemy size</td>
+    <td>Modifier</td>
+  </tr>
+  <tr>
+    <td>Small</td>
+    <td>Small</td>
+    <td>1.3</td>
+  </tr>
+  <tr>
+    <td>Medium</td>
+    <td>Small</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>Big</td>
+    <td>Small</td>
+    <td>0.75</td>
+  </tr>
+  <tr>
+    <td>Small</td>
+    <td>Medium</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>Medium</td>
+    <td>Medium</td>
+    <td>1.15</td>
+  </tr>
+  <tr>
+    <td>Big</td>
+    <td>Medium</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>Small</td>
+    <td>Big</td>
+    <td>0.70</td>
+  </tr>
+  <tr>
+    <td>Medium</td>
+    <td>Big</td>
+    <td>1.1</td>
+  </tr>
+  <tr>
+    <td>Big</td>
+    <td>Big</td>
+    <td>1.3</td>
+  </tr>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="var-mod-red"></a><a href="#var-mod-red" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>VAR_MOD_RED</h3>
+<p>This is the reduced variance mod.</p>
+<p>VAR_MOD_RED = VAR_MOD - VAR_MOD / 2 + 1/2</p>
+<h3><a class="anchor" aria-hidden="true" id="ammo-atk"></a><a href="#ammo-atk" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>AMMO_ATK</h3>
+<p>If special ammunition is used this value is used. Only ranged physical attacks can make use of ammunition.</p>
+<h3><a class="anchor" aria-hidden="true" id="bonus-ammo"></a><a href="#bonus-ammo" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>BONUS_AMMO</h3>
+<p>This value is determined by the equipment and status effects applied to an entity.</p>
+<h3><a class="anchor" aria-hidden="true" id="atk-mod"></a><a href="#atk-mod" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ATK_MOD</h3>
+<p>The ATK_MOD is calculated depending which type the attack was. If it was a ranged physical attack, ranged magic attack or a melee physical or a melee magic based attack. The attack mod is capped to 0.05.</p>
+<p>If attack is physical melee:</p>
+<p>ATK_MOD = bonus_physical_melee</p>
+<p>If attack is physical ranged:</p>
+<p>ATK_MOD = bonus_physical_ranged</p>
+<p>If attack is magical melee:</p>
+<p>ATK_MOD = bonus_magical_melee</p>
+<p>If attack is physical melee:</p>
+<p>ATK_MOD = bonus_physical_melee</p>
+<h3><a class="anchor" aria-hidden="true" id="hard-def"></a><a href="#hard-def" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>HARD_DEF</h3>
+<p>Hard defense represents mostly the damage reduction via armor and other natural defenses. It can of course modified by scripts. The hard defense is capped between 0 and 95%. Depending of the nature of the attack (physical or magical) either the normal armor or magic armor (magic resist) is used.</p>
+<p>If normal attack (ranged or melee):</p>
+<p>HARD_DEF = 100 - (TOTAL_ARMOR_MOD + PHYSICAL_DEF_MOD) / 100</p>
+<p>If magic attack (ranged or melee):</p>
+<p>HARD_DEF= 100 - (TOTAL_MAGIC_RESIST_MOD + MAGIC_DEF_MOD) / 100</p>
+<h3><a class="anchor" aria-hidden="true" id="soft-def"></a><a href="#soft-def" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>SOFT_DEF</h3>
+<p>Soft defense represents the natural defense of entities against damage of a specific domain. Soft def is a natural number and NO modifier. Its minimum value is capped to 0.</p>
+<p>If attack is physical based (regardless if melee or ranged):</p>
+<p>SOFT_DEF = LV / 2 + VIT + STR / 3</p>
+<p>If the attack is magic based (regardless if melee or ranged):</p>
+<p>SOFT_DEF= LV / 2 + VIT + WILL / 4 + INT / 5</p>
+<h3><a class="anchor" aria-hidden="true" id="crit-mod"></a><a href="#crit-mod" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CRIT_MOD</h3>
+<p>The base crit mod is set so 1.4 (bonus of 40% damage) if a critical hit has occurred. The chance to land a critical hit is determined before the actual damage is calculated. If no critical hit has occurred the crit mod is hardcoded set to 1. Magic based attacks can not land a critical hit (they also are hitting a target easier).</p>
+<p>The crit mod is capped at 1.</p>
+<p>CRIT_MOD = BASE_CRIT_MOD * CRIT_DAMAGE_MOD</p>
+<h2><a class="anchor" aria-hidden="true" id="damage-variables"></a><a href="#damage-variables" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Damage variables</h2>
+<p>Total damage calculation modifiers which are gathered from equipment and status effects. They are re-calculated upon change of the entities properties and then stored. The variables are feed into the attack scripts so their values can be accessed and altered via scripts on a per attack basis. These values are called damage variables.</p>
+<table>
+  <tr>
+    <td>Variable Name</td>
+    <td>Description</td>
+  </tr>
+  <tr>
+    <td>bonusAttackPhyscialMelee</td>
+    <td>Bonus damage on physical melee attacks.</td>
+  </tr>
+  <tr>
+    <td>bonusAttackPhyscialRanged</td>
+    <td>Bonus damage on physical ranged attacks.</td>
+  </tr>
+  <tr>
+    <td>bonusAttackMagicMelee</td>
+    <td>Bonus damage on magical melee attacks.</td>
+  </tr>
+  <tr>
+    <td>bonusAttackMagicRanged</td>
+    <td>Bonus damage on magical ranged attacks.</td>
+  </tr>
+  <tr>
+    <td>physicalDefMod</td>
+    <td>Bonus or reduction on armor.</td>
+  </tr>
+  <tr>
+    <td>magicDefMod</td>
+    <td>Bonus or reduction on magic resist.</td>
+  </tr>
+  <tr>
+    <td>criticalChanceMod</td>
+    <td>Bonus or Reduction to critical hit chance.</td>
+  </tr>
+  <tr>
+    <td>criticalDamageMod</td>
+    <td>Bonus or reduction in critical damage.</td>
+  </tr>
+</table>
+<h2><a class="anchor" aria-hidden="true" id="kampfsystem"></a><a href="#kampfsystem" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Kampfsystem</h2>
+<p>Kampfablauf</p>
+<ol>
+<li><p>Trifft eine Attacke?</p></li>
+<li><p>Gibt ein ein Script für die Attacke um bestimmte Effekte, oder eine andere Berechnung auszulösen?</p>
+<ol>
+<li>Nutze das Script um den Schaden zu berechnen.</li>
+</ol></li>
+<li><p>Berechne anhand aktueller Statuswerte den auftretenden Schaden und übergebe ihn an die Entität.</p></li>
+<li><p>Entität prüft ob der Schaden angewendet, oder durch Equipments abgeschwächt wird.</p></li>
+<li><p>Ist der Schaden dennoch aktiv wird er angewendet.</p></li>
+</ol>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/bestia-docs/docs/server-scripts.html">← Server Scripts</a><a class="docs-next button" href="/bestia-docs/docs/server-streaming.html">Server Streaming →</a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#stages-of-a-battle">Stages of a battle</a></li><li><a href="#damage-formula">Damage formula</a><ul class="toc-headings"><li><a href="#base-atk">BASE_ATK</a></li><li><a href="#status-atk">STATUS_ATK</a></li><li><a href="#var-mod">VAR_MOD</a></li><li><a href="#weapon-atk">WEAPON_ATK</a></li><li><a href="#qualy-mod">QUALY_MOD</a></li><li><a href="#size-mod">SIZE_MOD</a></li><li><a href="#var-mod-red">VAR_MOD_RED</a></li><li><a href="#ammo-atk">AMMO_ATK</a></li><li><a href="#bonus-ammo">BONUS_AMMO</a></li><li><a href="#atk-mod">ATK_MOD</a></li><li><a href="#hard-def">HARD_DEF</a></li><li><a href="#soft-def">SOFT_DEF</a></li><li><a href="#crit-mod">CRIT_MOD</a></li></ul></li><li><a href="#damage-variables">Damage variables</a></li><li><a href="#kampfsystem">Kampfsystem</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/bestia-docs/" class="nav-home"><img src="/bestia-docs/img/docusaurus.svg" alt="Bestia Game Documentation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/bestia-docs/docs/en/about-manifest.html">Introduction</a><a href="/bestia-docs/docs/en/server.html">Server Documentation</a><a href="/bestia-docs/docs/en/client.html">Client Documentation</a></div><div><h5>Community</h5><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/bestiagame" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="https://github.com/tfelix/bestia-docs">GitHub</a></div></section><section class="copyright">Copyright © 2018 Thomas Felix</section></footer></div></body></html>

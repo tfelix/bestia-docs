@@ -1,0 +1,142 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Server Architecture · Bestia Game Documentation</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Durch das aktuelle Design und die feste Zuweisung des Server Systems lässt sich eine echte Skalierung nicht durchführen. Sollten zu viele Spieler auf einem physischen Zone Server spielen führt dies langfristig zu Problemen. Eine wirklich dezentrale Server Architektur könnte hier abhilfe Leisten. Die Berechnungen auf den physischen Servern werden durch einzelne Einheiten abgehandelt und nicht mehr durch ein monolithisches System. Um diese Recheneinheiten (Actors) zu definieren sind Frameworks wie Akka gut geeignet. Um eine konsistente Beschreibung der Spielwelt zu ermöglichen sind In-Memory Cache Frameworks wie Hazelcast oder Redis notwendig."/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Server Architecture · Bestia Game Documentation"/><meta property="og:type" content="website"/><meta property="og:url" content="https://tfelix.github.io/bestia-docs/index.html"/><meta property="og:description" content="Durch das aktuelle Design und die feste Zuweisung des Server Systems lässt sich eine echte Skalierung nicht durchführen. Sollten zu viele Spieler auf einem physischen Zone Server spielen führt dies langfristig zu Problemen. Eine wirklich dezentrale Server Architektur könnte hier abhilfe Leisten. Die Berechnungen auf den physischen Servern werden durch einzelne Einheiten abgehandelt und nicht mehr durch ein monolithisches System. Um diese Recheneinheiten (Actors) zu definieren sind Frameworks wie Akka gut geeignet. Um eine konsistente Beschreibung der Spielwelt zu ermöglichen sind In-Memory Cache Frameworks wie Hazelcast oder Redis notwendig."/><meta property="og:image" content="https://tfelix.github.io/bestia-docs/img/docusaurus.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://tfelix.github.io/bestia-docs/img/docusaurus.png"/><link rel="shortcut icon" href="/bestia-docs/img/favicon.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/bestia-docs/css/main.css"/></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/bestia-docs/"><img class="logo" src="/bestia-docs/img/docusaurus.svg" alt="Bestia Game Documentation"/><h2 class="headerTitleWithLogo">Bestia Game Documentation</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/bestia-docs/docs/about-manifest.html" target="_self">Docs</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Server</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Introduction</h3><ul><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/about-manifest.html">About This Game</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/about-background.html">Background Story</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/about-design.html">Artwork and Design</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/about-lore.html">The Lore</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/about-mechanics.html">Game Mechanics</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/about-quests.html">Quests</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/about-resources.html">Resources</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Server</h3><ul><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/server.html">Server</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/bestia-docs/docs/server-architecture.html">Server Architecture</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/server-worldcreation.html">World Generation</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/server-npc-ai.html">Artificial Intelligence</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/server-scripts.html">Server Scripts</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/server-battlesystem.html">Battlesystem</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/server-streaming.html">Server Streaming</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/server-items.html">Battlesystem</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/server-routing.html">NPC Routing</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Client</h3><ul><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/client.html">Client</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/client-animation.html">Animations and Effects</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API</h3><ul><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/api.html">Bestia API</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Improvement Proposals</h3><ul><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/bip-about.html">Bestia Improvement Proposals (BIP)</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Appendix</h3><ul><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/bip-1.html">BIP 1 - ClientVars</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/bip-2.html">BIP 2 - Latency estimation</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/bip-3.html">BIP 3 - Debug mode</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/bip-4.html">BIP 4 - Dynamic Client UI</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/bip-5.html">BIP 5 - Translation Microservice</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/bip-6.html">BIP 6 - Conditional Component Sync</a></li></ul></div></div></section></div><script>
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Server Architecture</h1></header><article><div><span><p>Durch das aktuelle Design und die feste Zuweisung des Server Systems lässt sich eine echte Skalierung nicht durchführen. Sollten zu viele Spieler auf einem physischen Zone Server spielen führt dies langfristig zu Problemen. Eine wirklich dezentrale Server Architektur könnte hier abhilfe Leisten. Die Berechnungen auf den physischen Servern werden durch einzelne Einheiten abgehandelt und nicht mehr durch ein monolithisches System. Um diese Recheneinheiten (Actors) zu definieren sind Frameworks wie Akka gut geeignet. Um eine konsistente Beschreibung der Spielwelt zu ermöglichen sind In-Memory Cache Frameworks wie Hazelcast oder Redis notwendig.</p>
+<p>Autodiscovery</p>
+<p><a href="https://blog.hazelcast.com/hazelcast-discovery-spi/">https://blog.hazelcast.com/hazelcast-discovery-spi/</a></p>
+<p><a href="https://medium.com/@takezoe/save-state-of-actor-using-akka-persistence-a9111ff2c42b">https://medium.com/@takezoe/save-state-of-actor-using-akka-persistence-a9111ff2c42b</a></p>
+<p><a href="http://tudorzgureanu.com/akka-persistence-testing-persistent-actors/">http://tudorzgureanu.com/akka-persistence-testing-persistent-actors/</a></p>
+<p><a href="http://blog.kamkor.me/Akka-Cluster-Load-Balancing/">http://blog.kamkor.me/Akka-Cluster-Load-Balancing/</a></p>
+<h2><a class="anchor" aria-hidden="true" id="zoneserver-entities"></a><a href="#zoneserver-entities" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Zoneserver Entities</h2>
+<p>Entities stellen die zentralen Objekte zur Interaktion dar. Sie benötigen eine Schnittstelle zum Server, um ggf. mit weiteren Entities interagieren zu können und/oder damit Methodenaufrufe die innerhalb von Scripts geschehen zum Senden von Nachrichten an den Client führen können.</p>
+<p>Folgende Arten von Entities gibt es, sie benötigen folgende Eigenschaften:</p>
+<ul>
+<li><p>Attacken</p>
+<ul>
+<li><p>Script API</p></li>
+<li><p>Script Trigger API</p>
+<ul>
+<li><p>onEnter</p></li>
+<li><p>onLeave</p></li>
+<li><p>onTick</p></li>
+</ul></li>
+<li><p>Position API</p></li>
+<li><p>Visual API</p></li>
+<li><p>Movement API</p></li>
+</ul></li>
+<li><p>Scripte</p>
+<ul>
+<li><p>Script API</p></li>
+<li><p>Position API</p></li>
+<li><p>Script Trigger API</p></li>
+</ul></li>
+<li><p>Player Bestias</p>
+<ul>
+<li><p>Movement API</p></li>
+<li><p>Interaction API</p></li>
+<li><p>Attackable API</p></li>
+<li><p>Position API</p></li>
+<li><p>Visual API</p></li>
+<li><p>Equipable API</p></li>
+<li><p>Inventory API</p></li>
+</ul></li>
+<li><p>Bestia / NPC</p>
+<ul>
+<li><p>KI API</p></li>
+<li><p>Movement API</p></li>
+<li><p>Interaction API</p></li>
+<li><p>Attackable</p></li>
+<li><p>Position API</p></li>
+<li><p>Visual API</p></li>
+<li><p>Equipable API</p></li>
+<li><p>Inventory API</p></li>
+</ul></li>
+<li><p>Ressourcen (Abbaubare Bäume, Pflanzen)</p>
+<ul>
+<li><p>Position API</p></li>
+<li><p>Visual API</p></li>
+<li><p>Interaction API</p></li>
+<li><p>Attackable API</p></li>
+</ul></li>
+<li><p>Objekte (Maschinen, Gebäude)</p>
+<ul>
+<li><p>Position API</p></li>
+<li><p>Visual API</p></li>
+<li><p>Interaction API</p></li>
+<li><p>Attackable API</p></li>
+<li><p>Inventory API</p></li>
+</ul></li>
+</ul>
+<p>Eine Bewegung muss immer über den Server erfolgen, da nur so gewährleistet wird, dass entsprechende Script Trigger überprüft werden können.</p>
+<h2><a class="anchor" aria-hidden="true" id="message-guidelines"></a><a href="#message-guidelines" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Message guidelines</h2>
+<p>Akka messages should only be send from actors to actors. This keeps the messaging system away from the service structures thus allowing a clean separation of concerns.
+The main entry point of message digestion is the DigestExActor.
+Connection and authentication
+Client performs Authentication → Server accepts authentication → Webserver established connection → notifies client and server → server spawns client entities and updates client.
+Client Connection Actors hold the connection to the client and are used as a sharded actor. Updates to this certain client are sent to the sharded actor.</p>
+<h2><a class="anchor" aria-hidden="true" id="interest-management"></a><a href="#interest-management" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Interest management</h2>
+<p>To optimize performance clients are divided into certain areas called area of interest (AOI). Only clients having a receive enabled entity (usually bestias) inside an AOI are receiving updates of what is happening around them. These receivable entities are realized via a component attached to a entity. All such entities enable players to receive updates. The update packets are marked with a flag from which entity the observation was done.
+The server needs to keep track which entities are within a certain interest zone. This is done directly via the x and y coordinates of an entity.
+As soon as an entity performs a state transition or an action (item pickup, attack, movement, animation etc.) all connected clients need to be updated about this transition.
+In order to properly address a watching entity the following steps need to be done:
+Entity update message is received. Find the AOI and the adjacent AOIs of the entity emitting the update message.
+Inside the AOIs find all entities which have a client update component attached.
+Wrap the message inside a message holding the receiving entity id (entity observer id).
+Find the owner/account ID of these entities and send the update message towards the messaging actor system to forward the message.</p>
+<h1><a class="anchor" aria-hidden="true" id="entity-component-services"></a><a href="#entity-component-services" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Entity Component Services</h1>
+<p>Bestia nutzt serverseitig ein ECS System um eine möglichst flexible gestaltung des Entity Systems realisieren zu können. Entities are described by dynamically attaching components to them. ECS system have been proven as a de facto industrial standard for recent game development. The components only contain the data are attached to entities which merely are an ID in the system. The so called systems act upon this data and alter the entities usually this is the case in a fixed tick amount for game logic updates.. Since the bestia system is event based and not tick based we use a little different approach. We define services which work on entities and their components. These services are triggered by Akka Actors in case a event message arrives. This architecture is called entity component services and allows a better usage of computing resources in a clustered server environment.</p>
+<h2><a class="anchor" aria-hidden="true" id="actor-system-architecture"></a><a href="#actor-system-architecture" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Actor System Architecture</h2>
+<p>A entity factory will create a entity, save it into the memdb and also start a sharded entity into the cluster. The factory will also create and setup components which might have also active actors. If a component is created, altered or deleted these calls are intercepted via a configurable callback. Usually the component instances are cached for some amount of time to lessen the strain on the garbage collector. Upon creation of the component a message might get sent into the actorsystem to start up a component based actor which will then in turn control some execution specific operation like periodic health regeneration ticks.</p>
+<h2><a class="anchor" aria-hidden="true" id="entity-creators"></a><a href="#entity-creators" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Entity Creators</h2>
+<p>The first step into an usable entity are entity creators. They take alle domain data input or simple argument input and server as a helper function or a builder for usable a complete entities which are outfitted with components. They create the blueprints this is a building plan for the real entity factory for entity creation. The blueprints can either be created programmatically but they might also get statically described via JSON files which in turn then can be loaded by the software to create static entities (the created entities can of course later then be adjusted via scripts at runtime).</p>
+<h3><a class="anchor" aria-hidden="true" id="blueprint-json-datenformat"></a><a href="#blueprint-json-datenformat" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Blueprint JSON Datenformat</h3>
+<p>Components (identifiziert über den Namen/ID)
+Default Values für den Component Am einfachsten per Jackson parsen, da die Bibliothek sowieso schon im Einsatz ist.</p>
+<p>Verwendung:
+Builder b = Blueprint.newBuilder();
+b.addComponent(Component.class);</p>
+<p>später b.addComponent(Component.class, Map&lt;String, String&gt; values);</p>
+<p>Datenformat</p>
+<p>{
+position: {x: 0, y: 0},
+visible: {sprite: 'name', type: 'type'},
+script: {name: 'bla', type: 'item'}
+}</p>
+<h2><a class="anchor" aria-hidden="true" id="entity-factories"></a><a href="#entity-factories" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Entity Factories</h2>
+<p>Schritte zur Erzeugung einer Entity:</p>
+<ol>
+<li><p>Anlegen einer Entity (ID).</p></li>
+<li><p>Festlegen aller Components zu dieser ID.</p></li>
+<li><p>Befüllen der Components mit Default-Werten (optional).</p></li>
+<li><p>Befüllen der Components mit Werten aus der Factory.</p></li>
+<li><p>Speichern der Entity + Components.</p></li>
+</ol>
+<p>Factories können mit ComponentAdapter ausgestattet werden, diese bekommen von der Factory eine Component geliefert die sie dynamisch mit Werten befüllen können. Die Factory ist damit nicht threadsafe und sollte in mehrfachen Varianten vorgehalten werden. Die Adapter der Factory können vor dem Erzeugen einer neuen Entity mit neuen Werten besetzt werden und füllen die dann erzeugten Components dementsprechend.</p>
+<h2><a class="anchor" aria-hidden="true" id="speichern-von-entities-und-components"></a><a href="#speichern-von-entities-und-components" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Speichern von Entities und Components</h2>
+<p>Components und Entities sind verknüpft. Bei jeder Änderung eines Component muss diese zurück in die Memory Database gespeichert werden. Hier tritt der Component Interceptor in Kraft und überprüft ob sich eine Komponente geändert hat die eine Benachrichtigung zum Beispiel an den Client oder an KI Verarbeitende interne Komponenten benötigt. Sollte dies der Fall sein, werden entsprechende Messages generiert und entweder an den Client, alle in Sicht befindlichen Clients, oder das System selbst gesendet.</p>
+<h2><a class="anchor" aria-hidden="true" id="entity-actor-system"></a><a href="#entity-actor-system" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Entity Actor System</h2>
+<p>Bestia uses a entity actor system for management and active control of its entities. Each entity is registered via an in memory database. All of its current state is saved via this database. Nevertheless entities must be able to actively engage in world events. This is done via the actor messaging system of akka. As new messages arrive and updating the actors about environment statistics usually a AI state re-evaluation is performed to plan the next actions of the entity.
+But there are also easier operations like ticking of script events which will evaluated and performed.</p>
+<h2><a class="anchor" aria-hidden="true" id="entity-resource-cleanup"></a><a href="#entity-resource-cleanup" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Entity Resource Cleanup</h2>
+<p>The inner world representation relies on entities with associated component data. The problem is in order to manage this entities in a message based way there must be also an active actor present to receive these messages and react accordingly. This actor capsules the logic of the entity but might also have child actors if certain components require them (like for example a script callback trigger actor which will trigger script callbacks in certain intervals). If components or entities are deleted not only should the object instance be reused, these resources must also be reliably cleaned up.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/bestia-docs/docs/server.html">← Server</a><a class="docs-next button" href="/bestia-docs/docs/server-worldcreation.html">World Generation →</a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#zoneserver-entities">Zoneserver Entities</a></li><li><a href="#message-guidelines">Message guidelines</a></li><li><a href="#interest-management">Interest management</a></li><li><a href="#actor-system-architecture">Actor System Architecture</a></li><li><a href="#entity-creators">Entity Creators</a><ul class="toc-headings"><li><a href="#blueprint-json-datenformat">Blueprint JSON Datenformat</a></li></ul></li><li><a href="#entity-factories">Entity Factories</a></li><li><a href="#speichern-von-entities-und-components">Speichern von Entities und Components</a></li><li><a href="#entity-actor-system">Entity Actor System</a></li><li><a href="#entity-resource-cleanup">Entity Resource Cleanup</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/bestia-docs/" class="nav-home"><img src="/bestia-docs/img/docusaurus.svg" alt="Bestia Game Documentation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/bestia-docs/docs/en/about-manifest.html">Introduction</a><a href="/bestia-docs/docs/en/server.html">Server Documentation</a><a href="/bestia-docs/docs/en/client.html">Client Documentation</a></div><div><h5>Community</h5><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/bestiagame" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="https://github.com/tfelix/bestia-docs">GitHub</a></div></section><section class="copyright">Copyright © 2018 Thomas Felix</section></footer></div></body></html>

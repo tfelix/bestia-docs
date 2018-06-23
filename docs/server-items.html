@@ -1,0 +1,164 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Battlesystem · Bestia Game Documentation</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="# Items"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Battlesystem · Bestia Game Documentation"/><meta property="og:type" content="website"/><meta property="og:url" content="https://tfelix.github.io/bestia-docs/index.html"/><meta property="og:description" content="# Items"/><meta property="og:image" content="https://tfelix.github.io/bestia-docs/img/docusaurus.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://tfelix.github.io/bestia-docs/img/docusaurus.png"/><link rel="shortcut icon" href="/bestia-docs/img/favicon.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/bestia-docs/css/main.css"/></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/bestia-docs/"><img class="logo" src="/bestia-docs/img/docusaurus.svg" alt="Bestia Game Documentation"/><h2 class="headerTitleWithLogo">Bestia Game Documentation</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/bestia-docs/docs/about-manifest.html" target="_self">Docs</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Server</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Introduction</h3><ul><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/about-manifest.html">About This Game</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/about-background.html">Background Story</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/about-design.html">Artwork and Design</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/about-lore.html">The Lore</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/about-mechanics.html">Game Mechanics</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/about-quests.html">Quests</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/about-resources.html">Resources</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Server</h3><ul><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/server.html">Server</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/server-architecture.html">Server Architecture</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/server-worldcreation.html">World Generation</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/server-npc-ai.html">Artificial Intelligence</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/server-scripts.html">Server Scripts</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/server-battlesystem.html">Battlesystem</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/server-streaming.html">Server Streaming</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/bestia-docs/docs/server-items.html">Battlesystem</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/server-routing.html">NPC Routing</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Client</h3><ul><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/client.html">Client</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/client-animation.html">Animations and Effects</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API</h3><ul><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/api.html">Bestia API</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Improvement Proposals</h3><ul><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/bip-about.html">Bestia Improvement Proposals (BIP)</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Appendix</h3><ul><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/bip-1.html">BIP 1 - ClientVars</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/bip-2.html">BIP 2 - Latency estimation</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/bip-3.html">BIP 3 - Debug mode</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/bip-4.html">BIP 4 - Dynamic Client UI</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/bip-5.html">BIP 5 - Translation Microservice</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/bip-6.html">BIP 6 - Conditional Component Sync</a></li></ul></div></div></section></div><script>
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Battlesystem</h1></header><article><div><span><h1><a class="anchor" aria-hidden="true" id="items"></a><a href="#items" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Items</h1>
+<p>Each item has a level assigned. This level is important to determine how hard or easy it is to forge this item, upgrade it and so on.</p>
+<h2><a class="anchor" aria-hidden="true" id="weapon-refinement"></a><a href="#weapon-refinement" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Weapon refinement</h2>
+<p>Weapons can be refined which accounts to extra damage dealt if the weapon is used. Each upgrade step can result in a destruction of the equipment.</p>
+<table>
+  <tr>
+    <td>Equip lv.</td>
+    <td>Category</td>
+  </tr>
+  <tr>
+    <td>1 - 20</td>
+    <td>Mundane</td>
+  </tr>
+  <tr>
+    <td>20 - 60</td>
+    <td>Superior</td>
+  </tr>
+  <tr>
+    <td>60 and above</td>
+    <td>Legendary</td>
+  </tr>
+</table>
+<p>Superior upgrade chances</p>
+<table>
+  <tr>
+    <td>Upgrade Lv.</td>
+    <td>Success</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>100%</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>100%</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>100%</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>100%</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>90%</td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>80%</td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td>60%</td>
+  </tr>
+  <tr>
+    <td>8</td>
+    <td>50%</td>
+  </tr>
+  <tr>
+    <td>9</td>
+    <td>40%</td>
+  </tr>
+  <tr>
+    <td>10</td>
+    <td>30%</td>
+  </tr>
+</table>
+<p>Legendary upgrade chances</p>
+<table>
+  <tr>
+    <td>Upgrade Lv.</td>
+    <td>Success</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>100%</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>100%</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>100%</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>90%</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>70%</td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>70%</td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td>50%</td>
+  </tr>
+  <tr>
+    <td>8</td>
+    <td>40%</td>
+  </tr>
+  <tr>
+    <td>9</td>
+    <td>30%</td>
+  </tr>
+  <tr>
+    <td>10</td>
+    <td>20%</td>
+  </tr>
+</table>
+<h2><a class="anchor" aria-hidden="true" id="equipment-refinement"></a><a href="#equipment-refinement" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Equipment refinement</h2>
+<p>An equipment can be refined up to +10. Each higher refinement process can destroy the weapon/equipment. The chance of success is depending on skill and refine items used. The refinement bonus depending on level has not yet been decided.</p>
+<p>A refined armor has increased resistance for hard def. Each upgrade point grants ⅓ more defense.</p>
+<p>A refined weapon has increased damage.</p>
+<h2><a class="anchor" aria-hidden="true" id="item-recycling"></a><a href="#item-recycling" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Item recycling</h2>
+<p>In order to produce raw materials existing items can be taken apart. This will generate the raw materials from which they were produced originally.</p>
+<h2><a class="anchor" aria-hidden="true" id="item-crafting"></a><a href="#item-crafting" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Item crafting</h2>
+<p>Bestia uses an innovative new item crafting. Basically the player is allowed to craft all items. Some items however might be so hard to craft so it is not possible to craft it without appropriate skill. Some items may require special ingredients which can not be substituted. The higher the crafted item level and the harder it get to successful craft it. If the crafting of the item fails all the materials used to craft it are lost. In order to craft an item two things are important: the sum of raw materials used to craft and how the materials are laid out.</p>
+<p>Item craft success chance is determined if the raw materials</p>
+<p>totalAmoun = Summe i N Min(1, i/amount) / N</p>
+<p>Wenn    totalAmount (tA) &lt; 0.5 → SuccessChance = 0</p>
+<pre><code class="hljs">totalAmount (tA) &gt; 0.5 → SuccessChance = e^-(5*(1 - tA)) * (craftSkill * 10 / itemLevel) * craftMod
+</code></pre>
+<p>After an item was successfully crafted the recipe is saved for the user inside his recipe list. From this list the recipe can be inscribed upon a paper to give it to other players who can consume and learn it. The learning will take some time (depending of the level of the item).</p>
+<p>Data structure for a recipe: {rows: n, columns: m, items: [id-amount,id-amount,...], result: itemId}</p>
+<p>Related: See crafting skill.</p>
+<h2><a class="anchor" aria-hidden="true" id="alchemy-brewing"></a><a href="#alchemy-brewing" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Alchemy brewing</h2>
+<p>The brewing is a time consuming process. The process should be somehow deterministic so the results are logically to be obtained.</p>
+<p>Once a receipt was discovered it is saved for the user so it can be reused very quickly. If a player repeatedly makes the same receipt the quality of the produced potions increases over time. The player can choose to write down the receipt and give it to other players who might increase their skill by reading it.</p>
+<h2><a class="anchor" aria-hidden="true" id="craft-duration"></a><a href="#craft-duration" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Craft duration</h2>
+<p>Craft duration is determined by the item level which the player wants to craft. Skill points in the suitable skill tree (weapon, equipment, construction or alchemy, artifacts) reduces the build time.</p>
+<p>Shortest duration is: 3 min (Lv. 1) up to 2 days (Lv.100).</p>
+<h2><a class="anchor" aria-hidden="true" id="item-status-values"></a><a href="#item-status-values" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Item status values</h2>
+<p>Items are potentially able to receive attacks while they are on the ground. Thus to participate in the battle system the need status values. Items status value distribution is based upon their type (weapon, potion, book etc) and the total amount of points to distribute is given by the item level. Later there might be items which get preset custom values. But for now on they are based upon a lookup table.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/bestia-docs/docs/server-streaming.html">← Server Streaming</a><a class="docs-next button" href="/bestia-docs/docs/server-routing.html">Routing →</a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#weapon-refinement">Weapon refinement</a></li><li><a href="#equipment-refinement">Equipment refinement</a></li><li><a href="#item-recycling">Item recycling</a></li><li><a href="#item-crafting">Item crafting</a></li><li><a href="#alchemy-brewing">Alchemy brewing</a></li><li><a href="#craft-duration">Craft duration</a></li><li><a href="#item-status-values">Item status values</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/bestia-docs/" class="nav-home"><img src="/bestia-docs/img/docusaurus.svg" alt="Bestia Game Documentation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/bestia-docs/docs/en/about-manifest.html">Introduction</a><a href="/bestia-docs/docs/en/server.html">Server Documentation</a><a href="/bestia-docs/docs/en/client.html">Client Documentation</a></div><div><h5>Community</h5><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/bestiagame" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="https://github.com/tfelix/bestia-docs">GitHub</a></div></section><section class="copyright">Copyright © 2018 Thomas Felix</section></footer></div></body></html>

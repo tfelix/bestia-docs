@@ -1,0 +1,131 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Server Scripts · Bestia Game Documentation</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="# Scripte"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Server Scripts · Bestia Game Documentation"/><meta property="og:type" content="website"/><meta property="og:url" content="https://tfelix.github.io/bestia-docs/index.html"/><meta property="og:description" content="# Scripte"/><meta property="og:image" content="https://tfelix.github.io/bestia-docs/img/docusaurus.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://tfelix.github.io/bestia-docs/img/docusaurus.png"/><link rel="shortcut icon" href="/bestia-docs/img/favicon.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/bestia-docs/css/main.css"/></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/bestia-docs/"><img class="logo" src="/bestia-docs/img/docusaurus.svg" alt="Bestia Game Documentation"/><h2 class="headerTitleWithLogo">Bestia Game Documentation</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/bestia-docs/docs/about-manifest.html" target="_self">Docs</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Server</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Introduction</h3><ul><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/about-manifest.html">About This Game</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/about-background.html">Background Story</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/about-design.html">Artwork and Design</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/about-lore.html">The Lore</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/about-mechanics.html">Game Mechanics</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/about-quests.html">Quests</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/about-resources.html">Resources</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Server</h3><ul><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/server.html">Server</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/server-architecture.html">Server Architecture</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/server-worldcreation.html">World Generation</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/server-npc-ai.html">Artificial Intelligence</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/bestia-docs/docs/server-scripts.html">Server Scripts</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/server-battlesystem.html">Battlesystem</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/server-streaming.html">Server Streaming</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/server-items.html">Battlesystem</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/server-routing.html">NPC Routing</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Client</h3><ul><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/client.html">Client</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/client-animation.html">Animations and Effects</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API</h3><ul><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/api.html">Bestia API</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Improvement Proposals</h3><ul><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/bip-about.html">Bestia Improvement Proposals (BIP)</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Appendix</h3><ul><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/bip-1.html">BIP 1 - ClientVars</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/bip-2.html">BIP 2 - Latency estimation</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/bip-3.html">BIP 3 - Debug mode</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/bip-4.html">BIP 4 - Dynamic Client UI</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/bip-5.html">BIP 5 - Translation Microservice</a></li><li class="navListItem"><a class="navItem" href="/bestia-docs/docs/bip-6.html">BIP 6 - Conditional Component Sync</a></li></ul></div></div></section></div><script>
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Server Scripts</h1></header><article><div><span><h1><a class="anchor" aria-hidden="true" id="scripte"></a><a href="#scripte" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Scripte</h1>
+<p>Das Skript-System in Bestia wird genutzt um flexible Programmausführung für verschiedenste Zwecke zu ermöglichen. Dazu gehören vor allem die Effekte von benutzten Items, Attacken, das Verhalten von Gespawnten Entities usw.</p>
+<p>Als Skriptsprache wird auf JavaScript gesetzt, da diese sowieso im HTML Client verwendet werden muss und so eine weitere Sprache für das Spiel gespart werden kann. Aktuell wird die Nashorn Javascript Engine von Java 8 benutzt. Sollte sich dies als Performance Engpass herausstellen so kann später mit mittlerem Aufwand auf die V8 Engine von Google umgerüstet werden. Für alle Aktoren wird nur eine Script Engine verwendet. Da Javascripts von Natur her keine Mechanismen vorgesehen in einer Multithread Umgebung zu laufen, ist akribisch darauf zu achten, dass KEIN globaler State in den Scripten eingeführt und verwendet wird. Jede Ausführung muss einem zentralen Datenbestand arbeiten (Datenbank API). Zur Interaktion mit dem Bestia Server muss eine Script API vorgesehen werden, die den Scripten zusätzlich zu den von ihnen benötigten Variablen bei der Ausführung über ein Binding zur Verfügung gestellt wird.</p>
+<h2><a class="anchor" aria-hidden="true" id="allgemeine-fahigkeiten-von-scripts"></a><a href="#allgemeine-fahigkeiten-von-scripts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Allgemeine Fähigkeiten von Scripts</h2>
+<ul>
+<li><p>Scripts müssen Entities erzeugen oder zerstören können.</p></li>
+<li><p>Scripts müssen Entities in ihrerer Umgebung abrufen können.</p></li>
+<li><p>Sie müssen auf einen persistenten Datenspeicher Zugriff haben (einen globalen, einen nur für sie).</p></li>
+<li><p>Sie müssen das Aussehen von Entities verändern könne.</p></li>
+<li><p>Sie müssen Entities anpassen können (hinzufügen, entfernen von Statuseffekten)</p></li>
+</ul>
+<p>In der folgenden Tabelle sind die Arten der Scripte aufgelistet.</p>
+<p><a href="http://www.n-k.de/riding-the-nashorn/#_reading_files">http://www.n-k.de/riding-the-nashorn/#_reading_files</a></p>
+<table>
+  <tr>
+    <td>Script Art</td>
+    <td>Hooks</td>
+    <td>Bindings</td>
+    <td>API Funktionalität</td>
+  </tr>
+  <tr>
+    <td>Item</td>
+    <td>onUse</td>
+    <td>Account ID
+Benutzer
+Zielort (optional)
+Ziel (optional)</td>
+    <td>Entity Spawning
+Inventar</td>
+  </tr>
+  <tr>
+    <td>Attacken</td>
+    <td></td>
+    <td>Account ID
+Benutzer
+Ziel (optional)
+Zielort (optional)</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Entity Script</td>
+    <td>onTouch</td>
+    <td>Berührende Entity
+Interagierende Entity</td>
+    <td>Entity Spawning
+Inventar
+Attacken und Schaden</td>
+  </tr>
+  <tr>
+    <td>Equipment & Statuseffekte</td>
+    <td>onTakeDamage
+onAttack
+onTick
+onEquip
+onUnequip
+onStatusRequest</td>
+    <td></td>
+    <td>Tick API</td>
+  </tr>
+</table>
+<p>Scripts bestehen aus Funktionen die in Javascript implementiert werden. Die Funktionsnamen haben dabei den gleichen Namen wie in diesem Dokument beschrieben und werden bei Bedarf aufgerufen.</p>
+<p>Die Scripte sollten keinen inneren Zustand besitzen. Sie werden daher auch nicht serialisiert sondern nur eine Referenz ID/Namen. Durch diesen wird das entsprechend kompilierte Script Objekt abgerufen und bei Bedarf ausgeführt. Zustandsdaten müssen dann im Script über entsprechende APIs abgerufen werden.</p>
+<h2><a class="anchor" aria-hidden="true" id="script-kontext"></a><a href="#script-kontext" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Script Kontext</h2>
+<p>Stellt Zugriff auf die allgemeine API bereit.</p>
+<p>createEntity()</p>
+<p>getEntities(Rect rect)</p>
+<p>getEntity(Long id)</p>
+<p>// Set und Get vars müssen transaktionssicher sein.</p>
+<p>getVar(Long id)</p>
+<p>setVar(Long id, String data)</p>
+<p>// Set und Get vars müssen transaktionssicher sein.</p>
+<p>getGlobVar(Long id)</p>
+<p>setGlobVar(Long id, String data)</p>
+<h2><a class="anchor" aria-hidden="true" id="script-callbacks"></a><a href="#script-callbacks" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Script Callbacks</h2>
+<p>EntityScript</p>
+<ul>
+<li>Locatable</li>
+</ul>
+<p>Sie befinden sich in der Welt.</p>
+<ul>
+<li><p>onEnter(Locatable e)</p></li>
+<li><p>onLeave(Locatable e)</p></li>
+<li><p>onTick(Locatable e)</p></li>
+</ul>
+<p>registerTick(1000, function(){});</p>
+<ul>
+<li><p>onMoveInside(Locatable e, Path p)</p></li>
+<li><p>onCreate()</p></li>
+<li><p>onDestroy()</p></li>
+</ul>
+<p>StatusScripts / EquipScripts</p>
+<p>Es muss eine Reihe von standard Status und Equip Scripts geben die simple Änderungen der Werte erlauben. Es sind Additionen und Multiplikationen erlaubt.</p>
+<p>Besonderheiten</p>
+<ul>
+<li><p>StatusModifier verändern die Statuswerte durch Addition und Multiplikation oder durch setzen eines festen Wertes. Dabei kann eine Priorität angegeben werden.</p></li>
+<li><p>onApply</p></li>
+<li><p>onRemove</p></li>
+<li><p>onStatus(StatusModifier mods)</p></li>
+</ul>
+<p>Modifiziert den Status</p>
+<ul>
+<li><p>onTick()</p></li>
+<li><p>onTakeDamage(Damage dmg, Attackable self, Attackable enemy)</p></li>
+<li><p>onAttack(Attack atk, Attackable self, Attackable enemy)</p></li>
+</ul>
+<p>AI Scripts</p>
+<p>??? TBD</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/bestia-docs/docs/server-npc-ai.html">← Artificial Intelligence</a><a class="docs-next button" href="/bestia-docs/docs/server-battlesystem.html">Battlesystem →</a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#allgemeine-fahigkeiten-von-scripts">Allgemeine Fähigkeiten von Scripts</a></li><li><a href="#script-kontext">Script Kontext</a></li><li><a href="#script-callbacks">Script Callbacks</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/bestia-docs/" class="nav-home"><img src="/bestia-docs/img/docusaurus.svg" alt="Bestia Game Documentation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/bestia-docs/docs/en/about-manifest.html">Introduction</a><a href="/bestia-docs/docs/en/server.html">Server Documentation</a><a href="/bestia-docs/docs/en/client.html">Client Documentation</a></div><div><h5>Community</h5><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/bestiagame" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="https://github.com/tfelix/bestia-docs">GitHub</a></div></section><section class="copyright">Copyright © 2018 Thomas Felix</section></footer></div></body></html>
