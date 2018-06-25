@@ -24,7 +24,6 @@
 <url> <loc>https://tfelix.github.io/docs/bip-about.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://tfelix.github.io/docs/bip-about.html" /> </url>
 <url> <loc>https://tfelix.github.io/docs/client-animation.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://tfelix.github.io/docs/client-animation.html" /> </url>
 <url> <loc>https://tfelix.github.io/docs/client.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://tfelix.github.io/docs/client.html" /> </url>
-<url> <loc>https://tfelix.github.io/docs/doc4.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://tfelix.github.io/docs/doc4.html" /> </url>
 <url> <loc>https://tfelix.github.io/docs/misc-literature.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://tfelix.github.io/docs/misc-literature.html" /> </url>
 <url> <loc>https://tfelix.github.io/docs/server-architecture.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://tfelix.github.io/docs/server-architecture.html" /> </url>
 <url> <loc>https://tfelix.github.io/docs/server-battlesystem.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://tfelix.github.io/docs/server-battlesystem.html" /> </url>
@@ -34,5 +33,4 @@
 <url> <loc>https://tfelix.github.io/docs/server-routing.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://tfelix.github.io/docs/server-routing.html" /> </url>
 <url> <loc>https://tfelix.github.io/docs/server-scripts.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://tfelix.github.io/docs/server-scripts.html" /> </url>
 <url> <loc>https://tfelix.github.io/docs/server-worldcreation.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://tfelix.github.io/docs/server-worldcreation.html" /> </url>
-<url> <loc>https://tfelix.github.io/docs/server.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://tfelix.github.io/docs/server.html" /> </url>
 </urlset>
