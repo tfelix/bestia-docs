@@ -55,6 +55,14 @@ Yet there should be incentives for players not to go this route in order to prot
 other griev play. If a player behaves well and their honor level increases they will get more and more rewards. On the
 other hand if a player has negative honor they will get bad reputation and repressions. There might actually be some
 player initiated hunt on these low honor players.</p>
+<p>Additionally each NPC maintains an internal list of reputation points and players. If a player misbehaves or behaves in
+a friendly way, this list will be adjusted. The NPC also communicates this list with other NPCs if they meet. If the reputation
+exceeds certain upper and lower limits and the NPC enters areas that use a long-distance communication system, the NPC
+may also communicate this to more distant areas. Only if the players reputation falls below -100 the NPC encountered
+(and acted negative towards them) they remembers this permanently. Higher values slowly return to the default value
+of 0 and are then removed from the list (NPCs don't forget if a player killed family members or the NPC life was saved).
+If the customer reaches the nearest settlement via the reputation points after a certain time, the value is also stored
+there permanently.</p>
 <p>Reputation decreases faster through bad deeds than increasing because of good ones. There are a few points in the game
 to sacrifice a god shrine to raise a reputation that has fallen below the threshold of a player's global persecution.
 The sacrifice is usually (depending on the reputation threshold) very painful and even if it was made it can take
@@ -76,9 +84,9 @@ or NPC will reduce the honor by <strong>50 points</strong> (normally 20 points).
 actions will be <strong>multiplied by 1.5</strong>.</p>
 <h2><a class="anchor" aria-hidden="true" id="positive-honor"></a><a href="#positive-honor" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Positive Honor</h2>
 <p>A positive honor level will lead to very friendly NPC which might even give the player some discounts or gifts from
-time to time.</p>
+time to time. In order to increase your honor level again you can:</p>
 <ul>
-<li>Killing a player with negative honor</li>
+<li>Kill a player with negative honor</li>
 <li>Helping a NPC by healing or resurrecting a dead NPC</li>
 </ul>
 <h2><a class="anchor" aria-hidden="true" id="negative-honor"></a><a href="#negative-honor" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Negative Honor</h2>
@@ -86,7 +94,8 @@ time to time.</p>
 <ul>
 <li>&lt; 0: No more advantages from NPC and the NPC will act unfriendly against the player.</li>
 <li>&lt; -50: Some NPC might start to act hostile and attack the player or flee.</li>
-<li>Stealing goods from players or NPCs</li>
+<li>&lt; -100: NPC will permanently remember the player and also spread the word around so more NPC will start to act hostile
+towards the player.</li>
 </ul>
 <p>If a player steals something not belonging to him but to a NPC or another player he will loose honor for each item he
 takes and depending on the <a href="/docs/mech-items.html#item-level">item level</a> (looting a dead NPC/player will not lead to a
@@ -102,14 +111,6 @@ reduction of honor).</p>
 <tr><td>Superior</td><td>-45</td></tr>
 </tbody>
 </table>
-<p>He is also marked with the <a href="addlink.md">Thief debuff</a> which will grant any player who kills him <strong>5 honor</strong>. The killing
+<p>He is also marked with the <a href="addlink.md">Thief debuff</a> which will grant any player who kills him <strong>5 extra honor</strong>. The killing
 player also gets a honor reward for each item returned to the original owner of the items.</p>
-<h2><a class="anchor" aria-hidden="true" id="honor-progression"></a><a href="#honor-progression" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Honor Progression</h2>
-<p>Each NPC maintains an internal list of reputation points and players. If a player misbehaves or behaves in a friendly
-way, this list will be adjusted. The NPC also communicates this list with other NPCs if they meet. If the reputation
-exceeds certain upper and lower limits and the NPC enters areas that use a long-distance communication system, the NPC
-may also communicate this to more distant areas. Only if the reputation falls below -100 the NPC remembers this in the
-long run. Higher values slowly return to the default value of 0 and are then removed from the list (NPCs don't forget if
-a player killed family members or the NPC life was saved). If the customer reaches the nearest settlement via the
-reputation points after a certain time, the value is also stored there permanently.</p>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/mech-trading.html"><span class="arrow-prev">← </span><span>Trading</span></a><a class="docs-next button" href="/docs/mech-exploration.html"><span>Exploration</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#malicious-actions">Malicious Actions</a></li><li><a href="#protected-zone">Protected Zone</a></li><li><a href="#positive-honor">Positive Honor</a></li><li><a href="#negative-honor">Negative Honor</a><ul class="toc-headings"><li><a href="#honor-reduction-by-stealing">Honor Reduction By Stealing</a></li></ul></li><li><a href="#honor-progression">Honor Progression</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/logo-white-100.png" alt="Bestia Developer Documentation" width="50" height="50"/></a><div><h5>Docs</h5><a href="/docs/about-bestia.html"><i class="fas fa-code"></i> Introduction</a><a href="/docs/server-architecture.html"><i class="fas fa-code"></i> Server Documentation</a><a href="/docs/client-architecture.html"><i class="fas fa-code"></i> Client Documentation</a></div><div><h5>Community</h5><a href="https://discord.gg/zZW8M2S"><i class="fab fa-discord"></i> Discord</a><a href="https://twitter.com/bestiagame" target="_blank" rel="noreferrer noopener"><i class="fab fa-twitter"></i> Twitter</a></div><div><h5>More</h5><a href="https://github.com/tfelix/bestia-docs"><i class="fab fa-github"></i> GitHub</a></div></section><section class="copyright">Copyright © 2016 -2019 Thomas Felix</section></footer></div></body></html>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/mech-trading.html"><span class="arrow-prev">← </span><span>Trading</span></a><a class="docs-next button" href="/docs/mech-exploration.html"><span>Exploration</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#malicious-actions">Malicious Actions</a></li><li><a href="#protected-zone">Protected Zone</a></li><li><a href="#positive-honor">Positive Honor</a></li><li><a href="#negative-honor">Negative Honor</a><ul class="toc-headings"><li><a href="#honor-reduction-by-stealing">Honor Reduction By Stealing</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/logo-white-100.png" alt="Bestia Developer Documentation" width="50" height="50"/></a><div><h5>Docs</h5><a href="/docs/about-bestia.html"><i class="fas fa-code"></i> Introduction</a><a href="/docs/server-architecture.html"><i class="fas fa-code"></i> Server Documentation</a><a href="/docs/client-architecture.html"><i class="fas fa-code"></i> Client Documentation</a></div><div><h5>Community</h5><a href="https://discord.gg/zZW8M2S"><i class="fab fa-discord"></i> Discord</a><a href="https://twitter.com/bestiagame" target="_blank" rel="noreferrer noopener"><i class="fab fa-twitter"></i> Twitter</a></div><div><h5>More</h5><a href="https://github.com/tfelix/bestia-docs"><i class="fab fa-github"></i> GitHub</a></div></section><section class="copyright">Copyright © 2016 -2019 Thomas Felix</section></footer></div></body></html>

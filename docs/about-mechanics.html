@@ -127,7 +127,7 @@ free to choose any skill from the given skill trees. Resetting the skills is onl
 players to gain through the use of skills. However, in order to give players no advantage over fighting players, the
 experience is calculated by skills in another pool. The experience gained by job is reduced the higher the job level count
 of the players rises by a factor.</p>
-<pre><code class="hljs">reductionFactor = exp(jobLevel/<span class="hljs-number">10</span>)^<span class="hljs-number">-1</span>
+<pre><code class="hljs css language-bash">reductionFactor = exp(jobLevel/10)^-1
 </code></pre>
 <p>Only activly used jobs will create experience.</p>
 <p>By each level up results in a certain amount of Effort Points which can be distributed by the player over all status points
