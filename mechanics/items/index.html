@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Bestia Development Documentation - The massive Open World, classic, 16-bit, Browser MMORPG">
+
+    <title>Bestia Development Documentation</title>
+
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" sizes="any" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <link rel="stylesheet" href="/styles/bootstrap.min.css" />
+    <link rel="stylesheet" href="/styles/style.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/github-markdown-css/2.2.1/github-markdown.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles/prism-atom-dark.css" />
+
+    <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
+    <script src="https://bramp.github.io/js-sequence-diagrams/js/webfont.js"></script>
+    <script src="https://bramp.github.io/js-sequence-diagrams/js/snap.svg-min.js"></script>
+    <script src="https://bramp.github.io/js-sequence-diagrams/js/underscore-min.js"></script>
+    <script src="https://bramp.github.io/js-sequence-diagrams/js/sequence-diagram-min.js"></script>
+  </head>
+
+  <body>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <!-- Header navigation -->
+    <header class="container mt-2">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/"><img src="/images/bestia-logo.svg"></a>
+    <a class="nav-link active" href="/mechanics"><i class="fas fa-gamepad"></i> Game Design</a>
+    <!--
+    <a class="nav-link" href="#"><i class="fas fa-code"></i> Client Development</a>
+    <a class="nav-link" href="#"><i class="fas fa-server"></i> Server Development</a>
+    <a class="nav-link" href="#"><i class="fas fa-hat-wizard"></i></i> API</a>
+    -->
+  </nav>
+</header>
+
+
+    <!-- Page Content -->
+    <div class="container">
+      <div class="row mt-2">
+        <div class="col-3">
+            
+
+<aside class="side-menu">
+  <div class="list-group">
+  
+  <a class="list-group-item list-group-item-action " href="/mechanics/ai/">
+    
+      <i class="fas fa-brain"></i>
+    
+    Artificial Intelligence
+  </a>
+
+  <a class="list-group-item list-group-item-action " href="/mechanics/alchemy/">
+    
+      <i class="fas fa-flask"></i>
+    
+    Alchemy
+  </a>
+
+  <a class="list-group-item list-group-item-action " href="/mechanics/archivements/">
+    
+      <i class="fas fa-trophy"></i>
+    
+    Archivements
+  </a>
+
+  <a class="list-group-item list-group-item-action " href="/mechanics/battle/">
+    
+      <i class="fas fa-fist-raised"></i>
+    
+    Battle
+  </a>
+
+  <a class="list-group-item list-group-item-action " href="/mechanics/breeding/">
+    
+      <i class="fas fa-paw"></i>
+    
+    Breeding
+  </a>
+
+  <a class="list-group-item list-group-item-action " href="/mechanics/crafting/">
+    
+      <i class="fas fa-drafting-compass"></i>
+    
+    Crafting
+  </a>
+
+  <a class="list-group-item list-group-item-action " href="/mechanics/cults/">
+    
+      <i class="fas fa-users"></i>
+    
+    The Cults
+  </a>
+
+  <a class="list-group-item list-group-item-action " href="/mechanics/exploration/">
+    
+      <i class="fas fa-globe"></i>
+    
+    Exploration
+  </a>
+
+  <a class="list-group-item list-group-item-action " href="/mechanics/honor/">
+    
+      <i class="fas fa-award"></i>
+    
+    Honor
+  </a>
+
+  <a class="list-group-item list-group-item-action " href="/mechanics/inventory/">
+    
+      <i class="fas fa-box"></i>
+    
+    Inventory
+  </a>
+
+  <a class="list-group-item list-group-item-action active" href="/mechanics/items/">
+    
+      <i class="fas fa-square"></i>
+    
+    Items
+  </a>
+
+  <a class="list-group-item list-group-item-action " href="/mechanics/master/">
+    
+      <i class="fas fa-user"></i>
+    
+    Bestia Master
+  </a>
+
+  <a class="list-group-item list-group-item-action " href="/mechanics/postal-system/">
+    
+      <i class="fas fa-envelope"></i>
+    
+    Postal System
+  </a>
+
+  <a class="list-group-item list-group-item-action " href="/mechanics/quests/">
+    
+      <i class="fas fa-star"></i>
+    
+    Quests
+  </a>
+
+  <a class="list-group-item list-group-item-action " href="/mechanics/resources/">
+    
+      <i class="fas fa-box-open"></i>
+    
+    Resources
+  </a>
+
+  <a class="list-group-item list-group-item-action " href="/mechanics/skills/">
+    
+      <i class="fas fa-sign-language"></i>
+    
+    Skills
+  </a>
+
+  <a class="list-group-item list-group-item-action " href="/mechanics/spells/">
+    
+      <i class="fas fa-skull"></i>
+    
+    Attacks
+  </a>
+
+  <a class="list-group-item list-group-item-action " href="/mechanics/statusvalues/">
+    
+      <i class="fas fa-feather"></i>
+    
+    Status Values
+  </a>
+
+  <a class="list-group-item list-group-item-action " href="/mechanics/story/">
+    
+      <i class="fas fa-book"></i>
+    
+    Background Story
+  </a>
+
+  <a class="list-group-item list-group-item-action " href="/mechanics/time/">
+    
+      <i class="far fa-clock"></i>
+    
+    Time
+  </a>
+
+  <a class="list-group-item list-group-item-action " href="/mechanics/trading/">
+    
+      <i class="fas fa-handshake"></i>
+    
+    Trading
+  </a>
+
+  <a class="list-group-item list-group-item-action " href="/mechanics/weather/">
+    
+      <i class="fas fa-sun"></i>
+    
+    Weather
+  </a>
+
+  </div>
+</aside>
+
+        </div>
+        <div class="col">
+          <a href="https://github.com/tfelix/bestia-docs/edit/master/src/mechanics/items.md" class="btn btn-dark btn-sm edit-button">
+            <i class="fas fa-edit"></i> Edit
+          </a>
+          <h1 id="items"><i class="fas fa-square"></i> Items <a class="header-anchor" href="#items" aria-hidden="true">§</a></h1>
+<p>Items can be optained by the player and carried around. The amount of items limited to each entity is determined via
+its <a href="/mechanics/inventory">Inventory</a>.</p>
+<p>Each item has a level assigned. This level is important to determine how hard or easy it is to forge this item, upgrade
+it and so on. It also effects how spels interact with the item entity.</p>
+<h2 id="item-level">Item Level <a class="header-anchor" href="#item-level" aria-hidden="true">§</a></h2>
+<p>Items are grouped into three categories and inside this documentation often refered to via its category.</p>
+<table>
+<thead>
+<tr>
+<th>Item Level</th>
+<th>Category</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 - 20</td>
+<td>Mundane</td>
+</tr>
+<tr>
+<td>21 - 80</td>
+<td>Superior</td>
+</tr>
+<tr>
+<td>81 - 100</td>
+<td>Legendary</td>
+</tr>
+</tbody>
+</table>
+<h2 id="weapon-refinement">Weapon Refinement <a class="header-anchor" href="#weapon-refinement" aria-hidden="true">§</a></h2>
+<p>Weapons and armors can be refined which accounts to extra damage dealt if the weapon is used. Each upgrade step can
+result in a destruction of the equipment.</p>
+<p>A refined weapon has increased base damage per level:</p>
+<table>
+<thead>
+<tr>
+<th>Weapon Category</th>
+<th>Base Damage Bonus / Upgrade Level</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mundane</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Superior</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Legendary</td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+<p>These are the base upgrade chances. The chances can be altered via skills or item usages.</p>
+<h3 id="uprade-chances">Uprade Chances <a class="header-anchor" href="#uprade-chances" aria-hidden="true">§</a></h3>
+<table>
+<thead>
+<tr>
+<th>Weapon Category</th>
+<th>Uprade Formula</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mundane</td>
+<td><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>i</mi><mi>n</mi><mo>(</mo><mn>1</mn><mo separator="true">,</mo><msup><mi>e</mi><mrow><mo>−</mo><mo>(</mo><mi>i</mi><mi>t</mi><mi>e</mi><mi>m</mi><mi>L</mi><mi>v</mi><mo>−</mo><mn>5</mn><mo>)</mo><mi mathvariant="normal">/</mi><mn>9</mn><mi mathvariant="normal">.</mi><mn>8</mn><mo>)</mo></mrow></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">min(1, e^{-(itemLv-5)/9.8)})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8879999999999999em;"></span><span class="strut bottom" style="height:1.138em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit">m</span><span class="mord mathit">i</span><span class="mord mathit">n</span><span class="mopen">(</span><span class="mord mathrm">1</span><span class="mpunct">,</span><span class="mord"><span class="mord mathit">e</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mord">−</span><span class="mopen">(</span><span class="mord mathit">i</span><span class="mord mathit">t</span><span class="mord mathit">e</span><span class="mord mathit">m</span><span class="mord mathit">L</span><span class="mord mathit" style="margin-right:0.03588em;">v</span><span class="mbin">−</span><span class="mord mathrm">5</span><span class="mclose">)</span><span class="mord mathrm">/</span><span class="mord mathrm">9</span><span class="mord mathrm">.</span><span class="mord mathrm">8</span><span class="mclose">)</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mclose">)</span></span></span></span></td>
+</tr>
+<tr>
+<td>Superior</td>
+<td><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>i</mi><mi>n</mi><mo>(</mo><mn>1</mn><mo separator="true">,</mo><msup><mi>e</mi><mrow><mo>−</mo><mo>(</mo><mi>i</mi><mi>t</mi><mi>e</mi><mi>m</mi><mi>L</mi><mi>v</mi><mo>−</mo><mn>4</mn><mo>)</mo><mi mathvariant="normal">/</mi><mn>8</mn><mo separator="true">,</mo><mn>6</mn><mn>9</mn><mo>)</mo></mrow></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">min(1, e^{-(itemLv-4)/8,69)})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8879999999999999em;"></span><span class="strut bottom" style="height:1.138em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit">m</span><span class="mord mathit">i</span><span class="mord mathit">n</span><span class="mopen">(</span><span class="mord mathrm">1</span><span class="mpunct">,</span><span class="mord"><span class="mord mathit">e</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mord">−</span><span class="mopen">(</span><span class="mord mathit">i</span><span class="mord mathit">t</span><span class="mord mathit">e</span><span class="mord mathit">m</span><span class="mord mathit">L</span><span class="mord mathit" style="margin-right:0.03588em;">v</span><span class="mbin">−</span><span class="mord mathrm">4</span><span class="mclose">)</span><span class="mord mathrm">/</span><span class="mord mathrm">8</span><span class="mpunct">,</span><span class="mord mathrm">6</span><span class="mord mathrm">9</span><span class="mclose">)</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mclose">)</span></span></span></span></td>
+</tr>
+<tr>
+<td>Legendary</td>
+<td><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>i</mi><mi>n</mi><mo>(</mo><mn>1</mn><mo separator="true">,</mo><msup><mi>e</mi><mrow><mo>−</mo><mo>(</mo><mi>i</mi><mi>t</mi><mi>e</mi><mi>m</mi><mi>L</mi><mi>v</mi><mo>−</mo><mn>3</mn><mo>)</mo><mi mathvariant="normal">/</mi><mn>7</mn><mi mathvariant="normal">.</mi><mn>6</mn><mn>9</mn><mo>)</mo></mrow></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">min(1, e^{-(itemLv-3)/7.69)})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8879999999999999em;"></span><span class="strut bottom" style="height:1.138em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit">m</span><span class="mord mathit">i</span><span class="mord mathit">n</span><span class="mopen">(</span><span class="mord mathrm">1</span><span class="mpunct">,</span><span class="mord"><span class="mord mathit">e</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mord">−</span><span class="mopen">(</span><span class="mord mathit">i</span><span class="mord mathit">t</span><span class="mord mathit">e</span><span class="mord mathit">m</span><span class="mord mathit">L</span><span class="mord mathit" style="margin-right:0.03588em;">v</span><span class="mbin">−</span><span class="mord mathrm">3</span><span class="mclose">)</span><span class="mord mathrm">/</span><span class="mord mathrm">7</span><span class="mord mathrm">.</span><span class="mord mathrm">6</span><span class="mord mathrm">9</span><span class="mclose">)</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mclose">)</span></span></span></span></td>
+</tr>
+</tbody>
+</table>
+<h2 id="equipment-refinement">Equipment Refinement <a class="header-anchor" href="#equipment-refinement" aria-hidden="true">§</a></h2>
+<p>The equipment refine level is not capped but each higher refinement process can destroy the weapon/equipment.
+The chance of success is depending on skill and refine items used.</p>
+<p>A refined armor has increased resistance for hard defense. Each upgrade point grants ⅓ points more defense.</p>
+<h2 id="item-crafting">Item Crafting <a class="header-anchor" href="#item-crafting" aria-hidden="true">§</a></h2>
+<p>Bestia uses an innovative new item crafting. Basically the player is allowed to craft all items. Some items however
+might be so hard to craft so it is not possible to craft it without appropriate skill. Some items may require special
+ingredients which can not be substituted. The higher the crafted item level and the harder it get to successful craft
+it. If the crafting of the item fails all the materials used to craft it are lost. In order to craft an item two things
+are important: the sum of raw materials used to craft and how the materials are laid out.</p>
+<p>Item craft success chance is determined if the raw materials.</p>
+<p>After an item was successfully crafted the recipe is saved for the user inside his recipe list. From this list the
+recipe can be inscribed upon a paper to give it to other players who can consume and learn it. The learning will take
+some time (depending of the level of the item).</p>
+<h2 id="item-and-entity-interactions">Item and Entity Interactions <a class="header-anchor" href="#item-and-entity-interactions" aria-hidden="true">§</a></h2>
+<p>It should be possible to link items to entities. Nesting should be possible. With this technique it is possible to
+combine active items.</p>
+<p>Its possible to do something like:</p>
+<ul>
+<li>Attaching or removing energy crystals to a magical artifact</li>
+<li>Boxes that can be stuffed with other items for shipping</li>
+</ul>
+<p>For this purpose the items that can be stored in an entity must be limited. Filtering must be very flexible, be able to
+exclude certain items, be able to limit weight, etc. Each item also has its own resistance values. As soon as a Bestia
+is killed it will be checked if and if so how much damage individual items take. Even items lying on the ground can be
+damaged or even destroyed by attacks.</p>
+<h2 id="damaging-of-items">Damaging of Items <a class="header-anchor" href="#damaging-of-items" aria-hidden="true">§</a></h2>
+<p>As with any item in Bestia, it can be damaged. There will be professions capable of repairing items. The durability of
+an item is given via a percentage. Items will function normally within a wide range of their condition. At a certain
+level, they slowly lose their properties (armor their armor value, weapons hit less often, magic staffs suffer a damage
+penalty, etc.). Until the items become unusable. If you then inflict further damage on them, they can be completely and
+irretrievably destroyed.</p>
+<table>
+<thead>
+<tr>
+<th>Durability</th>
+<th>State</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>30 - 100%</td>
+<td>Normal Operation</td>
+</tr>
+<tr>
+<td>1 - 29%</td>
+<td>Increasing Damage Effects</td>
+</tr>
+<tr>
+<td>0%</td>
+<td>Item breaks unrecoverably</td>
+</tr>
+</tbody>
+</table>
+<p>Items on the ground can suffer damage from attacks. They are affected by Area Of Effect spells and can be targetted manually
+albeit they are not auto targeted like enemies.</p>
+<h3 id="item-status-values">Item Status Values <a class="header-anchor" href="#item-status-values" aria-hidden="true">§</a></h3>
+<p>In order to let items participate in the battle system they need status values. Items status value distribution is based
+upon their type (weapon, potion, book etc) and the total amount of points to distribute is given by the item level.
+Later there might be items which get preset custom values but for now on they are based upon a lookup table.</p>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer py-3 mt-3">
+  <div class="container">
+    <div class="row">
+    <div class="col">
+        <img style="width: 12em" class="mt-3" src="/images/bestia-logo.svg">
+      </div>
+      <div class="col">
+        <ul class="list-unstyled">
+          <li><h6>Documentation</h6></li>
+          <li><i class="fas fa-gamepad"></i> <a href="/mechanics/">Game Design</a></li>
+          <!--<li><i class="fas fa-code"></i> Client Documentation</li>-->
+          <!--<li><i class="fas fa-server"></i> Server Documentation</li>-->
+        </ul>
+      </div>
+      <div class="col">
+        <ul class="list-unstyled">
+          <li><h6>Community</h6></li>
+          <li><i class="fab fa-discord"></i><a href="https://discord.gg/zZW8M2S">Discord</a></li>
+          <li><i class="fab fa-facebook"></i><a href="https://www.facebook.com/BestiaGame" target="_blank" rel="noreferrer noopener">Facebook</a></li>
+          <li><i class="fab fa-twitter"></i><a href="https://twitter.com/bestiagame" target="_blank" rel="noreferrer noopener">Twitter</a></li>
+        </ul>
+      </div>
+      <div class="col">
+        <ul class="list-unstyled">
+          <li><h6>More</h6></li>
+          <li><i class="fab fa-github"></i><a href="https://github.com/tfelix/bestia-docs">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col text-center">
+        <span class="text-muted">&#8226; made by<a href="https://tfelix.de">Thomas Felix</a> with ❤️ and ☕ &#8226;</span>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col text-center">
+        <p>Documentation is licenced under <a href="https://creativecommons.org/publicdomain/zero/1.0/legalcode"><img src="/images/cc-zero.svg"></a></p>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+  </body>
+</html>

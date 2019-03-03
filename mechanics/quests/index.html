@@ -142,7 +142,7 @@
     Postal System
   </a>
 
-  <a class="list-group-item list-group-item-action " href="/mechanics/quests/">
+  <a class="list-group-item list-group-item-action active" href="/mechanics/quests/">
     
       <i class="fas fa-star"></i>
     
@@ -210,48 +210,76 @@
 
         </div>
         <div class="col">
-          <a href="https://github.com/tfelix/bestia-docs/edit/master/src/index.md" class="btn btn-dark btn-sm edit-button">
+          <a href="https://github.com/tfelix/bestia-docs/edit/master/src/mechanics/quests.md" class="btn btn-dark btn-sm edit-button">
             <i class="fas fa-edit"></i> Edit
           </a>
-          <div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-4">Bestia Development Documentation</h1>
-    <p class="lead">Massive. Hard. Innovative. Open World. Open Source.</p>
+          <h1 id="quests"><i class="fas fa-star"></i> Quests <a class="header-anchor" href="#quests" aria-hidden="true">§</a></h1>
+<p>The game will be more or less an Open World game. But the declared goal will be to try out new ways of storytelling in
+order to present a credible world with developing history to the players. You have to say goodbye to the idea that every
+game can live through every part of the story/quest. This contradicts the persistent and inner logical structure of the
+game world. Quests must rather result dynamically from what happens within the game world. Some examples:</p>
+<div class="card-group">
+  <div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Peasant help!</h5>
+    <p class="card-text">
+      A rich harvest is imminent, but the farmer Wilhelm cannot bring in the whole harvest due to his short time before it
+      spoils on the fields. He asks passing players if they could help him. This is rewarded with an EXP bonus, gold and
+      if necessary an item.
+    </p>
+  </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Defend the city!</h5>
+      <p class="card-text">
+        Due to high rift activity and mana flooding, many high-level Bestias make the surroundings of a large city unsafe.
+        Players are encouraged to fight the Bestias, rise in the city's favor, and gain access to better items, experience
+        and gold.
+      </p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Help me!</h5>
+      <p class="card-text">
+        A NPC has gotten lost in a dangerous area and is now hiding. If a player finds the NPC he can help him to find his
+        way back and will be rewarded with EXP and gold.
+      </p>
+    </div>
   </div>
 </div>
-<p><a class="github-button" href="https://github.com/tfelix/bestia-docs" data-icon="octicon-star" data-size="large"
-data-show-count="true" aria-label="Star tfelix/bestia-docs on GitHub">Star</a>
-<a class="github-button" href="https://github.com/tfelix/bestia-docs/subscription" data-icon="octicon-eye"
-data-size="large" data-show-count="true" aria-label="Watch tfelix/bestia-docs on GitHub">Watch</a></p>
-<p>Congratulations! You just have found the Developer Documentation of the Bestia-Browsergame. Here you find everything from
-gamedesign guidlines to engine architecture overview as well as the API documentation.</p>
-<p>These infos should help you to get kickstarted and join the development. As Bestia is a community driven, open game each
-contribution is welcome. With the provided guidelines enthusiasts should very easily be able to create contributions
-from artworks to scripts.</p>
-<blockquote>
-<p>A recent build of the demo version of Bestia is available under <a href="http://demo.bestia-game.net">http://demo.bestia-game.net</a>.</p>
-</blockquote>
-<blockquote>
-<p>Note: This document is currently transformed and assambled from numerous internal sources of the Bestia Game Docs.
-Please help translating it into english or sorting its chapters.</p>
-</blockquote>
-<h2 id="contributing">Contributing <a class="header-anchor" href="#contributing" aria-hidden="true">§</a></h2>
-<p>Contributions to both the game design and the game itself (the client and the server) are very welcomed! Inside this game
-design document you possibly will find certain <strong>Contributing</strong> sections which will give you some guidlines to follow
-in order to help to get you changes into the game quickly.</p>
-<p><strong><a href="about-manifest.md">Read the Bestia Manifest first</a></strong> and align your contributions and changes under these central
-game guidelines.</p>
-<p>Otherwise feel free to check out the three project repositories on Github (and maybe give them a Star 😃)</p>
+<h2 id="quests-generation">Quests Generation <a class="header-anchor" href="#quests-generation" aria-hidden="true">§</a></h2>
+<p>Quests in Bestia are generated on via two mechanics:</p>
+<ol>
+<li>Automatic generated quests</li>
+<li>Player generated quests, these challanges must be given to an NPC who will then announce these quests so other
+players can pick them up.</li>
+</ol>
+<h3 id="automatic-quests">Automatic Quests <a class="header-anchor" href="#automatic-quests" aria-hidden="true">§</a></h3>
+<p><strong>TBD</strong></p>
 <ul>
-<li><a href="https://github.com/tfelix/bestia-docs">Bestia Game Design</a> <i class="fab fa-github"></i></li>
-<li><a href="https://github.com/tfelix/bestia-client">Bestia Browser Client</a> <i class="fab fa-github"></i></li>
-<li><a href="https://github.com/tfelix/bestia-behemoth">Bestia Behemoth Server</a> <i class="fab fa-github"></i></li>
+<li>http://rapturerebornmmorpg.wikia.com/wiki/Quest_Generation_system</li>
+<li>https://www.gamedev.net/topic/648285-latest-trends-in-procedural-quest-generation/</li>
+<li><a href="http://escholarship.org/uc/item/004129jn?query=The%20Grail%20Framework">http://escholarship.org/uc/item/004129jn?query=The%20Grail%20Framework</a>:</li>
+<li><a href="http://larc.unt.edu/ian/pubs/pcg2011.pdf">http://larc.unt.edu/ian/pubs/pcg2011.pdf</a></li>
+<li><a href="http://www.aaai.org/Papers/AIIDE/2006/AIIDE06-036.pdf">http://www.aaai.org/Papers/AIIDE/2006/AIIDE06-036.pdf</a></li>
+<li><a href="https://pdfs.semanticscholar.org/e38f/523ba64f014def436ebb03166eb4e573cc3a.pdf">https://pdfs.semanticscholar.org/e38f/523ba64f014def436ebb03166eb4e573cc3a.pdf</a></li>
+<li><a href="https://webdocs.cs.ualberta.ca/~script/publications/2013aiide.pdf">https://webdocs.cs.ualberta.ca/~script/publications/2013aiide.pdf</a></li>
+<li><a href="http://www.academia.edu/4558587/Dynamic_Quest_Plot_Generation_using_Petri_Net_Planning">http://www.academia.edu/4558587/Dynamic_Quest_Plot_Generation_using_Petri_Net_Planning</a></li>
+<li><a href="https://larc.unt.edu/techreports/LARC-2010-02.pdf">https://larc.unt.edu/techreports/LARC-2010-02.pdf</a></li>
+<li><a href="http://gram.cs.mcgill.ca/papers/kybartas-14-analysis.pdf">http://gram.cs.mcgill.ca/papers/kybartas-14-analysis.pdf</a></li>
+<li><a href="https://pdfs.semanticscholar.org/de12/486ae621c3f074691069da4e4a5097c7a48f.pdf">https://pdfs.semanticscholar.org/de12/486ae621c3f074691069da4e4a5097c7a48f.pdf</a></li>
 </ul>
-<blockquote>
-<p>You can use the <code>Edit</code> button on the top right of every page to directly edit this document and create a Pull Request
-on Github.</p>
-</blockquote>
-<script async defer src="https://buttons.github.io/buttons.js"></script>
+<h3 id="player-quests">Player Quests <a class="header-anchor" href="#player-quests" aria-hidden="true">§</a></h3>
+<p>Players can define various tasks, such as collecting resources or defeating certain enemies, or transporting certain
+goods as a task and offer a reward. Also the deactivation of Bestias as guardians would be a conceivable task. This
+reward must then be given to the appropriate NPCs, who then hold it in trust (or simply negotiate among the players).</p>
+<p>The awarding of quests must be worthwhile for both parties. The player is credited with a good amount of experience both
+for the quest and for the successful completion of the quest by another player. He can redistribute this experience to
+Bestias in his possession under certain circumstances (items needed). When a quest is accepted, a contract is concluded
+between the player and the NPC. If all contract conditions are met, the reward will be handed out. Contracts may be
+limited in time.</p>
 
         </div>
       </div>

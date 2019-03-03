@@ -149,7 +149,7 @@
     Quests
   </a>
 
-  <a class="list-group-item list-group-item-action " href="/mechanics/resources/">
+  <a class="list-group-item list-group-item-action active" href="/mechanics/resources/">
     
       <i class="fas fa-box-open"></i>
     
@@ -210,48 +210,131 @@
 
         </div>
         <div class="col">
-          <a href="https://github.com/tfelix/bestia-docs/edit/master/src/index.md" class="btn btn-dark btn-sm edit-button">
+          <a href="https://github.com/tfelix/bestia-docs/edit/master/src/mechanics/resources.md" class="btn btn-dark btn-sm edit-button">
             <i class="fas fa-edit"></i> Edit
           </a>
-          <div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-4">Bestia Development Documentation</h1>
-    <p class="lead">Massive. Hard. Innovative. Open World. Open Source.</p>
-  </div>
-</div>
-<p><a class="github-button" href="https://github.com/tfelix/bestia-docs" data-icon="octicon-star" data-size="large"
-data-show-count="true" aria-label="Star tfelix/bestia-docs on GitHub">Star</a>
-<a class="github-button" href="https://github.com/tfelix/bestia-docs/subscription" data-icon="octicon-eye"
-data-size="large" data-show-count="true" aria-label="Watch tfelix/bestia-docs on GitHub">Watch</a></p>
-<p>Congratulations! You just have found the Developer Documentation of the Bestia-Browsergame. Here you find everything from
-gamedesign guidlines to engine architecture overview as well as the API documentation.</p>
-<p>These infos should help you to get kickstarted and join the development. As Bestia is a community driven, open game each
-contribution is welcome. With the provided guidelines enthusiasts should very easily be able to create contributions
-from artworks to scripts.</p>
-<blockquote>
-<p>A recent build of the demo version of Bestia is available under <a href="http://demo.bestia-game.net">http://demo.bestia-game.net</a>.</p>
-</blockquote>
-<blockquote>
-<p>Note: This document is currently transformed and assambled from numerous internal sources of the Bestia Game Docs.
-Please help translating it into english or sorting its chapters.</p>
-</blockquote>
-<h2 id="contributing">Contributing <a class="header-anchor" href="#contributing" aria-hidden="true">§</a></h2>
-<p>Contributions to both the game design and the game itself (the client and the server) are very welcomed! Inside this game
-design document you possibly will find certain <strong>Contributing</strong> sections which will give you some guidlines to follow
-in order to help to get you changes into the game quickly.</p>
-<p><strong><a href="about-manifest.md">Read the Bestia Manifest first</a></strong> and align your contributions and changes under these central
-game guidelines.</p>
-<p>Otherwise feel free to check out the three project repositories on Github (and maybe give them a Star 😃)</p>
+          <h1 id="resources"><i class="fas fa-box-open"></i> Resources <a class="header-anchor" href="#resources" aria-hidden="true">§</a></h1>
+<p>Resources are raw materials used to sell to other players. They can be used to craft items or construct buildings.
+Resources can be obtained by the following means:</p>
 <ul>
-<li><a href="https://github.com/tfelix/bestia-docs">Bestia Game Design</a> <i class="fab fa-github"></i></li>
-<li><a href="https://github.com/tfelix/bestia-client">Bestia Browser Client</a> <i class="fab fa-github"></i></li>
-<li><a href="https://github.com/tfelix/bestia-behemoth">Bestia Behemoth Server</a> <i class="fab fa-github"></i></li>
+<li>Killing enemies and loot them</li>
+<li>Gathering of natural resources in the game world</li>
+<li>Using special extracting buildings or devices</li>
+<li>Recycling of existing items</li>
 </ul>
 <blockquote>
-<p>You can use the <code>Edit</code> button on the top right of every page to directly edit this document and create a Pull Request
-on Github.</p>
+<p>The item loot from monster should be logically correct: a dead wolve would very likly not drop iron ore or golden coins.</p>
 </blockquote>
-<script async defer src="https://buttons.github.io/buttons.js"></script>
+<p>Dropped items in the world are semi-permanent. The player have a strong incentive to gather dropped items to participate
+in the market.</p>
+<blockquote>
+<p>Dropped items usually persist for up to 4 days (96 h real time) before they are deleted by the server.</p>
+</blockquote>
+<h2 id="mana">Mana <a class="header-anchor" href="#mana" aria-hidden="true">§</a></h2>
+<p>Mana pervades the world. The concentration of mana flows is redefined in each incarnation of Bestias plays. Mana
+concentration is used, among other things, to determine how quickly the Bestia regenerate mana in a particular area.
+Mana is a two-edged-sword: As resource its quite valuable but concentrating it in a small area can lead to magic build up
+and lead to magic-storms or even rift events which will attract strong Bestias. In areas with high concentration
+magical artifacts can be built, powerful rituals can be held and mana can be &quot;harvested&quot; to transport it for research
+purposes.</p>
+<h2 id="resource-types">Resource Types <a class="header-anchor" href="#resource-types" aria-hidden="true">§</a></h2>
+<p>The following base types of resources exist in the game.</p>
+<table>
+<thead>
+<tr>
+<th>Typ</th>
+<th>Occurrence</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ores, Minerals, Crystals</td>
+<td>Mountains, Caves</td>
+<td>Raffinery, Alchemy, Magic, Blacksmiths</td>
+</tr>
+<tr>
+<td>Mana</td>
+<td>World</td>
+<td>Magical Uses</td>
+</tr>
+<tr>
+<td>Herbs</td>
+<td>World, especially Forrests</td>
+<td>Magic Uses &amp; Alchemy</td>
+</tr>
+<tr>
+<td>Wood</td>
+<td>Forrests</td>
+<td>Material</td>
+</tr>
+<tr>
+<td>Stone</td>
+<td>Mountains</td>
+<td>Material</td>
+</tr>
+<tr>
+<td>Salts</td>
+<td>Mountains, Sea</td>
+<td>Material</td>
+</tr>
+</tbody>
+</table>
+<h2 id="item-recycling">Item Recycling <a class="header-anchor" href="#item-recycling" aria-hidden="true">§</a></h2>
+<p>For each item is a list of base resources which the item is roughly based upon (this list is also used when forging or
+creating the item). When an attempt to recycle the item there is a chance that the item is destroyed and the resources are lost.</p>
+<p>The base chance for item recylcing is:</p>
+<table>
+<thead>
+<tr>
+<th>Item Lv.</th>
+<th>Base Resource Reclaim</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 - 20</td>
+<td>65%</td>
+</tr>
+<tr>
+<td>21 - 60</td>
+<td>45%</td>
+</tr>
+<tr>
+<td>&gt; 61</td>
+<td>25%</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>The chance can be altered by players INT (slightly) and DEX and also by the apropriate skill.</p>
+</blockquote>
+<p>If successfull performed a recycling attempt the amount of captured resources is determined:</p>
+<table>
+<thead>
+<tr>
+<th>Item Lv.</th>
+<th>Base Resource Reclaim</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 - 20</td>
+<td>60%</td>
+</tr>
+<tr>
+<td>21 - 60</td>
+<td>40%</td>
+</tr>
+<tr>
+<td>&gt; 61</td>
+<td>20%</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>This is the base chance which is altered by the <a href="/mechanics/skills/#scavenger">Scavenger</a> skill as well as INT (slightly) and DEX.</p>
+</blockquote>
 
         </div>
       </div>

@@ -107,7 +107,7 @@
     Exploration
   </a>
 
-  <a class="list-group-item list-group-item-action " href="/mechanics/honor/">
+  <a class="list-group-item list-group-item-action active" href="/mechanics/honor/">
     
       <i class="fas fa-award"></i>
     
@@ -210,48 +210,101 @@
 
         </div>
         <div class="col">
-          <a href="https://github.com/tfelix/bestia-docs/edit/master/src/index.md" class="btn btn-dark btn-sm edit-button">
+          <a href="https://github.com/tfelix/bestia-docs/edit/master/src/mechanics/honor.md" class="btn btn-dark btn-sm edit-button">
             <i class="fas fa-edit"></i> Edit
           </a>
-          <div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-4">Bestia Development Documentation</h1>
-    <p class="lead">Massive. Hard. Innovative. Open World. Open Source.</p>
-  </div>
-</div>
-<p><a class="github-button" href="https://github.com/tfelix/bestia-docs" data-icon="octicon-star" data-size="large"
-data-show-count="true" aria-label="Star tfelix/bestia-docs on GitHub">Star</a>
-<a class="github-button" href="https://github.com/tfelix/bestia-docs/subscription" data-icon="octicon-eye"
-data-size="large" data-show-count="true" aria-label="Watch tfelix/bestia-docs on GitHub">Watch</a></p>
-<p>Congratulations! You just have found the Developer Documentation of the Bestia-Browsergame. Here you find everything from
-gamedesign guidlines to engine architecture overview as well as the API documentation.</p>
-<p>These infos should help you to get kickstarted and join the development. As Bestia is a community driven, open game each
-contribution is welcome. With the provided guidelines enthusiasts should very easily be able to create contributions
-from artworks to scripts.</p>
-<blockquote>
-<p>A recent build of the demo version of Bestia is available under <a href="http://demo.bestia-game.net">http://demo.bestia-game.net</a>.</p>
-</blockquote>
-<blockquote>
-<p>Note: This document is currently transformed and assambled from numerous internal sources of the Bestia Game Docs.
-Please help translating it into english or sorting its chapters.</p>
-</blockquote>
-<h2 id="contributing">Contributing <a class="header-anchor" href="#contributing" aria-hidden="true">§</a></h2>
-<p>Contributions to both the game design and the game itself (the client and the server) are very welcomed! Inside this game
-design document you possibly will find certain <strong>Contributing</strong> sections which will give you some guidlines to follow
-in order to help to get you changes into the game quickly.</p>
-<p><strong><a href="about-manifest.md">Read the Bestia Manifest first</a></strong> and align your contributions and changes under these central
-game guidelines.</p>
-<p>Otherwise feel free to check out the three project repositories on Github (and maybe give them a Star 😃)</p>
+          <h1 id="honor"><i class="fas fa-award"></i> Honor <a class="header-anchor" href="#honor" aria-hidden="true">§</a></h1>
+<p>It is possible in Bestia to perform malicious actions which will reduce the players good experience. This is by design!
+Yet there should be incentives for players not to go this route in order to protect low level players from ganking of
+other griev play. If a player behaves well and their honor level increases they will get more and more rewards. On the
+other hand if a player has negative honor they will get bad reputation and repressions. There might actually be some
+player initiated hunt on these low honor players.</p>
+<p>Additionally each NPC maintains an internal list of reputation points and players. If a player misbehaves or behaves in
+a friendly way, this list will be adjusted. The NPC also communicates this list with other NPCs if they meet. If the reputation
+exceeds certain upper and lower limits and the NPC enters areas that use a long-distance communication system, the NPC
+may also communicate this to more distant areas. Only if the players reputation falls below -100 the NPC encountered
+(and acted negative towards them) they remembers this permanently. Higher values slowly return to the default value
+of 0 and are then removed from the list (NPCs don't forget if a player killed family members or the NPC life was saved).
+If the customer reaches the nearest settlement via the reputation points after a certain time, the value is also stored
+there permanently.</p>
+<p>Reputation decreases faster through bad deeds than increasing because of good ones. There are a few points in the game
+to sacrifice a god shrine to raise a reputation that has fallen below the threshold of a player's global persecution.
+The sacrifice is usually (depending on the reputation threshold) very painful and even if it was made it can take
+several days until the customer was spread about it.</p>
+<h2 id="malicious-actions">Malicious Actions <a class="header-anchor" href="#malicious-actions" aria-hidden="true">§</a></h2>
+<p>As there are multiple factions which different interests it is not easy to define which play is considered bad behavior
+which will get punished automatically. Yet there are some core actions which will be universally be considered as griev play
+which is not inherently forbidden but will result in a loss of honor.</p>
+<p>As malicious act is considered:</p>
 <ul>
-<li><a href="https://github.com/tfelix/bestia-docs">Bestia Game Design</a> <i class="fab fa-github"></i></li>
-<li><a href="https://github.com/tfelix/bestia-client">Bestia Browser Client</a> <i class="fab fa-github"></i></li>
-<li><a href="https://github.com/tfelix/bestia-behemoth">Bestia Behemoth Server</a> <i class="fab fa-github"></i></li>
+<li>Killing NPCs</li>
+<li>Killing Players Bestias if they are low level and in a <strong>Protected Zone</strong></li>
 </ul>
-<blockquote>
-<p>You can use the <code>Edit</code> button on the top right of every page to directly edit this document and create a Pull Request
-on Github.</p>
-</blockquote>
-<script async defer src="https://buttons.github.io/buttons.js"></script>
+<h2 id="protected-zone">Protected Zone <a class="header-anchor" href="#protected-zone" aria-hidden="true">§</a></h2>
+<p>Around the starting places there will be spell in place which will mark the lands in the vacinity as <strong>Protected Zones</strong>.
+Inside this zone there will be every kill of another player Bestia with more then 5 levels less as the killing bestia
+or NPC will reduce the honor by <strong>50 points</strong> (normally 20 points).</p>
+<p>Every action which leads to honor loss inside a protected zone will be <strong>multiplied by 3</strong> wheras honor increasing
+actions will be <strong>multiplied by 1.5</strong>.</p>
+<h2 id="positive-honor">Positive Honor <a class="header-anchor" href="#positive-honor" aria-hidden="true">§</a></h2>
+<p>A positive honor level will lead to very friendly NPC which might even give the player some discounts or gifts from
+time to time. In order to increase your honor level again you can:</p>
+<ul>
+<li>Kill a player with negative honor</li>
+<li>Helping a NPC by healing or resurrecting a dead NPC</li>
+</ul>
+<h2 id="negative-honor">Negative Honor <a class="header-anchor" href="#negative-honor" aria-hidden="true">§</a></h2>
+<p>If the honor drops below 0 the negative effects will start to take place. The effects are as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Honor Amount</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&lt; 0</td>
+<td>No more advantages from NPC and the NPC will act unfriendly against the player.</td>
+</tr>
+<tr>
+<td>&lt; -50</td>
+<td>Some NPC might start to act hostile and attack the player or flee.</td>
+</tr>
+<tr>
+<td>&lt; -100</td>
+<td>NPC will permanently remember the player and also spread the word around so more NPC will start to act hostile towards the player.</td>
+</tr>
+</tbody>
+</table>
+<p>If a player steals something not belonging to him but to a NPC or another player he will loose honor for each item he
+takes and depending on the <a href="/mechanics/items/#item-level">item level</a> (looting a dead NPC/player will not lead to a
+reduction of honor).</p>
+<h3 id="honor-reduction-by-stealing">Honor Reduction By Stealing <a class="header-anchor" href="#honor-reduction-by-stealing" aria-hidden="true">§</a></h3>
+<table>
+<thead>
+<tr>
+<th>Item Level</th>
+<th>Honor Loss</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mundane</td>
+<td>-5</td>
+</tr>
+<tr>
+<td>Superior</td>
+<td>-15</td>
+</tr>
+<tr>
+<td>Superior</td>
+<td>-45</td>
+</tr>
+</tbody>
+</table>
+<p>He is also marked with the <a href="addlink.md">Thief debuff</a> which will grant any player who kills him <strong>5 extra honor</strong>. The killing
+player also gets a honor reward for each item returned to the original owner of the items.</p>
 
         </div>
       </div>

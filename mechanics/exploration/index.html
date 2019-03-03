@@ -100,7 +100,7 @@
     The Cults
   </a>
 
-  <a class="list-group-item list-group-item-action " href="/mechanics/exploration/">
+  <a class="list-group-item list-group-item-action active" href="/mechanics/exploration/">
     
       <i class="fas fa-globe"></i>
     
@@ -210,48 +210,43 @@
 
         </div>
         <div class="col">
-          <a href="https://github.com/tfelix/bestia-docs/edit/master/src/index.md" class="btn btn-dark btn-sm edit-button">
+          <a href="https://github.com/tfelix/bestia-docs/edit/master/src/mechanics/exploration.md" class="btn btn-dark btn-sm edit-button">
             <i class="fas fa-edit"></i> Edit
           </a>
-          <div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-4">Bestia Development Documentation</h1>
-    <p class="lead">Massive. Hard. Innovative. Open World. Open Source.</p>
-  </div>
-</div>
-<p><a class="github-button" href="https://github.com/tfelix/bestia-docs" data-icon="octicon-star" data-size="large"
-data-show-count="true" aria-label="Star tfelix/bestia-docs on GitHub">Star</a>
-<a class="github-button" href="https://github.com/tfelix/bestia-docs/subscription" data-icon="octicon-eye"
-data-size="large" data-show-count="true" aria-label="Watch tfelix/bestia-docs on GitHub">Watch</a></p>
-<p>Congratulations! You just have found the Developer Documentation of the Bestia-Browsergame. Here you find everything from
-gamedesign guidlines to engine architecture overview as well as the API documentation.</p>
-<p>These infos should help you to get kickstarted and join the development. As Bestia is a community driven, open game each
-contribution is welcome. With the provided guidelines enthusiasts should very easily be able to create contributions
-from artworks to scripts.</p>
-<blockquote>
-<p>A recent build of the demo version of Bestia is available under <a href="http://demo.bestia-game.net">http://demo.bestia-game.net</a>.</p>
-</blockquote>
-<blockquote>
-<p>Note: This document is currently transformed and assambled from numerous internal sources of the Bestia Game Docs.
-Please help translating it into english or sorting its chapters.</p>
-</blockquote>
-<h2 id="contributing">Contributing <a class="header-anchor" href="#contributing" aria-hidden="true">§</a></h2>
-<p>Contributions to both the game design and the game itself (the client and the server) are very welcomed! Inside this game
-design document you possibly will find certain <strong>Contributing</strong> sections which will give you some guidlines to follow
-in order to help to get you changes into the game quickly.</p>
-<p><strong><a href="about-manifest.md">Read the Bestia Manifest first</a></strong> and align your contributions and changes under these central
-game guidelines.</p>
-<p>Otherwise feel free to check out the three project repositories on Github (and maybe give them a Star 😃)</p>
-<ul>
-<li><a href="https://github.com/tfelix/bestia-docs">Bestia Game Design</a> <i class="fab fa-github"></i></li>
-<li><a href="https://github.com/tfelix/bestia-client">Bestia Browser Client</a> <i class="fab fa-github"></i></li>
-<li><a href="https://github.com/tfelix/bestia-behemoth">Bestia Behemoth Server</a> <i class="fab fa-github"></i></li>
-</ul>
-<blockquote>
-<p>You can use the <code>Edit</code> button on the top right of every page to directly edit this document and create a Pull Request
-on Github.</p>
-</blockquote>
-<script async defer src="https://buttons.github.io/buttons.js"></script>
+          <h1 id="world-exploration"><i class="fas fa-globe"></i> World Exploration <a class="header-anchor" href="#world-exploration" aria-hidden="true">§</a></h1>
+<p>A large part of the game world is generated automatically. There should be a motivation for players in exploring the
+world. New areas can be mapped and unique resources can be discovered and explored. In general, players should have
+their own branch about the secrets of the world to discover new items and how they are created. The entire world
+must gradually be explored and mapped by players. A hidden map has to be uncovered regularly. Players will be able to
+view this map online and see the overall progress of the exploration.</p>
+<p>Possible events can then also be announced on this public map. Every player should be able to create a world map
+in-game. Special cartographers should be able to combine these maps or generate new magic maps to inform about possible
+events (exchange information with friends via markers, or display certain resource sources).</p>
+<p>To make even more impact the explored maps are very needed by the general player population in order to preciesly target
+locations or send Bestias into the area for certain AI controlled missions. The maps, once created, can thus be copied
+and sold by the cartographer. Regular player might try to create copies but this will be very hard without a cartography
+skill and most likly fail.</p>
+<p>Exploring of the land should be a fun process but not so easy as going into the wild and pressing one simple button.</p>
+<p>For generating the visual of the player map we use the algorithm described in <a href="http://mewo2.com/notes/terrain/">Terrain Map Generation</a>
+and its respective <a href="https://github.com/mewo2/terrain">Github repository</a></p>
+<h2 id="cartography">Cartography <a class="header-anchor" href="#cartography" aria-hidden="true">§</a></h2>
+<p>In the game you should be able to make and acquire maps. These should be strongly interwoven with the game mechanics,
+so that it can pay off to own a good map. It should also give the players an incentive to actively explore the world.</p>
+<p>The player has to walk into the wilderness and then use his cartography skill. He can choose how wide the area to
+measure should be. Bigger areas will tend to be more error prone. Also the further away the player is from already
+explored land the harder the sucessfull performing of the skill will be.</p>
+<p>If the skill fails the player will need to wait for a certain amount of time in order to perform the skill again in the
+vicinity. The cooldown is reduced for adjacent areas.</p>
+<p>The server must validate the button presses of the player for success.</p>
+<h2 id="skill-usage">Skill Usage <a class="header-anchor" href="#skill-usage" aria-hidden="true">§</a></h2>
+<ol>
+<li>Upon using the skill a difficulty <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi></mrow><annotation encoding="application/x-tex">d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.69444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">d</span></span></span></span> is determined, depending on the distance to the next already cartographed area
+and the area wished to be explored.</li>
+<li>There are 3-5 locations <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi></mrow><annotation encoding="application/x-tex">l</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.69444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.01968em;">l</span></span></span></span> spawned around the player within a radius of 300 to 800 meters around the player
+(depending on the difficulty). He must reach them within a timelimit <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.61508em;"></span><span class="strut bottom" style="height:0.61508em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">t</span></span></span></span>.</li>
+<li>When near one of such a location (5m) the player is given a moving compass graphic. The speed of moving needle and the
+area to hit via button press is calculated based on <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi></mrow><annotation encoding="application/x-tex">d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.69444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">d</span></span></span></span>.</li>
+</ol>
 
         </div>
       </div>

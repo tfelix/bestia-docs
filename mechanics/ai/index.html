@@ -51,7 +51,7 @@
 <aside class="side-menu">
   <div class="list-group">
   
-  <a class="list-group-item list-group-item-action " href="/mechanics/ai/">
+  <a class="list-group-item list-group-item-action active" href="/mechanics/ai/">
     
       <i class="fas fa-brain"></i>
     
@@ -210,48 +210,22 @@
 
         </div>
         <div class="col">
-          <a href="https://github.com/tfelix/bestia-docs/edit/master/src/index.md" class="btn btn-dark btn-sm edit-button">
+          <a href="https://github.com/tfelix/bestia-docs/edit/master/src/mechanics/ai.md" class="btn btn-dark btn-sm edit-button">
             <i class="fas fa-edit"></i> Edit
           </a>
-          <div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-4">Bestia Development Documentation</h1>
-    <p class="lead">Massive. Hard. Innovative. Open World. Open Source.</p>
-  </div>
-</div>
-<p><a class="github-button" href="https://github.com/tfelix/bestia-docs" data-icon="octicon-star" data-size="large"
-data-show-count="true" aria-label="Star tfelix/bestia-docs on GitHub">Star</a>
-<a class="github-button" href="https://github.com/tfelix/bestia-docs/subscription" data-icon="octicon-eye"
-data-size="large" data-show-count="true" aria-label="Watch tfelix/bestia-docs on GitHub">Watch</a></p>
-<p>Congratulations! You just have found the Developer Documentation of the Bestia-Browsergame. Here you find everything from
-gamedesign guidlines to engine architecture overview as well as the API documentation.</p>
-<p>These infos should help you to get kickstarted and join the development. As Bestia is a community driven, open game each
-contribution is welcome. With the provided guidelines enthusiasts should very easily be able to create contributions
-from artworks to scripts.</p>
-<blockquote>
-<p>A recent build of the demo version of Bestia is available under <a href="http://demo.bestia-game.net">http://demo.bestia-game.net</a>.</p>
-</blockquote>
-<blockquote>
-<p>Note: This document is currently transformed and assambled from numerous internal sources of the Bestia Game Docs.
-Please help translating it into english or sorting its chapters.</p>
-</blockquote>
-<h2 id="contributing">Contributing <a class="header-anchor" href="#contributing" aria-hidden="true">§</a></h2>
-<p>Contributions to both the game design and the game itself (the client and the server) are very welcomed! Inside this game
-design document you possibly will find certain <strong>Contributing</strong> sections which will give you some guidlines to follow
-in order to help to get you changes into the game quickly.</p>
-<p><strong><a href="about-manifest.md">Read the Bestia Manifest first</a></strong> and align your contributions and changes under these central
-game guidelines.</p>
-<p>Otherwise feel free to check out the three project repositories on Github (and maybe give them a Star 😃)</p>
-<ul>
-<li><a href="https://github.com/tfelix/bestia-docs">Bestia Game Design</a> <i class="fab fa-github"></i></li>
-<li><a href="https://github.com/tfelix/bestia-client">Bestia Browser Client</a> <i class="fab fa-github"></i></li>
-<li><a href="https://github.com/tfelix/bestia-behemoth">Bestia Behemoth Server</a> <i class="fab fa-github"></i></li>
-</ul>
-<blockquote>
-<p>You can use the <code>Edit</code> button on the top right of every page to directly edit this document and create a Pull Request
-on Github.</p>
-</blockquote>
-<script async defer src="https://buttons.github.io/buttons.js"></script>
+          <h2 id="artificial-intelligence"><i class="fas fa-brain"></i> Artificial Intelligence <a class="header-anchor" href="#artificial-intelligence" aria-hidden="true">§</a></h2>
+<p>The AI system in Bestia will set new standards. Bestias and NPCs alike should be able to create long-term plans,
+so-called game plans or GPs for short. They then follow this strategy until observations or influences from the
+game world force them to abandon this plan or the plan is fulfilled.</p>
+<p>Bestias look for ways to get the highest possible inner happiness. They must sleep, eat and feel attracted to mana
+currents. Of course they try to avoid threats and protect their health. Here some subtypes differ from each other.
+Some tend to be aggressive and actively attack players and other Bestias, while others are shy and flee quickly.
+But there can also be representatives who are, as you would say, &quot;stupid&quot; and will attack players to death as soon as
+they come into sight.</p>
+<p>Decisions should be made on the basis of knowledge. A sensory simulation should be used to understand the world and
+make decisions based on it.</p>
+<p>The basic AI forms should be assignable via shortcut in the Mob table (and for NPCs in the Map Editor). For bosses or
+special bestias, however, scripts should be able to be stored to enable target-oriented behavior.</p>
 
         </div>
       </div>

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Bestia Development Documentation - The massive Open World, classic, 16-bit, Browser MMORPG">
+
+    <title>Bestia Development Documentation</title>
+
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" sizes="any" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <link rel="stylesheet" href="/styles/bootstrap.min.css" />
+    <link rel="stylesheet" href="/styles/style.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/github-markdown-css/2.2.1/github-markdown.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles/prism-atom-dark.css" />
+
+    <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
+    <script src="https://bramp.github.io/js-sequence-diagrams/js/webfont.js"></script>
+    <script src="https://bramp.github.io/js-sequence-diagrams/js/snap.svg-min.js"></script>
+    <script src="https://bramp.github.io/js-sequence-diagrams/js/underscore-min.js"></script>
+    <script src="https://bramp.github.io/js-sequence-diagrams/js/sequence-diagram-min.js"></script>
+  </head>
+
+  <body>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <!-- Header navigation -->
+    <header class="container mt-2">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/"><img src="/images/bestia-logo.svg"></a>
+    <a class="nav-link active" href="/mechanics"><i class="fas fa-gamepad"></i> Game Design</a>
+    <!--
+    <a class="nav-link" href="#"><i class="fas fa-code"></i> Client Development</a>
+    <a class="nav-link" href="#"><i class="fas fa-server"></i> Server Development</a>
+    <a class="nav-link" href="#"><i class="fas fa-hat-wizard"></i></i> API</a>
+    -->
+  </nav>
+</header>
+
+
+    <!-- Page Content -->
+    <div class="container">
+      <div class="row mt-2">
+        <div class="col-3">
+            
+
+<aside class="side-menu">
+  <div class="list-group">
+  
+  <a class="list-group-item list-group-item-action " href="/mechanics/ai/">
+    
+      <i class="fas fa-brain"></i>
+    
+    Artificial Intelligence
+  </a>
+
+  <a class="list-group-item list-group-item-action " href="/mechanics/alchemy/">
+    
+      <i class="fas fa-flask"></i>
+    
+    Alchemy
+  </a>
+
+  <a class="list-group-item list-group-item-action " href="/mechanics/archivements/">
+    
+      <i class="fas fa-trophy"></i>
+    
+    Archivements
+  </a>
+
+  <a class="list-group-item list-group-item-action " href="/mechanics/battle/">
+    
+      <i class="fas fa-fist-raised"></i>
+    
+    Battle
+  </a>
+
+  <a class="list-group-item list-group-item-action " href="/mechanics/breeding/">
+    
+      <i class="fas fa-paw"></i>
+    
+    Breeding
+  </a>
+
+  <a class="list-group-item list-group-item-action " href="/mechanics/crafting/">
+    
+      <i class="fas fa-drafting-compass"></i>
+    
+    Crafting
+  </a>
+
+  <a class="list-group-item list-group-item-action " href="/mechanics/cults/">
+    
+      <i class="fas fa-users"></i>
+    
+    The Cults
+  </a>
+
+  <a class="list-group-item list-group-item-action " href="/mechanics/exploration/">
+    
+      <i class="fas fa-globe"></i>
+    
+    Exploration
+  </a>
+
+  <a class="list-group-item list-group-item-action " href="/mechanics/honor/">
+    
+      <i class="fas fa-award"></i>
+    
+    Honor
+  </a>
+
+  <a class="list-group-item list-group-item-action " href="/mechanics/inventory/">
+    
+      <i class="fas fa-box"></i>
+    
+    Inventory
+  </a>
+
+  <a class="list-group-item list-group-item-action " href="/mechanics/items/">
+    
+      <i class="fas fa-square"></i>
+    
+    Items
+  </a>
+
+  <a class="list-group-item list-group-item-action " href="/mechanics/master/">
+    
+      <i class="fas fa-user"></i>
+    
+    Bestia Master
+  </a>
+
+  <a class="list-group-item list-group-item-action " href="/mechanics/postal-system/">
+    
+      <i class="fas fa-envelope"></i>
+    
+    Postal System
+  </a>
+
+  <a class="list-group-item list-group-item-action " href="/mechanics/quests/">
+    
+      <i class="fas fa-star"></i>
+    
+    Quests
+  </a>
+
+  <a class="list-group-item list-group-item-action " href="/mechanics/resources/">
+    
+      <i class="fas fa-box-open"></i>
+    
+    Resources
+  </a>
+
+  <a class="list-group-item list-group-item-action active" href="/mechanics/skills/">
+    
+      <i class="fas fa-sign-language"></i>
+    
+    Skills
+  </a>
+
+  <a class="list-group-item list-group-item-action " href="/mechanics/spells/">
+    
+      <i class="fas fa-skull"></i>
+    
+    Attacks
+  </a>
+
+  <a class="list-group-item list-group-item-action " href="/mechanics/statusvalues/">
+    
+      <i class="fas fa-feather"></i>
+    
+    Status Values
+  </a>
+
+  <a class="list-group-item list-group-item-action " href="/mechanics/story/">
+    
+      <i class="fas fa-book"></i>
+    
+    Background Story
+  </a>
+
+  <a class="list-group-item list-group-item-action " href="/mechanics/time/">
+    
+      <i class="far fa-clock"></i>
+    
+    Time
+  </a>
+
+  <a class="list-group-item list-group-item-action " href="/mechanics/trading/">
+    
+      <i class="fas fa-handshake"></i>
+    
+    Trading
+  </a>
+
+  <a class="list-group-item list-group-item-action " href="/mechanics/weather/">
+    
+      <i class="fas fa-sun"></i>
+    
+    Weather
+  </a>
+
+  </div>
+</aside>
+
+        </div>
+        <div class="col">
+          <a href="https://github.com/tfelix/bestia-docs/edit/master/src/mechanics/skills.md" class="btn btn-dark btn-sm edit-button">
+            <i class="fas fa-edit"></i> Edit
+          </a>
+          <h1 id="skills-and-attacks"><i class="fas fa-sign-language"></i> Skills and Attacks <a class="header-anchor" href="#skills-and-attacks" aria-hidden="true">§</a></h1>
+<p>The bestia master of a player can learn a set of skills. Since these skills are bound to the account they are called
+account skills. These skills are freely chosen by the player and determine the job or profession of the master.</p>
+<p>Some of this account skills can be used by every bestia in posession of only by the master itself.</p>
+<blockquote>
+<p>Don't confuse this skills with the regular attacks a Bestia is learning by item usage or level up. These are simply
+called <strong>attacks</strong>.</p>
+</blockquote>
+<h2 id="guildines">Guildines <a class="header-anchor" href="#guildines" aria-hidden="true">§</a></h2>
+<ul>
+<li>The number of total skil ranks inside a tree should <strong>not exeed 70</strong> by much</li>
+<li>The possible rank counts of a skill should be: <strong>1, 3, 5 and 10</strong></li>
+<li>There should be some meaningful dependency of the skills forming an exciting tree</li>
+<li>There should be some kind of three tiers inside a tree form low and basic skill to the much powerfull skills</li>
+</ul>
+<blockquote>
+<p>No Hardcoded Skill Effects!</p>
+</blockquote>
+<p>Skills should be used when possible require some interaction with the player whose success depends on the effect of the
+skill. An example would be the teleport ability: after selecting the players (which can be flexible by the number) and
+the magic interference at the destination, the player must win a small mini-game in the client which can be a skill
+game. Depending on how successful this was, the player will be more precisely transported to the destination.</p>
+<p>Ultimately, it remains important to leave the outcome of skills open in some way. However, the result should remain
+understandable and influenceable by the player.</p>
+<h2 id="skill-progression">Skill Progression <a class="header-anchor" href="#skill-progression" aria-hidden="true">§</a></h2>
+<p>Upon each level up the master gains 1 skillpoint to put into the skills rank. This is permanent and means a player can
+spend about 100 points for improving the ranks of his skills.</p>
+<blockquote>
+<p>Since max level is not capped actually he might be able to spend more points but a progressions gets continously
+harder it is safe to assume every player has about 100 points.</p>
+</blockquote>
+<p>The skilltrees are designed as such that to reach the highest professions in a tree the player needs to spend <strong>70 points</strong>.</p>
+<p>The player can decide to have mediocre profession in each tree or to max out one and have maybe half of the
+meaningful professions of another tree. The skilltree is a hierarchical dependency of skills.</p>
+<h2 id="common-tree">Common Tree <a class="header-anchor" href="#common-tree" aria-hidden="true">§</a></h2>
+<p>In this tree, simple, common mundane tasks are placed.</p>
+<p><strong>TODO</strong></p>
+<h2 id="battle-tree">Battle Tree <a class="header-anchor" href="#battle-tree" aria-hidden="true">§</a></h2>
+<p>The battle tree contains skills which are primarly useful for fighting, battle and maybe to some extend improve survival
+in the wild.</p>
+<h3 id="elemental-mastery-(5)">Elemental Mastery (5) <a class="header-anchor" href="#elemental-mastery-(5)" aria-hidden="true">§</a></h3>
+<p>Increases damage or healing of spells with elemental (earth, wind, wasser, fire) domain.</p>
+<pre><code>+3% damage/level
+</code></pre>
+<h3 id="master-of-fire-(10)">Master of Fire (10) <a class="header-anchor" href="#master-of-fire-(10)" aria-hidden="true">§</a></h3>
+<ul>
+<li>Elemental Mastery (3)</li>
+</ul>
+<p>Increases the damage of fire attacks.</p>
+<pre><code>+3% damage/level
+</code></pre>
+<h3 id="master-of-water-(10)">Master of Water (10) <a class="header-anchor" href="#master-of-water-(10)" aria-hidden="true">§</a></h3>
+<ul>
+<li>Elemental Mastery (3)</li>
+</ul>
+<p>Increases damage of water spells.</p>
+<pre><code>+3% damage/level
+</code></pre>
+<h3 id="master-of-wind-(10)">Master of Wind (10) <a class="header-anchor" href="#master-of-wind-(10)" aria-hidden="true">§</a></h3>
+<p>Elemental Mastery (3)</p>
+<p>Increases damage of wind spells.</p>
+<pre><code>+3% damage/level
+</code></pre>
+<h3 id="master-of-earth-(10)">Master of Earth (10) <a class="header-anchor" href="#master-of-earth-(10)" aria-hidden="true">§</a></h3>
+<p>Elemental Mastery (3)</p>
+<p>Increases damage of earth spells.</p>
+<pre><code>+3% damage/level
+</code></pre>
+<h3 id="spritual-mastery-(5)">Spritual Mastery (5) <a class="header-anchor" href="#spritual-mastery-(5)" aria-hidden="true">§</a></h3>
+<p>Increases damage or healing of spells with the Holy or Dark domain.</p>
+<pre><code>+5% damage/level
+</code></pre>
+<h2 id="survival-tree">Survival Tree <a class="header-anchor" href="#survival-tree" aria-hidden="true">§</a></h2>
+<h3 id="improved-healing-(10)">Improved Healing (10) <a class="header-anchor" href="#improved-healing-(10)" aria-hidden="true">§</a></h3>
+<p>Increases effects of healing done and duration of buff spells.</p>
+<pre><code>+2% effect/level
+</code></pre>
+<h3 id="increased-regeneration-(10)">Increased Regeneration (10) <a class="header-anchor" href="#increased-regeneration-(10)" aria-hidden="true">§</a></h3>
+<p>Your Bestias and Masters HP and Mana will have an increased regeneration rate.</p>
+<pre><code>+3% effect/level
+</code></pre>
+<h3 id="magic-resistance-(3)">Magic Resistance (3) <a class="header-anchor" href="#magic-resistance-(3)" aria-hidden="true">§</a></h3>
+<ul>
+<li>Improved Healing (2)</li>
+</ul>
+<p>Reduces damage of magical effects.</p>
+<pre><code>-2%/level reduced damage
+</code></pre>
+<h3 id="faster-travel-(5)">Faster Travel (5) <a class="header-anchor" href="#faster-travel-(5)" aria-hidden="true">§</a></h3>
+<p>Hard terrain does not reduce the Bestia movement speed anymore. On Level 5 the tarrain does not reduce movement speed anymore at all.</p>
+<pre><code>-10%/level reduced movement reduction
+</code></pre>
+<h3 id="tough-guy-(3)">Tough Guy (3) <a class="header-anchor" href="#tough-guy-(3)" aria-hidden="true">§</a></h3>
+<p>Stamina is faster regenerated and drops slower in high demanding environments and while dong activities which would otherwise
+deplete your stamina.</p>
+<pre><code>-10%/level reduced stamina reduction
++10%/level increased stamina regeneration
+</code></pre>
+<h3 id="packhorse">Packhorse <a class="header-anchor" href="#packhorse" aria-hidden="true">§</a></h3>
+<p><strong>Max Level: 5</strong></p>
+<p>Increases weight limit to carry.</p>
+<pre><code>+5%/level weight limit increase
+</code></pre>
+<h2 id="crafts-tree">Crafts Tree <a class="header-anchor" href="#crafts-tree" aria-hidden="true">§</a></h2>
+<h3 id="improved-trading-(3)">Improved Trading (3) <a class="header-anchor" href="#improved-trading-(3)" aria-hidden="true">§</a></h3>
+<p>NPC can be talked into to pay more or give the player cheaper prices for items.</p>
+<pre><code>-10%/level reduced stamina reduction
++10%/
+</code></pre>
+<h3 id="scavenger">Scavenger <a class="header-anchor" href="#scavenger" aria-hidden="true">§</a></h3>
+<p>When breaking up and recycling items the probability to recycle a higher amount of components is increased.</p>
+<h3 id="blacksmithing">Blacksmithing <a class="header-anchor" href="#blacksmithing" aria-hidden="true">§</a></h3>
+<p>Able to forge weaponry. Can also <a href="/mechanics/items/#weapon-refinement">refine weapons</a>.</p>
+<h2 id="science-tree">Science Tree <a class="header-anchor" href="#science-tree" aria-hidden="true">§</a></h2>
+<p>The Science Tree contains skills witch help with sensing the world events and or performing rituals to even shape the
+face of the Bestia world.</p>
+<h3 id="spell-enscription">Spell Enscription <a class="header-anchor" href="#spell-enscription" aria-hidden="true">§</a></h3>
+<p>Enables the user to write down spells onto items or scrolls for a later use (even by someone who does not know the spell).</p>
+<h3 id="geography-(10)">Geography (10) <a class="header-anchor" href="#geography-(10)" aria-hidden="true">§</a></h3>
+<p>Increases the range and effectivness when performing a cartography.</p>
+<h3 id="engieneer-(10)">Engieneer (10) <a class="header-anchor" href="#engieneer-(10)" aria-hidden="true">§</a></h3>
+<h3 id="control-mana-flow">Control Mana Flow <a class="header-anchor" href="#control-mana-flow" aria-hidden="true">§</a></h3>
+<p>User is able to channel down the Mana to crystalize into small shards of Mana crystals which can be used as a power source throughout the world.</p>
+<h3 id="taming-(3)">Taming (3) <a class="header-anchor" href="#taming-(3)" aria-hidden="true">§</a></h3>
+<p>Bestias gain faster experience.</p>
+<pre><code>+5% experience gain per level
+</code></pre>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer py-3 mt-3">
+  <div class="container">
+    <div class="row">
+    <div class="col">
+        <img style="width: 12em" class="mt-3" src="/images/bestia-logo.svg">
+      </div>
+      <div class="col">
+        <ul class="list-unstyled">
+          <li><h6>Documentation</h6></li>
+          <li><i class="fas fa-gamepad"></i> <a href="/mechanics/">Game Design</a></li>
+          <!--<li><i class="fas fa-code"></i> Client Documentation</li>-->
+          <!--<li><i class="fas fa-server"></i> Server Documentation</li>-->
+        </ul>
+      </div>
+      <div class="col">
+        <ul class="list-unstyled">
+          <li><h6>Community</h6></li>
+          <li><i class="fab fa-discord"></i><a href="https://discord.gg/zZW8M2S">Discord</a></li>
+          <li><i class="fab fa-facebook"></i><a href="https://www.facebook.com/BestiaGame" target="_blank" rel="noreferrer noopener">Facebook</a></li>
+          <li><i class="fab fa-twitter"></i><a href="https://twitter.com/bestiagame" target="_blank" rel="noreferrer noopener">Twitter</a></li>
+        </ul>
+      </div>
+      <div class="col">
+        <ul class="list-unstyled">
+          <li><h6>More</h6></li>
+          <li><i class="fab fa-github"></i><a href="https://github.com/tfelix/bestia-docs">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col text-center">
+        <span class="text-muted">&#8226; made by<a href="https://tfelix.de">Thomas Felix</a> with ❤️ and ☕ &#8226;</span>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col text-center">
+        <p>Documentation is licenced under <a href="https://creativecommons.org/publicdomain/zero/1.0/legalcode"><img src="/images/cc-zero.svg"></a></p>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+  </body>
+</html>

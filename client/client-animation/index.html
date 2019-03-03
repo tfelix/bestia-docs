@@ -1,0 +1,65 @@
+<h2 id="animationen-and-effects">Animationen and Effects <a class="header-anchor" href="#animationen-and-effects" aria-hidden="true">§</a></h2>
+<p>For performing an attack or effect on an entity certain visual effects should be abled to be played. We call this actions animations. Animations should be able to change visual occurences of existing sprites (like for example scale, alpha, adding of shader etc.) as well as introducing new sprites. The new sprites might be needed to be attached to an existing sprite.
+All of these information data has to be saved inside an <code>animation.json</code> which can be loaded and parsed by the engine.</p>
+<p>An animation must be able to match this design goals:</p>
+<ul>
+<li>The must be able to fully revert their introduced changes upon removal.</li>
+<li>Must be able to target certain map coordinates.</li>
+<li>Must be able to target an entity.</li>
+<li>Their display duration must not be fixed but controllable in length or indefinetly upon removal (their might be animations which are continously looping or one shots none the less).</li>
+<li>Inside an animation description file the position is always given relative to the target coordinates.</li>
+<li>If the entity plays certain standard animations and the applied animation also contains these animations it should be played in sync.</li>
+</ul>
+<p>Folgende Funktionen muss der Animationsmanager besitzen:</p>
+<ul>
+<li>Er muss alle Änderungen die eine Animation durchführt verfolgen können (um sie ggf. Rückgängig bzw. anhalten zu können).</li>
+</ul>
+<h1 id="animationserzeugung">Animationserzeugung <a class="header-anchor" href="#animationserzeugung" aria-hidden="true">§</a></h1>
+<p>Der Animationsparser geht schrittweise vor, nachdem er vom Server die Anweisung bekommen hat eine Animation abzuspielen.</p>
+<ol>
+<li>
+<p>Ist die Animationsbeschreibung bereits geladen? Wenn nein: Animationsbeschreibung laden.</p>
+</li>
+<li>
+<p>Listen aller benötigten Resourcen, dabei beachten, dass als Animationen auch weitere Animationsdatein geladen werden können. Siehe Formatbeschreibung. ‘animation:NAME:ANIM_ID’ löst das Laden einer weiteren Animationsdatei aus. Auch deren Ressourcen müssen dann entsprechend rekursiv geladen werden.</p>
+</li>
+<li>
+<p>Wenn in der AnimationUseMessage Target und Origin gegeben wurden werden diese Entities bzw. Koordinaten gesucht und zusammen mit der Animationsbeschreibung an die AnimationFactory übergeben.</p>
+</li>
+<li>
+<p>Die Factory geht die Animationssequenz schrittweise durch und führt nach und nach alle Animationsanweisungen aus, indem Entsprechende Phaser Objekte erzeugt, Tweens gestartet usw. werden. Es wird dabei eine Referenz auf die entsprechenden Animationen gesetzt.</p>
+</li>
+</ol>
+<h1 id="animationsformat">Animationsformat <a class="header-anchor" href="#animationsformat" aria-hidden="true">§</a></h1>
+<p>Animationsbeschreibungen werden als JSON Dateien im Ordner /animation/ abgelegt. Das zu verwendende Dateiformat ist im folgenden beschrieben.</p>
+<h2 id="version-1">Version 1 <a class="header-anchor" href="#version-1" aria-hidden="true">§</a></h2>
+<p>{
+version: 1, // Version Number of this format.
+resources: [RESSOURCE], // Needed resources by this animation
+animationSequences: [ANIMATION_SEQ],
+target: [animation_seq_id_string],
+origin: [animation_seq_id_string]
+}</p>
+<p>RESSOURCE</p>
+<p>{
+type: ‘animation’|‘image’|’sprite’|‘audio’,
+key: string,
+url: string
+}</p>
+<p>ANIMATION_SEQ</p>
+<p>{
+id: ‘invisible’, // Name of this animation sequence in order to reuse it.
+animations: [ANIMATION]
+}</p>
+<p>ANIMATION</p>
+<p>{</p>
+<p>type: ‘tween’, // Type of the Animation.
+duration: 300, // Duration of the Animation.
+data: {property: ‘scale’, from: 1 to: 0} // Data is variable to contain the specific data for</p>
+<p>}</p>
+<p>[ANIMATION_SEQ]</p>
+<p>{animations: [{type: tween, duration: 100, parallel: true}],</p>
+<p>target: [ANIMATION_SEQ],</p>
+<p>owner: [ANIMATION_SEQ]</p>
+<p>}</p>
+<p>{animations: [{type: scale, duration: 100, parallel: true}], target: [] owner: [{}]}</p>

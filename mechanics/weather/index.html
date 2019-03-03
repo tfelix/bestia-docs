@@ -198,7 +198,7 @@
     Trading
   </a>
 
-  <a class="list-group-item list-group-item-action " href="/mechanics/weather/">
+  <a class="list-group-item list-group-item-action active" href="/mechanics/weather/">
     
       <i class="fas fa-sun"></i>
     
@@ -210,48 +210,25 @@
 
         </div>
         <div class="col">
-          <a href="https://github.com/tfelix/bestia-docs/edit/master/src/index.md" class="btn btn-dark btn-sm edit-button">
+          <a href="https://github.com/tfelix/bestia-docs/edit/master/src/mechanics/weather.md" class="btn btn-dark btn-sm edit-button">
             <i class="fas fa-edit"></i> Edit
           </a>
-          <div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-4">Bestia Development Documentation</h1>
-    <p class="lead">Massive. Hard. Innovative. Open World. Open Source.</p>
-  </div>
-</div>
-<p><a class="github-button" href="https://github.com/tfelix/bestia-docs" data-icon="octicon-star" data-size="large"
-data-show-count="true" aria-label="Star tfelix/bestia-docs on GitHub">Star</a>
-<a class="github-button" href="https://github.com/tfelix/bestia-docs/subscription" data-icon="octicon-eye"
-data-size="large" data-show-count="true" aria-label="Watch tfelix/bestia-docs on GitHub">Watch</a></p>
-<p>Congratulations! You just have found the Developer Documentation of the Bestia-Browsergame. Here you find everything from
-gamedesign guidlines to engine architecture overview as well as the API documentation.</p>
-<p>These infos should help you to get kickstarted and join the development. As Bestia is a community driven, open game each
-contribution is welcome. With the provided guidelines enthusiasts should very easily be able to create contributions
-from artworks to scripts.</p>
-<blockquote>
-<p>A recent build of the demo version of Bestia is available under <a href="http://demo.bestia-game.net">http://demo.bestia-game.net</a>.</p>
-</blockquote>
-<blockquote>
-<p>Note: This document is currently transformed and assambled from numerous internal sources of the Bestia Game Docs.
-Please help translating it into english or sorting its chapters.</p>
-</blockquote>
-<h2 id="contributing">Contributing <a class="header-anchor" href="#contributing" aria-hidden="true">§</a></h2>
-<p>Contributions to both the game design and the game itself (the client and the server) are very welcomed! Inside this game
-design document you possibly will find certain <strong>Contributing</strong> sections which will give you some guidlines to follow
-in order to help to get you changes into the game quickly.</p>
-<p><strong><a href="about-manifest.md">Read the Bestia Manifest first</a></strong> and align your contributions and changes under these central
-game guidelines.</p>
-<p>Otherwise feel free to check out the three project repositories on Github (and maybe give them a Star 😃)</p>
-<ul>
-<li><a href="https://github.com/tfelix/bestia-docs">Bestia Game Design</a> <i class="fab fa-github"></i></li>
-<li><a href="https://github.com/tfelix/bestia-client">Bestia Browser Client</a> <i class="fab fa-github"></i></li>
-<li><a href="https://github.com/tfelix/bestia-behemoth">Bestia Behemoth Server</a> <i class="fab fa-github"></i></li>
-</ul>
-<blockquote>
-<p>You can use the <code>Edit</code> button on the top right of every page to directly edit this document and create a Pull Request
-on Github.</p>
-</blockquote>
-<script async defer src="https://buttons.github.io/buttons.js"></script>
+          <h1 id="weather"><i class="fas fa-sun"></i> Weather <a class="header-anchor" href="#weather" aria-hidden="true">§</a></h1>
+<p>The weather system in Bestia plays a crucial role. It also affects the visibility and also the behavior of the NPC and
+mobs. Depending on the weather the NPCs and the player character will need a improved shelter or equipment to avoid a
+loss of stamina.</p>
+<p>The weather influences the temperature which will in turn decide if and how much stamina a entity regenerates or loses.</p>
+<h2 id="rain">Rain <a class="header-anchor" href="#rain" aria-hidden="true">§</a></h2>
+<p>A in strength controllable rain effect should overlay the entire viewport. The rain blowing direction should correlate
+with the wind direction (which will be more or less random). During rain start the ground will show a watering effect.
+This means that reflecting poodles of water will start to form as well as circular raindrops which will darkening the ground.</p>
+<h2 id="fog">Fog <a class="header-anchor" href="#fog" aria-hidden="true">§</a></h2>
+<p>Clouds of fog will move slowly over the map. And the sight of the entities is reduced.</p>
+<h2 id="sun">Sun <a class="header-anchor" href="#sun" aria-hidden="true">§</a></h2>
+<p>The light will bleach out the colors and form a more lighter environment.</p>
+<h2 id="dusk-and-dawn">Dusk and Dawn <a class="header-anchor" href="#dusk-and-dawn" aria-hidden="true">§</a></h2>
+<p>During the traversal from day to night the overall color should be color corrected to simulate the rising or setting
+sun as well as night times (color reduction)</p>
 
         </div>
       </div>
