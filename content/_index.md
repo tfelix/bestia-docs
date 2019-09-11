@@ -1,79 +1,48 @@
 ---
-title: Introduction
+title: Bestia - Developer Documentation
 type: docs
 ---
 
-# Acerbo datus maxime
+# Bestia Developer Documentation
 
-{{< columns >}}
-## Astris ipse furtiva
+> Massive. Hard. Innovative. Open World. Open Source.
 
-Est in vagis et Pittheus tu arge accipiter regia iram vocatur nurus. Omnes ut
-olivae sensit **arma sorori** deducit, inesset **crudus**, ego vetuere aliis,
-modo arsit? Utinam rapta fiducia valuere litora _adicit cursu_, ad facies
+<a class="github-button" href="https://github.com/tfelix/bestia-docs" data-icon="octicon-star" data-size="large"
+data-show-count="true" aria-label="Star tfelix/bestia-docs on GitHub">Star</a>
+<a class="github-button" href="https://github.com/tfelix/bestia-docs/subscription" data-icon="octicon-eye"
+data-size="large" data-show-count="true" aria-label="Watch tfelix/bestia-docs on GitHub">Watch</a>
 
-<--->
+**Congratulations!** You just have found the Developer Documentation of the Bestia-Game. Here you find everything from
+gamedesign guidlines to engine architecture overview as well as the API documentation to access game resources.
 
-## Suis quot vota
+These infos should help you to get kickstarted and join the development. As Bestia is a community driven, open game each
+contribution is welcome. With the provided guidelines enthusiasts should very easily be able to create contributions
+from artworks to scripts.
 
-Ea _furtique_ risere fratres edidit terrae magis. Colla tam mihi tenebat:
-miseram excita suadent es pecudes iam. Concilio _quam_ velatus posset ait quod
-nunc! Fragosis suae dextra geruntur functus vulgata.
-{{< /columns >}}
+> **The game currently transforms into a stand-alone client which is currently not available for testing.**
 
+## Contributing
 
-## Tempora nisi nunc
+Contributions to both the game design and the game itself (the client and the server) are very welcomed!
 
-Lorem **markdownum** emicat gestu. Cannis sol pressit ducta. **Est** Idaei,
-tremens ausim se tutaeque, illi ulnis hausit, sed, lumina cutem. Quae avis
-sequens!
+You may find a little `Edit this page` link at the bottom of each page. If you want to change some game design
+aspects feel free to give it a try!
 
-    var panel = ram_design;
-    if (backup + system) {
-        file.readPoint = network_native;
-        sidebar_engine_device(cell_tftp_raster,
-                dual_login_paper.adf_vci.application_reader_design(
-                graphicsNvramCdma, lpi_footer_snmp, integer_model));
-    }
-    public_keyboard_docking += error.controller_gibibyte_plug.ip(4,
-            asciiPetaflops, software(supercomputer_compatible_status + 4));
-    dynamic_disk.indexModeLaptop = bufferTftpReality;
-    var export_vlog_sequence = trinitron_flowchart + supercomputer_cluster_rj(
-            -1, toolbar_powerpoint_query, -2 / multiprocessing_impression);
+Inside this game design document you possibly will find certain **Contributing** sections which will give you some
+guidlines to follow in order to help to get you changes into the game quickly.
 
-## Locis suis novi cum suoque decidit eadem
+**[Read the Bestia Manifest first](about-manifest.md)** and align your contributions and changes under these central
+game guidelines.
 
-Idmoniae ripis, at aves, ali missa adest, ut _et autem_, et ab? Venit spes
-versus finis sermonibus patefecit murum nec est sine oculis. _Ille_ inmota
-macies domoque caelestia cadit tantummodo scelus procul, corde!
+## Project Repositories
 
-1. Dolentem capi parte rostro alvum habentem pudor
-2. Fulgentia sanguine paret
-3. E punior consurgit lentus
-4. Vox hasta eras micantes
+Otherwise feel free to check out the three project repositories on Github (and maybe give them a Star)
 
-## Facibus pharetrae indetonsusque indulsit sic incurrite foliis
+* [Bestia Developer Documentation](https://github.com/tfelix/bestia-docs) <i class="fab fa-github"></i>
+* [Bestia Browser Client](https://github.com/tfelix/bestia-client) <i class="fab fa-github"></i>
+* [Bestia Behemoth Server](https://github.com/tfelix/bestia-behemoth) <i class="fab fa-github"></i>
 
-Nefandam et prisci palmas! Blandita cutis flectitur montis macies, te _nati_
-Latiis; turbaque inferias. Virginis tibi peracta avidusque facies caper nec, e
-at ademptae, mira.
+> You can use the `Edit` button on the top right of every page to directly edit this document and create a Pull Request
+> on Github.
 
-    direct *= font(inputScareware(sliHome), crossplatform.byte(
-            ppl_encryption.excel_e_rte(integratedModelModifier), timeVirtual,
-            floating_speakers.media_printer(us, yahoo, primaryPhp)));
-    friendly_metal_flatbed(cd, isoPrimaryStorage(reader), dmaMirrored);
-    if (parse_flash_cron.metalGif(1, adServiceDevice, utility)) {
-        adf -= operation_cdma_samba;
-        imapGif.switch += torrent;
-    } else {
-        pmu.disk_captcha = digital_ppp_pci + recursionTransistor(5, dram);
-        ajax_service += grayscalePythonLock;
-        google_scroll_capacity = ftp + engine_dslam_sidebar / tape - 1;
-    }
-    drive_rw = zipTftp;
-    var suffix = software_router_extension.dimm_ddr(-5,
-            kernel_digital_minisite);
-
-Vocavit toto; alas **mitis** maestus in liquidarum ab legi finitimosque dominam
-tibi subitus; Orionis vertitur nota. Currere alti etiam seroque cernitis
-innumeris miraturus amplectique collo sustinet quemque! Litora ante turba?
+<script async defer src="https://buttons.github.io/buttons.js"></script>

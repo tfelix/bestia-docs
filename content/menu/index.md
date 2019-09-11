@@ -2,9 +2,9 @@
 headless: true
 ---
 
-- [**Introduction**]({{< relref "/docs/introduction" >}})
-- [Examples]({{< relref "/docs/introduction/examples" >}})
-  - [With Table of Contents]({{< relref "/docs/introduction/examples/with-toc" >}})
-  - [Without Table of Contents]({{< relref "/docs/introduction/examples/without-toc" >}})
-  - [Shortcodes]({{< relref "/docs/introduction/examples/shortcodes" >}})
-- **More Examples**
+{{< expand >}}
+- [**Game Design**]({{< relref "/docs/mechanics" >}})
+  - [Artificial Intelligence]({{< relref "/docs/mechanics/ai" >}})
+  - [Crafting]({{< relref "/docs/mechanics/ai" >}})
+    - [Alchemy]({{< relref "/docs/mechanics/crafting/alchemy" >}})
+{{< /expand >}}

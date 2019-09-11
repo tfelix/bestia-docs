@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+- "9"
+cache: npm
+
+script: npm run build
+
+# See https://gohugo.io/hosting-and-deployment/hosting-on-github/
+
+deploy:
+  provider: pages
+  local-dir: dist
+  skip-cleanup: true
+  github-token: ${GH_TOKEN}
+  keep-history: true
+  on:
+    branch: master
