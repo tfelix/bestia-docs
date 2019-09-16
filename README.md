@@ -1,6 +1,7 @@
 # Bestia Development Docs
 
 [![Build Status](https://travis-ci.org/tfelix/bestia-docs.svg?branch=master)](https://travis-ci.org/tfelix/bestia-docs)
+[![License: CC0](https://img.shields.io/badge/license-CC0-green)](LICENSE)
 
 This repository contains the central game design documents and guidelines of the [Bestia Game](https://bestia-game.net).
 
