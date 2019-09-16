@@ -1,6 +1,6 @@
 baseURL = 'https://tfelix.github.io/bestia-docs'
 title = 'Bestia Game'
-theme = 'hugo-book'
+theme = 'book'
 disableKinds = ['taxonomy', 'taxonomyTerm']
 # themesDir = '../..'
 
