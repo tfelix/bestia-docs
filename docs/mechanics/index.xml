@@ -2,38 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Game Design on Bestia Game</title>
-    <link>https://tfelix.github.io/bestia-docs/docs/mechanics/</link>
+    <link>https://docs.bestia-game.net/docs/mechanics/</link>
     <description>Recent content in Game Design on Bestia Game</description>
     <generator>Hugo -- gohugo.io</generator>
     
-	<atom:link href="https://tfelix.github.io/bestia-docs/docs/mechanics/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://docs.bestia-game.net/docs/mechanics/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Core Concepts</title>
-      <link>https://tfelix.github.io/bestia-docs/docs/mechanics/core-guidelines/</link>
+      <link>https://docs.bestia-game.net/docs/mechanics/core-guidelines/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://tfelix.github.io/bestia-docs/docs/mechanics/core-guidelines/</guid>
+      <guid>https://docs.bestia-game.net/docs/mechanics/core-guidelines/</guid>
       <description>Core Concepts Consistent Fantasy Simulation We want to tell a story, a story the players forge and form by themselves. We must provide a world, an environment in which this is made possible. The game should motivate the players to explore and test their creativity for solving problems. Nothing frustrates more then to solve riddles only by bruteforcing the answers. All the things inside the world should be explainable by in-universe theories and follow certain logic patterns.</description>
     </item>
     
     <item>
       <title>Archivements</title>
-      <link>https://tfelix.github.io/bestia-docs/docs/mechanics/archivements/</link>
+      <link>https://docs.bestia-game.net/docs/mechanics/archivements/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://tfelix.github.io/bestia-docs/docs/mechanics/archivements/</guid>
+      <guid>https://docs.bestia-game.net/docs/mechanics/archivements/</guid>
       <description>Archivements If a player manages to archive a certain goal then he will be awarded an archivement. These archivements are listed ingame so the player can view them. It is also possible for other players to access the players archivements.
 There are archivements which are unique to a single world and other which every player can reach for his own. World archivements are saved with the world they were acquired and are reset (they can be re-acuired by another player if the world is re-created).</description>
     </item>
     
     <item>
       <title>Attacks</title>
-      <link>https://tfelix.github.io/bestia-docs/docs/mechanics/spells/</link>
+      <link>https://docs.bestia-game.net/docs/mechanics/spells/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://tfelix.github.io/bestia-docs/docs/mechanics/spells/</guid>
+      <guid>https://docs.bestia-game.net/docs/mechanics/spells/</guid>
       <description>Spells and Attacks The magic and the usage of it plays a crucial role in the Bestia universe. The users should be able to be deeply involved into magic spell creation and research.
 The system must allow the user to describe or discover newly innovative ways to combine spells. Yet the research should be fun and entertaining.
 Each Bestia has a internal list of attacks she will learn when gaining levels.</description>
@@ -41,39 +41,39 @@ Each Bestia has a internal list of attacks she will learn when gaining levels.</
     
     <item>
       <title>Bestia Time</title>
-      <link>https://tfelix.github.io/bestia-docs/docs/mechanics/time/</link>
+      <link>https://docs.bestia-game.net/docs/mechanics/time/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://tfelix.github.io/bestia-docs/docs/mechanics/time/</guid>
+      <guid>https://docs.bestia-game.net/docs/mechanics/time/</guid>
       <description>Bestia Time The time in the Bestia game is faster then the real world time. When we refer to the faster in-game time we will call it bestia time, if we refer to the normal time we call it real time.
 Changing seasons should lead to an impression of the changeability of the world. You have to adapt to a periodically changing environment. Things that work in summer may not be possible in winter.</description>
     </item>
     
     <item>
       <title>Honor</title>
-      <link>https://tfelix.github.io/bestia-docs/docs/mechanics/honor/</link>
+      <link>https://docs.bestia-game.net/docs/mechanics/honor/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://tfelix.github.io/bestia-docs/docs/mechanics/honor/</guid>
+      <guid>https://docs.bestia-game.net/docs/mechanics/honor/</guid>
       <description>Honor It is possible in Bestia to perform malicious actions which will reduce the players good experience. This is by design! Yet there should be incentives for players not to go this route in order to protect low level players from ganking of other griev play. If a player behaves well and their honor level increases they will get more and more rewards. On the other hand if a player has negative honor they will get bad reputation and repressions.</description>
     </item>
     
     <item>
       <title>Inventory</title>
-      <link>https://tfelix.github.io/bestia-docs/docs/mechanics/inventory/</link>
+      <link>https://docs.bestia-game.net/docs/mechanics/inventory/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://tfelix.github.io/bestia-docs/docs/mechanics/inventory/</guid>
+      <guid>https://docs.bestia-game.net/docs/mechanics/inventory/</guid>
       <description>Inventory The inventory is an important system for interaction between the player and the game mechanics. It must be easy to access and logical build. Each Bestia has its own inventory. So the player must be careful to exchange items between the Bestias in time. Trading must be fast to do to reduce the annoyance.
 If a Bestia/Entity is killed and has had some items inside its inventory usually the items are dropped and can be looted.</description>
     </item>
     
     <item>
       <title>Items</title>
-      <link>https://tfelix.github.io/bestia-docs/docs/mechanics/items/</link>
+      <link>https://docs.bestia-game.net/docs/mechanics/items/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://tfelix.github.io/bestia-docs/docs/mechanics/items/</guid>
+      <guid>https://docs.bestia-game.net/docs/mechanics/items/</guid>
       <description>Items Items can be optained by the player and carried around. The amount of items limited to each entity is determined via its Inventory.
 Each item has a level assigned. This level is important to determine how hard or easy it is to forge this item, upgrade it and so on. It also effects how spels interact with the item entity.
 Item Level Items are grouped into three categories and inside this documentation often refered to via its category.</description>
@@ -81,29 +81,29 @@ Item Level Items are grouped into three categories and inside this documentation
     
     <item>
       <title>Quests</title>
-      <link>https://tfelix.github.io/bestia-docs/docs/mechanics/quests/</link>
+      <link>https://docs.bestia-game.net/docs/mechanics/quests/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://tfelix.github.io/bestia-docs/docs/mechanics/quests/</guid>
+      <guid>https://docs.bestia-game.net/docs/mechanics/quests/</guid>
       <description>Quests The game will be more or less an Open World game. But the declared goal will be to try out new ways of storytelling in order to present a credible world with developing history to the players. You have to say goodbye to the idea that every game can live through every part of the story/quest. This contradicts the persistent and inner logical structure of the game world. Quests must rather result dynamically from what happens within the game world.</description>
     </item>
     
     <item>
       <title>Resources</title>
-      <link>https://tfelix.github.io/bestia-docs/docs/mechanics/resources/</link>
+      <link>https://docs.bestia-game.net/docs/mechanics/resources/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://tfelix.github.io/bestia-docs/docs/mechanics/resources/</guid>
+      <guid>https://docs.bestia-game.net/docs/mechanics/resources/</guid>
       <description>Resources Resources are raw materials used to sell to other players. They can be used to craft items or construct buildings. Resources can be obtained by the following means:
  Killing enemies and loot them Gathering of natural resources in the game world Using special extracting buildings or devices Recycling of existing items   The item loot from monster should be logically correct: a dead wolve would very likly not drop iron ore or golden coins.</description>
     </item>
     
     <item>
       <title>Skills</title>
-      <link>https://tfelix.github.io/bestia-docs/docs/mechanics/skills/</link>
+      <link>https://docs.bestia-game.net/docs/mechanics/skills/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://tfelix.github.io/bestia-docs/docs/mechanics/skills/</guid>
+      <guid>https://docs.bestia-game.net/docs/mechanics/skills/</guid>
       <description>Skills and Attacks The bestia master of a player can learn a set of skills. Since these skills are bound to the account they are called account skills. These skills are freely chosen by the player and determine the job or profession of the master.
 Some of this account skills can be used by every bestia in posession of only by the master itself.
  Don&amp;rsquo;t confuse this skills with the regular attacks a Bestia is learning by item usage or level up.</description>
@@ -111,39 +111,39 @@ Some of this account skills can be used by every bestia in posession of only by 
     
     <item>
       <title>Story</title>
-      <link>https://tfelix.github.io/bestia-docs/docs/mechanics/story/</link>
+      <link>https://docs.bestia-game.net/docs/mechanics/story/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://tfelix.github.io/bestia-docs/docs/mechanics/story/</guid>
+      <guid>https://docs.bestia-game.net/docs/mechanics/story/</guid>
       <description>Story The main story revolves around the player whose world was destroyed due to a so-called rift event. The magic pushed into his world and merged it with another one. This altered the physical properties of both worlds and mostly destroyed them. He is thrown into a new one and must learn to survive on his own (while exploring the new world, making friends and foes.)
 The principle of destroying the world is the common thread throughout the game.</description>
     </item>
     
     <item>
       <title>The Cults</title>
-      <link>https://tfelix.github.io/bestia-docs/docs/mechanics/cults/</link>
+      <link>https://docs.bestia-game.net/docs/mechanics/cults/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://tfelix.github.io/bestia-docs/docs/mechanics/cults/</guid>
+      <guid>https://docs.bestia-game.net/docs/mechanics/cults/</guid>
       <description>The Cults In each Bestia World there are 2-3 cults to which the Bestia summoners can belong. When creating the world, the existing cults are chosen randomly. At least one cult should long for the destruction of the world, one should prevent it. Optionally there are some neutral cults that pursue their own goals which do not deal with the destruction of the world. These cults should not exist in every world iteration.</description>
     </item>
     
     <item>
       <title>Trading</title>
-      <link>https://tfelix.github.io/bestia-docs/docs/mechanics/trading/</link>
+      <link>https://docs.bestia-game.net/docs/mechanics/trading/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://tfelix.github.io/bestia-docs/docs/mechanics/trading/</guid>
+      <guid>https://docs.bestia-game.net/docs/mechanics/trading/</guid>
       <description>Trading Trading is an important mechanic and allows player to exchange goods. Players can create auction hauses which can be used in order to perform trades while they are offline themselves.
 Auction House TBD</description>
     </item>
     
     <item>
       <title>Weather</title>
-      <link>https://tfelix.github.io/bestia-docs/docs/mechanics/weather/</link>
+      <link>https://docs.bestia-game.net/docs/mechanics/weather/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://tfelix.github.io/bestia-docs/docs/mechanics/weather/</guid>
+      <guid>https://docs.bestia-game.net/docs/mechanics/weather/</guid>
       <description>Weather The weather system in Bestia plays a crucial role. It also affects the visibility and also the behavior of the NPC and mobs. Depending on the weather the NPCs and the player character will need a improved shelter or equipment to avoid a loss of stamina.
 The weather influences the temperature which will in turn decide if and how much stamina a entity regenerates or loses.
 Rain A in strength controllable rain effect should overlay the entire viewport.</description>
@@ -151,19 +151,19 @@ Rain A in strength controllable rain effect should overlay the entire viewport.<
     
     <item>
       <title>World Exploration</title>
-      <link>https://tfelix.github.io/bestia-docs/docs/mechanics/exploration/</link>
+      <link>https://docs.bestia-game.net/docs/mechanics/exploration/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://tfelix.github.io/bestia-docs/docs/mechanics/exploration/</guid>
+      <guid>https://docs.bestia-game.net/docs/mechanics/exploration/</guid>
       <description>World Exploration A large part of the game world is generated automatically. There should be a motivation for players in exploring the world. New areas can be mapped and unique resources can be discovered and explored. In general, players should have their own branch about the secrets of the world to discover new items and how they are created. The entire world must gradually be explored and mapped by players.</description>
     </item>
     
     <item>
       <title>Artwork and Design</title>
-      <link>https://tfelix.github.io/bestia-docs/docs/mechanics/resources/artwork/</link>
+      <link>https://docs.bestia-game.net/docs/mechanics/resources/artwork/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://tfelix.github.io/bestia-docs/docs/mechanics/resources/artwork/</guid>
+      <guid>https://docs.bestia-game.net/docs/mechanics/resources/artwork/</guid>
       <description>Artwork and Design The general art style will be comic like as for example World of Warcraft. This helps the game to get fast assets as its easier then archiving foto-realism and also these styles are more timeless.
 UI Design Currently no final UI Design was found. Feel free to contribute!
 Logos Currently no final Bestia Logo was found. Feel free to contribute!
@@ -172,10 +172,10 @@ Fonts Currently the font usage is not finally decided.</description>
     
     <item>
       <title>Literature</title>
-      <link>https://tfelix.github.io/bestia-docs/docs/mechanics/resources/literature/</link>
+      <link>https://docs.bestia-game.net/docs/mechanics/resources/literature/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://tfelix.github.io/bestia-docs/docs/mechanics/resources/literature/</guid>
+      <guid>https://docs.bestia-game.net/docs/mechanics/resources/literature/</guid>
       <description> Literature This is a list of article, paper or other game related resources used in the creation of this game.
  http://www.gamasutra.com/blogs/JoshNewland/20150624/246897/2D_procedurally_generated_world_building_in_Unity.php https://gillesleblanc.wordpress.com/2012/10/16/creating-a-random-2d-game-world-map/ https://en.wikipedia.org/wiki/Perlin_noise https://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_division_method http://pcg.wikidot.com/category-pcg-algorithms http://www-cs-students.stanford.edu/~amitp/game-programming/polygon-map-generation/ http://www.pixelenvy.ca/wa/river.html http://gamedev.stackexchange.com/questions/15612/howd-they-do-it-millions-of-tiles-in-terraria https://en.wikipedia.org/wiki/Simplex_noise http://vterrain.org/Elevation/Artificial/ http://www.saltgames.com/article/awareTiles/ http://paulbourke.net/geometry/transformationprojection/ http://www.gamasutra.com/view/feature/3090/image_compression_withvector.php https://de.wikipedia.org/wiki/Slaves_to_Armok_II:_Dwarf_Fortress https://www.samcodes.co.uk/project/markov-namegen/  AI  http://www.roguebasin.com/index.php?title=A_Better_Monster_AI  Procedural Content Creation  https://firespark.de/?id=article&amp;amp;article=ProceduralGenerationResources http://www.jorisdormans.nl/pdf/dormans2010_AdventuresInLevelDesign.pdf https://arches.liris.cnrs.fr/publications/articles/EG2010_ProceduralGenerationOfRoads.pdf http://mc-server.xoft.cz/docs/Generator.html#biome.grown https://nil.cs.uno.edu/projects/glaive/ http://www.jorisdormans.nl/pdf/dormans2010_AdventuresInLevelDesign.pdf  </description>
     </item>

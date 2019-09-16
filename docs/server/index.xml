@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Server on Bestia Game</title>
-    <link>https://tfelix.github.io/bestia-docs/docs/server/</link>
+    <link>https://docs.bestia-game.net/docs/server/</link>
     <description>Recent content in Server on Bestia Game</description>
     <generator>Hugo -- gohugo.io</generator>
     
-	<atom:link href="https://tfelix.github.io/bestia-docs/docs/server/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://docs.bestia-game.net/docs/server/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title></title>
-      <link>https://tfelix.github.io/bestia-docs/docs/server/server-datatypes/</link>
+      <link>https://docs.bestia-game.net/docs/server/server-datatypes/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://tfelix.github.io/bestia-docs/docs/server/server-datatypes/</guid>
+      <guid>https://docs.bestia-game.net/docs/server/server-datatypes/</guid>
       <description>Datatypes All locations and entities are represented via fixed point numbers to avoid incorrectness with floating points over a bigger distance (see The perils of floating point).
 The basic datastructures for positioning and collisions are found in net.bestia.model.geometry. Most notable the Vector3 datatype.
 It uses long as datatypes for the coordinates and thus has a range between -9.223.372.036.854.775.808 to 9.223.372.036.854.775.807 which means Bestia can represent at the best a position resolution of 1mm.</description>
@@ -22,39 +22,39 @@ It uses long as datatypes for the coordinates and thus has a range between -9.22
     
     <item>
       <title>Artificial Intelligence</title>
-      <link>https://tfelix.github.io/bestia-docs/docs/server/ai/</link>
+      <link>https://docs.bestia-game.net/docs/server/ai/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://tfelix.github.io/bestia-docs/docs/server/ai/</guid>
+      <guid>https://docs.bestia-game.net/docs/server/ai/</guid>
       <description>Artificial Intelligence The AI system in Bestia will set new standards. Bestias and NPCs alike should be able to create long-term plans, so-called game plans or GPs for short. They then follow this strategy until observations or influences from the game world force them to abandon this plan or the plan is fulfilled.
 Bestias look for ways to get the highest possible inner happiness. They must sleep, eat and feel attracted to mana currents.</description>
     </item>
     
     <item>
       <title>Battlesystem</title>
-      <link>https://tfelix.github.io/bestia-docs/docs/server/server-battlesystem/</link>
+      <link>https://docs.bestia-game.net/docs/server/server-battlesystem/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://tfelix.github.io/bestia-docs/docs/server/server-battlesystem/</guid>
+      <guid>https://docs.bestia-game.net/docs/server/server-battlesystem/</guid>
       <description>Battle system The battle or attack is performed in various stages. Equipments or Status effects either alter the DamageVars or expose certain hooks which are called during the damage calculation. In the case of the DamageVars this object is
 The attack itself either provides a script to completely manage the effect which takes place during cast or it provides certain callbacks for damage calculation stages which are getting called while applying the damage.</description>
     </item>
     
     <item>
       <title>Environment</title>
-      <link>https://tfelix.github.io/bestia-docs/docs/server/server-environment/</link>
+      <link>https://docs.bestia-game.net/docs/server/server-environment/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://tfelix.github.io/bestia-docs/docs/server/server-environment/</guid>
+      <guid>https://docs.bestia-game.net/docs/server/server-environment/</guid>
       <description>Das Umweltsystem ist in der Lage dynamische Umweltbedingungen zu simulieren. Diese sollen auf gewissen Grundwerten aufbauen die ortsabhängig festgelegt werden, aber durch Interaktion mit den Spielern veränderbar sind. Auch natürliche Veränderungen durch die Welt (Jahreszeiten) sollen zu einer Anpassungen dieser Werte führen. Durch die Veränderungen der Umweltwerte müssen Tiles der Welt selbst angepasst werden. Diese müssen sowieso angepasst werden wenn sich diese durch andere lokale Effekte, wie zum Beispiel Feuer oder Bergbau ändern sollten.</description>
     </item>
     
     <item>
       <title>Lighting</title>
-      <link>https://tfelix.github.io/bestia-docs/docs/server/server-lighting/</link>
+      <link>https://docs.bestia-game.net/docs/server/server-lighting/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://tfelix.github.io/bestia-docs/docs/server/server-lighting/</guid>
+      <guid>https://docs.bestia-game.net/docs/server/server-lighting/</guid>
       <description>Gruppen Renderlayer
 ground objects sprites effects overlay gui
 Gruppenmanager? Der entsprechende Render-Layer definiert und verwaltet? Lichtsystem Lichtinformation wird auf dem Server benötigt Tile basiert. Licht information wird auf dem Client benötigt, Tile basiert
@@ -63,58 +63,58 @@ Licht wird global in groben Chunks abgelegt. Darüber hinaus werden Entities im 
     
     <item>
       <title>Routing</title>
-      <link>https://tfelix.github.io/bestia-docs/docs/server/server-routing/</link>
+      <link>https://docs.bestia-game.net/docs/server/server-routing/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://tfelix.github.io/bestia-docs/docs/server/server-routing/</guid>
+      <guid>https://docs.bestia-game.net/docs/server/server-routing/</guid>
       <description>Zur Routenfindung muss ein globales Verständnis der Karten und Wege vorhanden sein. Beim Starten der Zone müssen die Maps entsprechend ausgelesen werden damit ein Graph erstellt werden kann der die einzelnen Verbindungen der Zonen beschreibt. Der globale Routenfinder muss diese Daten nutzen um Routen erstellen zu können. Zum Abschätzen der Gewichtung der Graph Kante wird die Zeit zur Durchquerung der Zonen mit Hilfe einer Heuristik abgeschätzt. Da jeder Server nur die Maps verarbeitet für die er Zuständig ist muss nach dem Starten der erstellte Teilgraph durch alle Zonen publiziert werden sobald eine Zone online gegangen ist.</description>
     </item>
     
     <item>
       <title>Server Architecture</title>
-      <link>https://tfelix.github.io/bestia-docs/docs/server/server-architecture/</link>
+      <link>https://docs.bestia-game.net/docs/server/server-architecture/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://tfelix.github.io/bestia-docs/docs/server/server-architecture/</guid>
+      <guid>https://docs.bestia-game.net/docs/server/server-architecture/</guid>
       <description>Star Watch
 The basic server design relies on using Akka as the framework to form a so called cluster from multiple nodes. As soon as the cluster is formed the basic Bestia entities which represents all in game elements (player, things the player can interact with, buildings, enemies etc). The entities are distributed between the cluster nodes and so are the incoming player controls for these entities. If the system needs to scale up its easily possible to just spawn more cluster nodes to distribute the load.</description>
     </item>
     
     <item>
       <title>Server Scripts</title>
-      <link>https://tfelix.github.io/bestia-docs/docs/server/server-scripts/</link>
+      <link>https://docs.bestia-game.net/docs/server/server-scripts/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://tfelix.github.io/bestia-docs/docs/server/server-scripts/</guid>
+      <guid>https://docs.bestia-game.net/docs/server/server-scripts/</guid>
       <description>Scripte Das Skript-System in Bestia wird genutzt um flexible Programmausführung für verschiedenste Zwecke zu ermöglichen. Dazu gehören vor allem die Effekte von benutzten Items, Attacken, das Verhalten von Gespawnten Entities usw.
 Als Skriptsprache wird auf JavaScript gesetzt, da diese sowieso im HTML Client verwendet werden muss und so eine weitere Sprache für das Spiel gespart werden kann. Aktuell wird die Nashorn Javascript Engine von Java 8 benutzt. Sollte sich dies als Performance Engpass herausstellen so kann später mit mittlerem Aufwand auf die V8 Engine von Google umgerüstet werden.</description>
     </item>
     
     <item>
       <title>Server Streaming</title>
-      <link>https://tfelix.github.io/bestia-docs/docs/server/server-datastreaming/</link>
+      <link>https://docs.bestia-game.net/docs/server/server-datastreaming/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://tfelix.github.io/bestia-docs/docs/server/server-datastreaming/</guid>
+      <guid>https://docs.bestia-game.net/docs/server/server-datastreaming/</guid>
       <description>Kartenübertragung Die Map besteht aus Tiles welche in verschiedenen Layern organisiert sind. Üblicherweise sollten es nicht mehr als 2-3 Layer sein. Ein Grundlayer mit der Nummer 0 ist immer vorhanden. Dieser stellt den Boden dar. Er enthält begehbar und unbegehbare Tiles. Die restlichen Layer werden in einem sparse Datenformat übertragen, da Kartendaten die als Layer sich vor dem Spieler befinden eher seltener anzutreffen sind
 Patch Übertragung Um ein effektives Streaming sicherzustellen werden die Tiles in quadratisches Patches eingeteilt.</description>
     </item>
     
     <item>
       <title>Stories and Quests Generation</title>
-      <link>https://tfelix.github.io/bestia-docs/docs/server/server-narrativegeneration/</link>
+      <link>https://docs.bestia-game.net/docs/server/server-narrativegeneration/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://tfelix.github.io/bestia-docs/docs/server/server-narrativegeneration/</guid>
+      <guid>https://docs.bestia-game.net/docs/server/server-narrativegeneration/</guid>
       <description>Literature https://www.rockpapershotgun.com/2016/09/02/how-to-procedurally-generate-culture/ http://www.gdcvault.com/play/1024143/Procedural-Narrative http://pcg.wikidot.com/pcg-algorithm:procedural-puzzles-and-plot-generation http://ieeexplore.ieee.org/abstract/document/5740836/</description>
     </item>
     
     <item>
       <title>World Generation</title>
-      <link>https://tfelix.github.io/bestia-docs/docs/server/server-worldcreation/</link>
+      <link>https://docs.bestia-game.net/docs/server/server-worldcreation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://tfelix.github.io/bestia-docs/docs/server/server-worldcreation/</guid>
+      <guid>https://docs.bestia-game.net/docs/server/server-worldcreation/</guid>
       <description>Bestia uses a specialized library for world creation. It will soon be open sourced as a own project. It is a clusterable generator which is cabable of dividing the world creation workload onto multiple, different machines. With this framework it should be possible to create million of square kilometers without hitting any memory limit on the servers.
 Algorithmus  Grundparameter Erstellung von Influencemaps Wasserspiegel festlegung Erzeuge die Wasser Maske Erzeuge von Gewässern und Flüsse Temperaturkorrektur Biom Zuordnung vornehmen Terrain Features verteilen und erzeugen Biom Optimierung Tilemap Erzeugung Biom Features Erzeugung der Städtekandidaten Erzeugung und Verteilung von Bodenschätzen  Grundparameter The following base parameters are used to generate the map:</description>
     </item>

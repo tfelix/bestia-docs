@@ -2,29 +2,29 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Bestia on Bestia Game</title>
-    <link>https://tfelix.github.io/bestia-docs/docs/mechanics/bestia/</link>
+    <link>https://docs.bestia-game.net/docs/mechanics/bestia/</link>
     <description>Recent content in Bestia on Bestia Game</description>
     <generator>Hugo -- gohugo.io</generator>
     
-	<atom:link href="https://tfelix.github.io/bestia-docs/docs/mechanics/bestia/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://docs.bestia-game.net/docs/mechanics/bestia/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Bestia Master</title>
-      <link>https://tfelix.github.io/bestia-docs/docs/mechanics/bestia/master/</link>
+      <link>https://docs.bestia-game.net/docs/mechanics/bestia/master/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://tfelix.github.io/bestia-docs/docs/mechanics/bestia/master/</guid>
+      <guid>https://docs.bestia-game.net/docs/mechanics/bestia/master/</guid>
       <description>Bestia Master The intro game tells players how to become a Bestia Master. They came into direct contact with an ephemeral mana crystal that changed their nature through magic and connected them to the mana currents. They are therefore receptive to the mana Rivers and are able to communicate with the beings that emerge from this mythical energy: the Bestias.
 In areas with high mana concentration, so-called mini rift events are formed.</description>
     </item>
     
     <item>
       <title>Bestia Breeding</title>
-      <link>https://tfelix.github.io/bestia-docs/docs/mechanics/bestia/breeding/</link>
+      <link>https://docs.bestia-game.net/docs/mechanics/bestia/breeding/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://tfelix.github.io/bestia-docs/docs/mechanics/bestia/breeding/</guid>
+      <guid>https://docs.bestia-game.net/docs/mechanics/bestia/breeding/</guid>
       <description> Bestia Breeding Bestias can be interbred in order to improve certain statistics. The player can pair certain individuals of Bestia in order to produce offspring. In order to breed a Bestia a male and female is required.
 The player can affect:
  Learnable Attacks Individual Values  </description>
@@ -32,10 +32,10 @@ The player can affect:
     
     <item>
       <title>Status Values</title>
-      <link>https://tfelix.github.io/bestia-docs/docs/mechanics/bestia/statusvalues/</link>
+      <link>https://docs.bestia-game.net/docs/mechanics/bestia/statusvalues/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://tfelix.github.io/bestia-docs/docs/mechanics/bestia/statusvalues/</guid>
+      <guid>https://docs.bestia-game.net/docs/mechanics/bestia/statusvalues/</guid>
       <description>Status Values Status Values are the base values from which the basics for all ingame calculations are performed. There are four main types of values: Base Values, Status Valus, Condition Values and Effort Values. The Status Based Values (SBV) play a special role.
 The sophisticated status system describes the current state of an bestia (or simply any living entity) and does not strictly apply only to biological entities. The status system is important to calculate all battle related effects in the game.</description>
     </item>
