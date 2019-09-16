@@ -1,4 +1,4 @@
-baseURL = 'https://tfelix.github.io/bestia-docs'
+baseURL = 'https://docs.bestia-game.net'
 title = 'Bestia Game'
 theme = 'book'
 disableKinds = ['taxonomy', 'taxonomyTerm']
