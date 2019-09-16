@@ -1,0 +1,25 @@
+/* To be overridden by theme user */
+@import "variables";
+
+body {
+  background-image: url("nicole-mason-bg.jpg");
+  background-repeat: no-repeat;
+  background-position: left top;
+  background-attachment: fixed;
+}
+
+blockquote {
+  background-color: $gray-700;
+}
+
+.markdown code {
+  background-color: $gray-700;
+}
+
+.book-tabs input[type=radio]:checked+label {
+  border-bottom: 3px solid #efd79d;
+}
+
+.markdown table tr:nth-child(2n) {
+  background: $gray-600;
+}

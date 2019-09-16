@@ -2,7 +2,7 @@
 title: Alchemy
 type: docs
 ---
-# <i class="fas fa-flask"></i> Alchemy
+# Alchemy
 
 The brewing is a time consuming process. The process should be somehow deterministic so the results are logically to be obtained.
 

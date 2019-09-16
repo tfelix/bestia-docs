@@ -1,8 +1,8 @@
 ---
 title: The Cults
-menu_icon: fas fa-users
+weight: 100
 ---
-# <i class="fas fa-users"></i> The Cults
+# The Cults
 
 In each Bestia World there are 2-3 cults to which the Bestia summoners can belong. When creating the world, the existing
 cults are chosen randomly. At least one cult should long for the destruction of the world, one should prevent it. Optionally

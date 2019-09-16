@@ -1,45 +1,30 @@
 ---
 title: Quests
-menu_icon: fas fa-star
+weight: 100
 ---
-# <i class="fas fa-star"></i> Quests
+# Quests
 
 The game will be more or less an Open World game. But the declared goal will be to try out new ways of storytelling in
 order to present a credible world with developing history to the players. You have to say goodbye to the idea that every
 game can live through every part of the story/quest. This contradicts the persistent and inner logical structure of the
-game world. Quests must rather result dynamically from what happens within the game world. Some examples:
+game world. Quests must rather result dynamically from what happens within the game world.
 
-<div class="card-group">
-  <div class="card">
-  <div class="card-body">
-    <h5 class="card-title">Peasant help!</h5>
-    <p class="card-text">
-      A rich harvest is imminent, but the farmer Wilhelm cannot bring in the whole harvest due to his short time before it
-      spoils on the fields. He asks passing players if they could help him. This is rewarded with an EXP bonus, gold and
-      if necessary an item.
-    </p>
-  </div>
-  </div>
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Defend the city!</h5>
-      <p class="card-text">
-        Due to high rift activity and mana flooding, many high-level Bestias make the surroundings of a large city unsafe.
-        Players are encouraged to fight the Bestias, rise in the city's favor, and gain access to better items, experience
-        and gold.
-      </p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Help me!</h5>
-      <p class="card-text">
-        A NPC has gotten lost in a dangerous area and is now hiding. If a player finds the NPC he can help him to find his
-        way back and will be rewarded with EXP and gold.
-      </p>
-    </div>
-  </div>
-</div>
+{{< tabs "Example Quests" >}}
+{{< tab "Help the Peasants!" >}}
+A rich harvest is imminent, but the farmer Wilhelm cannot bring in the whole harvest due to his short time before it
+spoils on the fields. He asks passing players if they could help him. This is rewarded with an EXP bonus, gold and
+if necessary an item.
+{{< /tab >}}
+{{< tab "Defend the city!" >}}
+Due to high rift activity and mana flooding, many high-level Bestias make the surroundings of a large city unsafe.
+Players are encouraged to fight the Bestias, rise in the city's favor, and gain access to better items, experience
+and gold.
+{{< /tab >}}
+{{< tab "Help me!" >}}
+A NPC has gotten lost in a dangerous area and is now hiding. If a player finds the NPC he can help him to find his
+way back and will be rewarded with EXP and gold.
+{{< /tab >}}
+{{< /tabs >}}
 
 ## Quests Generation
 
@@ -51,7 +36,7 @@ Quests in Bestia are generated on via two mechanics:
 
 ### Automatic Quests
 
-**TBD**
+This documentation might help to build an automatic quest narrative system.
 
 * http://rapturerebornmmorpg.wikia.com/wiki/Quest_Generation_system
 * https://www.gamedev.net/topic/648285-latest-trends-in-procedural-quest-generation/

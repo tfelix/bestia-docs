@@ -1,8 +1,8 @@
 ---
 title: Trading
-menu_icon: fas fa-handshake
+weight: 100
 ---
-# <i class="fas fa-handshake"></i> Trading
+# Trading
 
 Trading is an important mechanic and allows player to exchange goods. Players can create auction hauses which can be used
 in order to perform trades while they are offline themselves.

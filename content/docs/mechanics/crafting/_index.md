@@ -1,5 +1,6 @@
 ---
 title: Crafting
+weight: 100
 ---
 # Crafting
 

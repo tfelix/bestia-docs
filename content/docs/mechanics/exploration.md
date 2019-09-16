@@ -1,9 +1,8 @@
 ---
-id: mech-exploration
-title: Exploration
-menu_icon: fas fa-globe
+title: World Exploration
+weight: 100
 ---
-# <i class="fas fa-globe"></i> World Exploration
+# World Exploration
 
 A large part of the game world is generated automatically. There should be a motivation for players in exploring the
 world. New areas can be mapped and unique resources can be discovered and explored. In general, players should have
@@ -41,9 +40,9 @@ The server must validate the button presses of the player for success.
 
 ## Skill Usage
 
-1. Upon using the skill a difficulty $d$ is determined, depending on the distance to the next already cartographed area
+1. Upon using the skill a difficulty `d` is determined, depending on the distance to the next already cartographed area
    and the area wished to be explored.
-2. There are 3-5 locations $l$ spawned around the player within a radius of 300 to 800 meters around the player
-   (depending on the difficulty). He must reach them within a timelimit $t$.
+2. There are 3-5 locations `l` spawned around the player within a radius of 300 to 800 meters around the player
+   (depending on the difficulty). He must reach them within a timelimit `t`.
 3. When near one of such a location (5m) the player is given a moving compass graphic. The speed of moving needle and the
-   area to hit via button press is calculated based on $d$.
+   area to hit via button press is calculated based on `d`.

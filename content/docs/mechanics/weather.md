@@ -1,5 +1,6 @@
 ---
 title: Weather
+weight: 100
 ---
 # Weather
 

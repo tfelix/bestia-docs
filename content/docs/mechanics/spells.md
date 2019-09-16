@@ -1,8 +1,8 @@
 ---
 title: Attacks
-menu_icon: fas fa-skull
+weight: 100
 ---
-# <i class="fas fa-skull"></i> Spells and Attacks
+# Spells and Attacks
 
 The magic and the usage of it plays a crucial role in the Bestia universe. The users should be able to be deeply involved
 into magic spell creation and research.

@@ -1,7 +1,8 @@
 ---
 title: Bestia Master
+weight: 100
 ---
-# <i class="fas fa-user"></i> Bestia Master
+# Bestia Master
 
 The intro game tells players how to become a Bestia Master. They came into direct contact with an ephemeral mana crystal
 that changed their nature through magic and connected them to the mana currents. They are therefore receptive to the
@@ -16,4 +17,3 @@ unscathed and to pass on to the next world.
 > Bestia Master enter the current world from another, not further mentioned dimension. During each incarnation
 > a name of this world is generated and in each cycle all Bestia Master entering the game will have this world name
 > persisted in their account data.
->

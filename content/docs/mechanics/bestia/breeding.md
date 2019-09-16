@@ -1,6 +1,5 @@
 ---
 title: Bestia Breeding
-menu_icon: fas fa-paw
 ---
 # Bestia Breeding
 

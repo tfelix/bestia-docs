@@ -1,8 +1,8 @@
 ---
 title: Skills
-menu_icon: fas fa-sign-language
+weight: 100
 ---
-# <i class="fas fa-sign-language"></i> Skills and Attacks
+# Skills and Attacks
 
 The bestia master of a player can learn a set of skills. Since these skills are bound to the account they are called
 account skills. These skills are freely chosen by the player and determine the job or profession of the master.

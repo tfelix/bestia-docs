@@ -1,8 +1,8 @@
 ---
 title: Items
-menu_icon: fas fa-square
+weight: 100
 ---
-# <i class="fas fa-square"></i> Items
+# Items
 
 Items can be optained by the player and carried around. The amount of items limited to each entity is determined via
 its [Inventory](/mechanics/inventory).

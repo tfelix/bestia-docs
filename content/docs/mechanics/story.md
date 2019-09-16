@@ -1,5 +1,6 @@
 ---
 title: Story
+weight: 100
 ---
 # Story
 

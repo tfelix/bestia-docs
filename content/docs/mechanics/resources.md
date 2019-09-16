@@ -1,8 +1,8 @@
 ---
 title: Resources
-menu_icon: fas fa-box-open
+weight: 100
 ---
-# <i class="fas fa-box-open"></i> Resources
+# Resources
 
 Resources are raw materials used to sell to other players. They can be used to craft items or construct buildings.
 Resources can be obtained by the following means:

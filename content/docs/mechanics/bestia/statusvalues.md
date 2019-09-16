@@ -1,8 +1,7 @@
 ---
 title: Status Values
-menu_icon: fas fa-feather
 ---
-# <i class="fas fa-feather"></i> Status Values
+# Status Values
 
 Status Values are the base values from which the basics for all ingame calculations are performed.
 There are four main types of values: **Base Values**, **Status Valus**, **Condition Values** and **Effort Values**. The
@@ -171,3 +170,19 @@ as desired.
 
 Furthermore each level up below level 50 results in one point for a skill up. At level 50 and above the number of
 skill up points decreases slowly. So you may need several level ups to get another skill up.
+
+## Death
+
+Players Master can not die directly, they are reborn with a temporary malus.
+
+A killed Bestia or Master loses `1%` of their current experience. The items are automatically protected via a spell
+which tries to teleport the items back to a secure storage (but remember: spells can be dispelled!).
+
+If the player activates the so-called **Hard Mode** he gets an experience bonus as well as a loot bonus of `+3%`.
+However, if he dies he looses `5%`of his current experience and items are not protected by default with a spell.
+
+In both cases the items suffer a durability penality.
+
+Bestias can be permanently get killed if the killing blow is particularly strong. If s once activated the
+**Hard Mode** this process will take one hour real time. This should prevent players from switching the mode on and off
+quickly after detecting a dicey situation.

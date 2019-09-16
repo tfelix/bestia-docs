@@ -85,3 +85,7 @@ It would also be conceivable to have a paid telegram system for players to trans
 faster and safer (but then costs considerably more gold). It would be very nice to have one or more NPCs to transport
 the mail in the game. This could then become a victim of robberies and highwaymen like players themselves. It is just
 not sure if the AI is able to perform such tasks reliably.
+
+# Battle
+
+Basically every entity in the Bestia world can be attacked, damaged or destroyed.

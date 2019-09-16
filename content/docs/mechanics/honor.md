@@ -1,5 +1,6 @@
 ---
 title: Honor
+weight: 100
 ---
 # Honor
 
