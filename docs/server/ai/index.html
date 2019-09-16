@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Artificial Intelligence | Bestia Game</title>
+
+
+<link rel="stylesheet" href="/bestia-docs/book.min.45f3004d3c562c29285b27831e8a758ba54606954e3732ff376275b2c2d98616.css" integrity="sha256-RfMATTxWLCkoWyeDHop1i6VGBpVONzL/N2J1ssLZhhY=">
+
+
+<script defer src="/bestia-docs/search.min.205975cd516425e173698bfbd84b57974b9bf404056c88c0620c4e5b4f012334.js" integrity="sha256-IFl1zVFkJeFzaYv72EtXl0ub9AQFbIjAYgxOW08BIzQ="></script>
+
+
+
+<link rel="icon" href="/bestia-docs/favicon.png" type="image/x-icon">
+
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/github-markdown-css/2.2.1/github-markdown.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+</head>
+
+<body>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="flex container">
+
+    <aside class="book-menu fixed">
+      <nav>
+<h2 class="book-brand">
+  <a href="https://tfelix.github.io/bestia-docs"><img src="/bestia-docs/bestia-logo.svg" alt="Logo" /></a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" placeholder="Search" id="book-search-input" maxlength="64" readonly />
+  <div class="book-search-spinner spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+    
+
+  
+  
+
+
+
+
+
+ 
+  
+    
+
+  <ul>
+    
+      
+        
+
+  <li >
+    
+      
+
+  <a href="/bestia-docs/docs/mechanics/" >
+      Game Design
+  </a>
+
+
+    
+
+    
+
+  <ul>
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/core-guidelines/" >
+      Core Concepts
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/archivements/" >
+      Archivements
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/spells/" >
+      Attacks
+  </a>
+
+</li>
+      
+    
+      
+        
+
+  <li >
+    
+      <span>Bestia</span>
+    
+
+    
+
+  <ul>
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/bestia/master/" >
+      Bestia Master
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/bestia/breeding/" >
+      Bestia Breeding
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/bestia/statusvalues/" >
+      Status Values
+  </a>
+
+</li>
+      
+    
+  </ul>
+
+
+  </li>
+
+
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/time/" >
+      Bestia Time
+  </a>
+
+</li>
+      
+    
+      
+        
+
+  <li >
+    
+      
+
+  <a href="/bestia-docs/docs/mechanics/crafting/" >
+      Crafting
+  </a>
+
+
+    
+
+    
+
+  <ul>
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/crafting/alchemy/" >
+      Alchemy
+  </a>
+
+</li>
+      
+    
+  </ul>
+
+
+  </li>
+
+
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/honor/" >
+      Honor
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/inventory/" >
+      Inventory
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/items/" >
+      Items
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/quests/" >
+      Quests
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/resources/" >
+      Resources
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/skills/" >
+      Skills
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/story/" >
+      Story
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/cults/" >
+      The Cults
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/trading/" >
+      Trading
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/weather/" >
+      Weather
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/exploration/" >
+      World Exploration
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/resources/artwork/" >
+      Artwork and Design
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/resources/literature/" >
+      Literature
+  </a>
+
+</li>
+      
+    
+  </ul>
+
+
+  </li>
+
+
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/api/" >
+      API
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/client/client-architecture/" >
+      Client
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/bip/" >
+      Improvement Proposals
+  </a>
+
+</li>
+      
+    
+      
+        
+
+  <li >
+    
+      <span>Server</span>
+    
+
+    
+
+  <ul>
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/server/server-datatypes/" >
+      Server Datatypes
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/server/ai/"  class="active">
+      Artificial Intelligence
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/server/server-battlesystem/" >
+      Battlesystem
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/server/server-environment/" >
+      Environment
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/server/server-lighting/" >
+      Lighting
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/server/server-routing/" >
+      Routing
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/server/server-architecture/" >
+      Server Architecture
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/server/server-scripts/" >
+      Server Scripts
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/server/server-datastreaming/" >
+      Server Streaming
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/server/server-narrativegeneration/" >
+      Stories and Quests Generation
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/server/server-worldcreation/" >
+      World Generation
+  </a>
+
+</li>
+      
+    
+  </ul>
+
+
+  </li>
+
+
+      
+    
+  </ul>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+<script>
+(function() {
+  var menu = document.querySelector("aside.book-menu nav");
+  addEventListener("beforeunload", function(event) {
+    localStorage.setItem("menu.scrollTop", menu.scrollTop);
+  });
+  menu.scrollTop = localStorage.getItem("menu.scrollTop");
+})();
+</script>
+
+    </aside>
+
+    <div class="book-page">
+      <header class="flex align-center justify-between book-header">
+  <label for="menu-control">
+    <img src="/bestia-docs/svg/menu.svg" alt="Menu" />
+  </label>
+  <strong>Artificial Intelligence</strong>
+</header>
+
+      
+<article class="markdown">
+
+<h1 id="artificial-intelligence">Artificial Intelligence</h1>
+
+<p>The AI system in Bestia will set new standards. Bestias and NPCs alike should be able to create long-term plans,
+so-called game plans or GPs for short. They then follow this strategy until observations or influences from the
+game world force them to abandon this plan or the plan is fulfilled.</p>
+
+<p>Bestias look for ways to get the highest possible inner happiness. They must sleep, eat and feel attracted to mana
+currents. Of course they try to avoid threats and protect their health. Here some subtypes differ from each other.
+Some tend to be aggressive and actively attack players and other Bestias, while others are shy and flee quickly.
+But there can also be representatives who are, as you would say, &ldquo;stupid&rdquo; and will attack players to death as soon as
+they come into sight.</p>
+
+<p>Decisions should be made on the basis of knowledge. A sensory simulation should be used to understand the world and
+make decisions based on it.</p>
+
+<p>The basic AI forms should be assignable via shortcut in the Mob table (and for NPCs in the Map Editor). For bosses or
+special bestias, however, scripts should be able to be stored to enable target-oriented behavior.</p>
+
+<p>Finden einer KI Strategie</p>
+
+<ul>
+<li><p>NPC</p>
+
+<ul>
+<li>Arbeiten</li>
+<li>Holzhacken</li>
+<li>Fischen</li>
+<li>Feldarbeit</li>
+<li>Haus bauen</li>
+<li>Bibliothek</li>
+<li>Schlafen</li>
+<li>Essen</li>
+<li>Ausruhen</li>
+<li>Reisen</li>
+</ul></li>
+
+<li><p>Mob</p>
+
+<ul>
+<li>Schlafen</li>
+<li>Junge aufziehen</li>
+<li>Nest bauen</li>
+<li>Nahrungssuche</li>
+</ul></li>
+</ul>
+
+<p>Entity</p>
+
+<ul>
+<li><p>Kann Schaden erleiden.</p></li>
+
+<li><p>Besitzt eine Ausrichtung</p></li>
+
+<li><p>Kann am KI Eventsystem teilhaben</p></li>
+
+<li><p>Besitzt eine Position.</p></li>
+
+<li><p>Besitzt eine visuelle Repräsentation (Sprite)</p></li>
+
+<li><p>Kann eine KI Strategie erzeugen, basierend auf einem Script/Behaviour Tree</p></li>
+</ul>
+
+<h3 id="sinneswahrnehmung">Sinneswahrnehmung</h3>
+
+<p>Es müssen sensorische Daten über die Umwelt an das KI System einer Bestia geleitet werden. Folgende externe Sinne werden simuliert:</p>
+
+<ol>
+<li><p>Sicht</p></li>
+
+<li><p>Gehör</p></li>
+
+<li><p>Gefühl: (Hitzeempfinden/Feuchtigkeit)</p></li>
+
+<li><p>Mana (Wahrnehmen von Mana)</p></li>
+</ol>
+
+<p>Die Engine muss diese Sinnessimulationen generieren und Entitäten die sich für diese registriert haben über Veränderungen hinweisen, was den Entitäten wiederum ermöglicht eine Neubewertung ihrer KI Strategie vornehmen zu können. Dazu kommt ein umfassendes Set an internen Informationen wie Gesundheitszustand, Manavorrat, mögliche Attacken, Wissen über Geländebesonderheiten.</p>
+
+<p>Da die Bewertung der KI Strategie von der Entity selbst vorgenommen wird, sollen die Regeln zur evaluation der Strategie dynamisch zur Laufzeit anpassbar sein. Lernende Agenten wären die folge. Die Entity benötigt nicht nur Schnittstellen zum Empfangen von KI Relevanten Events. Nachdem eine KI Strategie gefunden wurde, muss diese Strategie auch umgesetzt werden.</p>
+
+<p>Im folgenden werden die Sinneswahrnehmungen der Entities im einzelnen beschrieben und möglichkeiten dargelegt diese effizient zu simulieren. Nicht alle Wahrnehmungen lassen sich ausreichend schnell physikalisch ausreichend gut simulieren.</p>
+
+<h3 id="sicht">Sicht</h3>
+
+<p>Sicht erfolgt durch die Wahrnehmung von Licht. Es breitet sich ausreichend schnell aus, dass keine zeitliche Verzögerung betrachtet werden muss. Entities besitzen einen Blickwinkel von 60 Grad. Das Blickfeld kann aber durch Entitäten welche die Sicht blockieren oder einfachen Hindernissen versperrt sein. Lichtverhältnisse können die Wahrnehmung beeinflussen. So ist Nachts mit einer geringen Sichtweite zu rechnen. Die optimale Sichtweite sollte in etwa der Sichtbereich eines normalen Spielers betragen (das bedeutet (1950 px / 32 px) / 2 Tiles = 30 Tiles).</p>
+
+<p>Verhalten von NPC</p>
+
+<ul>
+<li><p>Nachtaktiv (Lichtscheu)</p></li>
+
+<li><p>Agressiv - Suchen aktiv Spieler und greifen diese an.</p></li>
+
+<li><p>Passiv - Ignorieren Spieler soweit diese sie ebenfalls ignorieren. Scheu - Versuchen aktiv Begegnungen mit anderen Bestias oder Spielern aus dem Weg zu gehen.</p></li>
+</ul>
+
+<p>Ein angreifender Spieler oder Umweltbedingungen können das Verhalten ändern. Folgendes Verhalten soll für ein KI gesteuerten NPC möglich sein. Das komplexeste Verhalten kommt hier den NPCS zu. Mobs verhalten sich in der Regelprimitiver dennoch soll auch ihre Langzeitplanung und Verhalten neue Maßstäbe setzen. Die Zustände können durch das erreichen von Zielen aufgelöst werden. Um Zeit zu sparen soll gerade die Berechnung der Zielerfüllung ggf. Extern zumindest aber in mehreren Schritten erfolgen.</p>
+
+<p>Verhaltensmuster der Mobs und NPCs</p>
+
+<ul>
+<li>Planen von Routen über mehrere Maps hinweg.</li>
+<li>Festlegen von inneren Zielen</li>
+<li>Wahrnehmung des Manaflusses</li>
+</ul>
+
+<h1 id="präsentation">Präsentation</h1>
+
+<p>Dieser Abschnitt enthält Themenpunkte welche die konkrete visuelle Umsetzung und Präsentation des Spiels gegenüber einem Spieler umfassen. Dies können sowohl Style Richtlinien sein, als auch spiel mechanische Elemente um die Story zu transportieren.</p>
+
+<h1 id="künstliche-intelligenz">Künstliche Intelligenz</h1>
+
+<h2 id="grundlegende-techniken">Grundlegende Techniken</h2>
+
+<ul>
+<li><p>Wissendatenbank für die NPC über eine selbstoptimierende Ontologie (Semantische Wissensdatenbank).</p></li>
+
+<li><p>Entscheidungsbaum</p></li>
+
+<li><p>Auflösen von Informationen</p></li>
+
+<li><p>Entitätsbasierte Wissensdatenbank (Erinnerung, Abfrage und Löschen der Informationen nach gewisser Zeit).</p></li>
+</ul>
+
+<h2 id="interaktion-mit-gegenständen">Interaktion mit Gegenständen</h2>
+
+<p>Um ein glaubhaftes Szenario der Welt zu zeichnen, müssen Entities in der Lage sein miteinander zu interagieren. Entities sind hier alle im Spiel befindlichen Gebäude, Gegenstände oder NPCs. Auch die KI muss in der Lage sein den Nutzen von Gegenständen zu begreifen und diese zu verwenden (Inventar von Entities muss vorhanden sein).</p>
+
+<ul>
+<li><p>KI Buch</p></li>
+
+<li><p>SIMs KI</p></li>
+
+<li><p>Gegenstände bieten Fähigkeiten an die man verwenden kann</p></li>
+
+<li><p>Interaktion: Gegenstände bieten ein Signal Slot Verhältnis das man miteinander verknüpfen kann. Über diese Verknüpfung wird sichergestellt, dass auch räumlich voneinander getrennte Items miteinander interagieren können. (z.B. magische Artefakte die durch eine große, räumliche Distanz voneinander getrennt sind, oder Alarmanlagen in benachbarten Räumen).</p></li>
+</ul>
+
+<p>Gegenstands Verknüpfungen</p>
+
+<p>Allen Gegenstand Entitäten (und somit eigentlich allen Entities) müssen in der Lage sein andere Gegenstände aufnehmen zu können. So lassen sich zum Beispiel Truhen, Frachtladungen etc. realisieren. Ob ein Gegenstand erfolgreich aufgenommen werden kann oder nicht muss dynamisch durch ein Script der aufnehmenden Entität entschieden werden. Hier kann ermittelt werden ob Voraussetzungen wie ausreichende Ladekapazität erfüllt sind.</p>
+
+<p>Interaktion mit einem Gegenstand muss einen Fehlerstatus liefern ob die Interaktion erfolgte, oder ein Abbruch stattfindet (eine Interaktion nicht möglich war). Der Grund für diesen Abbruch muss angegeben werden können, damit dies für den Benutzer ersichtlich ist.</p>
+
+<p>The artificial intelligence module should be implemented as generic library so it can be used by various kinds of games.
+The framework must interact with the game engine in certain ways. It must have some notion of locality. The engine must be queried about environmental factors and the AI framework must be provided with a point object which it is able to save. Depending on this locations the game framework must be able to move agents to this points. Also the path planning and avoidance is highly dependent of the game and can not be part of the AI framework itself but must be provided by the game engine.
+It is very likely that there are different kind of AIs needed for one single game. There are low intelligence agents like small (or dumb) enemies and very intelligent agents like NPCs or bosses.
+Agents are described by an inner state which describes its next actions. The inner state might not always be a single, simple state (like a state machine) but can also inhibit a fuzzy behaviour. The inner state should be savable. The state transition should occur depending on the used state machine. Either there could be decision trees, variable controlled (fuzzy states) and many more. Either way there are transition function in place which take inputs from the environment and change directly the state or indirectly attributes which are used to ultimately calculate the current internal state.
+The AI transition function must have a way to actively query into the world state of the engine to gather informations. This could be sounds, smell or visual information of their environment and so on. This information is used to either directly change its internal state via its transition functions or this information is filtered and saved into the agent&rsquo;s memory if a memory storage is provided. Environment information might also get delivered via events to the agent. Such information is usually not actively searched for. But a sudden explosion sound or enemy visual could lead to a change in behaviour and thus internal state. The agent must be able to re-evaluate its state upon the arrival of such events.
+Smart management and storage of environment information is also a complete new innovation: the introduction of memory supported AI. This could mean a AI is capable of remembering the positions of players habitats, hunting grounds etc.. Depending upon the AI the entity should be able to communicate this information to other entities (if it is capable of communicating). Since we won&rsquo;t be able to correctly simulate the transfer of information via a language (might be the case for a later implementation) what we need is a way to configure the process of information exchange with other agents. It must be configurable which type of agents are able to exchange information, how close they must be to each other, do they need a special internal state until information is transferred and if the transfer starts how many information is shared how fast?
+Agents should decide for themselves (usually depending on the internal state how often they want to reevaluate the world around them since this is a costly operation). They can send a suggestion to the outermost control system how often they want to tick (a sleeping agent usually needs less processing than a fighting entity). However the external system has to decide how many spare resources it has and if necessary give the AI less ticks then they might suggest). Since the Bestia system is event based and not ticked based in order to avoid unnecessary evaluations we might need a filter which will ignore certain incoming events to avoid costly operations.
+Inner states might lead to desires. There must be a function for certain group of entities which maps the internal state to a current, certain goal. The strongest goal determines which actions are currently performed. The mapping of this Goal(State) function is highly agent and game dependent and thus must be provided by the user of the framework. There might be some default desires like eating, sleeping, idle etc..
+Long term goal and behaviour planning
+If the internal states suggest the agent is hungry which leads to a desire to eat we must have a way to plan how this desire can be fulfilled in a changing and complex external world. Therefore we need a mapping of goals to a list of actions. A action is a small subunit and should be able to be directly performed by the entity inside the game world. In order to perform correct goal into action mappings the agent needs some additional informations about actions like for example the estimated execution time or other cost factors so a cheapest path can be found of the current state to the goal. The actions are then saved into a queue and performed one after another by asking the game engine to perform this action in behalf of the agent. The agent must be able to ask the game if the action has been performed or if it&rsquo;s maybe unable to execute the action at all. If this is the case a revaluation of the goal to action list must be performed.
+Some actions might be available all the time (drop an item) but some actions might only be possible in certain circumstances (mana is not empty, a certain tool lies on the ground). It is the job of the goal solver to assess all possible actions for a certain agent until the search for the best action solution towards the goal can be found.
+Architecture
+Agents
+Agents contain a “Memory”. Inside this memory certain events are recorded and the agent can access this information for evaluation the next actions.
+The memory&rsquo;s size must be adjustable to limit memory consumption.
+Depending on the memory and the agent the memory is eventually dropped from the internal state or its weight reduces in decision making (a seen item might drop in relevance over time).
+Agents act to fulfill “Desires”
+Agents perform actions in order to fulfill the current active desire.
+Agents can form groups and exchange “memory”.
+Agents contain a state which describes internal “values” like e.g. hunger, thirst, health etc. based on this internal state and external circumstances desires are planned.
+Receive environmental events like sound, smell or vision. Each change of world state (e.g. received event) can lead to a reevaluation of its internal state/goals/desires.</p>
+
+<p>AgentState
+Attributes can be added by the user.
+Some state values are getting “better” the higher they are, some should be lowered. (e.g. hunger is bad if its value is high. But sleepiness is good when it goes low).
+Some/all values have a decay function. Their values change over time.
+Desires
+Are fulfilled by a planned list of actions.
+Desire have a priority. The desire to stay alive might be higher than to move from a to b.
+Some desires are permanent some are temporary.
+The possible actions are layed out to optimize against a agent dependent weight function. Some actors maybe want to save money, some might save time etc.</p>
+
+<p>Questions
+How are desires evaluated as “fullfilled”?</p>
+
+<p>External System
+Calls AI manager in more or less regular intervals to evaluate state changes.
+External system provides interface for environmental access.
+Perform Actions
+Query informations about the state of certain actions
+Estimate the cost of an action</p>
+
+<p>AIGoalSolver
+AIs must be able to solve complex operations in order to fulfill a desire.
+Example: Desire:
+Sleep Goal for animal: Find sleeping place → sleep
+Sleep Goal for human: Go home → go to bed → sleep</p>
+
+<p>Desire evaluation
+For example the most important desire for most agents would be to stay alive. In order to do so they have a high importance to maximize the internal health state. The goal evaluator will pick one out of all possible actions, the action will alter the state and then the improvement will be evaluated. For example:</p>
+
+<p>Agent
+It has in its internal memory two locations A and B of possible food saved.
+Near location A is also saved that there is an enemy 1 hour ago.
+B is further away.</p>
+
+<p>The agent gets very hungry and the desire to reduce the hunger is picked and placed as the current and thus most important one.
+The goal solver now tries to solve this desire.
+The solver looks in all possible actions for the entity:
+Pick up food (there is no food around, thus this action is not legal)
+Move (has a bit of a cost associated)
+The solver picks move because the memory says there are two places with food.
+CONSIDER THE ENEMY
+The solver calculates how long it would take to perform the move action (time will increase our hunger) and pick the shortest way.
+The main factors to drive AI decisions
+How long does an action take to perform?
+How much impact has the action? (measured by how much our internal state changes to the better or to the worst).
+AI evolution
+The most complex feature should be AI evolution. The AI should be able to evaluate its actions against a fitness function in order to start alternating or changing the transition functions. This could be either changing the whole decision tree or only changing some parameters in order to optimize behaviour. This evolution should be configurable. Some AI behaviour should simply not be able to change. Maybe some sort of evolutionary algorithm could be used to evaluate the AI actions. This would need two components: a fitness function evaluating the performance of the AI for certain criterions and a encoding scheme to encode the transition functions into a genetic code used for mutating after applying pressure.</p>
+
+<p>AIPoint is used as notion of locality in the world. Points must be serializable so they can be saved with various locations.
+Path planning and waypoint generation
+There is a global waypoint and path network
+Long term planning only available for agents which have learned about the way
+Learning happens by: reading, questing, exploring the way of its own, drawing maps</p>
+</article>
+
+      
+<div class="book-footer justify-between">
+  
+  <div>
+    
+    <a href="https://github.com/tfelix/bestia-docs/commit/ad79b32f9a8f8e4bdaebcf1d4cf1790076508002" title='Last modified Sep 16, 2019 by Thomas Felix' target="_blank" rel="noopener">
+      <img src="/bestia-docs/svg/calendar.svg" alt="Changed" /> Sep 16, 2019
+    </a>
+  </div>
+  
+  
+  <div>
+    <a href="https://github.com/tfelix/bestia-docs/edit/master/content/docs/server/ai.md" target="_blank" rel="noopener">
+      <img src="/bestia-docs/svg/edit.svg" alt="Edit" /> Edit this page
+    </a>
+  </div>
+  
+</div>
+
+
+      
+    </div>
+
+    
+  
+
+  <aside class="book-toc level-3 fixed">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#artificial-intelligence">Artificial Intelligence</a>
+<ul>
+<li>
+<ul>
+<li><a href="#sinneswahrnehmung">Sinneswahrnehmung</a></li>
+<li><a href="#sicht">Sicht</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#präsentation">Präsentation</a></li>
+<li><a href="#künstliche-intelligenz">Künstliche Intelligenz</a>
+<ul>
+<li><a href="#grundlegende-techniken">Grundlegende Techniken</a></li>
+<li><a href="#interaktion-mit-gegenständen">Interaktion mit Gegenständen</a></li>
+</ul></li>
+</ul>
+</nav>
+  </aside>
+
+
+
+  </main>
+
+  
+  
+</body>
+
+</html>

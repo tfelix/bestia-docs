@@ -2,10 +2,9 @@
 <html lang="en">
 
 <head>
-	<meta name="generator" content="Hugo 0.58.2" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bestia - Developer Documentation | Bestia Game</title>
+<title>Story | Bestia Game</title>
 
 
 <link rel="stylesheet" href="/bestia-docs/book.min.45f3004d3c562c29285b27831e8a758ba54606954e3732ff376275b2c2d98616.css" integrity="sha256-RfMATTxWLCkoWyeDHop1i6VGBpVONzL/N2J1ssLZhhY=">
@@ -18,7 +17,6 @@
 <link rel="icon" href="/bestia-docs/favicon.png" type="image/x-icon">
 
 
-<link rel="alternate" type="application/rss+xml" href="https://tfelix.github.io/bestia-docs/index.xml" title="Bestia Game" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -271,7 +269,7 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/bestia-docs/docs/mechanics/story/" >
+  <a href="/bestia-docs/docs/mechanics/story/"  class="active">
       Story
   </a>
 
@@ -541,63 +539,86 @@ https://github.com/alex-shpak/hugo-book
   <label for="menu-control">
     <img src="/bestia-docs/svg/menu.svg" alt="Menu" />
   </label>
-  <strong>Bestia - Developer Documentation</strong>
+  <strong>Story</strong>
 </header>
 
       
 <article class="markdown">
 
-<h1 id="bestia-developer-documentation">Bestia Developer Documentation</h1>
+<h1 id="story">Story</h1>
 
-<blockquote>
-<p>Massive. Hard. Innovative. Open World. Open Source.</p>
-</blockquote>
+<p>The main story revolves around the player whose world was destroyed due to a so-called <strong>rift event</strong>. The magic pushed into
+his world and merged it with another one. This altered the physical properties of both worlds and mostly destroyed them.
+He is thrown into a new one and must learn to survive on his own (while exploring the new world, making friends and foes.)</p>
 
-<p><a class="github-button" href="https://github.com/tfelix/bestia-docs" data-icon="octicon-star" data-size="large"
-data-show-count="true" aria-label="Star tfelix/bestia-docs on GitHub">Star</a>
-<a class="github-button" href="https://github.com/tfelix/bestia-docs/subscription" data-icon="octicon-eye"
-data-size="large" data-show-count="true" aria-label="Watch tfelix/bestia-docs on GitHub">Watch</a></p>
+<p>The principle of destroying the world is the common thread throughout the game. By joining one of the different cults the
+players can actively work towards a destruction of the world as well as prenting it from harm (see <a href="/mechanics/cults">The Cults</a>).</p>
 
-<p><strong>Congratulations!</strong> You just have found the Developer Documentation of the Bestia-Game. Here you find everything from
-gamedesign guidlines to engine architecture overview as well as the API documentation to access game resources.</p>
+<p>Due to this event the world is <strong>generated dynamically</strong>. Despite the ultimate goal of the game to prevent or initiate this
+destruction, this should remain a rare event that occurs no more frequently than every 1 to 2 years (real time). The
+newly generated world should cover as wide a spectrum of biomes as possible. The world and its inhabitants embed
+themselves in a certain history, which should also be generated as automatically as possible. This enriches the player
+experience especially in the beginning when there are not many players.</p>
 
-<p>These infos should help you to get kickstarted and join the development. As Bestia is a community driven, open game each
-contribution is welcome. With the provided guidelines enthusiasts should very easily be able to create contributions
-from artworks to scripts.</p>
+<p>For the details of world generation, see the <a href="/">technical documentation</a>.</p>
 
-<blockquote>
-<p><strong>The game currently transforms into a stand-alone client which is currently not available for testing.</strong></p>
-</blockquote>
+<h2 id="the-persistent-threat">The Persistent Threat</h2>
 
-<h2 id="contributing">Contributing</h2>
+<p>After a random period of time (at least 6 months in <a href="/docs/mechanics/time">real time</a>), threats starts to appear in every world. These can be threats
+from particularly strong Bestia, which cause great destruction, but also magical elements or natural disasters such as
+meteorites. Under certain conditions, this event can also contribute to the destruction of the world. If the total destruction
+is caused by the event then none of the cults will benefit from it. So it is in the interest of the cult players to
+avert this threat together.</p>
 
-<p>Contributions to both the game design and the game itself (the client and the server) are very welcomed!</p>
 
-<p>You may find a little <code>Edit this page</code> link at the bottom of each page. If you want to change some game design
-aspects feel free to give it a try!</p>
 
-<p>Inside this game design document you possibly will find certain <strong>Contributing</strong> sections which will give you some
-guidlines to follow in order to help to get you changes into the game quickly.</p>
 
-<p><strong><a href="about-manifest.md">Read the Bestia Manifest first</a></strong> and align your contributions and changes under these central
-game guidelines.</p>
 
-<h2 id="project-repositories">Project Repositories</h2>
+<div class="book-tabs">
 
-<p>Otherwise feel free to check out the three project repositories on Github (and maybe give them a Star)</p>
+  <input type="radio" class="hidden" name="tabs-Thread Appearence Delay" id="tabs-Thread Appearence Delay-0" checked="checked" />
+  <label for="tabs-Thread Appearence Delay-0">
+    Population &lt; 1k
+  </label>
+  <div class="book-tabs-content markdown-inner">
+    <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">delay = <span style="color:#ae81ff">9</span> + rand() * <span style="color:#ae81ff">1.5</span>;</code></pre></div>
+  </div>
+
+  <input type="radio" class="hidden" name="tabs-Thread Appearence Delay" id="tabs-Thread Appearence Delay-1"  />
+  <label for="tabs-Thread Appearence Delay-1">
+    Population &lt; 5k
+  </label>
+  <div class="book-tabs-content markdown-inner">
+    <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">delay = <span style="color:#ae81ff">9</span> + rand() * <span style="color:#ae81ff">2.5</span>;</code></pre></div>
+  </div>
+
+  <input type="radio" class="hidden" name="tabs-Thread Appearence Delay" id="tabs-Thread Appearence Delay-2"  />
+  <label for="tabs-Thread Appearence Delay-2">
+    Population &gt; 5k
+  </label>
+  <div class="book-tabs-content markdown-inner">
+    <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">delay = <span style="color:#ae81ff">9</span> + rand() * <span style="color:#ae81ff">4</span>;</code></pre></div>
+  </div>
+
+</div>
+
+
+<p>A threat does not necessarily have to be perceived directly. A meteor, or severe flooding, can take place far away,
+changing parts of the world without much of the player community noticing but permanently shaping and changing the world.
+A subtle fear of this change should always haunt players.</p>
+
+<p>Possible events are:</p>
 
 <ul>
-<li><a href="https://github.com/tfelix/bestia-docs">Bestia Developer Documentation</a> <i class="fab fa-github"></i></li>
-<li><a href="https://github.com/tfelix/bestia-client">Bestia Browser Client</a> <i class="fab fa-github"></i></li>
-<li><a href="https://github.com/tfelix/bestia-behemoth">Bestia Behemoth Server</a> <i class="fab fa-github"></i></li>
+<li>Meteorite Impact</li>
+<li>Extreme Weathers (Storms or extreme cold over multiple days)</li>
+<li>Vulcanic eruptions</li>
+<li>Tsunami / Permanent Flooding</li>
+<li>Wildfire / Mana Fires</li>
+<li>Opening of a Rift and pouring in strong Bestias</li>
+<li>World bosses showing up</li>
+<li>Mana cristallization making the land uninhabitable</li>
 </ul>
-
-<blockquote>
-<p>You can use the <code>Edit</code> button on the top right of every page to directly edit this document and create a Pull Request
-on Github.</p>
-</blockquote>
-
-<script async defer src="https://buttons.github.io/buttons.js"></script>
 </article>
 
       
@@ -605,14 +626,14 @@ on Github.</p>
   
   <div>
     
-    <a href="https://github.com/tfelix/bestia-docs/commit/fe881e405f8c591b102b43b83cd72f39d3f7f01f" title='Last modified Sep 11, 2019 by Thomas Felix' target="_blank" rel="noopener">
-      <img src="/bestia-docs/svg/calendar.svg" alt="Changed" /> Sep 11, 2019
+    <a href="https://github.com/tfelix/bestia-docs/commit/ad79b32f9a8f8e4bdaebcf1d4cf1790076508002" title='Last modified Sep 16, 2019 by Thomas Felix' target="_blank" rel="noopener">
+      <img src="/bestia-docs/svg/calendar.svg" alt="Changed" /> Sep 16, 2019
     </a>
   </div>
   
   
   <div>
-    <a href="https://github.com/tfelix/bestia-docs/edit/master/content/_index.md" target="_blank" rel="noopener">
+    <a href="https://github.com/tfelix/bestia-docs/edit/master/content/docs/mechanics/story.md" target="_blank" rel="noopener">
       <img src="/bestia-docs/svg/edit.svg" alt="Edit" /> Edit this page
     </a>
   </div>
@@ -629,10 +650,9 @@ on Github.</p>
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#bestia-developer-documentation">Bestia Developer Documentation</a>
+<li><a href="#story">Story</a>
 <ul>
-<li><a href="#contributing">Contributing</a></li>
-<li><a href="#project-repositories">Project Repositories</a></li>
+<li><a href="#the-persistent-threat">The Persistent Threat</a></li>
 </ul></li>
 </ul>
 </nav>

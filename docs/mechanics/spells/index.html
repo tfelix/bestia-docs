@@ -2,10 +2,9 @@
 <html lang="en">
 
 <head>
-	<meta name="generator" content="Hugo 0.58.2" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bestia - Developer Documentation | Bestia Game</title>
+<title>Attacks | Bestia Game</title>
 
 
 <link rel="stylesheet" href="/bestia-docs/book.min.45f3004d3c562c29285b27831e8a758ba54606954e3732ff376275b2c2d98616.css" integrity="sha256-RfMATTxWLCkoWyeDHop1i6VGBpVONzL/N2J1ssLZhhY=">
@@ -18,7 +17,6 @@
 <link rel="icon" href="/bestia-docs/favicon.png" type="image/x-icon">
 
 
-<link rel="alternate" type="application/rss+xml" href="https://tfelix.github.io/bestia-docs/index.xml" title="Bestia Game" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -105,7 +103,7 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/bestia-docs/docs/mechanics/spells/" >
+  <a href="/bestia-docs/docs/mechanics/spells/"  class="active">
       Attacks
   </a>
 
@@ -541,63 +539,45 @@ https://github.com/alex-shpak/hugo-book
   <label for="menu-control">
     <img src="/bestia-docs/svg/menu.svg" alt="Menu" />
   </label>
-  <strong>Bestia - Developer Documentation</strong>
+  <strong>Attacks</strong>
 </header>
 
       
 <article class="markdown">
 
-<h1 id="bestia-developer-documentation">Bestia Developer Documentation</h1>
+<h1 id="spells-and-attacks">Spells and Attacks</h1>
+
+<p>The magic and the usage of it plays a crucial role in the Bestia universe. The users should be able to be deeply involved
+into magic spell creation and research.</p>
+
+<p>The system must allow the user to describe or discover newly innovative ways to combine spells. Yet the research should
+be fun and entertaining.</p>
+
+<p>Each Bestia has a internal list of attacks she will learn when gaining levels.</p>
 
 <blockquote>
-<p>Massive. Hard. Innovative. Open World. Open Source.</p>
+<p>About 80% attacks should be learned at a lower levels yet only a few, more powerful attacks should be learned between
+the levels 70 - 100.</p>
 </blockquote>
 
-<p><a class="github-button" href="https://github.com/tfelix/bestia-docs" data-icon="octicon-star" data-size="large"
-data-show-count="true" aria-label="Star tfelix/bestia-docs on GitHub">Star</a>
-<a class="github-button" href="https://github.com/tfelix/bestia-docs/subscription" data-icon="octicon-eye"
-data-size="large" data-show-count="true" aria-label="Watch tfelix/bestia-docs on GitHub">Watch</a></p>
+<h2 id="spell-attachments">Spell Attachments</h2>
 
-<p><strong>Congratulations!</strong> You just have found the Developer Documentation of the Bestia-Game. Here you find everything from
-gamedesign guidlines to engine architecture overview as well as the API documentation to access game resources.</p>
+<p>If the player owns the skill <a href="/mechanics/skills/#spell-enscription">Spell Enscription</a> he can attach the spell to
+scrolls or even to other entities.</p>
 
-<p>These infos should help you to get kickstarted and join the development. As Bestia is a community driven, open game each
-contribution is welcome. With the provided guidelines enthusiasts should very easily be able to create contributions
-from artworks to scripts.</p>
+<p>After a spell has been materialized and bound to some kind of magic containment it can be used by the owner. Spells of
+a higher level are of course far harder to handle. Attaching or handling such spells could produce unwanted side effects
+depending on the spell (some spells might create explosions, others might teleport something away or randomly heal
+bystanders etc.)</p>
 
-<blockquote>
-<p><strong>The game currently transforms into a stand-alone client which is currently not available for testing.</strong></p>
-</blockquote>
+<p>Most if not each entity/object in the game world has slots/events to which spells can be attached to. If such an event
+is triggered the effect of the spell is resolved.</p>
 
-<h2 id="contributing">Contributing</h2>
+<h2 id="detection-of-magic">Detection of Magic</h2>
 
-<p>Contributions to both the game design and the game itself (the client and the server) are very welcomed!</p>
-
-<p>You may find a little <code>Edit this page</code> link at the bottom of each page. If you want to change some game design
-aspects feel free to give it a try!</p>
-
-<p>Inside this game design document you possibly will find certain <strong>Contributing</strong> sections which will give you some
-guidlines to follow in order to help to get you changes into the game quickly.</p>
-
-<p><strong><a href="about-manifest.md">Read the Bestia Manifest first</a></strong> and align your contributions and changes under these central
-game guidelines.</p>
-
-<h2 id="project-repositories">Project Repositories</h2>
-
-<p>Otherwise feel free to check out the three project repositories on Github (and maybe give them a Star)</p>
-
-<ul>
-<li><a href="https://github.com/tfelix/bestia-docs">Bestia Developer Documentation</a> <i class="fab fa-github"></i></li>
-<li><a href="https://github.com/tfelix/bestia-client">Bestia Browser Client</a> <i class="fab fa-github"></i></li>
-<li><a href="https://github.com/tfelix/bestia-behemoth">Bestia Behemoth Server</a> <i class="fab fa-github"></i></li>
-</ul>
-
-<blockquote>
-<p>You can use the <code>Edit</code> button on the top right of every page to directly edit this document and create a Pull Request
-on Github.</p>
-</blockquote>
-
-<script async defer src="https://buttons.github.io/buttons.js"></script>
+<p>The must be a skill which enables the user to detect magic. The detection itself is easier if the spell is more
+powerful. However precautions can be used to avoid the spell getting detected. If more than one spell is attached to an
+object the less powerful spells are harder to detect.</p>
 </article>
 
       
@@ -605,14 +585,14 @@ on Github.</p>
   
   <div>
     
-    <a href="https://github.com/tfelix/bestia-docs/commit/fe881e405f8c591b102b43b83cd72f39d3f7f01f" title='Last modified Sep 11, 2019 by Thomas Felix' target="_blank" rel="noopener">
-      <img src="/bestia-docs/svg/calendar.svg" alt="Changed" /> Sep 11, 2019
+    <a href="https://github.com/tfelix/bestia-docs/commit/ad79b32f9a8f8e4bdaebcf1d4cf1790076508002" title='Last modified Sep 16, 2019 by Thomas Felix' target="_blank" rel="noopener">
+      <img src="/bestia-docs/svg/calendar.svg" alt="Changed" /> Sep 16, 2019
     </a>
   </div>
   
   
   <div>
-    <a href="https://github.com/tfelix/bestia-docs/edit/master/content/_index.md" target="_blank" rel="noopener">
+    <a href="https://github.com/tfelix/bestia-docs/edit/master/content/docs/mechanics/spells.md" target="_blank" rel="noopener">
       <img src="/bestia-docs/svg/edit.svg" alt="Edit" /> Edit this page
     </a>
   </div>
@@ -629,10 +609,10 @@ on Github.</p>
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#bestia-developer-documentation">Bestia Developer Documentation</a>
+<li><a href="#spells-and-attacks">Spells and Attacks</a>
 <ul>
-<li><a href="#contributing">Contributing</a></li>
-<li><a href="#project-repositories">Project Repositories</a></li>
+<li><a href="#spell-attachments">Spell Attachments</a></li>
+<li><a href="#detection-of-magic">Detection of Magic</a></li>
 </ul></li>
 </ul>
 </nav>

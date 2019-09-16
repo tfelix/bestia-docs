@@ -2,10 +2,9 @@
 <html lang="en">
 
 <head>
-	<meta name="generator" content="Hugo 0.58.2" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bestia - Developer Documentation | Bestia Game</title>
+<title>Client | Bestia Game</title>
 
 
 <link rel="stylesheet" href="/bestia-docs/book.min.45f3004d3c562c29285b27831e8a758ba54606954e3732ff376275b2c2d98616.css" integrity="sha256-RfMATTxWLCkoWyeDHop1i6VGBpVONzL/N2J1ssLZhhY=">
@@ -18,7 +17,6 @@
 <link rel="icon" href="/bestia-docs/favicon.png" type="image/x-icon">
 
 
-<link rel="alternate" type="application/rss+xml" href="https://tfelix.github.io/bestia-docs/index.xml" title="Bestia Game" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -359,7 +357,7 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/bestia-docs/docs/client/client-architecture/" >
+  <a href="/bestia-docs/docs/client/client-architecture/"  class="active">
       Client
   </a>
 
@@ -541,61 +539,47 @@ https://github.com/alex-shpak/hugo-book
   <label for="menu-control">
     <img src="/bestia-docs/svg/menu.svg" alt="Menu" />
   </label>
-  <strong>Bestia - Developer Documentation</strong>
+  <strong>Client</strong>
 </header>
 
       
 <article class="markdown">
 
-<h1 id="bestia-developer-documentation">Bestia Developer Documentation</h1>
+<h1 id="client">Client</h1>
 
-<blockquote>
-<p>Massive. Hard. Innovative. Open World. Open Source.</p>
-</blockquote>
+<p><a class="github-button" href="https://github.com/tfelix/bestia-client" data-icon="octicon-star" data-size="large"
+data-show-count="true" aria-label="Star tfelix/bestia-client on GitHub">Star</a>
+<a class="github-button" href="https://github.com/tfelix/bestia-client/subscription" data-icon="octicon-eye"
+data-size="large" data-show-count="true" aria-label="Watch tfelix/bestia-client on GitHub">Watch</a></p>
 
-<p><a class="github-button" href="https://github.com/tfelix/bestia-docs" data-icon="octicon-star" data-size="large"
-data-show-count="true" aria-label="Star tfelix/bestia-docs on GitHub">Star</a>
-<a class="github-button" href="https://github.com/tfelix/bestia-docs/subscription" data-icon="octicon-eye"
-data-size="large" data-show-count="true" aria-label="Watch tfelix/bestia-docs on GitHub">Watch</a></p>
+<p>Die Engine besteht aus mehreren Subsystemen die jeweils mit eigenen Aufgaben betraut sind. Die Subsysteme werden im folgenden beschrieben.
+The client is responsible for communication with the server and visualization of all the transferred data. The client is divided into two modules: the engine module which is used for rendering and the data gui module which is used for information visualization and GUI operations. This module is realized via simple HTML.
+When receiving server updates the data model is updated and the HTML representation updated by KnockoutJS accordingly.
+As soon as entity updates are received these updates are stored inside an entity cache register. The engine needs to pick up this data as soon as possible and start to visualize and animate the entities inside this storage. Its her responsibility to fetch the visualization data as soon as possible for the entities contained inside this data storage.</p>
 
-<p><strong>Congratulations!</strong> You just have found the Developer Documentation of the Bestia-Game. Here you find everything from
-gamedesign guidlines to engine architecture overview as well as the API documentation to access game resources.</p>
+<h2 id="entities">Entities</h2>
 
-<p>These infos should help you to get kickstarted and join the development. As Bestia is a community driven, open game each
-contribution is welcome. With the provided guidelines enthusiasts should very easily be able to create contributions
-from artworks to scripts.</p>
+<p>Sie spiegeln grafische Elemente im Spiel wieder. Sie können sowohl auf dem Server, als auch nur im Client existieren. Üblicherweise besitzen sie eine grafische Repräsentation, bieten eine Möglichkeit der Interaktion (Mouse Hover) und ihr Aussehen kann über das Anlegen von Effekten verändert werden. Die Entities besitzen eine API über die man das Aussehen der Sprites steuern kann: Hinzufügen und Löschen von Partikeln, Shadern, Kinder-Sprites etc.</p>
 
-<blockquote>
-<p><strong>The game currently transforms into a stand-alone client which is currently not available for testing.</strong></p>
-</blockquote>
+<h2 id="partikel">Partikel</h2>
 
-<h2 id="contributing">Contributing</h2>
+<p>Dies sind visualisierte Objekte in Form von Sprites, Animationen, Partikeln, die zwar im Spiel repräsentiert sind, aber nur lokal erzeugt werden. Sie sind in der Regel verhältnismäßig kurzlebig und können, je nach Situation schnell angefragt werden. Ein Caching Algorithmus sollte daher vorgesehen werden.</p>
 
-<p>Contributions to both the game design and the game itself (the client and the server) are very welcomed!</p>
+<p>Effekte beziehen sich immer auf Entities und werden an diese angehängt. Ein Effekt kann eine Entities dahingehend anpassen indem es Shader oder weitere Kind Sprites anfügt.</p>
 
-<p>You may find a little <code>Edit this page</code> link at the bottom of each page. If you want to change some game design
-aspects feel free to give it a try!</p>
+<p>Der Server hat keine oder nur einen geringen Einfluss auf die Erzeugung von Effekten. Eine Ausnahme kann zum Beispiel Schaden sein. Dieser wird zwar vom Server an den Client gesendet, aber es gibt auf Serverseite keine Entitäten-Repräsentation dieses Datensatzes.</p>
 
-<p>Inside this game design document you possibly will find certain <strong>Contributing</strong> sections which will give you some
-guidlines to follow in order to help to get you changes into the game quickly.</p>
+<h2 id="indicator">Indicator</h2>
 
-<p><strong><a href="about-manifest.md">Read the Bestia Manifest first</a></strong> and align your contributions and changes under these central
-game guidelines.</p>
+<p>Steuert die Anzeige der Mauszeiger und der Effekte die dort angezeigt und an die Bewegungen des Mauszeigers/Fingers geknüpft sind. Die verschiedenen Indicator werden über einen Manager verwaltet und können über diesen aktiv geschaltet werden.</p>
 
-<h2 id="project-repositories">Project Repositories</h2>
+<h2 id="map">Map</h2>
 
-<p>Otherwise feel free to check out the three project repositories on Github (and maybe give them a Star)</p>
+<p>Dieses Subsystem enthält Objekte um die Map Daten abzurufen, zu verarbeiten und zu speichern. Sie bietet weiterhin hilfen zur Visualisierung, zur Pfadfindung und aktualisiert die Collision Map, welche unbegehbare Gebiete im Sichtfeld markiert.</p>
 
-<ul>
-<li><a href="https://github.com/tfelix/bestia-docs">Bestia Developer Documentation</a> <i class="fab fa-github"></i></li>
-<li><a href="https://github.com/tfelix/bestia-client">Bestia Browser Client</a> <i class="fab fa-github"></i></li>
-<li><a href="https://github.com/tfelix/bestia-behemoth">Bestia Behemoth Server</a> <i class="fab fa-github"></i></li>
-</ul>
+<h2 id="renderer">Renderer</h2>
 
-<blockquote>
-<p>You can use the <code>Edit</code> button on the top right of every page to directly edit this document and create a Pull Request
-on Github.</p>
-</blockquote>
+<p>Hier werden größere Renderer abgelegt die größere, übergreifende Strukturen darstellen, für die es aber auch keine direkte Repräsentation auf dem Server gibt. Die Darstellung von globalem Licht oder die Darstellung der Map passieren innerhalb dieses Paketes.</p>
 
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 </article>
@@ -605,14 +589,14 @@ on Github.</p>
   
   <div>
     
-    <a href="https://github.com/tfelix/bestia-docs/commit/fe881e405f8c591b102b43b83cd72f39d3f7f01f" title='Last modified Sep 11, 2019 by Thomas Felix' target="_blank" rel="noopener">
-      <img src="/bestia-docs/svg/calendar.svg" alt="Changed" /> Sep 11, 2019
+    <a href="https://github.com/tfelix/bestia-docs/commit/ad79b32f9a8f8e4bdaebcf1d4cf1790076508002" title='Last modified Sep 16, 2019 by Thomas Felix' target="_blank" rel="noopener">
+      <img src="/bestia-docs/svg/calendar.svg" alt="Changed" /> Sep 16, 2019
     </a>
   </div>
   
   
   <div>
-    <a href="https://github.com/tfelix/bestia-docs/edit/master/content/_index.md" target="_blank" rel="noopener">
+    <a href="https://github.com/tfelix/bestia-docs/edit/master/content/docs/client/client-architecture.md" target="_blank" rel="noopener">
       <img src="/bestia-docs/svg/edit.svg" alt="Edit" /> Edit this page
     </a>
   </div>
@@ -629,10 +613,13 @@ on Github.</p>
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#bestia-developer-documentation">Bestia Developer Documentation</a>
+<li><a href="#client">Client</a>
 <ul>
-<li><a href="#contributing">Contributing</a></li>
-<li><a href="#project-repositories">Project Repositories</a></li>
+<li><a href="#entities">Entities</a></li>
+<li><a href="#partikel">Partikel</a></li>
+<li><a href="#indicator">Indicator</a></li>
+<li><a href="#map">Map</a></li>
+<li><a href="#renderer">Renderer</a></li>
 </ul></li>
 </ul>
 </nav>

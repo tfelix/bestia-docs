@@ -2,10 +2,9 @@
 <html lang="en">
 
 <head>
-	<meta name="generator" content="Hugo 0.58.2" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bestia - Developer Documentation | Bestia Game</title>
+<title>Honor | Bestia Game</title>
 
 
 <link rel="stylesheet" href="/bestia-docs/book.min.45f3004d3c562c29285b27831e8a758ba54606954e3732ff376275b2c2d98616.css" integrity="sha256-RfMATTxWLCkoWyeDHop1i6VGBpVONzL/N2J1ssLZhhY=">
@@ -18,7 +17,6 @@
 <link rel="icon" href="/bestia-docs/favicon.png" type="image/x-icon">
 
 
-<link rel="alternate" type="application/rss+xml" href="https://tfelix.github.io/bestia-docs/index.xml" title="Bestia Game" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -211,7 +209,7 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/bestia-docs/docs/mechanics/honor/" >
+  <a href="/bestia-docs/docs/mechanics/honor/"  class="active">
       Honor
   </a>
 
@@ -541,63 +539,156 @@ https://github.com/alex-shpak/hugo-book
   <label for="menu-control">
     <img src="/bestia-docs/svg/menu.svg" alt="Menu" />
   </label>
-  <strong>Bestia - Developer Documentation</strong>
+  <strong>Honor</strong>
 </header>
 
       
 <article class="markdown">
 
-<h1 id="bestia-developer-documentation">Bestia Developer Documentation</h1>
+<h1 id="honor">Honor</h1>
 
-<blockquote>
-<p>Massive. Hard. Innovative. Open World. Open Source.</p>
-</blockquote>
+<p>It is possible in Bestia to perform malicious actions which will reduce the players good experience. This is by design!
+Yet there should be incentives for players not to go this route in order to protect low level players from ganking of
+other griev play. If a player behaves well and their honor level increases they will get more and more rewards. On the
+other hand if a player has negative honor they will get bad reputation and repressions. There might actually be some
+player initiated hunt on these low honor players.</p>
 
-<p><a class="github-button" href="https://github.com/tfelix/bestia-docs" data-icon="octicon-star" data-size="large"
-data-show-count="true" aria-label="Star tfelix/bestia-docs on GitHub">Star</a>
-<a class="github-button" href="https://github.com/tfelix/bestia-docs/subscription" data-icon="octicon-eye"
-data-size="large" data-show-count="true" aria-label="Watch tfelix/bestia-docs on GitHub">Watch</a></p>
+<p>Additionally each NPC maintains an internal list of reputation points and players. If a player misbehaves or behaves in
+a friendly way, this list will be adjusted. The NPC also communicates this list with other NPCs if they meet. If the reputation
+exceeds certain upper and lower limits and the NPC enters areas that use a long-distance communication system, the NPC
+may also communicate this to more distant areas. Only if the players reputation falls below -100 the NPC encountered
+(and acted negative towards them) they remembers this permanently. Higher values slowly return to the default value
+of 0 and are then removed from the list (NPCs don&rsquo;t forget if a player killed family members or the NPC life was saved).
+If the customer reaches the nearest settlement via the reputation points after a certain time, the value is also stored
+there permanently.</p>
 
-<p><strong>Congratulations!</strong> You just have found the Developer Documentation of the Bestia-Game. Here you find everything from
-gamedesign guidlines to engine architecture overview as well as the API documentation to access game resources.</p>
+<p>Reputation decreases faster through bad deeds than increasing because of good ones.</p>
 
-<p>These infos should help you to get kickstarted and join the development. As Bestia is a community driven, open game each
-contribution is welcome. With the provided guidelines enthusiasts should very easily be able to create contributions
-from artworks to scripts.</p>
+<h2 id="protected-zones">Protected Zones</h2>
 
-<blockquote>
-<p><strong>The game currently transforms into a stand-alone client which is currently not available for testing.</strong></p>
-</blockquote>
+<p>Around the starting places there will be a enchantment in place which will mark the lands in the vacinity as <strong>Protected Zones</strong>.
+Inside this zone every kill of another player Bestia with more then 5 levels less as the killing bestia
+or NPC will reduce the honor by <strong>20 points</strong>.</p>
 
-<h2 id="contributing">Contributing</h2>
+<p>Every action which leads to honor loss inside a protected zone (other then killing a low level Player Bestia) will be <strong>multiplied by 3</strong>
+wheras honor increasing actions will be <strong>multiplied by 1.5</strong>.</p>
 
-<p>Contributions to both the game design and the game itself (the client and the server) are very welcomed!</p>
+<h2 id="negative-honor">Negative Honor</h2>
 
-<p>You may find a little <code>Edit this page</code> link at the bottom of each page. If you want to change some game design
-aspects feel free to give it a try!</p>
+<p>As there are multiple factions which different interests it is not easy to define which play is considered bad behavior
+which will get punished automatically. Yet there are some core actions which will be universally be considered as griev play
+which is not inherently forbidden but will result in a loss of honor.</p>
 
-<p>Inside this game design document you possibly will find certain <strong>Contributing</strong> sections which will give you some
-guidlines to follow in order to help to get you changes into the game quickly.</p>
+<p>If a player drops below 0 honor he will receive the debuff <a href="/">Rogue</a>. If a player has less then -100 honor he will receive
+the debuff <a href="/">Outlaw</a>.</p>
 
-<p><strong><a href="about-manifest.md">Read the Bestia Manifest first</a></strong> and align your contributions and changes under these central
-game guidelines.</p>
+<h3 id="stealing">Stealing</h3>
 
-<h2 id="project-repositories">Project Repositories</h2>
+<p>Stealing means if a player picks up an item from a storage chest not belonging to him. The owner can also grant certain player
+access right to a chest. Then its not considered stealing. A guild leader can also mark storage chests as usable for guild members.</p>
 
-<p>Otherwise feel free to check out the three project repositories on Github (and maybe give them a Star)</p>
+<p>A player who steals an item is also marked with the debuff <a href="/">Thief</a> which will grant any player who kills him <strong>5 extra honor</strong>. The killing
+player also gets a honor reward for each item returned to the original owner of the items within 6 real time hours (18 hours in Bestia time).</p>
+
+<h3 id="malicious-actions">Malicious Actions</h3>
+
+<table>
+<thead>
+<tr>
+<th>Malicious Action</th>
+<th align="center">Honor Loss (Player)</th>
+<th align="center">Honor Loss to NPC in Sight</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Killing a NPC</td>
+<td align="center">-5</td>
+<td align="center">-15</td>
+</tr>
+
+<tr>
+<td>Killing Players Bestias</td>
+<td align="center">0</td>
+<td align="center">-2</td>
+</tr>
+
+<tr>
+<td>Killing Players Bestias in a <strong>Protected Zone</strong></td>
+<td align="center">-20</td>
+<td align="center">-20</td>
+</tr>
+
+<tr>
+<td>Stealing Item (Mundane)</td>
+<td align="center">-5</td>
+<td align="center">-10</td>
+</tr>
+
+<tr>
+<td>Stealing Item (Superior)</td>
+<td align="center">-10</td>
+<td align="center">-20</td>
+</tr>
+
+<tr>
+<td>Stealing Item (Legendary)</td>
+<td align="center">-15</td>
+<td align="center">-50</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="negative-honor-effects">Negative Honor Effects</h3>
+
+<p>If the honor drops below 0 the negative effects will start to take place. The effects are as follows:</p>
+
+<table>
+<thead>
+<tr>
+<th>Honor Amount</th>
+<th>Effect</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>&lt; 0</td>
+<td>No more advantages from NPC and the NPC will act unfriendly against the player.</td>
+</tr>
+
+<tr>
+<td>&lt; -50</td>
+<td>Some NPC might start to act hostile and attack the player or flee from him.</td>
+</tr>
+
+<tr>
+<td>&lt; -100</td>
+<td>NPC will permanently remember the player and also spread the word around so more NPC will start to act hostile towards the player.</td>
+</tr>
+</tbody>
+</table>
+
+<p>If a player steals something not belonging to him but to a NPC or another player he will loose honor for each item he
+takes and depending on the <a href="/mechanics/items/#item-level">item level</a> (looting a dead NPC/player will not lead to a
+reduction of honor).</p>
+
+<h2 id="positive-honor">Positive Honor</h2>
+
+<p>A positive honor level will lead to very friendly NPC which might even give the player some discounts or gifts from
+time to time. In order to increase your honor level again you can:</p>
 
 <ul>
-<li><a href="https://github.com/tfelix/bestia-docs">Bestia Developer Documentation</a> <i class="fab fa-github"></i></li>
-<li><a href="https://github.com/tfelix/bestia-client">Bestia Browser Client</a> <i class="fab fa-github"></i></li>
-<li><a href="https://github.com/tfelix/bestia-behemoth">Bestia Behemoth Server</a> <i class="fab fa-github"></i></li>
+<li>Kill a player with negative honor</li>
+<li>Helping a NPC by healing or resurrecting a dead NPC</li>
 </ul>
 
-<blockquote>
-<p>You can use the <code>Edit</code> button on the top right of every page to directly edit this document and create a Pull Request
-on Github.</p>
-</blockquote>
+<h3 id="shrines-of-judgement">Shrines of Judgement</h3>
 
-<script async defer src="https://buttons.github.io/buttons.js"></script>
+<p>There are a 5 shrines in each game world incarnation where a player can sacrifice to raise a reputation that has fallen below the threshold of a player&rsquo;s global
+persecution. The sacrifice is usually (depending on the reputation threshold) very painful and even if it was made it can take
+several days until the news about it was spread.</p>
 </article>
 
       
@@ -605,14 +696,14 @@ on Github.</p>
   
   <div>
     
-    <a href="https://github.com/tfelix/bestia-docs/commit/fe881e405f8c591b102b43b83cd72f39d3f7f01f" title='Last modified Sep 11, 2019 by Thomas Felix' target="_blank" rel="noopener">
-      <img src="/bestia-docs/svg/calendar.svg" alt="Changed" /> Sep 11, 2019
+    <a href="https://github.com/tfelix/bestia-docs/commit/ad79b32f9a8f8e4bdaebcf1d4cf1790076508002" title='Last modified Sep 16, 2019 by Thomas Felix' target="_blank" rel="noopener">
+      <img src="/bestia-docs/svg/calendar.svg" alt="Changed" /> Sep 16, 2019
     </a>
   </div>
   
   
   <div>
-    <a href="https://github.com/tfelix/bestia-docs/edit/master/content/_index.md" target="_blank" rel="noopener">
+    <a href="https://github.com/tfelix/bestia-docs/edit/master/content/docs/mechanics/honor.md" target="_blank" rel="noopener">
       <img src="/bestia-docs/svg/edit.svg" alt="Edit" /> Edit this page
     </a>
   </div>
@@ -629,10 +720,19 @@ on Github.</p>
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#bestia-developer-documentation">Bestia Developer Documentation</a>
+<li><a href="#honor">Honor</a>
 <ul>
-<li><a href="#contributing">Contributing</a></li>
-<li><a href="#project-repositories">Project Repositories</a></li>
+<li><a href="#protected-zones">Protected Zones</a></li>
+<li><a href="#negative-honor">Negative Honor</a>
+<ul>
+<li><a href="#stealing">Stealing</a></li>
+<li><a href="#malicious-actions">Malicious Actions</a></li>
+<li><a href="#negative-honor-effects">Negative Honor Effects</a></li>
+</ul></li>
+<li><a href="#positive-honor">Positive Honor</a>
+<ul>
+<li><a href="#shrines-of-judgement">Shrines of Judgement</a></li>
+</ul></li>
 </ul></li>
 </ul>
 </nav>

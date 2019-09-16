@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docs on Bestia Game</title>
+    <link>https://tfelix.github.io/bestia-docs/docs/</link>
+    <description>Recent content in Docs on Bestia Game</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	<atom:link href="https://tfelix.github.io/bestia-docs/docs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>API</title>
+      <link>https://tfelix.github.io/bestia-docs/docs/api/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://tfelix.github.io/bestia-docs/docs/api/</guid>
+      <description>API The Bestia game will certainly get an extensive and public API to allow external developer to interface with the gameworld and create their own solutions and Apps. But for now we need to get the game started.</description>
+    </item>
+    
+    <item>
+      <title>Client</title>
+      <link>https://tfelix.github.io/bestia-docs/docs/client/client-architecture/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://tfelix.github.io/bestia-docs/docs/client/client-architecture/</guid>
+      <description>Client Star Watch
+Die Engine besteht aus mehreren Subsystemen die jeweils mit eigenen Aufgaben betraut sind. Die Subsysteme werden im folgenden beschrieben. The client is responsible for communication with the server and visualization of all the transferred data. The client is divided into two modules: the engine module which is used for rendering and the data gui module which is used for information visualization and GUI operations. This module is realized via simple HTML.</description>
+    </item>
+    
+    <item>
+      <title>Improvement Proposals</title>
+      <link>https://tfelix.github.io/bestia-docs/docs/bip/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://tfelix.github.io/bestia-docs/docs/bip/</guid>
+      <description>Improvement Proposals BIPs are used to describe some technical details about subsystems which are in use to improve the Bestia game. If they are in a draft state they are not included into this document but as soon as they are worked out they are included and are awaiting implementation.
+Implementation of a BIP is done in a own branch named after the pattern: feat-bip-N where N is the number of the BIP.</description>
+    </item>
+    
+  </channel>
+</rss>

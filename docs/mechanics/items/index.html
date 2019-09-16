@@ -2,10 +2,9 @@
 <html lang="en">
 
 <head>
-	<meta name="generator" content="Hugo 0.58.2" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bestia - Developer Documentation | Bestia Game</title>
+<title>Items | Bestia Game</title>
 
 
 <link rel="stylesheet" href="/bestia-docs/book.min.45f3004d3c562c29285b27831e8a758ba54606954e3732ff376275b2c2d98616.css" integrity="sha256-RfMATTxWLCkoWyeDHop1i6VGBpVONzL/N2J1ssLZhhY=">
@@ -18,7 +17,6 @@
 <link rel="icon" href="/bestia-docs/favicon.png" type="image/x-icon">
 
 
-<link rel="alternate" type="application/rss+xml" href="https://tfelix.github.io/bestia-docs/index.xml" title="Bestia Game" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -231,7 +229,7 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/bestia-docs/docs/mechanics/items/" >
+  <a href="/bestia-docs/docs/mechanics/items/"  class="active">
       Items
   </a>
 
@@ -541,63 +539,193 @@ https://github.com/alex-shpak/hugo-book
   <label for="menu-control">
     <img src="/bestia-docs/svg/menu.svg" alt="Menu" />
   </label>
-  <strong>Bestia - Developer Documentation</strong>
+  <strong>Items</strong>
 </header>
 
       
 <article class="markdown">
 
-<h1 id="bestia-developer-documentation">Bestia Developer Documentation</h1>
+<h1 id="items">Items</h1>
 
-<blockquote>
-<p>Massive. Hard. Innovative. Open World. Open Source.</p>
-</blockquote>
+<p>Items can be optained by the player and carried around. The amount of items limited to each entity is determined via
+its <a href="/mechanics/inventory">Inventory</a>.</p>
 
-<p><a class="github-button" href="https://github.com/tfelix/bestia-docs" data-icon="octicon-star" data-size="large"
-data-show-count="true" aria-label="Star tfelix/bestia-docs on GitHub">Star</a>
-<a class="github-button" href="https://github.com/tfelix/bestia-docs/subscription" data-icon="octicon-eye"
-data-size="large" data-show-count="true" aria-label="Watch tfelix/bestia-docs on GitHub">Watch</a></p>
+<p>Each item has a level assigned. This level is important to determine how hard or easy it is to forge this item, upgrade
+it and so on. It also effects how spels interact with the item entity.</p>
 
-<p><strong>Congratulations!</strong> You just have found the Developer Documentation of the Bestia-Game. Here you find everything from
-gamedesign guidlines to engine architecture overview as well as the API documentation to access game resources.</p>
+<h2 id="item-level">Item Level</h2>
 
-<p>These infos should help you to get kickstarted and join the development. As Bestia is a community driven, open game each
-contribution is welcome. With the provided guidelines enthusiasts should very easily be able to create contributions
-from artworks to scripts.</p>
+<p>Items are grouped into three categories and inside this documentation often refered to via its category.</p>
 
-<blockquote>
-<p><strong>The game currently transforms into a stand-alone client which is currently not available for testing.</strong></p>
-</blockquote>
+<table>
+<thead>
+<tr>
+<th>Item Level</th>
+<th>Category</th>
+</tr>
+</thead>
 
-<h2 id="contributing">Contributing</h2>
+<tbody>
+<tr>
+<td>1 - 20</td>
+<td>Mundane</td>
+</tr>
 
-<p>Contributions to both the game design and the game itself (the client and the server) are very welcomed!</p>
+<tr>
+<td>21 - 80</td>
+<td>Superior</td>
+</tr>
 
-<p>You may find a little <code>Edit this page</code> link at the bottom of each page. If you want to change some game design
-aspects feel free to give it a try!</p>
+<tr>
+<td>81 - 100</td>
+<td>Legendary</td>
+</tr>
+</tbody>
+</table>
 
-<p>Inside this game design document you possibly will find certain <strong>Contributing</strong> sections which will give you some
-guidlines to follow in order to help to get you changes into the game quickly.</p>
+<h2 id="weapon-refinement">Weapon Refinement</h2>
 
-<p><strong><a href="about-manifest.md">Read the Bestia Manifest first</a></strong> and align your contributions and changes under these central
-game guidelines.</p>
+<p>Weapons and armors can be refined which accounts to extra damage dealt if the weapon is used. Each upgrade step can
+result in a destruction of the equipment.</p>
 
-<h2 id="project-repositories">Project Repositories</h2>
+<p>A refined weapon has increased base damage per level:</p>
 
-<p>Otherwise feel free to check out the three project repositories on Github (and maybe give them a Star)</p>
+<table>
+<thead>
+<tr>
+<th>Weapon Category</th>
+<th>Base Damage Bonus / Upgrade Level</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Mundane</td>
+<td>2</td>
+</tr>
+
+<tr>
+<td>Superior</td>
+<td>4</td>
+</tr>
+
+<tr>
+<td>Legendary</td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+
+<p>These are the base upgrade chances. The chances can be altered via skills or item usages.</p>
+
+<h3 id="uprade-chances">Uprade Chances</h3>
+
+<table>
+<thead>
+<tr>
+<th>Weapon Category</th>
+<th>Uprade Formula</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Mundane</td>
+<td>$min(1, e^{-(itemLv-5)/9.8)})$</td>
+</tr>
+
+<tr>
+<td>Superior</td>
+<td>$min(1, e^{-(itemLv-4)/8,69)})$</td>
+</tr>
+
+<tr>
+<td>Legendary</td>
+<td>$min(1, e^{-(itemLv-3)/7.69)})$</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="equipment-refinement">Equipment Refinement</h2>
+
+<p>The equipment refine level is not capped but each higher refinement process can destroy the weapon/equipment.
+The chance of success is depending on skill and refine items used.</p>
+
+<p>A refined armor has increased resistance for hard defense. Each upgrade point grants ⅓ points more defense.</p>
+
+<h2 id="item-crafting">Item Crafting</h2>
+
+<p>Bestia uses an innovative new item crafting. Basically the player is allowed to craft all items. Some items however
+might be so hard to craft so it is not possible to craft it without appropriate skill. Some items may require special
+ingredients which can not be substituted. The higher the crafted item level and the harder it get to successful craft
+it. If the crafting of the item fails all the materials used to craft it are lost. In order to craft an item two things
+are important: the sum of raw materials used to craft and how the materials are laid out.</p>
+
+<p>Item craft success chance is determined if the raw materials.</p>
+
+<p>After an item was successfully crafted the recipe is saved for the user inside his recipe list. From this list the
+recipe can be inscribed upon a paper to give it to other players who can consume and learn it. The learning will take
+some time (depending of the level of the item).</p>
+
+<h2 id="item-and-entity-interactions">Item and Entity Interactions</h2>
+
+<p>It should be possible to link items to entities. Nesting should be possible. With this technique it is possible to
+combine active items.</p>
+
+<p>Its possible to do something like:</p>
 
 <ul>
-<li><a href="https://github.com/tfelix/bestia-docs">Bestia Developer Documentation</a> <i class="fab fa-github"></i></li>
-<li><a href="https://github.com/tfelix/bestia-client">Bestia Browser Client</a> <i class="fab fa-github"></i></li>
-<li><a href="https://github.com/tfelix/bestia-behemoth">Bestia Behemoth Server</a> <i class="fab fa-github"></i></li>
+<li>Attaching or removing energy crystals to a magical artifact</li>
+<li>Boxes that can be stuffed with other items for shipping</li>
 </ul>
 
-<blockquote>
-<p>You can use the <code>Edit</code> button on the top right of every page to directly edit this document and create a Pull Request
-on Github.</p>
-</blockquote>
+<p>For this purpose the items that can be stored in an entity must be limited. Filtering must be very flexible, be able to
+exclude certain items, be able to limit weight, etc. Each item also has its own resistance values. As soon as a Bestia
+is killed it will be checked if and if so how much damage individual items take. Even items lying on the ground can be
+damaged or even destroyed by attacks.</p>
 
-<script async defer src="https://buttons.github.io/buttons.js"></script>
+<h2 id="damaging-of-items">Damaging of Items</h2>
+
+<p>As with any item in Bestia, it can be damaged. There will be professions capable of repairing items. The durability of
+an item is given via a percentage. Items will function normally within a wide range of their condition. At a certain
+level, they slowly lose their properties (armor their armor value, weapons hit less often, magic staffs suffer a damage
+penalty, etc.). Until the items become unusable. If you then inflict further damage on them, they can be completely and
+irretrievably destroyed.</p>
+
+<table>
+<thead>
+<tr>
+<th>Durability</th>
+<th>State</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>30 - 100%</td>
+<td>Normal Operation</td>
+</tr>
+
+<tr>
+<td>1 - 29%</td>
+<td>Increasing Damage Effects</td>
+</tr>
+
+<tr>
+<td>0%</td>
+<td>Item breaks unrecoverably</td>
+</tr>
+</tbody>
+</table>
+
+<p>Items on the ground can suffer damage from attacks. They are affected by Area Of Effect spells and can be targetted manually
+albeit they are not auto targeted like enemies.</p>
+
+<h3 id="item-status-values">Item Status Values</h3>
+
+<p>In order to let items participate in the battle system they need status values. Items status value distribution is based
+upon their type (weapon, potion, book etc) and the total amount of points to distribute is given by the item level.
+Later there might be items which get preset custom values but for now on they are based upon a lookup table.</p>
 </article>
 
       
@@ -605,14 +733,14 @@ on Github.</p>
   
   <div>
     
-    <a href="https://github.com/tfelix/bestia-docs/commit/fe881e405f8c591b102b43b83cd72f39d3f7f01f" title='Last modified Sep 11, 2019 by Thomas Felix' target="_blank" rel="noopener">
-      <img src="/bestia-docs/svg/calendar.svg" alt="Changed" /> Sep 11, 2019
+    <a href="https://github.com/tfelix/bestia-docs/commit/ad79b32f9a8f8e4bdaebcf1d4cf1790076508002" title='Last modified Sep 16, 2019 by Thomas Felix' target="_blank" rel="noopener">
+      <img src="/bestia-docs/svg/calendar.svg" alt="Changed" /> Sep 16, 2019
     </a>
   </div>
   
   
   <div>
-    <a href="https://github.com/tfelix/bestia-docs/edit/master/content/_index.md" target="_blank" rel="noopener">
+    <a href="https://github.com/tfelix/bestia-docs/edit/master/content/docs/mechanics/items.md" target="_blank" rel="noopener">
       <img src="/bestia-docs/svg/edit.svg" alt="Edit" /> Edit this page
     </a>
   </div>
@@ -629,10 +757,20 @@ on Github.</p>
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#bestia-developer-documentation">Bestia Developer Documentation</a>
+<li><a href="#items">Items</a>
 <ul>
-<li><a href="#contributing">Contributing</a></li>
-<li><a href="#project-repositories">Project Repositories</a></li>
+<li><a href="#item-level">Item Level</a></li>
+<li><a href="#weapon-refinement">Weapon Refinement</a>
+<ul>
+<li><a href="#uprade-chances">Uprade Chances</a></li>
+</ul></li>
+<li><a href="#equipment-refinement">Equipment Refinement</a></li>
+<li><a href="#item-crafting">Item Crafting</a></li>
+<li><a href="#item-and-entity-interactions">Item and Entity Interactions</a></li>
+<li><a href="#damaging-of-items">Damaging of Items</a>
+<ul>
+<li><a href="#item-status-values">Item Status Values</a></li>
+</ul></li>
 </ul></li>
 </ul>
 </nav>

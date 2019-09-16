@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>World Generation | Bestia Game</title>
+
+
+<link rel="stylesheet" href="/bestia-docs/book.min.45f3004d3c562c29285b27831e8a758ba54606954e3732ff376275b2c2d98616.css" integrity="sha256-RfMATTxWLCkoWyeDHop1i6VGBpVONzL/N2J1ssLZhhY=">
+
+
+<script defer src="/bestia-docs/search.min.205975cd516425e173698bfbd84b57974b9bf404056c88c0620c4e5b4f012334.js" integrity="sha256-IFl1zVFkJeFzaYv72EtXl0ub9AQFbIjAYgxOW08BIzQ="></script>
+
+
+
+<link rel="icon" href="/bestia-docs/favicon.png" type="image/x-icon">
+
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/github-markdown-css/2.2.1/github-markdown.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+</head>
+
+<body>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="flex container">
+
+    <aside class="book-menu fixed">
+      <nav>
+<h2 class="book-brand">
+  <a href="https://tfelix.github.io/bestia-docs"><img src="/bestia-docs/bestia-logo.svg" alt="Logo" /></a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" placeholder="Search" id="book-search-input" maxlength="64" readonly />
+  <div class="book-search-spinner spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+    
+
+  
+  
+
+
+
+
+
+ 
+  
+    
+
+  <ul>
+    
+      
+        
+
+  <li >
+    
+      
+
+  <a href="/bestia-docs/docs/mechanics/" >
+      Game Design
+  </a>
+
+
+    
+
+    
+
+  <ul>
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/core-guidelines/" >
+      Core Concepts
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/archivements/" >
+      Archivements
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/spells/" >
+      Attacks
+  </a>
+
+</li>
+      
+    
+      
+        
+
+  <li >
+    
+      <span>Bestia</span>
+    
+
+    
+
+  <ul>
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/bestia/master/" >
+      Bestia Master
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/bestia/breeding/" >
+      Bestia Breeding
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/bestia/statusvalues/" >
+      Status Values
+  </a>
+
+</li>
+      
+    
+  </ul>
+
+
+  </li>
+
+
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/time/" >
+      Bestia Time
+  </a>
+
+</li>
+      
+    
+      
+        
+
+  <li >
+    
+      
+
+  <a href="/bestia-docs/docs/mechanics/crafting/" >
+      Crafting
+  </a>
+
+
+    
+
+    
+
+  <ul>
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/crafting/alchemy/" >
+      Alchemy
+  </a>
+
+</li>
+      
+    
+  </ul>
+
+
+  </li>
+
+
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/honor/" >
+      Honor
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/inventory/" >
+      Inventory
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/items/" >
+      Items
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/quests/" >
+      Quests
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/resources/" >
+      Resources
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/skills/" >
+      Skills
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/story/" >
+      Story
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/cults/" >
+      The Cults
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/trading/" >
+      Trading
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/weather/" >
+      Weather
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/exploration/" >
+      World Exploration
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/resources/artwork/" >
+      Artwork and Design
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/resources/literature/" >
+      Literature
+  </a>
+
+</li>
+      
+    
+  </ul>
+
+
+  </li>
+
+
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/api/" >
+      API
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/client/client-architecture/" >
+      Client
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/bip/" >
+      Improvement Proposals
+  </a>
+
+</li>
+      
+    
+      
+        
+
+  <li >
+    
+      <span>Server</span>
+    
+
+    
+
+  <ul>
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/server/server-datatypes/" >
+      Server Datatypes
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/server/ai/" >
+      Artificial Intelligence
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/server/server-battlesystem/" >
+      Battlesystem
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/server/server-environment/" >
+      Environment
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/server/server-lighting/" >
+      Lighting
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/server/server-routing/" >
+      Routing
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/server/server-architecture/" >
+      Server Architecture
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/server/server-scripts/" >
+      Server Scripts
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/server/server-datastreaming/" >
+      Server Streaming
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/server/server-narrativegeneration/" >
+      Stories and Quests Generation
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/server/server-worldcreation/"  class="active">
+      World Generation
+  </a>
+
+</li>
+      
+    
+  </ul>
+
+
+  </li>
+
+
+      
+    
+  </ul>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+<script>
+(function() {
+  var menu = document.querySelector("aside.book-menu nav");
+  addEventListener("beforeunload", function(event) {
+    localStorage.setItem("menu.scrollTop", menu.scrollTop);
+  });
+  menu.scrollTop = localStorage.getItem("menu.scrollTop");
+})();
+</script>
+
+    </aside>
+
+    <div class="book-page">
+      <header class="flex align-center justify-between book-header">
+  <label for="menu-control">
+    <img src="/bestia-docs/svg/menu.svg" alt="Menu" />
+  </label>
+  <strong>World Generation</strong>
+</header>
+
+      
+<article class="markdown">
+
+<p>Bestia uses a specialized library for world creation. It will soon be open sourced as a own project. It is a clusterable generator which is cabable of dividing the world creation workload onto multiple, different machines. With this framework it should be possible to create million of square kilometers without hitting any memory limit on the servers.</p>
+
+<h2 id="algorithmus">Algorithmus</h2>
+
+<ol>
+<li>Grundparameter</li>
+<li>Erstellung von Influencemaps</li>
+<li>Wasserspiegel festlegung</li>
+<li>Erzeuge die Wasser Maske</li>
+<li>Erzeuge von Gewässern und Flüsse</li>
+<li>Temperaturkorrektur</li>
+<li>Biom Zuordnung vornehmen</li>
+<li>Terrain Features verteilen und erzeugen</li>
+<li>Biom Optimierung</li>
+<li>Tilemap Erzeugung</li>
+<li>Biom Features</li>
+<li>Erzeugung der Städtekandidaten</li>
+<li>Erzeugung und Verteilung von Bodenschätzen</li>
+</ol>
+
+<h2 id="grundparameter">Grundparameter</h2>
+
+<p>The following base parameters are used to generate the map:</p>
+
+<ul>
+<li>Gesamtpopulation P</li>
+<li>Weltgröße S (Abhängig von der Spielerzahl)</li>
+<li>Wassermasse/Landmasse WM (20-40% Wasser)</li>
+<li>Anzahl von Städten/Siedlungen Sn</li>
+</ul>
+
+<p>The base parameter are generated randomly based on the expected active player count. They are persisted in the database.</p>
+
+<p>$x = \frac{1}{3}$</p>
+
+<h2 id="influencemaps">Influencemaps</h2>
+
+<p>Folgende Influencemaps werden in der Größe der Weltkarte erstellt und über den <a href="https://de.wikipedia.org/wiki/Simplex_Noise">SimplexNoise </a>Algorithmus mit Rauschen gefüllt.</p>
+
+<ol>
+<li><p>Höhenkarte: mH</p></li>
+
+<li><p>Temperaturkarte: mT</p></li>
+
+<li><p>Niederschlagskarte: mN</p></li>
+
+<li><p>Magiekarte: mM</p></li>
+
+<li><p>Populationsdichte: mP</p></li>
+</ol>
+
+<h2 id="terrain-features-post-biom">Terrain Features (Post Biom)</h2>
+
+<p>Bestimmte, extravagante Features, die sich vor allem auf die Höhenstufen der Map niederschlagen werden hier zufällig verteilt. Die Wahrscheinlichkeitsverteilungen der Terrain Features sind häufig an bestimmte Biome gekoppelt. Da diese bereits bestimmt wurden, kann hier eine Prüfung auf bestimmte Features stattfinden. Bestimmte Feature sind:</p>
+
+<ul>
+<li><p>Seen</p></li>
+
+<li><p>Canyons</p></li>
+
+<li><p>Vulkane</p></li>
+
+<li><p>Gebirge</p></li>
+</ul>
+
+<h2 id="gewässer-und-flüsse">Gewässer und Flüsse</h2>
+
+<p>Dazu werden zufällig Wasser-Seeds verteilt und ein Flood Fill bis zur Küstenlinie durchgeführt. Der Wasserspiegel wird so lange angehoben, bis der Land/Wasser Parameter erfüllt ist. Sollte dies aus einem Grund nicht möglich sein. Gehe zu 1.</p>
+
+<h2 id="temperaturkorrektur">Temperaturkorrektur</h2>
+
+<p>Temperaturgradient auf mT aufbringen. Versehe die Temperaturkarte mit einem Gradienten um am Aquator eine höhere Temperatur zu erhalten wie an den Polen (Nord, Süd).</p>
+
+<h2 id="biom-zuordnung">Biom Zuordnung</h2>
+
+<p>TBD</p>
+
+<h2 id="biom-optimierung">Biom Optimierung</h2>
+
+<p>Nachdem die Biome über die Zuweisungsregeln hart zugewiesen wurden, müssen mehrere Plausibilitätsfilter verwendet werden um eine saubere Erzeugung zu gewährleisten.</p>
+
+<p>TBD: Welche Filter müssen hier angewendet werden? Was kann denn falsch erzeugt werden?</p>
+
+<p>Erzeuge an den Biom Grenzen entsprechende Übergangsbiome.</p>
+
+<h2 id="tilemap-zuordnung">Tilemap Zuordnung</h2>
+
+<p>Jedes Biome besitzt ein gewisses Set an Tiles. Diese stammen aus einem oder mehreren Tilemaps (also eine Menge von GIDs). Zusätzlich existiert eine Reihe von weiteren Entities welche nach einer gewissen Wahrscheinlichkeit verteilt werden können (Bäume z.B.). Diese werden aber nicht immer einfach zufällig auf Koordianten platziert. Vielmehr kann es auch hier einen Top-Down Ansatz geben, der gewährleistet, dass eine ausreichend gute Verteilung der Features generiert wird.</p>
+
+<h2 id="biom-features">Biom Features</h2>
+
+<p>Erzeuge entsprechende Strukturen innerhalb der Biome (siehe Tilemap Erzeugung). dazu gehört das Anlegen von Entities für Bäume, Pflanzen, hohes Gras, Steine, Felsen etc. Für jedes dieser Features existiert pro Biom eine oder mehrere Alternativen. Es gibt weiterhin eine Wahrscheinlichkeitsfunktion, die das Auftreten dieser Features innerhalb des Bioms regelt. Nach der Erzeugung werden alle Biome durchlaufen, diese Features so verteilt, dass ihre Positionierung innerhalb der bereits verteilten Tiles legal ist (keine Positionierung auf nicht begehbaren Felder etc.). Die Wahrscheinlichkeit für diese besonderen Orte ist in den Biomen gesteigert, bzw sie sind teilweise einzigartig für diese Biome. Folgende besondere Eigenschaften gelten für die verschiedenen Biome:</p>
+
+<h3 id="eistundra">Eistundra</h3>
+
+<ul>
+<li><p>Alte Höhlensysteme</p></li>
+
+<li><p>Eistempel</p></li>
+
+<li><p>vermehrt Bodenschätze</p></li>
+</ul>
+
+<h3 id="wälder">Wälder</h3>
+
+<ul>
+<li><p>Alte Tempelanlagen</p></li>
+
+<li><p>Ruinen</p></li>
+
+<li><p>Alte, unbewohnte Dörfer</p></li>
+
+<li><p>Bewohnte Siedlungen</p></li>
+
+<li><p>Höhlen</p></li>
+
+<li><p>Grabstädten</p></li>
+</ul>
+
+<h2 id="cities">Cities</h2>
+
+<p>Cities usually form around natural resources like shores, rivers or rich farmland. The algorithm as described below will find suitable city position candidates and then distribute the cities in 2 to n clusters around the world map. This clustering will make sure there is enough unexplored land for the players left. It should also help with the idea of different civilization which could lead to ingame player conflicts. A possible distribution is shown in here. <em>TODO: Include figure</em></p>
+
+<p>The algorithm searches the world map and creates matrix with a mesh length of 1km.</p>
+
+<ul>
+<li>Rohstoffvorkommen (Farmland, Minerals, Fishing Grounds)</li>
+<li>Nähe zu einem Gewässer (Fluss oder Meer)</li>
+</ul>
+
+<p>Folgende Voraussetzungen müssen gegeben sein:</p>
+
+<ul>
+<li>Karte mit Biom-Zuordnung muss generiert worden sein.</li>
+</ul>
+
+<p>Aufbauen auf der Weltkarte wird eine Influence Map erstellt. Wasserwege geben einen abfallenden Wert vor. Die Auflösung der Influence Map kann geringer sein als die eigentliche Karte. Auflösungen zwischen 100m und 1km erscheinen praktikabel. Folgende Punkte werden auf der Influence Map vergeben und summiert:</p>
+
+<ul>
+<li>Ist das Biom praktisch um Lebensmittel anzubauen?</li>
+<li>Sind natürliche Ressourcen in diesem Biom vorhanden?</li>
+<li>Wasser Biom in der Nähe gibt Punkte.</li>
+</ul>
+
+<p>Von der Influence Map müssen nun die Punkte entfernt werden die eindeutig keine Besiedlung ermöglichen. Folgende Punkte müssen auf 0 reduziert werden:</p>
+
+<ul>
+<li>Liegen im Wasser/Lava</li>
+<li>Liegen auf Gebirge</li>
+<li>Liegen im Wald</li>
+<li>Liegen in Gebieten mit sehr hoher Magie</li>
+</ul>
+
+<p>Bei allen verbleibenden Punkten muss überprüft werden ob es sich um ein lokales Maximum handelt. Diese Punkte werden zusammen mit ihrer Gewichtung in eine sortierte Liste aufgenommen. Dabei kann ein wandernder Durchschnitt berechnet werden und Werte unterhalb eines gewissen Schwellwertes verworfen werden.</p>
+
+<p>Koordinaten die dann zu nahe beieinander liegen (&lt; 3-6km) werden aus der Liste entfernt.</p>
+
+<p>Anhand der Punkte auf der Liste werden die Siedlungen berechnet. Zu 70% wird eine Stadt aus der oberen Hälfte der Liste der Reihe nach entnommen. Zu 30% wird eine Siedlung zufällig aus einem Kandidaten der unteren Listenhälfte entnommen bis die Anzahl der gewünschten Siedlungen erreicht ist oder die Liste erschöpft ist. Sollte ein Listenteil erschöpft sein, so wird jeweils vom anderen Listenteil mit dem gleichen Muster vorgegangen.</p>
+
+<p>Erzeugung von Städten</p>
+
+<ol>
+<li>Bestimmung der Anzahl der Gebäude anhand der Populationsmenge.</li>
+<li>Verteilen der Gebäude um den Stadtkern nach einer Gaußkurvenverteilung.</li>
+<li>Erzeugung der Gebäude-Innenräume nach: <a href="https://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_division_method">https://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_division_method</a></li>
+</ol>
+
+<h2 id="bodenschätze-ressourcen">Bodenschätze &amp; Ressourcen</h2>
+
+<p>TBD. Zum Nutzen und Verwendung der einzelnen Bodenschätze, siehe Abschnitt <a href="#heading=h.qtftxg6zrzre">Ressourcen</a>.</p>
+
+<h2 id="roads">Roads</h2>
+
+<h2 id="weltzerstörung">Weltzerstörung</h2>
+
+<p>Die Welt soll durch das Herbeiführen von Rift Events strukturell geschwächt werden, bis sie mit einer weiteren Welt kollidiert. Die Spieler selbst bleiben bei solch einem Event relativ unbeschadet. Je nach Fraktion/Kult welcher die Spieler angehören wird es aber weitreichende Mali oder Boni geben. In der neu generierten Welt starten die Spieler wieder zunächst ohne Kult Zugehörigkeit.</p>
+</article>
+
+      
+<div class="book-footer justify-between">
+  
+  <div>
+    
+    <a href="https://github.com/tfelix/bestia-docs/commit/ad79b32f9a8f8e4bdaebcf1d4cf1790076508002" title='Last modified Sep 16, 2019 by Thomas Felix' target="_blank" rel="noopener">
+      <img src="/bestia-docs/svg/calendar.svg" alt="Changed" /> Sep 16, 2019
+    </a>
+  </div>
+  
+  
+  <div>
+    <a href="https://github.com/tfelix/bestia-docs/edit/master/content/docs/server/server-worldcreation.md" target="_blank" rel="noopener">
+      <img src="/bestia-docs/svg/edit.svg" alt="Edit" /> Edit this page
+    </a>
+  </div>
+  
+</div>
+
+
+      
+    </div>
+
+    
+  
+
+  <aside class="book-toc level-3 fixed">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#algorithmus">Algorithmus</a></li>
+<li><a href="#grundparameter">Grundparameter</a></li>
+<li><a href="#influencemaps">Influencemaps</a></li>
+<li><a href="#terrain-features-post-biom">Terrain Features (Post Biom)</a></li>
+<li><a href="#gewässer-und-flüsse">Gewässer und Flüsse</a></li>
+<li><a href="#temperaturkorrektur">Temperaturkorrektur</a></li>
+<li><a href="#biom-zuordnung">Biom Zuordnung</a></li>
+<li><a href="#biom-optimierung">Biom Optimierung</a></li>
+<li><a href="#tilemap-zuordnung">Tilemap Zuordnung</a></li>
+<li><a href="#biom-features">Biom Features</a>
+<ul>
+<li><a href="#eistundra">Eistundra</a></li>
+<li><a href="#wälder">Wälder</a></li>
+</ul></li>
+<li><a href="#cities">Cities</a></li>
+<li><a href="#bodenschätze-ressourcen">Bodenschätze &amp; Ressourcen</a></li>
+<li><a href="#roads">Roads</a></li>
+<li><a href="#weltzerstörung">Weltzerstörung</a></li>
+</ul></li>
+</ul>
+</nav>
+  </aside>
+
+
+
+  </main>
+
+  
+  
+</body>
+
+</html>

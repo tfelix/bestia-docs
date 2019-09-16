@@ -2,10 +2,9 @@
 <html lang="en">
 
 <head>
-	<meta name="generator" content="Hugo 0.58.2" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bestia - Developer Documentation | Bestia Game</title>
+<title>Quests | Bestia Game</title>
 
 
 <link rel="stylesheet" href="/bestia-docs/book.min.45f3004d3c562c29285b27831e8a758ba54606954e3732ff376275b2c2d98616.css" integrity="sha256-RfMATTxWLCkoWyeDHop1i6VGBpVONzL/N2J1ssLZhhY=">
@@ -18,7 +17,6 @@
 <link rel="icon" href="/bestia-docs/favicon.png" type="image/x-icon">
 
 
-<link rel="alternate" type="application/rss+xml" href="https://tfelix.github.io/bestia-docs/index.xml" title="Bestia Game" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -241,7 +239,7 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/bestia-docs/docs/mechanics/quests/" >
+  <a href="/bestia-docs/docs/mechanics/quests/"  class="active">
       Quests
   </a>
 
@@ -541,63 +539,96 @@ https://github.com/alex-shpak/hugo-book
   <label for="menu-control">
     <img src="/bestia-docs/svg/menu.svg" alt="Menu" />
   </label>
-  <strong>Bestia - Developer Documentation</strong>
+  <strong>Quests</strong>
 </header>
 
       
 <article class="markdown">
 
-<h1 id="bestia-developer-documentation">Bestia Developer Documentation</h1>
+<h1 id="quests">Quests</h1>
 
-<blockquote>
-<p>Massive. Hard. Innovative. Open World. Open Source.</p>
-</blockquote>
+<p>The game will be more or less an Open World game. But the declared goal will be to try out new ways of storytelling in
+order to present a credible world with developing history to the players. You have to say goodbye to the idea that every
+game can live through every part of the story/quest. This contradicts the persistent and inner logical structure of the
+game world. Quests must rather result dynamically from what happens within the game world.</p>
 
-<p><a class="github-button" href="https://github.com/tfelix/bestia-docs" data-icon="octicon-star" data-size="large"
-data-show-count="true" aria-label="Star tfelix/bestia-docs on GitHub">Star</a>
-<a class="github-button" href="https://github.com/tfelix/bestia-docs/subscription" data-icon="octicon-eye"
-data-size="large" data-show-count="true" aria-label="Watch tfelix/bestia-docs on GitHub">Watch</a></p>
 
-<p><strong>Congratulations!</strong> You just have found the Developer Documentation of the Bestia-Game. Here you find everything from
-gamedesign guidlines to engine architecture overview as well as the API documentation to access game resources.</p>
 
-<p>These infos should help you to get kickstarted and join the development. As Bestia is a community driven, open game each
-contribution is welcome. With the provided guidelines enthusiasts should very easily be able to create contributions
-from artworks to scripts.</p>
 
-<blockquote>
-<p><strong>The game currently transforms into a stand-alone client which is currently not available for testing.</strong></p>
-</blockquote>
 
-<h2 id="contributing">Contributing</h2>
+<div class="book-tabs">
 
-<p>Contributions to both the game design and the game itself (the client and the server) are very welcomed!</p>
+  <input type="radio" class="hidden" name="tabs-Example Quests" id="tabs-Example Quests-0" checked="checked" />
+  <label for="tabs-Example Quests-0">
+    Help the Peasants!
+  </label>
+  <div class="book-tabs-content markdown-inner">
+    A rich harvest is imminent, but the farmer Wilhelm cannot bring in the whole harvest due to his short time before it
+spoils on the fields. He asks passing players if they could help him. This is rewarded with an EXP bonus, gold and
+if necessary an item.
+  </div>
 
-<p>You may find a little <code>Edit this page</code> link at the bottom of each page. If you want to change some game design
-aspects feel free to give it a try!</p>
+  <input type="radio" class="hidden" name="tabs-Example Quests" id="tabs-Example Quests-1"  />
+  <label for="tabs-Example Quests-1">
+    Defend the city!
+  </label>
+  <div class="book-tabs-content markdown-inner">
+    Due to high rift activity and mana flooding, many high-level Bestias make the surroundings of a large city unsafe.
+Players are encouraged to fight the Bestias, rise in the city&rsquo;s favor, and gain access to better items, experience
+and gold.
+  </div>
 
-<p>Inside this game design document you possibly will find certain <strong>Contributing</strong> sections which will give you some
-guidlines to follow in order to help to get you changes into the game quickly.</p>
+  <input type="radio" class="hidden" name="tabs-Example Quests" id="tabs-Example Quests-2"  />
+  <label for="tabs-Example Quests-2">
+    Help me!
+  </label>
+  <div class="book-tabs-content markdown-inner">
+    A NPC has gotten lost in a dangerous area and is now hiding. If a player finds the NPC he can help him to find his
+way back and will be rewarded with EXP and gold.
+  </div>
 
-<p><strong><a href="about-manifest.md">Read the Bestia Manifest first</a></strong> and align your contributions and changes under these central
-game guidelines.</p>
+</div>
 
-<h2 id="project-repositories">Project Repositories</h2>
 
-<p>Otherwise feel free to check out the three project repositories on Github (and maybe give them a Star)</p>
+<h2 id="quests-generation">Quests Generation</h2>
+
+<p>Quests in Bestia are generated on via two mechanics:</p>
+
+<ol>
+<li>Automatic generated quests</li>
+<li>Player generated quests, these challanges must be given to an NPC who will then announce these quests so other
+players can pick them up.</li>
+</ol>
+
+<h3 id="automatic-quests">Automatic Quests</h3>
+
+<p>This documentation might help to build an automatic quest narrative system.</p>
 
 <ul>
-<li><a href="https://github.com/tfelix/bestia-docs">Bestia Developer Documentation</a> <i class="fab fa-github"></i></li>
-<li><a href="https://github.com/tfelix/bestia-client">Bestia Browser Client</a> <i class="fab fa-github"></i></li>
-<li><a href="https://github.com/tfelix/bestia-behemoth">Bestia Behemoth Server</a> <i class="fab fa-github"></i></li>
+<li><a href="http://rapturerebornmmorpg.wikia.com/wiki/Quest_Generation_system">http://rapturerebornmmorpg.wikia.com/wiki/Quest_Generation_system</a></li>
+<li><a href="https://www.gamedev.net/topic/648285-latest-trends-in-procedural-quest-generation/">https://www.gamedev.net/topic/648285-latest-trends-in-procedural-quest-generation/</a></li>
+<li><a href="http://escholarship.org/uc/item/004129jn?query=The%20Grail%20Framework">http://escholarship.org/uc/item/004129jn?query=The%20Grail%20Framework</a>:</li>
+<li><a href="http://larc.unt.edu/ian/pubs/pcg2011.pdf">http://larc.unt.edu/ian/pubs/pcg2011.pdf</a></li>
+<li><a href="http://www.aaai.org/Papers/AIIDE/2006/AIIDE06-036.pdf">http://www.aaai.org/Papers/AIIDE/2006/AIIDE06-036.pdf</a></li>
+<li><a href="https://pdfs.semanticscholar.org/e38f/523ba64f014def436ebb03166eb4e573cc3a.pdf">https://pdfs.semanticscholar.org/e38f/523ba64f014def436ebb03166eb4e573cc3a.pdf</a></li>
+<li><a href="https://webdocs.cs.ualberta.ca/~script/publications/2013aiide.pdf">https://webdocs.cs.ualberta.ca/~script/publications/2013aiide.pdf</a></li>
+<li><a href="http://www.academia.edu/4558587/Dynamic_Quest_Plot_Generation_using_Petri_Net_Planning">http://www.academia.edu/4558587/Dynamic_Quest_Plot_Generation_using_Petri_Net_Planning</a></li>
+<li><a href="https://larc.unt.edu/techreports/LARC-2010-02.pdf">https://larc.unt.edu/techreports/LARC-2010-02.pdf</a></li>
+<li><a href="http://gram.cs.mcgill.ca/papers/kybartas-14-analysis.pdf">http://gram.cs.mcgill.ca/papers/kybartas-14-analysis.pdf</a></li>
+<li><a href="https://pdfs.semanticscholar.org/de12/486ae621c3f074691069da4e4a5097c7a48f.pdf">https://pdfs.semanticscholar.org/de12/486ae621c3f074691069da4e4a5097c7a48f.pdf</a></li>
 </ul>
 
-<blockquote>
-<p>You can use the <code>Edit</code> button on the top right of every page to directly edit this document and create a Pull Request
-on Github.</p>
-</blockquote>
+<h3 id="player-quests">Player Quests</h3>
 
-<script async defer src="https://buttons.github.io/buttons.js"></script>
+<p>Players can define various tasks, such as collecting resources or defeating certain enemies, or transporting certain
+goods as a task and offer a reward. Also the deactivation of Bestias as guardians would be a conceivable task. This
+reward must then be given to the appropriate NPCs, who then hold it in trust (or simply negotiate among the players).</p>
+
+<p>The awarding of quests must be worthwhile for both parties. The player is credited with a good amount of experience both
+for the quest and for the successful completion of the quest by another player. He can redistribute this experience to
+Bestias in his possession under certain circumstances (items needed). When a quest is accepted, a contract is concluded
+between the player and the NPC. If all contract conditions are met, the reward will be handed out. Contracts may be
+limited in time.</p>
 </article>
 
       
@@ -605,14 +636,14 @@ on Github.</p>
   
   <div>
     
-    <a href="https://github.com/tfelix/bestia-docs/commit/fe881e405f8c591b102b43b83cd72f39d3f7f01f" title='Last modified Sep 11, 2019 by Thomas Felix' target="_blank" rel="noopener">
-      <img src="/bestia-docs/svg/calendar.svg" alt="Changed" /> Sep 11, 2019
+    <a href="https://github.com/tfelix/bestia-docs/commit/ad79b32f9a8f8e4bdaebcf1d4cf1790076508002" title='Last modified Sep 16, 2019 by Thomas Felix' target="_blank" rel="noopener">
+      <img src="/bestia-docs/svg/calendar.svg" alt="Changed" /> Sep 16, 2019
     </a>
   </div>
   
   
   <div>
-    <a href="https://github.com/tfelix/bestia-docs/edit/master/content/_index.md" target="_blank" rel="noopener">
+    <a href="https://github.com/tfelix/bestia-docs/edit/master/content/docs/mechanics/quests.md" target="_blank" rel="noopener">
       <img src="/bestia-docs/svg/edit.svg" alt="Edit" /> Edit this page
     </a>
   </div>
@@ -629,10 +660,13 @@ on Github.</p>
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#bestia-developer-documentation">Bestia Developer Documentation</a>
+<li><a href="#quests">Quests</a>
 <ul>
-<li><a href="#contributing">Contributing</a></li>
-<li><a href="#project-repositories">Project Repositories</a></li>
+<li><a href="#quests-generation">Quests Generation</a>
+<ul>
+<li><a href="#automatic-quests">Automatic Quests</a></li>
+<li><a href="#player-quests">Player Quests</a></li>
+</ul></li>
 </ul></li>
 </ul>
 </nav>

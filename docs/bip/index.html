@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Improvement Proposals | Bestia Game</title>
+
+
+<link rel="stylesheet" href="/bestia-docs/book.min.45f3004d3c562c29285b27831e8a758ba54606954e3732ff376275b2c2d98616.css" integrity="sha256-RfMATTxWLCkoWyeDHop1i6VGBpVONzL/N2J1ssLZhhY=">
+
+
+<script defer src="/bestia-docs/search.min.205975cd516425e173698bfbd84b57974b9bf404056c88c0620c4e5b4f012334.js" integrity="sha256-IFl1zVFkJeFzaYv72EtXl0ub9AQFbIjAYgxOW08BIzQ="></script>
+
+
+
+<link rel="icon" href="/bestia-docs/favicon.png" type="image/x-icon">
+
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/github-markdown-css/2.2.1/github-markdown.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+</head>
+
+<body>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="flex container">
+
+    <aside class="book-menu fixed">
+      <nav>
+<h2 class="book-brand">
+  <a href="https://tfelix.github.io/bestia-docs"><img src="/bestia-docs/bestia-logo.svg" alt="Logo" /></a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" placeholder="Search" id="book-search-input" maxlength="64" readonly />
+  <div class="book-search-spinner spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+    
+
+  
+  
+
+
+
+
+
+ 
+  
+    
+
+  <ul>
+    
+      
+        
+
+  <li >
+    
+      
+
+  <a href="/bestia-docs/docs/mechanics/" >
+      Game Design
+  </a>
+
+
+    
+
+    
+
+  <ul>
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/core-guidelines/" >
+      Core Concepts
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/archivements/" >
+      Archivements
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/spells/" >
+      Attacks
+  </a>
+
+</li>
+      
+    
+      
+        
+
+  <li >
+    
+      <span>Bestia</span>
+    
+
+    
+
+  <ul>
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/bestia/master/" >
+      Bestia Master
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/bestia/breeding/" >
+      Bestia Breeding
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/bestia/statusvalues/" >
+      Status Values
+  </a>
+
+</li>
+      
+    
+  </ul>
+
+
+  </li>
+
+
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/time/" >
+      Bestia Time
+  </a>
+
+</li>
+      
+    
+      
+        
+
+  <li >
+    
+      
+
+  <a href="/bestia-docs/docs/mechanics/crafting/" >
+      Crafting
+  </a>
+
+
+    
+
+    
+
+  <ul>
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/crafting/alchemy/" >
+      Alchemy
+  </a>
+
+</li>
+      
+    
+  </ul>
+
+
+  </li>
+
+
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/honor/" >
+      Honor
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/inventory/" >
+      Inventory
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/items/" >
+      Items
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/quests/" >
+      Quests
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/resources/" >
+      Resources
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/skills/" >
+      Skills
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/story/" >
+      Story
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/cults/" >
+      The Cults
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/trading/" >
+      Trading
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/weather/" >
+      Weather
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/exploration/" >
+      World Exploration
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/resources/artwork/" >
+      Artwork and Design
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/resources/literature/" >
+      Literature
+  </a>
+
+</li>
+      
+    
+  </ul>
+
+
+  </li>
+
+
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/api/" >
+      API
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/client/client-architecture/" >
+      Client
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/bip/"  class="active">
+      Improvement Proposals
+  </a>
+
+</li>
+      
+    
+      
+        
+
+  <li >
+    
+      <span>Server</span>
+    
+
+    
+
+  <ul>
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/server/server-datatypes/" >
+      Server Datatypes
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/server/ai/" >
+      Artificial Intelligence
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/server/server-battlesystem/" >
+      Battlesystem
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/server/server-environment/" >
+      Environment
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/server/server-lighting/" >
+      Lighting
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/server/server-routing/" >
+      Routing
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/server/server-architecture/" >
+      Server Architecture
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/server/server-scripts/" >
+      Server Scripts
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/server/server-datastreaming/" >
+      Server Streaming
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/server/server-narrativegeneration/" >
+      Stories and Quests Generation
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/server/server-worldcreation/" >
+      World Generation
+  </a>
+
+</li>
+      
+    
+  </ul>
+
+
+  </li>
+
+
+      
+    
+  </ul>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+<script>
+(function() {
+  var menu = document.querySelector("aside.book-menu nav");
+  addEventListener("beforeunload", function(event) {
+    localStorage.setItem("menu.scrollTop", menu.scrollTop);
+  });
+  menu.scrollTop = localStorage.getItem("menu.scrollTop");
+})();
+</script>
+
+    </aside>
+
+    <div class="book-page">
+      <header class="flex align-center justify-between book-header">
+  <label for="menu-control">
+    <img src="/bestia-docs/svg/menu.svg" alt="Menu" />
+  </label>
+  <strong>Improvement Proposals</strong>
+</header>
+
+      
+<article class="markdown">
+
+<h1 id="improvement-proposals">Improvement Proposals</h1>
+
+<p>BIPs are used to describe some technical details about subsystems which are in use to improve the Bestia game. If they
+are in a draft state they are not included into this document but as soon as they are worked out they are included and
+are awaiting implementation.</p>
+
+<p>Implementation of a BIP is done in a own branch named after the pattern: feat-bip-N where N is the number of the BIP.</p>
+
+<h2 id="bip-1-clientvars">BIP 1 - ClientVars</h2>
+
+<blockquote>
+<p>Implemented</p>
+</blockquote>
+
+<p>The user client should be able to save variable data to the server in order to persist certain client settings. This
+data should be retrieved via a KEY-VALUE association. The data is piped through the ClientVarService which checks and
+loosely validates the data. This is important to prevent DDOS attacks from the client by spamming the server with
+unusually large data. The service should be used if the server does not need to have a clue about the incoming data
+and acts only as a dumb storage device.</p>
+
+<p>In the first implementation this ClientVars should be used to save the client shortcuts. But it can also be used to
+declare some kind of public vars to be shared between multiple clients for example, like configuration. Please note
+that this kind of storage is for data which must be persisted between client logouts or between different machines of
+the same user. The system is NOT intended to be used as a real time messaging solution between the clients.</p>
+
+<h3 id="technical-details">Technical Details</h3>
+
+<p>The client sends a <code>Signal.CLIENT_VAR_REQUEST</code> with a key and a callback (and error callback) function. The
+<code>ClientVarManager</code> will look if there is already a request running for this key and if so it will queue up the callback
+function towards this key and invoke it along with the other function upon server response.</p>
+
+<p>After a configurable delay and if no server response is given or the server signals the missing of this key the callback
+error function is called otherwise the data is transformed to a JSON object and handed to the callback function.</p>
+
+<h3 id="message-format">Message format</h3>
+
+<h4 id="request">Request</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#960050;background-color:#1e0010">key:</span> <span style="color:#960050;background-color:#1e0010">STRING</span> <span style="color:#960050;background-color:#1e0010">//</span> <span style="color:#960050;background-color:#1e0010">The</span> <span style="color:#960050;background-color:#1e0010">requested</span> <span style="color:#960050;background-color:#1e0010">key.</span>
+}</code></pre></div>
+<h4 id="reponse">Reponse</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#960050;background-color:#1e0010">key:</span> <span style="color:#960050;background-color:#1e0010">STRING</span> <span style="color:#960050;background-color:#1e0010">//</span> <span style="color:#960050;background-color:#1e0010">Same</span> <span style="color:#960050;background-color:#1e0010">key</span> <span style="color:#960050;background-color:#1e0010">from</span> <span style="color:#960050;background-color:#1e0010">the</span> <span style="color:#960050;background-color:#1e0010">request.</span>
+  <span style="color:#960050;background-color:#1e0010">data:</span> <span style="color:#960050;background-color:#1e0010">STRING</span> <span style="color:#960050;background-color:#1e0010">//</span> <span style="color:#960050;background-color:#1e0010">Serialized</span> <span style="color:#960050;background-color:#1e0010">JSON</span>
+}</code></pre></div>
+<h2 id="bip-2-latency-estimation">BIP 2 - Latency estimation</h2>
+
+<blockquote>
+<p>Partly implemented</p>
+</blockquote>
+
+<p>Um dem Spieler ein möglichst synchrones Spielerlebnis zu gewährleisten ist es wichtig die Latenz der Spieler untereinander zu kennen um so zum Beispiel Laufwege zu realisieren die zum gleichen Zeitpunkt enden. Dafür ist es wichtig die aktuelle Latenz des Spielers zum Server zu kennen. Zu diesem Zweck sendet der Server in regelmäßigen Zeitabständen einen PingRequest, mit einer ID und einem Timestamp, an den Client. Dieser antwortet darauf mit einem PingAnswer und dieser ID. Der Server kann dann zusammen mit der Ankunftszeit dieses Paketes die Latenz zu diesem Client abschätzen.</p>
+
+<p>Diese Pakete werden alle 10 Sekunden gesendet und es wird ein Sliding Average der Ping Werte über 5 Messungen gebildet. Dabei wird der Median gebildet. Das Ergebnis nutzt man um alle Events zu korrigieren die eine gewisse Dauer in Anspruch nehmen. Dies sind vor allem Laufevents und Animationen über eine bestimmte Dauer (Zauber).</p>
+
+<p>Zur Korrektur wird die ursprüngliche Animationsdauer um die Latenzzeit subtrahiert. All messages denoting a duration should also contain the latency estimation value.</p>
+
+<p>Siehe: <a href="http://www.dynetisgames.com/2017/03/19/latency-estimation-phaser-quest/">http://www.dynetisgames.com/2017/03/19/latency-estimation-phaser-quest/</a></p>
+
+<h2 id="bip-3-debug-mode">BIP 3 - Debug mode</h2>
+
+<blockquote>
+<p>Not implemented</p>
+</blockquote>
+
+<p>The PhaserJS Client should have a debug mode in which the programmer can alter some enviromental data independently of the server state.
+In order to ease up the development visual helpers should be used to visualize some effects like the collision map or other data like the brightness or weather effects.
+The mode should be controlled via chat commands. Instead of going to the server these commands should be routed towards the global config object inside the engine. Clients in production should have this feature removed.</p>
+
+<h3 id="technical-details-1">Technical Details</h3>
+
+<p>To implement this features two components are needed one is the chat command module which will register itself and send the commands to the engine.</p>
+
+<p>The second one is the engine module which will alter the engine (adding sprites, filter etc.) to display the otherwise invisible information. Most likely there will be an engine module for each debug command. They are all managed by a DebugCommandManager who can be easily be removed during a production build and orchestrates the calls for the different phaser states onConstruct, onUpdate and onRender.</p>
+
+<h3 id="commands">Commands</h3>
+
+<p>Is the command called without parameter the current state of the engine is requested and displayed. The commands shown in this document are not final. If new debug commands are added later the list here should be extended.</p>
+
+<h4 id="debug-1-0">/debug 1|0</h4>
+
+<p>Schaltet das komplette Debugging aus oder ein. Dabei werden einige standard Befehle umgesetzt wie zum Beispiel die Anzeige der FPS aktiviert. /debug engine 0 deaktiviert alle Debugging Protokolle der Engine und bringt sie wieder in einen normalen Ausgangszustand zurück.</p>
+
+<h4 id="debug-fps-1-0">/debug fps 1|0</h4>
+
+<p>Enables or disables FPS counter.</p>
+
+<h4 id="debug-daytime-0-23">/debug daytime [0-23]</h4>
+
+<p>Switches the daytime of the engine to the given hour.</p>
+
+<h4 id="debug-weather-sunny-cloudy-foggy-rain-thunderstorm">/debug weather [sunny, cloudy, foggy, rain, thunderstorm]</h4>
+
+<p>Changes the weather system into one of the presets.</p>
+
+<h4 id="debug-environment-light-1-0">/debug environment light 1|0</h4>
+
+<p>Switches environmental lighting on and off.</p>
+
+<h2 id="bip-4-dynamic-client-ui">BIP 4 - Dynamic Client UI</h2>
+
+<blockquote>
+<p>Not implemented</p>
+</blockquote>
+
+<p>This module enables scripts to completely control the user interface on the clients. This can be used to easily enable new scripts who needs a good control over user interaction. The module needs three important functionalities:</p>
+
+<ol>
+<li>It must be able to push GUI elements to the client engine which are then displayed.</li>
+<li>It must have the ability to later control these elements with data updates.</li>
+<li>It must provide a back channel so the user can click buttons or enter text input.</li>
+<li>Optionally: It should be able to translate the UI into all the supported languages by the Bestia game.</li>
+</ol>
+
+<h3 id="technical-details-2">Technical Details</h3>
+
+<p>The UI components should be implemented as HTML snippets similar to the GUI elements. The engine can load and display them on demand by specifying an ID. KnockoutJS can be used to bind the data model to the UI.</p>
+
+<p>By creating such a user UI a script should generate a UUID since we must uniquely identify the UI element the user is interacting with.</p>
+
+<p>Before the data is sent to the user a scriptRemoteUId is generated. This is basically a UID which maps to a script component id and entity id. This is important so the script IDs are hidden from the client and the data send back from him has no way to guess a script id and send spoofed data towards it.</p>
+
+<h4 id="data-updates">Data Updates</h4>
+
+<p>In order for the script to update the data to the user it just sends a gui request message again with a updates data section (as seen in the examples). The client will only update the data model if the GUI with the associated uuid is already active.</p>
+
+<h4 id="user-control">User Control</h4>
+
+<p>If the user interacts with the model, changes the data the GUI should either send the data on every change or via some kind of user triggered event (e.g. like closing the UI, clicking a &ldquo;send&rdquo; button). How to trigger the data transfer is up to the UI code. The whole data model is then transferred back to the server. Since this data comes from the client the script is not directly fed with the data. The script remote uid is translated back towards a component and script id and then the JSON data should be sanitized and send back to the script into a callback. See: <a href="https://stackoverflow.com/questions/9676423/how-to-pass-json-object-from-java-to-javascript">https://stackoverflow.com/questions/9676423/how-to-pass-json-object-from-java-to-javascript</a></p>
+
+<p>The script callback is determined by the script if the data is sent to the user and must be saved on the server side.</p>
+
+<p>There should also be an easy API call to clean up all resources on the server the script-client communication did consume. If there is no interaction with the client for some time (maybe some minutes) the server resources should be freed automatically.</p>
+
+<h4 id="translation">Translation</h4>
+
+<p>For the alpha status of the game no translation is performed. The implementation is done in english. Translation facilities have to discussed for a later time.</p>
+
+<h3 id="dataformat">Dataformat</h3>
+
+<h3 id="gui-request-message">GUI Request Message</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+<span style="color:#f92672">&#34;uuid&#34;</span>: <span style="color:#960050;background-color:#1e0010">“XXXXXXXX”</span>, <span style="color:#960050;background-color:#1e0010">//</span> <span style="color:#960050;background-color:#1e0010">String</span>
+<span style="color:#f92672">&#34;scriptRemoteUid&#34;</span>: <span style="color:#960050;background-color:#1e0010">“XXXXXXX”</span>, <span style="color:#960050;background-color:#1e0010">//</span> <span style="color:#960050;background-color:#1e0010">String,</span> <span style="color:#960050;background-color:#1e0010">ID</span> <span style="color:#960050;background-color:#1e0010">of</span> <span style="color:#960050;background-color:#1e0010">the</span> <span style="color:#960050;background-color:#1e0010">script</span> <span style="color:#960050;background-color:#1e0010">instance</span> <span style="color:#960050;background-color:#1e0010">responsible.</span>
+<span style="color:#f92672">&#34;guiElement&#34;</span>: <span style="color:#960050;background-color:#1e0010">“myGUI”</span>, <span style="color:#960050;background-color:#1e0010">//</span> <span style="color:#960050;background-color:#1e0010">String,</span> <span style="color:#960050;background-color:#1e0010">ID</span> <span style="color:#960050;background-color:#1e0010">which</span> <span style="color:#960050;background-color:#1e0010">GUI</span> <span style="color:#960050;background-color:#1e0010">element</span> <span style="color:#960050;background-color:#1e0010">to</span> <span style="color:#960050;background-color:#1e0010">load.</span>
+<span style="color:#f92672">&#34;data&#34;</span>: {<span style="color:#960050;background-color:#1e0010">...</span>} <span style="color:#960050;background-color:#1e0010">//</span> <span style="color:#960050;background-color:#1e0010">Arbitrary</span> <span style="color:#960050;background-color:#1e0010">data</span> <span style="color:#960050;background-color:#1e0010">depending</span> <span style="color:#960050;background-color:#1e0010">on</span> <span style="color:#960050;background-color:#1e0010">the</span> <span style="color:#960050;background-color:#1e0010">script.</span>
+}</code></pre></div></article>
+
+      
+<div class="book-footer justify-between">
+  
+  <div>
+    
+    <a href="https://github.com/tfelix/bestia-docs/commit/ad79b32f9a8f8e4bdaebcf1d4cf1790076508002" title='Last modified Sep 16, 2019 by Thomas Felix' target="_blank" rel="noopener">
+      <img src="/bestia-docs/svg/calendar.svg" alt="Changed" /> Sep 16, 2019
+    </a>
+  </div>
+  
+  
+  <div>
+    <a href="https://github.com/tfelix/bestia-docs/edit/master/content/docs/bip/index.md" target="_blank" rel="noopener">
+      <img src="/bestia-docs/svg/edit.svg" alt="Edit" /> Edit this page
+    </a>
+  </div>
+  
+</div>
+
+
+      
+    </div>
+
+    
+  
+
+  <aside class="book-toc level-3 fixed">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#improvement-proposals">Improvement Proposals</a>
+<ul>
+<li><a href="#bip-1-clientvars">BIP 1 - ClientVars</a>
+<ul>
+<li><a href="#technical-details">Technical Details</a></li>
+<li><a href="#message-format">Message format</a>
+<ul>
+<li><a href="#request">Request</a></li>
+<li><a href="#reponse">Reponse</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#bip-2-latency-estimation">BIP 2 - Latency estimation</a></li>
+<li><a href="#bip-3-debug-mode">BIP 3 - Debug mode</a>
+<ul>
+<li><a href="#technical-details-1">Technical Details</a></li>
+<li><a href="#commands">Commands</a>
+<ul>
+<li><a href="#debug-1-0">/debug 1|0</a></li>
+<li><a href="#debug-fps-1-0">/debug fps 1|0</a></li>
+<li><a href="#debug-daytime-0-23">/debug daytime [0-23]</a></li>
+<li><a href="#debug-weather-sunny-cloudy-foggy-rain-thunderstorm">/debug weather [sunny, cloudy, foggy, rain, thunderstorm]</a></li>
+<li><a href="#debug-environment-light-1-0">/debug environment light 1|0</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#bip-4-dynamic-client-ui">BIP 4 - Dynamic Client UI</a>
+<ul>
+<li><a href="#technical-details-2">Technical Details</a>
+<ul>
+<li><a href="#data-updates">Data Updates</a></li>
+<li><a href="#user-control">User Control</a></li>
+<li><a href="#translation">Translation</a></li>
+</ul></li>
+<li><a href="#dataformat">Dataformat</a></li>
+<li><a href="#gui-request-message">GUI Request Message</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </aside>
+
+
+
+  </main>
+
+  
+  
+</body>
+
+</html>

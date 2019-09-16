@@ -2,10 +2,9 @@
 <html lang="en">
 
 <head>
-	<meta name="generator" content="Hugo 0.58.2" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bestia - Developer Documentation | Bestia Game</title>
+<title>Resources | Bestia Game</title>
 
 
 <link rel="stylesheet" href="/bestia-docs/book.min.45f3004d3c562c29285b27831e8a758ba54606954e3732ff376275b2c2d98616.css" integrity="sha256-RfMATTxWLCkoWyeDHop1i6VGBpVONzL/N2J1ssLZhhY=">
@@ -18,7 +17,6 @@
 <link rel="icon" href="/bestia-docs/favicon.png" type="image/x-icon">
 
 
-<link rel="alternate" type="application/rss+xml" href="https://tfelix.github.io/bestia-docs/index.xml" title="Bestia Game" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -251,7 +249,7 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/bestia-docs/docs/mechanics/resources/" >
+  <a href="/bestia-docs/docs/mechanics/resources/"  class="active">
       Resources
   </a>
 
@@ -541,63 +539,164 @@ https://github.com/alex-shpak/hugo-book
   <label for="menu-control">
     <img src="/bestia-docs/svg/menu.svg" alt="Menu" />
   </label>
-  <strong>Bestia - Developer Documentation</strong>
+  <strong>Resources</strong>
 </header>
 
       
 <article class="markdown">
 
-<h1 id="bestia-developer-documentation">Bestia Developer Documentation</h1>
+<h1 id="resources">Resources</h1>
 
-<blockquote>
-<p>Massive. Hard. Innovative. Open World. Open Source.</p>
-</blockquote>
-
-<p><a class="github-button" href="https://github.com/tfelix/bestia-docs" data-icon="octicon-star" data-size="large"
-data-show-count="true" aria-label="Star tfelix/bestia-docs on GitHub">Star</a>
-<a class="github-button" href="https://github.com/tfelix/bestia-docs/subscription" data-icon="octicon-eye"
-data-size="large" data-show-count="true" aria-label="Watch tfelix/bestia-docs on GitHub">Watch</a></p>
-
-<p><strong>Congratulations!</strong> You just have found the Developer Documentation of the Bestia-Game. Here you find everything from
-gamedesign guidlines to engine architecture overview as well as the API documentation to access game resources.</p>
-
-<p>These infos should help you to get kickstarted and join the development. As Bestia is a community driven, open game each
-contribution is welcome. With the provided guidelines enthusiasts should very easily be able to create contributions
-from artworks to scripts.</p>
-
-<blockquote>
-<p><strong>The game currently transforms into a stand-alone client which is currently not available for testing.</strong></p>
-</blockquote>
-
-<h2 id="contributing">Contributing</h2>
-
-<p>Contributions to both the game design and the game itself (the client and the server) are very welcomed!</p>
-
-<p>You may find a little <code>Edit this page</code> link at the bottom of each page. If you want to change some game design
-aspects feel free to give it a try!</p>
-
-<p>Inside this game design document you possibly will find certain <strong>Contributing</strong> sections which will give you some
-guidlines to follow in order to help to get you changes into the game quickly.</p>
-
-<p><strong><a href="about-manifest.md">Read the Bestia Manifest first</a></strong> and align your contributions and changes under these central
-game guidelines.</p>
-
-<h2 id="project-repositories">Project Repositories</h2>
-
-<p>Otherwise feel free to check out the three project repositories on Github (and maybe give them a Star)</p>
+<p>Resources are raw materials used to sell to other players. They can be used to craft items or construct buildings.
+Resources can be obtained by the following means:</p>
 
 <ul>
-<li><a href="https://github.com/tfelix/bestia-docs">Bestia Developer Documentation</a> <i class="fab fa-github"></i></li>
-<li><a href="https://github.com/tfelix/bestia-client">Bestia Browser Client</a> <i class="fab fa-github"></i></li>
-<li><a href="https://github.com/tfelix/bestia-behemoth">Bestia Behemoth Server</a> <i class="fab fa-github"></i></li>
+<li>Killing enemies and loot them</li>
+<li>Gathering of natural resources in the game world</li>
+<li>Using special extracting buildings or devices</li>
+<li>Recycling of existing items</li>
 </ul>
 
 <blockquote>
-<p>You can use the <code>Edit</code> button on the top right of every page to directly edit this document and create a Pull Request
-on Github.</p>
+<p>The item loot from monster should be logically correct: a dead wolve would very likly not drop iron ore or golden coins.</p>
 </blockquote>
 
-<script async defer src="https://buttons.github.io/buttons.js"></script>
+<p>Dropped items in the world are semi-permanent. The player have a strong incentive to gather dropped items to participate
+in the market.</p>
+
+<blockquote>
+<p>Dropped items usually persist for up to 4 days (96 h real time) before they are deleted by the server.</p>
+</blockquote>
+
+<h2 id="mana">Mana</h2>
+
+<p>Mana pervades the world. The concentration of mana flows is redefined in each incarnation of Bestias plays. Mana
+concentration is used, among other things, to determine how quickly the Bestia regenerate mana in a particular area.
+Mana is a two-edged-sword: As resource its quite valuable but concentrating it in a small area can lead to magic build up
+and lead to magic-storms or even rift events which will attract strong Bestias. In areas with high concentration
+magical artifacts can be built, powerful rituals can be held and mana can be &ldquo;harvested&rdquo; to transport it for research
+purposes.</p>
+
+<h2 id="resource-types">Resource Types</h2>
+
+<p>The following base types of resources exist in the game.</p>
+
+<table>
+<thead>
+<tr>
+<th>Typ</th>
+<th>Occurrence</th>
+<th>Usage</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Ores, Minerals, Crystals</td>
+<td>Mountains, Caves</td>
+<td>Raffinery, Alchemy, Magic, Blacksmiths</td>
+</tr>
+
+<tr>
+<td>Mana</td>
+<td>World</td>
+<td>Magical Uses</td>
+</tr>
+
+<tr>
+<td>Herbs</td>
+<td>World, especially Forrests</td>
+<td>Magic Uses &amp; Alchemy</td>
+</tr>
+
+<tr>
+<td>Wood</td>
+<td>Forrests</td>
+<td>Material</td>
+</tr>
+
+<tr>
+<td>Stone</td>
+<td>Mountains</td>
+<td>Material</td>
+</tr>
+
+<tr>
+<td>Salts</td>
+<td>Mountains, Sea</td>
+<td>Material</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="item-recycling">Item Recycling</h2>
+
+<p>For each item is a list of base resources which the item is roughly based upon (this list is also used when forging or
+creating the item). When an attempt to recycle the item there is a chance that the item is destroyed and the resources are lost.</p>
+
+<p>The base chance for item recylcing is:</p>
+
+<table>
+<thead>
+<tr>
+<th>Item Lv.</th>
+<th>Base Resource Reclaim</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1 - 20</td>
+<td>65%</td>
+</tr>
+
+<tr>
+<td>21 - 60</td>
+<td>45%</td>
+</tr>
+
+<tr>
+<td>&gt; 61</td>
+<td>25%</td>
+</tr>
+</tbody>
+</table>
+
+<blockquote>
+<p>The chance can be altered by players INT (slightly) and DEX and also by the apropriate skill.</p>
+</blockquote>
+
+<p>If successfull performed a recycling attempt the amount of captured resources is determined:</p>
+
+<table>
+<thead>
+<tr>
+<th>Item Lv.</th>
+<th>Base Resource Reclaim</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1 - 20</td>
+<td>60%</td>
+</tr>
+
+<tr>
+<td>21 - 60</td>
+<td>40%</td>
+</tr>
+
+<tr>
+<td>&gt; 61</td>
+<td>20%</td>
+</tr>
+</tbody>
+</table>
+
+<blockquote>
+<p>This is the base chance which is altered by the <a href="/mechanics/skills/#scavenger">Scavenger</a> skill as well as INT (slightly) and DEX.</p>
+</blockquote>
 </article>
 
       
@@ -605,14 +704,14 @@ on Github.</p>
   
   <div>
     
-    <a href="https://github.com/tfelix/bestia-docs/commit/fe881e405f8c591b102b43b83cd72f39d3f7f01f" title='Last modified Sep 11, 2019 by Thomas Felix' target="_blank" rel="noopener">
-      <img src="/bestia-docs/svg/calendar.svg" alt="Changed" /> Sep 11, 2019
+    <a href="https://github.com/tfelix/bestia-docs/commit/ad79b32f9a8f8e4bdaebcf1d4cf1790076508002" title='Last modified Sep 16, 2019 by Thomas Felix' target="_blank" rel="noopener">
+      <img src="/bestia-docs/svg/calendar.svg" alt="Changed" /> Sep 16, 2019
     </a>
   </div>
   
   
   <div>
-    <a href="https://github.com/tfelix/bestia-docs/edit/master/content/_index.md" target="_blank" rel="noopener">
+    <a href="https://github.com/tfelix/bestia-docs/edit/master/content/docs/mechanics/resources.md" target="_blank" rel="noopener">
       <img src="/bestia-docs/svg/edit.svg" alt="Edit" /> Edit this page
     </a>
   </div>
@@ -629,10 +728,11 @@ on Github.</p>
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#bestia-developer-documentation">Bestia Developer Documentation</a>
+<li><a href="#resources">Resources</a>
 <ul>
-<li><a href="#contributing">Contributing</a></li>
-<li><a href="#project-repositories">Project Repositories</a></li>
+<li><a href="#mana">Mana</a></li>
+<li><a href="#resource-types">Resource Types</a></li>
+<li><a href="#item-recycling">Item Recycling</a></li>
 </ul></li>
 </ul>
 </nav>

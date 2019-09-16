@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Server Architecture | Bestia Game</title>
+
+
+<link rel="stylesheet" href="/bestia-docs/book.min.45f3004d3c562c29285b27831e8a758ba54606954e3732ff376275b2c2d98616.css" integrity="sha256-RfMATTxWLCkoWyeDHop1i6VGBpVONzL/N2J1ssLZhhY=">
+
+
+<script defer src="/bestia-docs/search.min.205975cd516425e173698bfbd84b57974b9bf404056c88c0620c4e5b4f012334.js" integrity="sha256-IFl1zVFkJeFzaYv72EtXl0ub9AQFbIjAYgxOW08BIzQ="></script>
+
+
+
+<link rel="icon" href="/bestia-docs/favicon.png" type="image/x-icon">
+
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/github-markdown-css/2.2.1/github-markdown.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+</head>
+
+<body>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="flex container">
+
+    <aside class="book-menu fixed">
+      <nav>
+<h2 class="book-brand">
+  <a href="https://tfelix.github.io/bestia-docs"><img src="/bestia-docs/bestia-logo.svg" alt="Logo" /></a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" placeholder="Search" id="book-search-input" maxlength="64" readonly />
+  <div class="book-search-spinner spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+    
+
+  
+  
+
+
+
+
+
+ 
+  
+    
+
+  <ul>
+    
+      
+        
+
+  <li >
+    
+      
+
+  <a href="/bestia-docs/docs/mechanics/" >
+      Game Design
+  </a>
+
+
+    
+
+    
+
+  <ul>
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/core-guidelines/" >
+      Core Concepts
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/archivements/" >
+      Archivements
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/spells/" >
+      Attacks
+  </a>
+
+</li>
+      
+    
+      
+        
+
+  <li >
+    
+      <span>Bestia</span>
+    
+
+    
+
+  <ul>
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/bestia/master/" >
+      Bestia Master
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/bestia/breeding/" >
+      Bestia Breeding
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/bestia/statusvalues/" >
+      Status Values
+  </a>
+
+</li>
+      
+    
+  </ul>
+
+
+  </li>
+
+
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/time/" >
+      Bestia Time
+  </a>
+
+</li>
+      
+    
+      
+        
+
+  <li >
+    
+      
+
+  <a href="/bestia-docs/docs/mechanics/crafting/" >
+      Crafting
+  </a>
+
+
+    
+
+    
+
+  <ul>
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/crafting/alchemy/" >
+      Alchemy
+  </a>
+
+</li>
+      
+    
+  </ul>
+
+
+  </li>
+
+
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/honor/" >
+      Honor
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/inventory/" >
+      Inventory
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/items/" >
+      Items
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/quests/" >
+      Quests
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/resources/" >
+      Resources
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/skills/" >
+      Skills
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/story/" >
+      Story
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/cults/" >
+      The Cults
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/trading/" >
+      Trading
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/weather/" >
+      Weather
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/exploration/" >
+      World Exploration
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/resources/artwork/" >
+      Artwork and Design
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/mechanics/resources/literature/" >
+      Literature
+  </a>
+
+</li>
+      
+    
+  </ul>
+
+
+  </li>
+
+
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/api/" >
+      API
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/client/client-architecture/" >
+      Client
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/bip/" >
+      Improvement Proposals
+  </a>
+
+</li>
+      
+    
+      
+        
+
+  <li >
+    
+      <span>Server</span>
+    
+
+    
+
+  <ul>
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/server/server-datatypes/" >
+      Server Datatypes
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/server/ai/" >
+      Artificial Intelligence
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/server/server-battlesystem/" >
+      Battlesystem
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/server/server-environment/" >
+      Environment
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/server/server-lighting/" >
+      Lighting
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/server/server-routing/" >
+      Routing
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/server/server-architecture/"  class="active">
+      Server Architecture
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/server/server-scripts/" >
+      Server Scripts
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/server/server-datastreaming/" >
+      Server Streaming
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/server/server-narrativegeneration/" >
+      Stories and Quests Generation
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/bestia-docs/docs/server/server-worldcreation/" >
+      World Generation
+  </a>
+
+</li>
+      
+    
+  </ul>
+
+
+  </li>
+
+
+      
+    
+  </ul>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+<script>
+(function() {
+  var menu = document.querySelector("aside.book-menu nav");
+  addEventListener("beforeunload", function(event) {
+    localStorage.setItem("menu.scrollTop", menu.scrollTop);
+  });
+  menu.scrollTop = localStorage.getItem("menu.scrollTop");
+})();
+</script>
+
+    </aside>
+
+    <div class="book-page">
+      <header class="flex align-center justify-between book-header">
+  <label for="menu-control">
+    <img src="/bestia-docs/svg/menu.svg" alt="Menu" />
+  </label>
+  <strong>Server Architecture</strong>
+</header>
+
+      
+<article class="markdown">
+
+<p><a class="github-button" href="https://github.com/tfelix/bestia-behemoth" data-icon="octicon-star" data-size="large"
+data-show-count="true" aria-label="Star tfelix/bestia-behemoth on GitHub">Star</a>
+<a class="github-button" href="https://github.com/tfelix/bestia-behemoth/subscription" data-icon="octicon-eye"
+data-size="large" data-show-count="true" aria-label="Watch tfelix/bestia-behemoth on GitHub">Watch</a></p>
+
+<p>The basic server design relies on using Akka as the framework to form a so called cluster from multiple nodes. As soon
+as the cluster is formed the basic Bestia entities which represents all in game elements (player, things the player
+ can interact with, buildings, enemies etc). The entities are distributed between the cluster nodes and so are the
+ incoming player controls for these entities. If the system needs to scale up its easily possible to just spawn more
+ cluster nodes to distribute the load.</p>
+
+<p><a href="https://medium.com/@takezoe/save-state-of-actor-using-akka-persistence-a9111ff2c42b">https://medium.com/@takezoe/save-state-of-actor-using-akka-persistence-a9111ff2c42b</a>
+<a href="http://tudorzgureanu.com/akka-persistence-testing-persistent-actors/">http://tudorzgureanu.com/akka-persistence-testing-persistent-actors/</a>
+<a href="http://blog.kamkor.me/Akka-Cluster-Load-Balancing/">http://blog.kamkor.me/Akka-Cluster-Load-Balancing/</a></p>
+
+<h2 id="entity-component-services">Entity Component Services</h2>
+
+<p>Entities are described by dynamically attaching components to them. ECS system have been proven as a de facto industry
+ standard for recent game development. The components only contain the data are attached to entities which merely are
+ an ID in the system. The so called systems act upon this data and alter the entities usually this is the case in a
+ fixed tick amount for game logic updates.. Since the bestia system is event based and not tick based we use a little
+ different approach. We define services which work on entities and their components. These services are triggered by
+ Akka Actors in case a event message arrives. This architecture is called entity component services and allows a
+ better usage of computing resources in a clustered server environment.</p>
+
+<p>A entity factory will create a entity, save it into the memdb and also start a sharded entity into the cluster.
+The factory will also create and setup components which might have also active actors. If a component is created,
+altered or deleted these calls are intercepted via a configurable callback. Usually the component instances are
+cached for some amount of time to lessen the strain on the garbage collector. Upon creation of the component a
+message might get sent into the actorsystem to start up a component based actor which will then in turn control
+some execution specific operation like periodic health regeneration ticks.</p>
+
+<h2 id="entity-creators">Entity Creators</h2>
+
+<p>The first step into an usable entity are entity creators. They take alle domain data input or simple argument input
+and server as a helper function or a builder for usable a complete entities which are outfitted with components. They
+create the blueprints this is a building plan for the real entity factory for entity creation. The blueprints can
+either be created programmatically but they might also get statically described via JSON files which in turn then can
+be loaded by the software to create static entities (the created entities can of course later then be adjusted via
+scripts at runtime).</p>
+
+<h3 id="blueprint-json-datenformat">Blueprint JSON Datenformat</h3>
+
+<p>Blueprints are basically entity compositions described via JSON. Jackson is used to parse these files and feed them
+into a special <code>BlueprintEntityFactory</code>. The components are initialized with the values given in the blueprint.</p>
+
+<h4 id="example-dataformat">Example Dataformat</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#960050;background-color:#1e0010">position:</span> <span style="color:#960050;background-color:#1e0010">{x:</span> <span style="color:#960050;background-color:#1e0010">0,</span> <span style="color:#960050;background-color:#1e0010">y:</span> <span style="color:#960050;background-color:#1e0010">0</span>}<span style="color:#960050;background-color:#1e0010">,</span>
+  <span style="color:#960050;background-color:#1e0010">visible:</span> {<span style="color:#960050;background-color:#1e0010">sprite:</span> <span style="color:#960050;background-color:#1e0010">&#39;name&#39;,</span> <span style="color:#960050;background-color:#1e0010">type:</span> <span style="color:#960050;background-color:#1e0010">&#39;type&#39;</span>}<span style="color:#960050;background-color:#1e0010">,</span>
+  <span style="color:#960050;background-color:#1e0010">script:</span> {<span style="color:#960050;background-color:#1e0010">name:</span> <span style="color:#960050;background-color:#1e0010">&#39;bla&#39;,</span> <span style="color:#960050;background-color:#1e0010">type:</span> <span style="color:#960050;background-color:#1e0010">&#39;item&#39;</span>}
+<span style="color:#960050;background-color:#1e0010">}</span></code></pre></div>
+<h2 id="entity-actor-system">Entity Actor System</h2>
+
+<p>Bestia uses a entity actor system for management and active control of its entities. Each entity is registered via an in
+memory actor. When entity interact they communicate via the Akka messaging system. Components are child actors of an
+entity actor and they can send messages to other entities or components.</p>
+
+<h2 id="entity-resource-cleanup">Entity Resource Cleanup</h2>
+
+<p>The inner world representation relies on entities with associated component data. The problem is in order to manage this
+entities in a message based way there must be also an active actor present to receive these messages and react
+accordingly. This actor capsules the logic of the entity but might also have child actors if certain components require
+them (like for example a script callback trigger actor which will trigger script callbacks in certain intervals). If
+components or entities are deleted not only should the object instance be reused, these resources must also be reliably
+cleaned up.</p>
+
+<h2 id="internal-messaging">Internal Messaging</h2>
+
+<p>Akka messages should only be send from actors to actors. This keeps the messaging system away from the service
+structures thus allowing a clean separation of concerns.
+The main entry point of message digestion is the DigestExActor. Connection and authentication Client performs
+Authentication → Server accepts authentication → Webserver established connection → notifies client and
+server → server spawns client entities and updates client.
+Client Connection Actors hold the connection to the client and are used as a sharded actor. Updates to this
+certain client are sent to the sharded actor.</p>
+
+<h2 id="component-synchronization">Component Synchronization</h2>
+
+<h3 id="interest-management">Interest Management</h3>
+
+<p>To optimize performance clients are divided into certain areas called area of interest (AOI). Only clients having a
+receive enabled entity (usually bestias) inside an AOI are receiving updates of what is happening around them. These
+receivable entities are realized via a component attached to a entity. All such entities enable players to receive
+updates. The update packets are marked with a flag from which entity the observation was done.
+The server needs to keep track which entities are within a certain interest zone. This is done directly via the x and y
+coordinates of an entity.</p>
+
+<p>As soon as a transmittable Component changes the system automatically searchs for entities which needs an updated. The
+updated component is then transmitted to these entities or connected players.</p>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+</article>
+
+      
+<div class="book-footer justify-between">
+  
+  <div>
+    
+    <a href="https://github.com/tfelix/bestia-docs/commit/ad79b32f9a8f8e4bdaebcf1d4cf1790076508002" title='Last modified Sep 16, 2019 by Thomas Felix' target="_blank" rel="noopener">
+      <img src="/bestia-docs/svg/calendar.svg" alt="Changed" /> Sep 16, 2019
+    </a>
+  </div>
+  
+  
+  <div>
+    <a href="https://github.com/tfelix/bestia-docs/edit/master/content/docs/server/server-architecture.md" target="_blank" rel="noopener">
+      <img src="/bestia-docs/svg/edit.svg" alt="Edit" /> Edit this page
+    </a>
+  </div>
+  
+</div>
+
+
+      
+    </div>
+
+    
+  
+
+  <aside class="book-toc level-3 fixed">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#entity-component-services">Entity Component Services</a></li>
+<li><a href="#entity-creators">Entity Creators</a>
+<ul>
+<li><a href="#blueprint-json-datenformat">Blueprint JSON Datenformat</a>
+<ul>
+<li><a href="#example-dataformat">Example Dataformat</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#entity-actor-system">Entity Actor System</a></li>
+<li><a href="#entity-resource-cleanup">Entity Resource Cleanup</a></li>
+<li><a href="#internal-messaging">Internal Messaging</a></li>
+<li><a href="#component-synchronization">Component Synchronization</a>
+<ul>
+<li><a href="#interest-management">Interest Management</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </aside>
+
+
+
+  </main>
+
+  
+  
+</body>
+
+</html>
