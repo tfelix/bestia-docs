@@ -7,10 +7,10 @@
 <title>World Generation | Bestia Game</title>
 
 
-<link rel="stylesheet" href="/book.min.00b5fa08755bdeec19e42d01006b18aa488a0b1bf0015dd182d303f0cd35a152.css" integrity="sha256-ALX6CHVb3uwZ5C0BAGsYqkiKCxvwAV3RgtMD8M01oVI=">
+<link rel="stylesheet" href="/book.min.6ce39c318c4c697670ce5ed31d5801e7dc620149be801b92a4fe0c6ddcc3bcd2.css" integrity="sha256-bOOcMYxMaXZwzl7THVgB59xiAUm&#43;gBuSpP4MbdzDvNI=">
 
 
-<script defer src="/search.min.db3449a88b9b8b54da4866a74a96aeb9619a21e53deedd7dc65d6ef82ed360e6.js" integrity="sha256-2zRJqIubi1TaSGanSpauuWGaIeU97t19xl1u&#43;C7TYOY="></script>
+<script defer src="/search.min.af42bf811ab2acaaa467df2c91d8d38f09f0b162f4c20428a1b54c678cbf3418.js" integrity="sha256-r0K/gRqyrKqkZ98skdjTjwnwsWL0wgQoobVMZ4y/NBg="></script>
 
 
 
@@ -379,7 +379,13 @@ https://github.com/alex-shpak/hugo-book
 
   <li >
     
-      <span>Server</span>
+      
+
+  <a href="/docs/server/" >
+      Server
+  </a>
+
+
     
 
     
@@ -449,16 +455,6 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/docs/server/server-architecture/" >
-      Server Architecture
-  </a>
-
-</li>
-      
-    
-      
-        <li>
-
   <a href="/docs/server/server-scripts/" >
       Server Scripts
   </a>
@@ -489,7 +485,7 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/docs/server/server-worldcreation/"  class="active">
+  <a href="/docs/server/world-generation/"  class="active">
       World Generation
   </a>
 
@@ -545,7 +541,12 @@ https://github.com/alex-shpak/hugo-book
       
 <article class="markdown">
 
-<p>Bestia uses a specialized library for world creation. It will soon be open sourced as a own project. It is a clusterable generator which is cabable of dividing the world creation workload onto multiple, different machines. With this framework it should be possible to create million of square kilometers without hitting any memory limit on the servers.</p>
+<h1 id="world-generation">World Generation</h1>
+
+<p>Bestia uses a specialized library called <a href="https://github.com/tfelix/worldgen">worldgen</a> for world creation. It is a
+clusterable generator which is cabable of dividing the world creation workload onto multiple, different machines.
+With this framework it should be possible to create million of square kilometers without hitting any memory limit
+on the servers.</p>
 
 <h2 id="algorithmus">Algorithmus</h2>
 
@@ -601,13 +602,10 @@ https://github.com/alex-shpak/hugo-book
 <p>Bestimmte, extravagante Features, die sich vor allem auf die Höhenstufen der Map niederschlagen werden hier zufällig verteilt. Die Wahrscheinlichkeitsverteilungen der Terrain Features sind häufig an bestimmte Biome gekoppelt. Da diese bereits bestimmt wurden, kann hier eine Prüfung auf bestimmte Features stattfinden. Bestimmte Feature sind:</p>
 
 <ul>
-<li><p>Seen</p></li>
-
-<li><p>Canyons</p></li>
-
-<li><p>Vulkane</p></li>
-
-<li><p>Gebirge</p></li>
+<li>Seen</li>
+<li>Canyons</li>
+<li>Vulkane</li>
+<li>Gebirge</li>
 </ul>
 
 <h2 id="gewässer-und-flüsse">Gewässer und Flüsse</h2>
@@ -728,14 +726,14 @@ https://github.com/alex-shpak/hugo-book
   
   <div>
     
-    <a href="https://github.com/tfelix/bestia-docs/commit/ad79b32f9a8f8e4bdaebcf1d4cf1790076508002" title='Last modified Sep 16, 2019 by Thomas Felix' target="_blank" rel="noopener">
-      <i class="far fa-calendar" style="margin-right: 0.3em"></i> Sep 16, 2019
+    <a href="https://github.com/tfelix/bestia-docs/commit/92027263327ef609c1e5ab277c6d79fa6982e3b1" title='Last modified Sep 17, 2019 by Thomas Felix' target="_blank" rel="noopener">
+      <i class="far fa-calendar" style="margin-right: 0.3em"></i> Sep 17, 2019
     </a>
   </div>
   
   
   <div>
-    <a href="https://github.com/tfelix/bestia-docs/edit/master/content/docs/server/server-worldcreation.md" target="_blank" rel="noopener">
+    <a href="https://github.com/tfelix/bestia-docs/edit/master/content/docs/server/world-generation.md" target="_blank" rel="noopener">
       <i class="fas fa-edit" style="margin-right: 0.3em"></i> Edit this page
     </a>
   </div>
@@ -752,7 +750,7 @@ https://github.com/alex-shpak/hugo-book
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
 <ul>
-<li>
+<li><a href="#world-generation">World Generation</a>
 <ul>
 <li><a href="#algorithmus">Algorithmus</a></li>
 <li><a href="#grundparameter">Grundparameter</a></li>

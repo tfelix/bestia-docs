@@ -45,7 +45,7 @@ There are archivements which are unique to a single world and other which every 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://docs.bestia-game.net/docs/mechanics/bestia/master/</guid>
-      <description>Bestia Master The intro game tells players how to become a Bestia Master. They came into direct contact with an ephemeral mana crystal that changed their nature through magic and connected them to the mana currents. They are therefore receptive to the mana Rivers and are able to communicate with the beings that emerge from this mythical energy: the Bestias.
+      <description>Bestia Master The intro game tells players how to become a Bestia Master. They came into direct contact with an ephemeral mana crystal that changed their nature through magic and connected them to the mana flows. They are therefore receptive to the influence of mana and are able to communicate with the beings that emerge from this mythical energy: the Bestias.
 In areas with high mana concentration, so-called mini rift events are formed.</description>
     </item>
     
@@ -197,8 +197,8 @@ Fonts Currently the font usage is not finally decided.</description>
       
       <guid>https://docs.bestia-game.net/docs/server/server-datatypes/</guid>
       <description>Datatypes All locations and entities are represented via fixed point numbers to avoid incorrectness with floating points over a bigger distance (see The perils of floating point).
-The basic datastructures for positioning and collisions are found in net.bestia.model.geometry. Most notable the Vector3 datatype.
-It uses long as datatypes for the coordinates and thus has a range between -9.223.372.036.854.775.808 to 9.223.372.036.854.775.807 which means Bestia can represent at the best a position resolution of 1mm.</description>
+Positioning The basic datastructures for positioning and collisions are found in net.bestia.model.geometry. Most notable the Vector3 datatype.
+It uses long as datatypes for the coordinates and thus has a range between -9.223.372.036.854.775.808 to 9.223.372.036.854.775.807 which means if we can represent at the best a position resolution of 1mm.</description>
     </item>
     
     <item>
@@ -302,16 +302,6 @@ Licht wird global in groben Chunks abgelegt. Darüber hinaus werden Entities im 
     </item>
     
     <item>
-      <title>Server Architecture</title>
-      <link>https://docs.bestia-game.net/docs/server/server-architecture/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://docs.bestia-game.net/docs/server/server-architecture/</guid>
-      <description>Star Watch
-The basic server design relies on using Akka as the framework to form a so called cluster from multiple nodes. As soon as the cluster is formed the basic Bestia entities which represents all in game elements (player, things the player can interact with, buildings, enemies etc). The entities are distributed between the cluster nodes and so are the incoming player controls for these entities. If the system needs to scale up its easily possible to just spawn more cluster nodes to distribute the load.</description>
-    </item>
-    
-    <item>
       <title>Server Scripts</title>
       <link>https://docs.bestia-game.net/docs/server/server-scripts/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -352,11 +342,11 @@ The sophisticated status system describes the current state of an bestia (or sim
     
     <item>
       <title>World Generation</title>
-      <link>https://docs.bestia-game.net/docs/server/server-worldcreation/</link>
+      <link>https://docs.bestia-game.net/docs/server/world-generation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.bestia-game.net/docs/server/server-worldcreation/</guid>
-      <description>Bestia uses a specialized library for world creation. It will soon be open sourced as a own project. It is a clusterable generator which is cabable of dividing the world creation workload onto multiple, different machines. With this framework it should be possible to create million of square kilometers without hitting any memory limit on the servers.
+      <guid>https://docs.bestia-game.net/docs/server/world-generation/</guid>
+      <description>World Generation Bestia uses a specialized library called worldgen for world creation. It is a clusterable generator which is cabable of dividing the world creation workload onto multiple, different machines. With this framework it should be possible to create million of square kilometers without hitting any memory limit on the servers.
 Algorithmus  Grundparameter Erstellung von Influencemaps Wasserspiegel festlegung Erzeuge die Wasser Maske Erzeuge von Gewässern und Flüsse Temperaturkorrektur Biom Zuordnung vornehmen Terrain Features verteilen und erzeugen Biom Optimierung Tilemap Erzeugung Biom Features Erzeugung der Städtekandidaten Erzeugung und Verteilung von Bodenschätzen  Grundparameter The following base parameters are used to generate the map:</description>
     </item>
     

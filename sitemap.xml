@@ -19,7 +19,7 @@
   
   <url>
     <loc>https://docs.bestia-game.net/docs/mechanics/attacks/</loc>
-    <lastmod>2019-09-17T02:22:24+02:00</lastmod>
+    <lastmod>2019-09-18T00:30:22+02:00</lastmod>
   </url>
   
   <url>
@@ -29,7 +29,7 @@
   
   <url>
     <loc>https://docs.bestia-game.net/docs/mechanics/bestia/master/</loc>
-    <lastmod>2019-09-16T23:01:20+02:00</lastmod>
+    <lastmod>2019-09-18T00:30:22+02:00</lastmod>
   </url>
   
   <url>
@@ -69,12 +69,12 @@
   
   <url>
     <loc>https://docs.bestia-game.net/docs/mechanics/skills/</loc>
-    <lastmod>2019-09-17T02:22:24+02:00</lastmod>
+    <lastmod>2019-09-18T00:30:22+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://docs.bestia-game.net/docs/mechanics/story/</loc>
-    <lastmod>2019-09-16T23:01:20+02:00</lastmod>
+    <lastmod>2019-09-18T00:30:22+02:00</lastmod>
   </url>
   
   <url>
@@ -174,12 +174,7 @@
   
   <url>
     <loc>https://docs.bestia-game.net/docs/server/</loc>
-    <lastmod>2019-09-12T00:54:21+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://docs.bestia-game.net/docs/server/server-architecture/</loc>
-    <lastmod>2019-09-16T23:01:20+02:00</lastmod>
+    <lastmod>2019-09-18T00:30:22+02:00</lastmod>
   </url>
   
   <url>
@@ -203,8 +198,8 @@
   </url>
   
   <url>
-    <loc>https://docs.bestia-game.net/docs/server/server-worldcreation/</loc>
-    <lastmod>2019-09-16T23:01:20+02:00</lastmod>
+    <loc>https://docs.bestia-game.net/docs/server/world-generation/</loc>
+    <lastmod>2019-09-18T00:30:22+02:00</lastmod>
   </url>
   
 </urlset>

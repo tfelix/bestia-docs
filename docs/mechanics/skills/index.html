@@ -7,10 +7,10 @@
 <title>Skills | Bestia Game</title>
 
 
-<link rel="stylesheet" href="/book.min.00b5fa08755bdeec19e42d01006b18aa488a0b1bf0015dd182d303f0cd35a152.css" integrity="sha256-ALX6CHVb3uwZ5C0BAGsYqkiKCxvwAV3RgtMD8M01oVI=">
+<link rel="stylesheet" href="/book.min.6ce39c318c4c697670ce5ed31d5801e7dc620149be801b92a4fe0c6ddcc3bcd2.css" integrity="sha256-bOOcMYxMaXZwzl7THVgB59xiAUm&#43;gBuSpP4MbdzDvNI=">
 
 
-<script defer src="/search.min.db3449a88b9b8b54da4866a74a96aeb9619a21e53deedd7dc65d6ef82ed360e6.js" integrity="sha256-2zRJqIubi1TaSGanSpauuWGaIeU97t19xl1u&#43;C7TYOY="></script>
+<script defer src="/search.min.af42bf811ab2acaaa467df2c91d8d38f09f0b162f4c20428a1b54c678cbf3418.js" integrity="sha256-r0K/gRqyrKqkZ98skdjTjwnwsWL0wgQoobVMZ4y/NBg="></script>
 
 
 
@@ -379,7 +379,13 @@ https://github.com/alex-shpak/hugo-book
 
   <li >
     
-      <span>Server</span>
+      
+
+  <a href="/docs/server/" >
+      Server
+  </a>
+
+
     
 
     
@@ -449,16 +455,6 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/docs/server/server-architecture/" >
-      Server Architecture
-  </a>
-
-</li>
-      
-    
-      
-        <li>
-
   <a href="/docs/server/server-scripts/" >
       Server Scripts
   </a>
@@ -489,7 +485,7 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/docs/server/server-worldcreation/" >
+  <a href="/docs/server/world-generation/" >
       World Generation
   </a>
 
@@ -555,7 +551,7 @@ the master.</p>
 
 <blockquote>
 <p>Don&rsquo;t confuse this skills with the regular attacks a Bestia is learning by item usage or level up. These are simply
-called (<strong>attacks</strong>)[/docs/mechanics/attacks].</p>
+called <a href="/docs/mechanics/attacks">attacks</a>.</p>
 </blockquote>
 
 <h2 id="guidlines">Guidlines</h2>
@@ -604,6 +600,30 @@ meaningful professions of another tree. The skilltree is a hierarchical dependen
 
 <p>The battle tree contains skills which are primarly useful for fighting, battle and maybe to some extend improve survival
  in the wild.</p>
+
+
+
+<script src="/mermaid.min.js"></script>
+<script>
+    var config = {
+        theme: 'dark'
+    };
+    mermaid.initialize(config);
+</script>
+
+
+
+<p class="mermaid">
+  
+graph TD
+  SPRITIUAL_MASTERY("Spritual Mastery [5]")
+  ELEMENTAL_MASTERY("Elemental Mastery [5]")-->|3|MASTER_OF_FIRE("Master of Fire [10]")
+  ELEMENTAL_MASTERY-->|3|MASTER_OF_WATER("Master of Water [10]")
+  ELEMENTAL_MASTERY-->|3|MASTER_OF_WIND("Master of Wind [10]")
+  ELEMENTAL_MASTERY-->|3|MASTER_OF_EARTH("Master of Earth [10]")
+
+</p>
+
 
 <h3 id="elemental-mastery-5">Elemental Mastery (5)</h3>
 
@@ -738,6 +758,10 @@ face of the Bestia world.</p>
 
 <p>Enables the user to write down spells onto items or scrolls for a later use (even by someone who does not know the spell).</p>
 
+<h3 id="spell-discovery">Spell Discovery</h3>
+
+<p>Enables the user to discover spells to learn for his Bestias.</p>
+
 <h3 id="geography-10">Geography (10)</h3>
 
 <p>Increases the range and effectivness when performing a cartography.</p>
@@ -761,7 +785,7 @@ face of the Bestia world.</p>
   
   <div>
     
-    <a href="https://github.com/tfelix/bestia-docs/commit/fea23db0e625758b773b045a7a28b2b894e9875f" title='Last modified Sep 17, 2019 by Thomas Felix' target="_blank" rel="noopener">
+    <a href="https://github.com/tfelix/bestia-docs/commit/92027263327ef609c1e5ab277c6d79fa6982e3b1" title='Last modified Sep 17, 2019 by Thomas Felix' target="_blank" rel="noopener">
       <i class="far fa-calendar" style="margin-right: 0.3em"></i> Sep 17, 2019
     </a>
   </div>
@@ -817,6 +841,7 @@ face of the Bestia world.</p>
 <li><a href="#science-tree">Science Tree</a>
 <ul>
 <li><a href="#spell-enscription">Spell Enscription</a></li>
+<li><a href="#spell-discovery">Spell Discovery</a></li>
 <li><a href="#geography-10">Geography (10)</a></li>
 <li><a href="#engieneer-10">Engieneer (10)</a></li>
 <li><a href="#control-mana-flow">Control Mana Flow</a></li>
