@@ -19,12 +19,21 @@ Currently no final Bestia Logo was found. Feel free to contribute!
 
 Currently the font usage is not finally decided. These are the possible fonts:
 
-* [FaryDust](http://www.dafont.com/de/fairydustb.font?text=Bestia)
-* [Conthrax](http://www.dafont.com/de/conthrax.font?l[]=10&l[]=1&text=Bestia)
-* [ethnocentric](http://www.dafont.com/de/ethnocentric.font?l[]=10&l[]=1&text=Bestia)
-* [annabel](http://www.dafont.com/de/annabel.font?text=Bestia)
+The Logo can be done with one of these:
+* [Long Shot](https://www.dafont.com/de/long-shot.font?l[]=10&l[]=1&text=Bestia)
+* [Regensburg](https://www.dafont.com/de/regensburg.font?l[]=10&l[]=1&text=Bestia)
+* [Immortal](https://www.dafont.com/de/immortal.font?l[]=10&l[]=1&text=Bestia)
+* [Bradley Gratis](https://www.dafont.com/de/bradley-gratis.font?l[]=10&l[]=1&text=Bestia)
+* [Goozeman](https://www.dafont.com/de/goozeman.font?l[]=10&l[]=1&text=Bestia)
 
-The Bitmap font later used inside the game will be:
+Potentially useful fonts:
+
+* [CAT Childs](https://www.dafont.com/de/cat-childs.font?l[]=10&l[]=1&text=Bestia)
+* [Old Newspaper Types](https://www.dafont.com/de/oldnewspapertypes.font?text=Bestia+Worlds+End&l[]=10&l[]=1)
+* [Satans Minions](https://www.dafont.com/de/satans-minions.font?text=Bestia+-+The+Game&l[]=10&l[]=1&back=theme)
+* [Dwarven Stonecraft](https://www.dafont.com/de/dwarven-stonecraft.font?l[]=10&l[]=1&text=Bestia)
+
+The Bitmap font ingame usage will be:
 
 * http://www.pentacom.jp/pentacom/bitfontmaker2/gallery/?id=234
 

@@ -2,17 +2,18 @@
 title: Skills
 weight: 100
 ---
-# Skills and Attacks
+# Skills
 
 The bestia master of a player can learn a set of skills. Since these skills are bound to the account they are called
-account skills. These skills are freely chosen by the player and determine the job or profession of the master.
+account skills or just skills. These skills are freely chosen by the player and determine the job or profession of
+the master.
 
-Some of this account skills can be used by every bestia in posession of only by the master itself.
+Some of this account skills can be used by every Bestia in posession others only by the master itself.
 
 > Don't confuse this skills with the regular attacks a Bestia is learning by item usage or level up. These are simply
-> called **attacks**.
+> called (**attacks**)[/docs/mechanics/attacks].
 
-## Guildines
+## Guidlines
 
 * The number of total skil ranks inside a tree should **not exeed 70** by much
 * The possible rank counts of a skill should be: **1, 3, 5 and 10**

@@ -5,7 +5,7 @@ type: docs
 
 # Bestia Developer Documentation
 
-> Massive. Hard. Innovative. Open World. Open Source.
+> Massive. Hard. Innovative. Open World and Open Source.
 
 <a class="github-button" href="https://github.com/tfelix/bestia-docs" data-icon="octicon-star" data-size="large"
 data-show-count="true" aria-label="Star tfelix/bestia-docs on GitHub">Star</a>
@@ -39,10 +39,10 @@ game guidelines.
 Otherwise feel free to check out the three project repositories on Github (and maybe give them a Star)
 
 * [Bestia Developer Documentation](https://github.com/tfelix/bestia-docs) <i class="fab fa-github"></i>
-* [Bestia Browser Client](https://github.com/tfelix/bestia-client) <i class="fab fa-github"></i>
+* [Bestia Game Client](https://github.com/tfelix/bestia-client) <i class="fab fa-github"></i>
 * [Bestia Behemoth Server](https://github.com/tfelix/bestia-behemoth) <i class="fab fa-github"></i>
 
-> You can use the `Edit` button on the top right of every page to directly edit this document and create a Pull Request
+> You can use the `Edit` link on the bottom right of every page to directly edit this document and create a Pull Request
 > on Github.
 
 <script async defer src="https://buttons.github.io/buttons.js"></script>

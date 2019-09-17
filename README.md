@@ -17,7 +17,6 @@ The documentation page can be found on [https://docs.bestia-game.net](https://do
 
 The Bestia Client itself can be found under [http://tfelix.github.io/bestia-client](https://tfelix.github.io/bestia-client/).
 
-
 ## Build
 
 The documentation uses the static site generator [Hugo](https://gohugo.io/) to generate a nice documentation hompage. In order to build

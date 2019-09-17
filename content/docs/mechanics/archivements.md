@@ -15,50 +15,50 @@ The date + the name of the world in which the success was achieved always remain
 
 ### Master of 10 Bestias
 
-<small><span>World</span> <span>Individual</span></small>
+{{< archivement true true >}}
 The player has owned 10 Bestias.
 
 ### Master of 100 Bestias
 
-<small><span>World</span> <span>Individual</span></small>
+{{< archivement true true >}}
 The player has owned 100 Bestias.
 
 ### Master of 1000 Bestias
 
-<small><span>World</span> <span>Individual</span></small>
+{{< archivement true true >}}
 The player has owned 1000 Bestias.
 
 ### Master of 10k Bestias
 
-<small><span>World</span> <span>Individual</span></small>
+{{< archivement true true >}}
 The player has owned 10k Bestias.
 
 ### Officer
 
-<small><span>World</span> <span>Individual</span></small>
+{{< archivement true true >}}
 Killing 10 players with `Rogue` debuf.
 
 ### Grand Officer
 
-<small><span>World</span> <span>Individual</span></small>
+{{< archivement true true >}}
 Killing 20 players with `Rogue` debuf.
 
 ### Sheriff
 
-<small><span>World</span> <span>Individual</span></small>
+{{< archivement true true >}}
 Killing 60 players with `Rogue` debuf.
 
 ### Great Sheriff
 
-<small><span>World</span> <span>Individual</span></small>
+{{< archivement true true >}}
 Killing 100 players with `Rogue` debuf.
 
 ### Marshall
 
-<small><span>World</span> <span>Individual</span></small>
+{{< archivement true true >}}
 Killing 200 players with `Rogue` debuf.
 
 ### Great Marshall
 
-<small><span>World</span> <span>Individual</span></small>
+{{< archivement true true >}}
 Killing 500 players with `Rogue` debuf.
