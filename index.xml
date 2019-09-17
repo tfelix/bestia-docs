@@ -30,13 +30,13 @@ There are archivements which are unique to a single world and other which every 
     
     <item>
       <title>Attacks</title>
-      <link>https://docs.bestia-game.net/docs/mechanics/spells/</link>
+      <link>https://docs.bestia-game.net/docs/mechanics/attacks/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.bestia-game.net/docs/mechanics/spells/</guid>
-      <description>Spells and Attacks The magic and the usage of it plays a crucial role in the Bestia universe. The users should be able to be deeply involved into magic spell creation and research.
-The system must allow the user to describe or discover newly innovative ways to combine spells. Yet the research should be fun and entertaining.
-Each Bestia has a internal list of attacks she will learn when gaining levels.</description>
+      <guid>https://docs.bestia-game.net/docs/mechanics/attacks/</guid>
+      <description>Attacks The magic and the usage of it plays a crucial role in the Bestia universe. The users should be able to be deeply involved into magic spell creation and research.
+ The words Attacks and Spells are equally used.
+ The system must allow the user to describe or discover newly innovative ways to combine spells. Yet the research should be fun and entertaining. Bestias can learn attacks by two means:</description>
     </item>
     
     <item>
@@ -114,8 +114,8 @@ Item Level Items are grouped into three categories and inside this documentation
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://docs.bestia-game.net/docs/mechanics/skills/</guid>
-      <description>Skills and Attacks The bestia master of a player can learn a set of skills. Since these skills are bound to the account they are called account skills. These skills are freely chosen by the player and determine the job or profession of the master.
-Some of this account skills can be used by every bestia in posession of only by the master itself.
+      <description>Skills The bestia master of a player can learn a set of skills. Since these skills are bound to the account they are called account skills or just skills. These skills are freely chosen by the player and determine the job or profession of the master.
+Some of this account skills can be used by every Bestia in posession others only by the master itself.
  Don&amp;rsquo;t confuse this skills with the regular attacks a Bestia is learning by item usage or level up.</description>
     </item>
     
