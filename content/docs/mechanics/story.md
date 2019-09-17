@@ -9,7 +9,7 @@ his world and merged it with another one. This altered the physical properties o
 He is thrown into a new one and must learn to survive on his own (while exploring the new world, making friends and foes.)
 
 The principle of destroying the world is the common thread throughout the game. By joining one of the different cults the
-players can actively work towards a destruction of the world as well as prenting it from harm (see [The Cults](/mechanics/cults)).
+players can actively work towards a destruction of the world as well as prenting it from harm (see [The Cults](/docs/mechanics/cults)).
 
 Due to this event the world is **generated dynamically**. Despite the ultimate goal of the game to prevent or initiate this
 destruction, this should remain a rare event that occurs no more frequently than every 1 to 2 years (real time). The
@@ -17,7 +17,7 @@ newly generated world should cover as wide a spectrum of biomes as possible. The
 themselves in a certain history, which should also be generated as automatically as possible. This enriches the player
 experience especially in the beginning when there are not many players.
 
-For the details of world generation, see the [technical documentation](/).
+For the details of world generation, see the [technical documentation](/docs/server/world-generation).
 
 ## The Persistent Threat
 

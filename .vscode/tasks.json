@@ -4,9 +4,18 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "build",
+      "label": "Run Server",
       "type": "shell",
-      "command": "hugo server --minify --theme book"
+      "command": "hugo server --minify --theme book",
+      "problemMatcher": [],
+      "presentation": {
+        "echo": true,
+        "reveal": "silent",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": false
+      }
     }
   ]
 }

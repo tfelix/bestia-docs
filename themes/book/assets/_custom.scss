@@ -55,3 +55,15 @@ small.archivement span.individual {
 .book-menu nav::-webkit-scrollbar-thumb {
   background: #ddd;
 }
+
+body::-webkit-scrollbar {
+  width: 5px;
+}
+
+body::-webkit-scrollbar-track {
+  background: #666;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #ddd;
+}

@@ -5,8 +5,8 @@ weight: 100
 # Bestia Master
 
 The intro game tells players how to become a Bestia Master. They came into direct contact with an ephemeral mana crystal
-that changed their nature through magic and connected them to the mana currents. They are therefore receptive to the
-mana Rivers and are able to communicate with the beings that emerge from this mythical energy: **the Bestias**.
+that changed their nature through magic and connected them to the mana flows. They are therefore receptive to the
+influence of mana and are able to communicate with the beings that emerge from this mythical energy: **the Bestias**.
 
 In areas with high mana concentration, so-called mini rift events are formed. At these neuralgic points, Bestia are
 materialized and enter the respective worlds.

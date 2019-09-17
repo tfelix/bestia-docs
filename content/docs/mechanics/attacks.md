@@ -25,7 +25,7 @@ General rule of thumb is:
 
 ### Spell Discovery
 
-Spells can be discovered by the player. If he has the skill **Spell Discovery**. The maximum attack learnable by the skill
+Spells can be discovered by the player. If he has the skill [Spell Discovery](/docs/mechanics/skills/#spell-discovery). The maximum attack learnable by the skill
 level is given in the table below.
 
 | Spell Discovery Lv. | max. Attack Level Discoverable |
@@ -47,7 +47,7 @@ TBD
 
 ## Spell Enscription
 
-If the player owns the skill [Spell Enscription]([/docs/mechanics/skills/#spell-enscription) he can attach the spell to
+If the player owns the skill [Spell Enscription](/docs/mechanics/skills/#spell-enscription) he can attach the spell to
 scrolls or even to other entities.
 
 After a spell has been materialized and bound to some kind of magic containment it can be used by the owner. Spells of

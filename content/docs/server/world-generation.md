@@ -1,14 +1,18 @@
 ---
-id: server-worldcreation
 title: World Generation
 sidebar_label: World Generation
 ---
-Bestia uses a specialized library for world creation. It will soon be open sourced as a own project. It is a clusterable generator which is cabable of dividing the world creation workload onto multiple, different machines. With this framework it should be possible to create million of square kilometers without hitting any memory limit on the servers.
+# World Generation
+
+Bestia uses a specialized library called [worldgen](https://github.com/tfelix/worldgen) for world creation. It is a
+clusterable generator which is cabable of dividing the world creation workload onto multiple, different machines.
+With this framework it should be possible to create million of square kilometers without hitting any memory limit
+on the servers.
 
 ## Algorithmus
 
 1. Grundparameter
-2. Erstellung von Influencemaps 
+2. Erstellung von Influencemaps
 3. Wasserspiegel festlegung
 4. Erzeuge die Wasser Maske
 5. Erzeuge von Gewässern und Flüsse
@@ -54,11 +58,8 @@ Folgende Influencemaps werden in der Größe der Weltkarte erstellt und über de
 Bestimmte, extravagante Features, die sich vor allem auf die Höhenstufen der Map niederschlagen werden hier zufällig verteilt. Die Wahrscheinlichkeitsverteilungen der Terrain Features sind häufig an bestimmte Biome gekoppelt. Da diese bereits bestimmt wurden, kann hier eine Prüfung auf bestimmte Features stattfinden. Bestimmte Feature sind:
 
 * Seen
-
 * Canyons
-
 * Vulkane
-
 * Gebirge
 
 ## Gewässer und Flüsse
@@ -67,7 +68,7 @@ Dazu werden zufällig Wasser-Seeds verteilt und ein Flood Fill bis zur Küstenli
 
 ## Temperaturkorrektur
 
-Temperaturgradient auf mT aufbringen. Versehe die Temperaturkarte mit einem Gradienten um am Aquator eine höhere Temperatur zu erhalten wie an den Polen (Nord, Süd). 
+Temperaturgradient auf mT aufbringen. Versehe die Temperaturkarte mit einem Gradienten um am Aquator eine höhere Temperatur zu erhalten wie an den Polen (Nord, Süd).
 
 ## Biom Zuordnung
 
@@ -75,9 +76,9 @@ TBD
 
 ## Biom Optimierung
 
-Nachdem die Biome über die Zuweisungsregeln hart zugewiesen wurden, müssen mehrere Plausibilitätsfilter verwendet werden um eine saubere Erzeugung zu gewährleisten. 
+Nachdem die Biome über die Zuweisungsregeln hart zugewiesen wurden, müssen mehrere Plausibilitätsfilter verwendet werden um eine saubere Erzeugung zu gewährleisten.
 
- 
+
 
 TBD: Welche Filter müssen hier angewendet werden? Was kann denn falsch erzeugt werden?
 
@@ -117,7 +118,7 @@ Erzeuge entsprechende Strukturen innerhalb der Biome (siehe Tilemap Erzeugung). 
 
 Cities usually form around natural resources like shores, rivers or rich farmland. The algorithm as described below will find suitable city position candidates and then distribute the cities in 2 to n clusters around the world map. This clustering will make sure there is enough unexplored land for the players left. It should also help with the idea of different civilization which could lead to ingame player conflicts. A possible distribution is shown in here. *TODO: Include figure*
 
-The algorithm searches the world map and creates matrix with a mesh length of 1km. 
+The algorithm searches the world map and creates matrix with a mesh length of 1km.
 
 * Rohstoffvorkommen (Farmland, Minerals, Fishing Grounds)
 * Nähe zu einem Gewässer (Fluss oder Meer)
@@ -140,7 +141,7 @@ Von der Influence Map müssen nun die Punkte entfernt werden die eindeutig keine
 * Liegen im Wald
 * Liegen in Gebieten mit sehr hoher Magie
 
-Bei allen verbleibenden Punkten muss überprüft werden ob es sich um ein lokales Maximum handelt. Diese Punkte werden zusammen mit ihrer Gewichtung in eine sortierte Liste aufgenommen. Dabei kann ein wandernder Durchschnitt berechnet werden und Werte unterhalb eines gewissen Schwellwertes verworfen werden. 
+Bei allen verbleibenden Punkten muss überprüft werden ob es sich um ein lokales Maximum handelt. Diese Punkte werden zusammen mit ihrer Gewichtung in eine sortierte Liste aufgenommen. Dabei kann ein wandernder Durchschnitt berechnet werden und Werte unterhalb eines gewissen Schwellwertes verworfen werden.
 
 Koordinaten die dann zu nahe beieinander liegen (< 3-6km) werden aus der Liste entfernt.
 
@@ -161,4 +162,4 @@ TBD. Zum Nutzen und Verwendung der einzelnen Bodenschätze, siehe Abschnitt [Res
 
 ## Weltzerstörung
 
-Die Welt soll durch das Herbeiführen von Rift Events strukturell geschwächt werden, bis sie mit einer weiteren Welt kollidiert. Die Spieler selbst bleiben bei solch einem Event relativ unbeschadet. Je nach Fraktion/Kult welcher die Spieler angehören wird es aber weitreichende Mali oder Boni geben. In der neu generierten Welt starten die Spieler wieder zunächst ohne Kult Zugehörigkeit. 
+Die Welt soll durch das Herbeiführen von Rift Events strukturell geschwächt werden, bis sie mit einer weiteren Welt kollidiert. Die Spieler selbst bleiben bei solch einem Event relativ unbeschadet. Je nach Fraktion/Kult welcher die Spieler angehören wird es aber weitreichende Mali oder Boni geben. In der neu generierten Welt starten die Spieler wieder zunächst ohne Kult Zugehörigkeit.

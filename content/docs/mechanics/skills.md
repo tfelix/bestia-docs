@@ -11,7 +11,7 @@ the master.
 Some of this account skills can be used by every Bestia in posession others only by the master itself.
 
 > Don't confuse this skills with the regular attacks a Bestia is learning by item usage or level up. These are simply
-> called (**attacks**)[/docs/mechanics/attacks].
+> called [attacks](/docs/mechanics/attacks).
 
 ## Guidlines
 
@@ -53,6 +53,15 @@ In this tree, simple, common mundane tasks are placed.
 
 The battle tree contains skills which are primarly useful for fighting, battle and maybe to some extend improve survival
  in the wild.
+
+{{< mermaid >}}
+graph TD
+  SPRITIUAL_MASTERY("Spritual Mastery [5]")
+  ELEMENTAL_MASTERY("Elemental Mastery [5]")-->|3|MASTER_OF_FIRE("Master of Fire [10]")
+  ELEMENTAL_MASTERY-->|3|MASTER_OF_WATER("Master of Water [10]")
+  ELEMENTAL_MASTERY-->|3|MASTER_OF_WIND("Master of Wind [10]")
+  ELEMENTAL_MASTERY-->|3|MASTER_OF_EARTH("Master of Earth [10]")
+{{< /mermaid >}}
 
 ### Elemental Mastery (5)
 
@@ -193,6 +202,10 @@ face of the Bestia world.
 ### Spell Enscription
 
 Enables the user to write down spells onto items or scrolls for a later use (even by someone who does not know the spell).
+
+### Spell Discovery
+
+Enables the user to discover spells to learn for his Bestias.
 
 ### Geography (10)
 
