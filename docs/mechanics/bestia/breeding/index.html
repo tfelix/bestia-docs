@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="/book.min.6ce39c318c4c697670ce5ed31d5801e7dc620149be801b92a4fe0c6ddcc3bcd2.css" integrity="sha256-bOOcMYxMaXZwzl7THVgB59xiAUm&#43;gBuSpP4MbdzDvNI=">
 
 
-<script defer src="/search.min.af42bf811ab2acaaa467df2c91d8d38f09f0b162f4c20428a1b54c678cbf3418.js" integrity="sha256-r0K/gRqyrKqkZ98skdjTjwnwsWL0wgQoobVMZ4y/NBg="></script>
+<script defer src="/search.min.ac52d79d15470de70c51a950ad088c6b377af352a996ac1e3bfe3dcf1679c415.js" integrity="sha256-rFLXnRVHDecMUalQrQiMazd681KplqweO/49zxZ5xBU="></script>
 
 
 
@@ -546,12 +546,42 @@ https://github.com/alex-shpak/hugo-book
 <p>Bestias can be interbred in order to improve certain statistics. The player can pair certain individuals of Bestia in
 order to produce offspring. In order to breed a Bestia a male and female is required.</p>
 
-<p>The player can affect:</p>
+<p>Bestias is the same kind (humanoid, formless etc.) can be bread.</p>
 
-<ul>
-<li>Learnable Attacks</li>
-<li>Individual Values</li>
-</ul>
+<p>In order to breed two Bestia one male and one female must be put together in a breeder which needs to be build and put
+ont the map. After a waiting time which is determined by its original level an egg is produced. The Bestia species produced
+will always be the species of the female breeding partner.</p>
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.0/dist/katex.min.css" integrity="sha384-BdGj8xC2eZkQaxoQ8nSLefg4AV4/AwB3Fj+8SUSo7pnKP6Eoy18liIKTPn9oBYNG" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.0/dist/katex.min.js" integrity="sha384-JiKN5O8x9Hhs/UE5cT5AAJqieYlOZbGT3CHws/y97o3ty4R7/O5poG9F3JoiOYw1" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.0/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+
+
+
+<p class="katex">
+  $$ 
+   t_{hatch} =  (0.1 - 7/99) * lv_{avg} + 7/99
+ $$
+</p>
+
+
+
+<h2 id="individual-value-breeding">Individual Value Breeding</h2>
+
+<p>The Bestia spawned from the process will have its <a href="/docs/mechanics/bestia/statusvalues/#individual-values">Individual Values</a> (IV)
+determined like so:</p>
+
+<ol>
+<li>Pick two random IVs.</li>
+<li>From these IVs use the highest value from one of its parents.</li>
+<li>With 70% the picked IV is 10% higher, with 20% its the same and with 10% its 10% lower.</li>
+</ol>
+
+<h2 id="learnable-attacks">Learnable Attacks</h2>
+
+<p>TBD</p>
 </article>
 
       
@@ -559,8 +589,8 @@ order to produce offspring. In order to breed a Bestia a male and female is requ
   
   <div>
     
-    <a href="https://github.com/tfelix/bestia-docs/commit/ad79b32f9a8f8e4bdaebcf1d4cf1790076508002" title='Last modified Sep 16, 2019 by Thomas Felix' target="_blank" rel="noopener">
-      <i class="far fa-calendar" style="margin-right: 0.3em"></i> Sep 16, 2019
+    <a href="https://github.com/tfelix/bestia-docs/commit/aede5359aaee0bd4a1372cf0119503753938579b" title='Last modified Sep 30, 2019 by Thomas Felix' target="_blank" rel="noopener">
+      <i class="far fa-calendar" style="margin-right: 0.3em"></i> Sep 30, 2019
     </a>
   </div>
   
@@ -583,7 +613,11 @@ order to produce offspring. In order to breed a Bestia a male and female is requ
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#bestia-breeding">Bestia Breeding</a></li>
+<li><a href="#bestia-breeding">Bestia Breeding</a>
+<ul>
+<li><a href="#individual-value-breeding">Individual Value Breeding</a></li>
+<li><a href="#learnable-attacks">Learnable Attacks</a></li>
+</ul></li>
 </ul>
 </nav>
   </aside>
