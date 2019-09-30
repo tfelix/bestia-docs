@@ -203,7 +203,7 @@ face of the Bestia world.
 
 Enables the user to write down spells onto items or scrolls for a later use (even by someone who does not know the spell).
 
-### Spell Discovery
+### Spell Discovery (10)
 
 Enables the user to discover spells to learn for his Bestias.
 
