@@ -57,19 +57,17 @@ The battle tree contains skills which are primarly useful for fighting, battle a
 {{< mermaid >}}
 graph TD
   SPRITIUAL_MASTERY("Spritual Mastery [5]")
-  ELEMENTAL_MASTERY("Elemental Mastery [5]")-->|3|MASTER_OF_FIRE("Master of Fire [10]")
-  ELEMENTAL_MASTERY-->|3|MASTER_OF_WATER("Master of Water [10]")
-  ELEMENTAL_MASTERY-->|3|MASTER_OF_WIND("Master of Wind [10]")
-  ELEMENTAL_MASTERY-->|3|MASTER_OF_EARTH("Master of Earth [10]")
+  ELEMENTAL_MASTERY("Elemental Mastery [5]")-->|min. 3|MASTER_OF_FIRE("Master of Fire [10]")
+  ELEMENTAL_MASTERY-->|min. 3|MASTER_OF_WATER("Master of Water [10]")
+  ELEMENTAL_MASTERY-->|min. 3|MASTER_OF_WIND("Master of Wind [10]")
+  ELEMENTAL_MASTERY-->|min. 3|MASTER_OF_EARTH("Master of Earth [10]")
 {{< /mermaid >}}
 
 ### Elemental Mastery (5)
 
 Increases damage or healing of spells with elemental (earth, wind, wasser, fire) domain.
 
-```
-+3% damage/level
-```
+> +3% damage/level
 
 ### Master of Fire (10)
 
@@ -77,9 +75,7 @@ Increases damage or healing of spells with elemental (earth, wind, wasser, fire)
 
 Increases the damage of fire attacks.
 
-```
-+3% damage/level
-```
+> +3% damage/level
 
 ### Master of Water (10)
 
@@ -87,9 +83,7 @@ Increases the damage of fire attacks.
 
 Increases damage of water spells.
 
-```
-+3% damage/level
-```
+> +3% damage/level
 
 ### Master of Wind (10)
 
@@ -97,9 +91,7 @@ Elemental Mastery (3)
 
 Increases damage of wind spells.
 
-```
-+3% damage/level
-```
+> +3% damage/level
 
 ### Master of Earth (10)
 
@@ -107,63 +99,50 @@ Elemental Mastery (3)
 
 Increases damage of earth spells.
 
-```
-+3% damage/level
-```
+> +3% damage/level
 
 ### Spritual Mastery (5)
 
 Increases damage or healing of spells with the Holy or Dark domain.
 
-```
-+5% damage/level
-```
+> +5% damage/level
 
 ## Survival Tree
 
 ### Improved Healing (10)
 
-Increases effects of healing done and duration of buff spells.
+Increases effects of healing done and duration of buff spells when used by the owner of this spell.
 
-```
-+2% effect/level
-```
+> +2% effect/level
 
 ### Increased Regeneration (10)
 
 Your Bestias and Masters HP and Mana will have an increased regeneration rate.
 
-```
-+3% effect/level
-```
+> +3% effect/level
 
-### Magic Resistance (3)
+### Magic Armor (3)
 
-* Improved Healing (2)
+* Improved Healing (5)
 
 Reduces damage of magical effects.
 
-```
--2%/level reduced damage
-```
+> -2%/level reduced damage
 
 ### Faster Travel (5)
 
 Hard terrain does not reduce the Bestia movement speed anymore. On Level 5 the tarrain does not reduce movement speed anymore at all.
 
-```
--10%/level reduced movement reduction
-```
+> -20%/level reduced movement reduction
 
 ### Tough Guy (3)
 
 Stamina is faster regenerated and drops slower in high demanding environments and while dong activities which would otherwise
 deplete your stamina.
 
-```
--10%/level reduced stamina reduction
-+10%/level increased stamina regeneration
-```
+> -10%/level reduced stamina reduction
+>
+> +10%/level increased stamina regeneration
 
 ### Packhorse
 
@@ -171,28 +150,29 @@ deplete your stamina.
 
 Increases weight limit to carry.
 
-```
-+5%/level weight limit increase
-```
+> +5%/level Weight Limit increase
 
 ## Crafts Tree
 
-### Improved Trading (3)
+### Improved Trading (5)
 
 NPC can be talked into to pay more or give the player cheaper prices for items.
 
-```
--10%/level reduced stamina reduction
-+10%/
-```
+> -5%/lv price reduction at NPCs
+>
+> +3%/lv higher price when selling at NPC
 
-### Scavenger
+### Scavenger (10)
 
 When breaking up and recycling items the probability to recycle a higher amount of components is increased.
 
-### Blacksmithing
+### Blacksmithing (10)
 
-Able to forge weaponry. Can also [refine weapons](/mechanics/items/#weapon-refinement).
+* Scavenger (5)
+
+Able to forge weaponry. Can also [refine weapons](/mechanics/items/#weapon-refinement). Increasing the spell does increase the chance to forge higher level weapons.
+
+Also increases the probability by 2% to succeed when upgrading a weapon.
 
 ## Science Tree
 
@@ -213,6 +193,10 @@ Increases the range and effectivness when performing a cartography.
 
 ### Engieneer (10)
 
+### Sage (10)
+
+Can create magical artifacts.
+
 ### Control Mana Flow
 
 User is able to channel down the Mana to crystalize into small shards of Mana crystals which can be used as a power source throughout the world.
@@ -221,6 +205,5 @@ User is able to channel down the Mana to crystalize into small shards of Mana cr
 
 Bestias gain faster experience.
 
-```
-+5% experience gain per level
-```
+> +5% experience gain per level
+>

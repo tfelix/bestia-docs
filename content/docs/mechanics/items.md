@@ -10,7 +10,7 @@ its [Inventory](/mechanics/inventory).
 Each item has a level assigned. This level is important to determine how hard or easy it is to forge this item, upgrade
 it and so on. It also effects how spels interact with the item entity.
 
-## Item Level
+## Item Category
 
 Items are grouped into three categories and inside this documentation often refered to via its category.
 
@@ -33,15 +33,15 @@ A refined weapon has increased base damage per level:
 | Superior        | 4                                 |
 | Legendary       | 6                                 |
 
-These are the base upgrade chances. The chances can be altered via skills or item usages.
-
 ### Uprade Chances
 
-| Weapon Category | Uprade Formula                  |
-| --------------- | ------------------------------- |
-| Mundane         | $min(1, e^{-(itemLv-5)/9.8)})$  |
-| Superior        | $min(1, e^{-(itemLv-4)/8,69)})$ |
-| Legendary       | $min(1, e^{-(itemLv-3)/7.69)})$ |
+These are the base upgrade chances. The chances can be altered via skills or item usages.
+
+| Weapon Category | Uprade Formula                                            |
+| --------------- | --------------------------------------------------------- |
+| Mundane         | {{< katex >}} min(1, e^{-(itemLv-5)/9.8)}){{< /katex >}}  |
+| Superior        | {{< katex >}} min(1, e^{-(itemLv-4)/8.69)}){{< /katex >}} |
+| Legendary       | {{< katex >}} min(1, e^{-(itemLv-3)/7.69)}){{< /katex >}} |
 
 ## Equipment Refinement
 
