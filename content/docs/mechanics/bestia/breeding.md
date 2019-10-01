@@ -27,4 +27,18 @@ determined like so:
 
 ## Learnable Attacks
 
-TBD
+The father Bestia has a chance to transfer up to three attacks towards its offspring. Depending on the season out of 25 attacks
+are picked to allow the player some control over the selected attacks.
+
+| Attack Range | Season Of Breed |
+| :----------- | --------------: |
+| 1 - 25       |          Spring |
+| 26 - 50      |          Summer |
+| 51 - 75      |            Fall |
+| 76 - 100     |          Winter |
+
+Up to three attacks from this range is selected and then with a chance of 30 % each of this attacks the attack is transfered
+to the female if it can not learn this attack on their own. If she learns this attack on a higher level it will now learn the
+attack by the level of the father.
+
+With a chance of 30 % the attack is learned one level earlier then before.
