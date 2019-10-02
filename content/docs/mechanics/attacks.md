@@ -16,17 +16,40 @@ be fun and entertaining. Bestias can learn attacks by two means:
 2. Spell Discovery - The player can try to "invent/discover" new attacks which then can be tried to be learned to a Bestia.
    This means 16 attacks until level 70 and about 4 attacks later on.
 
-## Level Up Learning
+## Magic Schools
 
-General rule of thumb is:
+All attacks are divided into the three schools of magic: Arcane, Black or White Magic. These schools might be important if certain
+spells are increased via a learned skill.
+
+### Arcane Magic
+
+This describes 'trickster' magic. It can be illusion spells, utility spells like generating food or shelter. There might be some
+rare kind of damaging spells but usually they contain transmutations and other fancy spell effects.
+
+### Black Magic
+
+Mostly damaging spells which are meant to inflict harm. These might be damaging spells or spells which directly inflict damage or
+harming status of its receiver like lowering defense or status values.
+
+### White Magic
+
+The Healing, Buff or protection spells. These also contain detection of spells and neutralization spells of magic. generally all
+kind of protection, healing or improving stati fall into the domain of white magic.
+
+## Learning Attacks
+
+Attacks are either learned via leveling up, vie the [Spell Discovery](/docs/mechanics/skills/#spell-discovery) skill or via Spell Scrolls
+which can be traded (but are rather expensive).
+
+For leveling up a Bestia a general rule of thumb is:
 
 1. A Bestia should have about 20 Attacks.
 2. 80% of the attacks should be learned from level 1 - 69. The last 20% of the attacks between level 70 - 100.
 
 ### Spell Discovery
 
-Spells can be discovered by the player. If he has the skill [Spell Discovery](/docs/mechanics/skills/#spell-discovery). The maximum attack learnable by the skill
-level is given in the table below.
+Spells can be discovered by the player. If he has the skill [Spell Discovery](/docs/mechanics/skills/#spell-discovery). The maximum attack
+learnable by the skill level is given in the table below.
 
 | Spell Discovery Lv. | max. Attack Level Discoverable |
 | ------------------- | -----------------------------: |
@@ -45,7 +68,7 @@ To discover a spell an aspect is chosen like 'White Magic', 'Black Magic' or 'Ar
 
 TBD
 
-## Spell Enscription
+### Spell Enscription
 
 If the player owns the skill [Spell Enscription](/docs/mechanics/skills/#spell-enscription) he can attach the spell to
 scrolls or even to other entities.
@@ -55,13 +78,23 @@ a higher level are of course far harder to handle. Attaching or handling such sp
 depending on the spell (some spells might create explosions, others might teleport something away or randomly heal
 bystanders etc.)
 
-## Spell Attachments
+## Spell Binding
 
-Most if not each entity/object in the game world has slots/events to which spells can be attached to. If such an event
-is triggered the effect of the spell is resolved.
+Most if not each entity/object in the game world have slots and triggers to which spells can be attached to.
+If the player has the skill [Spell Binding](/docs/mechanics/skills/#spell-binding) he can discover such slots and triggers
+on entities as well as trying to bind spells to such entities.
+
+### Trigger Types
+
+* Entity entering or leaving range
+* Special Entity entering or leaving range (Name, Type etc.)
+* Presence of Magic rising of falling
+* Weather Conditions
+* Time
+* Spell Cast in Range
 
 ## Detection of Magic
 
-The must be a skill which enables the user to detect magic. The detection itself is easier if the spell is more
+If the user has learned [Detect Magic](/docs/mechanics/skills/#detect-magic). The detection itself is easier if the spell is more
 powerful. However precautions can be used to avoid the spell getting detected. If more than one spell is attached to an
 object the less powerful spells are harder to detect.

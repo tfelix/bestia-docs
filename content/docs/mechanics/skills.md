@@ -15,12 +15,13 @@ Some of this account skills can be used by every Bestia in posession others only
 
 ## Guidlines
 
-* The number of total skil ranks inside a tree should **not exeed 70** by much
-* The possible rank counts of a skill should be: **1, 3, 5 and 10**
+* The number of total skil ranks inside a tree should **be between 70-80**
+* The possible rank counts of a skill should be: **1, 5 and 10**
 * There should be some meaningful dependency of the skills forming an exciting tree
+* In each profession tree there should form 2-3 sub-trees which create a miningful hierarchy
 * There should be some kind of three tiers inside a tree form low and basic skill to the much powerfull skills
 
-> No Hardcoded Skill Effects!
+> Most Important: No Hardcoded Skill Effects!
 
 Skills should be used when possible require some interaction with the player whose success depends on the effect of the
 skill. An example would be the teleport ability: after selecting the players (which can be flexible by the number) and
@@ -47,7 +48,11 @@ meaningful professions of another tree. The skilltree is a hierarchical dependen
 
 In this tree, simple, common mundane tasks are placed.
 
-**TODO**
+### First Aid
+
+### Cooking (5)
+
+### Fishing (5)
 
 ## Battle Tree
 
@@ -107,7 +112,26 @@ Increases damage or healing of spells with the Holy or Dark domain.
 
 > +5% damage/level
 
+### Mindbreak (5)
+
+This is a buff which once it gets applied reduces the armor but increases the physical and magical attack of a Bestia.
+
+> +20% damage/level
+>
+> -20% armor/level
+
+### Mindfocus (5)
+
+This is a buff which once it gets applied increases the armor but decreases the physical and magical attack of a Bestia.
+
+> +20% armor/level
+>
+> -20% damage/level
+
 ## Survival Tree
+
+The survival tree has three main ideas: protecting the masters Bestia from physical harm by increasing they tougness indirectly, improving the survivability
+in harsh environments for his Bestias or others.
 
 ### Improved Healing (10)
 
@@ -121,7 +145,7 @@ Your Bestias and Masters HP and Mana will have an increased regeneration rate.
 
 > +3% effect/level
 
-### Magic Armor (3)
+### Magic Armor (5)
 
 * Improved Healing (5)
 
@@ -135,7 +159,19 @@ Hard terrain does not reduce the Bestia movement speed anymore. On Level 5 the t
 
 > -20%/level reduced movement reduction
 
-### Tough Guy (3)
+### Taming (5)
+
+Bestias gain faster experience and are easier to catch.
+
+> +5% experience gain per level
+
+### Breeding (5)
+
+### Summon Bestia (10)
+
+A temporarly Bestia from pure magic is created which will assist its master for a short period of time.
+
+### Tough Guy (5)
 
 Stamina is faster regenerated and drops slower in high demanding environments and while dong activities which would otherwise
 deplete your stamina.
@@ -145,6 +181,12 @@ deplete your stamina.
 > +10%/level increased stamina regeneration
 
 ### Packhorse
+
+### Magic Shelter (5)
+
+Improves environment condition via magic.
+
+### Magic Protection (5)
 
 **Max Level: 5**
 
@@ -174,36 +216,85 @@ Able to forge weaponry. Can also [refine weapons](/mechanics/items/#weapon-refin
 
 Also increases the probability by 2% to succeed when upgrading a weapon.
 
+### Engineering (10)
+
+### Magic Artisan (10)
+
+Can create magical artifacts.
+
+### Transmutation (10)
+
 ## Science Tree
 
 The Science Tree contains skills witch help with sensing the world events and or performing rituals to even shape the
-face of the Bestia world.
+face of the Bestia world itself. It basically forms 3 sub-trees: One is focused on attack learning, and enscribing, the second one
+helps with world exploration, and mana flow detection and control. And the third one is there for resource transformation/transmutation.
 
-### Spell Enscription
+{{< mermaid >}}
+graph TD
+  SPELL_ENSCRIPTION("Spell Enscription [10]")-->|min. 5|SPELL_BINDING("Spell Binding [10]")
+  SPELL_ENSCRIPTION-->|min. 3|SPELL_DISCOVERY("Spell Discovery [10]")
+  SPELL_BINDING-->|min. 5|FOCUS_BLACK("Focus: Black Magic [5]")
+  SPELL_DISCOVERY-->|min. 5|FOCUS_BLACK
+  SPELL_BINDING-->|min. 5|FOCUS_WHITE("Focus: White Magic [5]")
+  SPELL_DISCOVERY-->|min. 5|FOCUS_WHITE
+  SPELL_BINDING-->|min. 5|FOCUS_ARCANE("Focus: Arcane [5]")
+  SPELL_DISCOVERY-->|min. 5|FOCUS_ARCANE
+  GEOGRAPHY("Geography [5]")-->|min. 3|SCRY("Scry [5]")
+  SCRY-->|min. 3|TELEPORT("Teleport [10]")
+  TELEPORT-->|min. 8|PORTAL("Portal [10]")
+{{< /mermaid >}}
+
+### Spell Enscription (10)
 
 Enables the user to write down spells onto items or scrolls for a later use (even by someone who does not know the spell).
+
+### Spell Binding (10)
+
+Allows the user to bind certain spells to entities and create trigger for them. This can be used to permanently bind spells
+to artifacts or setup alarms or traps for example.
 
 ### Spell Discovery (10)
 
 Enables the user to discover spells to learn for his Bestias.
 
-### Geography (10)
+### Focus: Black Magic (5)
+
+Enables the user to discover spells to learn for his Bestias.
+
+### Focus: White Magic (5)
+
+Enables the user to discover spells to learn for his Bestias.
+
+### Focus: Arcane (5)
+
+Enables the user to discover spells to learn for his Bestias.
+
+### Geography (5)
 
 Increases the range and effectivness when performing a cartography.
 
-### Engieneer (10)
+### Scry (5)
 
-### Sage (10)
+Can look into areas far away.
 
-Can create magical artifacts.
+### Teleport (10)
 
-### Control Mana Flow
+Can teleport own bestias over a distance. To teleport somewhere one needs to setup Teleport Runes which form some kind of magical anchor.
+They can be used as targets then trying to teleport. The teleportation gets harder and more error prone the longer distances are tried to travel.
+The teleported entity also gets a debuff which will prevent it from teleporting for some time.
+
+### Portal (10)
+
+Can teleport any entity over a distance. To teleport somewhere one needs to setup Portal Runes which form some kind of magical anchor. As soon as a portal
+has opened it can be used in both directions for some time.
+
+### Control Mana Flow (10)
 
 User is able to channel down the Mana to crystalize into small shards of Mana crystals which can be used as a power source throughout the world.
 
-### Taming (3)
+### Magic Senses (5)
 
-Bestias gain faster experience.
+Detect presence of magic.
 
-> +5% experience gain per level
->
+### Identify Magic (5)

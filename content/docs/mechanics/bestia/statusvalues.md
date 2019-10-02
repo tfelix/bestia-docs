@@ -120,7 +120,7 @@ speed or attack speed of an entity.
 ## Individual Values
 
 The individual value **IVs** are generated when the Bestia spawns and makes this somewhat random. Its possible to find
-better or worst Bestia. By breeding Bestia this IVs are subject to manipulation by the player and it is possible to make
+better or worst Bestia. By [breeding Bestia](/docs/mechanics/bestia/breeding/) this IVs are subject to manipulation by the player and it is possible to make
 stronger Bestia in a controlled way.
 
 ## Base Values
@@ -153,25 +153,16 @@ TBD
 ## Experience
 
 The primary way to gain experience in the game is by fighting enemy Bestias. But there is also experience for more pacifistic
-players to gain through the use of skills. However, in order to give players no advantage over fighting players, the
-experience is calculated by skills in another pool and can only be used
+players to gain through the use of skills. However, in order to give players no advantage over activly fighting players, the
+experience gained via skill use only rises linearly (opposing to the exponential exp needed growth of a Bestia).
 
-The experience gained by job is reduced the higher the job level count
-of the players rises by a factor.
+### Killing Enemies
 
-```kotlin
-reductionFactor = exp(jobLevel/10)^-1
-```
+### Skill Usage
 
 Only activly used jobs will create experience.
 
-By each level up results in a certain amount of Effort Points which can be distributed by the player over all status points
-as desired.
-
-Furthermore each level up below level 50 results in one point for a skill up. At level 50 and above the number of
-skill up points decreases slowly. So you may need several level ups to get another skill up.
-
-## Death
+### Death Penalty
 
 Players Master can not die directly, they are reborn with a temporary malus.
 

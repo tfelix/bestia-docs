@@ -11,6 +11,9 @@ There are archivements which are unique to a single world and other which every 
 are saved with the world they were acquired and are reset (they can be re-acuired by another player if the world is re-created).
 The date + the name of the world in which the success was achieved always remains in the history for a player.
 
+This list is far from completed! New ideas and suggestions are welcomed. Please open an issue or directly
+[make a pull request](https://github.com/tfelix/bestia-docs/edit/master/content/docs%5cmechanics%5carchivements.md) for new ideas.
+
 ## List of Archivements
 
 ### Master of 10 Bestias
