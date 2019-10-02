@@ -86,7 +86,16 @@ If a Bestia/Entity is killed and has had some items inside its inventory usually
       <guid>https://docs.bestia-game.net/docs/mechanics/items/</guid>
       <description>Items Items can be optained by the player and carried around. The amount of items limited to each entity is determined via its Inventory.
 Each item has a level assigned. This level is important to determine how hard or easy it is to forge this item, upgrade it and so on. It also effects how spels interact with the item entity.
-Item Level Items are grouped into three categories and inside this documentation often refered to via its category.</description>
+Item Category Items are grouped into three categories and inside this documentation often refered to via its category.</description>
+    </item>
+    
+    <item>
+      <title>Postal System</title>
+      <link>https://docs.bestia-game.net/docs/mechanics/postalsystem/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.bestia-game.net/docs/mechanics/postalsystem/</guid>
+      <description>Postal System Based on World of Warcraft, a postal system is to be established. The system should make it possible to send letters, but above all items and money to other players and places. But unlike most games, it should not be an &amp;ldquo;out-of-world&amp;rdquo; system. It would be conceivable that players would have to organize the system themselves and send Bestia as postmen to remote locations in Aventerra. This should take the speed out of the game.</description>
     </item>
     
     <item>
