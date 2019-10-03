@@ -41,6 +41,22 @@ The following base types of resources exist in the game.
 | Stone                    | Mountains                  | Material                               |
 | Salts                    | Mountains, Sea             | Material                               |
 
+## Resource List
+
+| Name                 | Type  | Description |
+| -------------------- | ----- | ----------- |
+| Iron                 | Metal |             |
+| Steel                | Metal |             |
+| Silver               | Metal |             |
+| Gold                 | Metal |             |
+| Platin               | Metal |             |
+| Copper               | Metal |             |
+| Mercury              | Metal |             |
+| Blue Mana Christal   | Salt  |             |
+| Yellow Mana Christal | Salt  |             |
+| Red Mana Christal    | Salt  |             |
+| NaCl                 | Salt  |             |
+
 ## Item Recycling
 
 For each item is a list of base resources which the item is roughly based upon (this list is also used when forging or
