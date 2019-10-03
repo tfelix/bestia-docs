@@ -14,12 +14,12 @@
   
   <url>
     <loc>https://docs.bestia-game.net/docs/mechanics/archivements/</loc>
-    <lastmod>2019-09-17T02:22:24+02:00</lastmod>
+    <lastmod>2019-10-03T01:33:08+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://docs.bestia-game.net/docs/mechanics/attacks/</loc>
-    <lastmod>2019-09-18T00:30:22+02:00</lastmod>
+    <lastmod>2019-10-03T01:33:08+02:00</lastmod>
   </url>
   
   <url>
@@ -69,12 +69,12 @@
   
   <url>
     <loc>https://docs.bestia-game.net/docs/mechanics/resources/</loc>
-    <lastmod>2019-09-16T23:01:20+02:00</lastmod>
+    <lastmod>2019-10-04T00:35:53+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://docs.bestia-game.net/docs/mechanics/skills/</loc>
-    <lastmod>2019-10-01T22:24:05+02:00</lastmod>
+    <lastmod>2019-10-03T01:33:08+02:00</lastmod>
   </url>
   
   <url>
@@ -158,8 +158,18 @@
   </url>
   
   <url>
+    <loc>https://docs.bestia-game.net/docs/mechanics/crafting/engineering/</loc>
+    <lastmod>2019-10-03T01:33:08+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://docs.bestia-game.net/docs/server/server-environment/</loc>
     <lastmod>2019-09-16T23:01:20+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://docs.bestia-game.net/docs/mechanics/crafting/forging/</loc>
+    <lastmod>2019-10-03T01:33:08+02:00</lastmod>
   </url>
   
   <url>
@@ -194,7 +204,7 @@
   
   <url>
     <loc>https://docs.bestia-game.net/docs/mechanics/bestia/statusvalues/</loc>
-    <lastmod>2019-09-16T23:01:20+02:00</lastmod>
+    <lastmod>2019-10-03T01:33:08+02:00</lastmod>
   </url>
   
   <url>

@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="/book.min.6ce39c318c4c697670ce5ed31d5801e7dc620149be801b92a4fe0c6ddcc3bcd2.css" integrity="sha256-bOOcMYxMaXZwzl7THVgB59xiAUm&#43;gBuSpP4MbdzDvNI=">
 
 
-<script defer src="/search.min.5f65477e6a96622a6853965aafc3703542b36fef80b3d173bb39e40f0b59a6d8.js" integrity="sha256-X2VHfmqWYipoU5Zar8NwNUKzb&#43;&#43;As9FzuznkDwtZptg="></script>
+<script defer src="/search.min.1cb516b160f038dde78d9c05c1a86418b36bd155003ae122d0abf1a28d3af1f3.js" integrity="sha256-HLUWsWDwON3njZwFwahkGLNr0VUAOuEi0Kvxoo068fM="></script>
 
 
 
@@ -193,6 +193,26 @@ https://github.com/alex-shpak/hugo-book
 
   <a href="/docs/mechanics/crafting/alchemy/" >
       Alchemy
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/docs/mechanics/crafting/engineering/" >
+      Engineering
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/docs/mechanics/crafting/forging/" >
+      Forging
   </a>
 
 </li>
@@ -678,7 +698,7 @@ speed or attack speed of an entity.</p>
 <h2 id="individual-values">Individual Values</h2>
 
 <p>The individual value <strong>IVs</strong> are generated when the Bestia spawns and makes this somewhat random. Its possible to find
-better or worst Bestia. By breeding Bestia this IVs are subject to manipulation by the player and it is possible to make
+better or worst Bestia. By <a href="/docs/mechanics/bestia/breeding/">breeding Bestia</a> this IVs are subject to manipulation by the player and it is possible to make
 stronger Bestia in a controlled way.</p>
 
 <h2 id="base-values">Base Values</h2>
@@ -711,21 +731,16 @@ runs out).</p>
 <h2 id="experience">Experience</h2>
 
 <p>The primary way to gain experience in the game is by fighting enemy Bestias. But there is also experience for more pacifistic
-players to gain through the use of skills. However, in order to give players no advantage over fighting players, the
-experience is calculated by skills in another pool and can only be used</p>
+players to gain through the use of skills. However, in order to give players no advantage over activly fighting players, the
+experience gained via skill use only rises linearly (opposing to the exponential exp needed growth of a Bestia).</p>
 
-<p>The experience gained by job is reduced the higher the job level count
-of the players rises by a factor.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">reductionFactor = exp(jobLevel/<span style="color:#ae81ff">10</span>)^-<span style="color:#ae81ff">1</span></code></pre></div>
+<h3 id="killing-enemies">Killing Enemies</h3>
+
+<h3 id="skill-usage">Skill Usage</h3>
+
 <p>Only activly used jobs will create experience.</p>
 
-<p>By each level up results in a certain amount of Effort Points which can be distributed by the player over all status points
-as desired.</p>
-
-<p>Furthermore each level up below level 50 results in one point for a skill up. At level 50 and above the number of
-skill up points decreases slowly. So you may need several level ups to get another skill up.</p>
-
-<h2 id="death">Death</h2>
+<h3 id="death-penalty">Death Penalty</h3>
 
 <p>Players Master can not die directly, they are reborn with a temporary malus.</p>
 
@@ -747,8 +762,8 @@ quickly after detecting a dicey situation.</p>
   
   <div>
     
-    <a href="https://github.com/tfelix/bestia-docs/commit/ad79b32f9a8f8e4bdaebcf1d4cf1790076508002" title='Last modified Sep 16, 2019 by Thomas Felix' target="_blank" rel="noopener">
-      <i class="far fa-calendar" style="margin-right: 0.3em"></i> Sep 16, 2019
+    <a href="https://github.com/tfelix/bestia-docs/commit/96c2b3001d3082424530e35440d5471331da4e54" title='Last modified Oct 2, 2019 by Thomas Felix' target="_blank" rel="noopener">
+      <i class="far fa-calendar" style="margin-right: 0.3em"></i> Oct 2, 2019
     </a>
   </div>
   
@@ -792,8 +807,12 @@ quickly after detecting a dicey situation.</p>
 <li><a href="#effective-status-values">Effective Status Values</a></li>
 <li><a href="#effective-status-value-calculation">Effective Status Value Calculation</a></li>
 <li><a href="#status-based-values-calculation">Status Based Values Calculation</a></li>
-<li><a href="#experience">Experience</a></li>
-<li><a href="#death">Death</a></li>
+<li><a href="#experience">Experience</a>
+<ul>
+<li><a href="#killing-enemies">Killing Enemies</a></li>
+<li><a href="#skill-usage">Skill Usage</a></li>
+<li><a href="#death-penalty">Death Penalty</a></li>
+</ul></li>
 </ul></li>
 </ul>
 </nav>

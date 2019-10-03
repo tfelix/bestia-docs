@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="/book.min.6ce39c318c4c697670ce5ed31d5801e7dc620149be801b92a4fe0c6ddcc3bcd2.css" integrity="sha256-bOOcMYxMaXZwzl7THVgB59xiAUm&#43;gBuSpP4MbdzDvNI=">
 
 
-<script defer src="/search.min.5f65477e6a96622a6853965aafc3703542b36fef80b3d173bb39e40f0b59a6d8.js" integrity="sha256-X2VHfmqWYipoU5Zar8NwNUKzb&#43;&#43;As9FzuznkDwtZptg="></script>
+<script defer src="/search.min.1cb516b160f038dde78d9c05c1a86418b36bd155003ae122d0abf1a28d3af1f3.js" integrity="sha256-HLUWsWDwON3njZwFwahkGLNr0VUAOuEi0Kvxoo068fM="></script>
 
 
 
@@ -193,6 +193,26 @@ https://github.com/alex-shpak/hugo-book
 
   <a href="/docs/mechanics/crafting/alchemy/" >
       Alchemy
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/docs/mechanics/crafting/engineering/" >
+      Engineering
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/docs/mechanics/crafting/forging/" >
+      Forging
   </a>
 
 </li>
@@ -567,14 +587,15 @@ called <a href="/docs/mechanics/attacks">attacks</a>.</p>
 <h2 id="guidlines">Guidlines</h2>
 
 <ul>
-<li>The number of total skil ranks inside a tree should <strong>not exeed 70</strong> by much</li>
-<li>The possible rank counts of a skill should be: <strong>1, 3, 5 and 10</strong></li>
+<li>The number of total skil ranks inside a tree should <strong>be between 70-80</strong></li>
+<li>The possible rank counts of a skill should be: <strong>1, 5 and 10</strong></li>
 <li>There should be some meaningful dependency of the skills forming an exciting tree</li>
+<li>In each profession tree there should form 2-3 sub-trees which create a miningful hierarchy</li>
 <li>There should be some kind of three tiers inside a tree form low and basic skill to the much powerfull skills</li>
 </ul>
 
 <blockquote>
-<p>No Hardcoded Skill Effects!</p>
+<p>Most Important: No Hardcoded Skill Effects!</p>
 </blockquote>
 
 <p>Skills should be used when possible require some interaction with the player whose success depends on the effect of the
@@ -604,7 +625,11 @@ meaningful professions of another tree. The skilltree is a hierarchical dependen
 
 <p>In this tree, simple, common mundane tasks are placed.</p>
 
-<p><strong>TODO</strong></p>
+<h3 id="first-aid">First Aid</h3>
+
+<h3 id="cooking-5">Cooking (5)</h3>
+
+<h3 id="fishing-5">Fishing (5)</h3>
 
 <h2 id="battle-tree">Battle Tree</h2>
 
@@ -695,7 +720,30 @@ graph TD
 <p>+5% damage/level</p>
 </blockquote>
 
+<h3 id="mindbreak-5">Mindbreak (5)</h3>
+
+<p>This is a buff which once it gets applied reduces the armor but increases the physical and magical attack of a Bestia.</p>
+
+<blockquote>
+<p>+20% damage/level</p>
+
+<p>-20% armor/level</p>
+</blockquote>
+
+<h3 id="mindfocus-5">Mindfocus (5)</h3>
+
+<p>This is a buff which once it gets applied increases the armor but decreases the physical and magical attack of a Bestia.</p>
+
+<blockquote>
+<p>+20% armor/level</p>
+
+<p>-20% damage/level</p>
+</blockquote>
+
 <h2 id="survival-tree">Survival Tree</h2>
+
+<p>The survival tree has three main ideas: protecting the masters Bestia from physical harm by increasing they tougness indirectly, improving the survivability
+in harsh environments for his Bestias or others.</p>
 
 <h3 id="improved-healing-10">Improved Healing (10)</h3>
 
@@ -713,7 +761,7 @@ graph TD
 <p>+3% effect/level</p>
 </blockquote>
 
-<h3 id="magic-armor-3">Magic Armor (3)</h3>
+<h3 id="magic-armor-5">Magic Armor (5)</h3>
 
 <ul>
 <li>Improved Healing (5)</li>
@@ -733,7 +781,21 @@ graph TD
 <p>-20%/level reduced movement reduction</p>
 </blockquote>
 
-<h3 id="tough-guy-3">Tough Guy (3)</h3>
+<h3 id="taming-5">Taming (5)</h3>
+
+<p>Bestias gain faster experience and are easier to catch.</p>
+
+<blockquote>
+<p>+5% experience gain per level</p>
+</blockquote>
+
+<h3 id="breeding-5">Breeding (5)</h3>
+
+<h3 id="summon-bestia-10">Summon Bestia (10)</h3>
+
+<p>A temporarly Bestia from pure magic is created which will assist its master for a short period of time.</p>
+
+<h3 id="tough-guy-5">Tough Guy (5)</h3>
 
 <p>Stamina is faster regenerated and drops slower in high demanding environments and while dong activities which would otherwise
 deplete your stamina.</p>
@@ -745,6 +807,12 @@ deplete your stamina.</p>
 </blockquote>
 
 <h3 id="packhorse">Packhorse</h3>
+
+<h3 id="magic-shelter-5">Magic Shelter (5)</h3>
+
+<p>Improves environment condition via magic.</p>
+
+<h3 id="magic-protection-5">Magic Protection (5)</h3>
 
 <p><strong>Max Level: 5</strong></p>
 
@@ -780,40 +848,93 @@ deplete your stamina.</p>
 
 <p>Also increases the probability by 2% to succeed when upgrading a weapon.</p>
 
+<h3 id="engineering-10">Engineering (10)</h3>
+
+<h3 id="magic-artisan-10">Magic Artisan (10)</h3>
+
+<p>Can create magical artifacts.</p>
+
+<h3 id="transmutation-10">Transmutation (10)</h3>
+
 <h2 id="science-tree">Science Tree</h2>
 
 <p>The Science Tree contains skills witch help with sensing the world events and or performing rituals to even shape the
-face of the Bestia world.</p>
+face of the Bestia world itself. It basically forms 3 sub-trees: One is focused on attack learning, and enscribing, the second one
+helps with world exploration, and mana flow detection and control. And the third one is there for resource transformation/transmutation.</p>
 
-<h3 id="spell-enscription">Spell Enscription</h3>
+
+
+<p class="mermaid">
+  
+graph TD
+  SPELL_ENSCRIPTION("Spell Enscription [10]")-->|min. 5|SPELL_BINDING("Spell Binding [10]")
+  SPELL_ENSCRIPTION-->|min. 3|SPELL_DISCOVERY("Spell Discovery [10]")
+  SPELL_BINDING-->|min. 5|FOCUS_BLACK("Focus: Black Magic [5]")
+  SPELL_DISCOVERY-->|min. 5|FOCUS_BLACK
+  SPELL_BINDING-->|min. 5|FOCUS_WHITE("Focus: White Magic [5]")
+  SPELL_DISCOVERY-->|min. 5|FOCUS_WHITE
+  SPELL_BINDING-->|min. 5|FOCUS_ARCANE("Focus: Arcane [5]")
+  SPELL_DISCOVERY-->|min. 5|FOCUS_ARCANE
+  GEOGRAPHY("Geography [5]")-->|min. 3|SCRY("Scry [5]")
+  SCRY-->|min. 3|TELEPORT("Teleport [10]")
+  TELEPORT-->|min. 8|PORTAL("Portal [10]")
+
+</p>
+
+
+<h3 id="spell-enscription-10">Spell Enscription (10)</h3>
 
 <p>Enables the user to write down spells onto items or scrolls for a later use (even by someone who does not know the spell).</p>
+
+<h3 id="spell-binding-10">Spell Binding (10)</h3>
+
+<p>Allows the user to bind certain spells to entities and create trigger for them. This can be used to permanently bind spells
+to artifacts or setup alarms or traps for example.</p>
 
 <h3 id="spell-discovery-10">Spell Discovery (10)</h3>
 
 <p>Enables the user to discover spells to learn for his Bestias.</p>
 
-<h3 id="geography-10">Geography (10)</h3>
+<h3 id="focus-black-magic-5">Focus: Black Magic (5)</h3>
+
+<p>Enables the user to discover spells to learn for his Bestias.</p>
+
+<h3 id="focus-white-magic-5">Focus: White Magic (5)</h3>
+
+<p>Enables the user to discover spells to learn for his Bestias.</p>
+
+<h3 id="focus-arcane-5">Focus: Arcane (5)</h3>
+
+<p>Enables the user to discover spells to learn for his Bestias.</p>
+
+<h3 id="geography-5">Geography (5)</h3>
 
 <p>Increases the range and effectivness when performing a cartography.</p>
 
-<h3 id="engieneer-10">Engieneer (10)</h3>
+<h3 id="scry-5">Scry (5)</h3>
 
-<h3 id="sage-10">Sage (10)</h3>
+<p>Can look into areas far away.</p>
 
-<p>Can create magical artifacts.</p>
+<h3 id="teleport-10">Teleport (10)</h3>
 
-<h3 id="control-mana-flow">Control Mana Flow</h3>
+<p>Can teleport own bestias over a distance. To teleport somewhere one needs to setup Teleport Runes which form some kind of magical anchor.
+They can be used as targets then trying to teleport. The teleportation gets harder and more error prone the longer distances are tried to travel.
+The teleported entity also gets a debuff which will prevent it from teleporting for some time.</p>
+
+<h3 id="portal-10">Portal (10)</h3>
+
+<p>Can teleport any entity over a distance. To teleport somewhere one needs to setup Portal Runes which form some kind of magical anchor. As soon as a portal
+has opened it can be used in both directions for some time.</p>
+
+<h3 id="control-mana-flow-10">Control Mana Flow (10)</h3>
 
 <p>User is able to channel down the Mana to crystalize into small shards of Mana crystals which can be used as a power source throughout the world.</p>
 
-<h3 id="taming-3">Taming (3)</h3>
+<h3 id="magic-senses-5">Magic Senses (5)</h3>
 
-<p>Bestias gain faster experience.</p>
+<p>Detect presence of magic.</p>
 
-<blockquote>
-<p>+5% experience gain per level</p>
-</blockquote>
+<h3 id="identify-magic-5">Identify Magic (5)</h3>
 </article>
 
       
@@ -821,8 +942,8 @@ face of the Bestia world.</p>
   
   <div>
     
-    <a href="https://github.com/tfelix/bestia-docs/commit/556295e81f75c60a252ad2ceacb76cf246c4bc82" title='Last modified Oct 1, 2019 by Thomas Felix' target="_blank" rel="noopener">
-      <i class="far fa-calendar" style="margin-right: 0.3em"></i> Oct 1, 2019
+    <a href="https://github.com/tfelix/bestia-docs/commit/96c2b3001d3082424530e35440d5471331da4e54" title='Last modified Oct 2, 2019 by Thomas Felix' target="_blank" rel="noopener">
+      <i class="far fa-calendar" style="margin-right: 0.3em"></i> Oct 2, 2019
     </a>
   </div>
   
@@ -849,7 +970,12 @@ face of the Bestia world.</p>
 <ul>
 <li><a href="#guidlines">Guidlines</a></li>
 <li><a href="#skill-progression">Skill Progression</a></li>
-<li><a href="#common-tree">Common Tree</a></li>
+<li><a href="#common-tree">Common Tree</a>
+<ul>
+<li><a href="#first-aid">First Aid</a></li>
+<li><a href="#cooking-5">Cooking (5)</a></li>
+<li><a href="#fishing-5">Fishing (5)</a></li>
+</ul></li>
 <li><a href="#battle-tree">Battle Tree</a>
 <ul>
 <li><a href="#elemental-mastery-5">Elemental Mastery (5)</a></li>
@@ -858,31 +984,47 @@ face of the Bestia world.</p>
 <li><a href="#master-of-wind-10">Master of Wind (10)</a></li>
 <li><a href="#master-of-earth-10">Master of Earth (10)</a></li>
 <li><a href="#spritual-mastery-5">Spritual Mastery (5)</a></li>
+<li><a href="#mindbreak-5">Mindbreak (5)</a></li>
+<li><a href="#mindfocus-5">Mindfocus (5)</a></li>
 </ul></li>
 <li><a href="#survival-tree">Survival Tree</a>
 <ul>
 <li><a href="#improved-healing-10">Improved Healing (10)</a></li>
 <li><a href="#increased-regeneration-10">Increased Regeneration (10)</a></li>
-<li><a href="#magic-armor-3">Magic Armor (3)</a></li>
+<li><a href="#magic-armor-5">Magic Armor (5)</a></li>
 <li><a href="#faster-travel-5">Faster Travel (5)</a></li>
-<li><a href="#tough-guy-3">Tough Guy (3)</a></li>
+<li><a href="#taming-5">Taming (5)</a></li>
+<li><a href="#breeding-5">Breeding (5)</a></li>
+<li><a href="#summon-bestia-10">Summon Bestia (10)</a></li>
+<li><a href="#tough-guy-5">Tough Guy (5)</a></li>
 <li><a href="#packhorse">Packhorse</a></li>
+<li><a href="#magic-shelter-5">Magic Shelter (5)</a></li>
+<li><a href="#magic-protection-5">Magic Protection (5)</a></li>
 </ul></li>
 <li><a href="#crafts-tree">Crafts Tree</a>
 <ul>
 <li><a href="#improved-trading-5">Improved Trading (5)</a></li>
 <li><a href="#scavenger-10">Scavenger (10)</a></li>
 <li><a href="#blacksmithing-10">Blacksmithing (10)</a></li>
+<li><a href="#engineering-10">Engineering (10)</a></li>
+<li><a href="#magic-artisan-10">Magic Artisan (10)</a></li>
+<li><a href="#transmutation-10">Transmutation (10)</a></li>
 </ul></li>
 <li><a href="#science-tree">Science Tree</a>
 <ul>
-<li><a href="#spell-enscription">Spell Enscription</a></li>
+<li><a href="#spell-enscription-10">Spell Enscription (10)</a></li>
+<li><a href="#spell-binding-10">Spell Binding (10)</a></li>
 <li><a href="#spell-discovery-10">Spell Discovery (10)</a></li>
-<li><a href="#geography-10">Geography (10)</a></li>
-<li><a href="#engieneer-10">Engieneer (10)</a></li>
-<li><a href="#sage-10">Sage (10)</a></li>
-<li><a href="#control-mana-flow">Control Mana Flow</a></li>
-<li><a href="#taming-3">Taming (3)</a></li>
+<li><a href="#focus-black-magic-5">Focus: Black Magic (5)</a></li>
+<li><a href="#focus-white-magic-5">Focus: White Magic (5)</a></li>
+<li><a href="#focus-arcane-5">Focus: Arcane (5)</a></li>
+<li><a href="#geography-5">Geography (5)</a></li>
+<li><a href="#scry-5">Scry (5)</a></li>
+<li><a href="#teleport-10">Teleport (10)</a></li>
+<li><a href="#portal-10">Portal (10)</a></li>
+<li><a href="#control-mana-flow-10">Control Mana Flow (10)</a></li>
+<li><a href="#magic-senses-5">Magic Senses (5)</a></li>
+<li><a href="#identify-magic-5">Identify Magic (5)</a></li>
 </ul></li>
 </ul></li>
 </ul>

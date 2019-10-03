@@ -271,12 +271,30 @@ Die Engine besteht aus mehreren Subsystemen die jeweils mit eigenen Aufgaben bet
     </item>
     
     <item>
+      <title>Engineering</title>
+      <link>https://docs.bestia-game.net/docs/mechanics/crafting/engineering/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.bestia-game.net/docs/mechanics/crafting/engineering/</guid>
+      <description>Engineering TBD</description>
+    </item>
+    
+    <item>
       <title>Environment</title>
       <link>https://docs.bestia-game.net/docs/server/server-environment/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://docs.bestia-game.net/docs/server/server-environment/</guid>
       <description>Das Umweltsystem ist in der Lage dynamische Umweltbedingungen zu simulieren. Diese sollen auf gewissen Grundwerten aufbauen die ortsabhängig festgelegt werden, aber durch Interaktion mit den Spielern veränderbar sind. Auch natürliche Veränderungen durch die Welt (Jahreszeiten) sollen zu einer Anpassungen dieser Werte führen. Durch die Veränderungen der Umweltwerte müssen Tiles der Welt selbst angepasst werden. Diese müssen sowieso angepasst werden wenn sich diese durch andere lokale Effekte, wie zum Beispiel Feuer oder Bergbau ändern sollten.</description>
+    </item>
+    
+    <item>
+      <title>Forging</title>
+      <link>https://docs.bestia-game.net/docs/mechanics/crafting/forging/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.bestia-game.net/docs/mechanics/crafting/forging/</guid>
+      <description>Forging TBD</description>
     </item>
     
     <item>

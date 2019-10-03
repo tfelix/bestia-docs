@@ -19,5 +19,23 @@
 Once a receipt was discovered it is saved for the user so it can be reused very quickly. If a player repeatedly makes the same receipt the quality of the produced potions increases over time. The player can choose to write down the receipt and give it to other players who might increase their skill by reading it.</description>
     </item>
     
+    <item>
+      <title>Engineering</title>
+      <link>https://docs.bestia-game.net/docs/mechanics/crafting/engineering/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.bestia-game.net/docs/mechanics/crafting/engineering/</guid>
+      <description>Engineering TBD</description>
+    </item>
+    
+    <item>
+      <title>Forging</title>
+      <link>https://docs.bestia-game.net/docs/mechanics/crafting/forging/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.bestia-game.net/docs/mechanics/crafting/forging/</guid>
+      <description>Forging TBD</description>
+    </item>
+    
   </channel>
 </rss>
