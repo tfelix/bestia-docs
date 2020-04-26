@@ -41,6 +41,7 @@ maxMana = baseMana * 2 + ivMana + effMana / 4 * level / 100 + 10  + level * 2
 * Reduces cast duration of spells
 * Increases slightly the stamina regeneration
 * Increases slightly the total amount of stamina
+* Slightly increases resistance against temperature
 
 ## Strength (STR)
 
@@ -56,6 +57,7 @@ maxMana = baseMana * 2 + ivMana + effMana / 4 * level / 100 + 10  + level * 2
 * Increases the maximum amount of HP
 * Increases the stamina regeneration
 * Increases the maximim amount of stamina
+* Increases resistence against temperature
 
 ## Dexterity (DEX)
 
@@ -98,7 +100,8 @@ Upon level up of a Bestia it gains **Gain Points** which the player is free to d
 to any of the status values.
 
 These values are gained upon leveling up the Bestia and can freely assigned by the player as soon as he has some points
-to spend. However once spend these points are fixed and connot re-distributed anymore.
+to spend. However once spend these points are fixed and can not re-distributed anymore (there might be quests or NPC which
+are able to reset these values in a certain amount).
 
 The gain of effort values for a entity is:
 
@@ -109,7 +112,7 @@ effGain = 4 + floor(reachedLevel / 10)
 Upon leveling up the status values player needs to invest:
 
 ```kotlin
-effGainNeeded = floor(0.25 * nextEffValue) * 2
+effGainNeeded = max(1, (nextEffValue / 4) * 2)
 ```
 
 ## Status Based Values
@@ -120,12 +123,12 @@ speed or attack speed of an entity.
 ## Individual Values
 
 The individual value **IVs** are generated when the Bestia spawns and makes this somewhat random. Its possible to find
-better or worst Bestia. By [breeding Bestia](/docs/mechanics/bestia/breeding/) this IVs are subject to manipulation by the player and it is possible to make
-stronger Bestia in a controlled way.
+better or worst Bestia. By [breeding Bestia](/docs/mechanics/bestia/breeding/) this IVs are subject to manipulation by
+the player and it is possible to make stronger Bestia in a controlled way.
 
 ## Base Values
 
-Every Bestia has Base Values upon which the status values are calculated. With setting these  values some
+Every Bestia has Base Values upon which the status values are calculated. With setting these values some
 baseline for status values can be controlled from the designer. Every status has its designated base value.
 
 For other non Bestia based entities like items or buildings etc. base values are usually generated via a ruleset.
@@ -133,7 +136,7 @@ For other non Bestia based entities like items or buildings etc. base values are
 ## Effective Status Values
 
 The effective status values a calculated by the base values and effort values of each bestia. These values are set when
-the entity is instanced. For other non bestia entities like non living objects or NPC the status values might just get
+the entity is instanced. For other non Bestia entities like non living objects or NPCs the status values might just get
 assigned by a simpler mechanism.
 
 Usually the equipment or buffs (status effects) will alter the status points directly or indirectly. Both alterations
