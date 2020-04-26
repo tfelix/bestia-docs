@@ -4,13 +4,13 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Weather | Bestia Game</title>
+<title>Environment | Bestia Game</title>
 
 
 <link rel="stylesheet" href="/book.min.6ce39c318c4c697670ce5ed31d5801e7dc620149be801b92a4fe0c6ddcc3bcd2.css" integrity="sha256-bOOcMYxMaXZwzl7THVgB59xiAUm&#43;gBuSpP4MbdzDvNI=">
 
 
-<script defer src="/search.min.1cb516b160f038dde78d9c05c1a86418b36bd155003ae122d0abf1a28d3af1f3.js" integrity="sha256-HLUWsWDwON3njZwFwahkGLNr0VUAOuEi0Kvxoo068fM="></script>
+<script defer src="/search.min.26d6ca88493a2575bdeea80ff8817bb481aecd4fdc460fd6de748dbfd2aef3bf.js" integrity="sha256-JtbKiEk6JXW97qgP&#43;IF7tIGuzU/cRg/W3nSNv9Ku878="></script>
 
 
 
@@ -229,6 +229,16 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
+  <a href="/docs/mechanics/environment/"  class="active">
+      Environment
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
   <a href="/docs/mechanics/honor/" >
       Honor
   </a>
@@ -321,16 +331,6 @@ https://github.com/alex-shpak/hugo-book
 
   <a href="/docs/mechanics/trading/" >
       Trading
-  </a>
-
-</li>
-      
-    
-      
-        <li>
-
-  <a href="/docs/mechanics/weather/"  class="active">
-      Weather
   </a>
 
 </li>
@@ -565,38 +565,85 @@ https://github.com/alex-shpak/hugo-book
   <label for="menu-control">
     <img src="/svg/menu.svg" alt="Menu" />
   </label>
-  <strong>Weather</strong>
+  <strong>Environment</strong>
 </header>
 
       
 <article class="markdown">
 
-<h1 id="weather">Weather</h1>
+<h1 id="environment">Environment</h1>
+
+<p>Bestia uses a sophisticated temperature and environment system to drive weather simulation and the effects on the players
+environment.</p>
+
+<h2 id="temperature">Temperature</h2>
+
+<p>Each Bestia has a certain sweet spot of tolerable temperature. There are several kind of base temperature ranges in
+which Bestia thrive:</p>
+
+<table>
+<thead>
+<tr>
+<th>Temperature Kind</th>
+<th align="right">Base Temperature Range (°C)</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Low Temperature</td>
+<td align="right">-20 - 15</td>
+</tr>
+
+<tr>
+<td>Medium Temperature</td>
+<td align="right">10 - 30</td>
+</tr>
+
+<tr>
+<td>High Temperature</td>
+<td align="right">25 - 45</td>
+</tr>
+</tbody>
+</table>
+
+<p><code>Vitality</code> and <code>Willpower</code> increases resistenace against the temperatures. Specialized equipments or status effects can also
+affect temperature resistence.</p>
+
+<p>The formular is as follows:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#66d9ef">val</span> increaseToleraceVit = sqrt(VIT) / <span style="color:#ae81ff">2</span>
+<span style="color:#66d9ef">val</span> increaseToleraceWill = sqrt(WILL) / <span style="color:#ae81ff">4</span></code></pre></div>
+<p>For items and structures these calculation is a bit different. Usually these items have some threshold above or under which they will
+start to malfunction or perhaps even catch fire.</p>
+
+<h2 id="weather">Weather</h2>
 
 <p>The weather system in Bestia plays a crucial role. It also affects the visibility and also the behavior of the NPC and
 mobs. Depending on the weather the NPCs and the player character will need a improved shelter or equipment to avoid a
 loss of stamina.</p>
 
-<p>The weather influences the temperature which will in turn decide if and how much stamina a entity regenerates or loses.</p>
+<p>The weather influences also the temperature which will in turn decide if and how much stamina a entity regenerates or loses.</p>
+
+<p>The weather will also play a role in which crops and plants grow. If the player decided to plant salad in the desert this won&rsquo;t work
+well.</p>
 
 <h2 id="rain">Rain</h2>
 
 <p>A in strength controllable rain effect should overlay the entire viewport. The rain blowing direction should correlate
-with the wind direction (which will be more or less random). During rain start the ground will show a watering effect.
-This means that reflecting poodles of water will start to form as well as circular raindrops which will darkening the ground.</p>
+with the wind direction (which will be more or less random). During rain the ground will show a wet effect and view distance is
+reduced.</p>
 
 <h2 id="fog">Fog</h2>
 
 <p>Clouds of fog will move slowly over the map. And the sight of the entities is reduced.</p>
 
-<h2 id="sun">Sun</h2>
+<h2 id="sunshine">Sunshine</h2>
 
-<p>The light will bleach out the colors and form a more lighter environment.</p>
+<p>The light will bleach out the colors and form a more lighter environment. Certain plants grow well in this environment.</p>
 
 <h2 id="night">Night</h2>
 
-<p>During the traversal from day to night the overall color should be color corrected to simulate the rising or setting
-sun as well as night times (color reduction). During night time the player will need light sources in order to improve
+<p>During night time the player will need light sources in order to improve
 the visibility of enemies or terrain. There will be certain items (e.g. torches, candles etc.) as well as spells to
 make light.</p>
 </article>
@@ -606,14 +653,14 @@ make light.</p>
   
   <div>
     
-    <a href="https://github.com/tfelix/bestia-docs/commit/ad79b32f9a8f8e4bdaebcf1d4cf1790076508002" title='Last modified Sep 16, 2019 by Thomas Felix' target="_blank" rel="noopener">
-      <i class="far fa-calendar" style="margin-right: 0.3em"></i> Sep 16, 2019
+    <a href="https://github.com/tfelix/bestia-docs/commit/4ce7fab26f21bd8fcd41461c7bc1b0cd78184825" title='Last modified Apr 26, 2020 by Thomas Felix' target="_blank" rel="noopener">
+      <i class="far fa-calendar" style="margin-right: 0.3em"></i> Apr 26, 2020
     </a>
   </div>
   
   
   <div>
-    <a href="https://github.com/tfelix/bestia-docs/edit/master/content/docs/mechanics/weather.md" target="_blank" rel="noopener">
+    <a href="https://github.com/tfelix/bestia-docs/edit/master/content/docs/mechanics/environment.md" target="_blank" rel="noopener">
       <i class="fas fa-edit" style="margin-right: 0.3em"></i> Edit this page
     </a>
   </div>
@@ -630,11 +677,13 @@ make light.</p>
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#weather">Weather</a>
+<li><a href="#environment">Environment</a>
 <ul>
+<li><a href="#temperature">Temperature</a></li>
+<li><a href="#weather">Weather</a></li>
 <li><a href="#rain">Rain</a></li>
 <li><a href="#fog">Fog</a></li>
-<li><a href="#sun">Sun</a></li>
+<li><a href="#sunshine">Sunshine</a></li>
 <li><a href="#night">Night</a></li>
 </ul></li>
 </ul>

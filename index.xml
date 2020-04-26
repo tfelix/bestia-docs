@@ -60,6 +60,17 @@ Changing seasons should lead to an impression of the changeability of the world.
     </item>
     
     <item>
+      <title>Environment</title>
+      <link>https://docs.bestia-game.net/docs/mechanics/environment/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.bestia-game.net/docs/mechanics/environment/</guid>
+      <description>Environment Bestia uses a sophisticated temperature and environment system to drive weather simulation and the effects on the players environment.
+Temperature Each Bestia has a certain sweet spot of tolerable temperature. There are several kind of base temperature ranges in which Bestia thrive:
+   Temperature Kind Base Temperature Range (°C)     Low Temperature -20 - 15   Medium Temperature 10 - 30   High Temperature 25 - 45    Vitality and Willpower increases resistenace against the temperatures.</description>
+    </item>
+    
+    <item>
       <title>Honor</title>
       <link>https://docs.bestia-game.net/docs/mechanics/honor/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -155,17 +166,6 @@ The principle of destroying the world is the common thread throughout the game.<
       <guid>https://docs.bestia-game.net/docs/mechanics/trading/</guid>
       <description>Trading Trading is an important mechanic and allows player to exchange goods. Players can create auction hauses which can be used in order to perform trades while they are offline themselves.
 Auction House TBD</description>
-    </item>
-    
-    <item>
-      <title>Weather</title>
-      <link>https://docs.bestia-game.net/docs/mechanics/weather/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://docs.bestia-game.net/docs/mechanics/weather/</guid>
-      <description>Weather The weather system in Bestia plays a crucial role. It also affects the visibility and also the behavior of the NPC and mobs. Depending on the weather the NPCs and the player character will need a improved shelter or equipment to avoid a loss of stamina.
-The weather influences the temperature which will in turn decide if and how much stamina a entity regenerates or loses.
-Rain A in strength controllable rain effect should overlay the entire viewport.</description>
     </item>
     
     <item>

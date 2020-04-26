@@ -43,6 +43,11 @@
   </url>
   
   <url>
+    <loc>https://docs.bestia-game.net/docs/mechanics/environment/</loc>
+    <lastmod>2020-04-26T16:28:26+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://docs.bestia-game.net/docs/mechanics/honor/</loc>
     <lastmod>2019-09-16T23:01:20+02:00</lastmod>
   </url>
@@ -89,11 +94,6 @@
   
   <url>
     <loc>https://docs.bestia-game.net/docs/mechanics/trading/</loc>
-    <lastmod>2019-09-16T23:01:20+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://docs.bestia-game.net/docs/mechanics/weather/</loc>
     <lastmod>2019-09-16T23:01:20+02:00</lastmod>
   </url>
   
@@ -204,7 +204,7 @@
   
   <url>
     <loc>https://docs.bestia-game.net/docs/mechanics/bestia/statusvalues/</loc>
-    <lastmod>2019-10-03T01:33:08+02:00</lastmod>
+    <lastmod>2020-04-26T16:28:26+02:00</lastmod>
   </url>
   
   <url>

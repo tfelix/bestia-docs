@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="/book.min.6ce39c318c4c697670ce5ed31d5801e7dc620149be801b92a4fe0c6ddcc3bcd2.css" integrity="sha256-bOOcMYxMaXZwzl7THVgB59xiAUm&#43;gBuSpP4MbdzDvNI=">
 
 
-<script defer src="/search.min.1cb516b160f038dde78d9c05c1a86418b36bd155003ae122d0abf1a28d3af1f3.js" integrity="sha256-HLUWsWDwON3njZwFwahkGLNr0VUAOuEi0Kvxoo068fM="></script>
+<script defer src="/search.min.26d6ca88493a2575bdeea80ff8817bb481aecd4fdc460fd6de748dbfd2aef3bf.js" integrity="sha256-JtbKiEk6JXW97qgP&#43;IF7tIGuzU/cRg/W3nSNv9Ku878="></script>
 
 
 
@@ -229,6 +229,16 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
+  <a href="/docs/mechanics/environment/" >
+      Environment
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
   <a href="/docs/mechanics/honor/" >
       Honor
   </a>
@@ -321,16 +331,6 @@ https://github.com/alex-shpak/hugo-book
 
   <a href="/docs/mechanics/trading/" >
       Trading
-  </a>
-
-</li>
-      
-    
-      
-        <li>
-
-  <a href="/docs/mechanics/weather/" >
-      Weather
   </a>
 
 </li>
@@ -606,6 +606,7 @@ maxMana = baseMana * <span style="color:#ae81ff">2</span> + ivMana + effMana / <
 <li>Reduces cast duration of spells</li>
 <li>Increases slightly the stamina regeneration</li>
 <li>Increases slightly the total amount of stamina</li>
+<li>Slightly increases resistance against temperature</li>
 </ul>
 
 <h2 id="strength-str">Strength (STR)</h2>
@@ -625,6 +626,7 @@ maxMana = baseMana * <span style="color:#ae81ff">2</span> + ivMana + effMana / <
 <li>Increases the maximum amount of HP</li>
 <li>Increases the stamina regeneration</li>
 <li>Increases the maximim amount of stamina</li>
+<li>Increases resistence against temperature</li>
 </ul>
 
 <h2 id="dexterity-dex">Dexterity (DEX)</h2>
@@ -684,12 +686,13 @@ or bigger spells she can cast</li>
 to any of the status values.</p>
 
 <p>These values are gained upon leveling up the Bestia and can freely assigned by the player as soon as he has some points
-to spend. However once spend these points are fixed and connot re-distributed anymore.</p>
+to spend. However once spend these points are fixed and can not re-distributed anymore (there might be quests or NPC which
+are able to reset these values in a certain amount).</p>
 
 <p>The gain of effort values for a entity is:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">effGain = <span style="color:#ae81ff">4</span> + floor(reachedLevel / <span style="color:#ae81ff">10</span>)</code></pre></div>
 <p>Upon leveling up the status values player needs to invest:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">effGainNeeded = floor(<span style="color:#ae81ff">0.25</span> * nextEffValue) * <span style="color:#ae81ff">2</span></code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">effGainNeeded = max(<span style="color:#ae81ff">1</span>, (nextEffValue / <span style="color:#ae81ff">4</span>) * <span style="color:#ae81ff">2</span>)</code></pre></div>
 <h2 id="status-based-values">Status Based Values</h2>
 
 <p>The status based values (<strong>SBVs</strong>) are important numbers used throughout the system to determine for example the walk
@@ -698,12 +701,12 @@ speed or attack speed of an entity.</p>
 <h2 id="individual-values">Individual Values</h2>
 
 <p>The individual value <strong>IVs</strong> are generated when the Bestia spawns and makes this somewhat random. Its possible to find
-better or worst Bestia. By <a href="/docs/mechanics/bestia/breeding/">breeding Bestia</a> this IVs are subject to manipulation by the player and it is possible to make
-stronger Bestia in a controlled way.</p>
+better or worst Bestia. By <a href="/docs/mechanics/bestia/breeding/">breeding Bestia</a> this IVs are subject to manipulation by
+the player and it is possible to make stronger Bestia in a controlled way.</p>
 
 <h2 id="base-values">Base Values</h2>
 
-<p>Every Bestia has Base Values upon which the status values are calculated. With setting these  values some
+<p>Every Bestia has Base Values upon which the status values are calculated. With setting these values some
 baseline for status values can be controlled from the designer. Every status has its designated base value.</p>
 
 <p>For other non Bestia based entities like items or buildings etc. base values are usually generated via a ruleset.</p>
@@ -711,7 +714,7 @@ baseline for status values can be controlled from the designer. Every status has
 <h2 id="effective-status-values">Effective Status Values</h2>
 
 <p>The effective status values a calculated by the base values and effort values of each bestia. These values are set when
-the entity is instanced. For other non bestia entities like non living objects or NPC the status values might just get
+the entity is instanced. For other non Bestia entities like non living objects or NPCs the status values might just get
 assigned by a simpler mechanism.</p>
 
 <p>Usually the equipment or buffs (status effects) will alter the status points directly or indirectly. Both alterations
@@ -762,8 +765,8 @@ quickly after detecting a dicey situation.</p>
   
   <div>
     
-    <a href="https://github.com/tfelix/bestia-docs/commit/96c2b3001d3082424530e35440d5471331da4e54" title='Last modified Oct 2, 2019 by Thomas Felix' target="_blank" rel="noopener">
-      <i class="far fa-calendar" style="margin-right: 0.3em"></i> Oct 2, 2019
+    <a href="https://github.com/tfelix/bestia-docs/commit/4ce7fab26f21bd8fcd41461c7bc1b0cd78184825" title='Last modified Apr 26, 2020 by Thomas Felix' target="_blank" rel="noopener">
+      <i class="far fa-calendar" style="margin-right: 0.3em"></i> Apr 26, 2020
     </a>
   </div>
   
