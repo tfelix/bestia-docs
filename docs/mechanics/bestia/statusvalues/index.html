@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="/book.min.6ce39c318c4c697670ce5ed31d5801e7dc620149be801b92a4fe0c6ddcc3bcd2.css" integrity="sha256-bOOcMYxMaXZwzl7THVgB59xiAUm&#43;gBuSpP4MbdzDvNI=">
 
 
-<script defer src="/search.min.26d6ca88493a2575bdeea80ff8817bb481aecd4fdc460fd6de748dbfd2aef3bf.js" integrity="sha256-JtbKiEk6JXW97qgP&#43;IF7tIGuzU/cRg/W3nSNv9Ku878="></script>
+<script defer src="/search.min.e2eaebd42bdbb71ecf45f6cace670908fc5bfd13bde9f9a6ae9cfc5f73ce73d2.js" integrity="sha256-4urr1Cvbtx7PRfbKzmcJCPxb/RO96fmmrpz8X3POc9I="></script>
 
 
 
@@ -690,9 +690,9 @@ to spend. However once spend these points are fixed and can not re-distributed a
 are able to reset these values in a certain amount).</p>
 
 <p>The gain of effort values for a entity is:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">effGain = <span style="color:#ae81ff">4</span> + floor(reachedLevel / <span style="color:#ae81ff">10</span>)</code></pre></div>
-<p>Upon leveling up the status values player needs to invest:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">effGainNeeded = max(<span style="color:#ae81ff">1</span>, (nextEffValue / <span style="color:#ae81ff">4</span>) * <span style="color:#ae81ff">2</span>)</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">effGain = <span style="color:#ae81ff">5</span> + floor(reachedLevel / <span style="color:#ae81ff">2</span>)</code></pre></div>
+<p>Upon leveling up the Effort Values the player needs to invest the number of Gain Points:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">effGainNeeded = max(<span style="color:#ae81ff">1</span>, (nextEffValue / <span style="color:#ae81ff">10</span>)</code></pre></div>
 <h2 id="status-based-values">Status Based Values</h2>
 
 <p>The status based values (<strong>SBVs</strong>) are important numbers used throughout the system to determine for example the walk
@@ -723,14 +723,6 @@ runs out).</p>
 
 <p>The effective status values are taken into account when game calculations are performed.</p>
 
-<h2 id="effective-status-value-calculation">Effective Status Value Calculation</h2>
-
-<p>TBD</p>
-
-<h2 id="status-based-values-calculation">Status Based Values Calculation</h2>
-
-<p>TBD</p>
-
 <h2 id="experience">Experience</h2>
 
 <p>The primary way to gain experience in the game is by fighting enemy Bestias. But there is also experience for more pacifistic
@@ -745,19 +737,19 @@ experience gained via skill use only rises linearly (opposing to the exponential
 
 <h3 id="death-penalty">Death Penalty</h3>
 
-<p>Players Master can not die directly, they are reborn with a temporary malus.</p>
+<p>Players Master can not die, they are reborn with a temporary malus. Which reduces all their stats by <code>15%</code> for 15 minutes.</p>
 
-<p>A killed Bestia or Master loses <code>1%</code> of their current experience. The items are automatically protected via a spell
-which tries to teleport the items back to a secure storage (but remember: spells can be dispelled!).</p>
+<p>A killed Bestia or Master loses <code>1%</code> of their current experience points. The items are automatically protected via a spell
+which tries to teleport the items back to a secure storage after short duration (but remember: spells can be dispelled!).</p>
 
 <p>If the player activates the so-called <strong>Hard Mode</strong> he gets an experience bonus as well as a loot bonus of <code>+3%</code>.
-However, if he dies he looses <code>5%</code>of his current experience and items are not protected by default with a spell.</p>
+However, if he dies he looses <code>5%</code> of his current experience and items are not protected by default with a spell. If once
+activated the <strong>Hard Mode</strong> will take one hour real time cooldown in order to get switched again.. This should prevent
+players from switching the mode on and off quickly after detecting a dicey situation.</p>
 
 <p>In both cases the items suffer a durability penality.</p>
 
-<p>Bestias can be permanently get killed if the killing blow is particularly strong. If s once activated the
-<strong>Hard Mode</strong> this process will take one hour real time. This should prevent players from switching the mode on and off
-quickly after detecting a dicey situation.</p>
+<p>Bestias however, can be permanently get killed, if the killing blow is particularly strong.</p>
 </article>
 
       
@@ -765,8 +757,8 @@ quickly after detecting a dicey situation.</p>
   
   <div>
     
-    <a href="https://github.com/tfelix/bestia-docs/commit/4ce7fab26f21bd8fcd41461c7bc1b0cd78184825" title='Last modified Apr 26, 2020 by Thomas Felix' target="_blank" rel="noopener">
-      <i class="far fa-calendar" style="margin-right: 0.3em"></i> Apr 26, 2020
+    <a href="https://github.com/tfelix/bestia-docs/commit/aac9160a7cd3e25d63b3e0edcedfe94a427385f7" title='Last modified Apr 28, 2020 by Thomas Felix' target="_blank" rel="noopener">
+      <i class="far fa-calendar" style="margin-right: 0.3em"></i> Apr 28, 2020
     </a>
   </div>
   
@@ -808,8 +800,6 @@ quickly after detecting a dicey situation.</p>
 <li><a href="#individual-values">Individual Values</a></li>
 <li><a href="#base-values">Base Values</a></li>
 <li><a href="#effective-status-values">Effective Status Values</a></li>
-<li><a href="#effective-status-value-calculation">Effective Status Value Calculation</a></li>
-<li><a href="#status-based-values-calculation">Status Based Values Calculation</a></li>
 <li><a href="#experience">Experience</a>
 <ul>
 <li><a href="#killing-enemies">Killing Enemies</a></li>
