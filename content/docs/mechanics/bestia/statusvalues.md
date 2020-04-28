@@ -106,13 +106,13 @@ are able to reset these values in a certain amount).
 The gain of effort values for a entity is:
 
 ```kotlin
-effGain = 4 + floor(reachedLevel / 10)
+effGain = 5 + floor(reachedLevel / 2)
 ```
 
-Upon leveling up the status values player needs to invest:
+Upon leveling up the Effort Values the player needs to invest the number of Gain Points:
 
 ```kotlin
-effGainNeeded = max(1, (nextEffValue / 4) * 2)
+effGainNeeded = max(1, (nextEffValue / 10)
 ```
 
 ## Status Based Values
@@ -145,14 +145,6 @@ runs out).
 
 The effective status values are taken into account when game calculations are performed.
 
-## Effective Status Value Calculation
-
-TBD
-
-## Status Based Values Calculation
-
-TBD
-
 ## Experience
 
 The primary way to gain experience in the game is by fighting enemy Bestias. But there is also experience for more pacifistic
@@ -167,16 +159,16 @@ Only activly used jobs will create experience.
 
 ### Death Penalty
 
-Players Master can not die directly, they are reborn with a temporary malus.
+Players Master can not die, they are reborn with a temporary malus. Which reduces all their stats by `15%` for 15 minutes.
 
-A killed Bestia or Master loses `1%` of their current experience. The items are automatically protected via a spell
-which tries to teleport the items back to a secure storage (but remember: spells can be dispelled!).
+A killed Bestia or Master loses `1%` of their current experience points. The items are automatically protected via a spell
+which tries to teleport the items back to a secure storage after short duration (but remember: spells can be dispelled!).
 
 If the player activates the so-called **Hard Mode** he gets an experience bonus as well as a loot bonus of `+3%`.
-However, if he dies he looses `5%`of his current experience and items are not protected by default with a spell.
+However, if he dies he looses `5%` of his current experience and items are not protected by default with a spell. If once
+activated the **Hard Mode** will take one hour real time cooldown in order to get switched again.. This should prevent
+players from switching the mode on and off quickly after detecting a dicey situation.
 
 In both cases the items suffer a durability penality.
 
-Bestias can be permanently get killed if the killing blow is particularly strong. If s once activated the
-**Hard Mode** this process will take one hour real time. This should prevent players from switching the mode on and off
-quickly after detecting a dicey situation.
+Bestias however, can be permanently get killed, if the killing blow is particularly strong.

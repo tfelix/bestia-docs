@@ -9,7 +9,7 @@ and logical build. Each Bestia has its own inventory. So the player must be care
 Bestias in time. Trading must be fast to do to reduce the annoyance.
 
 If a Bestia/Entity is killed and has had some items inside its inventory usually the items are dropped and can be looted.
-In case a player killed a mob the loot will be protected for a few seconds so he can loot it.
+In case a player killed a mob the loot will be protected for 30 seconds so he can exclusivly loot it.
 
 ## Weight Limit
 
