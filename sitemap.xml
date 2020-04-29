@@ -4,72 +4,12 @@
   
   <url>
     <loc>https://docs.bestia-game.net/docs/mechanics/</loc>
-    <lastmod>2019-09-12T00:54:21+02:00</lastmod>
+    <lastmod>2020-04-30T01:47:03+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://docs.bestia-game.net/docs/mechanics/core-guidelines/</loc>
-    <lastmod>2019-10-01T22:24:05+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://docs.bestia-game.net/docs/mechanics/archivements/</loc>
-    <lastmod>2019-10-03T01:33:08+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://docs.bestia-game.net/docs/mechanics/attacks/</loc>
-    <lastmod>2019-10-03T01:33:08+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://docs.bestia-game.net/docs/mechanics/bestia/</loc>
-    <lastmod>2019-09-16T23:01:20+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://docs.bestia-game.net/docs/mechanics/bestia/master/</loc>
-    <lastmod>2019-09-18T00:30:22+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://docs.bestia-game.net/docs/mechanics/time/</loc>
-    <lastmod>2019-09-16T23:01:20+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://docs.bestia-game.net/docs/mechanics/crafting/</loc>
-    <lastmod>2019-09-16T23:01:20+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://docs.bestia-game.net/docs/mechanics/environment/</loc>
-    <lastmod>2020-04-26T16:28:26+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://docs.bestia-game.net/docs/mechanics/honor/</loc>
-    <lastmod>2019-09-16T23:01:20+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://docs.bestia-game.net/docs/mechanics/inventory/</loc>
-    <lastmod>2020-04-29T01:28:10+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://docs.bestia-game.net/docs/mechanics/items/</loc>
-    <lastmod>2019-10-01T22:24:05+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://docs.bestia-game.net/docs/mechanics/postalsystem/</loc>
-    <lastmod>2019-10-01T22:24:05+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://docs.bestia-game.net/docs/mechanics/quests/</loc>
-    <lastmod>2019-09-16T23:01:20+02:00</lastmod>
+    <loc>https://docs.bestia-game.net/docs/mechanics/skills/</loc>
+    <lastmod>2020-04-30T01:47:03+02:00</lastmod>
   </url>
   
   <url>
@@ -78,53 +18,33 @@
   </url>
   
   <url>
-    <loc>https://docs.bestia-game.net/docs/mechanics/skills/</loc>
-    <lastmod>2019-10-03T01:33:08+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://docs.bestia-game.net/docs/mechanics/story/</loc>
-    <lastmod>2019-09-18T00:30:22+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://docs.bestia-game.net/docs/mechanics/cults/</loc>
-    <lastmod>2019-09-16T23:01:20+02:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://docs.bestia-game.net/docs/mechanics/trading/</loc>
     <lastmod>2019-09-16T23:01:20+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://docs.bestia-game.net/docs/mechanics/exploration/</loc>
-    <lastmod>2019-09-16T23:01:20+02:00</lastmod>
+    <loc>https://docs.bestia-game.net/docs/api/</loc>
+    <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://docs.bestia-game.net/docs/mechanics/resources/artwork/</loc>
-    <lastmod>2019-09-17T02:22:24+02:00</lastmod>
+    <loc>https://docs.bestia-game.net/docs/client/</loc>
+    <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://docs.bestia-game.net/docs/mechanics/resources/literature/</loc>
-    <lastmod>2019-09-16T23:01:20+02:00</lastmod>
+    <loc>https://docs.bestia-game.net/docs/mechanics/dev-resources/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://docs.bestia-game.net/docs/mechanics/general/</loc>
+    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://docs.bestia-game.net/docs/server/server-datatypes/</loc>
     <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://docs.bestia-game.net/docs/mechanics/crafting/alchemy/</loc>
-    <lastmod>2019-09-16T23:01:20+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://docs.bestia-game.net/docs/api/</loc>
-    <lastmod>2019-09-16T23:01:20+02:00</lastmod>
   </url>
   
   <url>
@@ -138,43 +58,37 @@
   </url>
   
   <url>
+    <loc>https://docs.bestia-game.net/docs/mechanics/bestia/</loc>
+    <lastmod>2020-04-30T01:47:03+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://docs.bestia-game.net/</loc>
-    <lastmod>2019-09-17T02:22:24+02:00</lastmod>
+    <lastmod>2020-04-30T01:47:03+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://docs.bestia-game.net/docs/mechanics/bestia/breeding/</loc>
-    <lastmod>2019-10-01T02:24:48+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://docs.bestia-game.net/docs/client/client-architecture/</loc>
-    <lastmod>2019-09-16T23:01:20+02:00</lastmod>
+    <loc>https://docs.bestia-game.net/docs/mechanics/master/</loc>
+    <lastmod>2020-04-30T01:47:03+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://docs.bestia-game.net/docs/</loc>
-    <lastmod>2019-09-16T23:01:20+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://docs.bestia-game.net/docs/mechanics/crafting/engineering/</loc>
-    <lastmod>2019-10-03T01:33:08+02:00</lastmod>
+    <loc>https://docs.bestia-game.net/docs/mechanics/environment/</loc>
+    <lastmod>2020-04-30T01:47:03+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://docs.bestia-game.net/docs/server/server-environment/</loc>
-    <lastmod>2019-09-16T23:01:20+02:00</lastmod>
+    <loc>https://docs.bestia-game.net/docs/mechanics/honor/</loc>
+    <lastmod>2020-04-30T01:47:03+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://docs.bestia-game.net/docs/mechanics/crafting/forging/</loc>
-    <lastmod>2019-10-03T01:33:08+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://docs.bestia-game.net/docs/bip/</loc>
-    <lastmod>2019-09-16T23:01:20+02:00</lastmod>
+    <loc>https://docs.bestia-game.net/docs/mechanics/items/</loc>
+    <lastmod>2020-04-30T01:47:03+02:00</lastmod>
   </url>
   
   <url>
@@ -203,8 +117,8 @@
   </url>
   
   <url>
-    <loc>https://docs.bestia-game.net/docs/mechanics/bestia/statusvalues/</loc>
-    <lastmod>2020-04-29T01:28:10+02:00</lastmod>
+    <loc>https://docs.bestia-game.net/docs/mechanics/statusvalues/</loc>
+    <lastmod>2020-04-30T01:47:03+02:00</lastmod>
   </url>
   
   <url>

@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Trading | Bestia Game</title>
+<title>Client | Bestia Game</title>
 
 
 <link rel="stylesheet" href="/book.min.6ce39c318c4c697670ce5ed31d5801e7dc620149be801b92a4fe0c6ddcc3bcd2.css" integrity="sha256-bOOcMYxMaXZwzl7THVgB59xiAUm&#43;gBuSpP4MbdzDvNI=">
@@ -17,6 +17,7 @@
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 
 
+<link rel="alternate" type="application/rss+xml" href="https://docs.bestia-game.net/docs/client/index.xml" title="Bestia Game" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -53,7 +54,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   <style>
-  nav ul a[href$="\2f docs\2fmechanics\2ftrading\2f "] {
+  nav ul a[href$="\2f docs\2f client\2f "] {
       color: #004ed0;
   }
   </style>
@@ -101,20 +102,26 @@ https://github.com/alex-shpak/hugo-book
   <label for="menu-control">
     <img src="/svg/menu.svg" alt="Menu" />
   </label>
-  <strong>Trading</strong>
+  <strong>Client</strong>
 </header>
 
       
 <article class="markdown">
 
-<h1 id="trading">Trading</h1>
+<h1 id="bestia-client">Bestia Client</h1>
 
-<p>Trading is an important mechanic and allows player to exchange goods. Players can create auction hauses which can be used
-in order to perform trades while they are offline themselves.</p>
+<p><a class="github-button" href="https://github.com/tfelix/bestia-client" data-icon="octicon-star" data-size="large"
+data-show-count="true" aria-label="Star tfelix/bestia-client on GitHub">Star</a>
+<a class="github-button" href="https://github.com/tfelix/bestia-client/subscription" data-icon="octicon-eye"
+data-size="large" data-show-count="true" aria-label="Watch tfelix/bestia-client on GitHub">Watch</a></p>
 
-<h2 id="auction-house">Auction House</h2>
+<p>The Bestia Client is build with the <a href="https://godotengine.org">Godot Open Source</a> engine. Its job is the visualization of the game world. It synchronizes with the game server and will display entities so the player is able to interact with them.</p>
 
-<p><strong>TBD</strong></p>
+<p>The server is build similar to a Entity Component System. The client utilizes this architecture as well. It receives updates for the entities and reads the assigned components in order to display items, structures and entities.</p>
+
+<p>It also transmits the voxel model of the world and visualizes the game map by the <a href="https://github.com/Zylann/godot_voxel">Godot Voxel plugin</a>.</p>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
 </article>
 
       
@@ -122,14 +129,14 @@ in order to perform trades while they are offline themselves.</p>
   
   <div>
     
-    <a href="https://github.com/tfelix/bestia-docs/commit/ad79b32f9a8f8e4bdaebcf1d4cf1790076508002" title='Last modified Sep 16, 2019 by Thomas Felix' target="_blank" rel="noopener">
-      <i class="far fa-calendar" style="margin-right: 0.3em"></i> Sep 16, 2019
+    <a href="https://github.com/tfelix/bestia-docs/commit/9b983781a1736f4fb6cc4c123f3b27841f7b594e" title='Last modified Apr 29, 2020 by Thomas Felix' target="_blank" rel="noopener">
+      <i class="far fa-calendar" style="margin-right: 0.3em"></i> Apr 29, 2020
     </a>
   </div>
   
   
   <div>
-    <a href="https://github.com/tfelix/bestia-docs/edit/master/content/docs/mechanics/trading.md" target="_blank" rel="noopener">
+    <a href="https://github.com/tfelix/bestia-docs/edit/master/content/docs/client/_index.md" target="_blank" rel="noopener">
       <i class="fas fa-edit" style="margin-right: 0.3em"></i> Edit this page
     </a>
   </div>
@@ -146,10 +153,7 @@ in order to perform trades while they are offline themselves.</p>
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#trading">Trading</a>
-<ul>
-<li><a href="#auction-house">Auction House</a></li>
-</ul></li>
+<li><a href="#bestia-client">Bestia Client</a></li>
 </ul>
 </nav>
   </aside>
