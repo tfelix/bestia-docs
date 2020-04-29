@@ -1,0 +1,14 @@
+# Bestia Client
+
+<a class="github-button" href="https://github.com/tfelix/bestia-client" data-icon="octicon-star" data-size="large"
+data-show-count="true" aria-label="Star tfelix/bestia-client on GitHub">Star</a>
+<a class="github-button" href="https://github.com/tfelix/bestia-client/subscription" data-icon="octicon-eye"
+data-size="large" data-show-count="true" aria-label="Watch tfelix/bestia-client on GitHub">Watch</a>
+
+The Bestia Client is build with the [Godot Open Source](https://godotengine.org) engine. Its job is the visualization of the game world. It synchronizes with the game server and will display entities so the player is able to interact with them.
+
+The server is build similar to a Entity Component System. The client utilizes this architecture as well. It receives updates for the entities and reads the assigned components in order to display items, structures and entities.
+
+It also transmits the voxel model of the world and visualizes the game map by the [Godot Voxel plugin](https://github.com/Zylann/godot_voxel).
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>

@@ -1,300 +1,100 @@
 ---
-title: Skills
+title: Attacks
 weight: 100
 ---
-# Skills
+# Attacks
 
-The bestia master of a player can learn a set of skills. Since these skills are bound to the account they are called
-account skills or just skills. These skills are freely chosen by the player and determine the job or profession of
-the master.
+The magic and the usage of it plays a crucial role in the Bestia universe. The users should be able to be deeply involved
+into magic spell creation and research.
 
-Some of this account skills can be used by every Bestia in posession others only by the master itself.
+> The words Attacks and Spells are equally used.
 
-> Don't confuse this skills with the regular attacks a Bestia is learning by item usage or level up. These are simply
-> called [attacks](/docs/mechanics/attacks).
+The system must allow the user to describe or discover newly innovative ways to combine spells. Yet the research should
+be fun and entertaining. Bestias can learn attacks by two means:
 
-## Guidlines
+1. Level Up - Each Bestia has a internal list of attacks she will learn when gaining levels.
+2. Spell Discovery - The player can try to "invent/discover" new attacks which then can be tried to be learned to a Bestia.
+   This means 16 attacks until level 70 and about 4 attacks later on.
 
-* The number of total skil ranks inside a tree should **be between 70-80**
-* The possible rank counts of a skill should be: **1, 5 and 10**
-* There should be some meaningful dependency of the skills forming an exciting tree
-* In each profession tree there should form 2-3 sub-trees which create a miningful hierarchy
-* There should be some kind of three tiers inside a tree form low and basic skill to the much powerfull skills
+## Magic Schools
 
-> Most Important: No Hardcoded Skill Effects!
+All attacks are divided into the three schools of magic: Arcane, Black or White Magic. These schools might be important if certain
+spells are increased via a learned skill.
 
-Skills should be used when possible require some interaction with the player whose success depends on the effect of the
-skill. An example would be the teleport ability: after selecting the players (which can be flexible by the number) and
-the magic interference at the destination, the player must win a small mini-game in the client which can be a skill
-game. Depending on how successful this was, the player will be more precisely transported to the destination.
+### Arcane Magic
 
-Ultimately, it remains important to leave the outcome of skills open in some way. However, the result should remain
-understandable and influenceable by the player.
+This describes 'trickster' magic. It can be illusion spells, utility spells like generating food or shelter. There might be some
+rare kind of damaging spells but usually they contain transmutations and other fancy spell effects.
 
-## Skill Progression
+### Black Magic
 
-Upon each level up the master gains 1 skillpoint to put into the skills rank. This is permanent and means a player can
-spend about 100 points for improving the ranks of his skills.
+Mostly damaging spells which are meant to inflict harm. These might be damaging spells or spells which directly inflict damage or
+harming status of its receiver like lowering defense or status values.
 
-> Since max level is not capped actually he might be able to spend more points but a progressions gets continously
-> harder it is safe to assume every player has about 100 points.
+### White Magic
 
-The skilltrees are designed as such that to reach the highest professions in a tree the player needs to spend **70 points**.
+The Healing, Buff or protection spells. These also contain detection of spells and neutralization spells of magic. generally all
+kind of protection, healing or improving stati fall into the domain of white magic.
 
-The player can decide to have mediocre profession in each tree or to max out one and have maybe half of the
-meaningful professions of another tree. The skilltree is a hierarchical dependency of skills.
+## Learning Attacks
 
-## Common Tree
+Attacks are either learned via leveling up, vie the [Spell Discovery](/docs/mechanics/skills/#spell-discovery) skill or via Spell Scrolls
+which can be traded (but are rather expensive).
 
-In this tree, simple, common mundane tasks are placed.
+For leveling up a Bestia a general rule of thumb is:
 
-### First Aid
+1. A Bestia should have about 20 Attacks.
+2. 80% of the attacks should be learned from level 1 - 69. The last 20% of the attacks between level 70 - 100.
 
-### Cooking (5)
+### Spell Discovery
 
-### Fishing (5)
+Spells can be discovered by the player. If he has the skill [Spell Discovery](/docs/mechanics/skills/#spell-discovery). The maximum attack
+learnable by the skill level is given in the table below.
 
-## Battle Tree
+| Spell Discovery Lv. | max. Attack Level Discoverable |
+| ------------------- | -----------------------------: |
+| 1                   |                             10 |
+| 2                   |                             20 |
+| 3                   |                             30 |
+| 4                   |                             40 |
+| 5                   |                             50 |
+| 6                   |                             60 |
+| 7                   |                             70 |
+| 8                   |                             80 |
+| 9                   |                             90 |
+| 10                  |                            100 |
 
-The battle tree contains skills which are primarly useful for fighting, battle and maybe to some extend improve survival
- in the wild.
+To discover a spell an aspect is chosen like 'White Magic', 'Black Magic' or 'Arkane Magic'.
 
-{{< mermaid >}}
-graph TD
-  SPRITIUAL_MASTERY("Spritual Mastery [5]")
-  ELEMENTAL_MASTERY("Elemental Mastery [5]")-->|min. 3|MASTER_OF_FIRE("Master of Fire [10]")
-  ELEMENTAL_MASTERY-->|min. 3|MASTER_OF_WATER("Master of Water [10]")
-  ELEMENTAL_MASTERY-->|min. 3|MASTER_OF_WIND("Master of Wind [10]")
-  ELEMENTAL_MASTERY-->|min. 3|MASTER_OF_EARTH("Master of Earth [10]")
-{{< /mermaid >}}
+TBD
 
-### Elemental Mastery (5)
+### Spell Enscription
 
-Increases damage or healing of spells with elemental (earth, wind, wasser, fire) domain.
+If the player owns the skill [Spell Enscription](/docs/mechanics/skills/#spell-enscription) he can attach the spell to
+scrolls or even to other entities.
 
-> +3% damage/level
+After a spell has been materialized and bound to some kind of magic containment it can be used by the owner. Spells of
+a higher level are of course far harder to handle. Attaching or handling such spells could produce unwanted side effects
+depending on the spell (some spells might create explosions, others might teleport something away or randomly heal
+bystanders etc.)
 
-### Master of Fire (10)
+## Spell Binding
 
-* Elemental Mastery (3)
+Most if not each entity/object in the game world have slots and triggers to which spells can be attached to.
+If the player has the skill [Spell Binding](/docs/mechanics/skills/#spell-binding) he can discover such slots and triggers
+on entities as well as trying to bind spells to such entities.
 
-Increases the damage of fire attacks.
+### Trigger Types
 
-> +3% damage/level
+* Entity entering or leaving range
+* Special Entity entering or leaving range (Name, Type etc.)
+* Presence of Magic rising of falling
+* Weather Conditions
+* Time
+* Spell Cast in Range
 
-### Master of Water (10)
+## Detection of Magic
 
-* Elemental Mastery (3)
-
-Increases damage of water spells.
-
-> +3% damage/level
-
-### Master of Wind (10)
-
-Elemental Mastery (3)
-
-Increases damage of wind spells.
-
-> +3% damage/level
-
-### Master of Earth (10)
-
-Elemental Mastery (3)
-
-Increases damage of earth spells.
-
-> +3% damage/level
-
-### Spritual Mastery (5)
-
-Increases damage or healing of spells with the Holy or Dark domain.
-
-> +5% damage/level
-
-### Mindbreak (5)
-
-This is a buff which once it gets applied reduces the armor but increases the physical and magical attack of a Bestia.
-
-> +20% damage/level
->
-> -20% armor/level
-
-### Mindfocus (5)
-
-This is a buff which once it gets applied increases the armor but decreases the physical and magical attack of a Bestia.
-
-> +20% armor/level
->
-> -20% damage/level
-
-## Survival Tree
-
-The survival tree has three main ideas: protecting the masters Bestia from physical harm by increasing they tougness indirectly, improving the survivability
-in harsh environments for his Bestias or others.
-
-### Improved Healing (10)
-
-Increases effects of healing done and duration of buff spells when used by the owner of this spell.
-
-> +2% effect/level
-
-### Increased Regeneration (10)
-
-Your Bestias and Masters HP and Mana will have an increased regeneration rate.
-
-> +3% effect/level
-
-### Magic Armor (5)
-
-* Improved Healing (5)
-
-Reduces damage of magical effects.
-
-> -2%/level reduced damage
-
-### Faster Travel (5)
-
-Hard terrain does not reduce the Bestia movement speed anymore. On Level 5 the tarrain does not reduce movement speed anymore at all.
-
-> -20%/level reduced movement reduction
-
-### Taming (5)
-
-Bestias gain faster experience and are easier to catch.
-
-> +5% experience gain per level
-
-### Breeding (5)
-
-### Summon Bestia (10)
-
-A temporarly Bestia from pure magic is created which will assist its master for a short period of time.
-
-### Tough Guy (5)
-
-Stamina is faster regenerated and drops slower in high demanding environments and while dong activities which would otherwise
-deplete your stamina.
-
-> -10%/level reduced stamina reduction
->
-> +10%/level increased stamina regeneration
-
-### Packhorse
-
-### Magic Shelter (5)
-
-Improves environment condition via magic.
-
-### Magic Protection (5)
-
-**Max Level: 5**
-
-Increases weight limit to carry.
-
-> +5%/level Weight Limit increase
-
-## Crafts Tree
-
-### Improved Trading (5)
-
-NPC can be talked into to pay more or give the player cheaper prices for items.
-
-> -5%/lv price reduction at NPCs
->
-> +3%/lv higher price when selling at NPC
-
-### Scavenger (10)
-
-When breaking up and recycling items the probability to recycle a higher amount of components is increased.
-
-### Blacksmithing (10)
-
-* Scavenger (5)
-
-Able to forge weaponry. Can also [refine weapons](/mechanics/items/#weapon-refinement). Increasing the spell does increase the chance to forge higher level weapons.
-
-Also increases the probability by 2% to succeed when upgrading a weapon.
-
-### Engineering (10)
-
-### Magic Artisan (10)
-
-Can create magical artifacts.
-
-### Transmutation (10)
-
-## Science Tree
-
-The Science Tree contains skills witch help with sensing the world events and or performing rituals to even shape the
-face of the Bestia world itself. It basically forms 3 sub-trees: One is focused on attack learning, and enscribing, the second one
-helps with world exploration, and mana flow detection and control. And the third one is there for resource transformation/transmutation.
-
-{{< mermaid >}}
-graph TD
-  SPELL_ENSCRIPTION("Spell Enscription [10]")-->|min. 5|SPELL_BINDING("Spell Binding [10]")
-  SPELL_ENSCRIPTION-->|min. 3|SPELL_DISCOVERY("Spell Discovery [10]")
-  SPELL_BINDING-->|min. 5|FOCUS_BLACK("Focus: Black Magic [5]")
-  SPELL_DISCOVERY-->|min. 5|FOCUS_BLACK
-  SPELL_BINDING-->|min. 5|FOCUS_WHITE("Focus: White Magic [5]")
-  SPELL_DISCOVERY-->|min. 5|FOCUS_WHITE
-  SPELL_BINDING-->|min. 5|FOCUS_ARCANE("Focus: Arcane [5]")
-  SPELL_DISCOVERY-->|min. 5|FOCUS_ARCANE
-  GEOGRAPHY("Geography [5]")-->|min. 3|SCRY("Scry [5]")
-  SCRY-->|min. 3|TELEPORT("Teleport [10]")
-  TELEPORT-->|min. 8|PORTAL("Portal [10]")
-{{< /mermaid >}}
-
-### Spell Enscription (10)
-
-Enables the user to write down spells onto items or scrolls for a later use (even by someone who does not know the spell).
-
-### Spell Binding (10)
-
-Allows the user to bind certain spells to entities and create trigger for them. This can be used to permanently bind spells
-to artifacts or setup alarms or traps for example.
-
-### Spell Discovery (10)
-
-Enables the user to discover spells to learn for his Bestias.
-
-### Focus: Black Magic (5)
-
-Enables the user to discover spells to learn for his Bestias.
-
-### Focus: White Magic (5)
-
-Enables the user to discover spells to learn for his Bestias.
-
-### Focus: Arcane (5)
-
-Enables the user to discover spells to learn for his Bestias.
-
-### Geography (5)
-
-Increases the range and effectivness when performing a cartography.
-
-### Scry (5)
-
-Can look into areas far away.
-
-### Teleport (10)
-
-Can teleport own bestias over a distance. To teleport somewhere one needs to setup Teleport Runes which form some kind of magical anchor.
-They can be used as targets then trying to teleport. The teleportation gets harder and more error prone the longer distances are tried to travel.
-The teleported entity also gets a debuff which will prevent it from teleporting for some time.
-
-### Portal (10)
-
-Can teleport any entity over a distance. To teleport somewhere one needs to setup Portal Runes which form some kind of magical anchor. As soon as a portal
-has opened it can be used in both directions for some time.
-
-### Control Mana Flow (10)
-
-User is able to channel down the Mana to crystalize into small shards of Mana crystals which can be used as a power source throughout the world.
-
-### Magic Senses (5)
-
-Detect presence of magic.
-
-### Identify Magic (5)
+If the user has learned [Detect Magic](/docs/mechanics/skills/#detect-magic). The detection itself is easier if the spell is more
+powerful. However precautions can be used to avoid the spell getting detected. If more than one spell is attached to an
+object the less powerful spells are harder to detect.

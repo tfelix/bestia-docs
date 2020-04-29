@@ -1,10 +1,15 @@
----
-headless: true
----
++++
+headless = true
++++
 
-{{< expand >}}
-- [**Game Design**]({{< relref "/docs/mechanics" >}})
-  - [Artificial Intelligence]({{< relref "/docs/mechanics/ai" >}})
-  - [Crafting]({{< relref "/docs/mechanics/ai" >}})
-    - [Alchemy]({{< relref "/docs/mechanics/crafting/alchemy" >}})
-{{< /expand >}}
+- [Game Design]({{< relref "/docs/mechanics" >}})
+  - [General Mechanics]({{< relref "/docs/mechanics/general" >}})
+  - [Bestia Master]({{< relref "/docs/mechanics/master" >}})
+  - [Environment]({{< relref "/docs/mechanics/environment" >}})
+  - [Bestia]({{< relref "/docs/mechanics/bestia" >}})
+  - [Skills]({{< relref "/docs/mechanics/skills" >}})
+  - [Items]({{< relref "/docs/mechanics/items" >}})
+  - [Resources]({{< relref "/docs/mechanics/resources" >}})
+  - [Development Resources]({{< relref "/docs/mechanics/dev-resources" >}})
+- [Client]({{< relref "/docs/client" >}})
+- [REST API]({{< relref "/docs/api" >}})

@@ -1,14 +1,17 @@
 ---
 title: Items
-weight: 100
 ---
+
 # Items
 
 Items can be optained by the player and carried around. The amount of items limited to each entity is determined via
-its [Inventory](/mechanics/inventory).
+its [Inventory](#inventory). Each Bestia (and also a lot of other entities), have their own inventory with different sizes.
+
+Items are mostly crafted by the players. Its quite rare to obtain direct item drops from killed enemies. Instead its very common
+to loot resources when enemies are killed.
 
 Each item has a level assigned. This level is important to determine how hard or easy it is to forge this item, upgrade
-it and so on. It also effects how spels interact with the item entity.
+it and so on. It also effects how spells interact with the item entity.
 
 ## Item Category
 
@@ -19,6 +22,7 @@ Items are grouped into three categories and inside this documentation often refe
 | 1 - 20     | Mundane   |
 | 21 - 80    | Superior  |
 | 81 - 100   | Legendary |
+| 101+       | Epic      |
 
 ## Weapon Refinement
 
@@ -32,27 +36,29 @@ A refined weapon has increased base damage per level:
 | Mundane         | 2                                 |
 | Superior        | 4                                 |
 | Legendary       | 6                                 |
+| Epic            | 10                                |
 
 ### Uprade Chances
 
-These are the base upgrade chances. The chances can be altered via skills or item usages.
+These are the base upgrade chances. The chances can be altered via skills or item usages. If a upgrade fails the weapon is destroyed. It is then complelty unusable and also the resources are lost.
 
 | Weapon Category | Uprade Formula                                            |
 | --------------- | --------------------------------------------------------- |
 | Mundane         | {{< katex >}} min(1, e^{-(itemLv-5)/9.8)}){{< /katex >}}  |
 | Superior        | {{< katex >}} min(1, e^{-(itemLv-4)/8.69)}){{< /katex >}} |
 | Legendary       | {{< katex >}} min(1, e^{-(itemLv-3)/7.69)}){{< /katex >}} |
+| Epic            | {{< katex >}} min(1, e^{-(itemLv-2)/7.31)}){{< /katex >}} |
 
-## Equipment Refinement
-
-The equipment refine level is not capped but each higher refinement process can destroy the weapon/equipment.
+The refine level is not capped but each higher refinement process can destroy the weapon/equipment with an increasing chance.
 The chance of success is depending on skill and refine items used.
 
 A refined armor has increased resistance for hard defense. Each upgrade point grants ⅓ points more defense.
 
+The upgrade chances can be increased by leveling up the Skill Mastery `Upgrade Mastery`.
+
 ## Item Crafting
 
-Bestia uses an innovative new item crafting. Basically the player is allowed to craft all items. Some items however
+Bestia uses an innovative new item crafting. The player is basically is allowed to craft all items. Some items however
 might be so hard to craft so it is not possible to craft it without appropriate skill. Some items may require special
 ingredients which can not be substituted. The higher the crafted item level and the harder it get to successful craft
 it. If the crafting of the item fails all the materials used to craft it are lost. In order to craft an item two things
@@ -63,6 +69,34 @@ Item craft success chance is determined if the raw materials.
 After an item was successfully crafted the recipe is saved for the user inside his recipe list. From this list the
 recipe can be inscribed upon a paper to give it to other players who can consume and learn it. The learning will take
 some time (depending of the level of the item).
+
+Players are encouraged to try and create stuff. There are basically 6 domains of craftable and user generatable content
+in the world of Bestia, and are related to the linked [Skill Mastery](/docs/mechanics/master#skill-mastery).
+
+* Weapons (Blacksmith: Weapon)
+* Armor (Blacksmith: Armor)
+* Magical Artifacts (Scholar: Crafting)
+* Potions and Usables (Alchemy Mastery)
+* Meals (Cooking)
+* Buildings, Traps and non magical devices (Engineering)
+
+## Alchemy
+
+The brewing is a time consuming process. The process should be somehow deterministic so the results are logically to be obtained.
+
+Once a receipt was discovered it is saved for the user so it can be reused very quickly. If a player repeatedly makes
+the same receipt the quality of the produced potions increases over time. The player can choose to write down the
+receipt and give it to other players who might increase their skill by reading it.
+
+## Craft Duration
+
+Craft duration is determined by the item level which the player wants to craft. Skill points in the suitable skill tree
+(weapon, equipment, construction or alchemy, artifacts) reduces the build time. The `baseDuration` is given in real
+time minutes.
+
+```kotlin
+baseDuration = 28.8 * itemLevel
+```
 
 ## Item and Entity Interactions
 
@@ -101,3 +135,25 @@ albeit they are not auto targeted like enemies.
 In order to let items participate in the battle system they need status values. Items status value distribution is based
 upon their type (weapon, potion, book etc) and the total amount of points to distribute is given by the item level.
 Later there might be items which get preset custom values but for now on they are based upon a lookup table.
+
+## Inventory
+
+The inventory is an important system for interaction between the player and the game mechanics. It must be easy to access
+and logical build. Each Bestia has its own inventory. So the player must be careful to exchange items between the
+Bestias in time. Trading must be fast to do to reduce the annoyance.
+
+If a Bestia/Entity is killed and has had some items inside its inventory usually the items are dropped and can be looted.
+In case a player killed a mob the loot will be protected for 30 seconds so he can exclusivly loot it.
+
+### Weight Limit
+
+Items weight is given by units of about 1kg per unit. The smallest division is 0.1 units which aproximates to 100gr.
+The maximum amount a Bestia can carry is dependent on its strength and its vitality. The
+[Packhorse skill](/docs/mechanics/skills/#packhorse) can  increase the carriable weight limit. The formula is given as:
+
+```kotlin
+limit = STR / 2 + VIT / 5 + 15 + LEVEL / 10
+```
+
+Please not that depending of your used up weight limit regeneration of certain [status values](/docs/mechanics/bestia/statusvalues/)
+might be affected.

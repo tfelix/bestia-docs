@@ -1,6 +1,5 @@
 ---
 title: Honor
-weight: 100
 ---
 # Honor
 
@@ -29,7 +28,6 @@ or NPC will reduce the honor by **20 points**.
 
 Every action which leads to honor loss inside a protected zone (other then killing a low level Player Bestia) will be **multiplied by 3**
 wheras honor increasing actions will be **multiplied by 1.5**.
-
 
 ## Negative Honor
 

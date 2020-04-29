@@ -3,15 +3,15 @@
 [![Build Status](https://travis-ci.org/tfelix/bestia-docs.svg?branch=master)](https://travis-ci.org/tfelix/bestia-docs)
 [![License: CC0](https://img.shields.io/badge/license-CC0-green)](LICENSE)
 
-This repository contains the central game design documents and guidelines of the [Bestia Game](https://bestia-game.net).
-
 > Bestia is a MMORPG based on world exploration and emerging gameplay placed in a living and fully simulated environment.
 
-The documentation should enable any developer to dive into the code and start extending the game or even propose
-changes to the gamedesign itself.
+This repository contains the central game design documents and guidelines of the [Bestia Game](https://bestia-game.net).
+Bestia is a hobby project started many years ago and evolved in quite a large codebase. This documentation is an effort
+to bring all the needed information together to allow others to read, understand and perhaps contribute to the game.
 
-Currently only the documents for the central game design are online. Architectural documentation for the client and the server
-will be added one after the other.
+The documentation covers aspects of game design, client as well as the server architecture.
+
+> This is a work in progress not all server and client docs are currently available
 
 The documentation page can be found on [https://docs.bestia-game.net](https://docs.bestia-game.net)
 
