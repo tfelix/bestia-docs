@@ -4,8 +4,7 @@ title: Environment
 
 # Environment
 
-Bestia uses a sophisticated temperature and environment system to drive weather simulation and the effects on the players
-environment.
+Bestia uses a sophisticated temperature and environment system to drive weather simulation and the effects on the players environment.
 
 These simulations should be based on certain basic values which are determined location-dependent, but can be changed by interaction with the players. Also natural changes through the world (seasons) should lead to an adjustment of these values.
 Due to the changes of the environmental values tiles have to be adapted to the world itself. These have to be adjusted anyway if they should change due to other local effects like fire or mining. The client must be informed about adjusted tiles.
