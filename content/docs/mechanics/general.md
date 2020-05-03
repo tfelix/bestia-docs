@@ -2,8 +2,7 @@
 
 ## Main Story
 
-The main story revolves around the player whose world was destroyed due to a so-called **rift event**. The magic pushed into
-his world and merged it with another one. This altered the physical properties of both worlds and mostly destroyed them.
+The main story revolves around the player whose world was destroyed due to a so-called **rift event**. The magic pushed into his world and merged it with another one. This altered the physical properties of both worlds and mostly destroyed them.
 He is thrown into a new one and must learn to survive on his own (while exploring the new world, making friends and foes.)
 
 The principle of destroying the world is the common thread throughout the game. By joining one of the different cults the
@@ -182,7 +181,6 @@ The server must validate the button presses of the player for success.
 3. When near one of such a location (5m) the player is given a moving compass graphic. The speed of moving needle and the
    area to hit via button press is calculated based on `d`.
 
-
 # The Cults
 
 In each Bestia World there are 2-3 cults to which the Bestia summoners can belong. When creating the world, the existing
@@ -268,3 +266,12 @@ Killing 200 players with `Rogue` debuf.
 
 {{< archivement true true >}}
 Killing 500 players with `Rogue` debuf.
+
+## Trading
+
+Trading is an important mechanic and allows player to exchange goods. Players can create auction hauses which can be used
+in order to perform trades while they are offline themselves.
+
+## Auction House
+
+TBD

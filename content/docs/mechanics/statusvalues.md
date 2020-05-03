@@ -1,6 +1,3 @@
----
-title: Status Values
----
 # Status Values
 
 Status Values are the base values from which the basics for all ingame calculations are performed.
