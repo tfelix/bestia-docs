@@ -15,7 +15,7 @@ Due to the changes of the environmental values tiles have to be adapted to the w
 Each Bestia has a certain sweet spot of tolerable temperature. There are several kind of base temperature ranges in
 which Bestia thrive:
 
-| Temperature Kind   | Base Temperature Range (°C) |
+| Temperature Kind   | Base Temperature Range [°C] |
 | ------------------ | --------------------------: |
 | Low Temperature    |                    -20 - 15 |
 | Medium Temperature |                     10 - 30 |

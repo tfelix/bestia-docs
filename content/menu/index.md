@@ -13,6 +13,6 @@ headless = true
   - [Status Values]({{< relref "/docs/mechanics/statusvalues" >}})
   - [Development Resources]({{< relref "/docs/mechanics/dev-resources" >}})
 - [Client]({{< relref "/docs/client" >}})
-  - [Entities]({{< relref "/docs/entities" >}})
-- [Client]({{< relref "/docs/server" >}})
+  - [Entities]({{< relref "/docs/client/entities" >}})
+- [Server]({{< relref "/docs/server" >}})
 - [REST API]({{< relref "/docs/api" >}})
