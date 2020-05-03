@@ -1,6 +1,3 @@
----
-title: Artificial Intelligence
----
 # Artificial Intelligence
 
 The AI system in Bestia will set new standards. Bestias and NPCs alike should be able to create long-term plans,

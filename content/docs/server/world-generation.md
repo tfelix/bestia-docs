@@ -1,7 +1,3 @@
----
-title: World Generation
-sidebar_label: World Generation
----
 # World Generation
 
 Bestia uses a specialized library called [worldgen](https://github.com/tfelix/worldgen) for world creation. It is a

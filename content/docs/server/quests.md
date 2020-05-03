@@ -1,8 +1,6 @@
----
-id: server-queststories
-title: Stories and Quests Generation
-sidebar_label: Stories and Quests
----
+# Quests
+
+TBD
 
 ## Literature
 

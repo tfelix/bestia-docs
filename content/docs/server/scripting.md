@@ -1,13 +1,8 @@
----
-id: server-scripts
-title: Server Scripts
-sidebar_label: Server Scripts
----
-# Scripte
+# Scripting
 
-Das Skript-System in Bestia wird genutzt um flexible Programmausführung für verschiedenste Zwecke zu ermöglichen. Dazu gehören vor allem die Effekte von benutzten Items, Attacken, das Verhalten von Gespawnten Entities usw.
+Das Skript-System in Bestia wird genutzt um flexible Programmausführung für verschiedenste Zwecke zu ermöglichen. Dazu gehören vor allem die Effekte von benutzten Items, Attacken, das Verhalten von Entities zu steuern.
 
-Als Skriptsprache wird auf JavaScript gesetzt, da diese sowieso im HTML Client verwendet werden muss und so eine weitere Sprache für das Spiel gespart werden kann. Aktuell wird die Nashorn Javascript Engine von Java 8 benutzt. Sollte sich dies als Performance Engpass herausstellen so kann später mit mittlerem Aufwand auf die V8 Engine von Google umgerüstet werden. Für alle Aktoren wird nur eine Script Engine verwendet. Da Javascripts von Natur her keine Mechanismen vorgesehen in einer Multithread Umgebung zu laufen, ist akribisch darauf zu achten, dass KEIN globaler State in den Scripten eingeführt und verwendet wird. Jede Ausführung muss einem zentralen Datenbestand arbeiten (Datenbank API). Zur Interaktion mit dem Bestia Server muss eine Script API vorgesehen werden, die den Scripten zusätzlich zu den von ihnen benötigten Variablen bei der Ausführung über ein Binding zur Verfügung gestellt wird.
+Als Skriptsprache wird auf JavaScript gesetzt. Aktuell wird die Nashorn Javascript Engine von Java 8 benutzt. Sollte sich dies als Performance Engpass herausstellen so kann später mit mittlerem Aufwand auf die V8 Engine von Google umgerüstet werden. Für alle Aktoren wird nur eine Script Engine verwendet. Da Javascripts keine Mechanismen vorgesehen in einer Multithread Umgebung zu laufen, ist darauf zu achten, dass KEIN globaler State in den Scripten eingeführt und verwendet wird. Jede Ausführung muss einem zentralen Datenbestand arbeiten (z.b. Datenbank API). Zur Interaktion mit dem Bestia Server muss eine Script API vorgesehen werden, die den Scripten zusätzlich zu den von ihnen benötigten Variablen bei der Ausführung über ein Binding zur Verfügung gestellt wird.
 
 ## Allgemeine Fähigkeiten von Scripts
 

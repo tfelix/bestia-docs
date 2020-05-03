@@ -1,3 +1,5 @@
+# Client Server Communication
+
 # Datatypes
 
 All locations and entities are represented via fixed point numbers to avoid incorrectness with floating points
