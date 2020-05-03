@@ -31,16 +31,6 @@
     </item>
     
     <item>
-      <title>Trading</title>
-      <link>https://docs.bestia-game.net/docs/mechanics/trading/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://docs.bestia-game.net/docs/mechanics/trading/</guid>
-      <description>Trading Trading is an important mechanic and allows player to exchange goods. Players can create auction hauses which can be used in order to perform trades while they are offline themselves.
-Auction House TBD</description>
-    </item>
-    
-    <item>
       <title></title>
       <link>https://docs.bestia-game.net/docs/mechanics/dev-resources/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -59,6 +49,16 @@ Fonts Currently the font usage is not finally decided.</description>
       
       <guid>https://docs.bestia-game.net/docs/mechanics/general/</guid>
       <description>General Mechanics Main Story The main story revolves around the player whose world was destroyed due to a so-called rift event. The magic pushed into his world and merged it with another one. This altered the physical properties of both worlds and mostly destroyed them. He is thrown into a new one and must learn to survive on his own (while exploring the new world, making friends and foes.)</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.bestia-game.net/docs/mechanics/statusvalues/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.bestia-game.net/docs/mechanics/statusvalues/</guid>
+      <description>Status Values Status Values are the base values from which the basics for all ingame calculations are performed. There are four main types of values: Base Values, Status Valus, Condition Values and Effort Values. The Status Based Values (SBV) play a special role.
+The sophisticated status system describes the current state of an bestia (or simply any living entity) and does not strictly apply only to biological entities. The status system is important to calculate all battle related effects in the game.</description>
     </item>
     
     <item>
@@ -94,15 +94,6 @@ These simulations should be based on certain basic values which are determined l
     </item>
     
     <item>
-      <title>Honor</title>
-      <link>https://docs.bestia-game.net/docs/mechanics/honor/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://docs.bestia-game.net/docs/mechanics/honor/</guid>
-      <description>Honor It is possible in Bestia to perform malicious actions which will reduce the players good experience. This is by design! Yet there should be incentives for players not to go this route in order to protect low level players from ganking of other griev play. If a player behaves well and their honor level increases they will get more and more rewards. On the other hand if a player has negative honor they will get bad reputation and repressions.</description>
-    </item>
-    
-    <item>
       <title>Items</title>
       <link>https://docs.bestia-game.net/docs/mechanics/items/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -110,16 +101,6 @@ These simulations should be based on certain basic values which are determined l
       <guid>https://docs.bestia-game.net/docs/mechanics/items/</guid>
       <description>Items Items can be optained by the player and carried around. The amount of items limited to each entity is determined via its Inventory. Each Bestia (and also a lot of other entities), have their own inventory with different sizes.
 Items are mostly crafted by the players. Its quite rare to obtain direct item drops from killed enemies. Instead its very common to loot resources when enemies are killed.</description>
-    </item>
-    
-    <item>
-      <title>Status Values</title>
-      <link>https://docs.bestia-game.net/docs/mechanics/statusvalues/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://docs.bestia-game.net/docs/mechanics/statusvalues/</guid>
-      <description>Status Values Status Values are the base values from which the basics for all ingame calculations are performed. There are four main types of values: Base Values, Status Valus, Condition Values and Effort Values. The Status Based Values (SBV) play a special role.
-The sophisticated status system describes the current state of an bestia (or simply any living entity) and does not strictly apply only to biological entities. The status system is important to calculate all battle related effects in the game.</description>
     </item>
     
   </channel>

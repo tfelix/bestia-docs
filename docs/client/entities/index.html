@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Api | Bestia Game</title>
+<title>Entities | Bestia Game</title>
 
 
 <link rel="stylesheet" href="/book.min.e455ec3d70e30769b65addd415b9219adfbaa8fb5c17db0ee83d73131879098d.css" integrity="sha256-5FXsPXDjB2m2Wt3UFbkhmt&#43;6qPtcF9sO6D1zExh5CY0=">
@@ -17,7 +17,6 @@
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 
 
-<link rel="alternate" type="application/rss+xml" href="https://docs.bestia-game.net/docs/api/index.xml" title="Bestia Game" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -54,7 +53,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   <style>
-  nav ul a[href$="\2f docs\2f api\2f "] {
+  nav ul a[href$="\2f docs\2f client\2f entities\2f "] {
       color: #004ed0;
   }
   </style>
@@ -108,18 +107,73 @@ https://github.com/alex-shpak/hugo-book
   <label for="menu-control">
     <img src="/svg/menu.svg" alt="Menu" />
   </label>
-  <strong>Api</strong>
+  <strong>Entities</strong>
 </header>
 
       
 <article class="markdown">
 
-<h1 id="rest-api">REST API</h1>
+<h1 id="entities">Entities</h1>
 
-<p>The Bestia game will get an extensive and public API to allow external developer to interface
-with the gameworld and create their own solutions and Apps. But for now we need to get the game started.</p>
+<p>The Bestia server entities are synched to the client also represented there also under the name <code>Entities</code>. An entity is described by a set of components which is attached to it and by a certain kind of logic synched between the client and the server. Not every component is synched though. This can depend on various factors for example party membership (ConditionComponent is only synched between members of the same party), or ownership or view distance (mostly only entities in view distance are synched).</p>
 
-<p>The REST API will get fully designed when the game is live.</p>
+<h2 id="interaction-behavior">Interaction Behavior</h2>
+
+<p>When the player wants to interact with an entity we must provide a way to fast and easy detect the default interaction between the player and the entity. There are several problems here:</p>
+
+<ul>
+<li>Interaction options can vary on dynamics like equipment and need to be checked by a server side script</li>
+<li>Interactions must be saved for a group of entites so the player does not check every enemy he wants to attack</li>
+<li>There should be sensible defaults. Items should be picked by default, enemies attacked</li>
+</ul>
+
+<h3 id="list-of-interactions">List of Interactions</h3>
+
+<ul>
+<li>Attack<sup>1<sup></li>
+<li>Talk</li>
+<li>Read</li>
+<li>Use</li>
+<li>Trade</li>
+<li>Pickup</li>
+<li>Construct</li>
+<li>Gather Resources</li>
+</ul>
+
+<p><sup>1<sup>: Attack is always possible for entites as each entity should be attackable in the game.</p>
+
+<h3 id="grouping-of-entities">Grouping of Entities</h3>
+
+<p>The grouping is hard to determine as the engine has no real clue which type an entity belongs to. For the player the most distinctive visual clue would be the entity model  which is used for display.</p>
+
+<p>The <code>BehaviorService</code> is responsible for checking the possible interactions and presenting the player the usable options, the algorithm is as follows:</p>
+
+
+
+<script src="/mermaid.min.js"></script>
+<script>
+    var config = {
+        theme: 'dark'
+    };
+    mermaid.initialize(config);
+</script>
+
+
+
+<p class="mermaid">
+  
+graph TD
+  s1[Request Interaction list from server]-->s2[Is saved default interaction present?]
+  s2-- Yes -->s3[Is default interaction present in list?]
+  s3-- Yes -->s4[Did user request manual selection?]
+  s4-- Yes -->s6((Open Interaction Menu))
+  s4-- No -->s5((Perform interaction))
+  s2-- No -->s7[Fetch default interaction for entity]
+  s7-- Found -->s5
+  s7-- Not Found-->s6
+
+</p>
+
 </article>
 
       
@@ -134,7 +188,7 @@ with the gameworld and create their own solutions and Apps. But for now we need 
   
   
   <div>
-    <a href="https://github.com/tfelix/bestia-docs/edit/master/content/docs/api/_index.md" target="_blank" rel="noopener">
+    <a href="https://github.com/tfelix/bestia-docs/edit/master/content/docs/client/entities.md" target="_blank" rel="noopener">
       <i class="fas fa-edit" style="margin-right: 0.3em"></i> Edit this page
     </a>
   </div>
@@ -151,7 +205,14 @@ with the gameworld and create their own solutions and Apps. But for now we need 
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#rest-api">REST API</a></li>
+<li><a href="#entities">Entities</a>
+<ul>
+<li><a href="#interaction-behavior">Interaction Behavior</a>
+<ul>
+<li><a href="#list-of-interactions">List of Interactions</a></li>
+<li><a href="#grouping-of-entities">Grouping of Entities</a></li>
+</ul></li>
+</ul></li>
 </ul>
 </nav>
   </aside>

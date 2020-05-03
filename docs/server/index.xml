@@ -11,10 +11,10 @@
     
     <item>
       <title></title>
-      <link>https://docs.bestia-game.net/docs/server/server-datatypes/</link>
+      <link>https://docs.bestia-game.net/docs/server/datatypes/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.bestia-game.net/docs/server/server-datatypes/</guid>
+      <guid>https://docs.bestia-game.net/docs/server/datatypes/</guid>
       <description>Datatypes All locations and entities are represented via fixed point numbers to avoid incorrectness with floating points over a bigger distance (see The perils of floating point).
 Positioning The basic datastructures for positioning and collisions are found in net.bestia.model.geometry. Most notable the Vector3 datatype.
 It uses long as datatypes for the coordinates and thus has a range between -9.223.372.036.854.775.808 to 9.223.372.036.854.775.807 which means if we can represent at the best a position resolution of 1mm.</description>
@@ -32,61 +32,30 @@ Bestias look for ways to get the highest possible inner happiness. They must sle
     
     <item>
       <title>Battlesystem</title>
-      <link>https://docs.bestia-game.net/docs/server/server-battlesystem/</link>
+      <link>https://docs.bestia-game.net/docs/server/battlesystem/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.bestia-game.net/docs/server/server-battlesystem/</guid>
+      <guid>https://docs.bestia-game.net/docs/server/battlesystem/</guid>
       <description>Battle system The battle or attack is performed in various stages. Equipments or Status effects either alter the DamageVars or expose certain hooks which are called during the damage calculation. In the case of the DamageVars this object is
 The attack itself either provides a script to completely manage the effect which takes place during cast or it provides certain callbacks for damage calculation stages which are getting called while applying the damage.</description>
     </item>
     
     <item>
-      <title>Lighting</title>
-      <link>https://docs.bestia-game.net/docs/server/server-lighting/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://docs.bestia-game.net/docs/server/server-lighting/</guid>
-      <description>Gruppen Renderlayer
-ground objects sprites effects overlay gui
-Gruppenmanager? Der entsprechende Render-Layer definiert und verwaltet? Lichtsystem Lichtinformation wird auf dem Server benötigt Tile basiert. Licht information wird auf dem Client benötigt, Tile basiert
-Licht wird global in groben Chunks abgelegt. Darüber hinaus werden Entities im System gespeichert welche Licht emmitieren. Aus beiden wird eine Lightmap berechnet die in einer effizienten Codierung die Light Map in einem Dateiformat ablegen und an den Client senden Der Client regeneriert diese Lightmap und rendert daraus eine Textur, die dann mit der Karte überlagert wird.</description>
-    </item>
-    
-    <item>
-      <title>Routing</title>
-      <link>https://docs.bestia-game.net/docs/server/server-routing/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://docs.bestia-game.net/docs/server/server-routing/</guid>
-      <description>Zur Routenfindung muss ein globales Verständnis der Karten und Wege vorhanden sein. Beim Starten der Zone müssen die Maps entsprechend ausgelesen werden damit ein Graph erstellt werden kann der die einzelnen Verbindungen der Zonen beschreibt. Der globale Routenfinder muss diese Daten nutzen um Routen erstellen zu können. Zum Abschätzen der Gewichtung der Graph Kante wird die Zeit zur Durchquerung der Zonen mit Hilfe einer Heuristik abgeschätzt. Da jeder Server nur die Maps verarbeitet für die er Zuständig ist muss nach dem Starten der erstellte Teilgraph durch alle Zonen publiziert werden sobald eine Zone online gegangen ist.</description>
-    </item>
-    
-    <item>
       <title>Server Scripts</title>
-      <link>https://docs.bestia-game.net/docs/server/server-scripts/</link>
+      <link>https://docs.bestia-game.net/docs/server/scripts/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.bestia-game.net/docs/server/server-scripts/</guid>
+      <guid>https://docs.bestia-game.net/docs/server/scripts/</guid>
       <description>Scripte Das Skript-System in Bestia wird genutzt um flexible Programmausführung für verschiedenste Zwecke zu ermöglichen. Dazu gehören vor allem die Effekte von benutzten Items, Attacken, das Verhalten von Gespawnten Entities usw.
 Als Skriptsprache wird auf JavaScript gesetzt, da diese sowieso im HTML Client verwendet werden muss und so eine weitere Sprache für das Spiel gespart werden kann. Aktuell wird die Nashorn Javascript Engine von Java 8 benutzt. Sollte sich dies als Performance Engpass herausstellen so kann später mit mittlerem Aufwand auf die V8 Engine von Google umgerüstet werden.</description>
     </item>
     
     <item>
-      <title>Server Streaming</title>
-      <link>https://docs.bestia-game.net/docs/server/server-datastreaming/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://docs.bestia-game.net/docs/server/server-datastreaming/</guid>
-      <description>Kartenübertragung Die Map besteht aus Tiles welche in verschiedenen Layern organisiert sind. Üblicherweise sollten es nicht mehr als 2-3 Layer sein. Ein Grundlayer mit der Nummer 0 ist immer vorhanden. Dieser stellt den Boden dar. Er enthält begehbar und unbegehbare Tiles. Die restlichen Layer werden in einem sparse Datenformat übertragen, da Kartendaten die als Layer sich vor dem Spieler befinden eher seltener anzutreffen sind
-Patch Übertragung Um ein effektives Streaming sicherzustellen werden die Tiles in quadratisches Patches eingeteilt.</description>
-    </item>
-    
-    <item>
       <title>Stories and Quests Generation</title>
-      <link>https://docs.bestia-game.net/docs/server/server-narrativegeneration/</link>
+      <link>https://docs.bestia-game.net/docs/server/quests/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.bestia-game.net/docs/server/server-narrativegeneration/</guid>
+      <guid>https://docs.bestia-game.net/docs/server/quests/</guid>
       <description>Literature https://www.rockpapershotgun.com/2016/09/02/how-to-procedurally-generate-culture/ http://www.gdcvault.com/play/1024143/Procedural-Narrative http://pcg.wikidot.com/pcg-algorithm:procedural-puzzles-and-plot-generation http://ieeexplore.ieee.org/abstract/document/5740836/</description>
     </item>
     
