@@ -4,13 +4,13 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Server Scripts | Bestia Game</title>
+<title>Scripting | Bestia Game</title>
 
 
 <link rel="stylesheet" href="/book.min.e455ec3d70e30769b65addd415b9219adfbaa8fb5c17db0ee83d73131879098d.css" integrity="sha256-5FXsPXDjB2m2Wt3UFbkhmt&#43;6qPtcF9sO6D1zExh5CY0=">
 
 
-<script defer src="/search.min.d12e6481ec7f490f9b19f2457fd0f206f08bd56e6161b7a72c9ee13c674e85e1.js" integrity="sha256-0S5kgex/SQ&#43;bGfJFf9DyBvCL1W5hYbenLJ7hPGdOheE="></script>
+<script defer src="/search.min.532fa32bf143be056c62f71bed00f874a00b90291cd08f015bf0c19de01f3156.js" integrity="sha256-Uy&#43;jK/FDvgVsYvcb7QD4dKALkCkc0I8BW/DBneAfMVY="></script>
 
 
 
@@ -53,7 +53,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   <style>
-  nav ul a[href$="\2f docs\2fserver\2fscripts\2f "] {
+  nav ul a[href$="\2f docs\2fserver\2fscripting\2f "] {
       color: #004ed0;
   }
   </style>
@@ -77,7 +77,17 @@ https://github.com/alex-shpak/hugo-book
 <ul>
 <li><a href="/docs/client/entities/">Entities</a></li>
 </ul></li>
-<li><a href="/docs/server/">Server</a></li>
+<li><a href="/docs/server/">Server</a>
+
+<ul>
+<li><a href="/docs/server/architecture/">Architecture</a></li>
+<li><a href="/docs/server/ai/">Artificial Intelligence</a></li>
+<li><a href="/docs/server/battle/">Battle</a></li>
+<li><a href="/docs/server/communication/">Communication</a></li>
+<li><a href="/docs/server/quests/">Quests</a></li>
+<li><a href="/docs/server/scripting/">Scripting</a></li>
+<li><a href="/docs/server/world-generation/">World Generation</a></li>
+</ul></li>
 <li><a href="/docs/api/">REST API</a></li>
 </ul>
 
@@ -107,17 +117,17 @@ https://github.com/alex-shpak/hugo-book
   <label for="menu-control">
     <img src="/svg/menu.svg" alt="Menu" />
   </label>
-  <strong>Server Scripts</strong>
+  <strong>Scripting</strong>
 </header>
 
       
 <article class="markdown">
 
-<h1 id="scripte">Scripte</h1>
+<h1 id="scripting">Scripting</h1>
 
-<p>Das Skript-System in Bestia wird genutzt um flexible Programmausführung für verschiedenste Zwecke zu ermöglichen. Dazu gehören vor allem die Effekte von benutzten Items, Attacken, das Verhalten von Gespawnten Entities usw.</p>
+<p>Das Skript-System in Bestia wird genutzt um flexible Programmausführung für verschiedenste Zwecke zu ermöglichen. Dazu gehören vor allem die Effekte von benutzten Items, Attacken, das Verhalten von Entities zu steuern.</p>
 
-<p>Als Skriptsprache wird auf JavaScript gesetzt, da diese sowieso im HTML Client verwendet werden muss und so eine weitere Sprache für das Spiel gespart werden kann. Aktuell wird die Nashorn Javascript Engine von Java 8 benutzt. Sollte sich dies als Performance Engpass herausstellen so kann später mit mittlerem Aufwand auf die V8 Engine von Google umgerüstet werden. Für alle Aktoren wird nur eine Script Engine verwendet. Da Javascripts von Natur her keine Mechanismen vorgesehen in einer Multithread Umgebung zu laufen, ist akribisch darauf zu achten, dass KEIN globaler State in den Scripten eingeführt und verwendet wird. Jede Ausführung muss einem zentralen Datenbestand arbeiten (Datenbank API). Zur Interaktion mit dem Bestia Server muss eine Script API vorgesehen werden, die den Scripten zusätzlich zu den von ihnen benötigten Variablen bei der Ausführung über ein Binding zur Verfügung gestellt wird.</p>
+<p>Als Skriptsprache wird auf JavaScript gesetzt. Aktuell wird die Nashorn Javascript Engine von Java 8 benutzt. Sollte sich dies als Performance Engpass herausstellen so kann später mit mittlerem Aufwand auf die V8 Engine von Google umgerüstet werden. Für alle Aktoren wird nur eine Script Engine verwendet. Da Javascripts keine Mechanismen vorgesehen in einer Multithread Umgebung zu laufen, ist darauf zu achten, dass KEIN globaler State in den Scripten eingeführt und verwendet wird. Jede Ausführung muss einem zentralen Datenbestand arbeiten (z.b. Datenbank API). Zur Interaktion mit dem Bestia Server muss eine Script API vorgesehen werden, die den Scripten zusätzlich zu den von ihnen benötigten Variablen bei der Ausführung über ein Binding zur Verfügung gestellt wird.</p>
 
 <h2 id="allgemeine-fähigkeiten-von-scripts">Allgemeine Fähigkeiten von Scripts</h2>
 
@@ -314,14 +324,14 @@ targetPosition (Point): Might be null. Is set if the item was intended to be use
   
   <div>
     
-    <a href="https://github.com/tfelix/bestia-docs/commit/545b8534508bd3481b023007d112b7c756938b9d" title='Last modified May 3, 2020 by Thomas Felix' target="_blank" rel="noopener">
+    <a href="https://github.com/tfelix/bestia-docs/commit/8f6f22567d6a5e46a61f30b8cfce2e1c2a6588ec" title='Last modified May 3, 2020 by Thomas Felix' target="_blank" rel="noopener">
       <i class="far fa-calendar" style="margin-right: 0.3em"></i> May 3, 2020
     </a>
   </div>
   
   
   <div>
-    <a href="https://github.com/tfelix/bestia-docs/edit/master/content/docs/server/scripts.md" target="_blank" rel="noopener">
+    <a href="https://github.com/tfelix/bestia-docs/edit/master/content/docs/server/scripting.md" target="_blank" rel="noopener">
       <i class="fas fa-edit" style="margin-right: 0.3em"></i> Edit this page
     </a>
   </div>
@@ -338,7 +348,7 @@ targetPosition (Point): Might be null. Is set if the item was intended to be use
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#scripte">Scripte</a>
+<li><a href="#scripting">Scripting</a>
 <ul>
 <li><a href="#allgemeine-fähigkeiten-von-scripts">Allgemeine Fähigkeiten von Scripts</a></li>
 <li><a href="#script-kontext">Script Kontext</a></li>

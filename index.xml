@@ -72,17 +72,6 @@ The sophisticated status system describes the current state of an bestia (or sim
     
     <item>
       <title></title>
-      <link>https://docs.bestia-game.net/docs/server/datatypes/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://docs.bestia-game.net/docs/server/datatypes/</guid>
-      <description>Datatypes All locations and entities are represented via fixed point numbers to avoid incorrectness with floating points over a bigger distance (see The perils of floating point).
-Positioning The basic datastructures for positioning and collisions are found in net.bestia.model.geometry. Most notable the Vector3 datatype.
-It uses long as datatypes for the coordinates and thus has a range between -9.223.372.036.854.775.808 to 9.223.372.036.854.775.807 which means if we can represent at the best a position resolution of 1mm.</description>
-    </item>
-    
-    <item>
-      <title>Artificial Intelligence</title>
       <link>https://docs.bestia-game.net/docs/server/ai/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -92,11 +81,61 @@ Bestias look for ways to get the highest possible inner happiness. They must sle
     </item>
     
     <item>
-      <title>Battlesystem</title>
-      <link>https://docs.bestia-game.net/docs/server/battlesystem/</link>
+      <title></title>
+      <link>https://docs.bestia-game.net/docs/server/architecture/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.bestia-game.net/docs/server/battlesystem/</guid>
+      <guid>https://docs.bestia-game.net/docs/server/architecture/</guid>
+      <description>Architecture Entity Component Services Entities are described by dynamically attaching components to them. ECS system have been proven as a de facto industry standard for recent game development. The components only contain the data are attached to entities which merely are an ID in the system. The so called systems act upon this data and alter the entities usually this is the case in a fixed tick amount for game logic updates.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.bestia-game.net/docs/server/communication/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.bestia-game.net/docs/server/communication/</guid>
+      <description>Client Server Communication Datatypes All locations and entities are represented via fixed point numbers to avoid incorrectness with floating points over a bigger distance (see The perils of floating point).
+Positioning The basic datastructures for positioning and collisions are found in net.bestia.model.geometry. Most notable the Vector3 datatype.
+It uses long as datatypes for the coordinates and thus has a range between -9.223.372.036.854.775.808 to 9.223.372.036.854.775.807 which means if we can represent at the best a position resolution of 1mm.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.bestia-game.net/docs/server/quests/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.bestia-game.net/docs/server/quests/</guid>
+      <description>Quests TBD
+Literature https://www.rockpapershotgun.com/2016/09/02/how-to-procedurally-generate-culture/ http://www.gdcvault.com/play/1024143/Procedural-Narrative http://pcg.wikidot.com/pcg-algorithm:procedural-puzzles-and-plot-generation http://ieeexplore.ieee.org/abstract/document/5740836/</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.bestia-game.net/docs/server/scripting/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.bestia-game.net/docs/server/scripting/</guid>
+      <description>Scripting Das Skript-System in Bestia wird genutzt um flexible Programmausführung für verschiedenste Zwecke zu ermöglichen. Dazu gehören vor allem die Effekte von benutzten Items, Attacken, das Verhalten von Entities zu steuern.
+Als Skriptsprache wird auf JavaScript gesetzt. Aktuell wird die Nashorn Javascript Engine von Java 8 benutzt. Sollte sich dies als Performance Engpass herausstellen so kann später mit mittlerem Aufwand auf die V8 Engine von Google umgerüstet werden. Für alle Aktoren wird nur eine Script Engine verwendet.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.bestia-game.net/docs/server/world-generation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.bestia-game.net/docs/server/world-generation/</guid>
+      <description>World Generation Bestia uses a specialized library called worldgen for world creation. It is a clusterable generator which is cabable of dividing the world creation workload onto multiple, different machines. With this framework it should be possible to create million of square kilometers without hitting any memory limit on the servers.
+Algorithmus  Grundparameter Erstellung von Influencemaps Wasserspiegel festlegung Erzeuge die Wasser Maske Erzeuge von Gewässern und Flüsse Temperaturkorrektur Biom Zuordnung vornehmen Terrain Features verteilen und erzeugen Biom Optimierung Tilemap Erzeugung Biom Features Erzeugung der Städtekandidaten Erzeugung und Verteilung von Bodenschätzen  Grundparameter The following base parameters are used to generate the map:</description>
+    </item>
+    
+    <item>
+      <title>Battlesystem</title>
+      <link>https://docs.bestia-game.net/docs/server/battle/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.bestia-game.net/docs/server/battle/</guid>
       <description>Battle system The battle or attack is performed in various stages. Equipments or Status effects either alter the DamageVars or expose certain hooks which are called during the damage calculation. In the case of the DamageVars this object is
 The attack itself either provides a script to completely manage the effect which takes place during cast or it provides certain callbacks for damage calculation stages which are getting called while applying the damage.</description>
     </item>
@@ -141,35 +180,6 @@ These simulations should be based on certain basic values which are determined l
       <guid>https://docs.bestia-game.net/docs/mechanics/items/</guid>
       <description>Items Items can be optained by the player and carried around. The amount of items limited to each entity is determined via its Inventory. Each Bestia (and also a lot of other entities), have their own inventory with different sizes.
 Items are mostly crafted by the players. Its quite rare to obtain direct item drops from killed enemies. Instead its very common to loot resources when enemies are killed.</description>
-    </item>
-    
-    <item>
-      <title>Server Scripts</title>
-      <link>https://docs.bestia-game.net/docs/server/scripts/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://docs.bestia-game.net/docs/server/scripts/</guid>
-      <description>Scripte Das Skript-System in Bestia wird genutzt um flexible Programmausführung für verschiedenste Zwecke zu ermöglichen. Dazu gehören vor allem die Effekte von benutzten Items, Attacken, das Verhalten von Gespawnten Entities usw.
-Als Skriptsprache wird auf JavaScript gesetzt, da diese sowieso im HTML Client verwendet werden muss und so eine weitere Sprache für das Spiel gespart werden kann. Aktuell wird die Nashorn Javascript Engine von Java 8 benutzt. Sollte sich dies als Performance Engpass herausstellen so kann später mit mittlerem Aufwand auf die V8 Engine von Google umgerüstet werden.</description>
-    </item>
-    
-    <item>
-      <title>Stories and Quests Generation</title>
-      <link>https://docs.bestia-game.net/docs/server/quests/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://docs.bestia-game.net/docs/server/quests/</guid>
-      <description>Literature https://www.rockpapershotgun.com/2016/09/02/how-to-procedurally-generate-culture/ http://www.gdcvault.com/play/1024143/Procedural-Narrative http://pcg.wikidot.com/pcg-algorithm:procedural-puzzles-and-plot-generation http://ieeexplore.ieee.org/abstract/document/5740836/</description>
-    </item>
-    
-    <item>
-      <title>World Generation</title>
-      <link>https://docs.bestia-game.net/docs/server/world-generation/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://docs.bestia-game.net/docs/server/world-generation/</guid>
-      <description>World Generation Bestia uses a specialized library called worldgen for world creation. It is a clusterable generator which is cabable of dividing the world creation workload onto multiple, different machines. With this framework it should be possible to create million of square kilometers without hitting any memory limit on the servers.
-Algorithmus  Grundparameter Erstellung von Influencemaps Wasserspiegel festlegung Erzeuge die Wasser Maske Erzeuge von Gewässern und Flüsse Temperaturkorrektur Biom Zuordnung vornehmen Terrain Features verteilen und erzeugen Biom Optimierung Tilemap Erzeugung Biom Features Erzeugung der Städtekandidaten Erzeugung und Verteilung von Bodenschätzen  Grundparameter The following base parameters are used to generate the map:</description>
     </item>
     
   </channel>
