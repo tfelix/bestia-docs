@@ -93,7 +93,7 @@ Quests in Bestia are generated on via two mechanics:
 
 ## Automatic Quest Generation
 
-Quest generation is done with Templates similar to what the terrain auto-generation system uses. Alot of logic can be built into the Scripts to 'fit' locations and to vary the details of the Quest significantly. Can be made to 'fit' the Player, but its better for the Player to have to figure out how to come up with the needed resources/skilled help/solutions. It is based manly on the paper [A prototype quest generator based on a structural analysis of quests from four MMORPGs](http://ianparberry.com/pubs/pcg2011.pdf) by Ian Parberry and Jonathon Doran and also on the Grail Framework desribed in [The Grail Framework: Making Stories Layable on Three Levels in CRPGS](https://escholarship.org/uc/item/004129jn). In order to keep the quest generation close to the world in a narrative perspective consider some ideas from the paper [Analysis of ReGEN as a Graph Rewriting System for Quest Generation](http://gram.cs.mcgill.ca/papers/kybartas-14-analysis.pdf).
+Quest generation is done with Templates similar to what the terrain auto-generation system uses. Alot of logic can be built into the Scripts to 'fit' locations and to vary the details of the Quest significantly. Can be made to 'fit' the Player, but its better for the Player to have to figure out how to come up with the needed resources or solutions. It is based manly on the paper [A prototype quest generator based on a structural analysis of quests from four MMORPGs](http://ianparberry.com/pubs/pcg2011.pdf) by Ian Parberry and Jonathon Doran and also on the Grail Framework desribed in [The Grail Framework: Making Stories Layable on Three Levels in CRPGS](https://escholarship.org/uc/item/004129jn). In order to keep the quest generation close to the world in a narrative perspective consider some ideas from the paper [Analysis of ReGEN as a Graph Rewriting System for Quest Generation](http://gram.cs.mcgill.ca/papers/kybartas-14-analysis.pdf).
 
 Discovery of these quests can be done in various ways:
 
@@ -152,7 +152,7 @@ The fee is defined by:
 {{< /katex >}}
 
 {{< katex >}}
-   deliver_time =  8h + km / 10
+   deliver_{time} =  8h + km / 10
 {{< /katex >}}
 
 The player can decide to insure his delivery which will setup a teleport spell on the item if its not looted but the postman is killed which will deliver it towards the target destination. But this will take another 0.5-1 days in real time before the item will then be available at the target location.
