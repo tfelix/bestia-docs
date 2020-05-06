@@ -4,19 +4,21 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Status Values Status Values are the base values from which the basics for all ingame calculations are performed. There are four main types of values: Base Values, Status Valus, Condition Values and Effort Values. The Status Based Values (SBV) play a special role.
+The sophisticated status system describes the current state of an bestia (or simply any living entity) and does not strictly apply only to biological entities. The status system is important to calculate all battle related effects in the game.">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
+<meta property="og:description" content="Status Values Status Values are the base values from which the basics for all ingame calculations are performed. There are four main types of values: Base Values, Status Valus, Condition Values and Effort Values. The Status Based Values (SBV) play a special role.
+The sophisticated status system describes the current state of an bestia (or simply any living entity) and does not strictly apply only to biological entities. The status system is important to calculate all battle related effects in the game." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://docs.bestia-game.net/docs/mechanics/statusvalues/" />
+<meta property="article:modified_time" content="2020-05-06T02:00:55+02:00" />
 <title>Statusvalues | Bestia Game</title>
-
-
-<link rel="stylesheet" href="/book.min.e455ec3d70e30769b65addd415b9219adfbaa8fb5c17db0ee83d73131879098d.css" integrity="sha256-5FXsPXDjB2m2Wt3UFbkhmt&#43;6qPtcF9sO6D1zExh5CY0=">
-
-
-<script defer src="/search.min.c2d8df9c61afa359fdd56ddc9a11d7e06bf1277afe10aecd89ccc8560c7556de.js" integrity="sha256-wtjfnGGvo1n91W3cmhHX4GvxJ3r&#43;EK7NiczIVgx1Vt4="></script>
-
-
-
+<link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.33a33f5aa85ae88a745523e33a90fc180c0265506f82d14eccb0b602ba49aeea.css" integrity="sha256-M6M/Wqha6Ip0VSPjOpD8GAwCZVBvgtFOzLC2ArpJruo=">
+<script defer src="/en.search.min.0071d0c9b0c1dba29fb5a151f046353559f40cbb123dafeff6908e76a47ad645.js" integrity="sha256-AHHQybDB26KftaFR8EY1NVn0DLsSPa/v9pCOdqR61kU="></script>
 
-
+<script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -28,17 +30,18 @@ https://github.com/alex-shpak/hugo-book
 
 <body>
   <input type="checkbox" class="hidden" id="menu-control" />
-  <main class="flex container">
-
-    <aside class="book-menu fixed">
-      <nav>
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
 <h2 class="book-brand">
-  <a href="https://docs.bestia-game.net"><img src="/bestia-logo.svg" alt="Logo" /></a>
+  <a href="/"><img src="/bestia-logo.svg" alt="Logo" /><span>Bestia Game</span>
+  </a>
 </h2>
 
 
 <div class="book-search">
-  <input type="text" placeholder="Search" id="book-search-input" maxlength="64" readonly />
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
   <div class="book-search-spinner spinner hidden"></div>
   <ul id="book-search-results"></ul>
 </div>
@@ -47,49 +50,68 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-    
-  
-  
-  
 
-  <style>
-  nav ul a[href$="\2f docs\2fmechanics\2fstatusvalues\2f "] {
-      color: #004ed0;
-  }
-  </style>
 
+
+
+
+
+  <ul>
+<li>
+  <a href="/docs/mechanics/"><strong>Game Design</strong></a>
 <ul>
-<li><a href="/docs/mechanics/">Game Design</a>
-
-<ul>
-<li><a href="/docs/mechanics/general/">General Mechanics</a></li>
-<li><a href="/docs/mechanics/master/">Bestia Master</a></li>
-<li><a href="/docs/mechanics/bestia/">Bestia</a></li>
-<li><a href="/docs/mechanics/environment/">Environment</a></li>
-<li><a href="/docs/mechanics/items/">Items</a></li>
-<li><a href="/docs/mechanics/resources/">Resources</a></li>
-<li><a href="/docs/mechanics/skills/">Skills</a></li>
-<li><a href="/docs/mechanics/statusvalues/">Status Values</a></li>
-<li><a href="/docs/mechanics/dev-resources/">Development Resources</a></li>
-</ul></li>
-<li><a href="/docs/client/">Client</a>
-
-<ul>
-<li><a href="/docs/client/entities/">Entities</a></li>
-</ul></li>
-<li><a href="/docs/server/">Server</a>
-
-<ul>
-<li><a href="/docs/server/architecture/">Architecture</a></li>
-<li><a href="/docs/server/ai/">Artificial Intelligence</a></li>
-<li><a href="/docs/server/battle/">Battle</a></li>
-<li><a href="/docs/server/communication/">Communication</a></li>
-<li><a href="/docs/server/quests/">Quests</a></li>
-<li><a href="/docs/server/scripting/">Scripting</a></li>
-<li><a href="/docs/server/world-generation/">World Generation</a></li>
-</ul></li>
-<li><a href="/docs/api/">REST API</a></li>
+<li>
+  <a href="/docs/mechanics/general/">General Mechanics</a></li>
+<li>
+  <a href="/docs/mechanics/master/">Bestia Master</a></li>
+<li>
+  <a href="/docs/mechanics/bestia/">Bestia</a></li>
+<li>
+  <a href="/docs/mechanics/environment/">Environment</a></li>
+<li>
+  <a href="/docs/mechanics/items/">Items</a></li>
+<li>
+  <a href="/docs/mechanics/resources/">Resources</a></li>
+<li>
+  <a href="/docs/mechanics/skills/">Skills</a></li>
+<li>
+  <a href="/docs/mechanics/statusvalues/"class=active>Status Values</a></li>
+<li>
+  <a href="/docs/mechanics/dev-resources/">Development Resources</a></li>
 </ul>
+</li>
+<li>
+  <a href="/docs/client/"><strong>Client</strong></a>
+<ul>
+<li>
+  <a href="/docs/client/entities/">Entities</a></li>
+</ul>
+</li>
+<li>
+  <a href="/docs/server/"><strong>Server</strong></a>
+<ul>
+<li>
+  <a href="/docs/server/architecture/">Architecture</a></li>
+<li>
+  <a href="/docs/server/ai/">Artificial Intelligence</a></li>
+<li>
+  <a href="/docs/server/battle/">Battle</a></li>
+<li>
+  <a href="/docs/server/communication/">Communication</a></li>
+<li>
+  <a href="/docs/server/quests/">Quests</a></li>
+<li>
+  <a href="/docs/server/scripting/">Scripting</a></li>
+<li>
+  <a href="/docs/server/world-generation/">World Generation</a></li>
+</ul>
+</li>
+<li>
+  <a href="/docs/api/"><strong>REST API</strong></a></li>
+</ul>
+
+
+
 
 
 
@@ -100,57 +122,97 @@ https://github.com/alex-shpak/hugo-book
 </nav>
 
 
-<script>
-(function() {
-  var menu = document.querySelector("aside.book-menu nav");
-  addEventListener("beforeunload", function(event) {
-    localStorage.setItem("menu.scrollTop", menu.scrollTop);
-  });
-  menu.scrollTop = localStorage.getItem("menu.scrollTop");
-})();
-</script>
 
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
     </aside>
 
     <div class="book-page">
-      <header class="flex align-center justify-between book-header">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
   <label for="menu-control">
-    <img src="/svg/menu.svg" alt="Menu" />
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
+
   <strong>Statusvalues</strong>
-</header>
+
+  <label for="toc-control">
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#status-values">Status Values</a>
+      <ul>
+        <li><a href="#intelligence-int">Intelligence (INT)</a></li>
+        <li><a href="#willpower-wil">Willpower (WIL)</a></li>
+        <li><a href="#strength-str">Strength (STR)</a></li>
+        <li><a href="#vitality-vit">Vitality (VIT)</a></li>
+        <li><a href="#dexterity-dex">Dexterity (DEX)</a></li>
+        <li><a href="#agility-agi">Agility (AGI)</a></li>
+        <li><a href="#condition-values">Condition Values</a>
+          <ul>
+            <li><a href="#stamina-sta">Stamina (STA)</a></li>
+            <li><a href="#hp">HP</a></li>
+            <li><a href="#mana">Mana</a></li>
+          </ul>
+        </li>
+        <li><a href="#effort-values">Effort Values</a></li>
+        <li><a href="#status-based-values">Status Based Values</a></li>
+        <li><a href="#individual-values">Individual Values</a></li>
+        <li><a href="#base-values">Base Values</a></li>
+        <li><a href="#effective-status-values">Effective Status Values</a></li>
+        <li><a href="#experience">Experience</a>
+          <ul>
+            <li><a href="#killing-enemies">Killing Enemies</a></li>
+            <li><a href="#skill-usage">Skill Usage</a></li>
+            <li><a href="#death-penalty">Death Penalty</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
 
       
-<article class="markdown">
-
-<h1 id="status-values">Status Values</h1>
-
+      
+  <article class="markdown"><h1 id="status-values">Status Values</h1>
 <p>Status Values are the base values from which the basics for all ingame calculations are performed.
 There are four main types of values: <strong>Base Values</strong>, <strong>Status Valus</strong>, <strong>Condition Values</strong> and <strong>Effort Values</strong>. The
 <strong>Status Based Values (SBV)</strong> play a special role.</p>
-
 <p>The sophisticated status system describes the current state of an bestia (or simply any living entity) and does not
 strictly apply only to biological entities. The status system is important to calculate all battle related effects
 in the game.</p>
-
 <p>The status system knows the following different attributes. These attributes are directly used to calculate the gameplay
 effects like battle outcomes or skill usages.</p>
-
 <p>Status values are calculated like so:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">str = (baseStr * <span style="color:#ae81ff">2</span> + ivStr + effStr / <span style="color:#ae81ff">4</span>) * level / <span style="color:#ae81ff">100</span> + <span style="color:#ae81ff">5</span></code></pre></div>
-<p>The caluclation differs for mana and HP calculation thought:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">str = (baseStr * <span style="color:#ae81ff">2</span> + ivStr + effStr / <span style="color:#ae81ff">4</span>) * level / <span style="color:#ae81ff">100</span> + <span style="color:#ae81ff">5</span>
+</code></pre></div><p>The caluclation differs for mana and HP calculation thought:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">maxHp = baseHp * <span style="color:#ae81ff">2</span> + ivHp + effHp / <span style="color:#ae81ff">4</span> * level / <span style="color:#ae81ff">100</span> + <span style="color:#ae81ff">10</span> + level
-maxMana = baseMana * <span style="color:#ae81ff">2</span> + ivMana + effMana / <span style="color:#ae81ff">4</span> * level / <span style="color:#ae81ff">100</span> + <span style="color:#ae81ff">10</span>  + level * <span style="color:#ae81ff">2</span></code></pre></div>
-<h2 id="intelligence-int">Intelligence (INT)</h2>
-
+maxMana = baseMana * <span style="color:#ae81ff">2</span> + ivMana + effMana / <span style="color:#ae81ff">4</span> * level / <span style="color:#ae81ff">100</span> + <span style="color:#ae81ff">10</span>  + level * <span style="color:#ae81ff">2</span>
+</code></pre></div><h2 id="intelligence-int">Intelligence (INT)</h2>
 <ul>
 <li>Main influence value for magic domain related effects and power/damage of magic based attacks and skills.</li>
 <li>Increases the duration of magical effects from the player (buffs, skills, etc)</li>
 <li>Increases the total amount of available mana</li>
 </ul>
-
 <h2 id="willpower-wil">Willpower (WIL)</h2>
-
 <ul>
 <li>Increases resistance against enemy spells and magic effects.</li>
 <li>Increases mana regeneration over time</li>
@@ -160,18 +222,14 @@ maxMana = baseMana * <span style="color:#ae81ff">2</span> + ivMana + effMana / <
 <li>Increases slightly the total amount of stamina</li>
 <li>Slightly increases resistance against temperature</li>
 </ul>
-
 <h2 id="strength-str">Strength (STR)</h2>
-
 <ul>
 <li>Increases damage of physical attacks (and slightly the damage of distance attacks)</li>
 <li>Increases carry capacity</li>
 <li>Increases the maximum HP amount slightly</li>
 <li>Increases the maximum stamina amount slightly</li>
 </ul>
-
 <h2 id="vitality-vit">Vitality (VIT)</h2>
-
 <ul>
 <li>Reduces the damage of physical attacks</li>
 <li>Increases the HP regeneration over time</li>
@@ -180,195 +238,189 @@ maxMana = baseMana * <span style="color:#ae81ff">2</span> + ivMana + effMana / <
 <li>Increases the maximim amount of stamina</li>
 <li>Increases resistence against temperature</li>
 </ul>
-
 <h2 id="dexterity-dex">Dexterity (DEX)</h2>
-
 <ul>
 <li>Increases the hitchance of physical based attacks</li>
 <li>Increases the probability of a critical hit</li>
 <li>Increases the damage of a distance attack</li>
 </ul>
-
 <h2 id="agility-agi">Agility (AGI)</h2>
-
 <ul>
 <li>Increases the attack rate</li>
 <li>Increases the walking speed</li>
 <li>Increases the dodge chance (flee rate) for physical attacks (melee and distance)</li>
 </ul>
-
 <h2 id="condition-values">Condition Values</h2>
-
 <p>The Condition Values resemble the current condition of a entity.</p>
-
 <h3 id="stamina-sta">Stamina (STA)</h3>
-
 <ul>
 <li>If stamina drops to low the walkspeed of the Bestia decreases
-
 <ul>
 <li>From 30% stamina to 0% stamina the walkspeed linearly decreases by 50%.</li>
-</ul></li>
+</ul>
+</li>
 <li>It gives resistance against environmental factors</li>
 <li>A stamina below 10% stops the mana and HP generation</li>
 <li>A stamina below 5% leads to a slow HP drop over time
-
 <ul>
 <li>0.3% of max HP loss every tick (leads to death in about 8h real time)</li>
-</ul></li>
+</ul>
+</li>
 <li>Stamina can be regenerated by resting in a safe spot or by using items</li>
 </ul>
-
 <h3 id="hp">HP</h3>
-
 <ul>
 <li>HP is the life energy of a Bestia or entity. If the HP reaches 0 the Bestia is killed</li>
 </ul>
-
 <h3 id="mana">Mana</h3>
-
 <ul>
 <li>Mana is the energy needed to cast spells or abilities. The more mana the Bestia has the more
 or bigger spells she can cast</li>
 </ul>
-
 <h2 id="effort-values">Effort Values</h2>
-
 <p>Upon level up of a Bestia it gains <strong>Gain Points</strong> which the player is free to distribute into his <strong>Effort Values</strong>
 to any of the status values.</p>
-
 <p>These values are gained upon leveling up the Bestia and can freely assigned by the player as soon as he has some points
 to spend. However once spend these points are fixed and can not re-distributed anymore (there might be quests or NPC which
 are able to reset these values in a certain amount).</p>
-
 <p>The gain of effort values for a entity is:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">effGain = <span style="color:#ae81ff">5</span> + floor(reachedLevel / <span style="color:#ae81ff">2</span>)</code></pre></div>
-<p>Upon leveling up the Effort Values the player needs to invest the number of Gain Points:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">effGainNeeded = max(<span style="color:#ae81ff">1</span>, (nextEffValue / <span style="color:#ae81ff">10</span>)</code></pre></div>
-<h2 id="status-based-values">Status Based Values</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">effGain = <span style="color:#ae81ff">5</span> + floor(reachedLevel / <span style="color:#ae81ff">2</span>)
+</code></pre></div><p>Upon leveling up the Effort Values the player needs to invest the number of Gain Points:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">effGainNeeded = max(<span style="color:#ae81ff">1</span>, (nextEffValue / <span style="color:#ae81ff">10</span>)
+</code></pre></div><h2 id="status-based-values">Status Based Values</h2>
 <p>The status based values (<strong>SBVs</strong>) are important numbers used throughout the system to determine for example the walk
 speed or attack speed of an entity.</p>
-
 <h2 id="individual-values">Individual Values</h2>
-
 <p>The individual value <strong>IVs</strong> are generated when the Bestia spawns and makes this somewhat random. Its possible to find
-better or worst Bestia. By <a href="/docs/mechanics/bestia/breeding/">breeding Bestia</a> this IVs are subject to manipulation by
+better or worst Bestia. By 
+  <a href="/docs/mechanics/bestia/#breeding">breeding Bestia</a> this IVs are subject to manipulation by
 the player and it is possible to make stronger Bestia in a controlled way.</p>
-
 <h2 id="base-values">Base Values</h2>
-
 <p>Every Bestia has Base Values upon which the status values are calculated. With setting these values some
 baseline for status values can be controlled from the designer. Every status has its designated base value.</p>
-
 <p>For other non Bestia based entities like items or buildings etc. base values are usually generated via a ruleset.</p>
-
 <h2 id="effective-status-values">Effective Status Values</h2>
-
 <p>The effective status values a calculated by the base values and effort values of each bestia. These values are set when
 the entity is instanced. For other non Bestia entities like non living objects or NPCs the status values might just get
 assigned by a simpler mechanism.</p>
-
 <p>Usually the equipment or buffs (status effects) will alter the status points directly or indirectly. Both alterations
 are called status effects and might be semi-permanent (as long as the equip is worn) or temporarily (when the buff
 runs out).</p>
-
 <p>The effective status values are taken into account when game calculations are performed.</p>
-
 <h2 id="experience">Experience</h2>
-
 <p>The primary way to gain experience in the game is by fighting enemy Bestias. But there is also experience for more pacifistic
 players to gain through the use of skills. However, in order to give players no advantage over activly fighting players, the
 experience gained via skill use only rises linearly (opposing to the exponential exp needed growth of a Bestia).</p>
-
 <h3 id="killing-enemies">Killing Enemies</h3>
-
 <h3 id="skill-usage">Skill Usage</h3>
-
 <p>Only activly used jobs will create experience.</p>
-
 <h3 id="death-penalty">Death Penalty</h3>
-
 <p>Players Master can not die, they are reborn with a temporary malus. Which reduces all their stats by <code>15%</code> for 15 minutes.</p>
-
 <p>A killed Bestia or Master loses <code>1%</code> of their current experience points. The items are automatically protected via a spell
 which tries to teleport the items back to a secure storage after short duration (but remember: spells can be dispelled!).</p>
-
 <p>If the player activates the so-called <strong>Hard Mode</strong> he gets an experience bonus as well as a loot bonus of <code>+3%</code>.
 However, if he dies he looses <code>5%</code> of his current experience and items are not protected by default with a spell. If once
 activated the <strong>Hard Mode</strong> will take one hour real time cooldown in order to get switched again.. This should prevent
 players from switching the mode on and off quickly after detecting a dicey situation.</p>
-
 <p>In both cases the items suffer a durability penality.</p>
-
 <p>Bestias however, can be permanently get killed, if the killing blow is particularly strong.</p>
 </article>
-
+ 
       
-<div class="book-footer justify-between">
-  
-  <div>
-    
-    <a href="https://github.com/tfelix/bestia-docs/commit/545b8534508bd3481b023007d112b7c756938b9d" title='Last modified May 3, 2020 by Thomas Felix' target="_blank" rel="noopener">
-      <i class="far fa-calendar" style="margin-right: 0.3em"></i> May 3, 2020
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/96c1eb6c182448d409e165b495eba052e16bc9ad" title='Last modified by Thomas Felix | May 6, 2020' target="_blank" rel="noopener">
+      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>May 6, 2020</span>
     </a>
   </div>
-  
-  
+
+
+
   <div>
-    <a href="https://github.com/tfelix/bestia-docs/edit/master/content/docs/mechanics/statusvalues.md" target="_blank" rel="noopener">
-      <i class="fas fa-edit" style="margin-right: 0.3em"></i> Edit this page
+    <a class="flex align-center" href="https://github.com/tfelix/bestia-docs/edit/master/content//docs/mechanics/statusvalues.md" target="_blank" rel="noopener">
+      <img src="/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
     </a>
   </div>
-  
+
 </div>
 
+ 
+        
+      </footer>
 
       
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
     </div>
 
     
-  
-
-  <aside class="book-toc level-3 fixed">
-    <nav id="TableOfContents">
-<ul>
-<li><a href="#status-values">Status Values</a>
-<ul>
-<li><a href="#intelligence-int">Intelligence (INT)</a></li>
-<li><a href="#willpower-wil">Willpower (WIL)</a></li>
-<li><a href="#strength-str">Strength (STR)</a></li>
-<li><a href="#vitality-vit">Vitality (VIT)</a></li>
-<li><a href="#dexterity-dex">Dexterity (DEX)</a></li>
-<li><a href="#agility-agi">Agility (AGI)</a></li>
-<li><a href="#condition-values">Condition Values</a>
-<ul>
-<li><a href="#stamina-sta">Stamina (STA)</a></li>
-<li><a href="#hp">HP</a></li>
-<li><a href="#mana">Mana</a></li>
-</ul></li>
-<li><a href="#effort-values">Effort Values</a></li>
-<li><a href="#status-based-values">Status Based Values</a></li>
-<li><a href="#individual-values">Individual Values</a></li>
-<li><a href="#base-values">Base Values</a></li>
-<li><a href="#effective-status-values">Effective Status Values</a></li>
-<li><a href="#experience">Experience</a>
-<ul>
-<li><a href="#killing-enemies">Killing Enemies</a></li>
-<li><a href="#skill-usage">Skill Usage</a></li>
-<li><a href="#death-penalty">Death Penalty</a></li>
-</ul></li>
-</ul></li>
-</ul>
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#status-values">Status Values</a>
+      <ul>
+        <li><a href="#intelligence-int">Intelligence (INT)</a></li>
+        <li><a href="#willpower-wil">Willpower (WIL)</a></li>
+        <li><a href="#strength-str">Strength (STR)</a></li>
+        <li><a href="#vitality-vit">Vitality (VIT)</a></li>
+        <li><a href="#dexterity-dex">Dexterity (DEX)</a></li>
+        <li><a href="#agility-agi">Agility (AGI)</a></li>
+        <li><a href="#condition-values">Condition Values</a>
+          <ul>
+            <li><a href="#stamina-sta">Stamina (STA)</a></li>
+            <li><a href="#hp">HP</a></li>
+            <li><a href="#mana">Mana</a></li>
+          </ul>
+        </li>
+        <li><a href="#effort-values">Effort Values</a></li>
+        <li><a href="#status-based-values">Status Based Values</a></li>
+        <li><a href="#individual-values">Individual Values</a></li>
+        <li><a href="#base-values">Base Values</a></li>
+        <li><a href="#effective-status-values">Effective Status Values</a></li>
+        <li><a href="#experience">Experience</a>
+          <ul>
+            <li><a href="#killing-enemies">Killing Enemies</a></li>
+            <li><a href="#skill-usage">Skill Usage</a></li>
+            <li><a href="#death-penalty">Death Penalty</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </nav>
-  </aside>
 
-
-
+ 
+    </aside>
+    
   </main>
 
-  
   
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+

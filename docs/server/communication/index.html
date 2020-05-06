@@ -4,19 +4,23 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Client Server Communication Datatypes All locations and entities are represented via fixed point numbers to avoid incorrectness with floating points over a bigger distance (see The perils of floating point).
+Positioning The basic datastructures for positioning and collisions are found in net.bestia.model.geometry. Most notable the Vector3 datatype.
+It uses long as datatypes for the coordinates and thus has a range between -9.223.372.036.854.775.808 to 9.223.372.036.854.775.807 which means if we can represent at the best a position resolution of 1mm.">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
+<meta property="og:description" content="Client Server Communication Datatypes All locations and entities are represented via fixed point numbers to avoid incorrectness with floating points over a bigger distance (see The perils of floating point).
+Positioning The basic datastructures for positioning and collisions are found in net.bestia.model.geometry. Most notable the Vector3 datatype.
+It uses long as datatypes for the coordinates and thus has a range between -9.223.372.036.854.775.808 to 9.223.372.036.854.775.807 which means if we can represent at the best a position resolution of 1mm." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://docs.bestia-game.net/docs/server/communication/" />
+<meta property="article:modified_time" content="2020-05-04T00:01:20+02:00" />
 <title>Communication | Bestia Game</title>
-
-
-<link rel="stylesheet" href="/book.min.e455ec3d70e30769b65addd415b9219adfbaa8fb5c17db0ee83d73131879098d.css" integrity="sha256-5FXsPXDjB2m2Wt3UFbkhmt&#43;6qPtcF9sO6D1zExh5CY0=">
-
-
-<script defer src="/search.min.c2d8df9c61afa359fdd56ddc9a11d7e06bf1277afe10aecd89ccc8560c7556de.js" integrity="sha256-wtjfnGGvo1n91W3cmhHX4GvxJ3r&#43;EK7NiczIVgx1Vt4="></script>
-
-
-
+<link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.33a33f5aa85ae88a745523e33a90fc180c0265506f82d14eccb0b602ba49aeea.css" integrity="sha256-M6M/Wqha6Ip0VSPjOpD8GAwCZVBvgtFOzLC2ArpJruo=">
+<script defer src="/en.search.min.0071d0c9b0c1dba29fb5a151f046353559f40cbb123dafeff6908e76a47ad645.js" integrity="sha256-AHHQybDB26KftaFR8EY1NVn0DLsSPa/v9pCOdqR61kU="></script>
 
-
+<script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -28,17 +32,18 @@ https://github.com/alex-shpak/hugo-book
 
 <body>
   <input type="checkbox" class="hidden" id="menu-control" />
-  <main class="flex container">
-
-    <aside class="book-menu fixed">
-      <nav>
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
 <h2 class="book-brand">
-  <a href="https://docs.bestia-game.net"><img src="/bestia-logo.svg" alt="Logo" /></a>
+  <a href="/"><img src="/bestia-logo.svg" alt="Logo" /><span>Bestia Game</span>
+  </a>
 </h2>
 
 
 <div class="book-search">
-  <input type="text" placeholder="Search" id="book-search-input" maxlength="64" readonly />
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
   <div class="book-search-spinner spinner hidden"></div>
   <ul id="book-search-results"></ul>
 </div>
@@ -47,49 +52,68 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-    
-  
-  
-  
 
-  <style>
-  nav ul a[href$="\2f docs\2fserver\2f communication\2f "] {
-      color: #004ed0;
-  }
-  </style>
 
+
+
+
+
+  <ul>
+<li>
+  <a href="/docs/mechanics/"><strong>Game Design</strong></a>
 <ul>
-<li><a href="/docs/mechanics/">Game Design</a>
-
-<ul>
-<li><a href="/docs/mechanics/general/">General Mechanics</a></li>
-<li><a href="/docs/mechanics/master/">Bestia Master</a></li>
-<li><a href="/docs/mechanics/bestia/">Bestia</a></li>
-<li><a href="/docs/mechanics/environment/">Environment</a></li>
-<li><a href="/docs/mechanics/items/">Items</a></li>
-<li><a href="/docs/mechanics/resources/">Resources</a></li>
-<li><a href="/docs/mechanics/skills/">Skills</a></li>
-<li><a href="/docs/mechanics/statusvalues/">Status Values</a></li>
-<li><a href="/docs/mechanics/dev-resources/">Development Resources</a></li>
-</ul></li>
-<li><a href="/docs/client/">Client</a>
-
-<ul>
-<li><a href="/docs/client/entities/">Entities</a></li>
-</ul></li>
-<li><a href="/docs/server/">Server</a>
-
-<ul>
-<li><a href="/docs/server/architecture/">Architecture</a></li>
-<li><a href="/docs/server/ai/">Artificial Intelligence</a></li>
-<li><a href="/docs/server/battle/">Battle</a></li>
-<li><a href="/docs/server/communication/">Communication</a></li>
-<li><a href="/docs/server/quests/">Quests</a></li>
-<li><a href="/docs/server/scripting/">Scripting</a></li>
-<li><a href="/docs/server/world-generation/">World Generation</a></li>
-</ul></li>
-<li><a href="/docs/api/">REST API</a></li>
+<li>
+  <a href="/docs/mechanics/general/">General Mechanics</a></li>
+<li>
+  <a href="/docs/mechanics/master/">Bestia Master</a></li>
+<li>
+  <a href="/docs/mechanics/bestia/">Bestia</a></li>
+<li>
+  <a href="/docs/mechanics/environment/">Environment</a></li>
+<li>
+  <a href="/docs/mechanics/items/">Items</a></li>
+<li>
+  <a href="/docs/mechanics/resources/">Resources</a></li>
+<li>
+  <a href="/docs/mechanics/skills/">Skills</a></li>
+<li>
+  <a href="/docs/mechanics/statusvalues/">Status Values</a></li>
+<li>
+  <a href="/docs/mechanics/dev-resources/">Development Resources</a></li>
 </ul>
+</li>
+<li>
+  <a href="/docs/client/"><strong>Client</strong></a>
+<ul>
+<li>
+  <a href="/docs/client/entities/">Entities</a></li>
+</ul>
+</li>
+<li>
+  <a href="/docs/server/"><strong>Server</strong></a>
+<ul>
+<li>
+  <a href="/docs/server/architecture/">Architecture</a></li>
+<li>
+  <a href="/docs/server/ai/">Artificial Intelligence</a></li>
+<li>
+  <a href="/docs/server/battle/">Battle</a></li>
+<li>
+  <a href="/docs/server/communication/"class=active>Communication</a></li>
+<li>
+  <a href="/docs/server/quests/">Quests</a></li>
+<li>
+  <a href="/docs/server/scripting/">Scripting</a></li>
+<li>
+  <a href="/docs/server/world-generation/">World Generation</a></li>
+</ul>
+</li>
+<li>
+  <a href="/docs/api/"><strong>REST API</strong></a></li>
+</ul>
+
+
+
 
 
 
@@ -100,44 +124,63 @@ https://github.com/alex-shpak/hugo-book
 </nav>
 
 
-<script>
-(function() {
-  var menu = document.querySelector("aside.book-menu nav");
-  addEventListener("beforeunload", function(event) {
-    localStorage.setItem("menu.scrollTop", menu.scrollTop);
-  });
-  menu.scrollTop = localStorage.getItem("menu.scrollTop");
-})();
-</script>
 
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
     </aside>
 
     <div class="book-page">
-      <header class="flex align-center justify-between book-header">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
   <label for="menu-control">
-    <img src="/svg/menu.svg" alt="Menu" />
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
+
   <strong>Communication</strong>
-</header>
+
+  <label for="toc-control">
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#client-server-communication">Client Server Communication</a></li>
+    <li><a href="#datatypes">Datatypes</a>
+      <ul>
+        <li><a href="#positioning">Positioning</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
 
       
-<article class="markdown">
-
-<h1 id="client-server-communication">Client Server Communication</h1>
-
+      
+  <article class="markdown"><h1 id="client-server-communication">Client Server Communication</h1>
 <h1 id="datatypes">Datatypes</h1>
-
 <p>All locations and entities are represented via fixed point numbers to avoid incorrectness with floating points
-over a bigger distance <a href="http://www.stat.cmu.edu/~brian/711/week03/perils-of-floating-point.pdf">(see The perils of floating point</a>).</p>
-
+over a bigger distance 
+  <a href="http://www.stat.cmu.edu/~brian/711/week03/perils-of-floating-point.pdf">(see The perils of floating point</a>).</p>
 <h2 id="positioning">Positioning</h2>
-
 <p>The basic datastructures for positioning and collisions are found in <code>net.bestia.model.geometry</code>. Most notable the <code>Vector3</code> datatype.</p>
-
 <p>It uses long as datatypes for the coordinates and thus has a range between <code>-9.223.372.036.854.775.808</code> to
 <code>9.223.372.036.854.775.807</code> which means if we can represent at the best a position resolution of 1mm. So our
 maximum world size is:</p>
-
 <table>
 <thead>
 <tr>
@@ -145,67 +188,92 @@ maximum world size is:</p>
 <th align="right">Unit</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">+-9.223.372.036.854.775</td>
 <td align="right">m</td>
 </tr>
-
 <tr>
 <td align="left">+-9.223.372.036.854</td>
 <td align="right">km</td>
 </tr>
 </tbody>
 </table>
-
 <p>which is more then enough.</p>
 </article>
-
+ 
       
-<div class="book-footer justify-between">
-  
-  <div>
-    
-    <a href="https://github.com/tfelix/bestia-docs/commit/8f6f22567d6a5e46a61f30b8cfce2e1c2a6588ec" title='Last modified May 3, 2020 by Thomas Felix' target="_blank" rel="noopener">
-      <i class="far fa-calendar" style="margin-right: 0.3em"></i> May 3, 2020
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/8f6f22567d6a5e46a61f30b8cfce2e1c2a6588ec" title='Last modified by Thomas Felix | May 3, 2020' target="_blank" rel="noopener">
+      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>May 3, 2020</span>
     </a>
   </div>
-  
-  
+
+
+
   <div>
-    <a href="https://github.com/tfelix/bestia-docs/edit/master/content/docs/server/communication.md" target="_blank" rel="noopener">
-      <i class="fas fa-edit" style="margin-right: 0.3em"></i> Edit this page
+    <a class="flex align-center" href="https://github.com/tfelix/bestia-docs/edit/master/content//docs/server/communication.md" target="_blank" rel="noopener">
+      <img src="/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
     </a>
   </div>
-  
+
 </div>
 
+ 
+        
+      </footer>
 
       
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
     </div>
 
     
-  
-
-  <aside class="book-toc level-3 fixed">
-    <nav id="TableOfContents">
-<ul>
-<li><a href="#client-server-communication">Client Server Communication</a></li>
-<li><a href="#datatypes">Datatypes</a>
-<ul>
-<li><a href="#positioning">Positioning</a></li>
-</ul></li>
-</ul>
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#client-server-communication">Client Server Communication</a></li>
+    <li><a href="#datatypes">Datatypes</a>
+      <ul>
+        <li><a href="#positioning">Positioning</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
-  </aside>
 
-
-
+ 
+    </aside>
+    
   </main>
 
-  
   
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+

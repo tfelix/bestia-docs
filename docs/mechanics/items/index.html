@@ -4,19 +4,23 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Items Items can be optained by the player and carried around. The amount of items limited to each entity is determined via its Inventory. Each Bestia (and also a lot of other entities), have their own inventory with different sizes.
+Items are mostly crafted by the players. Its quite rare to obtain direct item drops from killed enemies. Instead its very common to loot resources when enemies are killed.
+Each item has a level assigned.">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Items" />
+<meta property="og:description" content="Items Items can be optained by the player and carried around. The amount of items limited to each entity is determined via its Inventory. Each Bestia (and also a lot of other entities), have their own inventory with different sizes.
+Items are mostly crafted by the players. Its quite rare to obtain direct item drops from killed enemies. Instead its very common to loot resources when enemies are killed.
+Each item has a level assigned." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://docs.bestia-game.net/docs/mechanics/items/" />
+<meta property="article:modified_time" content="2020-04-30T01:47:03+02:00" />
 <title>Items | Bestia Game</title>
-
-
-<link rel="stylesheet" href="/book.min.e455ec3d70e30769b65addd415b9219adfbaa8fb5c17db0ee83d73131879098d.css" integrity="sha256-5FXsPXDjB2m2Wt3UFbkhmt&#43;6qPtcF9sO6D1zExh5CY0=">
-
-
-<script defer src="/search.min.c2d8df9c61afa359fdd56ddc9a11d7e06bf1277afe10aecd89ccc8560c7556de.js" integrity="sha256-wtjfnGGvo1n91W3cmhHX4GvxJ3r&#43;EK7NiczIVgx1Vt4="></script>
-
-
-
+<link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.33a33f5aa85ae88a745523e33a90fc180c0265506f82d14eccb0b602ba49aeea.css" integrity="sha256-M6M/Wqha6Ip0VSPjOpD8GAwCZVBvgtFOzLC2ArpJruo=">
+<script defer src="/en.search.min.0071d0c9b0c1dba29fb5a151f046353559f40cbb123dafeff6908e76a47ad645.js" integrity="sha256-AHHQybDB26KftaFR8EY1NVn0DLsSPa/v9pCOdqR61kU="></script>
 
-
+<script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -28,17 +32,18 @@ https://github.com/alex-shpak/hugo-book
 
 <body>
   <input type="checkbox" class="hidden" id="menu-control" />
-  <main class="flex container">
-
-    <aside class="book-menu fixed">
-      <nav>
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
 <h2 class="book-brand">
-  <a href="https://docs.bestia-game.net"><img src="/bestia-logo.svg" alt="Logo" /></a>
+  <a href="/"><img src="/bestia-logo.svg" alt="Logo" /><span>Bestia Game</span>
+  </a>
 </h2>
 
 
 <div class="book-search">
-  <input type="text" placeholder="Search" id="book-search-input" maxlength="64" readonly />
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
   <div class="book-search-spinner spinner hidden"></div>
   <ul id="book-search-results"></ul>
 </div>
@@ -47,49 +52,68 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-    
-  
-  
-  
 
-  <style>
-  nav ul a[href$="\2f docs\2fmechanics\2fitems\2f "] {
-      color: #004ed0;
-  }
-  </style>
 
+
+
+
+
+  <ul>
+<li>
+  <a href="/docs/mechanics/"><strong>Game Design</strong></a>
 <ul>
-<li><a href="/docs/mechanics/">Game Design</a>
-
-<ul>
-<li><a href="/docs/mechanics/general/">General Mechanics</a></li>
-<li><a href="/docs/mechanics/master/">Bestia Master</a></li>
-<li><a href="/docs/mechanics/bestia/">Bestia</a></li>
-<li><a href="/docs/mechanics/environment/">Environment</a></li>
-<li><a href="/docs/mechanics/items/">Items</a></li>
-<li><a href="/docs/mechanics/resources/">Resources</a></li>
-<li><a href="/docs/mechanics/skills/">Skills</a></li>
-<li><a href="/docs/mechanics/statusvalues/">Status Values</a></li>
-<li><a href="/docs/mechanics/dev-resources/">Development Resources</a></li>
-</ul></li>
-<li><a href="/docs/client/">Client</a>
-
-<ul>
-<li><a href="/docs/client/entities/">Entities</a></li>
-</ul></li>
-<li><a href="/docs/server/">Server</a>
-
-<ul>
-<li><a href="/docs/server/architecture/">Architecture</a></li>
-<li><a href="/docs/server/ai/">Artificial Intelligence</a></li>
-<li><a href="/docs/server/battle/">Battle</a></li>
-<li><a href="/docs/server/communication/">Communication</a></li>
-<li><a href="/docs/server/quests/">Quests</a></li>
-<li><a href="/docs/server/scripting/">Scripting</a></li>
-<li><a href="/docs/server/world-generation/">World Generation</a></li>
-</ul></li>
-<li><a href="/docs/api/">REST API</a></li>
+<li>
+  <a href="/docs/mechanics/general/">General Mechanics</a></li>
+<li>
+  <a href="/docs/mechanics/master/">Bestia Master</a></li>
+<li>
+  <a href="/docs/mechanics/bestia/">Bestia</a></li>
+<li>
+  <a href="/docs/mechanics/environment/">Environment</a></li>
+<li>
+  <a href="/docs/mechanics/items/"class=active>Items</a></li>
+<li>
+  <a href="/docs/mechanics/resources/">Resources</a></li>
+<li>
+  <a href="/docs/mechanics/skills/">Skills</a></li>
+<li>
+  <a href="/docs/mechanics/statusvalues/">Status Values</a></li>
+<li>
+  <a href="/docs/mechanics/dev-resources/">Development Resources</a></li>
 </ul>
+</li>
+<li>
+  <a href="/docs/client/"><strong>Client</strong></a>
+<ul>
+<li>
+  <a href="/docs/client/entities/">Entities</a></li>
+</ul>
+</li>
+<li>
+  <a href="/docs/server/"><strong>Server</strong></a>
+<ul>
+<li>
+  <a href="/docs/server/architecture/">Architecture</a></li>
+<li>
+  <a href="/docs/server/ai/">Artificial Intelligence</a></li>
+<li>
+  <a href="/docs/server/battle/">Battle</a></li>
+<li>
+  <a href="/docs/server/communication/">Communication</a></li>
+<li>
+  <a href="/docs/server/quests/">Quests</a></li>
+<li>
+  <a href="/docs/server/scripting/">Scripting</a></li>
+<li>
+  <a href="/docs/server/world-generation/">World Generation</a></li>
+</ul>
+</li>
+<li>
+  <a href="/docs/api/"><strong>REST API</strong></a></li>
+</ul>
+
+
+
 
 
 
@@ -100,44 +124,81 @@ https://github.com/alex-shpak/hugo-book
 </nav>
 
 
-<script>
-(function() {
-  var menu = document.querySelector("aside.book-menu nav");
-  addEventListener("beforeunload", function(event) {
-    localStorage.setItem("menu.scrollTop", menu.scrollTop);
-  });
-  menu.scrollTop = localStorage.getItem("menu.scrollTop");
-})();
-</script>
 
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
     </aside>
 
     <div class="book-page">
-      <header class="flex align-center justify-between book-header">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
   <label for="menu-control">
-    <img src="/svg/menu.svg" alt="Menu" />
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
+
   <strong>Items</strong>
-</header>
+
+  <label for="toc-control">
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#items">Items</a>
+      <ul>
+        <li><a href="#item-category">Item Category</a></li>
+        <li><a href="#weapon-refinement">Weapon Refinement</a>
+          <ul>
+            <li><a href="#uprade-chances">Uprade Chances</a></li>
+          </ul>
+        </li>
+        <li><a href="#item-crafting">Item Crafting</a></li>
+        <li><a href="#alchemy">Alchemy</a></li>
+        <li><a href="#craft-duration">Craft Duration</a></li>
+        <li><a href="#item-and-entity-interactions">Item and Entity Interactions</a></li>
+        <li><a href="#damaging-of-items">Damaging of Items</a>
+          <ul>
+            <li><a href="#item-status-values">Item Status Values</a></li>
+          </ul>
+        </li>
+        <li><a href="#inventory">Inventory</a>
+          <ul>
+            <li><a href="#weight-limit">Weight Limit</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
 
       
-<article class="markdown">
-
-<h1 id="items">Items</h1>
-
+      
+  <article class="markdown"><h1 id="items">Items</h1>
 <p>Items can be optained by the player and carried around. The amount of items limited to each entity is determined via
-its <a href="#inventory">Inventory</a>. Each Bestia (and also a lot of other entities), have their own inventory with different sizes.</p>
-
+its 
+  <a href="/#inventory">Inventory</a>. Each Bestia (and also a lot of other entities), have their own inventory with different sizes.</p>
 <p>Items are mostly crafted by the players. Its quite rare to obtain direct item drops from killed enemies. Instead its very common
 to loot resources when enemies are killed.</p>
-
 <p>Each item has a level assigned. This level is important to determine how hard or easy it is to forge this item, upgrade
 it and so on. It also effects how spells interact with the item entity.</p>
-
 <h2 id="item-category">Item Category</h2>
-
 <p>Items are grouped into three categories and inside this documentation often refered to via its category.</p>
-
 <table>
 <thead>
 <tr>
@@ -145,37 +206,29 @@ it and so on. It also effects how spells interact with the item entity.</p>
 <th>Category</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>1 - 20</td>
 <td>Mundane</td>
 </tr>
-
 <tr>
 <td>21 - 80</td>
 <td>Superior</td>
 </tr>
-
 <tr>
 <td>81 - 100</td>
 <td>Legendary</td>
 </tr>
-
 <tr>
 <td>101+</td>
 <td>Epic</td>
 </tr>
 </tbody>
 </table>
-
 <h2 id="weapon-refinement">Weapon Refinement</h2>
-
 <p>Weapons and armors can be refined which accounts to extra damage dealt if the weapon is used. Each upgrade step can
 result in a destruction of the equipment.</p>
-
 <p>A refined weapon has increased base damage per level:</p>
-
 <table>
 <thead>
 <tr>
@@ -183,34 +236,27 @@ result in a destruction of the equipment.</p>
 <th>Base Damage Bonus / Upgrade Level</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>Mundane</td>
 <td>2</td>
 </tr>
-
 <tr>
 <td>Superior</td>
 <td>4</td>
 </tr>
-
 <tr>
 <td>Legendary</td>
 <td>6</td>
 </tr>
-
 <tr>
 <td>Epic</td>
 <td>10</td>
 </tr>
 </tbody>
 </table>
-
 <h3 id="uprade-chances">Uprade Chances</h3>
-
 <p>These are the base upgrade chances. The chances can be altered via skills or item usages. If a upgrade fails the weapon is destroyed. It is then complelty unusable and also the resources are lost.</p>
-
 <table>
 <thead>
 <tr>
@@ -218,84 +264,57 @@ result in a destruction of the equipment.</p>
 <th>Uprade Formula</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>Mundane</td>
 <td>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.0/dist/katex.min.css" integrity="sha384-BdGj8xC2eZkQaxoQ8nSLefg4AV4/AwB3Fj+8SUSo7pnKP6Eoy18liIKTPn9oBYNG" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.0/dist/katex.min.js" integrity="sha384-JiKN5O8x9Hhs/UE5cT5AAJqieYlOZbGT3CHws/y97o3ty4R7/O5poG9F3JoiOYw1" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.0/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
-
-
-
-<p class="katex">
-  $$  min(1, e^{-(itemLv-5)/9.8)}) $$
-</p>
-
+<link rel="stylesheet" href="/katex/katex.min.css" />
+<script defer src="/katex/katex.min.js"></script>
+<script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body);"></script><span>
+  \( min(1, e^{-(itemLv-5)/9.8)})\)
+</span>
 </td>
 </tr>
-
 <tr>
 <td>Superior</td>
-<td>
-
-<p class="katex">
-  $$  min(1, e^{-(itemLv-4)/8.69)}) $$
-</p>
-
+<td><span>
+  \( min(1, e^{-(itemLv-4)/8.69)})\)
+</span>
 </td>
 </tr>
-
 <tr>
 <td>Legendary</td>
-<td>
-
-<p class="katex">
-  $$  min(1, e^{-(itemLv-3)/7.69)}) $$
-</p>
-
+<td><span>
+  \( min(1, e^{-(itemLv-3)/7.69)})\)
+</span>
 </td>
 </tr>
-
 <tr>
 <td>Epic</td>
-<td>
-
-<p class="katex">
-  $$  min(1, e^{-(itemLv-2)/7.31)}) $$
-</p>
-
+<td><span>
+  \( min(1, e^{-(itemLv-2)/7.31)})\)
+</span>
 </td>
 </tr>
 </tbody>
 </table>
-
 <p>The refine level is not capped but each higher refinement process can destroy the weapon/equipment with an increasing chance.
 The chance of success is depending on skill and refine items used.</p>
-
 <p>A refined armor has increased resistance for hard defense. Each upgrade point grants ⅓ points more defense.</p>
-
 <p>The upgrade chances can be increased by leveling up the Skill Mastery <code>Upgrade Mastery</code>.</p>
-
 <h2 id="item-crafting">Item Crafting</h2>
-
 <p>Bestia uses an innovative new item crafting. The player is basically is allowed to craft all items. Some items however
 might be so hard to craft so it is not possible to craft it without appropriate skill. Some items may require special
 ingredients which can not be substituted. The higher the crafted item level and the harder it get to successful craft
 it. If the crafting of the item fails all the materials used to craft it are lost. In order to craft an item two things
 are important: the sum of raw materials used to craft and how the materials are laid out.</p>
-
 <p>Item craft success chance is determined if the raw materials.</p>
-
 <p>After an item was successfully crafted the recipe is saved for the user inside his recipe list. From this list the
 recipe can be inscribed upon a paper to give it to other players who can consume and learn it. The learning will take
 some time (depending of the level of the item).</p>
-
 <p>Players are encouraged to try and create stuff. There are basically 6 domains of craftable and user generatable content
-in the world of Bestia, and are related to the linked <a href="/docs/mechanics/master#skill-mastery">Skill Mastery</a>.</p>
-
+in the world of Bestia, and are related to the linked 
+  <a href="/docs/mechanics/master/#skill-mastery">Skill Mastery</a>.</p>
 <ul>
 <li>Weapons (Blacksmith: Weapon)</li>
 <li>Armor (Blacksmith: Armor)</li>
@@ -304,46 +323,34 @@ in the world of Bestia, and are related to the linked <a href="/docs/mechanics/m
 <li>Meals (Cooking)</li>
 <li>Buildings, Traps and non magical devices (Engineering)</li>
 </ul>
-
 <h2 id="alchemy">Alchemy</h2>
-
 <p>The brewing is a time consuming process. The process should be somehow deterministic so the results are logically to be obtained.</p>
-
 <p>Once a receipt was discovered it is saved for the user so it can be reused very quickly. If a player repeatedly makes
 the same receipt the quality of the produced potions increases over time. The player can choose to write down the
 receipt and give it to other players who might increase their skill by reading it.</p>
-
 <h2 id="craft-duration">Craft Duration</h2>
-
 <p>Craft duration is determined by the item level which the player wants to craft. Skill points in the suitable skill tree
 (weapon, equipment, construction or alchemy, artifacts) reduces the build time. The <code>baseDuration</code> is given in real
 time minutes.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">baseDuration = <span style="color:#ae81ff">28.8</span> * itemLevel</code></pre></div>
-<h2 id="item-and-entity-interactions">Item and Entity Interactions</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">baseDuration = <span style="color:#ae81ff">28.8</span> * itemLevel
+</code></pre></div><h2 id="item-and-entity-interactions">Item and Entity Interactions</h2>
 <p>It should be possible to link items to entities. Nesting should be possible. With this technique it is possible to
 combine active items.</p>
-
 <p>Its possible to do something like:</p>
-
 <ul>
 <li>Attaching or removing energy crystals to a magical artifact</li>
 <li>Boxes that can be stuffed with other items for shipping</li>
 </ul>
-
 <p>For this purpose the items that can be stored in an entity must be limited. Filtering must be very flexible, be able to
 exclude certain items, be able to limit weight, etc. Each item also has its own resistance values. As soon as a Bestia
 is killed it will be checked if and if so how much damage individual items take. Even items lying on the ground can be
 damaged or even destroyed by attacks.</p>
-
 <h2 id="damaging-of-items">Damaging of Items</h2>
-
 <p>As with any item in Bestia, it can be damaged. There will be professions capable of repairing items. The durability of
 an item is given via a percentage. Items will function normally within a wide range of their condition. At a certain
 level, they slowly lose their properties (armor their armor value, weapons hit less often, magic staffs suffer a damage
 penalty, etc.). Until the items become unusable. If you then inflict further damage on them, they can be completely and
 irretrievably destroyed.</p>
-
 <table>
 <thead>
 <tr>
@@ -351,112 +358,134 @@ irretrievably destroyed.</p>
 <th>State</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>30 - 100%</td>
 <td>Normal Operation</td>
 </tr>
-
 <tr>
 <td>1 - 29%</td>
 <td>Increasing Damage Effects</td>
 </tr>
-
 <tr>
 <td>0%</td>
 <td>Item breaks unrecoverably</td>
 </tr>
 </tbody>
 </table>
-
 <p>Items on the ground can suffer damage from attacks. They are affected by Area Of Effect spells and can be targetted manually
 albeit they are not auto targeted like enemies.</p>
-
 <h3 id="item-status-values">Item Status Values</h3>
-
 <p>In order to let items participate in the battle system they need status values. Items status value distribution is based
 upon their type (weapon, potion, book etc) and the total amount of points to distribute is given by the item level.
 Later there might be items which get preset custom values but for now on they are based upon a lookup table.</p>
-
 <h2 id="inventory">Inventory</h2>
-
 <p>The inventory is an important system for interaction between the player and the game mechanics. It must be easy to access
 and logical build. Each Bestia has its own inventory. So the player must be careful to exchange items between the
 Bestias in time. Trading must be fast to do to reduce the annoyance.</p>
-
 <p>If a Bestia/Entity is killed and has had some items inside its inventory usually the items are dropped and can be looted.
 In case a player killed a mob the loot will be protected for 30 seconds so he can exclusivly loot it.</p>
-
 <h3 id="weight-limit">Weight Limit</h3>
-
 <p>Items weight is given by units of about 1kg per unit. The smallest division is 0.1 units which aproximates to 100gr.
 The maximum amount a Bestia can carry is dependent on its strength and its vitality. The
-<a href="/docs/mechanics/skills/#packhorse">Packhorse skill</a> can  increase the carriable weight limit. The formula is given as:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">limit = STR / <span style="color:#ae81ff">2</span> + VIT / <span style="color:#ae81ff">5</span> + <span style="color:#ae81ff">15</span> + LEVEL / <span style="color:#ae81ff">10</span></code></pre></div>
-<p>Please not that depending of your used up weight limit regeneration of certain <a href="/docs/mechanics/bestia/statusvalues/">status values</a>
+
+  <a href="/docs/mechanics/skills/#packhorse">Packhorse skill</a> can  increase the carriable weight limit. The formula is given as:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">limit = STR / <span style="color:#ae81ff">2</span> + VIT / <span style="color:#ae81ff">5</span> + <span style="color:#ae81ff">15</span> + LEVEL / <span style="color:#ae81ff">10</span>
+</code></pre></div><p>Please not that depending of your used up weight limit regeneration of certain 
+  <a href="/docs/mechanics/bestia/statusvalues/">status values</a>
 might be affected.</p>
 </article>
-
+ 
       
-<div class="book-footer justify-between">
-  
-  <div>
-    
-    <a href="https://github.com/tfelix/bestia-docs/commit/9b983781a1736f4fb6cc4c123f3b27841f7b594e" title='Last modified Apr 29, 2020 by Thomas Felix' target="_blank" rel="noopener">
-      <i class="far fa-calendar" style="margin-right: 0.3em"></i> Apr 29, 2020
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/9b983781a1736f4fb6cc4c123f3b27841f7b594e" title='Last modified by Thomas Felix | April 29, 2020' target="_blank" rel="noopener">
+      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>April 29, 2020</span>
     </a>
   </div>
-  
-  
+
+
+
   <div>
-    <a href="https://github.com/tfelix/bestia-docs/edit/master/content/docs/mechanics/items.md" target="_blank" rel="noopener">
-      <i class="fas fa-edit" style="margin-right: 0.3em"></i> Edit this page
+    <a class="flex align-center" href="https://github.com/tfelix/bestia-docs/edit/master/content//docs/mechanics/items.md" target="_blank" rel="noopener">
+      <img src="/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
     </a>
   </div>
-  
+
 </div>
 
+ 
+        
+      </footer>
 
       
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
     </div>
 
     
-  
-
-  <aside class="book-toc level-3 fixed">
-    <nav id="TableOfContents">
-<ul>
-<li><a href="#items">Items</a>
-<ul>
-<li><a href="#item-category">Item Category</a></li>
-<li><a href="#weapon-refinement">Weapon Refinement</a>
-<ul>
-<li><a href="#uprade-chances">Uprade Chances</a></li>
-</ul></li>
-<li><a href="#item-crafting">Item Crafting</a></li>
-<li><a href="#alchemy">Alchemy</a></li>
-<li><a href="#craft-duration">Craft Duration</a></li>
-<li><a href="#item-and-entity-interactions">Item and Entity Interactions</a></li>
-<li><a href="#damaging-of-items">Damaging of Items</a>
-<ul>
-<li><a href="#item-status-values">Item Status Values</a></li>
-</ul></li>
-<li><a href="#inventory">Inventory</a>
-<ul>
-<li><a href="#weight-limit">Weight Limit</a></li>
-</ul></li>
-</ul></li>
-</ul>
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#items">Items</a>
+      <ul>
+        <li><a href="#item-category">Item Category</a></li>
+        <li><a href="#weapon-refinement">Weapon Refinement</a>
+          <ul>
+            <li><a href="#uprade-chances">Uprade Chances</a></li>
+          </ul>
+        </li>
+        <li><a href="#item-crafting">Item Crafting</a></li>
+        <li><a href="#alchemy">Alchemy</a></li>
+        <li><a href="#craft-duration">Craft Duration</a></li>
+        <li><a href="#item-and-entity-interactions">Item and Entity Interactions</a></li>
+        <li><a href="#damaging-of-items">Damaging of Items</a>
+          <ul>
+            <li><a href="#item-status-values">Item Status Values</a></li>
+          </ul>
+        </li>
+        <li><a href="#inventory">Inventory</a>
+          <ul>
+            <li><a href="#weight-limit">Weight Limit</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </nav>
-  </aside>
 
-
-
+ 
+    </aside>
+    
   </main>
 
-  
   
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+

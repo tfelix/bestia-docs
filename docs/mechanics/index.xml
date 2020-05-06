@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Game Design on Bestia Game</title>
+    <title>Bestia Game</title>
     <link>https://docs.bestia-game.net/docs/mechanics/</link>
-    <description>Recent content in Game Design on Bestia Game</description>
+    <description>Recent content on Bestia Game</description>
     <generator>Hugo -- gohugo.io</generator>
     
 	<atom:link href="https://docs.bestia-game.net/docs/mechanics/index.xml" rel="self" type="application/rss+xml" />
@@ -68,9 +68,7 @@ The sophisticated status system describes the current state of an bestia (or sim
       
       <guid>https://docs.bestia-game.net/docs/mechanics/bestia/</guid>
       <description>Bestia In areas with high mana concentration, so-called mini rift events are formed. At these neuralgic points, Bestia are materialized and enter the respective worlds.
-Catching TODO
-Breeding Bestias can be interbred in order to improve certain statistics. The player can pair certain individuals of Bestia in order to produce offspring. In order to breed a Bestia the following criteria must be met:
- A male and female is required Bestias of the same kind (humanoid, formless etc.</description>
+Catching In order to catch Bestia you need Magic Bestia Traps. This items are manufactured via the apropriate crafting skill. Bestias catch chance can be increased by reducing its HP. If the HP is 1% the catch chance is increased by 30%. It can also changed by applying buffs or debuffs.</description>
     </item>
     
     <item>
@@ -100,7 +98,8 @@ These simulations should be based on certain basic values which are determined l
       
       <guid>https://docs.bestia-game.net/docs/mechanics/items/</guid>
       <description>Items Items can be optained by the player and carried around. The amount of items limited to each entity is determined via its Inventory. Each Bestia (and also a lot of other entities), have their own inventory with different sizes.
-Items are mostly crafted by the players. Its quite rare to obtain direct item drops from killed enemies. Instead its very common to loot resources when enemies are killed.</description>
+Items are mostly crafted by the players. Its quite rare to obtain direct item drops from killed enemies. Instead its very common to loot resources when enemies are killed.
+Each item has a level assigned.</description>
     </item>
     
   </channel>

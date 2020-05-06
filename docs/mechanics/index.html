@@ -4,19 +4,20 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Game Design | Bestia Game</title>
+<meta name="description" content="Game Design The game offers several main aspects of gameplay that the player can perceive, taking into account the always valid manifesto statements. In addition, the concept of the open world should open up an emergent game principle.
+Here concrete realizations of central game elements are described. Contrary to the rough guidelines of the manifesto, the discussion and description of a concrete game feature is already at stake here. The specification of the respective feature should be described as exactly as possible in order to make an easy implementation possible.">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://docs.bestia-game.net/docs/mechanics/" />
 
-
-<link rel="stylesheet" href="/book.min.e455ec3d70e30769b65addd415b9219adfbaa8fb5c17db0ee83d73131879098d.css" integrity="sha256-5FXsPXDjB2m2Wt3UFbkhmt&#43;6qPtcF9sO6D1zExh5CY0=">
-
-
-<script defer src="/search.min.c2d8df9c61afa359fdd56ddc9a11d7e06bf1277afe10aecd89ccc8560c7556de.js" integrity="sha256-wtjfnGGvo1n91W3cmhHX4GvxJ3r&#43;EK7NiczIVgx1Vt4="></script>
-
-
-
+<title>Mechanics | Bestia Game</title>
+<link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.33a33f5aa85ae88a745523e33a90fc180c0265506f82d14eccb0b602ba49aeea.css" integrity="sha256-M6M/Wqha6Ip0VSPjOpD8GAwCZVBvgtFOzLC2ArpJruo=">
+<script defer src="/en.search.min.0071d0c9b0c1dba29fb5a151f046353559f40cbb123dafeff6908e76a47ad645.js" integrity="sha256-AHHQybDB26KftaFR8EY1NVn0DLsSPa/v9pCOdqR61kU="></script>
 
-
+<script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <link rel="alternate" type="application/rss+xml" href="https://docs.bestia-game.net/docs/mechanics/index.xml" title="Bestia Game" />
 <!--
 Made with Book Theme
@@ -29,17 +30,18 @@ https://github.com/alex-shpak/hugo-book
 
 <body>
   <input type="checkbox" class="hidden" id="menu-control" />
-  <main class="flex container">
-
-    <aside class="book-menu fixed">
-      <nav>
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
 <h2 class="book-brand">
-  <a href="https://docs.bestia-game.net"><img src="/bestia-logo.svg" alt="Logo" /></a>
+  <a href="/"><img src="/bestia-logo.svg" alt="Logo" /><span>Bestia Game</span>
+  </a>
 </h2>
 
 
 <div class="book-search">
-  <input type="text" placeholder="Search" id="book-search-input" maxlength="64" readonly />
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
   <div class="book-search-spinner spinner hidden"></div>
   <ul id="book-search-results"></ul>
 </div>
@@ -48,49 +50,68 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-    
-  
-  
-  
 
-  <style>
-  nav ul a[href$="\2f docs\2fmechanics\2f "] {
-      color: #004ed0;
-  }
-  </style>
 
+
+
+
+
+  <ul>
+<li>
+  <a href="/docs/mechanics/"class=active><strong>Game Design</strong></a>
 <ul>
-<li><a href="/docs/mechanics/">Game Design</a>
-
-<ul>
-<li><a href="/docs/mechanics/general/">General Mechanics</a></li>
-<li><a href="/docs/mechanics/master/">Bestia Master</a></li>
-<li><a href="/docs/mechanics/bestia/">Bestia</a></li>
-<li><a href="/docs/mechanics/environment/">Environment</a></li>
-<li><a href="/docs/mechanics/items/">Items</a></li>
-<li><a href="/docs/mechanics/resources/">Resources</a></li>
-<li><a href="/docs/mechanics/skills/">Skills</a></li>
-<li><a href="/docs/mechanics/statusvalues/">Status Values</a></li>
-<li><a href="/docs/mechanics/dev-resources/">Development Resources</a></li>
-</ul></li>
-<li><a href="/docs/client/">Client</a>
-
-<ul>
-<li><a href="/docs/client/entities/">Entities</a></li>
-</ul></li>
-<li><a href="/docs/server/">Server</a>
-
-<ul>
-<li><a href="/docs/server/architecture/">Architecture</a></li>
-<li><a href="/docs/server/ai/">Artificial Intelligence</a></li>
-<li><a href="/docs/server/battle/">Battle</a></li>
-<li><a href="/docs/server/communication/">Communication</a></li>
-<li><a href="/docs/server/quests/">Quests</a></li>
-<li><a href="/docs/server/scripting/">Scripting</a></li>
-<li><a href="/docs/server/world-generation/">World Generation</a></li>
-</ul></li>
-<li><a href="/docs/api/">REST API</a></li>
+<li>
+  <a href="/docs/mechanics/general/">General Mechanics</a></li>
+<li>
+  <a href="/docs/mechanics/master/">Bestia Master</a></li>
+<li>
+  <a href="/docs/mechanics/bestia/">Bestia</a></li>
+<li>
+  <a href="/docs/mechanics/environment/">Environment</a></li>
+<li>
+  <a href="/docs/mechanics/items/">Items</a></li>
+<li>
+  <a href="/docs/mechanics/resources/">Resources</a></li>
+<li>
+  <a href="/docs/mechanics/skills/">Skills</a></li>
+<li>
+  <a href="/docs/mechanics/statusvalues/">Status Values</a></li>
+<li>
+  <a href="/docs/mechanics/dev-resources/">Development Resources</a></li>
 </ul>
+</li>
+<li>
+  <a href="/docs/client/"><strong>Client</strong></a>
+<ul>
+<li>
+  <a href="/docs/client/entities/">Entities</a></li>
+</ul>
+</li>
+<li>
+  <a href="/docs/server/"><strong>Server</strong></a>
+<ul>
+<li>
+  <a href="/docs/server/architecture/">Architecture</a></li>
+<li>
+  <a href="/docs/server/ai/">Artificial Intelligence</a></li>
+<li>
+  <a href="/docs/server/battle/">Battle</a></li>
+<li>
+  <a href="/docs/server/communication/">Communication</a></li>
+<li>
+  <a href="/docs/server/quests/">Quests</a></li>
+<li>
+  <a href="/docs/server/scripting/">Scripting</a></li>
+<li>
+  <a href="/docs/server/world-generation/">World Generation</a></li>
+</ul>
+</li>
+<li>
+  <a href="/docs/api/"><strong>REST API</strong></a></li>
+</ul>
+
+
+
 
 
 
@@ -101,48 +122,72 @@ https://github.com/alex-shpak/hugo-book
 </nav>
 
 
-<script>
-(function() {
-  var menu = document.querySelector("aside.book-menu nav");
-  addEventListener("beforeunload", function(event) {
-    localStorage.setItem("menu.scrollTop", menu.scrollTop);
-  });
-  menu.scrollTop = localStorage.getItem("menu.scrollTop");
-})();
-</script>
 
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
     </aside>
 
     <div class="book-page">
-      <header class="flex align-center justify-between book-header">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
   <label for="menu-control">
-    <img src="/svg/menu.svg" alt="Menu" />
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
-  <strong>Game Design</strong>
-</header>
+
+  <strong>Mechanics</strong>
+
+  <label for="toc-control">
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#game-design">Game Design</a>
+      <ul>
+        <li><a href="#consistent-fantasy-simulation">Consistent Fantasy Simulation</a></li>
+        <li><a href="#a-single-universe">A Single Universe</a></li>
+        <li><a href="#stable-mechanics">Stable Mechanics</a></li>
+        <li><a href="#encouraging-social-interaction">Encouraging Social Interaction</a></li>
+        <li><a href="#advanced-crafting">Advanced Crafting</a></li>
+        <li><a href="#modern-artifical-intelligence">Modern Artifical Intelligence</a></li>
+        <li><a href="#rich-and-immersive-history">Rich And Immersive History</a></li>
+        <li><a href="#meet-real-world-expectation">Meet Real World Expectation</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
 
       
-<article class="markdown">
-
-<h1 id="game-design">Game Design</h1>
-
+      
+  <article class="markdown"><h1 id="game-design">Game Design</h1>
 <p>The game offers several main aspects of gameplay that the player can perceive, taking into account the always valid
 manifesto statements. In addition, the concept of the open world should open up an emergent game principle.</p>
-
 <p>Here concrete realizations of central game elements are described. Contrary to the rough guidelines of the manifesto,
 the discussion and description of a concrete game feature is already at stake here. The specification of the respective
 feature should be described as exactly as possible in order to make an easy implementation possible. The list will be
 constantly updated and extended.</p>
-
 <p>This document describes the core thoughts and principals under which all game design choices should be oriented
 and challenged.</p>
-
 <blockquote>
 <p>It is best practice to stick as close as possible to the design principles described in the next section: <strong>Core Concepts</strong>.</p>
 </blockquote>
-
 <h2 id="consistent-fantasy-simulation">Consistent Fantasy Simulation</h2>
-
 <p>We want to tell a story, a story the players forge and form by themselves. We must provide a world, an environment in
 which this is made possible. The game should motivate the players to explore and test their creativity for solving problems.
 Nothing frustrates more then to solve riddles only by bruteforcing the answers. All the things inside the world should
@@ -150,118 +195,131 @@ be explainable by in-universe theories and follow certain logic patterns. There 
 which will teleport the player to the next Dungeon and destroy the immersive fantasy. The player should be motivated to
 solve this problems by himself maybe by finding a friendly other character class which is able to open portals.
 Interaction between players is highly encouraged to solve problems.</p>
-
 <h2 id="a-single-universe">A Single Universe</h2>
-
 <p>We all live on the same planet. So do we really need multiple servers? Multiple servers tear the community apart.
 Of course it is technically more challenging to connect all players through a common game world. But this challenge
- has to be met. One community further encourages interaction between the players.</p>
-
+has to be met. One community further encourages interaction between the players.</p>
 <h2 id="stable-mechanics">Stable Mechanics</h2>
-
 <p>In modern games players are kept encouraged by constantly changing the game mechanics. These poor design choices
 makes it hard for players to came back into the game after a long pause. Most mechanics have changed and must be
 adaptes first leading to frustration. Players slowly understanding the mechanics will put into a constant re-learning
 when the patches changes the mechanics. Bestia will strictly strive for preserving once established gameplay mechanics
 and makes them as resistant as possible against patches.</p>
-
 <blockquote>
 <p>Interesting long term challenges have to be implemented via a immersive gameplay world. Bugs and balancing problems
 will be patched of course.</p>
 </blockquote>
-
 <h2 id="encouraging-social-interaction">Encouraging Social Interaction</h2>
-
 <p>Many game mechanics should only be possible through interaction with other players. Rituals that require multiple
 players, even the help of multiple character classes should be the norm rather than the exception. Single players
 should of course also be able to enjoy the game. Nevertheless the name is MMORPG Program. The full potential
 of the game can and should only be experienced through interaction with other people. This promotes a cohesion
 in the community of the players. By these promoted social contacts the players are bound more strongly to
 the game itself.</p>
-
 <h2 id="advanced-crafting">Advanced Crafting</h2>
-
 <p>Items are usually not obtained by killing monsters (we remember: fantasy realism.) Do wolves carry swords?
 Probably not. They have to be made. Usually only raw materials are found on maps. Almost all equipment is
 manufactured or purchased from NPCs. NPC dealers only have a limited stock of goods. These must first be
 restored and delivered. This leads to the establishment of trade routes. The price is determined by supply
 and demand. NPC should try to get a profit maximization for themselves. Players must be able to participate
 in this cycle of goods as easily as possible, both as a producer and as a consumer.</p>
-
-<p>The professions are described in the <a href="/mechanics/skills">Skills and Attacks</a> section.</p>
-
+<p>The professions are described in the 
+  <a href="/mechanics/skills">Skills and Attacks</a> section.</p>
 <h2 id="modern-artifical-intelligence">Modern Artifical Intelligence</h2>
-
 <p>The game contains a modern, incredibly powerful AI. The world and its inhabitants should look incredibly
 alive with it. Bestias and NPC follow a daily routine and pursue their own goals. The player should be
 able to recognize patterns and interact with them by observing them. The NPCs react in the same way to
 influences by the player. NPCs should be able to travel long distances and not be available for the player
 for some time.</p>
-
 <h2 id="rich-and-immersive-history">Rich And Immersive History</h2>
-
 <p>The story and history should be rich in detail and deep and immersive. But its not necessairly important to be always
 totally serious. Yet it must be generic enough to get pre-computed to some degree when the world is calcualted.
 Instead the story should keep its own sense of strange, nerdy humor. Character development and ingame experiences
 should be tied to certain storys or quests. E.g. taking gameplay choices only by clicking a certain UI button is discouraged.</p>
-
 <h2 id="meet-real-world-expectation">Meet Real World Expectation</h2>
-
 <p>The environment should stick to real world expectation, can you open a door also by destroying it? Sure! Why should this not
 also work in games? - The simulated world of Bestia should stick to the principles and expectations of the real world.
 With this help player can think of funny and motivating workarounds and solutions to solve problems in game.</p>
 </article>
-
+ 
       
-<div class="book-footer justify-between">
-  
-  <div>
-    
-    <a href="https://github.com/tfelix/bestia-docs/commit/c6fe4ec3ae9469230b83d0db2e4a5d1432e3c876" title='Last modified May 3, 2020 by Thomas Felix' target="_blank" rel="noopener">
-      <i class="far fa-calendar" style="margin-right: 0.3em"></i> May 3, 2020
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/96c1eb6c182448d409e165b495eba052e16bc9ad" title='Last modified by Thomas Felix | May 6, 2020' target="_blank" rel="noopener">
+      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>May 6, 2020</span>
     </a>
   </div>
-  
-  
+
+
+
   <div>
-    <a href="https://github.com/tfelix/bestia-docs/edit/master/content/docs/mechanics/_index.md" target="_blank" rel="noopener">
-      <i class="fas fa-edit" style="margin-right: 0.3em"></i> Edit this page
+    <a class="flex align-center" href="https://github.com/tfelix/bestia-docs/edit/master/content//docs/mechanics/_index.md" target="_blank" rel="noopener">
+      <img src="/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
     </a>
   </div>
-  
+
 </div>
 
+ 
+        
+      </footer>
 
       
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
     </div>
 
     
-  
-
-  <aside class="book-toc level-3 fixed">
-    <nav id="TableOfContents">
-<ul>
-<li><a href="#game-design">Game Design</a>
-<ul>
-<li><a href="#consistent-fantasy-simulation">Consistent Fantasy Simulation</a></li>
-<li><a href="#a-single-universe">A Single Universe</a></li>
-<li><a href="#stable-mechanics">Stable Mechanics</a></li>
-<li><a href="#encouraging-social-interaction">Encouraging Social Interaction</a></li>
-<li><a href="#advanced-crafting">Advanced Crafting</a></li>
-<li><a href="#modern-artifical-intelligence">Modern Artifical Intelligence</a></li>
-<li><a href="#rich-and-immersive-history">Rich And Immersive History</a></li>
-<li><a href="#meet-real-world-expectation">Meet Real World Expectation</a></li>
-</ul></li>
-</ul>
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#game-design">Game Design</a>
+      <ul>
+        <li><a href="#consistent-fantasy-simulation">Consistent Fantasy Simulation</a></li>
+        <li><a href="#a-single-universe">A Single Universe</a></li>
+        <li><a href="#stable-mechanics">Stable Mechanics</a></li>
+        <li><a href="#encouraging-social-interaction">Encouraging Social Interaction</a></li>
+        <li><a href="#advanced-crafting">Advanced Crafting</a></li>
+        <li><a href="#modern-artifical-intelligence">Modern Artifical Intelligence</a></li>
+        <li><a href="#rich-and-immersive-history">Rich And Immersive History</a></li>
+        <li><a href="#meet-real-world-expectation">Meet Real World Expectation</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
-  </aside>
 
-
-
+ 
+    </aside>
+    
   </main>
 
-  
   
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+

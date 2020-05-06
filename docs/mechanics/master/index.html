@@ -4,19 +4,21 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Bestia Master The intro game tells players how to become a Bestia Master. They came into direct contact with an ephemeral mana crystal that changed their nature through magic and connected them to the mana flows. They are therefore receptive to the influence of mana and are able to communicate with the beings that emerge from this mythical energy: the Bestias.
+The attachment to mana also explains why Bestia masters were able to survive the destruction of their world relatively unscathed and to pass on to the next world.">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Bestia Master" />
+<meta property="og:description" content="Bestia Master The intro game tells players how to become a Bestia Master. They came into direct contact with an ephemeral mana crystal that changed their nature through magic and connected them to the mana flows. They are therefore receptive to the influence of mana and are able to communicate with the beings that emerge from this mythical energy: the Bestias.
+The attachment to mana also explains why Bestia masters were able to survive the destruction of their world relatively unscathed and to pass on to the next world." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://docs.bestia-game.net/docs/mechanics/master/" />
+<meta property="article:modified_time" content="2020-05-06T02:00:55+02:00" />
 <title>Bestia Master | Bestia Game</title>
-
-
-<link rel="stylesheet" href="/book.min.e455ec3d70e30769b65addd415b9219adfbaa8fb5c17db0ee83d73131879098d.css" integrity="sha256-5FXsPXDjB2m2Wt3UFbkhmt&#43;6qPtcF9sO6D1zExh5CY0=">
-
-
-<script defer src="/search.min.c2d8df9c61afa359fdd56ddc9a11d7e06bf1277afe10aecd89ccc8560c7556de.js" integrity="sha256-wtjfnGGvo1n91W3cmhHX4GvxJ3r&#43;EK7NiczIVgx1Vt4="></script>
-
-
-
+<link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.33a33f5aa85ae88a745523e33a90fc180c0265506f82d14eccb0b602ba49aeea.css" integrity="sha256-M6M/Wqha6Ip0VSPjOpD8GAwCZVBvgtFOzLC2ArpJruo=">
+<script defer src="/en.search.min.0071d0c9b0c1dba29fb5a151f046353559f40cbb123dafeff6908e76a47ad645.js" integrity="sha256-AHHQybDB26KftaFR8EY1NVn0DLsSPa/v9pCOdqR61kU="></script>
 
-
+<script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -28,17 +30,18 @@ https://github.com/alex-shpak/hugo-book
 
 <body>
   <input type="checkbox" class="hidden" id="menu-control" />
-  <main class="flex container">
-
-    <aside class="book-menu fixed">
-      <nav>
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
 <h2 class="book-brand">
-  <a href="https://docs.bestia-game.net"><img src="/bestia-logo.svg" alt="Logo" /></a>
+  <a href="/"><img src="/bestia-logo.svg" alt="Logo" /><span>Bestia Game</span>
+  </a>
 </h2>
 
 
 <div class="book-search">
-  <input type="text" placeholder="Search" id="book-search-input" maxlength="64" readonly />
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
   <div class="book-search-spinner spinner hidden"></div>
   <ul id="book-search-results"></ul>
 </div>
@@ -47,49 +50,68 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-    
-  
-  
-  
 
-  <style>
-  nav ul a[href$="\2f docs\2fmechanics\2fmaster\2f "] {
-      color: #004ed0;
-  }
-  </style>
 
+
+
+
+
+  <ul>
+<li>
+  <a href="/docs/mechanics/"><strong>Game Design</strong></a>
 <ul>
-<li><a href="/docs/mechanics/">Game Design</a>
-
-<ul>
-<li><a href="/docs/mechanics/general/">General Mechanics</a></li>
-<li><a href="/docs/mechanics/master/">Bestia Master</a></li>
-<li><a href="/docs/mechanics/bestia/">Bestia</a></li>
-<li><a href="/docs/mechanics/environment/">Environment</a></li>
-<li><a href="/docs/mechanics/items/">Items</a></li>
-<li><a href="/docs/mechanics/resources/">Resources</a></li>
-<li><a href="/docs/mechanics/skills/">Skills</a></li>
-<li><a href="/docs/mechanics/statusvalues/">Status Values</a></li>
-<li><a href="/docs/mechanics/dev-resources/">Development Resources</a></li>
-</ul></li>
-<li><a href="/docs/client/">Client</a>
-
-<ul>
-<li><a href="/docs/client/entities/">Entities</a></li>
-</ul></li>
-<li><a href="/docs/server/">Server</a>
-
-<ul>
-<li><a href="/docs/server/architecture/">Architecture</a></li>
-<li><a href="/docs/server/ai/">Artificial Intelligence</a></li>
-<li><a href="/docs/server/battle/">Battle</a></li>
-<li><a href="/docs/server/communication/">Communication</a></li>
-<li><a href="/docs/server/quests/">Quests</a></li>
-<li><a href="/docs/server/scripting/">Scripting</a></li>
-<li><a href="/docs/server/world-generation/">World Generation</a></li>
-</ul></li>
-<li><a href="/docs/api/">REST API</a></li>
+<li>
+  <a href="/docs/mechanics/general/">General Mechanics</a></li>
+<li>
+  <a href="/docs/mechanics/master/"class=active>Bestia Master</a></li>
+<li>
+  <a href="/docs/mechanics/bestia/">Bestia</a></li>
+<li>
+  <a href="/docs/mechanics/environment/">Environment</a></li>
+<li>
+  <a href="/docs/mechanics/items/">Items</a></li>
+<li>
+  <a href="/docs/mechanics/resources/">Resources</a></li>
+<li>
+  <a href="/docs/mechanics/skills/">Skills</a></li>
+<li>
+  <a href="/docs/mechanics/statusvalues/">Status Values</a></li>
+<li>
+  <a href="/docs/mechanics/dev-resources/">Development Resources</a></li>
 </ul>
+</li>
+<li>
+  <a href="/docs/client/"><strong>Client</strong></a>
+<ul>
+<li>
+  <a href="/docs/client/entities/">Entities</a></li>
+</ul>
+</li>
+<li>
+  <a href="/docs/server/"><strong>Server</strong></a>
+<ul>
+<li>
+  <a href="/docs/server/architecture/">Architecture</a></li>
+<li>
+  <a href="/docs/server/ai/">Artificial Intelligence</a></li>
+<li>
+  <a href="/docs/server/battle/">Battle</a></li>
+<li>
+  <a href="/docs/server/communication/">Communication</a></li>
+<li>
+  <a href="/docs/server/quests/">Quests</a></li>
+<li>
+  <a href="/docs/server/scripting/">Scripting</a></li>
+<li>
+  <a href="/docs/server/world-generation/">World Generation</a></li>
+</ul>
+</li>
+<li>
+  <a href="/docs/api/"><strong>REST API</strong></a></li>
+</ul>
+
+
+
 
 
 
@@ -100,59 +122,149 @@ https://github.com/alex-shpak/hugo-book
 </nav>
 
 
-<script>
-(function() {
-  var menu = document.querySelector("aside.book-menu nav");
-  addEventListener("beforeunload", function(event) {
-    localStorage.setItem("menu.scrollTop", menu.scrollTop);
-  });
-  menu.scrollTop = localStorage.getItem("menu.scrollTop");
-})();
-</script>
 
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
     </aside>
 
     <div class="book-page">
-      <header class="flex align-center justify-between book-header">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
   <label for="menu-control">
-    <img src="/svg/menu.svg" alt="Menu" />
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
+
   <strong>Bestia Master</strong>
-</header>
+
+  <label for="toc-control">
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#bestia-master">Bestia Master</a>
+      <ul>
+        <li><a href="#skill-mastery">Skill Mastery</a>
+          <ul>
+            <li><a href="#guidlines">Guidlines</a></li>
+            <li><a href="#skill-progression">Skill Progression</a></li>
+            <li><a href="#common-tree">Common Tree</a></li>
+            <li><a href="#first-aid">First Aid</a></li>
+            <li><a href="#cooking-5">Cooking (5)</a></li>
+            <li><a href="#fishing-5">Fishing (5)</a></li>
+          </ul>
+        </li>
+        <li><a href="#battle-tree">Battle Tree</a>
+          <ul>
+            <li><a href="#elemental-mastery-5">Elemental Mastery (5)</a></li>
+            <li><a href="#master-of-fire-10">Master of Fire (10)</a></li>
+            <li><a href="#master-of-water-10">Master of Water (10)</a></li>
+            <li><a href="#master-of-wind-10">Master of Wind (10)</a></li>
+            <li><a href="#master-of-earth-10">Master of Earth (10)</a></li>
+            <li><a href="#spritual-mastery-5">Spritual Mastery (5)</a></li>
+            <li><a href="#mindbreak-5">Mindbreak (5)</a></li>
+            <li><a href="#mindfocus-5">Mindfocus (5)</a></li>
+          </ul>
+        </li>
+        <li><a href="#survival-tree">Survival Tree</a>
+          <ul>
+            <li><a href="#improved-healing-10">Improved Healing (10)</a></li>
+            <li><a href="#increased-regeneration-10">Increased Regeneration (10)</a></li>
+            <li><a href="#magic-armor-5">Magic Armor (5)</a></li>
+            <li><a href="#faster-travel-5">Faster Travel (5)</a></li>
+            <li><a href="#taming-5">Taming (5)</a></li>
+            <li><a href="#breeding-5">Breeding (5)</a></li>
+            <li><a href="#summon-bestia-10">Summon Bestia (10)</a></li>
+            <li><a href="#tough-guy-5">Tough Guy (5)</a></li>
+            <li><a href="#packhorse">Packhorse</a></li>
+            <li><a href="#magic-shelter-5">Magic Shelter (5)</a></li>
+            <li><a href="#magic-protection-5">Magic Protection (5)</a></li>
+          </ul>
+        </li>
+        <li><a href="#crafts-tree">Crafts Tree</a>
+          <ul>
+            <li><a href="#improved-trading-5">Improved Trading (5)</a></li>
+            <li><a href="#scavenger-10">Scavenger (10)</a></li>
+            <li><a href="#blacksmithing-10">Blacksmithing (10)</a></li>
+            <li><a href="#engineering-10">Engineering (10)</a></li>
+            <li><a href="#magic-artisan-10">Magic Artisan (10)</a></li>
+            <li><a href="#transmutation-10">Transmutation (10)</a></li>
+          </ul>
+        </li>
+        <li><a href="#science-tree">Science Tree</a>
+          <ul>
+            <li><a href="#spell-enscription-10">Spell Enscription (10)</a></li>
+            <li><a href="#spell-binding-10">Spell Binding (10)</a></li>
+            <li><a href="#spell-discovery-10">Spell Discovery (10)</a></li>
+            <li><a href="#focus-black-magic-5">Focus: Black Magic (5)</a></li>
+            <li><a href="#focus-white-magic-5">Focus: White Magic (5)</a></li>
+            <li><a href="#focus-arcane-5">Focus: Arcane (5)</a></li>
+            <li><a href="#geography-5">Geography (5)</a></li>
+            <li><a href="#scry-5">Scry (5)</a></li>
+            <li><a href="#teleport-10">Teleport (10)</a></li>
+            <li><a href="#portal-10">Portal (10)</a></li>
+            <li><a href="#control-mana-flow-10">Control Mana Flow (10)</a></li>
+            <li><a href="#magic-senses-5">Magic Senses (5)</a></li>
+            <li><a href="#identify-magic-5">Identify Magic (5)</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#honor">Honor</a>
+      <ul>
+        <li><a href="#protected-zones">Protected Zones</a></li>
+        <li><a href="#negative-honor">Negative Honor</a>
+          <ul>
+            <li><a href="#stealing">Stealing</a></li>
+            <li><a href="#malicious-actions">Malicious Actions</a></li>
+            <li><a href="#negative-honor-effects">Negative Honor Effects</a></li>
+          </ul>
+        </li>
+        <li><a href="#positive-honor">Positive Honor</a>
+          <ul>
+            <li><a href="#shrines-of-judgement">Shrines of Judgement</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
 
       
-<article class="markdown">
-
-<h1 id="bestia-master">Bestia Master</h1>
-
+      
+  <article class="markdown"><h1 id="bestia-master">Bestia Master</h1>
 <p>The intro game tells players how to become a Bestia Master. They came into direct contact with an ephemeral mana crystal
 that changed their nature through magic and connected them to the mana flows. They are therefore receptive to the
 influence of mana and are able to communicate with the beings that emerge from this mythical energy: <strong>the Bestias</strong>.</p>
-
 <p>The attachment to mana also explains why Bestia masters were able to survive the destruction of their world relatively
 unscathed and to pass on to the next world.</p>
-
-<blockquote>
-<p>Bestia Master enter the current world from another, not further mentioned dimension. During each incarnation
-a name of this world is generated and in each cycle all Bestia Master entering the game will have this world name
-persisted in their account data to keep a record.</p>
-</blockquote>
-
 <h2 id="skill-mastery">Skill Mastery</h2>
-
 <p>The bestia master of a player can learn a set of skills. Since these skills are bound to the account they are called
 account skills or just skills. These skills are freely chosen by the player and determine the job or profession of
 the master.</p>
-
 <p>Some of this account skills can be used by every Bestia in posession others only by the master itself.</p>
-
 <blockquote>
 <p>Don&rsquo;t confuse this skills with the regular attacks a Bestia is learning by item usage or level up. These are simply
-called <a href="/docs/mechanics/attacks">attacks</a>.</p>
+called 
+  <a href="/docs/mechanics/attacks">attacks</a>.</p>
 </blockquote>
-
 <h3 id="guidlines">Guidlines</h3>
-
 <ul>
 <li>The number of total skil ranks inside a tree should <strong>be between 70-80</strong></li>
 <li>The possible rank counts of a skill should be: <strong>1, 5 and 10</strong></li>
@@ -160,279 +272,180 @@ called <a href="/docs/mechanics/attacks">attacks</a>.</p>
 <li>In each profession tree there should form 2-3 sub-trees which create a miningful hierarchy</li>
 <li>There should be some kind of three tiers inside a tree form low and basic skill to the much powerfull skills</li>
 </ul>
-
 <blockquote>
 <p>Most Important: No Hardcoded Skill Effects!</p>
 </blockquote>
-
 <p>Skills should be used when possible require some interaction with the player whose success depends on the effect of the
 skill. An example would be the teleport ability: after selecting the players (which can be flexible by the number) and
 the magic interference at the destination, the player must win a small mini-game in the client which can be a skill
 game. Depending on how successful this was, the player will be more precisely transported to the destination.</p>
-
 <p>Ultimately, it remains important to leave the outcome of skills open in some way. However, the result should remain
 understandable and influenceable by the player.</p>
-
 <h3 id="skill-progression">Skill Progression</h3>
-
 <p>Upon each level up the master gains 1 skillpoint to put into the skills rank. This is permanent and means a player can
 spend about 100 points for improving the ranks of his skills.</p>
-
 <blockquote>
 <p>Since max level is not capped actually he might be able to spend more points but a progressions gets continously
 harder it is safe to assume every player has about 100 points.</p>
 </blockquote>
-
 <p>The skilltrees are designed as such that to reach the highest professions in a tree the player needs to spend <strong>70 points</strong>.</p>
-
 <p>The player can decide to have mediocre profession in each tree or to max out one and have maybe half of the
 meaningful professions of another tree. The skilltree is a hierarchical dependency of skills.</p>
-
 <h3 id="common-tree">Common Tree</h3>
-
 <p>In this tree, simple, common mundane tasks are placed.</p>
-
 <h3 id="first-aid">First Aid</h3>
-
 <h3 id="cooking-5">Cooking (5)</h3>
-
 <h3 id="fishing-5">Fishing (5)</h3>
-
 <h2 id="battle-tree">Battle Tree</h2>
-
 <p>The battle tree contains skills which are primarly useful for fighting, battle and maybe to some extend improve survival
- in the wild.</p>
-
+in the wild.</p>
 
 
 <script src="/mermaid.min.js"></script>
 <script>
-    var config = {
-        theme: 'dark'
-    };
-    mermaid.initialize(config);
+mermaid.initialize({
+  flowchart: { useMaxWidth:true }
+});
 </script>
 
 
 
 <p class="mermaid">
-  
 graph TD
   SPRITIUAL_MASTERY("Spritual Mastery [5]")
   ELEMENTAL_MASTERY("Elemental Mastery [5]")-->|min. 3|MASTER_OF_FIRE("Master of Fire [10]")
   ELEMENTAL_MASTERY-->|min. 3|MASTER_OF_WATER("Master of Water [10]")
   ELEMENTAL_MASTERY-->|min. 3|MASTER_OF_WIND("Master of Wind [10]")
   ELEMENTAL_MASTERY-->|min. 3|MASTER_OF_EARTH("Master of Earth [10]")
-
 </p>
 
-
 <h3 id="elemental-mastery-5">Elemental Mastery (5)</h3>
-
 <p>Increases damage or healing of spells with elemental (earth, wind, wasser, fire) domain.</p>
-
 <blockquote>
 <p>+3% damage/level</p>
 </blockquote>
-
 <h3 id="master-of-fire-10">Master of Fire (10)</h3>
-
 <ul>
 <li>Elemental Mastery (3)</li>
 </ul>
-
 <p>Increases the damage of fire attacks.</p>
-
 <blockquote>
 <p>+3% damage/level</p>
 </blockquote>
-
 <h3 id="master-of-water-10">Master of Water (10)</h3>
-
 <ul>
 <li>Elemental Mastery (3)</li>
 </ul>
-
 <p>Increases damage of water spells.</p>
-
 <blockquote>
 <p>+3% damage/level</p>
 </blockquote>
-
 <h3 id="master-of-wind-10">Master of Wind (10)</h3>
-
 <p>Elemental Mastery (3)</p>
-
 <p>Increases damage of wind spells.</p>
-
 <blockquote>
 <p>+3% damage/level</p>
 </blockquote>
-
 <h3 id="master-of-earth-10">Master of Earth (10)</h3>
-
 <p>Elemental Mastery (3)</p>
-
 <p>Increases damage of earth spells.</p>
-
 <blockquote>
 <p>+3% damage/level</p>
 </blockquote>
-
 <h3 id="spritual-mastery-5">Spritual Mastery (5)</h3>
-
 <p>Increases damage or healing of spells with the Holy or Dark domain.</p>
-
 <blockquote>
 <p>+5% damage/level</p>
 </blockquote>
-
 <h3 id="mindbreak-5">Mindbreak (5)</h3>
-
 <p>This is a buff which once it gets applied reduces the armor but increases the physical and magical attack of a Bestia.</p>
-
 <blockquote>
 <p>+20% damage/level</p>
-
 <p>-20% armor/level</p>
 </blockquote>
-
 <h3 id="mindfocus-5">Mindfocus (5)</h3>
-
 <p>This is a buff which once it gets applied increases the armor but decreases the physical and magical attack of a Bestia.</p>
-
 <blockquote>
 <p>+20% armor/level</p>
-
 <p>-20% damage/level</p>
 </blockquote>
-
 <h2 id="survival-tree">Survival Tree</h2>
-
 <p>The survival tree has three main ideas: protecting the masters Bestia from physical harm by increasing they tougness indirectly, improving the survivability
 in harsh environments for his Bestias or others.</p>
-
 <h3 id="improved-healing-10">Improved Healing (10)</h3>
-
 <p>Increases effects of healing done and duration of buff spells when used by the owner of this spell.</p>
-
 <blockquote>
 <p>+2% effect/level</p>
 </blockquote>
-
 <h3 id="increased-regeneration-10">Increased Regeneration (10)</h3>
-
 <p>Your Bestias and Masters HP and Mana will have an increased regeneration rate.</p>
-
 <blockquote>
 <p>+3% effect/level</p>
 </blockquote>
-
 <h3 id="magic-armor-5">Magic Armor (5)</h3>
-
 <ul>
 <li>Improved Healing (5)</li>
 </ul>
-
 <p>Reduces damage of magical effects.</p>
-
 <blockquote>
 <p>-2%/level reduced damage</p>
 </blockquote>
-
 <h3 id="faster-travel-5">Faster Travel (5)</h3>
-
 <p>Hard terrain does not reduce the Bestia movement speed anymore. On Level 5 the tarrain does not reduce movement speed anymore at all.</p>
-
 <blockquote>
 <p>-20%/level reduced movement reduction</p>
 </blockquote>
-
 <h3 id="taming-5">Taming (5)</h3>
-
 <p>Bestias gain faster experience and are easier to catch.</p>
-
 <blockquote>
 <p>+5% experience gain per level</p>
 </blockquote>
-
 <h3 id="breeding-5">Breeding (5)</h3>
-
 <h3 id="summon-bestia-10">Summon Bestia (10)</h3>
-
 <p>A temporarly Bestia from pure magic is created which will assist its master for a short period of time.</p>
-
 <h3 id="tough-guy-5">Tough Guy (5)</h3>
-
 <p>Stamina is faster regenerated and drops slower in high demanding environments and while dong activities which would otherwise
 deplete your stamina.</p>
-
 <blockquote>
 <p>-10%/level reduced stamina reduction</p>
-
 <p>+10%/level increased stamina regeneration</p>
 </blockquote>
-
 <h3 id="packhorse">Packhorse</h3>
-
 <h3 id="magic-shelter-5">Magic Shelter (5)</h3>
-
 <p>Improves environment condition via magic.</p>
-
 <h3 id="magic-protection-5">Magic Protection (5)</h3>
-
 <p><strong>Max Level: 5</strong></p>
-
 <p>Increases weight limit to carry.</p>
-
 <blockquote>
 <p>+5%/level Weight Limit increase</p>
 </blockquote>
-
 <h2 id="crafts-tree">Crafts Tree</h2>
-
 <h3 id="improved-trading-5">Improved Trading (5)</h3>
-
 <p>NPC can be talked into to pay more or give the player cheaper prices for items.</p>
-
 <blockquote>
 <p>-5%/lv price reduction at NPCs</p>
-
 <p>+3%/lv higher price when selling at NPC</p>
 </blockquote>
-
 <h3 id="scavenger-10">Scavenger (10)</h3>
-
 <p>When breaking up and recycling items the probability to recycle a higher amount of components is increased.</p>
-
 <h3 id="blacksmithing-10">Blacksmithing (10)</h3>
-
 <ul>
 <li>Scavenger (5)</li>
 </ul>
-
-<p>Able to forge weaponry. Can also <a href="/mechanics/items/#weapon-refinement">refine weapons</a>. Increasing the spell does increase the chance to forge higher level weapons.</p>
-
+<p>Able to forge weaponry. Can also 
+  <a href="/mechanics/items/#weapon-refinement">refine weapons</a>. Increasing the spell does increase the chance to forge higher level weapons.</p>
 <p>Also increases the probability by 2% to succeed when upgrading a weapon.</p>
-
 <h3 id="engineering-10">Engineering (10)</h3>
-
 <h3 id="magic-artisan-10">Magic Artisan (10)</h3>
-
 <p>Can create magical artifacts.</p>
-
 <h3 id="transmutation-10">Transmutation (10)</h3>
-
 <h2 id="science-tree">Science Tree</h2>
-
 <p>The Science Tree contains skills witch help with sensing the world events and or performing rituals to even shape the
 face of the Bestia world itself. It basically forms 3 sub-trees: One is focused on attack learning, and enscribing, the second one
 helps with world exploration, and mana flow detection and control. And the third one is there for resource transformation/transmutation.</p>
 
 
-
 <p class="mermaid">
-  
 graph TD
   SPELL_ENSCRIPTION("Spell Enscription [10]")-->|min. 5|SPELL_BINDING("Spell Binding [10]")
   SPELL_ENSCRIPTION-->|min. 3|SPELL_DISCOVERY("Spell Discovery [10]")
@@ -445,72 +458,43 @@ graph TD
   GEOGRAPHY("Geography [5]")-->|min. 3|SCRY("Scry [5]")
   SCRY-->|min. 3|TELEPORT("Teleport [10]")
   TELEPORT-->|min. 8|PORTAL("Portal [10]")
-
 </p>
 
-
 <h3 id="spell-enscription-10">Spell Enscription (10)</h3>
-
 <p>Enables the user to write down spells onto items or scrolls for a later use (even by someone who does not know the spell).</p>
-
 <h3 id="spell-binding-10">Spell Binding (10)</h3>
-
 <p>Allows the user to bind certain spells to entities and create trigger for them. This can be used to permanently bind spells
 to artifacts or setup alarms or traps for example.</p>
-
 <h3 id="spell-discovery-10">Spell Discovery (10)</h3>
-
 <p>Enables the user to discover spells to learn for his Bestias.</p>
-
 <h3 id="focus-black-magic-5">Focus: Black Magic (5)</h3>
-
 <p>Enables the user to discover spells to learn for his Bestias.</p>
-
 <h3 id="focus-white-magic-5">Focus: White Magic (5)</h3>
-
 <p>Enables the user to discover spells to learn for his Bestias.</p>
-
 <h3 id="focus-arcane-5">Focus: Arcane (5)</h3>
-
 <p>Enables the user to discover spells to learn for his Bestias.</p>
-
 <h3 id="geography-5">Geography (5)</h3>
-
 <p>Increases the range and effectivness when performing a cartography.</p>
-
 <h3 id="scry-5">Scry (5)</h3>
-
 <p>Can look into areas far away.</p>
-
 <h3 id="teleport-10">Teleport (10)</h3>
-
 <p>Can teleport own bestias over a distance. To teleport somewhere one needs to setup Teleport Runes which form some kind of magical anchor.
 They can be used as targets then trying to teleport. The teleportation gets harder and more error prone the longer distances are tried to travel.
 The teleported entity also gets a debuff which will prevent it from teleporting for some time.</p>
-
 <h3 id="portal-10">Portal (10)</h3>
-
 <p>Can teleport any entity over a distance. To teleport somewhere one needs to setup Portal Runes which form some kind of magical anchor. As soon as a portal
 has opened it can be used in both directions for some time.</p>
-
 <h3 id="control-mana-flow-10">Control Mana Flow (10)</h3>
-
 <p>User is able to channel down the Mana to crystalize into small shards of Mana crystals which can be used as a power source throughout the world.</p>
-
 <h3 id="magic-senses-5">Magic Senses (5)</h3>
-
 <p>Detect presence of magic.</p>
-
 <h3 id="identify-magic-5">Identify Magic (5)</h3>
-
 <h1 id="honor">Honor</h1>
-
 <p>It is possible in Bestia to perform malicious actions which will reduce the players good experience. This is by design!
 Yet there should be incentives for players not to go this route in order to protect low level players from ganking of
 other griev play. If a player behaves well and their honor level increases they will get more and more rewards. On the
 other hand if a player has negative honor they will get bad reputation and repressions. There might actually be some
 player initiated hunt on these low honor players.</p>
-
 <p>Additionally each NPC maintains an internal list of reputation points and players. If a player misbehaves or behaves in
 a friendly way, this list will be adjusted. The NPC also communicates this list with other NPCs if they meet. If the reputation
 exceeds certain upper and lower limits and the NPC enters areas that use a long-distance communication system, the NPC
@@ -519,37 +503,28 @@ may also communicate this to more distant areas. Only if the players reputation 
 of 0 and are then removed from the list (NPCs don&rsquo;t forget if a player killed family members or the NPC life was saved).
 If the customer reaches the nearest settlement via the reputation points after a certain time, the value is also stored
 there permanently.</p>
-
 <p>Reputation decreases faster through bad deeds than increasing because of good ones.</p>
-
 <h2 id="protected-zones">Protected Zones</h2>
-
 <p>Around the starting places there will be a enchantment in place which will mark the lands in the vacinity as <strong>Protected Zones</strong>.
 Inside this zone every kill of another player Bestia with more then 5 levels less as the killing bestia
 or NPC will reduce the honor by <strong>20 points</strong>.</p>
-
 <p>Every action which leads to honor loss inside a protected zone (other then killing a low level Player Bestia) will be <strong>multiplied by 3</strong>
 wheras honor increasing actions will be <strong>multiplied by 1.5</strong>.</p>
-
 <h2 id="negative-honor">Negative Honor</h2>
-
 <p>As there are multiple factions which different interests it is not easy to define which play is considered bad behavior
 which will get punished automatically. Yet there are some core actions which will be universally be considered as griev play
 which is not inherently forbidden but will result in a loss of honor.</p>
-
-<p>If a player drops below 0 honor he will receive the debuff <a href="/">Rogue</a>. If a player has less then -100 honor he will receive
-the debuff <a href="/">Outlaw</a>.</p>
-
+<p>If a player drops below 0 honor he will receive the debuff 
+  <a href="/">Rogue</a>. If a player has less then -100 honor he will receive
+the debuff 
+  <a href="/">Outlaw</a>.</p>
 <h3 id="stealing">Stealing</h3>
-
 <p>Stealing means if a player picks up an item from a storage chest not belonging to him. The owner can also grant certain player
 access right to a chest. Then its not considered stealing. A guild leader can also mark storage chests as usable for guild members.</p>
-
-<p>A player who steals an item is also marked with the debuff <a href="/">Thief</a> which will grant any player who kills him <strong>5 extra honor</strong>. The killing
+<p>A player who steals an item is also marked with the debuff 
+  <a href="/">Thief</a> which will grant any player who kills him <strong>5 extra honor</strong>. The killing
 player also gets a honor reward for each item returned to the original owner of the items within 6 real time hours (18 hours in Bestia time).</p>
-
 <h3 id="malicious-actions">Malicious Actions</h3>
-
 <table>
 <thead>
 <tr>
@@ -558,38 +533,32 @@ player also gets a honor reward for each item returned to the original owner of 
 <th align="center">Honor Loss to NPC in Sight</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>Killing a NPC</td>
 <td align="center">-5</td>
 <td align="center">-15</td>
 </tr>
-
 <tr>
 <td>Killing Players Bestias</td>
 <td align="center">0</td>
 <td align="center">-2</td>
 </tr>
-
 <tr>
 <td>Killing Players Bestias in a <strong>Protected Zone</strong></td>
 <td align="center">-20</td>
 <td align="center">-20</td>
 </tr>
-
 <tr>
 <td>Stealing Item (Mundane)</td>
 <td align="center">-5</td>
 <td align="center">-10</td>
 </tr>
-
 <tr>
 <td>Stealing Item (Superior)</td>
 <td align="center">-10</td>
 <td align="center">-20</td>
 </tr>
-
 <tr>
 <td>Stealing Item (Legendary)</td>
 <td align="center">-15</td>
@@ -597,11 +566,8 @@ player also gets a honor reward for each item returned to the original owner of 
 </tr>
 </tbody>
 </table>
-
 <h3 id="negative-honor-effects">Negative Honor Effects</h3>
-
 <p>If the honor drops below 0 the negative effects will start to take place. The effects are as follows:</p>
-
 <table>
 <thead>
 <tr>
@@ -609,161 +575,189 @@ player also gets a honor reward for each item returned to the original owner of 
 <th>Effect</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>&lt; 0</td>
 <td>No more advantages from NPC and the NPC will act unfriendly against the player.</td>
 </tr>
-
 <tr>
 <td>&lt; -50</td>
 <td>Some NPC might start to act hostile and attack the player or flee from him.</td>
 </tr>
-
 <tr>
 <td>&lt; -100</td>
 <td>NPC will permanently remember the player and also spread the word around so more NPC will start to act hostile towards the player.</td>
 </tr>
 </tbody>
 </table>
-
 <p>If a player steals something not belonging to him but to a NPC or another player he will loose honor for each item he
-takes and depending on the <a href="/mechanics/items/#item-level">item level</a> (looting a dead NPC/player will not lead to a
+takes and depending on the 
+  <a href="/mechanics/items/#item-level">item level</a> (looting a dead NPC/player will not lead to a
 reduction of honor).</p>
-
 <h2 id="positive-honor">Positive Honor</h2>
-
 <p>A positive honor level will lead to very friendly NPC which might even give the player some discounts or gifts from
 time to time. In order to increase your honor level again you can:</p>
-
 <ul>
 <li>Kill a player with negative honor</li>
 <li>Helping a NPC by healing or resurrecting a dead NPC</li>
 </ul>
-
 <h3 id="shrines-of-judgement">Shrines of Judgement</h3>
-
 <p>There are a 5 shrines in each game world incarnation where a player can sacrifice to raise a reputation that has fallen below the threshold of a player&rsquo;s global
 persecution. The sacrifice is usually (depending on the reputation threshold) very painful and even if it was made it can take
 several days until the news about it was spread.</p>
 </article>
-
+ 
       
-<div class="book-footer justify-between">
-  
-  <div>
-    
-    <a href="https://github.com/tfelix/bestia-docs/commit/545b8534508bd3481b023007d112b7c756938b9d" title='Last modified May 3, 2020 by Thomas Felix' target="_blank" rel="noopener">
-      <i class="far fa-calendar" style="margin-right: 0.3em"></i> May 3, 2020
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/96c1eb6c182448d409e165b495eba052e16bc9ad" title='Last modified by Thomas Felix | May 6, 2020' target="_blank" rel="noopener">
+      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>May 6, 2020</span>
     </a>
   </div>
-  
-  
+
+
+
   <div>
-    <a href="https://github.com/tfelix/bestia-docs/edit/master/content/docs/mechanics/master.md" target="_blank" rel="noopener">
-      <i class="fas fa-edit" style="margin-right: 0.3em"></i> Edit this page
+    <a class="flex align-center" href="https://github.com/tfelix/bestia-docs/edit/master/content//docs/mechanics/master.md" target="_blank" rel="noopener">
+      <img src="/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
     </a>
   </div>
-  
+
 </div>
 
+ 
+        
+      </footer>
 
       
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
     </div>
 
     
-  
-
-  <aside class="book-toc level-3 fixed">
-    <nav id="TableOfContents">
-<ul>
-<li><a href="#bestia-master">Bestia Master</a>
-<ul>
-<li><a href="#skill-mastery">Skill Mastery</a>
-<ul>
-<li><a href="#guidlines">Guidlines</a></li>
-<li><a href="#skill-progression">Skill Progression</a></li>
-<li><a href="#common-tree">Common Tree</a></li>
-<li><a href="#first-aid">First Aid</a></li>
-<li><a href="#cooking-5">Cooking (5)</a></li>
-<li><a href="#fishing-5">Fishing (5)</a></li>
-</ul></li>
-<li><a href="#battle-tree">Battle Tree</a>
-<ul>
-<li><a href="#elemental-mastery-5">Elemental Mastery (5)</a></li>
-<li><a href="#master-of-fire-10">Master of Fire (10)</a></li>
-<li><a href="#master-of-water-10">Master of Water (10)</a></li>
-<li><a href="#master-of-wind-10">Master of Wind (10)</a></li>
-<li><a href="#master-of-earth-10">Master of Earth (10)</a></li>
-<li><a href="#spritual-mastery-5">Spritual Mastery (5)</a></li>
-<li><a href="#mindbreak-5">Mindbreak (5)</a></li>
-<li><a href="#mindfocus-5">Mindfocus (5)</a></li>
-</ul></li>
-<li><a href="#survival-tree">Survival Tree</a>
-<ul>
-<li><a href="#improved-healing-10">Improved Healing (10)</a></li>
-<li><a href="#increased-regeneration-10">Increased Regeneration (10)</a></li>
-<li><a href="#magic-armor-5">Magic Armor (5)</a></li>
-<li><a href="#faster-travel-5">Faster Travel (5)</a></li>
-<li><a href="#taming-5">Taming (5)</a></li>
-<li><a href="#breeding-5">Breeding (5)</a></li>
-<li><a href="#summon-bestia-10">Summon Bestia (10)</a></li>
-<li><a href="#tough-guy-5">Tough Guy (5)</a></li>
-<li><a href="#packhorse">Packhorse</a></li>
-<li><a href="#magic-shelter-5">Magic Shelter (5)</a></li>
-<li><a href="#magic-protection-5">Magic Protection (5)</a></li>
-</ul></li>
-<li><a href="#crafts-tree">Crafts Tree</a>
-<ul>
-<li><a href="#improved-trading-5">Improved Trading (5)</a></li>
-<li><a href="#scavenger-10">Scavenger (10)</a></li>
-<li><a href="#blacksmithing-10">Blacksmithing (10)</a></li>
-<li><a href="#engineering-10">Engineering (10)</a></li>
-<li><a href="#magic-artisan-10">Magic Artisan (10)</a></li>
-<li><a href="#transmutation-10">Transmutation (10)</a></li>
-</ul></li>
-<li><a href="#science-tree">Science Tree</a>
-<ul>
-<li><a href="#spell-enscription-10">Spell Enscription (10)</a></li>
-<li><a href="#spell-binding-10">Spell Binding (10)</a></li>
-<li><a href="#spell-discovery-10">Spell Discovery (10)</a></li>
-<li><a href="#focus-black-magic-5">Focus: Black Magic (5)</a></li>
-<li><a href="#focus-white-magic-5">Focus: White Magic (5)</a></li>
-<li><a href="#focus-arcane-5">Focus: Arcane (5)</a></li>
-<li><a href="#geography-5">Geography (5)</a></li>
-<li><a href="#scry-5">Scry (5)</a></li>
-<li><a href="#teleport-10">Teleport (10)</a></li>
-<li><a href="#portal-10">Portal (10)</a></li>
-<li><a href="#control-mana-flow-10">Control Mana Flow (10)</a></li>
-<li><a href="#magic-senses-5">Magic Senses (5)</a></li>
-<li><a href="#identify-magic-5">Identify Magic (5)</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#honor">Honor</a>
-<ul>
-<li><a href="#protected-zones">Protected Zones</a></li>
-<li><a href="#negative-honor">Negative Honor</a>
-<ul>
-<li><a href="#stealing">Stealing</a></li>
-<li><a href="#malicious-actions">Malicious Actions</a></li>
-<li><a href="#negative-honor-effects">Negative Honor Effects</a></li>
-</ul></li>
-<li><a href="#positive-honor">Positive Honor</a>
-<ul>
-<li><a href="#shrines-of-judgement">Shrines of Judgement</a></li>
-</ul></li>
-</ul></li>
-</ul>
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#bestia-master">Bestia Master</a>
+      <ul>
+        <li><a href="#skill-mastery">Skill Mastery</a>
+          <ul>
+            <li><a href="#guidlines">Guidlines</a></li>
+            <li><a href="#skill-progression">Skill Progression</a></li>
+            <li><a href="#common-tree">Common Tree</a></li>
+            <li><a href="#first-aid">First Aid</a></li>
+            <li><a href="#cooking-5">Cooking (5)</a></li>
+            <li><a href="#fishing-5">Fishing (5)</a></li>
+          </ul>
+        </li>
+        <li><a href="#battle-tree">Battle Tree</a>
+          <ul>
+            <li><a href="#elemental-mastery-5">Elemental Mastery (5)</a></li>
+            <li><a href="#master-of-fire-10">Master of Fire (10)</a></li>
+            <li><a href="#master-of-water-10">Master of Water (10)</a></li>
+            <li><a href="#master-of-wind-10">Master of Wind (10)</a></li>
+            <li><a href="#master-of-earth-10">Master of Earth (10)</a></li>
+            <li><a href="#spritual-mastery-5">Spritual Mastery (5)</a></li>
+            <li><a href="#mindbreak-5">Mindbreak (5)</a></li>
+            <li><a href="#mindfocus-5">Mindfocus (5)</a></li>
+          </ul>
+        </li>
+        <li><a href="#survival-tree">Survival Tree</a>
+          <ul>
+            <li><a href="#improved-healing-10">Improved Healing (10)</a></li>
+            <li><a href="#increased-regeneration-10">Increased Regeneration (10)</a></li>
+            <li><a href="#magic-armor-5">Magic Armor (5)</a></li>
+            <li><a href="#faster-travel-5">Faster Travel (5)</a></li>
+            <li><a href="#taming-5">Taming (5)</a></li>
+            <li><a href="#breeding-5">Breeding (5)</a></li>
+            <li><a href="#summon-bestia-10">Summon Bestia (10)</a></li>
+            <li><a href="#tough-guy-5">Tough Guy (5)</a></li>
+            <li><a href="#packhorse">Packhorse</a></li>
+            <li><a href="#magic-shelter-5">Magic Shelter (5)</a></li>
+            <li><a href="#magic-protection-5">Magic Protection (5)</a></li>
+          </ul>
+        </li>
+        <li><a href="#crafts-tree">Crafts Tree</a>
+          <ul>
+            <li><a href="#improved-trading-5">Improved Trading (5)</a></li>
+            <li><a href="#scavenger-10">Scavenger (10)</a></li>
+            <li><a href="#blacksmithing-10">Blacksmithing (10)</a></li>
+            <li><a href="#engineering-10">Engineering (10)</a></li>
+            <li><a href="#magic-artisan-10">Magic Artisan (10)</a></li>
+            <li><a href="#transmutation-10">Transmutation (10)</a></li>
+          </ul>
+        </li>
+        <li><a href="#science-tree">Science Tree</a>
+          <ul>
+            <li><a href="#spell-enscription-10">Spell Enscription (10)</a></li>
+            <li><a href="#spell-binding-10">Spell Binding (10)</a></li>
+            <li><a href="#spell-discovery-10">Spell Discovery (10)</a></li>
+            <li><a href="#focus-black-magic-5">Focus: Black Magic (5)</a></li>
+            <li><a href="#focus-white-magic-5">Focus: White Magic (5)</a></li>
+            <li><a href="#focus-arcane-5">Focus: Arcane (5)</a></li>
+            <li><a href="#geography-5">Geography (5)</a></li>
+            <li><a href="#scry-5">Scry (5)</a></li>
+            <li><a href="#teleport-10">Teleport (10)</a></li>
+            <li><a href="#portal-10">Portal (10)</a></li>
+            <li><a href="#control-mana-flow-10">Control Mana Flow (10)</a></li>
+            <li><a href="#magic-senses-5">Magic Senses (5)</a></li>
+            <li><a href="#identify-magic-5">Identify Magic (5)</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#honor">Honor</a>
+      <ul>
+        <li><a href="#protected-zones">Protected Zones</a></li>
+        <li><a href="#negative-honor">Negative Honor</a>
+          <ul>
+            <li><a href="#stealing">Stealing</a></li>
+            <li><a href="#malicious-actions">Malicious Actions</a></li>
+            <li><a href="#negative-honor-effects">Negative Honor Effects</a></li>
+          </ul>
+        </li>
+        <li><a href="#positive-honor">Positive Honor</a>
+          <ul>
+            <li><a href="#shrines-of-judgement">Shrines of Judgement</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </nav>
-  </aside>
 
-
-
+ 
+    </aside>
+    
   </main>
 
-  
   
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+

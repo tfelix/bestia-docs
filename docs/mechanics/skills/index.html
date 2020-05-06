@@ -4,19 +4,23 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Attacks The magic and the usage of it plays a crucial role in the Bestia universe. The users should be able to be deeply involved into magic spell creation and research.
+ The words Attacks and Spells are equally used.
+ The system must allow the user to describe or discover newly innovative ways to combine spells. Yet the research should be fun and entertaining. Bestias can learn attacks by two means:">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Attacks" />
+<meta property="og:description" content="Attacks The magic and the usage of it plays a crucial role in the Bestia universe. The users should be able to be deeply involved into magic spell creation and research.
+ The words Attacks and Spells are equally used.
+ The system must allow the user to describe or discover newly innovative ways to combine spells. Yet the research should be fun and entertaining. Bestias can learn attacks by two means:" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://docs.bestia-game.net/docs/mechanics/skills/" />
+<meta property="article:modified_time" content="2020-04-30T01:47:03+02:00" />
 <title>Attacks | Bestia Game</title>
-
-
-<link rel="stylesheet" href="/book.min.e455ec3d70e30769b65addd415b9219adfbaa8fb5c17db0ee83d73131879098d.css" integrity="sha256-5FXsPXDjB2m2Wt3UFbkhmt&#43;6qPtcF9sO6D1zExh5CY0=">
-
-
-<script defer src="/search.min.c2d8df9c61afa359fdd56ddc9a11d7e06bf1277afe10aecd89ccc8560c7556de.js" integrity="sha256-wtjfnGGvo1n91W3cmhHX4GvxJ3r&#43;EK7NiczIVgx1Vt4="></script>
-
-
-
+<link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.33a33f5aa85ae88a745523e33a90fc180c0265506f82d14eccb0b602ba49aeea.css" integrity="sha256-M6M/Wqha6Ip0VSPjOpD8GAwCZVBvgtFOzLC2ArpJruo=">
+<script defer src="/en.search.min.0071d0c9b0c1dba29fb5a151f046353559f40cbb123dafeff6908e76a47ad645.js" integrity="sha256-AHHQybDB26KftaFR8EY1NVn0DLsSPa/v9pCOdqR61kU="></script>
 
-
+<script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -28,17 +32,18 @@ https://github.com/alex-shpak/hugo-book
 
 <body>
   <input type="checkbox" class="hidden" id="menu-control" />
-  <main class="flex container">
-
-    <aside class="book-menu fixed">
-      <nav>
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
 <h2 class="book-brand">
-  <a href="https://docs.bestia-game.net"><img src="/bestia-logo.svg" alt="Logo" /></a>
+  <a href="/"><img src="/bestia-logo.svg" alt="Logo" /><span>Bestia Game</span>
+  </a>
 </h2>
 
 
 <div class="book-search">
-  <input type="text" placeholder="Search" id="book-search-input" maxlength="64" readonly />
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
   <div class="book-search-spinner spinner hidden"></div>
   <ul id="book-search-results"></ul>
 </div>
@@ -47,49 +52,68 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-    
-  
-  
-  
 
-  <style>
-  nav ul a[href$="\2f docs\2fmechanics\2fskills\2f "] {
-      color: #004ed0;
-  }
-  </style>
 
+
+
+
+
+  <ul>
+<li>
+  <a href="/docs/mechanics/"><strong>Game Design</strong></a>
 <ul>
-<li><a href="/docs/mechanics/">Game Design</a>
-
-<ul>
-<li><a href="/docs/mechanics/general/">General Mechanics</a></li>
-<li><a href="/docs/mechanics/master/">Bestia Master</a></li>
-<li><a href="/docs/mechanics/bestia/">Bestia</a></li>
-<li><a href="/docs/mechanics/environment/">Environment</a></li>
-<li><a href="/docs/mechanics/items/">Items</a></li>
-<li><a href="/docs/mechanics/resources/">Resources</a></li>
-<li><a href="/docs/mechanics/skills/">Skills</a></li>
-<li><a href="/docs/mechanics/statusvalues/">Status Values</a></li>
-<li><a href="/docs/mechanics/dev-resources/">Development Resources</a></li>
-</ul></li>
-<li><a href="/docs/client/">Client</a>
-
-<ul>
-<li><a href="/docs/client/entities/">Entities</a></li>
-</ul></li>
-<li><a href="/docs/server/">Server</a>
-
-<ul>
-<li><a href="/docs/server/architecture/">Architecture</a></li>
-<li><a href="/docs/server/ai/">Artificial Intelligence</a></li>
-<li><a href="/docs/server/battle/">Battle</a></li>
-<li><a href="/docs/server/communication/">Communication</a></li>
-<li><a href="/docs/server/quests/">Quests</a></li>
-<li><a href="/docs/server/scripting/">Scripting</a></li>
-<li><a href="/docs/server/world-generation/">World Generation</a></li>
-</ul></li>
-<li><a href="/docs/api/">REST API</a></li>
+<li>
+  <a href="/docs/mechanics/general/">General Mechanics</a></li>
+<li>
+  <a href="/docs/mechanics/master/">Bestia Master</a></li>
+<li>
+  <a href="/docs/mechanics/bestia/">Bestia</a></li>
+<li>
+  <a href="/docs/mechanics/environment/">Environment</a></li>
+<li>
+  <a href="/docs/mechanics/items/">Items</a></li>
+<li>
+  <a href="/docs/mechanics/resources/">Resources</a></li>
+<li>
+  <a href="/docs/mechanics/skills/"class=active>Skills</a></li>
+<li>
+  <a href="/docs/mechanics/statusvalues/">Status Values</a></li>
+<li>
+  <a href="/docs/mechanics/dev-resources/">Development Resources</a></li>
 </ul>
+</li>
+<li>
+  <a href="/docs/client/"><strong>Client</strong></a>
+<ul>
+<li>
+  <a href="/docs/client/entities/">Entities</a></li>
+</ul>
+</li>
+<li>
+  <a href="/docs/server/"><strong>Server</strong></a>
+<ul>
+<li>
+  <a href="/docs/server/architecture/">Architecture</a></li>
+<li>
+  <a href="/docs/server/ai/">Artificial Intelligence</a></li>
+<li>
+  <a href="/docs/server/battle/">Battle</a></li>
+<li>
+  <a href="/docs/server/communication/">Communication</a></li>
+<li>
+  <a href="/docs/server/quests/">Quests</a></li>
+<li>
+  <a href="/docs/server/scripting/">Scripting</a></li>
+<li>
+  <a href="/docs/server/world-generation/">World Generation</a></li>
+</ul>
+</li>
+<li>
+  <a href="/docs/api/"><strong>REST API</strong></a></li>
+</ul>
+
+
+
 
 
 
@@ -100,84 +124,108 @@ https://github.com/alex-shpak/hugo-book
 </nav>
 
 
-<script>
-(function() {
-  var menu = document.querySelector("aside.book-menu nav");
-  addEventListener("beforeunload", function(event) {
-    localStorage.setItem("menu.scrollTop", menu.scrollTop);
-  });
-  menu.scrollTop = localStorage.getItem("menu.scrollTop");
-})();
-</script>
 
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
     </aside>
 
     <div class="book-page">
-      <header class="flex align-center justify-between book-header">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
   <label for="menu-control">
-    <img src="/svg/menu.svg" alt="Menu" />
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
+
   <strong>Attacks</strong>
-</header>
+
+  <label for="toc-control">
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#attacks">Attacks</a>
+      <ul>
+        <li><a href="#magic-schools">Magic Schools</a>
+          <ul>
+            <li><a href="#arcane-magic">Arcane Magic</a></li>
+            <li><a href="#black-magic">Black Magic</a></li>
+            <li><a href="#white-magic">White Magic</a></li>
+          </ul>
+        </li>
+        <li><a href="#learning-attacks">Learning Attacks</a>
+          <ul>
+            <li><a href="#spell-discovery">Spell Discovery</a></li>
+            <li><a href="#spell-enscription">Spell Enscription</a></li>
+          </ul>
+        </li>
+        <li><a href="#spell-binding">Spell Binding</a>
+          <ul>
+            <li><a href="#trigger-types">Trigger Types</a></li>
+          </ul>
+        </li>
+        <li><a href="#detection-of-magic">Detection of Magic</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
 
       
-<article class="markdown">
-
-<h1 id="attacks">Attacks</h1>
-
+      
+  <article class="markdown"><h1 id="attacks">Attacks</h1>
 <p>The magic and the usage of it plays a crucial role in the Bestia universe. The users should be able to be deeply involved
 into magic spell creation and research.</p>
-
 <blockquote>
 <p>The words Attacks and Spells are equally used.</p>
 </blockquote>
-
 <p>The system must allow the user to describe or discover newly innovative ways to combine spells. Yet the research should
 be fun and entertaining. Bestias can learn attacks by two means:</p>
-
 <ol>
 <li>Level Up - Each Bestia has a internal list of attacks she will learn when gaining levels.</li>
 <li>Spell Discovery - The player can try to &ldquo;invent/discover&rdquo; new attacks which then can be tried to be learned to a Bestia.
 This means 16 attacks until level 70 and about 4 attacks later on.</li>
 </ol>
-
 <h2 id="magic-schools">Magic Schools</h2>
-
 <p>All attacks are divided into the three schools of magic: Arcane, Black or White Magic. These schools might be important if certain
 spells are increased via a learned skill.</p>
-
 <h3 id="arcane-magic">Arcane Magic</h3>
-
 <p>This describes &lsquo;trickster&rsquo; magic. It can be illusion spells, utility spells like generating food or shelter. There might be some
 rare kind of damaging spells but usually they contain transmutations and other fancy spell effects.</p>
-
 <h3 id="black-magic">Black Magic</h3>
-
 <p>Mostly damaging spells which are meant to inflict harm. These might be damaging spells or spells which directly inflict damage or
 harming status of its receiver like lowering defense or status values.</p>
-
 <h3 id="white-magic">White Magic</h3>
-
 <p>The Healing, Buff or protection spells. These also contain detection of spells and neutralization spells of magic. generally all
 kind of protection, healing or improving stati fall into the domain of white magic.</p>
-
 <h2 id="learning-attacks">Learning Attacks</h2>
-
-<p>Attacks are either learned via leveling up, vie the <a href="/docs/mechanics/skills/#spell-discovery">Spell Discovery</a> skill or via Spell Scrolls
+<p>Attacks are either learned via leveling up, vie the 
+  <a href="/docs/mechanics/skills/#spell-discovery">Spell Discovery</a> skill or via Spell Scrolls
 which can be traded (but are rather expensive).</p>
-
 <p>For leveling up a Bestia a general rule of thumb is:</p>
-
 <ol>
 <li>A Bestia should have about 20 Attacks.</li>
 <li>80% of the attacks should be learned from level 1 - 69. The last 20% of the attacks between level 70 - 100.</li>
 </ol>
-
 <h3 id="spell-discovery">Spell Discovery</h3>
-
-<p>Spells can be discovered by the player. If he has the skill <a href="/docs/mechanics/skills/#spell-discovery">Spell Discovery</a>. The maximum attack
+<p>Spells can be discovered by the player. If he has the skill 
+  <a href="/docs/mechanics/skills/#spell-discovery">Spell Discovery</a>. The maximum attack
 learnable by the skill level is given in the table below.</p>
-
 <table>
 <thead>
 <tr>
@@ -185,82 +233,65 @@ learnable by the skill level is given in the table below.</p>
 <th align="right">max. Attack Level Discoverable</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>1</td>
 <td align="right">10</td>
 </tr>
-
 <tr>
 <td>2</td>
 <td align="right">20</td>
 </tr>
-
 <tr>
 <td>3</td>
 <td align="right">30</td>
 </tr>
-
 <tr>
 <td>4</td>
 <td align="right">40</td>
 </tr>
-
 <tr>
 <td>5</td>
 <td align="right">50</td>
 </tr>
-
 <tr>
 <td>6</td>
 <td align="right">60</td>
 </tr>
-
 <tr>
 <td>7</td>
 <td align="right">70</td>
 </tr>
-
 <tr>
 <td>8</td>
 <td align="right">80</td>
 </tr>
-
 <tr>
 <td>9</td>
 <td align="right">90</td>
 </tr>
-
 <tr>
 <td>10</td>
 <td align="right">100</td>
 </tr>
 </tbody>
 </table>
-
 <p>To discover a spell an aspect is chosen like &lsquo;White Magic&rsquo;, &lsquo;Black Magic&rsquo; or &lsquo;Arkane Magic&rsquo;.</p>
-
 <p>TBD</p>
-
 <h3 id="spell-enscription">Spell Enscription</h3>
-
-<p>If the player owns the skill <a href="/docs/mechanics/skills/#spell-enscription">Spell Enscription</a> he can attach the spell to
+<p>If the player owns the skill 
+  <a href="/docs/mechanics/skills/#spell-enscription">Spell Enscription</a> he can attach the spell to
 scrolls or even to other entities.</p>
-
 <p>After a spell has been materialized and bound to some kind of magic containment it can be used by the owner. Spells of
 a higher level are of course far harder to handle. Attaching or handling such spells could produce unwanted side effects
 depending on the spell (some spells might create explosions, others might teleport something away or randomly heal
 bystanders etc.)</p>
-
 <h2 id="spell-binding">Spell Binding</h2>
-
 <p>Most if not each entity/object in the game world have slots and triggers to which spells can be attached to.
-If the player has the skill <a href="/docs/mechanics/skills/#spell-binding">Spell Binding</a> he can discover such slots and triggers
+If the player has the skill 
+  <a href="/docs/mechanics/skills/#spell-binding">Spell Binding</a> he can discover such slots and triggers
 on entities as well as trying to bind spells to such entities.</p>
-
 <h3 id="trigger-types">Trigger Types</h3>
-
 <ul>
 <li>Entity entering or leaving range</li>
 <li>Special Entity entering or leaving range (Name, Type etc.)</li>
@@ -269,72 +300,102 @@ on entities as well as trying to bind spells to such entities.</p>
 <li>Time</li>
 <li>Spell Cast in Range</li>
 </ul>
-
 <h2 id="detection-of-magic">Detection of Magic</h2>
-
-<p>If the user has learned <a href="/docs/mechanics/skills/#detect-magic">Detect Magic</a>. The detection itself is easier if the spell is more
+<p>If the user has learned 
+  <a href="/docs/mechanics/skills/#detect-magic">Detect Magic</a>. The detection itself is easier if the spell is more
 powerful. However precautions can be used to avoid the spell getting detected. If more than one spell is attached to an
 object the less powerful spells are harder to detect.</p>
 </article>
-
+ 
       
-<div class="book-footer justify-between">
-  
-  <div>
-    
-    <a href="https://github.com/tfelix/bestia-docs/commit/9b983781a1736f4fb6cc4c123f3b27841f7b594e" title='Last modified Apr 29, 2020 by Thomas Felix' target="_blank" rel="noopener">
-      <i class="far fa-calendar" style="margin-right: 0.3em"></i> Apr 29, 2020
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/9b983781a1736f4fb6cc4c123f3b27841f7b594e" title='Last modified by Thomas Felix | April 29, 2020' target="_blank" rel="noopener">
+      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>April 29, 2020</span>
     </a>
   </div>
-  
-  
+
+
+
   <div>
-    <a href="https://github.com/tfelix/bestia-docs/edit/master/content/docs/mechanics/skills.md" target="_blank" rel="noopener">
-      <i class="fas fa-edit" style="margin-right: 0.3em"></i> Edit this page
+    <a class="flex align-center" href="https://github.com/tfelix/bestia-docs/edit/master/content//docs/mechanics/skills.md" target="_blank" rel="noopener">
+      <img src="/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
     </a>
   </div>
-  
+
 </div>
 
+ 
+        
+      </footer>
 
       
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
     </div>
 
     
-  
-
-  <aside class="book-toc level-3 fixed">
-    <nav id="TableOfContents">
-<ul>
-<li><a href="#attacks">Attacks</a>
-<ul>
-<li><a href="#magic-schools">Magic Schools</a>
-<ul>
-<li><a href="#arcane-magic">Arcane Magic</a></li>
-<li><a href="#black-magic">Black Magic</a></li>
-<li><a href="#white-magic">White Magic</a></li>
-</ul></li>
-<li><a href="#learning-attacks">Learning Attacks</a>
-<ul>
-<li><a href="#spell-discovery">Spell Discovery</a></li>
-<li><a href="#spell-enscription">Spell Enscription</a></li>
-</ul></li>
-<li><a href="#spell-binding">Spell Binding</a>
-<ul>
-<li><a href="#trigger-types">Trigger Types</a></li>
-</ul></li>
-<li><a href="#detection-of-magic">Detection of Magic</a></li>
-</ul></li>
-</ul>
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#attacks">Attacks</a>
+      <ul>
+        <li><a href="#magic-schools">Magic Schools</a>
+          <ul>
+            <li><a href="#arcane-magic">Arcane Magic</a></li>
+            <li><a href="#black-magic">Black Magic</a></li>
+            <li><a href="#white-magic">White Magic</a></li>
+          </ul>
+        </li>
+        <li><a href="#learning-attacks">Learning Attacks</a>
+          <ul>
+            <li><a href="#spell-discovery">Spell Discovery</a></li>
+            <li><a href="#spell-enscription">Spell Enscription</a></li>
+          </ul>
+        </li>
+        <li><a href="#spell-binding">Spell Binding</a>
+          <ul>
+            <li><a href="#trigger-types">Trigger Types</a></li>
+          </ul>
+        </li>
+        <li><a href="#detection-of-magic">Detection of Magic</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
-  </aside>
 
-
-
+ 
+    </aside>
+    
   </main>
 
-  
   
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+

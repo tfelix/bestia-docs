@@ -4,19 +4,21 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="World Generation Bestia uses a specialized library called worldgen for world creation. It is a clusterable generator which is cabable of dividing the world creation workload onto multiple, different machines. With this framework it should be possible to create million of square kilometers without hitting any memory limit on the servers.
+Algorithmus  Grundparameter Erstellung von Influencemaps Wasserspiegel festlegung Erzeuge die Wasser Maske Erzeuge von Gewässern und Flüsse Temperaturkorrektur Biom Zuordnung vornehmen Terrain Features verteilen und erzeugen Biom Optimierung Tilemap Erzeugung Biom Features Erzeugung der Städtekandidaten Erzeugung und Verteilung von Bodenschätzen  Grundparameter The following base parameters are used to generate the map:">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
+<meta property="og:description" content="World Generation Bestia uses a specialized library called worldgen for world creation. It is a clusterable generator which is cabable of dividing the world creation workload onto multiple, different machines. With this framework it should be possible to create million of square kilometers without hitting any memory limit on the servers.
+Algorithmus  Grundparameter Erstellung von Influencemaps Wasserspiegel festlegung Erzeuge die Wasser Maske Erzeuge von Gewässern und Flüsse Temperaturkorrektur Biom Zuordnung vornehmen Terrain Features verteilen und erzeugen Biom Optimierung Tilemap Erzeugung Biom Features Erzeugung der Städtekandidaten Erzeugung und Verteilung von Bodenschätzen  Grundparameter The following base parameters are used to generate the map:" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://docs.bestia-game.net/docs/server/world-generation/" />
+<meta property="article:modified_time" content="2020-05-04T00:01:20+02:00" />
 <title>World Generation | Bestia Game</title>
-
-
-<link rel="stylesheet" href="/book.min.e455ec3d70e30769b65addd415b9219adfbaa8fb5c17db0ee83d73131879098d.css" integrity="sha256-5FXsPXDjB2m2Wt3UFbkhmt&#43;6qPtcF9sO6D1zExh5CY0=">
-
-
-<script defer src="/search.min.c2d8df9c61afa359fdd56ddc9a11d7e06bf1277afe10aecd89ccc8560c7556de.js" integrity="sha256-wtjfnGGvo1n91W3cmhHX4GvxJ3r&#43;EK7NiczIVgx1Vt4="></script>
-
-
-
+<link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.33a33f5aa85ae88a745523e33a90fc180c0265506f82d14eccb0b602ba49aeea.css" integrity="sha256-M6M/Wqha6Ip0VSPjOpD8GAwCZVBvgtFOzLC2ArpJruo=">
+<script defer src="/en.search.min.0071d0c9b0c1dba29fb5a151f046353559f40cbb123dafeff6908e76a47ad645.js" integrity="sha256-AHHQybDB26KftaFR8EY1NVn0DLsSPa/v9pCOdqR61kU="></script>
 
-
+<script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -28,17 +30,18 @@ https://github.com/alex-shpak/hugo-book
 
 <body>
   <input type="checkbox" class="hidden" id="menu-control" />
-  <main class="flex container">
-
-    <aside class="book-menu fixed">
-      <nav>
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
 <h2 class="book-brand">
-  <a href="https://docs.bestia-game.net"><img src="/bestia-logo.svg" alt="Logo" /></a>
+  <a href="/"><img src="/bestia-logo.svg" alt="Logo" /><span>Bestia Game</span>
+  </a>
 </h2>
 
 
 <div class="book-search">
-  <input type="text" placeholder="Search" id="book-search-input" maxlength="64" readonly />
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
   <div class="book-search-spinner spinner hidden"></div>
   <ul id="book-search-results"></ul>
 </div>
@@ -47,49 +50,68 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-    
-  
-  
-  
 
-  <style>
-  nav ul a[href$="\2f docs\2fserver\2fworld-generation\2f "] {
-      color: #004ed0;
-  }
-  </style>
 
+
+
+
+
+  <ul>
+<li>
+  <a href="/docs/mechanics/"><strong>Game Design</strong></a>
 <ul>
-<li><a href="/docs/mechanics/">Game Design</a>
-
-<ul>
-<li><a href="/docs/mechanics/general/">General Mechanics</a></li>
-<li><a href="/docs/mechanics/master/">Bestia Master</a></li>
-<li><a href="/docs/mechanics/bestia/">Bestia</a></li>
-<li><a href="/docs/mechanics/environment/">Environment</a></li>
-<li><a href="/docs/mechanics/items/">Items</a></li>
-<li><a href="/docs/mechanics/resources/">Resources</a></li>
-<li><a href="/docs/mechanics/skills/">Skills</a></li>
-<li><a href="/docs/mechanics/statusvalues/">Status Values</a></li>
-<li><a href="/docs/mechanics/dev-resources/">Development Resources</a></li>
-</ul></li>
-<li><a href="/docs/client/">Client</a>
-
-<ul>
-<li><a href="/docs/client/entities/">Entities</a></li>
-</ul></li>
-<li><a href="/docs/server/">Server</a>
-
-<ul>
-<li><a href="/docs/server/architecture/">Architecture</a></li>
-<li><a href="/docs/server/ai/">Artificial Intelligence</a></li>
-<li><a href="/docs/server/battle/">Battle</a></li>
-<li><a href="/docs/server/communication/">Communication</a></li>
-<li><a href="/docs/server/quests/">Quests</a></li>
-<li><a href="/docs/server/scripting/">Scripting</a></li>
-<li><a href="/docs/server/world-generation/">World Generation</a></li>
-</ul></li>
-<li><a href="/docs/api/">REST API</a></li>
+<li>
+  <a href="/docs/mechanics/general/">General Mechanics</a></li>
+<li>
+  <a href="/docs/mechanics/master/">Bestia Master</a></li>
+<li>
+  <a href="/docs/mechanics/bestia/">Bestia</a></li>
+<li>
+  <a href="/docs/mechanics/environment/">Environment</a></li>
+<li>
+  <a href="/docs/mechanics/items/">Items</a></li>
+<li>
+  <a href="/docs/mechanics/resources/">Resources</a></li>
+<li>
+  <a href="/docs/mechanics/skills/">Skills</a></li>
+<li>
+  <a href="/docs/mechanics/statusvalues/">Status Values</a></li>
+<li>
+  <a href="/docs/mechanics/dev-resources/">Development Resources</a></li>
 </ul>
+</li>
+<li>
+  <a href="/docs/client/"><strong>Client</strong></a>
+<ul>
+<li>
+  <a href="/docs/client/entities/">Entities</a></li>
+</ul>
+</li>
+<li>
+  <a href="/docs/server/"><strong>Server</strong></a>
+<ul>
+<li>
+  <a href="/docs/server/architecture/">Architecture</a></li>
+<li>
+  <a href="/docs/server/ai/">Artificial Intelligence</a></li>
+<li>
+  <a href="/docs/server/battle/">Battle</a></li>
+<li>
+  <a href="/docs/server/communication/">Communication</a></li>
+<li>
+  <a href="/docs/server/quests/">Quests</a></li>
+<li>
+  <a href="/docs/server/scripting/">Scripting</a></li>
+<li>
+  <a href="/docs/server/world-generation/"class=active>World Generation</a></li>
+</ul>
+</li>
+<li>
+  <a href="/docs/api/"><strong>REST API</strong></a></li>
+</ul>
+
+
+
 
 
 
@@ -100,38 +122,77 @@ https://github.com/alex-shpak/hugo-book
 </nav>
 
 
-<script>
-(function() {
-  var menu = document.querySelector("aside.book-menu nav");
-  addEventListener("beforeunload", function(event) {
-    localStorage.setItem("menu.scrollTop", menu.scrollTop);
-  });
-  menu.scrollTop = localStorage.getItem("menu.scrollTop");
-})();
-</script>
 
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
     </aside>
 
     <div class="book-page">
-      <header class="flex align-center justify-between book-header">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
   <label for="menu-control">
-    <img src="/svg/menu.svg" alt="Menu" />
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
+
   <strong>World Generation</strong>
-</header>
+
+  <label for="toc-control">
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#world-generation">World Generation</a>
+      <ul>
+        <li><a href="#algorithmus">Algorithmus</a></li>
+        <li><a href="#grundparameter">Grundparameter</a></li>
+        <li><a href="#influencemaps">Influencemaps</a></li>
+        <li><a href="#terrain-features-post-biom">Terrain Features (Post Biom)</a></li>
+        <li><a href="#gewässer-und-flüsse">Gewässer und Flüsse</a></li>
+        <li><a href="#temperaturkorrektur">Temperaturkorrektur</a></li>
+        <li><a href="#biom-zuordnung">Biom Zuordnung</a></li>
+        <li><a href="#biom-optimierung">Biom Optimierung</a></li>
+        <li><a href="#tilemap-zuordnung">Tilemap Zuordnung</a></li>
+        <li><a href="#biom-features">Biom Features</a>
+          <ul>
+            <li><a href="#eistundra">Eistundra</a></li>
+            <li><a href="#wälder">Wälder</a></li>
+          </ul>
+        </li>
+        <li><a href="#cities">Cities</a></li>
+        <li><a href="#bodenschätze--ressourcen">Bodenschätze &amp; Ressourcen</a></li>
+        <li><a href="#roads">Roads</a></li>
+        <li><a href="#weltzerstörung">Weltzerstörung</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
 
       
-<article class="markdown">
-
-<h1 id="world-generation">World Generation</h1>
-
-<p>Bestia uses a specialized library called <a href="https://github.com/tfelix/worldgen">worldgen</a> for world creation. It is a
+      
+  <article class="markdown"><h1 id="world-generation">World Generation</h1>
+<p>Bestia uses a specialized library called 
+  <a href="https://github.com/tfelix/worldgen">worldgen</a> for world creation. It is a
 clusterable generator which is cabable of dividing the world creation workload onto multiple, different machines.
 With this framework it should be possible to create million of square kilometers without hitting any memory limit
 on the servers.</p>
-
 <h2 id="algorithmus">Algorithmus</h2>
-
 <ol>
 <li>Grundparameter</li>
 <li>Erstellung von Influencemaps</li>
@@ -147,222 +208,221 @@ on the servers.</p>
 <li>Erzeugung der Städtekandidaten</li>
 <li>Erzeugung und Verteilung von Bodenschätzen</li>
 </ol>
-
 <h2 id="grundparameter">Grundparameter</h2>
-
 <p>The following base parameters are used to generate the map:</p>
-
 <ul>
 <li>Gesamtpopulation P</li>
 <li>Weltgröße S (Abhängig von der Spielerzahl)</li>
 <li>Wassermasse/Landmasse WM (20-40% Wasser)</li>
 <li>Anzahl von Städten/Siedlungen Sn</li>
 </ul>
-
 <p>The base parameter are generated randomly based on the expected active player count. They are persisted in the database.</p>
-
 <p>$x = \frac{1}{3}$</p>
-
 <h2 id="influencemaps">Influencemaps</h2>
-
-<p>Folgende Influencemaps werden in der Größe der Weltkarte erstellt und über den <a href="https://de.wikipedia.org/wiki/Simplex_Noise">SimplexNoise </a>Algorithmus mit Rauschen gefüllt.</p>
-
-<ol>
-<li><p>Höhenkarte: mH</p></li>
-
-<li><p>Temperaturkarte: mT</p></li>
-
-<li><p>Niederschlagskarte: mN</p></li>
-
-<li><p>Magiekarte: mM</p></li>
-
-<li><p>Populationsdichte: mP</p></li>
+<p>Folgende Influencemaps werden in der Größe der Weltkarte erstellt und über den 
+  <a href="https://de.wikipedia.org/wiki/Simplex_Noise">SimplexNoise </a>Algorithmus mit Rauschen gefüllt.</p>
+<ol start="14">
+<li>
+<p>Höhenkarte: mH</p>
+</li>
+<li>
+<p>Temperaturkarte: mT</p>
+</li>
+<li>
+<p>Niederschlagskarte: mN</p>
+</li>
+<li>
+<p>Magiekarte: mM</p>
+</li>
+<li>
+<p>Populationsdichte: mP</p>
+</li>
 </ol>
-
 <h2 id="terrain-features-post-biom">Terrain Features (Post Biom)</h2>
-
 <p>Bestimmte, extravagante Features, die sich vor allem auf die Höhenstufen der Map niederschlagen werden hier zufällig verteilt. Die Wahrscheinlichkeitsverteilungen der Terrain Features sind häufig an bestimmte Biome gekoppelt. Da diese bereits bestimmt wurden, kann hier eine Prüfung auf bestimmte Features stattfinden. Bestimmte Feature sind:</p>
-
 <ul>
 <li>Seen</li>
 <li>Canyons</li>
 <li>Vulkane</li>
 <li>Gebirge</li>
 </ul>
-
 <h2 id="gewässer-und-flüsse">Gewässer und Flüsse</h2>
-
 <p>Dazu werden zufällig Wasser-Seeds verteilt und ein Flood Fill bis zur Küstenlinie durchgeführt. Der Wasserspiegel wird so lange angehoben, bis der Land/Wasser Parameter erfüllt ist. Sollte dies aus einem Grund nicht möglich sein. Gehe zu 1.</p>
-
 <h2 id="temperaturkorrektur">Temperaturkorrektur</h2>
-
 <p>Temperaturgradient auf mT aufbringen. Versehe die Temperaturkarte mit einem Gradienten um am Aquator eine höhere Temperatur zu erhalten wie an den Polen (Nord, Süd).</p>
-
 <h2 id="biom-zuordnung">Biom Zuordnung</h2>
-
 <p>TBD</p>
-
 <h2 id="biom-optimierung">Biom Optimierung</h2>
-
 <p>Nachdem die Biome über die Zuweisungsregeln hart zugewiesen wurden, müssen mehrere Plausibilitätsfilter verwendet werden um eine saubere Erzeugung zu gewährleisten.</p>
-
 <p>TBD: Welche Filter müssen hier angewendet werden? Was kann denn falsch erzeugt werden?</p>
-
 <p>Erzeuge an den Biom Grenzen entsprechende Übergangsbiome.</p>
-
 <h2 id="tilemap-zuordnung">Tilemap Zuordnung</h2>
-
 <p>Jedes Biome besitzt ein gewisses Set an Tiles. Diese stammen aus einem oder mehreren Tilemaps (also eine Menge von GIDs). Zusätzlich existiert eine Reihe von weiteren Entities welche nach einer gewissen Wahrscheinlichkeit verteilt werden können (Bäume z.B.). Diese werden aber nicht immer einfach zufällig auf Koordianten platziert. Vielmehr kann es auch hier einen Top-Down Ansatz geben, der gewährleistet, dass eine ausreichend gute Verteilung der Features generiert wird.</p>
-
 <h2 id="biom-features">Biom Features</h2>
-
 <p>Erzeuge entsprechende Strukturen innerhalb der Biome (siehe Tilemap Erzeugung). dazu gehört das Anlegen von Entities für Bäume, Pflanzen, hohes Gras, Steine, Felsen etc. Für jedes dieser Features existiert pro Biom eine oder mehrere Alternativen. Es gibt weiterhin eine Wahrscheinlichkeitsfunktion, die das Auftreten dieser Features innerhalb des Bioms regelt. Nach der Erzeugung werden alle Biome durchlaufen, diese Features so verteilt, dass ihre Positionierung innerhalb der bereits verteilten Tiles legal ist (keine Positionierung auf nicht begehbaren Felder etc.). Die Wahrscheinlichkeit für diese besonderen Orte ist in den Biomen gesteigert, bzw sie sind teilweise einzigartig für diese Biome. Folgende besondere Eigenschaften gelten für die verschiedenen Biome:</p>
-
 <h3 id="eistundra">Eistundra</h3>
-
 <ul>
-<li><p>Alte Höhlensysteme</p></li>
-
-<li><p>Eistempel</p></li>
-
-<li><p>vermehrt Bodenschätze</p></li>
+<li>
+<p>Alte Höhlensysteme</p>
+</li>
+<li>
+<p>Eistempel</p>
+</li>
+<li>
+<p>vermehrt Bodenschätze</p>
+</li>
 </ul>
-
 <h3 id="wälder">Wälder</h3>
-
 <ul>
-<li><p>Alte Tempelanlagen</p></li>
-
-<li><p>Ruinen</p></li>
-
-<li><p>Alte, unbewohnte Dörfer</p></li>
-
-<li><p>Bewohnte Siedlungen</p></li>
-
-<li><p>Höhlen</p></li>
-
-<li><p>Grabstädten</p></li>
+<li>
+<p>Alte Tempelanlagen</p>
+</li>
+<li>
+<p>Ruinen</p>
+</li>
+<li>
+<p>Alte, unbewohnte Dörfer</p>
+</li>
+<li>
+<p>Bewohnte Siedlungen</p>
+</li>
+<li>
+<p>Höhlen</p>
+</li>
+<li>
+<p>Grabstädten</p>
+</li>
 </ul>
-
 <h2 id="cities">Cities</h2>
-
 <p>Cities usually form around natural resources like shores, rivers or rich farmland. The algorithm as described below will find suitable city position candidates and then distribute the cities in 2 to n clusters around the world map. This clustering will make sure there is enough unexplored land for the players left. It should also help with the idea of different civilization which could lead to ingame player conflicts. A possible distribution is shown in here. <em>TODO: Include figure</em></p>
-
 <p>The algorithm searches the world map and creates matrix with a mesh length of 1km.</p>
-
 <ul>
 <li>Rohstoffvorkommen (Farmland, Minerals, Fishing Grounds)</li>
 <li>Nähe zu einem Gewässer (Fluss oder Meer)</li>
 </ul>
-
 <p>Folgende Voraussetzungen müssen gegeben sein:</p>
-
 <ul>
 <li>Karte mit Biom-Zuordnung muss generiert worden sein.</li>
 </ul>
-
 <p>Aufbauen auf der Weltkarte wird eine Influence Map erstellt. Wasserwege geben einen abfallenden Wert vor. Die Auflösung der Influence Map kann geringer sein als die eigentliche Karte. Auflösungen zwischen 100m und 1km erscheinen praktikabel. Folgende Punkte werden auf der Influence Map vergeben und summiert:</p>
-
 <ul>
 <li>Ist das Biom praktisch um Lebensmittel anzubauen?</li>
 <li>Sind natürliche Ressourcen in diesem Biom vorhanden?</li>
 <li>Wasser Biom in der Nähe gibt Punkte.</li>
 </ul>
-
 <p>Von der Influence Map müssen nun die Punkte entfernt werden die eindeutig keine Besiedlung ermöglichen. Folgende Punkte müssen auf 0 reduziert werden:</p>
-
 <ul>
 <li>Liegen im Wasser/Lava</li>
 <li>Liegen auf Gebirge</li>
 <li>Liegen im Wald</li>
 <li>Liegen in Gebieten mit sehr hoher Magie</li>
 </ul>
-
 <p>Bei allen verbleibenden Punkten muss überprüft werden ob es sich um ein lokales Maximum handelt. Diese Punkte werden zusammen mit ihrer Gewichtung in eine sortierte Liste aufgenommen. Dabei kann ein wandernder Durchschnitt berechnet werden und Werte unterhalb eines gewissen Schwellwertes verworfen werden.</p>
-
 <p>Koordinaten die dann zu nahe beieinander liegen (&lt; 3-6km) werden aus der Liste entfernt.</p>
-
 <p>Anhand der Punkte auf der Liste werden die Siedlungen berechnet. Zu 70% wird eine Stadt aus der oberen Hälfte der Liste der Reihe nach entnommen. Zu 30% wird eine Siedlung zufällig aus einem Kandidaten der unteren Listenhälfte entnommen bis die Anzahl der gewünschten Siedlungen erreicht ist oder die Liste erschöpft ist. Sollte ein Listenteil erschöpft sein, so wird jeweils vom anderen Listenteil mit dem gleichen Muster vorgegangen.</p>
-
 <p>Erzeugung von Städten</p>
-
 <ol>
 <li>Bestimmung der Anzahl der Gebäude anhand der Populationsmenge.</li>
 <li>Verteilen der Gebäude um den Stadtkern nach einer Gaußkurvenverteilung.</li>
 <li>Erzeugung der Gebäude-Innenräume nach: <a href="https://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_division_method">https://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_division_method</a></li>
 </ol>
-
-<h2 id="bodenschätze-ressourcen">Bodenschätze &amp; Ressourcen</h2>
-
-<p>TBD. Zum Nutzen und Verwendung der einzelnen Bodenschätze, siehe Abschnitt <a href="#heading=h.qtftxg6zrzre">Ressourcen</a>.</p>
-
+<h2 id="bodenschätze--ressourcen">Bodenschätze &amp; Ressourcen</h2>
+<p>TBD. Zum Nutzen und Verwendung der einzelnen Bodenschätze, siehe Abschnitt 
+  <a href="/#heading=h.qtftxg6zrzre">Ressourcen</a>.</p>
 <h2 id="roads">Roads</h2>
-
 <h2 id="weltzerstörung">Weltzerstörung</h2>
-
 <p>Die Welt soll durch das Herbeiführen von Rift Events strukturell geschwächt werden, bis sie mit einer weiteren Welt kollidiert. Die Spieler selbst bleiben bei solch einem Event relativ unbeschadet. Je nach Fraktion/Kult welcher die Spieler angehören wird es aber weitreichende Mali oder Boni geben. In der neu generierten Welt starten die Spieler wieder zunächst ohne Kult Zugehörigkeit.</p>
 </article>
-
+ 
       
-<div class="book-footer justify-between">
-  
-  <div>
-    
-    <a href="https://github.com/tfelix/bestia-docs/commit/8f6f22567d6a5e46a61f30b8cfce2e1c2a6588ec" title='Last modified May 3, 2020 by Thomas Felix' target="_blank" rel="noopener">
-      <i class="far fa-calendar" style="margin-right: 0.3em"></i> May 3, 2020
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/8f6f22567d6a5e46a61f30b8cfce2e1c2a6588ec" title='Last modified by Thomas Felix | May 3, 2020' target="_blank" rel="noopener">
+      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>May 3, 2020</span>
     </a>
   </div>
-  
-  
+
+
+
   <div>
-    <a href="https://github.com/tfelix/bestia-docs/edit/master/content/docs/server/world-generation.md" target="_blank" rel="noopener">
-      <i class="fas fa-edit" style="margin-right: 0.3em"></i> Edit this page
+    <a class="flex align-center" href="https://github.com/tfelix/bestia-docs/edit/master/content//docs/server/world-generation.md" target="_blank" rel="noopener">
+      <img src="/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
     </a>
   </div>
-  
+
 </div>
 
+ 
+        
+      </footer>
 
       
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
     </div>
 
     
-  
-
-  <aside class="book-toc level-3 fixed">
-    <nav id="TableOfContents">
-<ul>
-<li><a href="#world-generation">World Generation</a>
-<ul>
-<li><a href="#algorithmus">Algorithmus</a></li>
-<li><a href="#grundparameter">Grundparameter</a></li>
-<li><a href="#influencemaps">Influencemaps</a></li>
-<li><a href="#terrain-features-post-biom">Terrain Features (Post Biom)</a></li>
-<li><a href="#gewässer-und-flüsse">Gewässer und Flüsse</a></li>
-<li><a href="#temperaturkorrektur">Temperaturkorrektur</a></li>
-<li><a href="#biom-zuordnung">Biom Zuordnung</a></li>
-<li><a href="#biom-optimierung">Biom Optimierung</a></li>
-<li><a href="#tilemap-zuordnung">Tilemap Zuordnung</a></li>
-<li><a href="#biom-features">Biom Features</a>
-<ul>
-<li><a href="#eistundra">Eistundra</a></li>
-<li><a href="#wälder">Wälder</a></li>
-</ul></li>
-<li><a href="#cities">Cities</a></li>
-<li><a href="#bodenschätze-ressourcen">Bodenschätze &amp; Ressourcen</a></li>
-<li><a href="#roads">Roads</a></li>
-<li><a href="#weltzerstörung">Weltzerstörung</a></li>
-</ul></li>
-</ul>
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#world-generation">World Generation</a>
+      <ul>
+        <li><a href="#algorithmus">Algorithmus</a></li>
+        <li><a href="#grundparameter">Grundparameter</a></li>
+        <li><a href="#influencemaps">Influencemaps</a></li>
+        <li><a href="#terrain-features-post-biom">Terrain Features (Post Biom)</a></li>
+        <li><a href="#gewässer-und-flüsse">Gewässer und Flüsse</a></li>
+        <li><a href="#temperaturkorrektur">Temperaturkorrektur</a></li>
+        <li><a href="#biom-zuordnung">Biom Zuordnung</a></li>
+        <li><a href="#biom-optimierung">Biom Optimierung</a></li>
+        <li><a href="#tilemap-zuordnung">Tilemap Zuordnung</a></li>
+        <li><a href="#biom-features">Biom Features</a>
+          <ul>
+            <li><a href="#eistundra">Eistundra</a></li>
+            <li><a href="#wälder">Wälder</a></li>
+          </ul>
+        </li>
+        <li><a href="#cities">Cities</a></li>
+        <li><a href="#bodenschätze--ressourcen">Bodenschätze &amp; Ressourcen</a></li>
+        <li><a href="#roads">Roads</a></li>
+        <li><a href="#weltzerstörung">Weltzerstörung</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
-  </aside>
 
-
-
+ 
+    </aside>
+    
   </main>
 
-  
   
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+

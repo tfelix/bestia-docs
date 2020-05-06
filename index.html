@@ -2,22 +2,24 @@
 <html lang="en">
 
 <head>
-	<meta name="generator" content="Hugo 0.58.2" />
+	<meta name="generator" content="Hugo 0.70.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bestia - Developer Documentation | Bestia Game</title>
+<meta name="description" content="Bestia Developer Documentation  Explore vast lands in a procedural generated world, fight tough monsters, or join guilds in your quest for honor. But be prepared: the world might end sooner as you would expect.
+ Star Watch
+Congratulations! You just have found the Developer Documentation of the Bestia-Game. Here you find everything from gamedesign guidlines to engine architecture overview as well as the API documentation to access game resources.">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://docs.bestia-game.net/" />
 
-
-<link rel="stylesheet" href="/book.min.e455ec3d70e30769b65addd415b9219adfbaa8fb5c17db0ee83d73131879098d.css" integrity="sha256-5FXsPXDjB2m2Wt3UFbkhmt&#43;6qPtcF9sO6D1zExh5CY0=">
-
-
-<script defer src="/search.min.c2d8df9c61afa359fdd56ddc9a11d7e06bf1277afe10aecd89ccc8560c7556de.js" integrity="sha256-wtjfnGGvo1n91W3cmhHX4GvxJ3r&#43;EK7NiczIVgx1Vt4="></script>
-
-
-
+<title> | Bestia Game</title>
+<link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.33a33f5aa85ae88a745523e33a90fc180c0265506f82d14eccb0b602ba49aeea.css" integrity="sha256-M6M/Wqha6Ip0VSPjOpD8GAwCZVBvgtFOzLC2ArpJruo=">
+<script defer src="/en.search.min.0071d0c9b0c1dba29fb5a151f046353559f40cbb123dafeff6908e76a47ad645.js" integrity="sha256-AHHQybDB26KftaFR8EY1NVn0DLsSPa/v9pCOdqR61kU="></script>
 
-
+<script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <link rel="alternate" type="application/rss+xml" href="https://docs.bestia-game.net/index.xml" title="Bestia Game" />
 <!--
 Made with Book Theme
@@ -30,17 +32,18 @@ https://github.com/alex-shpak/hugo-book
 
 <body>
   <input type="checkbox" class="hidden" id="menu-control" />
-  <main class="flex container">
-
-    <aside class="book-menu fixed">
-      <nav>
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
 <h2 class="book-brand">
-  <a href="https://docs.bestia-game.net"><img src="/bestia-logo.svg" alt="Logo" /></a>
+  <a href="/"><img src="/bestia-logo.svg" alt="Logo" /><span>Bestia Game</span>
+  </a>
 </h2>
 
 
 <div class="book-search">
-  <input type="text" placeholder="Search" id="book-search-input" maxlength="64" readonly />
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
   <div class="book-search-spinner spinner hidden"></div>
   <ul id="book-search-results"></ul>
 </div>
@@ -49,52 +52,68 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-    
-  
-  
-  
-    
-    
-  
 
-  <style>
-  nav ul a[href="https\3a\2f\2f docs.bestia-game.net\2f "] {
-      color: #004ed0;
-  }
-  </style>
 
+
+
+
+
+  <ul>
+<li>
+  <a href="/docs/mechanics/"><strong>Game Design</strong></a>
 <ul>
-<li><a href="/docs/mechanics/">Game Design</a>
-
-<ul>
-<li><a href="/docs/mechanics/general/">General Mechanics</a></li>
-<li><a href="/docs/mechanics/master/">Bestia Master</a></li>
-<li><a href="/docs/mechanics/bestia/">Bestia</a></li>
-<li><a href="/docs/mechanics/environment/">Environment</a></li>
-<li><a href="/docs/mechanics/items/">Items</a></li>
-<li><a href="/docs/mechanics/resources/">Resources</a></li>
-<li><a href="/docs/mechanics/skills/">Skills</a></li>
-<li><a href="/docs/mechanics/statusvalues/">Status Values</a></li>
-<li><a href="/docs/mechanics/dev-resources/">Development Resources</a></li>
-</ul></li>
-<li><a href="/docs/client/">Client</a>
-
-<ul>
-<li><a href="/docs/client/entities/">Entities</a></li>
-</ul></li>
-<li><a href="/docs/server/">Server</a>
-
-<ul>
-<li><a href="/docs/server/architecture/">Architecture</a></li>
-<li><a href="/docs/server/ai/">Artificial Intelligence</a></li>
-<li><a href="/docs/server/battle/">Battle</a></li>
-<li><a href="/docs/server/communication/">Communication</a></li>
-<li><a href="/docs/server/quests/">Quests</a></li>
-<li><a href="/docs/server/scripting/">Scripting</a></li>
-<li><a href="/docs/server/world-generation/">World Generation</a></li>
-</ul></li>
-<li><a href="/docs/api/">REST API</a></li>
+<li>
+  <a href="/docs/mechanics/general/">General Mechanics</a></li>
+<li>
+  <a href="/docs/mechanics/master/">Bestia Master</a></li>
+<li>
+  <a href="/docs/mechanics/bestia/">Bestia</a></li>
+<li>
+  <a href="/docs/mechanics/environment/">Environment</a></li>
+<li>
+  <a href="/docs/mechanics/items/">Items</a></li>
+<li>
+  <a href="/docs/mechanics/resources/">Resources</a></li>
+<li>
+  <a href="/docs/mechanics/skills/">Skills</a></li>
+<li>
+  <a href="/docs/mechanics/statusvalues/">Status Values</a></li>
+<li>
+  <a href="/docs/mechanics/dev-resources/">Development Resources</a></li>
 </ul>
+</li>
+<li>
+  <a href="/docs/client/"><strong>Client</strong></a>
+<ul>
+<li>
+  <a href="/docs/client/entities/">Entities</a></li>
+</ul>
+</li>
+<li>
+  <a href="/docs/server/"><strong>Server</strong></a>
+<ul>
+<li>
+  <a href="/docs/server/architecture/">Architecture</a></li>
+<li>
+  <a href="/docs/server/ai/">Artificial Intelligence</a></li>
+<li>
+  <a href="/docs/server/battle/">Battle</a></li>
+<li>
+  <a href="/docs/server/communication/">Communication</a></li>
+<li>
+  <a href="/docs/server/quests/">Quests</a></li>
+<li>
+  <a href="/docs/server/scripting/">Scripting</a></li>
+<li>
+  <a href="/docs/server/world-generation/">World Generation</a></li>
+</ul>
+</li>
+<li>
+  <a href="/docs/api/"><strong>REST API</strong></a></li>
+</ul>
+
+
+
 
 
 
@@ -105,130 +124,163 @@ https://github.com/alex-shpak/hugo-book
 </nav>
 
 
-<script>
-(function() {
-  var menu = document.querySelector("aside.book-menu nav");
-  addEventListener("beforeunload", function(event) {
-    localStorage.setItem("menu.scrollTop", menu.scrollTop);
-  });
-  menu.scrollTop = localStorage.getItem("menu.scrollTop");
-})();
-</script>
 
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
     </aside>
 
     <div class="book-page">
-      <header class="flex align-center justify-between book-header">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
   <label for="menu-control">
-    <img src="/svg/menu.svg" alt="Menu" />
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
-  <strong>Bestia - Developer Documentation</strong>
-</header>
+
+  <strong></strong>
+
+  <label for="toc-control">
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#bestia-developer-documentation">Bestia Developer Documentation</a>
+      <ul>
+        <li><a href="#contributing">Contributing</a></li>
+        <li><a href="#project-repositories">Project Repositories</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
 
       
-<article class="markdown">
-
-<h1 id="bestia-developer-documentation">Bestia Developer Documentation</h1>
-
+      
+  <article class="markdown"><h1 id="bestia-developer-documentation">Bestia Developer Documentation</h1>
 <blockquote>
 <p>Explore vast lands in a procedural generated world, fight tough monsters, or join guilds in your quest for honor.
 But be prepared: the world might end sooner as you would expect.</p>
 </blockquote>
-
 <p><a class="github-button" href="https://github.com/tfelix/bestia-docs" data-icon="octicon-star" data-size="large"
 data-show-count="true" aria-label="Star tfelix/bestia-docs on GitHub">Star</a>
 <a class="github-button" href="https://github.com/tfelix/bestia-docs/subscription" data-icon="octicon-eye"
 data-size="large" data-show-count="true" aria-label="Watch tfelix/bestia-docs on GitHub">Watch</a></p>
-
-<h2 id="about">About</h2>
-
 <p><strong>Congratulations!</strong> You just have found the Developer Documentation of the Bestia-Game. Here you find everything from
 gamedesign guidlines to engine architecture overview as well as the API documentation to access game resources.</p>
-
-<p>These infos should help you to get kickstarted and join the development. As Bestia is a community driven, open game each
-contribution is welcome. With the provided guidelines enthusiasts should very easily be able to create contributions
-from artworks to scripts.</p>
-
 <blockquote>
 <p><strong>The game currently transforms into a stand-alone client which is currently not available for testing.</strong></p>
 </blockquote>
-
 <h2 id="contributing">Contributing</h2>
-
 <p>Contributions to both the game design and the game itself (the client and the server) are very welcome!</p>
-
-<p>You may find a little <code>Edit this page</code> link at the bottom of each page. If you want to change some game design
-aspects feel free to give it a try!</p>
-
-<p>Inside this game design document you possibly will find certain <strong>Contributing</strong> sections which will give you some
-guidelines to follow in order to help to get you changes into the game quickly.</p>
-
-<p><strong><a href="about-manifest.md">Read the Bestia Manifest first</a></strong> and align your contributions and changes under these central
-game guidelines.</p>
-
+<p>The infos found in this document should help you to get kickstarted and join the development. As Bestia is a community driven, open game each contribution is welcome. With the provided guidelines enthusiasts should very easily be able to create contributions from artworks to scripts.</p>
+<p>You may find a little <code>Edit this page</code> link at the bottom of each page. If you want to change some game design aspects feel free to give it a try!</p>
+<p>Inside this game design document you possibly will find certain <strong>Contributing</strong> sections which will give you some guidelines to follow in order to help to get you changes into the game quickly.</p>
+<p><strong>
+  <a href="/docs/mechanics/">Read the Bestia Manifest first</a></strong> and align your contributions and changes under these central game guidelines.</p>
 <h2 id="project-repositories">Project Repositories</h2>
-
 <p>Otherwise feel free to check out the three project repositories on Github (and maybe give them a star or follow them)</p>
-
 <ul>
-<li><a href="https://github.com/tfelix/bestia-docs">Bestia Developer Documentation</a> <i class="fab fa-github"></i></li>
-<li><a href="https://github.com/tfelix/bestia-client">Bestia Game Client</a> <i class="fab fa-github"></i></li>
-<li><a href="https://github.com/tfelix/bestia-behemoth">Bestia Behemoth Server</a> <i class="fab fa-github"></i></li>
+<li>
+  <a href="https://github.com/tfelix/bestia-docs">Bestia Developer Documentation</a> <i class="fab fa-github"></i></li>
+<li>
+  <a href="https://github.com/tfelix/bestia-client">Bestia Game Client</a> <i class="fab fa-github"></i></li>
+<li>
+  <a href="https://github.com/tfelix/bestia-behemoth">Bestia Behemoth Server</a> <i class="fab fa-github"></i></li>
 </ul>
-
 <blockquote>
 <p>You can use the <code>Edit</code> link on the bottom right of every page to directly edit this document and create a Pull Request
 on Github.</p>
 </blockquote>
-
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 </article>
-
+ 
       
-<div class="book-footer justify-between">
-  
-  <div>
-    
-    <a href="https://github.com/tfelix/bestia-docs/commit/9b983781a1736f4fb6cc4c123f3b27841f7b594e" title='Last modified Apr 29, 2020 by Thomas Felix' target="_blank" rel="noopener">
-      <i class="far fa-calendar" style="margin-right: 0.3em"></i> Apr 29, 2020
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/96c1eb6c182448d409e165b495eba052e16bc9ad" title='Last modified by Thomas Felix | May 6, 2020' target="_blank" rel="noopener">
+      <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>May 6, 2020</span>
     </a>
   </div>
-  
-  
+
+
+
   <div>
-    <a href="https://github.com/tfelix/bestia-docs/edit/master/content/_index.md" target="_blank" rel="noopener">
-      <i class="fas fa-edit" style="margin-right: 0.3em"></i> Edit this page
+    <a class="flex align-center" href="https://github.com/tfelix/bestia-docs/edit/master/content//_index.md" target="_blank" rel="noopener">
+      <img src="/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
     </a>
   </div>
-  
+
 </div>
 
+ 
+        
+      </footer>
 
       
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
     </div>
 
     
-  
-
-  <aside class="book-toc level-3 fixed">
-    <nav id="TableOfContents">
-<ul>
-<li><a href="#bestia-developer-documentation">Bestia Developer Documentation</a>
-<ul>
-<li><a href="#about">About</a></li>
-<li><a href="#contributing">Contributing</a></li>
-<li><a href="#project-repositories">Project Repositories</a></li>
-</ul></li>
-</ul>
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#bestia-developer-documentation">Bestia Developer Documentation</a>
+      <ul>
+        <li><a href="#contributing">Contributing</a></li>
+        <li><a href="#project-repositories">Project Repositories</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
-  </aside>
 
-
-
+ 
+    </aside>
+    
   </main>
 
-  
   
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
