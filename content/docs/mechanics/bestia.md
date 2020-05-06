@@ -9,7 +9,16 @@ materialized and enter the respective worlds.
 
 ## Catching
 
-TODO
+In order to catch Bestia you need Magic Bestia Traps. This items are manufactured via the apropriate crafting skill. Bestias catch chance can be increased by reducing its HP. If the HP is 1% the catch chance is increased by 30%. It can also changed by applying buffs or debuffs.
+
+| Trap        | Bestia Lv. 1 - 20 | 21 - 40 | 41-60 | 61-100 |       100+        |
+| :---------- | :---------------: | :-----: | :---: | :----: | :---------------: |
+| Bestia Trap |        60%        |   20%   | -20%  |  -60%  | -60% - (LV - 100) |
+| Super Trap  |       100%        |   60%   |  20%  |  -20%  | -20% - (LV - 100) |
+| Mega Trap   |       140%        |  100%   |  60%  |  20%   | 20% - (LV - 100)  |
+| Master Trap |       180%        |  140%   | 100%  |  60%   | 60% - (LV - 100)  |
+
+You can also increase the chance of catching by {{< katex >}}\frac{WILL}{50}{{< /katex >}}.
 
 ## Breeding
 

@@ -1,3 +1,7 @@
+---
+bookCollapseSection: true
+weight: 20
+---
 # Bestia Client
 
 <a class="github-button" href="https://github.com/tfelix/bestia-client" data-icon="octicon-star" data-size="large"

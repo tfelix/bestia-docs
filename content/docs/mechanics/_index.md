@@ -1,6 +1,6 @@
 ---
 weight: 1
-title: Game Design
+bookCollapseSection: true
 ---
 
 # Game Design
@@ -17,7 +17,6 @@ This document describes the core thoughts and principals under which all game de
 and challenged.
 
 > It is best practice to stick as close as possible to the design principles described in the next section: **Core Concepts**.
-
 
 ## Consistent Fantasy Simulation
 

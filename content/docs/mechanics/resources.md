@@ -34,50 +34,58 @@ The following base types of resources exist in the game.
 
 | Typ                      | Occurrence                 | Usage                                  |
 | ------------------------ | -------------------------- | -------------------------------------- |
-| Ores, Minerals, Crystals | Mountains, Caves           | Raffinery, Alchemy, Magic, Blacksmiths |
+| Ores, Minerals, Crystals | Mountains, Sea, Caves      | Raffinery, Alchemy, Magic, Blacksmiths |
 | Mana                     | World                      | Magical Uses                           |
 | Herbs                    | World, especially Forrests | Magic Uses & Alchemy                   |
 | Wood                     | Forrests                   | Material                               |
 | Stone                    | Mountains                  | Material                               |
-| Salts                    | Mountains, Sea             | Material                               |
 
 ## Resource List
 
-| Name                 | Type  | Description |
-| -------------------- | ----- | ----------- |
-| Iron                 | Metal |             |
-| Steel                | Metal |             |
-| Silver               | Metal |             |
-| Gold                 | Metal |             |
-| Platin               | Metal |             |
-| Copper               | Metal |             |
-| Mercury              | Metal |             |
-| Blue Mana Christal   | Salt  |             |
-| Yellow Mana Christal | Salt  |             |
-| Red Mana Christal    | Salt  |             |
-| NaCl                 | Salt  |             |
+| Name                 | Type      | Description                    |
+| -------------------- | --------- | ------------------------------ |
+| Iron                 | Metal     |                                |
+| Steel                | Metal     |                                |
+| Silver               | Metal     |                                |
+| Gold                 | Metal     |                                |
+| Platin               | Metal     |                                |
+| Copper               | Metal     |                                |
+| Mercury              | Metal     |                                |
+| Blue Mana Christal   | Mana      | Used for magic artefacts       |
+| Yellow Mana Christal | Mana      | Used for magic artefacts       |
+| Red Mana Christal    | Mana      | Used for magic artefacts       |
+| Salt                 | Mineral   |                                |
+| Wood                 | Wood      | Standard bulding material      |
+| Stone                | Mountains | Standard building material     |
+| Marble               | Mountains | High quality building material |
+| Slate                | Mountains | Standard building material     |
 
 ## Item Recycling
 
 For each item is a list of base resources which the item is roughly based upon (this list is also used when forging or
 creating the item). When an attempt to recycle the item there is a chance that the item is destroyed and the resources are lost.
+Some items for example
 
 The base chance for item recylcing is:
 
-| Item Lv. | Base Resource Reclaim |
-| -------- | --------------------- |
-| 1 - 20   | 65%                   |
-| 21 - 60  | 45%                   |
-| > 61     | 25%                   |
+| Item Lv. | Successful Recycle Chance |
+| -------- | ------------------------- |
+| 1 - 20   | 65%                       |
+| 21 - 60  | 45%                       |
+| > 61     | 25%                       |
 
-> The chance can be altered by players INT (slightly) and DEX and also by the apropriate skill.
+The chance can be altered by players INT (slightly) and DEX and also by the apropriate skill:
+
+{{< katex >}}chance = chance_{base} + \frac{INT}{20} + \frac{DEX}{10} + chance_{skill}{{< /katex >}}
 
 If successfull performed a recycling attempt the amount of captured resources is determined:
 
 | Item Lv. | Base Resource Reclaim |
 | -------- | --------------------- |
-| 1 - 20   | 60%                   |
-| 21 - 60  | 40%                   |
-| > 61     | 20%                   |
+| 1 - 20   | 80%                   |
+| 21 - 60  | 60%                   |
+| > 61     | 40%                   |
 
-> This is the base chance which is altered by the [Scavenger](/mechanics/skills/#scavenger) skill as well as INT (slightly) and DEX.
+This is the base chance which is altered by the [Scavenger](/mechanics/skills/#scavenger) skill as well as INT (slightly) and DEX.
+
+{{< katex >}}chance = chance_{base} + \frac{INT}{40} + \frac{DEX}{20} + chance_{skill}{{< /katex >}}

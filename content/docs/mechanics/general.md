@@ -147,11 +147,11 @@ Like the rest of the game this should be solved by an ingame system. There shoul
 
 The fee is defined by:
 
-{{< katex >}}
+{{< katex display >}}
    price =  0.01g \cdot km \cdot m_{kg}
 {{< /katex >}}
 
-{{< katex >}}
+{{< katex display >}}
    deliver_{time} =  8h + km / 10
 {{< /katex >}}
 
@@ -200,7 +200,7 @@ The algorithm for the carthography is:
 3. When near one of such a location (5m) the player is given a moving compass graphic. The speed of moving needle and the
    area to hit via button press is calculated based on `d`.
 
-# The Cults
+## The Cults
 
 In each Bestia World there are 2-3 cults to which the Bestia summoners can belong. When creating the world, the existing cults are chosen randomly. At least one cult should aim for the destruction of the world, the other should prevent it. Optionally there are some neutral cults that pursue their own goals which do not deal with the destruction of the world. These cults should not exist in every world iteration.
 
@@ -210,26 +210,26 @@ Players can invest into their cults citadelle. Only one citadel can exist at the
 
 Players should be able to change cults. However, this will be sanctioned with a difficult task and will be associated with various disadvantages.
 
-## Citadels and Temples
+### Citadels and Temples
 
 The order can research powerful spells and devices which the players can then learn or access to accomplish their goal.
 
-## The Chaos
+### The Chaos
 
 The Chos tries to inflict destruction and to speed up the worlds downfall, as they believe the mana influx is the fate every world must face finally. They try to mass the amount of mana, open rifts in remote legions to form the world after their twisted image until it goes down in flames.
 
-## The Order
+### The Order
 
 This cult is the preserving one. They belive in stability and try to stop the ongoing destruction of the worlds. Their ultimate goal is to bring an end to the influx of mana. Thus they research a lot of spells to remove and control the mana influx and rifts.
 
-## Cult Advantages
+### Cult Advantages
 
 It would be conceivable that special land areas fall under the influence of a certain cult. This would attract certain
 Bestias that are friendly to the cult members. Special resources are generated or more Mana rifts are opened and the
 Mana within the country increases there. Furthermore, the prevailing faction can be rewarded with a global bonus.
 Additional EXP bonuses would be conceivable.
 
-# Archivements
+## Archivements
 
 If a player manages to archive a certain goal then he will be awarded an archivement. These archivements are listed ingame
 so the player can view them. It is also possible for other players to access the players archivements.
@@ -249,15 +249,18 @@ This list is far from completed! New ideas and suggestions are welcomed. Please 
 | Sheriff                | {{< archivement false true >}} |  Killing 50 players with `Rogue` debuf. |
 | Marshall               | {{< archivement false true >}} | Killing 100 players with `Rogue` debuf. |
 
-# Trading
-
-Trading is an important mechanic and allows player to exchange goods as the whole Bestia economy is player driven. Players can create auction hauses which can be used
-in order to perform trades while they are offline themselves.
-
 ## Auction House
+
+Trading is an important mechanic and allows player to exchange goods as the whole Bestia economy is player driven. Players can create auction hauses which can be used in order to perform trades while they are offline themselves.
 
 If an auction house was build by a player or a guild no other auction house can be build in a 300m radius. The player can decide the auction fee between 1% - 10% for new auctions. This fee is collected in the auction house and must be collected by the owners. Players can then use the auction house to sell their items by listing them. Either they set them up for a fixed price of do an auction. The decide between 1 (80% fee), 2 (100% fee), 3 (120% fee) or 5 (140% fee) days length for the auction.
 
 Auction houses of different owners can be linked in order to display the shared auctions. If a player wins an auction the item is delivered via postal service to the player if he decides to pay the delivery fee. The item is then send via the regular postal service from the linked auction house.
 
 If the player does not pay the fee the item is withheld for him up to 10 days until it is returned to his owner (who can keep the price payed for the item from the player who did not collect his item).
+
+## Currency
+
+All the ingame currency is made from gold found by the players. Yes you have heard it right the players must harvest gold deposites in order to make their own money. Gold can directly be turned into gold coins.
+
+In order to start the economy the NPC have 10% of the available world wealth in gold. This wealth is re-distributed equally between every NPC every night. This mechanic is one of the few that have no underlying real world logic.

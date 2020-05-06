@@ -120,7 +120,7 @@ speed or attack speed of an entity.
 ## Individual Values
 
 The individual value **IVs** are generated when the Bestia spawns and makes this somewhat random. Its possible to find
-better or worst Bestia. By [breeding Bestia](/docs/mechanics/bestia/breeding/) this IVs are subject to manipulation by
+better or worst Bestia. By [breeding Bestia](/docs/mechanics/bestia#breeding) this IVs are subject to manipulation by
 the player and it is possible to make stronger Bestia in a controlled way.
 
 ## Base Values

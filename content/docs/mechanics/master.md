@@ -11,10 +11,6 @@ influence of mana and are able to communicate with the beings that emerge from t
 The attachment to mana also explains why Bestia masters were able to survive the destruction of their world relatively
 unscathed and to pass on to the next world.
 
-> Bestia Master enter the current world from another, not further mentioned dimension. During each incarnation
-> a name of this world is generated and in each cycle all Bestia Master entering the game will have this world name
-> persisted in their account data to keep a record.
-
 ## Skill Mastery
 
 The bestia master of a player can learn a set of skills. Since these skills are bound to the account they are called
