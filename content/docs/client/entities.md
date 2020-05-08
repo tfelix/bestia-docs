@@ -1,6 +1,6 @@
 # Entities
 
-The Bestia server entities are synched to the client also represented there also under the name `Entities`. An entity is described by a set of components which is attached to it and by a certain kind of logic synched between the client and the server. Not every component is synched though. This can depend on various factors for example party membership (ConditionComponent is only synched between members of the same party), or ownership or view distance (mostly only entities in view distance are synched).
+The Bestia server entities are synced to the client also represented there also under the name `Entities`. An entity is described by a set of components which is attached to it and by a certain kind of logic synched between the client and the server. Not every component is synched though. This can depend on various factors for example party membership (ConditionComponent is only synched between members of the same party), or ownership or view distance (mostly only entities in view distance are synched).
 
 ## Interaction Behavior
 
@@ -12,7 +12,7 @@ When the player wants to interact with an entity we must provide a way to fast a
 
 ### List of Interactions
 
-* Attack<sup>1<sup>
+* Attack<sup>1</sup>
 * Talk
 * Read
 * Use
@@ -21,7 +21,7 @@ When the player wants to interact with an entity we must provide a way to fast a
 * Construct
 * Gather Resources
 
-<sup>1<sup>: Attack is always possible for entites as each entity should be attackable in the game.
+<sup>1</sup>: Attack is always possible for entites as each entity should be attackable in the game.
 
 ### Grouping of Entities
 

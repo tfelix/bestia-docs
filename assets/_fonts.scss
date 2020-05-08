@@ -8,13 +8,12 @@
        url('fonts/ProzaLibre-Regular.ttf') /* Chrome 26+, Opera 23+, Firefox 39+ */
 }
 
-/* proza-libre - latin */
 @font-face {
-  font-family: 'OpenSans';
+  font-family: 'Open Sans';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: local('OpenSans'), local('OpenSans-Regular'),
+  src: local('Open Sans Regular'), local('OpenSans-Regular'),
        url('fonts/OpenSans-Regular.ttf') /* Chrome 26+, Opera 23+, Firefox 39+ */
 }
 
@@ -23,7 +22,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 body {
-  font-family: 'OpenSans', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 code {
