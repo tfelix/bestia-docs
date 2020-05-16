@@ -18,7 +18,6 @@ headless = true
   - [Architecture]({{< relref "/docs/server/architecture" >}})
   - [Artificial Intelligence]({{< relref "/docs/server/ai" >}})
   - [Battle]({{< relref "/docs/server/battle" >}})
-  - [Communication]({{< relref "/docs/server/communication" >}})
   - [Quests]({{< relref "/docs/server/quests" >}})
   - [Scripting]({{< relref "/docs/server/scripting" >}})
   - [World Generation]({{< relref "/docs/server/world-generation" >}})
