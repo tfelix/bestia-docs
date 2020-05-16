@@ -4,19 +4,19 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="World Generation Bestia uses a specialized library called worldgen for world creation. It is a clusterable generator which is cabable of dividing the world creation workload onto multiple, different machines. With this framework it should be possible to create million of square kilometers without hitting any memory limit on the servers.
-Algorithmus  Grundparameter Erstellung von Influencemaps Wasserspiegel festlegung Erzeuge die Wasser Maske Erzeuge von Gewässern und Flüsse Temperaturkorrektur Biom Zuordnung vornehmen Terrain Features verteilen und erzeugen Biom Optimierung Tilemap Erzeugung Biom Features Erzeugung der Städtekandidaten Erzeugung und Verteilung von Bodenschätzen  Grundparameter The following base parameters are used to generate the map:">
+<meta name="description" content="World Generation Bestia integrates a specialized library called WorldGen for world creation. It is a clusterable generator which is cabable of dividing the world creation workload onto multiple, different machines. With this framework it should be possible to create million of square kilometers without hitting any memory limit on the servers during the creation process.
+In general it works by creating piplines which are then used to create and transform noise maps.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
-<meta property="og:description" content="World Generation Bestia uses a specialized library called worldgen for world creation. It is a clusterable generator which is cabable of dividing the world creation workload onto multiple, different machines. With this framework it should be possible to create million of square kilometers without hitting any memory limit on the servers.
-Algorithmus  Grundparameter Erstellung von Influencemaps Wasserspiegel festlegung Erzeuge die Wasser Maske Erzeuge von Gewässern und Flüsse Temperaturkorrektur Biom Zuordnung vornehmen Terrain Features verteilen und erzeugen Biom Optimierung Tilemap Erzeugung Biom Features Erzeugung der Städtekandidaten Erzeugung und Verteilung von Bodenschätzen  Grundparameter The following base parameters are used to generate the map:" />
+<meta property="og:description" content="World Generation Bestia integrates a specialized library called WorldGen for world creation. It is a clusterable generator which is cabable of dividing the world creation workload onto multiple, different machines. With this framework it should be possible to create million of square kilometers without hitting any memory limit on the servers during the creation process.
+In general it works by creating piplines which are then used to create and transform noise maps." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.bestia-game.net/docs/server/world-generation/" />
-<meta property="article:modified_time" content="2020-05-04T00:01:20+02:00" />
+<meta property="article:modified_time" content="2020-05-16T18:31:02+02:00" />
 <title>World Generation | Bestia Game</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.a6e2c98d287fde1ee03cdb4322ae00297d9842c96ed7d383b48098da94e04095.css" integrity="sha256-puLJjSh/3h7gPNtDIq4AKX2YQslu19ODtICY2pTgQJU=">
-<script defer src="/en.search.min.685c56b85195a6149f987b2ac3736e8ca557399535b3007a0cf0b9e1d4164e5a.js" integrity="sha256-aFxWuFGVphSfmHsqw3NujKVXOZU1swB6DPC54dQWTlo="></script>
+<script defer src="/en.search.min.31a07d5bab048f53bba62ca9f718729ec16bae89e48b8d75ec3124074e3ac0d9.js" integrity="sha256-MaB9W6sEj1O7piyp9xhynsFrronki4117DEkB046wNk="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
@@ -97,8 +97,6 @@ https://github.com/alex-shpak/hugo-book
 <li>
   <a href="/docs/server/battle/">Battle</a></li>
 <li>
-  <a href="/docs/server/communication/">Communication</a></li>
-<li>
   <a href="/docs/server/quests/">Quests</a></li>
 <li>
   <a href="/docs/server/scripting/">Scripting</a></li>
@@ -154,24 +152,25 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#world-generation">World Generation</a>
       <ul>
-        <li><a href="#algorithmus">Algorithmus</a></li>
-        <li><a href="#grundparameter">Grundparameter</a></li>
-        <li><a href="#influencemaps">Influencemaps</a></li>
-        <li><a href="#terrain-features-post-biom">Terrain Features (Post Biom)</a></li>
-        <li><a href="#gewässer-und-flüsse">Gewässer und Flüsse</a></li>
-        <li><a href="#temperaturkorrektur">Temperaturkorrektur</a></li>
-        <li><a href="#biom-zuordnung">Biom Zuordnung</a></li>
-        <li><a href="#biom-optimierung">Biom Optimierung</a></li>
-        <li><a href="#tilemap-zuordnung">Tilemap Zuordnung</a></li>
-        <li><a href="#biom-features">Biom Features</a>
+        <li><a href="#world-generation-algorithm">World Generation Algorithm</a></li>
+        <li><a href="#base-parameter">Base Parameter</a></li>
+        <li><a href="#noise-maps">Noise Maps</a>
           <ul>
-            <li><a href="#eistundra">Eistundra</a></li>
-            <li><a href="#wälder">Wälder</a></li>
+            <li><a href="#height-hahahugoshortcode-s2-hbhb">Height HAHAHUGOSHORTCODE-s2-HBHB</a></li>
+            <li><a href="#humidity-m_hum">Humidity $M_{hum}$</a></li>
+            <li><a href="#temperature-m_t">Temperature $M_{t}$</a></li>
+            <li><a href="#mana-m_m">Mana $M_{m}$</a></li>
+            <li><a href="#population-m_p">Population $M_{p}$</a></li>
           </ul>
         </li>
-        <li><a href="#cities">Cities</a></li>
-        <li><a href="#bodenschätze--ressourcen">Bodenschätze &amp; Ressourcen</a></li>
-        <li><a href="#roads">Roads</a></li>
+        <li><a href="#sealevel">Sealevel</a></li>
+        <li><a href="#creating-rivers-and-lakes">Creating Rivers and Lakes</a></li>
+        <li><a href="#erosion-simulation">Erosion Simulation</a></li>
+        <li><a href="#biome-setup">Biome Setup</a></li>
+        <li><a href="#terrain-features">Terrain Features</a></li>
+        <li><a href="#settlement-creation">Settlement Creation</a></li>
+        <li><a href="#resource-distribution">Resource Distribution</a></li>
+        <li><a href="#navigation-map-creation">Navigation Map Creation</a></li>
         <li><a href="#weltzerstörung">Weltzerstörung</a></li>
       </ul>
     </li>
@@ -187,113 +186,218 @@ https://github.com/alex-shpak/hugo-book
       
       
   <article class="markdown"><h1 id="world-generation">World Generation</h1>
-<p>Bestia uses a specialized library called 
-  <a href="https://github.com/tfelix/worldgen">worldgen</a> for world creation. It is a
-clusterable generator which is cabable of dividing the world creation workload onto multiple, different machines.
-With this framework it should be possible to create million of square kilometers without hitting any memory limit
-on the servers.</p>
-<h2 id="algorithmus">Algorithmus</h2>
+<p>Bestia integrates a specialized library called <strong>WorldGen</strong> for world creation. It is a clusterable generator which is cabable of dividing the world creation workload onto multiple, different machines. With this framework it should be possible to create million of square kilometers without hitting any memory limit on the servers during the creation process.</p>
+<p>In general it works by creating piplines which are then used to create and transform noise maps. After the noise was modified and generated the map data is created and saved to the Bestia database in chunks via the <strong>Voxel</strong> module.</p>
+<h2 id="world-generation-algorithm">World Generation Algorithm</h2>
+<p>There is basically a pipeline in order to generate the Bestia map, these steps are listed here and described below:</p>
 <ol>
-<li>Grundparameter</li>
-<li>Erstellung von Influencemaps</li>
-<li>Wasserspiegel festlegung</li>
-<li>Erzeuge die Wasser Maske</li>
-<li>Erzeuge von Gewässern und Flüsse</li>
-<li>Temperaturkorrektur</li>
-<li>Biom Zuordnung vornehmen</li>
-<li>Terrain Features verteilen und erzeugen</li>
-<li>Biom Optimierung</li>
-<li>Tilemap Erzeugung</li>
-<li>Biom Features</li>
-<li>Erzeugung der Städtekandidaten</li>
-<li>Erzeugung und Verteilung von Bodenschätzen</li>
+<li>Setup of Base Parameters</li>
+<li>Creating of noise maps based on base parameters
+<ol>
+<li>Height Map</li>
+<li>Humidity Map</li>
+<li>Temperature Map</li>
+<li>Mana Map</li>
+<li>Population Map</li>
 </ol>
-<h2 id="grundparameter">Grundparameter</h2>
+</li>
+<li>Sealevel</li>
+<li>Creating Rivers and Lakes</li>
+<li>Erosion Simulation</li>
+<li>Biome Setup</li>
+<li>Terrain Features</li>
+<li>Settlement Creation</li>
+<li>Resource Distribution</li>
+<li>Navigation Map Creation</li>
+</ol>
+<h2 id="base-parameter">Base Parameter</h2>
 <p>The following base parameters are used to generate the map:</p>
 <ul>
-<li>Gesamtpopulation P</li>
-<li>Weltgröße S (Abhängig von der Spielerzahl)</li>
-<li>Wassermasse/Landmasse WM (20-40% Wasser)</li>
-<li>Anzahl von Städten/Siedlungen Sn</li>
+<li>Total Population 
+<link rel="stylesheet" href="/katex/katex.min.css" />
+<script defer src="/katex/katex.min.js"></script>
+<script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body);"></script><span>
+  \(P\)
+</span>
+</li>
+<li>World Size $W$ (Depends on expected player count)</li>
+<li>Count of Settlements $C$</li>
+<li>Seed Value $S$</li>
+<li>Maximum Terrain Height <span>
+  \(h\)
+</span>
+</li>
+<li>Seelevel (Normalnull) $N$</li>
 </ul>
-<p>The base parameter are generated randomly based on the expected active player count. They are persisted in the database.</p>
-<p>$x = \frac{1}{3}$</p>
-<h2 id="influencemaps">Influencemaps</h2>
-<p>Folgende Influencemaps werden in der Größe der Weltkarte erstellt und über den 
-  <a href="https://de.wikipedia.org/wiki/Simplex_Noise">SimplexNoise </a>Algorithmus mit Rauschen gefüllt.</p>
-<ol start="14">
-<li>
-<p>Höhenkarte: mH</p>
-</li>
-<li>
-<p>Temperaturkarte: mT</p>
-</li>
-<li>
-<p>Niederschlagskarte: mN</p>
-</li>
-<li>
-<p>Magiekarte: mM</p>
-</li>
-<li>
-<p>Populationsdichte: mP</p>
-</li>
-</ol>
-<h2 id="terrain-features-post-biom">Terrain Features (Post Biom)</h2>
-<p>Bestimmte, extravagante Features, die sich vor allem auf die Höhenstufen der Map niederschlagen werden hier zufällig verteilt. Die Wahrscheinlichkeitsverteilungen der Terrain Features sind häufig an bestimmte Biome gekoppelt. Da diese bereits bestimmt wurden, kann hier eine Prüfung auf bestimmte Features stattfinden. Bestimmte Feature sind:</p>
+<p>The base parameter are generated randomly based on the expected active player count. They are persisted in the database together with some additional map parameters like creation date or name of the world (to keep some kind of history record).</p>
+<h2 id="noise-maps">Noise Maps</h2>
+<p>The following noise maps are created by the help of 
+  <a href="https://de.wikipedia.org/wiki/Simplex_Noise">OpenSimplexNoise</a> and saved in a shared data storage temporarly until world map generation is finished. In order to save memory its advisable to delete this maps as soon as possible.</p>
+<p>Depending on the case the resolution of the heightmaps might be differnt in order to be as memory efficient as possible.</p>
+<h3 id="height-hahahugoshortcode-s2-hbhb">Height <span>
+  \(M_h\)
+</span>
+</h3>
+<p>The heightmap consists of multiple high and low resolution maps which are added and then normalized to a value between 0-1. The lower resolution should have a frequency of about 2-5m. The highest resolution should have a frequency of roughly 4-5km, to give a sense of a &ldquo;big&rdquo; world. Consider maybe 2-3 resolutions in between which a decrease in amplitude.</p>
+<p>To calculate the final hight multiply this hight with the maximum map height.</p>
+<span>
+  \[height = M_{h} \cdot h\]
+</span>
+
+<blockquote>
+<p>Heightmap resolution is 1m.</p>
+</blockquote>
+<h3 id="humidity-m_hum">Humidity $M_{hum}$</h3>
+<p>This maps give the annual rainfall between 0-1. The more the humidity is the more snow or rain fall is to be expected (depending on the temperature).</p>
+<p>The humidity map is saved in a reduced resolution for later reference for the dynamic environment simulation.</p>
+<p>It slightly reduces the humidity based on the height of the terrain like so:</p>
+<span>
+  \[hum = M_{hum} - 0.4 \cdot M_h\]
+</span>
+
+<blockquote>
+<p>Humidity resolution 100m.</p>
+</blockquote>
+<h3 id="temperature-m_t">Temperature $M_{t}$</h3>
+<p>We assume a desired temperature range of -40 to 40 degree. This is shifted of about +/- 10 degrees randomly upon world creation.</p>
+<p>As our temperature map initially holds values between 0-1 the conversion is done like:</p>
+<span>
+  \[t = M_t \cdot 80 - 40\]
+</span>
+
+<p>The temperature is just created as the other maps but then a gradient is added which will increase the temperature towards the middle (equator) of the map by 130% and drop down to top and bottom to 30% of the original value. An example gradient is shown below:</p>
+<p>
+  <img src="/static/gradient.png" alt="Example temperature gradient" /></p>
+<p>It reduces the temperature the higher the hightmap value is down to a value of 10% by the formula:</p>
+<span>
+  \[t = M_t - 0.9 \cdot M_h\]
+</span>
+
+<blockquote>
+<p>Humidity resolution 100m.</p>
+</blockquote>
+<h3 id="mana-m_m">Mana $M_{m}$</h3>
+<p>The mana distribution is a normal noise map without any changes.</p>
+<blockquote>
+<p>Mana resolution 10m.</p>
+</blockquote>
+<h3 id="population-m_p">Population $M_{p}$</h3>
+<p>The mana distribution is a normal noise map without any changes. But is later heavily modified by influence maps.</p>
+<blockquote>
+<p>Population resolution 100m.</p>
+</blockquote>
+<h2 id="sealevel">Sealevel</h2>
+<p>The sealevel should chosen that oceans vs landmass ratio is about 20:80. This could be calculated but for now we just assume a fixed height value. Every terrain below is covered by water, the rest is landmass.</p>
+<h2 id="creating-rivers-and-lakes">Creating Rivers and Lakes</h2>
+<p>Water always flows downhill. In order to simulate the water flow random sources of water are placed at elevated points in the map and then the water flow is simulated down the slope of the terrain.</p>
+<p>In order to find the coordiante of a water sources on a map, the probability P of a coordiante is given by:</p>
 <ul>
-<li>Seen</li>
-<li>Canyons</li>
-<li>Vulkane</li>
-<li>Gebirge</li>
+<li>P increases at heights above NN max is 0.6 and then decreases above</li>
+<li>P increases with humidity above 0.5 - 1.0 from 1.0 to 3.0</li>
 </ul>
-<h2 id="gewässer-und-flüsse">Gewässer und Flüsse</h2>
-<p>Dazu werden zufällig Wasser-Seeds verteilt und ein Flood Fill bis zur Küstenlinie durchgeführt. Der Wasserspiegel wird so lange angehoben, bis der Land/Wasser Parameter erfüllt ist. Sollte dies aus einem Grund nicht möglich sein. Gehe zu 1.</p>
-<h2 id="temperaturkorrektur">Temperaturkorrektur</h2>
-<p>Temperaturgradient auf mT aufbringen. Versehe die Temperaturkarte mit einem Gradienten um am Aquator eine höhere Temperatur zu erhalten wie an den Polen (Nord, Süd).</p>
-<h2 id="biom-zuordnung">Biom Zuordnung</h2>
-<p>TBD</p>
-<h2 id="biom-optimierung">Biom Optimierung</h2>
-<p>Nachdem die Biome über die Zuweisungsregeln hart zugewiesen wurden, müssen mehrere Plausibilitätsfilter verwendet werden um eine saubere Erzeugung zu gewährleisten.</p>
-<p>TBD: Welche Filter müssen hier angewendet werden? Was kann denn falsch erzeugt werden?</p>
-<p>Erzeuge an den Biom Grenzen entsprechende Übergangsbiome.</p>
-<h2 id="tilemap-zuordnung">Tilemap Zuordnung</h2>
-<p>Jedes Biome besitzt ein gewisses Set an Tiles. Diese stammen aus einem oder mehreren Tilemaps (also eine Menge von GIDs). Zusätzlich existiert eine Reihe von weiteren Entities welche nach einer gewissen Wahrscheinlichkeit verteilt werden können (Bäume z.B.). Diese werden aber nicht immer einfach zufällig auf Koordianten platziert. Vielmehr kann es auch hier einen Top-Down Ansatz geben, der gewährleistet, dass eine ausreichend gute Verteilung der Features generiert wird.</p>
-<h2 id="biom-features">Biom Features</h2>
-<p>Erzeuge entsprechende Strukturen innerhalb der Biome (siehe Tilemap Erzeugung). dazu gehört das Anlegen von Entities für Bäume, Pflanzen, hohes Gras, Steine, Felsen etc. Für jedes dieser Features existiert pro Biom eine oder mehrere Alternativen. Es gibt weiterhin eine Wahrscheinlichkeitsfunktion, die das Auftreten dieser Features innerhalb des Bioms regelt. Nach der Erzeugung werden alle Biome durchlaufen, diese Features so verteilt, dass ihre Positionierung innerhalb der bereits verteilten Tiles legal ist (keine Positionierung auf nicht begehbaren Felder etc.). Die Wahrscheinlichkeit für diese besonderen Orte ist in den Biomen gesteigert, bzw sie sind teilweise einzigartig für diese Biome. Folgende besondere Eigenschaften gelten für die verschiedenen Biome:</p>
-<h3 id="eistundra">Eistundra</h3>
-<ul>
-<li>
-<p>Alte Höhlensysteme</p>
-</li>
-<li>
-<p>Eistempel</p>
-</li>
-<li>
-<p>vermehrt Bodenschätze</p>
-</li>
-</ul>
-<h3 id="wälder">Wälder</h3>
-<ul>
-<li>
-<p>Alte Tempelanlagen</p>
-</li>
-<li>
-<p>Ruinen</p>
-</li>
-<li>
-<p>Alte, unbewohnte Dörfer</p>
-</li>
-<li>
-<p>Bewohnte Siedlungen</p>
-</li>
-<li>
-<p>Höhlen</p>
-</li>
-<li>
-<p>Grabstädten</p>
-</li>
-</ul>
-<h2 id="cities">Cities</h2>
+<h2 id="erosion-simulation">Erosion Simulation</h2>
+<p>Its loosly based on the 
+  <a href="https://www.youtube.com/watch?v=9NXL48-Fbb8&amp;t=1009s">SIGGRAPH 2017</a> talk. In short random events a placed on the map like a water droplet. This droplet follows the slope downwards a hill and is able to pickup material. If it has reached its maximum carry capacity it starts to deposit a certain material amount again. A good explaination is found in 
+  <a href="https://www.youtube.com/watch?v=eaXk97ujbPQ">Coding Adventures: Hydraulic Erosion</a>.</p>
+<h2 id="biome-setup">Biome Setup</h2>
+<blockquote>
+<p>Note: For the biome calculation you need to calculate the ranges from the given absolute value in the noise map space.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Biome</th>
+<th>Height [m]</th>
+<th>Temp. [°C]</th>
+<th>Hum.</th>
+<th>Special</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ICE_DESERT</td>
+<td>0 - ∞</td>
+<td>-∞ - 0</td>
+<td>0 - ∞</td>
+<td></td>
+</tr>
+<tr>
+<td>DESERT</td>
+<td>0 - ∞</td>
+<td>30 - ∞</td>
+<td>0 - 0.1</td>
+<td></td>
+</tr>
+<tr>
+<td>DRY_FOREST</td>
+<td>50 - 1200</td>
+<td>10 - 30</td>
+<td>0.3 - 0.5</td>
+<td></td>
+</tr>
+<tr>
+<td>MOIST_FOREST</td>
+<td>50 - 1200</td>
+<td>10 - 30</td>
+<td>0.5 - 0.8</td>
+<td></td>
+</tr>
+<tr>
+<td>RAIN_FOREST</td>
+<td>50 - 1200</td>
+<td>20 - 40</td>
+<td>0.8 - 1.0</td>
+<td></td>
+</tr>
+<tr>
+<td>MOUNTAIN</td>
+<td>1500 - ∞</td>
+<td>-</td>
+<td>-</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="terrain-features">Terrain Features</h2>
+<p>After the Biomes are placed and the heightmap is finalized by erosion simulation there are predefined features placed on the maps. This can be old temples, caves or other quest relevant artifacts for player interaction.</p>
+<p>Usually these kind of features are depending on the kind of biome. For example a forrest biome would then run through the tree entity creation. This entities are stored in a database right when they are created via a entity blueprint.</p>
+<table>
+<thead>
+<tr>
+<th>Biome</th>
+<th>Possible Features</th>
+<th>Influence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ICE_DESERT</td>
+<td>Caverns, Ruins</td>
+<td>+40% mineral resources</td>
+</tr>
+<tr>
+<td>MOUNTAIN</td>
+<td>Caverns, Artefacts</td>
+<td>+100% mineral resources</td>
+</tr>
+<tr>
+<td>DRY_FORREST</td>
+<td>Caverns, Ruins, Artefacts, Deserted Settlements</td>
+<td></td>
+</tr>
+<tr>
+<td>MOIST_FOREST</td>
+<td>Caverns, Ruins, Artefacts, Deserted Settlements</td>
+<td></td>
+</tr>
+<tr>
+<td>RAIN_FOREST</td>
+<td>Caverns, Ruins, Artefacts, Deserted Settlements</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="settlement-creation">Settlement Creation</h2>
 <p>Cities usually form around natural resources like shores, rivers or rich farmland. The algorithm as described below will find suitable city position candidates and then distribute the cities in 2 to n clusters around the world map. This clustering will make sure there is enough unexplored land for the players left. It should also help with the idea of different civilization which could lead to ingame player conflicts. A possible distribution is shown in here. <em>TODO: Include figure</em></p>
 <p>The algorithm searches the world map and creates matrix with a mesh length of 1km.</p>
 <ul>
@@ -326,10 +430,10 @@ on the servers.</p>
 <li>Verteilen der Gebäude um den Stadtkern nach einer Gaußkurvenverteilung.</li>
 <li>Erzeugung der Gebäude-Innenräume nach: <a href="https://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_division_method">https://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_division_method</a></li>
 </ol>
-<h2 id="bodenschätze--ressourcen">Bodenschätze &amp; Ressourcen</h2>
+<h2 id="resource-distribution">Resource Distribution</h2>
 <p>TBD. Zum Nutzen und Verwendung der einzelnen Bodenschätze, siehe Abschnitt 
   <a href="/#heading=h.qtftxg6zrzre">Ressourcen</a>.</p>
-<h2 id="roads">Roads</h2>
+<h2 id="navigation-map-creation">Navigation Map Creation</h2>
 <h2 id="weltzerstörung">Weltzerstörung</h2>
 <p>Die Welt soll durch das Herbeiführen von Rift Events strukturell geschwächt werden, bis sie mit einer weiteren Welt kollidiert. Die Spieler selbst bleiben bei solch einem Event relativ unbeschadet. Je nach Fraktion/Kult welcher die Spieler angehören wird es aber weitreichende Mali oder Boni geben. In der neu generierten Welt starten die Spieler wieder zunächst ohne Kult Zugehörigkeit.</p>
 </article>
@@ -342,9 +446,9 @@ on the servers.</p>
 
 
 
-  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/8f6f22567d6a5e46a61f30b8cfce2e1c2a6588ec" title='Last modified by Thomas Felix | May 3, 2020' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/236abf34688020b27006571eabe8c0c0d253db67" title='Last modified by Thomas Felix | May 16, 2020' target="_blank" rel="noopener">
       <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>May 3, 2020</span>
+      <span>May 16, 2020</span>
     </a>
   </div>
 
@@ -381,24 +485,25 @@ on the servers.</p>
   <ul>
     <li><a href="#world-generation">World Generation</a>
       <ul>
-        <li><a href="#algorithmus">Algorithmus</a></li>
-        <li><a href="#grundparameter">Grundparameter</a></li>
-        <li><a href="#influencemaps">Influencemaps</a></li>
-        <li><a href="#terrain-features-post-biom">Terrain Features (Post Biom)</a></li>
-        <li><a href="#gewässer-und-flüsse">Gewässer und Flüsse</a></li>
-        <li><a href="#temperaturkorrektur">Temperaturkorrektur</a></li>
-        <li><a href="#biom-zuordnung">Biom Zuordnung</a></li>
-        <li><a href="#biom-optimierung">Biom Optimierung</a></li>
-        <li><a href="#tilemap-zuordnung">Tilemap Zuordnung</a></li>
-        <li><a href="#biom-features">Biom Features</a>
+        <li><a href="#world-generation-algorithm">World Generation Algorithm</a></li>
+        <li><a href="#base-parameter">Base Parameter</a></li>
+        <li><a href="#noise-maps">Noise Maps</a>
           <ul>
-            <li><a href="#eistundra">Eistundra</a></li>
-            <li><a href="#wälder">Wälder</a></li>
+            <li><a href="#height-hahahugoshortcode-s2-hbhb">Height HAHAHUGOSHORTCODE-s2-HBHB</a></li>
+            <li><a href="#humidity-m_hum">Humidity $M_{hum}$</a></li>
+            <li><a href="#temperature-m_t">Temperature $M_{t}$</a></li>
+            <li><a href="#mana-m_m">Mana $M_{m}$</a></li>
+            <li><a href="#population-m_p">Population $M_{p}$</a></li>
           </ul>
         </li>
-        <li><a href="#cities">Cities</a></li>
-        <li><a href="#bodenschätze--ressourcen">Bodenschätze &amp; Ressourcen</a></li>
-        <li><a href="#roads">Roads</a></li>
+        <li><a href="#sealevel">Sealevel</a></li>
+        <li><a href="#creating-rivers-and-lakes">Creating Rivers and Lakes</a></li>
+        <li><a href="#erosion-simulation">Erosion Simulation</a></li>
+        <li><a href="#biome-setup">Biome Setup</a></li>
+        <li><a href="#terrain-features">Terrain Features</a></li>
+        <li><a href="#settlement-creation">Settlement Creation</a></li>
+        <li><a href="#resource-distribution">Resource Distribution</a></li>
+        <li><a href="#navigation-map-creation">Navigation Map Creation</a></li>
         <li><a href="#weltzerstörung">Weltzerstörung</a></li>
       </ul>
     </li>

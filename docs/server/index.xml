@@ -30,13 +30,12 @@ Bestias look for ways to get the highest possible inner happiness. They must sle
     
     <item>
       <title></title>
-      <link>https://docs.bestia-game.net/docs/server/communication/</link>
+      <link>https://docs.bestia-game.net/docs/server/battle/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.bestia-game.net/docs/server/communication/</guid>
-      <description>Client Server Communication Datatypes All locations and entities are represented via fixed point numbers to avoid incorrectness with floating points over a bigger distance (see The perils of floating point).
-Positioning The basic datastructures for positioning and collisions are found in net.bestia.model.geometry. Most notable the Vector3 datatype.
-It uses long as datatypes for the coordinates and thus has a range between -9.223.372.036.854.775.808 to 9.223.372.036.854.775.807 which means if we can represent at the best a position resolution of 1mm.</description>
+      <guid>https://docs.bestia-game.net/docs/server/battle/</guid>
+      <description>Battle system The battle or attack is performed in various stages. Equipments or Status effects either alter the DamageVars or expose certain hooks which are called during the damage calculation. In the case of the DamageVars this object is
+The attack itself either provides a script to completely manage the effect which takes place during cast or it provides certain callbacks for damage calculation stages which are getting called while applying the damage.</description>
     </item>
     
     <item>
@@ -65,18 +64,8 @@ Als Skriptsprache wird auf JavaScript gesetzt. Aktuell wird die Nashorn Javascri
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://docs.bestia-game.net/docs/server/world-generation/</guid>
-      <description>World Generation Bestia uses a specialized library called worldgen for world creation. It is a clusterable generator which is cabable of dividing the world creation workload onto multiple, different machines. With this framework it should be possible to create million of square kilometers without hitting any memory limit on the servers.
-Algorithmus  Grundparameter Erstellung von Influencemaps Wasserspiegel festlegung Erzeuge die Wasser Maske Erzeuge von Gewässern und Flüsse Temperaturkorrektur Biom Zuordnung vornehmen Terrain Features verteilen und erzeugen Biom Optimierung Tilemap Erzeugung Biom Features Erzeugung der Städtekandidaten Erzeugung und Verteilung von Bodenschätzen  Grundparameter The following base parameters are used to generate the map:</description>
-    </item>
-    
-    <item>
-      <title>Battlesystem</title>
-      <link>https://docs.bestia-game.net/docs/server/battle/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://docs.bestia-game.net/docs/server/battle/</guid>
-      <description>Battle system The battle or attack is performed in various stages. Equipments or Status effects either alter the DamageVars or expose certain hooks which are called during the damage calculation. In the case of the DamageVars this object is
-The attack itself either provides a script to completely manage the effect which takes place during cast or it provides certain callbacks for damage calculation stages which are getting called while applying the damage.</description>
+      <description>World Generation Bestia integrates a specialized library called WorldGen for world creation. It is a clusterable generator which is cabable of dividing the world creation workload onto multiple, different machines. With this framework it should be possible to create million of square kilometers without hitting any memory limit on the servers during the creation process.
+In general it works by creating piplines which are then used to create and transform noise maps.</description>
     </item>
     
   </channel>

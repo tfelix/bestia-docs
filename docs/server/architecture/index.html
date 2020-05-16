@@ -9,12 +9,12 @@
 <meta property="og:description" content="Architecture Entity Component Services Entities are described by dynamically attaching components to them. ECS system have been proven as a de facto industry standard for recent game development. The components only contain the data are attached to entities which merely are an ID in the system. The so called systems act upon this data and alter the entities usually this is the case in a fixed tick amount for game logic updates." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.bestia-game.net/docs/server/architecture/" />
-<meta property="article:modified_time" content="2020-05-08T02:07:53+02:00" />
+<meta property="article:modified_time" content="2020-05-16T18:31:02+02:00" />
 <title>Architecture | Bestia Game</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.a6e2c98d287fde1ee03cdb4322ae00297d9842c96ed7d383b48098da94e04095.css" integrity="sha256-puLJjSh/3h7gPNtDIq4AKX2YQslu19ODtICY2pTgQJU=">
-<script defer src="/en.search.min.685c56b85195a6149f987b2ac3736e8ca557399535b3007a0cf0b9e1d4164e5a.js" integrity="sha256-aFxWuFGVphSfmHsqw3NujKVXOZU1swB6DPC54dQWTlo="></script>
+<script defer src="/en.search.min.31a07d5bab048f53bba62ca9f718729ec16bae89e48b8d75ec3124074e3ac0d9.js" integrity="sha256-MaB9W6sEj1O7piyp9xhynsFrronki4117DEkB046wNk="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
@@ -95,8 +95,6 @@ https://github.com/alex-shpak/hugo-book
 <li>
   <a href="/docs/server/battle/">Battle</a></li>
 <li>
-  <a href="/docs/server/communication/">Communication</a></li>
-<li>
   <a href="/docs/server/quests/">Quests</a></li>
 <li>
   <a href="/docs/server/scripting/">Scripting</a></li>
@@ -153,7 +151,7 @@ https://github.com/alex-shpak/hugo-book
     <li><a href="#architecture">Architecture</a>
       <ul>
         <li><a href="#entity-component-services">Entity Component Services</a></li>
-        <li><a href="#entity-creators">Entity Creators</a>
+        <li><a href="#create-entities">Create Entities</a>
           <ul>
             <li><a href="#blueprint-json-datenformat">Blueprint JSON Datenformat</a></li>
           </ul>
@@ -164,6 +162,12 @@ https://github.com/alex-shpak/hugo-book
         <li><a href="#component-synchronization">Component Synchronization</a>
           <ul>
             <li><a href="#interest-management">Interest Management</a></li>
+          </ul>
+        </li>
+        <li><a href="#client-server-communication">Client Server Communication</a>
+          <ul>
+            <li><a href="#datatypes">Datatypes</a></li>
+            <li><a href="#binary-protocol">Binary Protocol</a></li>
           </ul>
         </li>
       </ul>
@@ -181,20 +185,15 @@ https://github.com/alex-shpak/hugo-book
       
   <article class="markdown"><h1 id="architecture">Architecture</h1>
 <h2 id="entity-component-services">Entity Component Services</h2>
-<p>Entities are described by dynamically attaching components to them. ECS system have been proven as a de facto industry
-standard for recent game development. The components only contain the data are attached to entities which merely are
-an ID in the system. The so called systems act upon this data and alter the entities usually this is the case in a
-fixed tick amount for game logic updates.. Since the bestia system is event based and not tick based we use a little
-different approach. We define services which work on entities and their components. These services are triggered by
-Akka Actors in case a event message arrives. This architecture is called entity component services and allows a
-better usage of computing resources in a clustered server environment.</p>
+<p>Entities are described by dynamically attaching components to them. 
+  <a href="https://en.wikipedia.org/wiki/Entity_component_system">ECS system</a> have been proven as a de facto industry standard for recent game development. The components only contain the data are attached to entities which merely are an ID in the system. The so called systems act upon this data and alter the entities usually this is the case in a fixed tick amount for game logic updates.. Since the bestia system is event based and not tick based we use a little different approach. We define services which work on entities and their components. These services are triggered by Akka Actors in case a event message arrives. This architecture allows a better usage of computing resources in a clustered server environment.</p>
 <p>A entity factory will create a entity, save it into the memdb and also start a sharded entity into the cluster.
 The factory will also create and setup components which might have also active actors. If a component is created,
 altered or deleted these calls are intercepted via a configurable callback. Usually the component instances are
 cached for some amount of time to lessen the strain on the garbage collector. Upon creation of the component a
 message might get sent into the actorsystem to start up a component based actor which will then in turn control
 some execution specific operation like periodic health regeneration ticks.</p>
-<h2 id="entity-creators">Entity Creators</h2>
+<h2 id="create-entities">Create Entities</h2>
 <p>The first step into an usable entity are entity creators. They take alle domain data input or simple argument input
 and server as a helper function or a builder for usable a complete entities which are outfitted with components. They
 create the blueprints this is a building plan for the real entity factory for entity creation. The blueprints can
@@ -239,6 +238,37 @@ The server needs to keep track which entities are within a certain interest zone
 coordinates of an entity.</p>
 <p>As soon as a transmittable Component changes the system automatically searchs for entities which needs an updated. The
 updated component is then transmitted to these entities or connected players.</p>
+<h2 id="client-server-communication">Client Server Communication</h2>
+<h3 id="datatypes">Datatypes</h3>
+<p>All locations and entities are represented via fixed point numbers to avoid incorrectness with floating points over a bigger distance 
+  <a href="http://www.stat.cmu.edu/~brian/711/week03/perils-of-floating-point.pdf">(see The perils of floating point</a>).</p>
+<p>The basic datastructures for positioning and collisions are found in <code>net.bestia.model.geometry</code>. Most notable the <code>Vector3</code> datatype.</p>
+<p>It uses long as datatypes for the coordinates and thus has a range between <code>-9.223.372.036.854.775.808</code> to
+<code>9.223.372.036.854.775.807</code> which means if we can represent at the best a position resolution of 1mm. So our
+maximum world size is:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Size</th>
+<th align="right">Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">+-9.223.372.036.854.775</td>
+<td align="right">m</td>
+</tr>
+<tr>
+<td align="left">+-9.223.372.036.854</td>
+<td align="right">km</td>
+</tr>
+</tbody>
+</table>
+<p>which is more then enough.</p>
+<h3 id="binary-protocol">Binary Protocol</h3>
+<p>Bestia uses 
+  <a href="https://developers.google.com/protocol-buffers">ProtoBuf</a> descrition file in order to communicate with its connected clients. The description files can be found in the 
+  <a href="https://github.com/tfelix/bestia-behemoth/tree/master/bestia-proto-messages">bestia-protobuf</a> module in the main repository.</p>
 </article>
  
       
@@ -249,9 +279,9 @@ updated component is then transmitted to these entities or connected players.</p
 
 
 
-  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/913b3dd02bf18999279326ad392a2694365fd16e" title='Last modified by Thomas Felix | May 8, 2020' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/236abf34688020b27006571eabe8c0c0d253db67" title='Last modified by Thomas Felix | May 16, 2020' target="_blank" rel="noopener">
       <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>May 8, 2020</span>
+      <span>May 16, 2020</span>
     </a>
   </div>
 
@@ -289,7 +319,7 @@ updated component is then transmitted to these entities or connected players.</p
     <li><a href="#architecture">Architecture</a>
       <ul>
         <li><a href="#entity-component-services">Entity Component Services</a></li>
-        <li><a href="#entity-creators">Entity Creators</a>
+        <li><a href="#create-entities">Create Entities</a>
           <ul>
             <li><a href="#blueprint-json-datenformat">Blueprint JSON Datenformat</a></li>
           </ul>
@@ -300,6 +330,12 @@ updated component is then transmitted to these entities or connected players.</p
         <li><a href="#component-synchronization">Component Synchronization</a>
           <ul>
             <li><a href="#interest-management">Interest Management</a></li>
+          </ul>
+        </li>
+        <li><a href="#client-server-communication">Client Server Communication</a>
+          <ul>
+            <li><a href="#datatypes">Datatypes</a></li>
+            <li><a href="#binary-protocol">Binary Protocol</a></li>
           </ul>
         </li>
       </ul>
