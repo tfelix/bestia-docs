@@ -16,8 +16,8 @@ There is basically a pipeline in order to generate the Bestia map, these steps a
    4. Mana Map
    5. Population Map
 3. Sealevel
-4. Creating Rivers and Lakes
-5. Erosion Simulation
+4. Erosion Simulation
+5. Creating Rivers and Lakes
 6. Biome Setup
 7. Terrain Features
 8. Settlement Creation
@@ -47,13 +47,49 @@ Depending on the case the resolution of the heightmaps might be differnt in orde
 
 The heightmap {{< katex >}}M_h{{< /katex >}} consists of multiple high and low resolution maps which are added and then normalized to a value between 0-1. The lower resolution should have a frequency of about 2-5m. The highest resolution should have a frequency of roughly 4-5km, to give a sense of a "big" world. Consider maybe 2-3 resolutions in between which a decrease in amplitude.
 
+After the heightmap is created we redistribute the noise values by:
+
+{{< katex display >}}
+height_1 = M_{h}^{2.1}
+{{< /katex >}}
+
+This will push valleys further down and increase the hill heights. After this we will renormalize the values again between 0-1.
+
 To calculate the final hight multiply this hight with the maximum map height.
 
 {{< katex display >}}
-height = M_{h} \cdot h
+height = norm(height) \cdot h
 {{< /katex >}}
 
 > Heightmap resolution is 1m.
+
+In general the map should make the illusion to "wrap" arround, this can possibly archived by pushing everything on the sides under water, or to use a coordinate transform so the the map is actually wrapping around the borders. Which possibility is used for Bestia is not yet decided. As a hint, good shaping function can be done by:
+
+```
+e = lower(d) + e * (upper(d) - lower(d))
+```
+
+Where `d` is the distance to the center of the map.
+
+#### Ridged Noise
+
+For better initial mountains a special function can be sued which is described as:
+
+```
+function ridgenoise(nx, ny) {
+  return 2 * (0.5 - abs(0.5 - noise(nx, ny)));
+}
+```
+
+We can vary the amplitudes of the higher frequencies so that only the mountains get the added noise:
+
+```
+e0 =    1 * ridgenoise(1 * nx, 1 * ny);
+e1 =  0.5 * ridgenoise(2 * nx, 2 * ny) * e0;
+e2 = 0.25 * ridgenoise(4 * nx, 4 * ny) * (e0+e1);
+e = e0 + e1 + e2;
+elevation[y][x] = Math.pow(e, exponent);
+```
 
 ### Humidity Map
 
@@ -90,11 +126,11 @@ It reduces the temperature the higher the hightmap value is down to a value of 1
 t = M_t - 0.9 \cdot M_h
 {{< /katex >}}
 
-> Humidity resolution 100m.
+> Temperature resolution 100m.
 
 ### Mana Map
 
-The mana distribution {{< katex >}}M_m{< /katex >}} is a normal noise map without any changes.
+The mana distribution {{< katex >}}M_m{< /katex >}} is a normal noise map without any changes. Its done in two passes, a high frequency and also a low frequency pass. This allows us a rapid alteration in a smaller area while we still have big areas with just a higher mana concentration then others.
 
 > Mana resolution 10m.
 
@@ -108,19 +144,47 @@ The population distribution {{< katex >}}M_p{< /katex >}} is a normal noise map 
 
 The sealevel should chosen that oceans vs landmass ratio is about 20:80. This could be calculated but for now we just assume a fixed height value. Every terrain below is covered by water, the rest is landmass.
 
+## Erosion Simulation
+
+Its loosly based on the [SIGGRAPH 2017](https://www.youtube.com/watch?v=9NXL48-Fbb8&t=1009s) talk. In short random events a placed on the map like a water droplet. This droplet follows the slope downwards a hill and is able to pickup material. If it has reached its maximum carry capacity it starts to deposit a certain material amount again. A good explanation is found in [Coding Adventures: Hydraulic Erosion](https://www.youtube.com/watch?v=eaXk97ujbPQ).
+
 ## Creating Rivers and Lakes
 
 Water always flows downhill. In order to simulate the water flow random sources of water are placed at elevated points in the map and then the water flow is simulated down the slope of the terrain.
 
-In order to find the coordiante of a water sources on a map, the probability P of a coordiante is given by:
+The creation algorithm works as follows:
+
+1. Decide if a chunk has a spring
+2. Detect the spring source
+
+The base probability if a chunk has a spring is given by:
+
+| Avg. Height [m] | P          |
+| --------------- | ---------- |
+| h < 100         | impossible |
+| 100 < h < 1000  | 0.2        |
+| 1000 < h < 1500 | 0.3        |
+| 1500 < h < 2000 | 0.1        |
+| 2000 < h        | impossible |
+
+The average humidity on the map influences the probability P like:
+
+{{< katex display >}}
+P_{total} = (0.6 * m_{hum} - 1.5) + P_{base}
+{{< /katex >}}
+
+In order to find the coordiante of a water sources on a map and their probability distribution, the map is sampled at a resolution of 10m and theprobability P of a coordiante is given by:
 
 * P increases at heights above NN max is 0.6 and then decreases above
 * P increases with humidity above 0.5 - 1.0 from 1.0 to 3.0
 
+{{< katex display >}}
+P_h &= height(x, y) / 0.6 \cdot
+P_h &= height(x, y) / 0.6 \cdot
+P_{droplet} = M_t - 0.9 \cdot M_h
+{{< /katex >}}
 
-## Erosion Simulation
-
-Its loosly based on the [SIGGRAPH 2017](https://www.youtube.com/watch?v=9NXL48-Fbb8&t=1009s) talk. In short random events a placed on the map like a water droplet. This droplet follows the slope downwards a hill and is able to pickup material. If it has reached its maximum carry capacity it starts to deposit a certain material amount again. A good explaination is found in [Coding Adventures: Hydraulic Erosion](https://www.youtube.com/watch?v=eaXk97ujbPQ).
+After these are placed a water stream is simulated flowing from the source down the slopes. In this is an iterative process. The source will spill out a certain amount of water to the tile. In every step a bit water evaporates depending on the surrounding temperature. The simulation is repeated until there is no significant change in waterlevel and it reaches an equilibrium. If the water floats out at the border it is buffered and in a next run it is exchanged with the border tiles. This is again done until there is no significant change anymore and equilibriunm reached.
 
 ## Biome Setup
 
@@ -140,7 +204,6 @@ Its loosly based on the [SIGGRAPH 2017](https://www.youtube.com/watch?v=9NXL48-F
 After the Biomes are placed and the heightmap is finalized by erosion simulation there are predefined features placed on the maps. This can be old temples, caves or other quest relevant artifacts for player interaction.
 
 Usually these kind of features are depending on the kind of biome. For example a forrest biome would then run through the tree entity creation. This entities are stored in a database right when they are created via a entity blueprint.
-
 
 | Biome        | Possible Features                               | Influence               |
 | ------------ | ----------------------------------------------- | ----------------------- |
@@ -198,7 +261,7 @@ TBD.
 
 The navigation map is created for NPC to fast calculate travel paths other long distances. It creates a connected graph network and the output is put into a [Neo4J database](https://neo4j.com/).
 
-* Add nodes for each city, artefact and places of interest (poi's)
+* Add nodes for each city, artefact and places of interest (POI's)
 * Add a grid of 10 * 10 points and connect them to every next neighbour node (diagonal connections are allowed)
 * Weights of these connections is calculated
 
@@ -207,10 +270,10 @@ The guidline for weight is 1 for a normal, easy to walk road. It gets higher for
 In order to detect climable terrain we follow the connection between the nodes and if the slope over a distance of 5m is higher than 45° it is marked as 'climb'. The weight for sloped terrain is:
 
 {{< katex display >}}
-t = weight_{base} \cdot min(1.0, (slope - 15) \cdot \frac{4}{30})
+weight_{total} = weight_{base} \cdot min(1.0, (slope - 15) \cdot \frac{4}{30})
 {{< /katex >}}
 
-For waterways the weight 1 for a calm and normal flowing river.
+For waterways the weight 1 for a calm and normal flowing river and increased based an water speed or obstructions.
 
 Example weights:
 
@@ -238,3 +301,7 @@ Before a new world is created the old world data is deleted. The following proce
 1. Delete all voxel data
 2. Delete all navigation waypoint data
 3. Delete all non-player entity data
+
+## Literatur
+
+* [www.redblobgames.com - Making maps with noise functions](https://www.redblobgames.com/maps/terrain-from-noise/) - Very detailed overview of heightmap generation techniques with sample code
