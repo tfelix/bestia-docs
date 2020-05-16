@@ -1,116 +1,156 @@
 # World Generation
 
-Bestia uses a specialized library called [worldgen](https://github.com/tfelix/worldgen) for world creation. It is a
-clusterable generator which is cabable of dividing the world creation workload onto multiple, different machines.
-With this framework it should be possible to create million of square kilometers without hitting any memory limit
-on the servers.
+Bestia integrates a specialized library called **WorldGen** for world creation. It is a clusterable generator which is cabable of dividing the world creation workload onto multiple, different machines. With this framework it should be possible to create million of square kilometers without hitting any memory limit on the servers during the creation process.
 
-## Algorithmus
+In general it works by creating piplines which are then used to create and transform noise maps. After the noise was modified and generated the map data is created and saved to the Bestia database in chunks via the **Voxel** module.
 
-1. Grundparameter
-2. Erstellung von Influencemaps
-3. Wasserspiegel festlegung
-4. Erzeuge die Wasser Maske
-5. Erzeuge von Gewässern und Flüsse
-6. Temperaturkorrektur
-7. Biom Zuordnung vornehmen
-8. Terrain Features verteilen und erzeugen
-9. Biom Optimierung
-10. Tilemap Erzeugung
-11. Biom Features
-12. Erzeugung der Städtekandidaten
-13. Erzeugung und Verteilung von Bodenschätzen
+## World Generation Algorithm
 
-## Grundparameter
+There is basically a pipeline in order to generate the Bestia map, these steps are listed here and described below:
+
+1. Setup of Base Parameters
+2. Creating of noise maps based on base parameters
+   1. Height Map
+   2. Humidity Map
+   3. Temperature Map
+   4. Mana Map
+   5. Population Map
+3. Sealevel
+4. Creating Rivers and Lakes
+5. Erosion Simulation
+6. Biome Setup
+7. Terrain Features
+8. Settlement Creation
+9. Resource Distribution
+10. Navigation Map Creation
+
+## Base Parameter
 
 The following base parameters are used to generate the map:
 
-* Gesamtpopulation P
-* Weltgröße S (Abhängig von der Spielerzahl)
-* Wassermasse/Landmasse WM (20-40% Wasser)
-* Anzahl von Städten/Siedlungen Sn
+* Total Population {{< katex >}}P{{< /katex >}}
+* World Size $W$ (Depends on expected player count)
+* Count of Settlements $C$
+* Seed Value $S$
+* Maximum Terrain Height {{< katex >}}h{{< /katex >}}
+* Seelevel (Normalnull) $N$
+
+The base parameter are generated randomly based on the expected active player count. They are persisted in the database together with some additional map parameters like creation date or name of the world (to keep some kind of history record).
+
+## Noise Maps
+
+The following noise maps are created by the help of [OpenSimplexNoise](https://de.wikipedia.org/wiki/Simplex_Noise) and saved in a shared data storage temporarly until world map generation is finished. In order to save memory its advisable to delete this maps as soon as possible.
+
+Depending on the case the resolution of the heightmaps might be differnt in order to be as memory efficient as possible.
+
+### Height {{< katex >}}M_h{{< /katex >}}
+
+The heightmap consists of multiple high and low resolution maps which are added and then normalized to a value between 0-1. The lower resolution should have a frequency of about 2-5m. The highest resolution should have a frequency of roughly 4-5km, to give a sense of a "big" world. Consider maybe 2-3 resolutions in between which a decrease in amplitude.
+
+To calculate the final hight multiply this hight with the maximum map height.
+
+{{< katex display >}}
+height = M_{h} \cdot h
+{{< /katex >}}
+
+> Heightmap resolution is 1m.
+
+### Humidity $M_{hum}$
+
+This maps give the annual rainfall between 0-1. The more the humidity is the more snow or rain fall is to be expected (depending on the temperature).
+
+The humidity map is saved in a reduced resolution for later reference for the dynamic environment simulation.
+
+It slightly reduces the humidity based on the height of the terrain like so:
+
+{{< katex display >}}
+hum = M_{hum} - 0.4 \cdot M_h
+{{< /katex >}}
+
+> Humidity resolution 100m.
+
+### Temperature $M_{t}$
+
+We assume a desired temperature range of -40 to 40 degree. This is shifted of about +/- 10 degrees randomly upon world creation.
+
+As our temperature map initially holds values between 0-1 the conversion is done like:
+
+{{< katex display >}}
+t = M_t \cdot 80 - 40
+{{< /katex >}}
+
+The temperature is just created as the other maps but then a gradient is added which will increase the temperature towards the middle (equator) of the map by 130% and drop down to top and bottom to 30% of the original value. An example gradient is shown below:
+
+![Example temperature gradient](/static/gradient.png)
+
+It reduces the temperature the higher the hightmap value is down to a value of 10% by the formula:
+
+{{< katex display >}}
+t = M_t - 0.9 \cdot M_h
+{{< /katex >}}
+
+> Humidity resolution 100m.
+
+### Mana $M_{m}$
+
+The mana distribution is a normal noise map without any changes.
+
+> Mana resolution 10m.
+
+### Population $M_{p}$
+
+The mana distribution is a normal noise map without any changes. But is later heavily modified by influence maps.
+
+> Population resolution 100m.
+
+## Sealevel
+
+The sealevel should chosen that oceans vs landmass ratio is about 20:80. This could be calculated but for now we just assume a fixed height value. Every terrain below is covered by water, the rest is landmass.
+
+## Creating Rivers and Lakes
+
+Water always flows downhill. In order to simulate the water flow random sources of water are placed at elevated points in the map and then the water flow is simulated down the slope of the terrain.
+
+In order to find the coordiante of a water sources on a map, the probability P of a coordiante is given by:
+
+* P increases at heights above NN max is 0.6 and then decreases above
+* P increases with humidity above 0.5 - 1.0 from 1.0 to 3.0
 
 
-The base parameter are generated randomly based on the expected active player count. They are persisted in the database.
+## Erosion Simulation
 
-$x = \frac{1}{3}$
+Its loosly based on the [SIGGRAPH 2017](https://www.youtube.com/watch?v=9NXL48-Fbb8&t=1009s) talk. In short random events a placed on the map like a water droplet. This droplet follows the slope downwards a hill and is able to pickup material. If it has reached its maximum carry capacity it starts to deposit a certain material amount again. A good explaination is found in [Coding Adventures: Hydraulic Erosion](https://www.youtube.com/watch?v=eaXk97ujbPQ).
 
-## Influencemaps
+## Biome Setup
 
-Folgende Influencemaps werden in der Größe der Weltkarte erstellt und über den [SimplexNoise ](https://de.wikipedia.org/wiki/Simplex_Noise)Algorithmus mit Rauschen gefüllt.
+> Note: For the biome calculation you need to calculate the ranges from the given absolute value in the noise map space.
 
-14. Höhenkarte: mH
+| Biome        | Height [m]     | Temp. [°C]   | Hum.        | Special |
+| ------------ | -------------- | ------------ | ----------- | ------- |
+| ICE_DESERT   | 0 - &infin;    | -&infin; - 0 | 0 - &infin; |         |
+| DESERT       | 0 - &infin;    | 30 - &infin; | 0 - 0.1     |         |
+| DRY_FOREST   | 50 - 1200      | 10 - 30      | 0.3 - 0.5   |         |
+| MOIST_FOREST | 50 - 1200      | 10 - 30      | 0.5 - 0.8   |         |
+| RAIN_FOREST  | 50 - 1200      | 20 - 40      | 0.8 - 1.0   |         |
+| MOUNTAIN     | 1500 - &infin; | -            | -           |         |
 
-15. Temperaturkarte: mT
+## Terrain Features
 
-16. Niederschlagskarte: mN
+After the Biomes are placed and the heightmap is finalized by erosion simulation there are predefined features placed on the maps. This can be old temples, caves or other quest relevant artifacts for player interaction.
 
-17. Magiekarte: mM
-
-18. Populationsdichte: mP
-
-## Terrain Features (Post Biom)
-
-Bestimmte, extravagante Features, die sich vor allem auf die Höhenstufen der Map niederschlagen werden hier zufällig verteilt. Die Wahrscheinlichkeitsverteilungen der Terrain Features sind häufig an bestimmte Biome gekoppelt. Da diese bereits bestimmt wurden, kann hier eine Prüfung auf bestimmte Features stattfinden. Bestimmte Feature sind:
-
-* Seen
-* Canyons
-* Vulkane
-* Gebirge
-
-## Gewässer und Flüsse
-
-Dazu werden zufällig Wasser-Seeds verteilt und ein Flood Fill bis zur Küstenlinie durchgeführt. Der Wasserspiegel wird so lange angehoben, bis der Land/Wasser Parameter erfüllt ist. Sollte dies aus einem Grund nicht möglich sein. Gehe zu 1.
-
-## Temperaturkorrektur
-
-Temperaturgradient auf mT aufbringen. Versehe die Temperaturkarte mit einem Gradienten um am Aquator eine höhere Temperatur zu erhalten wie an den Polen (Nord, Süd).
-
-## Biom Zuordnung
-
-TBD
-
-## Biom Optimierung
-
-Nachdem die Biome über die Zuweisungsregeln hart zugewiesen wurden, müssen mehrere Plausibilitätsfilter verwendet werden um eine saubere Erzeugung zu gewährleisten.
+Usually these kind of features are depending on the kind of biome. For example a forrest biome would then run through the tree entity creation. This entities are stored in a database right when they are created via a entity blueprint.
 
 
+| Biome        | Possible Features                               | Influence               |
+| ------------ | ----------------------------------------------- | ----------------------- |
+| ICE_DESERT   | Caverns, Ruins                                  | +40% mineral resources  |
+| MOUNTAIN     | Caverns, Artefacts                              | +100% mineral resources |
+| DRY_FORREST  | Caverns, Ruins, Artefacts, Deserted Settlements |                         |
+| MOIST_FOREST | Caverns, Ruins, Artefacts, Deserted Settlements |                         |
+| RAIN_FOREST  | Caverns, Ruins, Artefacts, Deserted Settlements |                         |
 
-TBD: Welche Filter müssen hier angewendet werden? Was kann denn falsch erzeugt werden?
 
-Erzeuge an den Biom Grenzen entsprechende Übergangsbiome.
-
-## Tilemap Zuordnung
-
-Jedes Biome besitzt ein gewisses Set an Tiles. Diese stammen aus einem oder mehreren Tilemaps (also eine Menge von GIDs). Zusätzlich existiert eine Reihe von weiteren Entities welche nach einer gewissen Wahrscheinlichkeit verteilt werden können (Bäume z.B.). Diese werden aber nicht immer einfach zufällig auf Koordianten platziert. Vielmehr kann es auch hier einen Top-Down Ansatz geben, der gewährleistet, dass eine ausreichend gute Verteilung der Features generiert wird.
-
-## Biom Features
-
-Erzeuge entsprechende Strukturen innerhalb der Biome (siehe Tilemap Erzeugung). dazu gehört das Anlegen von Entities für Bäume, Pflanzen, hohes Gras, Steine, Felsen etc. Für jedes dieser Features existiert pro Biom eine oder mehrere Alternativen. Es gibt weiterhin eine Wahrscheinlichkeitsfunktion, die das Auftreten dieser Features innerhalb des Bioms regelt. Nach der Erzeugung werden alle Biome durchlaufen, diese Features so verteilt, dass ihre Positionierung innerhalb der bereits verteilten Tiles legal ist (keine Positionierung auf nicht begehbaren Felder etc.). Die Wahrscheinlichkeit für diese besonderen Orte ist in den Biomen gesteigert, bzw sie sind teilweise einzigartig für diese Biome. Folgende besondere Eigenschaften gelten für die verschiedenen Biome:
-
-### Eistundra
-
-* Alte Höhlensysteme
-
-* Eistempel
-
-* vermehrt Bodenschätze
-
-### Wälder
-
-* Alte Tempelanlagen
-
-* Ruinen
-
-* Alte, unbewohnte Dörfer
-
-* Bewohnte Siedlungen
-
-* Höhlen
-
-* Grabstädten
-
-## Cities
+##  Settlement Creation
 
 Cities usually form around natural resources like shores, rivers or rich farmland. The algorithm as described below will find suitable city position candidates and then distribute the cities in 2 to n clusters around the world map. This clustering will make sure there is enough unexplored land for the players left. It should also help with the idea of different civilization which could lead to ingame player conflicts. A possible distribution is shown in here. *TODO: Include figure*
 
@@ -149,11 +189,12 @@ Erzeugung von Städten
 2. Verteilen der Gebäude um den Stadtkern nach einer Gaußkurvenverteilung.
 3. Erzeugung der Gebäude-Innenräume nach: https://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_division_method
 
-## Bodenschätze & Ressourcen
+## Resource Distribution
 
 TBD. Zum Nutzen und Verwendung der einzelnen Bodenschätze, siehe Abschnitt [Ressourcen](#heading=h.qtftxg6zrzre).
 
-## Roads
+## Navigation Map Creation
+
 
 
 ## Weltzerstörung

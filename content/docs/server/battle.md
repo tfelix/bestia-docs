@@ -1,11 +1,6 @@
----
-id: server-battlesystem
-title: Battlesystem
-sidebar_label: Battlesystem
----
 # Battle system
 
-The battle or attack is performed in various stages. Equipments or Status effects either alter the DamageVars or expose certain hooks which are called during the damage calculation. In the case of the DamageVars this object is 
+The battle or attack is performed in various stages. Equipments or Status effects either alter the DamageVars or expose certain hooks which are called during the damage calculation. In the case of the DamageVars this object is
 
 The attack itself either provides a script to completely manage the effect which takes place during cast or it provides certain callbacks for damage calculation stages which are getting called while applying the damage. The attack callbacks are:
 
@@ -79,7 +74,7 @@ The damage calculation is roughly based on the system used by Ragnarök Online. 
 
 The damage at the end is rounded down but the damage is capped at 0. The calculation of the BASE_ATK is rather complex and is explained inside a own section. The parts written in pink are variables provided by bonuses from equips, stats, buffs etc.
 
-Damage = floor(BASE_ATK * ATK_MOD * HARD_DEF_MOD * CRIT_MOD - SOFT_DEF) 
+Damage = floor(BASE_ATK * ATK_MOD * HARD_DEF_MOD * CRIT_MOD - SOFT_DEF)
 
 ### BASE_ATK
 
@@ -99,7 +94,7 @@ The status attack value is determined by the capabilities of the character to at
 
 For **physical melee** attacks:
 
-STATUS_ATK = LV / 4 + STR + DEX / 5 
+STATUS_ATK = LV / 4 + STR + DEX / 5
 
 For **physical ranged** attacks:
 
@@ -113,7 +108,7 @@ STATUS_ATK = LV/4 + INT + WILL / 5
 
 Is a variable status modifier. The variance is reduced as the DEX value rises. It is defined as:
 
-VAR_MOD = 1 - (RAND(1,0) * 0.15) 
+VAR_MOD = 1 - (RAND(1,0) * 0.15)
 
 ### WEAPON_ATK
 
@@ -133,7 +128,7 @@ From this rating the mod damage is calculated as follow
 
 QUALI_MOD = QUALY / 100
 
-### SIZE_MOD 
+### SIZE_MOD
 
 The SIZE_MOD is determined between the size of the opponent and the type of the used weapon against him. The size mod is only applied when the attack is physically based.
 
@@ -223,7 +218,7 @@ ATK_MOD = bonus_magical_melee
 
 If attack is physical melee:
 
-ATK_MOD = bonus_physical_melee 
+ATK_MOD = bonus_physical_melee
 
 ### HARD_DEF
 

@@ -1,6 +1,5 @@
 ---
 bookCollapseSection: true
-weight: 20
 ---
 # Bestia Client
 
@@ -11,7 +10,7 @@ data-size="large" data-show-count="true" aria-label="Watch tfelix/bestia-client 
 
 The Bestia Client is build with the [Godot Open Source](https://godotengine.org) engine. Its job is the visualization of the game world. It synchronizes with the game server and will display entities so the player is able to interact with them.
 
-The server is build similar to a Entity Component System. The client utilizes this architecture as well. It receives updates for the entities and reads the assigned components in order to display items, structures and entities.
+The server is build similar to a [Entity Component System](https://en.wikipedia.org/wiki/Entity_component_system). The client utilizes this architecture as well and make sure it can easily work with these components. It receives updates for the entities and reads the assigned components in order to display items, structures and entities.
 
 It also transmits the voxel model of the world and visualizes the game map by the [Godot Voxel plugin](https://github.com/Zylann/godot_voxel).
 

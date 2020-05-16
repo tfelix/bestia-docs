@@ -2,13 +2,7 @@
 
 ## Entity Component Services
 
-Entities are described by dynamically attaching components to them. ECS system have been proven as a de facto industry
- standard for recent game development. The components only contain the data are attached to entities which merely are
- an ID in the system. The so called systems act upon this data and alter the entities usually this is the case in a
- fixed tick amount for game logic updates.. Since the bestia system is event based and not tick based we use a little
- different approach. We define services which work on entities and their components. These services are triggered by
- Akka Actors in case a event message arrives. This architecture is called entity component services and allows a
- better usage of computing resources in a clustered server environment.
+Entities are described by dynamically attaching components to them. [ECS system](https://en.wikipedia.org/wiki/Entity_component_system) have been proven as a de facto industry standard for recent game development. The components only contain the data are attached to entities which merely are an ID in the system. The so called systems act upon this data and alter the entities usually this is the case in a fixed tick amount for game logic updates.. Since the bestia system is event based and not tick based we use a little different approach. We define services which work on entities and their components. These services are triggered by Akka Actors in case a event message arrives. This architecture allows a better usage of computing resources in a clustered server environment.
 
 A entity factory will create a entity, save it into the memdb and also start a sharded entity into the cluster.
 The factory will also create and setup components which might have also active actors. If a component is created,
@@ -17,7 +11,7 @@ cached for some amount of time to lessen the strain on the garbage collector. Up
 message might get sent into the actorsystem to start up a component based actor which will then in turn control
 some execution specific operation like periodic health regeneration ticks.
 
-## Entity Creators
+## Create Entities
 
 The first step into an usable entity are entity creators. They take alle domain data input or simple argument input
 and server as a helper function or a builder for usable a complete entities which are outfitted with components. They
@@ -79,3 +73,26 @@ coordinates of an entity.
 
 As soon as a transmittable Component changes the system automatically searchs for entities which needs an updated. The
 updated component is then transmitted to these entities or connected players.
+
+## Client Server Communication
+
+### Datatypes
+
+All locations and entities are represented via fixed point numbers to avoid incorrectness with floating points over a bigger distance [(see The perils of floating point](http://www.stat.cmu.edu/~brian/711/week03/perils-of-floating-point.pdf)).
+
+The basic datastructures for positioning and collisions are found in `net.bestia.model.geometry`. Most notable the `Vector3` datatype.
+
+It uses long as datatypes for the coordinates and thus has a range between `-9.223.372.036.854.775.808` to
+`9.223.372.036.854.775.807` which means if we can represent at the best a position resolution of 1mm. So our
+maximum world size is:
+
+| Size                    | Unit |
+| :---------------------- | ---: |
+| +-9.223.372.036.854.775 |    m |
+| +-9.223.372.036.854     |   km |
+
+which is more then enough.
+
+### Binary Protocol
+
+Bestia uses [ProtoBuf](https://developers.google.com/protocol-buffers) descrition file in order to communicate with its connected clients. The description files can be found in the [bestia-protobuf](https://github.com/tfelix/bestia-behemoth/tree/master/bestia-proto-messages) module in the main repository.
