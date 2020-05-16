@@ -29,11 +29,11 @@ There is basically a pipeline in order to generate the Bestia map, these steps a
 The following base parameters are used to generate the map:
 
 * Total Population {{< katex >}}P{{< /katex >}}
-* World Size $W$ (Depends on expected player count)
-* Count of Settlements $C$
-* Seed Value $S$
+* World Size {{< katex >}}W{{< /katex >}} (Depends on expected player count)
+* Count of Settlements {{< katex >}}C{{< /katex >}}
+* Seed Value {{< katex >}}S{{< /katex >}}
 * Maximum Terrain Height {{< katex >}}h{{< /katex >}}
-* Seelevel (Normalnull) $N$
+* Seelevel (Normalnull) {{< katex >}}N{{< /katex >}}
 
 The base parameter are generated randomly based on the expected active player count. They are persisted in the database together with some additional map parameters like creation date or name of the world (to keep some kind of history record).
 
@@ -43,9 +43,9 @@ The following noise maps are created by the help of [OpenSimplexNoise](https://d
 
 Depending on the case the resolution of the heightmaps might be differnt in order to be as memory efficient as possible.
 
-### Height {{< katex >}}M_h{{< /katex >}}
+### Height Map
 
-The heightmap consists of multiple high and low resolution maps which are added and then normalized to a value between 0-1. The lower resolution should have a frequency of about 2-5m. The highest resolution should have a frequency of roughly 4-5km, to give a sense of a "big" world. Consider maybe 2-3 resolutions in between which a decrease in amplitude.
+The heightmap {{< katex >}}M_h{{< /katex >}} consists of multiple high and low resolution maps which are added and then normalized to a value between 0-1. The lower resolution should have a frequency of about 2-5m. The highest resolution should have a frequency of roughly 4-5km, to give a sense of a "big" world. Consider maybe 2-3 resolutions in between which a decrease in amplitude.
 
 To calculate the final hight multiply this hight with the maximum map height.
 
@@ -55,9 +55,9 @@ height = M_{h} \cdot h
 
 > Heightmap resolution is 1m.
 
-### Humidity $M_{hum}$
+### Humidity Map
 
-This maps give the annual rainfall between 0-1. The more the humidity is the more snow or rain fall is to be expected (depending on the temperature).
+The humidity map {{< katex >}}M_{hum}{{< /katex >}} represents the total annual rainfall between 0-1. The more the humidity is the more snow or rain fall is to be expected (depending on the temperature).
 
 The humidity map is saved in a reduced resolution for later reference for the dynamic environment simulation.
 
@@ -69,8 +69,9 @@ hum = M_{hum} - 0.4 \cdot M_h
 
 > Humidity resolution 100m.
 
-### Temperature $M_{t}$
+### Temperature Map
 
+The temperature map {{< katex >}}M_t{< /katex >}} represents the annual average temperature between 0-1.
 We assume a desired temperature range of -40 to 40 degree. This is shifted of about +/- 10 degrees randomly upon world creation.
 
 As our temperature map initially holds values between 0-1 the conversion is done like:
@@ -81,7 +82,7 @@ t = M_t \cdot 80 - 40
 
 The temperature is just created as the other maps but then a gradient is added which will increase the temperature towards the middle (equator) of the map by 130% and drop down to top and bottom to 30% of the original value. An example gradient is shown below:
 
-![Example temperature gradient](/static/gradient.png)
+![Example temperature gradient](gradient.png)
 
 It reduces the temperature the higher the hightmap value is down to a value of 10% by the formula:
 
@@ -91,15 +92,15 @@ t = M_t - 0.9 \cdot M_h
 
 > Humidity resolution 100m.
 
-### Mana $M_{m}$
+### Mana Map
 
-The mana distribution is a normal noise map without any changes.
+The mana distribution {{< katex >}}M_m{< /katex >}} is a normal noise map without any changes.
 
 > Mana resolution 10m.
 
-### Population $M_{p}$
+### Population Map
 
-The mana distribution is a normal noise map without any changes. But is later heavily modified by influence maps.
+The population distribution {{< katex >}}M_p{< /katex >}} is a normal noise map without any changes. But is later heavily modified by influence maps.
 
 > Population resolution 100m.
 
@@ -191,12 +192,49 @@ Erzeugung von Städten
 
 ## Resource Distribution
 
-TBD. Zum Nutzen und Verwendung der einzelnen Bodenschätze, siehe Abschnitt [Ressourcen](#heading=h.qtftxg6zrzre).
+TBD.
 
 ## Navigation Map Creation
 
+The navigation map is created for NPC to fast calculate travel paths other long distances. It creates a connected graph network and the output is put into a [Neo4J database](https://neo4j.com/).
 
+* Add nodes for each city, artefact and places of interest (poi's)
+* Add a grid of 10 * 10 points and connect them to every next neighbour node (diagonal connections are allowed)
+* Weights of these connections is calculated
 
-## Weltzerstörung
+The guidline for weight is 1 for a normal, easy to walk road. It gets higher for e.g. steeper terrain and if there is a slope between the points is more then its marked as climable.
 
-Die Welt soll durch das Herbeiführen von Rift Events strukturell geschwächt werden, bis sie mit einer weiteren Welt kollidiert. Die Spieler selbst bleiben bei solch einem Event relativ unbeschadet. Je nach Fraktion/Kult welcher die Spieler angehören wird es aber weitreichende Mali oder Boni geben. In der neu generierten Welt starten die Spieler wieder zunächst ohne Kult Zugehörigkeit.
+In order to detect climable terrain we follow the connection between the nodes and if the slope over a distance of 5m is higher than 45° it is marked as 'climb'. The weight for sloped terrain is:
+
+{{< katex display >}}
+t = weight_{base} \cdot min(1.0, (slope - 15) \cdot \frac{4}{30})
+{{< /katex >}}
+
+For waterways the weight 1 for a calm and normal flowing river.
+
+Example weights:
+
+* Normal road: 1
+* Grassland: 1.5
+* Rough Terrain: 2
+* Terrain with lots bushes/thorns: 4
+* Swamps: 8
+
+Additional data labels for the connections, to later help filter them for different use cases:
+
+* **Walk**: Connection can be traveled by food
+* **Drive**: Weagons can drive on this connection (e.g. roads)
+* **Swim**: Waterways connections are marked like this
+* **Climb**: Conneections with slopes higher then 45 degrees are marked like this
+
+### Node Connection Weights
+
+> Its possible that downscaled graphs with pre-calculated connections must be made in order to speed up NPC navigation later on.
+
+## World Data Cleanup
+
+Before a new world is created the old world data is deleted. The following procedure is made after all player entities are persisted and active entity simulation has stopped:
+
+1. Delete all voxel data
+2. Delete all navigation waypoint data
+3. Delete all non-player entity data
