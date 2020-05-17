@@ -8,6 +8,11 @@
   </url>
   
   <url>
+    <loc>https://docs.bestia-game.net/docs/server/</loc>
+    <lastmod>2020-05-17T16:12:52+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://docs.bestia-game.net/docs/mechanics/skills/</loc>
     <lastmod>2020-04-30T01:47:03+02:00</lastmod>
   </url>
@@ -40,7 +45,7 @@
   
   <url>
     <loc>https://docs.bestia-game.net/docs/mechanics/general/</loc>
-    <lastmod>2020-05-06T02:00:55+02:00</lastmod>
+    <lastmod>2020-05-17T16:12:52+02:00</lastmod>
   </url>
   
   <url>
@@ -70,7 +75,7 @@
   
   <url>
     <loc>https://docs.bestia-game.net/docs/server/quests/</loc>
-    <lastmod>2020-05-04T00:01:20+02:00</lastmod>
+    <lastmod>2020-05-17T16:12:52+02:00</lastmod>
   </url>
   
   <url>
@@ -99,7 +104,7 @@
   
   <url>
     <loc>https://docs.bestia-game.net/docs/</loc>
-    <lastmod>2020-05-17T15:41:44+02:00</lastmod>
+    <lastmod>2020-05-17T16:12:52+02:00</lastmod>
   </url>
   
   <url>
@@ -110,11 +115,6 @@
   <url>
     <loc>https://docs.bestia-game.net/docs/mechanics/items/</loc>
     <lastmod>2020-04-30T01:47:03+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://docs.bestia-game.net/docs/server/</loc>
-    <lastmod>2020-05-04T00:01:20+02:00</lastmod>
   </url>
   
   <url>
