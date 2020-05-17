@@ -107,7 +107,7 @@ hum = M_{hum} - 0.4 \cdot M_h
 
 ### Temperature Map
 
-The temperature map {{< katex >}}M_t{< /katex >}} represents the annual average temperature between 0-1.
+The temperature map {{< katex >}}M_t{{< /katex >}} represents the annual average temperature between 0-1.
 We assume a desired temperature range of -40 to 40 degree. This is shifted of about +/- 10 degrees randomly upon world creation.
 
 As our temperature map initially holds values between 0-1 the conversion is done like:
