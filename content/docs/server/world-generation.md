@@ -179,9 +179,8 @@ In order to find the coordiante of a water sources on a map and their probabilit
 * P increases with humidity above 0.5 - 1.0 from 1.0 to 3.0
 
 {{< katex display >}}
-P_h &= height(x, y) / 0.6 \cdot
-P_h &= height(x, y) / 0.6 \cdot
-P_{droplet} = M_t - 0.9 \cdot M_h
+P_h &= height(x, y) / 0.6
+P_{droplet} &= M_t - 0.9 \cdot M_h
 {{< /katex >}}
 
 After these are placed a water stream is simulated flowing from the source down the slopes. In this is an iterative process. The source will spill out a certain amount of water to the tile. In every step a bit water evaporates depending on the surrounding temperature. The simulation is repeated until there is no significant change in waterlevel and it reaches an equilibrium. If the water floats out at the border it is buffered and in a next run it is exchanged with the border tiles. This is again done until there is no significant change anymore and equilibriunm reached.
