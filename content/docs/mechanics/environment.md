@@ -29,15 +29,12 @@ affect temperature resistence.
 
 The formular is as follows:
 
-{{< katex >}}
-\begin{aligned}
-   T_{increase} &= \sqrt{\text{VIT}} / 2\\
-   T_{increase}  &= \sqrt{\text{WILL}} / 4\\
-\end{aligned}
+{{< katex display >}}
+   T_{tolerable} += T_{base} + \sqrt{\text{VIT}} / 2 \cdot \sqrt{\text{WILL}} / 4
 {{< /katex >}}
 
 For items and structures these calculation is a bit different. Usually these items have some threshold above or under which they will
-start to malfunction or perhaps even catch fire.
+start to malfunction (or perhaps even catch fire!).
 
 ## Weather
 
@@ -49,17 +46,17 @@ The weather influences also the temperature which will in turn decide if and how
 
 The weather will also play a role in which crops and plants grow. If the player decided to plant salad in the desert this won't work quite well.
 
-## Rain
+### Rain
 
 A in strength controllable rain effect should overlay the entire viewport. The rain blowing direction should correlate
 with the wind direction (which will be more or less random). During rain the ground will show a wet effect and view distance is
 reduced. It also reduces the effectiveness of fires and might extingush them. Fire attacks will lose certain strengths in a very wet environment (like burning effects won't last very long).
 
-## Fog
+### Fog
 
 Clouds of fog will move slowly over the map. And the sight of the AI entities is reduced. Its will also get harder for a player to see.
 
-## Night
+### Night
 
 During night time the player will need light sources in order to improve
 the visibility of enemies or terrain. There will be certain items (e.g. torches, candles etc.) as well as spells to
@@ -82,20 +79,6 @@ This means that the bestia month has 10 days in real time and an bestia year is 
 * Bestia year: 4 months
 * Bestia seasion: summer, winter, fall, spring: each 1 month
 * Bestia day: 8 hours
-
-### Time Calculation
-
-The easiest way to calculate the time in the Bestia world is the following:
-
-{{< katex >}}
-\begin{aligned}
-   btime &= time_{real} / 3 \\
-   btime_{hours} &= btime / 3600\\
-   btime_{days} &= btime_{hours} / 24\\
-   btime_{months} &= btime_{days} / 30\\
-   btime_{years} &= btime_{years} / 12
-\end{aligned}
-{{< /katex >}}
 
 This allows the player to see multiple day-night cycles on the same day while allowing him to play for a considerable
 time so he can actually do something meaningful until the sun rises again.

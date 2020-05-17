@@ -199,3 +199,6 @@ There is a global waypoint and path network
 Long term planning only available for agents which have learned about the way
 Learning happens by: reading, questing, exploring the way of its own, drawing maps
 
+## Literature
+
+* [A Better Monster AI - Joseph Swing](http://www.roguebasin.com/index.php?title=A_Better_Monster_AI)

@@ -170,7 +170,7 @@ The base probability if a chunk has a spring is given by:
 The average humidity on the map influences the probability P like:
 
 {{< katex display >}}
-P_{total} = (0.6 * m_{hum} - 1.5) + P_{base}
+P_{total} = (0.6 * hum_{avg} - 1.5) + P_{base}
 {{< /katex >}}
 
 In order to find the coordiante of a water sources on a map and their probability distribution, the map is sampled at a resolution of 10m and theprobability P of a coordiante is given by:
@@ -179,8 +179,10 @@ In order to find the coordiante of a water sources on a map and their probabilit
 * P increases with humidity above 0.5 - 1.0 from 1.0 to 3.0
 
 {{< katex display >}}
-P_h &= height(x, y) / 0.6
+\begin{aligned}
+P_h &= height(x, y) / 0.6\\
 P_{droplet} &= M_t - 0.9 \cdot M_h
+\end{aligned}
 {{< /katex >}}
 
 After these are placed a water stream is simulated flowing from the source down the slopes. In this is an iterative process. The source will spill out a certain amount of water to the tile. In every step a bit water evaporates depending on the surrounding temperature. The simulation is repeated until there is no significant change in waterlevel and it reaches an equilibrium. If the water floats out at the border it is buffered and in a next run it is exchanged with the border tiles. This is again done until there is no significant change anymore and equilibriunm reached.
@@ -252,6 +254,12 @@ Erzeugung von Städten
 2. Verteilen der Gebäude um den Stadtkern nach einer Gaußkurvenverteilung.
 3. Erzeugung der Gebäude-Innenräume nach: https://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_division_method
 
+### Road Creation
+
+After the settlements are created, depending on their population size and an estimated travel distance roads are procedurally generated. We loosly follow the approach presented in the Paper [Procedural Generation of Roads](https://www.researchgate.net/publication/229707505_Procedural_Generation_of_Roads).
+
+TBD.
+
 ## Resource Distribution
 
 TBD.
@@ -304,3 +312,8 @@ Before a new world is created the old world data is deleted. The following proce
 ## Literatur
 
 * [www.redblobgames.com - Making maps with noise functions](https://www.redblobgames.com/maps/terrain-from-noise/) - Very detailed overview of heightmap generation techniques with sample code
+* [Generating terrain in Cuberite](http://mc-server.xoft.cz/docs/Generator.html#biome.grown) - Ideas on how to create biomes in an alternate way, also nice overview of noise functions
+* [Procedural Generation Resources](https://firespark.de/?id=article&article=ProceduralGenerationResources) - A nice collection of links regarding procedural generation for games
+* [Dwarf Fortress](https://en.wikipedia.org/wiki/Dwarf_Fortress) - In general a good inspiration on how the Bestia world generation quality should be
+* [Spherical Projections (Stereographic and Cylindrical)](http://paulbourke.net/geometry/transformationprojection/) - Background infos on spherical and zylindrical projections, useful for coordiante transformations
+* [Algorithms for Procedural Content Generation](http://pcg.wikidot.com/category-pcg-algorithms) - Another very good and big resource for PCG algorithms

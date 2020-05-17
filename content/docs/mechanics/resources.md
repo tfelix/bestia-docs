@@ -40,7 +40,7 @@ The following base types of resources exist in the game.
 | Wood                     | Forrests                   | Material                               |
 | Stone                    | Mountains                  | Material                               |
 
-## Resource List
+## List of Resources
 
 | Name                 | Type      | Description                    |
 | -------------------- | --------- | ------------------------------ |
@@ -68,15 +68,17 @@ Some items for example
 
 The base chance for item recylcing is:
 
-| Item Lv. | Successful Recycle Chance |
-| -------- | ------------------------- |
-| 1 - 20   | 65%                       |
-| 21 - 60  | 45%                       |
-| > 61     | 25%                       |
+| Item Lv. | Successful Recycle Probability |
+| -------- | ------------------------------ |
+| 1 - 20   | 65%                            |
+| 21 - 60  | 45%                            |
+| > 61     | 25%                            |
 
 The chance can be altered by players INT (slightly) and DEX and also by the apropriate skill:
 
-{{< katex >}}chance = chance_{base} + \frac{INT}{20} + \frac{DEX}{10} + chance_{skill}{{< /katex >}}
+{{< katex display >}}
+  P_{total} = P_{base} + \frac{INT}{40} + \frac{DEX}{20} + P_{skill}
+{{< /katex >}}
 
 If successfull performed a recycling attempt the amount of captured resources is determined:
 
@@ -86,6 +88,8 @@ If successfull performed a recycling attempt the amount of captured resources is
 | 21 - 60  | 60%                   |
 | > 61     | 40%                   |
 
-This is the base chance which is altered by the [Scavenger](/mechanics/skills/#scavenger) skill as well as INT (slightly) and DEX.
+This is the base probability which is altered by the aprobiate skill as well as INT (slightly) and DEX.
 
-{{< katex >}}chance = chance_{base} + \frac{INT}{40} + \frac{DEX}{20} + chance_{skill}{{< /katex >}}
+{{< katex display>}}
+  P_{total} = P_{base} + \frac{INT}{40} + \frac{DEX}{20} + P_{skill}
+{{< /katex >}}

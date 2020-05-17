@@ -1,8 +1,8 @@
 ---
-title: Bestia
+title: Bestias
 ---
 
-# Bestia
+# Bestias
 
 In areas with high mana concentration, so-called mini rift events are formed. At these neuralgic points, Bestia are
 materialized and enter the respective worlds.
@@ -18,11 +18,11 @@ In order to catch Bestia you need Magic Bestia Traps. This items are manufacture
 | Mega Trap   |       140%        |  100%   |  60%  |  20%   | 20% - (LV - 100)  |
 | Master Trap |       180%        |  140%   | 100%  |  60%   | 60% - (LV - 100)  |
 
-You can also increase the chance of catching by {{< katex >}}\frac{WILL}{50}{{< /katex >}}.
+You can also increase the chance of catching by {{< katex >}}+\frac{WILL}{50}{{< /katex >}} of the trap user.
 
 ## Breeding
 
-Bestias can be interbred in order to improve certain statistics. The player can pair certain individuals of Bestia in
+Bestias can be bred in order to improve certain statistics. The player can pair certain individuals of Bestia in
 order to produce offspring. In order to breed a Bestia the following criteria must be met:
 
 * A male and female is required
