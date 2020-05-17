@@ -20,17 +20,17 @@ the master.
 Some of this account skills can be used by every Bestia in posession others only by the master itself.
 
 > Don't confuse this skills with the regular attacks a Bestia is learning by item usage or level up. These are simply
-> called [attacks](/docs/mechanics/attacks).
+> called attacks.
 
 ### Guidlines
 
 * The number of total skil ranks inside a tree should **be between 70-80**
-* The possible rank counts of a skill should be: **1, 5 and 10**
-* There should be some meaningful dependency of the skills forming an exciting tree
-* In each profession tree there should form 2-3 sub-trees which create a miningful hierarchy
-* There should be some kind of three tiers inside a tree form low and basic skill to the much powerfull skills
+* The possible rank counts of a skill should be: **1, 3, 5 and 10**
+* There should be some meaningful dependency of the skills forming a tree
+* In each profession tree there should form 2-3 sub-trees which create a meaningful hierarchy
+* There should be some kind of three tiers inside a tree to lead from low and basic skill to the much powerfull skills
 
-> Most Important: No Hardcoded Skill Effects!
+> Most Important: No hardcoded skill effects!
 
 Skills should be used when possible require some interaction with the player whose success depends on the effect of the
 skill. An example would be the teleport ability: after selecting the players (which can be flexible by the number) and
@@ -42,11 +42,9 @@ understandable and influenceable by the player.
 
 ### Skill Progression
 
-Upon each level up the master gains 1 skillpoint to put into the skills rank. This is permanent and means a player can
-spend about 100 points for improving the ranks of his skills.
+Starting from level 10, on each level up the master gains 1 skillpoint to put into the skills rank. This is permanent and means a player can spend about 100 points for improving the ranks of his skills.
 
-> Since max level is not capped actually he might be able to spend more points but a progressions gets continously
-> harder it is safe to assume every player has about 100 points.
+> Since max level is not capped actually he might be able to spend more points but a progressions gets continously harder it is safe to assume every player has about 100 points.
 
 The skilltrees are designed as such that to reach the highest professions in a tree the player needs to spend **70 points**.
 
@@ -57,11 +55,29 @@ meaningful professions of another tree. The skilltree is a hierarchical dependen
 
 In this tree, simple, common mundane tasks are placed.
 
-### First Aid
+{{< columns >}}
+**First Aid (1)**
 
-### Cooking (5)
+Player can apply bandages to Bestia and channel a healing effect of ob to 30% of their total health. The channel time is 15 seconds and the cooldown is 5 minutes. A Bestia can only receive a First Aid every 30 secs.
+<--->
+> +3% damage/level
+{{< /columns >}}
 
-### Fishing (5)
+{{< columns >}}
+**Cooking (5)**
+
+The user can start to cook meals on fire places. This meals apply certain buff effects when they are eaten.
+<--->
+> Level increas makes it easier to cook higher level food.
+{{< /columns >}}
+
+{{< columns >}}
+**Fishing (5)**
+
+With this skill you are able to start fishing.
+<--->
+> Level increas makes it easier to catch higher level fish.
+{{< /columns >}}
 
 ## Battle Tree
 
@@ -77,11 +93,14 @@ graph TD
   ELEMENTAL_MASTERY-->|min. 3|MASTER_OF_EARTH("Master of Earth [10]")
 {{< /mermaid >}}
 
-### Elemental Mastery (5)
+
+{{< columns >}}
+**Elemental Mastery (5)**
 
 Increases damage or healing of spells with elemental (earth, wind, wasser, fire) domain.
-
+<--->
 > +3% damage/level
+{{< /columns >}}
 
 ### Master of Fire (10)
 
@@ -307,87 +326,3 @@ User is able to channel down the Mana to crystalize into small shards of Mana cr
 Detect presence of magic.
 
 ### Identify Magic (5)
-
-# Honor
-
-It is possible in Bestia to perform malicious actions which will reduce the players good experience. This is by design!
-Yet there should be incentives for players not to go this route in order to protect low level players from ganking of
-other griev play. If a player behaves well and their honor level increases they will get more and more rewards. On the
-other hand if a player has negative honor they will get bad reputation and repressions. There might actually be some
-player initiated hunt on these low honor players.
-
-Additionally each NPC maintains an internal list of reputation points and players. If a player misbehaves or behaves in
-a friendly way, this list will be adjusted. The NPC also communicates this list with other NPCs if they meet. If the reputation
-exceeds certain upper and lower limits and the NPC enters areas that use a long-distance communication system, the NPC
-may also communicate this to more distant areas. Only if the players reputation falls below -100 the NPC encountered
-(and acted negative towards them) they remembers this permanently. Higher values slowly return to the default value
-of 0 and are then removed from the list (NPCs don't forget if a player killed family members or the NPC life was saved).
-If the customer reaches the nearest settlement via the reputation points after a certain time, the value is also stored
-there permanently.
-
-Reputation decreases faster through bad deeds than increasing because of good ones.
-
-## Protected Zones
-
-Around the starting places there will be a enchantment in place which will mark the lands in the vacinity as **Protected Zones**.
-Inside this zone every kill of another player Bestia with more then 5 levels less as the killing bestia
-or NPC will reduce the honor by **20 points**.
-
-Every action which leads to honor loss inside a protected zone (other then killing a low level Player Bestia) will be **multiplied by 3**
-wheras honor increasing actions will be **multiplied by 1.5**.
-
-## Negative Honor
-
-As there are multiple factions which different interests it is not easy to define which play is considered bad behavior
-which will get punished automatically. Yet there are some core actions which will be universally be considered as griev play
-which is not inherently forbidden but will result in a loss of honor.
-
-If a player drops below 0 honor he will receive the debuff [Rogue](/). If a player has less then -100 honor he will receive
-the debuff [Outlaw](/).
-
-### Stealing
-
-Stealing means if a player picks up an item from a storage chest not belonging to him. The owner can also grant certain player
-access right to a chest. Then its not considered stealing. A guild leader can also mark storage chests as usable for guild members.
-
-A player who steals an item is also marked with the debuff [Thief](/) which will grant any player who kills him **5 extra honor**. The killing
-player also gets a honor reward for each item returned to the original owner of the items within 6 real time hours (18 hours in Bestia time).
-
-### Malicious Actions
-
-| Malicious Action                                | Honor Loss (Player) | Honor Loss to NPC in Sight |
-| ----------------------------------------------- | :-----------------: | :------------------------: |
-| Killing a NPC                                   |         -5          |            -15             |
-| Killing Players Bestias                         |          0          |             -2             |
-| Killing Players Bestias in a **Protected Zone** |         -20         |            -20             |
-| Stealing Item (Mundane)                         |         -5          |            -10             |
-| Stealing Item (Superior)                        |         -10         |            -20             |
-| Stealing Item (Legendary)                       |         -15         |            -50             |
-
-### Negative Honor Effects
-
-If the honor drops below 0 the negative effects will start to take place. The effects are as follows:
-
-| Honor Amount | Effect                                                                                                                             |
-| ------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
-| < 0          | No more advantages from NPC and the NPC will act unfriendly against the player.                                                    |
-| < -50        | Some NPC might start to act hostile and attack the player or flee from him.                                                        |
-| < -100       | NPC will permanently remember the player and also spread the word around so more NPC will start to act hostile towards the player. |
-
-If a player steals something not belonging to him but to a NPC or another player he will loose honor for each item he
-takes and depending on the [item level](/mechanics/items/#item-level) (looting a dead NPC/player will not lead to a
-reduction of honor).
-
-## Positive Honor
-
-A positive honor level will lead to very friendly NPC which might even give the player some discounts or gifts from
-time to time. In order to increase your honor level again you can:
-
-* Kill a player with negative honor
-* Helping a NPC by healing or resurrecting a dead NPC
-
-### Shrines of Judgement
-
-There are a 5 shrines in each game world incarnation where a player can sacrifice to raise a reputation that has fallen below the threshold of a player's global
-persecution. The sacrifice is usually (depending on the reputation threshold) very painful and even if it was made it can take
-several days until the news about it was spread.

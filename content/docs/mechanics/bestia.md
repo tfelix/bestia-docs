@@ -34,7 +34,7 @@ In order to breed two Bestia one male and one female must be put together in a b
 onto the map. After a waiting time which is determined by its original level an egg is produced. The breeding time until
 an egg is produced is given by:
 
-{{< katex >}}
+{{< katex display >}}
    t_{breed} [s_{real}] =  (3 \cdot 24 \cdot 3600) \cdot \frac{lv_1 \cdot lv_2}{2}
 {{< /katex >}}
 
@@ -42,7 +42,7 @@ The Bestia species produced will always be the species of the female breeding pa
 
 The hatch time of the egg is given is given in normal time and is determined by:
 
-{{< katex >}}
+{{< katex display >}}
    t_{hatch} [s_{real}] =  rand(0.9, 1.0) \cdot (5 \cdot 24 \cdot 3600) \cdot \frac{lv_1 \cdot lv_2}{2}
 {{< /katex >}}
 
