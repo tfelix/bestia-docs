@@ -11,12 +11,12 @@ In general it works by creating piplines which are then used to create and trans
 In general it works by creating piplines which are then used to create and transform noise maps." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.bestia-game.net/docs/server/world-generation/" />
-<meta property="article:modified_time" content="2020-05-17T03:14:07+02:00" />
+<meta property="article:modified_time" content="2020-05-17T15:41:44+02:00" />
 <title>World Generation | Bestia Game</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.a6e2c98d287fde1ee03cdb4322ae00297d9842c96ed7d383b48098da94e04095.css" integrity="sha256-puLJjSh/3h7gPNtDIq4AKX2YQslu19ODtICY2pTgQJU=">
-<script defer src="/en.search.min.8597e351f1d0e495fa0be66f2b7355e420ed16967a3acab6eced5e763c5a2af2.js" integrity="sha256-hZfjUfHQ5JX6C&#43;ZvK3NV5CDtFpZ6Osq27O1edjxaKvI="></script>
+<script defer src="/en.search.min.1f6d926a8946ebb6daed9a75b7cf406d621fa7046ab0738a0478fa9352fe1106.js" integrity="sha256-H22SaolG67ba7Zp1t89AbWIfpwRqsHOKBHj6k1L&#43;EQY="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
@@ -65,7 +65,7 @@ https://github.com/alex-shpak/hugo-book
 <li>
   <a href="/docs/mechanics/master/">Bestia Master</a></li>
 <li>
-  <a href="/docs/mechanics/bestia/">Bestia</a></li>
+  <a href="/docs/mechanics/bestia/">Bestias</a></li>
 <li>
   <a href="/docs/mechanics/environment/">Environment</a></li>
 <li>
@@ -76,8 +76,6 @@ https://github.com/alex-shpak/hugo-book
   <a href="/docs/mechanics/skills/">Skills</a></li>
 <li>
   <a href="/docs/mechanics/statusvalues/">Status Values</a></li>
-<li>
-  <a href="/docs/mechanics/dev-resources/">Development Resources</a></li>
 </ul>
 </li>
 <li>
@@ -106,6 +104,8 @@ https://github.com/alex-shpak/hugo-book
 </li>
 <li>
   <a href="/docs/api/"><strong>REST API</strong></a></li>
+<li>
+  <a href="/docs/resources/"><strong>Development Resources</strong></a></li>
 </ul>
 
 
@@ -168,7 +168,11 @@ https://github.com/alex-shpak/hugo-book
         <li><a href="#creating-rivers-and-lakes">Creating Rivers and Lakes</a></li>
         <li><a href="#biome-setup">Biome Setup</a></li>
         <li><a href="#terrain-features">Terrain Features</a></li>
-        <li><a href="#settlement-creation">Settlement Creation</a></li>
+        <li><a href="#settlement-creation">Settlement Creation</a>
+          <ul>
+            <li><a href="#road-creation">Road Creation</a></li>
+          </ul>
+        </li>
         <li><a href="#resource-distribution">Resource Distribution</a></li>
         <li><a href="#navigation-map-creation">Navigation Map Creation</a>
           <ul>
@@ -382,7 +386,7 @@ We assume a desired temperature range of -40 to 40 degree. This is shifted of ab
 </table>
 <p>The average humidity on the map influences the probability P like:</p>
 <span>
-  \[P_{total} = (0.6 * m_{hum} - 1.5) &#43; P_{base}\]
+  \[P_{total} = (0.6 * hum_{avg} - 1.5) &#43; P_{base}\]
 </span>
 
 <p>In order to find the coordiante of a water sources on a map and their probability distribution, the map is sampled at a resolution of 10m and theprobability P of a coordiante is given by:</p>
@@ -391,8 +395,10 @@ We assume a desired temperature range of -40 to 40 degree. This is shifted of ab
 <li>P increases with humidity above 0.5 - 1.0 from 1.0 to 3.0</li>
 </ul>
 <span>
-  \[P_h &amp;= height(x, y) / 0.6
-P_{droplet} &amp;= M_t - 0.9 \cdot M_h\]
+  \[\begin{aligned}
+P_h &amp;= height(x, y) / 0.6\\
+P_{droplet} &amp;= M_t - 0.9 \cdot M_h
+\end{aligned}\]
 </span>
 
 <p>After these are placed a water stream is simulated flowing from the source down the slopes. In this is an iterative process. The source will spill out a certain amount of water to the tile. In every step a bit water evaporates depending on the surrounding temperature. The simulation is repeated until there is no significant change in waterlevel and it reaches an equilibrium. If the water floats out at the border it is buffered and in a next run it is exchanged with the border tiles. This is again done until there is no significant change anymore and equilibriunm reached.</p>
@@ -527,6 +533,10 @@ P_{droplet} &amp;= M_t - 0.9 \cdot M_h\]
 <li>Verteilen der Gebäude um den Stadtkern nach einer Gaußkurvenverteilung.</li>
 <li>Erzeugung der Gebäude-Innenräume nach: <a href="https://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_division_method">https://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_division_method</a></li>
 </ol>
+<h3 id="road-creation">Road Creation</h3>
+<p>After the settlements are created, depending on their population size and an estimated travel distance roads are procedurally generated. We loosly follow the approach presented in the Paper 
+  <a href="https://www.researchgate.net/publication/229707505_Procedural_Generation_of_Roads">Procedural Generation of Roads</a>.</p>
+<p>TBD.</p>
 <h2 id="resource-distribution">Resource Distribution</h2>
 <p>TBD.</p>
 <h2 id="navigation-map-creation">Navigation Map Creation</h2>
@@ -574,6 +584,16 @@ P_{droplet} &amp;= M_t - 0.9 \cdot M_h\]
 <ul>
 <li>
   <a href="https://www.redblobgames.com/maps/terrain-from-noise/">www.redblobgames.com - Making maps with noise functions</a> - Very detailed overview of heightmap generation techniques with sample code</li>
+<li>
+  <a href="http://mc-server.xoft.cz/docs/Generator.html#biome.grown">Generating terrain in Cuberite</a> - Ideas on how to create biomes in an alternate way, also nice overview of noise functions</li>
+<li>
+  <a href="https://firespark.de/?id=article&amp;article=ProceduralGenerationResources">Procedural Generation Resources</a> - A nice collection of links regarding procedural generation for games</li>
+<li>
+  <a href="https://en.wikipedia.org/wiki/Dwarf_Fortress">Dwarf Fortress</a> - In general a good inspiration on how the Bestia world generation quality should be</li>
+<li>
+  <a href="http://paulbourke.net/geometry/transformationprojection/">Spherical Projections (Stereographic and Cylindrical)</a> - Background infos on spherical and zylindrical projections, useful for coordiante transformations</li>
+<li>
+  <a href="http://pcg.wikidot.com/category-pcg-algorithms">Algorithms for Procedural Content Generation</a> - Another very good and big resource for PCG algorithms</li>
 </ul>
 </article>
  
@@ -585,7 +605,7 @@ P_{droplet} &amp;= M_t - 0.9 \cdot M_h\]
 
 
 
-  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/9f8c3bf812a2b6a5e2101506af03b1d6a778ad5e" title='Last modified by Thomas Felix | May 17, 2020' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/5c45d037bb544239b2df6e4cdb5d77cc245629f1" title='Last modified by Thomas Felix | May 17, 2020' target="_blank" rel="noopener">
       <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
       <span>May 17, 2020</span>
     </a>
@@ -640,7 +660,11 @@ P_{droplet} &amp;= M_t - 0.9 \cdot M_h\]
         <li><a href="#creating-rivers-and-lakes">Creating Rivers and Lakes</a></li>
         <li><a href="#biome-setup">Biome Setup</a></li>
         <li><a href="#terrain-features">Terrain Features</a></li>
-        <li><a href="#settlement-creation">Settlement Creation</a></li>
+        <li><a href="#settlement-creation">Settlement Creation</a>
+          <ul>
+            <li><a href="#road-creation">Road Creation</a></li>
+          </ul>
+        </li>
         <li><a href="#resource-distribution">Resource Distribution</a></li>
         <li><a href="#navigation-map-creation">Navigation Map Creation</a>
           <ul>

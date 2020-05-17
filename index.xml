@@ -41,18 +41,6 @@
     
     <item>
       <title></title>
-      <link>https://docs.bestia-game.net/docs/mechanics/dev-resources/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://docs.bestia-game.net/docs/mechanics/dev-resources/</guid>
-      <description>Artwork and Design The general art style will be comic like as for example World of Warcraft. This helps the game to get fast assets as its easier then archiving foto-realism and also these styles are more timeless.
-UI Design Currently no final UI Design was found. Feel free to contribute!
-Logos Currently no final Bestia Logo was found. Feel free to contribute!
-Fonts Currently the font usage is not finally decided.</description>
-    </item>
-    
-    <item>
-      <title></title>
       <link>https://docs.bestia-game.net/docs/mechanics/general/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -130,16 +118,6 @@ In general it works by creating piplines which are then used to create and trans
     </item>
     
     <item>
-      <title>Bestia</title>
-      <link>https://docs.bestia-game.net/docs/mechanics/bestia/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://docs.bestia-game.net/docs/mechanics/bestia/</guid>
-      <description>Bestia In areas with high mana concentration, so-called mini rift events are formed. At these neuralgic points, Bestia are materialized and enter the respective worlds.
-Catching In order to catch Bestia you need Magic Bestia Traps. This items are manufactured via the apropriate crafting skill. Bestias catch chance can be increased by reducing its HP. If the HP is 1% the catch chance is increased by 30%. It can also changed by applying buffs or debuffs.</description>
-    </item>
-    
-    <item>
       <title>Bestia Master</title>
       <link>https://docs.bestia-game.net/docs/mechanics/master/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -147,6 +125,16 @@ Catching In order to catch Bestia you need Magic Bestia Traps. This items are ma
       <guid>https://docs.bestia-game.net/docs/mechanics/master/</guid>
       <description>Bestia Master The intro game tells players how to become a Bestia Master. They came into direct contact with an ephemeral mana crystal that changed their nature through magic and connected them to the mana flows. They are therefore receptive to the influence of mana and are able to communicate with the beings that emerge from this mythical energy: the Bestias.
 The attachment to mana also explains why Bestia masters were able to survive the destruction of their world relatively unscathed and to pass on to the next world.</description>
+    </item>
+    
+    <item>
+      <title>Bestias</title>
+      <link>https://docs.bestia-game.net/docs/mechanics/bestia/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.bestia-game.net/docs/mechanics/bestia/</guid>
+      <description>Bestias In areas with high mana concentration, so-called mini rift events are formed. At these neuralgic points, Bestia are materialized and enter the respective worlds.
+Catching In order to catch Bestia you need Magic Bestia Traps. This items are manufactured via the apropriate crafting skill. Bestias catch chance can be increased by reducing its HP. If the HP is 1% the catch chance is increased by 30%. It can also changed by applying buffs or debuffs.</description>
     </item>
     
     <item>

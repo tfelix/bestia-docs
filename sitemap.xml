@@ -14,12 +14,12 @@
   
   <url>
     <loc>https://docs.bestia-game.net/docs/mechanics/resources/</loc>
-    <lastmod>2020-05-06T02:00:55+02:00</lastmod>
+    <lastmod>2020-05-17T15:41:44+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://docs.bestia-game.net/</loc>
-    <lastmod>2020-05-16T18:45:32+02:00</lastmod>
+    <lastmod>2020-05-17T15:41:44+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -39,11 +39,6 @@
   </url>
   
   <url>
-    <loc>https://docs.bestia-game.net/docs/mechanics/dev-resources/</loc>
-    <lastmod>2020-04-30T01:47:03+02:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://docs.bestia-game.net/docs/mechanics/general/</loc>
     <lastmod>2020-05-06T02:00:55+02:00</lastmod>
   </url>
@@ -54,8 +49,13 @@
   </url>
   
   <url>
+    <loc>https://docs.bestia-game.net/docs/resources/</loc>
+    <lastmod>2020-05-17T15:41:44+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://docs.bestia-game.net/docs/server/ai/</loc>
-    <lastmod>2020-05-04T00:01:20+02:00</lastmod>
+    <lastmod>2020-05-17T15:41:44+02:00</lastmod>
   </url>
   
   <url>
@@ -80,12 +80,7 @@
   
   <url>
     <loc>https://docs.bestia-game.net/docs/server/world-generation/</loc>
-    <lastmod>2020-05-17T03:14:07+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://docs.bestia-game.net/docs/mechanics/bestia/</loc>
-    <lastmod>2020-05-06T02:00:55+02:00</lastmod>
+    <lastmod>2020-05-17T15:41:44+02:00</lastmod>
   </url>
   
   <url>
@@ -94,17 +89,22 @@
   </url>
   
   <url>
+    <loc>https://docs.bestia-game.net/docs/mechanics/bestia/</loc>
+    <lastmod>2020-05-17T15:41:44+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://docs.bestia-game.net/categories/</loc>
   </url>
   
   <url>
     <loc>https://docs.bestia-game.net/docs/</loc>
-    <lastmod>2020-05-17T03:14:07+02:00</lastmod>
+    <lastmod>2020-05-17T15:41:44+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://docs.bestia-game.net/docs/mechanics/environment/</loc>
-    <lastmod>2020-05-06T02:00:55+02:00</lastmod>
+    <lastmod>2020-05-17T15:41:44+02:00</lastmod>
   </url>
   
   <url>

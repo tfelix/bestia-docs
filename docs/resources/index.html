@@ -2,25 +2,23 @@
 <html lang="en">
 
 <head>
-	<meta name="generator" content="Hugo 0.70.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Bestia Developer Documentation  Explore vast lands in a procedural generated world, fight tough monsters, or join guilds in your quest for honor. But be prepared: the world might end sooner as you would expect.
- Star Watch
-Congratulations! You just have found the Developer Documentation of the Bestia-Game. Here you find everything from gamedesign guidlines to engine architecture overview as well as the API documentation to access game resources.">
+<meta name="description" content="Development Resources Here you find helpful links and general guidelines how the look and feel should be from a User Experience point of view.
+Artwork and Design The general art style will be comic like as for example World of Warcraft. This helps the game to get fast assets as its easier then archiving foto-realism and also these styles are more timeless. The assets should be in a low poly style to also ease up development and to help to get a more &ldquo;timeless&rdquo; look and feel.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://docs.bestia-game.net/" />
+<meta property="og:url" content="https://docs.bestia-game.net/docs/resources/" />
 
-<title> | Bestia Game</title>
+<title>Resources | Bestia Game</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.a6e2c98d287fde1ee03cdb4322ae00297d9842c96ed7d383b48098da94e04095.css" integrity="sha256-puLJjSh/3h7gPNtDIq4AKX2YQslu19ODtICY2pTgQJU=">
 <script defer src="/en.search.min.1f6d926a8946ebb6daed9a75b7cf406d621fa7046ab0738a0478fa9352fe1106.js" integrity="sha256-H22SaolG67ba7Zp1t89AbWIfpwRqsHOKBHj6k1L&#43;EQY="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
-<link rel="alternate" type="application/rss+xml" href="https://docs.bestia-game.net/index.xml" title="Bestia Game" />
+<link rel="alternate" type="application/rss+xml" href="https://docs.bestia-game.net/docs/resources/index.xml" title="Bestia Game" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -107,7 +105,7 @@ https://github.com/alex-shpak/hugo-book
 <li>
   <a href="/docs/api/"><strong>REST API</strong></a></li>
 <li>
-  <a href="/docs/resources/"><strong>Development Resources</strong></a></li>
+  <a href="/docs/resources/"class=active><strong>Development Resources</strong></a></li>
 </ul>
 
 
@@ -138,7 +136,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong></strong>
+  <strong>Resources</strong>
 
   <label for="toc-control">
     <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
@@ -152,10 +150,13 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#bestia-developer-documentation">Bestia Developer Documentation</a>
+    <li><a href="#development-resources">Development Resources</a>
       <ul>
-        <li><a href="#contributing">Contributing</a></li>
-        <li><a href="#project-repositories">Project Repositories</a></li>
+        <li><a href="#artwork-and-design">Artwork and Design</a></li>
+        <li><a href="#ui-design">UI Design</a></li>
+        <li><a href="#logos">Logos</a></li>
+        <li><a href="#fonts">Fonts</a></li>
+        <li><a href="#links">Links</a></li>
       </ul>
     </li>
   </ul>
@@ -169,42 +170,46 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="bestia-developer-documentation">Bestia Developer Documentation</h1>
-<blockquote>
-<p>Explore vast lands in a procedural generated world, fight tough monsters, or join guilds in your quest for honor.
-But be prepared: the world might end sooner as you would expect.</p>
-</blockquote>
-<p><a class="github-button" href="https://github.com/tfelix/bestia-docs" data-icon="octicon-star" data-size="large"
-data-show-count="true" aria-label="Star tfelix/bestia-docs on GitHub">Star</a>
-<a class="github-button" href="https://github.com/tfelix/bestia-docs/subscription" data-icon="octicon-eye"
-data-size="large" data-show-count="true" aria-label="Watch tfelix/bestia-docs on GitHub">Watch</a></p>
-<p><strong>Congratulations!</strong> You just have found the Developer Documentation of the Bestia-Game. Here you find everything from
-gamedesign guidlines to engine architecture overview as well as the API documentation to access game resources.</p>
-<blockquote>
-<p><strong>The game currently transforms into a stand-alone client which is currently not available for testing.</strong></p>
-</blockquote>
-<h2 id="contributing">Contributing</h2>
-<p>Contributions to both the game design and the game itself (the client and the server) are very welcome!</p>
-<p>The infos found in this document should help you to get kickstarted and join the development. As Bestia is a community driven, open game each contribution is welcome. With the provided guidelines enthusiasts should very easily be able to create contributions from artworks to scripts.</p>
-<p>You may find a little <code>Edit this page</code> link at the bottom of each page. If you want to change some game design aspects feel free to give it a try!</p>
-<p>Inside this game design document you possibly will find certain <strong>Contributing</strong> sections which will give you some guidelines to follow in order to help to get you changes into the game quickly.</p>
-<p><strong>
-  <a href="/docs/mechanics/">Read the Bestia Manifest first</a></strong> and align your contributions and changes under these central game guidelines.</p>
-<h2 id="project-repositories">Project Repositories</h2>
-<p>Otherwise feel free to check out the three project repositories on Github (and maybe give them a star or follow them)</p>
+  <article class="markdown"><h1 id="development-resources">Development Resources</h1>
+<p>Here you find helpful links and general guidelines how the look and feel should be from a User Experience point of view.</p>
+<h2 id="artwork-and-design">Artwork and Design</h2>
+<p>The general art style will be comic like as for example 
+  <a href="https://worldofwarcraft.com">World of Warcraft</a>. This helps the game to get fast assets as its easier then archiving foto-realism and also these styles are more timeless. The assets should be in a low poly style to also ease up development and to help to get a more &ldquo;timeless&rdquo; look and feel.</p>
+<h2 id="ui-design">UI Design</h2>
+<p>Currently no final UI Design was found. Feel free to contribute!</p>
+<h2 id="logos">Logos</h2>
+<p>Currently no final Bestia Logo was found. Feel free to contribute!</p>
+<h2 id="fonts">Fonts</h2>
+<p>The fonts should be cleanly readable and only two should be used, one for normal text and another one for more prominent headers:</p>
+<ul>
+<li>The main font for text is 
+  <a href="https://fonts.google.com/specimen/Open&#43;Sans">Open Sans</a></li>
+<li>The header font is 
+  <a href="https://fonts.google.com/specimen/Proza&#43;Libre">Proza Libre</a></li>
+</ul>
+<p>There is one Bitmap font for certain ingame usages like damage popups or small item number counts is</p>
 <ul>
 <li>
-  <a href="https://github.com/tfelix/bestia-docs">Bestia Developer Documentation</a> <i class="fab fa-github"></i></li>
-<li>
-  <a href="https://github.com/tfelix/bestia-client">Bestia Game Client</a> <i class="fab fa-github"></i></li>
-<li>
-  <a href="https://github.com/tfelix/bestia-behemoth">Bestia Behemoth Server</a> <i class="fab fa-github"></i></li>
+  <a href="http://www.pentacom.jp/pentacom/bitfontmaker2/gallery/?id=234">NES Cyrillic by xbost</a>, Public Domain</li>
 </ul>
+<h2 id="links">Links</h2>
+<p>Every game needs a good amount of artwork and assets. During development a few pages stood out where to find helpful resources, below is a list of very good and mostly free game assets sources.</p>
 <blockquote>
-<p>You can use the <code>Edit</code> link on the bottom right of every page to directly edit this document and create a Pull Request
-on Github.</p>
+<p>If you want to integrate new assets into Bestia it is important to chose some with an appropriate licence. Since the game itself and currently the assets are released under a free licence the artwork licence must at least allow the bundling and sharing. 
+  <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.de">Creative Commons 0</a> or Public Domain is preferred.</p>
 </blockquote>
-<script async defer src="https://buttons.github.io/buttons.js"></script>
+<ul>
+<li>
+  <a href="http://www.pentacom.jp/pentacom/bitfontmaker2/">Bitmap Fonts</a> (most of them Public Domain). Has a nice gallery of bitmap fonts freely available.</li>
+<li>
+  <a href="http://www.timefantasy.net/">Time Fantasy</a> A real nice asset of compatible tilesets and sprites for RPG style games. Mostly they are free.</li>
+<li>
+  <a href="https://game-icons.net/">Game-Icons.net</a> A lot of usable icons with a CC BY 3.0 licence.</li>
+<li>
+  <a href="http://kenney.nl/assets">Kenney</a> Big chunk of assets some of them free to use.</li>
+<li>
+  <a href="https://itch.io/game-assets">itch.io</a> A lot of nice game assets. Some are free, and some can be bought for a few Dollars.</li>
+</ul>
 </article>
  
       
@@ -215,16 +220,16 @@ on Github.</p>
 
 
 
-  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/96c1eb6c182448d409e165b495eba052e16bc9ad" title='Last modified by Thomas Felix | May 6, 2020' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/5c45d037bb544239b2df6e4cdb5d77cc245629f1" title='Last modified by Thomas Felix | May 17, 2020' target="_blank" rel="noopener">
       <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>May 6, 2020</span>
+      <span>May 17, 2020</span>
     </a>
   </div>
 
 
 
   <div>
-    <a class="flex align-center" href="https://github.com/tfelix/bestia-docs/edit/master/content//_index.md" target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/tfelix/bestia-docs/edit/master/content//docs/resources/_index.md" target="_blank" rel="noopener">
       <img src="/svg/edit.svg" class="book-icon" alt="Edit" />
       <span>Edit this page</span>
     </a>
@@ -252,10 +257,13 @@ on Github.</p>
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#bestia-developer-documentation">Bestia Developer Documentation</a>
+    <li><a href="#development-resources">Development Resources</a>
       <ul>
-        <li><a href="#contributing">Contributing</a></li>
-        <li><a href="#project-repositories">Project Repositories</a></li>
+        <li><a href="#artwork-and-design">Artwork and Design</a></li>
+        <li><a href="#ui-design">UI Design</a></li>
+        <li><a href="#logos">Logos</a></li>
+        <li><a href="#fonts">Fonts</a></li>
+        <li><a href="#links">Links</a></li>
       </ul>
     </li>
   </ul>

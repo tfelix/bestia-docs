@@ -11,12 +11,12 @@ These simulations should be based on certain basic values which are determined l
 These simulations should be based on certain basic values which are determined location-dependent, but can be changed by interaction with the players. Also natural changes through the world (seasons) should lead to an adjustment of these values. Due to the changes of the environmental values tiles have to be adapted to the world itself." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.bestia-game.net/docs/mechanics/environment/" />
-<meta property="article:modified_time" content="2020-05-06T02:00:55+02:00" />
+<meta property="article:modified_time" content="2020-05-17T15:41:44+02:00" />
 <title>Environment | Bestia Game</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.a6e2c98d287fde1ee03cdb4322ae00297d9842c96ed7d383b48098da94e04095.css" integrity="sha256-puLJjSh/3h7gPNtDIq4AKX2YQslu19ODtICY2pTgQJU=">
-<script defer src="/en.search.min.8597e351f1d0e495fa0be66f2b7355e420ed16967a3acab6eced5e763c5a2af2.js" integrity="sha256-hZfjUfHQ5JX6C&#43;ZvK3NV5CDtFpZ6Osq27O1edjxaKvI="></script>
+<script defer src="/en.search.min.1f6d926a8946ebb6daed9a75b7cf406d621fa7046ab0738a0478fa9352fe1106.js" integrity="sha256-H22SaolG67ba7Zp1t89AbWIfpwRqsHOKBHj6k1L&#43;EQY="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
@@ -65,7 +65,7 @@ https://github.com/alex-shpak/hugo-book
 <li>
   <a href="/docs/mechanics/master/">Bestia Master</a></li>
 <li>
-  <a href="/docs/mechanics/bestia/">Bestia</a></li>
+  <a href="/docs/mechanics/bestia/">Bestias</a></li>
 <li>
   <a href="/docs/mechanics/environment/"class=active>Environment</a></li>
 <li>
@@ -76,8 +76,6 @@ https://github.com/alex-shpak/hugo-book
   <a href="/docs/mechanics/skills/">Skills</a></li>
 <li>
   <a href="/docs/mechanics/statusvalues/">Status Values</a></li>
-<li>
-  <a href="/docs/mechanics/dev-resources/">Development Resources</a></li>
 </ul>
 </li>
 <li>
@@ -106,6 +104,8 @@ https://github.com/alex-shpak/hugo-book
 </li>
 <li>
   <a href="/docs/api/"><strong>REST API</strong></a></li>
+<li>
+  <a href="/docs/resources/"><strong>Development Resources</strong></a></li>
 </ul>
 
 
@@ -153,15 +153,14 @@ https://github.com/alex-shpak/hugo-book
     <li><a href="#environment">Environment</a>
       <ul>
         <li><a href="#temperature">Temperature</a></li>
-        <li><a href="#weather">Weather</a></li>
-        <li><a href="#rain">Rain</a></li>
-        <li><a href="#fog">Fog</a></li>
-        <li><a href="#night">Night</a></li>
-        <li><a href="#ingame-time">Ingame Time</a>
+        <li><a href="#weather">Weather</a>
           <ul>
-            <li><a href="#time-calculation">Time Calculation</a></li>
+            <li><a href="#rain">Rain</a></li>
+            <li><a href="#fog">Fog</a></li>
+            <li><a href="#night">Night</a></li>
           </ul>
         </li>
+        <li><a href="#ingame-time">Ingame Time</a></li>
       </ul>
     </li>
   </ul>
@@ -216,27 +215,24 @@ affect temperature resistence.</p>
 <link rel="stylesheet" href="/katex/katex.min.css" />
 <script defer src="/katex/katex.min.js"></script>
 <script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body);"></script><span>
-  \(\begin{aligned}
-   T_{increase} &amp;= \sqrt{\text{VIT}} / 2\\
-   T_{increase}  &amp;= \sqrt{\text{WILL}} / 4\\
-\end{aligned}\)
+  \[   T_{tolerable} &#43;= T_{base} &#43; \sqrt{\text{VIT}} / 2 \cdot \sqrt{\text{WILL}} / 4\]
 </span>
 
 <p>For items and structures these calculation is a bit different. Usually these items have some threshold above or under which they will
-start to malfunction or perhaps even catch fire.</p>
+start to malfunction (or perhaps even catch fire!).</p>
 <h2 id="weather">Weather</h2>
 <p>The weather system in Bestia plays a crucial role. It also affects the visibility and also the behavior of the NPC and
 mobs. Depending on the weather the NPCs and the player character will need a improved shelter or equipment to avoid a
 loss of stamina.</p>
 <p>The weather influences also the temperature which will in turn decide if and how much stamina a entity regenerates or loses.</p>
 <p>The weather will also play a role in which crops and plants grow. If the player decided to plant salad in the desert this won&rsquo;t work quite well.</p>
-<h2 id="rain">Rain</h2>
+<h3 id="rain">Rain</h3>
 <p>A in strength controllable rain effect should overlay the entire viewport. The rain blowing direction should correlate
 with the wind direction (which will be more or less random). During rain the ground will show a wet effect and view distance is
 reduced. It also reduces the effectiveness of fires and might extingush them. Fire attacks will lose certain strengths in a very wet environment (like burning effects won&rsquo;t last very long).</p>
-<h2 id="fog">Fog</h2>
+<h3 id="fog">Fog</h3>
 <p>Clouds of fog will move slowly over the map. And the sight of the AI entities is reduced. Its will also get harder for a player to see.</p>
-<h2 id="night">Night</h2>
+<h3 id="night">Night</h3>
 <p>During night time the player will need light sources in order to improve
 the visibility of enemies or terrain. There will be certain items (e.g. torches, candles etc.) as well as spells to
 make light.</p>
@@ -254,18 +250,6 @@ This means that the normal bestia day has 8 hours in real time.</p>
 <li>Bestia seasion: summer, winter, fall, spring: each 1 month</li>
 <li>Bestia day: 8 hours</li>
 </ul>
-<h3 id="time-calculation">Time Calculation</h3>
-<p>The easiest way to calculate the time in the Bestia world is the following:</p>
-<span>
-  \(\begin{aligned}
-   btime &amp;= time_{real} / 3 \\
-   btime_{hours} &amp;= btime / 3600\\
-   btime_{days} &amp;= btime_{hours} / 24\\
-   btime_{months} &amp;= btime_{days} / 30\\
-   btime_{years} &amp;= btime_{years} / 12
-\end{aligned}\)
-</span>
-
 <p>This allows the player to see multiple day-night cycles on the same day while allowing him to play for a considerable
 time so he can actually do something meaningful until the sun rises again.</p>
 <blockquote>
@@ -305,9 +289,9 @@ of the limited amount of gameplay then the night might get shortened.</p>
 
 
 
-  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/96c1eb6c182448d409e165b495eba052e16bc9ad" title='Last modified by Thomas Felix | May 6, 2020' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/5c45d037bb544239b2df6e4cdb5d77cc245629f1" title='Last modified by Thomas Felix | May 17, 2020' target="_blank" rel="noopener">
       <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>May 6, 2020</span>
+      <span>May 17, 2020</span>
     </a>
   </div>
 
@@ -345,15 +329,14 @@ of the limited amount of gameplay then the night might get shortened.</p>
     <li><a href="#environment">Environment</a>
       <ul>
         <li><a href="#temperature">Temperature</a></li>
-        <li><a href="#weather">Weather</a></li>
-        <li><a href="#rain">Rain</a></li>
-        <li><a href="#fog">Fog</a></li>
-        <li><a href="#night">Night</a></li>
-        <li><a href="#ingame-time">Ingame Time</a>
+        <li><a href="#weather">Weather</a>
           <ul>
-            <li><a href="#time-calculation">Time Calculation</a></li>
+            <li><a href="#rain">Rain</a></li>
+            <li><a href="#fog">Fog</a></li>
+            <li><a href="#night">Night</a></li>
           </ul>
         </li>
+        <li><a href="#ingame-time">Ingame Time</a></li>
       </ul>
     </li>
   </ul>
