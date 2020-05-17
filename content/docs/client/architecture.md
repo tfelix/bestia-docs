@@ -1,4 +1,6 @@
-# Entities
+# Client Architecture
+
+## Entities
 
 The Bestia server entities are synced to the client also represented there also under the name `Entities`. An entity is described by a set of components which is attached to it and by a certain kind of logic synched between the client and the server. Not every component is synched though. This can depend on various factors for example party membership (ConditionComponent is only synched between members of the same party), or ownership or view distance (mostly only entities in view distance are synched).
 

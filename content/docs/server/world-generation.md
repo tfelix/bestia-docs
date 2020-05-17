@@ -170,7 +170,7 @@ The base probability if a chunk has a spring is given by:
 The average humidity on the map influences the probability P like:
 
 {{< katex display >}}
-P_{total} = (0.6 * hum_{avg} - 1.5) + P_{base}
+P_{total} = (0.6 * hum_{avg} - 0.3) + P_{base}
 {{< /katex >}}
 
 In order to find the coordiante of a water sources on a map and their probability distribution, the map is sampled at a resolution of 10m and theprobability P of a coordiante is given by:
@@ -217,13 +217,12 @@ Usually these kind of features are depending on the kind of biome. For example a
 
 ##  Settlement Creation
 
-Cities usually form around natural resources like shores, rivers or rich farmland. The algorithm as described below will find suitable city position candidates and then distribute the cities in 2 to n clusters around the world map. This clustering will make sure there is enough unexplored land for the players left. It should also help with the idea of different civilization which could lead to ingame player conflicts. A possible distribution is shown in here. *TODO: Include figure*
+Cities usually form around natural resources like shores, rivers or rich farmland. The algorithm as described below will find suitable city position candidates and then distribute the cities in clusters around the world map. This clustering will make sure there is enough unexplored land for the players left to explore (and to create own settlements). It should also help with the idea of different civilization which could lead to ingame player conflicts.
 
 The algorithm searches the world map and creates matrix with a mesh length of 1km.
 
 * Rohstoffvorkommen (Farmland, Minerals, Fishing Grounds)
 * Nähe zu einem Gewässer (Fluss oder Meer)
-
 
 Folgende Voraussetzungen müssen gegeben sein:
 
@@ -296,8 +295,6 @@ Additional data labels for the connections, to later help filter them for differ
 * **Drive**: Weagons can drive on this connection (e.g. roads)
 * **Swim**: Waterways connections are marked like this
 * **Climb**: Conneections with slopes higher then 45 degrees are marked like this
-
-### Node Connection Weights
 
 > Its possible that downscaled graphs with pre-calculated connections must be made in order to speed up NPC navigation later on.
 

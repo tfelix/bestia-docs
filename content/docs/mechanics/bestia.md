@@ -4,10 +4,11 @@ title: Bestias
 
 # Bestias
 
-In areas with high mana concentration, so-called mini rift events are formed. At these neuralgic points, Bestia are
-materialized and enter the respective worlds.
+In areas with high mana concentration, so-called mini rift events are formed. At these neuralgic points, Bestia are materialized and enter the respective worlds. They are basically automatically spawning on the map with a higher probability where the mana concentration is higher.
 
-## Catching
+The type of the Bestia which spawns is determined by the environments (Bestias have a affinity to certain biomes and they spawn according to this probability in the different biomes).
+
+## Catching Bestias
 
 In order to catch Bestia you need Magic Bestia Traps. This items are manufactured via the apropriate crafting skill. Bestias catch chance can be increased by reducing its HP. If the HP is 1% the catch chance is increased by 30%. It can also changed by applying buffs or debuffs.
 

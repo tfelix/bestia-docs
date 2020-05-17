@@ -1,8 +1,9 @@
+---
+title: Artificial Intelligence
+---
 # Artificial Intelligence
 
-The AI system in Bestia will set new standards. Bestias and NPCs alike should be able to create long-term plans,
-so-called game plans or GPs for short. They then follow this strategy until observations or influences from the
-game world force them to abandon this plan or the plan is fulfilled.
+The AI system in Bestia will set new standards. Bestias and NPCs alike should be able to create long-term plans, so-called game plans or GPs for short. They then follow this strategy until observations or influences from the game world force them to abandon this plan or the plan is fulfilled.
 
 Bestias look for ways to get the highest possible inner happiness. They must sleep, eat and feel attracted to mana
 currents. Of course they try to avoid threats and protect their health. Here some subtypes differ from each other.

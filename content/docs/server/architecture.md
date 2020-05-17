@@ -1,4 +1,4 @@
-# Architecture
+# Server Architecture
 
 ## Entity Component Services
 
