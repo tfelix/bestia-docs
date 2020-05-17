@@ -11,12 +11,12 @@ In general it works by creating piplines which are then used to create and trans
 In general it works by creating piplines which are then used to create and transform noise maps." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.bestia-game.net/docs/server/world-generation/" />
-<meta property="article:modified_time" content="2020-05-17T02:46:16+02:00" />
+<meta property="article:modified_time" content="2020-05-17T03:14:07+02:00" />
 <title>World Generation | Bestia Game</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.a6e2c98d287fde1ee03cdb4322ae00297d9842c96ed7d383b48098da94e04095.css" integrity="sha256-puLJjSh/3h7gPNtDIq4AKX2YQslu19ODtICY2pTgQJU=">
-<script defer src="/en.search.min.e8222a41538a4283028a01fd5afe17a4fd6bd8885acff84b0a9c0bb7df3117d0.js" integrity="sha256-6CIqQVOKQoMCigH9Wv4XpP1r2Ihaz/hLCpwLt98xF9A="></script>
+<script defer src="/en.search.min.8597e351f1d0e495fa0be66f2b7355e420ed16967a3acab6eced5e763c5a2af2.js" integrity="sha256-hZfjUfHQ5JX6C&#43;ZvK3NV5CDtFpZ6Osq27O1edjxaKvI="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
@@ -391,9 +391,8 @@ We assume a desired temperature range of -40 to 40 degree. This is shifted of ab
 <li>P increases with humidity above 0.5 - 1.0 from 1.0 to 3.0</li>
 </ul>
 <span>
-  \[P_h &amp;= height(x, y) / 0.6 \cdot
-P_h &amp;= height(x, y) / 0.6 \cdot
-P_{droplet} = M_t - 0.9 \cdot M_h\]
+  \[P_h &amp;= height(x, y) / 0.6
+P_{droplet} &amp;= M_t - 0.9 \cdot M_h\]
 </span>
 
 <p>After these are placed a water stream is simulated flowing from the source down the slopes. In this is an iterative process. The source will spill out a certain amount of water to the tile. In every step a bit water evaporates depending on the surrounding temperature. The simulation is repeated until there is no significant change in waterlevel and it reaches an equilibrium. If the water floats out at the border it is buffered and in a next run it is exchanged with the border tiles. This is again done until there is no significant change anymore and equilibriunm reached.</p>
@@ -586,7 +585,7 @@ P_{droplet} = M_t - 0.9 \cdot M_h\]
 
 
 
-  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/caf87821bf7f472663ef42f153496cc071b0906a" title='Last modified by Thomas Felix | May 17, 2020' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/9f8c3bf812a2b6a5e2101506af03b1d6a778ad5e" title='Last modified by Thomas Felix | May 17, 2020' target="_blank" rel="noopener">
       <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
       <span>May 17, 2020</span>
     </a>
