@@ -23,7 +23,7 @@ You may find a little `Edit this page` link at the bottom of each page. If you w
 
 Inside this game design document you possibly will find certain **Contributing** sections which will give you some guidelines to follow in order to help to get you changes into the game quickly.
 
-**[Read the Bestia Manifest first](/docs/mechanics)** and align your contributions and changes under these central game guidelines.
+Read the Bestia **[General Mechanics](/docs/mechanics)** section first to get a grasp for what this game is all about and align your contributions and changes under these game guidelines in order to maximize your chance of a fast approval of your contribution.
 
 ## Project Repositories
 

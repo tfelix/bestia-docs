@@ -1,1 +1,11 @@
 // @import "plugins/_scrollbars.scss";
+
+.markdown blockquote {
+  background-color: rgba(255,255,255,.2);
+}
+
+.katex-display {
+  padding: 5px;
+  background-color: rgba(255,255,255,.2);
+}
+

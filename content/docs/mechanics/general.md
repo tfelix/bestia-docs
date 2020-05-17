@@ -148,10 +148,7 @@ Like the rest of the game this should be solved by an ingame system. There shoul
 The fee is defined by:
 
 {{< katex display >}}
-   price =  0.01g \cdot km \cdot m_{kg}
-{{< /katex >}}
-
-{{< katex display >}}
+   price =  0.01g \cdot km \cdot m_{kg}\\
    deliver_{time} =  8h + km / 10
 {{< /katex >}}
 

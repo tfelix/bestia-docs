@@ -1,5 +1,6 @@
 ---
-title: Server
+bookCollapseSection: true
+weight: 20
 ---
 # Bestia Server
 
