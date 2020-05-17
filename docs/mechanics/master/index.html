@@ -11,12 +11,12 @@ The attachment to mana also explains why Bestia masters were able to survive the
 The attachment to mana also explains why Bestia masters were able to survive the destruction of their world relatively unscathed and to pass on to the next world." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.bestia-game.net/docs/mechanics/master/" />
-<meta property="article:modified_time" content="2020-05-06T02:00:55+02:00" />
+<meta property="article:modified_time" content="2020-05-18T00:07:56+02:00" />
 <title>Bestia Master | Bestia Game</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.8faf8c6f51f7bb1ff07807bc087f607f8071c4b0ce8b6737ad62995aa1337d4f.css" integrity="sha256-j6&#43;Mb1H3ux/weAe8CH9gf4BxxLDOi2c3rWKZWqEzfU8=">
-<script defer src="/en.search.min.2d82bfe3d45f572fc8f4bba422a3f54d725062611afa81e0a121adc5f79e0636.js" integrity="sha256-LYK/49RfVy/I9LukIqP1TXJQYmEa&#43;oHgoSGtxfeeBjY="></script>
+<script defer src="/en.search.min.ee096d0c96184f9d9c029844a6eef6c68d6117a193616ebc4677209f0692c810.js" integrity="sha256-7gltDJYYT52cAphEpu72xo1hF6GTYW68RncgnwaSyBA="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
@@ -155,14 +155,10 @@ https://github.com/alex-shpak/hugo-book
             <li><a href="#guidlines">Guidlines</a></li>
             <li><a href="#skill-progression">Skill Progression</a></li>
             <li><a href="#common-tree">Common Tree</a></li>
-            <li><a href="#first-aid">First Aid</a></li>
-            <li><a href="#cooking-5">Cooking (5)</a></li>
-            <li><a href="#fishing-5">Fishing (5)</a></li>
           </ul>
         </li>
         <li><a href="#battle-tree">Battle Tree</a>
           <ul>
-            <li><a href="#elemental-mastery-5">Elemental Mastery (5)</a></li>
             <li><a href="#master-of-fire-10">Master of Fire (10)</a></li>
             <li><a href="#master-of-water-10">Master of Water (10)</a></li>
             <li><a href="#master-of-wind-10">Master of Wind (10)</a></li>
@@ -216,23 +212,6 @@ https://github.com/alex-shpak/hugo-book
         </li>
       </ul>
     </li>
-    <li><a href="#honor">Honor</a>
-      <ul>
-        <li><a href="#protected-zones">Protected Zones</a></li>
-        <li><a href="#negative-honor">Negative Honor</a>
-          <ul>
-            <li><a href="#stealing">Stealing</a></li>
-            <li><a href="#malicious-actions">Malicious Actions</a></li>
-            <li><a href="#negative-honor-effects">Negative Honor Effects</a></li>
-          </ul>
-        </li>
-        <li><a href="#positive-honor">Positive Honor</a>
-          <ul>
-            <li><a href="#shrines-of-judgement">Shrines of Judgement</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
   </ul>
 </nav>
 
@@ -257,19 +236,18 @@ the master.</p>
 <p>Some of this account skills can be used by every Bestia in posession others only by the master itself.</p>
 <blockquote>
 <p>Don&rsquo;t confuse this skills with the regular attacks a Bestia is learning by item usage or level up. These are simply
-called 
-  <a href="/docs/mechanics/attacks">attacks</a>.</p>
+called attacks.</p>
 </blockquote>
 <h3 id="guidlines">Guidlines</h3>
 <ul>
 <li>The number of total skil ranks inside a tree should <strong>be between 70-80</strong></li>
-<li>The possible rank counts of a skill should be: <strong>1, 5 and 10</strong></li>
-<li>There should be some meaningful dependency of the skills forming an exciting tree</li>
-<li>In each profession tree there should form 2-3 sub-trees which create a miningful hierarchy</li>
-<li>There should be some kind of three tiers inside a tree form low and basic skill to the much powerfull skills</li>
+<li>The possible rank counts of a skill should be: <strong>1, 3, 5 and 10</strong></li>
+<li>There should be some meaningful dependency of the skills forming a tree</li>
+<li>In each profession tree there should form 2-3 sub-trees which create a meaningful hierarchy</li>
+<li>There should be some kind of three tiers inside a tree to lead from low and basic skill to the much powerfull skills</li>
 </ul>
 <blockquote>
-<p>Most Important: No Hardcoded Skill Effects!</p>
+<p>Most Important: No hardcoded skill effects!</p>
 </blockquote>
 <p>Skills should be used when possible require some interaction with the player whose success depends on the effect of the
 skill. An example would be the teleport ability: after selecting the players (which can be flexible by the number) and
@@ -278,20 +256,66 @@ game. Depending on how successful this was, the player will be more precisely tr
 <p>Ultimately, it remains important to leave the outcome of skills open in some way. However, the result should remain
 understandable and influenceable by the player.</p>
 <h3 id="skill-progression">Skill Progression</h3>
-<p>Upon each level up the master gains 1 skillpoint to put into the skills rank. This is permanent and means a player can
-spend about 100 points for improving the ranks of his skills.</p>
+<p>Starting from level 10, on each level up the master gains 1 skillpoint to put into the skills rank. This is permanent and means a player can spend about 100 points for improving the ranks of his skills.</p>
 <blockquote>
-<p>Since max level is not capped actually he might be able to spend more points but a progressions gets continously
-harder it is safe to assume every player has about 100 points.</p>
+<p>Since max level is not capped actually he might be able to spend more points but a progressions gets continously harder it is safe to assume every player has about 100 points.</p>
 </blockquote>
 <p>The skilltrees are designed as such that to reach the highest professions in a tree the player needs to spend <strong>70 points</strong>.</p>
 <p>The player can decide to have mediocre profession in each tree or to max out one and have maybe half of the
 meaningful professions of another tree. The skilltree is a hierarchical dependency of skills.</p>
 <h3 id="common-tree">Common Tree</h3>
 <p>In this tree, simple, common mundane tasks are placed.</p>
-<h3 id="first-aid">First Aid</h3>
-<h3 id="cooking-5">Cooking (5)</h3>
-<h3 id="fishing-5">Fishing (5)</h3>
+<div class="book-columns flex flex-wrap">
+  
+  <div class="flex-even markdown-inner">
+    <p><strong>First Aid (1)</strong></p>
+<p>Player can apply bandages to Bestia and channel a healing effect of ob to 30% of their total health. The channel time is 15 seconds and the cooldown is 5 minutes. A Bestia can only receive a First Aid every 30 secs.</p>
+
+  </div>
+  
+  <div class="flex-even markdown-inner">
+    <blockquote>
+<p>+3% damage/level</p>
+</blockquote>
+
+  </div>
+  
+</div>
+
+<div class="book-columns flex flex-wrap">
+  
+  <div class="flex-even markdown-inner">
+    <p><strong>Cooking (5)</strong></p>
+<p>The user can start to cook meals on fire places. This meals apply certain buff effects when they are eaten.</p>
+
+  </div>
+  
+  <div class="flex-even markdown-inner">
+    <blockquote>
+<p>Level increas makes it easier to cook higher level food.</p>
+</blockquote>
+
+  </div>
+  
+</div>
+
+<div class="book-columns flex flex-wrap">
+  
+  <div class="flex-even markdown-inner">
+    <p><strong>Fishing (5)</strong></p>
+<p>With this skill you are able to start fishing.</p>
+
+  </div>
+  
+  <div class="flex-even markdown-inner">
+    <blockquote>
+<p>Level increas makes it easier to catch higher level fish.</p>
+</blockquote>
+
+  </div>
+  
+</div>
+
 <h2 id="battle-tree">Battle Tree</h2>
 <p>The battle tree contains skills which are primarly useful for fighting, battle and maybe to some extend improve survival
 in the wild.</p>
@@ -315,11 +339,23 @@ graph TD
   ELEMENTAL_MASTERY-->|min. 3|MASTER_OF_EARTH("Master of Earth [10]")
 </p>
 
-<h3 id="elemental-mastery-5">Elemental Mastery (5)</h3>
+<div class="book-columns flex flex-wrap">
+  
+  <div class="flex-even markdown-inner">
+    <p><strong>Elemental Mastery (5)</strong></p>
 <p>Increases damage or healing of spells with elemental (earth, wind, wasser, fire) domain.</p>
-<blockquote>
+
+  </div>
+  
+  <div class="flex-even markdown-inner">
+    <blockquote>
 <p>+3% damage/level</p>
 </blockquote>
+
+  </div>
+  
+</div>
+
 <h3 id="master-of-fire-10">Master of Fire (10)</h3>
 <ul>
 <li>Elemental Mastery (3)</li>
@@ -485,122 +521,6 @@ has opened it can be used in both directions for some time.</p>
 <h3 id="magic-senses-5">Magic Senses (5)</h3>
 <p>Detect presence of magic.</p>
 <h3 id="identify-magic-5">Identify Magic (5)</h3>
-<h1 id="honor">Honor</h1>
-<p>It is possible in Bestia to perform malicious actions which will reduce the players good experience. This is by design!
-Yet there should be incentives for players not to go this route in order to protect low level players from ganking of
-other griev play. If a player behaves well and their honor level increases they will get more and more rewards. On the
-other hand if a player has negative honor they will get bad reputation and repressions. There might actually be some
-player initiated hunt on these low honor players.</p>
-<p>Additionally each NPC maintains an internal list of reputation points and players. If a player misbehaves or behaves in
-a friendly way, this list will be adjusted. The NPC also communicates this list with other NPCs if they meet. If the reputation
-exceeds certain upper and lower limits and the NPC enters areas that use a long-distance communication system, the NPC
-may also communicate this to more distant areas. Only if the players reputation falls below -100 the NPC encountered
-(and acted negative towards them) they remembers this permanently. Higher values slowly return to the default value
-of 0 and are then removed from the list (NPCs don&rsquo;t forget if a player killed family members or the NPC life was saved).
-If the customer reaches the nearest settlement via the reputation points after a certain time, the value is also stored
-there permanently.</p>
-<p>Reputation decreases faster through bad deeds than increasing because of good ones.</p>
-<h2 id="protected-zones">Protected Zones</h2>
-<p>Around the starting places there will be a enchantment in place which will mark the lands in the vacinity as <strong>Protected Zones</strong>.
-Inside this zone every kill of another player Bestia with more then 5 levels less as the killing bestia
-or NPC will reduce the honor by <strong>20 points</strong>.</p>
-<p>Every action which leads to honor loss inside a protected zone (other then killing a low level Player Bestia) will be <strong>multiplied by 3</strong>
-wheras honor increasing actions will be <strong>multiplied by 1.5</strong>.</p>
-<h2 id="negative-honor">Negative Honor</h2>
-<p>As there are multiple factions which different interests it is not easy to define which play is considered bad behavior
-which will get punished automatically. Yet there are some core actions which will be universally be considered as griev play
-which is not inherently forbidden but will result in a loss of honor.</p>
-<p>If a player drops below 0 honor he will receive the debuff 
-  <a href="/">Rogue</a>. If a player has less then -100 honor he will receive
-the debuff 
-  <a href="/">Outlaw</a>.</p>
-<h3 id="stealing">Stealing</h3>
-<p>Stealing means if a player picks up an item from a storage chest not belonging to him. The owner can also grant certain player
-access right to a chest. Then its not considered stealing. A guild leader can also mark storage chests as usable for guild members.</p>
-<p>A player who steals an item is also marked with the debuff 
-  <a href="/">Thief</a> which will grant any player who kills him <strong>5 extra honor</strong>. The killing
-player also gets a honor reward for each item returned to the original owner of the items within 6 real time hours (18 hours in Bestia time).</p>
-<h3 id="malicious-actions">Malicious Actions</h3>
-<table>
-<thead>
-<tr>
-<th>Malicious Action</th>
-<th align="center">Honor Loss (Player)</th>
-<th align="center">Honor Loss to NPC in Sight</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Killing a NPC</td>
-<td align="center">-5</td>
-<td align="center">-15</td>
-</tr>
-<tr>
-<td>Killing Players Bestias</td>
-<td align="center">0</td>
-<td align="center">-2</td>
-</tr>
-<tr>
-<td>Killing Players Bestias in a <strong>Protected Zone</strong></td>
-<td align="center">-20</td>
-<td align="center">-20</td>
-</tr>
-<tr>
-<td>Stealing Item (Mundane)</td>
-<td align="center">-5</td>
-<td align="center">-10</td>
-</tr>
-<tr>
-<td>Stealing Item (Superior)</td>
-<td align="center">-10</td>
-<td align="center">-20</td>
-</tr>
-<tr>
-<td>Stealing Item (Legendary)</td>
-<td align="center">-15</td>
-<td align="center">-50</td>
-</tr>
-</tbody>
-</table>
-<h3 id="negative-honor-effects">Negative Honor Effects</h3>
-<p>If the honor drops below 0 the negative effects will start to take place. The effects are as follows:</p>
-<table>
-<thead>
-<tr>
-<th>Honor Amount</th>
-<th>Effect</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>&lt; 0</td>
-<td>No more advantages from NPC and the NPC will act unfriendly against the player.</td>
-</tr>
-<tr>
-<td>&lt; -50</td>
-<td>Some NPC might start to act hostile and attack the player or flee from him.</td>
-</tr>
-<tr>
-<td>&lt; -100</td>
-<td>NPC will permanently remember the player and also spread the word around so more NPC will start to act hostile towards the player.</td>
-</tr>
-</tbody>
-</table>
-<p>If a player steals something not belonging to him but to a NPC or another player he will loose honor for each item he
-takes and depending on the 
-  <a href="/mechanics/items/#item-level">item level</a> (looting a dead NPC/player will not lead to a
-reduction of honor).</p>
-<h2 id="positive-honor">Positive Honor</h2>
-<p>A positive honor level will lead to very friendly NPC which might even give the player some discounts or gifts from
-time to time. In order to increase your honor level again you can:</p>
-<ul>
-<li>Kill a player with negative honor</li>
-<li>Helping a NPC by healing or resurrecting a dead NPC</li>
-</ul>
-<h3 id="shrines-of-judgement">Shrines of Judgement</h3>
-<p>There are a 5 shrines in each game world incarnation where a player can sacrifice to raise a reputation that has fallen below the threshold of a player&rsquo;s global
-persecution. The sacrifice is usually (depending on the reputation threshold) very painful and even if it was made it can take
-several days until the news about it was spread.</p>
 </article>
  
       
@@ -611,9 +531,9 @@ several days until the news about it was spread.</p>
 
 
 
-  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/96c1eb6c182448d409e165b495eba052e16bc9ad" title='Last modified by Thomas Felix | May 6, 2020' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/6556e8b3fd5f8e911930a9b418a75db7c8af7952" title='Last modified by Thomas Felix | May 17, 2020' target="_blank" rel="noopener">
       <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>May 6, 2020</span>
+      <span>May 17, 2020</span>
     </a>
   </div>
 
@@ -655,14 +575,10 @@ several days until the news about it was spread.</p>
             <li><a href="#guidlines">Guidlines</a></li>
             <li><a href="#skill-progression">Skill Progression</a></li>
             <li><a href="#common-tree">Common Tree</a></li>
-            <li><a href="#first-aid">First Aid</a></li>
-            <li><a href="#cooking-5">Cooking (5)</a></li>
-            <li><a href="#fishing-5">Fishing (5)</a></li>
           </ul>
         </li>
         <li><a href="#battle-tree">Battle Tree</a>
           <ul>
-            <li><a href="#elemental-mastery-5">Elemental Mastery (5)</a></li>
             <li><a href="#master-of-fire-10">Master of Fire (10)</a></li>
             <li><a href="#master-of-water-10">Master of Water (10)</a></li>
             <li><a href="#master-of-wind-10">Master of Wind (10)</a></li>
@@ -712,23 +628,6 @@ several days until the news about it was spread.</p>
             <li><a href="#control-mana-flow-10">Control Mana Flow (10)</a></li>
             <li><a href="#magic-senses-5">Magic Senses (5)</a></li>
             <li><a href="#identify-magic-5">Identify Magic (5)</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-    <li><a href="#honor">Honor</a>
-      <ul>
-        <li><a href="#protected-zones">Protected Zones</a></li>
-        <li><a href="#negative-honor">Negative Honor</a>
-          <ul>
-            <li><a href="#stealing">Stealing</a></li>
-            <li><a href="#malicious-actions">Malicious Actions</a></li>
-            <li><a href="#negative-honor-effects">Negative Honor Effects</a></li>
-          </ul>
-        </li>
-        <li><a href="#positive-honor">Positive Honor</a>
-          <ul>
-            <li><a href="#shrines-of-judgement">Shrines of Judgement</a></li>
           </ul>
         </li>
       </ul>
