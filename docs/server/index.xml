@@ -11,21 +11,11 @@
     
     <item>
       <title></title>
-      <link>https://docs.bestia-game.net/docs/server/ai/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://docs.bestia-game.net/docs/server/ai/</guid>
-      <description>Artificial Intelligence The AI system in Bestia will set new standards. Bestias and NPCs alike should be able to create long-term plans, so-called game plans or GPs for short. They then follow this strategy until observations or influences from the game world force them to abandon this plan or the plan is fulfilled.
-Bestias look for ways to get the highest possible inner happiness. They must sleep, eat and feel attracted to mana currents.</description>
-    </item>
-    
-    <item>
-      <title></title>
       <link>https://docs.bestia-game.net/docs/server/architecture/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://docs.bestia-game.net/docs/server/architecture/</guid>
-      <description>Architecture Entity Component Services Entities are described by dynamically attaching components to them. ECS system have been proven as a de facto industry standard for recent game development. The components only contain the data are attached to entities which merely are an ID in the system. The so called systems act upon this data and alter the entities usually this is the case in a fixed tick amount for game logic updates.</description>
+      <description>Server Architecture Entity Component Services Entities are described by dynamically attaching components to them. ECS system have been proven as a de facto industry standard for recent game development. The components only contain the data are attached to entities which merely are an ID in the system. The so called systems act upon this data and alter the entities usually this is the case in a fixed tick amount for game logic updates.</description>
     </item>
     
     <item>
@@ -44,8 +34,7 @@ The attack itself either provides a script to completely manage the effect which
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://docs.bestia-game.net/docs/server/quests/</guid>
-      <description>Quests TBD
-Literature  https://www.rockpapershotgun.com/2016/09/02/how-to-procedurally-generate-culture/ http://www.gdcvault.com/play/1024143/Procedural-Narrative http://pcg.wikidot.com/pcg-algorithm:procedural-puzzles-and-plot-generation http://ieeexplore.ieee.org/abstract/document/5740836/ https://nil.cs.uno.edu/projects/glaive/  </description>
+      <description>Quests The game will be more or less an Open World game. But the declared goal will be to try out new ways of storytelling in order to present a credible world with developing history to the players. You have to say goodbye to the idea that every game can live through every part of the story/quest. This contradicts the persistent and inner logical structure of the game world. Quests must rather result dynamically from what happens within the game world.</description>
     </item>
     
     <item>
@@ -66,6 +55,16 @@ Als Skriptsprache wird auf JavaScript gesetzt. Aktuell wird die Nashorn Javascri
       <guid>https://docs.bestia-game.net/docs/server/world-generation/</guid>
       <description>World Generation Bestia integrates a specialized library called WorldGen for world creation. It is a clusterable generator which is cabable of dividing the world creation workload onto multiple, different machines. With this framework it should be possible to create million of square kilometers without hitting any memory limit on the servers during the creation process.
 In general it works by creating piplines which are then used to create and transform noise maps.</description>
+    </item>
+    
+    <item>
+      <title>Artificial Intelligence</title>
+      <link>https://docs.bestia-game.net/docs/server/ai/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.bestia-game.net/docs/server/ai/</guid>
+      <description>Artificial Intelligence The AI system in Bestia will set new standards. Bestias and NPCs alike should be able to create long-term plans, so-called game plans or GPs for short. They then follow this strategy until observations or influences from the game world force them to abandon this plan or the plan is fulfilled.
+Bestias look for ways to get the highest possible inner happiness. They must sleep, eat and feel attracted to mana currents.</description>
     </item>
     
   </channel>

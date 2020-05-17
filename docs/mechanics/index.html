@@ -14,8 +14,8 @@ Here concrete realizations of central game elements are described. Contrary to t
 <title>Mechanics | Bestia Game</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="/book.min.b4326999511fa9ab08d3e5556b95ed1d8050e22afa5704e974165847ad072628.css" integrity="sha256-tDJpmVEfqasI0&#43;VVa5XtHYBQ4ir6VwTpdBZYR60HJig=">
-<script defer src="/en.search.min.7f0e9b077f76733085d58b2ef049b3fc0541edada72f607bf9d6cd8076927f4d.js" integrity="sha256-fw6bB392czCF1Ysu8Emz/AVB7a2nL2B7&#43;dbNgHaSf00="></script>
+<link rel="stylesheet" href="/book.min.8faf8c6f51f7bb1ff07807bc087f607f8071c4b0ce8b6737ad62995aa1337d4f.css" integrity="sha256-j6&#43;Mb1H3ux/weAe8CH9gf4BxxLDOi2c3rWKZWqEzfU8=">
+<script defer src="/en.search.min.2d82bfe3d45f572fc8f4bba422a3f54d725062611afa81e0a121adc5f79e0636.js" integrity="sha256-LYK/49RfVy/I9LukIqP1TXJQYmEa&#43;oHgoSGtxfeeBjY="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <link rel="alternate" type="application/rss+xml" href="https://docs.bestia-game.net/docs/mechanics/index.xml" title="Bestia Game" />
@@ -61,8 +61,6 @@ https://github.com/alex-shpak/hugo-book
   <a href="/docs/mechanics/"class=active><strong>Game Design</strong></a>
 <ul>
 <li>
-  <a href="/docs/mechanics/general/">General Mechanics</a></li>
-<li>
   <a href="/docs/mechanics/master/">Bestia Master</a></li>
 <li>
   <a href="/docs/mechanics/bestia/">Bestias</a></li>
@@ -82,7 +80,7 @@ https://github.com/alex-shpak/hugo-book
   <a href="/docs/client/"><strong>Client</strong></a>
 <ul>
 <li>
-  <a href="/docs/client/entities/">Entities</a></li>
+  <a href="/docs/client/architecture/">Architecture</a></li>
 </ul>
 </li>
 <li>
@@ -152,14 +150,27 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#game-design">Game Design</a>
       <ul>
-        <li><a href="#consistent-fantasy-simulation">Consistent Fantasy Simulation</a></li>
-        <li><a href="#a-single-universe">A Single Universe</a></li>
-        <li><a href="#stable-mechanics">Stable Mechanics</a></li>
-        <li><a href="#encouraging-social-interaction">Encouraging Social Interaction</a></li>
-        <li><a href="#advanced-crafting">Advanced Crafting</a></li>
-        <li><a href="#modern-artifical-intelligence">Modern Artifical Intelligence</a></li>
-        <li><a href="#rich-and-immersive-history">Rich And Immersive History</a></li>
-        <li><a href="#meet-real-world-expectation">Meet Real World Expectation</a></li>
+        <li><a href="#core-concepts">Core Concepts</a>
+          <ul>
+            <li><a href="#consistent-fantasy-simulation">Consistent Fantasy Simulation</a></li>
+            <li><a href="#a-single-universe">A Single Universe</a></li>
+            <li><a href="#stable-mechanics">Stable Mechanics</a></li>
+            <li><a href="#encouraging-social-interaction">Encouraging Social Interaction</a></li>
+            <li><a href="#advanced-crafting">Advanced Crafting</a></li>
+            <li><a href="#modern-artifical-intelligence">Modern Artifical Intelligence</a></li>
+            <li><a href="#rich-and-immersive-history">Rich And Immersive History</a></li>
+            <li><a href="#meet-real-world-expectation">Meet Real World Expectation</a></li>
+          </ul>
+        </li>
+        <li><a href="#game-mechanics">Game Mechanics</a>
+          <ul>
+            <li><a href="#postal-system">Postal System</a></li>
+            <li><a href="#the-cults">The Cults</a></li>
+            <li><a href="#archivements">Archivements</a></li>
+            <li><a href="#auction-house">Auction House</a></li>
+            <li><a href="#currency">Currency</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
@@ -174,18 +185,14 @@ https://github.com/alex-shpak/hugo-book
       
       
   <article class="markdown"><h1 id="game-design">Game Design</h1>
-<p>The game offers several main aspects of gameplay that the player can perceive, taking into account the always valid
-manifesto statements. In addition, the concept of the open world should open up an emergent game principle.</p>
-<p>Here concrete realizations of central game elements are described. Contrary to the rough guidelines of the manifesto,
-the discussion and description of a concrete game feature is already at stake here. The specification of the respective
-feature should be described as exactly as possible in order to make an easy implementation possible. The list will be
-constantly updated and extended.</p>
-<p>This document describes the core thoughts and principals under which all game design choices should be oriented
-and challenged.</p>
+<p>The game offers several main aspects of gameplay that the player can perceive, taking into account the always valid manifesto statements. In addition, the concept of the open world should open up an emergent game principle.</p>
+<p>Here concrete realizations of central game elements are described. Contrary to the rough guidelines of the manifesto, the discussion and description of a concrete game feature is already at stake here. The specification of the respective feature should be described as exactly as possible in order to make an easy implementation possible. The list will be constantly updated and extended.</p>
+<p>This document describes the core thoughts and principals under which all game design choices should be oriented and challenges.</p>
+<h2 id="core-concepts">Core Concepts</h2>
 <blockquote>
-<p>It is best practice to stick as close as possible to the design principles described in the next section: <strong>Core Concepts</strong>.</p>
+<p>It is best practice to stick as close as possible to the design principles described in the next section about the core concepts.</p>
 </blockquote>
-<h2 id="consistent-fantasy-simulation">Consistent Fantasy Simulation</h2>
+<h3 id="consistent-fantasy-simulation">Consistent Fantasy Simulation</h3>
 <p>We want to tell a story, a story the players forge and form by themselves. We must provide a world, an environment in
 which this is made possible. The game should motivate the players to explore and test their creativity for solving problems.
 Nothing frustrates more then to solve riddles only by bruteforcing the answers. All the things inside the world should
@@ -193,11 +200,11 @@ be explainable by in-universe theories and follow certain logic patterns. There 
 which will teleport the player to the next Dungeon and destroy the immersive fantasy. The player should be motivated to
 solve this problems by himself maybe by finding a friendly other character class which is able to open portals.
 Interaction between players is highly encouraged to solve problems.</p>
-<h2 id="a-single-universe">A Single Universe</h2>
+<h3 id="a-single-universe">A Single Universe</h3>
 <p>We all live on the same planet. So do we really need multiple servers? Multiple servers tear the community apart.
 Of course it is technically more challenging to connect all players through a common game world. But this challenge
 has to be met. One community further encourages interaction between the players.</p>
-<h2 id="stable-mechanics">Stable Mechanics</h2>
+<h3 id="stable-mechanics">Stable Mechanics</h3>
 <p>In modern games players are kept encouraged by constantly changing the game mechanics. These poor design choices
 makes it hard for players to came back into the game after a long pause. Most mechanics have changed and must be
 adaptes first leading to frustration. Players slowly understanding the mechanics will put into a constant re-learning
@@ -207,14 +214,14 @@ and makes them as resistant as possible against patches.</p>
 <p>Interesting long term challenges have to be implemented via a immersive gameplay world. Bugs and balancing problems
 will be patched of course.</p>
 </blockquote>
-<h2 id="encouraging-social-interaction">Encouraging Social Interaction</h2>
+<h3 id="encouraging-social-interaction">Encouraging Social Interaction</h3>
 <p>Many game mechanics should only be possible through interaction with other players. Rituals that require multiple
 players, even the help of multiple character classes should be the norm rather than the exception. Single players
 should of course also be able to enjoy the game. Nevertheless the name is MMORPG Program. The full potential
 of the game can and should only be experienced through interaction with other people. This promotes a cohesion
 in the community of the players. By these promoted social contacts the players are bound more strongly to
 the game itself.</p>
-<h2 id="advanced-crafting">Advanced Crafting</h2>
+<h3 id="advanced-crafting">Advanced Crafting</h3>
 <p>Items are usually not obtained by killing monsters (we remember: fantasy realism.) Do wolves carry swords?
 Probably not. They have to be made. Usually only raw materials are found on maps. Almost all equipment is
 manufactured or purchased from NPCs. NPC dealers only have a limited stock of goods. These must first be
@@ -223,21 +230,133 @@ and demand. NPC should try to get a profit maximization for themselves. Players 
 in this cycle of goods as easily as possible, both as a producer and as a consumer.</p>
 <p>The professions are described in the 
   <a href="/mechanics/skills">Skills and Attacks</a> section.</p>
-<h2 id="modern-artifical-intelligence">Modern Artifical Intelligence</h2>
+<h3 id="modern-artifical-intelligence">Modern Artifical Intelligence</h3>
 <p>The game contains a modern, incredibly powerful AI. The world and its inhabitants should look incredibly
 alive with it. Bestias and NPC follow a daily routine and pursue their own goals. The player should be
 able to recognize patterns and interact with them by observing them. The NPCs react in the same way to
 influences by the player. NPCs should be able to travel long distances and not be available for the player
 for some time.</p>
-<h2 id="rich-and-immersive-history">Rich And Immersive History</h2>
+<h3 id="rich-and-immersive-history">Rich And Immersive History</h3>
 <p>The story and history should be rich in detail and deep and immersive. But its not necessairly important to be always
 totally serious. Yet it must be generic enough to get pre-computed to some degree when the world is calcualted.
 Instead the story should keep its own sense of strange, nerdy humor. Character development and ingame experiences
 should be tied to certain storys or quests. E.g. taking gameplay choices only by clicking a certain UI button is discouraged.</p>
-<h2 id="meet-real-world-expectation">Meet Real World Expectation</h2>
+<h3 id="meet-real-world-expectation">Meet Real World Expectation</h3>
 <p>The environment should stick to real world expectation, can you open a door also by destroying it? Sure! Why should this not
 also work in games? - The simulated world of Bestia should stick to the principles and expectations of the real world.
 With this help player can think of funny and motivating workarounds and solutions to solve problems in game.</p>
+<h2 id="game-mechanics">Game Mechanics</h2>
+<p>The main story revolves around the player whose world was destroyed due to a so-called <strong>Rift Event</strong>. The magic pushed into his world and merged it with another one. This altered the physical properties of both worlds and mostly destroyed them in the process.</p>
+<p>The player is thrown into a new world and must learn to survive on his own (while exploring the new world, gathering resources, making friends and foes).</p>
+<p>The principle of destroying the world is the common thread throughout the game. By joining one of the different cults the players can actively work towards a destruction of the world or preventing it from harm (see 
+  <a href="/#cults">The Cults</a> for more information).</p>
+<p>Due to this event the world is <strong>generated dynamically</strong>. Despite the ultimate goal of the game to prevent or initiate this destruction, this should remain a rare event that occurs no more frequently than every 1 to 2 years (in real time). The newly generated world should cover as wide a spectrum of biomes as possible. The world and its inhabitants embed themselves in a certain history, which should also be generated as automatically as possible. This enriches the player experience especially in the beginning when there are not many players.</p>
+<p>For the details of world generation, see the 
+  <a href="/docs/server/world-generation/">technical documentation</a>.</p>
+<h3 id="postal-system">Postal System</h3>
+<p>Based on World of Warcraft, a postal system is to be established. The system should make it possible to send letters,
+but above all items and money to other players and places. And is also important for the 
+  <a href="/#player-quests">player quest system</a> as mostly quest rewards will need to be delived via a postal system).</p>
+<p>Like the rest of the game this should be solved by an ingame system. There should be NPCs which will take care of delivering postal services and players should setup Bestias in order to perform this delivery. This can be a quest on its own. If there is no player taking care in time for this delivery there should be always an NPC showing up taking care of the delivery, then the reward is lost.</p>
+<p>The postal fee is defined by:</p>
+
+<link rel="stylesheet" href="/katex/katex.min.css" />
+<script defer src="/katex/katex.min.js"></script>
+<script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body);"></script><span>
+  \[   price =  0.01g \cdot km \cdot m_{kg}\\
+   deliver_{time} =  8h &#43; km / 10\]
+</span>
+
+<p>The player can decide to insure his delivery which will setup a teleport spell on the item if its not looted but the postman is killed which will deliver it towards the target destination. But this will take another 0.5-1 days in real time before the item will then be available at the target location.</p>
+<p>Gold and text only messages can be send via a special telegram system which is very hard to intercept. But the fee is 3 times the usual price (but gold has no ingame weight, so you are allowed to carry as much as you want).</p>
+<h3 id="the-cults">The Cults</h3>
+<p>In each Bestia World there are 2-3 cults to which the Bestia summoners can belong. When creating the world, the existing cults are chosen randomly. At least one cult should aim for the destruction of the world, the other should prevent it. Optionally there are some neutral cults that pursue their own goals which do not deal with the destruction of the world. These cults should not exist in every world iteration.</p>
+<p>The cults are ultimately a faction. The goal is to be able to play these factions among themselves. Usually players can fight against each other at any time, but the rivalries should take place between the cults. To this end, game mechanics must be established that in a certain way grant the individual cults an additional bonus in a collaborative approach and thus offer playful incentives to actively intervene in the game.</p>
+<p>Players can invest into their cults citadelle. Only one citadel can exist at the time but players are free to build as many temples as they want, where they can access the services of their cult. The interesting thing is that some of the archivements by the cults will remain active when the world is replaced by a new one. So these cults help a lot when players want to keep their wealth during a world destruction event.</p>
+<p>Players should be able to change cults. However, this will be sanctioned with a difficult task and will be associated with various disadvantages.</p>
+<h4 id="citadels-and-temples">Citadels and Temples</h4>
+<p>The order can research powerful spells and devices which the players can then learn or access to accomplish their goal.</p>
+<h4 id="the-chaos">The Chaos</h4>
+<p>The Chos tries to inflict destruction and to speed up the worlds downfall, as they believe the mana influx is the fate every world must face finally. They try to mass the amount of mana, open rifts in remote legions to form the world after their twisted image until it goes down in flames.</p>
+<h4 id="the-order">The Order</h4>
+<p>This cult is the preserving one. They belive in stability and try to stop the ongoing destruction of the worlds. Their ultimate goal is to bring an end to the influx of mana. Thus they research a lot of spells to remove and control the mana influx and rifts.</p>
+<h4 id="cult-advantages">Cult Advantages</h4>
+<p>It would be conceivable that special land areas fall under the influence of a certain cult. This would attract certain
+Bestias that are friendly to the cult members. Special resources are generated or more Mana rifts are opened and the
+Mana within the country increases there. Furthermore, the prevailing faction can be rewarded with a global bonus.
+Additional EXP bonuses would be conceivable.</p>
+<h3 id="archivements">Archivements</h3>
+<p>If a player manages to archive a certain goal then he will be awarded an archivement. These archivements are listed ingame so the player can view them. It is also possible for other players to access the players archivements.</p>
+<p>There are archivements which are unique to a single world and other which every player can reach for his own. World archivements are saved with the world they were acquired and are reset (they can be re-acuired by another player if the world is re-created). The date + the name of the world in which the success was achieved always remains in the history for a player.</p>
+<p>This list is far from completed! New ideas and suggestions are welcomed. Please open an 
+  <a href="https://github.com/tfelix/bestia-docs/issues">issue</a> for new ideas.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Archivement</th>
+<th align="center">Type</th>
+<th align="right">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Master of 10 Bestias</td>
+<td align="center"><small class="archivement">
+  
+   <span class="individual">Individual</span> 
+</small></td>
+<td align="right">The player has owned 10 Bestias.</td>
+</tr>
+<tr>
+<td align="left">Master of 100 Bestias</td>
+<td align="center"><small class="archivement">
+  
+   <span class="individual">Individual</span> 
+</small></td>
+<td align="right">The player has owned 100 Bestias.</td>
+</tr>
+<tr>
+<td align="left">Master of 1000 Bestias</td>
+<td align="center"><small class="archivement">
+  
+   <span class="individual">Individual</span> 
+</small></td>
+<td align="right">The player has owned 1000 Bestias.</td>
+</tr>
+<tr>
+<td align="left">Officer</td>
+<td align="center"><small class="archivement">
+  
+   <span class="individual">Individual</span> 
+</small></td>
+<td align="right">Killing 10 players with <code>Rogue</code> debuf.</td>
+</tr>
+<tr>
+<td align="left">Sheriff</td>
+<td align="center"><small class="archivement">
+  
+   <span class="individual">Individual</span> 
+</small></td>
+<td align="right">Killing 50 players with <code>Rogue</code> debuf.</td>
+</tr>
+<tr>
+<td align="left">Marshall</td>
+<td align="center"><small class="archivement">
+  
+   <span class="individual">Individual</span> 
+</small></td>
+<td align="right">Killing 100 players with <code>Rogue</code> debuf.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="auction-house">Auction House</h3>
+<p>Trading is an important mechanic and allows player to exchange goods as the whole Bestia economy is player driven. Players can create auction hauses which can be used in order to perform trades while they are offline themselves.</p>
+<p>If an auction house was build by a player or a guild no other auction house can be build in a 300m radius. The player can decide the auction fee between 1% - 10% for new auctions. This fee is collected in the auction house and must be collected by the owners. Players can then use the auction house to sell their items by listing them. Either they set them up for a fixed price of do an auction. The decide between 1 (80% fee), 2 (100% fee), 3 (120% fee) or 5 (140% fee) days length for the auction.</p>
+<p>Auction houses of different owners can be linked in order to display the shared auctions. If a player wins an auction the item is delivered via postal service to the player if he decides to pay the delivery fee. The item is then send via the regular postal service from the linked auction house.</p>
+<p>If the player does not pay the fee the item is withheld for him up to 10 days until it is returned to his owner (who can keep the price payed for the item from the player who did not collect his item).</p>
+<h3 id="currency">Currency</h3>
+<p>All the ingame currency is made from gold found by the players. Yes you have heard it right the players must harvest gold deposites in order to make their own money. Gold can directly be turned into gold coins.</p>
+<p>In order to start the economy the NPC have 10% of the available world wealth in gold. This wealth is re-distributed equally between every NPC every night. This mechanic is one of the few that have no underlying real world logic.</p>
 </article>
  
       
@@ -248,9 +367,9 @@ With this help player can think of funny and motivating workarounds and solution
 
 
 
-  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/96c1eb6c182448d409e165b495eba052e16bc9ad" title='Last modified by Thomas Felix | May 6, 2020' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/8b925084e92f763f2172d38d614e0d2910eefc8a" title='Last modified by Thomas Felix | May 17, 2020' target="_blank" rel="noopener">
       <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>May 6, 2020</span>
+      <span>May 17, 2020</span>
     </a>
   </div>
 
@@ -266,9 +385,7 @@ With this help player can think of funny and motivating workarounds and solution
 </div>
 
  
-        <p>This is a test</p>
-
-<img src="/tf-logo.png">
+        
       </footer>
 
       
@@ -289,14 +406,27 @@ With this help player can think of funny and motivating workarounds and solution
   <ul>
     <li><a href="#game-design">Game Design</a>
       <ul>
-        <li><a href="#consistent-fantasy-simulation">Consistent Fantasy Simulation</a></li>
-        <li><a href="#a-single-universe">A Single Universe</a></li>
-        <li><a href="#stable-mechanics">Stable Mechanics</a></li>
-        <li><a href="#encouraging-social-interaction">Encouraging Social Interaction</a></li>
-        <li><a href="#advanced-crafting">Advanced Crafting</a></li>
-        <li><a href="#modern-artifical-intelligence">Modern Artifical Intelligence</a></li>
-        <li><a href="#rich-and-immersive-history">Rich And Immersive History</a></li>
-        <li><a href="#meet-real-world-expectation">Meet Real World Expectation</a></li>
+        <li><a href="#core-concepts">Core Concepts</a>
+          <ul>
+            <li><a href="#consistent-fantasy-simulation">Consistent Fantasy Simulation</a></li>
+            <li><a href="#a-single-universe">A Single Universe</a></li>
+            <li><a href="#stable-mechanics">Stable Mechanics</a></li>
+            <li><a href="#encouraging-social-interaction">Encouraging Social Interaction</a></li>
+            <li><a href="#advanced-crafting">Advanced Crafting</a></li>
+            <li><a href="#modern-artifical-intelligence">Modern Artifical Intelligence</a></li>
+            <li><a href="#rich-and-immersive-history">Rich And Immersive History</a></li>
+            <li><a href="#meet-real-world-expectation">Meet Real World Expectation</a></li>
+          </ul>
+        </li>
+        <li><a href="#game-mechanics">Game Mechanics</a>
+          <ul>
+            <li><a href="#postal-system">Postal System</a></li>
+            <li><a href="#the-cults">The Cults</a></li>
+            <li><a href="#archivements">Archivements</a></li>
+            <li><a href="#auction-house">Auction House</a></li>
+            <li><a href="#currency">Currency</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>

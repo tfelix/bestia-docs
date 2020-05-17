@@ -11,12 +11,12 @@ In general it works by creating piplines which are then used to create and trans
 In general it works by creating piplines which are then used to create and transform noise maps." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.bestia-game.net/docs/server/world-generation/" />
-<meta property="article:modified_time" content="2020-05-17T15:41:44+02:00" />
+<meta property="article:modified_time" content="2020-05-17T23:32:33+02:00" />
 <title>World Generation | Bestia Game</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="/book.min.b4326999511fa9ab08d3e5556b95ed1d8050e22afa5704e974165847ad072628.css" integrity="sha256-tDJpmVEfqasI0&#43;VVa5XtHYBQ4ir6VwTpdBZYR60HJig=">
-<script defer src="/en.search.min.7f0e9b077f76733085d58b2ef049b3fc0541edada72f607bf9d6cd8076927f4d.js" integrity="sha256-fw6bB392czCF1Ysu8Emz/AVB7a2nL2B7&#43;dbNgHaSf00="></script>
+<link rel="stylesheet" href="/book.min.8faf8c6f51f7bb1ff07807bc087f607f8071c4b0ce8b6737ad62995aa1337d4f.css" integrity="sha256-j6&#43;Mb1H3ux/weAe8CH9gf4BxxLDOi2c3rWKZWqEzfU8=">
+<script defer src="/en.search.min.2d82bfe3d45f572fc8f4bba422a3f54d725062611afa81e0a121adc5f79e0636.js" integrity="sha256-LYK/49RfVy/I9LukIqP1TXJQYmEa&#43;oHgoSGtxfeeBjY="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
@@ -61,8 +61,6 @@ https://github.com/alex-shpak/hugo-book
   <a href="/docs/mechanics/"><strong>Game Design</strong></a>
 <ul>
 <li>
-  <a href="/docs/mechanics/general/">General Mechanics</a></li>
-<li>
   <a href="/docs/mechanics/master/">Bestia Master</a></li>
 <li>
   <a href="/docs/mechanics/bestia/">Bestias</a></li>
@@ -82,7 +80,7 @@ https://github.com/alex-shpak/hugo-book
   <a href="/docs/client/"><strong>Client</strong></a>
 <ul>
 <li>
-  <a href="/docs/client/entities/">Entities</a></li>
+  <a href="/docs/client/architecture/">Architecture</a></li>
 </ul>
 </li>
 <li>
@@ -174,11 +172,7 @@ https://github.com/alex-shpak/hugo-book
           </ul>
         </li>
         <li><a href="#resource-distribution">Resource Distribution</a></li>
-        <li><a href="#navigation-map-creation">Navigation Map Creation</a>
-          <ul>
-            <li><a href="#node-connection-weights">Node Connection Weights</a></li>
-          </ul>
-        </li>
+        <li><a href="#navigation-map-creation">Navigation Map Creation</a></li>
         <li><a href="#world-data-cleanup">World Data Cleanup</a></li>
         <li><a href="#literatur">Literatur</a></li>
       </ul>
@@ -386,7 +380,7 @@ We assume a desired temperature range of -40 to 40 degree. This is shifted of ab
 </table>
 <p>The average humidity on the map influences the probability P like:</p>
 <span>
-  \[P_{total} = (0.6 * hum_{avg} - 1.5) &#43; P_{base}\]
+  \[P_{total} = (0.6 * hum_{avg} - 0.3) &#43; P_{base}\]
 </span>
 
 <p>In order to find the coordiante of a water sources on a map and their probability distribution, the map is sampled at a resolution of 10m and theprobability P of a coordiante is given by:</p>
@@ -501,7 +495,7 @@ P_{droplet} &amp;= M_t - 0.9 \cdot M_h
 </tbody>
 </table>
 <h2 id="settlement-creation">Settlement Creation</h2>
-<p>Cities usually form around natural resources like shores, rivers or rich farmland. The algorithm as described below will find suitable city position candidates and then distribute the cities in 2 to n clusters around the world map. This clustering will make sure there is enough unexplored land for the players left. It should also help with the idea of different civilization which could lead to ingame player conflicts. A possible distribution is shown in here. <em>TODO: Include figure</em></p>
+<p>Cities usually form around natural resources like shores, rivers or rich farmland. The algorithm as described below will find suitable city position candidates and then distribute the cities in clusters around the world map. This clustering will make sure there is enough unexplored land for the players left to explore (and to create own settlements). It should also help with the idea of different civilization which could lead to ingame player conflicts.</p>
 <p>The algorithm searches the world map and creates matrix with a mesh length of 1km.</p>
 <ul>
 <li>Rohstoffvorkommen (Farmland, Minerals, Fishing Grounds)</li>
@@ -569,7 +563,6 @@ P_{droplet} &amp;= M_t - 0.9 \cdot M_h
 <li><strong>Swim</strong>: Waterways connections are marked like this</li>
 <li><strong>Climb</strong>: Conneections with slopes higher then 45 degrees are marked like this</li>
 </ul>
-<h3 id="node-connection-weights">Node Connection Weights</h3>
 <blockquote>
 <p>Its possible that downscaled graphs with pre-calculated connections must be made in order to speed up NPC navigation later on.</p>
 </blockquote>
@@ -605,7 +598,7 @@ P_{droplet} &amp;= M_t - 0.9 \cdot M_h
 
 
 
-  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/5c45d037bb544239b2df6e4cdb5d77cc245629f1" title='Last modified by Thomas Felix | May 17, 2020' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/8b925084e92f763f2172d38d614e0d2910eefc8a" title='Last modified by Thomas Felix | May 17, 2020' target="_blank" rel="noopener">
       <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
       <span>May 17, 2020</span>
     </a>
@@ -623,9 +616,7 @@ P_{droplet} &amp;= M_t - 0.9 \cdot M_h
 </div>
 
  
-        <p>This is a test</p>
-
-<img src="/tf-logo.png">
+        
       </footer>
 
       
@@ -668,11 +659,7 @@ P_{droplet} &amp;= M_t - 0.9 \cdot M_h
           </ul>
         </li>
         <li><a href="#resource-distribution">Resource Distribution</a></li>
-        <li><a href="#navigation-map-creation">Navigation Map Creation</a>
-          <ul>
-            <li><a href="#node-connection-weights">Node Connection Weights</a></li>
-          </ul>
-        </li>
+        <li><a href="#navigation-map-creation">Navigation Map Creation</a></li>
         <li><a href="#world-data-cleanup">World Data Cleanup</a></li>
         <li><a href="#literatur">Literatur</a></li>
       </ul>

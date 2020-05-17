@@ -32,20 +32,11 @@
     
     <item>
       <title></title>
-      <link>https://docs.bestia-game.net/docs/client/entities/</link>
+      <link>https://docs.bestia-game.net/docs/client/architecture/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.bestia-game.net/docs/client/entities/</guid>
-      <description>Entities The Bestia server entities are synced to the client also represented there also under the name Entities. An entity is described by a set of components which is attached to it and by a certain kind of logic synched between the client and the server. Not every component is synched though. This can depend on various factors for example party membership (ConditionComponent is only synched between members of the same party), or ownership or view distance (mostly only entities in view distance are synched).</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://docs.bestia-game.net/docs/mechanics/general/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://docs.bestia-game.net/docs/mechanics/general/</guid>
-      <description>General Mechanics The main story revolves around the player whose world was destroyed due to a so-called Rift Event. The magic pushed into his world and merged it with another one. This altered the physical properties of both worlds and mostly destroyed them in the process. The player is thrown into a new world and must learn to survive on his own (while exploring the new world, gathering resources, making friends and foes).</description>
+      <guid>https://docs.bestia-game.net/docs/client/architecture/</guid>
+      <description>Client Architecture Entities The Bestia server entities are synced to the client also represented there also under the name Entities. An entity is described by a set of components which is attached to it and by a certain kind of logic synched between the client and the server. Not every component is synched though. This can depend on various factors for example party membership (ConditionComponent is only synched between members of the same party), or ownership or view distance (mostly only entities in view distance are synched).</description>
     </item>
     
     <item>
@@ -60,21 +51,11 @@ The sophisticated status system describes the current state of an bestia (or sim
     
     <item>
       <title></title>
-      <link>https://docs.bestia-game.net/docs/server/ai/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://docs.bestia-game.net/docs/server/ai/</guid>
-      <description>Artificial Intelligence The AI system in Bestia will set new standards. Bestias and NPCs alike should be able to create long-term plans, so-called game plans or GPs for short. They then follow this strategy until observations or influences from the game world force them to abandon this plan or the plan is fulfilled.
-Bestias look for ways to get the highest possible inner happiness. They must sleep, eat and feel attracted to mana currents.</description>
-    </item>
-    
-    <item>
-      <title></title>
       <link>https://docs.bestia-game.net/docs/server/architecture/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://docs.bestia-game.net/docs/server/architecture/</guid>
-      <description>Architecture Entity Component Services Entities are described by dynamically attaching components to them. ECS system have been proven as a de facto industry standard for recent game development. The components only contain the data are attached to entities which merely are an ID in the system. The so called systems act upon this data and alter the entities usually this is the case in a fixed tick amount for game logic updates.</description>
+      <description>Server Architecture Entity Component Services Entities are described by dynamically attaching components to them. ECS system have been proven as a de facto industry standard for recent game development. The components only contain the data are attached to entities which merely are an ID in the system. The so called systems act upon this data and alter the entities usually this is the case in a fixed tick amount for game logic updates.</description>
     </item>
     
     <item>
@@ -93,8 +74,7 @@ The attack itself either provides a script to completely manage the effect which
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://docs.bestia-game.net/docs/server/quests/</guid>
-      <description>Quests TBD
-Literature  https://www.rockpapershotgun.com/2016/09/02/how-to-procedurally-generate-culture/ http://www.gdcvault.com/play/1024143/Procedural-Narrative http://pcg.wikidot.com/pcg-algorithm:procedural-puzzles-and-plot-generation http://ieeexplore.ieee.org/abstract/document/5740836/ https://nil.cs.uno.edu/projects/glaive/  </description>
+      <description>Quests The game will be more or less an Open World game. But the declared goal will be to try out new ways of storytelling in order to present a credible world with developing history to the players. You have to say goodbye to the idea that every game can live through every part of the story/quest. This contradicts the persistent and inner logical structure of the game world. Quests must rather result dynamically from what happens within the game world.</description>
     </item>
     
     <item>
@@ -118,6 +98,16 @@ In general it works by creating piplines which are then used to create and trans
     </item>
     
     <item>
+      <title>Artificial Intelligence</title>
+      <link>https://docs.bestia-game.net/docs/server/ai/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.bestia-game.net/docs/server/ai/</guid>
+      <description>Artificial Intelligence The AI system in Bestia will set new standards. Bestias and NPCs alike should be able to create long-term plans, so-called game plans or GPs for short. They then follow this strategy until observations or influences from the game world force them to abandon this plan or the plan is fulfilled.
+Bestias look for ways to get the highest possible inner happiness. They must sleep, eat and feel attracted to mana currents.</description>
+    </item>
+    
+    <item>
       <title>Bestia Master</title>
       <link>https://docs.bestia-game.net/docs/mechanics/master/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -133,8 +123,8 @@ The attachment to mana also explains why Bestia masters were able to survive the
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://docs.bestia-game.net/docs/mechanics/bestia/</guid>
-      <description>Bestias In areas with high mana concentration, so-called mini rift events are formed. At these neuralgic points, Bestia are materialized and enter the respective worlds.
-Catching In order to catch Bestia you need Magic Bestia Traps. This items are manufactured via the apropriate crafting skill. Bestias catch chance can be increased by reducing its HP. If the HP is 1% the catch chance is increased by 30%. It can also changed by applying buffs or debuffs.</description>
+      <description>Bestias In areas with high mana concentration, so-called mini rift events are formed. At these neuralgic points, Bestia are materialized and enter the respective worlds. They are basically automatically spawning on the map with a higher probability where the mana concentration is higher.
+The type of the Bestia which spawns is determined by the environments (Bestias have a affinity to certain biomes and they spawn according to this probability in the different biomes).</description>
     </item>
     
     <item>

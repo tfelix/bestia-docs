@@ -4,19 +4,17 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Quests TBD
-Literature  https://www.rockpapershotgun.com/2016/09/02/how-to-procedurally-generate-culture/ http://www.gdcvault.com/play/1024143/Procedural-Narrative http://pcg.wikidot.com/pcg-algorithm:procedural-puzzles-and-plot-generation http://ieeexplore.ieee.org/abstract/document/5740836/ https://nil.cs.uno.edu/projects/glaive/  ">
+<meta name="description" content="Quests The game will be more or less an Open World game. But the declared goal will be to try out new ways of storytelling in order to present a credible world with developing history to the players. You have to say goodbye to the idea that every game can live through every part of the story/quest. This contradicts the persistent and inner logical structure of the game world. Quests must rather result dynamically from what happens within the game world.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
-<meta property="og:description" content="Quests TBD
-Literature  https://www.rockpapershotgun.com/2016/09/02/how-to-procedurally-generate-culture/ http://www.gdcvault.com/play/1024143/Procedural-Narrative http://pcg.wikidot.com/pcg-algorithm:procedural-puzzles-and-plot-generation http://ieeexplore.ieee.org/abstract/document/5740836/ https://nil.cs.uno.edu/projects/glaive/  " />
+<meta property="og:description" content="Quests The game will be more or less an Open World game. But the declared goal will be to try out new ways of storytelling in order to present a credible world with developing history to the players. You have to say goodbye to the idea that every game can live through every part of the story/quest. This contradicts the persistent and inner logical structure of the game world. Quests must rather result dynamically from what happens within the game world." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.bestia-game.net/docs/server/quests/" />
-<meta property="article:modified_time" content="2020-05-17T16:12:52+02:00" />
+<meta property="article:modified_time" content="2020-05-17T23:32:33+02:00" />
 <title>Quests | Bestia Game</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="/book.min.b4326999511fa9ab08d3e5556b95ed1d8050e22afa5704e974165847ad072628.css" integrity="sha256-tDJpmVEfqasI0&#43;VVa5XtHYBQ4ir6VwTpdBZYR60HJig=">
-<script defer src="/en.search.min.7f0e9b077f76733085d58b2ef049b3fc0541edada72f607bf9d6cd8076927f4d.js" integrity="sha256-fw6bB392czCF1Ysu8Emz/AVB7a2nL2B7&#43;dbNgHaSf00="></script>
+<link rel="stylesheet" href="/book.min.8faf8c6f51f7bb1ff07807bc087f607f8071c4b0ce8b6737ad62995aa1337d4f.css" integrity="sha256-j6&#43;Mb1H3ux/weAe8CH9gf4BxxLDOi2c3rWKZWqEzfU8=">
+<script defer src="/en.search.min.2d82bfe3d45f572fc8f4bba422a3f54d725062611afa81e0a121adc5f79e0636.js" integrity="sha256-LYK/49RfVy/I9LukIqP1TXJQYmEa&#43;oHgoSGtxfeeBjY="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
@@ -61,8 +59,6 @@ https://github.com/alex-shpak/hugo-book
   <a href="/docs/mechanics/"><strong>Game Design</strong></a>
 <ul>
 <li>
-  <a href="/docs/mechanics/general/">General Mechanics</a></li>
-<li>
   <a href="/docs/mechanics/master/">Bestia Master</a></li>
 <li>
   <a href="/docs/mechanics/bestia/">Bestias</a></li>
@@ -82,7 +78,7 @@ https://github.com/alex-shpak/hugo-book
   <a href="/docs/client/"><strong>Client</strong></a>
 <ul>
 <li>
-  <a href="/docs/client/entities/">Entities</a></li>
+  <a href="/docs/client/architecture/">Architecture</a></li>
 </ul>
 </li>
 <li>
@@ -152,6 +148,12 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#quests">Quests</a>
       <ul>
+        <li><a href="#automatic-quest-generation">Automatic Quest Generation</a></li>
+        <li><a href="#player-quests">Player Quests</a>
+          <ul>
+            <li><a href="#reward-calculation">Reward Calculation</a></li>
+          </ul>
+        </li>
         <li><a href="#literature">Literature</a></li>
       </ul>
     </li>
@@ -167,7 +169,70 @@ https://github.com/alex-shpak/hugo-book
       
       
   <article class="markdown"><h1 id="quests">Quests</h1>
-<p>TBD</p>
+<p>The game will be more or less an Open World game. But the declared goal will be to try out new ways of storytelling in
+order to present a credible world with developing history to the players. You have to say goodbye to the idea that every
+game can live through every part of the story/quest. This contradicts the persistent and inner logical structure of the
+game world. Quests must rather result dynamically from what happens within the game world.</p>
+
+
+
+
+<div class="book-tabs"><input type="radio" class="hidden" name="tabs-Example Quests" id="tabs-Example Quests-0" checked="checked" />
+  <label for="tabs-Example Quests-0">Help the Peasants!</label>
+  <div class="book-tabs-content markdown-inner">A rich harvest is imminent, but the farmer Wilhelm cannot bring in the whole harvest due to his short time before it
+spoils on the fields. He asks passing players if they could help him. This is rewarded with an EXP bonus, gold and
+if necessary an item.</div><input type="radio" class="hidden" name="tabs-Example Quests" id="tabs-Example Quests-1"  />
+  <label for="tabs-Example Quests-1">Defend the city!</label>
+  <div class="book-tabs-content markdown-inner">Due to high rift activity and mana flooding, many high-level Bestias make the surroundings of a large city unsafe.
+Players are encouraged to fight the Bestias, rise in the city&rsquo;s favor, and gain access to better items, experience
+and gold.</div><input type="radio" class="hidden" name="tabs-Example Quests" id="tabs-Example Quests-2"  />
+  <label for="tabs-Example Quests-2">Help me!</label>
+  <div class="book-tabs-content markdown-inner">A NPC has gotten lost in a dangerous area and is now hiding. If a player finds the NPC he can help him to find his
+way back and will be rewarded with EXP and gold.</div></div>
+
+<p>Quests in Bestia are generated on via two mechanics:</p>
+<ol>
+<li>Automatic generated quests, which are spawned in cities or villages where are NPCs present</li>
+<li>Player generated quests, these challenges must be given to an NPC who will then announce these quests so other
+players who can pick them up, players must follow a template for the rewards.</li>
+</ol>
+<h2 id="automatic-quest-generation">Automatic Quest Generation</h2>
+<p>Quest generation is done with Templates similar to what the terrain auto-generation system uses. Alot of logic can be built into the Scripts to &lsquo;fit&rsquo; locations and to vary the details of the Quest significantly. Can be made to &lsquo;fit&rsquo; the Player, but its better for the Player to have to figure out how to come up with the needed resources or solutions. It is based manly on the paper 
+  <a href="http://ianparberry.com/pubs/pcg2011.pdf">A prototype quest generator based on a structural analysis of quests from four MMORPGs</a> by Ian Parberry and Jonathon Doran and also on the Grail Framework desribed in 
+  <a href="https://escholarship.org/uc/item/004129jn">The Grail Framework: Making Stories Layable on Three Levels in CRPGS</a>. In order to keep the quest generation close to the world in a narrative perspective consider some ideas from the paper 
+  <a href="http://gram.cs.mcgill.ca/papers/kybartas-14-analysis.pdf">Analysis of ReGEN as a Graph Rewriting System for Quest Generation</a>.</p>
+<p>Discovery of these quests can be done in various ways:</p>
+<ul>
+<li>Announcements by city majors</li>
+<li>Bulletin Boards</li>
+<li>NPCs in a tavern start talking to the players</li>
+<li>Classical NPC interaction</li>
+</ul>
+<p>Try constantly challenge the player with various constraints imposed on quests:</p>
+<ul>
+<li>Time limits</li>
+<li>Puzzle solving mechanics</li>
+<li>Escort quests</li>
+<li>Resource or item gathering quests</li>
+</ul>
+<p>The auto generation allows creating such unique (semi-unique) situational experiences when there are lots of substitutions for the multiple details that make up a quest.
+Progressive Quests can be built with subsequent quests opening on completion of predecessors (the usual quest trees used on most MMORPGs).
+Sequential Multi-Quests are easily generated:  Goto X, Pickup Y, Deliver to Z -or- Patrol A then Patrol B then Patrol C .. and the locations can be shifted to &lsquo;fit&rsquo; the city areas (when the civilized part of city keeps expanding into the world).</p>
+<p>The automatic dialog generation can use a tree like structure with templates where placeholder like items, locations and names are replaced as needed from the auto generation of quests. Sets up NPC quest-giver with a dialog tree. Many situational details can be inserted as parameters (names/locations/item types/etc) into dialog.
+Many quests/missions given by NPCs include directions to a specific place. The place can be changed (varied) and the terrain can actually be built/modified &lsquo;on-the-fly&rsquo; to match the quest, so that you don&rsquo;t wind up going the same place other players have already done in the exact same mannor.</p>
+<p>Further resources to read:</p>
+<ul>
+<li>
+  <a href="http://www.academia.edu/4558587/Dynamic_Quest_Plot_Generation_using_Petri_Net_Planning">Dynamic_Quest_Plot_Generation_using Petri-Net Planning</a></li>
+</ul>
+<p>A Quest Log is maintained so the player can look up the details of a quest even though he might been offline for a few days. This interface could very well be available on the &lsquo;offline&rsquo; mobile interface of Bestia, so a pre-planning can be done throughout the day. The player should be able to direct his NPC Bestias to start to prepare/move into position to be ready to start into the dangerous territory the quest might be set in). Good use for the mobile interface to handle logistics like this offline (issue orders to the players Bestia team, to &lsquo;gear&rsquo; up and meet me at location X).</p>
+<h2 id="player-quests">Player Quests</h2>
+<p>Players can define various tasks, such as collecting resources or defeating certain enemies, or transporting certain goods as a task and offer a reward. Also the deactivation of Bestias as guardians would be a conceivable task. This reward must then be given to the appropriate NPCs, who then hold it in trust (or simply negotiate among the players).</p>
+<p>The awarding of quests must be worthwhile for both parties. The player is credited with a good amount of experience both for the quest and for the successful completion of the quest by another player. He can redistribute this experience to Bestias in his possession under certain circumstances (items needed). When a quest is accepted, a contract is concluded between the player and the NPC. If all contract conditions are met, the reward will be handed out. Contracts may be limited in time and if a player fails to fullfill the contract he might need to pay a fee which is delivered to the quest giver.</p>
+<h3 id="reward-calculation">Reward Calculation</h3>
+<p>The player creating a quest must setup a reward. This rewards is calculated in a fixed way and depends on the available money on the current server but will also factor in the wealth of the issues. The reward can also be higher then re quested amount. 5% of the reward is issued to the NPC managing this quest contract.</p>
+<p>The level range of the players suitable to do this quest must be automatically determined.</p>
+<p>The fee can be payed in items or in gold, though the NPC part of the fee must be payed always in gold.</p>
 <h2 id="literature">Literature</h2>
 <ul>
 <li><a href="https://www.rockpapershotgun.com/2016/09/02/how-to-procedurally-generate-culture/">https://www.rockpapershotgun.com/2016/09/02/how-to-procedurally-generate-culture/</a></li>
@@ -186,7 +251,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/163958b81762bd854d2cf6899118ce6389fa5ab9" title='Last modified by Thomas Felix | May 17, 2020' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/8b925084e92f763f2172d38d614e0d2910eefc8a" title='Last modified by Thomas Felix | May 17, 2020' target="_blank" rel="noopener">
       <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
       <span>May 17, 2020</span>
     </a>
@@ -204,9 +269,7 @@ https://github.com/alex-shpak/hugo-book
 </div>
 
  
-        <p>This is a test</p>
-
-<img src="/tf-logo.png">
+        
       </footer>
 
       
@@ -227,6 +290,12 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#quests">Quests</a>
       <ul>
+        <li><a href="#automatic-quest-generation">Automatic Quest Generation</a></li>
+        <li><a href="#player-quests">Player Quests</a>
+          <ul>
+            <li><a href="#reward-calculation">Reward Calculation</a></li>
+          </ul>
+        </li>
         <li><a href="#literature">Literature</a></li>
       </ul>
     </li>

@@ -4,19 +4,19 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Bestias In areas with high mana concentration, so-called mini rift events are formed. At these neuralgic points, Bestia are materialized and enter the respective worlds.
-Catching In order to catch Bestia you need Magic Bestia Traps. This items are manufactured via the apropriate crafting skill. Bestias catch chance can be increased by reducing its HP. If the HP is 1% the catch chance is increased by 30%. It can also changed by applying buffs or debuffs.">
+<meta name="description" content="Bestias In areas with high mana concentration, so-called mini rift events are formed. At these neuralgic points, Bestia are materialized and enter the respective worlds. They are basically automatically spawning on the map with a higher probability where the mana concentration is higher.
+The type of the Bestia which spawns is determined by the environments (Bestias have a affinity to certain biomes and they spawn according to this probability in the different biomes).">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Bestias" />
-<meta property="og:description" content="Bestias In areas with high mana concentration, so-called mini rift events are formed. At these neuralgic points, Bestia are materialized and enter the respective worlds.
-Catching In order to catch Bestia you need Magic Bestia Traps. This items are manufactured via the apropriate crafting skill. Bestias catch chance can be increased by reducing its HP. If the HP is 1% the catch chance is increased by 30%. It can also changed by applying buffs or debuffs." />
+<meta property="og:description" content="Bestias In areas with high mana concentration, so-called mini rift events are formed. At these neuralgic points, Bestia are materialized and enter the respective worlds. They are basically automatically spawning on the map with a higher probability where the mana concentration is higher.
+The type of the Bestia which spawns is determined by the environments (Bestias have a affinity to certain biomes and they spawn according to this probability in the different biomes)." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.bestia-game.net/docs/mechanics/bestia/" />
-<meta property="article:modified_time" content="2020-05-17T15:41:44+02:00" />
+<meta property="article:modified_time" content="2020-05-17T23:32:33+02:00" />
 <title>Bestias | Bestia Game</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="/book.min.b4326999511fa9ab08d3e5556b95ed1d8050e22afa5704e974165847ad072628.css" integrity="sha256-tDJpmVEfqasI0&#43;VVa5XtHYBQ4ir6VwTpdBZYR60HJig=">
-<script defer src="/en.search.min.7f0e9b077f76733085d58b2ef049b3fc0541edada72f607bf9d6cd8076927f4d.js" integrity="sha256-fw6bB392czCF1Ysu8Emz/AVB7a2nL2B7&#43;dbNgHaSf00="></script>
+<link rel="stylesheet" href="/book.min.8faf8c6f51f7bb1ff07807bc087f607f8071c4b0ce8b6737ad62995aa1337d4f.css" integrity="sha256-j6&#43;Mb1H3ux/weAe8CH9gf4BxxLDOi2c3rWKZWqEzfU8=">
+<script defer src="/en.search.min.2d82bfe3d45f572fc8f4bba422a3f54d725062611afa81e0a121adc5f79e0636.js" integrity="sha256-LYK/49RfVy/I9LukIqP1TXJQYmEa&#43;oHgoSGtxfeeBjY="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
@@ -61,8 +61,6 @@ https://github.com/alex-shpak/hugo-book
   <a href="/docs/mechanics/"><strong>Game Design</strong></a>
 <ul>
 <li>
-  <a href="/docs/mechanics/general/">General Mechanics</a></li>
-<li>
   <a href="/docs/mechanics/master/">Bestia Master</a></li>
 <li>
   <a href="/docs/mechanics/bestia/"class=active>Bestias</a></li>
@@ -82,7 +80,7 @@ https://github.com/alex-shpak/hugo-book
   <a href="/docs/client/"><strong>Client</strong></a>
 <ul>
 <li>
-  <a href="/docs/client/entities/">Entities</a></li>
+  <a href="/docs/client/architecture/">Architecture</a></li>
 </ul>
 </li>
 <li>
@@ -152,7 +150,7 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#bestias">Bestias</a>
       <ul>
-        <li><a href="#catching">Catching</a></li>
+        <li><a href="#catching-bestias">Catching Bestias</a></li>
         <li><a href="#breeding">Breeding</a>
           <ul>
             <li><a href="#individual-value-evolution">Individual Value Evolution</a></li>
@@ -173,9 +171,9 @@ https://github.com/alex-shpak/hugo-book
       
       
   <article class="markdown"><h1 id="bestias">Bestias</h1>
-<p>In areas with high mana concentration, so-called mini rift events are formed. At these neuralgic points, Bestia are
-materialized and enter the respective worlds.</p>
-<h2 id="catching">Catching</h2>
+<p>In areas with high mana concentration, so-called mini rift events are formed. At these neuralgic points, Bestia are materialized and enter the respective worlds. They are basically automatically spawning on the map with a higher probability where the mana concentration is higher.</p>
+<p>The type of the Bestia which spawns is determined by the environments (Bestias have a affinity to certain biomes and they spawn according to this probability in the different biomes).</p>
+<h2 id="catching-bestias">Catching Bestias</h2>
 <p>In order to catch Bestia you need Magic Bestia Traps. This items are manufactured via the apropriate crafting skill. Bestias catch chance can be increased by reducing its HP. If the HP is 1% the catch chance is increased by 30%. It can also changed by applying buffs or debuffs.</p>
 <table>
 <thead>
@@ -304,7 +302,7 @@ attack by the level of the father.</p>
 
 
 
-  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/5c45d037bb544239b2df6e4cdb5d77cc245629f1" title='Last modified by Thomas Felix | May 17, 2020' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/8b925084e92f763f2172d38d614e0d2910eefc8a" title='Last modified by Thomas Felix | May 17, 2020' target="_blank" rel="noopener">
       <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
       <span>May 17, 2020</span>
     </a>
@@ -322,9 +320,7 @@ attack by the level of the father.</p>
 </div>
 
  
-        <p>This is a test</p>
-
-<img src="/tf-logo.png">
+        
       </footer>
 
       
@@ -345,7 +341,7 @@ attack by the level of the father.</p>
   <ul>
     <li><a href="#bestias">Bestias</a>
       <ul>
-        <li><a href="#catching">Catching</a></li>
+        <li><a href="#catching-bestias">Catching Bestias</a></li>
         <li><a href="#breeding">Breeding</a>
           <ul>
             <li><a href="#individual-value-evolution">Individual Value Evolution</a></li>

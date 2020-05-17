@@ -11,11 +11,11 @@
     
     <item>
       <title></title>
-      <link>https://docs.bestia-game.net/docs/client/entities/</link>
+      <link>https://docs.bestia-game.net/docs/client/architecture/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.bestia-game.net/docs/client/entities/</guid>
-      <description>Entities The Bestia server entities are synced to the client also represented there also under the name Entities. An entity is described by a set of components which is attached to it and by a certain kind of logic synched between the client and the server. Not every component is synched though. This can depend on various factors for example party membership (ConditionComponent is only synched between members of the same party), or ownership or view distance (mostly only entities in view distance are synched).</description>
+      <guid>https://docs.bestia-game.net/docs/client/architecture/</guid>
+      <description>Client Architecture Entities The Bestia server entities are synced to the client also represented there also under the name Entities. An entity is described by a set of components which is attached to it and by a certain kind of logic synched between the client and the server. Not every component is synched though. This can depend on various factors for example party membership (ConditionComponent is only synched between members of the same party), or ownership or view distance (mostly only entities in view distance are synched).</description>
     </item>
     
   </channel>
