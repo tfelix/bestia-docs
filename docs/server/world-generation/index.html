@@ -11,12 +11,12 @@ In general it works by creating piplines which are then used to create and trans
 In general it works by creating piplines which are then used to create and transform noise maps." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.bestia-game.net/docs/server/world-generation/" />
-<meta property="article:modified_time" content="2020-05-17T23:32:33+02:00" />
+<meta property="article:modified_time" content="2020-05-18T01:28:47+02:00" />
 <title>World Generation | Bestia Game</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.8faf8c6f51f7bb1ff07807bc087f607f8071c4b0ce8b6737ad62995aa1337d4f.css" integrity="sha256-j6&#43;Mb1H3ux/weAe8CH9gf4BxxLDOi2c3rWKZWqEzfU8=">
-<script defer src="/en.search.min.ee096d0c96184f9d9c029844a6eef6c68d6117a193616ebc4677209f0692c810.js" integrity="sha256-7gltDJYYT52cAphEpu72xo1hF6GTYW68RncgnwaSyBA="></script>
+<script defer src="/en.search.min.82bfa96291c2d14629b88149bfee68142b51d8819c1e2d173945610a433d821e.js" integrity="sha256-gr&#43;pYpHC0UYpuIFJv&#43;5oFCtR2IGcHi0XOUVhCkM9gh4="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
@@ -166,13 +166,13 @@ https://github.com/alex-shpak/hugo-book
         <li><a href="#creating-rivers-and-lakes">Creating Rivers and Lakes</a></li>
         <li><a href="#biome-setup">Biome Setup</a></li>
         <li><a href="#terrain-features">Terrain Features</a></li>
-        <li><a href="#settlement-creation">Settlement Creation</a>
+        <li><a href="#resource-distribution">Resource Distribution</a></li>
+        <li><a href="#settlement-creation">Settlement Creation</a></li>
+        <li><a href="#navigation-map-creation">Navigation Map Creation</a>
           <ul>
             <li><a href="#road-creation">Road Creation</a></li>
           </ul>
         </li>
-        <li><a href="#resource-distribution">Resource Distribution</a></li>
-        <li><a href="#navigation-map-creation">Navigation Map Creation</a></li>
         <li><a href="#world-data-cleanup">World Data Cleanup</a></li>
         <li><a href="#literatur">Literatur</a></li>
       </ul>
@@ -209,9 +209,10 @@ https://github.com/alex-shpak/hugo-book
 <li>Creating Rivers and Lakes</li>
 <li>Biome Setup</li>
 <li>Terrain Features</li>
-<li>Settlement Creation</li>
 <li>Resource Distribution</li>
+<li>Settlement Creation</li>
 <li>Navigation Map Creation</li>
+<li>Road Generation</li>
 </ol>
 <h2 id="base-parameter">Base Parameter</h2>
 <p>The following base parameters are used to generate the map:</p>
@@ -494,45 +495,38 @@ P_{droplet} &amp;= M_t - 0.9 \cdot M_h
 </tr>
 </tbody>
 </table>
+<h2 id="resource-distribution">Resource Distribution</h2>
+<p>TBD.</p>
 <h2 id="settlement-creation">Settlement Creation</h2>
 <p>Cities usually form around natural resources like shores, rivers or rich farmland. The algorithm as described below will find suitable city position candidates and then distribute the cities in clusters around the world map. This clustering will make sure there is enough unexplored land for the players left to explore (and to create own settlements). It should also help with the idea of different civilization which could lead to ingame player conflicts.</p>
-<p>The algorithm searches the world map and creates matrix with a mesh length of 1km.</p>
+<p>The algorithm searches the world map and creates matrix with a mesh length of 1km. It will then calculate the chance of a settlement in this grid by taking this into account:</p>
 <ul>
-<li>Rohstoffvorkommen (Farmland, Minerals, Fishing Grounds)</li>
-<li>Nähe zu einem Gewässer (Fluss oder Meer)</li>
+<li>Resource Availability
+<ul>
+<li>Farmland</li>
+<li>Minerals</li>
+<li>Fishing Grounds</li>
 </ul>
-<p>Folgende Voraussetzungen müssen gegeben sein:</p>
-<ul>
-<li>Karte mit Biom-Zuordnung muss generiert worden sein.</li>
+</li>
+<li>Distance to river or sea</li>
+<li>Biome type</li>
 </ul>
-<p>Aufbauen auf der Weltkarte wird eine Influence Map erstellt. Wasserwege geben einen abfallenden Wert vor. Die Auflösung der Influence Map kann geringer sein als die eigentliche Karte. Auflösungen zwischen 100m und 1km erscheinen praktikabel. Folgende Punkte werden auf der Influence Map vergeben und summiert:</p>
+<p>For certain events the possibility of a settlement is reduced to zero:</p>
 <ul>
-<li>Ist das Biom praktisch um Lebensmittel anzubauen?</li>
-<li>Sind natürliche Ressourcen in diesem Biom vorhanden?</li>
-<li>Wasser Biom in der Nähe gibt Punkte.</li>
-</ul>
-<p>Von der Influence Map müssen nun die Punkte entfernt werden die eindeutig keine Besiedlung ermöglichen. Folgende Punkte müssen auf 0 reduziert werden:</p>
-<ul>
-<li>Liegen im Wasser/Lava</li>
-<li>Liegen auf Gebirge</li>
-<li>Liegen im Wald</li>
-<li>Liegen in Gebieten mit sehr hoher Magie</li>
+<li>Land is water</li>
+<li>Biome is a mountain</li>
+<li>Mana influence is too high</li>
 </ul>
 <p>Bei allen verbleibenden Punkten muss überprüft werden ob es sich um ein lokales Maximum handelt. Diese Punkte werden zusammen mit ihrer Gewichtung in eine sortierte Liste aufgenommen. Dabei kann ein wandernder Durchschnitt berechnet werden und Werte unterhalb eines gewissen Schwellwertes verworfen werden.</p>
 <p>Koordinaten die dann zu nahe beieinander liegen (&lt; 3-6km) werden aus der Liste entfernt.</p>
 <p>Anhand der Punkte auf der Liste werden die Siedlungen berechnet. Zu 70% wird eine Stadt aus der oberen Hälfte der Liste der Reihe nach entnommen. Zu 30% wird eine Siedlung zufällig aus einem Kandidaten der unteren Listenhälfte entnommen bis die Anzahl der gewünschten Siedlungen erreicht ist oder die Liste erschöpft ist. Sollte ein Listenteil erschöpft sein, so wird jeweils vom anderen Listenteil mit dem gleichen Muster vorgegangen.</p>
-<p>Erzeugung von Städten</p>
+<p>The algorithm for settlement creation is:</p>
 <ol>
-<li>Bestimmung der Anzahl der Gebäude anhand der Populationsmenge.</li>
-<li>Verteilen der Gebäude um den Stadtkern nach einer Gaußkurvenverteilung.</li>
-<li>Erzeugung der Gebäude-Innenräume nach: <a href="https://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_division_method">https://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_division_method</a></li>
+<li>Determine building count based on settlement population</li>
+<li>Buildings are places by poisson disc distribution and gauss distribution</li>
+<li>The buildings itself a procedural generated with 
+  <a href="https://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_division_method">recusive division</a></li>
 </ol>
-<h3 id="road-creation">Road Creation</h3>
-<p>After the settlements are created, depending on their population size and an estimated travel distance roads are procedurally generated. We loosly follow the approach presented in the Paper 
-  <a href="https://www.researchgate.net/publication/229707505_Procedural_Generation_of_Roads">Procedural Generation of Roads</a>.</p>
-<p>TBD.</p>
-<h2 id="resource-distribution">Resource Distribution</h2>
-<p>TBD.</p>
 <h2 id="navigation-map-creation">Navigation Map Creation</h2>
 <p>The navigation map is created for NPC to fast calculate travel paths other long distances. It creates a connected graph network and the output is put into a 
   <a href="https://neo4j.com/">Neo4J database</a>.</p>
@@ -566,6 +560,10 @@ P_{droplet} &amp;= M_t - 0.9 \cdot M_h
 <blockquote>
 <p>Its possible that downscaled graphs with pre-calculated connections must be made in order to speed up NPC navigation later on.</p>
 </blockquote>
+<h3 id="road-creation">Road Creation</h3>
+<p>After the settlements are created, depending on their population size and an estimated travel distance roads are procedurally generated. We loosly follow the approach presented in the Paper 
+  <a href="https://www.researchgate.net/publication/229707505_Procedural_Generation_of_Roads">Procedural Generation of Roads</a>.</p>
+<p>When the settlements are build connections to the next settlements are established and the shortest route is calculated like described in the paper. The voxel ground is then flattened and an apropriate material is assigned to the road.</p>
 <h2 id="world-data-cleanup">World Data Cleanup</h2>
 <p>Before a new world is created the old world data is deleted. The following procedure is made after all player entities are persisted and active entity simulation has stopped:</p>
 <ol>
@@ -598,7 +596,7 @@ P_{droplet} &amp;= M_t - 0.9 \cdot M_h
 
 
 
-  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/8b925084e92f763f2172d38d614e0d2910eefc8a" title='Last modified by Thomas Felix | May 17, 2020' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/a6514058bc113ee9eca7b8c80be84eb19fa99d3f" title='Last modified by Thomas Felix | May 17, 2020' target="_blank" rel="noopener">
       <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
       <span>May 17, 2020</span>
     </a>
@@ -653,13 +651,13 @@ P_{droplet} &amp;= M_t - 0.9 \cdot M_h
         <li><a href="#creating-rivers-and-lakes">Creating Rivers and Lakes</a></li>
         <li><a href="#biome-setup">Biome Setup</a></li>
         <li><a href="#terrain-features">Terrain Features</a></li>
-        <li><a href="#settlement-creation">Settlement Creation</a>
+        <li><a href="#resource-distribution">Resource Distribution</a></li>
+        <li><a href="#settlement-creation">Settlement Creation</a></li>
+        <li><a href="#navigation-map-creation">Navigation Map Creation</a>
           <ul>
             <li><a href="#road-creation">Road Creation</a></li>
           </ul>
         </li>
-        <li><a href="#resource-distribution">Resource Distribution</a></li>
-        <li><a href="#navigation-map-creation">Navigation Map Creation</a></li>
         <li><a href="#world-data-cleanup">World Data Cleanup</a></li>
         <li><a href="#literatur">Literatur</a></li>
       </ul>

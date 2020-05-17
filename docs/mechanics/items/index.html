@@ -13,12 +13,12 @@ Items are mostly crafted by the players. Its quite rare to obtain direct item dr
 Each item has a level assigned." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.bestia-game.net/docs/mechanics/items/" />
-<meta property="article:modified_time" content="2020-04-30T01:47:03+02:00" />
+<meta property="article:modified_time" content="2020-05-18T01:28:47+02:00" />
 <title>Items | Bestia Game</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.8faf8c6f51f7bb1ff07807bc087f607f8071c4b0ce8b6737ad62995aa1337d4f.css" integrity="sha256-j6&#43;Mb1H3ux/weAe8CH9gf4BxxLDOi2c3rWKZWqEzfU8=">
-<script defer src="/en.search.min.ee096d0c96184f9d9c029844a6eef6c68d6117a193616ebc4677209f0692c810.js" integrity="sha256-7gltDJYYT52cAphEpu72xo1hF6GTYW68RncgnwaSyBA="></script>
+<script defer src="/en.search.min.82bfa96291c2d14629b88149bfee68142b51d8819c1e2d173945610a433d821e.js" integrity="sha256-gr&#43;pYpHC0UYpuIFJv&#43;5oFCtR2IGcHi0XOUVhCkM9gh4="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
@@ -158,9 +158,12 @@ https://github.com/alex-shpak/hugo-book
             <li><a href="#uprade-chances">Uprade Chances</a></li>
           </ul>
         </li>
-        <li><a href="#item-crafting">Item Crafting</a></li>
+        <li><a href="#item-crafting">Item Crafting</a>
+          <ul>
+            <li><a href="#craft-duration">Craft Duration</a></li>
+          </ul>
+        </li>
         <li><a href="#alchemy">Alchemy</a></li>
-        <li><a href="#craft-duration">Craft Duration</a></li>
         <li><a href="#item-and-entity-interactions">Item and Entity Interactions</a></li>
         <li><a href="#damaging-of-items">Damaging of Items</a>
           <ul>
@@ -319,17 +322,17 @@ in the world of Bestia, and are related to the linked
 <li>Meals (Cooking)</li>
 <li>Buildings, Traps and non magical devices (Engineering)</li>
 </ul>
-<h2 id="alchemy">Alchemy</h2>
-<p>The brewing is a time consuming process. The process should be somehow deterministic so the results are logically to be obtained.</p>
-<p>Once a receipt was discovered it is saved for the user so it can be reused very quickly. If a player repeatedly makes
-the same receipt the quality of the produced potions increases over time. The player can choose to write down the
-receipt and give it to other players who might increase their skill by reading it.</p>
-<h2 id="craft-duration">Craft Duration</h2>
+<h3 id="craft-duration">Craft Duration</h3>
 <p>Craft duration is determined by the item level which the player wants to craft. Skill points in the suitable skill tree
 (weapon, equipment, construction or alchemy, artifacts) reduces the build time. The <code>baseDuration</code> is given in real
 time minutes.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">baseDuration = <span style="color:#ae81ff">28.8</span> * itemLevel
-</code></pre></div><h2 id="item-and-entity-interactions">Item and Entity Interactions</h2>
+</code></pre></div><h2 id="alchemy">Alchemy</h2>
+<p>The brewing is a time consuming process. The process should be somehow deterministic so the results are logically to be obtained.</p>
+<p>Once a receipt was discovered it is saved for the user so it can be reused very quickly. If a player repeatedly makes
+the same receipt the quality of the produced potions increases over time. The player can choose to write down the
+receipt and give it to other players who might increase their skill by reading it.</p>
+<h2 id="item-and-entity-interactions">Item and Entity Interactions</h2>
 <p>It should be possible to link items to entities. Nesting should be possible. With this technique it is possible to
 combine active items.</p>
 <p>Its possible to do something like:</p>
@@ -400,9 +403,9 @@ might be affected.</p>
 
 
 
-  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/9b983781a1736f4fb6cc4c123f3b27841f7b594e" title='Last modified by Thomas Felix | April 29, 2020' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/a6514058bc113ee9eca7b8c80be84eb19fa99d3f" title='Last modified by Thomas Felix | May 17, 2020' target="_blank" rel="noopener">
       <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>April 29, 2020</span>
+      <span>May 17, 2020</span>
     </a>
   </div>
 
@@ -445,9 +448,12 @@ might be affected.</p>
             <li><a href="#uprade-chances">Uprade Chances</a></li>
           </ul>
         </li>
-        <li><a href="#item-crafting">Item Crafting</a></li>
+        <li><a href="#item-crafting">Item Crafting</a>
+          <ul>
+            <li><a href="#craft-duration">Craft Duration</a></li>
+          </ul>
+        </li>
         <li><a href="#alchemy">Alchemy</a></li>
-        <li><a href="#craft-duration">Craft Duration</a></li>
         <li><a href="#item-and-entity-interactions">Item and Entity Interactions</a></li>
         <li><a href="#damaging-of-items">Damaging of Items</a>
           <ul>

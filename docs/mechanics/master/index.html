@@ -11,12 +11,12 @@ The attachment to mana also explains why Bestia masters were able to survive the
 The attachment to mana also explains why Bestia masters were able to survive the destruction of their world relatively unscathed and to pass on to the next world." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.bestia-game.net/docs/mechanics/master/" />
-<meta property="article:modified_time" content="2020-05-18T00:07:56+02:00" />
+<meta property="article:modified_time" content="2020-05-18T01:28:47+02:00" />
 <title>Bestia Master | Bestia Game</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.8faf8c6f51f7bb1ff07807bc087f607f8071c4b0ce8b6737ad62995aa1337d4f.css" integrity="sha256-j6&#43;Mb1H3ux/weAe8CH9gf4BxxLDOi2c3rWKZWqEzfU8=">
-<script defer src="/en.search.min.ee096d0c96184f9d9c029844a6eef6c68d6117a193616ebc4677209f0692c810.js" integrity="sha256-7gltDJYYT52cAphEpu72xo1hF6GTYW68RncgnwaSyBA="></script>
+<script defer src="/en.search.min.82bfa96291c2d14629b88149bfee68142b51d8819c1e2d173945610a433d821e.js" integrity="sha256-gr&#43;pYpHC0UYpuIFJv&#43;5oFCtR2IGcHi0XOUVhCkM9gh4="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
@@ -154,9 +154,9 @@ https://github.com/alex-shpak/hugo-book
           <ul>
             <li><a href="#guidlines">Guidlines</a></li>
             <li><a href="#skill-progression">Skill Progression</a></li>
-            <li><a href="#common-tree">Common Tree</a></li>
           </ul>
         </li>
+        <li><a href="#crafts-tree">Crafts Tree</a></li>
         <li><a href="#battle-tree">Battle Tree</a>
           <ul>
             <li><a href="#master-of-fire-10">Master of Fire (10)</a></li>
@@ -183,16 +183,6 @@ https://github.com/alex-shpak/hugo-book
             <li><a href="#magic-protection-5">Magic Protection (5)</a></li>
           </ul>
         </li>
-        <li><a href="#crafts-tree">Crafts Tree</a>
-          <ul>
-            <li><a href="#improved-trading-5">Improved Trading (5)</a></li>
-            <li><a href="#scavenger-10">Scavenger (10)</a></li>
-            <li><a href="#blacksmithing-10">Blacksmithing (10)</a></li>
-            <li><a href="#engineering-10">Engineering (10)</a></li>
-            <li><a href="#magic-artisan-10">Magic Artisan (10)</a></li>
-            <li><a href="#transmutation-10">Transmutation (10)</a></li>
-          </ul>
-        </li>
         <li><a href="#science-tree">Science Tree</a>
           <ul>
             <li><a href="#spell-enscription-10">Spell Enscription (10)</a></li>
@@ -208,6 +198,8 @@ https://github.com/alex-shpak/hugo-book
             <li><a href="#control-mana-flow-10">Control Mana Flow (10)</a></li>
             <li><a href="#magic-senses-5">Magic Senses (5)</a></li>
             <li><a href="#identify-magic-5">Identify Magic (5)</a></li>
+            <li><a href="#magic-artisan-10">Magic Artisan (10)</a></li>
+            <li><a href="#transmutation-10">Transmutation (10)</a></li>
           </ul>
         </li>
       </ul>
@@ -247,7 +239,7 @@ called attacks.</p>
 <li>There should be some kind of three tiers inside a tree to lead from low and basic skill to the much powerfull skills</li>
 </ul>
 <blockquote>
-<p>Most Important: No hardcoded skill effects!</p>
+<p>Most important: No hardcoded skill effects!</p>
 </blockquote>
 <p>Skills should be used when possible require some interaction with the player whose success depends on the effect of the
 skill. An example would be the teleport ability: after selecting the players (which can be flexible by the number) and
@@ -263,14 +255,42 @@ understandable and influenceable by the player.</p>
 <p>The skilltrees are designed as such that to reach the highest professions in a tree the player needs to spend <strong>70 points</strong>.</p>
 <p>The player can decide to have mediocre profession in each tree or to max out one and have maybe half of the
 meaningful professions of another tree. The skilltree is a hierarchical dependency of skills.</p>
-<h3 id="common-tree">Common Tree</h3>
-<p>In this tree, simple, common mundane tasks are placed.</p>
+<h2 id="crafts-tree">Crafts Tree</h2>
+<p>In this tree, simple, common mundane tasks are placed which can be benefitial for living in the outside world. This basically does not contain any mana related stuff, but rather mundane tasks.</p>
+
+
+<script src="/mermaid.min.js"></script>
+<script>
+mermaid.initialize({
+  flowchart: { useMaxWidth:true }
+});
+</script>
+
+
+
+<p class="mermaid">
+graph TD
+  FIRST_AID("First Aid [1]")
+  FISHING("Fishing [5]")
+  SCAVENGER("Scavenger [10]")
+
+  SCAVENGER-->|min. 5|IMPROVED_TRADING("Improved Trading [5]")
+  FISHING-->|min. 1|COOKING("Cooking [5]")
+
+  IMPROVED_TRADING-->|min. 3|CRAFTMANSHIP("Craftmanship [10]")
+  IMPROVED_TRADING-->|min. 3|LUMBERJACK("Lumberjack [10]")
+  IMPROVED_TRADING-->|min. 3|MINER("Miner [10]")
+
+  MINER-->|min. 5|BLACKSMITH("Blacksmith [10]")
+  CRAFTMANSHIP-->|min. 5|BLACKSMITH
+  CRAFTMANSHIP-->|min. 7|TAILOR("Tailor [10]")
+</p>
+
+<p><strong>First Aid (1)</strong>
 <div class="book-columns flex flex-wrap">
   
   <div class="flex-even markdown-inner">
-    <p><strong>First Aid (1)</strong></p>
-<p>Player can apply bandages to Bestia and channel a healing effect of ob to 30% of their total health. The channel time is 15 seconds and the cooldown is 5 minutes. A Bestia can only receive a First Aid every 30 secs.</p>
-
+    Player can apply bandages to Bestia and channel a healing effect of ob to 30% of their total health. The channel time is 15 seconds and the cooldown is 5 minutes. A Bestia can only receive a First Aid every 30 secs.
   </div>
   
   <div class="flex-even markdown-inner">
@@ -281,30 +301,12 @@ meaningful professions of another tree. The skilltree is a hierarchical dependen
   </div>
   
 </div>
-
+</p>
+<p><strong>Fishing (5)</strong>
 <div class="book-columns flex flex-wrap">
   
   <div class="flex-even markdown-inner">
-    <p><strong>Cooking (5)</strong></p>
-<p>The user can start to cook meals on fire places. This meals apply certain buff effects when they are eaten.</p>
-
-  </div>
-  
-  <div class="flex-even markdown-inner">
-    <blockquote>
-<p>Level increas makes it easier to cook higher level food.</p>
-</blockquote>
-
-  </div>
-  
-</div>
-
-<div class="book-columns flex flex-wrap">
-  
-  <div class="flex-even markdown-inner">
-    <p><strong>Fishing (5)</strong></p>
-<p>With this skill you are able to start fishing.</p>
-
+    With this skill you are able to catch fish. Fish can be cooked are used for food and trading.
   </div>
   
   <div class="flex-even markdown-inner">
@@ -315,19 +317,126 @@ meaningful professions of another tree. The skilltree is a hierarchical dependen
   </div>
   
 </div>
+</p>
+<p><strong>Scavenger (10)</strong>
+<div class="book-columns flex flex-wrap">
+  
+  <div class="flex-even markdown-inner">
+    When breaking up and recycling items the probability to recycle a higher amount of components is increased.
+  </div>
+  
+  <div class="flex-even markdown-inner">
+    <blockquote>
+<p>-5%/lv price reduction at NPCs
++3%/lv higher price when selling at NPC</p>
+</blockquote>
 
+  </div>
+  
+</div>
+</p>
+<p><strong>Improved Trading (5)</strong>
+<div class="book-columns flex flex-wrap">
+  
+  <div class="flex-even markdown-inner">
+    NPC can be talked into to pay more or give the player cheaper prices for items.
+  </div>
+  
+  <div class="flex-even markdown-inner">
+    <blockquote>
+<p>-5%/lv item price reduction at NPCs
++3%/lv higher price when selling items at NPC</p>
+</blockquote>
+
+  </div>
+  
+</div>
+</p>
+<p><strong>Cooking (5)</strong>
+<div class="book-columns flex flex-wrap">
+  
+  <div class="flex-even markdown-inner">
+    The user can start to cook meals on fire places. This meals apply certain buff effects when they are eaten.
+  </div>
+  
+  <div class="flex-even markdown-inner">
+    <blockquote>
+<p>Level increas makes it easier to cook higher level food.</p>
+</blockquote>
+
+  </div>
+  
+</div>
+</p>
+<p><strong>Craftmanship (10)</strong>
+<div class="book-columns flex flex-wrap">
+  
+  <div class="flex-even markdown-inner">
+    The player is able to construct faster and perform tasks better like excavations.
+  </div>
+  
+  <div class="flex-even markdown-inner">
+    <blockquote>
+<p>-3%/lv structure build time</p>
+</blockquote>
+
+  </div>
+  
+</div>
+</p>
+<p><strong>Lumberjack (10)</strong>
+<div class="book-columns flex flex-wrap">
+  
+  <div class="flex-even markdown-inner">
+    The player is able to gather wood resources faster.
+  </div>
+  
+  <div class="flex-even markdown-inner">
+    <blockquote>
+<p>-3%/lv wood gathering time
++2%/lvl resource drop chance</p>
+</blockquote>
+
+  </div>
+  
+</div>
+</p>
+<p><strong>Miner (10)</strong>
+<div class="book-columns flex flex-wrap">
+  
+  <div class="flex-even markdown-inner">
+    Specialized in digging mine shafts and gather mineral resources.
+  </div>
+  
+  <div class="flex-even markdown-inner">
+    <blockquote>
+<p>-3%/lv mining time
++2%/lv resource drop chance</p>
+</blockquote>
+
+  </div>
+  
+</div>
+</p>
+<p><strong>Blacksmith (10)</strong>
+<div class="book-columns flex flex-wrap">
+  
+  <div class="flex-even markdown-inner">
+    Able to forge weaponry. Can also <a href="/mechanics/items/#weapon-refinement">refine weapons</a>. Increasing the spell does increase the chance to forge higher level weapons.
+  </div>
+  
+  <div class="flex-even markdown-inner">
+    <blockquote>
+<p>Increases the probability by 2% to succeed when upgrading a weapon.
+Increase chance of forging highlevel weapons</p>
+</blockquote>
+
+  </div>
+  
+</div>
+</p>
 <h2 id="battle-tree">Battle Tree</h2>
-<p>The battle tree contains skills which are primarly useful for fighting, battle and maybe to some extend improve survival
-in the wild.</p>
-
-
-<script src="/mermaid.min.js"></script>
-<script>
-mermaid.initialize({
-  flowchart: { useMaxWidth:true }
-});
-</script>
-
+<p>The battle tree contains skills which are primarly useful for sustaining in fighting and battle.</p>
 
 
 <p class="mermaid">
@@ -451,26 +560,6 @@ deplete your stamina.</p>
 <blockquote>
 <p>+5%/level Weight Limit increase</p>
 </blockquote>
-<h2 id="crafts-tree">Crafts Tree</h2>
-<h3 id="improved-trading-5">Improved Trading (5)</h3>
-<p>NPC can be talked into to pay more or give the player cheaper prices for items.</p>
-<blockquote>
-<p>-5%/lv price reduction at NPCs</p>
-<p>+3%/lv higher price when selling at NPC</p>
-</blockquote>
-<h3 id="scavenger-10">Scavenger (10)</h3>
-<p>When breaking up and recycling items the probability to recycle a higher amount of components is increased.</p>
-<h3 id="blacksmithing-10">Blacksmithing (10)</h3>
-<ul>
-<li>Scavenger (5)</li>
-</ul>
-<p>Able to forge weaponry. Can also 
-  <a href="/mechanics/items/#weapon-refinement">refine weapons</a>. Increasing the spell does increase the chance to forge higher level weapons.</p>
-<p>Also increases the probability by 2% to succeed when upgrading a weapon.</p>
-<h3 id="engineering-10">Engineering (10)</h3>
-<h3 id="magic-artisan-10">Magic Artisan (10)</h3>
-<p>Can create magical artifacts.</p>
-<h3 id="transmutation-10">Transmutation (10)</h3>
 <h2 id="science-tree">Science Tree</h2>
 <p>The Science Tree contains skills witch help with sensing the world events and or performing rituals to even shape the
 face of the Bestia world itself. It basically forms 3 sub-trees: One is focused on attack learning, and enscribing, the second one
@@ -519,8 +608,12 @@ has opened it can be used in both directions for some time.</p>
 <h3 id="control-mana-flow-10">Control Mana Flow (10)</h3>
 <p>User is able to channel down the Mana to crystalize into small shards of Mana crystals which can be used as a power source throughout the world.</p>
 <h3 id="magic-senses-5">Magic Senses (5)</h3>
-<p>Detect presence of magic.</p>
+<p>Detect presence of magic. This also helps to</p>
 <h3 id="identify-magic-5">Identify Magic (5)</h3>
+<p>Enables a spell</p>
+<h3 id="magic-artisan-10">Magic Artisan (10)</h3>
+<p>Can create magical artifacts.</p>
+<h3 id="transmutation-10">Transmutation (10)</h3>
 </article>
  
       
@@ -531,7 +624,7 @@ has opened it can be used in both directions for some time.</p>
 
 
 
-  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/6556e8b3fd5f8e911930a9b418a75db7c8af7952" title='Last modified by Thomas Felix | May 17, 2020' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/a6514058bc113ee9eca7b8c80be84eb19fa99d3f" title='Last modified by Thomas Felix | May 17, 2020' target="_blank" rel="noopener">
       <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
       <span>May 17, 2020</span>
     </a>
@@ -574,9 +667,9 @@ has opened it can be used in both directions for some time.</p>
           <ul>
             <li><a href="#guidlines">Guidlines</a></li>
             <li><a href="#skill-progression">Skill Progression</a></li>
-            <li><a href="#common-tree">Common Tree</a></li>
           </ul>
         </li>
+        <li><a href="#crafts-tree">Crafts Tree</a></li>
         <li><a href="#battle-tree">Battle Tree</a>
           <ul>
             <li><a href="#master-of-fire-10">Master of Fire (10)</a></li>
@@ -603,16 +696,6 @@ has opened it can be used in both directions for some time.</p>
             <li><a href="#magic-protection-5">Magic Protection (5)</a></li>
           </ul>
         </li>
-        <li><a href="#crafts-tree">Crafts Tree</a>
-          <ul>
-            <li><a href="#improved-trading-5">Improved Trading (5)</a></li>
-            <li><a href="#scavenger-10">Scavenger (10)</a></li>
-            <li><a href="#blacksmithing-10">Blacksmithing (10)</a></li>
-            <li><a href="#engineering-10">Engineering (10)</a></li>
-            <li><a href="#magic-artisan-10">Magic Artisan (10)</a></li>
-            <li><a href="#transmutation-10">Transmutation (10)</a></li>
-          </ul>
-        </li>
         <li><a href="#science-tree">Science Tree</a>
           <ul>
             <li><a href="#spell-enscription-10">Spell Enscription (10)</a></li>
@@ -628,6 +711,8 @@ has opened it can be used in both directions for some time.</p>
             <li><a href="#control-mana-flow-10">Control Mana Flow (10)</a></li>
             <li><a href="#magic-senses-5">Magic Senses (5)</a></li>
             <li><a href="#identify-magic-5">Identify Magic (5)</a></li>
+            <li><a href="#magic-artisan-10">Magic Artisan (10)</a></li>
+            <li><a href="#transmutation-10">Transmutation (10)</a></li>
           </ul>
         </li>
       </ul>
