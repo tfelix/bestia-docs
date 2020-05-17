@@ -20,9 +20,10 @@ There is basically a pipeline in order to generate the Bestia map, these steps a
 5. Creating Rivers and Lakes
 6. Biome Setup
 7. Terrain Features
-8. Settlement Creation
-9. Resource Distribution
+8. Resource Distribution
+9. Settlement Creation
 10. Navigation Map Creation
+11. Road Generation
 
 ## Base Parameter
 
@@ -214,32 +215,29 @@ Usually these kind of features are depending on the kind of biome. For example a
 | MOIST_FOREST | Caverns, Ruins, Artefacts, Deserted Settlements |                         |
 | RAIN_FOREST  | Caverns, Ruins, Artefacts, Deserted Settlements |                         |
 
+## Resource Distribution
+
+TBD.
 
 ##  Settlement Creation
 
 Cities usually form around natural resources like shores, rivers or rich farmland. The algorithm as described below will find suitable city position candidates and then distribute the cities in clusters around the world map. This clustering will make sure there is enough unexplored land for the players left to explore (and to create own settlements). It should also help with the idea of different civilization which could lead to ingame player conflicts.
 
-The algorithm searches the world map and creates matrix with a mesh length of 1km.
+The algorithm searches the world map and creates matrix with a mesh length of 1km. It will then calculate the chance of a settlement in this grid by taking this into account:
 
-* Rohstoffvorkommen (Farmland, Minerals, Fishing Grounds)
-* Nähe zu einem Gewässer (Fluss oder Meer)
+* Resource Availability
+  * Farmland
+  * Minerals
+  * Fishing Grounds
+* Distance to river or sea
+* Biome type
 
-Folgende Voraussetzungen müssen gegeben sein:
+For certain events the possibility of a settlement is reduced to zero:
 
-* Karte mit Biom-Zuordnung muss generiert worden sein.
+* Land is water
+* Biome is a mountain
+* Mana influence is too high
 
-Aufbauen auf der Weltkarte wird eine Influence Map erstellt. Wasserwege geben einen abfallenden Wert vor. Die Auflösung der Influence Map kann geringer sein als die eigentliche Karte. Auflösungen zwischen 100m und 1km erscheinen praktikabel. Folgende Punkte werden auf der Influence Map vergeben und summiert:
-
-* Ist das Biom praktisch um Lebensmittel anzubauen?
-* Sind natürliche Ressourcen in diesem Biom vorhanden?
-* Wasser Biom in der Nähe gibt Punkte.
-
-Von der Influence Map müssen nun die Punkte entfernt werden die eindeutig keine Besiedlung ermöglichen. Folgende Punkte müssen auf 0 reduziert werden:
-
-* Liegen im Wasser/Lava
-* Liegen auf Gebirge
-* Liegen im Wald
-* Liegen in Gebieten mit sehr hoher Magie
 
 Bei allen verbleibenden Punkten muss überprüft werden ob es sich um ein lokales Maximum handelt. Diese Punkte werden zusammen mit ihrer Gewichtung in eine sortierte Liste aufgenommen. Dabei kann ein wandernder Durchschnitt berechnet werden und Werte unterhalb eines gewissen Schwellwertes verworfen werden.
 
@@ -247,21 +245,11 @@ Koordinaten die dann zu nahe beieinander liegen (< 3-6km) werden aus der Liste e
 
 Anhand der Punkte auf der Liste werden die Siedlungen berechnet. Zu 70% wird eine Stadt aus der oberen Hälfte der Liste der Reihe nach entnommen. Zu 30% wird eine Siedlung zufällig aus einem Kandidaten der unteren Listenhälfte entnommen bis die Anzahl der gewünschten Siedlungen erreicht ist oder die Liste erschöpft ist. Sollte ein Listenteil erschöpft sein, so wird jeweils vom anderen Listenteil mit dem gleichen Muster vorgegangen.
 
-Erzeugung von Städten
+The algorithm for settlement creation is:
 
-1. Bestimmung der Anzahl der Gebäude anhand der Populationsmenge.
-2. Verteilen der Gebäude um den Stadtkern nach einer Gaußkurvenverteilung.
-3. Erzeugung der Gebäude-Innenräume nach: https://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_division_method
-
-### Road Creation
-
-After the settlements are created, depending on their population size and an estimated travel distance roads are procedurally generated. We loosly follow the approach presented in the Paper [Procedural Generation of Roads](https://www.researchgate.net/publication/229707505_Procedural_Generation_of_Roads).
-
-TBD.
-
-## Resource Distribution
-
-TBD.
+1. Determine building count based on settlement population
+2. Buildings are places by poisson disc distribution and gauss distribution
+3. The buildings itself a procedural generated with [recusive division](https://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_division_method)
 
 ## Navigation Map Creation
 
@@ -297,6 +285,12 @@ Additional data labels for the connections, to later help filter them for differ
 * **Climb**: Conneections with slopes higher then 45 degrees are marked like this
 
 > Its possible that downscaled graphs with pre-calculated connections must be made in order to speed up NPC navigation later on.
+
+### Road Creation
+
+After the settlements are created, depending on their population size and an estimated travel distance roads are procedurally generated. We loosly follow the approach presented in the Paper [Procedural Generation of Roads](https://www.researchgate.net/publication/229707505_Procedural_Generation_of_Roads).
+
+When the settlements are build connections to the next settlements are established and the shortest route is calculated like described in the paper. The voxel ground is then flattened and an apropriate material is assigned to the road.
 
 ## World Data Cleanup
 

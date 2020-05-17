@@ -30,7 +30,7 @@ Some of this account skills can be used by every Bestia in posession others only
 * In each profession tree there should form 2-3 sub-trees which create a meaningful hierarchy
 * There should be some kind of three tiers inside a tree to lead from low and basic skill to the much powerfull skills
 
-> Most Important: No hardcoded skill effects!
+> Most important: No hardcoded skill effects!
 
 Skills should be used when possible require some interaction with the player whose success depends on the effect of the
 skill. An example would be the teleport ability: after selecting the players (which can be flexible by the number) and
@@ -51,38 +51,99 @@ The skilltrees are designed as such that to reach the highest professions in a t
 The player can decide to have mediocre profession in each tree or to max out one and have maybe half of the
 meaningful professions of another tree. The skilltree is a hierarchical dependency of skills.
 
-### Common Tree
+## Crafts Tree
 
-In this tree, simple, common mundane tasks are placed.
+In this tree, simple, common mundane tasks are placed which can be benefitial for living in the outside world. This basically does not contain any mana related stuff, but rather mundane tasks.
 
-{{< columns >}}
+{{< mermaid >}}
+graph TD
+  FIRST_AID("First Aid [1]")
+  FISHING("Fishing [5]")
+  SCAVENGER("Scavenger [10]")
+
+  SCAVENGER-->|min. 5|IMPROVED_TRADING("Improved Trading [5]")
+  FISHING-->|min. 1|COOKING("Cooking [5]")
+
+  IMPROVED_TRADING-->|min. 3|CRAFTMANSHIP("Craftmanship [10]")
+  IMPROVED_TRADING-->|min. 3|LUMBERJACK("Lumberjack [10]")
+  IMPROVED_TRADING-->|min. 3|MINER("Miner [10]")
+
+  MINER-->|min. 5|BLACKSMITH("Blacksmith [10]")
+  CRAFTMANSHIP-->|min. 5|BLACKSMITH
+  CRAFTMANSHIP-->|min. 7|TAILOR("Tailor [10]")
+{{< /mermaid >}}
+
 **First Aid (1)**
-
+{{< columns >}}
 Player can apply bandages to Bestia and channel a healing effect of ob to 30% of their total health. The channel time is 15 seconds and the cooldown is 5 minutes. A Bestia can only receive a First Aid every 30 secs.
 <--->
 > +3% damage/level
 {{< /columns >}}
 
+**Fishing (5)**
 {{< columns >}}
-**Cooking (5)**
+With this skill you are able to catch fish. Fish can be cooked are used for food and trading.
+<--->
+> Level increas makes it easier to catch higher level fish.
+{{< /columns >}}
 
+**Scavenger (10)**
+{{< columns >}}
+When breaking up and recycling items the probability to recycle a higher amount of components is increased.
+<--->
+> -5%/lv price reduction at NPCs
+> +3%/lv higher price when selling at NPC
+{{< /columns >}}
+
+**Improved Trading (5)**
+{{< columns >}}
+NPC can be talked into to pay more or give the player cheaper prices for items.
+<--->
+> -5%/lv item price reduction at NPCs
+> +3%/lv higher price when selling items at NPC
+{{< /columns >}}
+
+**Cooking (5)**
+{{< columns >}}
 The user can start to cook meals on fire places. This meals apply certain buff effects when they are eaten.
 <--->
 > Level increas makes it easier to cook higher level food.
 {{< /columns >}}
 
+**Craftmanship (10)**
 {{< columns >}}
-**Fishing (5)**
-
-With this skill you are able to start fishing.
+The player is able to construct faster and perform tasks better like excavations.
 <--->
-> Level increas makes it easier to catch higher level fish.
+> -3%/lv structure build time
+{{< /columns >}}
+
+**Lumberjack (10)**
+{{< columns >}}
+The player is able to gather wood resources faster.
+<--->
+> -3%/lv wood gathering time
+> +2%/lvl resource drop chance
+{{< /columns >}}
+
+**Miner (10)**
+{{< columns >}}
+Specialized in digging mine shafts and gather mineral resources.
+<--->
+> -3%/lv mining time
+> +2%/lv resource drop chance
+{{< /columns >}}
+
+**Blacksmith (10)**
+{{< columns >}}
+Able to forge weaponry. Can also [refine weapons](/mechanics/items/#weapon-refinement). Increasing the spell does increase the chance to forge higher level weapons.
+<--->
+> Increases the probability by 2% to succeed when upgrading a weapon.
+> Increase chance of forging highlevel weapons
 {{< /columns >}}
 
 ## Battle Tree
 
-The battle tree contains skills which are primarly useful for fighting, battle and maybe to some extend improve survival
- in the wild.
+The battle tree contains skills which are primarly useful for sustaining in fighting and battle.
 
 {{< mermaid >}}
 graph TD
@@ -222,36 +283,6 @@ Increases weight limit to carry.
 
 > +5%/level Weight Limit increase
 
-## Crafts Tree
-
-### Improved Trading (5)
-
-NPC can be talked into to pay more or give the player cheaper prices for items.
-
-> -5%/lv price reduction at NPCs
->
-> +3%/lv higher price when selling at NPC
-
-### Scavenger (10)
-
-When breaking up and recycling items the probability to recycle a higher amount of components is increased.
-
-### Blacksmithing (10)
-
-* Scavenger (5)
-
-Able to forge weaponry. Can also [refine weapons](/mechanics/items/#weapon-refinement). Increasing the spell does increase the chance to forge higher level weapons.
-
-Also increases the probability by 2% to succeed when upgrading a weapon.
-
-### Engineering (10)
-
-### Magic Artisan (10)
-
-Can create magical artifacts.
-
-### Transmutation (10)
-
 ## Science Tree
 
 The Science Tree contains skills witch help with sensing the world events and or performing rituals to even shape the
@@ -323,6 +354,14 @@ User is able to channel down the Mana to crystalize into small shards of Mana cr
 
 ### Magic Senses (5)
 
-Detect presence of magic.
+Detect presence of magic. This also helps to
 
 ### Identify Magic (5)
+
+Enables a spell
+
+### Magic Artisan (10)
+
+Can create magical artifacts.
+
+### Transmutation (10)

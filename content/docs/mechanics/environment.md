@@ -137,7 +137,7 @@ In areas with a very high mana concentration a Mana Infestation can manifest. It
 
 The crystals itself can be destroyed. Everything which drains mana or banishes it is helpful to reduce the crystals.
 
-# World Exploration
+## World Exploration
 
 A large part of the game world is generated automatically. There should be a motivation for players in exploring the world. New areas can be mapped and unique resources can be discovered and explored. In general, players should have their own branch about the secrets of the world to discover new items and how they are created. The entire world must gradually be explored and mapped by players. A hidden map has to be uncovered regularly. Players will be able to view this map online and see the overall progress of the exploration.
 
@@ -150,7 +150,7 @@ Exploring of the land should be a fun process but not so easy as going into the 
 For generating the visual of the player map we use the algorithm described in [Terrain Map Generation](http://mewo2.com/notes/terrain/)
 and its respective [Github repository](https://github.com/mewo2/terrain)
 
-## Cartography
+### Cartography
 
 In the game you should be able to make and acquire maps. These should be strongly interwoven with the game mechanics, so that it can pay off to own a good map. It should also give the players an incentive to actively explore the world.
 
