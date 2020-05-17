@@ -118,7 +118,7 @@ t = M_t \cdot 80 - 40
 
 The temperature is just created as the other maps but then a gradient is added which will increase the temperature towards the middle (equator) of the map by 130% and drop down to top and bottom to 30% of the original value. An example gradient is shown below:
 
-![Example temperature gradient](gradient.png)
+![Example temperature gradient](/gradient.png)
 
 It reduces the temperature the higher the hightmap value is down to a value of 10% by the formula:
 
@@ -130,13 +130,13 @@ t = M_t - 0.9 \cdot M_h
 
 ### Mana Map
 
-The mana distribution {{< katex >}}M_m{< /katex >}} is a normal noise map without any changes. Its done in two passes, a high frequency and also a low frequency pass. This allows us a rapid alteration in a smaller area while we still have big areas with just a higher mana concentration then others.
+The mana distribution {{< katex >}}M_m{{< /katex >}} is a normal noise map without any changes. Its done in two passes, a high frequency and also a low frequency pass. This allows us a rapid alteration in a smaller area while we still have big areas with just a higher mana concentration then others.
 
 > Mana resolution 10m.
 
 ### Population Map
 
-The population distribution {{< katex >}}M_p{< /katex >}} is a normal noise map without any changes. But is later heavily modified by influence maps.
+The population distribution {{< katex >}}M_p{{< /katex >}} is a normal noise map without any changes. But is later heavily modified by influence maps.
 
 > Population resolution 100m.
 
