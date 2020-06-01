@@ -1,5 +1,5 @@
 ---
-title: Attacks
+title: Skills
 weight: 100
 ---
 # Attacks
@@ -7,19 +7,22 @@ weight: 100
 The magic and the usage of it plays a crucial role in the Bestia universe. The users should be able to be deeply involved
 into magic spell creation and research.
 
-> The words Attacks and Spells are equally used.
+> There is a difference between the **Master Skills** and the attacks/skills of a Bestia: The master skills are based on a skill
+> tree while the attacks of a Bestia are learned automatically when reaching the designated level.
 
 The system must allow the user to describe or discover newly innovative ways to combine spells. Yet the research should
 be fun and entertaining. Bestias can learn attacks by two means:
 
-1. Level Up - Each Bestia has a internal list of attacks she will learn when gaining levels.
+1. Level Up - Each Bestia has a internal list of attacks she will learn when gaining levels. This is different from Bestia
+   to Bestia. The same attack can be learned at different levels for different Bestia.
 2. Spell Discovery - The player can try to "invent/discover" new attacks which then can be tried to be learned to a Bestia.
-   This means 16 attacks until level 70 and about 4 attacks later on.
+
+Each Bestia skill is characterized by its **level** and **magic school**.
 
 ## Magic Schools
 
-All attacks are divided into the three schools of magic: Arcane, Black or White Magic. These schools might be important if certain
-spells are increased via a learned skill.
+All skill are divided into the three schools of magic: **Arcane**, **Black** or **White Magic**. These schools might be
+important if certain spells are increased via a learned skill.
 
 ### Arcane Magic
 
@@ -39,19 +42,19 @@ kind of protection, healing or improving stati fall into the domain of white mag
 ## Learning Attacks
 
 Attacks are either learned via leveling up, vie the [Spell Discovery](/docs/mechanics/skills/#spell-discovery) skill or via Spell Scrolls
-which can be traded (but are rather expensive).
+which can be created by the players themselves (but should be rather expensive).
 
 For leveling up a Bestia a general rule of thumb is:
 
-1. A Bestia should have about 20 Attacks.
-2. 80% of the attacks should be learned from level 1 - 69. The last 20% of the attacks between level 70 - 100.
+1. A Bestia should have about 25 skills.
+2. About 20 of the attacks should be learned from level 1 - 70. The last 5 of the attacks between level 71 - 100.
 
 ### Spell Discovery
 
 Spells can be discovered by the player. If he has the skill [Spell Discovery](/docs/mechanics/skills/#spell-discovery). The maximum attack
 learnable by the skill level is given in the table below.
 
-| Spell Discovery Lv. | max. Attack Level Discoverable |
+| Spell Discovery Lv. | max. Skill Level Discoverable |
 | ------------------- | -----------------------------: |
 | 1                   |                             10 |
 | 2                   |                             20 |
@@ -70,8 +73,7 @@ TBD
 
 ### Spell Enscription
 
-If the player owns the skill [Spell Enscription](/docs/mechanics/skills/#spell-enscription) he can attach the spell to
-scrolls or even to other entities.
+If the player owns the skill [Spell Enscription](/docs/mechanics/skills/#spell-enscription) he can attach the spell to scrolls or even to other entities.
 
 After a spell has been materialized and bound to some kind of magic containment it can be used by the owner. Spells of
 a higher level are of course far harder to handle. Attaching or handling such spells could produce unwanted side effects
@@ -95,6 +97,4 @@ on entities as well as trying to bind spells to such entities.
 
 ## Detection of Magic
 
-If the user has learned [Detect Magic](/docs/mechanics/skills/#detect-magic). The detection itself is easier if the spell is more
-powerful. However precautions can be used to avoid the spell getting detected. If more than one spell is attached to an
-object the less powerful spells are harder to detect.
+If the user has learned [Detect Magic](/docs/mechanics/skills/#detect-magic). The detection itself is easier if the spell is more powerful. However precautions can be used to avoid the spell getting detected. If more than one spell is attached to an object the less powerful spells are harder to detect.

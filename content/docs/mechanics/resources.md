@@ -12,7 +12,7 @@ Resources can be obtained by the following means:
 * Using special extracting buildings or devices
 * Recycling of existing items
 
-> The item loot from monster should be logically correct: a dead wolve would very likly not drop iron ore or golden coins.
+> The item loot from monster should be somewhat logcal: a dead wolve would very likly not drop iron ore or golden coins.
 
 Dropped items in the world are semi-permanent. The player have a strong incentive to gather dropped items to participate
 in the market.
@@ -21,12 +21,7 @@ in the market.
 
 ## Mana
 
-Mana pervades the world. The concentration of mana flows is redefined in each incarnation of Bestias plays. Mana
-concentration is used, among other things, to determine how quickly the Bestia regenerate mana in a particular area.
-Mana is a two-edged-sword: As resource its quite valuable but concentrating it in a small area can lead to magic build up
-and lead to magic-storms or even rift events which will attract strong Bestias. In areas with high concentration
-magical artifacts can be built, powerful rituals can be held and mana can be "harvested" to transport it for research
-purposes.
+Mana pervades the world. The concentration of mana flows is redefined in each incarnation of Bestias plays. Mana concentration is used, among other things, to determine how quickly the Bestia regenerate mana in a particular area. Mana is a two-edged-sword: As resource its quite valuable but concentrating it in a small area can lead to magic build up and lead to magic-storms or even rift events which will attract strong Bestias. In areas with high concentration magical artifacts can be built, powerful rituals can be held and mana can be "harvested" to transport it for research purposes.
 
 ## Resource Types
 
@@ -42,23 +37,27 @@ The following base types of resources exist in the game.
 
 ## List of Resources
 
-| Name                 | Type      | Description                    |
-| -------------------- | --------- | ------------------------------ |
-| Iron                 | Metal     |                                |
-| Steel                | Metal     |                                |
-| Silver               | Metal     |                                |
-| Gold                 | Metal     |                                |
-| Platin               | Metal     |                                |
-| Copper               | Metal     |                                |
-| Mercury              | Metal     |                                |
-| Blue Mana Christal   | Mana      | Used for magic artefacts       |
-| Yellow Mana Christal | Mana      | Used for magic artefacts       |
-| Red Mana Christal    | Mana      | Used for magic artefacts       |
-| Salt                 | Mineral   |                                |
-| Wood                 | Wood      | Standard bulding material      |
-| Stone                | Mountains | Standard building material     |
-| Marble               | Mountains | High quality building material |
-| Slate                | Mountains | Standard building material     |
+| Name                 | Type      | Description                                    |
+| -------------------- | --------- | ---------------------------------------------- |
+| Iron Ore             | Ore       |                                                |
+| Silver               | Metal     |                                                |
+| Gold                 | Metal     |                                                |
+| Platin               | Metal     |                                                |
+| Copper Ore           | Ore       |                                                |
+| Mercury Ore          | Ore       |                                                |
+| Palladium Ore        | Ore       |                                                |
+| Mithril Ore          | Ore       | Used for magic artefacts                       |
+| Adamantium Ore       | Ore       | Hardest material known, used for various items |
+| Blue Mana Christal   | Mana      | Used for magic artefacts                       |
+| Yellow Mana Christal | Mana      | Used for magic artefacts                       |
+| Red Mana Christal    | Mana      | Used for magic artefacts                       |
+| Salt                 | Mineral   |                                                |
+| Wood                 | Wood      | Standard bulding material                      |
+| Stone                | Mountains | Standard building material                     |
+| Marble               | Mountains | High quality building material                 |
+| Slate                | Mountains | Standard building material                     |
+
+Steel for example can be refined from iron ore.
 
 ## Item Recycling
 

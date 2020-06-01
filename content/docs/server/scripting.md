@@ -167,6 +167,12 @@ and there is a chance they get attacked.
 
 Item scripts are called if an item associated with the script is used. This is one of the most simple form of scripts.
 
+Handles
+* onDrop
+* onPickup
+* onTakeDamage
+* onUse (if its a structure or consumable)
+
 Special variables
 source (long, entity id): The owner who triggered the script
 target (long, entity id): Might be null. Is set if the item was intended to be used on a certain entity.

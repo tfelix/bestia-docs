@@ -74,3 +74,58 @@ to the female if it can not learn this attack on their own. If she learns this a
 attack by the level of the father.
 
 With a chance of 30 % the attack is learned one level earlier then before.
+
+## Experience
+
+The primary way to gain experience in the game is by fighting enemy Bestias. But there is also experience for more pacifistic players to gain through the use of skills. However, in order to give players no advantage over activly fighting players, the experience gained via skill use only rises linearly (opposing to the exponential exp needed growth of a Bestia).
+
+To level up a Bestia the required amount of experience is given by:
+
+{{< katex display >}}
+   exp = lv^3 / 3 + 15 + lv * 1.5
+{{< /katex >}}
+
+### Killing Enemies
+
+When an enemy is killed the attackers participating in the attack will gain a certain:
+
+{{< katex display >}}
+   exp_{gain} = lv * 4 + 5
+{{< /katex >}}
+
+There are several modifiers for this exp which gets delivered:
+
+* `+20%` for each Bestia involved in the attack
+* `+200%` if it was a boss flagged Bestia
+* `+10%` for each elemental level (e.g. `FIRE_2` has +20% additional exp)
+* Bonus EXP by buffs or equipments
+* `180%` if it was a player controlled Bestia
+* Party Bonus of `130%`
+* `-80%` if it was a structure
+
+After a killing blow was delivered the EXP gained is calculated end distributed between the damage dealers of the entity. Then for each receiver it is checked if the EXP gets for example distributed into a guild otherwise it is contributed against the Bestia.
+
+### Environment Interaction
+
+Experience is also gained by interacting with the environment:
+
+* Travel: `EXP += 2` EXP per km travelled
+* Construction: `EXP += 2 * item_level` per item level of the construction used
+* Skill usage that creates items: `EXP += 2 * EXP`
+* Gather resources: `EXP += 3.5 * EXP` of resource item level found
+
+### Death Penalty
+
+Players Master can not die, they are reborn with a temporary malus. Which reduces all their stats by `15%` for 15 minutes.
+
+A killed Bestia or Master loses `1%` of their current experience points. The items are automatically protected via a spell
+which tries to teleport the items back to a secure storage after short duration (but remember: spells can be dispelled!).
+
+If the player activates the so-called **Hard Mode** he gets an experience bonus as well as a loot bonus of `+3%`.
+However, if he dies he looses `5%` of his current experience and items are not protected by default with a spell. If once
+activated the **Hard Mode** will take one hour real time cooldown in order to get switched again. This should prevent
+players from switching the mode on and off quickly after detecting a dicey situation.
+
+In both cases the items suffer a durability penality.
+
+Bestias however, can be permanently get killed, if the killing blow is particularly strong.

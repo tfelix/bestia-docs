@@ -317,15 +317,15 @@ to artifacts or setup alarms or traps for example.
 
 Enables the user to discover spells to learn for his Bestias.
 
-### Focus: Black Magic (5)
+### Black Magic Studies (5)
 
 Enables the user to discover spells to learn for his Bestias.
 
-### Focus: White Magic (5)
+### White Magic Studies (5)
 
 Enables the user to discover spells to learn for his Bestias.
 
-### Focus: Arcane (5)
+### Arcane Studies (5)
 
 Enables the user to discover spells to learn for his Bestias.
 
@@ -335,15 +335,15 @@ Increases the range and effectivness when performing a cartography.
 
 ### Scry (5)
 
-Can look into areas far away.
+The caster can gather information about areas located far away from his position. This is also a helpful spell to detect possible resources in areas which might be worth exploring.
 
-### Teleport (10)
+### Teleport (5)
 
 Can teleport own bestias over a distance. To teleport somewhere one needs to setup Teleport Runes which form some kind of magical anchor.
 They can be used as targets then trying to teleport. The teleportation gets harder and more error prone the longer distances are tried to travel.
-The teleported entity also gets a debuff which will prevent it from teleporting for some time.
+The teleported entity also gets a debuff which will prevent it from teleporting again for some time.
 
-### Portal (10)
+### Portal (5)
 
 Can teleport any entity over a distance. To teleport somewhere one needs to setup Portal Runes which form some kind of magical anchor. As soon as a portal
 has opened it can be used in both directions for some time.

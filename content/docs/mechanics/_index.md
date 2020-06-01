@@ -13,7 +13,7 @@ This document describes the core thoughts and principals under which all game de
 
 ## Core Concepts
 
-> It is best practice to stick as close as possible to the design principles described in the next section about the core concepts.
+> Try to conform to the core concepts as close as possible when you want to contribute your own content!
 
 ### Consistent Fantasy Simulation
 
@@ -93,7 +93,7 @@ The principle of destroying the world is the common thread throughout the game. 
 
 Due to this event the world is **generated dynamically**. Despite the ultimate goal of the game to prevent or initiate this destruction, this should remain a rare event that occurs no more frequently than every 1 to 2 years (in real time). The newly generated world should cover as wide a spectrum of biomes as possible. The world and its inhabitants embed themselves in a certain history, which should also be generated as automatically as possible. This enriches the player experience especially in the beginning when there are not many players.
 
-For the details of world generation, see the [technical documentation](/docs/server/world-generation).
+For the details of world generation, see the [server documentation](/docs/server/world-generation).
 
 ### Postal System
 
@@ -115,7 +115,7 @@ Gold and text only messages can be send via a special telegram system which is v
 
 ### The Cults
 
-In each Bestia World there are 2-3 cults to which the Bestia summoners can belong. When creating the world, the existing cults are chosen randomly. At least one cult should aim for the destruction of the world, the other should prevent it. Optionally there are some neutral cults that pursue their own goals which do not deal with the destruction of the world. These cults should not exist in every world iteration.
+In each Bestia World there are 2 cults to which the Bestia summoners can belong. When creating the world. One cult should aim for the destruction of the world, the other should prevent it.
 
 The cults are ultimately a faction. The goal is to be able to play these factions among themselves. Usually players can fight against each other at any time, but the rivalries should take place between the cults. To this end, game mechanics must be established that in a certain way grant the individual cults an additional bonus in a collaborative approach and thus offer playful incentives to actively intervene in the game.
 
@@ -137,27 +137,13 @@ This cult is the preserving one. They belive in stability and try to stop the on
 
 #### Cult Advantages
 
-It would be conceivable that special land areas fall under the influence of a certain cult. This would attract certain
-Bestias that are friendly to the cult members. Special resources are generated or more Mana rifts are opened and the
-Mana within the country increases there. Furthermore, the prevailing faction can be rewarded with a global bonus.
-Additional EXP bonuses would be conceivable.
+It would be conceivable that special land areas fall under the influence of a certain cult. This would attract certain Bestias that are friendly to the cult members. Special resources are generated or more Mana rifts are opened and the Mana within the country increases there. Furthermore, the prevailing faction can be rewarded with a global bonus.
 
-### Archivements
+When a world is created it is assumed it will last for {{< katex >}}x{{< /katex >}} days. If the Chaos manages to destroy a world in `80%` of this time we interpret this as an cult advantage {{< katex >}}ca{{< /katex >}} of `20%`, likewise if the Order keeps a world alive for `130%` of its estimated time their {{< katex >}}ca{{< /katex >}} is `30%`.
 
-If a player manages to archive a certain goal then he will be awarded an archivement. These archivements are listed ingame so the player can view them. It is also possible for other players to access the players archivements.
 
-There are archivements which are unique to a single world and other which every player can reach for his own. World archivements are saved with the world they were acquired and are reset (they can be re-acuired by another player if the world is re-created). The date + the name of the world in which the success was achieved always remains in the history for a player.
 
-This list is far from completed! New ideas and suggestions are welcomed. Please open an [issue](https://github.com/tfelix/bestia-docs/issues) for new ideas.
 
-| Archivement            |              Type              |                             Description |
-| :--------------------- | :----------------------------: | --------------------------------------: |
-| Master of 10 Bestias   | {{< archivement false true >}} |        The player has owned 10 Bestias. |
-| Master of 100 Bestias  | {{< archivement false true >}} |       The player has owned 100 Bestias. |
-| Master of 1000 Bestias | {{< archivement false true >}} |      The player has owned 1000 Bestias. |
-| Officer                | {{< archivement false true >}} |  Killing 10 players with `Rogue` debuf. |
-| Sheriff                | {{< archivement false true >}} |  Killing 50 players with `Rogue` debuf. |
-| Marshall               | {{< archivement false true >}} | Killing 100 players with `Rogue` debuf. |
 
 ### Auction House
 
@@ -176,7 +162,7 @@ All the ingame currency is made from gold found by the players. Yes you have hea
 In order to start the economy the NPC have 10% of the available world wealth in gold. This wealth is re-distributed equally between every NPC every night. This mechanic is one of the few that have no underlying real world logic.
 
 
-## Honor
+### Honor
 
 It is possible in Bestia to perform malicious actions which will reduce the players good experience. This is by design!
 Yet there should be incentives for players not to go this route in order to protect low level players from ganking of
@@ -195,7 +181,7 @@ there permanently.
 
 Reputation decreases faster through bad deeds than increasing because of good ones.
 
-### Protected Zones
+#### Protected Zones
 
 Around the starting places there will be a enchantment in place which will mark the lands in the vacinity as **Protected Zones**.
 Inside this zone every kill of another player Bestia with more then 5 levels less as the killing bestia
@@ -204,35 +190,14 @@ or NPC will reduce the honor by **20 points**.
 Every action which leads to honor loss inside a protected zone (other then killing a low level Player Bestia) will be **multiplied by 3**
 wheras honor increasing actions will be **multiplied by 1.5**.
 
-### Negative Honor
+#### Negative Honor
 
 As there are multiple factions which different interests it is not easy to define which play is considered bad behavior
 which will get punished automatically. Yet there are some core actions which will be universally be considered as griev play
 which is not inherently forbidden but will result in a loss of honor.
 
-If a player drops below 0 honor he will receive the debuff [Rogue](/). If a player has less then -100 honor he will receive
-the debuff [Outlaw](/).
-
-#### Stealing
-
-Stealing means if a player picks up an item from a storage chest not belonging to him. The owner can also grant certain player
-access right to a chest. Then its not considered stealing. A guild leader can also mark storage chests as usable for guild members.
-
-A player who steals an item is also marked with the debuff [Thief](/) which will grant any player who kills him **5 extra honor**. The killing
-player also gets a honor reward for each item returned to the original owner of the items within 6 real time hours (18 hours in Bestia time).
-
-#### Malicious Actions
-
-| Malicious Action                                | Honor Loss (Player) | Honor Loss to NPC in Sight |
-| ----------------------------------------------- | :-----------------: | :------------------------: |
-| Killing a NPC                                   |         -5          |            -15             |
-| Killing Players Bestias                         |          0          |             -2             |
-| Killing Players Bestias in a **Protected Zone** |         -20         |            -20             |
-| Stealing Item (Mundane)                         |         -5          |            -10             |
-| Stealing Item (Superior)                        |         -10         |            -20             |
-| Stealing Item (Legendary)                       |         -15         |            -50             |
-
-### Negative Honor Effects
+If a player drops below 0 honor he will receive the debuff **Rogue**. If a player has less then -100 honor he will receive
+the debuff **Outlaw**.
 
 If the honor drops below 0 the negative effects will start to take place. The effects are as follows:
 
@@ -242,21 +207,28 @@ If the honor drops below 0 the negative effects will start to take place. The ef
 | < -50        | Some NPC might start to act hostile and attack the player or flee from him.                                                        |
 | < -100       | NPC will permanently remember the player and also spread the word around so more NPC will start to act hostile towards the player. |
 
-If a player steals something not belonging to him but to a NPC or another player he will loose honor for each item he
-takes and depending on the [item level](/mechanics/items/#item-level) (looting a dead NPC/player will not lead to a
-reduction of honor).
+If a player steals something not belonging to him but to a NPC or another player he will loose honor for each item he takes and depending on the item level. Stealing means if a player picks up an item from a storage space not belonging to him. The owner can also grant certain player access right to a chest, in this case removal of items is not considered a stealing act.
 
-### Positive Honor
+A player who steals an item is also marked with the debuff ***Thief** which will grant any player who kills him **5 extra honor**. The killing player also gets a honor reward for each item returned to the original owner of the items within 6 real time hours (18 hours in Bestia time).
 
-A positive honor level will lead to very friendly NPC which might even give the player some discounts or gifts from
-time to time. In order to increase your honor level again you can:
+> Looting a dead NPC/player however, will not lead to a reduction of honor.
 
-* Kill a player with negative honor
+| Malicious Action                                | Honor Loss (Player) | Honor Loss to a NPC in Sight |
+| ----------------------------------------------- | :-----------------: | :--------------------------: |
+| Killing a NPC                                   |         -5          |             -15              |
+| Killing Players Bestias                         |          0          |              -2              |
+| Killing Players Bestias in a **Protected Zone** |         -20         |             -20              |
+| Stealing Item (Mundane)                         |         -5          |             -10              |
+| Stealing Item (Superior)                        |         -10         |             -20              |
+| Stealing Item (Legendary)                       |         -15         |             -50              |
+
+#### Positive Honor
+
+A positive honor level will lead to very friendly NPC which might even give the player some discounts or gifts from time to time. In order to increase your honor level again you can:
+
+* Kill a player with negative honor, which is indicated by certain debuffs visible to other players
 * Helping a NPC by healing or resurrecting a dead NPC
-* Doing Quests
 
 #### Shrines of Judgement
 
-There are a 5 shrines in each game world incarnation where a player can sacrifice to raise a reputation that has fallen below the threshold of a player's global
-persecution. The sacrifice is usually (depending on the reputation threshold) very painful and even if it was made it can take
-several days until the news about it was spread.
+There are a 5 shrines in each game world incarnation where a player can sacrifice to raise a reputation that has fallen below the threshold of a player's global persecution. The sacrifice is usually (depending on the reputation threshold) very painful and even if it was made it can take several days until the news about it was spread.
