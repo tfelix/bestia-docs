@@ -1,15 +1,12 @@
 # Server Architecture
 
+Bestia uses a entity actor system for management and active control of its entities. Each entity is registered via an in memory actor. When entity interact they communicate via the Akka messaging system. Components are child actors of an entity actor and they can send messages to other entities or components.
+
 ## Entity Component Services
 
-Entities are described by dynamically attaching components to them. [ECS system](https://en.wikipedia.org/wiki/Entity_component_system) have been proven as a de facto industry standard for recent game development. The components only contain the data are attached to entities which merely are an ID in the system. The so called systems act upon this data and alter the entities usually this is the case in a fixed tick amount for game logic updates.. Since the bestia system is event based and not tick based we use a little different approach. We define services which work on entities and their components. These services are triggered by Akka Actors in case a event message arrives. This architecture allows a better usage of computing resources in a clustered server environment.
+Entities are described by dynamically attaching components to them. [ECS system](https://en.wikipedia.org/wiki/Entity_component_system) have been proven as a de facto industry standard for recent game development. The components only contain the data are attached to entities which merely are an ID in the system. The so called systems act upon this data and alter the entities usually this is the case in a fixed tick amount for game logic updates. Since the Bestia system is event based and not tick based we use a little different approach. We define services which work on entities and their components. These services are triggered by Akka Actors in case a event message arrives. This architecture allows a better usage of computing resources in a clustered server environment.
 
-A entity factory will create a entity, save it into the memdb and also start a sharded entity into the cluster.
-The factory will also create and setup components which might have also active actors. If a component is created,
-altered or deleted these calls are intercepted via a configurable callback. Usually the component instances are
-cached for some amount of time to lessen the strain on the garbage collector. Upon creation of the component a
-message might get sent into the actorsystem to start up a component based actor which will then in turn control
-some execution specific operation like periodic health regeneration ticks.
+A entity factory will create a entity, save it into the memdb and also start a sharded entity into the cluster. The factory will also create and setup components which might have also active actors. If a component is created, altered or deleted these calls are intercepted via a configurable callback. Usually the component instances are cached for some amount of time to lessen the strain on the garbage collector. Upon creation of the component a message might get sent into the actorsystem to start up a component based actor which will then in turn control some execution specific operation like periodic health regeneration ticks.
 
 ## Create Entities
 
@@ -35,13 +32,7 @@ into a special `BlueprintEntityFactory`. The components are initialized with the
 }
 ```
 
-## Entity Actor System
-
-Bestia uses a entity actor system for management and active control of its entities. Each entity is registered via an in
-memory actor. When entity interact they communicate via the Akka messaging system. Components are child actors of an
-entity actor and they can send messages to other entities or components.
-
-## Entity Resource Cleanup
+# Entity Resource Cleanup
 
 The inner world representation relies on entities with associated component data. The problem is in order to manage this
 entities in a message based way there must be also an active actor present to receive these messages and react

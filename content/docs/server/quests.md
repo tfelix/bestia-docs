@@ -57,7 +57,6 @@ Further resources to read:
 
 * [Dynamic_Quest_Plot_Generation_using Petri-Net Planning](http://www.academia.edu/4558587/Dynamic_Quest_Plot_Generation_using_Petri_Net_Planning)
 
-
 A Quest Log is maintained so the player can look up the details of a quest even though he might been offline for a few days. This interface could very well be available on the 'offline' mobile interface of Bestia, so a pre-planning can be done throughout the day. The player should be able to direct his NPC Bestias to start to prepare/move into position to be ready to start into the dangerous territory the quest might be set in). Good use for the mobile interface to handle logistics like this offline (issue orders to the players Bestia team, to 'gear' up and meet me at location X).
 
 ## Player Quests

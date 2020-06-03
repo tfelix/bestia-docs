@@ -1,11 +1,11 @@
-# Battle system
+# Battle System
 
-The battle or attack is performed in various stages. Equipments or Status effects either alter the DamageVars or expose certain hooks which are called during the damage calculation. In the case of the DamageVars this object is
+The battle system is quite complex to allow almost any entity to get damaged in the game. Usually a battle context is established before damage calculation takes place.
+The attack is performed in various stages. Equipments or status effects either alter the DamageVars or expose certain hooks which are called during the damage calculation.
 
 The attack itself either provides a script to completely manage the effect which takes place during cast or it provides certain callbacks for damage calculation stages which are getting called while applying the damage. The attack callbacks are:
 
 * onHit - Called when the enemy was hit.
-
 * onApplyDamage - Called when the damage is about to get applied
 
 ## Stages of a battle
@@ -15,11 +15,9 @@ The stages of a battle are visualized in the following flow diagram.
 check if hit is possible
 
 * needs los?
-
     * is los present? no: abort attack
 
 * needs mana?
-
     * is mana present? no: abort attack. yes: subtract mana.
 
 * Needs items/ammo?
