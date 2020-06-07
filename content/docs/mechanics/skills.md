@@ -67,9 +67,7 @@ learnable by the skill level is given in the table below.
 | 9                   |                             90 |
 | 10                  |                            100 |
 
-To discover a spell an aspect is chosen like 'White Magic', 'Black Magic' or 'Arkane Magic'.
-
-TBD
+To discover a spell an aspect is chosen like 'White Magic', 'Black Magic' or 'Arcane Magic'.
 
 ### Spell Enscription
 

@@ -217,7 +217,7 @@ Usually these kind of features are depending on the kind of biome. For example a
 
 ## Resource Distribution
 
-TBD.
+> Currently the resource distribution is not implemented.
 
 ##  Settlement Creation
 

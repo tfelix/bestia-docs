@@ -8,7 +8,7 @@ headless = true
   - [Environment]({{< relref "/docs/mechanics/environment" >}})
   - [Items]({{< relref "/docs/mechanics/items" >}})
   - [Resources]({{< relref "/docs/mechanics/resources" >}})
-  - [Attacks]({{< relref "/docs/mechanics/attacks" >}})
+  - [Skills]({{< relref "/docs/mechanics/skills" >}})
   - [Status Values]({{< relref "/docs/mechanics/statusvalues" >}})
 - [**Client**]({{< relref "/docs/client" >}})
   - [Architecture]({{< relref "/docs/client/architecture" >}})

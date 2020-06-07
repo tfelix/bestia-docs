@@ -11,7 +11,7 @@ influence of mana and are able to communicate with the beings that emerge from t
 The attachment to mana also explains why Bestia masters were able to survive the destruction of their world relatively
 unscathed and to pass on to the next world.
 
-## Skill Mastery
+## Master Skills
 
 The bestia master of a player can learn a set of skills. Since these skills are bound to the account they are called
 account skills or just skills. These skills are freely chosen by the player and determine the job or profession of
@@ -21,8 +21,6 @@ Some of this account skills can be used by every Bestia in posession others only
 
 > Don't confuse this skills with the regular attacks a Bestia is learning by item usage or level up. These are simply
 > called attacks.
-
-### Guidlines
 
 * The number of total skil ranks inside a tree should **be between 70-80**
 * The possible rank counts of a skill should be: **1, 3, 5 and 10**
@@ -73,26 +71,26 @@ graph TD
   CRAFTMANSHIP-->|min. 7|TAILOR("Tailor [10]")
 {{< /mermaid >}}
 
-**First Aid (1)**
+{{< skill name="First Aid" maxLevel="5" >}}
 {{< columns >}}
 Player can apply bandages to Bestia and channel a healing effect of ob to 30% of their total health. The channel time is 15 seconds and the cooldown is 5 minutes. A Bestia can only receive a First Aid every 30 secs.
-<--->
-> +3% damage/level
 {{< /columns >}}
+{{< /skill >}}
 
-**Fishing (5)**
+{{< skill name="Fishing" maxLevel="5" >}}
 {{< columns >}}
 With this skill you are able to catch fish. Fish can be cooked are used for food and trading.
 <--->
 > Level increas makes it easier to catch higher level fish.
 {{< /columns >}}
+{{< /skill >}}
 
 **Scavenger (10)**
 {{< columns >}}
 When breaking up and recycling items the probability to recycle a higher amount of components is increased.
 <--->
-> -5%/lv price reduction at NPCs
-> +3%/lv higher price when selling at NPC
+> `-5%/lv` price reduction at NPCs<br>
+> `+3%/lv` higher price when selling at NPC
 {{< /columns >}}
 
 **Improved Trading (5)**
@@ -141,153 +139,153 @@ Able to forge weaponry. Can also [refine weapons](/mechanics/items/#weapon-refin
 > Increase chance of forging highlevel weapons
 {{< /columns >}}
 
-## Battle Tree
-
-The battle tree contains skills which are primarly useful for sustaining in fighting and battle.
-
-{{< mermaid >}}
-graph TD
-  SPRITIUAL_MASTERY("Spritual Mastery [5]")
-  ELEMENTAL_MASTERY("Elemental Mastery [5]")-->|min. 3|MASTER_OF_FIRE("Master of Fire [10]")
-  ELEMENTAL_MASTERY-->|min. 3|MASTER_OF_WATER("Master of Water [10]")
-  ELEMENTAL_MASTERY-->|min. 3|MASTER_OF_WIND("Master of Wind [10]")
-  ELEMENTAL_MASTERY-->|min. 3|MASTER_OF_EARTH("Master of Earth [10]")
-{{< /mermaid >}}
-
-
+{{< skill name="Packhorse" maxLevel="5" >}}
 {{< columns >}}
-**Elemental Mastery (5)**
-
-Increases damage or healing of spells with elemental (earth, wind, wasser, fire) domain.
+Increases weight limit to carry.
 <--->
-> +3% damage/level
+> `+5%/level` increased weight limit
 {{< /columns >}}
+{{< /skill >}}
 
-### Master of Fire (10)
+{{< skill name="Expert Taming" maxLevel="5" >}}
+{{< columns >}}
+Bestias gain faster experience and are easier to catch.
+<--->
+> `+5%exp gain/level` increased weight limit
+{{< /columns >}}
+{{< /skill >}}
 
-* Elemental Mastery (3)
+{{< skill name="Transmutation" maxLevel="10" >}}
+{{< columns >}}
+The user can transform resources into magical infused resources. These are very rare resources needed for strong artifect creation or weapon refinements.
+{{< /columns >}}
+{{< /skill >}}
 
-Increases the damage of fire attacks.
-
-> +3% damage/level
-
-### Master of Water (10)
-
-* Elemental Mastery (3)
-
-Increases damage of water spells.
-
-> +3% damage/level
-
-### Master of Wind (10)
-
-Elemental Mastery (3)
-
-Increases damage of wind spells.
-
-> +3% damage/level
-
-### Master of Earth (10)
-
-Elemental Mastery (3)
-
-Increases damage of earth spells.
-
-> +3% damage/level
-
-### Spritual Mastery (5)
-
-Increases damage or healing of spells with the Holy or Dark domain.
-
-> +5% damage/level
-
-### Mindbreak (5)
-
-This is a buff which once it gets applied reduces the armor but increases the physical and magical attack of a Bestia.
-
-> +20% damage/level
->
-> -20% armor/level
-
-### Mindfocus (5)
-
-This is a buff which once it gets applied increases the armor but decreases the physical and magical attack of a Bestia.
-
-> +20% armor/level
->
-> -20% damage/level
+{{< skill name="Magic Artisan" maxLevel="10" >}}
+{{< columns >}}
+Can create magic artefacts.
+{{< /columns >}}
+{{< /skill >}}
 
 ## Survival Tree
 
-The survival tree has three main ideas: protecting the masters Bestia from physical harm by increasing they tougness indirectly, improving the survivability
-in harsh environments for his Bestias or others.
+The survival tree has three main ideas: protecting the masters Bestia from physical harm by increasing they tougness indirectly, improving the survivability in harsh environments for his Bestias or others.
 
-### Improved Healing (10)
+{{< mermaid >}}
+graph TD
+  ELEMENTAL_MASTERY("Elemental Mastery [5]")-->|min. 3|MASTER_OF_FIRE("Master of Fire [10]")
+  ELEMENTAL_MASTERY-->|min.Artisannsmutation 3|MASTER_OF_WATER("Master of Water [10]")
+  ELEMENTAL_MASTERY-->|min. 3|MASTER_OF_WIND("Master of Wind [10]")
+  ELEMENTAL_MASTERY-->|min. 3|MASTER_OF_EARTH("Master of Earth [10]")
+  MASTER_OF_WATER-->|min. 3|SPRITIUAL_MASTERY("Spritual Mastery [5]")
+  MASTER_OF_WIND-->|min. 3|SPRITIUAL_MASTERY
+  MASTER_OF_FIRE-->|min. 3|SPRITIUAL_MASTERY
+  MASTER_OF_EARTH-->|min. 3|SPRITIUAL_MASTERY
+{{< /mermaid >}}
 
+{{< skill name="Elemental Mastery" maxLevel="5" >}}
+{{< columns >}}
+Increases damage or healing of spells with elemental (earth, wind, wasser, fire) domain.
+<--->
+> `+3% damage/lv`
+{{< /columns >}}
+{{< /skill >}}
+
+{{< skill name="Master of Fire" maxLevel="10" >}}
+{{< columns >}}
+Increases the damage of fire attacks.
+<--->
+> `+3% damage/lv`
+{{< /columns >}}
+{{< /skill >}}
+
+{{< skill name="Master of Water" maxLevel="10" >}}
+{{< columns >}}
+Increases damage of water spells.
+<--->
+> `+3% damage/lv`
+{{< /columns >}}
+{{< /skill >}}
+
+{{< skill name="Master of Wind" maxLevel="10" >}}
+{{< columns >}}
+Increases damage of wind spells.
+<--->
+> `+3% damage/lv`
+{{< /columns >}}
+{{< /skill >}}
+
+{{< skill name="Master of Earth" maxLevel="10" >}}
+{{< columns >}}
+Increases damage of earth spells.
+<--->
+> `+3% damage/lv`
+{{< /columns >}}
+{{< /skill >}}
+
+{{< skill name="Spritual Mastery" maxLevel="5" >}}
+{{< columns >}}
+Increases damage or healing of spells with the Holy or Dark domain.
+<--->
+> `+5% damage/lv`
+{{< /columns >}}
+{{< /skill >}}
+
+{{< skill name="Mindbreak" maxLevel="5" >}}
+{{< columns >}}
+This is a buff which once it gets applied reduces the armor but increases magical attack of a Bestia. It cancels `Mindfocus`.
+<--->
+> `+20% MATK/level`<br>
+> `-20% MDEF/level`<br>
+{{< /columns >}}
+{{< /skill >}}
+
+{{< skill name="Medical Expert" maxLevel="10" >}}
+{{< columns >}}
 Increases effects of healing done and duration of buff spells when used by the owner of this spell.
+<--->
+> `+3% effect/level`<br>
+{{< /columns >}}
+{{< /skill >}}
 
-> +2% effect/level
+{{< skill name="Inner Peace" maxLevel="10" >}}
+{{< columns >}}
+Your Bestias and Masters HP, Mana and Stamina will have an increased regeneration rate.
+<--->
+> `+3% effect/level`<br>
+{{< /columns >}}
+{{< /skill >}}
 
-### Increased Regeneration (10)
-
-Your Bestias and Masters HP and Mana will have an increased regeneration rate.
-
-> +3% effect/level
-
-### Magic Armor (5)
-
-* Improved Healing (5)
-
-Reduces damage of magical effects.
-
-> -2%/level reduced damage
-
-### Faster Travel (5)
-
+{{< skill name="Lightfooded" maxLevel="5" >}}
+{{< columns >}}
 Hard terrain does not reduce the Bestia movement speed anymore. On Level 5 the tarrain does not reduce movement speed anymore at all.
+<--->
+> `-20%/level reduced movement reduction`<br>
+{{< /columns >}}
+{{< /skill >}}
 
-> -20%/level reduced movement reduction
-
-### Taming (5)
-
-Bestias gain faster experience and are easier to catch.
-
-> +5% experience gain per level
-
-### Breeding (5)
-
-### Summon Bestia (10)
-
-A temporarly Bestia from pure magic is created which will assist its master for a short period of time.
-
-### Tough Guy (5)
-
-Stamina is faster regenerated and drops slower in high demanding environments and while dong activities which would otherwise
-deplete your stamina.
-
-> -10%/level reduced stamina reduction
->
+{{< skill name="Tough Guy" maxLevel="5" >}}
+{{< columns >}}
+Stamina is faster regenerated and drops slower in high demanding environments and while dong activities which would otherwise deplete your stamina.
+<--->
+> -10%/level reduced stamina reduction<br>
 > +10%/level increased stamina regeneration
+{{< /columns >}}
+{{< /skill >}}
 
-### Packhorse
-
-### Magic Shelter (5)
-
-Improves environment condition via magic.
-
-### Magic Protection (5)
-
-**Max Level: 5**
-
-Increases weight limit to carry.
-
-> +5%/level Weight Limit increase
+{{< skill name="Magic Armor" maxLevel="5" >}}
+{{< columns >}}
+Reduces damage of magical effects but each hit costs 0.2% percent of the max mana of the owner. When the mana drops below 10% the buff is cancelled.
+<--->
+> `-2%/level` reduced damage
+{{< /columns >}}
+{{< /skill >}}
 
 ## Science Tree
 
 The Science Tree contains skills witch help with sensing the world events and or performing rituals to even shape the
-face of the Bestia world itself. It basically forms 3 sub-trees: One is focused on attack learning, and enscribing, the second one
-helps with world exploration, and mana flow detection and control. And the third one is there for resource transformation/transmutation.
+face of the Bestia world itself. It basically forms 3 sub-trees: One is focused on skill reasearch and enscribing, the second one
+helps with world exploration mana flow detection and control and the last one if for resource detection and exploration utilities.
 
 {{< mermaid >}}
 graph TD
@@ -304,64 +302,75 @@ graph TD
   TELEPORT-->|min. 8|PORTAL("Portal [10]")
 {{< /mermaid >}}
 
-### Spell Enscription (10)
-
+{{< skill name="Spell Enscription" maxLevel="10" >}}
+{{< columns >}}
 Enables the user to write down spells onto items or scrolls for a later use (even by someone who does not know the spell).
+{{< /columns >}}
+{{< /skill >}}
 
-### Spell Binding (10)
+{{< skill name="Spell Binding" maxLevel="10" >}}
+{{< columns >}}
+Allows the user to bind certain spells to entities and create trigger for them. This can be used to permanently bind spells to artifacts or setup alarms or traps for example.
+{{< /columns >}}
+{{< /skill >}}
 
-Allows the user to bind certain spells to entities and create trigger for them. This can be used to permanently bind spells
-to artifacts or setup alarms or traps for example.
-
-### Spell Discovery (10)
-
+{{< skill name="Spell Discovery" maxLevel="10" >}}
+{{< columns >}}
 Enables the user to discover spells to learn for his Bestias.
+{{< /columns >}}
+{{< /skill >}}
 
-### Black Magic Studies (5)
+{{< skill name="Black Studies" maxLevel="5" >}}
+{{< columns >}}
+{{< /columns >}}
+{{< /skill >}}
 
-Enables the user to discover spells to learn for his Bestias.
+{{< skill name="White Studies" maxLevel="5" >}}
+{{< columns >}}
+{{< /columns >}}
+{{< /skill >}}
 
-### White Magic Studies (5)
+{{< skill name="Arcane Studies" maxLevel="5" >}}
+{{< columns >}}
+{{< /columns >}}
+{{< /skill >}}
 
-Enables the user to discover spells to learn for his Bestias.
+{{< skill name="Geography" maxLevel="5" >}}
+{{< columns >}}
+Enables to cartograph the environment. Each level increases the range and effectivness when performing a cartography of the environment.
+{{< /columns >}}
+{{< /skill >}}
 
-### Arcane Studies (5)
-
-Enables the user to discover spells to learn for his Bestias.
-
-### Geography (5)
-
-Increases the range and effectivness when performing a cartography.
-
-### Scry (5)
-
+{{< skill name="Scry" maxLevel="5" >}}
+{{< columns >}}
 The caster can gather information about areas located far away from his position. This is also a helpful spell to detect possible resources in areas which might be worth exploring.
+{{< /columns >}}
+{{< /skill >}}
 
-### Teleport (5)
-
+{{< skill name="Teleport" maxLevel="5" >}}
+{{< columns >}}
 Can teleport own bestias over a distance. To teleport somewhere one needs to setup Teleport Runes which form some kind of magical anchor.
 They can be used as targets then trying to teleport. The teleportation gets harder and more error prone the longer distances are tried to travel.
 The teleported entity also gets a debuff which will prevent it from teleporting again for some time.
+{{< /columns >}}
+{{< /skill >}}
 
-### Portal (5)
+{{< skill name="Portal" maxLevel="10" >}}
+{{< columns >}}
+Can teleport any entity over a distance. To teleport somewhere one needs to setup Portal Runes which form some kind of magical anchor. As soon as a portal has opened it can be used in both directions for some time.
+<--->
+> 1 person/lv can use the portal
+{{< /columns >}}
+{{< /skill >}}
 
-Can teleport any entity over a distance. To teleport somewhere one needs to setup Portal Runes which form some kind of magical anchor. As soon as a portal
-has opened it can be used in both directions for some time.
-
-### Control Mana Flow (10)
-
+{{< skill name="Manaflow Expert" maxLevel="10" >}}
+{{< columns >}}
 User is able to channel down the Mana to crystalize into small shards of Mana crystals which can be used as a power source throughout the world.
+{{< /columns >}}
+{{< /skill >}}
 
-### Magic Senses (5)
-
-Detect presence of magic. This also helps to
-
-### Identify Magic (5)
-
-Enables a spell
-
-### Magic Artisan (10)
-
-Can create magical artifacts.
-
-### Transmutation (10)
+{{< skill name="Magic Sense" maxLevel="5" >}}
+{{< columns >}}
+User can detect the presense of magic nearby. It can also identify a magical spell which might be bound to an entity.
+{{< /columns >}}
+{{< /skill >}}

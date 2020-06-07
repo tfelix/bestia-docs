@@ -129,7 +129,7 @@ The order can research powerful spells and devices which the players can then le
 
 #### The Chaos
 
-The Chos tries to inflict destruction and to speed up the worlds downfall, as they believe the mana influx is the fate every world must face finally. They try to mass the amount of mana, open rifts in remote legions to form the world after their twisted image until it goes down in flames.
+The Chaos tries to inflict destruction and to speed up the worlds downfall, as they believe the mana influx is the fate every world must face finally. They try to mass the amount of mana, open rifts in remote legions to form the world after their twisted image until it goes down in flames.
 
 #### The Order
 
@@ -141,9 +141,7 @@ It would be conceivable that special land areas fall under the influence of a ce
 
 When a world is created it is assumed it will last for {{< katex >}}x{{< /katex >}} days. If the Chaos manages to destroy a world in `80%` of this time we interpret this as an cult advantage {{< katex >}}ca{{< /katex >}} of `20%`, likewise if the Order keeps a world alive for `130%` of its estimated time their {{< katex >}}ca{{< /katex >}} is `30%`.
 
-
-
-
+> The boni are not yet fully designed, feel free to make suggestions.
 
 ### Auction House
 
@@ -160,7 +158,6 @@ If the player does not pay the fee the item is withheld for him up to 10 days un
 All the ingame currency is made from gold found by the players. Yes you have heard it right the players must harvest gold deposites in order to make their own money. Gold can directly be turned into gold coins.
 
 In order to start the economy the NPC have 10% of the available world wealth in gold. This wealth is re-distributed equally between every NPC every night. This mechanic is one of the few that have no underlying real world logic.
-
 
 ### Honor
 
