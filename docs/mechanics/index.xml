@@ -10,24 +10,24 @@
     
     
     <item>
-      <title>Attacks</title>
-      <link>https://docs.bestia-game.net/docs/mechanics/skills/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://docs.bestia-game.net/docs/mechanics/skills/</guid>
-      <description>Attacks The magic and the usage of it plays a crucial role in the Bestia universe. The users should be able to be deeply involved into magic spell creation and research.
- The words Attacks and Spells are equally used.
- The system must allow the user to describe or discover newly innovative ways to combine spells. Yet the research should be fun and entertaining. Bestias can learn attacks by two means:</description>
-    </item>
-    
-    <item>
       <title>Resources</title>
       <link>https://docs.bestia-game.net/docs/mechanics/resources/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://docs.bestia-game.net/docs/mechanics/resources/</guid>
       <description>Resources Resources are raw materials used to sell to other players. They can be used to craft items or construct buildings. Resources can be obtained by the following means:
- Killing enemies and loot them Gathering of natural resources in the game world Using special extracting buildings or devices Recycling of existing items   The item loot from monster should be logically correct: a dead wolve would very likly not drop iron ore or golden coins.</description>
+ Killing enemies and loot them Gathering of natural resources in the game world Using special extracting buildings or devices Recycling of existing items   The item loot from monster should be somewhat logcal: a dead wolve would very likly not drop iron ore or golden coins.</description>
+    </item>
+    
+    <item>
+      <title>Skills</title>
+      <link>https://docs.bestia-game.net/docs/mechanics/skills/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.bestia-game.net/docs/mechanics/skills/</guid>
+      <description>Attacks The magic and the usage of it plays a crucial role in the Bestia universe. The users should be able to be deeply involved into magic spell creation and research.
+ There is a difference between the Master Skills and the attacks/skills of a Bestia: The master skills are based on a skill tree while the attacks of a Bestia are learned automatically when reaching the designated level.
+ The system must allow the user to describe or discover newly innovative ways to combine spells.</description>
     </item>
     
     <item>

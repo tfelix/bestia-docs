@@ -5,18 +5,18 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Resources Resources are raw materials used to sell to other players. They can be used to craft items or construct buildings. Resources can be obtained by the following means:
- Killing enemies and loot them Gathering of natural resources in the game world Using special extracting buildings or devices Recycling of existing items   The item loot from monster should be logically correct: a dead wolve would very likly not drop iron ore or golden coins.">
+ Killing enemies and loot them Gathering of natural resources in the game world Using special extracting buildings or devices Recycling of existing items   The item loot from monster should be somewhat logcal: a dead wolve would very likly not drop iron ore or golden coins.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Resources" />
 <meta property="og:description" content="Resources Resources are raw materials used to sell to other players. They can be used to craft items or construct buildings. Resources can be obtained by the following means:
- Killing enemies and loot them Gathering of natural resources in the game world Using special extracting buildings or devices Recycling of existing items   The item loot from monster should be logically correct: a dead wolve would very likly not drop iron ore or golden coins." />
+ Killing enemies and loot them Gathering of natural resources in the game world Using special extracting buildings or devices Recycling of existing items   The item loot from monster should be somewhat logcal: a dead wolve would very likly not drop iron ore or golden coins." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.bestia-game.net/docs/mechanics/resources/" />
-<meta property="article:modified_time" content="2020-05-17T15:41:44+02:00" />
+<meta property="article:modified_time" content="2020-06-01T18:43:47+02:00" />
 <title>Resources | Bestia Game</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.8faf8c6f51f7bb1ff07807bc087f607f8071c4b0ce8b6737ad62995aa1337d4f.css" integrity="sha256-j6&#43;Mb1H3ux/weAe8CH9gf4BxxLDOi2c3rWKZWqEzfU8=">
-<script defer src="/en.search.min.fe67c5fc442c8d4a855e55a4ebe51ad951f76ed28491c311cb7596aa87dbc337.js" integrity="sha256-/mfF/EQsjUqFXlWk6&#43;Ua2VH3btKEkcMRy3WWqofbwzc="></script>
+<script defer src="/en.search.min.cc4d90cc1c6d88c6e2736b3299590ee974f0b143cf70108a54e7aeabb879d722.js" integrity="sha256-zE2QzBxtiMbic2symVkO6XTwsUPPcBCKVOeuq7h51yI="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
@@ -177,7 +177,7 @@ Resources can be obtained by the following means:</p>
 <li>Recycling of existing items</li>
 </ul>
 <blockquote>
-<p>The item loot from monster should be logically correct: a dead wolve would very likly not drop iron ore or golden coins.</p>
+<p>The item loot from monster should be somewhat logcal: a dead wolve would very likly not drop iron ore or golden coins.</p>
 </blockquote>
 <p>Dropped items in the world are semi-permanent. The player have a strong incentive to gather dropped items to participate
 in the market.</p>
@@ -185,12 +185,7 @@ in the market.</p>
 <p>Dropped items usually persist for up to 4 days (96 h real time) before they are deleted by the server.</p>
 </blockquote>
 <h2 id="mana">Mana</h2>
-<p>Mana pervades the world. The concentration of mana flows is redefined in each incarnation of Bestias plays. Mana
-concentration is used, among other things, to determine how quickly the Bestia regenerate mana in a particular area.
-Mana is a two-edged-sword: As resource its quite valuable but concentrating it in a small area can lead to magic build up
-and lead to magic-storms or even rift events which will attract strong Bestias. In areas with high concentration
-magical artifacts can be built, powerful rituals can be held and mana can be &ldquo;harvested&rdquo; to transport it for research
-purposes.</p>
+<p>Mana pervades the world. The concentration of mana flows is redefined in each incarnation of Bestias plays. Mana concentration is used, among other things, to determine how quickly the Bestia regenerate mana in a particular area. Mana is a two-edged-sword: As resource its quite valuable but concentrating it in a small area can lead to magic build up and lead to magic-storms or even rift events which will attract strong Bestias. In areas with high concentration magical artifacts can be built, powerful rituals can be held and mana can be &ldquo;harvested&rdquo; to transport it for research purposes.</p>
 <h2 id="resource-types">Resource Types</h2>
 <p>The following base types of resources exist in the game.</p>
 <table>
@@ -240,13 +235,8 @@ purposes.</p>
 </thead>
 <tbody>
 <tr>
-<td>Iron</td>
-<td>Metal</td>
-<td></td>
-</tr>
-<tr>
-<td>Steel</td>
-<td>Metal</td>
+<td>Iron Ore</td>
+<td>Ore</td>
 <td></td>
 </tr>
 <tr>
@@ -265,14 +255,29 @@ purposes.</p>
 <td></td>
 </tr>
 <tr>
-<td>Copper</td>
-<td>Metal</td>
+<td>Copper Ore</td>
+<td>Ore</td>
 <td></td>
 </tr>
 <tr>
-<td>Mercury</td>
-<td>Metal</td>
+<td>Mercury Ore</td>
+<td>Ore</td>
 <td></td>
+</tr>
+<tr>
+<td>Palladium Ore</td>
+<td>Ore</td>
+<td></td>
+</tr>
+<tr>
+<td>Mithril Ore</td>
+<td>Ore</td>
+<td>Used for magic artefacts</td>
+</tr>
+<tr>
+<td>Adamantium Ore</td>
+<td>Ore</td>
+<td>Hardest material known, used for various items</td>
 </tr>
 <tr>
 <td>Blue Mana Christal</td>
@@ -316,6 +321,7 @@ purposes.</p>
 </tr>
 </tbody>
 </table>
+<p>Steel for example can be refined from iron ore.</p>
 <h2 id="item-recycling">Item Recycling</h2>
 <p>For each item is a list of base resources which the item is roughly based upon (this list is also used when forging or
 creating the item). When an attempt to recycle the item there is a chance that the item is destroyed and the resources are lost.
@@ -389,9 +395,9 @@ Some items for example</p>
 
 
 
-  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/5c45d037bb544239b2df6e4cdb5d77cc245629f1" title='Last modified by Thomas Felix | May 17, 2020' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/6a433dec491743c76e3fd262c31830e37696d790" title='Last modified by Thomas Felix | June 1, 2020' target="_blank" rel="noopener">
       <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>May 17, 2020</span>
+      <span>June 1, 2020</span>
     </a>
   </div>
 

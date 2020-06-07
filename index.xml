@@ -10,24 +10,24 @@
     
     
     <item>
-      <title>Attacks</title>
-      <link>https://docs.bestia-game.net/docs/mechanics/skills/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://docs.bestia-game.net/docs/mechanics/skills/</guid>
-      <description>Attacks The magic and the usage of it plays a crucial role in the Bestia universe. The users should be able to be deeply involved into magic spell creation and research.
- The words Attacks and Spells are equally used.
- The system must allow the user to describe or discover newly innovative ways to combine spells. Yet the research should be fun and entertaining. Bestias can learn attacks by two means:</description>
-    </item>
-    
-    <item>
       <title>Resources</title>
       <link>https://docs.bestia-game.net/docs/mechanics/resources/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://docs.bestia-game.net/docs/mechanics/resources/</guid>
       <description>Resources Resources are raw materials used to sell to other players. They can be used to craft items or construct buildings. Resources can be obtained by the following means:
- Killing enemies and loot them Gathering of natural resources in the game world Using special extracting buildings or devices Recycling of existing items   The item loot from monster should be logically correct: a dead wolve would very likly not drop iron ore or golden coins.</description>
+ Killing enemies and loot them Gathering of natural resources in the game world Using special extracting buildings or devices Recycling of existing items   The item loot from monster should be somewhat logcal: a dead wolve would very likly not drop iron ore or golden coins.</description>
+    </item>
+    
+    <item>
+      <title>Skills</title>
+      <link>https://docs.bestia-game.net/docs/mechanics/skills/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.bestia-game.net/docs/mechanics/skills/</guid>
+      <description>Attacks The magic and the usage of it plays a crucial role in the Bestia universe. The users should be able to be deeply involved into magic spell creation and research.
+ There is a difference between the Master Skills and the attacks/skills of a Bestia: The master skills are based on a skill tree while the attacks of a Bestia are learned automatically when reaching the designated level.
+ The system must allow the user to describe or discover newly innovative ways to combine spells.</description>
     </item>
     
     <item>
@@ -36,7 +36,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://docs.bestia-game.net/docs/client/architecture/</guid>
-      <description>Client Architecture Entities The Bestia server entities are synced to the client also represented there also under the name Entities. An entity is described by a set of components which is attached to it and by a certain kind of logic synched between the client and the server. Not every component is synched though. This can depend on various factors for example party membership (ConditionComponent is only synched between members of the same party), or ownership or view distance (mostly only entities in view distance are synched).</description>
+      <description>Client Architecture In general we rely on the features of the Godot engine and its network stack. Incoming server messages are transferred to the bestia module which transforms them into usable messages which are then either emitted into the GD scripting part of the engine or internally routed to the entity manager which keeps track of entities and their components. How certain effects are setup is not subject for this documentation.</description>
     </item>
     
     <item>
@@ -55,7 +55,8 @@ The sophisticated status system describes the current state of an bestia (or sim
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://docs.bestia-game.net/docs/server/architecture/</guid>
-      <description>Server Architecture Entity Component Services Entities are described by dynamically attaching components to them. ECS system have been proven as a de facto industry standard for recent game development. The components only contain the data are attached to entities which merely are an ID in the system. The so called systems act upon this data and alter the entities usually this is the case in a fixed tick amount for game logic updates.</description>
+      <description>Server Architecture Bestia uses a entity actor system for management and active control of its entities. Each entity is registered via an in memory actor. When entity interact they communicate via the Akka messaging system. Components are child actors of an entity actor and they can send messages to other entities or components.
+Entity Component Services Entities are described by dynamically attaching components to them. ECS system have been proven as a de facto industry standard for recent game development.</description>
     </item>
     
     <item>
@@ -64,7 +65,7 @@ The sophisticated status system describes the current state of an bestia (or sim
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://docs.bestia-game.net/docs/server/battle/</guid>
-      <description>Battle system The battle or attack is performed in various stages. Equipments or Status effects either alter the DamageVars or expose certain hooks which are called during the damage calculation. In the case of the DamageVars this object is
+      <description>Battle System The battle system is quite complex to allow almost any entity to get damaged in the game. Usually a battle context is established before damage calculation takes place. The attack is performed in various stages. Equipments or status effects either alter the DamageVars or expose certain hooks which are called during the damage calculation.
 The attack itself either provides a script to completely manage the effect which takes place during cast or it provides certain callbacks for damage calculation stages which are getting called while applying the damage.</description>
     </item>
     
@@ -84,7 +85,8 @@ The attack itself either provides a script to completely manage the effect which
       
       <guid>https://docs.bestia-game.net/docs/server/scripting/</guid>
       <description>Scripting Das Skript-System in Bestia wird genutzt um flexible Programmausführung für verschiedenste Zwecke zu ermöglichen. Dazu gehören vor allem die Effekte von benutzten Items, Attacken, das Verhalten von Entities zu steuern.
-Als Skriptsprache wird auf JavaScript gesetzt. Aktuell wird die Nashorn Javascript Engine von Java 8 benutzt. Sollte sich dies als Performance Engpass herausstellen so kann später mit mittlerem Aufwand auf die V8 Engine von Google umgerüstet werden. Für alle Aktoren wird nur eine Script Engine verwendet.</description>
+The scripting language used is JavaScript. The scripting language is used to allow fast iteration and changes to the items. There is an API provided for the scripts in order to interact with the entity system of Bestia.
+Script code must always be placed inside a main() function.</description>
     </item>
     
     <item>

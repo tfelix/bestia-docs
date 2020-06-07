@@ -11,12 +11,12 @@ In general it works by creating piplines which are then used to create and trans
 In general it works by creating piplines which are then used to create and transform noise maps." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.bestia-game.net/docs/server/world-generation/" />
-<meta property="article:modified_time" content="2020-05-18T01:28:47+02:00" />
+<meta property="article:modified_time" content="2020-06-07T17:06:54+02:00" />
 <title>World Generation | Bestia Game</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.8faf8c6f51f7bb1ff07807bc087f607f8071c4b0ce8b6737ad62995aa1337d4f.css" integrity="sha256-j6&#43;Mb1H3ux/weAe8CH9gf4BxxLDOi2c3rWKZWqEzfU8=">
-<script defer src="/en.search.min.fe67c5fc442c8d4a855e55a4ebe51ad951f76ed28491c311cb7596aa87dbc337.js" integrity="sha256-/mfF/EQsjUqFXlWk6&#43;Ua2VH3btKEkcMRy3WWqofbwzc="></script>
+<script defer src="/en.search.min.cc4d90cc1c6d88c6e2736b3299590ee974f0b143cf70108a54e7aeabb879d722.js" integrity="sha256-zE2QzBxtiMbic2symVkO6XTwsUPPcBCKVOeuq7h51yI="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
@@ -496,7 +496,9 @@ P_{droplet} &amp;= M_t - 0.9 \cdot M_h
 </tbody>
 </table>
 <h2 id="resource-distribution">Resource Distribution</h2>
-<p>TBD.</p>
+<blockquote>
+<p>Currently the resource distribution is not implemented.</p>
+</blockquote>
 <h2 id="settlement-creation">Settlement Creation</h2>
 <p>Cities usually form around natural resources like shores, rivers or rich farmland. The algorithm as described below will find suitable city position candidates and then distribute the cities in clusters around the world map. This clustering will make sure there is enough unexplored land for the players left to explore (and to create own settlements). It should also help with the idea of different civilization which could lead to ingame player conflicts.</p>
 <p>The algorithm searches the world map and creates matrix with a mesh length of 1km. It will then calculate the chance of a settlement in this grid by taking this into account:</p>
@@ -596,9 +598,9 @@ P_{droplet} &amp;= M_t - 0.9 \cdot M_h
 
 
 
-  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/a6514058bc113ee9eca7b8c80be84eb19fa99d3f" title='Last modified by Thomas Felix | May 17, 2020' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/68d202cb717df62b0a04b4fc7a89419ebdbeab47" title='Last modified by Thomas Felix | June 7, 2020' target="_blank" rel="noopener">
       <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>May 17, 2020</span>
+      <span>June 7, 2020</span>
     </a>
   </div>
 

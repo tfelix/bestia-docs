@@ -15,7 +15,8 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://docs.bestia-game.net/docs/server/architecture/</guid>
-      <description>Server Architecture Entity Component Services Entities are described by dynamically attaching components to them. ECS system have been proven as a de facto industry standard for recent game development. The components only contain the data are attached to entities which merely are an ID in the system. The so called systems act upon this data and alter the entities usually this is the case in a fixed tick amount for game logic updates.</description>
+      <description>Server Architecture Bestia uses a entity actor system for management and active control of its entities. Each entity is registered via an in memory actor. When entity interact they communicate via the Akka messaging system. Components are child actors of an entity actor and they can send messages to other entities or components.
+Entity Component Services Entities are described by dynamically attaching components to them. ECS system have been proven as a de facto industry standard for recent game development.</description>
     </item>
     
     <item>
@@ -24,7 +25,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://docs.bestia-game.net/docs/server/battle/</guid>
-      <description>Battle system The battle or attack is performed in various stages. Equipments or Status effects either alter the DamageVars or expose certain hooks which are called during the damage calculation. In the case of the DamageVars this object is
+      <description>Battle System The battle system is quite complex to allow almost any entity to get damaged in the game. Usually a battle context is established before damage calculation takes place. The attack is performed in various stages. Equipments or status effects either alter the DamageVars or expose certain hooks which are called during the damage calculation.
 The attack itself either provides a script to completely manage the effect which takes place during cast or it provides certain callbacks for damage calculation stages which are getting called while applying the damage.</description>
     </item>
     
@@ -44,7 +45,8 @@ The attack itself either provides a script to completely manage the effect which
       
       <guid>https://docs.bestia-game.net/docs/server/scripting/</guid>
       <description>Scripting Das Skript-System in Bestia wird genutzt um flexible Programmausführung für verschiedenste Zwecke zu ermöglichen. Dazu gehören vor allem die Effekte von benutzten Items, Attacken, das Verhalten von Entities zu steuern.
-Als Skriptsprache wird auf JavaScript gesetzt. Aktuell wird die Nashorn Javascript Engine von Java 8 benutzt. Sollte sich dies als Performance Engpass herausstellen so kann später mit mittlerem Aufwand auf die V8 Engine von Google umgerüstet werden. Für alle Aktoren wird nur eine Script Engine verwendet.</description>
+The scripting language used is JavaScript. The scripting language is used to allow fast iteration and changes to the items. There is an API provided for the scripts in order to interact with the entity system of Bestia.
+Script code must always be placed inside a main() function.</description>
     </item>
     
     <item>

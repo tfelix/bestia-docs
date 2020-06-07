@@ -4,17 +4,17 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Client Architecture Entities The Bestia server entities are synced to the client also represented there also under the name Entities. An entity is described by a set of components which is attached to it and by a certain kind of logic synched between the client and the server. Not every component is synched though. This can depend on various factors for example party membership (ConditionComponent is only synched between members of the same party), or ownership or view distance (mostly only entities in view distance are synched).">
+<meta name="description" content="Client Architecture In general we rely on the features of the Godot engine and its network stack. Incoming server messages are transferred to the bestia module which transforms them into usable messages which are then either emitted into the GD scripting part of the engine or internally routed to the entity manager which keeps track of entities and their components. How certain effects are setup is not subject for this documentation.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
-<meta property="og:description" content="Client Architecture Entities The Bestia server entities are synced to the client also represented there also under the name Entities. An entity is described by a set of components which is attached to it and by a certain kind of logic synched between the client and the server. Not every component is synched though. This can depend on various factors for example party membership (ConditionComponent is only synched between members of the same party), or ownership or view distance (mostly only entities in view distance are synched)." />
+<meta property="og:description" content="Client Architecture In general we rely on the features of the Godot engine and its network stack. Incoming server messages are transferred to the bestia module which transforms them into usable messages which are then either emitted into the GD scripting part of the engine or internally routed to the entity manager which keeps track of entities and their components. How certain effects are setup is not subject for this documentation." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.bestia-game.net/docs/client/architecture/" />
-<meta property="article:modified_time" content="2020-05-17T23:32:33+02:00" />
+<meta property="article:modified_time" content="2020-06-07T17:06:54+02:00" />
 <title>Architecture | Bestia Game</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.8faf8c6f51f7bb1ff07807bc087f607f8071c4b0ce8b6737ad62995aa1337d4f.css" integrity="sha256-j6&#43;Mb1H3ux/weAe8CH9gf4BxxLDOi2c3rWKZWqEzfU8=">
-<script defer src="/en.search.min.fe67c5fc442c8d4a855e55a4ebe51ad951f76ed28491c311cb7596aa87dbc337.js" integrity="sha256-/mfF/EQsjUqFXlWk6&#43;Ua2VH3btKEkcMRy3WWqofbwzc="></script>
+<script defer src="/en.search.min.cc4d90cc1c6d88c6e2736b3299590ee974f0b143cf70108a54e7aeabb879d722.js" integrity="sha256-zE2QzBxtiMbic2symVkO6XTwsUPPcBCKVOeuq7h51yI="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
@@ -148,13 +148,9 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#client-architecture">Client Architecture</a>
       <ul>
-        <li><a href="#entities">Entities</a></li>
-        <li><a href="#interaction-behavior">Interaction Behavior</a>
-          <ul>
-            <li><a href="#list-of-interactions">List of Interactions</a></li>
-            <li><a href="#grouping-of-entities">Grouping of Entities</a></li>
-          </ul>
-        </li>
+        <li><a href="#entitymanager">EntityManager</a></li>
+        <li><a href="#entitynode">EntityNode</a></li>
+        <li><a href="#componentsetter">ComponentSetter</a></li>
       </ul>
     </li>
   </ul>
@@ -169,53 +165,27 @@ https://github.com/alex-shpak/hugo-book
       
       
   <article class="markdown"><h1 id="client-architecture">Client Architecture</h1>
-<h2 id="entities">Entities</h2>
-<p>The Bestia server entities are synced to the client also represented there also under the name <code>Entities</code>. An entity is described by a set of components which is attached to it and by a certain kind of logic synched between the client and the server. Not every component is synched though. This can depend on various factors for example party membership (ConditionComponent is only synched between members of the same party), or ownership or view distance (mostly only entities in view distance are synched).</p>
-<h2 id="interaction-behavior">Interaction Behavior</h2>
-<p>When the player wants to interact with an entity we must provide a way to fast and easy detect the default interaction between the player and the entity. There are several problems here:</p>
+<p>In general we rely on the features of the Godot engine and its network stack. Incoming server messages are transferred to the bestia module which transforms them into usable messages which are then either emitted into the GD scripting part of the engine or internally routed to the entity manager which keeps track of entities and their components.
+How certain effects are setup is not subject for this documentation. This is just an overview on how the server is communicating with the client and how this information is used to visualize the game content to the user.</p>
+<p>Network IO -&gt; Mod: Bytes -&gt; ProtoMsg is directed to the EntityManager, figures out the target entity.</p>
+<h2 id="entitymanager">EntityManager</h2>
 <ul>
-<li>Interaction options can vary on dynamics like equipment and need to be checked by a server side script</li>
-<li>Interactions must be saved for a group of entites so the player does not check every enemy he wants to attack</li>
-<li>There should be sensible defaults. Items should be picked by default, enemies attacked</li>
+<li>Reserves local IDs</li>
+<li>Keeps track of entities and their components</li>
+<li>Updates components and signal changes</li>
+<li>If Entity is deleted it gets informed and removes it</li>
 </ul>
-<h3 id="list-of-interactions">List of Interactions</h3>
+<h2 id="entitynode">EntityNode</h2>
 <ul>
-<li>Attack<sup>1</sup></li>
-<li>Talk</li>
-<li>Read</li>
-<li>Use</li>
-<li>Trade</li>
-<li>Pickup</li>
-<li>Construct</li>
-<li>Gather Resources</li>
+<li>Signals change in components</li>
+<li>Informs the EntityManager about creation and deletion</li>
 </ul>
-<p><sup>1</sup>: Attack is always possible for entites as each entity should be attackable in the game.</p>
-<h3 id="grouping-of-entities">Grouping of Entities</h3>
-<p>The grouping is hard to determine as the engine has no real clue which type an entity belongs to. For the player the most distinctive visual clue would be the entity model  which is used for display.</p>
-<p>The <code>BehaviorService</code> is responsible for checking the possible interactions and presenting the player the usable options, the algorithm is as follows:</p>
-
-
-<script src="/mermaid.min.js"></script>
-<script>
-mermaid.initialize({
-  flowchart: { useMaxWidth:true }
-});
-</script>
-
-
-
-<p class="mermaid">
-graph TD
-  s1[Request Interaction list from server]-->s2[Is saved default interaction present?]
-  s2-- Yes -->s3[Is default interaction present in list?]
-  s3-- Yes -->s4[Did user request manual selection?]
-  s4-- Yes -->s6((Open Interaction Menu))
-  s4-- No -->s5((Perform interaction))
-  s2-- No -->s7[Fetch default interaction for entity]
-  s7-- Found -->s5
-  s7-- Not Found-->s6
-</p>
-
+<h2 id="componentsetter">ComponentSetter</h2>
+<ul>
+<li>Sets component values via the editor</li>
+<li>Creates ProtoMsg from exports and notifies the EntityManager</li>
+<li>ComponentNodes should still be defined in the Editor -&gt; Must link to the Manager in order to get them added.</li>
+</ul>
 </article>
  
       
@@ -226,9 +196,9 @@ graph TD
 
 
 
-  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/8b925084e92f763f2172d38d614e0d2910eefc8a" title='Last modified by Thomas Felix | May 17, 2020' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/68d202cb717df62b0a04b4fc7a89419ebdbeab47" title='Last modified by Thomas Felix | June 7, 2020' target="_blank" rel="noopener">
       <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>May 17, 2020</span>
+      <span>June 7, 2020</span>
     </a>
   </div>
 
@@ -265,13 +235,9 @@ graph TD
   <ul>
     <li><a href="#client-architecture">Client Architecture</a>
       <ul>
-        <li><a href="#entities">Entities</a></li>
-        <li><a href="#interaction-behavior">Interaction Behavior</a>
-          <ul>
-            <li><a href="#list-of-interactions">List of Interactions</a></li>
-            <li><a href="#grouping-of-entities">Grouping of Entities</a></li>
-          </ul>
-        </li>
+        <li><a href="#entitymanager">EntityManager</a></li>
+        <li><a href="#entitynode">EntityNode</a></li>
+        <li><a href="#componentsetter">ComponentSetter</a></li>
       </ul>
     </li>
   </ul>

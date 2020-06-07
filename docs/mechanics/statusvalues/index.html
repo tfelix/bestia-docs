@@ -11,12 +11,12 @@ The sophisticated status system describes the current state of an bestia (or sim
 The sophisticated status system describes the current state of an bestia (or simply any living entity) and does not strictly apply only to biological entities. The status system is important to calculate all battle related effects in the game." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.bestia-game.net/docs/mechanics/statusvalues/" />
-<meta property="article:modified_time" content="2020-05-06T02:00:55+02:00" />
+<meta property="article:modified_time" content="2020-06-07T13:11:38+02:00" />
 <title>Statusvalues | Bestia Game</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.8faf8c6f51f7bb1ff07807bc087f607f8071c4b0ce8b6737ad62995aa1337d4f.css" integrity="sha256-j6&#43;Mb1H3ux/weAe8CH9gf4BxxLDOi2c3rWKZWqEzfU8=">
-<script defer src="/en.search.min.fe67c5fc442c8d4a855e55a4ebe51ad951f76ed28491c311cb7596aa87dbc337.js" integrity="sha256-/mfF/EQsjUqFXlWk6&#43;Ua2VH3btKEkcMRy3WWqofbwzc="></script>
+<script defer src="/en.search.min.cc4d90cc1c6d88c6e2736b3299590ee974f0b143cf70108a54e7aeabb879d722.js" integrity="sha256-zE2QzBxtiMbic2symVkO6XTwsUPPcBCKVOeuq7h51yI="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
@@ -168,13 +168,6 @@ https://github.com/alex-shpak/hugo-book
         <li><a href="#individual-values">Individual Values</a></li>
         <li><a href="#base-values">Base Values</a></li>
         <li><a href="#effective-status-values">Effective Status Values</a></li>
-        <li><a href="#experience">Experience</a>
-          <ul>
-            <li><a href="#killing-enemies">Killing Enemies</a></li>
-            <li><a href="#skill-usage">Skill Usage</a></li>
-            <li><a href="#death-penalty">Death Penalty</a></li>
-          </ul>
-        </li>
       </ul>
     </li>
   </ul>
@@ -275,15 +268,14 @@ or bigger spells she can cast</li>
 </ul>
 <h2 id="effort-values">Effort Values</h2>
 <p>Upon level up of a Bestia it gains <strong>Gain Points</strong> which the player is free to distribute into his <strong>Effort Values</strong>
-to any of the status values.</p>
-<p>These values are gained upon leveling up the Bestia and can freely assigned by the player as soon as he has some points
-to spend. However once spend these points are fixed and can not re-distributed anymore (there might be quests or NPC which
+to any of the status values. One point into the effort value will directly add 1 point to the respective Status Value.</p>
+<p>Once spend these points are fixed and can not re-distributed anymore (there might be quests or NPC which
 are able to reset these values in a certain amount).</p>
-<p>The gain of effort values for a entity is:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">effGain = <span style="color:#ae81ff">5</span> + floor(reachedLevel / <span style="color:#ae81ff">2</span>)
-</code></pre></div><p>Upon leveling up the Effort Values the player needs to invest the number of Gain Points:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">effGainNeeded = max(<span style="color:#ae81ff">1</span>, (nextEffValue / <span style="color:#ae81ff">10</span>)
-</code></pre></div><h2 id="status-based-values">Status Based Values</h2>
+<p>The gain points for a level up is calculated like this:</p>
+<pre><code>effGain = 5 + floor(reachedLevel / 2)
+</code></pre><p>The amount of Gain Points the player needs to spend, to rise a Effort Value is calculated like:</p>
+<pre><code>effGainNeeded = max(1, (nextEffValue / 3)
+</code></pre><h2 id="status-based-values">Status Based Values</h2>
 <p>The status based values (<strong>SBVs</strong>) are important numbers used throughout the system to determine for example the walk
 speed or attack speed of an entity.</p>
 <h2 id="individual-values">Individual Values</h2>
@@ -303,23 +295,6 @@ assigned by a simpler mechanism.</p>
 are called status effects and might be semi-permanent (as long as the equip is worn) or temporarily (when the buff
 runs out).</p>
 <p>The effective status values are taken into account when game calculations are performed.</p>
-<h2 id="experience">Experience</h2>
-<p>The primary way to gain experience in the game is by fighting enemy Bestias. But there is also experience for more pacifistic
-players to gain through the use of skills. However, in order to give players no advantage over activly fighting players, the
-experience gained via skill use only rises linearly (opposing to the exponential exp needed growth of a Bestia).</p>
-<h3 id="killing-enemies">Killing Enemies</h3>
-<h3 id="skill-usage">Skill Usage</h3>
-<p>Only activly used jobs will create experience.</p>
-<h3 id="death-penalty">Death Penalty</h3>
-<p>Players Master can not die, they are reborn with a temporary malus. Which reduces all their stats by <code>15%</code> for 15 minutes.</p>
-<p>A killed Bestia or Master loses <code>1%</code> of their current experience points. The items are automatically protected via a spell
-which tries to teleport the items back to a secure storage after short duration (but remember: spells can be dispelled!).</p>
-<p>If the player activates the so-called <strong>Hard Mode</strong> he gets an experience bonus as well as a loot bonus of <code>+3%</code>.
-However, if he dies he looses <code>5%</code> of his current experience and items are not protected by default with a spell. If once
-activated the <strong>Hard Mode</strong> will take one hour real time cooldown in order to get switched again.. This should prevent
-players from switching the mode on and off quickly after detecting a dicey situation.</p>
-<p>In both cases the items suffer a durability penality.</p>
-<p>Bestias however, can be permanently get killed, if the killing blow is particularly strong.</p>
 </article>
  
       
@@ -330,9 +305,9 @@ players from switching the mode on and off quickly after detecting a dicey situa
 
 
 
-  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/96c1eb6c182448d409e165b495eba052e16bc9ad" title='Last modified by Thomas Felix | May 6, 2020' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/91ed89fc940eecf59a956471fba66ee5fdcdc67b" title='Last modified by Thomas Felix | June 7, 2020' target="_blank" rel="noopener">
       <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>May 6, 2020</span>
+      <span>June 7, 2020</span>
     </a>
   </div>
 
@@ -387,13 +362,6 @@ players from switching the mode on and off quickly after detecting a dicey situa
         <li><a href="#individual-values">Individual Values</a></li>
         <li><a href="#base-values">Base Values</a></li>
         <li><a href="#effective-status-values">Effective Status Values</a></li>
-        <li><a href="#experience">Experience</a>
-          <ul>
-            <li><a href="#killing-enemies">Killing Enemies</a></li>
-            <li><a href="#skill-usage">Skill Usage</a></li>
-            <li><a href="#death-penalty">Death Penalty</a></li>
-          </ul>
-        </li>
       </ul>
     </li>
   </ul>

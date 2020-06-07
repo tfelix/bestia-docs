@@ -4,17 +4,19 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Server Architecture Entity Component Services Entities are described by dynamically attaching components to them. ECS system have been proven as a de facto industry standard for recent game development. The components only contain the data are attached to entities which merely are an ID in the system. The so called systems act upon this data and alter the entities usually this is the case in a fixed tick amount for game logic updates.">
+<meta name="description" content="Server Architecture Bestia uses a entity actor system for management and active control of its entities. Each entity is registered via an in memory actor. When entity interact they communicate via the Akka messaging system. Components are child actors of an entity actor and they can send messages to other entities or components.
+Entity Component Services Entities are described by dynamically attaching components to them. ECS system have been proven as a de facto industry standard for recent game development.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
-<meta property="og:description" content="Server Architecture Entity Component Services Entities are described by dynamically attaching components to them. ECS system have been proven as a de facto industry standard for recent game development. The components only contain the data are attached to entities which merely are an ID in the system. The so called systems act upon this data and alter the entities usually this is the case in a fixed tick amount for game logic updates." />
+<meta property="og:description" content="Server Architecture Bestia uses a entity actor system for management and active control of its entities. Each entity is registered via an in memory actor. When entity interact they communicate via the Akka messaging system. Components are child actors of an entity actor and they can send messages to other entities or components.
+Entity Component Services Entities are described by dynamically attaching components to them. ECS system have been proven as a de facto industry standard for recent game development." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.bestia-game.net/docs/server/architecture/" />
-<meta property="article:modified_time" content="2020-05-17T23:32:33+02:00" />
+<meta property="article:modified_time" content="2020-06-03T02:45:37+02:00" />
 <title>Architecture | Bestia Game</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.8faf8c6f51f7bb1ff07807bc087f607f8071c4b0ce8b6737ad62995aa1337d4f.css" integrity="sha256-j6&#43;Mb1H3ux/weAe8CH9gf4BxxLDOi2c3rWKZWqEzfU8=">
-<script defer src="/en.search.min.fe67c5fc442c8d4a855e55a4ebe51ad951f76ed28491c311cb7596aa87dbc337.js" integrity="sha256-/mfF/EQsjUqFXlWk6&#43;Ua2VH3btKEkcMRy3WWqofbwzc="></script>
+<script defer src="/en.search.min.cc4d90cc1c6d88c6e2736b3299590ee974f0b143cf70108a54e7aeabb879d722.js" integrity="sha256-zE2QzBxtiMbic2symVkO6XTwsUPPcBCKVOeuq7h51yI="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
@@ -154,8 +156,10 @@ https://github.com/alex-shpak/hugo-book
             <li><a href="#blueprint-json-datenformat">Blueprint JSON Datenformat</a></li>
           </ul>
         </li>
-        <li><a href="#entity-actor-system">Entity Actor System</a></li>
-        <li><a href="#entity-resource-cleanup">Entity Resource Cleanup</a></li>
+      </ul>
+    </li>
+    <li><a href="#entity-resource-cleanup">Entity Resource Cleanup</a>
+      <ul>
         <li><a href="#internal-messaging">Internal Messaging</a></li>
         <li><a href="#component-synchronization">Component Synchronization</a>
           <ul>
@@ -182,15 +186,11 @@ https://github.com/alex-shpak/hugo-book
       
       
   <article class="markdown"><h1 id="server-architecture">Server Architecture</h1>
+<p>Bestia uses a entity actor system for management and active control of its entities. Each entity is registered via an in memory actor. When entity interact they communicate via the Akka messaging system. Components are child actors of an entity actor and they can send messages to other entities or components.</p>
 <h2 id="entity-component-services">Entity Component Services</h2>
 <p>Entities are described by dynamically attaching components to them. 
-  <a href="https://en.wikipedia.org/wiki/Entity_component_system">ECS system</a> have been proven as a de facto industry standard for recent game development. The components only contain the data are attached to entities which merely are an ID in the system. The so called systems act upon this data and alter the entities usually this is the case in a fixed tick amount for game logic updates.. Since the bestia system is event based and not tick based we use a little different approach. We define services which work on entities and their components. These services are triggered by Akka Actors in case a event message arrives. This architecture allows a better usage of computing resources in a clustered server environment.</p>
-<p>A entity factory will create a entity, save it into the memdb and also start a sharded entity into the cluster.
-The factory will also create and setup components which might have also active actors. If a component is created,
-altered or deleted these calls are intercepted via a configurable callback. Usually the component instances are
-cached for some amount of time to lessen the strain on the garbage collector. Upon creation of the component a
-message might get sent into the actorsystem to start up a component based actor which will then in turn control
-some execution specific operation like periodic health regeneration ticks.</p>
+  <a href="https://en.wikipedia.org/wiki/Entity_component_system">ECS system</a> have been proven as a de facto industry standard for recent game development. The components only contain the data are attached to entities which merely are an ID in the system. The so called systems act upon this data and alter the entities usually this is the case in a fixed tick amount for game logic updates. Since the Bestia system is event based and not tick based we use a little different approach. We define services which work on entities and their components. These services are triggered by Akka Actors in case a event message arrives. This architecture allows a better usage of computing resources in a clustered server environment.</p>
+<p>A entity factory will create a entity, save it into the memdb and also start a sharded entity into the cluster. The factory will also create and setup components which might have also active actors. If a component is created, altered or deleted these calls are intercepted via a configurable callback. Usually the component instances are cached for some amount of time to lessen the strain on the garbage collector. Upon creation of the component a message might get sent into the actorsystem to start up a component based actor which will then in turn control some execution specific operation like periodic health regeneration ticks.</p>
 <h2 id="create-entities">Create Entities</h2>
 <p>The first step into an usable entity are entity creators. They take alle domain data input or simple argument input
 and server as a helper function or a builder for usable a complete entities which are outfitted with components. They
@@ -207,11 +207,7 @@ into a special <code>BlueprintEntityFactory</code>. The components are initializ
   <span style="color:#a6e22e">visible</span><span style="color:#f92672">:</span> {<span style="color:#a6e22e">sprite</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;name&#39;</span>, <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;type&#39;</span>},
   <span style="color:#a6e22e">script</span><span style="color:#f92672">:</span> {<span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;bla&#39;</span>, <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;item&#39;</span>}
 }
-</code></pre></div><h2 id="entity-actor-system">Entity Actor System</h2>
-<p>Bestia uses a entity actor system for management and active control of its entities. Each entity is registered via an in
-memory actor. When entity interact they communicate via the Akka messaging system. Components are child actors of an
-entity actor and they can send messages to other entities or components.</p>
-<h2 id="entity-resource-cleanup">Entity Resource Cleanup</h2>
+</code></pre></div><h1 id="entity-resource-cleanup">Entity Resource Cleanup</h1>
 <p>The inner world representation relies on entities with associated component data. The problem is in order to manage this
 entities in a message based way there must be also an active actor present to receive these messages and react
 accordingly. This actor capsules the logic of the entity but might also have child actors if certain components require
@@ -277,9 +273,9 @@ maximum world size is:</p>
 
 
 
-  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/8b925084e92f763f2172d38d614e0d2910eefc8a" title='Last modified by Thomas Felix | May 17, 2020' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/3d547edac6954c5e3a960d4432ea2a62cf34d97a" title='Last modified by Thomas Felix | June 3, 2020' target="_blank" rel="noopener">
       <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>May 17, 2020</span>
+      <span>June 3, 2020</span>
     </a>
   </div>
 
@@ -322,8 +318,10 @@ maximum world size is:</p>
             <li><a href="#blueprint-json-datenformat">Blueprint JSON Datenformat</a></li>
           </ul>
         </li>
-        <li><a href="#entity-actor-system">Entity Actor System</a></li>
-        <li><a href="#entity-resource-cleanup">Entity Resource Cleanup</a></li>
+      </ul>
+    </li>
+    <li><a href="#entity-resource-cleanup">Entity Resource Cleanup</a>
+      <ul>
         <li><a href="#internal-messaging">Internal Messaging</a></li>
         <li><a href="#component-synchronization">Component Synchronization</a>
           <ul>

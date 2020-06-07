@@ -11,12 +11,12 @@ The type of the Bestia which spawns is determined by the environments (Bestias h
 The type of the Bestia which spawns is determined by the environments (Bestias have a affinity to certain biomes and they spawn according to this probability in the different biomes)." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.bestia-game.net/docs/mechanics/bestia/" />
-<meta property="article:modified_time" content="2020-05-18T00:07:56+02:00" />
+<meta property="article:modified_time" content="2020-06-01T18:43:47+02:00" />
 <title>Bestias | Bestia Game</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.8faf8c6f51f7bb1ff07807bc087f607f8071c4b0ce8b6737ad62995aa1337d4f.css" integrity="sha256-j6&#43;Mb1H3ux/weAe8CH9gf4BxxLDOi2c3rWKZWqEzfU8=">
-<script defer src="/en.search.min.fe67c5fc442c8d4a855e55a4ebe51ad951f76ed28491c311cb7596aa87dbc337.js" integrity="sha256-/mfF/EQsjUqFXlWk6&#43;Ua2VH3btKEkcMRy3WWqofbwzc="></script>
+<script defer src="/en.search.min.cc4d90cc1c6d88c6e2736b3299590ee974f0b143cf70108a54e7aeabb879d722.js" integrity="sha256-zE2QzBxtiMbic2symVkO6XTwsUPPcBCKVOeuq7h51yI="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
@@ -157,6 +157,13 @@ https://github.com/alex-shpak/hugo-book
             <li><a href="#learnable-attacks">Learnable Attacks</a></li>
           </ul>
         </li>
+        <li><a href="#experience">Experience</a>
+          <ul>
+            <li><a href="#killing-enemies">Killing Enemies</a></li>
+            <li><a href="#environment-interaction">Environment Interaction</a></li>
+            <li><a href="#death-penalty">Death Penalty</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
@@ -292,6 +299,48 @@ to improve Bestia.</p>
 to the female if it can not learn this attack on their own. If she learns this attack on a higher level it will now learn the
 attack by the level of the father.</p>
 <p>With a chance of 30 % the attack is learned one level earlier then before.</p>
+<h2 id="experience">Experience</h2>
+<p>The primary way to gain experience in the game is by fighting enemy Bestias. But there is also experience for more pacifistic players to gain through the use of skills. However, in order to give players no advantage over activly fighting players, the experience gained via skill use only rises linearly (opposing to the exponential exp needed growth of a Bestia).</p>
+<p>To level up a Bestia the required amount of experience is given by:</p>
+<span>
+  \[   exp = lv^3 / 3 &#43; 15 &#43; lv * 1.5\]
+</span>
+
+<h3 id="killing-enemies">Killing Enemies</h3>
+<p>When an enemy is killed the attackers participating in the attack will gain a certain:</p>
+<span>
+  \[   exp_{gain} = lv * 4 &#43; 5\]
+</span>
+
+<p>There are several modifiers for this exp which gets delivered:</p>
+<ul>
+<li><code>+20%</code> for each Bestia involved in the attack</li>
+<li><code>+200%</code> if it was a boss flagged Bestia</li>
+<li><code>+10%</code> for each elemental level (e.g. <code>FIRE_2</code> has +20% additional exp)</li>
+<li>Bonus EXP by buffs or equipments</li>
+<li><code>180%</code> if it was a player controlled Bestia</li>
+<li>Party Bonus of <code>130%</code></li>
+<li><code>-80%</code> if it was a structure</li>
+</ul>
+<p>After a killing blow was delivered the EXP gained is calculated end distributed between the damage dealers of the entity. Then for each receiver it is checked if the EXP gets for example distributed into a guild otherwise it is contributed against the Bestia.</p>
+<h3 id="environment-interaction">Environment Interaction</h3>
+<p>Experience is also gained by interacting with the environment:</p>
+<ul>
+<li>Travel: <code>EXP += 2</code> EXP per km travelled</li>
+<li>Construction: <code>EXP += 2 * item_level</code> per item level of the construction used</li>
+<li>Skill usage that creates items: <code>EXP += 2 * EXP</code></li>
+<li>Gather resources: <code>EXP += 3.5 * EXP</code> of resource item level found</li>
+</ul>
+<h3 id="death-penalty">Death Penalty</h3>
+<p>Players Master can not die, they are reborn with a temporary malus. Which reduces all their stats by <code>15%</code> for 15 minutes.</p>
+<p>A killed Bestia or Master loses <code>1%</code> of their current experience points. The items are automatically protected via a spell
+which tries to teleport the items back to a secure storage after short duration (but remember: spells can be dispelled!).</p>
+<p>If the player activates the so-called <strong>Hard Mode</strong> he gets an experience bonus as well as a loot bonus of <code>+3%</code>.
+However, if he dies he looses <code>5%</code> of his current experience and items are not protected by default with a spell. If once
+activated the <strong>Hard Mode</strong> will take one hour real time cooldown in order to get switched again. This should prevent
+players from switching the mode on and off quickly after detecting a dicey situation.</p>
+<p>In both cases the items suffer a durability penality.</p>
+<p>Bestias however, can be permanently get killed, if the killing blow is particularly strong.</p>
 </article>
  
       
@@ -302,9 +351,9 @@ attack by the level of the father.</p>
 
 
 
-  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/6556e8b3fd5f8e911930a9b418a75db7c8af7952" title='Last modified by Thomas Felix | May 17, 2020' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/6a433dec491743c76e3fd262c31830e37696d790" title='Last modified by Thomas Felix | June 1, 2020' target="_blank" rel="noopener">
       <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>May 17, 2020</span>
+      <span>June 1, 2020</span>
     </a>
   </div>
 
@@ -346,6 +395,13 @@ attack by the level of the father.</p>
           <ul>
             <li><a href="#individual-value-evolution">Individual Value Evolution</a></li>
             <li><a href="#learnable-attacks">Learnable Attacks</a></li>
+          </ul>
+        </li>
+        <li><a href="#experience">Experience</a>
+          <ul>
+            <li><a href="#killing-enemies">Killing Enemies</a></li>
+            <li><a href="#environment-interaction">Environment Interaction</a></li>
+            <li><a href="#death-penalty">Death Penalty</a></li>
           </ul>
         </li>
       </ul>
