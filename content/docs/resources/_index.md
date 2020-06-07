@@ -36,3 +36,4 @@ Every game needs a good amount of artwork and assets. During development a few p
 * [Game-Icons.net](https://game-icons.net/) A lot of usable icons with a CC BY 3.0 licence.
 * [Kenney](http://kenney.nl/assets) Big chunk of assets some of them free to use.
 * [itch.io](https://itch.io/game-assets) A lot of nice game assets. Some are free, and some can be bought for a few Dollars.
+* [Grass Shader Tutorial](https://roystan.net/articles/grass-shader.html) Tutorial about stylized grass for Unit.

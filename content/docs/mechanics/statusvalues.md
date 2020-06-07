@@ -94,22 +94,21 @@ The Condition Values resemble the current condition of a entity.
 ## Effort Values
 
 Upon level up of a Bestia it gains **Gain Points** which the player is free to distribute into his **Effort Values**
-to any of the status values.
+to any of the status values. One point into the effort value will directly add 1 point to the respective Status Value.
 
-These values are gained upon leveling up the Bestia and can freely assigned by the player as soon as he has some points
-to spend. However once spend these points are fixed and can not re-distributed anymore (there might be quests or NPC which
+Once spend these points are fixed and can not re-distributed anymore (there might be quests or NPC which
 are able to reset these values in a certain amount).
 
-The gain of effort values for a entity is:
+The gain points for a level up is calculated like this:
 
 ```
 effGain = 5 + floor(reachedLevel / 2)
 ```
 
-Upon leveling up the Effort Values the player needs to invest the number of Gain Points:
+ The amount of Gain Points the player needs to spend, to rise a Effort Value is calculated like:
 
 ```
-effGainNeeded = max(1, (nextEffValue / 10)
+effGainNeeded = max(1, (nextEffValue / 3)
 ```
 
 ## Status Based Values
