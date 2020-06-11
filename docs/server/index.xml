@@ -25,8 +25,8 @@ Entity Component Services Entities are described by dynamically attaching compon
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://docs.bestia-game.net/docs/server/battle/</guid>
-      <description>Battle System The battle system is quite complex to allow almost any entity to get damaged in the game. Usually a battle context is established before damage calculation takes place. The attack is performed in various stages. Equipments or status effects either alter the DamageVars or expose certain hooks which are called during the damage calculation.
-The attack itself either provides a script to completely manage the effect which takes place during cast or it provides certain callbacks for damage calculation stages which are getting called while applying the damage.</description>
+      <description>Battle System The battle system is quite complex to allow almost any entity to get damaged in the game. Usually a battle context is established before damage calculation takes place and then used throughout the damage calculation. The attack outcome is then calculated with a strategy which is chosen depending on the type of attack used (melee, ranged or magic).
+Attacks can also be defined by a script alone and thus sidestepping the damage calculation completly to do script controlled effects (e.</description>
     </item>
     
     <item>

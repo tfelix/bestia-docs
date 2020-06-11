@@ -4,19 +4,19 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Battle System The battle system is quite complex to allow almost any entity to get damaged in the game. Usually a battle context is established before damage calculation takes place. The attack is performed in various stages. Equipments or status effects either alter the DamageVars or expose certain hooks which are called during the damage calculation.
-The attack itself either provides a script to completely manage the effect which takes place during cast or it provides certain callbacks for damage calculation stages which are getting called while applying the damage.">
+<meta name="description" content="Battle System The battle system is quite complex to allow almost any entity to get damaged in the game. Usually a battle context is established before damage calculation takes place and then used throughout the damage calculation. The attack outcome is then calculated with a strategy which is chosen depending on the type of attack used (melee, ranged or magic).
+Attacks can also be defined by a script alone and thus sidestepping the damage calculation completly to do script controlled effects (e.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
-<meta property="og:description" content="Battle System The battle system is quite complex to allow almost any entity to get damaged in the game. Usually a battle context is established before damage calculation takes place. The attack is performed in various stages. Equipments or status effects either alter the DamageVars or expose certain hooks which are called during the damage calculation.
-The attack itself either provides a script to completely manage the effect which takes place during cast or it provides certain callbacks for damage calculation stages which are getting called while applying the damage." />
+<meta property="og:description" content="Battle System The battle system is quite complex to allow almost any entity to get damaged in the game. Usually a battle context is established before damage calculation takes place and then used throughout the damage calculation. The attack outcome is then calculated with a strategy which is chosen depending on the type of attack used (melee, ranged or magic).
+Attacks can also be defined by a script alone and thus sidestepping the damage calculation completly to do script controlled effects (e." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.bestia-game.net/docs/server/battle/" />
-<meta property="article:modified_time" content="2020-06-03T02:45:37+02:00" />
+<meta property="article:modified_time" content="2020-06-12T00:04:31+02:00" />
 <title>Battle | Bestia Game</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.8faf8c6f51f7bb1ff07807bc087f607f8071c4b0ce8b6737ad62995aa1337d4f.css" integrity="sha256-j6&#43;Mb1H3ux/weAe8CH9gf4BxxLDOi2c3rWKZWqEzfU8=">
-<script defer src="/en.search.min.cb6d36c71c735988bba2f07c9b25e4a1b2620b080908375e72add139c6b5216d.js" integrity="sha256-y202xxxzWYi7ovB8myXkobJiCwgJCDdecq3ROca1IW0="></script>
+<script defer src="/en.search.min.326996ba9e28ca8f6f9c6265ba8a05d0abb19f272473997bb5a1870a2cf2a507.js" integrity="sha256-MmmWup4oyo9vnGJluooF0Kuxnyckc5l7taGHCizypQc="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
@@ -150,7 +150,12 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#battle-system">Battle System</a>
       <ul>
-        <li><a href="#stages-of-a-battle">Stages of a battle</a></li>
+        <li><a href="#damage-calculation">Damage Calculation</a>
+          <ul>
+            <li><a href="#attack-pre-check">Attack Pre-Check</a></li>
+            <li><a href="#damage-calculation-1">Damage Calculation</a></li>
+          </ul>
+        </li>
         <li><a href="#damage-formula">Damage formula</a>
           <ul>
             <li><a href="#base_atk">BASE_ATK</a></li>
@@ -169,7 +174,6 @@ https://github.com/alex-shpak/hugo-book
           </ul>
         </li>
         <li><a href="#damage-variables">Damage variables</a></li>
-        <li><a href="#kampfsystem">Kampfsystem</a></li>
       </ul>
     </li>
   </ul>
@@ -184,72 +188,48 @@ https://github.com/alex-shpak/hugo-book
       
       
   <article class="markdown"><h1 id="battle-system">Battle System</h1>
-<p>The battle system is quite complex to allow almost any entity to get damaged in the game. Usually a battle context is established before damage calculation takes place.
-The attack is performed in various stages. Equipments or status effects either alter the DamageVars or expose certain hooks which are called during the damage calculation.</p>
-<p>The attack itself either provides a script to completely manage the effect which takes place during cast or it provides certain callbacks for damage calculation stages which are getting called while applying the damage. The attack callbacks are:</p>
+<p>The battle system is quite complex to allow almost any entity to get damaged in the game. Usually a battle context is established before damage calculation takes place and then used throughout the damage calculation. The attack outcome is then calculated with a strategy which is chosen depending on the type of attack used (melee, ranged or magic).</p>
+<p>Attacks can also be defined by a script alone and thus sidestepping the damage calculation completly to do script controlled effects (e.g. reduce enemy health by 50%).</p>
+<h2 id="damage-calculation">Damage Calculation</h2>
+<p>The stages of a battle are visualized in the following flow diagram, first a check is done to see if the attack actually was a hit.</p>
+<h3 id="attack-pre-check">Attack Pre-Check</h3>
 <ul>
-<li>onHit - Called when the enemy was hit.</li>
-<li>onApplyDamage - Called when the damage is about to get applied</li>
-</ul>
-<h2 id="stages-of-a-battle">Stages of a battle</h2>
-<p>The stages of a battle are visualized in the following flow diagram.</p>
-<p>check if hit is possible</p>
-<ul>
-<li>
-<p>needs los?</p>
-<ul>
-<li>is los present? no: abort attack</li>
-</ul>
-</li>
-<li>
-<p>needs mana?</p>
+<li>Attacker ownes the attack? no -&gt; abort</li>
+<li>needs mana?
 <ul>
 <li>is mana present? no: abort attack. yes: subtract mana.</li>
 </ul>
 </li>
-<li>
-<p>Needs items/ammo?</p>
+<li>needs los?
+<ul>
+<li>is los present? no: abort attack</li>
+</ul>
+</li>
+<li>Needs items/ammo?
 <ul>
 <li>Is item/ammo present? no: abort attack. yes: substract item.</li>
 </ul>
 </li>
 </ul>
+<h3 id="damage-calculation-1">Damage Calculation</h3>
 <p>calculate crit hit:</p>
 <ul>
-<li>
-<p>Based on attacker and defender level and dex and direct crit modifier.</p>
-</li>
-<li>
-<p>0.02 * (atkLv / defLv) / 3 * (atkDex / defDex) / 2 * (atkAgi / defAgi) * critMod</p>
-</li>
-<li>
-<p>Capped: 0.01 and 0.95</p>
-</li>
-<li>
-<p>Critical hits triple the upcoming hitrate</p>
-</li>
-<li>
-<p>Magic attacks always hit</p>
-</li>
-<li>
-<p>Magic attacks can not crit.</p>
-</li>
+<li>Based on attacker and defender level and dex and direct crit modifier.</li>
+<li>0.02 * (atkLv / defLv) / 3 * (atkDex / defDex) / 2 * (atkAgi / defAgi) * critMod</li>
+<li>Capped: 0.01 and 0.95</li>
+<li>Critical hits triple the upcoming hitrate</li>
+<li>Magic attacks always hit</li>
+<li>Magic attacks can not crit.</li>
 </ul>
 <p>calculate actual hitrate</p>
 <ul>
-<li>
-<p>Based on attacker hitrate and defender flee rate.</p>
-</li>
-<li>
-<p>Based on modifier for attacker and defender.</p>
-</li>
-<li>
-<p>ActualHit: 0.5 * hit / flee, capped at 0.05 and 1.</p>
-</li>
+<li>Based on attacker hitrate and defender flee rate.</li>
+<li>Based on modifier for attacker and defender.</li>
+<li>ActualHit: 0.5 * hit / flee, capped at 0.05 and 1.</li>
 </ul>
-<p>check if the attack does land a critical hit</p>
-<p>check if the attack does land a hit depending on the hitrate.</p>
-<p>if the attack does miss display a MISS to the clients.</p>
+<p>check if the attack does land a critical hit
+check if the attack does land a hit depending on the hitrate.
+if the attack does miss display a MISS to the clients.</p>
 <p>if the attack does hit proceed with damage calculation.</p>
 <p>damage calculation</p>
 <p>create damage context</p>
@@ -420,28 +400,6 @@ The attack is performed in various stages. Equipments or status effects either a
     <td>Bonus or reduction in critical damage.</td>
   </tr>
 </table>
-<h2 id="kampfsystem">Kampfsystem</h2>
-<p>Kampfablauf</p>
-<ol>
-<li>
-<p>Trifft eine Attacke?</p>
-</li>
-<li>
-<p>Gibt ein ein Script für die Attacke um bestimmte Effekte, oder eine andere Berechnung auszulösen?</p>
-<ol>
-<li>Nutze das Script um den Schaden zu berechnen.</li>
-</ol>
-</li>
-<li>
-<p>Berechne anhand aktueller Statuswerte den auftretenden Schaden und übergebe ihn an die Entität.</p>
-</li>
-<li>
-<p>Entität prüft ob der Schaden angewendet, oder durch Equipments abgeschwächt wird.</p>
-</li>
-<li>
-<p>Ist der Schaden dennoch aktiv wird er angewendet.</p>
-</li>
-</ol>
 </article>
  
       
@@ -452,9 +410,9 @@ The attack is performed in various stages. Equipments or status effects either a
 
 
 
-  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/3d547edac6954c5e3a960d4432ea2a62cf34d97a" title='Last modified by Thomas Felix | June 3, 2020' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/97f598897d9a4f920c6c7aa108dd80f8819a0ccc" title='Last modified by Thomas Felix | June 11, 2020' target="_blank" rel="noopener">
       <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>June 3, 2020</span>
+      <span>June 11, 2020</span>
     </a>
   </div>
 
@@ -491,7 +449,12 @@ The attack is performed in various stages. Equipments or status effects either a
   <ul>
     <li><a href="#battle-system">Battle System</a>
       <ul>
-        <li><a href="#stages-of-a-battle">Stages of a battle</a></li>
+        <li><a href="#damage-calculation">Damage Calculation</a>
+          <ul>
+            <li><a href="#attack-pre-check">Attack Pre-Check</a></li>
+            <li><a href="#damage-calculation-1">Damage Calculation</a></li>
+          </ul>
+        </li>
         <li><a href="#damage-formula">Damage formula</a>
           <ul>
             <li><a href="#base_atk">BASE_ATK</a></li>
@@ -510,7 +473,6 @@ The attack is performed in various stages. Equipments or status effects either a
           </ul>
         </li>
         <li><a href="#damage-variables">Damage variables</a></li>
-        <li><a href="#kampfsystem">Kampfsystem</a></li>
       </ul>
     </li>
   </ul>
