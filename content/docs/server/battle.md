@@ -1,55 +1,42 @@
 # Battle System
 
-The battle system is quite complex to allow almost any entity to get damaged in the game. Usually a battle context is established before damage calculation takes place.
-The attack is performed in various stages. Equipments or status effects either alter the DamageVars or expose certain hooks which are called during the damage calculation.
+The battle system is quite complex to allow almost any entity to get damaged in the game. Usually a battle context is established before damage calculation takes place and then used throughout the damage calculation. The attack outcome is then calculated with a strategy which is chosen depending on the type of attack used (melee, ranged or magic).
 
-The attack itself either provides a script to completely manage the effect which takes place during cast or it provides certain callbacks for damage calculation stages which are getting called while applying the damage. The attack callbacks are:
+Attacks can also be defined by a script alone and thus sidestepping the damage calculation completly to do script controlled effects (e.g. reduce enemy health by 50%).
 
-* onHit - Called when the enemy was hit.
-* onApplyDamage - Called when the damage is about to get applied
+## Damage Calculation
 
-## Stages of a battle
+The stages of a battle are visualized in the following flow diagram, first a check is done to see if the attack actually was a hit.
 
-The stages of a battle are visualized in the following flow diagram.
+### Attack Pre-Check
 
-check if hit is possible
-
-* needs los?
-    * is los present? no: abort attack
-
+* Attacker ownes the attack? no -> abort
 * needs mana?
     * is mana present? no: abort attack. yes: subtract mana.
-
+* needs los?
+    * is los present? no: abort attack
 * Needs items/ammo?
-
     * Is item/ammo present? no: abort attack. yes: substract item.
+
+### Damage Calculation
 
 calculate crit hit:
 
 * Based on attacker and defender level and dex and direct crit modifier.
-
 * 0.02 * (atkLv / defLv) / 3 * (atkDex / defDex) / 2 * (atkAgi / defAgi) * critMod
-
 * Capped: 0.01 and 0.95
-
 * Critical hits triple the upcoming hitrate
-
 * Magic attacks always hit
-
 * Magic attacks can not crit.
 
 calculate actual hitrate
 
 * Based on attacker hitrate and defender flee rate.
-
 * Based on modifier for attacker and defender.
-
 * ActualHit: 0.5 * hit / flee, capped at 0.05 and 1.
 
 check if the attack does land a critical hit
-
 check if the attack does land a hit depending on the hitrate.
-
 if the attack does miss display a MISS to the clients.
 
 if the attack does hit proceed with damage calculation.
@@ -292,20 +279,3 @@ Total damage calculation modifiers which are gathered from equipment and status 
     <td>Bonus or reduction in critical damage.</td>
   </tr>
 </table>
-
-
-## Kampfsystem
-
-Kampfablauf
-
-1. Trifft eine Attacke?
-
-2. Gibt ein ein Script für die Attacke um bestimmte Effekte, oder eine andere Berechnung auszulösen?
-
-    1. Nutze das Script um den Schaden zu berechnen.
-
-3. Berechne anhand aktueller Statuswerte den auftretenden Schaden und übergebe ihn an die Entität.
-
-4. Entität prüft ob der Schaden angewendet, oder durch Equipments abgeschwächt wird.
-
-5. Ist der Schaden dennoch aktiv wird er angewendet.
