@@ -11,12 +11,12 @@ The attachment to mana also explains why Bestia masters were able to survive the
 The attachment to mana also explains why Bestia masters were able to survive the destruction of their world relatively unscathed and to pass on to the next world." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.bestia-game.net/docs/mechanics/master/" />
-<meta property="article:modified_time" content="2020-06-07T17:06:54+02:00" />
+<meta property="article:modified_time" content="2020-06-11T18:20:38+02:00" />
 <title>Bestia Master | Bestia Game</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.8faf8c6f51f7bb1ff07807bc087f607f8071c4b0ce8b6737ad62995aa1337d4f.css" integrity="sha256-j6&#43;Mb1H3ux/weAe8CH9gf4BxxLDOi2c3rWKZWqEzfU8=">
-<script defer src="/en.search.min.cc4d90cc1c6d88c6e2736b3299590ee974f0b143cf70108a54e7aeabb879d722.js" integrity="sha256-zE2QzBxtiMbic2symVkO6XTwsUPPcBCKVOeuq7h51yI="></script>
+<script defer src="/en.search.min.cb6d36c71c735988bba2f07c9b25e4a1b2620b080908375e72add139c6b5216d.js" integrity="sha256-y202xxxzWYi7ovB8myXkobJiCwgJCDdecq3ROca1IW0="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
@@ -203,11 +203,11 @@ game. Depending on how successful this was, the player will be more precisely tr
 <p>Ultimately, it remains important to leave the outcome of skills open in some way. However, the result should remain
 understandable and influenceable by the player.</p>
 <h3 id="skill-progression">Skill Progression</h3>
-<p>Starting from level 10, on each level up the master gains 1 skillpoint to put into the skills rank. This is permanent and means a player can spend about 100 points for improving the ranks of his skills.</p>
+<p>Starting from level 10, on each level up the master gains 1 skillpoint to put into the skills rank. This is permanent and means a player can spend about 90 points for improving the ranks of his skills.</p>
 <blockquote>
 <p>Since max level is not capped actually he might be able to spend more points but a progressions gets continously harder it is safe to assume every player has about 100 points.</p>
 </blockquote>
-<p>The skilltrees are designed as such that to reach the highest professions in a tree the player needs to spend <strong>70 points</strong>.</p>
+<p>The skilltrees are designed as such that to reach the highest professions in a tree the player needs to spend <strong>60 points</strong>.</p>
 <p>The player can decide to have mediocre profession in each tree or to max out one and have maybe half of the
 meaningful professions of another tree. The skilltree is a hierarchical dependency of skills.</p>
 <h2 id="crafts-tree">Crafts Tree</h2>
@@ -226,24 +226,25 @@ mermaid.initialize({
 <p class="mermaid">
 graph TD
   FIRST_AID("First Aid [1]")
+  COOKING("Cooking [3]")
   FISHING("Fishing [5]")
-  SCAVENGER("Scavenger [10]")
+  SCAVENGER("Scavenger [5]")
 
-  SCAVENGER-->|min. 5|IMPROVED_TRADING("Improved Trading [5]")
-  FISHING-->|min. 1|COOKING("Cooking [5]")
+  FISHING-->|Lv. 2|FARMING("Farming [5]")
+  SCAVENGER-->|Lv. 3|MINING("Mining [5]")
+  SCAVENGER-->|Lv. 3|LUMBERJACK("Luberjack [5]")
+  FIRST_AID-->|Lv. 1|MEDICAL_EXPERT("Medical Expert [5]")
 
-  IMPROVED_TRADING-->|min. 3|CRAFTMANSHIP("Craftmanship [10]")
-  IMPROVED_TRADING-->|min. 3|LUMBERJACK("Lumberjack [10]")
-  IMPROVED_TRADING-->|min. 3|MINER("Miner [10]")
+  SCAVENGER-->|Lv. 5|CRAFTSMANSHIP("Craftmanship [5]")
+  CRAFTSMANSHIP-->|Lv. 3|PACKHORSE("Packhorse [5]")
 
-  MINER-->|min. 5|BLACKSMITH("Blacksmith [10]")
-  CRAFTMANSHIP-->|min. 5|BLACKSMITH
-  CRAFTMANSHIP-->|min. 7|TAILOR("Tailor [10]")
+  CRAFTSMANSHIP-->|Lv. 3|ALCHEMY("Alchemy [5]")
+  ALCHEMY-->|Lv. 3|TRANSMUTATION("Transmutation [5]")
 </p>
 
 <header>
   <h4>First Aid</h4>
-  <p>Max. Level: 5</p>
+  <p>Max. Level: 1</p>
 </header>
 
 <div class="book-columns flex flex-wrap">
@@ -278,7 +279,11 @@ graph TD
 
 
 
-<p><strong>Scavenger (10)</strong>
+<header>
+  <h4>Scavenger</h4>
+  <p>Max. Level: 10</p>
+</header>
+
 <div class="book-columns flex flex-wrap">
   
   <div class="flex-even markdown-inner">
@@ -294,25 +299,14 @@ graph TD
   </div>
   
 </div>
-</p>
-<p><strong>Improved Trading (5)</strong>
-<div class="book-columns flex flex-wrap">
-  
-  <div class="flex-even markdown-inner">
-    NPC can be talked into to pay more or give the player cheaper prices for items.
-  </div>
-  
-  <div class="flex-even markdown-inner">
-    <blockquote>
-<p>-5%/lv item price reduction at NPCs
-+3%/lv higher price when selling items at NPC</p>
-</blockquote>
 
-  </div>
-  
-</div>
-</p>
-<p><strong>Cooking (5)</strong>
+
+
+<header>
+  <h4>Cooking</h4>
+  <p>Max. Level: 3</p>
+</header>
+
 <div class="book-columns flex flex-wrap">
   
   <div class="flex-even markdown-inner">
@@ -327,8 +321,14 @@ graph TD
   </div>
   
 </div>
-</p>
-<p><strong>Craftmanship (10)</strong>
+
+
+
+<header>
+  <h4>Craftmanship</h4>
+  <p>Max. Level: 5</p>
+</header>
+
 <div class="book-columns flex flex-wrap">
   
   <div class="flex-even markdown-inner">
@@ -337,14 +337,20 @@ graph TD
   
   <div class="flex-even markdown-inner">
     <blockquote>
-<p>-3%/lv structure build time</p>
+<p>-6%/lv structure build time</p>
 </blockquote>
 
   </div>
   
 </div>
-</p>
-<p><strong>Lumberjack (10)</strong>
+
+
+
+<header>
+  <h4>Lumberjack</h4>
+  <p>Max. Level: 5</p>
+</header>
+
 <div class="book-columns flex flex-wrap">
   
   <div class="flex-even markdown-inner">
@@ -360,8 +366,14 @@ graph TD
   </div>
   
 </div>
-</p>
-<p><strong>Miner (10)</strong>
+
+
+
+<header>
+  <h4>Mining</h4>
+  <p>Max. Level: 5</p>
+</header>
+
 <div class="book-columns flex flex-wrap">
   
   <div class="flex-even markdown-inner">
@@ -377,8 +389,14 @@ graph TD
   </div>
   
 </div>
-</p>
-<p><strong>Blacksmith (10)</strong>
+
+
+
+<header>
+  <h4>Blacksmith</h4>
+  <p>Max. Level: 5</p>
+</header>
+
 <div class="book-columns flex flex-wrap">
   
   <div class="flex-even markdown-inner">
@@ -387,14 +405,16 @@ graph TD
   
   <div class="flex-even markdown-inner">
     <blockquote>
-<p>Increases the probability by 2% to succeed when upgrading a weapon.
+<p>Increases the probability by 4% to succeed when upgrading a weapon.
 Increase chance of forging highlevel weapons</p>
 </blockquote>
 
   </div>
   
 </div>
-</p>
+
+
+
 <header>
   <h4>Packhorse</h4>
   <p>Max. Level: 5</p>
@@ -971,9 +991,9 @@ The teleported entity also gets a debuff which will prevent it from teleporting 
 
 
 
-  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/68d202cb717df62b0a04b4fc7a89419ebdbeab47" title='Last modified by Thomas Felix | June 7, 2020' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/c778730ba205b6751fa640e20ec30d69374e875c" title='Last modified by Thomas Felix | June 11, 2020' target="_blank" rel="noopener">
       <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>June 7, 2020</span>
+      <span>June 11, 2020</span>
     </a>
   </div>
 

@@ -13,12 +13,12 @@ The scripting language used is JavaScript. The scripting language is used to all
 Script code must always be placed inside a main() function." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.bestia-game.net/docs/server/scripting/" />
-<meta property="article:modified_time" content="2020-06-03T02:45:37+02:00" />
+<meta property="article:modified_time" content="2020-06-11T18:20:38+02:00" />
 <title>Scripting | Bestia Game</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.8faf8c6f51f7bb1ff07807bc087f607f8071c4b0ce8b6737ad62995aa1337d4f.css" integrity="sha256-j6&#43;Mb1H3ux/weAe8CH9gf4BxxLDOi2c3rWKZWqEzfU8=">
-<script defer src="/en.search.min.cc4d90cc1c6d88c6e2736b3299590ee974f0b143cf70108a54e7aeabb879d722.js" integrity="sha256-zE2QzBxtiMbic2symVkO6XTwsUPPcBCKVOeuq7h51yI="></script>
+<script defer src="/en.search.min.cb6d36c71c735988bba2f07c9b25e4a1b2620b080908375e72add139c6b5216d.js" integrity="sha256-y202xxxzWYi7ovB8myXkobJiCwgJCDdecq3ROca1IW0="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
@@ -154,22 +154,15 @@ https://github.com/alex-shpak/hugo-book
       <ul>
         <li><a href="#status-scripts--equip-scripts">Status Scripts / Equip Scripts</a>
           <ul>
-            <li><a href="#status-scripts-context-variables">Status Scripts Context Variables</a></li>
             <li><a href="#status-scripts-functions">Status Scripts Functions</a></li>
           </ul>
         </li>
         <li><a href="#item-scripts">Item Scripts</a>
           <ul>
             <li><a href="#item-scripts-context-variables">Item Scripts Context Variables</a></li>
-            <li><a href="#item-functions">Item Functions</a></li>
           </ul>
         </li>
-        <li><a href="#attack-scripts">Attack Scripts</a>
-          <ul>
-            <li><a href="#attack-scripts-context-variables">Attack Scripts Context Variables</a></li>
-            <li><a href="#attack-functions">Attack Functions</a></li>
-          </ul>
-        </li>
+        <li><a href="#attack-scripts">Attack Scripts</a></li>
       </ul>
     </li>
   </ul>
@@ -195,21 +188,6 @@ https://github.com/alex-shpak/hugo-book
 </code></pre></div><p>The main entry point into the Bestia API is the <code>Bestia</code> object.</p>
 <h2 id="status-scripts--equip-scripts">Status Scripts / Equip Scripts</h2>
 <p>These scripts are called when a status effect is applied or removed (or if an equipment with a status effect is applied or removed)</p>
-<h3 id="status-scripts-context-variables">Status Scripts Context Variables</h3>
-<table>
-<thead>
-<tr>
-<th>Context Variable</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>x</td>
-<td>x.</td>
-</tr>
-</tbody>
-</table>
 <h3 id="status-scripts-functions">Status Scripts Functions</h3>
 <table>
 <thead>
@@ -220,19 +198,31 @@ https://github.com/alex-shpak/hugo-book
 </thead>
 <tbody>
 <tr>
-<td>x</td>
-<td>x.</td>
+<td>onApply()</td>
+<td>Called when the effect is applied to an entity.</td>
+</tr>
+<tr>
+<td>onRemove()</td>
+<td>Called when the effect is removed from the entity.</td>
+</tr>
+<tr>
+<td>onStatusApplied()</td>
+<td>Called when another status effect is applied to the entity.</td>
+</tr>
+<tr>
+<td>onStatusRemoved()</td>
+<td>Called when another status effect is removed from the entity.</td>
+</tr>
+<tr>
+<td>onTakeDamage()</td>
+<td>Called when the entity which the script is attached to takes damage.</td>
+</tr>
+<tr>
+<td>onAttack()</td>
+<td>Called when the entity attacks another entity.</td>
 </tr>
 </tbody>
 </table>
-<ul>
-<li>onApply() - Called when the effect is applied to an entity</li>
-<li>onRemove() - Called when the effect is removed from the entity</li>
-<li>onStatusApplied() - Called when another status effect is applied to the entity</li>
-<li>onStatusRemoved() - Called when another status effect is removed from the entity</li>
-<li>onTakeDamage(Damage dmg, Attackable self, Attackable enemy)</li>
-<li>onAttack(Attack atk, Attackable self, Attackable enemy)</li>
-</ul>
 <h2 id="item-scripts">Item Scripts</h2>
 <p>These are attached to items and are somehow similar to status effect scripts yet they share callbacks from items since equipments can lay down on the ground
 and there is a chance they get attacked.</p>
@@ -246,42 +236,33 @@ and there is a chance they get attacked.</p>
 </thead>
 <tbody>
 <tr>
-<td>x</td>
-<td>x.</td>
+<td>bool onEquip()</td>
+<td>Called when the item is equipped. When <code>false</code> returned the equipment is aborted. (Only for equipments)</td>
+</tr>
+<tr>
+<td>bool onUnequip()</td>
+<td>Called when the item is unequipped. When <code>false</code> returned the unequipment is aborted. (Only for equipments)</td>
+</tr>
+<tr>
+<td>onDrop()</td>
+<td></td>
+</tr>
+<tr>
+<td>onPickup()</td>
+<td></td>
+</tr>
+<tr>
+<td>onTakeDamage()</td>
+<td></td>
+</tr>
+<tr>
+<td>onUse()</td>
+<td></td>
 </tr>
 </tbody>
 </table>
-<h3 id="item-functions">Item Functions</h3>
-<ul>
-<li>bool onEquip() - Called when the item is equipped. When <code>false</code> returned the equipment is aborted. (Only for equipments)</li>
-<li>bool onUnequip() - Called when the item is unequipped. When <code>false</code> returned the unequipment is aborted. (Only for equipments)</li>
-<li>onDrop()</li>
-<li>onPickup()</li>
-<li>onTakeDamage()</li>
-<li>onUse (if its a structure or consumable)</li>
-</ul>
-<p>Special variables
-source (long, entity id): The owner who triggered the script
-target (long, entity id): Might be null. Is set if the item was intended to be used on a certain entity.
-targetPosition (Point): Might be null. Is set if the item was intended to be used on a certain place.</p>
 <h2 id="attack-scripts">Attack Scripts</h2>
 <p>The attack scripts are a bit more complex. They are also simply called upon usage of an attack. Depending on the definition of the attack this might be the only place to perform certain damage calculation for example.</p>
-<h3 id="attack-scripts-context-variables">Attack Scripts Context Variables</h3>
-<table>
-<thead>
-<tr>
-<th>Context Variable</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>x</td>
-<td>x.</td>
-</tr>
-</tbody>
-</table>
-<h3 id="attack-functions">Attack Functions</h3>
 </article>
  
       
@@ -292,9 +273,9 @@ targetPosition (Point): Might be null. Is set if the item was intended to be use
 
 
 
-  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/3d547edac6954c5e3a960d4432ea2a62cf34d97a" title='Last modified by Thomas Felix | June 3, 2020' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/c778730ba205b6751fa640e20ec30d69374e875c" title='Last modified by Thomas Felix | June 11, 2020' target="_blank" rel="noopener">
       <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>June 3, 2020</span>
+      <span>June 11, 2020</span>
     </a>
   </div>
 
@@ -333,22 +314,15 @@ targetPosition (Point): Might be null. Is set if the item was intended to be use
       <ul>
         <li><a href="#status-scripts--equip-scripts">Status Scripts / Equip Scripts</a>
           <ul>
-            <li><a href="#status-scripts-context-variables">Status Scripts Context Variables</a></li>
             <li><a href="#status-scripts-functions">Status Scripts Functions</a></li>
           </ul>
         </li>
         <li><a href="#item-scripts">Item Scripts</a>
           <ul>
             <li><a href="#item-scripts-context-variables">Item Scripts Context Variables</a></li>
-            <li><a href="#item-functions">Item Functions</a></li>
           </ul>
         </li>
-        <li><a href="#attack-scripts">Attack Scripts</a>
-          <ul>
-            <li><a href="#attack-scripts-context-variables">Attack Scripts Context Variables</a></li>
-            <li><a href="#attack-functions">Attack Functions</a></li>
-          </ul>
-        </li>
+        <li><a href="#attack-scripts">Attack Scripts</a></li>
       </ul>
     </li>
   </ul>
