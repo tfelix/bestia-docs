@@ -12,7 +12,7 @@ Currently no final UI Design was found. Feel free to contribute!
 
 ## Logos
 
-Currently no final Bestia Logo was found. Feel free to contribute!
+The Bestia logo is done by the font [Long Shot](https://www.dafont.com/de/font-comment.php?file=long_shot&text=Bestia&back=theme)
 
 ## Fonts
 
