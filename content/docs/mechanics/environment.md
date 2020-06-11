@@ -91,10 +91,11 @@ This caluclation results in the following example timespans:
 
 ## The Threat
 
-After a random period of time (at least 6 months in [real time](/docs/mechanics/time)), a threats starts to appear in every world incarnation. These can be threats from particularly strong Bestia, which cause great destruction, but also magical elements or natural disasters such as meteorites. Under certain conditions, this event can also contribute to the destruction of the world. If the total destruction is caused by the event itself then none of the cults will benefit from it. So it is in the interest of the cult players to avert this threat together.
+After a random period of time (at least 6 months in [real time](#ingame-time)), a threats starts to appear in every world incarnation. These can be threats from particularly strong Bestia, which cause great destruction, but also magical elements or natural disasters such as meteorites. Under certain conditions, this event can also contribute to the destruction of the world. If the total destruction is caused by the event itself then none of the cults will benefit from it. So it is in the interest of the cult players to avert this threat together.
 
 {{< tabs "Thread Appearence Delay" >}}
 {{< tab "Population < 1k" >}}
+
 ```kotlin
 delay = 9 + rand() * 1.5;
 ```
@@ -112,6 +113,7 @@ delay = 9 + rand() * 2.5;
 ```kotlin
 delay = 9 + rand() * 4;
 ```
+
 {{< /tab >}}
 {{< /tabs >}}
 

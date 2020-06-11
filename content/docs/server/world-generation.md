@@ -219,7 +219,7 @@ Usually these kind of features are depending on the kind of biome. For example a
 
 > Currently the resource distribution is not implemented.
 
-##  Settlement Creation
+## Settlement Creation
 
 Cities usually form around natural resources like shores, rivers or rich farmland. The algorithm as described below will find suitable city position candidates and then distribute the cities in clusters around the world map. This clustering will make sure there is enough unexplored land for the players left to explore (and to create own settlements). It should also help with the idea of different civilization which could lead to ingame player conflicts.
 

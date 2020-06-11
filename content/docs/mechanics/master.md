@@ -40,11 +40,11 @@ understandable and influenceable by the player.
 
 ### Skill Progression
 
-Starting from level 10, on each level up the master gains 1 skillpoint to put into the skills rank. This is permanent and means a player can spend about 100 points for improving the ranks of his skills.
+Starting from level 10, on each level up the master gains 1 skillpoint to put into the skills rank. This is permanent and means a player can spend about 90 points for improving the ranks of his skills.
 
 > Since max level is not capped actually he might be able to spend more points but a progressions gets continously harder it is safe to assume every player has about 100 points.
 
-The skilltrees are designed as such that to reach the highest professions in a tree the player needs to spend **70 points**.
+The skilltrees are designed as such that to reach the highest professions in a tree the player needs to spend **60 points**.
 
 The player can decide to have mediocre profession in each tree or to max out one and have maybe half of the
 meaningful professions of another tree. The skilltree is a hierarchical dependency of skills.
@@ -56,22 +56,23 @@ In this tree, simple, common mundane tasks are placed which can be benefitial fo
 {{< mermaid >}}
 graph TD
   FIRST_AID("First Aid [1]")
+  COOKING("Cooking [3]")
   FISHING("Fishing [5]")
-  SCAVENGER("Scavenger [10]")
+  SCAVENGER("Scavenger [5]")
 
-  SCAVENGER-->|min. 5|IMPROVED_TRADING("Improved Trading [5]")
-  FISHING-->|min. 1|COOKING("Cooking [5]")
+  FISHING-->|Lv. 2|FARMING("Farming [5]")
+  SCAVENGER-->|Lv. 3|MINING("Mining [5]")
+  SCAVENGER-->|Lv. 3|LUMBERJACK("Luberjack [5]")
+  FIRST_AID-->|Lv. 1|MEDICAL_EXPERT("Medical Expert [5]")
 
-  IMPROVED_TRADING-->|min. 3|CRAFTMANSHIP("Craftmanship [10]")
-  IMPROVED_TRADING-->|min. 3|LUMBERJACK("Lumberjack [10]")
-  IMPROVED_TRADING-->|min. 3|MINER("Miner [10]")
+  SCAVENGER-->|Lv. 5|CRAFTSMANSHIP("Craftmanship [5]")
+  CRAFTSMANSHIP-->|Lv. 3|PACKHORSE("Packhorse [5]")
 
-  MINER-->|min. 5|BLACKSMITH("Blacksmith [10]")
-  CRAFTMANSHIP-->|min. 5|BLACKSMITH
-  CRAFTMANSHIP-->|min. 7|TAILOR("Tailor [10]")
+  CRAFTSMANSHIP-->|Lv. 3|ALCHEMY("Alchemy [5]")
+  ALCHEMY-->|Lv. 3|TRANSMUTATION("Transmutation [5]")
 {{< /mermaid >}}
 
-{{< skill name="First Aid" maxLevel="5" >}}
+{{< skill name="First Aid" maxLevel="1" >}}
 {{< columns >}}
 Player can apply bandages to Bestia and channel a healing effect of ob to 30% of their total health. The channel time is 15 seconds and the cooldown is 5 minutes. A Bestia can only receive a First Aid every 30 secs.
 {{< /columns >}}
@@ -85,59 +86,57 @@ With this skill you are able to catch fish. Fish can be cooked are used for food
 {{< /columns >}}
 {{< /skill >}}
 
-**Scavenger (10)**
+{{< skill name="Scavenger" maxLevel="10" >}}
 {{< columns >}}
 When breaking up and recycling items the probability to recycle a higher amount of components is increased.
 <--->
 > `-5%/lv` price reduction at NPCs<br>
 > `+3%/lv` higher price when selling at NPC
 {{< /columns >}}
+{{< /skill >}}
 
-**Improved Trading (5)**
-{{< columns >}}
-NPC can be talked into to pay more or give the player cheaper prices for items.
-<--->
-> -5%/lv item price reduction at NPCs
-> +3%/lv higher price when selling items at NPC
-{{< /columns >}}
-
-**Cooking (5)**
+{{< skill name="Cooking" maxLevel="3" >}}
 {{< columns >}}
 The user can start to cook meals on fire places. This meals apply certain buff effects when they are eaten.
 <--->
 > Level increas makes it easier to cook higher level food.
 {{< /columns >}}
+{{< /skill >}}
 
-**Craftmanship (10)**
+{{< skill name="Craftmanship" maxLevel="5" >}}
 {{< columns >}}
 The player is able to construct faster and perform tasks better like excavations.
 <--->
-> -3%/lv structure build time
+> -6%/lv structure build time
 {{< /columns >}}
+{{< /skill >}}
 
-**Lumberjack (10)**
+{{< skill name="Lumberjack" maxLevel="5" >}}
 {{< columns >}}
 The player is able to gather wood resources faster.
 <--->
 > -3%/lv wood gathering time
 > +2%/lvl resource drop chance
 {{< /columns >}}
+{{< /skill >}}
 
-**Miner (10)**
+{{< skill name="Mining" maxLevel="5" >}}
 {{< columns >}}
 Specialized in digging mine shafts and gather mineral resources.
 <--->
 > -3%/lv mining time
 > +2%/lv resource drop chance
 {{< /columns >}}
+{{< /skill >}}
 
-**Blacksmith (10)**
+{{< skill name="Blacksmith" maxLevel="5" >}}
 {{< columns >}}
 Able to forge weaponry. Can also [refine weapons](/mechanics/items/#weapon-refinement). Increasing the spell does increase the chance to forge higher level weapons.
 <--->
-> Increases the probability by 2% to succeed when upgrading a weapon.
+> Increases the probability by 4% to succeed when upgrading a weapon.
 > Increase chance of forging highlevel weapons
 {{< /columns >}}
+{{< /skill >}}
 
 {{< skill name="Packhorse" maxLevel="5" >}}
 {{< columns >}}

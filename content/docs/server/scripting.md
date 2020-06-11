@@ -20,25 +20,16 @@ The main entry point into the Bestia API is the `Bestia` object.
 
 These scripts are called when a status effect is applied or removed (or if an equipment with a status effect is applied or removed)
 
-### Status Scripts Context Variables
-
-| Context Variable | Description |
-| ---------------- | ----------- |
-| x                | x.          |
-
 ### Status Scripts Functions
 
-| Function | Description |
-| -------- | ----------- |
-| x        | x.          |
-
-* onApply() - Called when the effect is applied to an entity
-* onRemove() - Called when the effect is removed from the entity
-* onStatusApplied() - Called when another status effect is applied to the entity
-* onStatusRemoved() - Called when another status effect is removed from the entity
-* onTakeDamage(Damage dmg, Attackable self, Attackable enemy)
-* onAttack(Attack atk, Attackable self, Attackable enemy)
-
+| Function          | Description                                                          |
+| ----------------- | -------------------------------------------------------------------- |
+| onApply()         | Called when the effect is applied to an entity.                      |
+| onRemove()        | Called when the effect is removed from the entity.                   |
+| onStatusApplied() | Called when another status effect is applied to the entity.          |
+| onStatusRemoved() | Called when another status effect is removed from the entity.        |
+| onTakeDamage()    | Called when the entity which the script is attached to takes damage. |
+| onAttack()        | Called when the entity attacks another entity.                       |
 
 ## Item Scripts
 
@@ -47,32 +38,15 @@ and there is a chance they get attacked.
 
 ### Item Scripts Context Variables
 
-| Context Variable | Description |
-| ---------------- | ----------- |
-| x                | x.          |
-
-### Item Functions
-
-* bool onEquip() - Called when the item is equipped. When `false` returned the equipment is aborted. (Only for equipments)
-* bool onUnequip() - Called when the item is unequipped. When `false` returned the unequipment is aborted. (Only for equipments)
-* onDrop()
-* onPickup()
-* onTakeDamage()
-* onUse (if its a structure or consumable)
-
-Special variables
-source (long, entity id): The owner who triggered the script
-target (long, entity id): Might be null. Is set if the item was intended to be used on a certain entity.
-targetPosition (Point): Might be null. Is set if the item was intended to be used on a certain place.
+| Context Variable | Description                                                                                                 |
+| ---------------- | ----------------------------------------------------------------------------------------------------------- |
+| bool onEquip()   | Called when the item is equipped. When `false` returned the equipment is aborted. (Only for equipments)     |
+| bool onUnequip() | Called when the item is unequipped. When `false` returned the unequipment is aborted. (Only for equipments) |
+| onDrop()         |                                                                                                             |
+| onPickup()       |                                                                                                             |
+| onTakeDamage()   |                                                                                                             |
+| onUse()          |                                                                                                             |
 
 ## Attack Scripts
 
 The attack scripts are a bit more complex. They are also simply called upon usage of an attack. Depending on the definition of the attack this might be the only place to perform certain damage calculation for example.
-
-### Attack Scripts Context Variables
-
-| Context Variable | Description |
-| ---------------- | ----------- |
-| x                | x.          |
-
-### Attack Functions

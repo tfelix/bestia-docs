@@ -17,21 +17,6 @@ either be created programmatically but they might also get statically described 
 be loaded by the software to create static entities (the created entities can of course later then be adjusted via
 scripts at runtime).
 
-### Blueprint JSON Datenformat
-
-Blueprints are basically entity compositions described via JSON. Jackson is used to parse these files and feed them
-into a special `BlueprintEntityFactory`. The components are initialized with the values given in the blueprint.
-
-#### Example Dataformat
-
-```js
-{
-  position: {x: 0, y: 0},
-  visible: {sprite: 'name', type: 'type'},
-  script: {name: 'bla', type: 'item'}
-}
-```
-
 # Entity Resource Cleanup
 
 The inner world representation relies on entities with associated component data. The problem is in order to manage this
@@ -87,3 +72,9 @@ which is more then enough.
 ### Binary Protocol
 
 Bestia uses [ProtoBuf](https://developers.google.com/protocol-buffers) descrition file in order to communicate with its connected clients. The description files can be found in the [bestia-protobuf](https://github.com/tfelix/bestia-behemoth/tree/master/bestia-proto-messages) module in the main repository.
+
+## Literature
+
+[Save States of Actors](https://medium.com/@takezoe/save-state-of-actor-using-akka-persistence-a9111ff2c42b)
+[Testing persisting actors](http://tudorzgureanu.com/akka-persistence-testing-persistent-actors/)
+[Load Balancing Akka Clusters](http://blog.kamkor.me/Akka-Cluster-Load-Balancing/)
