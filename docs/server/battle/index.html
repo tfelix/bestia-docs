@@ -11,12 +11,12 @@ Attacks can also be defined by a script alone and thus sidestepping the damage c
 Attacks can also be defined by a script alone and thus sidestepping the damage calculation completly to do script controlled effects (e." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.bestia-game.net/docs/server/battle/" />
-<meta property="article:modified_time" content="2020-06-12T00:04:31+02:00" />
+<meta property="article:modified_time" content="2020-06-12T02:21:44+02:00" />
 <title>Battle | Bestia Game</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.8faf8c6f51f7bb1ff07807bc087f607f8071c4b0ce8b6737ad62995aa1337d4f.css" integrity="sha256-j6&#43;Mb1H3ux/weAe8CH9gf4BxxLDOi2c3rWKZWqEzfU8=">
-<script defer src="/en.search.min.f3e6a93c4c16f3169953c38258aeee57599800758ff39d96e6f57741c0ae2f13.js" integrity="sha256-8&#43;apPEwW8xaZU8OCWK7uV1mYAHWP852W5vV3QcCuLxM="></script>
+<script defer src="/en.search.min.087364c2274704a3cca4056afe1bf9836eaccf47580b782be7f3573a926c8b66.js" integrity="sha256-CHNkwidHBKPMpAVq/hv5g26sz0dYC3gr5/NXOpJsi2Y="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
@@ -193,24 +193,33 @@ https://github.com/alex-shpak/hugo-book
 <h2 id="damage-calculation">Damage Calculation</h2>
 <p>The stages of a battle are visualized in the following flow diagram, first a check is done to see if the attack actually was a hit.</p>
 <h3 id="attack-pre-check">Attack Pre-Check</h3>
-<ul>
-<li>Attacker ownes the attack? no -&gt; abort</li>
-<li>needs mana?
-<ul>
-<li>is mana present? no: abort attack. yes: subtract mana.</li>
-</ul>
-</li>
-<li>needs los?
-<ul>
-<li>is los present? no: abort attack</li>
-</ul>
-</li>
-<li>Needs items/ammo?
-<ul>
-<li>Is item/ammo present? no: abort attack. yes: substract item.</li>
-</ul>
-</li>
-</ul>
+
+
+<script src="/mermaid.min.js"></script>
+<script>
+mermaid.initialize({
+  flowchart: { useMaxWidth:true }
+});
+</script>
+
+
+
+<p class="mermaid">
+graph TD
+  step1{Attacker has Attack?}
+  step1 -->|No| abort((Abort))
+  step1 -->|Yes| step2[Calculate mana cost]
+  step2 --> step3{Has enough mana?}
+  step3 -->|No| abort
+  step3 --> |Yes| step4{Does attack need Line Of Sight (LOS)?}
+  step4 --> |No| step6{Is ammo needed and present?}
+  step4 --> |Yes| step5[Calculate LOS and check if blocked]
+  step5 --> |Blocked| abort
+  step5 --> |Not blocked| step6
+  step6 --> |No| abort
+  step6 --> |Yes| end((Perform attack))
+</p>
+
 <h3 id="damage-calculation-1">Damage Calculation</h3>
 <p>calculate crit hit:</p>
 <ul>
@@ -410,9 +419,9 @@ if the attack does miss display a MISS to the clients.</p>
 
 
 
-  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/97f598897d9a4f920c6c7aa108dd80f8819a0ccc" title='Last modified by Thomas Felix | June 11, 2020' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/2b20551e5330b6d19a960988c8cb253494011fd6" title='Last modified by Thomas Felix | June 12, 2020' target="_blank" rel="noopener">
       <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>June 11, 2020</span>
+      <span>June 12, 2020</span>
     </a>
   </div>
 
