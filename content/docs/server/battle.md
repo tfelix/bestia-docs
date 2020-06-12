@@ -10,13 +10,21 @@ The stages of a battle are visualized in the following flow diagram, first a che
 
 ### Attack Pre-Check
 
-* Attacker ownes the attack? no -> abort
-* needs mana?
-    * is mana present? no: abort attack. yes: subtract mana.
-* needs los?
-    * is los present? no: abort attack
-* Needs items/ammo?
-    * Is item/ammo present? no: abort attack. yes: substract item.
+{{< mermaid >}}
+graph TD
+  step1{Attacker has Attack?}
+  step1 -->|No| abort((Abort))
+  step1 -->|Yes| step2[Calculate mana cost]
+  step2 --> step3{Has enough mana?}
+  step3 -->|No| abort
+  step3 --> |Yes| step4{Does attack need Line Of Sight (LOS)?}
+  step4 --> |No| step6{Is ammo needed and present?}
+  step4 --> |Yes| step5[Calculate LOS and check if blocked]
+  step5 --> |Blocked| abort
+  step5 --> |Not blocked| step6
+  step6 --> |No| abort
+  step6 --> |Yes| end((Perform attack))
+{{< /mermaid >}}
 
 ### Damage Calculation
 
