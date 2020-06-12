@@ -1,3 +1,8 @@
+<p align="center">
+  <img width="50%" src="img/logo.png">
+</p>
+
+
 # Bestia Development Docs
 
 [![Build Status](https://travis-ci.org/tfelix/bestia-docs.svg?branch=master)](https://travis-ci.org/tfelix/bestia-docs)
@@ -11,11 +16,12 @@ to bring all the needed information together to allow others to read, understand
 
 The documentation covers aspects of game design, client as well as the server architecture.
 
-> This is a work in progress not all server and client docs are currently available
+The documentation web page can be found on [https://docs.bestia-game.net](https://docs.bestia-game.net)
 
-The documentation page can be found on [https://docs.bestia-game.net](https://docs.bestia-game.net)
+The other project repositories are found under:
 
-The Bestia Client itself can be found under [http://tfelix.github.io/bestia-client](https://tfelix.github.io/bestia-client/).
+* [Behemoth Game Server](https://github.com/tfelix/bestia-behemoth)
+* [Game Client](https://github.com/tfelix/bestia-client)
 
 ## Build
 
