@@ -9,14 +9,5 @@
 	<atom:link href="https://docs.bestia-game.net/docs/client/index.xml" rel="self" type="application/rss+xml" />
     
     
-    <item>
-      <title></title>
-      <link>https://docs.bestia-game.net/docs/client/architecture/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://docs.bestia-game.net/docs/client/architecture/</guid>
-      <description>Client Architecture In general we rely on the features of the Godot engine and its network stack. Incoming server messages are transferred to the bestia module which transforms them into usable messages which are then either emitted into the GD scripting part of the engine or internally routed to the entity manager which keeps track of entities and their components. How certain effects are setup is not subject for this documentation.</description>
-    </item>
-    
   </channel>
 </rss>

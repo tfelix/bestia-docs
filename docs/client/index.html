@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Bestia Client Star Watch
-The Bestia Client is build with the Godot Open Source engine. Its job is the visualization of the game world. It synchronizes with the game server and will display entities so the player is able to interact with them.
-The server is build similar to a Entity Component System. The client utilizes this architecture as well and make sure it can easily work with these components. It receives updates for the entities and reads the assigned components in order to display items, structures and entities.">
+The Bestia Client is build with the awesome Godot Open Source engine. Its job is the visualization of the game world. It synchronizes with the game server and will display entities so the player is able to interact with them.
+It also transmits the voxel model of the world and visualizes the game map with the help of the Godot Voxel plugin as well as a custom module for the entity management.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -16,7 +16,7 @@ The server is build similar to a Entity Component System. The client utilizes th
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.0744ca6dafd28e36cc163884234e8a9a28f0d748103d383c48b082d4e90005b6.css" integrity="sha256-B0TKba/SjjbMFjiEI06Kmijw10gQPTg8SLCC1OkABbY=">
-<script defer src="/en.search.min.0272b09439e5d5c64a6506de0d9df0de68a801c669200f3d09f776209bc16ec4.js" integrity="sha256-AnKwlDnl1cZKZQbeDZ3w3mioAcZpIA89Cfd2IJvBbsQ="></script>
+<script defer src="/en.search.min.3d02de2604c9c9f26d230f486e5ca2755b23433816eebbf93aa8ff1306880c77.js" integrity="sha256-PQLeJgTJyfJtIw9IblyidVsjQzgW7rv5Oqj/EwaIDHc="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <link rel="alternate" type="application/rss+xml" href="https://docs.bestia-game.net/docs/client/index.xml" title="Bestia Game" />
@@ -77,12 +77,7 @@ https://github.com/alex-shpak/hugo-book
 </ul>
 </li>
 <li>
-  <a href="/docs/client/"class=active><strong>Client</strong></a>
-<ul>
-<li>
-  <a href="/docs/client/architecture/">Architecture</a></li>
-</ul>
-</li>
+  <a href="/docs/client/"class=active><strong>Client</strong></a></li>
 <li>
   <a href="/docs/server/"><strong>Server</strong></a>
 <ul>
@@ -148,7 +143,12 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#bestia-client">Bestia Client</a></li>
+    <li><a href="#bestia-client">Bestia Client</a>
+      <ul>
+        <li><a href="#getting-started">Getting Started</a></li>
+        <li><a href="#architecture">Architecture</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -165,12 +165,48 @@ https://github.com/alex-shpak/hugo-book
 data-show-count="true" aria-label="Star tfelix/bestia-client on GitHub">Star</a>
 <a class="github-button" href="https://github.com/tfelix/bestia-client/subscription" data-icon="octicon-eye"
 data-size="large" data-show-count="true" aria-label="Watch tfelix/bestia-client on GitHub">Watch</a></p>
-<p>The Bestia Client is build with the 
+<p>The Bestia Client is build with the awesome 
   <a href="https://godotengine.org">Godot Open Source</a> engine. Its job is the visualization of the game world. It synchronizes with the game server and will display entities so the player is able to interact with them.</p>
-<p>The server is build similar to a 
-  <a href="https://en.wikipedia.org/wiki/Entity_component_system">Entity Component System</a>. The client utilizes this architecture as well and make sure it can easily work with these components. It receives updates for the entities and reads the assigned components in order to display items, structures and entities.</p>
 <p>It also transmits the voxel model of the world and visualizes the game map with the help of the 
-  <a href="https://github.com/Zylann/godot_voxel">Godot Voxel plugin</a> as well as a custom module for the entity management. The custom module is placed in the client repository. See its <code>README.md</code> for information on how to build the custom Godot binary.</p>
+  <a href="https://github.com/Zylann/godot_voxel">Godot Voxel plugin</a> as well as a custom module for the entity management.</p>
+<h2 id="getting-started">Getting Started</h2>
+<p>As mentioned you will most likely need to build your own custom build of the Godot engine to include the 
+  <a href="https://github.com/Zylann/godot_voxel">Godot Voxel plugin</a> as well as the custom module <code>bestia-entity</code> for entity managment.</p>
+<blockquote>
+<p>Warning: Its currently unclear how to structure the repositories. It might be that a mono-repo makes sense.</p>
+</blockquote>
+<ol>
+<li>Checkout the official Godot sources:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://github.com/godotengine/godot.git
+</code></pre></div></li>
+<li>Checkout the Voxel plugin:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd godot/modules
+git submodule add https://github.com/Zylann/godot_voxel.git voxel
+</code></pre></div></li>
+<li><strong>TBD</strong></li>
+</ol>
+<p>Then build the engine for your target platform. In order to do so, consult the 
+  <a href="https://docs.godotengine.org/en/stable/development/compiling/index.html">official build documentation</a>.</p>
+<h2 id="architecture">Architecture</h2>
+<p>The server is build with a 
+  <a href="https://en.wikipedia.org/wiki/Entity_component_system">Entity Component System</a> in mind. The logic of the server makes sure all the component updates of entities relevant for the client are send over the network.</p>
+<p>There are some notable classes in the  <code>bestia-entity</code> module:</p>
+<ul>
+<li>EntityManager
+<ul>
+<li>Reserves local IDs, if entities are created via the editor</li>
+<li>Keeps track of entities and their components</li>
+<li>Updates components and signal changes to the engine</li>
+<li>If an entity is deleted it gets informed and removes it from the tree</li>
+</ul>
+</li>
+<li>ComponentSetter
+<ul>
+<li>Enables component value access via the editor</li>
+<li>On start it creates a protobuf message from exports and notifies the EntityManager</li>
+</ul>
+</li>
+</ul>
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 </article>
  
@@ -182,9 +218,9 @@ data-size="large" data-show-count="true" aria-label="Watch tfelix/bestia-client 
 
 
 
-  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/dcd095af6ad94bfacb02558213b9d4e36cd8716f" title='Last modified by Thomas Felix | May 25, 2020' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/d4eaa73794b03d77e28e69cbdb6eac1771b6a6ce" title='Last modified by Thomas Felix | October 20, 2020' target="_blank" rel="noopener">
       <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>May 25, 2020</span>
+      <span>October 20, 2020</span>
     </a>
   </div>
 
@@ -219,7 +255,12 @@ data-size="large" data-show-count="true" aria-label="Watch tfelix/bestia-client 
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#bestia-client">Bestia Client</a></li>
+    <li><a href="#bestia-client">Bestia Client</a>
+      <ul>
+        <li><a href="#getting-started">Getting Started</a></li>
+        <li><a href="#architecture">Architecture</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
