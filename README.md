@@ -29,6 +29,8 @@ The documentation uses the static site generator [Hugo](https://gohugo.io/) to g
 the documentation [install Hugo](https://gohugo.io/getting-started/installing/) and then go to repo and call:
 
 ```bash
+# Intialize the theme git submodule
+git clone --recurse-submodules https://github.com/tfelix/bestia-docs
 hugo server --theme book
 ```
 

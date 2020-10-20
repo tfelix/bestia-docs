@@ -11,7 +11,6 @@ headless = true
   - [Skills]({{< relref "/docs/mechanics/skills" >}})
   - [Status Values]({{< relref "/docs/mechanics/statusvalues" >}})
 - [**Client**]({{< relref "/docs/client" >}})
-  - [Architecture]({{< relref "/docs/client/architecture" >}})
 - [**Server**]({{< relref "/docs/server" >}})
   - [Architecture]({{< relref "/docs/server/architecture" >}})
   - [Artificial Intelligence]({{< relref "/docs/server/ai" >}})

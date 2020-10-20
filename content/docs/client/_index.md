@@ -8,10 +8,42 @@ data-show-count="true" aria-label="Star tfelix/bestia-client on GitHub">Star</a>
 <a class="github-button" href="https://github.com/tfelix/bestia-client/subscription" data-icon="octicon-eye"
 data-size="large" data-show-count="true" aria-label="Watch tfelix/bestia-client on GitHub">Watch</a>
 
-The Bestia Client is build with the [Godot Open Source](https://godotengine.org) engine. Its job is the visualization of the game world. It synchronizes with the game server and will display entities so the player is able to interact with them.
+The Bestia Client is build with the awesome [Godot Open Source](https://godotengine.org) engine. Its job is the visualization of the game world. It synchronizes with the game server and will display entities so the player is able to interact with them.
 
-The server is build similar to a [Entity Component System](https://en.wikipedia.org/wiki/Entity_component_system). The client utilizes this architecture as well and make sure it can easily work with these components. It receives updates for the entities and reads the assigned components in order to display items, structures and entities.
+It also transmits the voxel model of the world and visualizes the game map with the help of the [Godot Voxel plugin](https://github.com/Zylann/godot_voxel) as well as a custom module for the entity management.
 
-It also transmits the voxel model of the world and visualizes the game map with the help of the [Godot Voxel plugin](https://github.com/Zylann/godot_voxel) as well as a custom module for the entity management. The custom module is placed in the client repository. See its `README.md` for information on how to build the custom Godot binary.
+## Getting Started
+
+As mentioned you will most likely need to build your own custom build of the Godot engine to include the [Godot Voxel plugin](https://github.com/Zylann/godot_voxel) as well as the custom module `bestia-entity` for entity managment.
+
+> Warning: Its currently unclear how to structure the repositories. It might be that a mono-repo makes sense.
+
+1. Checkout the official Godot sources:
+    ```bash
+    git clone https://github.com/godotengine/godot.git
+    ```
+2. Checkout the Voxel plugin:
+    ```bash
+    cd godot/modules
+    git submodule add https://github.com/Zylann/godot_voxel.git voxel
+    ```
+3. **TBD**
+
+Then build the engine for your target platform. In order to do so, consult the [official build documentation](https://docs.godotengine.org/en/stable/development/compiling/index.html).
+
+## Architecture
+
+The server is build with a [Entity Component System](https://en.wikipedia.org/wiki/Entity_component_system) in mind. The logic of the server makes sure all the component updates of entities relevant for the client are send over the network.
+
+There are some notable classes in the  `bestia-entity` module:
+
+- EntityManager
+  - Reserves local IDs, if entities are created via the editor
+  - Keeps track of entities and their components
+  - Updates components and signal changes to the engine
+  - If an entity is deleted it gets informed and removes it from the tree
+- ComponentSetter
+  - Enables component value access via the editor
+  - On start it creates a protobuf message from exports and notifies the EntityManager
 
 <script async defer src="https://buttons.github.io/buttons.js"></script>

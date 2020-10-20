@@ -8,16 +8,24 @@ data-show-count="true" aria-label="Star tfelix/bestia-docs on GitHub">Star</a>
 <a class="github-button" href="https://github.com/tfelix/bestia-docs/subscription" data-icon="octicon-eye"
 data-size="large" data-show-count="true" aria-label="Watch tfelix/bestia-docs on GitHub">Watch</a>
 
-**Congratulations!** You just have found the Developer Documentation of the Bestia-Game. Here you find everything from
+**Congratulations!** You just have found the Developer Documentation of Bestia. Here you find everything from
 gamedesign guidlines to engine architecture overview as well as the API documentation to access game resources.
 
 > **The game currently transforms into a stand-alone client which is currently not available for testing.**
 
+## Getting Started
+
+The documentation is split into three main sections:
+
+1. General Game Design
+2. Client Documentation
+3. Server Documentation
+
+The infos found in this document should help you to get kickstarted and join the development. Depending on where you want to contribute you should read the required sections. With the provided guidelines enthusiasts should very easily be able to create contributions from artworks to scripts.
+
 ## Contributing
 
 Contributions to both the game design and the game itself (the client and the server) are very welcome!
-
-The infos found in this document should help you to get kickstarted and join the development. As Bestia is a community driven, open game each contribution is welcome. With the provided guidelines enthusiasts should very easily be able to create contributions from artworks to scripts.
 
 You may find a little `Edit this page` link at the bottom of each page. If you want to change some game design aspects feel free to give it a try!
 
@@ -27,7 +35,7 @@ Read the Bestia **[General Mechanics](/docs/mechanics)** section first to get a 
 
 ## Project Repositories
 
-Otherwise feel free to check out the three project repositories on Github (and maybe give them a star or follow them)
+You find the three project repositories on GitHub (consider to givem them a star!)
 
 * [Bestia Developer Documentation](https://github.com/tfelix/bestia-docs) <i class="fab fa-github"></i>
 * [Bestia Game Client](https://github.com/tfelix/bestia-client) <i class="fab fa-github"></i>
