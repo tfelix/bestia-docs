@@ -28,9 +28,10 @@ The infos found in this document should help you to get kickstarted and join the
 To build the whole software you need to understand the relationship between the repositories. The relation is somewhat complicated as there are some inter-repositories dependencies. The `bestia-behemoth` repository contains the server but also the ProtoBuf message defintion. This definition is required to build the `bestia-entity-plugin` for Godot. The result, this engine, is required to build the `bestia-client` game. The server can be build only with the `bestia-behemoth` repository. The relation is depicted in the following diagram.
 
 {{< mermaid >}}
-graph TD
+graph LR
   zone[bestia-behemoth] -- ProtoBuf messages --> plugin[bestia-entity-plugin]
-  plugin -- builds --> godot[Godot Engine]
+  voxel[Voxel Plugin] -- required --> godot[Godot Engine]
+  plugin -- required --> godot
   godot -- required --> client[bestia-client]
 {{< /mermaid >}}
 
