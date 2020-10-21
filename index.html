@@ -206,9 +206,10 @@ gamedesign guidlines to engine architecture overview as well as the API document
 
 
 <p class="mermaid">
-graph TD
+graph LR
   zone[bestia-behemoth] -- ProtoBuf messages --> plugin[bestia-entity-plugin]
-  plugin -- builds --> godot[Godot Engine]
+  voxel[Voxel Plugin] -- required --> godot[Godot Engine]
+  plugin -- required --> godot
   godot -- required --> client[bestia-client]
 </p>
 
@@ -243,7 +244,7 @@ on Github.</p>
 
 
 
-  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/e263cc1833354c1a7b4aee1eee3165f3f38710a8" title='Last modified by Thomas Felix | October 21, 2020' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/bc5cae604b852c8b6a9ba3aa4e75a54d8f889061" title='Last modified by Thomas Felix | October 21, 2020' target="_blank" rel="noopener">
       <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
       <span>October 21, 2020</span>
     </a>
