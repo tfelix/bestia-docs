@@ -23,6 +23,17 @@ The documentation is split into three main sections:
 
 The infos found in this document should help you to get kickstarted and join the development. Depending on where you want to contribute you should read the required sections. With the provided guidelines enthusiasts should very easily be able to create contributions from artworks to scripts.
 
+## Project Relation
+
+To build the whole software you need to understand the relationship between the repositories. The relation is somewhat complicated as there are some inter-repositories dependencies. The `bestia-behemoth` repository contains the server but also the ProtoBuf message defintion. This definition is required to build the `bestia-entity-plugin` for Godot. The result, this engine, is required to build the `bestia-client` game. The server can be build only with the `bestia-behemoth` repository. The relation is depicted in the following diagram.
+
+{{< mermaid >}}
+graph TD
+  zone[bestia-behemoth] -- ProtoBuf messages --> plugin[bestia-entity-plugin]
+  plugin -- builds --> godot[Godot Engine]
+  godot -- required --> client[bestia-client]
+{{< /mermaid >}}
+
 ## Contributing
 
 Contributions to both the game design and the game itself (the client and the server) are very welcome!
