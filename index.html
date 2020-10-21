@@ -150,6 +150,7 @@ https://github.com/alex-shpak/hugo-book
     <li><a href="#bestia-developer-documentation">Bestia Developer Documentation</a>
       <ul>
         <li><a href="#getting-started">Getting Started</a></li>
+        <li><a href="#project-relation">Project Relation</a></li>
         <li><a href="#contributing">Contributing</a></li>
         <li><a href="#project-repositories">Project Repositories</a></li>
       </ul>
@@ -187,6 +188,30 @@ gamedesign guidlines to engine architecture overview as well as the API document
 <li>Server Documentation</li>
 </ol>
 <p>The infos found in this document should help you to get kickstarted and join the development. Depending on where you want to contribute you should read the required sections. With the provided guidelines enthusiasts should very easily be able to create contributions from artworks to scripts.</p>
+<h2 id="project-relation">Project Relation</h2>
+<p>To build the whole software you need to understand the relationship between the repositories. The relation is somewhat complicated as there are some inter-repositories dependencies. The <code>bestia-behemoth</code> repository contains the server but also the ProtoBuf message defintion. This definition is required to build the <code>bestia-entity-plugin</code> for Godot. The result, this engine, is required to build the <code>bestia-client</code> game. The server can be build only with the <code>bestia-behemoth</code> repository. The relation is depicted in the following diagram.</p>
+
+
+<script src="/mermaid.min.js"></script>
+
+  <script>mermaid.initialize({
+  "flowchart": {
+    "useMaxWidth":true
+  },
+  "theme": "default"
+}
+)</script>
+
+
+
+
+<p class="mermaid">
+graph TD
+  zone[bestia-behemoth] -- ProtoBuf messages --> plugin[bestia-entity-plugin]
+  plugin -- builds --> godot[Godot Engine]
+  godot -- required --> client[bestia-client]
+</p>
+
 <h2 id="contributing">Contributing</h2>
 <p>Contributions to both the game design and the game itself (the client and the server) are very welcome!</p>
 <p>You may find a little <code>Edit this page</code> link at the bottom of each page. If you want to change some game design aspects feel free to give it a try!</p>
@@ -218,9 +243,9 @@ on Github.</p>
 
 
 
-  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/d4eaa73794b03d77e28e69cbdb6eac1771b6a6ce" title='Last modified by Thomas Felix | October 20, 2020' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/e263cc1833354c1a7b4aee1eee3165f3f38710a8" title='Last modified by Thomas Felix | October 21, 2020' target="_blank" rel="noopener">
       <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>October 20, 2020</span>
+      <span>October 21, 2020</span>
     </a>
   </div>
 
@@ -258,6 +283,7 @@ on Github.</p>
     <li><a href="#bestia-developer-documentation">Bestia Developer Documentation</a>
       <ul>
         <li><a href="#getting-started">Getting Started</a></li>
+        <li><a href="#project-relation">Project Relation</a></li>
         <li><a href="#contributing">Contributing</a></li>
         <li><a href="#project-repositories">Project Repositories</a></li>
       </ul>
