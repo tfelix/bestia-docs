@@ -37,3 +37,7 @@ Every game needs a good amount of artwork and assets. During development a few p
 * [Kenney](http://kenney.nl/assets) Big chunk of assets some of them free to use.
 * [itch.io](https://itch.io/game-assets) A lot of nice game assets. Some are free, and some can be bought for a few Dollars.
 * [Grass Shader Tutorial](https://roystan.net/articles/grass-shader.html) Tutorial about stylized grass for Unit.
+
+## Talks and Inspirations
+
+* [YT: Balancing Ingame Economy in Albian Online](https://www.youtube.com/watch?v=aX8f1lE09uY)
