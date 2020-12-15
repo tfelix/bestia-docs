@@ -3,25 +3,31 @@ title: Artificial Intelligence
 ---
 # Artificial Intelligence
 
-The Bestia AI should be very modularized, its designgoals should allow the Bestia AI to:
+The Bestia AI should be very modularized, its design goals should allow the Bestia AI to:
 
 * Perform long term planning
 * Sense enemies
-* Give the impression of self improving and learning
+* Give the impression of self-improving and learning
 * Player should be able to express some level of control over the AI of his controlled Bestia
 
-In order to archive that goal the AI is seperated into three different parts:
+To archive that goal the AI is separated into three different parts:
 
 1. Sensing
 2. Behavior
 3. Action Planning
 
-In the sensing part the knowledge of an Agent is updated for example data is written to its blackboard.
-Its seperate from the other modules in order to be able to update it independently as for example running
-actions must read the current data and if possible interrept their execution to trigger a new behavior planning.
+In the sensing part, the knowledge of an Agent is updated for example data is written to its blackboard.
+It's separate from the other modules to be able to update it independently as for example running
+actions must read the current data and if possible interrupt their execution to trigger a new behavior planning.
 
 The behavior uses different techniques like a behavior tree or a finite state machine in order to define the next
 possible actions.
+
+{{< mermaid >}}
+graph LR
+    A[Sensing] -->|Update blackboards| B[Behavior]
+    B -->|Create execution plan| C[Action Planning]
+{{< /mermaid >}}
 
 After the set of actions are determined by the knowledge of an agent the action planer is invoked in order to plan
 a set of tasks in order to fulfill the action. These tasks are then executed until they fail or get interrupted by an
@@ -29,9 +35,9 @@ updates world state. Then planing is re-done.
 
 ## Sensors
 
-The Behemoth server is event based, thus if for example an Bestia steps into the field of view of another Bestia the
+The Behemoth server is event-based, thus if for example an Bestia steps into the field of view of another Bestia the
 eventing can register a sighting into the according visual sensor of the agent.
-Sensor can also activly poll information about the world if their tick is invoked however.
+The sensor can also actively poll information about the world if their tick is invoked however.
 
 The AI system in Bestia will set new standards. Bestias and NPCs alike should be able to create long-term plans, so-called
 game plans or GPs for short. They then follow this strategy until observations or influences from the game world force them
@@ -44,7 +50,7 @@ Available sensors are:
 * Temperature (Weather)
 * Mana/Magic
 
-Sensor information will be put into the Agents Blackboard to access it later when considerations are made or action plans
+Sensor information will be put into the Agent's Blackboard to access it later when considerations are made or action plans
 are created.
 
 ## Behavior
@@ -54,13 +60,38 @@ Usually this are behavior trees or state machines for simpler NPCs in order to g
 
 ## Action Planning
 
-TBD
+As soon as the behavior phase generated the "how" to execute the behavior is planned. In order to do so a GOAP module is
+used. It generates a list of all available action for the agent and then perform the best path in order to archive a certain
+outcome. Usually the action inside this execution list transform one or multiple world variable to the desired state.
+A set of transformable world variables follow. Every item, spell usage etc. must be designed with thee variables in mind.
+
+### Variables
+
+| Goal    | Precondition | Effect          |
+| ------- | ------------ | --------------- |
+| Healing | -            | Heals the agent |
+| Eat     | HasFood      | Agent will eat  |
+
+### Actions List
+
+| Actions   | Cost | Precondition                    | Effects                     |
+| --------- | ---- | ------------------------------- | --------------------------- |
+| UseSpell  | 1    | HasMana, HasConsumablesItems    | Depending on the skill used |
+| GetItem   | 2    | DoesNotHaveItem, KnowsItemPlace |                             |
+| EquipItem | 2    | HasItem                         | Depending on the item       |
+| UseItem   | 1    | HasItem                         | Depending on the item       |
+
+Example:
+
+NPC is hurt and its AI behavior wants to archive the goal **Healing**.
+
+
 
 ## Special Considerations
 
-AI Blueprints are given as JSON files and AI agents are build from these Blueprints. The Bestia Behemeoth
-server decides what the tickrate of this agents are, to reduce load on the server, agents without players near
-them tick slower then agents which are currently activly engaged in player interaction.
+AI Blueprints are given as JSON files and AI agents are build from these Blueprints. The Bestia Behemoth
+Server decides what the tick rate of this agents are, to reduce the load on the server, agents without players near
+They tick slower then agents which are currently actively engaged in player interaction.
 
 If NPCs meet they should be able to exchange certain information from their blackboards by exchanging "gossip" this
 should be also put into some kind of chat exchange which can be overheard by players.

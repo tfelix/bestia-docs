@@ -14,19 +14,25 @@ This repository contains the central game design documents and guidelines of the
 Bestia is a hobby project started many years ago and evolved in quite a large codebase. This documentation is an effort
 to bring all the needed information together to allow others to read, understand and perhaps contribute to the game.
 
-The documentation covers aspects of game design, client as well as the server architecture.
+The documentation covers aspects of game design, client as well as the general server architecture and serves as an entry
+point for everyone who wants to contribute to the project.
 
-The documentation web page can be found on [https://docs.bestia-game.net](https://docs.bestia-game.net)
+The documentation page can be found on [https://docs.bestia-game.net](https://docs.bestia-game.net)
 
-The other project repositories are found under:
+The other project repositories are:
 
 * [Behemoth Game Server](https://github.com/tfelix/bestia-behemoth)
 * [Game Client](https://github.com/tfelix/bestia-client)
 
 ## Build
 
-The documentation uses the static site generator [Hugo](https://gohugo.io/) to generate a nice documentation hompage. In order to build
-the documentation [install Hugo](https://gohugo.io/getting-started/installing/) and then go to repo and call:
+The documentation uses the static site generator [Hugo](https://gohugo.io/) to generate a nice documentation hompagenas well as the Book Theme via a git submodule. After you cloned the repository, issue the following command to check out the submodules initially:
+
+```bash
+git submodule update --init --recursive
+```
+
+In order to build the documentation [install Hugo](https://gohugo.io/getting-started/installing/) and then go to repo and call:
 
 ```bash
 # Intialize the theme git submodule

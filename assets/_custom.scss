@@ -21,3 +21,24 @@
   background-color: rgba(255,255,255,.2);
   border-radius: 5px;
 }
+
+.notices {
+  margin: 2rem 0;
+  background: #FFF2DB;
+  color: black;
+
+  .content {
+    padding: 15px;
+  }
+
+  .header {
+    background: #F0B37E;
+    color: white;
+    padding: 0.2rem 0.5rem;
+    font-weight: bold;
+
+    i {
+      margin: 0 0.4rem;
+    }
+  }
+}
