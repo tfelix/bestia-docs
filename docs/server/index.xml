@@ -65,9 +65,9 @@ In general it works by creating piplines which are then used to create and trans
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://docs.bestia-game.net/docs/server/ai/</guid>
-      <description>Artificial Intelligence The Bestia AI should be very modularized, its designgoals should allow the Bestia AI to:
- Perform long term planning Sense enemies Give the impression of self improving and learning Player should be able to express some level of control over the AI of his controlled Bestia  In order to archive that goal the AI is seperated into three different parts:
- Sensing Behavior Action Planning  In the sensing part the knowledge of an Agent is updated for example data is written to its blackboard.</description>
+      <description>Artificial Intelligence The Bestia AI should be very modularized, its design goals should allow the Bestia AI to:
+ Perform long term planning Sense enemies Give the impression of self-improving and learning Player should be able to express some level of control over the AI of his controlled Bestia  To archive that goal the AI is separated into three different parts:
+ Sensing Behavior Action Planning  In the sensing part, the knowledge of an Agent is updated for example data is written to its blackboard.</description>
     </item>
     
   </channel>

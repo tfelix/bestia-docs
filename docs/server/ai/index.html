@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html lang="en" dir=>
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Artificial Intelligence The Bestia AI should be very modularized, its designgoals should allow the Bestia AI to:
- Perform long term planning Sense enemies Give the impression of self improving and learning Player should be able to express some level of control over the AI of his controlled Bestia  In order to archive that goal the AI is seperated into three different parts:
- Sensing Behavior Action Planning  In the sensing part the knowledge of an Agent is updated for example data is written to its blackboard.">
+<meta name="description" content="Artificial Intelligence The Bestia AI should be very modularized, its design goals should allow the Bestia AI to:
+ Perform long term planning Sense enemies Give the impression of self-improving and learning Player should be able to express some level of control over the AI of his controlled Bestia  To archive that goal the AI is separated into three different parts:
+ Sensing Behavior Action Planning  In the sensing part, the knowledge of an Agent is updated for example data is written to its blackboard.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Artificial Intelligence" />
-<meta property="og:description" content="Artificial Intelligence The Bestia AI should be very modularized, its designgoals should allow the Bestia AI to:
- Perform long term planning Sense enemies Give the impression of self improving and learning Player should be able to express some level of control over the AI of his controlled Bestia  In order to archive that goal the AI is seperated into three different parts:
- Sensing Behavior Action Planning  In the sensing part the knowledge of an Agent is updated for example data is written to its blackboard." />
+<meta property="og:description" content="Artificial Intelligence The Bestia AI should be very modularized, its design goals should allow the Bestia AI to:
+ Perform long term planning Sense enemies Give the impression of self-improving and learning Player should be able to express some level of control over the AI of his controlled Bestia  To archive that goal the AI is separated into three different parts:
+ Sensing Behavior Action Planning  In the sensing part, the knowledge of an Agent is updated for example data is written to its blackboard." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.bestia-game.net/docs/server/ai/" />
-<meta property="article:modified_time" content="2020-12-14T01:01:23+01:00" />
+<meta property="article:modified_time" content="2020-12-15T01:49:33+01:00" />
 <title>Artificial Intelligence | Bestia Game</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="/book.min.96dff1a70730a3c92297e0bd58b7f197c5a8aeae63e269ae2c6d6cc5fb66d631.css" integrity="sha256-lt/xpwcwo8kil&#43;C9WLfxl8Worq5j4mmuLG1sxftm1jE=">
-<script defer src="/en.search.min.16e31b46ecbce81f796a6748743d6fd70640d9fe07eebfbeef8422e601d845f2.js" integrity="sha256-FuMbRuy86B95amdIdD1v1wZA2f4H7r&#43;&#43;74Qi5gHYRfI="></script>
+<link rel="stylesheet" href="/book.min.d039daff73a59233cf51fcce257b22e8ea640649970324da4db256265d1a2a68.css" integrity="sha256-0Dna/3OlkjPPUfzOJXsi6OpkBkmXAyTaTbJWJl0aKmg=">
+<script defer src="/en.search.min.1aeeee77c50221e766a383fd6841378ea9c1834014495cc9df8411dbd10d57b6.js" integrity="sha256-Gu7ud8UCIedmo4P9aEE3jqnBg0AUSVzJ34QR29ENV7Y="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
@@ -30,9 +30,8 @@ https://github.com/alex-shpak/hugo-book
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </head>
 
-<body dir=>
-  <input type="checkbox" class="hidden toggle" id="menu-control" />
-  <input type="checkbox" class="hidden toggle" id="toc-control" />
+<body>
+  <input type="checkbox" class="hidden" id="menu-control" />
   <main class="container flex">
     <aside class="book-menu">
       
@@ -44,7 +43,7 @@ https://github.com/alex-shpak/hugo-book
 
 <div class="book-search">
   <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
-  <div class="book-search-spinner hidden"></div>
+  <div class="book-search-spinner spinner hidden"></div>
   <ul id="book-search-results"></ul>
 </div>
 
@@ -134,23 +133,27 @@ https://github.com/alex-shpak/hugo-book
   <strong>Artificial Intelligence</strong>
 
   <label for="toc-control">
-    
     <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
-    
   </label>
 </div>
 
 
   
-  <aside class="hidden clearfix">
-    
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
   <nav id="TableOfContents">
   <ul>
     <li><a href="#artificial-intelligence">Artificial Intelligence</a>
       <ul>
         <li><a href="#sensors">Sensors</a></li>
         <li><a href="#behavior">Behavior</a></li>
-        <li><a href="#action-planning">Action Planning</a></li>
+        <li><a href="#action-planning">Action Planning</a>
+          <ul>
+            <li><a href="#variables">Variables</a></li>
+            <li><a href="#actions-list">Actions List</a></li>
+          </ul>
+        </li>
         <li><a href="#special-considerations">Special Considerations</a></li>
         <li><a href="#literature">Literature</a></li>
       </ul>
@@ -159,7 +162,7 @@ https://github.com/alex-shpak/hugo-book
 </nav>
 
 
-  </aside>
+    </aside>
   
  
       </header>
@@ -167,31 +170,48 @@ https://github.com/alex-shpak/hugo-book
       
       
   <article class="markdown"><h1 id="artificial-intelligence">Artificial Intelligence</h1>
-<p>The Bestia AI should be very modularized, its designgoals should allow the Bestia AI to:</p>
+<p>The Bestia AI should be very modularized, its design goals should allow the Bestia AI to:</p>
 <ul>
 <li>Perform long term planning</li>
 <li>Sense enemies</li>
-<li>Give the impression of self improving and learning</li>
+<li>Give the impression of self-improving and learning</li>
 <li>Player should be able to express some level of control over the AI of his controlled Bestia</li>
 </ul>
-<p>In order to archive that goal the AI is seperated into three different parts:</p>
+<p>To archive that goal the AI is separated into three different parts:</p>
 <ol>
 <li>Sensing</li>
 <li>Behavior</li>
 <li>Action Planning</li>
 </ol>
-<p>In the sensing part the knowledge of an Agent is updated for example data is written to its blackboard.
-Its seperate from the other modules in order to be able to update it independently as for example running
-actions must read the current data and if possible interrept their execution to trigger a new behavior planning.</p>
+<p>In the sensing part, the knowledge of an Agent is updated for example data is written to its blackboard.
+It&rsquo;s separate from the other modules to be able to update it independently as for example running
+actions must read the current data and if possible interrupt their execution to trigger a new behavior planning.</p>
 <p>The behavior uses different techniques like a behavior tree or a finite state machine in order to define the next
 possible actions.</p>
+
+
+<script src="/mermaid.min.js"></script>
+<script>
+mermaid.initialize({
+  flowchart: { useMaxWidth:true }
+});
+</script>
+
+
+
+<p class="mermaid">
+graph LR
+    A[Sensing] -->|Update blackboards| B[Behavior]
+    B -->|Create execution plan| C[Action Planning]
+</p>
+
 <p>After the set of actions are determined by the knowledge of an agent the action planer is invoked in order to plan
 a set of tasks in order to fulfill the action. These tasks are then executed until they fail or get interrupted by an
 updates world state. Then planing is re-done.</p>
 <h2 id="sensors">Sensors</h2>
-<p>The Behemoth server is event based, thus if for example an Bestia steps into the field of view of another Bestia the
+<p>The Behemoth server is event-based, thus if for example an Bestia steps into the field of view of another Bestia the
 eventing can register a sighting into the according visual sensor of the agent.
-Sensor can also activly poll information about the world if their tick is invoked however.</p>
+The sensor can also actively poll information about the world if their tick is invoked however.</p>
 <p>The AI system in Bestia will set new standards. Bestias and NPCs alike should be able to create long-term plans, so-called
 game plans or GPs for short. They then follow this strategy until observations or influences from the game world force them
 to abandon this plan or the plan is fulfilled.</p>
@@ -202,17 +222,81 @@ to abandon this plan or the plan is fulfilled.</p>
 <li>Temperature (Weather)</li>
 <li>Mana/Magic</li>
 </ul>
-<p>Sensor information will be put into the Agents Blackboard to access it later when considerations are made or action plans
+<p>Sensor information will be put into the Agent&rsquo;s Blackboard to access it later when considerations are made or action plans
 are created.</p>
 <h2 id="behavior">Behavior</h2>
 <p>If the agent is idle of some event has caused a currently running action to fail the behavior of the agent is generated.
 Usually this are behavior trees or state machines for simpler NPCs in order to generate the desired behavior.</p>
 <h2 id="action-planning">Action Planning</h2>
-<p>TBD</p>
+<p>As soon as the behavior phase generated the &ldquo;how&rdquo; to execute the behavior is planned. In order to do so a GOAP module is
+used. It generates a list of all available action for the agent and then perform the best path in order to archive a certain
+outcome. Usually the action inside this execution list transform one or multiple world variable to the desired state.
+A set of transformable world variables follow. Every item, spell usage etc. must be designed with thee variables in mind.</p>
+<h3 id="variables">Variables</h3>
+<table>
+<thead>
+<tr>
+<th>Goal</th>
+<th>Precondition</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Healing</td>
+<td>-</td>
+<td>Heals the agent</td>
+</tr>
+<tr>
+<td>Eat</td>
+<td>HasFood</td>
+<td>Agent will eat</td>
+</tr>
+</tbody>
+</table>
+<h3 id="actions-list">Actions List</h3>
+<table>
+<thead>
+<tr>
+<th>Actions</th>
+<th>Cost</th>
+<th>Precondition</th>
+<th>Effects</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UseSpell</td>
+<td>1</td>
+<td>HasMana, HasConsumablesItems</td>
+<td>Depending on the skill used</td>
+</tr>
+<tr>
+<td>GetItem</td>
+<td>2</td>
+<td>DoesNotHaveItem, KnowsItemPlace</td>
+<td></td>
+</tr>
+<tr>
+<td>EquipItem</td>
+<td>2</td>
+<td>HasItem</td>
+<td>Depending on the item</td>
+</tr>
+<tr>
+<td>UseItem</td>
+<td>1</td>
+<td>HasItem</td>
+<td>Depending on the item</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<p>NPC is hurt and its AI behavior wants to archive the goal <strong>Healing</strong>.</p>
 <h2 id="special-considerations">Special Considerations</h2>
-<p>AI Blueprints are given as JSON files and AI agents are build from these Blueprints. The Bestia Behemeoth
-server decides what the tickrate of this agents are, to reduce load on the server, agents without players near
-them tick slower then agents which are currently activly engaged in player interaction.</p>
+<p>AI Blueprints are given as JSON files and AI agents are build from these Blueprints. The Bestia Behemoth
+Server decides what the tick rate of this agents are, to reduce the load on the server, agents without players near
+They tick slower then agents which are currently actively engaged in player interaction.</p>
 <p>If NPCs meet they should be able to exchange certain information from their blackboards by exchanging &ldquo;gossip&rdquo; this
 should be also put into some kind of chat exchange which can be overheard by players.</p>
 <h2 id="literature">Literature</h2>
@@ -234,9 +318,9 @@ should be also put into some kind of chat exchange which can be overheard by pla
 
 
 
-  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/8d9d02540ed135192ecd68943621977cdd901ccf" title='Last modified by Thomas Felix | December 14, 2020' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/65005043614b9ae0e4caf6349282c074056de651" title='Last modified by Thomas Felix | December 15, 2020' target="_blank" rel="noopener">
       <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>December 14, 2020</span>
+      <span>December 15, 2020</span>
     </a>
   </div>
 
@@ -275,7 +359,12 @@ should be also put into some kind of chat exchange which can be overheard by pla
       <ul>
         <li><a href="#sensors">Sensors</a></li>
         <li><a href="#behavior">Behavior</a></li>
-        <li><a href="#action-planning">Action Planning</a></li>
+        <li><a href="#action-planning">Action Planning</a>
+          <ul>
+            <li><a href="#variables">Variables</a></li>
+            <li><a href="#actions-list">Actions List</a></li>
+          </ul>
+        </li>
         <li><a href="#special-considerations">Special Considerations</a></li>
         <li><a href="#literature">Literature</a></li>
       </ul>
