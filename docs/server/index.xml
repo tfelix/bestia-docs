@@ -44,7 +44,7 @@ Attacks can also be defined by a script alone and thus sidestepping the damage c
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://docs.bestia-game.net/docs/server/scripting/</guid>
-      <description>Scripting Das Skript-System in Bestia wird genutzt um flexible Programmausführung für verschiedenste Zwecke zu ermöglichen. Dazu gehören vor allem die Effekte von benutzten Items, Attacken, das Verhalten von Entities zu steuern.
+      <description>Scripting The scripting system in Bestia is used to allow flexible program execution for various purposes. This includes especially the effects of used items, attacks, controlling the behavior of entities.
 The scripting language used is JavaScript. The scripting language is used to allow fast iteration and changes to the items. There is an API provided for the scripts in order to interact with the entity system of Bestia.
 Script code must always be placed inside a main() function.</description>
     </item>

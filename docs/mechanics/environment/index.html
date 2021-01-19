@@ -1,22 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir=>
 
 <head>
+  <meta name="generator" content="Hugo 0.70.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Environment Bestia uses a sophisticated temperature and environment system to drive weather simulation and the effects on the players environment.
-These simulations should be based on certain basic values which are determined location-dependent, but can be changed by interaction with the players. Also natural changes through the world (seasons) should lead to an adjustment of these values. Due to the changes of the environmental values tiles have to be adapted to the world itself.">
+<meta name="description" content="Environment Bestia uses a sophisticated temperature and environment system to drive weather simulation and the effects on the player&rsquo;s environment.
+These simulations should be based on certain basic values that are determined location-dependent, but can be changed by interaction with the players. Also, natural changes in the world (alternating seasons) should lead to an adjustment of these values. Due to the changes of the environmental values the environment areas have to be adapted to the world itself.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Environment" />
-<meta property="og:description" content="Environment Bestia uses a sophisticated temperature and environment system to drive weather simulation and the effects on the players environment.
-These simulations should be based on certain basic values which are determined location-dependent, but can be changed by interaction with the players. Also natural changes through the world (seasons) should lead to an adjustment of these values. Due to the changes of the environmental values tiles have to be adapted to the world itself." />
+<meta property="og:description" content="Environment Bestia uses a sophisticated temperature and environment system to drive weather simulation and the effects on the player&rsquo;s environment.
+These simulations should be based on certain basic values that are determined location-dependent, but can be changed by interaction with the players. Also, natural changes in the world (alternating seasons) should lead to an adjustment of these values. Due to the changes of the environmental values the environment areas have to be adapted to the world itself." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.bestia-game.net/docs/mechanics/environment/" />
-<meta property="article:modified_time" content="2020-06-11T18:20:38+02:00" />
+<meta property="article:modified_time" content="2021-01-19T02:07:59+01:00" />
 <title>Environment | Bestia Game</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="/book.min.d039daff73a59233cf51fcce257b22e8ea640649970324da4db256265d1a2a68.css" integrity="sha256-0Dna/3OlkjPPUfzOJXsi6OpkBkmXAyTaTbJWJl0aKmg=">
-<script defer src="/en.search.min.1aeeee77c50221e766a383fd6841378ea9c1834014495cc9df8411dbd10d57b6.js" integrity="sha256-Gu7ud8UCIedmo4P9aEE3jqnBg0AUSVzJ34QR29ENV7Y="></script>
+<link rel="stylesheet" href="/book.min.4d34b11806294f51ee5852bec21808d962f1c7298e53d4f042251e021920a3f2.css" integrity="sha256-TTSxGAYpT1HuWFK&#43;whgI2WLxxymOU9TwQiUeAhkgo/I=">
+<script defer src="/en.search.min.05af73c38dfe876567bc8889254a6d5b2e0df9f6ac4bb2b111a50faf295af7da.js" integrity="sha256-Ba9zw43&#43;h2VnvIiJJUptWy4N&#43;fasS7KxEaUPryla99o="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
@@ -28,8 +29,9 @@ https://github.com/alex-shpak/hugo-book
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </head>
 
-<body>
-  <input type="checkbox" class="hidden" id="menu-control" />
+<body dir=>
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
   <main class="container flex">
     <aside class="book-menu">
       
@@ -41,7 +43,7 @@ https://github.com/alex-shpak/hugo-book
 
 <div class="book-search">
   <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
-  <div class="book-search-spinner spinner hidden"></div>
+  <div class="book-search-spinner hidden"></div>
   <ul id="book-search-results"></ul>
 </div>
 
@@ -59,6 +61,8 @@ https://github.com/alex-shpak/hugo-book
 <li>
   <a href="/docs/mechanics/"><strong>Game Design</strong></a>
 <ul>
+<li>
+  <a href="/docs/mechanics/mechanics/">Game Mechanics</a></li>
 <li>
   <a href="/docs/mechanics/master/">Bestia Master</a></li>
 <li>
@@ -131,15 +135,16 @@ https://github.com/alex-shpak/hugo-book
   <strong>Environment</strong>
 
   <label for="toc-control">
+    
     <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
   </label>
 </div>
 
 
   
-    <input type="checkbox" class="hidden" id="toc-control" />
-    <aside class="hidden clearfix">
-      
+  <aside class="hidden clearfix">
+    
   <nav id="TableOfContents">
   <ul>
     <li><a href="#environment">Environment</a>
@@ -152,7 +157,7 @@ https://github.com/alex-shpak/hugo-book
             <li><a href="#night">Night</a></li>
           </ul>
         </li>
-        <li><a href="#ingame-time">Ingame Time</a></li>
+        <li><a href="#bestia-time">Bestia-Time</a></li>
         <li><a href="#the-threat">The Threat</a>
           <ul>
             <li><a href="#rift-event">Rift Event</a></li>
@@ -170,7 +175,7 @@ https://github.com/alex-shpak/hugo-book
 </nav>
 
 
-    </aside>
+  </aside>
   
  
       </header>
@@ -178,15 +183,15 @@ https://github.com/alex-shpak/hugo-book
       
       
   <article class="markdown"><h1 id="environment">Environment</h1>
-<p>Bestia uses a sophisticated temperature and environment system to drive weather simulation and the effects on the players environment.</p>
-<p>These simulations should be based on certain basic values which are determined location-dependent, but can be changed by interaction with the players. Also natural changes through the world (seasons) should lead to an adjustment of these values. Due to the changes of the environmental values tiles have to be adapted to the world itself. These have to be adjusted anyway if they should change due to other local effects like fire or mining. The client must be informed about adjusted tiles.</p>
+<p>Bestia uses a sophisticated temperature and environment system to drive weather simulation and the effects on the player&rsquo;s environment.</p>
+<p>These simulations should be based on certain basic values that are determined location-dependent, but can be changed by interaction with the players. Also, natural changes in the world (alternating seasons) should lead to an adjustment of these values. Due to the changes of the environmental values the environment areas have to be adapted to the world itself. These have to be adjusted anyway if they should change due to other local effects like fire or mining. The client must be informed about adjusted environment areas.</p>
 <blockquote>
 <p>Bestia Master enter the current world from another, not further mentioned dimension. During each incarnation
 a name of this world is generated and in each cycle all Bestia Master entering the game will have this world name
 persisted in their account data to keep a record.</p>
 </blockquote>
 <h2 id="temperature">Temperature</h2>
-<p>Each Bestia has a certain sweet spot of tolerable temperature. There are several kind of base temperature ranges in which Bestia thrive:</p>
+<p>Each Bestia has a certain sweet spot of tolerable temperature. There are several kinds of base temperature ranges in which Bestia thrive:</p>
 <table>
 <thead>
 <tr>
@@ -209,8 +214,8 @@ persisted in their account data to keep a record.</p>
 </tr>
 </tbody>
 </table>
-<p><code>Vitality</code> and <code>Willpower</code> increases resistenace against the temperatures. Specialized equipments or status effects can also
-affect temperature resistence.</p>
+<p><code>Vitality</code> and <code>Willpower</code> increases resistance against the temperatures. Specialized equipment or status effects can also
+affect temperature resistance.</p>
 <p>The formular is as follows:</p>
 
 <link rel="stylesheet" href="/katex/katex.min.css" />
@@ -235,31 +240,31 @@ reduced. It also reduces the effectiveness of fires and might extingush them. Fi
 <p>During night time the player will need light sources in order to improve
 the visibility of enemies or terrain. There will be certain items (e.g. torches, candles etc.) as well as spells to
 make light.</p>
-<h2 id="ingame-time">Ingame Time</h2>
-<p>The time in the Bestia game is faster then the real world time. When we refer to the faster in-game time we will call it <strong>Bestia time</strong>, if we refer to the normal time we call it <strong>real time</strong>.</p>
+<h2 id="bestia-time">Bestia-Time</h2>
+<p>The time in the Bestia game is faster than the real-world time. When we refer to the faster in-game time we will call it <strong>Bestia time</strong>, if we refer to the normal time we call it <strong>real-time</strong>.</p>
 <p>Changing seasons should lead to an impression of the changeability of the world. You have to adapt to a periodically
 changing environment. Things that work in summer may not be possible in winter. But so that the players don&rsquo;t have
 to wait for a real year, time in Bestia flies faster.</p>
-<p>The bestia time starts at the creation of the bestia world. It is basically three times faster then the usual time.
-This means that the normal bestia day has 8 hours in real time.</p>
-<p>This means that the bestia month has 10 days in real time and an bestia year is 4 month in real time.</p>
+<p>The Bestia-Time starts at the creation of the Bestia world. It is basically three times faster then the usual time.
+This means that the normal bestia day has 8 hours in real-time.</p>
+<p>This means that the bestia month has 10 days in real-time and a bestia year is monthsth in real time.</p>
 <ul>
 <li>Bestia year: 4 months</li>
-<li>Bestia seasion: summer, winter, fall, spring: each 1 month</li>
+<li>Bestia season: summer, winter, fall, spring: each 1 month</li>
 <li>Bestia day: 8 hours</li>
 </ul>
 <p>This allows the player to see multiple day-night cycles on the same day while allowing him to play for a considerable
 time so he can actually do something meaningful until the sun rises again.</p>
 <blockquote>
-<p>If it turns out that the night period is too annyoing for the players because
+<p>If it turns out that the night period is too annoying for the players because
 of the limited amount of gameplay then the night might get shortened.</p>
 </blockquote>
-<p>This caluclation results in the following example timespans:</p>
+<p>This calculation results in the following example timespans:</p>
 <table>
 <thead>
 <tr>
 <th>Bestia Time</th>
-<th>Real Time</th>
+<th>Real-Time</th>
 </tr>
 </thead>
 <tbody>
@@ -284,13 +289,13 @@ of the limited amount of gameplay then the night might get shortened.</p>
 
 
 
-<div class="book-tabs"><input type="radio" class="hidden" name="tabs-Thread Appearence Delay" id="tabs-Thread Appearence Delay-0" checked="checked" />
+<div class="book-tabs"><input type="radio" class="toggle" name="tabs-Thread Appearence Delay" id="tabs-Thread Appearence Delay-0" checked="checked" />
   <label for="tabs-Thread Appearence Delay-0">Population &lt; 1k</label>
   <div class="book-tabs-content markdown-inner"><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">delay = <span style="color:#ae81ff">9</span> + rand() * <span style="color:#ae81ff">1.5</span>;
-</code></pre></div></div><input type="radio" class="hidden" name="tabs-Thread Appearence Delay" id="tabs-Thread Appearence Delay-1"  />
+</code></pre></div></div><input type="radio" class="toggle" name="tabs-Thread Appearence Delay" id="tabs-Thread Appearence Delay-1"  />
   <label for="tabs-Thread Appearence Delay-1">Population &lt; 5k</label>
   <div class="book-tabs-content markdown-inner"><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">delay = <span style="color:#ae81ff">9</span> + rand() * <span style="color:#ae81ff">2.5</span>;
-</code></pre></div></div><input type="radio" class="hidden" name="tabs-Thread Appearence Delay" id="tabs-Thread Appearence Delay-2"  />
+</code></pre></div></div><input type="radio" class="toggle" name="tabs-Thread Appearence Delay" id="tabs-Thread Appearence Delay-2"  />
   <label for="tabs-Thread Appearence Delay-2">Population &gt; 5k</label>
   <div class="book-tabs-content markdown-inner"><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">delay = <span style="color:#ae81ff">9</span> + rand() * <span style="color:#ae81ff">4</span>;
 </code></pre></div></div></div>
@@ -341,9 +346,9 @@ and its respective
 
 
 
-  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/c778730ba205b6751fa640e20ec30d69374e875c" title='Last modified by Thomas Felix | June 11, 2020' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/bd174fd1f9e9aa264ee8e137431a4f5bf95b608a" title='Last modified by Thomas Felix | January 19, 2021' target="_blank" rel="noopener">
       <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>June 11, 2020</span>
+      <span>January 19, 2021</span>
     </a>
   </div>
 
@@ -388,7 +393,7 @@ and its respective
             <li><a href="#night">Night</a></li>
           </ul>
         </li>
-        <li><a href="#ingame-time">Ingame Time</a></li>
+        <li><a href="#bestia-time">Bestia-Time</a></li>
         <li><a href="#the-threat">The Threat</a>
           <ul>
             <li><a href="#rift-event">Rift Event</a></li>

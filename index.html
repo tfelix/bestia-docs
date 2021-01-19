@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir=>
 
 <head>
-	<meta name="generator" content="Hugo 0.70.0" />
+  <meta name="generator" content="Hugo 0.70.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Bestia Developer Documentation  Explore vast lands in a procedural generated world, fight tough monsters, or join guilds in your quest for honor. But be prepared: the world might end sooner as you would expect.
  Star Watch
-Congratulations! You just have found the Developer Documentation of Bestia. Here you find everything from gamedesign guidlines to engine architecture overview as well as the API documentation to access game resources.
- The game currently transforms into a stand-alone client which is currently not available for testing.">
+Congratulations! You just have found the Developer Documentation of Bestia. Here you find everything from game design guidelines to engine architecture overview as well as the API documentation to access game resources.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -17,8 +16,8 @@ Congratulations! You just have found the Developer Documentation of Bestia. Here
 <title> | Bestia Game</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="/book.min.d039daff73a59233cf51fcce257b22e8ea640649970324da4db256265d1a2a68.css" integrity="sha256-0Dna/3OlkjPPUfzOJXsi6OpkBkmXAyTaTbJWJl0aKmg=">
-<script defer src="/en.search.min.1aeeee77c50221e766a383fd6841378ea9c1834014495cc9df8411dbd10d57b6.js" integrity="sha256-Gu7ud8UCIedmo4P9aEE3jqnBg0AUSVzJ34QR29ENV7Y="></script>
+<link rel="stylesheet" href="/book.min.4d34b11806294f51ee5852bec21808d962f1c7298e53d4f042251e021920a3f2.css" integrity="sha256-TTSxGAYpT1HuWFK&#43;whgI2WLxxymOU9TwQiUeAhkgo/I=">
+<script defer src="/en.search.min.05af73c38dfe876567bc8889254a6d5b2e0df9f6ac4bb2b111a50faf295af7da.js" integrity="sha256-Ba9zw43&#43;h2VnvIiJJUptWy4N&#43;fasS7KxEaUPryla99o="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <link rel="alternate" type="application/rss+xml" href="https://docs.bestia-game.net/index.xml" title="Bestia Game" />
@@ -31,8 +30,9 @@ https://github.com/alex-shpak/hugo-book
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </head>
 
-<body>
-  <input type="checkbox" class="hidden" id="menu-control" />
+<body dir=>
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
   <main class="container flex">
     <aside class="book-menu">
       
@@ -44,7 +44,7 @@ https://github.com/alex-shpak/hugo-book
 
 <div class="book-search">
   <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
-  <div class="book-search-spinner spinner hidden"></div>
+  <div class="book-search-spinner hidden"></div>
   <ul id="book-search-results"></ul>
 </div>
 
@@ -62,6 +62,8 @@ https://github.com/alex-shpak/hugo-book
 <li>
   <a href="/docs/mechanics/"><strong>Game Design</strong></a>
 <ul>
+<li>
+  <a href="/docs/mechanics/mechanics/">Game Mechanics</a></li>
 <li>
   <a href="/docs/mechanics/master/">Bestia Master</a></li>
 <li>
@@ -134,15 +136,16 @@ https://github.com/alex-shpak/hugo-book
   <strong></strong>
 
   <label for="toc-control">
+    
     <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
   </label>
 </div>
 
 
   
-    <input type="checkbox" class="hidden" id="toc-control" />
-    <aside class="hidden clearfix">
-      
+  <aside class="hidden clearfix">
+    
   <nav id="TableOfContents">
   <ul>
     <li><a href="#bestia-developer-documentation">Bestia Developer Documentation</a>
@@ -157,7 +160,7 @@ https://github.com/alex-shpak/hugo-book
 </nav>
 
 
-    </aside>
+  </aside>
   
  
       </header>
@@ -174,28 +177,29 @@ data-show-count="true" aria-label="Star tfelix/bestia-docs on GitHub">Star</a>
 <a class="github-button" href="https://github.com/tfelix/bestia-docs/subscription" data-icon="octicon-eye"
 data-size="large" data-show-count="true" aria-label="Watch tfelix/bestia-docs on GitHub">Watch</a></p>
 <p><strong>Congratulations!</strong> You just have found the Developer Documentation of Bestia. Here you find everything from
-gamedesign guidlines to engine architecture overview as well as the API documentation to access game resources.</p>
-<blockquote>
-<p><strong>The game currently transforms into a stand-alone client which is currently not available for testing.</strong></p>
-</blockquote>
+game design guidelines to engine architecture overview as well as the API documentation to access game resources.</p>
 <h2 id="getting-started">Getting Started</h2>
 <p>The documentation is split into three main sections:</p>
 <ol>
-<li>General Game Design</li>
+<li>Game Design</li>
 <li>Client Documentation</li>
 <li>Server Documentation</li>
 </ol>
-<p>The infos found in this document should help you to get kickstarted and join the development. Depending on where you want to contribute you should read the required sections. With the provided guidelines enthusiasts should very easily be able to create contributions from artworks to scripts.</p>
+<p>The info found in this document should help you to get kickstarted and join the development. Depending on where you want to contribute you should read the required sections. With the provided guidelines enthusiasts should very easily be able to create contributions from artworks to scripts.</p>
 <h2 id="project-relation">Project Relation</h2>
-<p>To build the whole software you need to understand the relationship between the repositories. The relation is somewhat complicated as there are some inter-repositories dependencies. The <code>bestia-behemoth</code> repository contains the server but also the ProtoBuf message defintion. This definition is required to build the <code>bestia-entity-plugin</code> for Godot. The result, this engine, is required to build the <code>bestia-client</code> game. The server can be build only with the <code>bestia-behemoth</code> repository. The relation is depicted in the following diagram.</p>
+<p>To build the whole software you need to understand the relationship between the repositories. The relation is somewhat complicated as there are some inter-repositories dependencies. The <code>bestia-behemoth</code> repository contains the server but also the ProtoBuf message definition. This definition is required to build the <code>bestia-entity-plugin</code> for Godot. The result, this engine, is required to build the <code>bestia-client</code> game. The server can be build only with the <code>bestia-behemoth</code> repository. The relation is depicted in the following diagram.</p>
 
 
 <script src="/mermaid.min.js"></script>
-<script>
-mermaid.initialize({
-  flowchart: { useMaxWidth:true }
-});
-</script>
+
+  <script>mermaid.initialize({
+  "flowchart": {
+    "useMaxWidth":true
+  },
+  "theme": "default"
+}
+)</script>
+
 
 
 
@@ -238,9 +242,9 @@ on Github.</p>
 
 
 
-  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/bc5cae604b852c8b6a9ba3aa4e75a54d8f889061" title='Last modified by Thomas Felix | October 21, 2020' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/bd174fd1f9e9aa264ee8e137431a4f5bf95b608a" title='Last modified by Thomas Felix | January 19, 2021' target="_blank" rel="noopener">
       <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>October 21, 2020</span>
+      <span>January 19, 2021</span>
     </a>
   </div>
 
