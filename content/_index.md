@@ -9,23 +9,21 @@ data-show-count="true" aria-label="Star tfelix/bestia-docs on GitHub">Star</a>
 data-size="large" data-show-count="true" aria-label="Watch tfelix/bestia-docs on GitHub">Watch</a>
 
 **Congratulations!** You just have found the Developer Documentation of Bestia. Here you find everything from
-gamedesign guidlines to engine architecture overview as well as the API documentation to access game resources.
-
-> **The game currently transforms into a stand-alone client which is currently not available for testing.**
+game design guidelines to engine architecture overview as well as the API documentation to access game resources.
 
 ## Getting Started
 
 The documentation is split into three main sections:
 
-1. General Game Design
+1. Game Design
 2. Client Documentation
 3. Server Documentation
 
-The infos found in this document should help you to get kickstarted and join the development. Depending on where you want to contribute you should read the required sections. With the provided guidelines enthusiasts should very easily be able to create contributions from artworks to scripts.
+The info found in this document should help you to get kickstarted and join the development. Depending on where you want to contribute you should read the required sections. With the provided guidelines enthusiasts should very easily be able to create contributions from artworks to scripts.
 
 ## Project Relation
 
-To build the whole software you need to understand the relationship between the repositories. The relation is somewhat complicated as there are some inter-repositories dependencies. The `bestia-behemoth` repository contains the server but also the ProtoBuf message defintion. This definition is required to build the `bestia-entity-plugin` for Godot. The result, this engine, is required to build the `bestia-client` game. The server can be build only with the `bestia-behemoth` repository. The relation is depicted in the following diagram.
+To build the whole software you need to understand the relationship between the repositories. The relation is somewhat complicated as there are some inter-repositories dependencies. The `bestia-behemoth` repository contains the server but also the ProtoBuf message definition. This definition is required to build the `bestia-entity-plugin` for Godot. The result, this engine, is required to build the `bestia-client` game. The server can be build only with the `bestia-behemoth` repository. The relation is depicted in the following diagram.
 
 {{< mermaid >}}
 graph LR

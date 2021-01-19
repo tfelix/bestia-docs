@@ -67,30 +67,38 @@ A set of transformable world variables follow. Every item, spell usage etc. must
 
 ### Variables
 
-| Goal    | Precondition | Effect          |
-| ------- | ------------ | --------------- |
-| Healing | -            | Heals the agent |
-| Eat     | HasFood      | Agent will eat  |
+| Goal  | Precondition | Effect                      |
+| ----- | ------------ | --------------------------- |
+| Heal  | -            | Heals the agent             |
+| Eat   | HasFood      | Agent will eat              |
+| Sleep | -            | Increases "Rested" property |
+
 
 ### Actions List
 
-| Actions   | Cost | Precondition                    | Effects                     |
-| --------- | ---- | ------------------------------- | --------------------------- |
-| UseSpell  | 1    | HasMana, HasConsumablesItems    | Depending on the skill used |
-| GetItem   | 2    | DoesNotHaveItem, KnowsItemPlace |                             |
-| EquipItem | 2    | HasItem                         | Depending on the item       |
-| UseItem   | 1    | HasItem                         | Depending on the item       |
+| Actions    | Cost | Precondition                  | Effects                     |
+| ---------- | ---- | ----------------------------- | --------------------------- |
+| MoveTo     | x    | -                             | IsAtPosition                |
+| UseSpell   | 1    | HasMana, HasConsumablesItems  | Depending on the skill used |
+| GetItem    | 2    | DoesNotHaveItem, IsAtPosition |                             |
+| EquipItem  | 2    | HasItem                       | Depending on the item       |
+| UseItem    | 1    | HasItem                       | Depending on the item       |
+| PickupItem | 1    | IsAtPosition                  | HasItem                     |
 
 Example:
 
-NPC is hurt and its AI behavior wants to archive the goal **Healing**.
+NPC is hurt and its AI behavior wants to archive the goal **Healing**. The NPC has a Healing spell but no mana to cast it
+however it has a mana potion. It also knows that a HP potion lies in his house.
 
-
+Heal(100HP)
+UseItem(HealthPotion): HasItem(HealthPotion) 1
+UseItem(HealthPotion): HasItem(HealthPotion) : PickupItem(HealthPotion) : MoveTo(x:10, y:20)
+UseSpell(Lesser Heal): HasMana(10) : UseItem(ManaPotion) : HasItem(ManaPotion)
 
 ## Special Considerations
 
 AI Blueprints are given as JSON files and AI agents are build from these Blueprints. The Bestia Behemoth
-Server decides what the tick rate of this agents are, to reduce the load on the server, agents without players near
+server decides what the tick rate of these agents are, to reduce the load on the server, agents without players near
 They tick slower then agents which are currently actively engaged in player interaction.
 
 If NPCs meet they should be able to exchange certain information from their blackboards by exchanging "gossip" this

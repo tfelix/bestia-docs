@@ -4,9 +4,9 @@ title: Environment
 
 # Environment
 
-Bestia uses a sophisticated temperature and environment system to drive weather simulation and the effects on the players environment.
+Bestia uses a sophisticated temperature and environment system to drive weather simulation and the effects on the player's environment.
 
-These simulations should be based on certain basic values which are determined location-dependent, but can be changed by interaction with the players. Also natural changes through the world (seasons) should lead to an adjustment of these values. Due to the changes of the environmental values tiles have to be adapted to the world itself. These have to be adjusted anyway if they should change due to other local effects like fire or mining. The client must be informed about adjusted tiles.
+These simulations should be based on certain basic values that are determined location-dependent, but can be changed by interaction with the players. Also, natural changes in the world (alternating seasons) should lead to an adjustment of these values. Due to the changes of the environmental values the environment areas have to be adapted to the world itself. These have to be adjusted anyway if they should change due to other local effects like fire or mining. The client must be informed about adjusted environment areas.
 
 > Bestia Master enter the current world from another, not further mentioned dimension. During each incarnation
 > a name of this world is generated and in each cycle all Bestia Master entering the game will have this world name
@@ -14,7 +14,7 @@ These simulations should be based on certain basic values which are determined l
 
 ## Temperature
 
-Each Bestia has a certain sweet spot of tolerable temperature. There are several kind of base temperature ranges in which Bestia thrive:
+Each Bestia has a certain sweet spot of tolerable temperature. There are several kinds of base temperature ranges in which Bestia thrive:
 
 | Temperature Kind   | Base Temperature Range [°C] |
 | ------------------ | --------------------------: |
@@ -22,8 +22,8 @@ Each Bestia has a certain sweet spot of tolerable temperature. There are several
 | Medium Temperature |                     10 - 30 |
 | High Temperature   |                     25 - 45 |
 
-`Vitality` and `Willpower` increases resistenace against the temperatures. Specialized equipments or status effects can also
-affect temperature resistence.
+`Vitality` and `Willpower` increases resistance against the temperatures. Specialized equipment or status effects can also
+affect temperature resistance.
 
 The formular is as follows:
 
@@ -58,32 +58,32 @@ During night time the player will need light sources in order to improve
 the visibility of enemies or terrain. There will be certain items (e.g. torches, candles etc.) as well as spells to
 make light.
 
-## Ingame Time
+## Bestia-Time
 
-The time in the Bestia game is faster then the real world time. When we refer to the faster in-game time we will call it **Bestia time**, if we refer to the normal time we call it **real time**.
+The time in the Bestia game is faster than the real-world time. When we refer to the faster in-game time we will call it **Bestia time**, if we refer to the normal time we call it **real-time**.
 
 Changing seasons should lead to an impression of the changeability of the world. You have to adapt to a periodically
 changing environment. Things that work in summer may not be possible in winter. But so that the players don't have
 to wait for a real year, time in Bestia flies faster.
 
-The bestia time starts at the creation of the bestia world. It is basically three times faster then the usual time.
-This means that the normal bestia day has 8 hours in real time.
+The Bestia-Time starts at the creation of the Bestia world. It is basically three times faster then the usual time.
+This means that the normal bestia day has 8 hours in real-time.
 
-This means that the bestia month has 10 days in real time and an bestia year is 4 month in real time.
+This means that the bestia month has 10 days in real-time and a bestia year is monthsth in real time.
 
 * Bestia year: 4 months
-* Bestia seasion: summer, winter, fall, spring: each 1 month
+* Bestia season: summer, winter, fall, spring: each 1 month
 * Bestia day: 8 hours
 
 This allows the player to see multiple day-night cycles on the same day while allowing him to play for a considerable
 time so he can actually do something meaningful until the sun rises again.
 
-> If it turns out that the night period is too annyoing for the players because
+> If it turns out that the night period is too annoying for the players because
 > of the limited amount of gameplay then the night might get shortened.
 
-This caluclation results in the following example timespans:
+This calculation results in the following example timespans:
 
-| Bestia Time | Real Time |
+| Bestia Time | Real-Time |
 | ----------- | --------- |
 | 3 h         | 1 h       |
 | 12 d        | 4 d       |

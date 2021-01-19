@@ -17,7 +17,7 @@ markup:
     startLevel: 1
 
 params:
-  BookTheme: 'dark'
+  BookTheme: "dark"
 
   # (Optional, default true) Controls table of contents visibility on right side of pages.
   # Start and end levels can be controlled with markup.tableOfContents setting.

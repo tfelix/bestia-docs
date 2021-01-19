@@ -3,6 +3,7 @@ headless = true
 +++
 
 - [**Game Design**]({{< relref "/docs/mechanics" >}})
+  - [Game Mechanics]({{< relref "/docs/mechanics/mechanics" >}})
   - [Bestia Master]({{< relref "/docs/mechanics/master" >}})
   - [Bestias]({{< relref "/docs/mechanics/bestia" >}})
   - [Environment]({{< relref "/docs/mechanics/environment" >}})
