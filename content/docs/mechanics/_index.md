@@ -11,11 +11,10 @@ Here concrete realizations of central game elements are described. Contrary to t
 
 This document describes the core thoughts and principles under which all game design choices should be oriented and challenges.
 
-## Core Concepts
 
 > Try to conform to the core concepts as close as possible when you want to contribute your own content!
 
-### Consistent Fantasy Simulation
+## Consistent Fantasy Simulation
 
 We want to tell a story, a story the players forge and form by themselves. We must provide a world, an environment in
 which this is made possible. The game should motivate the players to explore and test their creativity for solving problems.
@@ -25,24 +24,24 @@ that will teleport the player to the next Dungeon and destroy the immersive fant
 solve this problem by himself maybe by finding a friendly other character class which is able to open portals.
 Interaction between players is highly encouraged to solve problems.
 
-### A Single Universe
+## A Single Universe
 
 We all live on the same planet. So do we really need multiple servers? Multiple servers tear the community apart.
 Of course it is technically more challenging to connect all players through a common game world. But this challenge
  has to be met. One community further encourages interaction between the players.
 
-### Stable Mechanics
+## Stable Mechanics
 
 In modern games players are kept encouraged by constantly changing the game mechanics. These poor design choices
 makes it hard for players to came back into the game after a long pause. Most mechanics have changed and must be
 adaptes first leading to frustration. Players slowly understanding the mechanics will put into a constant re-learning
-when the patches changes the mechanics. Bestia will strictly strive for preserving once established gameplay mechanics
+when the patches change the mechanics. Bestia will strictly strive for preserving once established gameplay mechanics
 and makes them as resistant as possible against patches.
 
-> Interesting long term challenges have to be implemented via a immersive gameplay world. Bugs and balancing problems
+> Interesting long-term challenges have to be implemented via a immersive gameplay world. Bugs and balancing problems
 will be patched of course.
 
-### Encouraging Social Interaction
+## Encouraging Social Interaction
 
 Many game mechanics should only be possible through interaction with other players. Rituals that require multiple
 players, even the help of multiple character classes should be the norm rather than the exception. Single players
@@ -51,7 +50,7 @@ of the game can and should only be experienced through interaction with other pe
 in the community of the players. By these promoted social contacts the players are bound more strongly to
 the game itself.
 
-### Advanced Crafting
+## Advanced Crafting
 
 Items are usually not obtained by killing monsters (we remember: fantasy realism.) Do wolves carry swords?
 Probably not. They have to be made. Usually only raw materials are found on maps. Almost all equipment is
@@ -62,7 +61,7 @@ in this cycle of goods as easily as possible, both as a producer and as a consum
 
 The professions are described in the [Skills and Attacks](/mechanics/skills) section.
 
-### Modern Artifical Intelligence
+## Modern Artifical Intelligence
 
 The game contains a modern, incredibly powerful AI. The world and its inhabitants should look incredibly
 alive with it. Bestias and NPC follow a daily routine and pursue their own goals. The player should be
@@ -70,15 +69,15 @@ able to recognize patterns and interact with them by observing them. The NPCs re
 influences by the player. NPCs should be able to travel long distances and not be available for the player
 for some time.
 
-### Rich And Immersive History
+## Rich And Immersive History
 
 The story and history should be rich in detail and deep and immersive. But its not necessairly important to be always
 totally serious. Yet it must be generic enough to get pre-computed to some degree when the world is calcualted.
-Instead the story should keep its own sense of strange, nerdy humor. Character development and ingame experiences
+Instead, the story should keep its own sense of strange, nerdy humor. Character development and ingame experiences
 should be tied to certain storys or quests. E.g. taking gameplay choices only by clicking a certain UI button is discouraged.
 
-### Meet Real World Expectation
+## Meet Real-World Expectation
 
-The environment should stick to real world expectation, can you open a door also by destroying it? Sure! Why should this not
+The environment should stick toreal-worldd expectation, can you open a door also by destroying it? Sure! Why should this not
 also work in games? - The simulated world of Bestia should stick to the principles and expectations of the real world.
-With this help player can think of funny and motivating workarounds and solutions to solve problems in game.
+With this, help player can think of funny and motivating workarounds and solutions to solve problems in game.

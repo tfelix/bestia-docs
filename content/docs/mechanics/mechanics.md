@@ -26,32 +26,34 @@ The postal fee is defined by:
 
 {{< katex display >}}
    price =  0.01g \cdot km \cdot m_{kg}\\
-   deliver_{time} =  8h + km / 10
+   deliver_{time} =  30min + km / 10
 {{< /katex >}}
+
+Time is given in real-world time.
 
 The player can decide to insure his delivery which will setup a teleport spell on the item if its not looted but the postman is killed which will deliver it towards the target destination. But this will take another 0.5-1 days in real time before the item will then be available at the target location.
 
 Gold and text-only messages can be send via a special telegram system which is very hard to intercept. But the fee is 3 times the usual price (but gold has no ingame weight, so you are allowed to carry as much as you want).
 
-### The Cults
+## The Cults
 
-In each Bestia World there are 2 cults to which the Bestia summoners can belong. When creating the world. One cult should aim for the destruction of the world, the other should prevent it.
+In each Bestia World there are 2 cults to which the Bestia summoners can belong. The goal of one cult is to destroy the world, the others goal is to prevent it from destruction.
 
-The cults are ultimately a faction. The goal is to be able to play these factions among themselves. Usually players can fight against each other at any time, but the rivalries should take place between the cults. To this end, game mechanics must be established that in a certain way grant the individual cults an additional bonus in a collaborative approach and thus offer playful incentives to actively intervene in the game.
+The cults are basically a faction. The goal is to be able to play these factions among themselves. Usually players can fight against each other at any time, but the rivalries should take place between the cults. To this end, game mechanics must be established that in a certain way grant the individual cults an additional bonus in a collaborative approach and thus offer playful incentives to actively intervene in the game.
 
 Players can invest into their cults citadelle. Only one citadel can exist at the time but players are free to build as many temples as they want, where they can access the services of their cult. The interesting thing is that some of the archivements by the cults will remain active when the world is replaced by a new one. So these cults help a lot when players want to keep their wealth during a world destruction event.
 
 Players should be able to change cults. However, this will be sanctioned with a difficult task and will be associated with various disadvantages.
 
-#### Citadels and Temples
+### Citadels and Temples
 
 The order can research powerful spells and devices which the players can then learn or access to accomplish their goal.
 
-#### The Chaos
+### The Chaos
 
 The Chaos tries to inflict destruction and to speed up the worlds downfall, as they believe the mana influx is the fate every world must face finally. They try to mass the amount of mana, open rifts in remote legions to form the world after their twisted image until it goes down in flames.
 
-#### The Order
+### The Order
 
 This cult is the preserving one. They belive in stability and try to stop the ongoing destruction of the worlds. Their ultimate goal is to bring an end to the influx of mana. Thus they research a lot of spells to remove and control the mana influx and rifts.
 
@@ -61,9 +63,7 @@ It would be conceivable that special land areas fall under the influence of a ce
 
 When a world is created it is assumed it will last for {{< katex >}}x{{< /katex >}} days. If the Chaos manages to destroy a world in `80%` of this time we interpret this as an cult advantage {{< katex >}}ca{{< /katex >}} of `20%`, likewise if the Order keeps a world alive for `130%` of its estimated time their {{< katex >}}ca{{< /katex >}} is `30%`.
 
-> The boni are not yet fully designed, feel free to make suggestions.
-
-### Auction House
+## Auction House
 
 Trading is an important mechanic and allows player to exchange goods as the whole Bestia economy is player driven. Players can create auction hauses which can be used in order to perform trades while they are offline themselves.
 
@@ -73,13 +73,13 @@ Auction houses of different owners can be linked in order to display the shared 
 
 If the player does not pay the fee the item is withheld for him up to 10 days until it is returned to his owner (who can keep the price payed for the item from the player who did not collect his item).
 
-### Currency
+## Currency
 
 All the ingame currency is made from gold found by the players. Yes you have heard it right the players must harvest gold deposites in order to make their own money. Gold can directly be turned into gold coins.
 
 In order to start the economy the NPC have 10% of the available world wealth in gold. This wealth is re-distributed equally between every NPC every night. This mechanic is one of the few that have no underlying real world logic.
 
-### Honor
+## Honor
 
 It is possible in Bestia to perform malicious actions which will reduce the players good experience. This is by design!
 Yet there should be incentives for players not to go this route in order to protect low level players from ganking of
@@ -98,7 +98,7 @@ there permanently.
 
 Reputation decreases faster through bad deeds than increasing because of good ones.
 
-#### Protected Zones
+### Protected Zones
 
 Around the starting places there will be a enchantment in place which will mark the lands in the vacinity as **Protected Zones**.
 Inside this zone every kill of another player Bestia with more then 5 levels less as the killing bestia
@@ -107,7 +107,7 @@ or NPC will reduce the honor by **20 points**.
 Every action which leads to honor loss inside a protected zone (other then killing a low level Player Bestia) will be **multiplied by 3**
 wheras honor increasing actions will be **multiplied by 1.5**.
 
-#### Negative Honor
+### Negative Honor
 
 As there are multiple factions which different interests it is not easy to define which play is considered bad behavior
 which will get punished automatically. Yet there are some core actions which will be universally be considered as griev play
@@ -139,13 +139,13 @@ A player who steals an item is also marked with the debuff ***Thief** which will
 | Stealing Item (Superior)                        |         -10         |             -20              |
 | Stealing Item (Legendary)                       |         -15         |             -50              |
 
-#### Positive Honor
+### Positive Honor
 
 A positive honor level will lead to very friendly NPC which might even give the player some discounts or gifts from time to time. In order to increase your honor level again you can:
 
 * Kill a player with negative honor, which is indicated by certain debuffs visible to other players
 * Helping a NPC by healing or resurrecting a dead NPC
 
-#### Shrines of Judgement
+### Shrines of Judgement
 
 There are a 5 shrines in each game world incarnation where a player can sacrifice to raise a reputation that has fallen below the threshold of a player's global persecution. The sacrifice is usually (depending on the reputation threshold) very painful and even if it was made it can take several days until the news about it was spread.
