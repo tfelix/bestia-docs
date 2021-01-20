@@ -12,12 +12,12 @@ These simulations should be based on certain basic values that are determined lo
 These simulations should be based on certain basic values that are determined location-dependent, but can be changed by interaction with the players. Also, natural changes in the world (alternating seasons) should lead to an adjustment of these values. Due to the changes of the environmental values the environment areas have to be adapted to the world itself." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.bestia-game.net/docs/mechanics/environment/" />
-<meta property="article:modified_time" content="2021-01-19T02:07:59+01:00" />
+<meta property="article:modified_time" content="2021-01-20T01:57:21+01:00" />
 <title>Environment | Bestia Game</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.4d34b11806294f51ee5852bec21808d962f1c7298e53d4f042251e021920a3f2.css" integrity="sha256-TTSxGAYpT1HuWFK&#43;whgI2WLxxymOU9TwQiUeAhkgo/I=">
-<script defer src="/en.search.min.05af73c38dfe876567bc8889254a6d5b2e0df9f6ac4bb2b111a50faf295af7da.js" integrity="sha256-Ba9zw43&#43;h2VnvIiJJUptWy4N&#43;fasS7KxEaUPryla99o="></script>
+<script defer src="/en.search.min.4524f03d414e2031230cad308e15ee32cb2102ffe5f472d68dc5b03847cd7cd0.js" integrity="sha256-RSTwPUFOIDEjDK0wjhXuMsshAv/l9HLWjcWwOEfNfNA="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
@@ -167,6 +167,7 @@ https://github.com/alex-shpak/hugo-book
         <li><a href="#world-exploration">World Exploration</a>
           <ul>
             <li><a href="#cartography">Cartography</a></li>
+            <li><a href="#explored-worldmap">Explored Worldmap</a></li>
           </ul>
         </li>
       </ul>
@@ -317,24 +318,72 @@ of the limited amount of gameplay then the night might get shortened.</p>
 <p>In areas with a very high mana concentration a Mana Infestation can manifest. It increases mana generation in the area and depending on the concentation is will spawn new crystals next to it. The crystals damage every creature or structure in its vicinity, eventually consuming more and more of the planet destroying everything.</p>
 <p>The crystals itself can be destroyed. Everything which drains mana or banishes it is helpful to reduce the crystals.</p>
 <h2 id="world-exploration">World Exploration</h2>
-<p>A large part of the game world is generated automatically. There should be a motivation for players in exploring the world. New areas can be mapped and unique resources can be discovered and explored. In general, players should have their own branch about the secrets of the world to discover new items and how they are created. The entire world must gradually be explored and mapped by players. A hidden map has to be uncovered regularly. Players will be able to view this map online and see the overall progress of the exploration.</p>
-<p>Possible events can then also be announced on this public map. Every player should be able to create a world map in-game. Special cartographers should be able to combine these maps or generate new magic maps to inform about possible events (exchange information with friends via markers, or display certain resource sources).</p>
-<p>To make even more impact the explored maps are very needed by the general player population in order to preciesly target locations or send Bestias into the area for certain AI controlled missions. The maps, once created, can thus be copied and sold by the cartographer. Regular player might try to create copies but this will be very hard without a cartography skill and most likly fail.</p>
-<p>Exploring of the land should be a fun process but not so easy as going into the wild and pressing one simple button.</p>
+<p>A large part of the game world generates automatically. There should be a motivation for players exploring the world. New areas can be mapped and unique resources can be discovered and explored. In general, players should have their own branch about the secrets of the world to discover new items and how they are created. The entire world must gradually be explored and mapped by players. Players will be able to view this map online and see the overall progress of the exploration.</p>
+<p>Having a workable map has multiple use-cases:</p>
+<ol>
+<li>Most spells can be targeted only on a map with uncovered areas</li>
+<li>AI assisted walking of controlled player Bestia only works in charted territory</li>
+<li>Announcments of public events works and is synced via maps owned by the players</li>
+<li>Only inside explored areas Geologists can search for mineral resources</li>
+</ol>
+<p>There are a few assumptions regarding maps:</p>
+<ul>
+<li>Every player should be able to create a world map in-game</li>
+<li>Player with cartographer skill should be able to combine multiple maps into single ones combining the explored area</li>
+<li>Highly skilled cartoprpher can generate new magic maps to inform about possible events (exchange information with friends via markers, or display resource sources).</li>
+</ul>
+<p>Regular player might try to create copies but this will be very hard without a cartography skill and most likly fail.</p>
 <p>For generating the visual of the player map we use the algorithm described in 
   <a href="http://mewo2.com/notes/terrain/">Terrain Map Generation</a>
-and its respective 
+and it&rsquo;s respective 
   <a href="https://github.com/mewo2/terrain">Github repository</a></p>
 <h3 id="cartography">Cartography</h3>
-<p>In the game you should be able to make and acquire maps. These should be strongly interwoven with the game mechanics, so that it can pay off to own a good map. It should also give the players an incentive to actively explore the world.</p>
-<p>The player has to walk into the wilderness and then use his cartography skill. He can choose how wide the area to measure should be. Bigger areas will tend to be more error prone. Also the further away the player is from already explored land the harder the sucessfull performing of the skill will be.</p>
+<p>In order to explore a area of the map the player has to perform manual tasks. He can choose how wide the area to measure should be. Bigger areas will tend to be harder to explore. The further away the player is from already explored land the harder the successful performing of the skill will be.</p>
+<p>The player must perform a mini-game to explore the area. He might use devices which help to explore bigger areas.</p>
 <p>If the skill fails the player will need to wait for a certain amount of time in order to perform the skill again in the vicinity. The cooldown is reduced for adjacent areas.</p>
-<p>The server must validate the button presses of the player to make it harder to cheat the system.</p>
-<p>The algorithm for the carthography is:</p>
+<p>There are three difficulties which describe the range of the discovery and also give a base probability:</p>
+<table>
+<thead>
+<tr>
+<th>Range</th>
+<th>Difficulty</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1km</td>
+<td>30</td>
+</tr>
+<tr>
+<td>3km</td>
+<td>50</td>
+</tr>
+<tr>
+<td>5km</td>
+<td>80</td>
+</tr>
+</tbody>
+</table>
+<p>The following aplies:</p>
+<ul>
+<li>For every km from explored land the difficulty increases by <code>10</code></li>
+<li>For 1% of magic energy on the area difficulty increases by <code>0.5</code></li>
+<li>Every level of <code>Cartographer</code> reduces difficulty by <code>10</code>.</li>
+</ul>
 <ol>
 <li>Upon using the skill a difficulty <code>d</code> is determined, depending on the distance to the next already cartographed area and the area wished to be explored.</li>
 <li>There are 3-5 locations <code>l</code> spawned around the player within a radius of 300 to 800 meters around the player (depending on the difficulty). He must reach them within a timelimit <code>t</code>.</li>
 <li>When near one of such a location (5m) the player is given a moving compass graphic. The speed of moving needle and the area to hit via button press is calculated based on <code>d</code>.</li>
+</ol>
+<h3 id="explored-worldmap">Explored Worldmap</h3>
+<p>Explored areas are squared to save them easier. The total explored map is saved on the server in a Runlength Encoded datastructure. Smallest resolution is 100m.
+A base terrain map is generated an player map contains a sub-section of this map and every map holds its own data so it only displays what
+was explored by this map instance. The map is generated on the server like so:</p>
+<ol>
+<li>Detect the area the player map depicts</li>
+<li>Decode the RLE discovered area of it</li>
+<li>Use the complete map of the server to return the visible data, delete the rest</li>
+<li>Send display map data to the client</li>
 </ol>
 </article>
  
@@ -346,9 +395,9 @@ and its respective
 
 
 
-  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/bd174fd1f9e9aa264ee8e137431a4f5bf95b608a" title='Last modified by Thomas Felix | January 19, 2021' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/135da9bf975c94a0cabd3d6113a515b2a0fdb492" title='Last modified by Thomas Felix | January 20, 2021' target="_blank" rel="noopener">
       <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>January 19, 2021</span>
+      <span>January 20, 2021</span>
     </a>
   </div>
 
@@ -403,6 +452,7 @@ and its respective
         <li><a href="#world-exploration">World Exploration</a>
           <ul>
             <li><a href="#cartography">Cartography</a></li>
+            <li><a href="#explored-worldmap">Explored Worldmap</a></li>
           </ul>
         </li>
       </ul>

@@ -5,9 +5,9 @@
   <meta name="generator" content="Hugo 0.70.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Bestia Developer Documentation  Explore vast lands in a procedural generated world, fight tough monsters, or join guilds in your quest for honor. But be prepared: the world might end sooner as you would expect.
- Star Watch
-Congratulations! You just have found the Developer Documentation of Bestia. Here you find everything from game design guidelines to engine architecture overview as well as the API documentation to access game resources.">
+<meta name="description" content="Bestia Developer Documentation  Explore vast lands in a procedurally generated world, fight tough monsters, or join guilds in your quest for honor. But be prepared: the world might end sooner as you would expect.
+ Congratulations! You just have found the Developer Documentation of Bestia. Here you find everything from game design guidelines to engine architecture overview as well as the API documentation to access game resources.
+Project Repositories You find the three project repositories on GitHub (consider to give them a star!">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -17,7 +17,7 @@ Congratulations! You just have found the Developer Documentation of Bestia. Here
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.4d34b11806294f51ee5852bec21808d962f1c7298e53d4f042251e021920a3f2.css" integrity="sha256-TTSxGAYpT1HuWFK&#43;whgI2WLxxymOU9TwQiUeAhkgo/I=">
-<script defer src="/en.search.min.05af73c38dfe876567bc8889254a6d5b2e0df9f6ac4bb2b111a50faf295af7da.js" integrity="sha256-Ba9zw43&#43;h2VnvIiJJUptWy4N&#43;fasS7KxEaUPryla99o="></script>
+<script defer src="/en.search.min.4524f03d414e2031230cad308e15ee32cb2102ffe5f472d68dc5b03847cd7cd0.js" integrity="sha256-RSTwPUFOIDEjDK0wjhXuMsshAv/l9HLWjcWwOEfNfNA="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <link rel="alternate" type="application/rss+xml" href="https://docs.bestia-game.net/index.xml" title="Bestia Game" />
@@ -150,10 +150,10 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#bestia-developer-documentation">Bestia Developer Documentation</a>
       <ul>
-        <li><a href="#getting-started">Getting Started</a></li>
-        <li><a href="#project-relation">Project Relation</a></li>
-        <li><a href="#contributing">Contributing</a></li>
         <li><a href="#project-repositories">Project Repositories</a></li>
+        <li><a href="#repository-relations">Repository Relations</a></li>
+        <li><a href="#getting-started">Getting Started</a></li>
+        <li><a href="#contributing">Contributing</a></li>
       </ul>
     </li>
   </ul>
@@ -169,25 +169,45 @@ https://github.com/alex-shpak/hugo-book
       
   <article class="markdown"><h1 id="bestia-developer-documentation">Bestia Developer Documentation</h1>
 <blockquote>
-<p>Explore vast lands in a procedural generated world, fight tough monsters, or join guilds in your quest for honor.
+<p>Explore vast lands in a procedurally generated world, fight tough monsters, or join guilds in your quest for honor.
 But be prepared: the world might end sooner as you would expect.</p>
 </blockquote>
-<p><a class="github-button" href="https://github.com/tfelix/bestia-docs" data-icon="octicon-star" data-size="large"
-data-show-count="true" aria-label="Star tfelix/bestia-docs on GitHub">Star</a>
-<a class="github-button" href="https://github.com/tfelix/bestia-docs/subscription" data-icon="octicon-eye"
-data-size="large" data-show-count="true" aria-label="Watch tfelix/bestia-docs on GitHub">Watch</a></p>
 <p><strong>Congratulations!</strong> You just have found the Developer Documentation of Bestia. Here you find everything from
 game design guidelines to engine architecture overview as well as the API documentation to access game resources.</p>
-<h2 id="getting-started">Getting Started</h2>
-<p>The documentation is split into three main sections:</p>
-<ol>
-<li>Game Design</li>
-<li>Client Documentation</li>
-<li>Server Documentation</li>
-</ol>
-<p>The info found in this document should help you to get kickstarted and join the development. Depending on where you want to contribute you should read the required sections. With the provided guidelines enthusiasts should very easily be able to create contributions from artworks to scripts.</p>
-<h2 id="project-relation">Project Relation</h2>
-<p>To build the whole software you need to understand the relationship between the repositories. The relation is somewhat complicated as there are some inter-repositories dependencies. The <code>bestia-behemoth</code> repository contains the server but also the ProtoBuf message definition. This definition is required to build the <code>bestia-entity-plugin</code> for Godot. The result, this engine, is required to build the <code>bestia-client</code> game. The server can be build only with the <code>bestia-behemoth</code> repository. The relation is depicted in the following diagram.</p>
+<h2 id="project-repositories">Project Repositories</h2>
+<p>You find the three project repositories on GitHub (consider to give them a star!)</p>
+<ul>
+  <li>
+    <a href="https://github.com/tfelix/bestia-docs">Bestia Developer Documentation</a> <i class="fab fa-github"></i>
+    <p>
+    <a class="github-button" href="https://github.com/tfelix/bestia-docs" data-icon="octicon-star" data-size="large"
+    data-show-count="true" aria-label="Star tfelix/bestia-docs on GitHub">Star</a>
+    <a class="github-button" href="https://github.com/tfelix/bestia-docs/subscription" data-icon="octicon-eye"
+    data-size="large" data-show-count="true" aria-label="Watch tfelix/bestia-docs on GitHub">Watch</a>
+    </p>
+  </li>
+  <li>
+    <a href="https://github.com/tfelix/bestia-client">Bestia Game Client</a> <i class="fab fa-github"></i>
+    <p>
+    <a class="github-button" href="https://github.com/tfelix/bestia-client" data-icon="octicon-star" data-size="large"
+data-show-count="true" aria-label="Star tfelix/bestia-client on GitHub">Star</a>
+<a class="github-button" href="https://github.com/tfelix/bestia-client/subscription" data-icon="octicon-eye"
+data-size="large" data-show-count="true" aria-label="Watch tfelix/bestia-client on GitHub">Watch</a>
+    </p>
+  </li>
+    <li>
+    <a href="https://github.com/tfelix/bestia-behemoth">Bestia Behemoth Server</a> <i class="fab fa-github"></i>
+    <p>
+    <a class="github-button" href="https://github.com/tfelix/bestia-behemoth" data-icon="octicon-star" data-size="large"
+data-show-count="true" aria-label="Star tfelix/bestia-behemoth on GitHub">Star</a>
+<a class="github-button" href="https://github.com/tfelix/bestia-behemoth/subscription" data-icon="octicon-eye"
+data-size="large" data-show-count="true" aria-label="Watch tfelix/bestia-behemoth on GitHub">Watch</a>
+    </p>
+  </li>
+</ul>
+<h2 id="repository-relations">Repository Relations</h2>
+<p>To build the whole software you need to understand the relationship between the repositories. The relation is somewhat complicated as there are some inter-repositories dependencies. The <code>bestia-behemoth</code> repository contains the server but also the ProtoBuf message definition. This definition is required to build the <code>bestia-entity-plugin</code> for Godot. The result of this build, the 
+  <a href="https://godotengine.org/">Godot engine</a>, is required to build the <code>bestia-client</code> game. The server can be built only with the <code>bestia-behemoth</code> repository. The relation is depicted in the following diagram:</p>
 
 
 <script src="/mermaid.min.js"></script>
@@ -211,22 +231,20 @@ graph LR
   godot -- required --> client[bestia-client]
 </p>
 
+<h2 id="getting-started">Getting Started</h2>
+<p>The documentation is split into three main sections:</p>
+<ol>
+<li>Game Design</li>
+<li>Client Documentation</li>
+<li>Server Documentation</li>
+</ol>
+<p>The info found in this document should help you to get kickstarted and join the development. Depending on where you want to contribute you should read the required sections. With the provided guidelines enthusiasts should very easily be able to create contributions from artworks to scripts.</p>
 <h2 id="contributing">Contributing</h2>
 <p>Contributions to both the game design and the game itself (the client and the server) are very welcome!</p>
 <p>You may find a little <code>Edit this page</code> link at the bottom of each page. If you want to change some game design aspects feel free to give it a try!</p>
 <p>Inside this game design document you possibly will find certain <strong>Contributing</strong> sections which will give you some guidelines to follow in order to help to get you changes into the game quickly.</p>
 <p>Read the Bestia <strong>
-  <a href="/docs/mechanics/">General Mechanics</a></strong> section first to get a grasp for what this game is all about and align your contributions and changes under these game guidelines in order to maximize your chance of a fast approval of your contribution.</p>
-<h2 id="project-repositories">Project Repositories</h2>
-<p>You find the three project repositories on GitHub (consider to givem them a star!)</p>
-<ul>
-<li>
-  <a href="https://github.com/tfelix/bestia-docs">Bestia Developer Documentation</a> <i class="fab fa-github"></i></li>
-<li>
-  <a href="https://github.com/tfelix/bestia-client">Bestia Game Client</a> <i class="fab fa-github"></i></li>
-<li>
-  <a href="https://github.com/tfelix/bestia-behemoth">Bestia Behemoth Server</a> <i class="fab fa-github"></i></li>
-</ul>
+  <a href="/docs/mechanics/">Game Design</a></strong> section first to get a grasp for what this game is all about and align your contributions and changes under these game guidelines to maximize your chance of a fast approval of your contribution.</p>
 <blockquote>
 <p>You can use the <code>Edit</code> link on the bottom right of every page to directly edit this document and create a Pull Request
 on Github.</p>
@@ -242,9 +260,9 @@ on Github.</p>
 
 
 
-  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/bd174fd1f9e9aa264ee8e137431a4f5bf95b608a" title='Last modified by Thomas Felix | January 19, 2021' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/tfelix/bestia-docs/commit/135da9bf975c94a0cabd3d6113a515b2a0fdb492" title='Last modified by Thomas Felix | January 20, 2021' target="_blank" rel="noopener">
       <img src="/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>January 19, 2021</span>
+      <span>January 20, 2021</span>
     </a>
   </div>
 
@@ -281,10 +299,10 @@ on Github.</p>
   <ul>
     <li><a href="#bestia-developer-documentation">Bestia Developer Documentation</a>
       <ul>
-        <li><a href="#getting-started">Getting Started</a></li>
-        <li><a href="#project-relation">Project Relation</a></li>
-        <li><a href="#contributing">Contributing</a></li>
         <li><a href="#project-repositories">Project Repositories</a></li>
+        <li><a href="#repository-relations">Repository Relations</a></li>
+        <li><a href="#getting-started">Getting Started</a></li>
+        <li><a href="#contributing">Contributing</a></li>
       </ul>
     </li>
   </ul>
