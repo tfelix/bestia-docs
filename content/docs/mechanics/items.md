@@ -1,5 +1,5 @@
 ---
-title: Items
+title: Items & Crafting
 ---
 
 # Items
@@ -10,17 +10,20 @@ its [Inventory](#inventory). Each Bestia (and also a lot of other entities), hav
 Items are mostly crafted by the players. Its quite rare to obtain direct item drops from killed enemies. Instead its very common
 to loot resources when enemies are killed.
 
+## Item Level
+
 Each item has a level assigned. This level is important to determine how hard or easy it is to forge this item, upgrade
 it and so on. It also effects how spells interact with the item entity.
 
-## Item Category
+### Item Category
 
 Items are grouped into three categories and inside this documentation often refered to via its category.
 
 | Item Level | Category  |
 | ---------- | --------- |
 | 1 - 20     | Mundane   |
-| 21 - 80    | Superior  |
+| 21 - 50    | Superior  |
+| 51 - 80    | Rare      |
 | 81 - 100   | Legendary |
 | 101+       | Epic      |
 

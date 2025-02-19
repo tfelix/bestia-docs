@@ -3,7 +3,7 @@
 </p>
 
 
-# Bestia Development Docs
+# Bestia Documentation
 
 [![Build Status](https://travis-ci.org/tfelix/bestia-docs.svg?branch=master)](https://travis-ci.org/tfelix/bestia-docs)
 [![License: CC0](https://img.shields.io/badge/license-CC0-green)](LICENSE)
@@ -19,25 +19,26 @@ point for everyone who wants to contribute to the project.
 
 The documentation page can be found on [https://docs.bestia-game.net](https://docs.bestia-game.net)
 
-The other project repositories are:
+The other project repositories are found here:
 
 * [Behemoth Game Server](https://github.com/tfelix/bestia-behemoth)
 * [Game Client](https://github.com/tfelix/bestia-client)
 
 ## Build
 
-The documentation uses the static site generator [Hugo](https://gohugo.io/) to generate a nice documentation hompagenas well as the Book Theme via a git submodule. After you cloned the repository, issue the following command to check out the submodules initially:
-
-```bash
-git submodule update --init --recursive
-```
-
+The documentation uses the static site generator [Hugo](https://gohugo.io/) to generate a nice documentation hompagenas well as the Book Theme via a git submodule.
 In order to build the documentation [install Hugo](https://gohugo.io/getting-started/installing/) and then go to repo and call:
 
 ```bash
 # Intialize the theme git submodule
 git clone --recurse-submodules https://github.com/tfelix/bestia-docs
-hugo server --theme book
+hugo server
+```
+
+If you already cloned the repository and only need to pull the book theme submodule this command can be used:
+
+```bash
+git submodule update --init --recursive
 ```
 
 The website uses the [Book Theme for Hugo](https://github.com/alex-shpak/hugo-book) which is licenced under MIT License.

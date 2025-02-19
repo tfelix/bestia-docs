@@ -1,3 +1,9 @@
+---
+weight: 100
+bookCollapseSection: true
+title: Development Resources
+---
+
 # Development Resources
 
 Here you find helpful links and general guidelines how the look and feel should be from a User Experience point of view.

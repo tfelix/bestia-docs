@@ -1,83 +1,65 @@
 ---
-weight: 1
+weight: 20
 bookCollapseSection: true
+title: Design Guidelines
 ---
 
-# Game Design
+# Game Design Overview
 
-The game offers several main aspects of gameplay that the player can perceive, taking into account the always valid manifesto statements. Also, the concept of the open world should open up an emergent game principle.
+**Bestia** is built on an open-world, emergent gameplay philosophy, allowing players to shape their own experiences while staying true to the game's core manifesto. The world is dynamic, driven by player actions and ever-evolving systems that create a deep, immersive environment.
 
-Here concrete realizations of central game elements are described. Contrary to the rough guidelines of the manifesto, the discussion and description of a concrete game feature is already at stake here. The specification of the respective feature should be described as exactly as to make easy implementation possible. The list will be constantly updated and extended.
+This document details the **key game mechanics and design principles**, providing concrete specifications to guide implementation. While the manifesto sets broad ideological guidelines, this section focuses on specific gameplay features, ensuring clarity for both development and expansion.
 
-This document describes the core thoughts and principles under which all game design choices should be oriented and challenges.
+At the heart of the game is a **world torn apart** by a cataclysmic event known as the **Rift Event**. Magic surged uncontrollably, merging two realities and warping their physical properties—leading to widespread devastation. The player, a survivor of this catastrophe, is thrust into a **harsh new world**, forced to adapt, explore, and rebuild.
 
+Survival is just the beginning. Players will gather resources, forge alliances and rivalries, and ultimately shape the fate of the world. The theme of **destruction and rebirth** runs throughout the game, with players aligning themselves with different **factions**—some seeking to hasten the world’s demise, others striving to prevent further chaos (see [The Factions](/docs/mechanics/factions) for more details).
 
-> Try to conform to the core concepts as close as possible when you want to contribute your own content!
+This document will continue to evolve, expanding on these foundations and refining the game’s mechanics as development progresses.
+
+{{% hint info %}}
+**Note**
+
+Try to conform to the core concepts as close as possible when you want to contribute content! This makes sure your changes are quickly merged.
+{{% /hint %}}
 
 ## Consistent Fantasy Simulation
 
-We want to tell a story, a story the players forge and form by themselves. We must provide a world, an environment in
-which this is made possible. The game should motivate the players to explore and test their creativity for solving problems.
-Nothing frustrates more than solving riddles only by brute-forcing the answers. All the things inside the world should
-be explainable by in-universe theories and follow certain logic patterns. There should be no magic User Interface
-that will teleport the player to the next Dungeon and destroy the immersive fantasy. The player should be motivated to
-solve this problem by himself maybe by finding a friendly other character class which is able to open portals.
-Interaction between players is highly encouraged to solve problems.
+Our goal is to create an immersive world where players can forge their own stories. To achieve this, we must provide an environment that encourages exploration and creativity. The game should motivate players to solve problems using their ingenuity rather than relying on brute force. Every element within the world should be explainable through in-universe theories and follow logical patterns.
+
+To maintain immersion, there should be no magical user interfaces that teleport players to the next dungeon. Instead, players should be encouraged to find solutions themselves, perhaps by seeking help from other character classes capable of opening portals. Interaction between players is highly encouraged to overcome challenges.
 
 ## A Single Universe
 
-We all live on the same planet. So do we really need multiple servers? Multiple servers tear the community apart.
-Of course it is technically more challenging to connect all players through a common game world. But this challenge
- has to be met. One community further encourages interaction between the players.
+Just as we all inhabit the same planet, our game should exist within a single, unified world. Multiple servers can fragment the community, whereas a single universe fosters interaction and cohesion. While technically challenging, connecting all players through a common game world is a goal worth pursuing to build a stronger, more interconnected community.
 
 ## Stable Mechanics
 
-In modern games players are kept encouraged by constantly changing the game mechanics. These poor design choices
-makes it hard for players to came back into the game after a long pause. Most mechanics have changed and must be
-adaptes first leading to frustration. Players slowly understanding the mechanics will put into a constant re-learning
-when the patches change the mechanics. Bestia will strictly strive for preserving once established gameplay mechanics
-and makes them as resistant as possible against patches.
+In many modern games, players are kept engaged through constant changes in game mechanics. However, this approach can be frustrating for players who return after a long absence, as they must relearn mechanics that have changed. Our game will strive to maintain stable and consistent gameplay mechanics. Once established, these mechanics will be preserved to ensure a smooth and enjoyable experience for all players, minimizing the need for constant relearning.
 
-> Interesting long-term challenges have to be implemented via a immersive gameplay world. Bugs and balancing problems
-will be patched of course.
+{{% hint info %}}
+**Note**
+
+Bugs and balancing problems are still subject to a fix of course.
+{{% /hint %}}
 
 ## Encouraging Social Interaction
 
-Many game mechanics should only be possible through interaction with other players. Rituals that require multiple
-players, even the help of multiple character classes should be the norm rather than the exception. Single players
-should of course also be able to enjoy the game. Nevertheless the name is MMORPG Program. The full potential
-of the game can and should only be experienced through interaction with other people. This promotes a cohesion
-in the community of the players. By these promoted social contacts the players are bound more strongly to
-the game itself.
+Many game mechanics should require interaction with other players. Rituals that need multiple players, or even the cooperation of various character classes, should be the norm rather than the exception. While solo players should still enjoy the game, the full potential of this MMORPG can only be experienced through social interaction. This approach fosters a sense of community and strengthens players' bonds with the game.
 
 ## Advanced Crafting
 
-Items are usually not obtained by killing monsters (we remember: fantasy realism.) Do wolves carry swords?
-Probably not. They have to be made. Usually only raw materials are found on maps. Almost all equipment is
-manufactured or purchased from NPCs. NPC dealers only have a limited stock of goods. These must first be
-restored and delivered. This leads to the establishment of trade routes. The price is determined by supply
-and demand. NPC should try to get a profit maximization for themselves. Players must be able to participate
-in this cycle of goods as easily as possible, both as a producer and as a consumer.
+In keeping with our commitment to fantasy realism, items are typically not obtained by defeating monsters. Instead, they must be crafted. Raw materials are found throughout the world, and almost all equipment is either manufactured by players or purchased from NPCs. NPC vendors have limited stock, which must be replenished and delivered, leading to the establishment of trade routes. Prices are determined by supply and demand, with NPCs aiming to maximize their profits. Players should be able to easily participate in this economic cycle as both producers and consumers.
 
-The professions are described in the [Skills and Attacks](/mechanics/skills) section.
+For more details on professions, refer to the [Skills and Attacks](/mechanics/skills) section.
 
-## Modern Artifical Intelligence
+## Modern Artificial Intelligence
 
-The game contains a modern, incredibly powerful AI. The world and its inhabitants should look incredibly
-alive with it. Bestias and NPC follow a daily routine and pursue their own goals. The player should be
-able to recognize patterns and interact with them by observing them. The NPCs react in the same way to
-influences by the player. NPCs should be able to travel long distances and not be available for the player
-for some time.
+The game features a cutting-edge, powerful AI that brings the world and its inhabitants to life. NPCs follow daily routines and pursue their own goals, allowing players to observe patterns and interact with them. NPCs react to player actions and can travel long distances, making them unavailable for periods. This dynamic behavior enhances the game's immersion and realism.
 
-## Rich And Immersive History
+## Rich and Immersive History
 
-The story and history should be rich in detail and deep and immersive. But its not necessairly important to be always
-totally serious. Yet it must be generic enough to get pre-computed to some degree when the world is calcualted.
-Instead, the story should keep its own sense of strange, nerdy humor. Character development and ingame experiences
-should be tied to certain storys or quests. E.g. taking gameplay choices only by clicking a certain UI button is discouraged.
+The game's story and history should be detailed and immersive, with a touch of quirky, nerdy humor. While the narrative should be engaging, it must also be flexible enough to allow for pre-computed elements when the world is generated. Character development and in-game experiences should be tied to specific stories or quests, discouraging gameplay choices made solely through UI interactions.
 
-## Meet Real-World Expectation
+## Meeting Real-World Expectations
 
-The environment should stick toreal-worldd expectation, can you open a door also by destroying it? Sure! Why should this not
-also work in games? - The simulated world of Bestia should stick to the principles and expectations of the real world.
-With this, help player can think of funny and motivating workarounds and solutions to solve problems in game.
+The game environment should align with real-world expectations. For example, if a door can be opened by destroying it in the real world, the same should apply in the game. This principle allows players to think creatively and find innovative solutions to in-game problems, enhancing their overall experience.

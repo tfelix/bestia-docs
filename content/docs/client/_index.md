@@ -1,4 +1,5 @@
 ---
+weight: 30
 bookCollapseSection: true
 ---
 # Bestia Client
@@ -31,19 +32,5 @@ As mentioned you will most likely need to build your own custom build of the God
 
 Then build the engine for your target platform. In order to do so, consult the [official build documentation](https://docs.godotengine.org/en/stable/development/compiling/index.html).
 
-## Architecture
-
-The server is build with a [Entity Component System](https://en.wikipedia.org/wiki/Entity_component_system) in mind. The logic of the server makes sure all the component updates of entities relevant for the client are send over the network.
-
-There are some notable classes in the  `bestia-entity` module:
-
-- EntityManager
-  - Reserves local IDs, if entities are created via the editor
-  - Keeps track of entities and their components
-  - Updates components and signal changes to the engine
-  - If an entity is deleted it gets informed and removes it from the tree
-- ComponentSetter
-  - Enables component value access via the editor
-  - On start it creates a protobuf message from exports and notifies the EntityManager
 
 <script async defer src="https://buttons.github.io/buttons.js"></script>

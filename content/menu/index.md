@@ -1,7 +1,8 @@
-+++
-headless = true
-+++
+---
+headless: true
+---
 
+- [**About**]({{< relref "/docs/about" >}})
 - [**Game Design**]({{< relref "/docs/mechanics" >}})
   - [Game Mechanics]({{< relref "/docs/mechanics/mechanics" >}})
   - [Bestia Master]({{< relref "/docs/mechanics/master" >}})

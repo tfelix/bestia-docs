@@ -1,6 +1,6 @@
 ---
+weight: 40
 bookCollapseSection: true
-weight: 20
 ---
 # Bestia Server
 

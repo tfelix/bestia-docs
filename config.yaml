@@ -1,11 +1,12 @@
-# hugo server --minify --themesDir ... --baseURL=http://0.0.0.0:1313/theme/hugo-book/
-
 baseURL: https://docs.bestia-game.net
 title: Bestia Game
 theme: book
 
 # Book configuration
 disablePathToLower: true
+
+# (Optional) Set this to true to enable 'Last Modified by' date and git author
+#  information on 'doc' type pages.
 enableGitInfo: true
 
 # Needed for mermaid/katex shortcodes
@@ -44,12 +45,12 @@ params:
   # Enable "Edit this page" links for 'doc' page type.
   # Disabled by default. Uncomment to enable. Requires 'BookRepo' param.
   # Edit path must point to root directory of repo.
-  BookEditPath: edit/master/content
+  BookEditPath: edit/master
 
   # Configure the date format used on the pages
   # - In git information
   # - In blog posts
-  BookDateFormat: "January 2, 2006"
+  BookDateFormat: 'Jan 2, 2006'
 
   # (Optional, default true) Enables search function with flexsearch,
   # Index is built on fly, therefore it might slowdown your website.
@@ -70,4 +71,4 @@ params:
 
   # /!\ This is an experimental feature, might be removed or changed at any time
   # (Optional, experimental, default false) Enables service worker that caches visited pages and resources for offline use.
-  BookServiceWorker: true
+  BookServiceWorker: false

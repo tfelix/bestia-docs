@@ -1,30 +1,87 @@
-@import "plugins/_scrollbars.scss";
+:root {
+  --base-font-size: 16px; /* Adjust this value as needed */
+  --system-font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+body {
+  font-family: var(--system-font-family);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "ProzaLibre", var(--system-font-family);
+}
+
+/* Increase the font size for h1 and scale others proportionally */
+h1 {
+  font-size: 3rem;
+  background: linear-gradient(to bottom, #fefefe, #8d8d8d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border-bottom: solid var(--gray-500) 2px;
+  padding-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 1.9rem;
+}
+
+h3 {
+  font-size: 1.4rem;
+}
+
+h4 {
+  font-size: 1.3rem;
+}
+
+h5 {
+  font-size: 1.2rem;
+}
+
+h6 {
+  font-size: 1.1rem;
+}
+
+code {
+  font-family: "Roboto Mono", monospace;
+}
+
+.book-toc {
+  font-size: 0.9rem;
+}
 
 .book-brand img {
   width: auto;
   height: auto;
   vertical-align: middle;
-  margin-right: .5rem;
+  margin-right: 0.5rem;
 }
 
 .markdown blockquote {
-  background-color: rgba(255,255,255,.2);
+  background-color: rgba(255, 255, 255, 0.2);
+  margin: 1.8rem 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .katex-display {
   padding: 5px;
-  background-color: rgba(255,255,255,.2);
+  background-color: rgba(255, 255, 255, 0.2);
   border-radius: 5px;
 }
 
 .mermaid {
-  background-color: rgba(255,255,255,.2);
+  background-color: rgba(255, 255, 255, 0.2);
   border-radius: 5px;
 }
 
 .notices {
-  margin: 2rem 0;
-  background: #FFF2DB;
+  margin: 4rem 0;
+  background: #fff2db;
   color: black;
 
   .content {
@@ -32,7 +89,7 @@
   }
 
   .header {
-    background: #F0B37E;
+    background: #f0b37e;
     color: white;
     padding: 0.2rem 0.5rem;
     font-weight: bold;
@@ -41,4 +98,20 @@
       margin: 0 0.4rem;
     }
   }
+}
+
+.table {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.row {
+  display: flex;
+  margin-bottom: 0.4rem;
+}
+
+.cell {
+  display: flex;
+  flex: 1;
+  align-items: center;
 }

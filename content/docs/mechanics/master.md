@@ -53,6 +53,10 @@ meaningful professions of another tree. The skilltree is a hierarchical dependen
 
 In this tree, simple, common mundane tasks are placed which can be benefitial for living in the outside world. This basically does not contain any mana related stuff, but rather mundane tasks.
 
+Trade Agreement (link auction houses)
+Protection Against Thiefes (increased honor loss when stolen)
+Spell Extraction (write down a spell into a scroll)
+
 {{< mermaid >}}
 graph TD
   FIRST_AID("First Aid [1]")

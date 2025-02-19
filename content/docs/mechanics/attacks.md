@@ -1,5 +1,5 @@
 ---
-title: Skills
+title: Attacks
 weight: 100
 ---
 # Attacks
