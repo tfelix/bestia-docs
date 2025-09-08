@@ -1,0 +1,59 @@
+{{- if not (.Page.Scratch.Get "chartJSLoaded") -}}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  Chart.defaults.backgroundColor = '#9BD0F5';
+  Chart.defaults.borderColor = '#36A2EB';
+  Chart.defaults.color = '#fff';
+  Chart.defaults.plugins.colors.forceOverride = true;
+
+  // Chart.js v4.x plugin registration
+  const functionPlugin = {
+    id: 'functionPlotPlugin',
+    beforeInit: function (chart) {
+      // We get the chart data
+      var data = chart.config.data;
+
+      // For every dataset ...
+      for (var i = 0; i < data.datasets.length; i++) {
+        // Check if there is a function property. If not we skip the further
+        // processing.
+        if(!data.datasets[i].function) {
+          continue;
+        }
+
+        // Then we add the value to the dataset data
+        data.datasets[i].data.length = 0;
+
+        // For every label ...
+        for (var j = 0; j < data.labels.length; j++) {
+
+          // We get the dataset's function and calculate the value
+          var fct = data.datasets[i].function,
+
+            x = data.labels[j],
+            y = fct(x);
+
+          data.datasets[i].data.push(y);
+        }
+      }
+    }
+  };
+
+  // Register the plugin globally
+  Chart.register(functionPlugin);
+</script>
+{{- .Page.Scratch.Set "chartJSLoaded" true -}}
+{{- end -}}
+
+{{- $id := substr (md5 .Inner) 0 16 -}}
+<div class="chart">
+  <canvas id="{{ $id }}"></canvas>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    var ctx = document.getElementById('{{ $id }}')
+    var options = {{ .Inner | chomp | safeJS
+  }};
+  new Chart(ctx, options);
+    });
+</script>

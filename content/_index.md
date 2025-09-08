@@ -6,7 +6,7 @@ title: Bestia Documentation
 
 > Explore vast lands in a procedurally generated world, fight tough monsters, gather ressources, or join guilds in your personal quest for honor and power.
 
-**Welcome to the docuementation of the Bestia Game!** The hobbiest fantasy MMORPG taking place in a vast, persistent fantasy world were magic meet builders,
+**Welcome to the docs of the Bestia Game!** The hobbiest fantasy MMORPG taking place in a vast, persistent fantasy world were magic meet builders,
 gatherer and adventurer. Here you find everything from game design guidelines to engine architecture overviews, as well as the API documentation to access game data.
 
 ## Getting Started
