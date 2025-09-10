@@ -8,7 +8,6 @@ Attacks can also be defined by a script alone and thus sidestepping the damage c
 
 The stages of a battle are visualized in the following flow diagram, first a check is done to see if the attack actually was a hit.
 
-{{< mermaid >}}
 graph TD
   step1(Attacker has Attack?)
   step1 -->|No| abort((Abort attack))
@@ -22,7 +21,6 @@ graph TD
   step5 --> |Not blocked| step6
   step6 --> |No| abort
   step6 --> |Yes| bla((Perform attack))
-{{< /mermaid >}}
 
 ## Damage Calculation
 

@@ -16,11 +16,9 @@ Survival is just the beginning. Players will gather resources, forge alliances a
 
 This document will continue to evolve, expanding on these foundations and refining the game’s mechanics as development progresses.
 
-{{% hint info %}}
 **Note**
 
 Try to conform to the core concepts as close as possible when you want to contribute content! This makes sure your changes are quickly merged.
-{{% /hint %}}
 
 ## Consistent Fantasy Simulation
 
@@ -36,11 +34,9 @@ Just as we all inhabit the same planet, our game should exist within a single, u
 
 In many modern games, players are kept engaged through constant changes in game mechanics. However, this approach can be frustrating for players who return after a long absence, as they must relearn mechanics that have changed. Our game will strive to maintain stable and consistent gameplay mechanics. Once established, these mechanics will be preserved to ensure a smooth and enjoyable experience for all players, minimizing the need for constant relearning.
 
-{{% hint info %}}
 **Note**
 
 Bugs and balancing problems are still subject to a fix of course.
-{{% /hint %}}
 
 ## Encouraging Social Interaction
 

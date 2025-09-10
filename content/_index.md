@@ -61,12 +61,10 @@ Inside this game design document you possibly will find certain **Contributing**
 
 Read the Bestia **[Game Design](/docs/mechanics)** section first to get a grasp for what this game is all about and align your contributions and changes under these game guidelines to maximize your chance of a fast approval of your contribution.
 
-{{% hint info %}}
 **Note**
 
 You can use the **Edit** link on the bottom right of every page to directly edit this document and create a Pull Request
 on Github.
-{{% /hint %}}
 
 
 <script async defer src="https://buttons.github.io/buttons.js"></script>

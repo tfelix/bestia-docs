@@ -23,13 +23,11 @@ The core repositories include:
 
 While the **server** (`bestia-behemoth`) can be built independently, the **client** (`bestia-client`) requires the **entity plugin**, which in turn depends on the server's ProtoBuf definitions. The following diagram illustrates this dependency structure:
 
-{{< mermaid >}}
 graph LR
   zone[bestia-behemoth] -- ProtoBuf messages --> plugin[bestia-entity-plugin]
   voxel[Voxel Plugin] -- required --> godot[Godot Engine]
   plugin -- required --> godot
   godot -- required --> client[bestia-client]
-{{< /mermaid >}}
 
 
 ## Project Repositories

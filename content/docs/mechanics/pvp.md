@@ -38,11 +38,9 @@ If no negative honor is received for one day (normal time), negative honor decay
 
 If a player steals something not belonging to him but to a NPC or another player he will loose honor for each item he takes and depending on the item level. Stealing means if a player picks up an item from a storage space not belonging to him. The owner can also grant certain player access right to a chest, in this case removal of items is not considered a stealing act.
 
-{{% hint info %}}
 **Note**
 
 Looting a dead NPC/player however, will not lead to a reduction of honor.
-{{% /hint %}}
 
 When effects are calculated the global player honor and the local NPC honor value are added. Once a player's honor drops below 0, negative effects begin to take place. These effects include:
 

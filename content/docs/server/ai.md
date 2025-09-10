@@ -23,11 +23,9 @@ actions must read the current data and if possible interrupt their execution to 
 The behavior uses different techniques like a behavior tree or a finite state machine in order to define the next
 possible actions.
 
-{{< mermaid >}}
 graph LR
     A[Sensing] -->|Update blackboards| B[Behavior]
     B -->|Create execution plan| C[Action Planning]
-{{< /mermaid >}}
 
 After the set of actions are determined by the knowledge of an agent the action planer is invoked in order to plan
 a set of tasks in order to fulfill the action. These tasks are then executed until they fail or get interrupted by an

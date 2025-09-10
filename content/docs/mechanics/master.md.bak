@@ -57,7 +57,6 @@ Trade Agreement (link auction houses)
 Protection Against Thiefes (increased honor loss when stolen)
 Spell Extraction (write down a spell into a scroll)
 
-{{< mermaid >}}
 graph TD
   FIRST_AID("First Aid [1]")
   COOKING("Cooking [3]")
@@ -74,7 +73,6 @@ graph TD
 
   CRAFTSMANSHIP-->|Lv. 3|ALCHEMY("Alchemy [5]")
   ALCHEMY-->|Lv. 3|TRANSMUTATION("Transmutation [5]")
-{{< /mermaid >}}
 
 {{< skill name="First Aid" maxLevel="1" >}}
 {{< columns >}}
@@ -174,7 +172,6 @@ Can create magic artefacts.
 
 The survival tree has three main ideas: protecting the masters Bestia from physical harm by increasing they tougness indirectly, improving the survivability in harsh environments for his Bestias or others.
 
-{{< mermaid >}}
 graph TD
   ELEMENTAL_MASTERY("Elemental Mastery [5]")-->|min. 3|MASTER_OF_FIRE("Master of Fire [10]")
   ELEMENTAL_MASTERY-->|min.Artisannsmutation 3|MASTER_OF_WATER("Master of Water [10]")
@@ -184,7 +181,6 @@ graph TD
   MASTER_OF_WIND-->|min. 3|SPRITIUAL_MASTERY
   MASTER_OF_FIRE-->|min. 3|SPRITIUAL_MASTERY
   MASTER_OF_EARTH-->|min. 3|SPRITIUAL_MASTERY
-{{< /mermaid >}}
 
 {{< skill name="Elemental Mastery" maxLevel="5" >}}
 {{< columns >}}
@@ -290,7 +286,6 @@ The Science Tree contains skills witch help with sensing the world events and or
 face of the Bestia world itself. It basically forms 3 sub-trees: One is focused on skill reasearch and enscribing, the second one
 helps with world exploration mana flow detection and control and the last one if for resource detection and exploration utilities.
 
-{{< mermaid >}}
 graph TD
   SPELL_ENSCRIPTION("Spell Enscription [10]")-->|min. 5|SPELL_BINDING("Spell Binding [10]")
   SPELL_ENSCRIPTION-->|min. 3|SPELL_DISCOVERY("Spell Discovery [10]")
@@ -303,7 +298,6 @@ graph TD
   GEOGRAPHY("Geography [5]")-->|min. 3|SCRY("Scry [5]")
   SCRY-->|min. 3|TELEPORT("Teleport [10]")
   TELEPORT-->|min. 8|PORTAL("Portal [10]")
-{{< /mermaid >}}
 
 {{< skill name="Spell Enscription" maxLevel="10" >}}
 {{< columns >}}
