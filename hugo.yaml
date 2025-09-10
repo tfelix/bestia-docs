@@ -1,0 +1,91 @@
+baseURL: https://docs.bestia-game.net
+title: Bestia Game | An open source MMORPG
+
+# (Optional) Set this to true to enable 'Last Modified by' date and git author
+#  information on 'doc' type pages.
+enableGitInfo: true
+
+languageCode: en-us
+contentDir: content
+enableEmoji: true
+
+module:
+  imports:
+    - path: github.com/colinwilson/lotusdocs
+      disable: false
+    - path: github.com/gohugoio/hugo-mod-bootstrap-scss/v5
+      disable: false
+
+markup:
+  tableOfContents:
+    startLevel: 1
+    endLevel: 3
+  goldmark:
+    renderer:
+      unsafe: true # https://jdhao.github.io/2019/12/29/hugo_html_not_shown/
+    parser:
+      attribute:
+        block: true
+params:
+  #google_fonts:
+  #  - ["Inter", "300, 400, 600, 700"]
+  #  - ["Fira Code", "500, 700"]
+  #sans_serif_font: "Inter"
+ # secondary_font: "Inter"
+  #mono_font: "Fira Code"
+  footer:
+    copyright: "© :YEAR: Thomas Felix. Built with [**Lotus Docs**](https://github.com/colinwilson/lotusdocs)"
+    version: true
+  social:
+    github: "tfelix/bestia-docs"
+    # twitter: "lotusdocs"
+    # bluesky: "colinwilson.uk"
+    # instagram: "colinwilson"
+    # rss: true
+  docs:
+    # pathName: "docs"
+    # themeColor: "cyan"
+    darkMode: true
+    prism: true
+    # prismTheme: "lotusdocs"
+    repoURL: "https://github.com/tfelix/bestia-docs"
+    repoBranch: "master"
+    editPage: true
+    lastMod: true
+    lastModRelative: true
+    toc: true
+    tocMobile: true
+    scrollSpy: true
+    sidebarIcons: true
+    titleIcon: true
+    breadcrumbs: true
+    navDesc: true
+    navDescTrunc: 30
+    listDescTrunc: 100
+    backToTop: true
+    descriptions: true
+    intLinkTooltip: true
+    extLinkNewTab: true
+    logoLinkURL: "/"
+  flexsearch:
+    enabled: true
+    # tokenize: "full"
+    # optimize: true
+    # cache: 100
+    # minQueryChar: 3
+    # maxResult: 5
+    # searchSectionsIndex: []
+  feedback:
+    enabled: false
+
+menu:
+  primary:
+    - name: "Docs"
+      url: "/docs/"
+      identifier: "docs"
+      weight: 10
+    - name: "Community"
+      url: "https://github.com/colinwilson/lotusdocs/discussions"
+      identifier: "community"
+      weight: 30
+

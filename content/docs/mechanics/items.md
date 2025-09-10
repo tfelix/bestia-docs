@@ -1,23 +1,24 @@
 ---
+weight: 300
 title: Items & Crafting
+description: Overview of items, upgrades and the crafting system.
 ---
-
-# Items
 
 Items can be optained by the player and carried around. The amount of items limited to each entity is determined via
 its [Inventory](#inventory). Each Bestia (and also a lot of other entities), have their own inventory with different sizes.
 
-Items are mostly crafted by the players. Its quite rare to obtain direct item drops from killed enemies. Instead its very common
-to loot resources when enemies are killed.
+Items are mostly crafted by the players. Its quite rare to obtain direct item drops from killed enemies. Instead its very common to loot resources when enemies are killed.
 
-## Item Level
+# Item Level
 
 Each item has a level assigned. This level is important to determine how hard or easy it is to forge this item, upgrade
 it and so on. It also effects how spells interact with the item entity.
 
-### Item Category
+## Item Category
 
 Items are grouped into three categories and inside this documentation often refered to via its category.
+
+{{< table >}}
 
 | Item Level | Category  |
 | ---------- | --------- |
@@ -26,6 +27,8 @@ Items are grouped into three categories and inside this documentation often refe
 | 51 - 80    | Rare      |
 | 81 - 100   | Legendary |
 | 101+       | Epic      |
+
+{{< /table >}}
 
 ## Weapon Refinement
 

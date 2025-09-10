@@ -1,7 +1,8 @@
 ---
+weight: 200
 title: Status Values
+description: Overview of the status values and derived stati.
 ---
-# Status Values
 
 Status Values are the base values from which the basics for all ingame calculations are performed.
 There are four main types of values: **Base Values**, **Status Valus**, **Condition Values** and **Effort Values**. The

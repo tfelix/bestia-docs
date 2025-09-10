@@ -1,8 +1,11 @@
 ---
-title: Bestia Documentation
+weight: 100
+draft: false
+title: "Overview"
+icon: "circle"
+toc: true
+description: "Lotus Docs is a modern documentation theme built for Hugo."
 ---
-
-# Bestia Documentation
 
 > Explore vast lands in a procedurally generated world, fight tough monsters, gather ressources, or join guilds in your personal quest for honor and power.
 
