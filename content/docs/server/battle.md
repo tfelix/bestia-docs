@@ -1,4 +1,9 @@
-# Battle System
+---
+weight: 400
+title: Battle System
+description: "Summary of Bestia's battle system, including attack flow, damage calculation formulas, modifiers, and equipment effects."
+draft: true
+---
 
 The battle system is quite complex to allow almost any entity to get damaged in the game. Usually a battle context is established before damage calculation takes place and then used throughout the damage calculation. The attack outcome is then calculated with a strategy which is chosen depending on the type of attack used (melee, ranged or magic).
 

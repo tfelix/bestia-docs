@@ -1,4 +1,8 @@
-# World Generation
+---
+weight: 600
+title: World Generation
+description: "Summary of Bestia's world generation system, including algorithms, noise maps, terrain features, biomes, settlements, and navigation maps."
+---
 
 Bestia integrates a specialized library called **WorldGen** for world creation. It is a clusterable generator which is cabable of dividing the world creation workload onto multiple, different machines. With this framework it should be possible to create million of square kilometers without hitting any memory limit on the servers during the creation process.
 
@@ -300,7 +304,7 @@ Before a new world is created the old world data is deleted. The following proce
 2. Delete all navigation waypoint data
 3. Delete all non-player entity data
 
-## Literatur
+# References
 
 * [www.redblobgames.com - Making maps with noise functions](https://www.redblobgames.com/maps/terrain-from-noise/) - Very detailed overview of heightmap generation techniques with sample code
 * [Generating terrain in Cuberite](http://mc-server.xoft.cz/docs/Generator.html#biome.grown) - Ideas on how to create biomes in an alternate way, also nice overview of noise functions

@@ -1,5 +1,7 @@
 ---
 title: Environment
+description: "Overview of Bestia's dynamic environment, temperature, weather, and in-game time system, including real-time to Bestia time conversions."
+draft: true
 ---
 
 # Environment
@@ -83,8 +85,77 @@ of night time in which for example special bestias can be hunted. It also allows
 
 This calculation results in the following example timespans:
 
-| Bestia Time | Real-Time |
-| ----------- | --------- |
-| 3 h         | 1 h       |
-| 12 d        | 4 d       |
-| 1 yr        | 4 mon     |
+{{< table >}}
+
+| Real Time   | Bestia Time        |
+| ----------- | ----------------- |
+| 1 hour      | 3 Bestia hours    |
+| 1 day       | 3 Bestia days     |
+| 1 week      | 21 Bestia days    |
+| 1 month     | 84 Bestia days    |
+| 4 months    | 1 Bestia year     |
+
+{{< /table >}}
+
+### Bestia Time Converter
+
+<div class="g-3">
+  <form class="row row-cols-lg-auto align-items-center">
+    <div class="col-12">
+      <label class="visually-hidden" for="realTimeValue">Real Time Value</label>
+      <div class="input-group">
+        <div class="input-group-text">Enter Value</div>
+        <input type="number" class="form-control" id="realTimeValue" min="0" value="1">
+      </div>
+    </div>
+    <div class="col-12">
+      <label class="visually-hidden" for="realTimeUnit">Time Unit in Real Time</label>
+      <select class="form-select" id="realTimeUnit">
+        <option value="hours">Hours</option>
+        <option value="days">Days</option>
+        <option value="weeks">Weeks</option>
+        <option value="months">Months</option>
+      </select>
+    </div>
+    <div class="col-12">
+      <button type="button" class="btn btn-primary" onclick="convertBestiaTime()">Convert</button>
+    </div>
+  </form>
+  <div class="row mt-2">
+    <div id="bestiaTimeResult" class="col fw-bold"></div>
+  </div>
+</div>
+
+<script>
+   function convertBestiaTime() {
+      const value = parseFloat(document.getElementById('realTimeValue').value);
+      const unit = document.getElementById('realTimeUnit').value;
+      let result = '';
+      if (isNaN(value) || value < 0) {
+         document.getElementById('bestiaTimeResult').innerText = 'Please enter a valid number.';
+         return;
+      }
+      switch(unit) {
+         case 'hours':
+            result = `${value} hour(s) real time = ${value * 3} Bestia hour(s)`;
+            break;
+         case 'days':
+            result = `${value} day(s) real time = ${value * 3} Bestia day(s)`;
+            break;
+         case 'weeks':
+            result = `${value} week(s) real time = ${value * 21} Bestia day(s)`;
+            break;
+         case 'months':
+            const bestiaDays = value * 84;
+            const bestiaYears = Math.floor(value / 4);
+            const remainingMonths = value % 4;
+            let details = [];
+            if (bestiaYears > 0) details.push(`${bestiaYears} Bestia year(s)`);
+            if (remainingMonths > 0) details.push(`${remainingMonths} month(s) worth ${remainingMonths * 84} Bestia days`);
+            if (details.length === 0) details.push('0 Bestia years');
+            result = `${value} month(s) real time = ${details.join(' and ')}`;
+            break;
+      }
+      document.getElementById('bestiaTimeResult').innerText = result;
+   }
+</script>

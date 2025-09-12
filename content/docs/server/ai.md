@@ -1,7 +1,9 @@
 ---
+weight: 300
 title: Artificial Intelligence
+description: "Summary of Bestia's modular AI design, including sensing, behavior, action planning, sensors, and goal-oriented action planning."
+draft: true
 ---
-# Artificial Intelligence
 
 The Bestia AI should be very modularized, its design goals should allow the Bestia AI to:
 

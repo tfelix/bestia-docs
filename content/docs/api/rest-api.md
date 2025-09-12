@@ -1,7 +1,7 @@
 ---
 weight: 710
 title: Overview
-description: Documentation about using the public REST API. This can be useful to fetch live ingame information.
+description: Documentation about using the public REST API. This can be acessed to fetch live ingame data for analytics.
 draft: false
 ---
 

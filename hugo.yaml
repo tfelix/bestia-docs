@@ -8,6 +8,7 @@ enableGitInfo: true
 languageCode: en-us
 contentDir: content
 enableEmoji: true
+refLinksErrorLevel: WARNING
 
 module:
   imports:
