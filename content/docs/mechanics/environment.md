@@ -48,7 +48,7 @@ The weather will also play a role in which crops and plants grow. If the player 
 
 A in strength controllable rain effect should overlay the entire viewport. The rain blowing direction should correlate
 with the wind direction (which will be more or less random). During rain the ground will show a wet effect and view distance is
-reduced. It also reduces the effectiveness of fires and might extingush them. Fire attacks will lose certain strengths in a very wet environment (like burning effects won't last very long).
+reduced. It also reduces the effectiveness of fires and might extingush them. Fire attacks and earth attacks will only deal `50%` damage while ice or electric attacks deal `150%` damage in a wet environment.
 
 ### Fog
 
@@ -59,6 +59,11 @@ Clouds of fog will move slowly over the map. And the sight of the AI entities is
 During night time the player will need light sources in order to improve
 the visibility of enemies or terrain. There will be certain items (e.g. torches, candles etc.) as well as spells to
 make light.
+
+## Mana Concentration
+
+The system regularly evalutes mana emitter (bestia, spell usage, items) or sinks and calculates a mana density. Depending on the density of mana in a certain region this increases the propbability for rift events which spawn powerfull bestia or certain other devastating events like mana storms.
+It can also have a negative effect on the health effects of bestia master while bestia usually are unaffected by high mana density as they are born from it.
 
 ## In-Game Time
 
@@ -87,17 +92,19 @@ This calculation results in the following example timespans:
 
 {{< table >}}
 
-| Real Time   | Bestia Time        |
-| ----------- | ----------------- |
-| 1 hour      | 3 Bestia hours    |
-| 1 day       | 3 Bestia days     |
-| 1 week      | 21 Bestia days    |
-| 1 month     | 84 Bestia days    |
-| 4 months    | 1 Bestia year     |
+| Real Time | Bestia Time    |
+| --------- | -------------- |
+| 1 hour    | 3 Bestia hours |
+| 1 day     | 3 Bestia days  |
+| 1 week    | 21 Bestia days |
+| 1 month   | 84 Bestia days |
+| 4 months  | 1 Bestia year  |
 
 {{< /table >}}
 
 ### Bestia Time Converter
+
+A small helper tool to quickly convert between real time values and bestia time.
 
 <div class="g-3">
   <form class="row row-cols-lg-auto align-items-center">

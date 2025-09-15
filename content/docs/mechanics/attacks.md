@@ -1,11 +1,8 @@
 ---
-title: Attacks
+title: Attacks & Skills
 weight: 100
+description: The magic and the usage of it plays a crucial role in the Bestia universe. The users should be able to be deeply involved into magic spell creation and research.
 ---
-# Attacks
-
-The magic and the usage of it plays a crucial role in the Bestia universe. The users should be able to be deeply involved
-into magic spell creation and research.
 
 > There is a difference between the **Master Skills** and the attacks/skills of a Bestia: The master skills are based on a skill
 > tree while the attacks of a Bestia are learned automatically when reaching the designated level.
@@ -96,3 +93,14 @@ on entities as well as trying to bind spells to such entities.
 ## Detection of Magic
 
 If the user has learned [Detect Magic](/docs/mechanics/skills/#detect-magic). The detection itself is easier if the spell is more powerful. However precautions can be used to avoid the spell getting detected. If more than one spell is attached to an object the less powerful spells are harder to detect.
+
+
+# WORK INTO THE DOC
+
+A Bestia can learn most attacks by just gaining new levels. They have a predefined list of attacks until they reach Lv. 100. Over this level there are no new attacks anymore. New attacks should be learned every 4-6 Lv. The spell level should roughly match the level of the Bestia for balancing.
+
+{{< alert context="info" text="The level listed here does not necessairly mean every Bestia will learn it exactly at this level! It is only a rough guideline." />}}
+
+An attack **does not have** a seperate level which you can increase. Only skills which are available on a bestia master can be leveled up on their own to help customizing the master.
+
+However, there are spell scrolls that you can find or create, which hold a spell. These are either single-use, or you can teach the spell to a Bestia for a certain cost in resources. You can also produce a spell scroll from a Bestia you own, provided it can perform a certain attack. Learning a spell in this way has a fixed cost. This system encourages players to teach their Bestia only the most useful or powerful attacks, while cheaper spells are better used as single-use scrolls by their master.

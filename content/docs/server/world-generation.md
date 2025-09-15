@@ -312,3 +312,4 @@ Before a new world is created the old world data is deleted. The following proce
 * [Dwarf Fortress](https://en.wikipedia.org/wiki/Dwarf_Fortress) - In general a good inspiration on how the Bestia world generation quality should be
 * [Spherical Projections (Stereographic and Cylindrical)](http://paulbourke.net/geometry/transformationprojection/) - Background infos on spherical and zylindrical projections, useful for coordiante transformations
 * [Algorithms for Procedural Content Generation](http://pcg.wikidot.com/category-pcg-algorithms) - Another very good and big resource for PCG algorithms
+* [Better Mountain Generators That Aren't Perlin Noise or Erosion](https://www.youtube.com/watch?v=gsJHzBTPG0Y)

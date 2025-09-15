@@ -1,0 +1,33 @@
+<!-- attack.html: Single attack card shortcode -->
+{{ $id := replace (lower (.Get "name")) " " "-" }}
+<div class="col" id="{{ $id }}">
+  <div class="card text-light shadow h-100">
+    <div class="row g-0">
+      <div class="col-4 d-flex align-items-center justify-content-center p-3">
+          {{ $icon := .Get "icon" }}
+          {{ if $icon }}
+            <img src="/attacks/{{ $icon }}" class="img-fluid rounded" alt="Icon for attack {{ .Get "name" }}" />
+          {{ else }}
+            <img src="/attacks/128.svg" class="img-fluid rounded" alt="Placeholder icon for attack {{ .Get "name" }}" />
+          {{ end }}
+      </div>
+      <div class="col-8">
+        <div class="card-body">
+          <h5 class="card-title">{{ .Get "name" }} <small class="text-body-secondary">Lv. {{ .Get "level" }}</small>
+          </h5>
+          <p class="card-text mb-1 d-flex">
+            <span class="w-50"><strong>Mana:</strong> {{ .Get "mana" }}</span>
+            <span class="w-50"><strong><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                  width="24px" fill="#1f1f1f">
+                  <path
+                    d="M480-120 200-272v-240L40-600l440-240 440 240v320h-80v-276l-80 44v240L480-120Zm0-332 274-148-274-148-274 148 274 148Zm0 241 200-108v-151L480-360 280-470v151l200 108Zm0-241Zm0 90Zm0 0Z" />
+                </svg></strong> {{ .Get "school" }}</span>
+          </p>
+          <div class="card-text small">
+            {{ .Inner | strings.TrimSpace | .Page.RenderString }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

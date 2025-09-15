@@ -13,19 +13,21 @@ Attacks can also be defined by a script alone and thus sidestepping the damage c
 
 The stages of a battle are visualized in the following flow diagram, first a check is done to see if the attack actually was a hit.
 
+```mermaid
 graph TD
-  step1(Attacker has Attack?)
-  step1 -->|No| abort((Abort attack))
+  step1(Attacker knows Attack?)
+  step1 -->|No| abort((Abort))
   step1 -->|Yes| step2[Calculate mana cost]
   step2 --> step3(Has enough mana?)
   step3 -->|No| abort
-  step3 --> |Yes| step4("Does attack need Line Of Sight (LOS)"?)
-  step4 --> |No| step6(Is ammo needed and present?)
-  step4 --> |Yes| step5[Calculate LOS and check if blocked]
-  step5 --> |Blocked| abort
-  step5 --> |Not blocked| step6
-  step6 --> |No| abort
-  step6 --> |Yes| bla((Perform attack))
+  step3 --> |Yes| step4(Has Resources if required?)
+  step4 --> |No| abort
+  step4 --> |Yes| step5("Requires Line Of Sight (LOS)?")
+  step5 --> |Yes| step6[Calculate LOS, is it blocked?]
+  step6 --> |Yes| abort
+  step6 --> |No| attack((Perform attack))
+  step5 --> |No| attack
+```
 
 ## Damage Calculation
 

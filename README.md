@@ -1,46 +1,40 @@
-<p align="center">
-  <img width="50%" src="img/logo.png">
-</p>
 
+<p align="center">
+  <img width="50%" src=".github/logo.png">
+</p>
 
 # Bestia Documentation
 
-[![Build Status](https://travis-ci.org/tfelix/bestia-docs.svg?branch=master)](https://travis-ci.org/tfelix/bestia-docs)
 [![License: CC0](https://img.shields.io/badge/license-CC0-green)](LICENSE)
 
-> Bestia is a MMORPG based on world exploration and emerging gameplay placed in a living and fully simulated environment.
+> Welcome to the world of Bestia—a MMORPG where exploration, emergent gameplay, and a living, simulated environment await.
 
-This repository contains the central game design documents and guidelines of the [Bestia Game](https://bestia-game.net).
-Bestia is a hobby project started many years ago and evolved in quite a large codebase. This documentation is an effort
-to bring all the needed information together to allow others to read, understand and perhaps contribute to the game.
+This repository is your gateway to the central game design documents and guidelines for the [Bestia Game](https://bestia-game.net). Born as a hobby project and grown into a substantial codebase, Bestia invites curious minds to read, understand, and perhaps even contribute to its ongoing adventure.
 
-The documentation covers aspects of game design, client as well as the general server architecture and serves as an entry
-point for everyone who wants to contribute to the project.
+Here you'll find everything from game design principles to client and server architecture. Whether you're a seasoned developer or a newcomer eager to explore, this documentation is your starting point.
 
-The documentation page can be found on [https://docs.bestia-game.net](https://docs.bestia-game.net)
+The latest documentation is always available at [https://docs.bestia-game.net](https://docs.bestia-game.net).
 
-The other project repositories are found here:
+For those interested in the code behind the magic, check out the mono-repository:
 
 * [Behemoth Game Server](https://github.com/tfelix/bestia-behemoth)
-* [Game Client](https://github.com/tfelix/bestia-client)
 
 ## Build
 
-The documentation uses the static site generator [Hugo](https://gohugo.io/) to generate a nice documentation hompagenas well as the Book Theme via a git submodule.
-In order to build the documentation [install Hugo](https://gohugo.io/getting-started/installing/) and then go to repo and call:
+Bestia Docs is powered by [Hugo](https://gohugo.io/), the static site generator. Thanks to Hugo module support, setup is now easier than ever—no need to wrangle submodules or extra checkouts.
+
+To build and preview the documentation locally:
 
 ```bash
-# Intialize the theme git submodule
-git clone --recurse-submodules https://github.com/tfelix/bestia-docs
-hugo server
+# Install Hugo (see https://gohugo.io/getting-started/installing/)
+# Then, from the repository root:
+hugo server -D
 ```
 
-If you already cloned the repository and only need to pull the book theme submodule this command can be used:
+That's it! Hugo will fetch all required modules automatically. Your local docs will be live and ready for exploration.
 
-```bash
-git submodule update --init --recursive
-```
+The site uses [Lotusdocs for Hugo](https://github.com/colinwilson/lotusdocs), licensed under the MIT License.
 
-The website uses the [Book Theme for Hugo](https://github.com/alex-shpak/hugo-book) which is licenced under MIT License.
+All content here is released under the CC0 license—free for all adventurers to use, share, and remix.
 
 [![License: CC 0](https://licensebuttons.net/l/publicdomain/88x31.png)](https://creativecommons.org/publicdomain/zero/1.0/legalcode)

@@ -1,5 +1,5 @@
 {{- if not (.Page.Scratch.Get "chartJSLoaded") -}}
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/chart.min.js"></script>
 <script>
   Chart.defaults.backgroundColor = '#9BD0F5';
   Chart.defaults.borderColor = '#36A2EB';
@@ -56,8 +56,7 @@
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     var ctx = document.getElementById('{{ $id }}')
-    var options = {{ .Inner | chomp | safeJS
-  }};
-  new Chart(ctx, options);
+    var options = {{ .Inner | chomp | safeJS }};
+    new Chart(ctx, options);
     });
 </script>

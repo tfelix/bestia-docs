@@ -1,6 +1,6 @@
 ---
 title: Resources
-weight: 100
+weight: 600
 ---
 # Resources
 

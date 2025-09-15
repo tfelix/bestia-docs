@@ -1,5 +1,5 @@
 ---
-weight: 200
+weight: 400
 title: Factions
 description: "In the crucible of rivalry, the true shape of a faction is forged—not by its victories, but by the bonds its members choose to honor.<br>— Seraphine, Keeper of the Citadel"
 ---
@@ -38,6 +38,8 @@ When a world is created, it is predetermined when it should end to last for `x` 
 
 When the world is destroyed 5 advantage points go to the faction with the biggest sphere of influence, and 3 to the ones who sacrificed/used the most resources in their temples.
 
+{{< alert context="warning" text="This section needs a rework." />}}
+
 ## Faction Advantages
 
 When a world is created and in the previous incarnation a faction earned faction advantage points, they get a buff for the whole next world duration.
@@ -53,12 +55,13 @@ When a world is created and in the previous incarnation a faction earned faction
 
 {{< /table >}}
 
-## Switching a Faction
-
-A player can get expelled from a faction by a powerfull spell `Banished from the Citadel`. However this spell first must be found as a drop on a spell scroll, it can not be memorized and if it is applied to the player, the player will lose `20%` of his levels rounded up (e.g. a Lv. 67 master will drop to Lv. 54). And endure a debuff which will reduce his damage, mana and health by `10%` for the next 15 [bestia days](/docs/mechanics/environment/#in-game-time).
-It is a very severe and faction switches should be fairly rare, especially for high level players.
-
-### Citadels and Temples
+# Citadels and Temples
 
 Each faction build and maintain a citadel or temple in which it can research powerful spells and devices that players can learn or access to achieve their goals.
 If magic rituals are perfomed in those headquarters all players belonging to this faction can receive a global buff.
+
+# Switching a Faction
+
+A player can get expelled from a faction by a powerfull spell [Banished from the Citadel](/docs/mechanics/attack-list/#banished-from-the-citadel). However this spell first must be found as a drop on a spell scroll, it can not be memorized and if it is applied to the player, the player will get a debuff that sets his stus values to `50%` for the `Lv/2` rounded up of his master in days. **A level 74 master will receive this debuff for 37 [bestia days](/docs/mechanics/environment/#in-game-time)**. The spell also consumes a [Sigil of Redemption](/docs/mechanics/equip-list/#sigil-of-redemption) which is a very costly item.
+These are very severe consequences and this should de-insentivice player to perform this switch.
+
