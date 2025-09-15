@@ -1,23 +1,25 @@
 ---
+weight: 300
 title: Items & Crafting
+description: Overview of items, upgrades and the crafting system.
+katex: true
 ---
-
-# Items
 
 Items can be optained by the player and carried around. The amount of items limited to each entity is determined via
 its [Inventory](#inventory). Each Bestia (and also a lot of other entities), have their own inventory with different sizes.
 
-Items are mostly crafted by the players. Its quite rare to obtain direct item drops from killed enemies. Instead its very common
-to loot resources when enemies are killed.
+Items are mostly crafted by the players. Its quite rare to obtain direct item drops from killed enemies. Instead its very common to loot resources when enemies are killed.
 
-## Item Level
+# Item Level
 
 Each item has a level assigned. This level is important to determine how hard or easy it is to forge this item, upgrade
 it and so on. It also effects how spells interact with the item entity.
 
-### Item Category
+## Item Category
 
 Items are grouped into three categories and inside this documentation often refered to via its category.
+
+{{< table >}}
 
 | Item Level | Category  |
 | ---------- | --------- |
@@ -27,12 +29,16 @@ Items are grouped into three categories and inside this documentation often refe
 | 81 - 100   | Legendary |
 | 101+       | Epic      |
 
-## Weapon Refinement
+{{< /table >}}
+
+# Weapon Refinement
 
 Weapons and armors can be refined which accounts to extra damage dealt if the weapon is used. Each upgrade step can
 result in a destruction of the equipment.
 
 A refined weapon has increased base damage per level:
+
+{{< table >}}
 
 | Weapon Category | Base Damage Bonus / Upgrade Level |
 | --------------- | --------------------------------- |
@@ -41,23 +47,75 @@ A refined weapon has increased base damage per level:
 | Legendary       | 6                                 |
 | Epic            | 10                                |
 
-### Uprade Chances
+{{< /table >}}
+
+## Upgrade Chances
 
 These are the base upgrade chances. The chances can be altered via skills or item usages. If a upgrade fails the weapon is destroyed. It is then complelty unusable and also the resources are lost.
 
-| Weapon Category | Uprade Formula                                            |
-| --------------- | --------------------------------------------------------- |
-| Mundane         | {{< katex >}} min(1, e^{-(itemLv-5)/9.8)}){{< /katex >}}  |
-| Superior        | {{< katex >}} min(1, e^{-(itemLv-4)/8.69)}){{< /katex >}} |
-| Legendary       | {{< katex >}} min(1, e^{-(itemLv-3)/7.69)}){{< /katex >}} |
-| Epic            | {{< katex >}} min(1, e^{-(itemLv-2)/7.31)}){{< /katex >}} |
+{{< table >}}
+
+| Weapon Category | Upgrade Formula                    |
+| --------------- | --------------------------------- |
+| Mundane         | $ min(1, e^{-(itemLv-5)/9.8)}) $  |
+| Superior        | $ min(1, e^{-(itemLv-4)/8.69)}) $ |
+| Legendary       | $ min(1, e^{-(itemLv-3)/7.69)}) $ |
+| Epic            | $ min(1, e^{-(itemLv-2)/7.31)}) $ |
+
+{{< /table >}}
+
+This results in the following upgrade chances. As you can see the chance of success gets less and less the higher the weapon is upgraded and then caps (depending on the weapon level between 5% and 15%). Skills and buffs can alter this chance.
+
+{{< chart >}}
+{
+	type: 'line',
+	data: {
+		labels: Array.from({length: 25}, (_, i) => i + 1),
+		datasets: [
+			{
+				label: 'Mundane',
+				function: function(x) { return x <= 7 ? 1 : x >= 14 ? 0.15 : -0.17 * x + 1.85; },
+				fill: false
+			},
+			{
+				label: 'Superior',
+				function: function(x) { return x <= 6 ? 1 : x >= 13 ? 0.15 : -0.17 * x + 1.85; },
+				fill: false
+			},
+      {
+				label: 'Rare',
+				function: function(x) { return x <= 5 ? 1 : x >= 12 ? 0.15 : -0.17 * x + 1.85; },
+				fill: false
+			},
+			{
+				label: 'Legendary',
+				function: function(x) { return x <= 4 ? 1 : x >= 11 ? 0.10 : -0.17 * x + 1.85; },
+				fill: false
+			},
+			{
+				label: 'Epic',
+        function: function(x) { return x <= 4 ? 1 : x >= 10 ? 0.05 : -0.17 * x + 1.85; },
+				fill: false
+			}
+		]
+	}
+}
+{{< /chart >}}
 
 The refine level is not capped but each higher refinement process can destroy the weapon/equipment with an increasing chance.
-The chance of success is depending on skill and refine items used.
+The upgrade chances can be increased by leveling up the Skill Mastery `Upgrade Mastery`.
+
+# Armor Refinement
 
 A refined armor has increased resistance for hard defense. Each upgrade point grants ⅓ points more defense.
 
+## Upgrade Chances
+
+TBD
+
+The refine level is not capped but each higher refinement process can destroy the weapon/equipment with an increasing chance.
 The upgrade chances can be increased by leveling up the Skill Mastery `Upgrade Mastery`.
+
 
 ## Item Crafting
 

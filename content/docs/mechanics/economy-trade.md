@@ -1,5 +1,5 @@
 ---
-weight: 10
+weight: 400
 title: Economy & Trade
 ---
 
@@ -18,10 +18,8 @@ Gold is automatically converted between smaller denominators silver and copper (
 
 To kickstart the economy, **NPCs hold 10% of the world's total wealth in gold** when a new world is created. Every night, this wealth is **redistributed equally** among all NPCs. Unlike other mechanics in the game, this redistribution does not follow real-world economic logic but serves to ensure a fluid economy.
 
-{{% hint info %}}
 **Note**
 When a currency or fee is calculated here in the design document the smallest denominator (copper) is usually used if not specified otherwise.
-{{% /hint %}}
 
 ## Postal System
 

@@ -1,10 +1,18 @@
 ---
-weight: 10
-bookCollapseSection: false
-title: History
+weight: 300
+draft: true
+title: "About"
+icon: "info"
+description: "Introduction to Bestia, its open-source philosophy, development history, and technical evolution from browser game to MMORPG."
 ---
 
-# History of Bestia
+Welcome to the official documentation of **Bestia**, the free and open-source MMORPG built on a Kotlin and Java backend. Bestia is released under the **GPL v3.0 license**, ensuring that anyone can contribute, modify, and expand upon the game freely.
+
+Bestia is a persistent online game that evolved from a browser-based prototype into a fully-fledged MMORPG. The project aims to provide a deep and engaging game world with real-time mechanics, strategic encounters, and a player-driven environment.
+
+This documentation serves as a guide for developers, contributors, and enthusiasts who wish to understand, modify, or expand Bestia. Whether you're interested in game design, client development, or server-side mechanics, you'll find everything you need to get started here.
+
+# The History of Bestia
 
 The origins of *Bestia* trace back many years. Initially, it was conceived as a browser-based game inspired by [OGame](https://ogame.de/). The goal was to create an engaging experience that would encourage participation on a high school webpage. However, the game was never fully completed before its intended audience graduated, leaving the project in an unfinished state.
 

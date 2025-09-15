@@ -1,5 +1,7 @@
 ---
 title: Environment
+description: "Overview of Bestia's dynamic environment, temperature, weather, and in-game time system, including real-time to Bestia time conversions."
+draft: true
 ---
 
 # Environment
@@ -46,7 +48,7 @@ The weather will also play a role in which crops and plants grow. If the player 
 
 A in strength controllable rain effect should overlay the entire viewport. The rain blowing direction should correlate
 with the wind direction (which will be more or less random). During rain the ground will show a wet effect and view distance is
-reduced. It also reduces the effectiveness of fires and might extingush them. Fire attacks will lose certain strengths in a very wet environment (like burning effects won't last very long).
+reduced. It also reduces the effectiveness of fires and might extingush them. Fire attacks and earth attacks will only deal `50%` damage while ice or electric attacks deal `150%` damage in a wet environment.
 
 ### Fog
 
@@ -57,6 +59,11 @@ Clouds of fog will move slowly over the map. And the sight of the AI entities is
 During night time the player will need light sources in order to improve
 the visibility of enemies or terrain. There will be certain items (e.g. torches, candles etc.) as well as spells to
 make light.
+
+## Mana Concentration
+
+The system regularly evalutes mana emitter (bestia, spell usage, items) or sinks and calculates a mana density. Depending on the density of mana in a certain region this increases the propbability for rift events which spawn powerfull bestia or certain other devastating events like mana storms.
+It can also have a negative effect on the health effects of bestia master while bestia usually are unaffected by high mana density as they are born from it.
 
 ## In-Game Time
 
@@ -83,8 +90,79 @@ of night time in which for example special bestias can be hunted. It also allows
 
 This calculation results in the following example timespans:
 
-| Bestia Time | Real-Time |
-| ----------- | --------- |
-| 3 h         | 1 h       |
-| 12 d        | 4 d       |
-| 1 yr        | 4 mon     |
+{{< table >}}
+
+| Real Time | Bestia Time    |
+| --------- | -------------- |
+| 1 hour    | 3 Bestia hours |
+| 1 day     | 3 Bestia days  |
+| 1 week    | 21 Bestia days |
+| 1 month   | 84 Bestia days |
+| 4 months  | 1 Bestia year  |
+
+{{< /table >}}
+
+### Bestia Time Converter
+
+A small helper tool to quickly convert between real time values and bestia time.
+
+<div class="g-3">
+  <form class="row row-cols-lg-auto align-items-center">
+    <div class="col-12">
+      <label class="visually-hidden" for="realTimeValue">Real Time Value</label>
+      <div class="input-group">
+        <div class="input-group-text">Enter Value</div>
+        <input type="number" class="form-control" id="realTimeValue" min="0" value="1">
+      </div>
+    </div>
+    <div class="col-12">
+      <label class="visually-hidden" for="realTimeUnit">Time Unit in Real Time</label>
+      <select class="form-select" id="realTimeUnit">
+        <option value="hours">Hours</option>
+        <option value="days">Days</option>
+        <option value="weeks">Weeks</option>
+        <option value="months">Months</option>
+      </select>
+    </div>
+    <div class="col-12">
+      <button type="button" class="btn btn-primary" onclick="convertBestiaTime()">Convert</button>
+    </div>
+  </form>
+  <div class="row mt-2">
+    <div id="bestiaTimeResult" class="col fw-bold"></div>
+  </div>
+</div>
+
+<script>
+   function convertBestiaTime() {
+      const value = parseFloat(document.getElementById('realTimeValue').value);
+      const unit = document.getElementById('realTimeUnit').value;
+      let result = '';
+      if (isNaN(value) || value < 0) {
+         document.getElementById('bestiaTimeResult').innerText = 'Please enter a valid number.';
+         return;
+      }
+      switch(unit) {
+         case 'hours':
+            result = `${value} hour(s) real time = ${value * 3} Bestia hour(s)`;
+            break;
+         case 'days':
+            result = `${value} day(s) real time = ${value * 3} Bestia day(s)`;
+            break;
+         case 'weeks':
+            result = `${value} week(s) real time = ${value * 21} Bestia day(s)`;
+            break;
+         case 'months':
+            const bestiaDays = value * 84;
+            const bestiaYears = Math.floor(value / 4);
+            const remainingMonths = value % 4;
+            let details = [];
+            if (bestiaYears > 0) details.push(`${bestiaYears} Bestia year(s)`);
+            if (remainingMonths > 0) details.push(`${remainingMonths} month(s) worth ${remainingMonths * 84} Bestia days`);
+            if (details.length === 0) details.push('0 Bestia years');
+            result = `${value} month(s) real time = ${details.join(' and ')}`;
+            break;
+      }
+      document.getElementById('bestiaTimeResult').innerText = result;
+   }
+</script>
