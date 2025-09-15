@@ -29,7 +29,7 @@
       <div class="col">
         <div class="card-body pt-0">
           <div class="card-text small">
-            {{ .Inner | strings.TrimSpace | .Page.RenderString }}
+            {{ .Inner | string | strings.TrimSpace | .Page.RenderString }}
           </div>
         </div>
       </div>

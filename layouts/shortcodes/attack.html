@@ -24,7 +24,7 @@
                 </svg></strong> {{ .Get "school" }}</span>
           </p>
           <div class="card-text small">
-            {{ .Inner | strings.TrimSpace | .Page.RenderString }}
+            {{ .Inner | string | strings.TrimSpace | .Page.RenderString }}
           </div>
         </div>
       </div>
