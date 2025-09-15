@@ -25,15 +25,15 @@ For a better overview the attack list is on a sperate page. If you are intereste
     Recovers a great amount of health of a friendly unit. It can almost bring bad even the dead.
   {{< /attack >}}
 
-  {{< attack name="Tackle" icon="tackle.png" level="1" mana="2" school="White" >}}
+  {{< attack name="Tackle" icon="tackle.png" level="1" mana="2" school="Black" >}}
     Quick attack which uses the body weight in a short range melee attack. It does only little damage but is quick and cheap.
   {{< /attack >}}
 
-  {{< attack name="Ember" level="3" mana="6" school="White" >}}
+  {{< attack name="Ember" level="3" mana="6" school="Black" >}}
     A weak fire attack which leaves a patch of burning coals on the ground which can hurt if someone steps in. It is said this is often a source of forrest fires. Lasts for `10s`.
   {{< /attack >}}
 
-  {{< attack name="Banished From The Citadel" icon="banished-from-the-citadel.png" level="75" mana="150" school="White" >}}
+  {{< attack name="Banished From The Citadel" icon="banished-from-the-citadel.png" level="75" mana="150" school="Arcane" >}}
     A powerful ritual which will undoe your ties to your faction and will redeem you from your skill. Can only be cast on a Bestia Master who wears a [Sigil of Redemption](/docs/mechanics/equip-list/#sigil-of-redemption). Gives a debuff which reduces your stats by `50%` for `Master Lv` days.
   {{< /attack >}}
 
