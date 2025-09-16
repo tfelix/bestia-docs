@@ -70,3 +70,18 @@ Many entities and objects in the game world have slots and triggers for attachin
 Detecting enchanted items or traps is possible with the [Detect Magic](/docs/mechanics/skills/#detect-magic) skill. Higher-level spells are easier to detect, but precautions can make detection harder. If multiple spells are attached to an object, weaker spells are more difficult to detect.
 
 # Master Skilltree
+
+- Speedy Craftsmanship 1-10, every level reduces crafting time by 5%.
+- Blacksmith: Weapon 1-10
+- Blacksmith: Armor 1-10
+- Scholar: Crafting 1-10
+- Alchemy Mastery 1-10
+- Cooking 1-10
+- Engineering 1-10
+- Quicker/More Resource Extraction
+- Higher Chance of finding resources
+- Item Restauration
+
+- Lesser chance of failing spell enscriptions
+- lesser chance of failing a hard to cast spell
+- Packhorse 1-10 + 10% weight limit.
