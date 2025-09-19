@@ -2,6 +2,7 @@
 title: Attacks & Skills
 weight: 100
 description: Magic and its usage play a crucial role in the Bestia universe. Players are deeply involved in spell creation and research.
+draft: true
 ---
 
 In Bestia, there are two main types of magical actions:
@@ -81,6 +82,7 @@ Detecting enchanted items or traps is possible with the [Detect Magic](/docs/mec
 - Quicker/More Resource Extraction
 - Higher Chance of finding resources
 - Item Restauration
+- Ore Refinement
 
 - Lesser chance of failing spell enscriptions
 - lesser chance of failing a hard to cast spell

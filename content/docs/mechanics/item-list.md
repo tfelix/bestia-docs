@@ -4,121 +4,113 @@ title: Items List
 description: Overview of items, upgrades and the crafting system.
 ---
 
-<!-- Item List with Search -->
-<div class="input-group mb-3">
-  <span class="input-group-text" id="item-search-addon">
-    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f">
-      <path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z" />
-    </svg>
-  </span>
-  <input type="text" class="form-control" placeholder="Item Name" aria-label="Item Name"
-    aria-describedby="item-search-addon" onkeyup="filterItems(this.value)">
-</div>
+{{< itemlist >}}
 
-<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mb-4" id="item-list-container">
+{{< item name="Mobile Laboratory" weight="15" type="Usable" >}}
+Alchemists use those laboratories to work on new recipies or brew potions and elexiers. The must have for every alchemist.
+Use it to construct it in the world.
+{{< /item >}}
 
-  <!-- Mobile Laboratory -->
-  <div class="col" id="mobile-laboratory">
-    <div class="card text-light shadow h-100">
-      <div class="row g-0">
-        <div class="col-4 d-flex align-items-center justify-content-center p-4">
-          <img src="/items/128.svg" class="img-fluid rounded" alt="Icon for Mobile Laboratory" />
-        </div>
-        <div class="col-8">
-          <div class="card-body">
-            <h5 class="card-title">Mobile Laboratory</h5>
-            <p class="card-text small mb-1 d-flex">
-              <span class="w-50"><strong>Weight:</strong> 15</span>
-              <span class="w-50"><strong>Type:</strong> Tool</span>
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="row g-0">
-        <div class="col">
-          <div class="card-body pt-0">
-            <div class="card-text small">
-              Alchemists use those laboratories to work on new recipies or brew potions and elexiers. The must have of every alchemist.
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+{{< item name="Grape" weight="0.1" type="Usable" >}}
+A sweet, ripe purple grape. Restores 5 Mana.
+{{< /item >}}
 
-  <!-- Grape -->
-  <div class="col" id="grape">
-    <div class="card text-light shadow h-100">
-      <div class="row g-0">
-        <div class="col-4 d-flex align-items-center justify-content-center p-4">
-          <img src="/items/128.svg" class="img-fluid rounded" alt="Icon for Grape" />
-        </div>
-        <div class="col-8">
-          <div class="card-body">
-            <h5 class="card-title">Grape</h5>
-            <p class="card-text small mb-1 d-flex">
-              <span class="w-50"><strong>Weight:</strong> 0.1</span>
-              <span class="w-50"><strong>Type:</strong> Usable</span>
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="row g-0">
-        <div class="col">
-          <div class="card-body pt-0">
-            <div class="card-text small">
-              A sweet, ripe purple grape. Restores 5 Mana.
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+{{< item name="Iron Ore" weight="1" type="Etc" >}}
+Heavy, rugged chunks of iron ore. Blacksmiths prize these for their strength and potential. Can be used for forging.
+{{< /item >}}
 
-  <!-- Example item template for you to copy and modify -->
-  <!--
-  <div class="col" id="item-name-id">
-    <div class="card text-light shadow h-100">
-      <div class="row g-0">
-        <div class="col-4 d-flex align-items-center justify-content-center p-4">
-          <img src="/items/your-icon.png" class="img-fluid rounded" alt="Icon for Item Name" />
-        </div>
-        <div class="col-8">
-          <div class="card-body">
-            <h5 class="card-title">Item Name</h5>
-            <p class="card-text small mb-1 d-flex">
-              <span class="w-50"><strong>Weight:</strong> 0.0</span>
-              <span class="w-50"><strong>Type:</strong> Type Here</span>
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="row g-0">
-        <div class="col">
-          <div class="card-body pt-0">
-            <div class="card-text small">
-              Item description goes here.
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  -->
+{{< item name="Clay" weight="1" type="Etc" >}}
+Smooth, earthy clay. Malleable and perfect for shaping into bricks, pottery, or magical seals. Can be used for forging.
+{{< /item >}}
 
-</div>
+{{< item name="Charcoal" weight="0.2" type="Etc" >}}
+Charred, brittle pieces of wood. Essential for fueling furnaces and crafting potent alchemical mixtures. Can be used for forging.
+{{< /item >}}
 
-<script>
-  function filterItems(query) {
-    const cards = document.querySelectorAll('#item-list-container .col');
-    query = query.toLowerCase();
-    cards.forEach(card => {
-      const title = card.querySelector('.card-title');
-      if (title && title.textContent.toLowerCase().includes(query)) {
-        card.style.display = '';
-      } else {
-        card.style.display = 'none';
-      }
-    });
-  }
-</script>
+{{< item name="Furnance" weight="40" type="Etc" >}}
+Blacksmiths use furnances to extract metal from ores.
+Use it to construct it in the world.
+{{< /item >}}
+
+{{< item name="Small Health Potion" weight="0.2" type="Usable" >}}
+A tiny vial filled with shimmering red liquid. Instantly mends minor wounds and brings a gentle warmth to the soul. Heals 45 HP.
+{{< /item >}}
+
+{{< item name="Health Potion" weight="0.3" type="Usable" >}}
+A robust flask of vibrant crimson elixir. Favored by adventurers for its powerful restorative magic. Heals 170 HP.
+{{< /item >}}
+
+{{< item name="Small Mana Potion" weight="0.2" type="Usable" >}}
+A delicate bottle of sparkling blue essence. Recharges a mage’s spirit and restores a touch of magical energy. Restores 45 Mana.
+{{< /item >}}
+
+{{< item name="Mana Potion" weight="0.3" type="Usable" >}}
+A swirling flask of deep azure liquid. Pulses with arcane power, ready to fuel the most demanding spells. Restores 170 Mana.
+{{< /item >}}
+
+{{< item name="Wood" weight="30" type="Etc" >}}
+This is raw wood and it can be further processed into building material which is required for most buildings.
+{{< /item >}}
+
+{{< item name="Furnance" weight="40" type="Etc" >}}
+Blacksmiths use furnances to extract metal from ores.
+Use it to construct it in the world.
+{{< /item >}}
+
+{{< item name="Copper Ore" weight="1" type="Etc" >}}
+A reddish-brown ore that can be refined into copper. Used for forging and crafting.
+{{< /item >}}
+
+{{< item name="Mercury Ore" weight="2" type="Etc" >}}
+A rare silvery ore containing mercury. Used for advanced alchemy and magical crafting.
+{{< /item >}}
+
+{{< item name="Palladium Ore" weight="1.5" type="Etc" >}}
+A precious metallic ore with excellent catalytic properties. Used for high-end equipment.
+{{< /item >}}
+
+{{< item name="Mithril Ore" weight="0.8" type="Etc" >}}
+A legendary lightweight ore with magical properties. Used for magic artefacts.
+{{< /item >}}
+
+{{< item name="Adamantium Ore" weight="3" type="Etc" >}}
+The hardest material known. Used for creating the most durable items and equipment.
+{{< /item >}}
+
+{{< item name="Silver Bar" weight="2" type="Etc" >}}
+A refined silver ingot with excellent conductivity. Used for crafting and magical purposes.
+{{< /item >}}
+
+{{< item name="Gold Bar" weight="3" type="Etc" >}}
+A valuable refined gold ingot. Highly sought after for crafting and trade.
+{{< /item >}}
+
+{{< item name="Platin Bar" weight="2.5" type="Etc" >}}
+A precious refined platinum ingot. Used for premium crafting and magical applications.
+{{< /item >}}
+
+{{< item name="Blue Mana Christal" weight="0.5" type="Etc" >}}
+A common mana crystal with blue luminescence. Used for magic artefacts.
+{{< /item >}}
+
+{{< item name="Yellow Mana Christal" weight="0.5" type="Etc" >}}
+A quite rare mana crystal with golden glow. Used for magic artefacts.
+{{< /item >}}
+
+{{< item name="Red Mana Christal" weight="0.5" type="Etc" >}}
+A very rare mana crystal with crimson radiance. Used for magic artefacts.
+{{< /item >}}
+
+{{< item name="Salt" weight="0.1" type="Etc" >}}
+Common mineral salt. Used for food preservation and various crafting recipes.
+{{< /item >}}
+
+{{< item name="Stone" weight="5" type="Etc" >}}
+Standard building stone. Essential material for construction projects.
+{{< /item >}}
+
+{{< item name="Marble" weight="8" type="Etc" >}}
+High quality building stone with elegant appearance. Premium building material.
+{{< /item >}}
+
+{{< /itemlist >}}
