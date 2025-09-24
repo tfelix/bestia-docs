@@ -65,6 +65,7 @@ maxMana = baseMana * 2 + ivMana + effMana / 4 * level / 100 + 10  + level * 2
 * Increases the hitchance of physical based attacks
 * Increases the probability of a critical hit
 * Increases the damage of a distance attack
+* Increases upgrade chance of items and equipment by 1% ever 10 DEX.
 
 ## Agility (AGI)
 

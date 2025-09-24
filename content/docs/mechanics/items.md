@@ -47,20 +47,9 @@ A refined weapon has increased base damage per level:
 
 ## Upgrade Chances
 
-These are the base upgrade chances. The chances can be altered via skills or item usages. If a upgrade fails the weapon is destroyed. It is then complelty unusable and also the resources are lost.
+These are the base upgrade chances. The chances can be altered via skills, buffs or equipments. If a upgrade fails the weapon is destroyed. It is then complelty unusable and also the resources are lost. As you can see the chance of success gets less and less the higher the weapon is upgraded and then caps (depending on the weapon level between 5% and 15%).
 
-{{< table >}}
-
-| Weapon Category | Upgrade Formula                   |
-| --------------- | --------------------------------- |
-| Mundane         | $ min(1, e^{-(itemLv-5)/9.8)}) $  |
-| Superior        | $ min(1, e^{-(itemLv-4)/8.69)}) $ |
-| Legendary       | $ min(1, e^{-(itemLv-3)/7.69)}) $ |
-| Epic            | $ min(1, e^{-(itemLv-2)/7.31)}) $ |
-
-{{< /table >}}
-
-This results in the following upgrade chances. As you can see the chance of success gets less and less the higher the weapon is upgraded and then caps (depending on the weapon level between 5% and 15%). Skills and buffs can alter this chance.
+**Example:** You upgrade a superior weapon to level 12. Until level 7 the chance of success is at 100%. Then it drops for every level: `0.9 * 0.81 * 0.72 * 0.63 * 0.53 = 0.17`, so the total chance of success for this upgrade chain is 17%.
 
 {{< chart >}}
 {
@@ -70,27 +59,27 @@ This results in the following upgrade chances. As you can see the chance of succ
 		datasets: [
 			{
 				label: 'Mundane',
-				function: function(x) { return x <= 7 ? 1 : x >= 14 ? 0.15 : -0.17 * x + 1.85; },
+				function: function(x) { return x <= 7 ? 1 : x >= 16 ? 0.30 : -0.0875 * x + 1.7; },
 				fill: false
 			},
 			{
 				label: 'Superior',
-				function: function(x) { return x <= 6 ? 1 : x >= 13 ? 0.15 : -0.17 * x + 1.85; },
+				function: function(x) { return x <= 6 ? 1 : x >= 15 ? 0.25 : -0.09375 * x + 1.65625; },
 				fill: false
 			},
       {
 				label: 'Rare',
-				function: function(x) { return x <= 5 ? 1 : x >= 12 ? 0.15 : -0.17 * x + 1.85; },
+				function: function(x) { return x <= 5 ? 1 : x >= 14 ? 0.20 : -0.17 * x + 1.85; },
 				fill: false
 			},
 			{
 				label: 'Legendary',
-				function: function(x) { return x <= 4 ? 1 : x >= 11 ? 0.10 : -0.17 * x + 1.85; },
+				function: function(x) { return x <= 4 ? 1 : x >= 10 ? 0.15 : -0.17 * x + 1.85; },
 				fill: false
 			},
 			{
 				label: 'Epic',
-        function: function(x) { return x <= 4 ? 1 : x >= 10 ? 0.05 : -0.17 * x + 1.85; },
+        function: function(x) { return x <= 4 ? 1 : x >= 8 ? 0.05 : -0.17 * x + 1.85; },
 				fill: false
 			}
 		]
@@ -99,18 +88,63 @@ This results in the following upgrade chances. As you can see the chance of succ
 {{< /chart >}}
 
 The refine level is not capped but each higher refinement process can destroy the weapon/equipment with an increasing chance.
-The upgrade chances can be increased by leveling up the Skill Mastery `Upgrade Mastery`.
+The upgrade chances can be increased by leveling up the Master skill `Upgrade Mastery`.
 
 # Armor Refinement
 
-A refined armor has increased resistance for hard defense. Each upgrade point grants ⅓ points more defense.
+A refined armor has increased resistance for **hard defense**. Each upgrade point grants 10 points more hard defense.
+
+{{< chart >}}
+{
+	type: 'line',
+	data: {
+		labels: Array.from({length: 100}, (_, i) => i * 10),
+		datasets: [
+			{
+				label: 'Effect of DEF on damage',
+				function: function(x) { return 100 * ((4000 + x) / (4000 + x * 10)); },
+				fill: false
+			}
+		]
+	}
+}
+{{< /chart >}}
 
 ## Upgrade Chances
 
-TBD
-
 The refine level is not capped but each higher refinement process can destroy the weapon/equipment with an increasing chance.
-The upgrade chances can be increased by leveling up the Skill Mastery `Upgrade Mastery`.
+The upgrade chances can be increased by leveling up the Skill Mastery `Upgrade Mastery` or by buffs and items.
+
+{{< chart >}}
+{
+	type: 'line',
+	data: {
+		labels: Array.from({length: 15}, (_, i) => i + 1),
+		datasets: [
+			{
+				label: 'Armor',
+				function: function(x) { return x <= 4 ? 1 : x > 10 ? 0.10 : -0.15 * x + 1.6; },
+				fill: false
+			}
+		]
+	},
+  options: {
+    responsive: true,
+    scales: {
+      x: {
+        type: 'linear',
+        title: { display: true, text: 'Upgrade Level' },
+        min: 1,
+        ticks: { stepSize: 1 }
+      },
+      y: {
+        title: { display: true, text: 'Chance of Success' },
+        max: 1.1
+      }
+    }
+  }
+}
+{{< /chart >}}
 
 # Item Crafting
 
