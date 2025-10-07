@@ -13,34 +13,35 @@ Resources can be obtained by the following means:
 * Using special extracting buildings or devices.
 * Recycling of existing items.
 
-{{< alert context="info" text="The item loot from monster should be somewhat logcal: a dead wolve would very likly not drop iron ore or golden coins." />}}
+{{< alert context="info" text="The item loot from monster should be somewhat logcal: a dead wolve would very likely not drop iron ore or golden coins." />}}
 
-Dropped items in the world are semi-permanent. The player have a strong incentive to gather dropped items to participate
-in the market.
+Dropped items in the world are semi-permanent. The player have a strong incentive to gather dropped items to participate in the market.
 
 {{< alert context="info" text="Dropped items usually persist for up to 4 days (96 h real time) before they are deleted by the server." />}}
 
-## Mana
+The resource system of Bestia consists roughly of three tiers:
 
-Mana pervades the world. The concentration of mana flows is redefined in each incarnation of Bestias plays. Mana concentration is used, among other things, to determine how quickly the Bestia regenerate mana in a particular area. Mana is a two-edged-sword: As resource its quite valuable but concentrating it in a small area can lead to magic build up and lead to magic-storms or even rift events which will attract strong Bestias. In areas with high concentration magical artifacts can be built, powerful rituals can be held and mana can be "harvested" to transport it for research purposes.
+1. Raw materials
+2. Refined crafting raw materials
+3. Crafted Items
 
-The mana value of an area is calculated in fixed intervals with a discrete diffusion simulation and depends on how many spells were used in a certain interval or the presence of mana emitter or sinks.
+Where as usually the first must be found and gathered in the world, refined by certain players into the 2nd tier and lastely forged or crafted into usable items like equipment or weapons.
 
-## Resource Types
+# Resource Types
 
 The following base types of resources exist in the game.
 
 {{< table >}}
 
-| Typ                | Occurrence                 | Usage                            |
-| ------------------ | -------------------------- | -------------------------------- |
-| Ores               | Mountains, Sea, Caves      | Alchemy, Blacksmiths             |
-| Minerals, Crystals | Mountains, Sea, Caves      | Alchemy, Blacksmiths, Magic Uses |
-| Crystals           | Mountains, Sea, Caves      | Magic Uses                       |
-| Mana               | World                      | Magical Uses                     |
-| Herbs              | World, especially Forrests | Magic Uses & Alchemy             |
-| Wood               | Forrests                   | Material                         |
-| Stone              | Mountains                  | Material                         |
+| Typ      | Biome Occurrence           | Usage                            |
+| -------- | -------------------------- | -------------------------------- |
+| Ores     | Mountains, Sea, Caves      | Alchemy, Blacksmiths             |
+| Minerals | Mountains, Sea, Caves      | Alchemy, Blacksmiths, Magic Uses |
+| Crystals | Mountains, Sea, Caves      | Magical Uses                     |
+| Mana     | World                      | Magical Uses                     |
+| Herbs    | World, especially Forrests | Magical Uses & Alchemy           |
+| Wood     | Forrests                   | Material                         |
+| Stone    | Mountains                  | Material                         |
 
 {{< /table >}}
 
@@ -48,34 +49,42 @@ The following base types of resources exist in the game.
 
 {{< table >}}
 
-| Name                 | Type      | Description                                    |
-| -------------------- | --------- | ---------------------------------------------- |
-| Iron Ore             | Ore       |                                                |
-| Copper Ore           | Ore       |                                                |
-| Mercury Ore          | Ore       |                                                |
-| Palladium Ore        | Ore       |                                                |
-| Mithril Ore          | Ore       | Used for magic artefacts                       |
-| Adamantium Ore       | Ore       | Hardest material known, used for various items |
-| Silver Bar           | Metal     |                                                |
-| Gold Bar             | Metal     |                                                |
-| Platin Bar           | Metal     |                                                |
-| Blue Mana Christal   | Mana      | Used for magic artefacts. A common crystal.    |
-| Yellow Mana Christal | Mana      | Used for magic artefacts. Quite rare.          |
-| Red Mana Christal    | Mana      | Used for magic artefacts. Very rare.           |
-| Salt                 | Mineral   |                                                |
-| Wood                 | Wood      | Standard bulding material.                     |
-| Stone                | Mountains | Standard building material.                    |
-| Marble               | Mountains | High quality building material.                |
+| Name                | Type    | Description                                                       |
+| ------------------- | ------- | ----------------------------------------------------------------- |
+| Tin Ore             | Ore     |                                                                   |
+| Iron Ore            | Ore     |                                                                   |
+| Copper Ore          | Ore     |                                                                   |
+| Silver Ore          | Ore     | Used for crafting                                                 |
+| Gold Ore            | Ore     | Used for crafting and money creation                              |
+| Palladium Ore       | Ore     |                                                                   |
+| Mithril Ore         | Ore     | Used for magic artefacts                                          |
+| Adamantium Ore      | Ore     | Hardest material known, used for various items                    |
+| Steel Bar           | Metal   |                                                                   |
+| Silver Bar          | Metal   |                                                                   |
+| Gold Bar            | Metal   |                                                                   |
+| Platin Bar          | Metal   |                                                                   |
+| Mana Essence        | Mana    | Mana sludge. Raw material for mana infused crystals.              |
+| Pure Mana Essence   | Mana    | More pure mana sludge. Raw material for mana infused crystals.    |
+| Mana Concentrate    | Mana    | Concentrated mana sludge. Raw material for mana infused crystals. |
+| Blue Mana Chrystal  | Mana    | Used for magic artefacts. Quite a common crystal.                 |
+| Yellow Mana Crystal | Mana    | Used for magic artefacts. Quite rare.                             |
+| Red Mana Crystal    | Mana    | Used for magic artefacts. Very rare.                              |
+| Salt                | Mineral |                                                                   |
+| Wood                | Wood    | Standard bulding material.                                        |
+| Stone               | Stone   | Standard building material.                                       |
+| Marble              | Stone   | High quality building material.                                   |
+| Obsidian            | Stone   | A glass like very hard material.                                  |
 
 {{< /table >}}
 
-Steel for example can be refined from iron ore together with charcoal.
+In Bestia Mana is considered a resource. It permeates the land and there are regions with different concentration levels. As higher mana levels usually means more unstable biomes it is up to the player to "harvest" mana and specialize in the extraction of this resource. Usually you would infuse gels with it which then can be used to create powerful mana crystals which have various other usages.
 
-### Refining
+# Refining
 
+Steel for example can be refined from iron ore together with charcoal inside a furnace.
 Ore must be processed into metal bars before they are usable. This processing usually means you need a furnace and ideally a Master with the skill `Ore Refining` to increase the yield.
 
-## Item Recycling
+# Item Recycling
 
 For each item is a list of base resources which the item is roughly based upon (this list is also used when forging or creating the item). When an attempt to recycle the item there is a chance that the item is destroyed and the resources are lost. The skill `Recycling Expert` can increase success chance.
 

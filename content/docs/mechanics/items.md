@@ -112,7 +112,7 @@ A refined armor has increased resistance for **hard defense**. Each upgrade poin
 		datasets: [
 			{
 				label: 'Hard Defense',
-				function: function(x) {  return 0.1 + 0.9 / (1 + Math.exp(0.01 * (x - 478)));  },
+				function: function(x) {  return 0.95 * Math.exp(-0.0017 * x) + 0.05;  },
 				fill: false
 			}
 		]
@@ -159,7 +159,8 @@ The upgrade chances can be increased by leveling up the Skill Mastery `Upgrade M
       },
       y: {
         title: { display: true, text: 'Chance of Success' },
-        max: 1.1
+        max: 1.1,
+        min: 0
       }
     }
   }
