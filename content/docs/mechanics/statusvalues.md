@@ -76,7 +76,7 @@ These values are highly relevant for battle calculations. The values are derived
 HP is the life energy of a Bestia or entity. If the HP reaches 0 the Bestia is killed
 
 ```kotlin
-hp = baseHp * 2 + ivHp + effHp / 4 * level / 100 + 10 + level
+HP = floor(((15 + (baseValueHP * 2 + ivHp) * level / 100 + level) * (1 + VIT * 0.01) + HPModSum) * HPMod%)
 ```
 
 ## Mana
@@ -84,7 +84,7 @@ hp = baseHp * 2 + ivHp + effHp / 4 * level / 100 + 10 + level
 Mana is the energy needed to cast spells or abilities. The more mana the Bestia has the more or bigger spells she can cast
 
 ```kotlin
-mana = baseMana * 2 + ivMana + effMana / 4 * level / 100 + 10  + level * 2
+MANA = floor(((25 + (baseValueMana * 2 + ivMana) * level / 100 + level) * (1 + INT * 0.01) + ManaModSum) * ManaMod%)
 ```
 
 ## Stamina (STA)
@@ -100,21 +100,69 @@ Stamina is the third value and is used as a means to measure bestia "exhaustion"
 
 ## HIT
 
-TBD
+Calculates the chance of hitting an enemy.
+
+```kotlin
+HIT = 175 + BaseLv + DEX + floor(WIL ÷ 3) + Bonus
+```
+
+The chance to land a hit is calculated as `(AttackerHit - DefenderFlee)%`. The chance can not be below 5%.
 
 ## FLEE
 
-TBD
+This is the dodge rate of attacks.
+
+```kotlin
+FLEE = 100 + BaseLv + AGI + Floor(LUK ÷ 5) + Bonus
+```
 
 ## CRIT
 
+The Critical Hit rating, which increases damage by (40 + CRIT)%. Offensive attacks do not take CRIT into account except for a few exceptions. Critical Hit also ignores Flee rate but not DEF. Critical Hit Rate is doubled when wielding a Katar type weapon. Critical Hit rate is reduced based on the enemy's Critical Hit Shield.
+
+```kotlin
+CRIT = WIL ÷ 3 + Bonus
+```
+
+* Critical damage always goes with the highest weapon level variance
+
+## Soft DEF
+
 TBD
 
-## Soft Def
+## Soft MDEF
 
-TBD
+Soft magic defense, also known as "INT" magic defense, reduces incoming magic damage directly.
 
-## ATK
+```kotlin
+SoftMDEF = (floor(INT + (VIT / 5) + (DEX / 5) + (BaseLv / 4)) + SoftMdefModAdditive) × SoftMdefMod%
+```
+
+## Attack Speed - ASPD
+
+The attack speed describes how quick basic attacks can be performed. Its dependent on the following criteria:
+
+* The player's class.
+* The player's weapon type.
+* Increasing AGI to gain higher Attack Speed. (DEX provides negligible Attack Speed increases)
+* Wearing a shield decreases Attack Speed and is more dramatic at higher base Attack Speeds.
+* Some items, skills and equipments can either increase or decrease Attack Speed.
+* Equipping a shield reduces ASPD by 7.
+
+```kotlin
+StartASPD = 150
+EquipASPD % = [ { 195 − BaseASPD } × EquipASPDMod ]
+BaseASPD = [ 200 − { 200 − [StartASPD + ShieldPenalty + √(AGI × 10 + DEX × 0.2) ] } × { 1 − PotionASPDMod − SkillASPDMod } ]
+FinalASPD = BaseASPD * EquipASPD%  + EquipASPDFixed
+```
+
+The hits per second are calculated like this:
+
+```kotlin
+Hit/s = 1000 / ((200 - ASPD) * 10 + 70)
+```
+
+## Attack - ATK
 
 This is derived from the player's Base Level, STR, DEX, and WIL. This is always considered as Neutral property.
 
@@ -128,19 +176,19 @@ when using ranged weapons the formula becomes:
 ATK = (BaseLevel ÷ 4) + DEX + (STR ÷ 5) + (WIL ÷ 3)
 ```
 
-### Weapon ATK
+### Weapon Attack - WATK
 
 This is derived from a player's equiped weapon and STR or DEX depending on your weapon type. Variance, StatBonus, and OverUpgradeBonus is not shown in the Status Window.
 
 ```kotlin
-WeaponATK = (BaseWeaponDamage + Variance + StatBonus + RefinementBonus + OverUpgradeBonus) × SizePenalty
+WATK = (BaseWeaponDamage + Variance + StatBonus + RefinementBonus + OverUpgradeBonus) × SizePenalty
 ```
 
-## MATK
+## Magic Attack - MATK
 
 # Effort Values
 
-Upon level up of a Bestia it gains **Gain Points** which the player is free to distribute into his **Effort Values**
+Upon level up of a Bestia or Master it gains **Gain Points** which the player is free to distribute into his **Effort Values**
 to any of the status values. One point into the effort value will directly add 1 point to the respective Status Value.
 
 Once spend these points are fixed and can not re-distributed anymore (there might be quests or NPC which
@@ -152,7 +200,7 @@ The gain points for a level up is calculated like this:
 effGain = 5 + floor(reachedLevel / 2)
 ```
 
- The amount of Gain Points the player needs to spend, to rise a Effort Value is calculated like:
+The amount of Gain Points the player needs to spend in order to rise a Effort Value is calculated like:
 
 ```kotlin
 effGainNeeded = max(1, (nextEffValue / 3)
