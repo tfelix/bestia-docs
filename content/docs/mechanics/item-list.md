@@ -7,12 +7,20 @@ description: Overview of items, upgrades and the crafting system.
 {{< itemlist >}}
 
 {{< item name="Mobile Laboratory" weight="15" type="Usable" >}}
-Alchemists use those laboratories to work on new recipies or brew potions and elexiers. The must have for every alchemist.
+Alchemists use those small and laboratories to work on new recipies or brew potions and elexiers in the wild. When it is packed up it fits into a big crate and is quite transportable. A must have equipment for every alchemist.
 Use it to construct it in the world.
 {{< /item >}}
 
+{{< item name="Apple" icon="apple.png" weight="0.1" type="Usable" >}}
+A fresh and jucy red apple. Looks like it came right from a tree.
+
+Restores 20 HP
+{{< /item >}}
+
 {{< item name="Grape" weight="0.1" type="Usable" >}}
-A sweet, ripe purple grape. Restores 5 Mana.
+A sweet, ripe purple grape. It is said that its sugar vitalizes the brain.
+
+Restores 10 Mana
 {{< /item >}}
 
 {{< item name="Iron Ore" weight="1" type="Etc" >}}
@@ -89,15 +97,15 @@ A valuable refined gold ingot. Highly sought after for crafting and trade.
 A precious refined platinum ingot. Used for premium crafting and magical applications.
 {{< /item >}}
 
-{{< item name="Blue Mana Christal" weight="0.5" type="Etc" >}}
+{{< item name="Blue Mana Crystal" weight="0.5" type="Etc" >}}
 A common mana crystal with blue luminescence. Used for magic artefacts.
 {{< /item >}}
 
-{{< item name="Yellow Mana Christal" weight="0.5" type="Etc" >}}
+{{< item name="Yellow Mana Crystal" weight="0.5" type="Etc" >}}
 A quite rare mana crystal with golden glow. Used for magic artefacts.
 {{< /item >}}
 
-{{< item name="Red Mana Christal" weight="0.5" type="Etc" >}}
+{{< item name="Red Mana Crystal" weight="0.5" type="Etc" >}}
 A very rare mana crystal with crimson radiance. Used for magic artefacts.
 {{< /item >}}
 
