@@ -1,7 +1,7 @@
 ---
 title: Attacks & Skills
 weight: 200
-description: Magic and its usage play a crucial role in the Bestia universe. Players are deeply involved in spell creation and research.
+description: Magic and its usage play a crucial role in the Bestia universe. Most players are deeply involved in spell creation and research.
 draft: true
 ---
 
@@ -10,11 +10,7 @@ In Bestia, there are two main types of magical actions:
 1. **Skills** – Learned by a Bestia Master. Skills have levels and can be upgraded in a skill tree as the Master levels up. These are controlled by the player using skill points.
 2. **Attacks** – Learned by a Bestia as it levels up, at fixed, predefined levels. These can be battle-related or utility magic.
 
-{{< alert context="info" text="Master skills are based on a skill tree and can be leveled up, while Bestia attacks are learned automatically at designated levels and have a fixed level." />}}
-
-Each skill or attack is characterized by its **level**, **magic school**, and **elemental aspect**.
-
-# How Bestias Learn Attacks
+Each skill or attack is characterized by its **level** and **elemental aspect**.
 
 Bestias can learn attacks in two ways:
 
@@ -23,32 +19,13 @@ Bestias can learn attacks in two ways:
 
 General guidelines when Bestia are learning attacks from level ups:
 
-* **From Lv. 1–100**, a Bestia should learn **about 25** attacks.
-* Around **20 attacks** are learned between **Lv. 1–70**, the last 5 (most powerful) **between Lv. 71–100**.
+* **From Lv. 1–100**, a Bestia should learn **about 20** attacks.
+* Around **15 attacks** are learned between **Lv. 1–70**, the last 5 (most powerful) **between Lv. 71–100**.
 
-# Magic Schools
+# Spell Enscription
 
-All skills and attacks are divided into three schools of magic: **Arcane**, **Black**, and **White Magic**. These schools may affect spell effects, skill improvements, or equipment bonuses.
-
-* **Arcane Magic** - Trickster magic: illusions, utility spells (e.g., generating food or shelter), transmutations, and other unusual effects. Rarely includes damaging spells.
-* **Black Magic** - Damaging spells intended to inflict harm, reduce defenses, or apply negative status effects.
-* **White Magic** - Healing, buffing, and protection spells. Includes detection and neutralization of magic, as well as all forms of healing and status improvement.
-
-# Attack Enscription
-
-If the player has the skill [Attack Enscription](/docs/mechanics/skills/#attack-enscription), attacks can be inscribed onto scrolls for single-use or to teach other Bestias.
-
-After a spell is materialized and bound to a scroll, it can be used by the owner.
-
-| Attack Level | Base Enscription Success |
-| ------------ | ------------------------ |
-| 1–20         | 100%                     |
-| 21–40        | 80%                      |
-| 41–60        | 70%                      |
-| 61–80        | 60%                      |
-| 81–90        | 30%                      |
-| 91–100       | 10%                      |
-| 101+         | -10%                     |
+If the Master has the skill [Spell Enscription](/docs/mechanics/skills/#spell-enscription), attacks can be inscribed onto scrolls for single-use or to teach other Bestias. Depending on the skill level and equipment the base chance for the enscription are modified.
+After a spell is materialized and bound to a scroll, it can be used by the owner in a single use fashion or if the Master has the skill [Spell Teacher](/docs/mechanics/skills/#spell-teacher) it can try to learn this attack to a Bestia.
 
 # Spell Binding
 
@@ -173,6 +150,7 @@ Power Maximize - Weapons inflict always maximum damage.
 Beast Bane - Increases damage against against Beast and Insect type bestia
 Double Shot - Shoots two projectiles towards a target for ranged physical damage. Lv. 1- 100% damage lv. 10 190%.
 Vulture's Eye - Increaes attack range and hit rate with ranged type weapons.
+
   | Level | HIT Bonus | Range Bonus |
   | ----- | --------- | ----------- |
   | 1     | 1         | 1           |
@@ -188,17 +166,17 @@ Vulture's Eye - Increaes attack range and hit rate with ranged type weapons.
 
 Katar Mastery - Increases damage with Katar class weapons.
 
-Level	ATK Bonus
-1	3
-2	6
-3	9
-4	12
-5	15
-6	18
-7	21
-8	24
-9	27
-10	30
+Level ATK Bonus
+1 3
+2 6
+3 9
+4 12
+5 15
+6 18
+7 21
+8 24
+9 27
+10 30
 
 Sword Mastery - Increases damage with Sword class weapons.
 
@@ -209,12 +187,12 @@ Hammer Fall - 30-70% chance of stunning enemies in a 5x5 area. Active
 Adrenaline Rush - For 30~150 seconds, increase Attack Speed and hit rate of party members equipped with Axe and Mace class weapons (30% for Blacksmiths, 25% for other classes). 5 Level. Active.
 Reflect Damage - Places a temporary buff on the user that reduces damage by reflecting damage to the attacker.
 
-Level	Reflect Damage Reduction	Mana Cost
-1	10%	30
-2	20%	40
-3	30%	50
-4	40%	60
-5	50%	70
+Level Reflect Damage Reduction Mana Cost
+1 10% 30
+2 20% 40
+3 30% 50
+4 40% 60
+5 50% 70
 
 * **Combat Mastery (1-10)** - Increases HP and critical hit chance by 2% per level
 * **Staff Mastery (1-10)** - +3% magical damage and -1% mana usage per level
@@ -226,27 +204,27 @@ Level	Reflect Damage Reduction	Mana Cost
 * **Dodge Roll (1-10)** - Increases evasion chance and movement speed during combat
 * **Parry Master (1-10)** - Improves parry timing and counterattack opportunities
 * **Hide (1-5)** - Get invisible during combat. Higher levels reduce your mana drain and increase your movement speed while hidden.
-  Level	1	2	3	4	5
-Movement Speed (%)*	only usable on walls	50	75	100
-SP drained per 1 second	6	5	4	3	2
+  Level 1 2 3 4 5
+Movement Speed (%)* only usable on walls 50 75 100
+SP drained per 1 second 6 5 4 3 2
 * **Mind Break (1-5)** - Defense and Magic Defense halved, but MATK damage doubled
 * **Amplify Magic (1-10)** - Increases all magical damage by 2% per level
 * Strip Weapon - There is a chance to unequip the enemies weapon.
 
-Level	Base Success Chance	Base Duration	SP Cost
-1	6%	75s	22
-2	12%	90s	26
-3	18%	105s	30
+Level Base Success Chance Base Duration SP Cost
+1 6% 75s 22
+2 12% 90s 26
+3 18% 105s 30
 
 `Success Rate (%) = Base_Success_Chance + (DEX - Enemy DEX) ÷ 5`
 `Duration (s) = Base_Duration + (DEX - Enemy DEX) ÷ 2`
 
 * Strip Armor - There is a chance to unequeip the enemies armor.
 
-Level	Base Success Chance	Base Duration	SP Cost
-1	6%	75s	22
-2	12%	90s	26
-3	18%	105s	30
+Level Base Success Chance Base Duration SP Cost
+1 6% 75s 22
+2 12% 90s 26
+3 18% 105s 30
 
 `Success Rate (%) = Base_Success_Chance + (DEX - Enemy DEX) ÷ 5`
 `Duration (s) = Base_Duration + (DEX - Enemy DEX) ÷ 2`
@@ -263,18 +241,18 @@ Level	Base Success Chance	Base Duration	SP Cost
 * Firewall - Creates a wall of fire which causes damage to anyone who walks into it and has a pushback effect.
 * Icewall - Creates a wall of ice which can be attacked and damaged. It also blocks line of sight.
 * Frost Diver - Single target water damage with high chance of freezing the target.
-Level	Damage (MATK)	Frozen	SP Cost
-Chance	Duration
-1	110%	38%	3s	25
-2	120%	41%	6s	24
-3	130%	44%	9s	23
-4	140%	47%	12s	22
-5	150%	50%	15s	21
-6	160%	53%	18s	20
-7	170%	56%	21s	19
-8	180%	59%	24s	18
-9	190%	62%	27s	17
-10	200%	65%	30s	16
+Level Damage (MATK) Frozen SP Cost
+Chance Duration
+1 110% 38% 3s 25
+2 120% 41% 6s 24
+3 130% 44% 9s 23
+4 140% 47% 12s 22
+5 150% 50% 15s 21
+6 160% 53% 18s 20
+7 170% 56% 21s 19
+8 180% 59% 24s 18
+9 190% 62% 27s 17
+10 200% 65% 30s 16
 * Shattering Strike - Bestows a chance of breaking enemies' equipped weapon or armor with each attack. Against monsters, this skill will decrease their physical damage or defense instead.
 
 | Level | Weapon Break Chance | Armor Break Chance | Duration | Mana Cost |
@@ -290,34 +268,51 @@ Chance	Duration
 | 9     | 9%                  | 6.3%               | 55s      | 90        |
 | 10    | 10%                 | 7.0%               | 60s      |           |
 
-
 ## Support & Research Branch
 
 * Impositio Manus
 
-Level	ATK & MATK Boost	SP Cost
-1	5	59
-2	10	62
-3	15	65
-4	20	68
-5	25	71
+Level ATK & MATK Boost SP Cost
+1 5 59
+2 10 62
+3 15 65
+4 20 68
+5 25 71
+
 * Inspiration - Increases max. HP and Mana.
 
-Level	All Stat	Base ATK/MATK Increase	Base HIT Increase	Max HP Increase	HP Drain	SP Drain	Duration
-1	6	40	12	4%	3.0%	4.0%	60s
-2	12	80	24	8%	2.5%	3.5%	90s
-3	18	120	36	12%	2.0%	3.0%	120s
-4	24	160	48	16%	1.5%	2.5%	155s
-5	30	200	60	20%	1.0%	2.0%	180s
+Level All Stat Base ATK/MATK Increase Base HIT Increase Max HP Increase HP Drain SP Drain Duration
+1 6 40 12 4% 3.0% 4.0% 60s
+2 12 80 24 8% 2.5% 3.5% 90s
+3 18 120 36 12% 2.0% 3.0% 120s
+4 24 160 48 16% 1.5% 2.5% 155s
+5 30 200 60 20% 1.0% 2.0% 180s
 
 * Blessing - Increases all stats by 2 points/lv. HIT increase 4/lv. . Lv. 1-5. 60s 120s 240s. Removes Curse and Stone debuff. Mana 24 + (Skill Level × 4). Range 9.
 * Clearance - Attempts to nullify many benefits (in PVP) and negative status effects of a single target.
-Level	Success Rate	SP Cost
-1	33%	54
-2	66%	66
-3	100%	78
+Level Success Rate SP Cost
+1 33% 54
+2 66% 66
+3 100% 78
 
-* **Spell Enscription (1-10)** - Lesser chance of failing spell enscriptions (-5% failure per level)
+### Spell Enscription (1-10)
+
+Allows the Master to write down the essence of an attack of a Bestia he owns onto a scroll. The base success chance is as follows and is modified by equipment, skill level and intelligence:
+
+| Attack Level | Base Enscription Success |
+| ------------ | ------------------------ |
+| 1–20         | 80%                     |
+| 21–40        | 70%                      |
+| 41–60        | 60%                      |
+| 61–80        | 50%                      |
+| 81–90        | 10%                      |
+| 91–100       | -20%                      |
+| 101+         | -40%                     |
+
+INT / 2 + WIL / 4
+
+* **Spell Enscription (1-10)** - Lesser chance of failing spell enscriptions (-3% failure per level)
+* **Spell Enscription (1-10)** - Lesser chance of failing spell enscriptions (-3% failure per level)
 * **Spell Binding (1-10)** - Ability to bind spells to objects and create magical traps
 * **Detect Magic (1-10)** - Improved detection of magical auras and enchanted items
 * **Mana Efficiency (1-3)** - Reduces mana costs for all spells by 8% per level
@@ -332,29 +327,28 @@ Level	Success Rate	SP Cost
 * Dispell - (1-3) Removes all buffs on target. 60% chance, 80% chance, 100% chance. Uses a Yellow Crystal.
 * Magic Shield (1-5) - Absorbs certain amount of damage.
 * Expiatio - Places a temporary buff on a single target that grants attacks to bypass a percentage of enemies' Physical Defense and Magical Defense.
-Level	DEF & MDEF Bypass	Duration	SP Cost
-1	5%	150s	35
-2	10%	180s	40
-3	15%	210s	45
-4	20%	240s	50
-5	25%	270s	55
-
+Level DEF & MDEF Bypass Duration SP Cost
+1 5% 150s 35
+2 10% 180s 40
+3 15% 210s 45
+4 20% 240s 50
+5 25% 270s 55
 
 ## Crafting & Merchant Branch
 
 * **Speedy Craftsmanship (1-10)** - Every level reduces crafting time by 5%
 * **Weaponry Research (1-10)** - Raises the success rate of forging. This skill also raises Physical Attack (Weapon Mastery) and the accuracy with any weapon.
-Level	Forging Rate Increase	ATK Increase	Accuracy Mod
-1	1%	2	102%
-2	2%	4	104%
-3	3%	6	106%
-4	4%	8	108%
-5	5%	10	110%
-6	6%	12	112%
-7	7%	14	114%
-8	8%	16	116%
-9	9%	18	118%
-10	10%	20	120%
+Level Forging Rate Increase ATK Increase Accuracy Mod
+1 1% 2 102%
+2 2% 4 104%
+3 3% 6 106%
+4 4% 8 108%
+5 5% 10 110%
+6 6% 12 112%
+7 7% 14 114%
+8 8% 16 116%
+9 9% 18 118%
+10 10% 20 120%
 
 * **Smithing (1-10)** - Allows you to create armor and weapons.
 * Weapon Repair - Returns damaged equipment into a usable state. Lv. 1 active.
@@ -363,7 +357,6 @@ Level	Forging Rate Increase	ATK Increase	Accuracy Mod
 * Weapon Upgrade (1-5) - Increases chance of upgrading a weapon or equipment.
 * Chemical Protection - Coats armor and weapons to make them immune to damage and removal by certain skills.
 * Suffragium (1-3) - Reduces cast time for 10-30% for the next ability.
-
 
 ### Alchemy & Brewing
 
@@ -391,7 +384,7 @@ Level	Forging Rate Increase	ATK Increase	Accuracy Mod
 * **Resource Extraction (1-10)** - Quicker and more efficient resource gathering
 * **Resource Detection (1-10)** - Higher chance of finding rare resources and materials
 * **Scavenger (1-5)** - Higher chance of finding rare item drops from bestias. Increases drop chance of items by 100% per level.
-* **Packhorse (1-10)** - +10% weight limit per level for carrying capacity
+* **Packhorse (1-10)** - +5% weight limit per skill level for carrying capacity
 
 ### Merchant Skills
 

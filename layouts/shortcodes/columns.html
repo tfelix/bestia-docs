@@ -1,0 +1,9 @@
+<!-- columns.html: Splits inner content into side-by-side columns on the <---> separator -->
+{{ $parts := split (.Inner | string) "<--->" }}
+<div class="row">
+  {{ range $parts }}
+  <div class="col">
+    {{ . | strings.TrimSpace | $.Page.RenderString }}
+  </div>
+  {{ end }}
+</div>

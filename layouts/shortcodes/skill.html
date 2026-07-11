@@ -1,0 +1,13 @@
+<!-- skill.html: Single master skill card shortcode -->
+{{ $id := replace (lower (.Get "name")) " " "-" }}
+<div class="col" id="{{ $id }}">
+  <div class="card text-light shadow h-100">
+    <div class="card-body">
+      <h5 class="card-title">{{ .Get "name" }} <small class="text-body-secondary">Max Lv. {{ .Get "maxLevel" }}</small>
+      </h5>
+      <div class="card-text small">
+        {{ .Inner | string | strings.TrimSpace | .Page.RenderString }}
+      </div>
+    </div>
+  </div>
+</div>
