@@ -5,10 +5,8 @@ description: Overview of the status values and derived stati.
 source: https://irowiki.org/wiki/ATK#P.ATK
 ---
 
-Status Values are the base values from which the basics for all ingame calculations are performed.
-There are five main types of status values:
+The **status value** (e.g. INT or STR) is the fundamental number from which all in-game calculations are performed. It is built from three underlying value types, with a fourth category of values derived on top of it:
 
-* **Status Values**
 * **Base Values (BV)**
 * **Individual Values (IV)**
 * **Effort Value (EV)**
@@ -16,13 +14,13 @@ There are five main types of status values:
 
 The status value is calculated from the **base value (BV)** and the **individual value (IV)**.
 The base value is a specialized base value static for every bestia.
-The **IV** are determined when a bestia is caught and range from 0-100. The effort value is determined by the player and can be freely choose when a level up happens.
+The **IV** are determined when a bestia is caught and range from 0-100. The effort value is determined by the player and can be freely chosen when a level up happens.
 
 **Status Based Values (SBV)** are values which are important for damage calculation but are just derived from status values.
 
 # Status Values
 
-The sophisticated status system describes the current state of an bestia (or simply any living entity) and does not strictly apply only to biological entities. The status system is important to calculate all battle related effects in the game.
+The sophisticated status system describes the current state of a bestia (or simply any living entity) and does not strictly apply only to biological entities. The status system is important to calculate all battle related effects in the game.
 
 All status values are calculated like this:
 
@@ -45,6 +43,7 @@ statusValue = (baseValue + individualValue) * level / 100 + effortValue
 * Increases slightly the stamina regeneration
 * Increases slightly the total amount of stamina
 * Slightly increases resistance against temperature
+* Increases the flee rate (dodge chance) against physical attacks
 
 ## Strength - STR
 
@@ -67,7 +66,7 @@ statusValue = (baseValue + individualValue) * level / 100 + effortValue
 * Increases the hit chance of physical based attacks
 * Increases the probability of a critical hit
 * Increases the damage of a distance attack
-* Increases upgrade chance of items and equipment by 1% ever 10 DEX.
+* Increases upgrade chance of items and equipment by 1% every 10 DEX.
 
 ## Agility - AGI
 
@@ -110,7 +109,7 @@ Stamina is the third value and is used as a means to measure bestia "exhaustion"
 Calculates the chance of hitting an enemy.
 
 ```text
-HIT = floor(175 + BaseLv + DEX + floor(WIL ÷ 3) + HitModSum) * HitModPerc)
+HIT = floor((175 + BaseLv + DEX + floor(WIL ÷ 3) + HitModSum) * HitModPerc)
 ```
 
 The chance to land a hit is calculated as `(AttackerHit - DefenderFlee)%`. The chance can not be higher than 100% and lower than 5%.
@@ -120,12 +119,12 @@ The chance to land a hit is calculated as `(AttackerHit - DefenderFlee)%`. The c
 This is the dodge rate of physical attacks (magic attacks can not be dodged).
 
 ```text
-FLEE = floor((100 + BaseLv + AGI + Floor(LUK ÷ 5) + FleeModSum) * FleeModPerc)
+FLEE = floor((100 + BaseLv + AGI + Floor(WIL ÷ 5) + FleeModSum) * FleeModPerc)
 ```
 
 ## Critical Hit - CRIT
 
-The Critical Hit rating, which increases damage by (40 + CRIT)%. Offensive attacks do not take CRIT into account except for a few exceptions. Critical Hit also ignores Flee rate but not DEF. Critical Hit Rate is doubled when wielding a Katar type weapon. Critical Hit rate is reduced based on the enemy's Critical Hit Shield.
+The Critical Hit rating, which increases damage by (40 + CRIT)%. Offensive attacks do not take CRIT into account except for a few exceptions. Critical Hit also ignores Flee rate but not [Hard Defense](/docs/server/battle#value-hard_def). Critical Hit Rate is doubled when wielding a Katar type weapon. Critical Hit rate is reduced based on the enemy's Critical Hit Shield.
 
 ```text
 CRIT = WIL ÷ 3 + Bonus
@@ -135,7 +134,11 @@ CRIT = WIL ÷ 3 + Bonus
 
 ## Soft Defense - SDEF
 
-TBD
+Soft defense, also known as "VIT" defense, reduces incoming physical damage directly, on top of the [hard defense](/docs/server/battle#value-hard_def) granted by armor and other equipment.
+
+```text
+SoftDEF = (floor(VIT + (STR / 5) + (AGI / 5) + (BaseLv / 4)) + SoftDefModAdditive) × SoftDefMod%
+```
 
 ## Soft Magic Defense - SMDEF
 
@@ -193,14 +196,18 @@ WATK = (BaseWeaponDamage + Variance + StatBonus + RefinementBonus + OverUpgradeB
 
 ## Magic Attack - MATK
 
-TBD
+This is derived from the player's Base Level, INT, and WIL. Just like ATK, this is always considered as Neutral property unless a spell defines otherwise.
+
+```text
+MATK = (BaseLevel ÷ 4) + INT + (WIL ÷ 5)
+```
 
 # Effort Values
 
-Upon level up of a Bestia or Master it gains **gain points** which the player is free to distribute into his **effort vIalues**
+Upon level up of a Bestia or Master it gains **gain points** which the player is free to distribute into his **effort values**
 to any of the status values. One point into the effort value will directly add 1 point to the respective Status Value.
 
-Once spend these points are fixed and can not re-distributed anymore (there might be quests or NPC which
+Once spent these points are fixed and cannot be re-distributed anymore (there might be quests or NPC which
 are able to reset these values in a certain amount).
 
 The gain points for a level up is calculated like this:
@@ -212,7 +219,7 @@ effGain = 5 + floor(reachedLevel / 2)
 The amount of Gain Points the player needs to spend in order to rise a **effort value** is calculated like this:
 
 ```text
-effGainNeeded = max(1, (nextEffValue / 3)
+effGainNeeded = max(1, (nextEffValue / 3))
 ```
 
 # Individual Values

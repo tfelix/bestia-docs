@@ -5,15 +5,15 @@ description: Overview of items, upgrades and the crafting system.
 katex: true
 ---
 
-Items can be optained by the player and carried around. The amount of items limited to each entity is determined via
+Items can be obtained by the player and carried around. The amount of items limited to each entity is determined via
 its [Inventory](#inventory). Each Bestia (and also a lot of other entities), have their own inventory with different sizes.
 
-Items are mostly crafted by the players. Its quite rare to obtain direct item drops from killed enemies. Instead its very common to loot resources when enemies are killed.
+Items are mostly crafted by the players. It's quite rare to obtain direct item drops from killed enemies. Instead it's very common to loot resources when enemies are killed.
 
 # Item Level
 
 Each item has a level assigned. This level is important to determine how hard or easy it is to forge this item, upgrade
-it and so on. It also effects how spells interact with the item entity.
+it and so on. It also affects how spells interact with the item entity.
 
 {{< table >}}
 
@@ -40,6 +40,7 @@ A refined weapon has increased base damage per level:
 | --------------- | --------------------------------- |
 | Mundane         | 2                                 |
 | Superior        | 4                                 |
+| Rare            | 5                                 |
 | Legendary       | 6                                 |
 | Epic            | 10                                |
 
@@ -47,7 +48,7 @@ A refined weapon has increased base damage per level:
 
 ## Upgrade Chances
 
-These are the base upgrade chances. The chances can be altered via skills, buffs or equipments. If a upgrade fails the weapon is destroyed. It is then complelty unusable and also the resources are lost. As you can see the chance of success gets less and less the higher the weapon is upgraded and then caps (depending on the weapon level between 5% and 15%).
+These are the base upgrade chances. The chances can be altered via skills, buffs or equipments. If an upgrade fails the weapon is destroyed. It is then completely unusable and also the resources are lost. As you can see the chance of success gets less and less the higher the weapon is upgraded and then caps (depending on the weapon level between 5% and 15%).
 
 **Example:** You upgrade a superior weapon to level 12. Until level 7 the chance of success is at 100%. Then it drops for every level: `0.9 * 0.81 * 0.72 * 0.63 * 0.53 = 0.17`, so the total chance of success for this upgrade chain is 17%.
 
@@ -98,7 +99,7 @@ These are the base upgrade chances. The chances can be altered via skills, buffs
 {{< /chart >}}
 
 The refine level is not capped but each higher refinement process can destroy the weapon/equipment with an increasing chance.
-The upgrade chances can be increased by leveling up the Master skill `Upgrade Mastery`.
+The upgrade chances can be increased by leveling up the relevant [Master Skill](/docs/mechanics/master/#master-skills) (e.g. Blacksmith).
 
 # Armor Refinement
 
@@ -133,7 +134,7 @@ A refined armor has increased resistance for **hard defense**. Each upgrade poin
 ## Upgrade Chances
 
 The refine level is not capped but each higher refinement process can destroy the weapon/equipment with an increasing chance.
-The upgrade chances can be increased by leveling up the Skill Mastery `Upgrade Mastery` or by buffs and items.
+The upgrade chances can be increased by leveling up the relevant [Master Skill](/docs/mechanics/master/#master-skills) or by buffs and items.
 
 {{< chart >}}
 {
@@ -169,9 +170,9 @@ The upgrade chances can be increased by leveling up the Skill Mastery `Upgrade M
 
 # Item Crafting
 
-Bestia uses an innovative new item crafting system. The player is allowed to craft all items. Some items however
-might be so hard to craft so it is not possible to craft it without appropriate skill. Some items may require special
-ingredients which can not be substituted. The higher the crafted item level and the harder it get to successful craft
+Bestia uses an innovative new item crafting system. The player is allowed to craft all items. Some items may however
+be so hard to craft that it is not possible without the appropriate skill. Some items may require special
+ingredients which can not be substituted. The higher the crafted item level, the harder it gets to successfully craft
 it. If the crafting of the item fails all the materials used to craft it are lost. In order to craft an item two things
 are important: the sum of raw materials used to craft and how the materials are laid out.
 
@@ -180,19 +181,19 @@ a higher success chance.
 
 After an item was successfully crafted the recipe is saved for the user inside his recipe list. From this list the
 recipe can be inscribed upon paper to give it to other players who can consume and learn it. The learning will take
-some time (depending of the level of the item).
+some time (depending on the level of the item).
 
-Players are encouraged to try and create stuff. There are basically 6 domains of craftable and user generatable content
-in the world of Bestia, and are related to the linked [Skill Mastery](/docs/mechanics/master#skill-mastery).
+Players are encouraged to try and create stuff. There are basically 6 domains of craftable and user generated content
+in the world of Bestia, and are related to the linked [Master Skills](/docs/mechanics/master/#master-skills).
 
-* **Weapons** (Blacksmith: Weapon)
-* **Armor** (Blacksmith: Armor)
-* **Magical Artifacts** (Scholar: Crafting)
-* **Potions and Usables** (Alchemy Mastery)
+* **Weapons** (Blacksmith)
+* **Armor** (Blacksmith)
+* **Magical Artifacts** (Magic Artisan)
+* **Potions and Usables** (Alchemy)
 * **Meals** (Cooking)
-* **Buildings, Traps, non-magical Devices** (Engineering)
+* **Buildings, Traps, non-magical Devices** (Craftsmanship)
 
-Some item are exclusivly usable for certain crafting schools (for example a grape can not be used for forging). Items are categorized into a feature space which consists of 6 axis which describe the different properties of the outcome. The items used add or subtract from those axis and depending on your skill and the distance to a potential target you will successfully learn the blueprint. An attempt to learn a blueprint consumes the raw materials. So you basically navigate in a 6 axis vector space and at the end there will be a circle, dependent on your crafting skill. An item inside this circle you will then randomly learn. The chance of learning this skill depends on your skill.
+Some items are exclusively usable for certain crafting schools (for example a grape can not be used for forging). Items are categorized into a feature space which consists of 6 axis which describe the different properties of the outcome. The items used add or subtract from those axis and depending on your skill and the distance to a potential target you will successfully learn the blueprint. An attempt to learn a blueprint consumes the raw materials. So you basically navigate in a 6 axis vector space and at the end there will be a circle, dependent on your crafting skill. An item inside this circle you will then randomly learn. The chance of learning this skill depends on your skill.
 
 **Example:** You have Glass Shards (brittle +0.2), Mushroom (organic +0.2), blue manastone (white magic +0.5)
 
@@ -202,7 +203,7 @@ Mana Potion Lv. 10 Properties: Brittle 0.5, Organic: 0.05, White Magic: 0.8
 Sword:  Brittle 0.1, Organic: 0, White Magic: 0
 ```
 
-You combine all those three items and get a vector of `(0.2, 0.2, 0.5)`. With a level 10 forging skill this puts heal and mana potion into the possible range. A sword is out of range. Beginning from the lowest level you will now roll a dice against your skill success and the item difficulty to check if you successfully learned the item.
+You combine all those three items and get a vector of `(0.2, 0.2, 0.5)`. With a level 10 Alchemy skill this puts heal and mana potion into the possible range. A sword is out of range. Beginning from the lowest level you will now roll a dice against your skill success and the item difficulty to check if you successfully learned the item.
 
 {{< chart >}}
 {
@@ -284,7 +285,7 @@ baseDurationConsumablesSeconds = .3 * baseDurationSeconds
 # Damaging of Items
 
 As with any item in Bestia, it can be damaged. There will be professions capable of repairing items. The durability of an item is given via a percentage. Items will function normally within a wide range of their condition. At a certain
-level, they slowly lose their properties (armor their armor value, weapons hit less often, magic staffs suffer a damage penalty, etc.). Until the items become unusable. If you then inflict further damage on them, they can be completely and
+level, they slowly lose their properties (armor loses its defense value, weapons hit less often, magic staffs suffer a damage penalty, etc.), until the items become unusable. If you then inflict further damage on them, they can be completely and
 irretrievably destroyed.
 
 | Durability | State                     |
@@ -297,7 +298,7 @@ Items on the ground can suffer damage from attacks. They are affected by Area Of
 
 ## Item Status Values
 
-In order to let items participate in the battle system they need status values. Items status value distribution is based upon their type (weapon, potion, book etc) and the total amount of points to distribute is given by the item level.
+In order to let items participate in the battle system they need status values. An item's status value distribution is based upon their type (weapon, potion, book etc) and the total amount of points to distribute is given by the item level. See [Status Values](/docs/mechanics/statusvalues/) for how these points translate into combat stats.
 
 ```kotlin
 availableItemStatPoints = itemLv
@@ -306,16 +307,16 @@ availableItemStatPoints = itemLv
 # Inventory
 
 The inventory is an important system for interaction between the player and the game mechanics. It must be easy to access
-and logical build. Each Bestia has its own inventory. So the player must be careful to exchange items between the
+and logically built. Each Bestia has its own inventory. So the player must be careful to exchange items between the
 Bestias in time. Trading must be fast to do to reduce the annoyance.
 
 If a Bestia/Entity is killed and has had some items inside its inventory usually the items are dropped and can be looted.
-In case a player killed a mob the loot will be protected for 30 seconds so he can exclusivly loot it.
+In case a player killed a mob the loot will be protected for 30 seconds so he can exclusively loot it.
 
 ## Weight Limit
 
-Items weight is given by units of about 1kg per unit. The smallest division is 0.1 units which aproximates to 100gr.
-The maximum amount a Bestia can carry is dependent on its strength and its vitality. The [Packhorse skill](/docs/mechanics/skills/#packhorse) can  increase the carriable weight limit. The formula is given as:
+Items weight is given by units of about 1kg per unit. The smallest division is 0.1 units which approximates to 100gr.
+The maximum amount a Bestia can carry is dependent on its strength and its vitality. The [Packhorse skill](/docs/mechanics/master/#packhorse) can increase the carriable weight limit. The formula is given as:
 
 ```kotlin
 weightLimit = STR / 2 + VIT / 5 + 15 + LEVEL / 5
@@ -348,5 +349,5 @@ weightLimit = STR / 2 + VIT / 5 + 15 + LEVEL / 5
 {{< /chart >}}
 
 
-Please not that depending of your used up weight limit regeneration of certain [status values](/docs/mechanics/bestia/statusvalues/)
+Please note that depending on your used up weight limit regeneration of certain [status values](/docs/mechanics/statusvalues/)
 might be affected.
