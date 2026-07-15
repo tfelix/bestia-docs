@@ -42,7 +42,7 @@ Many game mechanics should require interaction with other players. Rituals that 
 
 In keeping with our commitment to fantasy realism, items are typically not obtained by defeating monsters. Instead, they must be crafted. Raw materials are found throughout the world, and almost all equipment is either manufactured by players or purchased from NPCs. NPC vendors have limited stock, which must be replenished and delivered, leading to the establishment of trade routes. Prices are determined by supply and demand, with NPCs aiming to maximize their profits. Players should be able to easily participate in this economic cycle as both producers and consumers.
 
-For more details on professions, refer to the [Crafts Tree](/docs/mechanics/master/#crafts-tree) section.
+For more details on professions, refer to the [Craftsman Tree](/docs/mechanics/master/#craftsman-tree) section.
 
 # Modern Artificial Intelligence
 

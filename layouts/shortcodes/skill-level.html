@@ -1,0 +1,7 @@
+<!-- skill-level.html: Individual skill level progression -->
+<div class="skill-level">
+<div class="skill-level-label">{{ if .Get "label" }}{{ .Get "label" }}{{ else }}Lv. {{ .Get "level" }}{{ end }}</div>
+<div class="">
+{{ .Inner | .Page.RenderString }}
+</div>
+</div>

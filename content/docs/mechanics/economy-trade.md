@@ -9,7 +9,7 @@ In **Bestia**, the economy is entirely player-driven, shaping the world through 
 
 ## Currency
 
-All in-game currency originates from gold deposits discovered and mined by players. That’s right—players must **harvest gold themselves** to [mint their own money](/docs/master/#minting). Gold can be directly converted into gold coins, which serve as the primary currency for trading and transactions.
+All in-game currency originates from gold deposits discovered and mined by players. That’s right—players must **harvest gold themselves** to [mint their own money](/docs/mechanics/master/#skill-minting). Gold can be directly converted into gold coins, which serve as the primary currency for trading and transactions.
 
 Gold is automatically converted between smaller denominators silver and copper (those currencies can not be created but are derived from the gold ones). The relation between those are:
 
@@ -81,6 +81,6 @@ Time is measured in real-world hours, not [game-time](/docs/mechanics/environmen
 
 ### Linking Auction Houses
 
-Auction houses owned by different players can be **linked together** by a [master skill](/docs/mechanics/master/#trade-agreement), if all players agree, allowing shared listings across multiple locations. This creates a broader marketplace and improves accessibility for buyers.
+Auction houses owned by different players can be **linked together** by a [master skill](/docs/mechanics/master/#skill-trade-agreement), if all players agree, allowing shared listings across multiple locations. This creates a broader marketplace and improves accessibility for buyers.
 
 When a player wins an auction, they can choose to **pay a delivery fee** to have the item sent via **postal service** from the linked auction house. If they refuse to pay, the item remains on hold for **up to 10 days**. If the player still does not claim it, the item is returned to the original seller, who **keeps the payment from the unclaimed purchase**.

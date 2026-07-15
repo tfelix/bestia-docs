@@ -1,4 +1,7 @@
-<!-- columns.html: Splits inner content into side-by-side columns on the <---> separator -->
+<!-- columns.html: splits inner content into side-by-side columns on a five-character
+     less-than/dash/dash/dash/greater-than marker (spelled out here so this comment
+     doesn't itself contain the marker - that previously closed the comment early
+     and leaked "-- marker --" as visible text on every card using this shortcode) -->
 {{ $parts := split (.Inner | string) "<--->" }}
 <div class="row">
   {{ range $parts }}

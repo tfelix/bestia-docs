@@ -45,7 +45,7 @@ The following aplies:
 
 * For every km from explored land the difficulty increases by `10`
 * For 1% of magic energy on the area difficulty increases by `0.5`
-* Every level of `Cartographer` reduces difficulty by `10`.
+* Every level of [`Cartographer`](/docs/mechanics/master/#skill-cartographer) reduces difficulty by `10`.
 
 1. Upon using the skill a difficulty `d` is determined, depending on the distance to the next already cartographed area and the area wished to be explored.
 2. There are 3-5 locations `l` spawned around the player within a radius of 300 to 800 meters around the player (depending on the difficulty). He must reach them within a timelimit `t`.

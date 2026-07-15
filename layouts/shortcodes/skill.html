@@ -1,13 +1,30 @@
-<!-- skill.html: Single master skill card shortcode -->
-{{ $id := replace (lower (.Get "name")) " " "-" }}
-<div class="col" id="{{ $id }}">
-  <div class="card text-light shadow h-100">
+<!-- skill.html: Master skill card with level progression -->
+{{ $id := printf "skill-%s" (replace (lower (.Get "name")) " " "-") }}
+<div class="col mb-3" id="{{ $id }}">
+  <div class="card shadow h-100 skill-card">
     <div class="card-body">
-      <h5 class="card-title">{{ .Get "name" }} <small class="text-body-secondary">Max Lv. {{ .Get "maxLevel" }}</small>
+      <h5 class="card-title d-flex align-items-center justify-content-between flex-wrap gap-2">
+        <span>{{ .Get "name" }}</span>
+        <span class="badge rounded-pill text-bg-primary fw-normal">Max Lv. {{ .Get "maxLevel" }}</span>
       </h5>
-      <div class="card-text small">
-        {{ .Inner | string | strings.TrimSpace | .Page.RenderString }}
+
+      <!-- Prerequisite -->
+      {{ if .Get "requires" }}
+        <p class="skill-requires mb-2">&#8627; Requires {{ .Get "requires" }}</p>
+      {{ end }}
+
+      <!-- Base description -->
+      {{ if .Get "description" }}
+        <p class="mb-2">{{ .Get "description" | .Page.RenderString }}</p>
+      {{ end }}
+
+      <!-- Level-based effects -->
+      {{ $levels := .Inner | string | strings.TrimSpace }}
+      {{ if gt (len $levels) 0 }}
+      <div class="skill-levels mt-3">
+{{ .Inner | .Page.RenderString }}
       </div>
+      {{ end }}
     </div>
   </div>
 </div>

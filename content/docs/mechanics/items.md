@@ -316,7 +316,7 @@ In case a player killed a mob the loot will be protected for 30 seconds so he ca
 ## Weight Limit
 
 Items weight is given by units of about 1kg per unit. The smallest division is 0.1 units which approximates to 100gr.
-The maximum amount a Bestia can carry is dependent on its strength and its vitality. The [Packhorse skill](/docs/mechanics/master/#packhorse) can increase the carriable weight limit. The formula is given as:
+The maximum amount a Bestia can carry is dependent on its strength and its vitality. The [Packhorse skill](/docs/mechanics/master/#skill-packhorse) can increase the carriable weight limit. The formula is given as:
 
 ```kotlin
 weightLimit = STR / 2 + VIT / 5 + 15 + LEVEL / 5

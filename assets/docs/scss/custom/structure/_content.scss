@@ -318,3 +318,54 @@ i {
 .docs-content figcaption {
     font-size: small;
 }
+
+// Skill / item / equipment / attack cards
+//
+// The theme's default `.card:hover .card-title { color: #fff }` (see
+// components/_card.scss upstream) is built for cards with a dark background
+// image, where a white title stays readable on hover. Our cards use the
+// plain `--card-bg` (white in light mode), so that rule turned the title
+// invisible on hover. Restore the normal title color instead.
+.docs-content .main-content .card:hover .card-title {
+    color: var(--card-title-color);
+}
+
+.docs-content .main-content {
+    .skill-card {
+        border-left: 3px solid var(--primary);
+    }
+
+    .skill-levels {
+        border-top: 1px solid var(--card-border-color);
+        padding-top: 0.75rem;
+    }
+
+    .skill-level {
+        position: relative;
+        padding-left: 0.2rem;
+        // border-left: 2px solid var(--card-border-color);
+
+        &:not(:last-child) {
+            margin-bottom: 1rem;
+            padding-bottom: 0.25rem;
+        }
+    }
+
+    .skill-level-label {
+        display: inline-block;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        color: #fff;
+        background: var(--primary);
+        border-radius: 999px;
+        padding: 0.15rem 0.6rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .skill-requires {
+        font-size: 0.8rem;
+        font-style: italic;
+        color: var(--card-text-color);
+    }
+}
