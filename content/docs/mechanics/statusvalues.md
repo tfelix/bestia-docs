@@ -86,12 +86,41 @@ HP is the life energy of a Bestia or entity. If the HP reaches 0 the Bestia is k
 HP = floor(((15 + (baseValueHP * 2 + ivHp) * level / 100 + level) * (1 + VIT * 0.01) + HPModSum) * HPModPerc)
 ```
 
+### HP Recovery
+
+HP regenerates automatically over time, ticking every 6 seconds. The regeneration rate is doubled while the Bestia is resting.
+
+```text
+BaseHPR = max(1, floor(MaxHP / 200))
+HPR = BaseHPR + floor(VIT / 5)
+FinalHPR = floor(HPR * (1 + HPRMod * 0.01))
+```
+
+`HPRMod` is a percentage bonus contributed by gear, buffs, and passive skills (e.g. an Increase HP Recovery skill).
+
 ## Mana
 
 Mana is the energy needed to cast spells or abilities. The more mana the Bestia has the more or bigger spells she can cast
 
 ```text
 MANA = floor(((25 + (baseValueMana * 2 + ivMana) * level / 100 + level) * (1 + INT * 0.01) + ManaModSum) * ManaModPerc)
+```
+
+### Mana Recovery
+
+Mana regenerates automatically over time, ticking every 8 seconds. The regeneration rate is doubled while the Bestia is resting.
+
+```text
+BaseSPR = 1 + floor(MaxMana / 100) + floor(INT / 6)
+SPR = floor(BaseSPR * (1 + SPRMod * 0.01))
+```
+
+`SPRMod` is a percentage bonus contributed by gear, buffs, and passive skills.
+
+If INT is 120 or higher, an additional flat bonus is added:
+
+```text
+SPR = SPR + 4 + floor((INT - 120) / 2)
 ```
 
 ## Stamina - STA

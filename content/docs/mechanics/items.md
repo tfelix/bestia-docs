@@ -99,7 +99,7 @@ These are the base upgrade chances. The chances can be altered via skills, buffs
 {{< /chart >}}
 
 The refine level is not capped but each higher refinement process can destroy the weapon/equipment with an increasing chance.
-The upgrade chances can be increased by leveling up the relevant [Master Skill](/docs/mechanics/master/#master-skills) (e.g. Blacksmith).
+The upgrade chances can be increased by leveling up the relevant [Master Skill](/docs/mechanics/master/#master-skills) (e.g. Weaponry Research).
 
 # Armor Refinement
 
