@@ -41,14 +41,44 @@ The skilltrees are designed as such that to reach the highest professions in eac
 The player can decide to have mediocre profession in each tree or to max out one and have maybe half of the
 meaningful professions of another tree. The skilltree is a hierarchical dependency of skills.
 
+# Tree Mastery
+
+Skillpoints spent within a subtree (e.g. Blacksmith, Priest, Wizard, ...) do more than unlock its skills - they also declare a profession to the world.
+
+* As soon as **5 or more skillpoints** are invested into a single subtree, the master becomes a **Master** of that tree.
+* Being a Master of a tree determines which of its associated items and weapons the master is able to use and equip.
+* A Bestia Master can be a Master of **at most 3 trees**.
+* Which trees count is decided by order of achievement: the first 3 subtrees in which a master reaches 5 or more skillpoints become their masteries. Reaching 5 or more skillpoints in any further subtree afterwards does **not** grant an additional mastery.
+
+{{< alert context="info" text="This is independent of the 5 Lv. requirement that unlocks access to a subtree in the first place - that threshold is reached by investing in the parent tree, while Mastery requires 5 points spent inside the subtree itself." />}}
+
 # Skill Trees
 
 The following trees exist, they are organized in subtrees.
+
+{{< alert context="info" text="Each tree and sub-tree below is illustrated with a dependency diagram. Rounded nodes are entry skills with no prerequisite, hexagon nodes are the sub-tree's capstone(s), a slanted node is a skill from another tree, and dashed arrows show the tree-mastery gate that unlocks a sub-tree once 5+ points are invested in its parent tree. Solid arrows are labeled with the required level in the source skill." />}}
 
 ## Novice Tree
 
 In order to learn how to interact with other player you need to invest your first skill points in this skill tree.
 
+{{< alert context="info" text="It is not implicitly stated but Lv. 7 in the Novice tree is mandatory for every other skill from other trees. If you take at least one skill point in any other tree the novice tree stays locked for you." />}}
+
+```mermaid
+graph TD
+    BasicSkill(["Basic Skill (1-10)"])
+    PlayDead["Play Dead (1)"]
+    FirstAid["First Aid (1-3)"]
+    Cooking["Cooking (1-3)"]
+    MasterRitual{{"Master Ritual (1)"}}
+
+    BasicSkill -->|Lv.2| PlayDead
+    BasicSkill -->|Lv.3| FirstAid
+    BasicSkill -->|Lv.4| Cooking
+    BasicSkill -->|Lv.7| MasterRitual
+```
+
+<br>
 {{< skill name="Basic Skill" maxLevel="10"
     description="Enables the use of the basic user interface." >}}
 {{< skill-level level="1" >}}Allows to trade with other players.{{< /skill-level >}}
@@ -60,76 +90,137 @@ In order to learn how to interact with other player you need to invest your firs
 {{< skill-level level="7" >}}Allows the user to perform the "Master Ritual".{{< /skill-level >}}
 {{< /skill >}}
 
-{{< skill name="Cooking" maxLevel="3" requires="Basic Skill Lv. 7" description="The Master and his Bestia can start to cook meals on fire places. These meals apply certain buff effects when they are eaten.<br>Cooking Time -10% / Lv<br>Success Chance +10% / Lv" >}}
+{{< skill name="Cooking" maxLevel="3" requires="Basic Skill Lv. 4" description="The Master and his Bestia can start to cook meals on fire places. These meals apply certain buff effects when they are eaten.<br>Cooking Time -10% / Lv<br>Success Chance +10% / Lv" >}}
 {{< /skill >}}
 
-{{< skill name="Play Dead" maxLevel="1"
+{{< skill name="Play Dead" maxLevel="1" requires="Basic Skill Lv. 2"
     description="Feigns death to avoid menace of nearby enemies. This skill can be switched on and off. After performing the ritual to become a Bestia Master this skill can not be used anymore." >}}
 {{< /skill >}}
 
-{{< skill name="First Aid" maxLevel="1"
-    description="Apply bandages to a Bestia and channel a healing effect of up to 50% of their total health or 100 HP, whichever comes first, over a duration of 20s. The cooldown is 5 minutes. A Bestia can only receive a single First Aid every 60 secs." >}}
+{{< skill name="First Aid" maxLevel="3" requires="Basic Skill Lv. 3"
+    description="Apply bandages to a Bestia and channel a healing effect over 10s. The cooldown of this skill is 5 minutes. A Bestia can only receive a single First Aid every 60 secs." >}}
+`+20%/lv` HP healed or `+100 HP/lv` healed
+{{< /skill >}}
+
+{{< skill name="Master Ritual" maxLevel="1" requires="Basic Skill Lv. 7">}}
+Automatically enabled once Lv. 7 in Basic Skill is reached. Can only be used as long as you are a Novice. Converts 25 [Void Essence](item-list/#void-essence), 5 [Mana Dust](item-list/#mana-dust) and 3 [Clay](item-list#clay) into a [Seal of Mastery](item-list#seal-of-mastery).
 {{< /skill >}}
 
 ## Craftsman Tree
 
-The workbenches, forges and cauldrons of Bestia's tradesfolk turn raw ambition into things a player can actually use. Every blade, trinket and bottled miracle a master ever relies on started out as somebody's Craftsman skill paying off.
+The workbenches, forges and cauldrons of the tradesfolk turn raw ambition into things a player can actually use. Every blade, trinket and bottled miracle a master ever relies on started out as somebody's Craftsman skill paying off.
 
-{{< skill name="Handyman" maxLevel="5" description="You are very skilled in working with tools and raw material. Building structures in the world is very quick for you and your Bestia.<br>Reduces construction time of structures by -10% / Lv" >}}
+```mermaid
+graph TD
+    Carpentry["Carpentry (1-10)"]
+    Tinkerer["Tinkerer (1-5)"]
+    ItemCustomization["Item Customization (1-10)"]
+    Gate{{"5+ pts in Craftsman Tree"}}
+    Blacksmith(("Blacksmith"))
+    Artificer(("Artificer"))
+    Alchemist(("Alchemist"))
+
+    Carpentry -->|Lv.3| Tinkerer
+    Carpentry -->|Lv.3| ItemCustomization
+    Carpentry -.-> Gate
+    Tinkerer -.-> Gate
+    ItemCustomization -.-> Gate
+    Gate -.->|unlocks| Blacksmith
+    Gate -.->|unlocks| Artificer
+    Gate -.->|unlocks| Alchemist
+```
+
+<br>
+{{< skill name="Carpentry" maxLevel="10" description="Allows you to construct useful items of daily use and structures which can be placed in the world." >}}
+`+5%/lv` success chance<br>
+`+10 item lv/lv` of items that can be produced, up to item level 100+ at max rank
 {{< /skill >}}
 
-{{< skill name="Item Customization" maxLevel="10" description="You are able to rework items to put slots in them in which runes can be slottet.<br>Requires an 'Engraving Set' which will be consumed in the process." >}}
+{{< skill name="Tinkerer" maxLevel="5" requires="Carpentry Lv. 3">}}
+You are very skilled in working with tools and raw material. Building structures in the world is very quick for you and the Bestia under your command.<br>
+`Reduce construction time of structures by -10% / Lv`
 {{< /skill >}}
 
-{{< skill name="Carpentry" maxLevel="10" description="Allows you to construct useful items of daily use which can be placed in the world." >}}
+{{< skill name="Item Customization" requires="Carpentry Lv. 3" maxLevel="10" >}}
+You are able to rework items to put slots in them in which runes can be slottet.<br>Requires an [Engraving Set](item-list/#engraving-set) which will be consumed in the process.
 {{< /skill >}}
 
 ### Blacksmith
 
-Steel remembers who beat it into shape. Blacksmiths turn ore into weaponry and armor worth carrying into a manastorm, and are the only ones who can [refine](/docs/mechanics/items/#weapon-refinement) either further afterwards.
+Steel remembers who beat it into shape. Blacksmiths turn raw ore into finest weaponry and armor which protects its carrier even in the mid of of a manastorm.
 
-{{< skill name="Ore Refinement" maxLevel="5"
-    description="Trains the eye to read raw ore before it ever sees a forge - a foundational skill for both weapon and armor smithing." >}}
-{{< skill-level level="1" >}}Can tell common ore apart from uncommon ore before smelting.{{< /skill-level >}}
-{{< skill-level level="2" >}}Reveals rare ore veins within a short radius, complementing a [Miner's](#miner) eye.{{< /skill-level >}}
-{{< skill-level level="3" >}}Smelting waste is reduced, yielding more ingots per unit of ore.{{< /skill-level >}}
+{{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [craftsman tree](#craftsman-tree)" />}}
+
+```mermaid
+graph TD
+    ItemCustomization[/"Item Customization (Craftsman Tree)"/]
+    OreRefinement["Ore Refinement (1-3)"]
+    ForgeWeapon["Forge Weapon (1-10)"]
+    ForgeArmor["Forge Armor (1-10)"]
+    WeaponRepair["Weapon Repair (1-5)"]
+    WeaponryResearch["Weaponry Research (1-10)"]
+    MasterSmith["Master Smith (1-5)"]
+
+    ItemCustomization -->|Lv.5| ForgeWeapon
+    ItemCustomization -->|Lv.5| ForgeArmor
+    OreRefinement -->|Lv.1| ForgeWeapon
+    OreRefinement -->|Lv.1| ForgeArmor
+    OreRefinement -->|Lv.3| WeaponRepair
+    WeaponRepair -->|Lv.3| WeaponryResearch
+    ForgeWeapon -->|Lv.8| MasterSmith
+    ForgeArmor -->|Lv.8| MasterSmith
+```
+
+<br>
+{{< skill name="Ore Refinement" maxLevel="3"
+    description="Enables the smith to refines the finest ores. A must have to produce the raw materials for weapon or armor forging." >}}
+`+30 ore lv/lv` that can be refined, up to ore level 90+ at max rank
 {{< /skill >}}
 
-{{< skill name="Blacksmith" maxLevel="10" requires="Ore Refinement Lv. 3 and Item Customization Lv. 5"
-    description="Able to forge weaponry from raw ingredients. Higher skill level unlocks forging higher-level weapon blueprints." >}}
+{{< skill name="Forge Weapon" maxLevel="10" requires="Ore Refinement Lv. 1 and Item Customization Lv. 5"
+    description="Able to forge weaponry from raw ingredients. Higher skill level unlocks forging higher-level weapons." >}}
 {{< /skill >}}
 
-{{< skill name="Armorsmith" maxLevel="10" requires="Ore Refinement Lv. 3 and Item Customization Lv. 5"
-    description="The counterpart to Blacksmith: forges plate, mail and shields from smelted ingots. Higher skill level unlocks forging higher-level armor blueprints." >}}
+{{< skill name="Forge Armor" maxLevel="10" requires="Ore Refinement Lv. 1 and Item Customization Lv. 5"
+    description="The counterpart to Blacksmith: forges plate, mail and shields from smelted ingots. Higher skill level unlocks forging higher-level armor." >}}
 {{< /skill >}}
 
-{{< skill name="Weaponry Research" maxLevel="10" requires="Blacksmith Lv. 3 and Armorsmith Lv. 3"
+{{< skill name="Weaponry Research" maxLevel="10" requires="Weapon Repair Lv. 3"
     description="Deeper knowledge of weapons and armor that raises the odds of successfully [refining](/docs/mechanics/items/#weapon-refinement) either one further after forging. If an upgrade fails the equipment can be destroyed." >}}
 `+4%/lv` success chance when upgrading a weapon or armor
 {{< /skill >}}
 
-{{< skill name="Weapon Repair" maxLevel="5" requires="Ore Refinement Lv. 2"
+{{< skill name="Weapon Repair" maxLevel="5" requires="Ore Refinement Lv. 3"
     description="You can repair damaged or broken equipment to refurbish and make it usable again. Higher levels unlock repairing equipment of a higher [item level](/docs/mechanics/items/#item-level)." >}}
-{{< skill-level level="1" >}}Can repair equipment up to item level 20.{{< /skill-level >}}
-{{< skill-level level="2" >}}Can repair equipment up to item level 40.{{< /skill-level >}}
-{{< skill-level level="3" >}}Can repair equipment up to item level 60.{{< /skill-level >}}
-{{< skill-level level="4" >}}Can repair equipment up to item level 80.{{< /skill-level >}}
-{{< skill-level level="5" >}}Can repair equipment of any item level, no cap.{{< /skill-level >}}
+`+20 item lv/lv` of equipment that can be repaired, up to item level 100+ at max rank
 {{< /skill >}}
 
-{{< skill name="Master Smith" maxLevel="5" requires="Blacksmith Lv. 5 and Armorsmith Lv. 5"
+{{< skill name="Master Smith" maxLevel="5" requires="Forge Weapon Lv. 8 and Forge Armor Lv. 8"
     description="The capstone of the forge. Makes a Blacksmith's hands steady enough to trust with the rarest ore." >}}
-{{< skill-level level="1" >}}`+5%` Weapon/Armor forging and `+5%` upgrade chance{{< /skill-level >}}
-{{< skill-level level="2" >}}`+10%` Weapon/Armor forging and `+10%` upgrade chance{{< /skill-level >}}
-{{< skill-level level="3" >}}`+15%` Weapon/Armor forging and `+15%` upgrade chance{{< /skill-level >}}
-{{< skill-level level="4" >}}`+20%` Weapon/Armor forging and `+20%` upgrade chance{{< /skill-level >}}
-{{< skill-level level="5" >}}`+25%` Weapon/Armor forging and `+25%` upgrade chance{{< /skill-level >}}
+`+5%/lv` Weapon/Armor forging chance<br>
+`+5%/lv` upgrade chance
 {{< /skill >}}
 
 ### Artificer
 
 Where Blacksmiths hammer steel, Artificers coax it into remembering spells. This path enscribes magic onto items, binds it to triggers, and crystalizes raw mana into shards other professions can build on.
 
+{{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [craftsman tree](#craftsman-tree)" />}}
+
+```mermaid
+graph TD
+    ItemCustomization[/"Item Customization (Craftsman Tree)"/]
+    ManaHarvester["Mana Harvester (1-10)"]
+    ManaflowExpert["Manaflow Expert (1-5)"]
+    RunicEtching["Runic Etching (1-10)"]
+    MagicArtisan["Magic Artisan (1-10)"]
+
+    ManaHarvester -->|Lv.3| ManaflowExpert
+    ItemCustomization -->|Lv.3| RunicEtching
+    RunicEtching -->|Lv.5| MagicArtisan
+```
+
+<br>
 {{< skill name="Mana Harvester" maxLevel="10"
     description="Build and operate Mana Harvesters which channel mana from the environment into raw crystals - the source of magic for many use cases." >}}
 Level 1 enables you to place a Mana Harvester<br>
@@ -148,7 +239,7 @@ Higher levels unlock refining higher-grade crystals
 `+5%/lv` chance of success<br>
 {{< /skill >}}
 
-{{< skill name="Magic Artisan" maxLevel="10" requires="Runic Etching Lv. 2"
+{{< skill name="Magic Artisan" maxLevel="10" requires="Runic Etching Lv. 5"
     description="Can create magic artefacts by binding sustained enchantments to an item, going well beyond what a single etched rune can hold." >}}
 `+4%/lv` enchantment chance<br>
 `-7%/lv` chance to destroy the item if the binding fails
@@ -158,66 +249,125 @@ Higher levels unlock refining higher-grade crystals
 
 Equal parts kitchen and laboratory. Alchemists turn raw ingredients - mundane or mana-soaked - into food, tonics and reagents nobody else can replicate twice. Some carry the first bandages they ever learned to wrap as a Novice all the way into a healer's toolkit.
 
+{{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [craftsman tree](#craftsman-tree)" />}}
+
+```mermaid
+graph TD
+    Herbalism["Herbalism (1-5)"]
+    Alchemy["Alchemy (1-10)"]
+    Transmutation["Transmutation (1-10)"]
+    AlchemyMastery["Alchemy Mastery (1-5) - placeholder"]
+
+    Herbalism -->|Lv.2| Alchemy
+    Alchemy -->|Lv.5| Transmutation
+    Alchemy -->|Lv.5| AlchemyMastery
+```
+
+<br>
 {{< skill name="Herbalism" maxLevel="5"
     description="Teaches which roots, herbs and mana-touched growth are worth the harvest, and how to keep them potent until they reach the cauldron." >}}
-{{< skill-level level="1" >}}Can identify the quality grade of a reagent before harvesting it.{{< /skill-level >}}
-{{< skill-level level="2" >}}Harvested reagents keep their full potency for longer before spoiling.{{< /skill-level >}}
-{{< skill-level level="3" >}}Small chance to harvest a bonus reagent from the same node.{{< /skill-level >}}
+{{< skill-level level="1" >}}Can collect herbs up to level 20{{< /skill-level >}}
+{{< skill-level level="2" >}}Can collect herbs up to level 40{{< /skill-level >}}
+{{< skill-level level="3" >}}Can collect herbs up to level 60{{< /skill-level >}}
+{{< skill-level level="4" >}}Can collect herbs up to level 80{{< /skill-level >}}
+{{< skill-level level="5" >}}Can collect herbs up to level 100+{{< /skill-level >}}
 {{< /skill >}}
 
 {{< skill name="Alchemy" maxLevel="10" requires="Herbalism Lv. 2"
     description="The core craft of the Alchemist: brewing reagents down into potions, tonics and other consumables. Builds directly on what Herbalism teaches about picking the right ingredient." >}}
-{{< skill-level level="1" >}}Can brew basic potions and usables at a workbench cauldron.{{< /skill-level >}}
-{{< skill-level level="5" >}}Failed brews return half of the raw reagents used instead of losing them entirely.{{< /skill-level >}}
-{{< skill-level level="10" >}}Unlocks brewing the highest-level potion and usable blueprints.{{< /skill-level >}}
+{{< skill-level level="1" >}}Can craft basic potions and elixirs up to level 10 at a workbench cauldron.{{< /skill-level >}}
+{{< skill-level level="2" >}}Can craft potions and elixirs up to level 20.{{< /skill-level >}}
+{{< skill-level level="3" >}}Can craft potions and elixirs up to level 30.{{< /skill-level >}}
+{{< skill-level level="4" >}}Can craft potions and elixirs up to level 40.{{< /skill-level >}}
+{{< skill-level level="5" >}}Can craft potions and elixirs up to level 50. Failed brews return half of the raw reagents used instead of losing them entirely.{{< /skill-level >}}
+{{< skill-level level="6" >}}Can craft potions and elixirs up to level 60.{{< /skill-level >}}
+{{< skill-level level="7" >}}Can craft potions and elixirs up to level 70.{{< /skill-level >}}
+{{< skill-level level="8" >}}Can craft potions and elixirs up to level 80.{{< /skill-level >}}
+{{< skill-level level="9" >}}Can craft potions and elixirs up to level 90.{{< /skill-level >}}
+{{< skill-level level="10" >}}Can craft potions and elixirs up to level 100+, unlocking the highest-level potion and elixir blueprints.{{< /skill-level >}}
 {{< /skill >}}
 
 {{< skill name="Transmutation" maxLevel="10" requires="Alchemy Lv. 5"
     description="The Alchemist's capstone. Where Alchemy brews what nature already provides, Transmutation reshapes mundane matter itself into the rare magically-infused resources needed for strong artifact creation and weapon refinements." >}}
-> Higher levels unlock transmuting higher-grade infused resources
+Higher levels unlock transmuting higher-grade infused resources
 {{< /skill >}}
 
 {{< skill name="Alchemy Mastery" maxLevel="5" requires="Alchemy Lv. 5"
-    description="Placeholder - an advanced alchemical specialization to be designed." >}}
+    description="Increased yield and success chance for Alchemy." >}}
 {{< /skill >}}
 
 ## Survival Tree
 
 Skills which allow the player to keep exploring the world and stay active longer far away from settlements are placed in this skill tree. Foresters live off the land, Prospectors chart what nobody has mapped yet, and Miners dig for what the land is hiding.
 
-_The following skill is parked here for now - its final placement is still to be decided._
+```mermaid
+graph TD
+    InnerPeace["Inner Peace (1-10)"]
+    WeatherResistance["Weather Resistance (1-5)"]
+    QuickTravel["Quick Travel (1-5)"]
+    Fishing["Fishing (1-5)"]
+    Gate{{"5+ pts in Survival Tree"}}
+    Forester(("Forester"))
+    Prospector(("Prospector"))
+    Miner(("Miner"))
 
+    InnerPeace -.-> Gate
+    WeatherResistance -.-> Gate
+    QuickTravel -.-> Gate
+    Fishing -.-> Gate
+    Gate -.->|unlocks| Forester
+    Gate -.->|unlocks| Prospector
+    Gate -.->|unlocks| Miner
+```
+
+<br>
 {{< skill name="Inner Peace" maxLevel="10"
     description="Your Bestia and Master gain an increased HP and Mana regeneration rate." >}}
-> `+3% effect/lv`
+`+3% effect/lv`
 {{< /skill >}}
 
-{{< skill name="Weather Resistance (placeholder)" maxLevel="5"
+{{< skill name="Weather Resistance" maxLevel="5"
     description="Your Bestia and Master gain an increased tolerance against high and low environment temperatures." >}}
 `+3%` higher tolerance/lv
 {{< /skill >}}
 
-* Quick Travel - higher travel speed for your Bestia _(placeholder)_
+{{< skill name="Quick Travel" maxLevel="5"
+    description="You and your Bestia know every kind of terrain." >}}
+`+3%` higher movement speed/lv
+{{< /skill >}}
+
+{{< skill name="Fishing" maxLevel="5"
+    description="With this skill you are able to catch fish. Fish can be cooked and are used for food and trading." >}}
+`+20 fish lv/lv` that can be caught, up to fish level 100+ at max rank
+{{< /skill >}}
 
 ### Forester
 
 At home wherever the trees outnumber the people. Foresters live off the land - felling timber, landing the catch of the day, and striking up a bond with Bestia most masters would call unapproachable.
 
-{{< skill name="Fishing" maxLevel="5"
-    description="With this skill you are able to catch fish. Fish can be cooked and are used for food and trading." >}}
-> Higher levels make it easier to catch higher-level fish.
-{{< /skill >}}
+{{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [survival tree](#survival-tree)" />}}
 
+```mermaid
+graph TD
+    Lumberjack(["Lumberjack (1-5)"])
+    Trapping(["Trapping (1-5)"])
+    ExpertTaming(["Expert Taming (1-5)"])
+    Beastfriend{{"Beastfriend (1-5)"}}
+
+    ExpertTaming -->|Lv.3| Beastfriend
+```
+
+<br>
 {{< skill name="Lumberjack" maxLevel="5"
     description="The player is able to gather wood resources faster." >}}
-> `-3%/lv` wood gathering time<br>
-> `+2%/lv` resource drop chance
+`-3%/lv` wood gathering time<br>
+`+2%/lv` resource drop chance
 {{< /skill >}}
 
 {{< skill name="Trapping" maxLevel="5"
     description="Sets snares and deadfalls that keep working for the master even while they're off doing something else, passively catching small game over time for meat and pelts on a later check-in." >}}
-> `+4%/lv` chance a snare yields a catch<br>
-> Higher levels unlock snares for larger game
+`+4%/lv` chance a snare yields a catch<br>
+Higher levels unlock snares for larger game
 {{< /skill >}}
 
 {{< skill name="Expert Taming" maxLevel="5"
@@ -235,118 +385,359 @@ At home wherever the trees outnumber the people. Foresters live off the land - f
 
 Half surveyor, half treasure hunter. Prospectors chart unclaimed land, feel out resources long before anyone else arrives, and travel heavier and further than sense would recommend.
 
-{{< skill name="Power Maximize" maxLevel="5"
+{{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [survival tree](#survival-tree)" />}}
+
+*Note: `Enlarge Weight Limit` lists its requirement as "Power Maximize Lv. 3", which doesn't match any skill name in this tree. The diagram below assumes this means `Maximize Carry Capacity` - the skill text likely needs a small fix to reference the actual skill name.*
+
+```mermaid
+graph TD
+    MaximizeCarryCapacity(["Maximize Carry Capacity (1-5)"])
+    EnlargeWeightLimit["Enlarge Weight Limit (1-5)"]
+    Cartography(["Cartography (1-5)"])
+    WildernessSurvival{{"Wilderness Survival (1-5)"}}
+    WeatherSense(["Weather Sense (1-3)"])
+
+    MaximizeCarryCapacity -->|Lv.3| EnlargeWeightLimit
+    EnlargeWeightLimit -->|Lv.3| WildernessSurvival
+```
+
+<br>
+{{< skill name="Maximize Carry Capacity" maxLevel="5"
     description="Raises the carrying capacity of your own Master." >}}
+`+10%/lv` weight limit
 {{< /skill >}}
 
-{{< skill name="Enlarge Weight Limit" maxLevel="5"
+{{< skill name="Enlarge Weight Limit" requires="Power Maximize Lv. 3" maxLevel="5"
     description="Raises the carrying capacity of every Bestia under your control." >}}
+`+10%/lv` weight limit
 {{< /skill >}}
 
 {{< skill name="Cartography" maxLevel="5"
     description="Enables the player to chart unexplored land, revealing terrain that can be shared, traded on, or built on. See [World Exploration](/docs/mechanics/world-exploration/#cartography) for how the surveying minigame plays out." >}}
-> Each level reduces the difficulty of surveying unexplored land.
+Each level reduces the difficulty of surveying unexplored land.
 {{< /skill >}}
 
-{{< skill name="Wilderness Survival" maxLevel="5"
-    description="Hardens the master and their Bestia against travel through hostile terrain, far from the comfort of a settlement. Reduces the stamina and HP drain caused by hostile terrain and environmental hazards while exploring unsettled land." >}}
-> `-4%/lv` stamina drain in hostile terrain<br>
-> `-4%/lv` environmental hazard damage
+{{< skill name="Wilderness Survival" requires="Enlarge Weight Limit Lv. 3" maxLevel="5"
+    description="Hardens the master and their Bestia against travel through hostile terrain, far from the comfort of a settlement. Reduces the stamina and HP drain caused by hostile terrain and environmental hazards." >}}
+`-10%/lv` stamina drain in hostile terrain<br>
+`-10%/lv` environmental hazard damage
 {{< /skill >}}
 
-{{< skill name="Weather-Beaten" maxLevel="3" requires="Wilderness Survival Lv. 3"
-    description="For those who've been rained, snowed and sandstormed on so often that the sky has nothing left to teach them." >}}
-{{< skill-level level="1" >}}Movement is no longer slowed by rain, snow or sandstorms.{{< /skill-level >}}
-{{< skill-level level="2" >}}Visibility reduction from fog or storms is halved.{{< /skill-level >}}
-{{< skill-level level="3" >}}Gains minor resistance to weather-inflicted status effects (frostbite, heatstroke).{{< /skill-level >}}
+{{< skill name="Weather Sense" maxLevel="3"
+    description="An instinct for reading the sky and wind well before a storm ever arrives, letting the Prospector plan a route or a dig around what's coming." >}}
+`+5min/lv` how far ahead upcoming weather changes can be sensed. Level 1 shows you the current wind direction and speed.
 {{< /skill >}}
 
 ### Miner
 
 If it's buried, a Miner will find a way to it. Equal parts pickaxe and stubbornness, this path turns raw earth - literally - into opportunity.
 
+{{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [survival tree](#survival-tree)" />}}
+
+```mermaid
+graph TD
+    Mining(["Mining (1-5)"])
+    GemCutting["Gem Cutting (1-5)"]
+    DeepDelver["Deep Delver (1-5)"]
+    ResourceSonar{{"Resource Sonar (1-3)"}}
+
+    Mining -->|Lv.3| GemCutting
+    Mining -->|Lv.3| DeepDelver
+    GemCutting -->|Lv.3| ResourceSonar
+    DeepDelver -->|Lv.3| ResourceSonar
+```
+
+<br>
 {{< skill name="Mining" maxLevel="5"
     description="Specialized in digging mine shafts and gathering mineral resources." >}}
-> Level 1 enables you to place a mining shaft<br>
-> `-5%/lv` mining time<br>
-> `+2%/lv` resource drop chance
+Level 1 enables you to place a mining shaft<br>
+`-10%/lv` mining time<br>
+`+20 resource lv/lv` that can be mined, up to resource level 100+ at max rank
 {{< /skill >}}
 
 {{< skill name="Gem Cutting" maxLevel="5" requires="Mining Lv. 3"
     description="Turns the rough gemstones a Miner digs up into cut stones fit for an Artificer's socket or a Trader's scale. Can cut raw gems recovered from mining into faceted gemstones, increasing their value and unlocking their use in socketed equipment." >}}
-> Higher levels unlock cutting higher-grade gems<br>
-> `-3%/lv` chance to shatter a gem while cutting
+Higher levels unlock cutting higher-grade gems<br>
+`-8%/lv` chance to shatter a gem while cutting
 {{< /skill >}}
 
 {{< skill name="Deep Delver" maxLevel="5" requires="Mining Lv. 3"
     description="Lets a Miner push shafts deeper than good sense would recommend, into ground that pays off precisely because nobody else risks it. Grants access to deeper, more dangerous mine shafts holding rarer ore veins and the odd buried structure." >}}
-> `-5%/lv` chance of a cave-in<br>
-> Higher levels unlock access to deeper shaft tiers
+`+10% more resources/lv`
 {{< /skill >}}
 
-{{< skill name="Tremor Sense" maxLevel="3" requires="Gem Cutting Lv. 3 and Deep Delver Lv. 3"
+{{< skill name="Resource Sonar" maxLevel="3" requires="Gem Cutting Lv. 3 and Deep Delver Lv. 3"
     description="The Miner's capstone: a feel for what's underfoot precise enough to map a shaft before the first swing of the pick." >}}
-{{< skill-level level="1" >}}Can sense ore and gem deposits through solid rock within a short range.{{< /skill-level >}}
-{{< skill-level level="2" >}}Range is doubled and buried structures are revealed alongside deposits.{{< /skill-level >}}
-{{< skill-level level="3" >}}Can also sense structural weaknesses, warning of a cave-in before it happens.{{< /skill-level >}}
+Can sense ore and gem deposits through solid rock within 5m / Lv.
 {{< /skill >}}
 
 ## Scholar Tree
 
 The Scholar tree contains skills which help with sensing the world's events and performing rituals to shape the face of the Bestia world itself. Traders keep the gears of commerce turning while Sages chase magic to its source - enscribing, discovering, and eventually bending distance itself.
 
+```mermaid
+graph TD
+    MagicSense(["Magic Sense (1-5)"])
+    Observation(["Observation (1-5)"])
+    Founder(["Founder (1)"])
+    Ruwach["Ruwach (1-3)"]
+    Gate{{"5+ pts in Scholar Tree"}}
+    Priest(("Priest"))
+    Trader(("Trader"))
+    Sage(("Sage"))
+
+    MagicSense -->|Lv.2| Ruwach
+    MagicSense -.-> Gate
+    Observation -.-> Gate
+    Founder -.-> Gate
+    Ruwach -.-> Gate
+    Gate -.->|unlocks| Priest
+    Gate -.->|unlocks| Trader
+    Gate -.->|unlocks| Sage
+```
+
+<br>
 {{< skill name="Magic Sense" maxLevel="5"
     description="User can detect the presence of magic nearby. It can also identify a magical spell which might be bound to an entity." >}}
 {{< /skill >}}
 
-* rift discovery (boss spawns, world events) _(placeholder)_
+{{< skill name="Observation" maxLevel="5" >}}
+You can detect the direction and distance of nearby world events like mana rifts which open, spawned bosses or other world changing events.
+Level 1 let you place an observatory. `1km/Lv detection distance`.
+{{< /skill >}}
+
+{{< skill name="Founder" maxLevel="1"
+    description="Allows you to create a settlement by placing a city sign." >}}
+{{< /skill >}}
+
+{{< skill name="Ruwach" maxLevel="3" requires="Magic Sense Lv. 2"
+    description="A pulse of second sight that peels back concealment - hidden traps, camouflaged Hunters and cloaked Assassins stand out for what they are, and counterfeit goods stop passing as genuine. Useful to any Scholar, whether they're scrying old ruins, appraising a shady deal, or walking a party into an ambush." >}}
+`+3m/lv` detection range<br>
+Higher levels shorten how long a concealed target needs to hold still before being revealed
+{{< /skill >}}
 
 ### Priest
 
 Priests channel mana into blessings that keep a party alive - restoring health, lifting curses, and bolstering the vitality of Bestia out in the field.
 
-{{< skill name="Improved Healing" maxLevel="10" requires="First Aid Lv. 1"
-    description="Increases effects of healing done and duration of buff spells when used by the owner of this spell. Builds on the fundamentals every Novice picks up during [First Aid](#skill-first-aid) training." >}}
-> `+3% effect/lv`
+{{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [scholar tree](#scholar-tree)" />}}
+
+```mermaid
+graph TD
+    MagicSense[/"Magic Sense (Scholar Tree)"/]
+
+    subgraph Foundations
+        Heal(["Heal (1-10)"])
+        MaceMastery(["Mace Mastery (1-5)"])
+    end
+
+    subgraph "Utility Rites"
+        Suffragium["Suffragium (1-3)"]
+        Gloria["Gloria (1-3)"]
+    end
+
+    subgraph "Cleansing & Wards"
+        Cure["Cure (1)"]
+        Absolution["Absolution (1)"]
+        AquaBenedicta["Aqua Benedicta (1)"]
+        StatusRecovery["Status Recovery (1)"]
+        Aspersio["Aspersio (1-3)"]
+    end
+
+    subgraph Blessings
+        Blessing["Blessing (1-10)"]
+        IncreaseAGI["Increase AGI (1-5)"]
+        DecreaseAGI["Decrease AGI (1-3)"]
+        KyrieEleison["Kyrie Eleison (1-5)"]
+        ImpositioManus["Impositio Manus (1-3)"]
+        Pneuma["Pneuma (1-3)"]
+        Magnificat["Magnificat (1-3)"]
+    end
+
+    subgraph "Holy Offense"
+        SignumCrucis["Signum Crucis (1-3)"]
+        HolyLight["Holy Light (1-5)"]
+        DemonBane["Demon Bane (1-3)"]
+        DivineProtection["Divine Protection (1-3)"]
+        TurnUndead["Turn Undead (1-5)"]
+        LexAeterna["Lex Aeterna (1)"]
+        MagnusExorcismus{{"Magnus Exorcismus (1-3)"}}
+    end
+
+    subgraph Ultimate
+        Sanctuary{{"Sanctuary (1-3)"}}
+        Resurrection{{"Resurrection (1)"}}
+    end
+
+    MagicSense -->|Lv.2| Gloria
+    MagicSense -->|Lv.3| Suffragium
+
+    Heal -->|Lv.2| Cure
+    Heal -->|Lv.2| Absolution
+    Heal -->|Lv.3| Blessing
+    Heal -->|Lv.3| IncreaseAGI
+    Heal -->|Lv.8| Resurrection
+
+    Cure -->|Lv.1| AquaBenedicta
+    Cure -->|Lv.1| StatusRecovery
+    StatusRecovery -->|Lv.2| Resurrection
+    AquaBenedicta -->|Lv.2| Aspersio
+    MaceMastery -->|Lv.2| Aspersio
+
+    Absolution -->|Lv.2| SignumCrucis
+
+    IncreaseAGI -->|Lv.2| DecreaseAGI
+
+    Blessing -->|Lv.2| KyrieEleison
+    Blessing -->|Lv.3| ImpositioManus
+    Blessing -->|Lv.3| Magnificat
+    KyrieEleison -->|Lv.2| Pneuma
+    KyrieEleison -->|Lv.3| Magnificat
+
+    SignumCrucis -->|Lv.2| HolyLight
+    SignumCrucis -->|Lv.2| DemonBane
+    SignumCrucis -->|Lv.2| DivineProtection
+    HolyLight -->|Lv.3| LexAeterna
+    HolyLight -->|Lv.3| TurnUndead
+    HolyLight -->|Lv.5| MagnusExorcismus
+    DemonBane -->|Lv.3| TurnUndead
+    TurnUndead -->|Lv.3| MagnusExorcismus
+
+    Magnificat -->|Lv.3| Sanctuary
+    Pneuma -->|Lv.2| Sanctuary
+```
+
+<br>
+{{< skill name="Heal" maxLevel="10"
+    description="Channels mana directly into a target's wounds, restoring HP in an instant. The Priest's bread and butter - simple, reliable, and the first rite every Priest learns." >}}
+`+8%/lv` HP healed<br>
+`-0.2s/lv` cast time
 {{< /skill >}}
 
-{{< skill name="Vitality" maxLevel="10" requires="Improved Healing Lv. 2"
-    description="An active buff that raises the maximum HP and Mana of a target Bestia for a duration." >}}
-> `+2%/lv` max HP and Mana while active
+{{< skill name="Suffragium" maxLevel="3" requires="Magic Sense Lv. 3"
+    description="A murmured rite that lightens the burden of spellcasting for a short while - a Sage burning through scrolls, a Priest chaining blessings and a Trader rushing a linking ritual all feel the difference equally." >}}
+`-10% / Lv` cast time to a target ally for the next spell in `30s`
 {{< /skill >}}
 
-Further Priest skills (placeholders, to be designed):
+{{< skill name="Gloria" maxLevel="3" requires="Magic Sense Lv. 2"
+    description="A quiet benediction that nudges fortune to smile a little wider on the caster and their party for a short while - stalls turn up better goods, dice favor the bold, and the elusive becomes that much easier to spot." >}}
+`+5 WILL / Lv` to party members within range for `30s / Lv`
+{{< /skill >}}
 
-* Heal
-* remove curses and poison
-* blessing
-* lex aeterna
-* pneuma
-* kyrie eleison
-* devine protection
-* increase agi
-* decrease agi
-* cure
-* aqua benedicta
-* ruwach
-* holy light
-* demon bane
-* signum crusis
-* mace mastery
-* status recovery
-* ressurection
-* turn undead
-* magnus exorcismus
-* magnificat
-* gloria
-* impositio manus
-* suffragium
-* aspersio
-* sanctuary
+{{< skill name="Cure" maxLevel="1" requires="Heal Lv. 2"
+    description="Lifts the fog of Silence, Blindness and Confusion from a target's mind with a touch." >}}
+{{< /skill >}}
+
+{{< skill name="Absolution" maxLevel="1" requires="Heal Lv. 2"
+    description="Where Cure clears the mind, Absolution clears the flesh - burning a Curse or Poison out of a target in a single rite." >}}
+{{< /skill >}}
+
+{{< skill name="Mace Mastery" maxLevel="5"
+    description="Priests are taught to trust a blunt weapon over an edge - a mace punishes the undead and demonic without the ritual impurity a blade would carry." >}}
+`+2 ATK/lv` while a mace or similar blunt weapon is equipped
+{{< /skill >}}
+
+{{< skill name="Aqua Benedicta" maxLevel="1" requires="Cure Lv. 1"
+    description="The rite of blessing plain water into [Holy Water](item-list/#holy-water). User must be standing in water, consuming an [Empty Bottle]('item-list/#empty-bottle) in the process. Holy Water is the reagent behind Aspersio and several higher rites." >}}
+{{< /skill >}}
+
+{{< skill name="Blessing" maxLevel="10" requires="Heal Lv. 3"
+    description="A benediction that steadies body and mind, raising a party's core stats for a short while." >}}
+`+1 STR/INT/DEX per Lv` for `60s + 20s / Lv`
+{{< /skill >}}
+
+{{< skill name="Increase AGI" maxLevel="5" requires="Heal Lv. 3"
+    description="Lightens a target's limbs with borrowed haste, quickening step and swing alike." >}}
+`3 + 1 / Lv AGI`, `15% Movement Speed`, `+1% ASPD / Lv`, Duration `60s + 20s / Lv`
+{{< /skill >}}
+
+{{< skill name="Decrease AGI" maxLevel="3" requires="Increase AGI Lv. 2"
+    description="The same rite turned inward out - a mote of leaden mana that slows an enemy's step and swing instead of quickening it." >}}
+`-4%/lv` movement and attack speed to the target for a short duration
+{{< /skill >}}
+
+{{< skill name="Kyrie Eleison" maxLevel="5" requires="Blessing Lv. 2"
+    description="A shimmering ward of mana that stands between a target and harm, soaking up a number of hits before it gives out." >}}
+`+1 hit absorbed/lv`<br>
+`+5%/lv` damage absorbed per hit
+{{< /skill >}}
+
+{{< skill name="Signum Crucis" maxLevel="3" requires="Absolution Lv. 2"
+    description="A sign traced in the air that unsettles anything unholy nearby, cracking the natural defenses of the undead and demonic." >}}
+`-5%/lv` DEF to undead and demon-type enemies within range for a short duration
+{{< /skill >}}
+
+{{< skill name="Pneuma" maxLevel="3" requires="Kyrie Eleison Lv. 2"
+    description="Lays a veil of still air over a patch of ground; anything standing in it becomes untouchable by arrows, bolts and thrown weapons, though a blade still finds its mark." >}}
+`+1m radius/lv`<br>
+Higher levels extend how long the veil holds
+{{< /skill >}}
+
+{{< skill name="Holy Light" maxLevel="5" requires="Signum Crucis Lv. 2"
+    description="Condenses raw holy mana into a single searing beam - the Priest's answer to needing to deal damage rather than mend it." >}}
+`+10%/lv` MATK
+{{< /skill >}}
+
+{{< skill name="Demon Bane" maxLevel="3" requires="Signum Crucis Lv. 2"
+    description="Years spent studying the weak points of the unholy pay off passively - every strike against a demon or undead lands that much harder." >}}
+`+4%/lv` damage against demon and undead-type enemies
+{{< /skill >}}
+
+{{< skill name="Divine Protection" maxLevel="3" requires="Signum Crucis Lv. 2"
+    description="The defensive twin of Demon Bane - a standing ward that dulls what comes back the other way from anything unholy." >}}
+`-5%/lv` damage taken from demon and undead-type enemies
+{{< /skill >}}
+
+{{< skill name="Impositio Manus" maxLevel="3" requires="Blessing Lv. 3"
+    description="The laying on of hands, channeling raw striking power into a single ally rather than the whole party." >}}
+`+5 ATK and MATK/lv` to the target for a short duration
+{{< /skill >}}
+
+{{< skill name="Status Recovery" maxLevel="1" requires="Cure Lv. 1"
+    description="Where Cure lifts the fog from a mind, Status Recovery breaks the ice, stone and cramp from a body - lifting Stun, Freeze and Stone Curse in a single rite." >}}
+{{< /skill >}}
+
+{{< skill name="Aspersio" maxLevel="3" requires="Aqua Benedicta Lv. 2 and Mace Mastery Lv. 2"
+    description="Anoints a weapon with Holy Water, temporarily imbuing its strikes with the holy element. Consumes a unit of [Holy Water](item-list/#holy-water) per cast." >}}
+Higher levels extend the duration and allow higher-grade Holy Water to be used for a stronger imbue
+{{< /skill >}}
+
+{{< skill name="Turn Undead" maxLevel="5" requires="Demon Bane Lv. 3 and Holy Light Lv. 3"
+    description="A focused holy strike aimed squarely at what should not be moving. Deals heavy damage to undead-type enemies, with a chance to unmake weaker ones outright." >}}
+`+8%/lv` damage against undead-type enemies<br>
+Higher levels raise the chance of an instant kill against sufficiently weak undead
+{{< /skill >}}
+
+{{< skill name="Lex Aeterna" maxLevel="1" requires="Holy Light Lv. 3"
+    description="Marks a single target so that the very next hit it takes lands twice as hard. The mark breaks the instant it's used, on friend or foe alike." >}}
+{{< /skill >}}
+
+{{< skill name="Magnificat" maxLevel="3" requires="Kyrie Eleison Lv. 3 and Blessing Lv. 3"
+    description="A hymn of thanksgiving that quickens the natural recovery of everyone within earshot." >}}
+`+10%/lv` HP and Mana regeneration to party members within range for a short duration
+{{< /skill >}}
+
+{{< skill name="Magnus Exorcismus" maxLevel="3" requires="Turn Undead Lv. 3 and Holy Light Lv. 5"
+    description="The Priest's offensive capstone: a pillar of holy mana erupts around the caster, searing everything caught in it and the undead and demonic worst of all." >}}
+`+15%/lv` MATK<br>
+`+10%/lv` additional damage against demon and undead-type enemies
+{{< /skill >}}
+
+{{< skill name="Sanctuary" maxLevel="3" requires="Magnificat Lv. 3 and Pneuma Lv. 2"
+    description="Consecrates a patch of ground into holy ground: allies standing in it are steadily mended, while any undead or demon caught inside burns instead." >}}
+`+5%/lv` max HP healed per tick to allies standing within<br>
+Deals equivalent holy damage per tick to undead and demon-type enemies standing within
+{{< /skill >}}
+
+{{< skill name="Resurrection" maxLevel="1" requires="Heal Lv. 8 and Status Recovery Lv. 2"
+    description="The rite few Priests ever get to cast and fewer still get to cast twice in a row on the same ally - channels enough mana to call a fallen Bestia or Master back over the threshold, returning them to the world with a portion of their HP restored. Long cooldown; can not be used on the caster." >}}
+{{< /skill >}}
 
 ### Trader
 
 Coin has its own kind of magic. Traders read markets instead of mana flows, linking auction houses together, minting the coin everyone else trades in, and looking out for goods that might otherwise walk off on their own.
+
+{{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [scholar tree](#scholar-tree)" />}}
 
 * Discount 10 _(placeholder)_
 * Overcharge 10 / Discount 3 _(placeholder)_
@@ -354,41 +745,30 @@ Coin has its own kind of magic. Traders read markets instead of mana flows, link
 
 {{< skill name="Appraisal" maxLevel="5"
     description="Trains an eye for what goods are actually worth, cutting through both a merchant's markup and a forger's polish. Reveals an item's true condition and quality before it's bought or sold, and can flag counterfeit or mislabeled goods." >}}
-> `+3%/lv` better prices when buying or selling based on assessed value
+`+3%/lv` better prices when buying or selling based on assessed value
 {{< /skill >}}
 
 {{< skill name="Scavenger" maxLevel="10"
     description="When breaking up and recycling items the probability to recycle a higher amount of components is increased." >}}
-> `-5%/lv` price reduction at NPCs<br>
-> `+3%/lv` higher price when selling at NPC
+`-5%/lv` price reduction at NPCs<br>
+`+3%/lv` higher price when selling at NPC
 {{< /skill >}}
 
 {{< skill name="Minting" maxLevel="5" requires="Appraisal Lv. 2"
     description="The final step between a fistful of raw gold and coin that actually spends. Allows the master to mint raw gold directly into gold coins, and coins down into silver or copper, in bulk and without an NPC mint's cut. See [Currency](/docs/mechanics/economy-trade/#currency) for how the world's money supply is minted from mined gold." >}}
-> `-3%/lv` minting fee<br>
-> `+10%/lv` amount minted per batch
-{{< /skill >}}
-
-{{< skill name="Founder" maxLevel="5"
-    description="Allows you to create a settlement by placing a city sign." >}}
+`-3%/lv` minting fee<br>
+`+10%/lv` amount minted per batch
 {{< /skill >}}
 
 {{< skill name="Trade Post Owner" maxLevel="5"
     description="Allows you to build trading posts which can be used by other citizen to buy and sell items. Only a single trading post can be located inside a settlement." >}}
-{{< skill-level level="1" >}}Create up to 1 trading posts. Set fees between 0-5%.{{< /skill-level >}}
-{{< skill-level level="2" >}}Create up to 2 trading posts. Set fees between 0-10%.{{< /skill-level >}}
-{{< skill-level level="3" >}}Create up to 3 trading posts. Set fees between 0-15%.{{< /skill-level >}}
-{{< skill-level level="4" >}}Create up to 4 trading posts. Set fees between 0-20%.{{< /skill-level >}}
-{{< skill-level level="5" >}}Create up to 5 trading posts. Set fees between 0-25%.{{< /skill-level >}}
+`+1/lv` trading posts that can be created<br>
+`+5%/lv` maximum fee that can be set
 {{< /skill >}}
 
 {{< skill name="Trade Agreement" maxLevel="5" requires="Trade Post Owner Lv. 1"
     description="Allows the master to link his auction house with those of other consenting players, merging their listings into a single, wider [marketplace](/docs/mechanics/economy-trade/#linking-auction-houses)." >}}
-{{< skill-level level="1" >}}Link with up to 1 players.{{< /skill-level >}}
-{{< skill-level level="2" >}}Link with up to 2 players.{{< /skill-level >}}
-{{< skill-level level="3" >}}Link with up to 3 players.{{< /skill-level >}}
-{{< skill-level level="4" >}}Link with up to 4 players.{{< /skill-level >}}
-{{< skill-level level="5" >}}Link with up to 5 players.{{< /skill-level >}}
+`+1/lv` players that can be linked
 {{< /skill >}}
 
 {{< skill name="Honorable Citizen" maxLevel="5" requires="Minting Lv. 2 and Trade Agreement Lv. 1"
@@ -398,6 +778,8 @@ Coin has its own kind of magic. Traders read markets instead of mana flows, link
 ### Sage
 
 Books, wards and long nights spent staring into scrying bowls. Sages study magic itself - discovering it, enscribing it, binding it, and eventually learning to fold distance in on itself with teleportation and portals.
+
+{{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [scholar tree](#scholar-tree)" />}}
 
 * Elemental Fields _(placeholder)_
 * Free Cast - move while casting _(placeholder)_
@@ -429,7 +811,7 @@ Books, wards and long nights spent staring into scrying bowls. Sages study magic
 
 {{< skill name="Warp Portal" maxLevel="10" requires="Teleport Lv. 5"
     description="The Sage's capstone. Where Teleport moves one anchor's worth of travelers once, a Portal tears a standing hole between two anchors that anyone can walk through. To teleport somewhere one needs to setup Portal Runes which form some kind of magical anchor. As soon as a portal has opened it can be used in both directions for some time." >}}
-> 1 person/lv can use the portal
+1 person/lv can use the portal
 {{< /skill >}}
 
 ## Warrior Tree
@@ -442,65 +824,69 @@ Where the other trees build, gather and study, the Warrior tree is built to figh
 
 {{< skill name="Iron Skin" maxLevel="5"
     description="The physical counterpart to a Wizard's Magic Armor: hide toughened by nothing more than sheer stubbornness. Reduces incoming physical damage. Unlike Magic Armor this costs no mana, but the reduction is more modest." >}}
-> `-2%/lv` reduced physical damage
+`-2%/lv` reduced physical damage
 {{< /skill >}}
 
 {{< skill name="Magic Armor" maxLevel="5"
     description="Reduces damage of magical effects but each hit costs 0.2% percent of the max mana of the owner. When the mana drops below 10% the buff is cancelled." >}}
-> `-2%/level` reduced damage
+`-2%/level` reduced damage
 {{< /skill >}}
 
 ### Wizard
 
 Fire, water, wind, earth, and the deeper currents of holy and dark magic - Wizards bend all of it into a weapon, at the cost of the armor most masters would rather keep.
 
+{{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [warrior tree](#warrior-tree)" />}}
+
 * Dispell _(placeholder)_
 * Spell Breaker _(placeholder)_
 
 {{< skill name="Elemental Mastery" maxLevel="5"
     description="Increases damage or healing of spells with elemental (earth, wind, water, fire) domain." >}}
-> `+3% damage/lv`
+`+3% damage/lv`
 {{< /skill >}}
 
 {{< skill name="Spiritual Mastery" maxLevel="5"
     description="Increases damage or healing of spells with the Holy or Dark domain." >}}
-> `+5% damage/lv`
+`+5% damage/lv`
 {{< /skill >}}
 
 {{< skill name="Master of Fire" maxLevel="5" requires="Elemental Mastery Lv. 2"
     description="Increases the damage of fire attacks." >}}
-> `+3% damage/lv`
+`+3% damage/lv`
 {{< /skill >}}
 
 {{< skill name="Master of Water" maxLevel="5" requires="Elemental Mastery Lv. 2"
     description="Increases damage of water spells." >}}
-> `+3% damage/lv`
+`+3% damage/lv`
 {{< /skill >}}
 
 {{< skill name="Master of Wind" maxLevel="5" requires="Elemental Mastery Lv. 2"
     description="Increases damage of wind spells." >}}
-> `+3% damage/lv`
+`+3% damage/lv`
 {{< /skill >}}
 
 {{< skill name="Master of Earth" maxLevel="5" requires="Elemental Mastery Lv. 2"
     description="Increases damage of earth spells." >}}
-> `+3% damage/lv`
+`+3% damage/lv`
 {{< /skill >}}
 
 {{< skill name="Mindbreak" maxLevel="5" requires="Elemental Mastery Lv. 3 or Spiritual Mastery Lv. 3"
     description="The Wizard's capstone: a buff channeling so much raw magic through a Bestia at once that its armor is the first thing to give. Once applied it reduces the armor but increases magical attack of a Bestia. It cancels `Mindfocus`." >}}
-> `+20% MATK/level`<br>
-> `-20% MDEF/level`
+`+20% MATK/level`<br>
+`-20% MDEF/level`
 {{< /skill >}}
 
 ### Brawler
 
 No fancy footwork, no elemental theatrics - just the kind of toughness that keeps going long after everyone else has called it quits.
 
+{{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [warrior tree](#warrior-tree)" />}}
+
 {{< skill name="Tough Guy" maxLevel="5"
     description="Stamina is faster regenerated and drops slower in high demanding environments and while doing activities which would otherwise deplete your stamina." >}}
-> `-10%/lv` reduced stamina reduction<br>
-> `+10%/lv` increased stamina regeneration
+`-10%/lv` reduced stamina reduction<br>
+`+10%/lv` increased stamina regeneration
 {{< /skill >}}
 
 {{< skill name="Second Wind" maxLevel="3" requires="Tough Guy Lv. 3"
@@ -521,15 +907,17 @@ No fancy footwork, no elemental theatrics - just the kind of toughness that keep
 
 Neither predator nor prey, exactly. Hunters move like the terrain isn't there and build the kind of bond with wild Bestia that makes taming look almost effortless.
 
+{{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [warrior tree](#warrior-tree)" />}}
+
 {{< skill name="Camouflage" maxLevel="3"
     description="Teaches the Hunter to read the land well enough to disappear into it. Reduces the range at which wild Bestia and monsters notice the master, and grants a damage bonus on an opening attack from concealment." >}}
-> `-10%/lv` detection range of wild Bestia<br>
-> `+8%/lv` damage on an ambushing first strike
+`-10%/lv` detection range of wild Bestia<br>
+`+8%/lv` damage on an ambushing first strike
 {{< /skill >}}
 
 {{< skill name="Lightfooted" maxLevel="5"
     description="Hard terrain does not reduce the Bestia movement speed anymore. On Level 5 the terrain does not reduce movement speed at all." >}}
-> `-20%/level` reduced movement reduction
+`-20%/level` reduced movement reduction
 {{< /skill >}}
 
 {{< skill name="Master Tracker" maxLevel="3" requires="Camouflage Lv. 2 and Lightfooted Lv. 3"
@@ -542,6 +930,8 @@ Neither predator nor prey, exactly. Hunters move like the terrain isn't there an
 ### Assassin
 
 Masters of hidden infiltration. They can deal high amount of single target damage and know a lot about poisons to coat their weapons.
+
+{{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [warrior tree](#warrior-tree)" />}}
 
 * Strip Weapons _(placeholder)_
 * Dual Wield _(placeholder)_
@@ -558,6 +948,8 @@ Masters of hidden infiltration. They can deal high amount of single target damag
 
 Where a Brawler trusts bare knuckles and a Wizard trusts raw mana, a Knight trusts steel - a lot of it, worn on the body and swung in the hand. This is the tree for masters who would rather stand at the front of a fight than avoid it.
 
+{{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [warrior tree](#warrior-tree)" />}}
+
 {{< skill name="Heavy Weapon Mastery" maxLevel="10"
     description="Years spent drilling with sword, axe, mace and spear until the weight stops mattering. Increases damage dealt with heavy one- and two-handed melee weapons and reduces the accuracy penalty from wielding oversized ones." >}}
 `+3 ATK/lv` with heavy melee weapons<br>
@@ -572,8 +964,8 @@ Where a Brawler trusts bare knuckles and a Wizard trusts raw mana, a Knight trus
 
 {{< skill name="Provoke" maxLevel="5"
     description="A shout, a slammed shield, whatever gets the job done - forces nearby enemies to focus their attacks on the Knight instead of their allies for a short duration." >}}
-> `+10%/lv` chance-to-target bonus against the Knight<br>
-> Higher levels extend the duration and the range at which enemies can be provoked
+`+10%/lv` chance-to-target bonus against the Knight<br>
+Higher levels extend the duration and the range at which enemies can be provoked
 {{< /skill >}}
 
 {{< skill name="Shield Wall" maxLevel="5" requires="Heavy Armor Mastery Lv. 2"
@@ -585,19 +977,19 @@ Where a Brawler trusts bare knuckles and a Wizard trusts raw mana, a Knight trus
 
 {{< skill name="Bash" maxLevel="5" requires="Heavy Weapon Mastery Lv. 3"
     description="A single committed swing that trades finesse for raw impact, with a chance to stagger whatever it lands on." >}}
-> `+20%/lv` damage compared to a normal attack<br>
-> `+5%/lv` chance to stagger the target on hit
+`+20%/lv` damage compared to a normal attack<br>
+`+5%/lv` chance to stagger the target on hit
 {{< /skill >}}
 
 {{< skill name="Auto Guard" maxLevel="5" requires="Shield Wall Lv. 2"
     description="A trained reflex that raises the shield on its own the instant a blow lands, sometimes fast enough to stop it cold." >}}
-> `+4%/lv` chance to fully block a physical hit while a shield is equipped
+`+4%/lv` chance to fully block a physical hit while a shield is equipped
 {{< /skill >}}
 
 {{< skill name="Charge" maxLevel="5" requires="Bash Lv. 3"
     description="Closes the distance to a target in an instant, weapon first. The impact deals damage and briefly forces the target to focus the Knight, folding a gap closer and a taunt into a single swing." >}}
-> `-0.5s/lv` cooldown<br>
-> Deals damage and applies a short [Provoke](#skill-provoke) effect on impact
+`-0.5s/lv` cooldown<br>
+Deals damage and applies a short [Provoke](#skill-provoke) effect on impact
 {{< /skill >}}
 
 {{< skill name="Juggernaut" maxLevel="3" requires="Heavy Armor Mastery Lv. 5 and Charge Lv. 3 and Auto Guard Lv. 3"
@@ -611,6 +1003,8 @@ Where a Brawler trusts bare knuckles and a Wizard trusts raw mana, a Knight trus
 
 Where a Sage studies magic to bend it, a Bard studies it to sing along with it. Every note carried on the wind can steady an ally's arm or unstring an enemy's nerve. A Bard alone can hearten a party; a Bard standing next to a [Dancer](#dancer) can do quite a lot more.
 
+{{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [warrior tree](#warrior-tree)" />}}
+
 {{< skill name="Instrument Mastery" maxLevel="10"
     description="Training with stringed and wind instruments well enough to fight with them in a pinch and to make every song carry further and land harder." >}}
 `+2 ATK/lv` while an instrument is equipped<br>
@@ -619,28 +1013,28 @@ Where a Sage studies magic to bend it, a Bard studies it to sing along with it. 
 
 {{< skill name="Voice Training" maxLevel="5"
     description="A trained voice reaches further and holds a note longer than an untrained one ever could." >}}
-> `+1 tile/lv` area of effect for songs<br>
-> `+10%/lv` duration of song effects
+`+1 tile/lv` area of effect for songs<br>
+`+10%/lv` duration of song effects
 {{< /skill >}}
 
 {{< skill name="Ballad of the Fallen" maxLevel="5" requires="Instrument Mastery Lv. 3"
     description="A driving battle hymn that steels the resolve of everyone in earshot." >}}
-> `+2%/lv` ATK and MATK to party members within range while the song plays
+`+2%/lv` ATK and MATK to party members within range while the song plays
 {{< /skill >}}
 
 {{< skill name="War March" maxLevel="5" requires="Instrument Mastery Lv. 3"
     description="A quickstep tune that puts a spring in the step and a snap in the swing of everyone marching to it." >}}
-> `+2%/lv` movement and attack speed to party members within range while the song plays
+`+2%/lv` movement and attack speed to party members within range while the song plays
 {{< /skill >}}
 
 {{< skill name="Dissonant Chord" maxLevel="5" requires="Instrument Mastery Lv. 5"
     description="Deliberately off-key and unpleasant to hear by design. Rattles nearby enemies badly enough to throw off their aim and their footing." >}}
-> `-3%/lv` HIT and ASPD to enemies within range while the song plays
+`-3%/lv` HIT and ASPD to enemies within range while the song plays
 {{< /skill >}}
 
 {{< skill name="Poem of the Netherworld" maxLevel="5" requires="Dissonant Chord Lv. 2"
     description="A mournful dirge that drags at the mana of anyone unlucky enough to hear it, siphoning it into the surrounding air." >}}
-> `+2%/lv` mana drain per tick to enemies within range while the song plays
+`+2%/lv` mana drain per tick to enemies within range while the song plays
 {{< /skill >}}
 
 {{< skill name="Siren's Lullaby" maxLevel="3" requires="Dissonant Chord Lv. 3"
@@ -652,7 +1046,7 @@ Where a Sage studies magic to bend it, a Bard studies it to sing along with it. 
 
 {{< skill name="Mystic Melody" maxLevel="5" requires="Voice Training Lv. 3"
     description="An old wandering tune said to carry a bit of luck with it. Occasionally shakes loose a minor beneficial effect for whoever is listening." >}}
-> `+3%/lv` chance per tick to grant a party member within range a small heal or cleanse a negative status
+`+3%/lv` chance per tick to grant a party member within range a small heal or cleanse a negative status
 {{< /skill >}}
 
 {{< skill name="Harmonic Duet" maxLevel="3" requires="Ballad of the Fallen Lv. 5 and War March Lv. 5"
@@ -666,6 +1060,8 @@ Where a Sage studies magic to bend it, a Bard studies it to sing along with it. 
 
 Where a Bard leans on breath and instrument, a Dancer leans on footwork and nerve - closing the distance, reading an enemy's weak step, and turning a whip into an argument nobody wins. A Dancer alone can unravel a fight from the inside; a Dancer standing next to a [Bard](#bard) can do quite a lot more.
 
+{{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [warrior tree](#warrior-tree)" />}}
+
 {{< skill name="Whip Mastery" maxLevel="10"
     description="Training with whips and chain-weapons until the reach stops feeling awkward. Increases damage dealt with whip-type weapons and the range at which they can strike." >}}
 `+2 ATK/lv` while a whip is equipped<br>
@@ -674,32 +1070,32 @@ Where a Bard leans on breath and instrument, a Dancer leans on footwork and nerv
 
 {{< skill name="Nimble Steps" maxLevel="5"
     description="A Dancer trusts footwork over plate. Rather than wearing heavy armor, they learn to simply not be where the hit lands." >}}
-> `+2%/lv` FLEE while wearing light armor or no armor
+`+2%/lv` FLEE while wearing light armor or no armor
 {{< /skill >}}
 
 {{< skill name="Slow Grace" maxLevel="5" requires="Whip Mastery Lv. 3"
     description="A whip-strike aimed less at the flesh than at the footing. Leaves a target's steps a beat slower for a while after." >}}
-> `-3%/lv` movement and attack speed to the struck target for a short duration
+`-3%/lv` movement and attack speed to the struck target for a short duration
 {{< /skill >}}
 
 {{< skill name="Sultry Rhythm" maxLevel="5" requires="Slow Grace Lv. 2"
     description="A hypnotic sway that draws an enemy's guard down before they even notice it slipping." >}}
-> `-3%/lv` DEF and SDEF to the struck target for a short duration
+`-3%/lv` DEF and SDEF to the struck target for a short duration
 {{< /skill >}}
 
 {{< skill name="Venomous Flourish" maxLevel="5" requires="Slow Grace Lv. 2"
     description="A whip's tip can carry more than momentum. Coats each strike with a mild toxin that wears an enemy down over time." >}}
-> `+2%/lv` chance per hit to apply a poison dealing damage over time
+`+2%/lv` chance per hit to apply a poison dealing damage over time
 {{< /skill >}}
 
 {{< skill name="Mirage Step" maxLevel="5" requires="Nimble Steps Lv. 3"
     description="A dance performed in motion rather than in place, sharing the Dancer's own knack for not being where the hit lands with everyone nearby." >}}
-> `+2%/lv` FLEE to party members within range while the dance plays
+`+2%/lv` FLEE to party members within range while the dance plays
 {{< /skill >}}
 
 {{< skill name="Guiding Steps" maxLevel="5" requires="Nimble Steps Lv. 3"
     description="A steady, ground-eating rhythm that keeps a traveling party's legs fresh long after they should have given out." >}}
-> `+2%/lv` movement speed and `-2%/lv` stamina drain to party members within range while the dance plays
+`+2%/lv` movement speed and `-2%/lv` stamina drain to party members within range while the dance plays
 {{< /skill >}}
 
 {{< skill name="Captivating Gaze" maxLevel="3" requires="Venomous Flourish Lv. 3"
