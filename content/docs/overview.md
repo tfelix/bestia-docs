@@ -7,8 +7,8 @@ toc: true
 description: "Explore vast lands in a procedurally generated world, fight tough monsters, gather ressources, or join guilds in your personal quest for honor and power."
 ---
 
-**Welcome to the docs of the Bestia Game!** The hobbiest fantasy MMORPG taking place in a vast, persistent fantasy world were magic meet builders,
-gatherer and adventurer. Here you find everything from game design guidelines to engine architecture overviews, as well as the API documentation to access game data.
+**Welcome to the docs of the Bestia Game!** It's a hobbyist fantasy MMORPG set in a vast, persistent world where magic meets builders,
+gatherers and adventurers. Here you'll find everything from game design guidelines to engine architecture overviews, as well as the API documentation to access game data.
 
 # Getting Started
 
@@ -26,18 +26,14 @@ The table of contents on the left gives you an overview of all documentation top
 
 # Project Repositories
 
-The whole Bestia game is living inside the [Bestia Game Monorepo](https://github.com/tfelix/bestia-behemoth). The [documentation](https://github.com/tfelix/bestia-docs) has their own repository.
+The whole Bestia game lives inside the [Bestia Game Monorepo](https://github.com/tfelix/bestia-behemoth). The [documentation](https://github.com/tfelix/bestia-docs) has its own repository.
 
-{{< table "table-responsive" >}}
-|                                                                         |                                                                                                                                                                                                         |                                                                                                                                                                                                                       |
-| ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Bestia Developer Documentation](https://github.com/tfelix/bestia-docs) | <a class="github-button" href="https://github.com/tfelix/bestia-docs" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star tfelix/bestia-docs on GitHub">Star</a>         | <a class="github-button" href="https://github.com/tfelix/bestia-client/subscription" data-icon="octicon-eye" data-size="large" data-show-count="true" aria-label="Watch tfelix/bestia-client on GitHub">Watch</a>     |
-| [Bestia Game Monorepo](https://github.com/tfelix/bestia-behemoth)       | <a class="github-button" href="https://github.com/tfelix/bestia-behemoth" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star tfelix/bestia-behemoth on GitHub">Star</a> | <a class="github-button" href="https://github.com/tfelix/bestia-behemoth/subscription" data-icon="octicon-eye" data-size="large" data-show-count="true" aria-label="Watch tfelix/bestia-behemoth on GitHub">Watch</a> |
-{{< /table >}}
+{{< repo owner="tfelix" name="bestia-behemoth" title="Bestia Game Monorepo" >}}
+{{< repo owner="tfelix" name="bestia-docs" title="Bestia Developer Documentation" >}}
 
 # Contributing
 
-Contributions to both the game design docments and the game itself (the client and the server) are very welcome!
+Contributions to both the game design documents and the game itself (the client and the server) are very welcome!
 
 You may find a little `Edit this page` link at the bottom of each page. If you want to change some game design aspects feel free to give it a try!
 

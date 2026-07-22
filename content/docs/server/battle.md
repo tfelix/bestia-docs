@@ -228,17 +228,7 @@ val HARD_DEF = 100 - (TOTAL_MAGIC_RESIST_MOD + MAGIC_DEF_MOD) / 100
 
 Soft defense represents the natural defense of entities against damage of a specific domain. Soft def is a natural number and NO modifier. Its minimum value is capped to 0.
 
-If attack is physical based (regardless if melee or ranged):
-
-```kotlin
-val SOFT_DEF = LV / 2 + VIT + STR / 3
-```
-
-If the attack is magic based (regardless if melee or ranged):
-
-```kotlin
-val SOFT_DEF= LV / 2 + VIT + WILL / 4 + INT / 5
-```
+Depending on the nature of the attack (physical or magical) either the [Soft Defense](/docs/mechanics/statusvalues#soft-defense---sdef) or the [Soft Magic Defense](/docs/mechanics/statusvalues#soft-magic-defense---smdef) is used. See the [Status Values](/docs/mechanics/statusvalues) page for the authoritative formulas.
 
 ### Value: CRIT_MOD
 

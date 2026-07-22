@@ -333,6 +333,15 @@ i {
 .docs-content .main-content {
     .skill-card {
         border-left: 3px solid var(--primary);
+
+        // Bootstrap's `.card` hard-sets `color: var(--bs-body-color)`, which
+        // this theme only overrides under `[data-bs-theme="dark"]` - an
+        // attribute the dark-mode toggle never sets (it uses `data-dark-mode`).
+        // The result was near-black card text on the dark background. Restore
+        // the readable content color used everywhere else.
+        .card-body {
+            color: var(--text-default);
+        }
     }
 
     .skill-levels {

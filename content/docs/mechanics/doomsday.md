@@ -4,7 +4,7 @@ weight: 900
 description: Explains the Doomsday mechanic — world-ending threats, event types, and their impact on gameplay.
 ---
 
-Every world incarnation faces an inevitable existential threat, emerging after a minimum of six months in real time. These threats can take various forms—powerful, destructive Bestia, chaotic magical phenomena, or natural disasters like **meteorite impacts**. If left unchecked, these forces can push the world toward **total annihilation**. However, if the world is destroyed by such an event rather than through the actions of the cults, **none of them will benefit**, giving all cult players a shared incentive to prevent its occurrence.
+Every world incarnation faces an inevitable existential threat, emerging after a minimum of six months in real time. These threats can take various forms—powerful, destructive Bestia, chaotic magical phenomena, or natural disasters like **meteorite impacts**. If left unchecked, these forces can push the world toward **total annihilation**. However, if the world is destroyed by such an event rather than through the actions of the factions, **none of them will benefit**, giving all faction players a shared incentive to prevent its occurrence.
 
 This cycle of destruction is what makes the world dynamically generated. While the overarching goal is to either **prevent or accelerate the world’s end**, complete destruction remains a rare occurrence, happening no more than once every one to two years (real time). When a new world is born, it is procedurally generated to feature diverse biomes, unique landscapes, and a fresh history that integrates seamlessly with the game’s lore. This system ensures a rich, evolving world — especially in the early stages, when player populations may be lower.
 

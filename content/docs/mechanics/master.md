@@ -14,11 +14,11 @@ Some of this account skills can be used by every Bestia in posession of the mast
 
 {{< alert context="info" text="Don't confuse this skill system with the regular attacks a Bestia is learning by item usage or just by level up. Those are simply called attacks." />}}
 
-* The number of total skil ranks inside a tree should **be between 70-80**
-* The possible rank counts of a skill should be: **1, 3, 5 and 10**
-* There should be some meaningful dependency of the skills forming a tree
-* In each profession tree there should form 2-3 sub-trees which create a meaningful hierarchy
-* There should be some kind of three tiers inside a tree to lead from low and basic skill to the much powerfull skills
+- The number of total skil ranks inside a tree should **be between 70-80**
+- The possible rank counts of a skill should be: **1, 3, 5 and 10**
+- There should be some meaningful dependency of the skills forming a tree
+- In each profession tree there should form 2-3 sub-trees which create a meaningful hierarchy
+- There should be some kind of three tiers inside a tree to lead from low and basic skill to the much powerfull skills
 
 {{< alert context="warning" text="Most important: **No hardcoded skill effects!**" />}}
 
@@ -45,10 +45,10 @@ meaningful professions of another tree. The skilltree is a hierarchical dependen
 
 Skillpoints spent within a subtree (e.g. Blacksmith, Priest, Wizard, ...) do more than unlock its skills - they also declare a profession to the world.
 
-* As soon as **5 or more skillpoints** are invested into a single subtree, the master becomes a **Master** of that tree.
-* Being a Master of a tree determines which of its associated items and weapons the master is able to use and equip.
-* A Bestia Master can be a Master of **at most 3 trees**.
-* Which trees count is decided by order of achievement: the first 3 subtrees in which a master reaches 5 or more skillpoints become their masteries. Reaching 5 or more skillpoints in any further subtree afterwards does **not** grant an additional mastery.
+- As soon as **5 or more skillpoints** are invested into a single subtree, the master becomes a **Master** of that tree.
+- Being a Master of a tree determines which of its associated items and weapons the master is able to use and equip.
+- A Bestia Master can be a Master of **at most 3 trees**.
+- Which trees count is decided by order of achievement: the first 3 subtrees in which a master reaches 5 or more skillpoints become their masteries. Reaching 5 or more skillpoints in any further subtree afterwards does **not** grant an additional mastery.
 
 {{< alert context="info" text="This is independent of the 5 Lv. requirement that unlocks access to a subtree in the first place - that threshold is reached by investing in the parent tree, while Mastery requires 5 points spent inside the subtree itself." />}}
 
@@ -187,7 +187,9 @@ graph TD
 
 {{< skill name="Weaponry Research" maxLevel="10" requires="Weapon Repair Lv. 3"
     description="Deeper knowledge of weapons and armor that raises the odds of successfully [refining](/docs/mechanics/items/#weapon-refinement) either one further after forging. If an upgrade fails the equipment can be destroyed." >}}
-`+4%/lv` success chance when upgrading a weapon or armor
+`+4%/lv` success chance when upgrading a weapon or armor<br>
+`+1%/lv` success chance when forging<br>
+`+2 ATK/lv` and `+2%/lv` accuracy while any forged weapon is wielded
 {{< /skill >}}
 
 {{< skill name="Weapon Repair" maxLevel="5" requires="Ore Refinement Lv. 3"
@@ -275,25 +277,37 @@ graph TD
 
 {{< skill name="Alchemy" maxLevel="10" requires="Herbalism Lv. 2"
     description="The core craft of the Alchemist: brewing reagents down into potions, tonics and other consumables. Builds directly on what Herbalism teaches about picking the right ingredient." >}}
-{{< skill-level level="1" >}}Can craft basic potions and elixirs up to level 10 at a workbench cauldron.{{< /skill-level >}}
+{{< skill-level level="1" >}}Can craft basic potions and elixirs up to level 10. Allows you to install Alchemist Workbenches.{{< /skill-level >}}
 {{< skill-level level="2" >}}Can craft potions and elixirs up to level 20.{{< /skill-level >}}
 {{< skill-level level="3" >}}Can craft potions and elixirs up to level 30.{{< /skill-level >}}
 {{< skill-level level="4" >}}Can craft potions and elixirs up to level 40.{{< /skill-level >}}
-{{< skill-level level="5" >}}Can craft potions and elixirs up to level 50. Failed brews return half of the raw reagents used instead of losing them entirely.{{< /skill-level >}}
+{{< skill-level level="5" >}}Can craft potions and elixirs up to level 50.{{< /skill-level >}}
 {{< skill-level level="6" >}}Can craft potions and elixirs up to level 60.{{< /skill-level >}}
 {{< skill-level level="7" >}}Can craft potions and elixirs up to level 70.{{< /skill-level >}}
 {{< skill-level level="8" >}}Can craft potions and elixirs up to level 80.{{< /skill-level >}}
 {{< skill-level level="9" >}}Can craft potions and elixirs up to level 90.{{< /skill-level >}}
-{{< skill-level level="10" >}}Can craft potions and elixirs up to level 100+, unlocking the highest-level potion and elixir blueprints.{{< /skill-level >}}
+{{< skill-level level="10" >}}Can craft potions and elixirs up to level 100+.{{< /skill-level >}}
 {{< /skill >}}
 
 {{< skill name="Transmutation" maxLevel="10" requires="Alchemy Lv. 5"
     description="The Alchemist's capstone. Where Alchemy brews what nature already provides, Transmutation reshapes mundane matter itself into the rare magically-infused resources needed for strong artifact creation and weapon refinements." >}}
-Higher levels unlock transmuting higher-grade infused resources
+Higher levels unlock transmuting higher-grade infused resources.
+
+{{< skill-level level="1" >}}Can transmute items up to Lv. 20. Allows you to install Transmutation Workbenches.{{< /skill-level >}}
+{{< skill-level level="2" >}}Can transmute items up to Lv. 40.{{< /skill-level >}}
+{{< skill-level level="3" >}}Can transmute items up to Lv. 60.{{< /skill-level >}}
+{{< skill-level level="4" >}}Can transmute items up to Lv. 80.{{< /skill-level >}}
+{{< skill-level level="5" >}}Can transmute items up to Lv. 100+.{{< /skill-level >}}
 {{< /skill >}}
 
 {{< skill name="Alchemy Mastery" maxLevel="5" requires="Alchemy Lv. 5"
     description="Increased yield and success chance for Alchemy." >}}
+`+10% / Lv` and `+5% yield / Lv`
+{{< /skill >}}
+
+{{< skill name="Speedy Brewer" maxLevel="5" requires="Alchemy Lv. 3"
+    description="Increased brewing speed for all your alchemist tasks performed by you and your Bestia." >}}
+`+10% / Speed`
 {{< /skill >}}
 
 ## Survival Tree
@@ -321,11 +335,6 @@ graph TD
 ```
 
 <br>
-{{< skill name="Inner Peace" maxLevel="10"
-    description="Your Bestia and Master gain an increased HP and Mana regeneration rate." >}}
-`+3% effect/lv`
-{{< /skill >}}
-
 {{< skill name="Weather Resistance" maxLevel="5"
     description="Your Bestia and Master gain an increased tolerance against high and low environment temperatures." >}}
 `+3%` higher tolerance/lv
@@ -334,6 +343,11 @@ graph TD
 {{< skill name="Quick Travel" maxLevel="5"
     description="You and your Bestia know every kind of terrain." >}}
 `+3%` higher movement speed/lv
+{{< /skill >}}
+
+{{< skill name="Meditation" requires="Weather Resistance Lv. 2, Quick Travel Lv. 2" maxLevel="10"
+    description="Your Bestia and Master gain an increased HP and Mana regeneration rate." >}}
+`+3% effect/lv`
 {{< /skill >}}
 
 {{< skill name="Fishing" maxLevel="5"
@@ -359,15 +373,22 @@ graph TD
 
 <br>
 {{< skill name="Lumberjack" maxLevel="5"
-    description="The player is able to gather wood resources faster." >}}
-`-3%/lv` wood gathering time<br>
-`+2%/lv` resource drop chance
+    description="The player is able to gather wood resources." >}}
+Level 1 allows you to install a woodworker cabin.<br>
+`-10% / Lv.` wood gathering time<br>
+`+20% / Lv.` resource drop chance
 {{< /skill >}}
 
 {{< skill name="Trapping" maxLevel="5"
     description="Sets snares and deadfalls that keep working for the master even while they're off doing something else, passively catching small game over time for meat and pelts on a later check-in." >}}
-`+4%/lv` chance a snare yields a catch<br>
-Higher levels unlock snares for larger game
+Level 1 allows you to place a trap.<br>
+`+6% / Lv` chance a snare yields a catch<br>
+{{< /skill >}}
+
+{{< skill name="Bestia Trapping" requires="Trapping Lv. 3" maxLevel="5"
+    description="Special traps and lures empowered with mana dust to catch Bestia." >}}
+Level 1 allows you to place a special Bestia trap.<br>
+`+6% / Lv` chance a snare yields a catch<br>
 {{< /skill >}}
 
 {{< skill name="Expert Taming" maxLevel="5"
@@ -377,7 +398,7 @@ Higher levels unlock snares for larger game
 {{< /skill >}}
 
 {{< skill name="Beastfriend" maxLevel="5" requires="Expert Taming Lv. 3"
-    description="Detailed knowledge of the Bestia and their behavior makes it easier for you to tame and catch them." >}}
+    description="Detailed knowledge of the Bestia and their behavior makes it easier for you to tame and catch them. Also increases the success chance for Bestia Trapping." >}}
 `+5%/lv` chance to tame
 {{< /skill >}}
 
@@ -387,15 +408,13 @@ Half surveyor, half treasure hunter. Prospectors chart unclaimed land, feel out 
 
 {{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [survival tree](#survival-tree)" />}}
 
-*Note: `Enlarge Weight Limit` lists its requirement as "Power Maximize Lv. 3", which doesn't match any skill name in this tree. The diagram below assumes this means `Maximize Carry Capacity` - the skill text likely needs a small fix to reference the actual skill name.*
-
 ```mermaid
 graph TD
-    MaximizeCarryCapacity(["Maximize Carry Capacity (1-5)"])
+    MaximizeCarryCapacity["Maximize Carry Capacity (1-5)"]
     EnlargeWeightLimit["Enlarge Weight Limit (1-5)"]
-    Cartography(["Cartography (1-5)"])
-    WildernessSurvival{{"Wilderness Survival (1-5)"}}
-    WeatherSense(["Weather Sense (1-3)"])
+    Cartography["Cartography (1-5)"]
+    WildernessSurvival["Wilderness Survival (1-5)"]
+    WeatherSense["Weather Sense (1-3)"]
 
     MaximizeCarryCapacity -->|Lv.3| EnlargeWeightLimit
     EnlargeWeightLimit -->|Lv.3| WildernessSurvival
@@ -407,14 +426,9 @@ graph TD
 `+10%/lv` weight limit
 {{< /skill >}}
 
-{{< skill name="Enlarge Weight Limit" requires="Power Maximize Lv. 3" maxLevel="5"
+{{< skill name="Enlarge Weight Limit" requires="Maximize Carry Capacity Lv. 3" maxLevel="5"
     description="Raises the carrying capacity of every Bestia under your control." >}}
 `+10%/lv` weight limit
-{{< /skill >}}
-
-{{< skill name="Cartography" maxLevel="5"
-    description="Enables the player to chart unexplored land, revealing terrain that can be shared, traded on, or built on. See [World Exploration](/docs/mechanics/world-exploration/#cartography) for how the surveying minigame plays out." >}}
-Each level reduces the difficulty of surveying unexplored land.
 {{< /skill >}}
 
 {{< skill name="Wilderness Survival" requires="Enlarge Weight Limit Lv. 3" maxLevel="5"
@@ -426,6 +440,11 @@ Each level reduces the difficulty of surveying unexplored land.
 {{< skill name="Weather Sense" maxLevel="3"
     description="An instinct for reading the sky and wind well before a storm ever arrives, letting the Prospector plan a route or a dig around what's coming." >}}
 `+5min/lv` how far ahead upcoming weather changes can be sensed. Level 1 shows you the current wind direction and speed.
+{{< /skill >}}
+
+{{< skill name="Cartography" requires="Weather Sense Lv. 1" maxLevel="5"
+    description="Enables the player to chart unexplored land, revealing terrain that can be shared, traded on, or built on. See [World Exploration](/docs/mechanics/world-exploration/#cartography) for how the surveying minigame plays out." >}}
+Each level reduces the difficulty of surveying unexplored land.
 {{< /skill >}}
 
 ### Miner
@@ -461,12 +480,12 @@ Higher levels unlock cutting higher-grade gems<br>
 `-8%/lv` chance to shatter a gem while cutting
 {{< /skill >}}
 
-{{< skill name="Deep Delver" maxLevel="5" requires="Mining Lv. 3"
+{{< skill name="Cave Explorer" maxLevel="5" requires="Mining Lv. 3"
     description="Lets a Miner push shafts deeper than good sense would recommend, into ground that pays off precisely because nobody else risks it. Grants access to deeper, more dangerous mine shafts holding rarer ore veins and the odd buried structure." >}}
 `+10% more resources/lv`
 {{< /skill >}}
 
-{{< skill name="Resource Sonar" maxLevel="3" requires="Gem Cutting Lv. 3 and Deep Delver Lv. 3"
+{{< skill name="Resource Sonar" maxLevel="3" requires="Cave Explorer Lv. 3"
     description="The Miner's capstone: a feel for what's underfoot precise enough to map a shaft before the first swing of the pick." >}}
 Can sense ore and gem deposits through solid rock within 5m / Lv.
 {{< /skill >}}
@@ -739,40 +758,36 @@ Coin has its own kind of magic. Traders read markets instead of mana flows, link
 
 {{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [scholar tree](#scholar-tree)" />}}
 
-* Discount 10 _(placeholder)_
-* Overcharge 10 / Discount 3 _(placeholder)_
-* Mammonite 10 _(placeholder)_
-
 {{< skill name="Appraisal" maxLevel="5"
     description="Trains an eye for what goods are actually worth, cutting through both a merchant's markup and a forger's polish. Reveals an item's true condition and quality before it's bought or sold, and can flag counterfeit or mislabeled goods." >}}
-`+3%/lv` better prices when buying or selling based on assessed value
+You can identify an item.<br>
++20 Item Lv / Lv
 {{< /skill >}}
 
 {{< skill name="Scavenger" maxLevel="10"
     description="When breaking up and recycling items the probability to recycle a higher amount of components is increased." >}}
-`-5%/lv` price reduction at NPCs<br>
-`+3%/lv` higher price when selling at NPC
+`+5%/lv` chance of recycling items<br>
 {{< /skill >}}
 
-{{< skill name="Minting" maxLevel="5" requires="Appraisal Lv. 2"
-    description="The final step between a fistful of raw gold and coin that actually spends. Allows the master to mint raw gold directly into gold coins, and coins down into silver or copper, in bulk and without an NPC mint's cut. See [Currency](/docs/mechanics/economy-trade/#currency) for how the world's money supply is minted from mined gold." >}}
-`-3%/lv` minting fee<br>
-`+10%/lv` amount minted per batch
+{{< skill name="Minting" maxLevel="5" requires="Appraisal Lv. 5, Scavenger Lv. 3"
+    description="The final step between a fistful of raw gold and coin that actually spends. Allows the master to mint raw gold directly into gold coins. See [Currency](/docs/mechanics/economy-trade/#currency) for how the world's money supply is minted from mined gold." >}}
+`+10% yield/ Lv` amount minted per batch
 {{< /skill >}}
 
 {{< skill name="Trade Post Owner" maxLevel="5"
     description="Allows you to build trading posts which can be used by other citizen to buy and sell items. Only a single trading post can be located inside a settlement." >}}
-`+1/lv` trading posts that can be created<br>
-`+5%/lv` maximum fee that can be set
+`+1 / Lv.` total trading posts that can be created by this Master<br>
+`+5% / Lv.` maximum fee that can be set
 {{< /skill >}}
 
-{{< skill name="Trade Agreement" maxLevel="5" requires="Trade Post Owner Lv. 1"
+{{< skill name="Trade Agreement" maxLevel="5" requires="Trade Post Owner Lv. 3"
     description="Allows the master to link his auction house with those of other consenting players, merging their listings into a single, wider [marketplace](/docs/mechanics/economy-trade/#linking-auction-houses)." >}}
-`+1/lv` players that can be linked
+`+1 / Lv` players that can be linked. To get linked from other players at least level 1 in this skill is required.
 {{< /skill >}}
 
 {{< skill name="Honorable Citizen" maxLevel="5" requires="Minting Lv. 2 and Trade Agreement Lv. 1"
     description="A quiet ledger of who's been caught with sticky fingers. Anyone caught stealing from this Trader's stock, mint or linked auction listings suffers a steeper honor penalty than they otherwise would." >}}
+`+20% / Lv` honor penalty for robbers
 {{< /skill >}}
 
 ### Sage
@@ -781,13 +796,13 @@ Books, wards and long nights spent staring into scrying bowls. Sages study magic
 
 {{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [scholar tree](#scholar-tree)" />}}
 
-* Elemental Fields _(placeholder)_
-* Free Cast - move while casting _(placeholder)_
-* Endow Weapons elemental (3 level) _(placeholder)_
-* Read Enemy _(placeholder)_
-* Mana Drain _(placeholder)_
-* Mana Transfer _(placeholder)_
-* Weather Control _(placeholder)_
+- Elemental Fields _(placeholder)_
+- Free Cast - move while casting _(placeholder)_
+- Endow Weapons elemental (3 level) _(placeholder)_
+- Read Enemy _(placeholder)_
+- Mana Drain _(placeholder)_
+- Mana Transfer _(placeholder)_
+- Weather Control _(placeholder)_
 
 {{< skill name="Spell Training" maxLevel="10"
     description="Train a spell from a scroll to a Bestia. The scroll will be consumed in this process. The success chance depends on the level of the scroll." >}}
@@ -798,7 +813,20 @@ Books, wards and long nights spent staring into scrying bowls. Sages study magic
 {{< /skill >}}
 
 {{< skill name="Spell Enscription" maxLevel="10" requires="Spell Training Lv. 3"
-    description="Enables you to extract a spell from the memory of a Bestia onto a spell scroll which can be used to either trigger the spell once or to learn it to another bestia. However there is a chance that the mind of a Bestia is destroyed during the extraction, killing the Bestia in the process." >}}
+    description="Enables you to extract a spell from the memory of a Bestia onto a spell scroll, which can then either trigger the spell once or teach it to another Bestia. However, there is a chance that the mind of a Bestia is destroyed during the extraction, killing the Bestia in the process." >}}
+The base success chance depends on the level of the attack being enscribed and is further modified by skill level, equipment and intelligence (`INT / 2 + WIL / 4`):
+
+| Attack Level | Base Success |
+| ------------ | ------------ |
+| 1–20         | 80%          |
+| 21–40        | 70%          |
+| 41–60        | 60%          |
+| 61–80        | 50%          |
+| 81–90        | 10%          |
+| 91–100       | -20%         |
+| 101+         | -40%         |
+
+A negative base means the extraction is impossible on raw talent alone and only becomes viable with strong bonuses from intelligence, skill level and equipment.
 {{< /skill >}}
 
 {{< skill name="Spell Binding" maxLevel="10" requires="Spell Enscription Lv. 3"
@@ -838,8 +866,14 @@ Fire, water, wind, earth, and the deeper currents of holy and dark magic - Wizar
 
 {{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [warrior tree](#warrior-tree)" />}}
 
-* Dispell _(placeholder)_
-* Spell Breaker _(placeholder)_
+- Spell Breaker _(placeholder)_
+
+{{< skill name="Dispell" maxLevel="3"
+    description="Strips all beneficial buffs from a single target. Consumes a [Yellow Mana Crystal](/docs/mechanics/item-list/#yellow-mana-crystal) per cast." >}}
+{{< skill-level level="1" >}}60% chance to remove all buffs.{{< /skill-level >}}
+{{< skill-level level="2" >}}80% chance to remove all buffs.{{< /skill-level >}}
+{{< skill-level level="3" >}}100% chance to remove all buffs.{{< /skill-level >}}
+{{< /skill >}}
 
 {{< skill name="Elemental Mastery" maxLevel="5"
     description="Increases damage or healing of spells with elemental (earth, wind, water, fire) domain." >}}
@@ -933,12 +967,12 @@ Masters of hidden infiltration. They can deal high amount of single target damag
 
 {{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [warrior tree](#warrior-tree)" />}}
 
-* Strip Weapons _(placeholder)_
-* Dual Wield _(placeholder)_
-* Hide _(placeholder)_
-* Cloak _(placeholder)_
-* Poison Research _(placeholder)_
-* Enchant Poison _(placeholder)_
+- Strip Weapons _(placeholder)_
+- Dual Wield _(placeholder)_
+- Hide _(placeholder)_
+- Cloak _(placeholder)_
+- Poison Research _(placeholder)_
+- Enchant Poison _(placeholder)_
 
 {{< skill name="Weapon Coating" maxLevel="5"
     description="Coat weapons and armor to protect them against damage and strip effects." >}}

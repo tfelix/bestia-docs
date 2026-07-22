@@ -10,7 +10,7 @@ This document details the **key game mechanics and design principles**, providin
 
 At the heart of the game is a **world torn apart** by a cataclysmic event, known as the **Rift**. During this time magic surged uncontrollably, merging two realities and warping their physical properties, leading to widespread devastation. The player, a survivor of this catastrophe, is thrust into a **harsh new world**, forced to adapt, explore and rebuild.
 
-But **survival is just the beginning**. Players will gather resources, forge alliances and fight rivalries, and ultimately shape the fate of the world. The theme of **destruction and rebirth** runs throughout the game, with players aligning themselves with different **factions**: some seeking to hasten the world’s demise, others striving to prevent further chaos (see [The Factions](/docs/mechanics/factions) for more details).
+But **survival is just the beginning**. Players will gather resources, forge alliances and rivalries, and ultimately shape the fate of the world. The theme of **destruction and rebirth** runs throughout the game, with players aligning themselves with different **factions**, each pursuing its own vision for the fate of the world (see [The Factions](/docs/mechanics/factions) for more details).
 
 This document will continue to evolve, expanding on these foundations and refining the game’s mechanics as development progresses.
 

@@ -1,0 +1,17 @@
+<!-- repo.html: A repository card with GitHub star/watch buttons.
+     All URLs are derived from owner/name so the star and watch links can
+     never drift out of sync (the copy-paste bug the old table had). -->
+{{ $owner := .Get "owner" }}
+{{ $name := .Get "name" }}
+{{ $title := .Get "title" }}
+{{ $repo := printf "%s/%s" $owner $name }}
+{{ $url := printf "https://github.com/%s" $repo }}
+<div class="card shadow-sm mb-2 repo-row" style="max-width: 34rem;">
+  <div class="card-body d-flex align-items-center flex-wrap gap-3 py-2">
+    <a class="fw-bold text-decoration-none flex-grow-1" href="{{ $url }}">{{ $title }}</a>
+    <span class="d-flex gap-2">
+      <a class="github-button" href="{{ $url }}" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star {{ $repo }} on GitHub">Star</a>
+      <a class="github-button" href="{{ $url }}/subscription" data-icon="octicon-eye" data-size="large" data-show-count="true" aria-label="Watch {{ $repo }} on GitHub">Watch</a>
+    </span>
+  </div>
+</div>
