@@ -1,6 +1,6 @@
 ---
 title: Attacks
-weight: 200
+weight: 400
 description: Magic and its usage play a crucial role in the Bestia universe. Most players are deeply involved in spell creation and research.
 ---
 

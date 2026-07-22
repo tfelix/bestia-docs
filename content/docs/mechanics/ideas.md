@@ -1,5 +1,5 @@
 ---
-weight: 10000
+weight: 15000
 title: Ideas & Suggestions
 description: A collection of creative ideas and suggestions for future game features and improvements. This serves as a brainstorming scratchpad for potential enhancements.
 ---
@@ -8,5 +8,4 @@ A list of ideas which crossed my mind. This is more like a scratchpad and was no
 
 # Idea List
 
-* Twitch integration (Twither Godot Addon) - Integrate Twitch Events into the Engine, maybe even memorize certain crafted items names to viewers.
-
+- Twitch integration (Twither Godot Addon) - Integrate Twitch Events into the Engine, maybe even memorize certain crafted items names to viewers.

@@ -1,14 +1,14 @@
 ---
 title: Environment
 description: "Overview of Bestia's dynamic environment, temperature, weather, and in-game time system, including real-time to Bestia time conversions."
-weight: 900
+weight: 1200
 ---
 
 Bestia uses a sophisticated temperature and environment system to drive weather simulation and the overall effects on the player's environment.
 
-These simulations should be based on certain basic values that are determined location-dependent during the world creation in so called biomes, but can be changed by interaction with the players later during the game. However biomes can change. If local player interactions lead to temperature increase rain amount can be reduced and a forrest biome can turn into a dessert for example. The client must be informed about adjusted environment areas and update their visuals accordingly.
+These simulations should be based on certain basic values that are determined location-dependently during world creation in so-called biomes, but can be changed by interaction with the players later during the game. However, biomes can change. If local player interactions lead to a temperature increase, the rain amount can be reduced and a forest biome can turn into a desert, for example. The client must be informed about adjusted environment areas and update its visuals accordingly.
 
-Bestia Master enter the current world from another, not further mentioned dimension. During each incarnation a name of this world is generated and in each cycle all Bestia Master entering the game will have this world name persisted in their account data to keep a permanent record.
+Bestia Masters enter the current world from another, not further specified, dimension. During each incarnation a name for this world is generated, and in each cycle all Bestia Masters entering the game will have this world name persisted in their account data to keep a permanent record.
 
 # Temperature
 
@@ -28,31 +28,31 @@ Bestia Master always have a **Medium Temperature** sweet spot.
 
 `Vitality` and `Willpower` increases resistance against the temperatures. Specialized equipment or status effects can also affect temperature resistance.
 
-The formular is as follows:
+The formula is as follows:
 
 ```kotlin
-tolerableTemperature = baseTemperature ± sqrt(VIT / 2 x WILL / 4)
+tolerableTemperature = baseTemperature ± sqrt(VIT / 2 * WILL / 4)
 ```
 
-For items and structures these calculation is a bit different. Usually these items have some threshold above or under which they will start to malfunction (or perhaps even catch fire!).
+For items and structures this calculation is a bit different. Usually these items have some threshold above or below which they will start to malfunction (or perhaps even catch fire!).
 
 # Weather
 
-The weather system in Bestia plays a crucial role. It also affects the visibility and also the behavior of the NPC and mobs. Depending on the weather the NPCs and the player character will need a improved shelter or equipment to avoid a loss of stamina.
+The weather system in Bestia plays a crucial role. It also affects visibility as well as the behavior of NPCs and mobs. Depending on the weather, the NPCs and the player character will need improved shelter or equipment to avoid a loss of stamina.
 
-The weather influences also the temperature which will in turn decide if and how much stamina a entity regenerates or loses.
+The weather also influences the temperature, which will in turn decide if and how much stamina an entity regenerates or loses.
 
-The weather will also play a role in which crops and plants grow. If the player decided to plant salad in the desert this won't work quite well.
+The weather will also play a role in which crops and plants grow. If the player decides to plant salad in the desert, this won't work quite well.
 
 ## Rain
 
-A in strength controllable rain effect should overlay the entire viewport. The rain blowing direction should correlate
+A rain effect, controllable in strength, should overlay the entire viewport. The rain's blowing direction should correlate
 with the wind direction (which will be more or less random). During rain the ground will show a wet effect and view distance is
-reduced. It also reduces the effectiveness of fires and might extingush them. Fire attacks and earth attacks will only deal `50%` damage while ice or electric attacks deal `150%` damage in a wet environment.
+reduced. It also reduces the effectiveness of fires and might extinguish them. Fire attacks and earth attacks will only deal `50%` damage while ice or wind attacks deal `150%` damage in a wet environment. These environmental modifiers feed into the `ELEMENT_MOD` term of the [damage calculation](/docs/server/battle#damage-calculation).
 
 ## Fog
 
-Clouds of fog will move slowly over the map. And the sight of the AI entities is reduced. Its will also get harder for a player to see.
+Clouds of fog will move slowly over the map, reducing the sight of AI entities. It will also get harder for a player to see.
 
 ## Night
 
@@ -60,8 +60,8 @@ During night time the player will need light sources in order to improve the vis
 
 # Mana Concentration
 
-The system regularly evalutes mana emitter (bestia, spell usage, items) or sinks and calculates a mana density. Depending on the density of mana in a certain region this increases the propbability for rift events which spawn powerfull bestia or certain other devastating events like mana storms.
-It can also have a negative effect on the health effects of bestia master while bestia usually are unaffected by high mana density as they are born from it.
+The system regularly evaluates mana emitters (bestia, spell usage, items) and sinks and calculates a mana density. Depending on the density of mana in a certain region, this increases the probability of rift events which spawn powerful bestia, or of other devastating events like mana storms.
+It can also have a negative effect on the health of Bestia Masters, while bestia are usually unaffected by high mana density, as they are born from it.
 
 # In-Game Time
 
@@ -71,17 +71,17 @@ Changing seasons should lead to an impression of the changeability of the world.
 changing environment. Things that work in summer may not be possible in winter. But so that the players don't have
 to wait for a real year, time in Bestia flies faster.
 
-The Bestia-Time starts at the creation of the Bestia world. It is basically three times faster then the usual time.
+The Bestia-Time starts at the creation of the Bestia world. It is basically three times faster than the usual time.
 This means that the normal bestia day has 8 hours in real-time.
 
-This means that the bestia month has 10 days in real-time and a bestia year is 4 months in real time.
+It also means that a bestia year is 4 months in real time.
 
 * Bestia year: 4 months
-* Bestia season: summer, winter, fall, spring: each 1 month
+* Bestia season: spring, summer, fall, winter: each 1 month
 * Bestia day: 8 hours (2 hours night, 6 hours daytime)
 
-The assymetric day night cycle just allows the player to be more productive during the day while still getting a decent amount
-of night time in which for example special bestias can be hunted. It also allows the player to see multiple day-night cycles on the same day.
+The asymmetric day-night cycle allows the player to be more productive during the day while still getting a decent amount
+of night time in which, for example, special bestias can be hunted. It also allows the player to experience multiple day-night cycles within a single real-time day.
 
 {{< alert context="info" text="If it turns out that the night period is too annoying for the players because of the limited amount of gameplay then the night might get shortened." />}}
 

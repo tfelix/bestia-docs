@@ -1,5 +1,5 @@
 ---
-weight: 1000
+weight: 9100
 title: Items List
 description: Overview of items, upgrades and the crafting system.
 ---
@@ -35,8 +35,8 @@ Smooth, earthy clay. Malleable and perfect for shaping into bricks, pottery, or 
 Charred, brittle pieces of wood. Essential for fueling furnaces and crafting potent alchemical mixtures. Can be used for forging.
 {{< /item >}}
 
-{{< item name="Furnance" weight="40" type="Etc" >}}
-Blacksmiths use furnances to extract metal from ores.
+{{< item name="Furnace" weight="40" type="Etc" >}}
+Blacksmiths use furnaces to extract metal from ores.
 Use it to construct it in the world.
 {{< /item >}}
 
@@ -58,11 +58,6 @@ A swirling flask of deep azure liquid. Pulses with arcane power, ready to fuel t
 
 {{< item name="Wood" weight="30" type="Etc" >}}
 This is raw wood and it can be further processed into building material which is required for most buildings.
-{{< /item >}}
-
-{{< item name="Furnance" weight="40" type="Etc" >}}
-Blacksmiths use furnances to extract metal from ores.
-Use it to construct it in the world.
 {{< /item >}}
 
 {{< item name="Copper Ore" weight="1" type="Etc" >}}
@@ -119,6 +114,74 @@ Standard building stone. Essential material for construction projects.
 
 {{< item name="Marble" weight="8" type="Etc" >}}
 High quality building stone with elegant appearance. Premium building material.
+{{< /item >}}
+
+{{< item name="Tin Ore" weight="1" type="Etc" >}}
+A soft, dull-grey ore. Alloyed with copper to make bronze and used in basic crafting.
+{{< /item >}}
+
+{{< item name="Silver Ore" weight="1" type="Etc" >}}
+A lustrous ore streaked with silver. Smelted into silver bars for crafting and magical work.
+{{< /item >}}
+
+{{< item name="Gold Ore" weight="1.5" type="Etc" >}}
+A heavy ore flecked with gold. Smelted into gold bars and, once minted, into the world's coinage.
+{{< /item >}}
+
+{{< item name="Steel Bar" weight="2" type="Etc" >}}
+Iron ore refined with charcoal in a furnace. The staple metal for weapons and armor.
+{{< /item >}}
+
+{{< item name="Obsidian" weight="4" type="Etc" >}}
+A glass-like volcanic stone, brittle yet razor-sharp. Prized for cutting edges and decorative work.
+{{< /item >}}
+
+{{< item name="Mana Essence" weight="0.3" type="Etc" >}}
+Raw mana-bearing powder. Fed into a Mana Harvester to grow mana crystals.
+{{< /item >}}
+
+{{< item name="Pure Mana Essence" weight="0.3" type="Etc" >}}
+A purer grade of mana powder that yields higher-quality mana crystals.
+{{< /item >}}
+
+{{< item name="Mana Concentrate" weight="0.3" type="Etc" >}}
+Highly concentrated mana powder, the raw material for the finest mana crystals.
+{{< /item >}}
+
+{{< item name="Mana Dust" weight="0.2" type="Etc" >}}
+Fine, faintly glowing dust of condensed mana. Used to empower Bestia traps and ritual crafting.
+{{< /item >}}
+
+{{< item name="Void Essence" weight="0.2" type="Etc" >}}
+A cold, light-swallowing wisp gathered from where mana runs thin. A key reagent of the Master Ritual.
+{{< /item >}}
+
+{{< item name="Rough Gemstone" weight="0.3" type="Etc" >}}
+An uncut gem pried from a mineral vein. A Gem Cutter can facet it into a Cut Gemstone.
+{{< /item >}}
+
+{{< item name="Cut Gemstone" weight="0.2" type="Etc" >}}
+A faceted, polished gem. Slots into socketed equipment and fetches a high price at market.
+{{< /item >}}
+
+{{< item name="Medicinal Herb" weight="0.1" type="Etc" >}}
+A common healing herb. A staple ingredient for potions and tonics.
+{{< /item >}}
+
+{{< item name="Mana Herb" weight="0.1" type="Etc" >}}
+A faintly luminescent, mana-touched herb. Used in more potent alchemical brews.
+{{< /item >}}
+
+{{< item name="Embercoal" weight="0.5" type="Etc" >}}
+A lump of coal that never stops smouldering. Loaded into a blueprint to give a craft the fire element.
+{{< /item >}}
+
+{{< item name="Frost Shard" weight="0.4" type="Etc" >}}
+A sliver of ice that never melts. Loaded into a blueprint to give a craft the frost element.
+{{< /item >}}
+
+{{< item name="Seal of Mastery" weight="0.5" type="Etc" >}}
+Proof of a Novice's transformation. Forged in the Master Ritual to ascend to a true Bestia Master.
 {{< /item >}}
 
 {{< /itemlist >}}

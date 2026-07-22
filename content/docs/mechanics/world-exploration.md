@@ -1,8 +1,7 @@
 ---
 title: World Exploration
+weight: 1100
 ---
-
-# World Exploration
 
 A large part of the game world generates automatically. There should be a motivation for players exploring the world. New areas can be mapped and unique resources can be discovered and explored. In general, players should have their own branch about the secrets of the world to discover new items and how they are created. The entire world must gradually be explored and mapped by players. Players will be able to view this map online and see the overall progress of the exploration.
 
@@ -24,7 +23,7 @@ Regular player might try to create copies but this will be very hard without a c
 For generating the visual of the player map we use the algorithm described in [Terrain Map Generation](http://mewo2.com/notes/terrain/)
 and it's respective [Github repository](https://github.com/mewo2/terrain)
 
-## Cartography
+# Cartography
 
 In order to explore a area of the map the player has to perform manual tasks. He can choose how wide the area to measure should be. Bigger areas will tend to be harder to explore. The further away the player is from already explored land the harder the successful performing of the skill will be.
 
@@ -51,7 +50,7 @@ The following aplies:
 2. There are 3-5 locations `l` spawned around the player within a radius of 300 to 800 meters around the player (depending on the difficulty). He must reach them within a timelimit `t`.
 3. When near one of such a location (5m) the player is given a moving compass graphic. The speed of moving needle and the area to hit via button press is calculated based on `d`.
 
-## Explored Worldmap
+# Explored Worldmap
 
 Explored areas are squared to save them easier. The total explored map is saved on the server in a Runlength Encoded datastructure. Smallest resolution is 100m.
 A base terrain map is generated an player map contains a sub-section of this map and every map holds its own data so it only displays what

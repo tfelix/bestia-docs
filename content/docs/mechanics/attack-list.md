@@ -1,6 +1,6 @@
 ---
 title: Attack List
-weight: 900
+weight: 9000
 description: Those who master the tools of survival will thrive in a dangerous world. A list of all available attacks.
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Equipment List
-weight: 1000
+weight: 9200
 description: Those who master the tools of survival will thrive in a dangerous world. A list of all available attacks.
 ---
 

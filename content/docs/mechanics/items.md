@@ -1,12 +1,12 @@
 ---
-weight: 300
+weight: 500
 title: Items & Crafting
 description: Overview of items, upgrades and the crafting system.
 katex: true
 ---
 
-Items can be obtained by the player and carried around. The amount of items limited to each entity is determined via
-its [Inventory](#inventory). Each Bestia (and also a lot of other entities), have their own inventory with different sizes.
+Items can be obtained by the player and carried around. The number of items each entity can carry is determined by
+its [Inventory](#inventory). Each Bestia (and many other entities) has its own inventory with a different size.
 
 Items are mostly crafted by the players. It's quite rare to obtain direct item drops from killed enemies. Instead it's very common to loot resources when enemies are killed.
 
@@ -29,8 +29,8 @@ it and so on. It also affects how spells interact with the item entity.
 
 # Weapon Refinement
 
-Weapons and armors can be refined which accounts to extra damage dealt if the weapon is used. Each upgrade step can
-result in a destruction of the equipment.
+Weapons and armor can be refined, which translates into extra damage dealt when the weapon is used. Each upgrade step can
+result in the destruction of the equipment.
 
 A refined weapon has increased base damage per level:
 
@@ -48,7 +48,7 @@ A refined weapon has increased base damage per level:
 
 ## Upgrade Chances
 
-These are the base upgrade chances. The chances can be altered via skills, buffs or equipments. If an upgrade fails the weapon is destroyed. It is then completely unusable and also the resources are lost. As you can see the chance of success gets less and less the higher the weapon is upgraded and then caps (depending on the weapon level between 5% and 15%).
+These are the base upgrade chances. The chances can be altered via skills, buffs or equipments. If an upgrade fails the weapon is destroyed. It is then completely unusable and also the resources are lost. As you can see the chance of success gets lower and lower the higher the weapon is upgraded, and then caps (depending on the weapon level, between 5% and 15%).
 
 **Example:** You upgrade a superior weapon to level 12. Until level 7 the chance of success is at 100%. Then it drops for every level: `0.9 * 0.81 * 0.72 * 0.63 * 0.53 = 0.17`, so the total chance of success for this upgrade chain is 17%.
 
@@ -103,7 +103,11 @@ The upgrade chances can be increased by leveling up the relevant [Master Skill](
 
 # Armor Refinement
 
-A refined armor has increased resistance for **hard defense**. Each upgrade point grants 10 points more hard defense.
+A refined armor grants increased **[hard defense](/docs/server/battle#value-hard_def)**. Each refinement level adds 10 armor points. These armor points are then converted into a hard-defense percentage with diminishing returns: the value asymptotically approaches 100% but never reaches it, so every additional percent of hard defense costs progressively more armor points. There is no hard cap — extremely high defense is possible in theory, just increasingly expensive.
+
+```kotlin
+hardDefense = armorPoints / (armorPoints + 100)
+```
 
 {{< chart >}}
 {
@@ -113,7 +117,7 @@ A refined armor has increased resistance for **hard defense**. Each upgrade poin
 		datasets: [
 			{
 				label: 'Hard Defense',
-				function: function(x) {  return 0.95 * Math.exp(-0.0017 * x) + 0.05;  },
+				function: function(x) { return x / (x + 100); },
 				fill: false
 			}
 		]
@@ -121,8 +125,12 @@ A refined armor has increased resistance for **hard defense**. Each upgrade poin
   options: {
     responsive: true,
     scales: {
+      x: {
+        type: 'linear',
+        title: { display: true, text: 'Armor Points' }
+      },
       y: {
-        title: { display: true, text: 'Armor %' },
+        title: { display: true, text: 'Hard Defense %' },
         max: 1.0,
         min: 0.0
       }
@@ -170,21 +178,15 @@ The upgrade chances can be increased by leveling up the relevant [Master Skill](
 
 # Item Crafting
 
-Bestia uses an innovative new item crafting system. The player is allowed to craft all items. Some items may however
-be so hard to craft that it is not possible without the appropriate skill. Some items may require special
-ingredients which can not be substituted. The higher the crafted item level, the harder it gets to successfully craft
-it. If the crafting of the item fails all the materials used to craft it are lost. In order to craft an item two things
-are important: the sum of raw materials used to craft and how the materials are laid out.
+Bestia uses a flexible, discovery-driven crafting system. Every player can attempt to craft anything, but crafting
+always happens in two distinct phases:
 
-Item craft success chance is determined by the level of the raw materials used. Higher level raw materials also means
-a higher success chance.
+1. **Discovery** – you experiment with raw materials to *learn a blueprint*. This is the risky part: it consumes the
+   materials and can fail.
+2. **Production** – once a blueprint is learned, you (or your Bestia) can produce that item repeatedly and reliably.
 
-After an item was successfully crafted the recipe is saved for the user inside his recipe list. From this list the
-recipe can be inscribed upon paper to give it to other players who can consume and learn it. The learning will take
-some time (depending on the level of the item).
-
-Players are encouraged to try and create stuff. There are basically 6 domains of craftable and user generated content
-in the world of Bestia, and are related to the linked [Master Skills](/docs/mechanics/master/#master-skills).
+What you are even *allowed* to attempt depends on the **crafting school** you use — each tied to a
+[Master Skill](/docs/mechanics/master/#master-skills). There are six domains of craftable, user-generated content:
 
 * **Weapons** (Blacksmith)
 * **Armor** (Blacksmith)
@@ -193,64 +195,136 @@ in the world of Bestia, and are related to the linked [Master Skills](/docs/mech
 * **Meals** (Cooking)
 * **Buildings, Traps, non-magical Devices** (Craftsmanship)
 
-Some items are exclusively usable for certain crafting schools (for example a grape can not be used for forging). Items are categorized into a feature space which consists of 6 axis which describe the different properties of the outcome. The items used add or subtract from those axis and depending on your skill and the distance to a potential target you will successfully learn the blueprint. An attempt to learn a blueprint consumes the raw materials. So you basically navigate in a 6 axis vector space and at the end there will be a circle, dependent on your crafting skill. An item inside this circle you will then randomly learn. The chance of learning this skill depends on your skill.
+Some materials are exclusive to certain schools (a grape is useless for forging, and a Craftsman cannot forge a blade).
+The school is the only "category" you actively choose — and you choose it just by picking the craft action, never by
+typing a keyword.
 
-**Example:** You have Glass Shards (brittle +0.2), Mushroom (organic +0.2), blue manastone (white magic +0.5)
+## Discovery: Learning a Blueprint
 
-```text
-Heal Potion Lv. 5 Properties: Brittle 0.5, Organic: 0.1, White Magic: 0.7
-Mana Potion Lv. 10 Properties: Brittle 0.5, Organic: 0.05, White Magic: 0.8
-Sword:  Brittle 0.1, Organic: 0, White Magic: 0
-```
+Every craftable item lives at a point in a shared **feature space**. Each raw material carries its own coordinates in
+that space; when you combine materials their vectors **sum** into a single point, so the *proportion* of materials is
+the "shape" you are aiming for — far more flexible than a rigid grid pattern.
 
-You combine all those three items and get a vector of `(0.2, 0.2, 0.5)`. With a level 10 Alchemy skill this puts heal and mana potion into the possible range. A sword is out of range. Beginning from the lowest level you will now roll a dice against your skill success and the item difficulty to check if you successfully learned the item.
+Your crafting skill defines a **radius** around that point. Every known blueprint that falls inside this sphere is a
+candidate. Starting from the lowest-level candidate, the game rolls against your skill and the item's difficulty to see
+whether you learn it. A discovery attempt always consumes the materials and ends in one of three ways:
+
+{{< table >}}
+
+| Outcome     | Condition                | In-game feedback                             |
+| ----------- | ------------------------ | -------------------------------------------- |
+| **Learned** | in range, roll succeeded | "You grasp the pattern — blueprint learned!" |
+| **Slipped** | in range, roll failed    | "A pattern resonates here but slips away…"   |
+| **Nothing** | nothing in range         | "These materials resonate with nothing."     |
+
+{{< /table >}}
+
+This resonance feedback removes the classic frustration of not knowing whether a combination is *impossible* or merely
+*unlucky*: a **Slipped** result means the blueprint exists — keep trying with the same materials, while **Nothing**
+means you should swap materials. If a blueprint sits just outside your radius, the game instead hints *"something faint
+lies beyond your skill"* — telling you to level up rather than swap materials, since the radius grows with skill.
+
+The chance to learn drops with item level and rises with skill. It is floored at **0.1%** for items up to Lv. 100 and
+**0.01%** above Lv. 100, so in theory every blueprint is discoverable given enough attempts.
 
 {{< chart >}}
 {
-	type: 'line',
-	data: {
-		labels: Array.from({length: 100}, (_, i) => i ),
-		datasets: [
-			{
-				label: 'Item Level',
-				function: function(x) { return 1.0 - (x / 50); },
-				fill: false
-			}
-		]
-	},
+  type: 'line',
+  data: {
+    labels: Array.from({length: 150}, (_, i) => i + 1),
+    datasets: [
+      {
+        label: 'Skill 30',
+        function: function(x) { return Math.max(0.001, Math.min(1, Math.pow(30 / x, 2))); },
+        fill: false
+      },
+      {
+        label: 'Skill 60',
+        function: function(x) { return Math.max(0.001, Math.min(1, Math.pow(60 / x, 2))); },
+        fill: false
+      },
+      {
+        label: 'Skill 90',
+        function: function(x) { return Math.max(0.001, Math.min(1, Math.pow(90 / x, 2))); },
+        fill: false
+      }
+    ]
+  },
   options: {
     responsive: true,
     scales: {
-      x: {
-        type: 'linear',
-        title: { display: true, text: 'Upgrade Level' },
-        min: 1,
-        ticks: { stepSize: 1 }
-      },
-      y: {
-        title: { display: true, text: 'Chance of Success' },
-        max: 1.1
-      }
+      x: { type: 'linear', title: { display: true, text: 'Item Level' }, min: 1 },
+      y: { title: { display: true, text: 'Chance to Learn' }, max: 1.0, min: 0 }
     }
   }
 }
 {{< /chart >}}
 
-The chance to learn an item is capped at 0.1% for items lower than Lv. 100 and 0.01% for items bigger than Lv. 100. In theory you have the chance to learn every item blueprint.
-After a blueprint was learnt you or your Bestia can produce the items for you.
+**Example — telling a Health Potion from a Minor Poison.** Both are light fluids with almost identical coordinates;
+the only meaningful difference is the **Vitality** axis, and that difference comes entirely from the ingredients, never
+from a label you pick:
 
+```text
+                State   Vitality   Arcane    (other axes ~0)
+Health Potion   -0.9     +0.6       +0.3
+Minor Poison    -0.9     -0.5        0.0
+```
 
-## Feature Space Axis
+Drop a healing herb into your mix and it lands at positive Vitality (Health Potion territory); drop a deathcap in and
+the very same recipe lands at negative Vitality (Poison territory). Same skill, same station — a different mushroom.
 
-### Armor
+## Production: Crafting a Known Item
 
-* Hardness - Which main material is mainly used? Metal, leather, cloth?
-* Elasticity - How easy is it to rip it apart (a cloth based armoer will be less stable than a full plate armor)
-* Arcane Absorbtion - How well the item channels magical schools.
-* Elemental Resonance - How well the item aligns with existing elemental flow, which can grant magical effects.
-* Pattern Complexity - Is it a very detailed and sophisticated or rather blunt item?
+Once a blueprint is learned it is saved to your **blueprint list**, and you or your Bestia can produce the item on
+demand. Production success is determined by the **level and quality of the raw materials** used — higher-level materials
+mean a higher success chance. On a failed production the materials are lost.
 
-### Craft Duration
+A learned blueprint can be **inscribed onto paper** as a shareable **recipe** and handed to other players, who consume
+the recipe to learn the blueprint themselves. Learning from a recipe takes time depending on the item level.
+
+Some properties are not baked into the blueprint but **inherited from the materials at production time**. A single
+"elemental flask" blueprint yields a fire flask if you load embercoal or a frost flask if you load frost shard; a
+magical draught takes its school from the magical reagent you feed it. Some blueprints also demand a special ingredient
+that cannot be substituted. This keeps the feature space small while letting one blueprint cover a whole family of
+variants.
+
+## The Feature Space Axes
+
+The feature space uses a handful of **bipolar** axes. Each runs from a negative pole through a neutral `0` to a positive
+pole, so an axis that is irrelevant to an item simply sits near `0` (a potion has no *Edge*, a sword has no *Vitality*).
+
+{{< table >}}
+
+| Axis           | − Pole ⟷ + Pole        | Captures                                        |
+| -------------- | ---------------------- | ----------------------------------------------- |
+| **State**      | Fluid ⟷ Solid          | consumables vs. solid goods                     |
+| **Integrity**  | Brittle ⟷ Resilient    | fragile vs. durable (independent of hardness)   |
+| **Heft**       | Light ⟷ Massive        | daggers vs. warhammers, trinkets vs. buildings  |
+| **Edge**       | Blunt ⟷ Keen           | crushing vs. cutting weapons                    |
+| **Vitality**   | Necrotic ⟷ Restorative | poisons vs. healing food & potions              |
+| **Arcane**     | Warding ⟷ Charged      | anti-magic vs. mana-dense items (mundane = `0`) |
+| **Complexity** | Crude ⟷ Intricate      | clubs & walls vs. artifacts & devices           |
+
+{{< /table >}}
+
+Element type (fire/ice/…) and magic school (restoration/illusion/…) are deliberately **not** axes — they are the
+production-inherited facets described above. Forcing every element and school onto its own axis would explode the
+dimensionality; letting the dominant reagent decide keeps the space small and flexible.
+
+**Example — Mace vs. Sword vs. Hammer.** All three are solid, resilient, mundane metal weapons, so they sit at the same
+place on every *material* axis. What separates them is pure geometry — exactly the **Heft** and **Edge** axes:
+
+```text
+         Heft    Edge
+Sword    -0.1    +0.7     light and keen
+Mace     +0.4    -0.4     heavier, blunt
+Hammer   +0.8    -0.6     massive, blunt
+```
+
+Without Heft and Edge these three would collapse onto a single point — which is why material properties alone were not
+enough to describe every item.
+
+# Craft Duration
 
 Craft duration is determined by the item level which the player is crafting. Skill points in the suitable skill tree
 (weapon, equipment, construction or alchemy, artifacts) reduces the build time. The `baseDuration` is given in real
@@ -294,7 +368,7 @@ irretrievably destroyed.
 | 1 - 29%    | Increasing Damage Effects |
 | 0%         | Item breaks unrecoverably |
 
-Items on the ground can suffer damage from attacks. They are affected by Area Of Effect spells and can be targetted manually albeit they are not auto targeted like enemies.
+Items on the ground can suffer damage from attacks. They are affected by Area Of Effect spells and can be targeted manually, although they are not auto-targeted like enemies.
 
 ## Item Status Values
 
@@ -311,12 +385,12 @@ and logically built. Each Bestia has its own inventory. So the player must be ca
 Bestias in time. Trading must be fast to do to reduce the annoyance.
 
 If a Bestia/Entity is killed and has had some items inside its inventory usually the items are dropped and can be looted.
-In case a player killed a mob the loot will be protected for 30 seconds so he can exclusively loot it.
+If a player killed a mob, the loot will be protected for 30 seconds so they can exclusively loot it.
 
 ## Weight Limit
 
 Items weight is given by units of about 1kg per unit. The smallest division is 0.1 units which approximates to 100gr.
-The maximum amount a Bestia can carry is dependent on its strength and its vitality. The [Packhorse skill](/docs/mechanics/master/#skill-packhorse) can increase the carriable weight limit. The formula is given as:
+The maximum amount a Bestia can carry is dependent on its strength and its vitality. The [Maximize Carry Capacity](/docs/mechanics/master/#skill-maximize-carry-capacity) and [Enlarge Weight Limit](/docs/mechanics/master/#skill-enlarge-weight-limit) skills can increase the carriable weight limit. The formula is given as:
 
 ```kotlin
 weightLimit = STR / 2 + VIT / 5 + 15 + LEVEL / 5

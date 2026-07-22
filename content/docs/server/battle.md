@@ -210,18 +210,20 @@ val ATK_MOD = bonus_physical_melee
 
 ### Value: HARD_DEF
 
-Hard defense represents mostly the damage reduction via armor and other natural defenses. It can of course modified by scripts. The hard defense is capped between 0 and 95%. Depending of the nature of the attack (physical or magical) either the normal armor or magic armor (magic resist) is used.
+Hard defense represents mostly the damage reduction via armor and other natural defenses. It can of course be modified by scripts. Armor points are converted into a fractional damage reduction with diminishing returns: the value asymptotically approaches `1.0` (100%) but never reaches it, so there is no hard cap — extremely high defense is possible in theory, just increasingly expensive per point. Depending on the nature of the attack (physical or magical) either the normal armor or magic armor (magic resist) is used. See [Armor Refinement](/docs/mechanics/items#armor-refinement) for how armor points accumulate.
 
 If normal attack (ranged or melee):
 
 ```kotlin
-val HARD_DEF = 100 - (TOTAL_ARMOR_MOD + PHYSICAL_DEF_MOD) / 100
+val armorPoints = TOTAL_ARMOR_MOD + PHYSICAL_DEF_MOD
+val HARD_DEF = armorPoints / (armorPoints + 100)
 ```
 
 If magic attack (ranged or melee):
 
 ```kotlin
-val HARD_DEF = 100 - (TOTAL_MAGIC_RESIST_MOD + MAGIC_DEF_MOD) / 100
+val armorPoints = TOTAL_MAGIC_RESIST_MOD + MAGIC_DEF_MOD
+val HARD_DEF = armorPoints / (armorPoints + 100)
 ```
 
 ### Value: SOFT_DEF

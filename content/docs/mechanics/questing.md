@@ -1,10 +1,8 @@
 ---
-weight: 300
+weight: 800
 title: Questing
 description: "Bestia's player-driven questing system: funded contracts, gather and transport commissions, escrow and reward settlement, and rare faction-contested world events like mana rifts."
 ---
-
-# Questing
 
 Questing in **Bestia** is primarily **player-driven**. Players write out rewards for tasks they need done — gathering
 resources, transporting goods from A to B, hunting a troublesome Bestia and other players pick them up. The world

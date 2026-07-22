@@ -1,5 +1,6 @@
 ---
 title: Bestia Master
+weight: 200
 ---
 
 The small intro game tells players how they became a Bestia Master: They came into direct contact with an ephemeral mana crystal that changed their nature through magic and connected them to the mana flows of the universe. They are therefore receptive to the influence of mana and are able to communicate with the beings that emerge from this mythical energy: **the Bestia**.
@@ -110,6 +111,8 @@ Automatically enabled once Lv. 7 in Basic Skill is reached. Can only be used as 
 
 The workbenches, forges and cauldrons of the tradesfolk turn raw ambition into things a player can actually use. Every blade, trinket and bottled miracle a master ever relies on started out as somebody's Craftsman skill paying off.
 
+Crafting always runs in two phases: a Craftsman first **discovers a blueprint** by experimenting with raw materials, then **produces** that item from it as often as they like. A learned blueprint can be inscribed onto paper as a shareable **recipe**. The skills below govern how reliably a Craftsman discovers, produces and refines within their trade — see [Item Crafting](/docs/mechanics/items/#item-crafting) for the full system.
+
 ```mermaid
 graph TD
     Carpentry["Carpentry (1-10)"]
@@ -178,15 +181,15 @@ graph TD
 {{< /skill >}}
 
 {{< skill name="Forge Weapon" maxLevel="10" requires="Ore Refinement Lv. 1 and Item Customization Lv. 5"
-    description="Able to forge weaponry from raw ingredients. Higher skill level unlocks forging higher-level weapons." >}}
+    description="Able to discover and forge weapon blueprints from raw ingredients. Higher skill levels reliably reach higher-level weapons; blueprints far above your skill can still be attempted, just at a steeply falling chance." >}}
 {{< /skill >}}
 
 {{< skill name="Forge Armor" maxLevel="10" requires="Ore Refinement Lv. 1 and Item Customization Lv. 5"
-    description="The counterpart to Blacksmith: forges plate, mail and shields from smelted ingots. Higher skill level unlocks forging higher-level armor." >}}
+    description="The counterpart to Forge Weapon: discovers and forges armor blueprints - plate, mail and shields - from smelted ingots. Higher skill levels reliably reach higher-level armor; blueprints far above your skill can still be attempted, just at a steeply falling chance." >}}
 {{< /skill >}}
 
 {{< skill name="Weaponry Research" maxLevel="10" requires="Weapon Repair Lv. 3"
-    description="Deeper knowledge of weapons and armor that raises the odds of successfully [refining](/docs/mechanics/items/#weapon-refinement) either one further after forging. If an upgrade fails the equipment can be destroyed." >}}
+    description="Deeper knowledge of weapons and armor that raises the odds of successfully [refining](/docs/mechanics/items/#weapon-refinement) either one further after forging. This governs post-forging refinement only - discovering and forging new blueprints is handled by Forge Weapon and Forge Armor. If an upgrade fails the equipment can be destroyed." >}}
 `+4%/lv` success chance when upgrading a weapon or armor<br>
 `+1%/lv` success chance when forging<br>
 `+2 ATK/lv` and `+2%/lv` accuracy while any forged weapon is wielded
@@ -277,16 +280,16 @@ graph TD
 
 {{< skill name="Alchemy" maxLevel="10" requires="Herbalism Lv. 2"
     description="The core craft of the Alchemist: brewing reagents down into potions, tonics and other consumables. Builds directly on what Herbalism teaches about picking the right ingredient." >}}
-{{< skill-level level="1" >}}Can craft basic potions and elixirs up to level 10. Allows you to install Alchemist Workbenches.{{< /skill-level >}}
-{{< skill-level level="2" >}}Can craft potions and elixirs up to level 20.{{< /skill-level >}}
-{{< skill-level level="3" >}}Can craft potions and elixirs up to level 30.{{< /skill-level >}}
-{{< skill-level level="4" >}}Can craft potions and elixirs up to level 40.{{< /skill-level >}}
-{{< skill-level level="5" >}}Can craft potions and elixirs up to level 50.{{< /skill-level >}}
-{{< skill-level level="6" >}}Can craft potions and elixirs up to level 60.{{< /skill-level >}}
-{{< skill-level level="7" >}}Can craft potions and elixirs up to level 70.{{< /skill-level >}}
-{{< skill-level level="8" >}}Can craft potions and elixirs up to level 80.{{< /skill-level >}}
-{{< skill-level level="9" >}}Can craft potions and elixirs up to level 90.{{< /skill-level >}}
-{{< skill-level level="10" >}}Can craft potions and elixirs up to level 100+.{{< /skill-level >}}
+{{< skill-level level="1" >}}Reliably discover and craft basic potions and elixirs up to level 10. Allows you to install Alchemist Workbenches.{{< /skill-level >}}
+{{< skill-level level="2" >}}Reliably discover and craft potions and elixirs up to level 20.{{< /skill-level >}}
+{{< skill-level level="3" >}}Reliably discover and craft potions and elixirs up to level 30.{{< /skill-level >}}
+{{< skill-level level="4" >}}Reliably discover and craft potions and elixirs up to level 40.{{< /skill-level >}}
+{{< skill-level level="5" >}}Reliably discover and craft potions and elixirs up to level 50.{{< /skill-level >}}
+{{< skill-level level="6" >}}Reliably discover and craft potions and elixirs up to level 60.{{< /skill-level >}}
+{{< skill-level level="7" >}}Reliably discover and craft potions and elixirs up to level 70.{{< /skill-level >}}
+{{< skill-level level="8" >}}Reliably discover and craft potions and elixirs up to level 80.{{< /skill-level >}}
+{{< skill-level level="9" >}}Reliably discover and craft potions and elixirs up to level 90.{{< /skill-level >}}
+{{< skill-level level="10" >}}Reliably discover and craft potions and elixirs up to level 100+.{{< /skill-level >}}
 {{< /skill >}}
 
 {{< skill name="Transmutation" maxLevel="10" requires="Alchemy Lv. 5"
