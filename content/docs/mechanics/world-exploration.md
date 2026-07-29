@@ -1,38 +1,47 @@
 ---
 title: World Exploration
 weight: 1100
+description: Explains how players explore and map the game world, including cartography mechanics, difficulty factors, and how explored maps are stored and rendered.
 ---
 
-A large part of the game world generates automatically. There should be a motivation for players exploring the world. New areas can be mapped and unique resources can be discovered and explored. In general, players should have their own branch about the secrets of the world to discover new items and how they are created. The entire world must gradually be explored and mapped by players. Players will be able to view this map online and see the overall progress of the exploration.
+Most of **Bestia**'s world is generated automatically, but very little of it starts explored. That gap is the point:
+charting new territory is how players uncover unique resources, stumble on new items, and piece together the stories
+behind how those items came to be. Over time the entire world is meant to be mapped collectively by the playerbase, and
+anyone can check that collective progress by viewing the shared world map online.
 
-Having a workable map has multiple use-cases:
+{{< alert context="info" text="This page covers the player-facing exploration and mapping loop. For how the underlying terrain, biomes and navigation graph are generated in the first place, see the server-side [World Generation](/docs/server/world-generation) page." />}}
 
-1. Most spells can be targeted only on a map with uncovered areas
-2. AI assisted walking of controlled player Bestia only works in charted territory
-3. Announcments of public events works and is synced via maps owned by the players
-4. Only inside explored areas Geologists can search for mineral resources
+A charted map isn't just a picture of the world — it unlocks concrete gameplay:
 
-There are a few assumptions regarding maps:
+1. Most spells can only be targeted at locations inside an already-charted area.
+2. AI-assisted movement for a controlled Bestia only works within charted territory.
+3. [Public world events](/docs/mechanics/questing/#world-events) are only announced on, and synced across, the maps players own.
+4. Mineral prospecting with the [Mining](/docs/mechanics/master/#skill-mining) skill only works inside charted areas.
 
-* Every player should be able to create a world map in-game
-* Player with cartographer skill should be able to combine multiple maps into single ones combining the explored area
-* Highly skilled cartoprpher can generate new magic maps to inform about possible events (exchange information with friends via markers, or display resource sources).
+A few ground rules govern how maps work:
 
-Regular player might try to create copies but this will be very hard without a cartography skill and most likly fail.
+* Every player can create their own world map in-game.
+* Players with the [Cartography](/docs/mechanics/master/#skill-cartography) skill can merge several maps into one, combining everyone's explored area.
+* At high skill levels, a cartographer can craft magical maps that go further still — sharing custom markers with friends, or surfacing known resource locations directly on the map.
 
-For generating the visual of the player map we use the algorithm described in [Terrain Map Generation](http://mewo2.com/notes/terrain/)
-and it's respective [Github repository](https://github.com/mewo2/terrain)
+Copying someone else's map is technically possible, but without training in Cartography it's extremely difficult and most likely to fail.
+
+To generate the visuals of the player map, **Bestia** uses the algorithm described in
+[Terrain Map Generation](http://mewo2.com/notes/terrain/) and its
+[reference implementation on GitHub](https://github.com/mewo2/terrain).
 
 # Cartography
 
-In order to explore a area of the map the player has to perform manual tasks. He can choose how wide the area to measure should be. Bigger areas will tend to be harder to explore. The further away the player is from already explored land the harder the successful performing of the skill will be.
+To chart an area of the map, players play out a manual mini-game rather than watching a progress bar fill. They choose
+how wide an area to survey — bigger areas are harder to chart, and the further the target area is from already-explored
+land, the harder the attempt becomes. Players may also use devices that make surveying larger areas easier.
 
-The player must perform a mini-game to explore the area. He might use devices which help to explore bigger areas.
+A failed attempt puts that vicinity on cooldown before it can be tried again; the cooldown is shorter when the next
+attempt targets an adjacent, still-unexplored area instead.
 
-If the skill fails the player will need to wait for a certain amount of time in order to perform the skill again in the vicinity. The cooldown is reduced for adjacent areas.
+There are three difficulty tiers, describing both the range of the survey and its base difficulty:
 
-There are three difficulties which describe the range of the discovery and also give a base probability:
-
+{{< table >}}
 
 | Range | Difficulty |
 | ----- | ---------- |
@@ -40,23 +49,28 @@ There are three difficulties which describe the range of the discovery and also 
 | 3km   | 50         |
 | 5km   | 80         |
 
-The following aplies:
+{{< /table >}}
 
-* For every km from explored land the difficulty increases by `10`
-* For 1% of magic energy on the area difficulty increases by `0.5`
-* Every level of [`Cartographer`](/docs/mechanics/master/#skill-cartographer) reduces difficulty by `10`.
+The following applies:
 
-1. Upon using the skill a difficulty `d` is determined, depending on the distance to the next already cartographed area and the area wished to be explored.
-2. There are 3-5 locations `l` spawned around the player within a radius of 300 to 800 meters around the player (depending on the difficulty). He must reach them within a timelimit `t`.
-3. When near one of such a location (5m) the player is given a moving compass graphic. The speed of moving needle and the area to hit via button press is calculated based on `d`.
+* For every km from already-explored land, difficulty increases by `10`.
+* For every 1% of [mana concentration](/docs/mechanics/environment/#mana-concentration) in the area, difficulty increases by `0.5`.
+* Every level of [Cartography](/docs/mechanics/master/#skill-cartography) reduces difficulty by `10`.
 
-# Explored Worldmap
+1. Using the skill determines a difficulty `d`, based on the distance to the nearest already-charted area and the size of the area being surveyed.
+2. Between 3 and 5 locations `l` spawn around the player, at a distance of 300 to 800 meters depending on `d`. Each must be reached within a time limit `t`.
+3. Getting within 5m of one of these locations brings up a moving compass minigame: the needle's speed and the size of the window that must be hit are both calculated from `d`.
 
-Explored areas are squared to save them easier. The total explored map is saved on the server in a Runlength Encoded datastructure. Smallest resolution is 100m.
-A base terrain map is generated an player map contains a sub-section of this map and every map holds its own data so it only displays what
-was explored by this map instance. The map is generated on the server like so:
+# Explored World Map
 
-1. Detect the area the player map depicts
-2. Decode the RLE discovered area of it
-3. Use the complete map of the server to return the visible data, delete the rest
-4. Send display map data to the client
+Explored areas are stored as squares to keep the data compact. The complete explored map lives on the server as a
+Run-Length Encoded (RLE) data structure, at a smallest resolution of 100m.
+
+The server generates a single base terrain map, and each player's map is a sub-section of it — every player map keeps
+its own data, so it only ever displays what that particular map instance has actually explored. Building the display
+map works like this on the server:
+
+1. Determine which area the player's map covers.
+2. Decode the RLE-encoded explored area for that region.
+3. Overlay it on the server's complete map to extract only the explored, visible data, discarding the rest.
+4. Send the resulting display data to the client.

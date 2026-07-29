@@ -9,7 +9,7 @@ The battle system is quite complex to allow almost any entity to get damaged in 
 
 Attacks can also be defined by a script alone and thus sidestepping the damage calculation completly to do script controlled effects (e.g. reduce enemy health by 50%).
 
-## Attack Pre-Check
+# Attack Pre-Check
 
 The stages of a battle are visualized in the following flow diagram, first a check is done to see if the attack actually was a hit.
 
@@ -29,7 +29,7 @@ graph TD
   step5 --> |No| attack
 ```
 
-## Damage Calculation
+# Damage Calculation
 
 The damage calculation is roughly based on the system used by Ragnarök Online. In certain areas it is refined in order to better express the design philosophy of Bestia as well as be extensible. Modifier (MOD suffix) are float values representing percentage values (e.g. 0.25). Bonus mods are bigger than 1 (bonus 5% is 1.05) while reduction modifier are less than 1.
 
@@ -39,7 +39,7 @@ The damage at the end is rounded down but the damage is capped at 0. The calcula
 val damage = floor(BASE_ATK * ATK_MOD * HARD_DEF_MOD * CRIT_MOD - SOFT_DEF)
 ```
 
-### Value: BASE_ATK
+## Value: BASE_ATK
 
 The base attack represents the attack strength of an entity. This attack strength is based on the status values important to perform the attack as well as the properties of the currently equipped weapon. Equipment might also alter the status values by which the base attack is indirectly influenced.
 
@@ -49,7 +49,7 @@ The base attack is capped at a minimum of 1. Default formula is:
 val BASE_ATK = (2 * STATUS_ATK * VAR_MOD + WEAPON_ATK * VAR_MOD_RED + SKILL_ATK + BONUS_ATK + AMMO_ATK) * ELEMENT_MOD * ELEMENT_BONUS_MOD
 ```
 
-### Value: STATUS_ATK
+## Value: STATUS_ATK
 
 The status attack value is determined by the capabilities of the character to attack and inflict damage. The formula is different for magic and physical based attacks.
 
@@ -71,7 +71,7 @@ For **magical attacks** (both melee and ranged):
 val STATUS_ATK = LV / 4 + INT + WILL / 5
 ```
 
-### Value: VAR_MOD
+## Value: VAR_MOD
 
 Is a variable status modifier. The variance is reduced as the `DEX` value rises. It is defined as:
 
@@ -79,7 +79,7 @@ Is a variable status modifier. The variance is reduced as the `DEX` value rises.
 val VAR_MOD = 1 - RAND(1,0) * 0.15
 ```
 
-### Value: WEAPON_ATK
+## Value: WEAPON_ATK
 
 The weapon attack value for **physical** attacks is given by:
 
@@ -93,7 +93,7 @@ Where as the `WEAPON_ATK` value for **magical** attacks is given by:
 val WEAPON_ATK = (BASE_ATK * QUALY_MOD + REFINE_BONUS) * RACE_MOD
 ```
 
-### Value: QUALY_MOD
+## Value: QUALY_MOD
 
 The QUALY_MOD is a modification depending of the durability of the weapon. The max quali damage mod should converge to +15% at maximum.
 
@@ -107,7 +107,7 @@ val QUALI_MOD = if(DURABILITY > 30) {
 }
 ```
 
-### Value: SIZE_MOD
+## Value: SIZE_MOD
 
 The attack is physically based.
 
@@ -164,7 +164,7 @@ The attack is physically based.
   </tr>
 </table>
 
-### Value: VAR_MOD_RED
+## Value: VAR_MOD_RED
 
 This is the reduced variance mod.
 
@@ -172,15 +172,15 @@ This is the reduced variance mod.
 val VAR_MOD_RED = VAR_MOD - VAR_MOD / 2 + 1/2
 ```
 
-### Value: AMMO_ATK
+## Value: AMMO_ATK
 
 If special ammunition is used this value is used. Only ranged physical attacks can make use of ammunition.
 
-### Value: BONUS_AMMO
+## Value: BONUS_AMMO
 
 This value is determined by the equipment and status effects applied to an entity.
 
-### Value: ATK_MOD
+## Value: ATK_MOD
 
 The `ATK_MOD` is calculated depending which type the attack was. If it was a ranged physical attack, ranged magic attack or a melee physical or a melee magic based attack. The attack mod is capped to a minimum of 0.05.
 
@@ -208,7 +208,7 @@ If attack is physical melee:
 val ATK_MOD = bonus_physical_melee
 ```
 
-### Value: HARD_DEF
+## Value: HARD_DEF
 
 Hard defense represents mostly the damage reduction via armor and other natural defenses. It can of course be modified by scripts. Armor points are converted into a fractional damage reduction with diminishing returns: the value asymptotically approaches `1.0` (100%) but never reaches it, so there is no hard cap — extremely high defense is possible in theory, just increasingly expensive per point. Depending on the nature of the attack (physical or magical) either the normal armor or magic armor (magic resist) is used. See [Armor Refinement](/docs/mechanics/items#armor-refinement) for how armor points accumulate.
 
@@ -226,13 +226,13 @@ val armorPoints = TOTAL_MAGIC_RESIST_MOD + MAGIC_DEF_MOD
 val HARD_DEF = armorPoints / (armorPoints + 100)
 ```
 
-### Value: SOFT_DEF
+## Value: SOFT_DEF
 
 Soft defense represents the natural defense of entities against damage of a specific domain. Soft def is a natural number and NO modifier. Its minimum value is capped to 0.
 
 Depending on the nature of the attack (physical or magical) either the [Soft Defense](/docs/mechanics/statusvalues#soft-defense---sdef) or the [Soft Magic Defense](/docs/mechanics/statusvalues#soft-magic-defense---smdef) is used. See the [Status Values](/docs/mechanics/statusvalues) page for the authoritative formulas.
 
-### Value: CRIT_MOD
+## Value: CRIT_MOD
 
 The base crit mod is set so 1.4 (bonus of 40% damage) if a critical hit has occurred. The chance to land a critical hit is determined before the actual damage is calculated. If no critical hit has occurred the crit mod is hardcoded set to 1. Magic based attacks can not land a critical hit (they also are hitting a target easier).
 
@@ -240,7 +240,7 @@ The crit mod is capped at 1.
 
 CRIT_MOD = BASE_CRIT_MOD * CRIT_DAMAGE_MOD
 
-## Damage Variables
+# Damage Variables
 
 Total damage calculation modifiers which are gathered from equipment and status effects. They are re-calculated upon change of the entities properties and then stored. The variables are feed into the attack scripts so their values can be accessed and altered via scripts on a per attack basis. These values are called damage variables.
 

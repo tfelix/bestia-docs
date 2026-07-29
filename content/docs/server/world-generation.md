@@ -8,7 +8,7 @@ Bestia integrates a specialized library called **WorldGen** for world creation. 
 
 In general it works by creating piplines which are then used to create and transform noise maps. After the noise was modified and generated the map data is created and saved to the Bestia database in chunks via the **Voxel** module.
 
-## World Generation Algorithm
+# World Generation Algorithm
 
 There is basically a pipeline in order to generate the Bestia map, these steps are listed here and described below:
 
@@ -29,7 +29,7 @@ There is basically a pipeline in order to generate the Bestia map, these steps a
 10. Navigation Map Creation
 11. Road Generation
 
-## Base Parameter
+# Base Parameter
 
 The following base parameters are used to generate the map:
 
@@ -42,13 +42,13 @@ The following base parameters are used to generate the map:
 
 The base parameter are generated randomly based on the expected active player count. They are persisted in the database together with some additional map parameters like creation date or name of the world (to keep some kind of history record).
 
-## Noise Maps
+# Noise Maps
 
 The following noise maps are created by the help of [OpenSimplexNoise](https://de.wikipedia.org/wiki/Simplex_Noise) and saved in a shared data storage temporarly until world map generation is finished. In order to save memory its advisable to delete this maps as soon as possible.
 
 Depending on the case the resolution of the heightmaps might be differnt in order to be as memory efficient as possible.
 
-### Height Map
+## Height Map
 
 The heightmap {{< katex >}}M_h{{< /katex >}} consists of multiple high and low resolution maps which are added and then normalized to a value between 0-1. The lower resolution should have a frequency of about 2-5m. The highest resolution should have a frequency of roughly 4-5km, to give a sense of a "big" world. Consider maybe 2-3 resolutions in between which a decrease in amplitude.
 
@@ -76,7 +76,7 @@ e = lower(d) + e * (upper(d) - lower(d))
 
 Where `d` is the distance to the center of the map.
 
-#### Ridged Noise
+### Ridged Noise
 
 For better initial mountains a special function can be sued which is described as:
 
@@ -96,7 +96,7 @@ e = e0 + e1 + e2;
 elevation[y][x] = Math.pow(e, exponent);
 ```
 
-### Humidity Map
+## Humidity Map
 
 The humidity map {{< katex >}}M_{hum}{{< /katex >}} represents the total annual rainfall between 0-1. The more the humidity is the more snow or rain fall is to be expected (depending on the temperature).
 
@@ -110,7 +110,7 @@ hum = M_{hum} - 0.4 \cdot M_h
 
 > Humidity resolution 100m.
 
-### Temperature Map
+## Temperature Map
 
 The temperature map {{< katex >}}M_t{{< /katex >}} represents the annual average temperature between 0-1.
 We assume a desired temperature range of -40 to 40 degree. This is shifted of about +/- 10 degrees randomly upon world creation.
@@ -133,27 +133,27 @@ t = M_t - 0.9 \cdot M_h
 
 > Temperature resolution 100m.
 
-### Mana Map
+## Mana Map
 
 The mana distribution {{< katex >}}M_m{{< /katex >}} is a normal noise map without any changes. Its done in two passes, a high frequency and also a low frequency pass. This allows us a rapid alteration in a smaller area while we still have big areas with just a higher mana concentration then others.
 
 > Mana resolution 10m.
 
-### Population Map
+## Population Map
 
 The population distribution {{< katex >}}M_p{{< /katex >}} is a normal noise map without any changes. But is later heavily modified by influence maps.
 
 > Population resolution 100m.
 
-## Sealevel
+# Sealevel
 
 The sealevel should chosen that oceans vs landmass ratio is about 20:80. This could be calculated but for now we just assume a fixed height value. Every terrain below is covered by water, the rest is landmass.
 
-## Erosion Simulation
+# Erosion Simulation
 
 Its loosly based on the [SIGGRAPH 2017](https://www.youtube.com/watch?v=9NXL48-Fbb8&t=1009s) talk. In short random events a placed on the map like a water droplet. This droplet follows the slope downwards a hill and is able to pickup material. If it has reached its maximum carry capacity it starts to deposit a certain material amount again. A good explanation is found in [Coding Adventures: Hydraulic Erosion](https://www.youtube.com/watch?v=eaXk97ujbPQ).
 
-## Creating Rivers and Lakes
+# Creating Rivers and Lakes
 
 Water always flows downhill. In order to simulate the water flow random sources of water are placed at elevated points in the map and then the water flow is simulated down the slope of the terrain.
 
@@ -192,7 +192,7 @@ P_{droplet} &= M_t - 0.9 \cdot M_h
 
 After these are placed a water stream is simulated flowing from the source down the slopes. In this is an iterative process. The source will spill out a certain amount of water to the tile. In every step a bit water evaporates depending on the surrounding temperature. The simulation is repeated until there is no significant change in waterlevel and it reaches an equilibrium. If the water floats out at the border it is buffered and in a next run it is exchanged with the border tiles. This is again done until there is no significant change anymore and equilibriunm reached.
 
-## Biome Setup
+# Biome Setup
 
 > Note: For the biome calculation you need to calculate the ranges from the given absolute value in the noise map space.
 
@@ -205,7 +205,7 @@ After these are placed a water stream is simulated flowing from the source down 
 | RAIN_FOREST  | 50 - 1200      | 20 - 40      | 0.8 - 1.0   |         |
 | MOUNTAIN     | 1500 - &infin; | -            | -           |         |
 
-## Terrain Features
+# Terrain Features
 
 After the Biomes are placed and the heightmap is finalized by erosion simulation there are predefined features placed on the maps. This can be old temples, caves or other quest relevant artifacts for player interaction.
 
@@ -219,11 +219,11 @@ Usually these kind of features are depending on the kind of biome. For example a
 | MOIST_FOREST | Caverns, Ruins, Artefacts, Deserted Settlements |                         |
 | RAIN_FOREST  | Caverns, Ruins, Artefacts, Deserted Settlements |                         |
 
-## Resource Distribution
+# Resource Distribution
 
 > Currently the resource distribution is not implemented.
 
-## Settlement Creation
+# Settlement Creation
 
 Cities usually form around natural resources like shores, rivers or rich farmland. The algorithm as described below will find suitable city position candidates and then distribute the cities in clusters around the world map. This clustering will make sure there is enough unexplored land for the players left to explore (and to create own settlements). It should also help with the idea of different civilization which could lead to ingame player conflicts.
 
@@ -255,7 +255,7 @@ The algorithm for settlement creation is:
 2. Buildings are places by poisson disc distribution and gauss distribution
 3. The buildings itself a procedural generated with [recusive division](https://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_division_method)
 
-## Navigation Map Creation
+# Navigation Map Creation
 
 The navigation map is created for NPC to fast calculate travel paths other long distances. It creates a connected graph network and the output is put into a [Neo4J database](https://neo4j.com/).
 
@@ -290,13 +290,13 @@ Additional data labels for the connections, to later help filter them for differ
 
 > Its possible that downscaled graphs with pre-calculated connections must be made in order to speed up NPC navigation later on.
 
-### Road Creation
+## Road Creation
 
 After the settlements are created, depending on their population size and an estimated travel distance roads are procedurally generated. We loosly follow the approach presented in the Paper [Procedural Generation of Roads](https://www.researchgate.net/publication/229707505_Procedural_Generation_of_Roads).
 
 When the settlements are build connections to the next settlements are established and the shortest route is calculated like described in the paper. The voxel ground is then flattened and an apropriate material is assigned to the road.
 
-## World Data Cleanup
+# World Data Cleanup
 
 Before a new world is created the old world data is deleted. The following procedure is made after all player entities are persisted and active entity simulation has stopped:
 

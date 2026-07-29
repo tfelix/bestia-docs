@@ -33,7 +33,7 @@ After the set of actions are determined by the knowledge of an agent the action 
 a set of tasks in order to fulfill the action. These tasks are then executed until they fail or get interrupted by an
 updates world state. Then planing is re-done.
 
-## Sensors
+# Sensors
 
 The Behemoth server is event-based, thus if for example an Bestia steps into the field of view of another Bestia the
 eventing can register a sighting into the according visual sensor of the agent.
@@ -53,19 +53,19 @@ Available sensors are:
 Sensor information will be put into the Agent's Blackboard to access it later when considerations are made or action plans
 are created.
 
-## Behavior
+# Behavior
 
 If the agent is idle of some event has caused a currently running action to fail the behavior of the agent is generated.
 Usually this are behavior trees or state machines for simpler NPCs in order to generate the desired behavior.
 
-## Action Planning
+# Action Planning
 
 As soon as the behavior phase generated the "how" to execute the behavior is planned. In order to do so a GOAP module is
 used. It generates a list of all available action for the agent and then perform the best path in order to archive a certain
 outcome. Usually the action inside this execution list transform one or multiple world variable to the desired state.
 A set of transformable world variables follow. Every item, spell usage etc. must be designed with thee variables in mind.
 
-### Variables
+## Variables
 
 | Goal  | Precondition | Effect                      |
 | ----- | ------------ | --------------------------- |
@@ -74,7 +74,7 @@ A set of transformable world variables follow. Every item, spell usage etc. must
 | Sleep | -            | Increases "Rested" property |
 
 
-### Actions List
+## Actions List
 
 | Actions    | Cost | Precondition                  | Effects                     |
 | ---------- | ---- | ----------------------------- | --------------------------- |
@@ -95,7 +95,7 @@ UseItem(HealthPotion): HasItem(HealthPotion) 1
 UseItem(HealthPotion): HasItem(HealthPotion) : PickupItem(HealthPotion) : MoveTo(x:10, y:20)
 UseSpell(Lesser Heal): HasMana(10) : UseItem(ManaPotion) : HasItem(ManaPotion)
 
-## Special Considerations
+# Special Considerations
 
 AI Blueprints are given as JSON files and AI agents are build from these Blueprints. The Bestia Behemoth
 server decides what the tick rate of these agents are, to reduce the load on the server, agents without players near
@@ -104,7 +104,7 @@ They tick slower then agents which are currently actively engaged in player inte
 If NPCs meet they should be able to exchange certain information from their blackboards by exchanging "gossip" this
 should be also put into some kind of chat exchange which can be overheard by players.
 
-## Literature
+# Literature
 
 * [A Better Monster AI - Joseph Swing](http://www.roguebasin.com/index.php?title=A_Better_Monster_AI)
 * [Modular AI Systems](https://www.youtube.com/watch?v=IvK0ZlNoxjw)

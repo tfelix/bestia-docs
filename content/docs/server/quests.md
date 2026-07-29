@@ -26,11 +26,14 @@ way back and will be rewarded with EXP and gold.
 {{< /tab >}}
 {{< /tabs >}}
 
-Quests in Bestia are generated on via two mechanics:
+Quests in Bestia are generated via two mechanics:
 
-1. Automatic generated quests, which are spawned in cities or villages where NPCs are present
-2. Player generated quests, these challenges must be given to an NPC who will then announce these quests so other
-   players who can pick them up, players must follow a template for the rewards.
+1. **Automatically generated quests**, spawned in cities or villages where NPCs are present.
+2. **Player generated quests**: these challenges are handed to an NPC who then announces them so that other players can
+   pick them up. Players must follow a template for the rewards.
+
+Both end up as the same kind of **contract**, and the rare world events driven by the simulation use that machinery too.
+The player-facing rules for all three live on the [Questing](/docs/mechanics/questing/) page.
 
 # Automatic Quest Generation
 
@@ -61,21 +64,21 @@ Further resources to read:
 
 * [Dynamic_Quest_Plot_Generation_using Petri-Net Planning](http://www.academia.edu/4558587/Dynamic_Quest_Plot_Generation_using_Petri_Net_Planning)
 
-A Quest Log is maintained so the player can look up the details of a quest even though he might been offline for a few days. This interface could very well be available on the 'offline' mobile interface of Bestia, so a pre-planning can be done throughout the day. The player should be able to direct his NPC Bestias to start to prepare/move into position to be ready to start into the dangerous territory the quest might be set in). Good use for the mobile interface to handle logistics like this offline (issue orders to the players Bestia team, to 'gear' up and meet me at location X).
-
 # Player Quests
 
 Players can define various tasks, such as collecting resources or defeating certain enemies, or transporting certain goods as a task and offer a reward. Also the deactivation of Bestias as guardians would be a conceivable task. This reward must then be given to the appropriate NPCs, who then hold it in trust (or simply negotiate among the players).
 
-The awarding of quests must be worthwhile for both parties. The player is credited with a good amount of experience both for the quest and for the successful completion of the quest by another player. He can redistribute this experience to Bestias in his possession under certain circumstances (items needed). When a quest is accepted, a contract is concluded between the player and the NPC. If all contract conditions are met, the reward will be handed out. Contracts may be limited in time and if a player fails to fullfill the contract he might need to pay a fee which is delivered to the quest giver.
+The awarding of quests must be worthwhile for both parties. When a quest is accepted, a contract is concluded between the player and the NPC. If all contract conditions are met, the reward will be handed out. Contracts may be limited in time, and an accepter who abandons a contract forfeits the collateral they staked when accepting it, which is delivered to the quest giver.
+
+Issuers can never mint experience. The server derives the whole experience reward from the difficulty of the objective and pays it from a capped world pool: the accepter earns the bulk of it, and the issuer earns a small flat amount for posting a funded quest plus a share of the accepter's reward once the quest settles successfully. See [Rewards, Experience and Settlement](/docs/mechanics/questing/#rewards-experience-and-settlement) for the player-facing rules and the anti-farming measures that go with them.
 
 ## Reward Calculation
 
-The player creating a quest must setup a reward. This rewards is calculated in a fixed way and depends on the available money on the current server but will also factor in the wealth of the issues. The reward can also be higher then re quested amount. 5% of the reward is issued to the NPC managing this quest contract.
+The player creating a quest must setup a reward. This reward is calculated in a fixed way and depends on the available money on the current server but will also factor in the wealth of the issuer. The reward can also be higher than the requested amount. 5% of the reward is issued to the NPC managing this quest contract, and a further 2% is burned as a posting tax — both always in gold, even when the reward itself consists of items. Payouts on NPC-issued quests are budgeted by the [World Treasury Director](/docs/server/economy/).
 
-The level range of the players suitable to do this quest must be automatically determined.
+The difficulty of a quest, and from it the level range of the players suitable to do it, must be automatically determined; see [Difficulty and Level Range](/docs/mechanics/questing/#difficulty-and-level-range). The lower bound of that range is enforced — a master below it cannot accept the contract.
 
-The fee can be payed in items or in gold, though the NPC part of the fee must be payed always in gold.
+The reward itself can be paid in items or in gold.
 
 # References
 

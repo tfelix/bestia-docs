@@ -32,8 +32,11 @@ Due to the presence of multiple factions with differing interests, defining univ
 | Stealing Item (Rare)                           |        -10        |            -30             |
 | Stealing Item (Legendary)                      |        -15        |            -40             |
 | Damaging a Building >10% HP                    |        -2         |            -10             |
+| Abandoning an accepted commission              |        -5         |            -20             |
 
 \* The victim is at least 10 levels below the attacker. Killing an opposing-faction player who is not this far below carries no honor penalty.
+
+Abandoning a commission means dropping an assigned contract, letting it expire without a serious attempt, or dumping the cargo — not merely failing at it. The local honor loss falls on the **broker NPC** who held the contract, and brokers talk to each other, so a player who makes a habit of it finds the boards of a whole town closed to them. The forfeited [collateral](/docs/mechanics/questing/#collateral) is a separate, purely financial consequence on top.
 
 If no negative honor is received for a full [real-time](/docs/mechanics/environment/#in-game-time) day, the accumulated negative honor decays by 1 point per real-time day. Positive honor can be earned on top of that.
 
@@ -68,7 +71,7 @@ A positive honor level leads to very friendly NPCs, which might even give the pl
 - Kill a player with negative honor, which is indicated by certain debuffs visible to other players.
 - Help an NPC, for example by healing or resurrecting a dead NPC.
 - Defend an NPC or a low-level player from an attacker.
-- Complete an NPC's quest or commission.
+- Complete an NPC's quest, or fulfil a player [commission](/docs/mechanics/questing/) held by that NPC as broker.
 - Return a stolen item to its rightful owner (see the **Thief** mechanic below).
 - Trade fairly and repeatedly with the same NPC over time.
 

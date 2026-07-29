@@ -1,6 +1,7 @@
 ---
 weight: 700
 title: Economy & Trade
+description: "Overview of Bestia's player-driven economy, covering gold and minting, the postal system for sending goods and coin, and the auction houses where trading happens."
 ---
 
 Every coin in **Bestia** was dug out of the ground by somebody. The economy is entirely player-driven: players find the
@@ -24,6 +25,12 @@ To give a fresh world something to trade with, **NPCs start out holding 10% of t
 night this NPC wealth is **redistributed equally** among all of them. This one mechanic deliberately ignores real-world
 economic logic; it exists so that coin keeps circulating into player hands through NPC purchases and quest brokers
 instead of pooling wherever it happened to land.
+
+That NPC gold is a **closed pool**, not a second faucet: whenever an NPC pays a player — a quest reward, a purchase, a
+world-event payout — the gold must have been earned by some other NPC first. The server-side
+[World Treasury Director](/docs/server/economy/) owns that pool, budgets every NPC payout against it, and adjusts what
+NPCs pay and charge as the pool drifts from its 10% target. It is the reason no NPC in the world can conjure money, and
+the reason prices need no manual intervention to stay sane.
 
 # Postal System
 

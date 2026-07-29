@@ -13,6 +13,13 @@ Report findings in these four categories:
 2. **Typos and grammar** — misspellings, strange or incomplete sentences (fragments missing a verb, dangling clauses), inconsistent terminology, or accidental non-English words.
 3. **Dead links** — for every internal link (`/docs/...` or relative), verify the target page actually exists under `content/docs` (accounting for Hugo `_index.md` routing and anchors where feasible). Note when a link's path style is inconsistent with the convention used elsewhere in the same file (e.g. missing `/docs` prefix).
 4. **Incomplete sections** — sections that are noticeably thinner than their siblings, end abruptly, name-drop a mechanic without linking to where it's actually specified, or otherwise read as unfinished. For each, suggest concretely how to finish it (e.g. which existing page to link out to, or what's missing).
+5. **Heading structure** — every page's body must open with an `#` (h1) heading for its first top-level section; the frontmatter `title` is not rendered into the body, so a page that jumps straight to `##` is missing a level. Subsections then nest normally (`##`, `###`, ...) without skipping a level. Flag any page whose first heading is `##` or deeper, and any place headings skip a level. Ignore headings inside fenced code blocks.
+
+## Docs schema
+
+- Every page starts with YAML frontmatter (`weight`, `title`, `description`, ...).
+- The body's first heading is always `#` (h1) — used for each top-level section of the page (a short page may have only one). Subsections use `##`, `###`, etc., one level at a time.
+- A handful of stub/draft pages (e.g. `quickstart.md`, `server/overview.md`) have no headings at all — that's fine as long as they're genuinely just placeholders.
 
 ## Process
 
