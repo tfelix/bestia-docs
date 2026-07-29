@@ -3,79 +3,138 @@ weight: 700
 title: Economy & Trade
 ---
 
-In **Bestia**, the economy is entirely player-driven, shaping the world through resource gathering, trade, and logistics. Players not only generate wealth but also manage its distribution through postal services and auction houses. This document outlines the key mechanics behind the in-game **currency**, **postal system**, and **auction houses**, detailing how they interact to create a dynamic economic landscape.
+Every coin in **Bestia** was dug out of the ground by somebody. The economy is entirely player-driven: players find the
+gold, mint the money, haul the freight and run the marketplaces, and the world's prices are whatever they collectively
+decide those things are worth. This page covers the three systems that carry all of it — the **currency**, the **postal
+system** that moves goods and coin across the map, and the **auction houses** where most trading actually happens.
+
+{{< alert context="info" text="**Conventions used on this page.** Unless stated otherwise, every amount and fee is expressed in **gold**, and every duration in hours or days refers to **real time**, not in-game [Bestia time](/docs/mechanics/environment/#in-game-time)." />}}
 
 # Currency
 
-All in-game currency originates from gold deposits discovered and mined by players. That’s right—players must **harvest gold themselves** to [mint their own money](/docs/mechanics/master/#skill-minting). Mined gold is converted into **gold coins**, the single currency used for all trading and transactions. There are no smaller denominations: everything in the game is priced in **gold**.
+All currency in the world originates from gold deposits that players discover and mine themselves. Raw gold becomes
+money only once a master turns it into **gold coins** with the [Minting](/docs/mechanics/master/#skill-minting) skill —
+there is no other tap. Gold coins are the single currency for every trade and transaction, and there are no smaller
+denominations: everything in the game is priced in whole **gold**.
 
-To kickstart the economy, **NPCs hold 10% of the world's total wealth in gold** when a new world is created. Every night, this wealth is **redistributed equally** among all NPCs. Unlike other mechanics in the game, this redistribution does not follow real-world economic logic but serves to ensure a fluid economy.
+Because coins cannot be split, every calculated fee on this page is **rounded up to the next whole gold**, and a fee
+that works out below `1` still costs `1`.
 
-**Note**
-Unless specified otherwise, all currency amounts and fees in this design document are expressed in **gold**.
+To give a fresh world something to trade with, **NPCs start out holding 10% of the world's total wealth in gold**. Every
+night this NPC wealth is **redistributed equally** among all of them. This one mechanic deliberately ignores real-world
+economic logic; it exists so that coin keeps circulating into player hands through NPC purchases and quest brokers
+instead of pooling wherever it happened to land.
 
 # Postal System
 
-Inspired by [World of Warcraft](https://en.wikipedia.org/wiki/World_of_Warcraft), **Bestia** features a structured **postal system** that allows players to send letters, items, and currency to other players and locations. It also plays a crucial role in the [player quest system](/docs/mechanics/questing), as many quest rewards are delivered through mail.
+Inspired by [World of Warcraft](https://en.wikipedia.org/wiki/World_of_Warcraft), **Bestia** has a proper **postal
+system** for sending letters, items and gold between players and places. It is also the backbone of the
+[quest system](/docs/mechanics/questing/) — commission rewards arrive by mail rather than from a quest giver standing
+around waiting for you.
 
-A player requires a postbox in order to send a package, but once a package has been delivered a player can access their delivered goods and messages from every other postbox. This ensures the system is not too frustrating and reduces the need to travel. The postal system is meant to be used often and to help players gather their equipment and gold.
+Unlike the mailbox in most games, this one **lives in the world**. NPC couriers handle deliveries by default, but players
+can train and assign their **Bestias** to run routes instead, and a delivery can be a commission in its own right. If
+nobody picks up a delivery within its time frame, an NPC courier finishes the job — the parcel still arrives, but the
+courier's cut of the delivery fees is lost to whoever might have earned it.
 
-Unlike standard game mail systems, this one is **fully integrated into the game world**. NPC couriers manage postal deliveries, but players can also train and assign their **Bestias** to carry out deliveries. Delivering mail can even be a quest in itself. However, if no player handles a delivery within a given time frame, an NPC courier will complete it, but in this case, the player loses their potential reward which is based on the delivery fees of the goods.
+The system is meant to be used constantly, and it is built to be generous rather than punishing: it is how players
+gather their equipment and move their money without spending an evening walking.
 
 ## Sending and Receiving
 
-In order to send a package you must interact with a post box, type the message and pay the listed fee. When you send a package you must pick a target post box (you must own a map to do so, otherwise you only get post boxes in a 10km radius listed). Maps are drawn using the [Cartography](/docs/mechanics/master/#skill-cartography) master skill and, as items, grant access to the game map.
+To send a parcel, interact with a **postbox**, write your message and pay the listed fee. You then choose a destination
+postbox. By default only postboxes **within 10km** are listed — to send further, you need to own a **map**, which grants
+access to the game map and reveals the postboxes on it. Maps are drawn with the
+[Cartography](/docs/mechanics/master/#skill-cartography) master skill and are traded as items like anything else.
 
-After the package has been delivered you can pick it up at the target post box and at every post box in a 10km radius around it. This makes sure players are not required to constantly wait in front of a specific post box.
+Once a parcel has arrived, you can collect it at the destination postbox **or at any postbox within 10km of it**. Nobody
+has to stand and wait at one specific box for a package to land.
 
 ## Postal Fees and Delivery Time
 
-The cost and time required for deliveries of goods follow these formulas:
+Cost and travel time follow these formulas:
 
 ```text
-freight_fee = 10 * distance_km * freight_weight_kg
-
-// always 1.5% of the send currency amount
-currency_fee = send_amount * 0.015
-
-delivery_time_hours =  0.1 + distance_km / 30
+freight_fee   = 10 * distance_km * freight_weight_kg
+currency_fee  = send_amount * 0.015
+delivery_time = 0.1 + distance_km / 30
 ```
 
-Time is measured in real-world hours, not [game-time](/docs/mechanics/environment#in-game-time). Gold-only and text-based messages can be sent instantly without the wait delay.
+`currency_fee` is a flat `1.5%` of any gold you send. `delivery_time` is given in hours, which works out to a courier
+pace of roughly `30 km/h` plus about six minutes of handling at each end. Parcels containing **only gold or only text**
+skip the wait entirely and arrive instantly.
 
 ## Insurance
 
-Players can **insure their deliveries** by paying an additional fee. If an insured item is lost because the courier is killed before completing the delivery, a **teleportation spell** will activate, sending the item automatically to its destination. However, this process takes an additional random amount of time between **0.5 to 1 real-time days** before the item becomes available in the player's postbox (to avoid gaming the system to get quicker delivery times).
+Deliveries can be **insured** for an extra fee. If an insured parcel is lost — usually because the courier was killed
+before finishing the route — a **teleportation spell** triggers and sends the goods on to their destination by itself.
+That safety net is deliberately slow: the parcel takes a further **0.5 to 1 days** (randomised) to surface in the
+recipient's postbox, so insurance can never be abused as a shortcut past normal delivery times.
+
+{{< alert context="warning" text="The insurance fee itself is still **TBD** and needs a formula. It should scale with the declared value of the goods, and it must stay cheap enough to be the obvious choice on a dangerous long haul while never being cheaper than eating the loss on a trivial one." />}}
 
 # Auction House
 
-Trading is a vital mechanic in **Bestia**, as the entire economy is **player-driven**. Players can **build and manage auction houses**, allowing them to trade goods even while offline.
+Trading is where the player-driven economy actually becomes visible. Players **build and run their own auction houses**,
+which means they can keep selling while logged off — and it means a well-placed marketplace is a genuine source of
+income for its owner.
 
 ## Building an Auction House
 
-An auction house is quite the expensive building. So usually the required resources are gathered by multiple players or a guild. The following special rules apply:
+Building an auction house requires the [Trade Post Owner](/docs/mechanics/master/#skill-trade-post-owner) master skill,
+which also caps how many a single master may operate (one at Lv. 1, up to five at Lv. 5). It is an expensive building,
+so the materials are usually pooled by a group of players or a whole guild. These special rules apply:
 
-- Once an auction house is built, **no other auction house can be placed within a 5km radius**.
-- The owner sets an **owner fee** between **1% and 10%** for new item listings. The maximum an owner may set depends on their Trader skill level. This fee is charged on top of the listing fees described below and is kept by the owner: it accumulates in the auction house and must be regularly collected.
-- **50% of the collected owner fee is redistributed to NPCs** as some sort of tax equivalent.
+- Once an auction house stands, **no other auction house may be placed within a 5km radius**, and no settlement may hold
+  more than one.
+- The owner sets an **owner fee** of at least **1%** on every new listing. The ceiling is granted by their Trade Post
+  Owner level, rising from **5% at Lv. 1 to 25% at Lv. 5**.
+- The owner fee is charged on top of the listing fees below, and the seller pays it up front. It **accumulates inside
+  the auction house** and has to be collected in person every so often — an unattended marketplace does not bank its
+  own profits.
+- **Half of every owner fee collected is passed on to NPCs**, the game's stand-in for taxation. In practice an owner
+  keeps half of the rate they advertise.
 
 ## How Auctions Work
 
-Players can list items in the auction house for:
+Items can be listed either at a **fixed price** for a direct sale, or as a timed **auction**:
 
-- A **fixed price** (direct sale, 10% listing fee)
-- An **auction**, where they select a duration of:
-  - **1 day** (8% listing fee)
-  - **2 days** (10% listing fee)
-  - **3 days** (20% listing fee)
-  - **5 days** (30% listing fee)
+| Listing type        | Listing fee |
+| ------------------- | ----------- |
+| Fixed price         | 10%         |
+| Auction, **1 day**  | 6%          |
+| Auction, **2 days** | 10%         |
+| Auction, **5 days** | 20%         |
 
-These **listing fees** are separate from the owner fee. Unlike the owner fee, listing fees are removed from the economy by the server (burned), which helps counteract inflation. The owner fee and the listing fee stack on top of each other. For example, if the owner has set their fee to 5% and a player lists an item for 5 days, a total of **35%** of the final sale price is taken (5% to the owner, 30% burned).
+Both fees are calculated from the **price you ask for** — the fixed price, or the minimum starting bid of an auction —
+and **never from what the item eventually sells for**. Both are also **paid up front**, out of your own pocket, at the
+moment you create the listing. Whatever the item then fetches above your asking price is yours to keep in full.
+
+**Listing fees are separate from the owner fee**, and the two stack. Unlike the owner fee, listing fees are **burned** -
+removed from the economy by the server - which is the game's main brake on inflation.
+
+Worked example: the owner has set a **5%** owner fee, and a player lists an item as a **5-day auction** (**20%**) with a
+minimum starting bid of `1000`. Creating that listing costs **25% of 1000 = 250 gold**, payable immediately: `200` is
+burned, `25` goes to the owner's till and `25` to the NPC pool. If the auction closes at `1800`, the seller walks away
+with the whole `1800`.
+
+Charging up front on the asking price is what keeps the marketplace honest. Nobody can paper the boards with hopeful
+junk priced at a million gold, because the fee for asking is real and it is due before anyone has even looked at the
+item. Setting a sane starting bid is the cheap move; greed costs gold whether it pays off or not.
+
+**If a listing runs out its duration without finding a buyer**, the auction house simply **posts the item back to you**
+through the [postal system](#postal-system) — it is never lost, and you do not have to be online for it to find its way
+home.
+
+The fees, however, are **not refunded**. You paid for the marketplace's time and the owner's floor space, and you got both. That is the honest cost of a listing that asked for too much.
 
 ## Linking Auction Houses
 
-Auction houses owned by different players can be **linked together** by a [master skill](/docs/mechanics/master/#skill-trade-agreement), if all players agree, allowing shared listings across multiple locations. This creates a broader marketplace and improves accessibility for buyers.
+Auction houses belonging to different players can be **linked** using the
+[Trade Agreement](/docs/mechanics/master/#skill-trade-agreement) master skill, provided every owner involved agrees.
+Linked houses share their listings, turning a handful of local shops into one broad marketplace and making goods far easier to find - for buyers and sellers alike.
 
-When a player wins an auction, they can choose to **pay a delivery fee** to have the item sent via **postal service** from the linked auction house. If they refuse to pay, the item remains on hold for **up to 10 days**.[^realtime-days] If the player still does not claim it, the item is returned to the original seller, who **keeps the payment from the unclaimed purchase**.
-
-[^realtime-days]: All durations given in days refer to real-time days, not in-game [Bestia days](/docs/mechanics/environment#in-game-time).
+Winning an auction at a linked house leaves the buyer a choice: **pay a delivery fee** and have the item posted over by
+the [postal system](#postal-system), or travel and fetch it. Unclaimed items are held for **up to 10 days**. After that
+the item goes back to the original seller, who **keeps the payment** — so it is worth remembering where you bought
+something.

@@ -1,12 +1,13 @@
 <!-- attacklist.html: Outer structure and search bar for the attack list -->
 <div class="input-group mb-3">
-  <span class="input-group-text" id="basic-addon1"><svg xmlns="http://www.w3.org/2000/svg" height="24px"
+  <span class="input-group-text" id="attack-search-addon"><svg xmlns="http://www.w3.org/2000/svg" height="24px"
       viewBox="0 -960 960 960" width="24px" fill="#1f1f1f">
       <path
         d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z" />
     </svg></span>
-  <input type="text" class="form-control" placeholder="Attack Name" aria-label="Attack Name"
-    aria-describedby="basic-addon1" onkeyup="filterAttacks(this.value)">
+  <input type="text" class="form-control" id="attack-search" placeholder="Attack Name" aria-label="Attack Name"
+    aria-describedby="attack-search-addon" onkeyup="filterAttacks(this.value)">
+  <button class="btn btn-outline-secondary" type="button" id="attack-search-clear" title="Show all attacks">Clear</button>
 </div>
 <div class="row row-cols-1 row-cols-lg-2 g-4 mb-4" id="attack-list-container">
   {{ .Inner }}
@@ -14,14 +15,37 @@
 <script>
   function filterAttacks(query) {
     const cards = document.querySelectorAll('#attack-list-container .col');
-    query = query.toLowerCase();
+    query = query.toLowerCase().trim();
     cards.forEach(card => {
       const title = card.querySelector('.card-title');
-      if (title && title.textContent.toLowerCase().includes(query)) {
-        card.style.display = '';
-      } else {
-        card.style.display = 'none';
-      }
+      card.style.display = (title && title.textContent.toLowerCase().includes(query)) ? '' : 'none';
     });
   }
+
+  (function () {
+    const input = document.getElementById('attack-search');
+    const clearBtn = document.getElementById('attack-search-clear');
+
+    // Deep links such as /docs/mechanics/attack-list/#tackle narrow the list down to the
+    // linked attack instead of only scrolling to it.
+    function applyHashFilter() {
+      const id = decodeURIComponent(location.hash.replace(/^#/, ''));
+      if (!id) return;
+      const card = document.getElementById(id);
+      if (!card || !card.closest('#attack-list-container')) return;
+      input.value = id.replace(/-/g, ' ');
+      filterAttacks(input.value);
+      card.scrollIntoView({ block: 'center' });
+    }
+
+    clearBtn.addEventListener('click', function () {
+      input.value = '';
+      filterAttacks('');
+      if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+      input.focus();
+    });
+
+    window.addEventListener('hashchange', applyHashFilter);
+    applyHashFilter();
+  })();
 </script>

@@ -1,6 +1,7 @@
 ---
 title: Bestia Master
 weight: 200
+description: Overview of the Bestia Master, their origin and skill system, including skill trees, progression from novice to master, and profession design guidelines.
 ---
 
 The small intro game tells players how they became a Bestia Master: They came into direct contact with an ephemeral mana crystal that changed their nature through magic and connected them to the mana flows of the universe. They are therefore receptive to the influence of mana and are able to communicate with the beings that emerge from this mythical energy: **the Bestia**.
@@ -117,7 +118,7 @@ graph TD
 {{< /skill >}}
 
 {{< skill name="Master Ritual" maxLevel="1" requires="Basic Skill Lv. 7">}}
-Automatically enabled once Lv. 7 in Basic Skill is reached. Can only be used as long as you are a Novice. Converts 25 [Void Essence](item-list/#void-essence), 5 [Mana Dust](item-list/#mana-dust) and 3 [Clay](item-list#clay) into a [Seal of Mastery](item-list#seal-of-mastery).
+Automatically enabled once Lv. 7 in Basic Skill is reached. Can only be used as long as you are a Novice. Converts 25 [Void Essence](/docs/mechanics/item-list/#void-essence), 5 [Mana Dust](/docs/mechanics/item-list/#mana-dust) and 3 [Clay](/docs/mechanics/item-list/#clay) into a [Seal of Mastery](/docs/mechanics/item-list/#seal-of-mastery).
 {{< /skill >}}
 
 ## Craftsman Tree
@@ -178,7 +179,7 @@ You are very skilled in working with tools and raw material. Building structures
 {{< /skill >}}
 
 {{< skill name="Item Customization" requires="Carpentry Lv. 3" maxLevel="10" >}}
-You are able to rework items to put slots in them in which runes can be slottet.<br>Requires an [Engraving Set](item-list/#engraving-set) which will be consumed in the process.
+You are able to rework items to put slots in them in which runes can be slottet.<br>Requires an [Engraving Set](/docs/mechanics/item-list/#engraving-set) which will be consumed in the process.
 {{< /skill >}}
 
 ### Blacksmith
@@ -942,7 +943,7 @@ Applies to the next spell cast by the target ally within `30s`.
 {{< /skill >}}
 
 {{< skill name="Aqua Benedicta" maxLevel="1" requires="Cure Lv. 1"
-    description="The rite of blessing plain water into [Holy Water](item-list/#holy-water). User must be standing in water, consuming an [Empty Bottle]('item-list/#empty-bottle) in the process. Holy Water is the reagent behind Aspersio and several higher rites." >}}
+    description="The rite of blessing plain water into [Holy Water](/docs/mechanics/item-list/#holy-water). User must be standing in water, consuming an [Empty Bottle](/docs/mechanics/item-list/#empty-bottle) in the process. Holy Water is the reagent behind Aspersio and several higher rites." >}}
 {{< /skill >}}
 
 {{< skill name="Blessing" maxLevel="10" requires="Heal Lv. 3"
@@ -1062,7 +1063,7 @@ Higher levels extend how long the veil holds.
 {{< /skill >}}
 
 {{< skill name="Aspersio" maxLevel="3" requires="Aqua Benedicta Lv. 2 and Mace Mastery Lv. 2"
-    description="Anoints a weapon with Holy Water, temporarily imbuing its strikes with the holy element. Consumes a unit of [Holy Water](item-list/#holy-water) per cast." >}}
+    description="Anoints a weapon with Holy Water, temporarily imbuing its strikes with the holy element. Consumes a unit of [Holy Water](/docs/mechanics/item-list/#holy-water) per cast." >}}
 Higher levels extend the duration and allow higher-grade Holy Water to be used for a stronger imbue
 {{< /skill >}}
 

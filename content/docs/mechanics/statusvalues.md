@@ -1,7 +1,7 @@
 ---
 weight: 100
 title: Status Values
-description: Overview of the status values and derived stati.
+description: Overview of the status values and derived properties.
 ---
 
 The **status value** (e.g. INT or STR) is the fundamental number from which all in-game calculations are performed. It is built from three underlying value types, with a fourth category of values derived on top of it:

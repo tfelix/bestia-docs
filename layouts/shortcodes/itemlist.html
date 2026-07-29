@@ -5,8 +5,9 @@
       <path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z" />
     </svg>
   </span>
-  <input type="text" class="form-control" placeholder="Item Name" aria-label="Item Name"
+  <input type="text" class="form-control" id="item-search" placeholder="Item Name" aria-label="Item Name"
     aria-describedby="item-search-addon" onkeyup="filterItems(this.value)">
+  <button class="btn btn-outline-secondary" type="button" id="item-search-clear" title="Show all items">Clear</button>
 </div>
 
 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mb-4" id="item-list-container">
@@ -16,14 +17,37 @@
 <script>
   function filterItems(query) {
     const cards = document.querySelectorAll('#item-list-container .col');
-    query = query.toLowerCase();
+    query = query.toLowerCase().trim();
     cards.forEach(card => {
       const title = card.querySelector('.card-title');
-      if (title && title.textContent.toLowerCase().includes(query)) {
-        card.style.display = '';
-      } else {
-        card.style.display = 'none';
-      }
+      card.style.display = (title && title.textContent.toLowerCase().includes(query)) ? '' : 'none';
     });
   }
+
+  (function () {
+    const input = document.getElementById('item-search');
+    const clearBtn = document.getElementById('item-search-clear');
+
+    // Deep links such as /docs/mechanics/item-list/#void-essence narrow the list down to
+    // the linked item instead of only scrolling to it, so a single item is easy to read.
+    function applyHashFilter() {
+      const id = decodeURIComponent(location.hash.replace(/^#/, ''));
+      if (!id) return;
+      const card = document.getElementById(id);
+      if (!card || !card.closest('#item-list-container')) return;
+      input.value = id.replace(/-/g, ' ');
+      filterItems(input.value);
+      card.scrollIntoView({ block: 'center' });
+    }
+
+    clearBtn.addEventListener('click', function () {
+      input.value = '';
+      filterItems('');
+      if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+      input.focus();
+    });
+
+    window.addEventListener('hashchange', applyHashFilter);
+    applyHashFilter();
+  })();
 </script>

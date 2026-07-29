@@ -184,4 +184,41 @@ A sliver of ice that never melts. Loaded into a blueprint to give a craft the fr
 Proof of a Novice's transformation. Forged in the Master Ritual to ascend to a true Bestia Master.
 {{< /item >}}
 
+{{< item name="Empty Bottle" weight="0.2" type="Etc" >}}
+A plain, corked glass bottle. The vessel behind every potion, tonic and blessed draught - alchemists and priests alike never carry enough of them.
+{{< /item >}}
+
+{{< item name="Holy Water" weight="0.3" type="Etc" >}}
+Plain water blessed in the rite of Aqua Benedicta. The reagent behind Aspersio and several higher rites.
+{{< /item >}}
+
+{{< item name="Engraving Set" weight="3" type="Etc" >}}
+A roll of fine chisels, needles and etching stylae. Consumed when reworking an item to cut rune slots into it.
+{{< /item >}}
+
+{{< item name="Breeder" weight="60" type="Etc" >}}
+A warded pen where a pair of Bestia can be left together to produce an egg. Holds exactly one male and one female at a time.
+Use it to construct it in the world.
+{{< /item >}}
+
+{{< item name="Bestia Trap" weight="1.5" type="Usable" >}}
+The entry-level Magic Bestia Trap, woven from mana dust and cheap wards. Reliable against young Bestia and hopeless against anything grown.
+Base catch chance `+60%` against Bestia up to Lv. 20.
+{{< /item >}}
+
+{{< item name="Super Trap" weight="1.5" type="Usable" >}}
+A reinforced Magic Bestia Trap with a second layer of binding wards. The workhorse of most Foresters.
+Base catch chance `+100%` against Bestia up to Lv. 20.
+{{< /item >}}
+
+{{< item name="Mega Trap" weight="2" type="Usable" >}}
+A Magic Bestia Trap built around a caged mana crystal. Expensive enough that most masters save them for something worth keeping.
+Base catch chance `+140%` against Bestia up to Lv. 20.
+{{< /item >}}
+
+{{< item name="Master Trap" weight="2" type="Usable" >}}
+The finest Magic Bestia Trap a Craftsman can produce. The only trap with any real hope against a Bestia past Lv. 100.
+Base catch chance `+180%` against Bestia up to Lv. 20.
+{{< /item >}}
+
 {{< /itemlist >}}
