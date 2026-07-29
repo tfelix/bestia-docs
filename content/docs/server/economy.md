@@ -1,8 +1,10 @@
 ---
 weight: 550
 title: Economy Simulation
-description: "How the server keeps the player-driven economy stable: the World Treasury Director, the NPC gold pool, the conservation invariant, sinks and faucets, and how NPC payouts are budgeted."
+description: "Design document for an NPC-side economy — the World Treasury Director, the NPC gold pool, and the conservation invariant. Not yet implemented in zone-server."
 ---
+
+{{< alert context="warning" text="This page is a design document, not a description of running code. There is no shop, trade, currency or 'World Treasury Director' implementation anywhere in zone-server today — search the codebase and the only 'market'/'gold' code you'll find is an unrelated GOAP-planner test scenario. It's kept because the design below is sound and should guide a future implementation." />}}
 
 Bestia's economy is [entirely player-driven](/docs/mechanics/economy-trade/): players find the gold, mint the coins and
 set the prices. That works right up to the point where **NPCs** start handing out money — quest rewards, purchases,

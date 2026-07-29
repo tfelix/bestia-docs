@@ -1,8 +1,10 @@
 ---
 weight: 500
 title: Questing
-description: "Summary of Bestia's questing system, including dynamic quest generation, player-created quests, templates, rewards, and narrative mechanics."
+description: "Design document for Bestia's quest system — dynamic quest generation, player-created quests, templates and rewards. Not yet implemented in zone-server."
 ---
+
+{{< alert context="warning" text="This page is a design document, not a description of running code. There is no quest, contract or commission implementation anywhere in zone-server today — no Quest entity, component, or handler exists. It's kept because the design work below is sound and should guide a future implementation, not because any of it currently runs." />}}
 
 The game will be more or less an Open World game. But the declared goal will be to try out new ways of storytelling in
 order to present a credible world with developing history to the players. You have to say goodbye to the idea that every
@@ -82,8 +84,8 @@ The reward itself can be paid in items or in gold.
 
 # References
 
-* https://www.rockpapershotgun.com/2016/09/02/how-to-procedurally-generate-culture/
-* http://www.gdcvault.com/play/1024143/Procedural-Narrative
-* http://pcg.wikidot.com/pcg-algorithm:procedural-puzzles-and-plot-generation
-* http://ieeexplore.ieee.org/abstract/document/5740836/
-* https://nil.cs.uno.edu/projects/glaive/
+* <https://www.rockpapershotgun.com/2016/09/02/how-to-procedurally-generate-culture/>
+* <http://www.gdcvault.com/play/1024143/Procedural-Narrative>
+* <http://pcg.wikidot.com/pcg-algorithm:procedural-puzzles-and-plot-generation>
+* <http://ieeexplore.ieee.org/abstract/document/5740836/>
+* <https://nil.cs.uno.edu/projects/glaive/>

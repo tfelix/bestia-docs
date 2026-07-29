@@ -1,315 +1,156 @@
 ---
 weight: 600
 title: World Generation
-description: "Summary of Bestia's world generation system, including algorithms, noise maps, terrain features, biomes, settlements, and navigation maps."
+description: The worldgen pipeline that builds Bestia's terrain — plate tectonics through settlements — how it's wired into zone-server's boot, and how chunks stream to clients.
 ---
 
-Bestia integrates a specialized library called **WorldGen** for world creation. It is a clusterable generator which is cabable of dividing the world creation workload onto multiple, different machines. With this framework it should be possible to create million of square kilometers without hitting any memory limit on the servers during the creation process.
+World generation lives in its own Gradle module, `worldgen/` — a pure-function pipeline over data,
+with no Spring, no JPA, and no I/O (the one exception, `viewer/`, is dev tooling for inspecting a
+generated world, not part of the running server). `zone-server` links it and owns the one thing
+`worldgen` deliberately doesn't: a running world with a database row and a socket to serve it over.
 
-In general it works by creating piplines which are then used to create and transform noise maps. After the noise was modified and generated the map data is created and saved to the Bestia database in chunks via the **Voxel** module.
+The module has its own deep design document, `worldgen-architecture.md`, at the root of the
+`bestia-behemoth` repo — written as a design spec with an implementation-status ledger kept
+alongside it rather than folded in. This page is the docs-site summary; that file is the
+authoritative source for anyone extending the pipeline itself.
 
-# World Generation Algorithm
+# Implementation status
 
-There is basically a pipeline in order to generate the Bestia map, these steps are listed here and described below:
+Most of the pipeline is real and running. What isn't:
 
-1. Setup of Base Parameters
-2. Creating of noise maps based on base parameters
-   1. Height Map
-   2. Humidity Map
-   3. Temperature Map
-   4. Mana Map
-   5. Population Map
-3. Sealevel
-4. Erosion Simulation
-5. Creating Rivers and Lakes
-6. Biome Setup
-7. Terrain Features
-8. Resource Distribution
-9. Settlement Creation
-10. Navigation Map Creation
-11. Road Generation
+| Stage | Status |
+| --- | --- |
+| Tectonics, climate, erosion, hydrology, biomes, glacial features | **Implemented** |
+| Resources, habitability, settlements, roads | **Implemented** |
+| Town layout & buildings (streets, lots, zoning, structures) | **Not started** |
+| Economy & NPC distribution | **Not started** |
+| History/story simulation | **Not started** |
+| Chunk materialization, streaming to clients, delta+bake persistence | **Implemented** |
 
-# Base Parameter
+Town layout, economy, and history are deliberately deferred as one unit: buildings need zoning,
+zoning needs an economy, and the economy's shape comes out of simulated history — building any one
+without the other two means inventing throwaway placeholders for them.
 
-The following base parameters are used to generate the map:
+This corrects the previous version of this page, which described resource distribution as "not
+implemented" (it is: `resource/ResourceStage.kt`) and proposed a Neo4j-backed navigation graph for
+NPC pathing. There is no graph database anywhere in the codebase — NPC pathing is a separate,
+unrelated stack (`zone-server/.../navigation/`, a 2.5D `NavGrid` + `AStarPathfinder`), and it isn't
+even wired to the terrain described here yet; `worldgen`'s own `derived/WalkableTile` structures are
+what a future pathing system should query instead.
 
-* Total Population {{< katex >}}P{{< /katex >}}
-* World Size {{< katex >}}W{{< /katex >}} (Depends on expected player count)
-* Count of Settlements {{< katex >}}C{{< /katex >}}
-* Seed Value {{< katex >}}S{{< /katex >}}
-* Maximum Terrain Height {{< katex >}}h{{< /katex >}}
-* Seelevel (Normalnull) {{< katex >}}N{{< /katex >}}
+# The pipeline
 
-The base parameter are generated randomly based on the expected active player count. They are persisted in the database together with some additional map parameters like creation date or name of the world (to keep some kind of history record).
-
-# Noise Maps
-
-The following noise maps are created by the help of [OpenSimplexNoise](https://de.wikipedia.org/wiki/Simplex_Noise) and saved in a shared data storage temporarly until world map generation is finished. In order to save memory its advisable to delete this maps as soon as possible.
-
-Depending on the case the resolution of the heightmaps might be differnt in order to be as memory efficient as possible.
-
-## Height Map
-
-The heightmap {{< katex >}}M_h{{< /katex >}} consists of multiple high and low resolution maps which are added and then normalized to a value between 0-1. The lower resolution should have a frequency of about 2-5m. The highest resolution should have a frequency of roughly 4-5km, to give a sense of a "big" world. Consider maybe 2-3 resolutions in between which a decrease in amplitude.
-
-After the heightmap is created we redistribute the noise values by:
-
-{{< katex display >}}
-height_1 = M_{h}^{2.1}
-{{< /katex >}}
-
-This will push valleys further down and increase the hill heights. After this we will renormalize the values again between 0-1.
-
-To calculate the final hight multiply this hight with the maximum map height.
-
-{{< katex display >}}
-height = norm(height) \cdot h
-{{< /katex >}}
-
-> Heightmap resolution is 1m.
-
-In general the map should make the illusion to "wrap" arround, this can possibly archived by pushing everything on the sides under water, or to use a coordinate transform so the the map is actually wrapping around the borders. Which possibility is used for Bestia is not yet decided. As a hint, good shaping function can be done by:
-
-```
-e = lower(d) + e * (upper(d) - lower(d))
+```mermaid
+graph LR
+  T[tectonics] --> C[climate]
+  C --> E[erosion]
+  E --> G[glacial]
+  E --> H[hydrology]
+  H --> B[biomes]
+  B --> R[resources]
+  R --> HA[habitability]
+  HA --> S[settlements]
 ```
 
-Where `d` is the distance to the center of the map.
+Every stage is a pure function `f(seed, region, upstream layers) → layer data`, declaring exactly
+what it reads (`Stage.dependencies`) and produces (`Stage.outputs`). `WorldGenPipeline` topologically
+sorts the stage list, computes a version vector per stage (its own version folded with every
+upstream version — so tuning erosion invalidates erosion-and-downstream but leaves tectonics, the
+expensive part, untouched), and — for tests and tooling — verifies a stage never emits a layer or
+feature kind it didn't declare.
 
-### Ridged Noise
+| Stage | Emits | Notable code |
+| --- | --- | --- |
+| Tectonics | Elevation, plate id, rock hardness, crust age + fault lines | `geo/TectonicsStage.kt`, `geo/Plates.kt` |
+| Climate | Temperature, precipitation (orographic), distance to ocean | `climate/ClimateStage.kt`, `climate/Winds.kt` |
+| Erosion | Elevation, sediment (stream-power + thermal relaxation) | `geo/ErosionStage.kt` |
+| Glacial | Ice thickness + troughs, fjords, cirques, moraines | `geo/GlacialStage.kt` |
+| Hydrology | Flow direction/accumulation, discharge, lakes + river channels | `hydro/FlowRouting.kt`, `hydro/Lakes.kt`, `hydro/RiverNetwork.kt` |
+| Biomes | Biome classification, soil fertility/depth | `bio/BiomeStage.kt` |
+| Resources | Fourteen resource types (ore, coal, salt, placer gold, ...) | `resource/ResourceStage.kt`, `resource/Deposits.kt` |
+| Habitability | A weighted suitability score per culture | `civ/HabitabilityStage.kt`, `civ/Terms.kt` |
+| Settlements | Settlement placement + a pruned road network | `civ/SettlementStage.kt`, `civ/RouteFinder.kt` |
 
-For better initial mountains a special function can be sued which is described as:
+# Three representations, not two
 
+The design's central idea, and the reason the pipeline isn't just a stack of noise maps: anything
+narrower than ~3 coarse cells (river channels, glacial troughs, roads, coastlines) can't survive
+being represented on a ~1 km raster grid without losing the shape that makes it recognizable. So the
+world is stored as three complementary things:
+
+- **Raster fields** — elevation, temperature, biome, soil: dense arrays, ~1 km cells, immutable
+  after world creation.
+- **Vector features** — rivers, troughs, roads, faults, settlement footprints: polylines/points with
+  per-station attributes, resolution-independent, spatially indexed.
+- **Voxel chunks** — the actual materialized blocks a client sees: 32×32×256, generated on demand.
+
+A voxel carries a **material and an occupancy fraction** (0–255), not just a material — a surface at
+40.3 m is genuinely 30% of the voxel spanning 40–41 m, and the client's Surface Nets mesher (see
+[World & Terrain](/docs/client/world-terrain)) reconstructs that height to a fraction of a
+centimetre rather than snapping to the nearest whole voxel.
+
+# World size, wrapping, and scale
+
+Genesis (the server's first/default world) is 128 km across, generated in well under a second —
+terrain is a pure function of seed + config, so it's **regenerated at boot, not stored**; only what
+players change is persisted. `WorldConfig.detailScale` compensates for a genuinely small world:
+features like rivers and glacial troughs are gated on absolute size (a river needs real catchment
+area before it cuts a channel), so a small world scaled 1:1 against the pipeline's tuning constants
+comes out as a plain with a stream on it. `detailScale` divides length/area thresholds so a small
+world still earns its features — deliberately unphysical, and computed fresh from the config every
+time rather than stored, since a stored value goes stale the moment a world's dimensions change.
+
+The world wraps on X by default. Wrapping Y (north-south) is trickier — temperature derives from a
+linear latitude ramp, so a Y-wrap walks one pole into the other — but Genesis turns it on anyway
+(`zone-server`'s `worldgen.wrap-y`) because the alternative is a hard wall a player can walk into.
+Both seams are hidden inside a fixed 2.5 km underwater ocean margin forced around all four edges
+(`geo/OceanBorder.kt`), wider than any client's view distance.
+
+# Chunk materialization and streaming
+
+At request time (`core/ChunkHeightSampler.kt` → `voxel/ChunkMaterializer.kt`): sample the base
+raster, apply any vector feature profiles (river channels, trough cross-sections, settlement
+grading) in priority order, then stratify into voxels using rock hardness and soil depth. Player
+edits are a sparse delta on top (`derived/ChunkDelta.kt`); a chunk read is always
+`base ⊕ delta` (`store/ChunkStore.merged()`) — there's no API that hands out an unmerged base,
+because the server needs its own merged view for anything it's authoritative over (line of sight,
+movement validation) and a client-authoritative alternative is the single most exploited class of
+bug in multiplayer voxel games.
+
+Heavily-edited chunks get **baked**: past ~30% of the chunk edited (or a raw delta bigger than the
+merged, RLE-encoded chunk), the merged result becomes the new base and the delta is dropped — so
+heavily-built areas get *cheaper* to serve, not more expensive, and baking doubles as the migration
+path when the pipeline version changes (bake everything with a delta, then ship the new version;
+untouched chunks just regenerate against it).
+
+`world/stream/` on the zone-server side owns the running world's one `ChunkStore` and streams merged
+RLE chunks to clients over dedicated `bnet-messages` (see [Networking](/docs/server/networking)):
+a `ChunkManifestSMSG` announces `(position, revision)` pairs for a player's view volume, the client
+asks only for what it doesn't already hold, and edits travel afterward as small `ChunkPatchSMSG`
+diffs fanned out to that chunk's subscribers. Base-plus-delta (sending only a hash plus the edit list
+for an untouched chunk, rather than the full terrain) is designed for but deliberately deferred — it
+requires the client to regenerate bit-identical base terrain, and the Godot client is C#, exactly the
+"different floating-point path" case that makes that dangerous without real bandwidth numbers to
+justify it first.
+
+Alongside the voxels, `derived/` maintains cheap, incrementally-updated structures so hot paths never
+touch raw voxels: `WalkableTile` (per-column walkable surface spans for a given agent profile) and
+`OpacityGrid` (a downsampled, occupancy-weighted occlusion grid for line-of-sight). Both are kept
+fresh on every edit via a per-tick rebuild budget (`DerivedStore`, drained by `ChunkStreamSystem`) —
+but nothing queries them yet; movement, line-of-sight and pathing are still separate, unconnected
+code today.
+
+# Tooling
+
+The `worldgen` module ships its own offline tooling, useful when debugging generation issues
+independently of a running server:
+
+```text
+./gradlew :worldgen:viewer -Pgenesis        # interactive layer/feature inspector, on the server's actual world
+./gradlew :worldgen:viewerExport -Pout=...  # same, rendered to PNGs (works over SSH/CI)
+./gradlew :worldgen:invariants -Pseeds=200  # seed-sweep regression harness against generation invariants
+./gradlew :worldgen:probe -Pchannels=1      # inspect a single small window at voxel resolution as text
 ```
-function ridgenoise(nx, ny) {
-  return 2 * (0.5 - abs(0.5 - noise(nx, ny)));
-}
-```
 
-We can vary the amplitudes of the higher frequencies so that only the mountains get the added noise:
-
-```
-e0 =    1 * ridgenoise(1 * nx, 1 * ny);
-e1 =  0.5 * ridgenoise(2 * nx, 2 * ny) * e0;
-e2 = 0.25 * ridgenoise(4 * nx, 4 * ny) * (e0+e1);
-e = e0 + e1 + e2;
-elevation[y][x] = Math.pow(e, exponent);
-```
-
-## Humidity Map
-
-The humidity map {{< katex >}}M_{hum}{{< /katex >}} represents the total annual rainfall between 0-1. The more the humidity is the more snow or rain fall is to be expected (depending on the temperature).
-
-The humidity map is saved in a reduced resolution for later reference for the dynamic environment simulation.
-
-It slightly reduces the humidity based on the height of the terrain like so:
-
-{{< katex display >}}
-hum = M_{hum} - 0.4 \cdot M_h
-{{< /katex >}}
-
-> Humidity resolution 100m.
-
-## Temperature Map
-
-The temperature map {{< katex >}}M_t{{< /katex >}} represents the annual average temperature between 0-1.
-We assume a desired temperature range of -40 to 40 degree. This is shifted of about +/- 10 degrees randomly upon world creation.
-
-As our temperature map initially holds values between 0-1 the conversion is done like:
-
-{{< katex display >}}
-t = M_t \cdot 80 - 40
-{{< /katex >}}
-
-The temperature is just created as the other maps but then a gradient is added which will increase the temperature towards the middle (equator) of the map by 130% and drop down to top and bottom to 30% of the original value. An example gradient is shown below:
-
-![Example temperature gradient](/gradient.png)
-
-It reduces the temperature the higher the hightmap value is down to a value of 10% by the formula:
-
-{{< katex display >}}
-t = M_t - 0.9 \cdot M_h
-{{< /katex >}}
-
-> Temperature resolution 100m.
-
-## Mana Map
-
-The mana distribution {{< katex >}}M_m{{< /katex >}} is a normal noise map without any changes. Its done in two passes, a high frequency and also a low frequency pass. This allows us a rapid alteration in a smaller area while we still have big areas with just a higher mana concentration then others.
-
-> Mana resolution 10m.
-
-## Population Map
-
-The population distribution {{< katex >}}M_p{{< /katex >}} is a normal noise map without any changes. But is later heavily modified by influence maps.
-
-> Population resolution 100m.
-
-# Sealevel
-
-The sealevel should chosen that oceans vs landmass ratio is about 20:80. This could be calculated but for now we just assume a fixed height value. Every terrain below is covered by water, the rest is landmass.
-
-# Erosion Simulation
-
-Its loosly based on the [SIGGRAPH 2017](https://www.youtube.com/watch?v=9NXL48-Fbb8&t=1009s) talk. In short random events a placed on the map like a water droplet. This droplet follows the slope downwards a hill and is able to pickup material. If it has reached its maximum carry capacity it starts to deposit a certain material amount again. A good explanation is found in [Coding Adventures: Hydraulic Erosion](https://www.youtube.com/watch?v=eaXk97ujbPQ).
-
-# Creating Rivers and Lakes
-
-Water always flows downhill. In order to simulate the water flow random sources of water are placed at elevated points in the map and then the water flow is simulated down the slope of the terrain.
-
-The creation algorithm works as follows:
-
-1. Decide if a chunk has a spring
-2. Detect the spring source
-
-The base probability if a chunk has a spring is given by:
-
-| Avg. Height [m] | P          |
-| --------------- | ---------- |
-| h < 100         | impossible |
-| 100 < h < 1000  | 0.2        |
-| 1000 < h < 1500 | 0.3        |
-| 1500 < h < 2000 | 0.1        |
-| 2000 < h        | impossible |
-
-The average humidity on the map influences the probability P like:
-
-{{< katex display >}}
-P_{total} = (0.6 * hum_{avg} - 0.3) + P_{base}
-{{< /katex >}}
-
-In order to find the coordiante of a water sources on a map and their probability distribution, the map is sampled at a resolution of 10m and theprobability P of a coordiante is given by:
-
-* P increases at heights above NN max is 0.6 and then decreases above
-* P increases with humidity above 0.5 - 1.0 from 1.0 to 3.0
-
-{{< katex display >}}
-\begin{aligned}
-P_h &= height(x, y) / 0.6\\
-P_{droplet} &= M_t - 0.9 \cdot M_h
-\end{aligned}
-{{< /katex >}}
-
-After these are placed a water stream is simulated flowing from the source down the slopes. In this is an iterative process. The source will spill out a certain amount of water to the tile. In every step a bit water evaporates depending on the surrounding temperature. The simulation is repeated until there is no significant change in waterlevel and it reaches an equilibrium. If the water floats out at the border it is buffered and in a next run it is exchanged with the border tiles. This is again done until there is no significant change anymore and equilibriunm reached.
-
-# Biome Setup
-
-> Note: For the biome calculation you need to calculate the ranges from the given absolute value in the noise map space.
-
-| Biome        | Height [m]     | Temp. [°C]   | Hum.        | Special |
-| ------------ | -------------- | ------------ | ----------- | ------- |
-| ICE_DESERT   | 0 - &infin;    | -&infin; - 0 | 0 - &infin; |         |
-| DESERT       | 0 - &infin;    | 30 - &infin; | 0 - 0.1     |         |
-| DRY_FOREST   | 50 - 1200      | 10 - 30      | 0.3 - 0.5   |         |
-| MOIST_FOREST | 50 - 1200      | 10 - 30      | 0.5 - 0.8   |         |
-| RAIN_FOREST  | 50 - 1200      | 20 - 40      | 0.8 - 1.0   |         |
-| MOUNTAIN     | 1500 - &infin; | -            | -           |         |
-
-# Terrain Features
-
-After the Biomes are placed and the heightmap is finalized by erosion simulation there are predefined features placed on the maps. This can be old temples, caves or other quest relevant artifacts for player interaction.
-
-Usually these kind of features are depending on the kind of biome. For example a forrest biome would then run through the tree entity creation. This entities are stored in a database right when they are created via a entity blueprint.
-
-| Biome        | Possible Features                               | Influence               |
-| ------------ | ----------------------------------------------- | ----------------------- |
-| ICE_DESERT   | Caverns, Ruins                                  | +40% mineral resources  |
-| MOUNTAIN     | Caverns, Artefacts                              | +100% mineral resources |
-| DRY_FORREST  | Caverns, Ruins, Artefacts, Deserted Settlements |                         |
-| MOIST_FOREST | Caverns, Ruins, Artefacts, Deserted Settlements |                         |
-| RAIN_FOREST  | Caverns, Ruins, Artefacts, Deserted Settlements |                         |
-
-# Resource Distribution
-
-> Currently the resource distribution is not implemented.
-
-# Settlement Creation
-
-Cities usually form around natural resources like shores, rivers or rich farmland. The algorithm as described below will find suitable city position candidates and then distribute the cities in clusters around the world map. This clustering will make sure there is enough unexplored land for the players left to explore (and to create own settlements). It should also help with the idea of different civilization which could lead to ingame player conflicts.
-
-The algorithm searches the world map and creates matrix with a mesh length of 1km. It will then calculate the chance of a settlement in this grid by taking this into account:
-
-* Resource Availability
-  * Farmland
-  * Minerals
-  * Fishing Grounds
-* Distance to river or sea
-* Biome type
-
-For certain events the possibility of a settlement is reduced to zero:
-
-* Land is water
-* Biome is a mountain
-* Mana influence is too high
-
-
-Bei allen verbleibenden Punkten muss überprüft werden ob es sich um ein lokales Maximum handelt. Diese Punkte werden zusammen mit ihrer Gewichtung in eine sortierte Liste aufgenommen. Dabei kann ein wandernder Durchschnitt berechnet werden und Werte unterhalb eines gewissen Schwellwertes verworfen werden.
-
-Koordinaten die dann zu nahe beieinander liegen (< 3-6km) werden aus der Liste entfernt.
-
-Anhand der Punkte auf der Liste werden die Siedlungen berechnet. Zu 70% wird eine Stadt aus der oberen Hälfte der Liste der Reihe nach entnommen. Zu 30% wird eine Siedlung zufällig aus einem Kandidaten der unteren Listenhälfte entnommen bis die Anzahl der gewünschten Siedlungen erreicht ist oder die Liste erschöpft ist. Sollte ein Listenteil erschöpft sein, so wird jeweils vom anderen Listenteil mit dem gleichen Muster vorgegangen.
-
-The algorithm for settlement creation is:
-
-1. Determine building count based on settlement population
-2. Buildings are places by poisson disc distribution and gauss distribution
-3. The buildings itself a procedural generated with [recusive division](https://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_division_method)
-
-# Navigation Map Creation
-
-The navigation map is created for NPC to fast calculate travel paths other long distances. It creates a connected graph network and the output is put into a [Neo4J database](https://neo4j.com/).
-
-* Add nodes for each city, artefact and places of interest (POI's)
-* Add a grid of 10 * 10 points and connect them to every next neighbour node (diagonal connections are allowed)
-* Weights of these connections is calculated
-
-The guidline for weight is 1 for a normal, easy to walk road. It gets higher for e.g. steeper terrain and if there is a slope between the points is more then its marked as climable.
-
-In order to detect climable terrain we follow the connection between the nodes and if the slope over a distance of 5m is higher than 45° it is marked as 'climb'. The weight for sloped terrain is:
-
-{{< katex display >}}
-weight_{total} = weight_{base} \cdot min(1.0, (slope - 15) \cdot \frac{4}{30})
-{{< /katex >}}
-
-For waterways the weight 1 for a calm and normal flowing river and increased based an water speed or obstructions.
-
-Example weights:
-
-* Normal road: 1
-* Grassland: 1.5
-* Rough Terrain: 2
-* Terrain with lots bushes/thorns: 4
-* Swamps: 8
-
-Additional data labels for the connections, to later help filter them for different use cases:
-
-* **Walk**: Connection can be traveled by food
-* **Drive**: Weagons can drive on this connection (e.g. roads)
-* **Swim**: Waterways connections are marked like this
-* **Climb**: Conneections with slopes higher then 45 degrees are marked like this
-
-> Its possible that downscaled graphs with pre-calculated connections must be made in order to speed up NPC navigation later on.
-
-## Road Creation
-
-After the settlements are created, depending on their population size and an estimated travel distance roads are procedurally generated. We loosly follow the approach presented in the Paper [Procedural Generation of Roads](https://www.researchgate.net/publication/229707505_Procedural_Generation_of_Roads).
-
-When the settlements are build connections to the next settlements are established and the shortest route is calculated like described in the paper. The voxel ground is then flattened and an apropriate material is assigned to the road.
-
-# World Data Cleanup
-
-Before a new world is created the old world data is deleted. The following procedure is made after all player entities are persisted and active entity simulation has stopped:
-
-1. Delete all voxel data
-2. Delete all navigation waypoint data
-3. Delete all non-player entity data
-
-# References
-
-* [www.redblobgames.com - Making maps with noise functions](https://www.redblobgames.com/maps/terrain-from-noise/) - Very detailed overview of heightmap generation techniques with sample code
-* [Generating terrain in Cuberite](http://mc-server.xoft.cz/docs/Generator.html#biome.grown) - Ideas on how to create biomes in an alternate way, also nice overview of noise functions
-* [Procedural Generation Resources](https://firespark.de/?id=article&article=ProceduralGenerationResources) - A nice collection of links regarding procedural generation for games
-* [Dwarf Fortress](https://en.wikipedia.org/wiki/Dwarf_Fortress) - In general a good inspiration on how the Bestia world generation quality should be
-* [Spherical Projections (Stereographic and Cylindrical)](http://paulbourke.net/geometry/transformationprojection/) - Background infos on spherical and zylindrical projections, useful for coordiante transformations
-* [Algorithms for Procedural Content Generation](http://pcg.wikidot.com/category-pcg-algorithms) - Another very good and big resource for PCG algorithms
-* [Better Mountain Generators That Aren't Perlin Noise or Erosion](https://www.youtube.com/watch?v=gsJHzBTPG0Y)
+`-Pgenesis` reads `zone-server`'s actual `worldgen:` configuration block rather than a demo config,
+so the tools inspect the real world the server would boot, not merely one with the same seed.

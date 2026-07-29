@@ -1,284 +1,113 @@
 ---
 weight: 400
 title: Battle System
-description: "Summary of Bestia's battle system, including attack flow, damage calculation formulas, modifiers, and equipment effects."
-draft: true
+description: How an attack resolves today — context building, skill strategies, and status effects — and which parts of the classic RO-style damage formula are still unimplemented stubs.
 ---
 
-The battle system is quite complex to allow almost any entity to get damaged in the game. Usually a battle context is established before damage calculation takes place and then used throughout the damage calculation. The attack outcome is then calculated with a strategy which is chosen depending on the type of attack used (melee, ranged or magic).
+This page replaces an older version that documented a full Ragnarök-Online-style damage formula
+(`BASE_ATK`, `HARD_DEF`, `CRIT_MOD`, ...) as if it were live. It isn't: the **pipeline** around
+combat is real and working, but the actual physical/magic damage formulas it's meant to plug into
+are, today, unimplemented stubs. This page describes what actually runs.
 
-Attacks can also be defined by a script alone and thus sidestepping the damage calculation completly to do script controlled effects (e.g. reduce enemy health by 50%).
-
-# Attack Pre-Check
-
-The stages of a battle are visualized in the following flow diagram, first a check is done to see if the attack actually was a hit.
+# The real flow
 
 ```mermaid
 graph TD
-  step1(Attacker knows Attack?)
-  step1 -->|No| abort((Abort))
-  step1 -->|Yes| step2[Calculate mana cost]
-  step2 --> step3(Has enough mana?)
-  step3 -->|No| abort
-  step3 --> |Yes| step4(Has Resources if required?)
-  step4 --> |No| abort
-  step4 --> |Yes| step5("Requires Line Of Sight (LOS)?")
-  step5 --> |Yes| step6[Calculate LOS, is it blocked?]
-  step6 --> |Yes| abort
-  step6 --> |No| attack((Perform attack))
-  step5 --> |No| attack
+  A["AttackEntityCMSG / ActivateSkillCMSG"] --> B{Which handler?}
+  B -->|basic attack, no skill| C[AttackEntityHandler]
+  B -->|skill| D[SkillExecutionService]
+  D --> E[BattleContextFactory]
+  E --> F[SkillStrategyFactory]
+  F --> G["SkillStrategy.doAttack(ctx)"]
+  G --> H["Damage result: HitDamage / CriticalHit / Heal / Buff / Miss"]
+  H --> I["Damage/Health ECS components + DamageEntitySMSG broadcast"]
 ```
 
-# Damage Calculation
+`SkillExecutionService.execute()` is the single chokepoint for every activated skill: it builds a
+`BattleContext` via `BattleContextFactory`, resolves a `SkillStrategy` for the skill's `SkillType`,
+checks range/line-of-sight (`strategy.isAttackPossible`), consumes mana, then applies whatever
+`Damage` the strategy returns — `HitDamage`/`CriticalHit` stage a `Damage` ECS component that
+`ReceivedDamageSystem` (order 50) drains into `Health` next tick (also handling death, interrupting
+casts, and combat-timeout tracking); `Heal` applies directly; `Buff` calls
+`StatusEffectService.applyEffect` instead of touching health at all.
 
-The damage calculation is roughly based on the system used by Ragnarök Online. In certain areas it is refined in order to better express the design philosophy of Bestia as well as be extensible. Modifier (MOD suffix) are float values representing percentage values (e.g. 0.25). Bonus mods are bigger than 1 (bonus 5% is 1.05) while reduction modifier are less than 1.
+`BattleContextFactory` builds real data from live ECS state — position, level, `StatusValues`,
+and `DefenseValues` (a genuinely implemented soft-defense formula, `VIT + STR/5 + AGI/5 + lvl/4` for
+physical, `INT + VIT/5 + DEX/5 + lvl/4` for magic, matching [Status Values](/docs/mechanics/statusvalues)).
+Two things it deliberately fakes today, called out inline in its own source: **every entity is
+`Element.NORMAL`** (no per-entity element component exists yet), and **every entity fights
+bare-handed** (`Weapon(atk = 0, matk = 0, upgradeLevel = 0)` — no equipment system feeds real weapon
+stats in yet).
 
-The damage at the end is rounded down but the damage is capped at 0. The calculation of the BASE_ATK is rather complex and is explained inside a own section. The parts written in pink are variables provided by bonuses from equips, stats, buffs etc.
+# Skill strategies, by type
 
-```kotlin
-val damage = floor(BASE_ATK * ATK_MOD * HARD_DEF_MOD * CRIT_MOD - SOFT_DEF)
-```
+`SkillStrategyFactory.getSkillStrategy(ctx)` dispatches on `SkillType`:
 
-## Value: BASE_ATK
+| `SkillType` | Strategy | Status |
+| --- | --- | --- |
+| `MELEE_PHYSICAL` / `RANGED_PHYSICAL` | `MeleePhysicalSkillStrategy` / `RangedPhysicalSkillStrategy`, both backed by `MeleePhysicalDamageCalculator` | **Not implemented** — `calculateDamage`, `getStatusAttack`, `getSoftDefense` and `getHardDefenseModifier` are all `TODO("Not yet implemented")`. A skill of this type throws if actually cast. |
+| `MAGIC` | — | `SkillStrategyFactory` itself hits `TODO()` for this branch; `MagicDamageCalculator` exists but is in the same unimplemented state as the physical one. |
+| `NO_DAMAGE` | Whatever `SkillScriptRegistry` resolves for the skill's `script` name | **This is what actually works today** — see below. |
+| `PASSIVE` | — | Always-on, never resolved through a strategy; activating one throws `IllegalStateException`. |
 
-The base attack represents the attack strength of an entity. This attack strength is based on the status values important to perform the attack as well as the properties of the currently equipped weapon. Equipment might also alter the status values by which the base attack is indirectly influenced.
+`BaseDamageCalculator` (the shared parent of the physical/magic calculators) still carries the
+original Ragnarök-derived formula as commented-out code — `BASE_ATK`, variance mod, element
+modifiers — with every real method replaced by a `TODO`. `ElementModifier` is a complete,
+standalone RO-style elemental multiplier table (10 elements × 4 levels), fully implemented and
+unit-testable, but currently unreachable: nothing calls it, since `assumedElement` is hardcoded to
+`NORMAL` and the calculator methods that would consult it are the same `TODO` stubs above.
 
-The base attack is capped at a minimum of 1. Default formula is:
+# What actually deals damage today
 
-```kotlin
-val BASE_ATK = (2 * STATUS_ATK * VAR_MOD + WEAPON_ATK * VAR_MOD_RED + SKILL_ATK + BONUS_ATK + AMMO_ATK) * ELEMENT_MOD * ELEMENT_BONUS_MOD
-```
+Two paths work:
 
-## Value: STATUS_ATK
+**Basic attack** (no skill — `AttackEntityCMSG`, `usedAttackId == 0`): handled directly by
+`AttackEntityHandler`, which is explicit in its own comment that this is a **"hacky test
+implementation"** — `Random.nextInt(1, 7)` damage, no range/line-of-sight check, no formula at all.
 
-The status attack value is determined by the capabilities of the character to attack and inflict damage. The formula is different for magic and physical based attacks.
-
-For **physical melee** attacks:
-
-```kotlin
-val STATUS_ATK = LV / 4 + STR + DEX / 5
-```
-
-For **physical ranged** attacks:
-
-```kotlin
-val STATUS_ATK = LV / 4 + DEX + STR / 5
-```
-
-For **magical attacks** (both melee and ranged):
-
-```kotlin
-val STATUS_ATK = LV / 4 + INT + WILL / 5
-```
-
-## Value: VAR_MOD
-
-Is a variable status modifier. The variance is reduced as the `DEX` value rises. It is defined as:
-
-```kotlin
-val VAR_MOD = 1 - RAND(1,0) * 0.15
-```
-
-## Value: WEAPON_ATK
-
-The weapon attack value for **physical** attacks is given by:
+**Script-based skills** (`SkillType.NO_DAMAGE`): each is a small `@Component` implementing
+`SkillStrategy` directly, resolved by name via `SkillScriptRegistry`. Only three exist today:
 
 ```kotlin
-val WEAPON_ATK = (BASE_ATK * QUALY_MOD + REFINE_BONUS) * SIZE_MOD * RACE_MOD * WEAPON_BONUS_MOD
-```
-
-Where as the `WEAPON_ATK` value for **magical** attacks is given by:
-
-```kotlin
-val WEAPON_ATK = (BASE_ATK * QUALY_MOD + REFINE_BONUS) * RACE_MOD
-```
-
-## Value: QUALY_MOD
-
-The QUALY_MOD is a modification depending of the durability of the weapon. The max quali damage mod should converge to +15% at maximum.
-
-From this rating the mod damage is calculated as follow
-
-```kotlin
-val QUALI_MOD = if(DURABILITY > 30) {
-  1.15
-} else {
-  1.15 - 0.15 + DURABILITY / 200
+// Firebolt.kt — a channelled single-target bolt (skills.yml id 5)
+private fun firebolt(ctx: EntityBattleContext): Damage {
+  val base = (attacker.level / 4 + attacker.statusValues.intelligence) * ctx.usedAttack.level
+  val matk = attacker.derivedStatusValues.matk + ctx.weapon.matk
+  val mitigated = base + matk - ctx.defender.defense.magicDefense
+  return HitDamage(mitigated.coerceAtLeast(1))
 }
 ```
 
-## Value: SIZE_MOD
+The other two are `Heal` (skill id 4, a similar small formula returning a `Heal` result) and
+`Blessing` (skill id 1, a `Buff` that hands off to `StatusEffectService` — no damage number at all).
+Each is its own bespoke formula, not an instance of the shared RO-style calculator.
 
-The attack is physically based.
+`skills.yml` catalogs **43 skills**, but the overwhelming majority are `PASSIVE` or `NO_DAMAGE`
+profession/crafting skills for the master skill tree (forging, alchemy, mining, cartography, ...)
+whose `script:` name has **no matching Kotlin class** — e.g. `Cooking`, `ForgeWeapon`,
+`MasterRitual`. `SkillScriptBootValidator` checks this at boot (on `ApplicationReadyEvent`, after
+`SkillImporterBootRunner` has populated the table) and logs a warning rather than failing the boot,
+since a hard failure would make the server unbootable against real catalog data; activating one of
+the missing skills fails at cast time instead. The two Bestia-side attack skills (`ember`,
+`NO_DAMAGE`; `tackle`, `MELEE_PHYSICAL`) are in the same boat — `ember` has no matching script, and
+`tackle` would hit the unimplemented melee calculator.
 
-<table>
-  <tr>
-    <td>Weapon size</td>
-    <td>Enemy size</td>
-    <td>Modifier</td>
-  </tr>
-  <tr>
-    <td>Small</td>
-    <td>Small</td>
-    <td>1.3</td>
-  </tr>
-  <tr>
-    <td>Medium</td>
-    <td>Small</td>
-    <td>1</td>
-  </tr>
-  <tr>
-    <td>Big</td>
-    <td>Small</td>
-    <td>0.75</td>
-  </tr>
-  <tr>
-    <td>Small</td>
-    <td>Medium</td>
-    <td>1</td>
-  </tr>
-  <tr>
-    <td>Medium</td>
-    <td>Medium</td>
-    <td>1.15</td>
-  </tr>
-  <tr>
-    <td>Big</td>
-    <td>Medium</td>
-    <td>1</td>
-  </tr>
-  <tr>
-    <td>Small</td>
-    <td>Big</td>
-    <td>0.70</td>
-  </tr>
-  <tr>
-    <td>Medium</td>
-    <td>Big</td>
-    <td>1.1</td>
-  </tr>
-  <tr>
-    <td>Big</td>
-    <td>Big</td>
-    <td>1.3</td>
-  </tr>
-</table>
+# Status effects
 
-## Value: VAR_MOD_RED
+A separate, working system from damage: `StatusEffectService.applyEffect()` resolves a
+`StatusEffectDefinition` (`status_effects.yml`) and its `StatusEffectScript`, applies stacking rules
+via the `StatusEffects` ECS component, and flags the entity for a status-value recalc. Four scripts
+exist: `Swiftness` (buff), `Cripple` (a flat -15% speed debuff), `BlessingStatusEffect` (applied by
+the `BLESSING` skill), and `ResistedOnceMarker` (internal bookkeeping only, never synced to the
+client — tracks that an entity already resisted a debuff once this encounter). This mirrors the
+skill-script pattern one level down — see [Scripting](/docs/server/scripting) for the shared
+registry/boot-validation mechanism both use.
 
-This is the reduced variance mod.
+# Summary
 
-```kotlin
-val VAR_MOD_RED = VAR_MOD - VAR_MOD / 2 + 1/2
-```
-
-## Value: AMMO_ATK
-
-If special ammunition is used this value is used. Only ranged physical attacks can make use of ammunition.
-
-## Value: BONUS_AMMO
-
-This value is determined by the equipment and status effects applied to an entity.
-
-## Value: ATK_MOD
-
-The `ATK_MOD` is calculated depending which type the attack was. If it was a ranged physical attack, ranged magic attack or a melee physical or a melee magic based attack. The attack mod is capped to a minimum of 0.05.
-
-If attack is physical melee:
-
-```kotlin
-val ATK_MOD = bonus_physical_melee
-```
-
-If attack is physical ranged:
-
-```kotlin
-val ATK_MOD = bonus_physical_ranged
-```
-
-If attack is magical melee:
-
-```kotlin
-val ATK_MOD = bonus_magical_melee
-```
-
-If attack is physical melee:
-
-```kotlin
-val ATK_MOD = bonus_physical_melee
-```
-
-## Value: HARD_DEF
-
-Hard defense represents mostly the damage reduction via armor and other natural defenses. It can of course be modified by scripts. Armor points are converted into a fractional damage reduction with diminishing returns: the value asymptotically approaches `1.0` (100%) but never reaches it, so there is no hard cap — extremely high defense is possible in theory, just increasingly expensive per point. Depending on the nature of the attack (physical or magical) either the normal armor or magic armor (magic resist) is used. See [Armor Refinement](/docs/mechanics/items#armor-refinement) for how armor points accumulate.
-
-If normal attack (ranged or melee):
-
-```kotlin
-val armorPoints = TOTAL_ARMOR_MOD + PHYSICAL_DEF_MOD
-val HARD_DEF = armorPoints / (armorPoints + 100)
-```
-
-If magic attack (ranged or melee):
-
-```kotlin
-val armorPoints = TOTAL_MAGIC_RESIST_MOD + MAGIC_DEF_MOD
-val HARD_DEF = armorPoints / (armorPoints + 100)
-```
-
-## Value: SOFT_DEF
-
-Soft defense represents the natural defense of entities against damage of a specific domain. Soft def is a natural number and NO modifier. Its minimum value is capped to 0.
-
-Depending on the nature of the attack (physical or magical) either the [Soft Defense](/docs/mechanics/statusvalues#soft-defense---sdef) or the [Soft Magic Defense](/docs/mechanics/statusvalues#soft-magic-defense---smdef) is used. See the [Status Values](/docs/mechanics/statusvalues) page for the authoritative formulas.
-
-## Value: CRIT_MOD
-
-The base crit mod is set so 1.4 (bonus of 40% damage) if a critical hit has occurred. The chance to land a critical hit is determined before the actual damage is calculated. If no critical hit has occurred the crit mod is hardcoded set to 1. Magic based attacks can not land a critical hit (they also are hitting a target easier).
-
-The crit mod is capped at 1.
-
-CRIT_MOD = BASE_CRIT_MOD * CRIT_DAMAGE_MOD
-
-# Damage Variables
-
-Total damage calculation modifiers which are gathered from equipment and status effects. They are re-calculated upon change of the entities properties and then stored. The variables are feed into the attack scripts so their values can be accessed and altered via scripts on a per attack basis. These values are called damage variables.
-
-<table>
-  <tr>
-    <th>Variable Name</th>
-    <th>Description</th>
-  </tr>
-  <tr>
-    <td>bonusAttackPhysicalMelee</td>
-    <td>Bonus damage on physical melee attacks.</td>
-  </tr>
-  <tr>
-    <td>bonusAttackPhysicalRanged</td>
-    <td>Bonus damage on physical ranged attacks.</td>
-  </tr>
-  <tr>
-    <td>bonusAttackMagicMelee</td>
-    <td>Bonus damage on magical melee attacks.</td>
-  </tr>
-  <tr>
-    <td>bonusAttackMagicRanged</td>
-    <td>Bonus damage on magical ranged attacks.</td>
-  </tr>
-  <tr>
-    <td>physicalDefMod</td>
-    <td>Bonus or reduction on armor.</td>
-  </tr>
-  <tr>
-    <td>magicDefMod</td>
-    <td>Bonus or reduction on magic resist.</td>
-  </tr>
-  <tr>
-    <td>criticalChanceMod</td>
-    <td>Bonus or Reduction to critical hit chance.</td>
-  </tr>
-  <tr>
-    <td>criticalDamageMod</td>
-    <td>Bonus or reduction in critical damage.</td>
-  </tr>
-</table>
+The **plumbing** (context building, strategy dispatch, mana cost, range/LoS gating, staged damage
+→ `ReceivedDamageSystem` → death, status effect stacking) is solid, production-shaped code. The
+**formulas** the old docs described in detail — the full `BASE_ATK`/`HARD_DEF`/`CRIT_MOD` chain,
+weapon quality, size modifiers — exist only as commented-out reference code inside
+`BaseDamageCalculator` and are not callable. If you're extending combat today, the working pattern
+to copy is a `NO_DAMAGE` script like `Firebolt`, not the physical/magic calculator classes.
