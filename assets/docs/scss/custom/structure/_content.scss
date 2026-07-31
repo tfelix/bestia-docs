@@ -377,4 +377,27 @@ i {
         font-style: italic;
         color: var(--card-text-color);
     }
+
+    .skill-meta {
+        font-size: 0.78rem;
+        color: var(--bs-secondary-color, #6c757d);
+    }
+
+    .skill-meta-item {
+        white-space: nowrap;
+    }
+
+    .skill-meta-label {
+        font-weight: 700;
+
+        &::after {
+            content: ":";
+        }
+    }
+
+    .skill-meta-sep {
+        display: inline-block;
+        margin: 0 0.5rem;
+        opacity: 0.6;
+    }
 }

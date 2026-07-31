@@ -445,7 +445,7 @@ Skills which allow the player to keep exploring the world and stay active longer
 
 ```mermaid
 graph TD
-    Meditation["Meditation (1-10)"]
+    ResourceSense["Resource Sense (1-5)"]
     QuickTravel["Quick Travel (1-5)"]
     Fishing["Fishing (1-5)"]
     Cooking["Cooking (1-3)"]
@@ -454,7 +454,7 @@ graph TD
     Prospector(("Prospector"))
     Miner(("Miner"))
 
-    Meditation -.-> Gate
+    ResourceSense -.-> Gate
     QuickTravel -.-> Gate
     Fishing -.-> Gate
     Cooking -.-> Gate
@@ -476,21 +476,17 @@ graph TD
 
 {{< /skill >}}
 
-{{< skill name="Meditation" maxLevel="10"
-    description="Your Bestia and Master gain an increased HP and Mana regeneration rate." >}}
+{{< skill name="Resource Sense" maxLevel="5"
+    description="The physical counterpart to a Sage's Observation: an instinct for the direction and distance of nearby physical resources - ore veins, herb patches, timber stands and game trails - long before they come into view." >}}
+Level 1 lets you place a Lookout Post.
 
-| Lv. | HP/Mana Regeneration |
-| --- | -------------------- |
-| 1   | +3%                  |
-| 2   | +6%                  |
-| 3   | +9%                  |
-| 4   | +12%                 |
-| 5   | +15%                 |
-| 6   | +18%                 |
-| 7   | +21%                 |
-| 8   | +24%                 |
-| 9   | +27%                 |
-| 10  | +30%                 |
+| Lv. | Detection Distance | Detection Accuracy |
+| --- | ------------------ | ------------------ |
+| 1   | 1km                | +10%               |
+| 2   | 2km                | +20%               |
+| 3   | 3km                | +30%               |
+| 4   | 4km                | +40%               |
+| 5   | 5km                | +50%               |
 
 {{< /skill >}}
 
@@ -602,19 +598,21 @@ Half surveyor, half treasure hunter. Prospectors chart unclaimed land, feel out 
 
 ```mermaid
 graph TD
+    ResourceSense[/"Resource Sense (Survival Tree)"/]
     MaximizeCarryCapacity["Maximize Carry Capacity (1-5)"]
     EnlargeWeightLimit["Enlarge Weight Limit (1-5)"]
     Cartography["Cartography (1-5)"]
     WildernessSurvival["Wilderness Survival (1-5)"]
     WeatherSense["Weather Sense (1-3)"]
 
+    ResourceSense -->|Lv.1| MaximizeCarryCapacity
     MaximizeCarryCapacity -->|Lv.3| EnlargeWeightLimit
     EnlargeWeightLimit -->|Lv.3| WildernessSurvival
     WeatherSense -->|Lv.1| Cartography
 ```
 
 <br>
-{{< skill name="Maximize Carry Capacity" maxLevel="5"
+{{< skill name="Maximize Carry Capacity" maxLevel="5" requires="Resource Sense Lv. 1"
     description="Raises the carrying capacity of your own Master." >}}
 
 | Lv. | Weight Limit |
@@ -678,10 +676,10 @@ If it's buried, a Miner will find a way to it. Equal parts pickaxe and stubbornn
 
 ```mermaid
 graph TD
-    Mining(["Mining (1-5)"])
+    Mining["Mining (1-5)"]
     GemCutting["Gem Cutting (1-5)"]
     CaveExplorer["Cave Explorer (1-5)"]
-    ResourceSonar{{"Resource Sonar (1-3)"}}
+    ResourceSonar["Resource Sonar (1-3)"]
 
     Mining -->|Lv.3| GemCutting
     Mining -->|Lv.3| CaveExplorer
@@ -703,17 +701,17 @@ Level 1 enables you to place a mining shaft.
 
 {{< /skill >}}
 
-{{< skill name="Gem Cutting" maxLevel="5" requires="Mining Lv. 3"
-    description="Turns the rough gemstones a Miner digs up into cut stones fit for an Artificer's socket or a Trader's scale. Can cut raw gems recovered from mining into faceted gemstones, increasing their value and unlocking their use in socketed equipment." >}}
-Higher levels unlock cutting higher-grade gems.
+{{< skill name="Gem Cutting" maxLevel="5" requires="Mining Lv. 3" >}}
+Turns the rough gemstones a Miner digs up into cut stones fit for an Artificer's socket or a Trader's sale. Can cut raw gems recovered from mining into faceted gemstones, increasing their value and unlocking their use in socketed equipment.
+Higher levels unlock cutting higher-grade gems. Level 1 allows you to place [Gem Cut Stations](item-list/#gem-cut-stations)
 
-| Lv. | Shatter Chance |
-| --- | -------------- |
-| 1   | -8%            |
-| 2   | -16%           |
-| 3   | -24%           |
-| 4   | -32%           |
-| 5   | -40%           |
+| Lv. | Cut Success Chance |
+| --- | ------------------ |
+| 1   | +8%                |
+| 2   | +16%               |
+| 3   | +24%               |
+| 4   | +32%               |
+| 5   | +40%               |
 
 {{< /skill >}}
 
@@ -748,9 +746,9 @@ The Scholar tree contains skills which help with sensing the world's events and 
 
 ```mermaid
 graph TD
-    MagicSense(["Magic Sense (1-5)"])
-    Observation(["Observation (1-5)"])
-    Founder(["Founder (1)"])
+    MagicSense["Magic Sense (1-5)"]
+    Observation["Observation (1-5)"]
+    Founder["Founder (1)"]
     Ruwach["Ruwach (1-3)"]
     Gate{{"5+ pts in Scholar Tree"}}
     Priest(("Priest"))
@@ -792,7 +790,10 @@ Level 1 let you place an observatory.
 {{< /skill >}}
 
 {{< skill name="Founder" maxLevel="1"
-    description="Allows you to create a settlement by placing a city sign." >}}
+    description="Allows you to create your own settlement by placing a city sign." >}}
+
+Only one settlement can be active at any time. You must destroy the settlement before you can place a new one. Only inactive settlements can be destroyed. This means there must be no more functional building (post office, trade post, etc.) be inside the sphere of influence of the settlement.
+
 {{< /skill >}}
 
 {{< skill name="Ruwach" maxLevel="3" requires="Magic Sense Lv. 2"
@@ -817,66 +818,52 @@ Priests channel mana into blessings that keep a party alive - restoring health, 
 graph TD
     MagicSense[/"Magic Sense (Scholar Tree)"/]
 
-    subgraph Foundations
-        Heal(["Heal (1-10)"])
-    end
+    Heal["Heal (1-10)"]
 
-    subgraph "Utility Rites"
-        Suffragium["Suffragium (1-3)"]
-        Gloria["Gloria (1-3)"]
-    end
+    Suffragium["Suffragium (1-3)"]
+    Gloria["Gloria (1-3)"]
 
-    subgraph "Cleansing & Wards"
-        Cure["Cure (1)"]
-        AquaBenedicta["Aqua Benedicta (1)"]
-        StatusRecovery["Status Recovery (1)"]
-        Aspersio["Aspersio (1-3)"]
-    end
+    Cure["Cure (1)"]
+    AquaBenedicta["Aqua Benedicta (1)"]
+    StatusRecovery["Status Recovery (1)"]
+    Aspersio["Aspersio (1-3)"]
 
-    subgraph Blessings
-        Blessing["Blessing (1-10)"]
-        IncreaseAGI(["Increase AGI (1-5)"])
-        DecreaseAGI["Decrease AGI (1-3)"]
-        KyrieEleison(["Kyrie Eleison (1-3)"])
-        ImpositioManus["Impositio Manus (1-3)"]
-        Pneuma["Pneuma (1-3)"]
-        Magnificat["Magnificat (1-3)"]
-    end
+    Blessing["Blessing (1-10)"]
+    IncreaseAGI["Increase AGI (1-5)"]
+    DecreaseAGI["Decrease AGI (1-3)"]
+    KyrieEleison["Kyrie Eleison (1-3)"]
+    ImpositioManus["Impositio Manus (1-3)"]
+    Pneuma["Pneuma (1-3)"]
+    Magnificat["Magnificat (1-3)"]
 
-    subgraph "Holy Offense"
-        SignumCrucis["Signum Crucis (1-3)"]
-        HolyLight["Holy Light (1-5)"]
-        DemonBane["Demon Bane (1-3)"]
-        DivineProtection["Divine Protection (1-3)"]
-        TurnUndead["Turn Undead (1-5)"]
-        LexAeterna["Lex Aeterna (1)"]
-        MagnusExorcismus{{"Magnus Exorcismus (1-3)"}}
-    end
 
-    subgraph Ultimate
-        Sanctuary{{"Sanctuary (1-3)"}}
-        Resurrection{{"Resurrection (1)"}}
-    end
+    SignumCrucis["Signum Crucis (1-3)"]
+    HolyLight["Holy Light (1-5)"]
+    DemonBane["Demon Bane (1-3)"]
+    DivineProtection["Divine Protection (1-3)"]
+    TurnUndead["Turn Undead (1-5)"]
+    LexAeterna["Lex Aeterna (1)"]
+    MagnusExorcismus["Magnus Exorcismus (1-3)"]
+
+    Sanctuary["Sanctuary (1-3)"]
+    Resurrection["Resurrection (3)"]
 
     MagicSense -->|Lv.2| Gloria
     MagicSense -->|Lv.2| Suffragium
 
     Heal -->|Lv.2| Cure
     Heal -->|Lv.3| Blessing
-    Heal -->|Lv.8| Resurrection
 
     Cure -->|Lv.1| AquaBenedicta
     Cure -->|Lv.1| StatusRecovery
     StatusRecovery -->|Lv.2| Resurrection
     AquaBenedicta -->|Lv.2| Aspersio
-    MaceMastery -->|Lv.2| Aspersio
 
     IncreaseAGI -->|Lv.2| DecreaseAGI
 
     Blessing -->|Lv.3| ImpositioManus
     Blessing -->|Lv.3| Magnificat
     KyrieEleison -->|Lv.2| Pneuma
-    KyrieEleison -->|Lv.3| Magnificat
 
     SignumCrucis -->|Lv.2| HolyLight
     SignumCrucis -->|Lv.2| DemonBane
@@ -1030,9 +1017,9 @@ Higher levels extend how long the veil holds.
 
 | Lv. | Damage vs Demon/Undead |
 | --- | ---------------------- |
-| 1   | +4%                    |
-| 2   | +8%                    |
-| 3   | +12%                   |
+| 1   | +8%                    |
+| 2   | +16%                   |
+| 3   | +24%                   |
 
 {{< /skill >}}
 
@@ -1041,9 +1028,9 @@ Higher levels extend how long the veil holds.
 
 | Lv. | Damage Taken from Demon/Undead |
 | --- | ------------------------------ |
-| 1   | -5%                            |
-| 2   | -10%                           |
-| 3   | -15%                           |
+| 1   | -10%                           |
+| 2   | -20%                           |
+| 3   | -30%                           |
 
 {{< /skill >}}
 
@@ -1067,17 +1054,21 @@ Higher levels extend how long the veil holds.
 Higher levels extend the duration and allow higher-grade Holy Water to be used for a stronger imbue
 {{< /skill >}}
 
-{{< skill name="Turn Undead" maxLevel="5" requires="Demon Bane Lv. 3 and Holy Light Lv. 3"
-    description="A focused holy strike aimed squarely at what should not be moving. Deals heavy damage to undead-type enemies, with a chance to unmake weaker ones outright." >}}
+{{< skill name="Turn Undead" maxLevel="5" requires="Demon Bane Lv. 3 and Holy Light Lv. 3" >}}
 Higher levels raise the chance of an instant kill against sufficiently weak undead.
 
-| Lv. | Damage vs Undead |
-| --- | ---------------- |
-| 1   | +8%              |
-| 2   | +16%             |
-| 3   | +24%             |
-| 4   | +32%             |
-| 5   | +40%             |
+Inflicts single target Holy, armor piercing damage. If the target is an Undead property monster, this spell has a chance of immediatly ending its existence.
+
+| Lv. | Base Chance of Effect |
+| --- | --------------------- |
+| 1   | -8%                   |
+| 2   | -16%                  |
+| 3   | -24%                  |
+
+```text
+Chance of Effect = [Base_Chance_of_Effect + (Lv ÷ 10) + (INT ÷ 10) + (WIL ÷ 10) + {1 − (Target_HP ÷ Target_MaxHP)} × 20]%
+Damage = Base_Damage + Base_Lv + INT
+```
 
 {{< /skill >}}
 
@@ -1131,16 +1122,18 @@ Coin has its own kind of magic. Traders read markets instead of mana flows, link
 
 ```mermaid
 graph TD
-    Appraisal(["Appraisal (1-5)"])
-    Scavenger(["Scavenger (1-10)"])
-    TradePostOwner(["Trade Post Owner (1-5)"])
+    Founder[/"Founder (Scholar Tree)"/]
+    Appraisal["Appraisal (1-5)"]
+    Scavenger["Scavenger (1-10)"]
+    TradePostOwner["Trade Post Owner (1-5)"]
     Minting["Minting (1-5)"]
     TradeAgreement["Trade Agreement (1-5)"]
-    HonorableCitizen{{"Honorable Citizen (1-5)"}}
+    HonorableCitizen["Honorable Citizen (1-5)"]
 
     Appraisal -->|Lv.5| Minting
     Scavenger -->|Lv.3| Minting
 
+    Founder -->|Lv.1| TradePostOwner
     TradePostOwner -->|Lv.3| TradeAgreement
 
     Minting -->|Lv.2| HonorableCitizen
@@ -1241,7 +1234,8 @@ Books, wards and long nights spent staring into scrying bowls. Sages study magic
 
 ```mermaid
 graph TD
-    SpellTraining(["Spell Training (1-10)"])
+    Observation[/"Observation (Scholar Tree)"/]
+    SpellTraining["Spell Training (1-10)"]
     FreeCast(["Free Cast (1-5)"])
     Scry["Scry (1-5)"]
     Dispell["Dispell (1-5)"]
@@ -1257,13 +1251,15 @@ graph TD
     EndowIce["Endow Ice (1-3)"]
     EndowWind["Endow Wind (1-3)"]
     EndowEarth["Endow Earth (1-3)"]
-    WeatherControl["Weather Control (1-3)"]
+    ElementalEmpowerment["Elemental Empowerment (1-3)"]
 
-    SpellTraining -->|Lv.2| Scry
+    Observation -->|Lv.5| SpellTraining
+    Observation -->|Lv.1| Scry
     SpellTraining -->|Lv.2| Dispell
     SpellTraining -->|Lv.3| SpellEnscription
     SpellEnscription -->|Lv.3| SpellBinding
-    SpellBinding -->|Lv.3| Teleport
+
+    Scry -->|Lv.3| Teleport
     Teleport -->|Lv.1| WarpPortal
 
     Dispell -->|Lv.2| MagicRod
@@ -1275,7 +1271,10 @@ graph TD
     FreeCast -->|Lv.2| EndowIce
     FreeCast -->|Lv.2| EndowWind
     FreeCast -->|Lv.2| EndowEarth
-    EndowWind -->|Lv.3| WeatherControl
+    EndowWind -->|Lv.1| ElementalEmpowerment
+    EndowIce -->|Lv.1| ElementalEmpowerment
+    EndowFire -->|Lv.1| ElementalEmpowerment
+    EndowEarth -->|Lv.1| ElementalEmpowerment
 ```
 
 <br>
@@ -1360,7 +1359,7 @@ Catches a single incoming spell while the ward holds.
 {{< /skill >}}
 
 {{< skill name="Spell Enscription" maxLevel="10" requires="Spell Training Lv. 3"
-    description="Enables you to extract a spell from the memory of a Bestia onto a spell scroll, which can then either trigger the spell once or teach it to another Bestia. However, there is a chance that the mind of a Bestia is destroyed during the extraction, killing the Bestia in the process." >}}
+    description="Enables you to extract an attack from the memory of a Bestia onto a scroll, which can then either trigger the attack once or teach it to another Bestia instead. However, there is a chance that the mind of a Bestia is destroyed during the extraction, killing the Bestia in the process." >}}
 The base success chance depends on the level of the attack being enscribed and is further modified by skill level, equipment and intelligence (`INT / 2 + WIL / 4`):
 
 | Attack Level | Base Success |
@@ -1452,7 +1451,7 @@ A negative base means the extraction is impossible on raw talent alone and only 
 
 {{< /skill >}}
 
-{{< skill name="Weather Control" maxLevel="3" requires="Endow Wind Lv. 3"
+{{< skill name="Elemental Empowerment" maxLevel="3" requires="Endow Wind Lv. 1, Endow Water Lv. 1, Endow Fire Lv. 1,"
     description="The Sage's command of the elements grown wide enough to lean on the sky itself. Calls a chosen weather front - rain, gale or heat - over a large area for a time, strengthening spells and endowments of the matching element for everyone beneath it while dampening its opposite. Where a Prospector's [Weather Sense](#skill-weather-sense) only reads the sky, a Sage bends it." >}}
 
 | Lv. | Area | Duration | Matching-Element Boost |
@@ -1467,6 +1466,35 @@ A negative base means the extraction is impossible on raw talent alone and only 
 
 Where the other trees build, gather and study, the Warrior tree is built to fight. Wizards burn the battlefield down with elemental and arcane fury, Brawlers shrug off punishment nobody should be able to shrug off, Hunters strike up a bond with wild Bestia most people just run from, Assassins vanish before the first drop of blood even hits the ground, Knights plant themselves between danger and everyone else, and Bards and Dancers turn a battlefield into something worth listening to.
 
+```mermaid
+graph TD
+    Endure(["Endure (1)"])
+    IronSkin(["Iron Skin (1-5)"])
+    MagicArmor(["Magic Armor (1-5)"])
+    Meditation(["Meditation (1-5)"])
+    Gate{{"5+ pts in Warrior Tree"}}
+    Wizard(("Wizard"))
+    %% Brawler(("Brawler")) %% parked
+    %% Hunter(("Hunter")) %% parked
+    Assassin(("Assassin"))
+    Knight(("Knight"))
+    %% Bard(("Bard")) %% parked
+    %% Dancer(("Dancer")) %% parked
+
+    Endure -.-> Gate
+    IronSkin -.-> Gate
+    MagicArmor -.-> Gate
+    Meditation -.-> Gate
+    Gate -.->|unlocks| Wizard
+    %% Gate -.->|unlocks| Brawler
+    %% Gate -.->|unlocks| Hunter
+    Gate -.->|unlocks| Assassin
+    Gate -.->|unlocks| Knight
+    %% Gate -.->|unlocks| Bard
+    %% Gate -.->|unlocks| Dancer
+```
+
+<br>
 {{< skill name="Endure" maxLevel="1"
     description="HP and Mana regeneration is not stopped during combat." >}}
 {{< /skill >}}
@@ -1485,15 +1513,29 @@ Where the other trees build, gather and study, the Warrior tree is built to figh
 {{< /skill >}}
 
 {{< skill name="Magic Armor" maxLevel="5"
-    description="Reduces damage of magical effects but each hit costs 0.2% percent of the max mana of the owner. When the mana drops below 10% the buff is cancelled." >}}
+    type="Active" manaCost="30" castTime="5s" duration="5 min" target="Self"
+    description="Reduces physical and magical damage but each hit costs 2% percent of the current mana of the owner. When the mana drops below 20% the buff is cancelled." >}}
 
 | Lv. | Damage Reduction |
 | --- | ---------------- |
-| 1   | -2%              |
-| 2   | -4%              |
-| 3   | -6%              |
-| 4   | -8%              |
-| 5   | -10%             |
+| 1   | -6%              |
+| 2   | -12%             |
+| 3   | -18%             |
+| 4   | -24%             |
+| 5   | -30%             |
+
+{{< /skill >}}
+
+{{< skill name="Meditation" maxLevel="5"
+    description="Your Bestia and Master gain an increased HP and Mana regeneration rate." >}}
+
+| Lv. | HP/Mana Regeneration |
+| --- | -------------------- |
+| 1   | +6%                  |
+| 2   | +12%                 |
+| 3   | +18%                 |
+| 4   | +24%                 |
+| 5   | +30%                 |
 
 {{< /skill >}}
 
@@ -1548,7 +1590,7 @@ graph TD
         ThunderOfJupiter["Thunder of Jupiter (1-5)"]
     end
 
-    Mindbreak{{"Mindbreak (1-5)"}}
+    Mindbreak["Mindbreak (1-5)"]
 
     ElementalMastery -->|Lv.2| MasterOfFire
     ElementalMastery -->|Lv.2| MasterOfWater
@@ -1898,6 +1940,7 @@ Regardless of level, the reduction is capped at `-25%` against other Bestia Mast
 
 {{< /skill >}}
 
+<!-- Parked
 ### Brawler
 
 No fancy footwork, no elemental theatrics - just the kind of toughness that keeps going long after everyone else has called it quits.
@@ -1967,6 +2010,7 @@ Neither predator nor prey, exactly. Hunters move like the terrain isn't there an
 {{< skill-level level="2" >}}Gains a critical strike bonus against a tracked target.{{< /skill-level >}}
 {{< skill-level level="3" >}}Trail-tracking range and duration are both doubled.{{< /skill-level >}}
 {{< /skill >}}
+-->
 
 ### Assassin
 
@@ -1974,14 +2018,43 @@ Masters of hidden infiltration. They can deal high amount of single target damag
 
 {{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [warrior tree](#warrior-tree)" />}}
 
-- Strip Weapons _(placeholder)_
-- Dual Wield _(placeholder)_
-- Hide _(placeholder)_
-- Cloak _(placeholder)_
-- Poison Research _(placeholder)_
-- Enchant Poison _(placeholder)_
+```mermaid
+graph TD
+    subgraph "Weapon Trickery"
+        StripWeapons["Strip Weapons (1-5)"]
+        DualWield["Dual Wield (1-5)"]
+        WeaponCoating["Weapon Coating (1-5)"]
+    end
 
-{{< skill name="Weapon Coating" maxLevel="5"
+    subgraph Infiltration
+        Hide["Hide (1-5)"]
+        Cloak["Cloak (1-3)"]
+    end
+
+    subgraph Toxicology
+        PoisonResearch["Poison Research (1-10)"]
+        EnchantPoison["Enchant Poison (1-5)"]
+    end
+
+    Plagiarism["Plagiarism (1-10)"]
+    Preserve["Preserve (1)"]
+
+    StripWeapons -->|Lv.2| DualWield
+    DualWield -->|Lv.2| WeaponCoating
+    Hide -->|Lv.3| Cloak
+    PoisonResearch -->|Lv.3| EnchantPoison
+    Plagiarism -->|Lv.5| Preserve
+```
+
+<br>
+- Strip Weapons (1-5) _(placeholder)_
+- Dual Wield (1-5) requires Strip Weapons Lv. 2 _(placeholder)_
+- Hide (1-5) _(placeholder)_
+- Cloak (1-3) requires Hide Lv. 3 _(placeholder)_ - see the [cloaked Assassins](#skill-ruwach) a Priest's Ruwach can reveal
+- Poison Research (1-10) _(placeholder)_
+- Enchant Poison (1-5) requires Poison Research Lv. 3 _(placeholder)_
+
+{{< skill name="Weapon Coating" maxLevel="5" requires="Dual Wield Lv. 2"
     description="Coat weapons and armor to protect them against damage and strip effects." >}}
 {{< /skill >}}
 
@@ -2117,6 +2190,7 @@ Deals damage and applies a short [Provoke](#skill-provoke) effect on impact.
 {{< skill-level level="3" >}}Cooldown is reduced and a fully blocked hit (via [Auto Guard](#skill-auto-guard)) refreshes the remaining duration.{{< /skill-level >}}
 {{< /skill >}}
 
+<!-- Parked
 ### Bard
 
 Where a Sage studies magic to bend it, a Bard studies it to sing along with it. Every note carried on the wind can steady an ally's arm or unstring an enemy's nerve. A Bard alone can hearten a party; a Bard standing next to a [Dancer](#dancer) can do quite a lot more.
@@ -2348,3 +2422,4 @@ Where a Bard leans on breath and instrument, a Dancer leans on footwork and nerv
 {{< skill-level level="2" >}}The bonus increases to `+25%` and the combined range is extended.{{< /skill-level >}}
 {{< skill-level level="3" >}}The bonus increases to `+40%` and a single additional song or dance from each performer can be active at the same time.{{< /skill-level >}}
 {{< /skill >}}
+-->

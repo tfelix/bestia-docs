@@ -13,6 +13,21 @@
         <p class="skill-requires mb-2">&#8627; Requires {{ .Get "requires" }}</p>
       {{ end }}
 
+      <!-- At-a-glance stats (type, cost, cast time, ...) -->
+      {{ $meta := slice }}
+      {{ if .Get "type" }}{{ $meta = $meta | append (dict "label" "Type" "value" (.Get "type")) }}{{ end }}
+      {{ if .Get "manaCost" }}{{ $meta = $meta | append (dict "label" "Mana Cost" "value" (.Get "manaCost")) }}{{ end }}
+      {{ if .Get "castTime" }}{{ $meta = $meta | append (dict "label" "Cast Time" "value" (.Get "castTime")) }}{{ end }}
+      {{ if .Get "cooldown" }}{{ $meta = $meta | append (dict "label" "Cooldown" "value" (.Get "cooldown")) }}{{ end }}
+      {{ if .Get "duration" }}{{ $meta = $meta | append (dict "label" "Duration" "value" (.Get "duration")) }}{{ end }}
+      {{ if .Get "range" }}{{ $meta = $meta | append (dict "label" "Range" "value" (.Get "range")) }}{{ end }}
+      {{ if .Get "target" }}{{ $meta = $meta | append (dict "label" "Target" "value" (.Get "target")) }}{{ end }}
+      {{ if gt (len $meta) 0 }}
+      <p class="skill-meta mb-2">
+        {{ range $i, $m := $meta }}{{ if gt $i 0 }}<span class="skill-meta-sep">&middot;</span>{{ end }}<span class="skill-meta-item"><span class="skill-meta-label">{{ $m.label }}</span> {{ $m.value }}</span>{{ end }}
+      </p>
+      {{ end }}
+
       <!-- Base description -->
       {{ if .Get "description" }}
         <p class="mb-2">{{ .Get "description" | .Page.RenderString }}</p>
