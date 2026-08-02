@@ -283,7 +283,7 @@ of the pot:
 - **Time held** — presence and survival inside the contested area while it mattered
 
 Scoring each axis separately is what keeps a world event from being a high-level damage party. A Scholar who located
-the rift with [Observation](/docs/mechanics/master/#skill-observation), an Order player placing seals and a fighter
+the rift with [Observation](/docs/mechanics/master/#skill-observation), an Eternity player placing seals and a fighter
 tanking the wave bosses all earn from the axis they actually contributed to, and none of them has to out-damage anyone
 to be paid.
 
@@ -309,13 +309,13 @@ region that has just been through a crisis needs time before another one is wort
 World events are **not purely cooperative** — they hook directly into the [factions](/docs/mechanics/factions/) and their
 [spheres of influence](/docs/mechanics/factions/#sphere-of-influence):
 
-- **The Chaos** _wants_ rifts open and may have caused the mana build-up in the first place; they can defend or even
-  widen a rift.
-- **The Order** profits from sealing it.
-- **The Harmony** seeks to stabilize the region without suppressing the mana flow entirely, holding the rift in a
-  controlled stasis instead of closing or feeding it.
+- **The Order of Chaos** _wants_ rifts open and may have caused the mana build-up in the first place; they can defend or
+  even widen a rift.
+- **The Order of Eternity** profits from sealing it.
+- **The Order of the Circle** seeks to stabilize the region without suppressing the mana flow entirely, holding the rift
+  in a controlled stasis instead of closing or feeding it.
 
-So the same rift is a defend-quest for one faction and a sabotage opportunity for another, and how it ends shifts the
+So the same rift is a defend-quest for one Order and a sabotage opportunity for another, and how it ends shifts the
 region's influence scores. This turns world events into emergent PvPvE flashpoints instead of scripted set-pieces.
 
 Crucially, the **frequency of these events is itself player-driven**: because Chaos players opening rifts is what raises

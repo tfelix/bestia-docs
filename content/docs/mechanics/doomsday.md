@@ -4,7 +4,7 @@ weight: 1300
 description: Explains the Doomsday mechanic — world-ending threats, event types, and their impact on gameplay.
 ---
 
-Every world incarnation faces an inevitable existential threat. Both the _nature_ of that threat and the _point in the world's life_ at which it begins are decided when the world is generated — the same predetermined life span the factions are ultimately scored against (see [Earning Advantage Points](/docs/mechanics/factions/#earning-advantage-points)). This onset is never sooner than **six months** of real time into a world's life. These threats can take various forms—powerful, destructive Bestia, chaotic magical phenomena, or natural disasters like **meteorite impacts**. Once a threat sets in, its effects grow stronger and stronger, ideally unfolding over a span of **six months to a year** before the world is either saved or lost. If left unchecked, these forces can push the world toward **total annihilation**. However, if the world is destroyed by neglect — with no faction having meaningfully shaped its end — **none of them will benefit**, giving all faction players a shared incentive to keep a runaway event from wiping the board before it can be turned to their advantage.
+Every world incarnation faces an inevitable existential threat. Both the _nature_ of that threat and the _point in the world's life_ at which it begins are decided when the world is generated — the same predetermined life span the factions are ultimately scored against (see [Earning Advantage Points](/docs/mechanics/factions/#earning-advantage-points)). This onset is never sooner than **six months** of real time into a world's life. These threats can take various forms—powerful, destructive Bestia, chaotic magical phenomena, or natural disasters like **meteorite impacts**. Once a threat sets in, its effects grow stronger and stronger, ideally unfolding over a span of **six months to a year** before the world is either saved or lost. If left unchecked, these forces can push the world toward **total annihilation**. However, if the world is destroyed by neglect — with no Order having met its [Seasonal Covenant](/docs/mechanics/factions/#seasonal-covenants) in the closing seasons — **none of them will benefit**, giving every Order a shared incentive to stay engaged through the endgame rather than letting a runaway event wipe the board. See [The Neglect Clause](/docs/mechanics/factions/#the-neglect-clause) for how this is scored.
 
 This cycle of destruction is what makes the world dynamically generated. While the overarching goal is to either **prevent or accelerate the world’s end**, complete destruction remains a rare occurrence, happening no more than once every one to two years (real time). When a new world is born, it is procedurally generated to feature diverse biomes, unique landscapes, and a fresh history that integrates seamlessly with the game’s lore. This system ensures a rich, evolving world — especially in the early stages, when player populations may be lower.
 
@@ -21,7 +21,7 @@ No Doomsday strikes all at once. Whatever form it takes, a threat escalates thro
 3. **Escalation** — the effect intensifies and spreads, region by region, feeding on whatever fuels it (usually mana). This is the long middle phase where the outcome is genuinely in the players' hands.
 4. **Cataclysm** — if never contained, the threat reaches critical mass and the world is lost. A new world is then generated in its place.
 
-Each faction reads these stages differently. **The Order** works to seal, delay, or avert the threat; **The Chaos** works to feed and hasten it; **The Harmony** wants it to arrive exactly on its predetermined schedule. How a world meets its end feeds directly into each faction's [Advantage Points](/docs/mechanics/factions/#earning-advantage-points).
+Each Order reads these stages differently. **The Order of Eternity** works to seal, delay, or avert the threat; **The Order of Chaos** works to feed and hasten it; **The Order of the Circle** wants it to arrive exactly on its predetermined schedule. How a world meets its end feeds directly into each Order's [Advantage Points](/docs/mechanics/factions/#earning-advantage-points).
 
 # Event Types
 
@@ -69,13 +69,13 @@ The dead zone widens outward, choked by sandstorms, until only desert-adapted Be
 
 In a region already thick with mana, the ambient energy begins to shimmer and smoulder — and then it ignites. Arcane fire sweeps the saturated land, burning creatures, structures, and the ground itself with a flame that ordinary water cannot quench.
 
-The burn chases [mana density](/docs/mechanics/factions/#sphere-of-influence), leaping from one high-concentration region to the next and leaving scorched dead zones — and worsening [Mana Storms](#mana-storms) — in its wake. The only reliable defence is to starve it: **draining or banishing mana** deprives the fire of fuel, and **The Order**'s dampening rituals smother it, while **The Chaos** may instead pour mana in to spread it faster. Left to feed, it sets the entire mana-rich world alight.
+The burn chases [mana density](/docs/mechanics/environment/#mana-concentration), leaping from one high-concentration region to the next and leaving scorched dead zones — and worsening [Mana Storms](#mana-storms) — in its wake. The only reliable defence is to starve it: **draining or banishing mana** deprives the fire of fuel, and **Eternity**'s dampening rituals smother it, while **Chaos** may instead pour mana in to spread it faster. Left to feed, it sets the entire mana-rich world alight.
 
 ## The Destroyer
 
 Old legends stir first — restless Bestia, an ominous reading on a Scholar's [Observation](/docs/mechanics/master/#skill-observation) — and then a colossal unique Bestia awakens and begins a slow, deliberate march toward the nearest player city.
 
-Its path is predictable enough to plan around, but every settlement it razes heals and empowers it, so each city lost makes the next harder to save. Players meet it with server-wide raids at defensible chokepoints, environmental traps, and siege devices researched at a faction's [citadel](/docs/mechanics/factions/#citadels-and-temples) — while **The Chaos** may try to lure or empower it toward its rivals. If The Destroyer reaches and levels the major cities, the world collapses with them.
+Its path is predictable enough to plan around, but every settlement it razes heals and empowers it, so each city lost makes the next harder to save. Players meet it with server-wide raids at defensible chokepoints, environmental traps, and siege devices researched at an Order's [citadel](/docs/mechanics/factions/#citadels-and-temples) — while **Chaos** may try to lure or empower it toward its rivals. If The Destroyer reaches and levels the major cities, the world collapses with them.
 
 ## The Long Night
 
@@ -99,7 +99,7 @@ As the herds charge they sweep up still more Bestia, and successive waves batter
 
 The skies over a mana-rich region begin to crackle and churn, and then break into violent arcane tempests that scour the surface — dealing area magic damage, disrupting spellcasting, and battering structures.
 
-The storms grow and roam with the [mana density](/docs/mechanics/factions/#sphere-of-influence), and where they linger they can ignite [Mana Burn](#mana-burn) or feed nearby rifts. Players shelter behind wards, weaken the storms by draining the mana that powers them, and can calm them outright with the right rituals. Left to rage, the tempests scour the surface bare.
+The storms grow and roam with the [mana density](/docs/mechanics/environment/#mana-concentration), and where they linger they can ignite [Mana Burn](#mana-burn) or feed nearby rifts. Players shelter behind wards, weaken the storms by draining the mana that powers them, and can calm them outright with the right rituals. Left to rage, the tempests scour the surface bare.
 
 ## The Sundering
 
@@ -109,13 +109,13 @@ As it worsens the continents themselves fracture — land routes sever, and whol
 
 ## The Void Tear
 
-Mana rifts are a normal, ongoing feature of every world: **The Chaos** opens and feeds them while **The Order** seals them, and their number is one of the ways factions bend a region's [mana density](/docs/mechanics/factions/#sphere-of-influence). The Void Tear is simply the worst-case version of this everyday mechanic — what happens when rifts in a high-mana region are left to grow and merge unchecked.
+Mana rifts are a normal, ongoing feature of every world: **Chaos** opens and feeds them while **Eternity** seals them, and their number is one of the ways the Orders bend a region's [mana density](/docs/mechanics/environment/#mana-concentration). The Void Tear is simply the worst-case version of this everyday mechanic — what happens when rifts in a high-mana region are left to grow and merge unchecked.
 
 It starts in an area with a strong mana presence, where a first rift opens up. Rifts are detectable with spells that reveal large mana concentrations, and can also be found using dedicated rift-detection spells or devices; a Scholar's [Observation](/docs/mechanics/master/#skill-observation) skill lets players approximately pinpoint a rift's origin.
 
 Left open, a rift **widens over time and periodically spawns waves of increasingly powerful Bestia** that roam out to attack nearby settlements. A widening rift also raises the local mana density, which makes further rifts more likely nearby — and once two grow into one another they merge. The Void Tear is what forms when enough of them merge: a persistent tear that anchors a raid-scale world boss and continuously floods the region with mana, which can in turn seed a [Mana Crystal Infestation](#mana-crystal-infestation).
 
-Players hold it back by **sealing rituals** performed by The Order at temples and the citadel, by killing the wave bosses and the rift's anchoring boss to collapse it, and by draining mana from the region to starve its growth. The Chaos, of course, can do the opposite and feed it. If it is never contained, the Void Tear becomes permanent, spreading its corruption across the world until nothing is left.
+Players hold it back by **sealing rituals** performed by Eternity at temples and the citadel, by killing the wave bosses and the rift's anchoring boss to collapse it, and by draining mana from the region to starve its growth. Chaos, of course, can do the opposite and feed it. If it is never contained, the Void Tear becomes permanent, spreading its corruption across the world until nothing is left.
 
 ## Mana Crystal Infestation
 

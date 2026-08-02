@@ -34,7 +34,7 @@ For a better overview the attack list is on a sperate page. If you are intereste
   {{< /attack >}}
 
   {{< attack name="Banished From The Citadel" icon="banished-from-the-citadel.png" level="75" mana="150" school="Arcane" >}}
-    A powerful ritual which will undoe your ties to your faction and will redeem you from your skill. Can only be cast on a Bestia Master who wears a [Sigil of Redemption](/docs/mechanics/equip-list/#sigil-of-redemption). Gives a debuff which reduces your stats by `50%` for `Master Lv` days.
+    A powerful ritual which severs your ties to your [Order](/docs/mechanics/factions/#switching-an-order) and leaves you unsworn. It can only be performed on yourself, and only while you wear a [Sigil of Redemption](/docs/mechanics/equip-list/#sigil-of-redemption), which the rite consumes. Gives a debuff which reduces your status values to `50%` for `Lv/2` (rounded up) days.
   {{< /attack >}}
 
   <!-- Add more attackcard shortcodes here -->

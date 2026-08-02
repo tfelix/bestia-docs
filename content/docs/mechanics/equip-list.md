@@ -26,7 +26,7 @@ Light comfy boots made of high quality leather, ideal for quick movements.
   {{< /equipment >}}
 
   {{< equipment name="Sigil of Redemption" icon="sigil-of-redemption.png" minlv="10" itemlv="73" weight="1.0" type="Accessoir" >}}
-  A very expensive and rare sigil made from gold. It symbolizes your bond to your faction, but it also holds the power to undo those holy ties.
+  A very expensive and rare sigil made from gold. It symbolizes your bond to your Order, but it also holds the power to undo those holy ties. It must be worn by the one performing the rite of [Banished From The Citadel](/docs/mechanics/attack-list/#banished-from-the-citadel), and is consumed by it.
   {{< /equipment >}}
 {{< /equipmentlist >}}
 
