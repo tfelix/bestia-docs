@@ -16,7 +16,7 @@ Some of this account skills can be used by every Bestia in posession of the mast
 
 {{< alert context="info" text="Don't confuse this skill system with the regular attacks a Bestia is learning by item usage or just by level up. Those are simply called attacks." />}}
 
-- The number of total skil ranks inside a tree should **be between 70-80**
+- The number of total skill ranks inside a tree should **be between 70-80**
 - The possible rank counts of a skill should be: **1, 3, 5 and 10**
 - There should be some meaningful dependency of the skills forming a tree
 - In each profession tree there should form 2-3 sub-trees which create a meaningful hierarchy
@@ -26,7 +26,7 @@ Some of this account skills can be used by every Bestia in posession of the mast
 
 Especially crafting skills should be, when possible, require some sort of minigame or meaningful player interaction. Their outcome should also be dependent on the status values of a player, on the skill level but also on environmental aspects. An example teleport could go as follows:
 
-After the master Saferu has selected a few of his and friendly Bestia he prepares to teleport to a fairly distant location. While he is very skilled and has a maxed teleport skill, on the target location there is a manastorm causing some interference. Upon teleportation the group is set of course and spawns almost a kilometer off from their target in a very hostile environment.
+> After the master Saferu has selected a few of his and friendly Bestia he prepares to teleport to a fairly distant location. While he is very skilled and has a maxed teleport skill, on the target location there is a manastorm causing some interference. Upon teleportation the group is set of course and spawns almost a kilometer off from their target in a very hostile environment.
 
 Ultimately, it remains important to leave the outcome of skills open in some way. However, the result should remain understandable and influenceable by the player.
 
@@ -47,28 +47,26 @@ meaningful professions of another tree. The skilltree is a hierarchical dependen
 
 Skillpoints spent within a subtree (e.g. Blacksmith, Priest, Wizard, ...) do more than unlock its skills - they also declare a profession to the world.
 
-- As soon as **5 or more skillpoints** are invested into a single subtree, the master becomes a **Master** of that tree.
-- Being a Master of a tree determines which of its associated items and weapons the master is able to use and equip.
-- A Bestia Master can be a Master of **at most 3 trees**.
-- Which trees count is decided by order of achievement: the first 3 subtrees in which a master reaches 5 or more skillpoints become their masteries. Reaching 5 or more skillpoints in any further subtree afterwards does **not** grant an additional mastery.
+- As soon as **5 or more skillpoints** are invested into a single subtree, the master becomes **trained** in that tree.
+- Being trained of a tree determines which of its associated items and weapons the master is able to use and equip.
 
-{{< alert context="info" text="This is independent of the 5 Lv. requirement that unlocks access to a subtree in the first place - that threshold is reached by investing in the parent tree, while Mastery requires 5 points spent inside the subtree itself." />}}
+{{< alert context="info" text="This is independent of the 5 Lv. requirement that unlocks access to a subtree in the first place - that threshold is reached by investing in the parent tree, while being trained requires 5 points spent inside the subtree itself." />}}
 
 # Skill Trees
 
-The following trees exist, they are organized in subtrees.
+The following trees exist, they are organized in subtrees. These form the skill trees of a master. After a level up one skill point can be spend to increase a single level of a skill.
 
-{{< alert context="info" text="Each tree and sub-tree below is illustrated with a dependency diagram. Rounded nodes are entry skills with no prerequisite, hexagon nodes are the sub-tree's capstone(s), a slanted node is a skill from another tree, and dashed arrows show the tree-mastery gate that unlocks a sub-tree once 5+ points are invested in its parent tree. Solid arrows are labeled with the required level in the source skill." />}}
+{{< alert context="info" text="Each tree and sub-tree below is illustrated with a dependency diagram. Rounded nodes are entry skills with no prerequisite, a slanted node is a skill from another tree, and dashed arrows show the tree-mastery gate that unlocks a sub-tree once 5+ points are invested in its parent tree. Solid arrows are labeled with the required level in the source skill." />}}
 
 ## Novice Tree
 
-In order to learn how to interact with other player you need to invest your first skill points in this skill tree.
+In order to learn how to interact with other player you need to invest your first skill points in this skill tree. It is expected that every user learns at least Basic Skill Level 5. After you spend 5 points in **Basic Skill** the skill **Master Ritual** is automatically enabled. The player does not need to spend an additional skill point for this.
 
 {{< alert context="info" text="It is not implicitly stated but Lv. 7 in the Novice tree is mandatory for every other skill from other trees. If you take at least one skill point in any other tree the novice tree stays locked for you." />}}
 
 ```mermaid
 graph TD
-    BasicSkill(["Basic Skill (1-7)"])
+    BasicSkill(["Basic Skill (1-5)"])
     PlayDead["Play Dead (1)"]
     FirstAid["First Aid (1-3)"]
     MasterRitual["Master Ritual (1)"]
@@ -76,29 +74,27 @@ graph TD
 
     BasicSkill -->|Lv.2| PlayDead
     BasicSkill -->|Lv.3| FirstAid
-    BasicSkill -->|Lv.4| Cooking
-    BasicSkill -->|Lv.7| MasterRitual
+    BasicSkill -->|Lv.3| Cooking
+    BasicSkill -->|Lv.5| MasterRitual
 ```
 
 <br>
-{{< skill name="Basic Skill" maxLevel="10"
+{{< skill name="Basic Skill" maxLevel="5"
     description="Enables the use of the basic user interface." >}}
 {{< skill-level level="1" >}}Allows to trade with other players.{{< /skill-level >}}
 {{< skill-level level="2" >}}Allows to chat with other players via public and whisper chat.{{< /skill-level >}}
-{{< skill-level level="3" >}}Allows to express emotes.{{< /skill-level >}}
+{{< skill-level level="3" >}}Allows to use trade posts.{{< /skill-level >}}
 {{< skill-level level="4" >}}Allows sitting to double HP & Mana recovery.{{< /skill-level >}}
-{{< skill-level level="5" >}}Allows to join and create parties.{{< /skill-level >}}
-{{< skill-level level="6" >}}Allows to use trade posts.{{< /skill-level >}}
-{{< skill-level level="7" >}}Allows the user to perform the "Master Ritual".{{< /skill-level >}}
+{{< skill-level level="5" >}}Allows to join and create parties. Enables the user to perform the "Master Ritual".{{< /skill-level >}}
 {{< /skill >}}
 
-{{< skill name="Cooking" maxLevel="3" requires="Basic Skill Lv. 4" description="The Master and his Bestia can start to cook meals on fire places. These meals apply certain buff effects when they are eaten." >}}
+{{< skill name="Cooking" maxLevel="3" requires="Basic Skill Lv. 3" description="The Master and his Bestia can start to cook meals on fire places. These meals apply certain buff effects when they are eaten." >}}
 
 | Lv. | Cooking Time | Success Chance |
 | --- | ------------ | -------------- |
-| 1   | -10%         | +10%           |
+| 1   | -0%          | +0%            |
 | 2   | -20%         | +20%           |
-| 3   | -30%         | +30%           |
+| 3   | -40%         | +40%           |
 
 {{< /skill >}}
 
@@ -117,7 +113,7 @@ graph TD
 
 {{< /skill >}}
 
-{{< skill name="Master Ritual" maxLevel="1" requires="Basic Skill Lv. 7">}}
+{{< skill name="Master Ritual" maxLevel="1" requires="Basic Skill Lv. 5">}}
 Automatically enabled once Lv. 7 in Basic Skill is reached. Can only be used as long as you are a Novice. Converts 25 [Void Essence](/docs/mechanics/item-list/#void-essence), 5 [Mana Dust](/docs/mechanics/item-list/#mana-dust) and 3 [Clay](/docs/mechanics/item-list/#clay) into a [Seal of Mastery](/docs/mechanics/item-list/#seal-of-mastery).
 {{< /skill >}}
 
@@ -125,7 +121,7 @@ Automatically enabled once Lv. 7 in Basic Skill is reached. Can only be used as 
 
 The workbenches, forges and cauldrons of the tradesfolk turn raw ambition into things a player can actually use. Every blade, trinket and bottled miracle a master ever relies on started out as somebody's Craftsman skill paying off.
 
-Crafting always runs in two phases: a Craftsman first **discovers a blueprint** by experimenting with raw materials, then **produces** that item from it as often as they like. A learned blueprint can be inscribed onto paper as a shareable **recipe**. The skills below govern how reliably a Craftsman discovers, produces and refines within their trade — see [Item Crafting](/docs/mechanics/items/#item-crafting) for the full system.
+Crafting always runs in two phases: a Craftsman first **discovers a blueprint** by experimenting with raw materials, then **produces** that item from it as often as they like. The skills below govern how reliably a Craftsman discovers, produces and refines within their trade — see [Item Crafting](/docs/mechanics/items/#item-crafting) for the full system.
 
 ```mermaid
 graph TD
