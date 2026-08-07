@@ -54,47 +54,47 @@ These are the base upgrade chances. The chances can be altered via skills, buffs
 
 {{< chart >}}
 {
-	type: 'line',
-	data: {
-		labels: Array.from({length: 25}, (_, i) => i + 1),
-		datasets: [
-			{
-				label: 'Mundane',
-				function: function(x) { return x <= 7 ? 1 : x >= 16 ? 0.30 : -0.0875 * x + 1.7; },
-				fill: false
-			},
-			{
-				label: 'Superior',
-				function: function(x) { return x <= 6 ? 1 : x >= 15 ? 0.25 : -0.09375 * x + 1.65625; },
-				fill: false
-			},
-      {
-				label: 'Rare',
-				function: function(x) { return x <= 6 ? 1 : x >= 14 ? 0.20 : -0.1 * x + 1.6; },
-				fill: false
-			},
-			{
-				label: 'Legendary',
-				function: function(x) { return x <= 5 ? 1 : x >= 13 ? 0.15 : -0.10625 * x + 1.53125; },
-				fill: false
-			},
-			{
-				label: 'Epic',
-        function: function(x) { return x <= 4 ? 1 : x >= 12 ? 0.10 : -0.1125 * x + 1.45; },
-				fill: false
-			}
-		]
-	},
-  options: {
-    responsive: true,
-    scales: {
-      y: {
-        title: { display: true, text: 'Upgrade Chance %' },
-        max: 1.0,
-        min: 0.0
-      }
-    }
-  }
+type: 'line',
+data: {
+labels: Array.from({length: 25}, (\_, i) => i + 1),
+datasets: [
+{
+label: 'Mundane',
+function: function(x) { return x <= 7 ? 1 : x >= 16 ? 0.30 : -0.0875 *x + 1.7; },
+fill: false
+},
+{
+label: 'Superior',
+function: function(x) { return x <= 6 ? 1 : x >= 15 ? 0.25 : -0.09375* x + 1.65625; },
+fill: false
+},
+{
+label: 'Rare',
+function: function(x) { return x <= 6 ? 1 : x >= 14 ? 0.20 : -0.1 *x + 1.6; },
+fill: false
+},
+{
+label: 'Legendary',
+function: function(x) { return x <= 5 ? 1 : x >= 13 ? 0.15 : -0.10625* x + 1.53125; },
+fill: false
+},
+{
+label: 'Epic',
+function: function(x) { return x <= 4 ? 1 : x >= 12 ? 0.10 : -0.1125 * x + 1.45; },
+fill: false
+}
+]
+},
+options: {
+responsive: true,
+scales: {
+y: {
+title: { display: true, text: 'Upgrade Chance %' },
+max: 1.0,
+min: 0.0
+}
+}
+}
 }
 {{< /chart >}}
 
@@ -111,31 +111,31 @@ hardDefense = armorPoints / (armorPoints + 100)
 
 {{< chart >}}
 {
-	type: 'line',
-	data: {
-		labels: Array.from({length: 101}, (_, i) => i * 10),
-		datasets: [
-			{
-				label: 'Hard Defense',
-				function: function(x) { return x / (x + 100); },
-				fill: false
-			}
-		]
-	},
-  options: {
-    responsive: true,
-    scales: {
-      x: {
-        type: 'linear',
-        title: { display: true, text: 'Armor Points' }
-      },
-      y: {
-        title: { display: true, text: 'Hard Defense %' },
-        max: 1.0,
-        min: 0.0
-      }
-    }
-  }
+type: 'line',
+data: {
+labels: Array.from({length: 101}, (\_, i) => i \* 10),
+datasets: [
+{
+label: 'Hard Defense',
+function: function(x) { return x / (x + 100); },
+fill: false
+}
+]
+},
+options: {
+responsive: true,
+scales: {
+x: {
+type: 'linear',
+title: { display: true, text: 'Armor Points' }
+},
+y: {
+title: { display: true, text: 'Hard Defense %' },
+max: 1.0,
+min: 0.0
+}
+}
+}
 }
 {{< /chart >}}
 
@@ -146,54 +146,107 @@ The upgrade chances can be increased by leveling up the relevant [Master Skill](
 
 {{< chart >}}
 {
-	type: 'line',
-	data: {
-		labels: Array.from({length: 15}, (_, i) => i + 1),
-		datasets: [
-			{
-				label: 'Armor',
-				function: function(x) { return x <= 4 ? 1 : x > 10 ? 0.10 : -0.15 * x + 1.6; },
-				fill: false
-			}
-		]
-	},
-  options: {
-    responsive: true,
-    scales: {
-      x: {
-        type: 'linear',
-        title: { display: true, text: 'Upgrade Level' },
-        min: 1,
-        ticks: { stepSize: 1 }
-      },
-      y: {
-        title: { display: true, text: 'Chance of Success' },
-        max: 1.1,
-        min: 0
-      }
-    }
-  }
+type: 'line',
+data: {
+labels: Array.from({length: 15}, (\_, i) => i + 1),
+datasets: [
+{
+label: 'Armor',
+function: function(x) { return x <= 4 ? 1 : x > 10 ? 0.10 : -0.15 * x + 1.6; },
+fill: false
+}
+]
+},
+options: {
+responsive: true,
+scales: {
+x: {
+type: 'linear',
+title: { display: true, text: 'Upgrade Level' },
+min: 1,
+ticks: { stepSize: 1 }
+},
+y: {
+title: { display: true, text: 'Chance of Success' },
+max: 1.1,
+min: 0
+}
+}
+}
 }
 {{< /chart >}}
+
+# Item Customization
+
+An item can be reworked to cut rune slots into it, which [Runic Etching](/docs/mechanics/master/#skill-runic-etching) can later
+fill. This is governed by the Craftsman's [Item Customization](/docs/mechanics/master/#skill-item-customization) skill and
+consumes an [Engraving Set](/docs/mechanics/item-list/#engraving-set) per attempt, whether it succeeds or not. A failed
+attempt can destroy the item outright - see the skill's Destroy Chance column.
+
+The chance of successfully cutting a slot has a **base chance** that depends purely on the item's own
+[level](#item-level) - higher-level gear is tougher to rework - on top of which the skill's flat Success Chance bonus and
+the crafter's DEX are added:
+
+```kotlin
+baseChance = 0.4 - max(0, itemLevel - 10) * 0.01
+chance = clamp(baseChance + skillSuccessChance + floor(DEX / 10) * 0.01, 0.01, 1.0)
+```
+
+Levels 1-10 all share the same `40%` base chance; every level above that removes another 1%, so it reaches `0%` at
+level 50 and `-50%` at level 100 - firmly negative, meaning a Craftsman needs a near-maxed
+[Item Customization](/docs/mechanics/master/#skill-item-customization) rank (and preferably some DEX) just to bring a
+level 100 item back up to a coin flip. Level 100 is only a landmark, not a ceiling - the base chance keeps falling by
+1% per level for anything higher. The total is clamped so an attempt is never above 100% nor entirely impossible.
+
+{{< chart >}}
+{
+type: 'line',
+data: {
+labels: Array.from({length: 100}, (\_, i) => i + 1),
+datasets: [
+{
+label: 'Base Slot Chance',
+function: function(x) { return 0.4 - Math.max(0, x - 10) * 0.01; },
+fill: false
+}
+]
+},
+options: {
+responsive: true,
+scales: {
+x: { type: 'linear', title: { display: true, text: 'Item Level' }, min: 1 },
+y: { title: { display: true, text: 'Base Chance' }, max: 0.5, min: -0.6 }
+}
+}
+}
+{{< /chart >}}
+
+**Example:** A crafter with Item Customization Lv. 1 (`+10%` Success Chance) and no notable DEX attempts a single slot
+on a level 10 item: `40% (base) - 0% (dex) + 10% (skill) - 0% (1 slot)  = 50%`. The same crafter at Item Customization Lv. 10 (`+100%`) attempting a
+level 100 item instead: `-50% (base) + 100% (skill) = 50%` - the item level penalty has eaten the entire skill bonus, leaving the same coin-flip odds despite the enormous gap in both item and skill level.
+
+Putting more than one slot into an item costs further chance on top: every extra slot above the first subtracts another
+`40` percentage points, i.e. `chance(n slots) = clamp(chance(1 slot) - 0.4 * (n - 1), 0.01, 1.0)`. So an item and skill
+combination that would land on `80%` for a single slot drops to `40%` once you ask for two.
 
 # Item Crafting
 
 Bestia uses a flexible, discovery-driven crafting system. Every player can attempt to craft anything, but crafting
 always happens in two distinct phases:
 
-1. **Discovery** – you experiment with raw materials to *learn a blueprint*. This is the risky part: it consumes the
+1. **Discovery** – you experiment with raw materials to _learn a blueprint_. This is the risky part: it consumes the
    materials and can fail.
 2. **Production** – once a blueprint is learned, you (or your Bestia) can produce that item repeatedly and reliably.
 
-What you are even *allowed* to attempt depends on the **crafting school** you use — each tied to a
+What you are even _allowed_ to attempt depends on the **crafting school** you use — each tied to a
 [Master Skill](/docs/mechanics/master/#master-skills). There are six domains of craftable, user-generated content:
 
-* **Weapons** (Blacksmith)
-* **Armor** (Blacksmith)
-* **Magical Artifacts** (Magic Artisan)
-* **Potions and Usables** (Alchemy)
-* **Meals** (Cooking)
-* **Buildings, Traps, non-magical Devices** (Craftsmanship)
+- **Weapons** (Blacksmith)
+- **Armor** (Blacksmith)
+- **Magical Artifacts** (Magic Artisan)
+- **Potions and Usables** (Alchemy)
+- **Meals** (Cooking)
+- **Buildings, Traps, non-magical Devices** (Craftsmanship)
 
 Some materials are exclusive to certain schools (a grape is useless for forging, and a Craftsman cannot forge a blade).
 The school is the only "category" you actively choose — and you choose it just by picking the craft action, never by
@@ -202,7 +255,7 @@ typing a keyword.
 ## Discovery: Learning a Blueprint
 
 Every craftable item lives at a point in a shared **feature space**. Each raw material carries its own coordinates in
-that space; when you combine materials their vectors **sum** into a single point, so the *proportion* of materials is
+that space; when you combine materials their vectors **sum** into a single point, so the _proportion_ of materials is
 the "shape" you are aiming for — far more flexible than a rigid grid pattern.
 
 Your crafting skill defines a **radius** around that point. Every known blueprint that falls inside this sphere is a
@@ -219,44 +272,44 @@ whether you learn it. A discovery attempt always consumes the materials and ends
 
 {{< /table >}}
 
-This resonance feedback removes the classic frustration of not knowing whether a combination is *impossible* or merely
-*unlucky*: a **Slipped** result means the blueprint exists — keep trying with the same materials, while **Nothing**
-means you should swap materials. If a blueprint sits just outside your radius, the game instead hints *"something faint
-lies beyond your skill"* — telling you to level up rather than swap materials, since the radius grows with skill.
+This resonance feedback removes the classic frustration of not knowing whether a combination is _impossible_ or merely
+_unlucky_: a **Slipped** result means the blueprint exists — keep trying with the same materials, while **Nothing**
+means you should swap materials. If a blueprint sits just outside your radius, the game instead hints _"something faint
+lies beyond your skill"_ — telling you to level up rather than swap materials, since the radius grows with skill.
 
 The chance to learn drops with item level and rises with skill. It is floored at **0.1%** for items up to Lv. 100 and
 **0.01%** above Lv. 100, so in theory every blueprint is discoverable given enough attempts.
 
 {{< chart >}}
 {
-  type: 'line',
-  data: {
-    labels: Array.from({length: 150}, (_, i) => i + 1),
-    datasets: [
-      {
-        label: 'Skill 30',
-        function: function(x) { return Math.max(0.001, Math.min(1, Math.pow(30 / x, 2))); },
-        fill: false
-      },
-      {
-        label: 'Skill 60',
-        function: function(x) { return Math.max(0.001, Math.min(1, Math.pow(60 / x, 2))); },
-        fill: false
-      },
-      {
-        label: 'Skill 90',
-        function: function(x) { return Math.max(0.001, Math.min(1, Math.pow(90 / x, 2))); },
-        fill: false
-      }
-    ]
-  },
-  options: {
-    responsive: true,
-    scales: {
-      x: { type: 'linear', title: { display: true, text: 'Item Level' }, min: 1 },
-      y: { title: { display: true, text: 'Chance to Learn' }, max: 1.0, min: 0 }
-    }
-  }
+type: 'line',
+data: {
+labels: Array.from({length: 150}, (\_, i) => i + 1),
+datasets: [
+{
+label: 'Skill 30',
+function: function(x) { return Math.max(0.001, Math.min(1, Math.pow(30 / x, 2))); },
+fill: false
+},
+{
+label: 'Skill 60',
+function: function(x) { return Math.max(0.001, Math.min(1, Math.pow(60 / x, 2))); },
+fill: false
+},
+{
+label: 'Skill 90',
+function: function(x) { return Math.max(0.001, Math.min(1, Math.pow(90 / x, 2))); },
+fill: false
+}
+]
+},
+options: {
+responsive: true,
+scales: {
+x: { type: 'linear', title: { display: true, text: 'Item Level' }, min: 1 },
+y: { title: { display: true, text: 'Chance to Learn' }, max: 1.0, min: 0 }
+}
+}
 }
 {{< /chart >}}
 
@@ -291,7 +344,7 @@ variants.
 ## The Feature Space Axes
 
 The feature space uses a handful of **bipolar** axes. Each runs from a negative pole through a neutral `0` to a positive
-pole, so an axis that is irrelevant to an item simply sits near `0` (a potion has no *Edge*, a sword has no *Vitality*).
+pole, so an axis that is irrelevant to an item simply sits near `0` (a potion has no _Edge_, a sword has no _Vitality_).
 
 {{< table >}}
 
@@ -312,7 +365,7 @@ production-inherited facets described above. Forcing every element and school on
 dimensionality; letting the dominant reagent decide keeps the space small and flexible.
 
 **Example — Mace vs. Sword vs. Hammer.** All three are solid, resilient, mundane metal weapons, so they sit at the same
-place on every *material* axis. What separates them is pure geometry — exactly the **Heft** and **Edge** axes:
+place on every _material_ axis. What separates them is pure geometry — exactly the **Heft** and **Edge** axes:
 
 ```text
          Heft    Edge
@@ -337,22 +390,22 @@ baseDurationConsumablesSeconds = .3 * baseDurationSeconds
 
 {{< chart >}}
 {
-	type: 'line',
-	data: {
-		labels: Array.from({length: 100}, (_, i) => i + 1),
-		datasets: [
-			{
-				label: 'Craft Time / s',
-				function: function(x) { return 1.2 * x * x; },
-				fill: false
-			},
-      {
-				label: 'Craft Time Consumables / s',
-				function: function(x) { return 0.3 * 1.2 * x * x; },
-				fill: false
-			}
-		]
-	}
+type: 'line',
+data: {
+labels: Array.from({length: 100}, (\_, i) => i + 1),
+datasets: [
+{
+label: 'Craft Time / s',
+function: function(x) { return 1.2 *x* x; },
+fill: false
+},
+{
+label: 'Craft Time Consumables / s',
+function: function(x) { return 0.3 *1.2* x * x; },
+fill: false
+}
+]
+}
 }
 {{< /chart >}}
 
@@ -398,30 +451,29 @@ weightLimit = STR / 2 + VIT / 5 + 15 + LEVEL / 5
 
 {{< chart >}}
 {
-	type: 'line',
-	data: {
-		labels: Array.from({length: 100}, (_, i) => i + 1),
-		datasets: [
-			{
-				label: 'Weight Limit (High STR)',
-				function: function(x) { return 100 / 2 + 30 / 5 + 15 + x / 5; },
-				fill: false
-			},
-      {
-        label: 'Weight Limit (Medium STR)',
-        function: function(x) { return 60 / 2 + 30 / 5 + 15 + x / 5; },
-				fill: false
-			},
-      {
-        label: 'Weight Limit (Low STR, High VIT)',
-        function: function(x) { return 20 / 2 + 90 / 5 + 15 + x / 5; },
-				fill: false
-			}
-		]
-	}
+type: 'line',
+data: {
+labels: Array.from({length: 100}, (\_, i) => i + 1),
+datasets: [
+{
+label: 'Weight Limit (High STR)',
+function: function(x) { return 100 / 2 + 30 / 5 + 15 + x / 5; },
+fill: false
+},
+{
+label: 'Weight Limit (Medium STR)',
+function: function(x) { return 60 / 2 + 30 / 5 + 15 + x / 5; },
+fill: false
+},
+{
+label: 'Weight Limit (Low STR, High VIT)',
+function: function(x) { return 20 / 2 + 90 / 5 + 15 + x / 5; },
+fill: false
+}
+]
+}
 }
 {{< /chart >}}
-
 
 Please note that depending on your used up weight limit regeneration of certain [status values](/docs/mechanics/statusvalues/)
 might be affected.

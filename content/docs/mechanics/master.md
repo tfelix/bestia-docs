@@ -136,17 +136,17 @@ Crafting always runs in two phases: a Craftsman first **discovers a blueprint** 
 ```mermaid
 graph TD
     Carpentry["Carpentry (1-10)"]
-    Tinkerer["Tinkerer (1-5)"]
+    MasterCraftsman["Master Craftsman (1-5)"]
     ItemCustomization["Item Customization (1-10)"]
     Gate{{"5+ pts in Craftsman Tree"}}
     Blacksmith(("Blacksmith"))
     Artificer(("Artificer"))
     Alchemist(("Alchemist"))
 
-    Carpentry -->|Lv.3| Tinkerer
+    Carpentry -->|Lv.3| MasterCraftsman
     Carpentry -->|Lv.3| ItemCustomization
     Carpentry -.-> Gate
-    Tinkerer -.-> Gate
+    MasterCraftsman -.-> Gate
     ItemCustomization -.-> Gate
     Gate -.->|unlocks| Blacksmith
     Gate -.->|unlocks| Artificer
@@ -155,10 +155,10 @@ graph TD
 
 <br>
 {{< skill name="Carpentry" maxLevel="10"
-    type="Active" manaCost="20" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="20" cooldown="0 s" range="2" target="Workbench"
     description="Allows you to construct useful items of daily use and structures which can be placed in the world." >}}
 
-Lv. 1 allows you to build a [workbench](/docs/mechanics/item-list/#workbench), which you can use for crafting.
+Lv. 1 allows you to build a [workbench](/docs/mechanics/item-list/#workbench), which you can use for crafting. The time it needs to craft an item depends on the item level you want to craft.
 
 | Lv. | Success Chance | Max Item Level |
 | --- | -------------- | -------------- |
@@ -179,34 +179,36 @@ Lv. 1 allows you to build a [workbench](/docs/mechanics/item-list/#workbench), w
 type="Passive"
 description="You are very skilled in working with tools and raw material. Building structures in the world is very quick for you and the Bestia under your command." >}}
 
-| Lv. | Construction Time |
-| --- | ----------------- |
-| 1   | -10%              |
-| 2   | -20%              |
-| 3   | -30%              |
-| 4   | -40%              |
-| 5   | -50%              |
+| Lv. | Construction Time | Success Chance |
+| --- | ----------------- | -------------- |
+| 1   | -10%              | +2%            |
+| 2   | -20%              | +4%            |
+| 3   | -30%              | +6%            |
+| 4   | -40%              | +8%            |
+| 5   | -50%              | +10%           |
 
 {{< /skill >}}
 
 {{< skill name="Item Customization" maxLevel="10" requires="Carpentry Lv. 3"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="23" cooldown="0s"
     description="You are able to rework items to put slots in them in which runes can be slottet." >}}
 
-Requires an [Engraving Set](/docs/mechanics/item-list/#engraving-set) which will be consumed in the process.
+Requires an [Engraving Set](/docs/mechanics/item-list/#engraving-set) which will be consumed in the process. You can choose how many slots you want to put into an item. But every slot makes it harder to succeed. Every extra slot above 1 reduces the success chance by 40%.
 
-| Lv. | Success Chance |
-| --- | -------------- |
-| 1   | +10%           |
-| 2   | +20%           |
-| 3   | +30%           |
-| 4   | +40%           |
-| 5   | +50%           |
-| 1   | +60%           |
-| 2   | +70%           |
-| 3   | +80%           |
-| 4   | +90%           |
-| 5   | +100%          |
+The Success Chance below is added on top of a **base chance that drops as the item's own level rises**. See [Item Customization](/docs/mechanics/items/#item-customization) for the full formula and worked examples.
+
+| Lv. | Success Chance | Destroy Chance On Failure | Max Slots |
+| --- | -------------- | ------------------------- | --------- |
+| 1   | +10%           | 30%                       | 1         |
+| 2   | +20%           | 28%                       | 1         |
+| 3   | +30%           | 26%                       | 1         |
+| 4   | +40%           | 24%                       | 2         |
+| 5   | +50%           | 22%                       | 2         |
+| 6   | +60%           | 20%                       | 2         |
+| 7   | +70%           | 18%                       | 3         |
+| 8   | +80%           | 16%                       | 3         |
+| 9   | +90%           | 14%                       | 3         |
+| 10  | +100%          | 12%                       | 3         |
 
 {{< /skill >}}
 

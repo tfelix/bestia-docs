@@ -66,6 +66,7 @@ statusValue = (baseValue + individualValue) * level / 100 + effortValue
 - Increases the probability of a critical hit
 - Increases the damage of ranged attacks
 - Increases upgrade chance of items and equipment by 1% every 10 DEX.
+- Increases the chance to successfully cut a rune slot into an item by 1% every 10 DEX, see [Item Customization](/docs/mechanics/items/#item-customization).
 
 ## Agility - AGI
 
