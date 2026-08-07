@@ -341,6 +341,134 @@ magical draught takes its school from the magical reagent you feed it. Some blue
 that cannot be substituted. This keeps the feature space small while letting one blueprint cover a whole family of
 variants.
 
+## Construction Crafting Success Chance
+
+For the Craftsmanship domain specifically — workbenches, structures, traps and other non-magical devices built with
+[Carpentry](/docs/mechanics/master/#skill-carpentry) — the Production roll above is shaped by skill rank and status
+values, not material quality alone, much like [Item Customization](#item-customization)'s slot-cutting chance. A
+**base chance** falls off with the item level being attempted, on top of which
+[Carpentry](/docs/mechanics/master/#skill-carpentry), [Master Craftsman](/docs/mechanics/master/#skill-master-craftsman),
+temporary buffs and the Craftsman's own status values are added:
+
+```kotlin
+baseChance = 0.90 - max(0, itemLevel - 10) * 0.015
+chance = clamp(baseChance + carpentryBonus + masterCraftsmanBonus + buffBonus + floor(DEX / 10) * 0.02 + floor(WIL / 10) * 0.01, 0.01, 1.0)
+```
+
+Levels 1-10 all share the same `90%` base chance, so [Carpentry](/docs/mechanics/master/#skill-carpentry) alone gets
+you the rest of the way there: Lv. 1 (+5%) reaches 95%, Lv. 2 (+10%) already caps out at 100%. Every level above 10
+removes another 1.5%, reaching `0%` at level 70 and `-30%` at level 90 - firmly negative, meaning a level 90 build
+needs real investment across skill, buffs and stats to be worth attempting at all. Bonus sources:
+
+- [Carpentry](/docs/mechanics/master/#skill-carpentry) rank — up to **+50%** at Lv. 10.
+- [Master Craftsman](/docs/mechanics/master/#skill-master-craftsman) rank — up to **+10%** at Lv. 5.
+- Temporary buffs (a support consumable, an ally's blessing, …) — typically **+5% to +10%** while active.
+- **DEX** — `+2%` per 10 points (see [Status Values](/docs/mechanics/statusvalues/#dexterity---dex)).
+- **WIL** — `+1%` per 10 points (see [Status Values](/docs/mechanics/statusvalues/#willpower---wil)).
+
+**Example:** A Craftsman attempts a level 90 item with maxed Carpentry (Lv. 10, +50%), maxed Master Craftsman (Lv. 5,
++10%), a +10% buff active, 150 DEX (+30%) and 50 WIL (+5%). `baseChance = 0.90 - 80 * 0.015 = -0.30`, so
+`chance = -0.30 + 0.50 + 0.10 + 0.10 + 0.30 + 0.05 = 0.75` — a 75% success chance. Push the same fully-maxed build to
+a level 100 item and `baseChance` drops to `-0.45`, bringing the total down to 60%: raising skill and stats raises
+the ceiling, it never flattens the curve, so the chance keeps eroding the higher the item level climbs.
+
+{{< chart >}}
+{
+  type: 'line',
+  data: {
+    labels: Array.from({length: 150}, (_, i) => i + 1),
+    datasets: [
+      {
+        label: 'Base Chance (no bonuses)',
+        function: function(x) { return Math.max(0.01, 0.90 - Math.max(0, x - 10)*0.015); },
+        fill: false
+      },
+      {
+        label: 'Fully Maxed (Carpentry+Master Craftsman+Buff+DEX 150+WIL 50)',
+        function: function(x) { var base = 0.90 - Math.max(0, x - 10)*0.015; return Math.max(0.01, Math.min(1, base + 1.05)); },
+        fill: false
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    scales: {
+      x: { type: 'linear', title: { display: true, text: 'Item Level' }, min: 1 },
+      y: { title: { display: true, text: 'Success Chance' }, max: 1.0, min: 0 }
+    }
+  }
+}
+{{< /chart >}}
+
+## Ore Refinement Success Chance
+
+Raw ore is dead weight until it has been through a [Furnace](/docs/mechanics/item-list/#furnace). Smelting is
+deliberately **not** blueprint-driven — there is nothing to discover, every ore has exactly one refined form — but each
+charge still rolls against a success chance, and a failed smelt turns the whole batch into slag: the ore **and** the
+fuel are lost.
+
+The roll is governed by the Blacksmith's [Ore Refinement](/docs/mechanics/master/#skill-ore-refinement) skill and, like
+[Item Customization](#item-customization) and [Construction Crafting](#construction-crafting-success-chance), starts
+from a **base chance that falls with the level of the ore** being worked:
+
+```kotlin
+baseChance = 0.30 - max(0, oreLevel - 10) * 0.01
+chance = clamp(baseChance + oreRefinementBonus + fuelBonus + floor(STR / 10) * 0.02 + floor(WIL / 10) * 0.01, 0.01, 1.0)
+```
+
+The two simplest ores — [Tin](/docs/mechanics/item-list/#tin-ore) and [Copper](/docs/mechanics/item-list/#copper-ore) —
+sit at or below Lv. 10 and therefore share the same `30%` base chance, which a single rank of Ore Refinement already
+doubles. Every ore level above 10 removes another 1%, so the base reaches `0%` at ore level 40, `-30%` at level 70 and
+`-60%` at [Adamantium Ore](/docs/mechanics/item-list/#adamantium-ore)'s level 100. See
+[Refining](/docs/mechanics/natural-resources/#refining) for the level and base chance of every ore. Bonus sources:
+
+- [Ore Refinement](/docs/mechanics/master/#skill-ore-refinement) rank — up to **+90%** at Lv. 3.
+- **Fuel** — [Coal](/docs/mechanics/item-list/#coal) is the reference fuel at `±0%`;
+  [Charcoal](/docs/mechanics/item-list/#charcoal) burns cooler and costs `-10%`.
+- **STR** — `+2%` per 10 points; working the bellows and turning a heavy charge is physical labour
+  (see [Status Values](/docs/mechanics/statusvalues/#strength---str)).
+- **WIL** — `+1%` per 10 points; holding a furnace at temperature for hours is a matter of patience
+  (see [Status Values](/docs/mechanics/statusvalues/#willpower---wil)).
+
+**Example:** A Blacksmith with maxed [Ore Refinement](/docs/mechanics/master/#skill-ore-refinement) (Lv. 3, `+90%`)
+burning coal, at 60 STR (`+12%`) and 30 WIL (`+3%`), attempts [Adamantium Ore](/docs/mechanics/item-list/#adamantium-ore)
+(Lv. 100): `baseChance = 0.30 - 90 * 0.01 = -0.60`, so `chance = -0.60 + 0.90 + 0.00 + 0.12 + 0.03 = 0.45` — a 45%
+success chance on the hardest ore in the world, meaning even a maxed smith loses roughly every second batch. The same
+smith at 80 STR / 40 WIL reaches `50%`; feeding the furnace charcoal instead of coal costs a flat 10 points off either
+figure.
+
+Ore level 100 is a landmark, not a ceiling — **the base chance is never capped** and keeps falling by 1% per level
+beyond it, so an Epic-tier ore at Lv. 130 leaves the 60 STR / 30 WIL smith above at just 15%. Only the total is
+clamped, so an attempt is never above 100% nor entirely impossible.
+
+{{< chart >}}
+{
+  type: 'line',
+  data: {
+    labels: Array.from({length: 140}, (_, i) => i + 1),
+    datasets: [
+      {
+        label: 'Base Chance (no bonuses)',
+        function: function(x) { return Math.max(0.01, 0.30 - Math.max(0, x - 10)*0.01); },
+        fill: false
+      },
+      {
+        label: 'Ore Refinement Lv. 3 + Coal + 60 STR/30 WIL',
+        function: function(x) { var base = 0.30 - Math.max(0, x - 10)*0.01; return Math.max(0.01, Math.min(1, base + 1.05)); },
+        fill: false
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    scales: {
+      x: { type: 'linear', title: { display: true, text: 'Ore Level' }, min: 1 },
+      y: { title: { display: true, text: 'Success Chance' }, max: 1.0, min: 0 }
+    }
+  }
+}
+{{< /chart >}}
+
 ## The Feature Space Axes
 
 The feature space uses a handful of **bipolar** axes. Each runs from a negative pole through a neutral `0` to a positive

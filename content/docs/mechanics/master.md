@@ -173,6 +173,9 @@ Lv. 1 allows you to build a [workbench](/docs/mechanics/item-list/#workbench), w
 | 9   | +45%           | 90             |
 | 10  | +50%           | 100+           |
 
+This bonus is added on top of the item-level base chance and the crafter's DEX/WIL — see
+[Construction Crafting Success Chance](/docs/mechanics/items/#construction-crafting-success-chance) for the full formula.
+
 {{< /skill >}}
 
 {{< skill name="Master Craftsman" maxLevel="5" requires="Carpentry Lv. 3"
@@ -186,6 +189,9 @@ description="You are very skilled in working with tools and raw material. Buildi
 | 3   | -30%              | +6%            |
 | 4   | -40%              | +8%            |
 | 5   | -50%              | +10%           |
+
+This bonus is added on top of the item-level base chance and the crafter's DEX/WIL — see
+[Construction Crafting Success Chance](/docs/mechanics/items/#construction-crafting-success-chance) for the full formula.
 
 {{< /skill >}}
 
@@ -240,19 +246,34 @@ graph TD
 
 <br>
 {{< skill name="Ore Refinement" maxLevel="3"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
-    description="Enables the smith to refines the finest ores. A must have to produce the raw materials for weapon or armor forging." >}}
-| Lv. | Max Ore Level |
-| --- | -------------- |
-| 1   | 30              |
-| 2   | 60              |
-| 3   | 90+             |
+    type="Active" manaCost="18" castTime="10s" cooldown="0s"
+    description="Enables the smith to refine the finest ores. A must have to produce the raw materials for weapon or armor forging." >}}
+
+Lv. 1 allows you to place a [Furnace](/docs/mechanics/item-list/#furnace). Every batch burns fuel:
+[Coal](/docs/mechanics/item-list/#coal) is the reference fuel, [Charcoal](/docs/mechanics/item-list/#charcoal) burns
+cooler and costs `-10%`. A failed smelt loses both the ore and the fuel.
+
+| Lv. | Ore Refinement Success |
+| --- | ---------------------- |
+| 1   | +30%                   |
+| 2   | +60%                   |
+| 3   | +90%                   |
+
+There is **no ore level cap** - the bonus is added on top of an ore-level base chance that starts at `30%` for
+[Tin](/docs/mechanics/item-list/#tin-ore) and [Copper](/docs/mechanics/item-list/#copper-ore) and keeps falling by 1%
+per ore level above 10, plus the smith's STR and WIL. Even a maxed smith loses roughly every second batch of
+[Adamantium Ore](/docs/mechanics/item-list/#adamantium-ore). See
+[Ore Refinement Success Chance](/docs/mechanics/items/#ore-refinement-success-chance) for the full formula and
+[Refining](/docs/mechanics/natural-resources/#refining) for the level of every ore.
 
 {{< /skill >}}
 
 {{< skill name="Forge Weapon" maxLevel="10" requires="Ore Refinement Lv. 1 and Item Customization Lv. 5"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
-    description="Able to discover and forge weapon blueprints from raw ingredients. Higher skill levels reliably reach higher-level weapons; blueprints far above your skill can still be attempted, just at a steeply falling chance." >}}
+    type="Active" manaCost="23" castTime="10s" cooldown="0s" range="2" target="Forge"
+    description="Able to discover and forge weapon blueprints from raw ingredients. Higher skill levels reliably reach higher-level weapons." >}}
+
+Lv. 1 allows you to place a Forge.
+
 {{< /skill >}}
 
 {{< skill name="Forge Armor" maxLevel="10" requires="Ore Refinement Lv. 1 and Item Customization Lv. 5"

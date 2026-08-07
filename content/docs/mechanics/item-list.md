@@ -31,13 +31,17 @@ Heavy, rugged chunks of iron ore. Blacksmiths prize these for their strength and
 Smooth, earthy clay. Malleable and perfect for shaping into bricks, pottery, or magical seals. Can be used for forging.
 {{< /item >}}
 
+{{< item name="Coal" weight="0.4" type="Etc" >}}
+Glossy black lumps hewn out of a mineral seam. The reference fuel of every [Furnace](/docs/mechanics/item-list/#furnace) and what any serious smelting run burns — see [Refining](/docs/mechanics/natural-resources/#refining).
+{{< /item >}}
+
 {{< item name="Charcoal" weight="0.2" type="Etc" >}}
-Charred, brittle pieces of wood. Essential for fueling furnaces and crafting potent alchemical mixtures. Can be used for forging.
+Charred, brittle pieces of wood. Cheap furnace fuel and a base for potent alchemical mixtures. Burns cooler than [Coal](/docs/mechanics/item-list/#coal) and costs `-10%` on every [ore refinement](/docs/mechanics/items/#ore-refinement-success-chance) attempt.
 {{< /item >}}
 
 {{< item name="Furnace" weight="40" type="Etc" >}}
-Blacksmiths use furnaces to extract metal from ores.
-Use it to construct it in the world.
+Blacksmiths use furnaces to smelt raw ore down into metal bars. Every batch burns [Coal](/docs/mechanics/item-list/#coal) or [Charcoal](/docs/mechanics/item-list/#charcoal), and both the ore and the fuel are lost if the smelt fails.
+Placing one requires [Ore Refinement](/docs/mechanics/master/#skill-ore-refinement) Lv. 1. Use it to construct it in the world.
 {{< /item >}}
 
 {{< item name="Workbench" weight="?" type="Etc" >}}

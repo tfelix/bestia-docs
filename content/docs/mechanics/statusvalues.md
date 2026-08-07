@@ -43,6 +43,8 @@ statusValue = (baseValue + individualValue) * level / 100 + effortValue
 - Slightly increases the total amount of stamina
 - Slightly increases resistance against temperature
 - Increases the flee rate (dodge chance) against physical attacks
+- Increases [construction crafting success chance](/docs/mechanics/items/#construction-crafting-success-chance) by 1% every 10 WIL
+- Increases [ore refinement success chance](/docs/mechanics/items/#ore-refinement-success-chance) by 1% every 10 WIL - holding a furnace at temperature for hours is a matter of patience
 
 ## Strength - STR
 
@@ -50,6 +52,7 @@ statusValue = (baseValue + individualValue) * level / 100 + effortValue
 - Increases carry capacity
 - Increases the maximum HP amount slightly
 - Increases the maximum stamina amount slightly
+- Increases [ore refinement success chance](/docs/mechanics/items/#ore-refinement-success-chance) by 2% every 10 STR - working the bellows and turning a heavy charge is physical labour
 
 ## Vitality - VIT
 
@@ -67,6 +70,7 @@ statusValue = (baseValue + individualValue) * level / 100 + effortValue
 - Increases the damage of ranged attacks
 - Increases upgrade chance of items and equipment by 1% every 10 DEX.
 - Increases the chance to successfully cut a rune slot into an item by 1% every 10 DEX, see [Item Customization](/docs/mechanics/items/#item-customization).
+- Increases [construction crafting success chance](/docs/mechanics/items/#construction-crafting-success-chance) by 2% every 10 DEX.
 
 ## Agility - AGI
 

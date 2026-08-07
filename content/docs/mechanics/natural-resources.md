@@ -74,6 +74,8 @@ The **Type** column reuses the base resource types listed above, plus the refine
 | Yellow Mana Crystal | Mana    | Used for magic artefacts. Quite rare.                                                       |
 | Red Mana Crystal    | Mana    | Used for magic artefacts. Very rare.                                                        |
 | Rough Gemstone      | Crystal | Uncut gemstones pried from mineral veins. Cut and faceted for use in socketed equipment.    |
+| Coal                | Mineral | A black mineral fuel dug from seams. The reference fuel of every furnace.                   |
+| Charcoal            | Mineral | Wood burned down into fuel. Cheaper than coal, but never gets a furnace as hot.             |
 | Salt                | Mineral | Common mineral salt. Used for food preservation and various crafting recipes.               |
 | Clay                | Mineral | Smooth, earthy clay dug from riverbanks. Shaped into bricks, pottery and magical seals.     |
 | Medicinal Herb      | Herb    | A common healing herb gathered in the wild. A base ingredient for many potions.             |
@@ -89,8 +91,59 @@ In Bestia, Mana is considered a resource. It permeates the land, and there are r
 
 # Refining
 
-Steel for example can be refined from iron ore together with charcoal inside a furnace.
-Ore must be processed into metal bars before they are usable. This processing usually means you need a furnace and ideally a Master with the skill [Ore Refinement](/docs/mechanics/master) to increase the yield.
+Ore must be processed into metal bars before it is usable — steel, for example, is refined from iron ore together with
+fuel inside a [Furnace](/docs/mechanics/item-list/#furnace). Placing a furnace and smelting at all requires a Master
+with the [Ore Refinement](/docs/mechanics/master/#skill-ore-refinement) skill; every further rank raises the odds that
+a batch survives the heat.
+
+## Ore Levels
+
+Every ore carries an **ore level** just like any other item (see [Item Level](/docs/mechanics/items/#item-level)), and
+that level alone decides the base chance of a smelt succeeding:
+
+```kotlin
+baseChance = 0.30 - max(0, oreLevel - 10) * 0.01
+```
+
+{{< table >}}
+
+| Ore                 | Ore Lv. | Category  | Base Refine Chance |
+| ------------------- | ------- | --------- | ------------------ |
+| Tin Ore             | 5       | Mundane   | 30%                |
+| Copper Ore          | 10      | Mundane   | 30%                |
+| Iron Ore            | 20      | Mundane   | 20%                |
+| Silver Ore          | 35      | Superior  | 5%                 |
+| Gold Ore            | 50      | Superior  | -10%               |
+| Mercury Ore         | 60      | Rare      | -20%               |
+| Palladium Ore       | 70      | Rare      | -30%               |
+| Mithril Ore         | 85      | Legendary | -45%               |
+| Adamantium Ore      | 100     | Legendary | -60%               |
+
+{{< /table >}}
+
+The two entry ores sit at or below Lv. 10 and share the same `30%` base chance, so a smith who has just placed their
+first furnace can work tin and copper reliably from the very first rank of the skill. From there the chance erodes by
+1% per ore level, turning negative at level 40 — beyond that point smelting is only worth attempting with skill ranks,
+good fuel and the stats to back them up. Nothing caps this: an Epic-tier ore above Lv. 100 keeps losing another 1% per
+level, so the ladder always has another rung that hurts.
+
+## Fuel
+
+Every smelt burns fuel alongside the ore, and a failed batch loses both.
+
+{{< table >}}
+
+| Fuel                                            | Modifier | Notes                                                                        |
+| ----------------------------------------------- | -------- | ---------------------------------------------------------------------------- |
+| [Coal](/docs/mechanics/item-list/#coal)         | ±0%      | The reference fuel. Mined from seams in mountains and caves.                 |
+| [Charcoal](/docs/mechanics/item-list/#charcoal) | -10%     | Burned down from wood. Cheap and craftable, but never gets a furnace as hot. |
+
+{{< /table >}}
+
+On top of the base chance and the fuel come the smith's
+[Ore Refinement](/docs/mechanics/master/#skill-ore-refinement) rank (up to `+90%`) and their STR and WIL — see
+[Ore Refinement Success Chance](/docs/mechanics/items/#ore-refinement-success-chance) for the full formula and worked
+examples.
 
 # Item Recycling
 
