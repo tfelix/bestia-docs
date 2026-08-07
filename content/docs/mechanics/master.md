@@ -80,6 +80,7 @@ graph TD
 
 <br>
 {{< skill name="Basic Skill" maxLevel="5"
+    type="Passive"
     description="Enables the use of the basic user interface." >}}
 {{< skill-level level="1" >}}Allows to trade with other players.{{< /skill-level >}}
 {{< skill-level level="2" >}}Allows to chat with other players via public and whisper chat.{{< /skill-level >}}
@@ -88,32 +89,41 @@ graph TD
 {{< skill-level level="5" >}}Allows to join and create parties. Enables the user to perform the "Master Ritual".{{< /skill-level >}}
 {{< /skill >}}
 
-{{< skill name="Cooking" maxLevel="3" requires="Basic Skill Lv. 3" description="The Master and his Bestia can start to cook meals on fire places. These meals apply certain buff effects when they are eaten." >}}
+{{< skill name="Cooking" maxLevel="3" requires="Basic Skill Lv. 3"
+    type="Active" castTime="Instant" cooldown="None"
+    description="The Master and his Bestia can learn recipies and start to cook meals on fire places. Food helps a Bestia to keep its health and stamina up and usually apply buff effects when they are eaten." >}}
 
-| Lv. | Cooking Time | Success Chance |
-| --- | ------------ | -------------- |
-| 1   | -0%          | +0%            |
-| 2   | -20%         | +20%           |
-| 3   | -40%         | +40%           |
+Requires a cooking place. Lv 1 allows you to place a campfire which counts as cooking place.
+
+| Lv. | Cooking Time | Success Chance | Stamina Cost |
+| --- | ------------ | -------------- | ------------ |
+| 1   | -0%          | +0%            | 5            |
+| 2   | -20%         | +20%           | 8            |
+| 3   | -40%         | +40%           | 11           |
 
 {{< /skill >}}
 
 {{< skill name="Play Dead" maxLevel="1" requires="Basic Skill Lv. 2"
+    type="Active" manaCost="8" castTime="Instant" cooldown="10s" duration="Until cancelled" range="0" target="Self"
     description="Feigns death to avoid menace of nearby enemies. This skill can be switched on and off. After performing the ritual to become a Bestia Master this skill can not be used anymore." >}}
 {{< /skill >}}
 
 {{< skill name="First Aid" maxLevel="3" requires="Basic Skill Lv. 3"
-    description="Apply bandages to a Bestia and channel a healing effect over 10s. The cooldown of this skill is 5 minutes. A Bestia can only receive a single First Aid every 60 secs." >}}
+    type="Active" manaCost="per Lv." castTime="Channeled" cooldown="3min" duration="10s" range="2" target="Bestia"
+    description="Apply bandages to a Bestia or yourself and channel a healing effect over 10s. A Bestia can only receive a single First Aid every 60 secs." >}}
+
+It will heal whatever limit is reached first.
 
 | Lv. | Max HP Healed (% based) | Max HP Healed (flat) |
 | --- | ----------------------- | -------------------- |
-| 1   | +20%                    | +100 HP              |
-| 2   | +40%                    | +200 HP              |
-| 3   | +60%                    | +300 HP              |
+| 1   | +30%                    | +100 HP              |
+| 2   | +60%                    | +200 HP              |
+| 3   | +100%                   | +350 HP              |
 
 {{< /skill >}}
 
-{{< skill name="Master Ritual" maxLevel="1" requires="Basic Skill Lv. 5">}}
+{{< skill name="Master Ritual" maxLevel="1" requires="Basic Skill Lv. 5"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?" >}}
 Automatically enabled once Lv. 7 in Basic Skill is reached. Can only be used as long as you are a Novice. Converts 25 [Void Essence](/docs/mechanics/item-list/#void-essence), 5 [Mana Dust](/docs/mechanics/item-list/#mana-dust) and 3 [Clay](/docs/mechanics/item-list/#clay) into a [Seal of Mastery](/docs/mechanics/item-list/#seal-of-mastery).
 {{< /skill >}}
 
@@ -144,7 +154,11 @@ graph TD
 ```
 
 <br>
-{{< skill name="Carpentry" maxLevel="10" description="Allows you to construct useful items of daily use and structures which can be placed in the world." >}}
+{{< skill name="Carpentry" maxLevel="10"
+    type="Active" manaCost="20" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    description="Allows you to construct useful items of daily use and structures which can be placed in the world." >}}
+
+Lv. 1 allows you to build a [workbench](/docs/mechanics/item-list/#workbench), which you can use for crafting.
 
 | Lv. | Success Chance | Max Item Level |
 | --- | -------------- | -------------- |
@@ -161,8 +175,9 @@ graph TD
 
 {{< /skill >}}
 
-{{< skill name="Tinkerer" maxLevel="5" requires="Carpentry Lv. 3">}}
-You are very skilled in working with tools and raw material. Building structures in the world is very quick for you and the Bestia under your command.
+{{< skill name="Master Craftsman" maxLevel="5" requires="Carpentry Lv. 3"
+type="Passive"
+description="You are very skilled in working with tools and raw material. Building structures in the world is very quick for you and the Bestia under your command." >}}
 
 | Lv. | Construction Time |
 | --- | ----------------- |
@@ -174,13 +189,30 @@ You are very skilled in working with tools and raw material. Building structures
 
 {{< /skill >}}
 
-{{< skill name="Item Customization" requires="Carpentry Lv. 3" maxLevel="10" >}}
-You are able to rework items to put slots in them in which runes can be slottet.<br>Requires an [Engraving Set](/docs/mechanics/item-list/#engraving-set) which will be consumed in the process.
+{{< skill name="Item Customization" maxLevel="10" requires="Carpentry Lv. 3"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    description="You are able to rework items to put slots in them in which runes can be slottet." >}}
+
+Requires an [Engraving Set](/docs/mechanics/item-list/#engraving-set) which will be consumed in the process.
+
+| Lv. | Success Chance |
+| --- | -------------- |
+| 1   | +10%           |
+| 2   | +20%           |
+| 3   | +30%           |
+| 4   | +40%           |
+| 5   | +50%           |
+| 1   | +60%           |
+| 2   | +70%           |
+| 3   | +80%           |
+| 4   | +90%           |
+| 5   | +100%          |
+
 {{< /skill >}}
 
 ### Blacksmith
 
-Steel remembers who beat it into shape. Blacksmiths turn raw ore into finest weaponry and armor which protects its carrier even in the mid of of a manastorm.
+Steel remembers who beat it into shape. Blacksmiths turn raw ore into finest weaponry and armor which protects its carrier even in the mid of the harshest environments and hottest battles.
 
 {{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [craftsman tree](#craftsman-tree)" />}}
 
@@ -206,6 +238,7 @@ graph TD
 
 <br>
 {{< skill name="Ore Refinement" maxLevel="3"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Enables the smith to refines the finest ores. A must have to produce the raw materials for weapon or armor forging." >}}
 | Lv. | Max Ore Level |
 | --- | -------------- |
@@ -216,14 +249,17 @@ graph TD
 {{< /skill >}}
 
 {{< skill name="Forge Weapon" maxLevel="10" requires="Ore Refinement Lv. 1 and Item Customization Lv. 5"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Able to discover and forge weapon blueprints from raw ingredients. Higher skill levels reliably reach higher-level weapons; blueprints far above your skill can still be attempted, just at a steeply falling chance." >}}
 {{< /skill >}}
 
 {{< skill name="Forge Armor" maxLevel="10" requires="Ore Refinement Lv. 1 and Item Customization Lv. 5"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="The counterpart to Forge Weapon: discovers and forges armor blueprints - plate, mail and shields - from smelted ingots. Higher skill levels reliably reach higher-level armor; blueprints far above your skill can still be attempted, just at a steeply falling chance." >}}
 {{< /skill >}}
 
 {{< skill name="Weaponry Research" maxLevel="10" requires="Weapon Repair Lv. 3"
+    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Deeper knowledge of weapons and armor that raises the odds of successfully [refining](/docs/mechanics/items/#weapon-refinement) either one further after forging. This governs post-forging refinement only - discovering and forging new blueprints is handled by Forge Weapon and Forge Armor. If an upgrade fails the equipment can be destroyed." >}}
 
 | Lv. | Upgrade Success | Forging Success | ATK (forged weapon) | Accuracy (forged weapon) |
@@ -242,6 +278,7 @@ graph TD
 {{< /skill >}}
 
 {{< skill name="Weapon Repair" maxLevel="5" requires="Ore Refinement Lv. 3"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="You can repair damaged or broken equipment to refurbish and make it usable again. Higher levels unlock repairing equipment of a higher [item level](/docs/mechanics/items/#item-level)." >}}
 
 | Lv. | Max Item Level |
@@ -255,6 +292,7 @@ graph TD
 {{< /skill >}}
 
 {{< skill name="Master Smith" maxLevel="5" requires="Forge Weapon Lv. 8 and Forge Armor Lv. 8"
+    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="The capstone of the forge. Makes a Blacksmith's hands steady enough to trust with the rarest ore." >}}
 
 | Lv. | Forging Chance | Upgrade Chance |
@@ -288,6 +326,7 @@ graph TD
 
 <br>
 {{< skill name="Mana Harvester" maxLevel="10"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Build and operate Mana Harvesters which channel mana from the environment into raw crystals - the source of magic for many use cases." >}}
 Level 1 enables you to place a Mana Harvester
 
@@ -307,6 +346,7 @@ Level 1 enables you to place a Mana Harvester
 {{< /skill >}}
 
 {{< skill name="Manaflow Expert" maxLevel="5" requires="Mana Harvester Lv. 3"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Refine the raw and unstable mana crystals harvested by a Mana Harvester into the finest arcane raw materials used to build powerful magic artifacts." >}}
 Higher levels unlock refining higher-grade crystals.
 
@@ -321,6 +361,7 @@ Higher levels unlock refining higher-grade crystals.
 {{< /skill >}}
 
 {{< skill name="Runic Etching" maxLevel="10" requires="Item Customization Lv. 3"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Create runes from Bestia essences. These runes are imbued with the power of the Bestia and can be slotted into a weapon or piece of equipment that has been prepared with Item Customization. An attempt to convert a Bestia into an essence destroys the Bestia." >}}
 
 | Lv. | Success Chance |
@@ -339,6 +380,7 @@ Higher levels unlock refining higher-grade crystals.
 {{< /skill >}}
 
 {{< skill name="Magic Artisan" maxLevel="10" requires="Runic Etching Lv. 5"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Can create magic artefacts by binding sustained enchantments to an item, going well beyond what a single etched rune can hold." >}}
 
 | Lv. | Enchantment Chance | Destroy Chance on Failed Bind |
@@ -378,6 +420,7 @@ graph TD
 
 <br>
 {{< skill name="Herbalism" maxLevel="5"
+    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Teaches which roots, herbs and mana-touched growth are worth the harvest, and how to keep them potent until they reach the cauldron." >}}
 {{< skill-level level="1" >}}Can collect herbs up to level 20{{< /skill-level >}}
 {{< skill-level level="2" >}}Can collect herbs up to level 40{{< /skill-level >}}
@@ -387,6 +430,7 @@ graph TD
 {{< /skill >}}
 
 {{< skill name="Alchemy" maxLevel="10" requires="Herbalism Lv. 2"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="The core craft of the Alchemist: brewing reagents down into potions, tonics and other consumables. Builds directly on what Herbalism teaches about picking the right ingredient." >}}
 {{< skill-level level="1" >}}Reliably discover and craft basic potions and elixirs up to level 10. Allows you to install Alchemist Workbenches.{{< /skill-level >}}
 {{< skill-level level="2" >}}Reliably discover and craft potions and elixirs up to level 20.{{< /skill-level >}}
@@ -401,6 +445,7 @@ graph TD
 {{< /skill >}}
 
 {{< skill name="Transmutation" maxLevel="10" requires="Alchemy Lv. 5"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="The Alchemist's capstone. Where Alchemy brews what nature already provides, Transmutation reshapes mundane matter itself into the rare magically-infused resources needed for strong artifact creation and weapon refinements." >}}
 Higher levels unlock transmuting higher-grade infused resources.
 
@@ -412,6 +457,7 @@ Higher levels unlock transmuting higher-grade infused resources.
 {{< /skill >}}
 
 {{< skill name="Alchemy Mastery" maxLevel="5" requires="Alchemy Lv. 5"
+    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Increased yield and success chance for Alchemy crafting operations." >}}
 
 | Lv. | Success Chance | Yield Increase |
@@ -425,6 +471,7 @@ Higher levels unlock transmuting higher-grade infused resources.
 {{< /skill >}}
 
 {{< skill name="Speedy Brewer" maxLevel="5" requires="Alchemy Lv. 3"
+    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Increased brewing speed for all your alchemist tasks performed by you and your Bestia." >}}
 
 | Lv. | Alchemist Crafting Speed |
@@ -461,6 +508,7 @@ graph TD
 
 <br>
 {{< skill name="Quick Travel" maxLevel="5"
+    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="You and your Bestia know every kind of terrain." >}}
 | Lv. | Movement Speed |
 | --- | --------------- |
@@ -473,6 +521,7 @@ graph TD
 {{< /skill >}}
 
 {{< skill name="Resource Sense" maxLevel="5"
+    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="The physical counterpart to a Sage's Observation: an instinct for the direction and distance of nearby physical resources - ore veins, herb patches, timber stands and game trails - long before they come into view." >}}
 Level 1 lets you place a Lookout Post.
 
@@ -487,6 +536,7 @@ Level 1 lets you place a Lookout Post.
 {{< /skill >}}
 
 {{< skill name="Fishing" maxLevel="5"
+    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="With this skill you are able to catch fish. Fish can be cooked and are used for food and trading." >}}
 
 | Lv. | Max Fish Level |
@@ -519,6 +569,7 @@ graph TD
 
 <br>
 {{< skill name="Lumberjack" maxLevel="5"
+    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="The player is able to gather wood resources." >}}
 Level 1 allows you to install a woodworker cabin.
 
@@ -533,6 +584,7 @@ Level 1 allows you to install a woodworker cabin.
 {{< /skill >}}
 
 {{< skill name="Trapping" maxLevel="5"
+    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Sets snares and deadfalls that keep working for the master even while they're off doing something else, passively catching small game over time for meat and pelts on a later check-in." >}}
 Level 1 allows you to place a trap.
 
@@ -546,7 +598,8 @@ Level 1 allows you to place a trap.
 
 {{< /skill >}}
 
-{{< skill name="Bestia Trapping" requires="Trapping Lv. 3" maxLevel="5"
+{{< skill name="Bestia Trapping" maxLevel="5" requires="Trapping Lv. 3"
+    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Special traps and lures empowered with mana dust to catch Bestia." >}}
 Level 1 allows you to place a special Bestia trap.
 
@@ -561,6 +614,7 @@ Level 1 allows you to place a special Bestia trap.
 {{< /skill >}}
 
 {{< skill name="Expert Taming" maxLevel="5"
+    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Bestia under your control gain faster experience and require less food to maintain their stamina out in the open." >}}
 
 | Lv. | EXP Gain | Stamina Loss |
@@ -574,6 +628,7 @@ Level 1 allows you to place a special Bestia trap.
 {{< /skill >}}
 
 {{< skill name="Beastfriend" maxLevel="5" requires="Expert Taming Lv. 3"
+    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Detailed knowledge of the Bestia and their behavior makes it easier for you to tame and catch them. Also increases the success chance for Bestia Trapping." >}}
 
 | Lv. | Tame Chance |
@@ -609,6 +664,7 @@ graph TD
 
 <br>
 {{< skill name="Maximize Carry Capacity" maxLevel="5" requires="Resource Sense Lv. 1"
+    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Raises the carrying capacity of your own Master." >}}
 
 | Lv. | Weight Limit |
@@ -621,7 +677,8 @@ graph TD
 
 {{< /skill >}}
 
-{{< skill name="Enlarge Weight Limit" requires="Maximize Carry Capacity Lv. 3" maxLevel="5"
+{{< skill name="Enlarge Weight Limit" maxLevel="5" requires="Maximize Carry Capacity Lv. 3"
+    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Raises the carrying capacity of every Bestia under your control." >}}
 
 | Lv. | Weight Limit |
@@ -634,7 +691,8 @@ graph TD
 
 {{< /skill >}}
 
-{{< skill name="Wilderness Survival" requires="Enlarge Weight Limit Lv. 3" maxLevel="5"
+{{< skill name="Wilderness Survival" maxLevel="5" requires="Enlarge Weight Limit Lv. 3"
+    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Hardens the master and their Bestia against travel through hostile terrain, far from the comfort of a settlement. Reduces the stamina drain caused by hostile terrain and raises tolerance against extreme temperatures." >}}
 
 | Lv. | Stamina Drain (hostile terrain) | Temperature Tolerance |
@@ -648,6 +706,7 @@ graph TD
 {{< /skill >}}
 
 {{< skill name="Weather Sense" maxLevel="3"
+    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="An instinct for reading the sky and wind well before a storm ever arrives, letting the Prospector plan a route or a dig around what's coming." >}}
 Level 1 shows you the current wind direction and speed.
 
@@ -659,7 +718,8 @@ Level 1 shows you the current wind direction and speed.
 
 {{< /skill >}}
 
-{{< skill name="Cartography" requires="Weather Sense Lv. 1" maxLevel="5"
+{{< skill name="Cartography" maxLevel="5" requires="Weather Sense Lv. 1"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Enables the player to chart unexplored land, revealing terrain that can be shared, traded on, or built on. See [World Exploration](/docs/mechanics/world-exploration/#cartography) for how the surveying minigame plays out." >}}
 Each level reduces the difficulty of surveying unexplored land.
 {{< /skill >}}
@@ -684,6 +744,7 @@ graph TD
 
 <br>
 {{< skill name="Mining" maxLevel="5"
+    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Specialized in digging mine shafts and gathering mineral resources." >}}
 Level 1 enables you to place a mining shaft.
 
@@ -697,7 +758,8 @@ Level 1 enables you to place a mining shaft.
 
 {{< /skill >}}
 
-{{< skill name="Gem Cutting" maxLevel="5" requires="Mining Lv. 3" >}}
+{{< skill name="Gem Cutting" maxLevel="5" requires="Mining Lv. 3"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?" >}}
 Turns the rough gemstones a Miner digs up into cut stones fit for an Artificer's socket or a Trader's sale. Can cut raw gems recovered from mining into faceted gemstones, increasing their value and unlocking their use in socketed equipment.
 Higher levels unlock cutting higher-grade gems. Level 1 allows you to place [Gem Cut Stations](item-list/#gem-cut-stations)
 
@@ -712,6 +774,7 @@ Higher levels unlock cutting higher-grade gems. Level 1 allows you to place [Gem
 {{< /skill >}}
 
 {{< skill name="Cave Explorer" maxLevel="5" requires="Mining Lv. 3"
+    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Lets a Miner push shafts deeper than good sense would recommend, into ground that pays off precisely because nobody else risks it. Grants access to deeper, more dangerous mine shafts holding rarer ore veins and the odd buried structure." >}}
 
 | Lv. | Bonus Resources |
@@ -725,6 +788,7 @@ Higher levels unlock cutting higher-grade gems. Level 1 allows you to place [Gem
 {{< /skill >}}
 
 {{< skill name="Resource Sonar" maxLevel="3" requires="Cave Explorer Lv. 3"
+    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="The Miner's capstone: a feel for what's underfoot precise enough to map a shaft before the first swing of the pick." >}}
 Can sense ore and gem deposits through solid rock.
 
@@ -763,15 +827,18 @@ graph TD
 
 <br>
 {{< skill name="Detect Magic" maxLevel="5"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="User can detect the presence of magic nearby. It can also identify a magical spell which might be bound to an entity." >}}
 {{< /skill >}}
 
 {{< skill name="Sense" maxLevel="1"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Cast on a monster to read what mana and instinct alone can tell about it." >}}
 Reveals the monster status values, element, HP and Mana.
 {{< /skill >}}
 
-{{< skill name="Observation" maxLevel="5" >}}
+{{< skill name="Observation" maxLevel="5"
+    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?" >}}
 You can detect the direction and distance of nearby world events like mana rifts which open, spawned bosses or other world changing events.
 Level 1 let you place an observatory.
 
@@ -786,6 +853,7 @@ Level 1 let you place an observatory.
 {{< /skill >}}
 
 {{< skill name="Founder" maxLevel="1"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Allows you to create your own settlement by placing a city sign." >}}
 
 Only one settlement can be active at any time. You must destroy the settlement before you can place a new one. Only inactive settlements can be destroyed. This means there must be no more functional building (post office, trade post, etc.) be inside the sphere of influence of the settlement.
@@ -793,6 +861,7 @@ Only one settlement can be active at any time. You must destroy the settlement b
 {{< /skill >}}
 
 {{< skill name="Ruwach" maxLevel="3" requires="Magic Sense Lv. 2"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="A pulse of second sight that peels back concealment - hidden traps, camouflaged Hunters and cloaked Assassins stand out for what they are, and counterfeit goods stop passing as genuine. Useful to any Scholar, whether they're scrying old ruins, appraising a shady deal, or walking a party into an ambush." >}}
 Higher levels shorten how long a concealed target needs to hold still before being revealed.
 
@@ -876,6 +945,7 @@ graph TD
 
 <br>
 {{< skill name="Heal" maxLevel="10"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Channels mana directly into a target's wounds, restoring HP in an instant. The Priest's bread and butter - simple, reliable, and the first rite every Priest learns." >}}
 
 Heals a target's HP for `[(BaseLV+INT)/8]*(4+8*SkillLV)`. When used against Undead property monsters, it is a holy attack that ignores MDEF and INT, but deals only half damage
@@ -899,6 +969,7 @@ To use against a monster, you must shift-click it or turn on /noshift.
 {{< /skill >}}
 
 {{< skill name="Suffragium" maxLevel="3" requires="Magic Sense Lv. 2"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="A murmured rite that lightens the burden of spellcasting for a short while - a Sage burning through scrolls, a Priest chaining blessings and a Trader rushing a linking ritual all feel the difference equally." >}}
 Applies to the next spell cast by the target ally within `30s`.
 
@@ -911,6 +982,7 @@ Applies to the next spell cast by the target ally within `30s`.
 {{< /skill >}}
 
 {{< skill name="Gloria" maxLevel="3" requires="Magic Sense Lv. 2"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="A quiet benediction that nudges fortune to smile a little wider on the caster and their party for a short while - stalls turn up better goods, dice favor the bold, and the elusive becomes that much easier to spot." >}}
 
 | Lv. | WILL Bonus | Duration |
@@ -922,14 +994,17 @@ Applies to the next spell cast by the target ally within `30s`.
 {{< /skill >}}
 
 {{< skill name="Cure" maxLevel="1" requires="Heal Lv. 2"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Lifts the fog of Silence, Blindness and Confusion from a target's mind with a touch." >}}
 {{< /skill >}}
 
 {{< skill name="Aqua Benedicta" maxLevel="1" requires="Cure Lv. 1"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="The rite of blessing plain water into [Holy Water](/docs/mechanics/item-list/#holy-water). User must be standing in water, consuming an [Empty Bottle](/docs/mechanics/item-list/#empty-bottle) in the process. Holy Water is the reagent behind Aspersio and several higher rites." >}}
 {{< /skill >}}
 
 {{< skill name="Blessing" maxLevel="10" requires="Heal Lv. 3"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="A benediction that steadies body and mind, raising a party's core stats for a short while." >}}
 
 | Lv. | STR/INT/DEX | Duration |
@@ -948,6 +1023,7 @@ Applies to the next spell cast by the target ally within `30s`.
 {{< /skill >}}
 
 {{< skill name="Increase AGI" maxLevel="5"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Lightens a target's limbs with borrowed haste, quickening step and swing alike." >}}
 Grants a flat `+15%` Movement Speed at any level, plus:
 
@@ -962,6 +1038,7 @@ Grants a flat `+15%` Movement Speed at any level, plus:
 {{< /skill >}}
 
 {{< skill name="Decrease AGI" maxLevel="3" requires="Increase AGI Lv. 2"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="The same rite turned inward out - a mote of leaden mana that slows an enemy's step and swing instead of quickening it." >}}
 
 | Lv. | Movement/Attack Speed |
@@ -973,6 +1050,7 @@ Grants a flat `+15%` Movement Speed at any level, plus:
 {{< /skill >}}
 
 {{< skill name="Kyrie Eleison" maxLevel="3"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="A shimmering ward of mana that stands between a target and harm, soaking up a number of hits before it gives out." >}}
 
 | Lv. | Hits Absorbed | Damage Absorbed per Hit |
@@ -984,6 +1062,7 @@ Grants a flat `+15%` Movement Speed at any level, plus:
 {{< /skill >}}
 
 {{< skill name="Pneuma" maxLevel="3" requires="Kyrie Eleison Lv. 2"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Lays a veil of still air over a patch of ground; anything standing in it becomes untouchable by arrows, bolts and thrown weapons, though a blade still finds its mark." >}}
 Higher levels extend how long the veil holds.
 
@@ -996,6 +1075,7 @@ Higher levels extend how long the veil holds.
 {{< /skill >}}
 
 {{< skill name="Holy Light" maxLevel="5" requires="Signum Crucis Lv. 2"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Condenses raw holy mana into a single searing beam - the Priest's answer to needing to deal damage rather than mend it." >}}
 
 | Lv. | MATK |
@@ -1009,6 +1089,7 @@ Higher levels extend how long the veil holds.
 {{< /skill >}}
 
 {{< skill name="Demon Bane" maxLevel="3" requires="Signum Crucis Lv. 2"
+    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Years spent studying the weak points of the unholy pay off passively - every strike against a demon or undead lands that much harder." >}}
 
 | Lv. | Damage vs Demon/Undead |
@@ -1020,6 +1101,7 @@ Higher levels extend how long the veil holds.
 {{< /skill >}}
 
 {{< skill name="Divine Protection" maxLevel="3" requires="Signum Crucis Lv. 2"
+    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="The defensive twin of Demon Bane - a standing ward that dulls what comes back the other way from anything unholy." >}}
 
 | Lv. | Damage Taken from Demon/Undead |
@@ -1031,6 +1113,7 @@ Higher levels extend how long the veil holds.
 {{< /skill >}}
 
 {{< skill name="Impositio Manus" maxLevel="3" requires="Blessing Lv. 3"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="The laying on of hands, channeling raw striking power into a single ally rather than the whole party." >}}
 
 | Lv. | ATK and MATK |
@@ -1042,15 +1125,18 @@ Higher levels extend how long the veil holds.
 {{< /skill >}}
 
 {{< skill name="Status Recovery" maxLevel="1" requires="Cure Lv. 1"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Where Cure lifts the fog from a mind, Status Recovery breaks the ice, stone and cramp from a body - lifting Stun, Freeze and Stone Curse in a single rite." >}}
 {{< /skill >}}
 
 {{< skill name="Aspersio" maxLevel="3" requires="Aqua Benedicta Lv. 2 and Mace Mastery Lv. 2"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Anoints a weapon with Holy Water, temporarily imbuing its strikes with the holy element. Consumes a unit of [Holy Water](/docs/mechanics/item-list/#holy-water) per cast." >}}
 Higher levels extend the duration and allow higher-grade Holy Water to be used for a stronger imbue
 {{< /skill >}}
 
-{{< skill name="Turn Undead" maxLevel="5" requires="Demon Bane Lv. 3 and Holy Light Lv. 3" >}}
+{{< skill name="Turn Undead" maxLevel="5" requires="Demon Bane Lv. 3 and Holy Light Lv. 3"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?" >}}
 Higher levels raise the chance of an instant kill against sufficiently weak undead.
 
 Inflicts single target Holy, armor piercing damage. If the target is an Undead property monster, this spell has a chance of immediatly ending its existence.
@@ -1069,10 +1155,12 @@ Damage = Base_Damage + Base_Lv + INT
 {{< /skill >}}
 
 {{< skill name="Lex Aeterna" maxLevel="1" requires="Holy Light Lv. 3"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Marks a single target so that the very next hit it takes lands twice as hard. The mark breaks the instant it's used, on friend or foe alike." >}}
 {{< /skill >}}
 
 {{< skill name="Magnificat" maxLevel="3" requires="Kyrie Eleison Lv. 3 and Blessing Lv. 3"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="A hymn of thanksgiving that quickens the natural recovery of everyone within earshot." >}}
 
 | Lv. | HP/Mana Regeneration |
@@ -1084,6 +1172,7 @@ Damage = Base_Damage + Base_Lv + INT
 {{< /skill >}}
 
 {{< skill name="Magnus Exorcismus" maxLevel="3" requires="Turn Undead Lv. 3 and Holy Light Lv. 5"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="The Priest's offensive capstone: a pillar of holy mana erupts around the caster, searing everything caught in it and the undead and demonic worst of all." >}}
 
 | Lv. | MATK | Bonus Damage vs Demon/Undead |
@@ -1095,6 +1184,7 @@ Damage = Base_Damage + Base_Lv + INT
 {{< /skill >}}
 
 {{< skill name="Sanctuary" maxLevel="3" requires="Magnificat Lv. 3 and Pneuma Lv. 2"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Consecrates a patch of ground into holy ground: allies standing in it are steadily mended, while any undead or demon caught inside burns instead." >}}
 Deals equivalent holy damage per tick to undead and demon-type enemies standing within.
 
@@ -1107,6 +1197,7 @@ Deals equivalent holy damage per tick to undead and demon-type enemies standing 
 {{< /skill >}}
 
 {{< skill name="Resurrection" maxLevel="1" requires="Heal Lv. 8 and Status Recovery Lv. 2"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="The rite few Priests ever get to cast and fewer still get to cast twice in a row on the same ally - channels enough mana to call a fallen Bestia or Master back over the threshold, returning them to the world with a portion of their HP restored. Long cooldown; can not be used on the caster." >}}
 {{< /skill >}}
 
@@ -1138,6 +1229,7 @@ graph TD
 
 <br>
 {{< skill name="Appraisal" maxLevel="5"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Trains an eye for what goods are actually worth, cutting through both a merchant's markup and a forger's polish. Reveals an item's true condition and quality before it's bought or sold, and can flag counterfeit or mislabeled goods." >}}
 You can identify an item.
 
@@ -1152,6 +1244,7 @@ You can identify an item.
 {{< /skill >}}
 
 {{< skill name="Scavenger" maxLevel="10"
+    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="When breaking up and recycling items the probability to recycle a higher amount of components is increased." >}}
 
 | Lv. | Recycle Chance |
@@ -1170,6 +1263,7 @@ You can identify an item.
 {{< /skill >}}
 
 {{< skill name="Minting" maxLevel="5" requires="Appraisal Lv. 5, Scavenger Lv. 3"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="The final step between a fistful of raw gold and coin that actually spends. Allows the master to mint raw gold directly into gold coins. See [Currency](/docs/mechanics/economy-trade/#currency) for how the world's money supply is minted from mined gold." >}}
 
 | Lv. | Mint Yield |
@@ -1183,6 +1277,7 @@ You can identify an item.
 {{< /skill >}}
 
 {{< skill name="Trade Post Owner" maxLevel="5"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Allows you to build trading posts which can be used by other citizen to buy and sell items. Only a single trading post can be located inside a settlement." >}}
 
 | Lv. | Trading Posts | Max Fee |
@@ -1196,6 +1291,7 @@ You can identify an item.
 {{< /skill >}}
 
 {{< skill name="Trade Agreement" maxLevel="5" requires="Trade Post Owner Lv. 3"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Allows the master to link his auction house with those of other consenting players, merging their listings into a single, wider [marketplace](/docs/mechanics/economy-trade/#linking-auction-houses)." >}}
 To get linked from other players at least level 1 in this skill is required.
 
@@ -1210,6 +1306,7 @@ To get linked from other players at least level 1 in this skill is required.
 {{< /skill >}}
 
 {{< skill name="Honorable Citizen" maxLevel="5" requires="Minting Lv. 2 and Trade Agreement Lv. 1"
+    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="A quiet ledger of who's been caught with sticky fingers. Anyone caught stealing from this Trader's stock, mint or linked auction listings suffers a steeper honor penalty than they otherwise would." >}}
 
 | Lv. | Honor Penalty for Robbers |
@@ -1276,10 +1373,12 @@ graph TD
 <br>
 
 {{< skill name="Spell Training" maxLevel="10"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Train a spell from a scroll to a Bestia. The scroll will be consumed in this process. The success chance depends on the level of the scroll." >}}
 {{< /skill >}}
 
 {{< skill name="Free Cast" maxLevel="5"
+    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Trains a Sage to keep moving through an incantation instead of rooting to the spot. Raises how much movement speed is kept while a spell is being cast and lowers the chance an incoming hit breaks concentration." >}}
 
 | Lv. | Movement Speed While Casting | Interrupt Resistance |
@@ -1293,10 +1392,12 @@ graph TD
 {{< /skill >}}
 
 {{< skill name="Scry" maxLevel="5" requires="Spell Training Lv. 2"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="The caster can gather information about areas located far away from his position. This is also a helpful spell to detect possible resources in areas which might be worth exploring." >}}
 {{< /skill >}}
 
 {{< skill name="Dispell" maxLevel="5" requires="Spell Training Lv. 2"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Cancels all magical effects on a target. Success chance is based on skill level and the target's MDEF, with a base chance of `(50 + 10 * SkillLv)%`. Requires 1 [Yellow Mana Crystal](/docs/mechanics/item-list/#yellow-mana-crystal) per cast." >}}
 
 | Lv. | Base Success Chance |
@@ -1310,6 +1411,7 @@ graph TD
 {{< /skill >}}
 
 {{< skill name="Magic Rod" maxLevel="3" requires="Dispell Lv. 2"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="A reactive ward raised at a gesture. The next single-target spell to strike the caster is caught and unravelled instead of landing, its energy siphoned back as mana. Area spells wash straight over it - only single-target magic is caught." >}}
 Catches a single incoming spell while the ward holds.
 
@@ -1322,6 +1424,7 @@ Catches a single incoming spell while the ward holds.
 {{< /skill >}}
 
 {{< skill name="Mana Drain" maxLevel="3" requires="Magic Rod Lv. 1"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Opens a slow siphon on the mana of everything hostile standing too close, pulling it steadily into the Sage's own reserves for a short while. Cooldown is 15s." >}}
 
 | Lv. | Range | Mana Drained per Second | Duration |
@@ -1333,6 +1436,7 @@ Catches a single incoming spell while the ward holds.
 {{< /skill >}}
 
 {{< skill name="Mana Swap" maxLevel="3" requires="Mana Drain Lv. 2"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="A gamble of a rite that trades the caster's own pool of mana for the target's, wholesale. Higher skill makes the exchange more likely to take hold." >}}
 
 | Lv. | Swap Success Chance |
@@ -1344,6 +1448,7 @@ Catches a single incoming spell while the ward holds.
 {{< /skill >}}
 
 {{< skill name="Land Protector" maxLevel="3" requires="Magic Rod Lv. 2"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Consecrates a patch of ground against hostile magic. While it holds, no area-of-effect or ground-targeted spell can take root inside its bounds - friend's and foe's alike." >}}
 
 | Lv. | Radius | Duration |
@@ -1355,6 +1460,7 @@ Catches a single incoming spell while the ward holds.
 {{< /skill >}}
 
 {{< skill name="Spell Enscription" maxLevel="10" requires="Spell Training Lv. 3"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Enables you to extract an attack from the memory of a Bestia onto a scroll, which can then either trigger the attack once or teach it to another Bestia instead. However, there is a chance that the mind of a Bestia is destroyed during the extraction, killing the Bestia in the process." >}}
 The base success chance depends on the level of the attack being enscribed and is further modified by skill level, equipment and intelligence (`INT / 2 + WIL / 4`):
 
@@ -1372,10 +1478,12 @@ A negative base means the extraction is impossible on raw talent alone and only 
 {{< /skill >}}
 
 {{< skill name="Spell Binding" maxLevel="10" requires="Spell Enscription Lv. 3"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Allows the user to bind certain spells to entities and create trigger for them. This can be used to permanently bind spells to artifacts or setup alarms or traps for example." >}}
 {{< /skill >}}
 
 {{< skill name="Teleport" maxLevel="2" requires="Spell Binding Lv. 3"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Can teleport own bestias over a distance. To teleport somewhere one needs to setup Teleport Runes which form some kind of magical anchor - the same kind of anchor a Spell Binder learns to set for alarms and traps. They can be used as targets when trying to teleport. The teleportation gets harder and more error prone the longer distances are tried to travel. The teleported entity also gets a debuff which will prevent it from teleporting again for some time." >}}
 
 | Level | Base Success                          |
@@ -1386,6 +1494,7 @@ A negative base means the extraction is impossible on raw talent alone and only 
 {{< /skill >}}
 
 {{< skill name="Warp Portal" maxLevel="10" requires="Teleport Lv. 1"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="The Sage's capstone. Where Teleport moves one anchor's worth of travelers once, a Portal tears a standing hole between two anchors that anyone can walk through. To teleport somewhere one needs to setup Portal Runes which form some kind of magical anchor. As soon as a portal has opened it can be used in both directions for some time." >}}
 
 | Lv. | Simultaneous Users |
@@ -1404,6 +1513,7 @@ A negative base means the extraction is impossible on raw talent alone and only 
 {{< /skill >}}
 
 {{< skill name="Endow Fire" maxLevel="3" requires="Free Cast Lv. 2"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Temporarily infuses an ally's weapon with the fire element, so its strikes burn as well as bite. Consumes a [Blue Mana Crystal](/docs/mechanics/item-list/#blue-mana-crystal) to carry the charge." >}}
 
 | Lv. | Duration | Bonus Fire Damage |
@@ -1415,6 +1525,7 @@ A negative base means the extraction is impossible on raw talent alone and only 
 {{< /skill >}}
 
 {{< skill name="Endow Ice" maxLevel="3" requires="Free Cast Lv. 2"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Temporarily infuses an ally's weapon with the water element, wreathing each strike in biting cold. Consumes a [Blue Mana Crystal](/docs/mechanics/item-list/#blue-mana-crystal) to carry the charge." >}}
 
 | Lv. | Duration | Bonus Water Damage |
@@ -1426,6 +1537,7 @@ A negative base means the extraction is impossible on raw talent alone and only 
 {{< /skill >}}
 
 {{< skill name="Endow Wind" maxLevel="3" requires="Free Cast Lv. 2"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Temporarily infuses an ally's weapon with the wind element, so its strikes crack like lightning. Consumes a [Blue Mana Crystal](/docs/mechanics/item-list/#blue-mana-crystal) to carry the charge." >}}
 
 | Lv. | Duration | Bonus Wind Damage |
@@ -1437,6 +1549,7 @@ A negative base means the extraction is impossible on raw talent alone and only 
 {{< /skill >}}
 
 {{< skill name="Endow Earth" maxLevel="3" requires="Free Cast Lv. 2"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Temporarily infuses an ally's weapon with the earth element, so its strikes land with the weight of stone. Consumes a [Blue Mana Crystal](/docs/mechanics/item-list/#blue-mana-crystal) to carry the charge." >}}
 
 | Lv. | Duration | Bonus Earth Damage |
@@ -1448,6 +1561,7 @@ A negative base means the extraction is impossible on raw talent alone and only 
 {{< /skill >}}
 
 {{< skill name="Elemental Empowerment" maxLevel="3" requires="Endow Wind Lv. 1, Endow Water Lv. 1, Endow Fire Lv. 1,"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="The Sage's command of the elements grown wide enough to lean on the sky itself. Calls a chosen weather front - rain, gale or heat - over a large area for a time, strengthening spells and endowments of the matching element for everyone beneath it while dampening its opposite. Where a Prospector's [Weather Sense](#skill-weather-sense) only reads the sky, a Sage bends it." >}}
 
 | Lv. | Area | Duration | Matching-Element Boost |
@@ -1492,10 +1606,12 @@ graph TD
 
 <br>
 {{< skill name="Endure" maxLevel="1"
+    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="HP and Mana regeneration is not stopped during combat." >}}
 {{< /skill >}}
 
 {{< skill name="Iron Skin" maxLevel="5"
+    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="The physical counterpart to a Wizard's Magic Armor: hide toughened by nothing more than sheer stubbornness. Reduces incoming physical damage. Unlike Magic Armor this costs no mana, but the reduction is more modest." >}}
 
 | Lv. | Physical Damage Reduction |
@@ -1509,7 +1625,7 @@ graph TD
 {{< /skill >}}
 
 {{< skill name="Magic Armor" maxLevel="5"
-    type="Active" manaCost="30" castTime="5s" duration="5 min" target="Self"
+    type="Active" manaCost="30" castTime="5s" cooldown="?" duration="5 min" range="?" target="Self"
     description="Reduces physical and magical damage but each hit costs 2% percent of the current mana of the owner. When the mana drops below 20% the buff is cancelled." >}}
 
 | Lv. | Damage Reduction |
@@ -1523,6 +1639,7 @@ graph TD
 {{< /skill >}}
 
 {{< skill name="Meditation" maxLevel="5"
+    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Your Bestia and Master gain an increased HP and Mana regeneration rate." >}}
 
 | Lv. | HP/Mana Regeneration |
@@ -1623,6 +1740,7 @@ graph TD
 
 <br>
 {{< skill name="Elemental Mastery" maxLevel="5"
+    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Increases damage or healing of spells with elemental (earth, wind, water, fire) domain." >}}
 
 | Lv. | Damage/Healing |
@@ -1636,6 +1754,7 @@ graph TD
 {{< /skill >}}
 
 {{< skill name="Spiritual Mastery" maxLevel="5"
+    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Increases damage or healing of spells with the Holy or Dark domain." >}}
 
 | Lv. | Damage/Healing |
@@ -1649,6 +1768,7 @@ graph TD
 {{< /skill >}}
 
 {{< skill name="Fire Bolt" maxLevel="10"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="A quick bolt of flame hurled at a single target. The first spell most Wizards ever learn, and the one they cast the most often." >}}
 
 | Lv. | MATK  | Cast Time |
@@ -1667,6 +1787,7 @@ graph TD
 {{< /skill >}}
 
 {{< skill name="Ice Bolt" maxLevel="10"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="A shard of hardened cold flung at a single target - the water-elemental counterpart to Fire Bolt." >}}
 
 | Lv. | MATK  | Cast Time |
@@ -1685,6 +1806,7 @@ graph TD
 {{< /skill >}}
 
 {{< skill name="Thunder Bolt" maxLevel="10"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="A crack of lightning called down onto a single target - the wind-elemental counterpart to Fire Bolt." >}}
 
 | Lv. | MATK  | Cast Time |
@@ -1703,6 +1825,7 @@ graph TD
 {{< /skill >}}
 
 {{< skill name="Earth Spike" maxLevel="10"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="A jagged spar of stone erupts beneath a single target - the earth-elemental counterpart to Fire Bolt." >}}
 
 | Lv. | MATK  | Cast Time |
@@ -1721,6 +1844,7 @@ graph TD
 {{< /skill >}}
 
 {{< skill name="Safety Wall" maxLevel="10"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Conjures a shimmering barrier of solidified mana in front of a target. It blocks incoming physical projectiles and melee strikes until it has absorbed enough hits or its duration runs out." >}}
 
 | Lv. | Hits Absorbed | Duration |
@@ -1739,10 +1863,12 @@ graph TD
 {{< /skill >}}
 
 {{< skill name="Energy Coat" maxLevel="1" requires="Safety Wall Lv. 5"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Where Safety Wall turns aside physical blows, Energy Coat turns aside all of them - trading a slice of mana for every hit absorbed instead of flesh. Reduces incoming physical and magical damage by `-15%`, converting the absorbed damage into a `5%` max-mana cost per hit instead. Like Magic Armor, the buff cancels once mana drops below 10%." >}}
 {{< /skill >}}
 
 {{< skill name="Stone Curse" maxLevel="5" requires="Safety Wall Lv. 3"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Encases a target in solid stone, petrifying them where they stand. Requires 1 [Red Mana Crystal](/docs/mechanics/item-list/#red-mana-crystal) per cast." >}}
 
 | Lv. | Petrify Chance | Duration |
@@ -1756,6 +1882,7 @@ graph TD
 {{< /skill >}}
 
 {{< skill name="Suppress Magic" maxLevel="5" requires="Stone Curse Lv. 2"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="A ward of counter-mana thrown over a target mid-incantation, interrupting whatever spell they were weaving and leaving their casting muddled for a short time after." >}}
 
 | Lv. | Interrupt Chance | Silence Duration |
@@ -1769,6 +1896,7 @@ graph TD
 {{< /skill >}}
 
 {{< skill name="Suppress Aura" maxLevel="3" requires="Suppress Magic Lv. 2"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Cast on an object, Bestia or Master to mute the mana clinging to it, making it invisible towards magic detection - wards, Magic Sense, and similar scrying senses." >}}
 
 | Lv. | Mana Suppression |
@@ -1780,6 +1908,7 @@ graph TD
 {{< /skill >}}
 
 {{< skill name="Fire Wall" maxLevel="5" requires="Master of Fire Lv. 2"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Conjures a wall of roaring flame across a line of tiles. Anything that tries to push through is burned and shoved back the way it came." >}}
 
 | Lv. | MATK (per tick) | Knockback |
@@ -1793,6 +1922,7 @@ graph TD
 {{< /skill >}}
 
 {{< skill name="Meteor Storm" maxLevel="5" requires="Master of Fire Lv. 3"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Calls down a rain of blazing meteors onto an area, scorching everything caught beneath it over and over as it falls." >}}
 
 | Lv. | MATK (per meteor) | Meteor Count |
@@ -1806,6 +1936,7 @@ graph TD
 {{< /skill >}}
 
 {{< skill name="Sturm Gust" maxLevel="5" requires="Master of Water Lv. 3"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="A freezing gale that batters an area with repeated waves of ice, each one carrying a chance to freeze anything caught in the flurry solid." >}}
 
 | Lv. | MATK (per tick) | Freeze Chance (per tick) |
@@ -1819,6 +1950,7 @@ graph TD
 {{< /skill >}}
 
 {{< skill name="Water Ball" maxLevel="5" requires="Master of Water Lv. 3"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Gathers the water in a 5x5 area around the caster into a single crashing orb hurled at a target. The caster must be standing in water for the spell to draw from, and it strikes once for every water tile it manages to pull from around them - up to 25 hits at once." >}}
 
 | Lv. | Hits per Cast |
@@ -1832,6 +1964,7 @@ graph TD
 {{< /skill >}}
 
 {{< skill name="Frost Nova" maxLevel="5" requires="Master of Water Lv. 4"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="A burst of subzero cold erupts outward from the caster, freezing anything caught too close." >}}
 
 | Lv. | Radius | Freeze Chance |
@@ -1845,6 +1978,7 @@ graph TD
 {{< /skill >}}
 
 {{< skill name="Quagmire" maxLevel="5" requires="Master of Wind Lv. 2"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Turns the ground in an area into thick, clinging mud. Any AGI-increasing buff on someone caught in it is stripped away, and their own AGI and DEX are dragged down for as long as they remain inside." >}}
 Regardless of level, the reduction is capped at `-25%` against other Bestia Masters and `-50%` against wild Bestia and monsters.
 
@@ -1859,6 +1993,7 @@ Regardless of level, the reduction is capped at `-25%` against other Bestia Mast
 {{< /skill >}}
 
 {{< skill name="Thunder Storm" maxLevel="5" requires="Master of Wind Lv. 3"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Wind churns into a raging storm overhead, calling down lightning bolts across the whole area at random." >}}
 
 | Lv. | MATK (per strike) | Strike Count |
@@ -1872,6 +2007,7 @@ Regardless of level, the reduction is capped at `-25%` against other Bestia Mast
 {{< /skill >}}
 
 {{< skill name="Earthquake" maxLevel="5" requires="Master of Earth Lv. 3"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Splits the ground in a wide radius around the caster, the shockwave dealing repeated damage to everything caught standing on it." >}}
 
 | Lv. | MATK (per tick) | Radius |
@@ -1885,6 +2021,7 @@ Regardless of level, the reduction is capped at `-25%` against other Bestia Mast
 {{< /skill >}}
 
 {{< skill name="Frost Orb" maxLevel="5" requires="Frost Nova Lv. 2"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="A dense orb of packed ice hurled at a single target, hitting hard and near-guaranteed to leave them frozen solid." >}}
 
 | Lv. | MATK | Freeze Chance |
@@ -1898,6 +2035,7 @@ Regardless of level, the reduction is capped at `-25%` against other Bestia Mast
 {{< /skill >}}
 
 {{< skill name="Soul Break" maxLevel="5" requires="Elemental Mastery Lv. 4 and Spiritual Mastery Lv. 2"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Tears into a target with raw, undirected mana that ignores elemental resistance, ripping away a portion of their own mana in the process." >}}
 
 | Lv. | MATK  | Target Mana Drained |
@@ -1911,6 +2049,7 @@ Regardless of level, the reduction is capped at `-25%` against other Bestia Mast
 {{< /skill >}}
 
 {{< skill name="Thunder of Jupiter" maxLevel="5" requires="Thunder Storm Lv. 3 and Master of Wind Lv. 5"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="The Wizard's answer to a single stubborn target: a column of lightning that strikes over and over, once for every level of mastery behind it." >}}
 
 | Lv. | Hits per Cast | MATK (per hit) |
@@ -1924,6 +2063,7 @@ Regardless of level, the reduction is capped at `-25%` against other Bestia Mast
 {{< /skill >}}
 
 {{< skill name="Mindbreak" maxLevel="5" requires="Elemental Mastery Lv. 3 or Spiritual Mastery Lv. 3"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="The Wizard's capstone: a buff channeling so much raw magic through a Bestia at once that its armor is the first thing to give. Once applied it reduces the armor but increases magical attack of a Bestia. It cancels `Mindfocus`." >}}
 
 | Lv. | MATK  | MDEF  |
@@ -1944,6 +2084,7 @@ No fancy footwork, no elemental theatrics - just the kind of toughness that keep
 {{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [warrior tree](#warrior-tree)" />}}
 
 {{< skill name="Tough Guy" maxLevel="5"
+    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Stamina is faster regenerated and drops slower in high demanding environments and while doing activities which would otherwise deplete your stamina." >}}
 
 | Lv. | Stamina Reduction | Stamina Regeneration |
@@ -1957,6 +2098,7 @@ No fancy footwork, no elemental theatrics - just the kind of toughness that keep
 {{< /skill >}}
 
 {{< skill name="Second Wind" maxLevel="3" requires="Tough Guy Lv. 3"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="A Brawler's answer to running on empty: dig deep once, and get back up." >}}
 {{< skill-level level="1" >}}Once every few minutes, can trigger a burst that restores a portion of Stamina immediately.{{< /skill-level >}}
 {{< skill-level level="2" >}}The burst also restores a small portion of HP.{{< /skill-level >}}
@@ -1964,6 +2106,7 @@ No fancy footwork, no elemental theatrics - just the kind of toughness that keep
 {{< /skill >}}
 
 {{< skill name="Unbreakable" maxLevel="3" requires="Iron Skin Lv. 3 and Second Wind Lv. 2"
+    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="The Brawler's capstone. Everyone else has a breaking point; this is the skill that argues otherwise." >}}
 {{< skill-level level="1" >}}Once per cooldown, an otherwise lethal hit instead leaves the Bestia at 1 HP.{{< /skill-level >}}
 {{< skill-level level="2" >}}Stagger and knockback effects are greatly reduced while above 50% HP.{{< /skill-level >}}
@@ -1977,6 +2120,7 @@ Neither predator nor prey, exactly. Hunters move like the terrain isn't there an
 {{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [warrior tree](#warrior-tree)" />}}
 
 {{< skill name="Camouflage" maxLevel="3"
+    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Teaches the Hunter to read the land well enough to disappear into it. Reduces the range at which wild Bestia and monsters notice the master, and grants a damage bonus on an opening attack from concealment." >}}
 
 | Lv. | Detection Range (wild Bestia) | Ambush Damage |
@@ -1988,6 +2132,7 @@ Neither predator nor prey, exactly. Hunters move like the terrain isn't there an
 {{< /skill >}}
 
 {{< skill name="Lightfooted" maxLevel="5"
+    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Hard terrain does not reduce the Bestia movement speed anymore. On Level 5 the terrain does not reduce movement speed at all." >}}
 
 | Lv. | Movement Reduction Negated |
@@ -2001,6 +2146,7 @@ Neither predator nor prey, exactly. Hunters move like the terrain isn't there an
 {{< /skill >}}
 
 {{< skill name="Master Tracker" maxLevel="3" requires="Camouflage Lv. 2 and Lightfooted Lv. 3"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="The Hunter's capstone: a Bestia's trail stops being a trail and starts being a map." >}}
 {{< skill-level level="1" >}}Can follow the trail of any Bestia across long distances, even hours after it passed.{{< /skill-level >}}
 {{< skill-level level="2" >}}Gains a critical strike bonus against a tracked target.{{< /skill-level >}}
@@ -2051,10 +2197,12 @@ graph TD
 - Enchant Poison (1-5) requires Poison Research Lv. 3 _(placeholder)_
 
 {{< skill name="Weapon Coating" maxLevel="5" requires="Dual Wield Lv. 2"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Coat weapons and armor to protect them against damage and strip effects." >}}
 {{< /skill >}}
 
 {{< skill name="Plagiarism" maxLevel="10"
+    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="A passive knack for stealing more than just gold - whenever the Assassin is struck by an enemy spell, there's a chance they memorize it well enough to cast it back once, at a reduced level. Casting the copied spell consumes it, and getting hit by a new spell overwrites whatever was memorized before." >}}
 
 | Lv. | Copy Chance | Max Spell Level Copied |
@@ -2073,6 +2221,7 @@ graph TD
 {{< /skill >}}
 
 {{< skill name="Preserve" maxLevel="1" requires="Plagiarism Lv. 5"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Toggle. While active, a spell memorized via Plagiarism is not lost to a fresh copy - the Assassin keeps whatever they stole last until they switch this off and let a new hit overwrite it." >}}
 {{< /skill >}}
 
@@ -2083,6 +2232,7 @@ Where a Brawler trusts bare knuckles and a Wizard trusts raw mana, a Knight trus
 {{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [warrior tree](#warrior-tree)" />}}
 
 {{< skill name="Heavy Weapon Mastery" maxLevel="10"
+    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Years spent drilling with sword, axe, mace and spear until the weight stops mattering. Increases damage dealt with heavy one- and two-handed melee weapons and reduces the accuracy penalty from wielding oversized ones." >}}
 
 | Lv. | ATK (heavy melee weapons) | Accuracy Penalty Reduction |
@@ -2101,6 +2251,7 @@ Where a Brawler trusts bare knuckles and a Wizard trusts raw mana, a Knight trus
 {{< /skill >}}
 
 {{< skill name="Heavy Armor Mastery" maxLevel="10"
+    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Plate and mail punish anyone who hasn't trained to move in them. This skill teaches the body to carry the weight without giving up speed, complementing the protection of Iron Skin with the ability to actually wear it." >}}
 
 | Lv. | DEF (heavy armor) | Speed Penalty Reduction |
@@ -2119,6 +2270,7 @@ Where a Brawler trusts bare knuckles and a Wizard trusts raw mana, a Knight trus
 {{< /skill >}}
 
 {{< skill name="Provoke" maxLevel="5"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="A shout, a slammed shield, whatever gets the job done - forces nearby enemies to focus their attacks on the Knight instead of their allies for a short duration." >}}
 Higher levels extend the duration and the range at which enemies can be provoked.
 
@@ -2133,6 +2285,7 @@ Higher levels extend the duration and the range at which enemies can be provoked
 {{< /skill >}}
 
 {{< skill name="Shield Wall" maxLevel="5" requires="Heavy Armor Mastery Lv. 2"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Plants the Knight's feet and raises their shield into a proper wall. While active, incoming physical damage is reduced but movement speed drops sharply." >}}
 {{< skill-level level="1" >}}`-15%` incoming physical damage, `-50%` movement speed while active.{{< /skill-level >}}
 {{< skill-level level="3" >}}Damage reduction improves to `-25%` and the movement penalty eases to `-30%`.{{< /skill-level >}}
@@ -2140,6 +2293,7 @@ Higher levels extend the duration and the range at which enemies can be provoked
 {{< /skill >}}
 
 {{< skill name="Bash" maxLevel="5" requires="Heavy Weapon Mastery Lv. 3"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="A single committed swing that trades finesse for raw impact, with a chance to stagger whatever it lands on." >}}
 
 | Lv. | Bonus Damage | Stagger Chance |
@@ -2153,6 +2307,7 @@ Higher levels extend the duration and the range at which enemies can be provoked
 {{< /skill >}}
 
 {{< skill name="Auto Guard" maxLevel="5" requires="Shield Wall Lv. 2"
+    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="A trained reflex that raises the shield on its own the instant a blow lands, sometimes fast enough to stop it cold." >}}
 
 | Lv. | Full Block Chance |
@@ -2166,6 +2321,7 @@ Higher levels extend the duration and the range at which enemies can be provoked
 {{< /skill >}}
 
 {{< skill name="Charge" maxLevel="5" requires="Bash Lv. 3"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Closes the distance to a target in an instant, weapon first. The impact deals damage and briefly forces the target to focus the Knight, folding a gap closer and a taunt into a single swing." >}}
 Deals damage and applies a short [Provoke](#skill-provoke) effect on impact.
 
@@ -2180,6 +2336,7 @@ Deals damage and applies a short [Provoke](#skill-provoke) effect on impact.
 {{< /skill >}}
 
 {{< skill name="Juggernaut" maxLevel="3" requires="Heavy Armor Mastery Lv. 5 and Charge Lv. 3 and Auto Guard Lv. 3"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="The Knight's capstone. For a short time the line between wall and weapon stops meaning anything." >}}
 {{< skill-level level="1" >}}Once activated, gains `+20%` DEF and `+20%` ATK for a short duration.{{< /skill-level >}}
 {{< skill-level level="2" >}}Duration is extended and the Knight becomes immune to stagger and knockback while active.{{< /skill-level >}}
@@ -2194,6 +2351,7 @@ Where a Sage studies magic to bend it, a Bard studies it to sing along with it. 
 {{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [warrior tree](#warrior-tree)" />}}
 
 {{< skill name="Instrument Mastery" maxLevel="10"
+    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Training with stringed and wind instruments well enough to fight with them in a pinch and to make every song carry further and land harder." >}}
 
 | Lv. | ATK (instrument equipped) | Song Range/Effect |
@@ -2212,6 +2370,7 @@ Where a Sage studies magic to bend it, a Bard studies it to sing along with it. 
 {{< /skill >}}
 
 {{< skill name="Voice Training" maxLevel="5"
+    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="A trained voice reaches further and holds a note longer than an untrained one ever could." >}}
 
 | Lv. | Song AoE | Song Duration |
@@ -2225,6 +2384,7 @@ Where a Sage studies magic to bend it, a Bard studies it to sing along with it. 
 {{< /skill >}}
 
 {{< skill name="Ballad of the Fallen" maxLevel="5" requires="Instrument Mastery Lv. 3"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="A driving battle hymn that steels the resolve of everyone in earshot." >}}
 
 | Lv. | ATK and MATK (party, while playing) |
@@ -2238,6 +2398,7 @@ Where a Sage studies magic to bend it, a Bard studies it to sing along with it. 
 {{< /skill >}}
 
 {{< skill name="War March" maxLevel="5" requires="Instrument Mastery Lv. 3"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="A quickstep tune that puts a spring in the step and a snap in the swing of everyone marching to it." >}}
 
 | Lv. | Movement/Attack Speed (party, while playing) |
@@ -2251,6 +2412,7 @@ Where a Sage studies magic to bend it, a Bard studies it to sing along with it. 
 {{< /skill >}}
 
 {{< skill name="Dissonant Chord" maxLevel="5" requires="Instrument Mastery Lv. 5"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Deliberately off-key and unpleasant to hear by design. Rattles nearby enemies badly enough to throw off their aim and their footing." >}}
 
 | Lv. | HIT and ASPD (enemies, while playing) |
@@ -2264,6 +2426,7 @@ Where a Sage studies magic to bend it, a Bard studies it to sing along with it. 
 {{< /skill >}}
 
 {{< skill name="Poem of the Netherworld" maxLevel="5" requires="Dissonant Chord Lv. 2"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="A mournful dirge that drags at the mana of anyone unlucky enough to hear it, siphoning it into the surrounding air." >}}
 
 | Lv. | Mana Drain per Tick (enemies, while playing) |
@@ -2277,6 +2440,7 @@ Where a Sage studies magic to bend it, a Bard studies it to sing along with it. 
 {{< /skill >}}
 
 {{< skill name="Siren's Lullaby" maxLevel="3" requires="Dissonant Chord Lv. 3"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Not every song is meant to be heard for long. A slow, heavy melody that can lull a listener clean off their feet." >}}
 {{< skill-level level="1" >}}Small chance per tick to put an enemy in range to sleep.{{< /skill-level >}}
 {{< skill-level level="2" >}}Sleep chance and range are increased.{{< /skill-level >}}
@@ -2284,6 +2448,7 @@ Where a Sage studies magic to bend it, a Bard studies it to sing along with it. 
 {{< /skill >}}
 
 {{< skill name="Mystic Melody" maxLevel="5" requires="Voice Training Lv. 3"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="An old wandering tune said to carry a bit of luck with it. Occasionally shakes loose a minor beneficial effect for whoever is listening." >}}
 
 | Lv. | Proc Chance per Tick |
@@ -2297,6 +2462,7 @@ Where a Sage studies magic to bend it, a Bard studies it to sing along with it. 
 {{< /skill >}}
 
 {{< skill name="Harmonic Duet" maxLevel="3" requires="Ballad of the Fallen Lv. 5 and War March Lv. 5"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="The Bard's capstone. No song written for one voice sounds quite complete - performing alongside a master who has trained the [Dancer](#dancer) tree lets both of you play parts neither could carry alone." >}}
 {{< skill-level level="1" >}}While performing near a master with Dancer skills active, active songs and dances gain `+15%` effect strength for both performers' parties.{{< /skill-level >}}
 {{< skill-level level="2" >}}The bonus increases to `+25%` and the combined range is extended.{{< /skill-level >}}
@@ -2310,6 +2476,7 @@ Where a Bard leans on breath and instrument, a Dancer leans on footwork and nerv
 {{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [warrior tree](#warrior-tree)" />}}
 
 {{< skill name="Whip Mastery" maxLevel="10"
+    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Training with whips and chain-weapons until the reach stops feeling awkward. Increases damage dealt with whip-type weapons and the range at which they can strike." >}}
 
 | Lv. | ATK (whip equipped) | Effective Reach |
@@ -2328,6 +2495,7 @@ Where a Bard leans on breath and instrument, a Dancer leans on footwork and nerv
 {{< /skill >}}
 
 {{< skill name="Nimble Steps" maxLevel="5"
+    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="A Dancer trusts footwork over plate. Rather than wearing heavy armor, they learn to simply not be where the hit lands." >}}
 
 | Lv. | FLEE (light/no armor) |
@@ -2341,6 +2509,7 @@ Where a Bard leans on breath and instrument, a Dancer leans on footwork and nerv
 {{< /skill >}}
 
 {{< skill name="Slow Grace" maxLevel="5" requires="Whip Mastery Lv. 3"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="A whip-strike aimed less at the flesh than at the footing. Leaves a target's steps a beat slower for a while after." >}}
 
 | Lv. | Movement/Attack Speed (target) |
@@ -2354,6 +2523,7 @@ Where a Bard leans on breath and instrument, a Dancer leans on footwork and nerv
 {{< /skill >}}
 
 {{< skill name="Sultry Rhythm" maxLevel="5" requires="Slow Grace Lv. 2"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="A hypnotic sway that draws an enemy's guard down before they even notice it slipping." >}}
 
 | Lv. | DEF and SDEF (target) |
@@ -2367,6 +2537,7 @@ Where a Bard leans on breath and instrument, a Dancer leans on footwork and nerv
 {{< /skill >}}
 
 {{< skill name="Venomous Flourish" maxLevel="5" requires="Slow Grace Lv. 2"
+    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="A whip's tip can carry more than momentum. Coats each strike with a mild toxin that wears an enemy down over time." >}}
 
 | Lv. | Poison Chance per Hit |
@@ -2380,6 +2551,7 @@ Where a Bard leans on breath and instrument, a Dancer leans on footwork and nerv
 {{< /skill >}}
 
 {{< skill name="Mirage Step" maxLevel="5" requires="Nimble Steps Lv. 3"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="A dance performed in motion rather than in place, sharing the Dancer's own knack for not being where the hit lands with everyone nearby." >}}
 
 | Lv. | FLEE (party, while dancing) |
@@ -2393,6 +2565,7 @@ Where a Bard leans on breath and instrument, a Dancer leans on footwork and nerv
 {{< /skill >}}
 
 {{< skill name="Guiding Steps" maxLevel="5" requires="Nimble Steps Lv. 3"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="A steady, ground-eating rhythm that keeps a traveling party's legs fresh long after they should have given out." >}}
 
 | Lv. | Movement Speed (party, while dancing) | Stamina Drain (party, while dancing) |
@@ -2406,6 +2579,7 @@ Where a Bard leans on breath and instrument, a Dancer leans on footwork and nerv
 {{< /skill >}}
 
 {{< skill name="Captivating Gaze" maxLevel="3" requires="Venomous Flourish Lv. 3"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="A held look and a held breath is sometimes all it takes. A single enemy loses track of who it was even fighting." >}}
 {{< skill-level level="1" >}}Small chance to force the target to attack a random nearby enemy instead of the Dancer's party for a short duration.{{< /skill-level >}}
 {{< skill-level level="2" >}}Chance and duration are increased.{{< /skill-level >}}
@@ -2413,6 +2587,7 @@ Where a Bard leans on breath and instrument, a Dancer leans on footwork and nerv
 {{< /skill >}}
 
 {{< skill name="Radiant Waltz" maxLevel="3" requires="Mirage Step Lv. 5 and Guiding Steps Lv. 5"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="The Dancer's capstone. No dance choreographed for one performer sounds quite complete - performing alongside a master who has trained the [Bard](#bard) tree lets both of you play parts neither could carry alone." >}}
 {{< skill-level level="1" >}}While performing near a master with Bard skills active, active songs and dances gain `+15%` effect strength for both performers' parties.{{< /skill-level >}}
 {{< skill-level level="2" >}}The bonus increases to `+25%` and the combined range is extended.{{< /skill-level >}}

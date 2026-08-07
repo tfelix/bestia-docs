@@ -40,6 +40,10 @@ Blacksmiths use furnaces to extract metal from ores.
 Use it to construct it in the world.
 {{< /item >}}
 
+{{< item name="Workbench" weight="?" type="Etc" >}}
+_(placeholder)_ A basic crafting station used by Carpentry to build items. Use it to construct it in the world.
+{{< /item >}}
+
 {{< item name="Small Health Potion" weight="0.2" type="Usable" >}}
 A tiny vial filled with shimmering red liquid. Instantly mends minor wounds and brings a gentle warmth to the soul. Heals 45 HP.
 {{< /item >}}
