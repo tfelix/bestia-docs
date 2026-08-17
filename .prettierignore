@@ -1,0 +1,13 @@
+# Do not let Prettier format the docs markdown.
+#
+# Prettier treats the raw content of Hugo shortcodes as prose, which silently
+# corrupts it and breaks the Hugo build:
+#   * {{< chart >}} blocks contain JavaScript. Prettier escaped `(_, i)` to
+#     `(\_, i)` and rewrote the multiplication `1.2 *x* x` to `1.2 _x_ x`,
+#     because both look like markdown emphasis.
+#   * {{< katex >}} blocks and inline \\( ... \\) math contain `_` subscripts
+#     and `*`, which are vulnerable in exactly the same way.
+#
+# Formatting these files is not worth the risk of a broken deploy, so keep
+# them out of Prettier entirely. Format markdown by hand here.
+content/

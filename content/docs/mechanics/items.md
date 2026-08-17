@@ -56,26 +56,26 @@ These are the base upgrade chances. The chances can be altered via skills, buffs
 {
 type: 'line',
 data: {
-labels: Array.from({length: 25}, (\_, i) => i + 1),
+labels: Array.from({length: 25}, (_, i) => i + 1),
 datasets: [
 {
 label: 'Mundane',
-function: function(x) { return x <= 7 ? 1 : x >= 16 ? 0.30 : -0.0875 *x + 1.7; },
+function: function(x) { return x <= 7 ? 1 : x >= 16 ? 0.30 : -0.0875 * x + 1.7; },
 fill: false
 },
 {
 label: 'Superior',
-function: function(x) { return x <= 6 ? 1 : x >= 15 ? 0.25 : -0.09375* x + 1.65625; },
+function: function(x) { return x <= 6 ? 1 : x >= 15 ? 0.25 : -0.09375 * x + 1.65625; },
 fill: false
 },
 {
 label: 'Rare',
-function: function(x) { return x <= 6 ? 1 : x >= 14 ? 0.20 : -0.1 *x + 1.6; },
+function: function(x) { return x <= 6 ? 1 : x >= 14 ? 0.20 : -0.1 * x + 1.6; },
 fill: false
 },
 {
 label: 'Legendary',
-function: function(x) { return x <= 5 ? 1 : x >= 13 ? 0.15 : -0.10625* x + 1.53125; },
+function: function(x) { return x <= 5 ? 1 : x >= 13 ? 0.15 : -0.10625 * x + 1.53125; },
 fill: false
 },
 {
@@ -113,7 +113,7 @@ hardDefense = armorPoints / (armorPoints + 100)
 {
 type: 'line',
 data: {
-labels: Array.from({length: 101}, (\_, i) => i \* 10),
+labels: Array.from({length: 101}, (_, i) => i * 10),
 datasets: [
 {
 label: 'Hard Defense',
@@ -148,7 +148,7 @@ The upgrade chances can be increased by leveling up the relevant [Master Skill](
 {
 type: 'line',
 data: {
-labels: Array.from({length: 15}, (\_, i) => i + 1),
+labels: Array.from({length: 15}, (_, i) => i + 1),
 datasets: [
 {
 label: 'Armor',
@@ -202,7 +202,7 @@ level 100 item back up to a coin flip. Level 100 is only a landmark, not a ceili
 {
 type: 'line',
 data: {
-labels: Array.from({length: 100}, (\_, i) => i + 1),
+labels: Array.from({length: 100}, (_, i) => i + 1),
 datasets: [
 {
 label: 'Base Slot Chance',
@@ -284,7 +284,7 @@ The chance to learn drops with item level and rises with skill. It is floored at
 {
 type: 'line',
 data: {
-labels: Array.from({length: 150}, (\_, i) => i + 1),
+labels: Array.from({length: 150}, (_, i) => i + 1),
 datasets: [
 {
 label: 'Skill 30',
@@ -520,16 +520,16 @@ baseDurationConsumablesSeconds = .3 * baseDurationSeconds
 {
 type: 'line',
 data: {
-labels: Array.from({length: 100}, (\_, i) => i + 1),
+labels: Array.from({length: 100}, (_, i) => i + 1),
 datasets: [
 {
 label: 'Craft Time / s',
-function: function(x) { return 1.2 *x* x; },
+function: function(x) { return 1.2 * x * x; },
 fill: false
 },
 {
 label: 'Craft Time Consumables / s',
-function: function(x) { return 0.3 *1.2* x * x; },
+function: function(x) { return 0.3 * 1.2 * x * x; },
 fill: false
 }
 ]
@@ -581,7 +581,7 @@ weightLimit = STR / 2 + VIT / 5 + 15 + LEVEL / 5
 {
 type: 'line',
 data: {
-labels: Array.from({length: 100}, (\_, i) => i + 1),
+labels: Array.from({length: 100}, (_, i) => i + 1),
 datasets: [
 {
 label: 'Weight Limit (High STR)',
