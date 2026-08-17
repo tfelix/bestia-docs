@@ -66,7 +66,7 @@ In order to learn how to interact with other player you need to invest your firs
 
 ```mermaid
 graph TD
-    BasicSkill(["Basic Skill (1-5)"])
+    BasicSkill["Basic Skill (1-5)"]
     PlayDead["Play Dead (1)"]
     FirstAid["First Aid (1-3)"]
     MasterRitual["Master Ritual (1)"]
@@ -136,6 +136,7 @@ Crafting always runs in two phases: a Craftsman first **discovers a blueprint** 
 ```mermaid
 graph TD
     Carpentry["Carpentry (1-10)"]
+    UpgradeEquipment["Upgrade Equipment (1)"]
     MasterCraftsman["Master Craftsman (1-5)"]
     ItemCustomization["Item Customization (1-10)"]
     Gate{{"5+ pts in Craftsman Tree"}}
@@ -148,6 +149,7 @@ graph TD
     Carpentry -.-> Gate
     MasterCraftsman -.-> Gate
     ItemCustomization -.-> Gate
+    UpgradeEquipment -.-> Gate
     Gate -.->|unlocks| Blacksmith
     Gate -.->|unlocks| Artificer
     Gate -.->|unlocks| Alchemist
@@ -195,6 +197,16 @@ This bonus is added on top of the item-level base chance and the crafter's DEX/W
 
 {{< /skill >}}
 
+{{< skill name="Master Craftsman" maxLevel="1"
+type="Active" manaCost="18" cooldown="0s"
+description="Your time far away from settlements have taught you to adapt and improvise. You can improve your weapons and armor to better suite your needs and protect you." >}}
+
+Allows you to perform upgrades or armor and weapons. There is a chance this fails and potentially destroys your equipment.
+
+See [Weapon Refinement](/docs/mechanics/items/#weapon-refinement) and [Armor Refinement](/docs/mechanics/items/#armor-refinement) for the upgrade chances and effects.
+
+{{< /skill >}}
+
 {{< skill name="Item Customization" maxLevel="10" requires="Carpentry Lv. 3"
     type="Active" manaCost="23" cooldown="0s"
     description="You are able to rework items to put slots in them in which runes can be slottet." >}}
@@ -227,6 +239,7 @@ Steel remembers who beat it into shape. Blacksmiths turn raw ore into finest wea
 ```mermaid
 graph TD
     ItemCustomization[/"Item Customization (Craftsman Tree)"/]
+    UpgradeEquipment[/"Upgrade Equipment (Craftsman Tree)"/]
     OreRefinement["Ore Refinement (1-3)"]
     ForgeWeapon["Forge Weapon (1-10)"]
     ForgeArmor["Forge Armor (1-10)"]
@@ -238,6 +251,7 @@ graph TD
     ItemCustomization -->|Lv.5| ForgeArmor
     OreRefinement -->|Lv.1| ForgeWeapon
     OreRefinement -->|Lv.1| ForgeArmor
+    UpgradeEquipment -->|Lv.1| WeaponryResearch
     OreRefinement -->|Lv.3| WeaponRepair
     WeaponRepair -->|Lv.3| WeaponryResearch
     ForgeWeapon -->|Lv.8| MasterSmith
@@ -250,8 +264,7 @@ graph TD
     description="Enables the smith to refine the finest ores. A must have to produce the raw materials for weapon or armor forging." >}}
 
 Lv. 1 allows you to place a [Furnace](/docs/mechanics/item-list/#furnace). Every batch burns fuel:
-[Coal](/docs/mechanics/item-list/#coal) is the reference fuel, [Charcoal](/docs/mechanics/item-list/#charcoal) burns
-cooler and costs `-10%`. A failed smelt loses both the ore and the fuel.
+[Coal](/docs/mechanics/item-list/#coal). A failed smelt loses both the ore and the fuel.
 
 | Lv. | Ore Refinement Success |
 | --- | ---------------------- |
@@ -277,31 +290,34 @@ Lv. 1 allows you to place a Forge.
 {{< /skill >}}
 
 {{< skill name="Forge Armor" maxLevel="10" requires="Ore Refinement Lv. 1 and Item Customization Lv. 5"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="23" castTime="10s" cooldown="0s" range="2" target="Forge"
     description="The counterpart to Forge Weapon: discovers and forges armor blueprints - plate, mail and shields - from smelted ingots. Higher skill levels reliably reach higher-level armor; blueprints far above your skill can still be attempted, just at a steeply falling chance." >}}
+
+Lv. 1 allows you to place a Forge.
+
 {{< /skill >}}
 
-{{< skill name="Weaponry Research" maxLevel="10" requires="Weapon Repair Lv. 3"
-    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
-    description="Deeper knowledge of weapons and armor that raises the odds of successfully [refining](/docs/mechanics/items/#weapon-refinement) either one further after forging. This governs post-forging refinement only - discovering and forging new blueprints is handled by Forge Weapon and Forge Armor. If an upgrade fails the equipment can be destroyed." >}}
+{{< skill name="Weaponry Research" maxLevel="10" requires="Weapon Repair Lv. 3, Upgrade Equipment Lv. 1"
+    type="Passive"
+    description="Deeper knowledge of weapons and armor that raises the odds of successfully [refining](/docs/mechanics/items/#weapon-refinement) either one further after forging. If an upgrade fails the equipment can be destroyed." >}}
 
-| Lv. | Upgrade Success | Forging Success | ATK (forged weapon) | Accuracy (forged weapon) |
-| --- | --------------- | --------------- | ------------------- | ------------------------ |
-| 1   | +4%             | +1%             | +2                  | +2%                      |
-| 2   | +8%             | +2%             | +4                  | +4%                      |
-| 3   | +12%            | +3%             | +6                  | +6%                      |
-| 4   | +16%            | +4%             | +8                  | +8%                      |
-| 5   | +20%            | +5%             | +10                 | +10%                     |
-| 6   | +24%            | +6%             | +12                 | +12%                     |
-| 7   | +28%            | +7%             | +14                 | +14%                     |
-| 8   | +32%            | +8%             | +16                 | +16%                     |
-| 9   | +36%            | +9%             | +18                 | +18%                     |
-| 10  | +40%            | +10%            | +20                 | +20%                     |
+| Lv. | Upgrade Success | Forging Success |
+| --- | --------------- | --------------- |
+| 1   | +4%             | +1%             |
+| 2   | +8%             | +2%             |
+| 3   | +12%            | +3%             |
+| 4   | +16%            | +4%             |
+| 5   | +20%            | +5%             |
+| 6   | +24%            | +6%             |
+| 7   | +28%            | +7%             |
+| 8   | +32%            | +8%             |
+| 9   | +36%            | +9%             |
+| 10  | +40%            | +10%            |
 
 {{< /skill >}}
 
 {{< skill name="Weapon Repair" maxLevel="5" requires="Ore Refinement Lv. 3"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="33" castTime="3" cooldown="0s" range="2" target="Forge"
     description="You can repair damaged or broken equipment to refurbish and make it usable again. Higher levels unlock repairing equipment of a higher [item level](/docs/mechanics/items/#item-level)." >}}
 
 | Lv. | Max Item Level |
@@ -315,7 +331,7 @@ Lv. 1 allows you to place a Forge.
 {{< /skill >}}
 
 {{< skill name="Master Smith" maxLevel="5" requires="Forge Weapon Lv. 8 and Forge Armor Lv. 8"
-    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Passive"
     description="The capstone of the forge. Makes a Blacksmith's hands steady enough to trust with the rarest ore." >}}
 
 | Lv. | Forging Chance | Upgrade Chance |
@@ -328,7 +344,7 @@ Lv. 1 allows you to place a Forge.
 
 {{< /skill >}}
 
-### Artificer
+### Artificer (unrefined)
 
 Where Blacksmiths hammer steel, Artificers coax it into remembering spells. This path enscribes magic onto items, binds it to triggers, and crystalizes raw mana into shards other professions can build on.
 
@@ -421,7 +437,7 @@ Higher levels unlock refining higher-grade crystals.
 
 {{< /skill >}}
 
-### Alchemist
+### Alchemist (unrefined)
 
 Equal parts kitchen and laboratory. Alchemists turn raw ingredients - mundane or mana-soaked - into food, tonics and reagents nobody else can replicate twice. Some carry the first bandages they ever learned to wrap as a Novice all the way into a healer's toolkit.
 
@@ -505,7 +521,7 @@ Higher levels unlock transmuting higher-grade infused resources.
 
 {{< /skill >}}
 
-## Survival Tree
+## Survival Tree (unrefined)
 
 Skills which allow the player to keep exploring the world and stay active longer far away from settlements are placed in this skill tree. Foresters live off the land, Prospectors chart what nobody has mapped yet, and Miners dig for what the land is hiding.
 
@@ -582,11 +598,13 @@ At home wherever the trees outnumber the people. Foresters live off the land - f
 graph TD
     Lumberjack["Lumberjack (1-5)"]
     Trapping["Trapping (1-5)"]
+    TrackReading["Track Reading (1-5)"]
     BestiaTrapping["Bestia Trapping (1-5)"]
     ExpertTaming["Expert Taming (1-5)"]
     Beastfriend["Beastfriend (1-5)"]
 
     Trapping -->|Lv.3| BestiaTrapping
+    Trapping -->|Lv.3| TrackReading
     ExpertTaming -->|Lv.3| Beastfriend
 ```
 
@@ -611,13 +629,29 @@ Level 1 allows you to install a woodworker cabin.
     description="Sets snares and deadfalls that keep working for the master even while they're off doing something else, passively catching small game over time for meat and pelts on a later check-in." >}}
 Level 1 allows you to place a trap.
 
-| Lv. | Catch Chance |
-| --- | ------------ |
-| 1   | +6%          |
-| 2   | +12%         |
-| 3   | +18%         |
-| 4   | +24%         |
-| 5   | +30%         |
+| Lv. | Catch Chance | Max Traps |
+| --- | ------------ | --------- |
+| 1   | +6%          | 1         |
+| 2   | +12%         | 2         |
+| 3   | +18%         | 3         |
+| 4   | +24%         | 4         |
+| 5   | +30%         | 5         |
+
+{{< /skill >}}
+
+{{< skill name="Track Reading" maxLevel="5" requires="Trapping Lv. 3"
+    type="Active" manaCost="19" castTime="6s" cooldown="10s" target="Ground"
+    description="Trained in the art of track reading you can identify the tracks that a bestia or a player has recently left in the ground" >}}
+
+Displays a track a player or bestia recently took. Shows you also the direction of nearby Bestia.
+
+| Lv. | Bestia Indicator Max Distance | Oldest Detectable Track |
+| --- | ----------------------------- | ----------------------- |
+| 1   | 100m                          | 1h                      |
+| 2   | 200m                          | 3h                      |
+| 3   | 300m                          | 6h                      |
+| 4   | 400m                          | 12h                     |
+| 5   | 500m                          | 1d                      |
 
 {{< /skill >}}
 
@@ -823,7 +857,7 @@ Can sense ore and gem deposits through solid rock.
 
 {{< /skill >}}
 
-## Scholar Tree
+## Scholar Tree (unrefined)
 
 The Scholar tree contains skills which help with sensing the world's events and performing rituals to shape the face of the Bestia world itself. Traders keep the gears of commerce turning while Sages chase magic to its source - enscribing, discovering, and eventually bending distance itself.
 
@@ -1595,7 +1629,7 @@ A negative base means the extraction is impossible on raw talent alone and only 
 
 {{< /skill >}}
 
-## Warrior Tree
+## Warrior Tree (unrefined)
 
 Where the other trees build, gather and study, the Warrior tree is built to fight. Wizards burn the battlefield down with elemental and arcane fury, Brawlers shrug off punishment nobody should be able to shrug off, Hunters strike up a bond with wild Bestia most people just run from, Assassins vanish before the first drop of blood even hits the ground, Knights plant themselves between danger and everyone else, and Bards and Dancers turn a battlefield into something worth listening to.
 
