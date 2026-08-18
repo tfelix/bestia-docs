@@ -81,7 +81,7 @@ graph TD
 <br>
 {{< skill name="Basic Skill" maxLevel="5"
     type="Passive"
-    description="Enables the use of the basic user interface." >}}
+    description="The first lessons every wanderer learns before mana ever answers their call - how to speak with others, strike a fair trade, and hold their own among strangers." >}}
 {{< skill-level level="1" >}}Allows to trade with other players.{{< /skill-level >}}
 {{< skill-level level="2" >}}Allows to chat with other players via public and whisper chat.{{< /skill-level >}}
 {{< skill-level level="3" >}}Allows to use trade posts.{{< /skill-level >}}
@@ -91,7 +91,7 @@ graph TD
 
 {{< skill name="Cooking" maxLevel="3" requires="Basic Skill Lv. 3"
     type="Active" castTime="Instant" cooldown="None"
-    description="The Master and his Bestia can learn recipies and start to cook meals on fire places. Food helps a Bestia to keep its health and stamina up and usually apply buff effects when they are eaten." >}}
+    description="The Master and his Bestia can learn recipes and start to cook meals on fire places. Food helps a Bestia to keep its health and stamina up and usually apply buff effects when they are eaten." >}}
 
 Requires a cooking place. Lv 1 allows you to place a campfire which counts as cooking place.
 
@@ -105,14 +105,17 @@ Requires a cooking place. Lv 1 allows you to place a campfire which counts as co
 
 {{< skill name="Play Dead" maxLevel="1" requires="Basic Skill Lv. 2"
     type="Active" manaCost="8" castTime="Instant" cooldown="10s" duration="Until cancelled" range="0" target="Self"
-    description="Feigns death to avoid menace of nearby enemies. This skill can be switched on and off. After performing the ritual to become a Bestia Master this skill can not be used anymore." >}}
+    description="Feigns death convincingly enough to slip past danger unnoticed - a novice's oldest trick for surviving what they can't yet fight." >}}
+
+Toggled on and off at will. Once the Master Ritual is performed to become a Bestia Master, this skill can no longer be used.
+
 {{< /skill >}}
 
 {{< skill name="First Aid" maxLevel="3" requires="Basic Skill Lv. 3"
     type="Active" manaCost="per Lv." castTime="Channeled" cooldown="3min" duration="10s" range="2" target="Bestia"
-    description="Apply bandages to a Bestia or yourself and channel a healing effect over 10s. A Bestia can only receive a single First Aid every 60 secs." >}}
+    description="Apply bandages to a Bestia or yourself, channeling a steady mend into whatever's bleeding." >}}
 
-It will heal whatever limit is reached first.
+Channels for 10s. A Bestia can only receive a single First Aid every 60 secs. It will heal whatever limit is reached first.
 
 | Lv. | Max HP Healed (% based) | Max HP Healed (flat) |
 | --- | ----------------------- | -------------------- |
@@ -123,7 +126,8 @@ It will heal whatever limit is reached first.
 {{< /skill >}}
 
 {{< skill name="Master Ritual" maxLevel="1" requires="Basic Skill Lv. 5"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?" >}}
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    description="The rite of passage every novice eventually faces - trading the last of their raw mana-essence to be reforged as a true Bestia Master." >}}
 Automatically enabled once Lv. 7 in Basic Skill is reached. Can only be used as long as you are a Novice. Converts 25 [Void Essence](/docs/mechanics/item-list/#void-essence), 5 [Mana Dust](/docs/mechanics/item-list/#mana-dust) and 3 [Clay](/docs/mechanics/item-list/#clay) into a [Seal of Mastery](/docs/mechanics/item-list/#seal-of-mastery).
 {{< /skill >}}
 
@@ -132,6 +136,8 @@ Automatically enabled once Lv. 7 in Basic Skill is reached. Can only be used as 
 The workbenches, forges and cauldrons of the tradesfolk turn raw ambition into things a player can actually use. Every blade, trinket and bottled miracle a master ever relies on started out as somebody's Craftsman skill paying off.
 
 Crafting always runs in two phases: a Craftsman first **discovers a blueprint** by experimenting with raw materials, then **produces** that item from it as often as they like. The skills below govern how reliably a Craftsman discovers, produces and refines within their trade — see [Item Crafting](/docs/mechanics/items/#item-crafting) for the full system.
+
+{{< alert context="info" text="Some skills require a prop to interact with e.g. a cooking station and Lv. 1 of this skill allows you to place such a prop by using the item represenation of it from within your inventory. If you have at least one level in such a skill you will be able to cast this spell on you and craft such a prop item (if you have the resources for it) for yourself." />}}
 
 ```mermaid
 graph TD
@@ -158,7 +164,7 @@ graph TD
 <br>
 {{< skill name="Carpentry" maxLevel="10"
     type="Active" manaCost="20" cooldown="0 s" range="2" target="Workbench"
-    description="Allows you to construct useful items of daily use and structures which can be placed in the world." >}}
+    description="Turns raw timber and honest labor into the workbenches, furniture and structures every settlement needs to stand on its own." >}}
 
 Lv. 1 allows you to build a [workbench](/docs/mechanics/item-list/#workbench), which you can use for crafting. The time it needs to craft an item depends on the item level you want to craft.
 
@@ -182,7 +188,7 @@ This bonus is added on top of the item-level base chance and the crafter's DEX/W
 
 {{< skill name="Master Craftsman" maxLevel="5" requires="Carpentry Lv. 3"
 type="Passive"
-description="You are very skilled in working with tools and raw material. Building structures in the world is very quick for you and the Bestia under your command." >}}
+description="A lifetime of calluses paid off - tools answer faster and structures rise quicker under this Craftsman's hand, and the Bestia working alongside them keep pace." >}}
 
 | Lv. | Construction Time | Success Chance |
 | --- | ----------------- | -------------- |
@@ -197,9 +203,9 @@ This bonus is added on top of the item-level base chance and the crafter's DEX/W
 
 {{< /skill >}}
 
-{{< skill name="Master Craftsman" maxLevel="1"
+{{< skill name="Upgrade Equipment" maxLevel="1"
 type="Active" manaCost="18" cooldown="0s"
-description="Your time far away from settlements have taught you to adapt and improvise. You can improve your weapons and armor to better suite your needs and protect you." >}}
+description="Time spent far from settlements teaches a Craftsman to adapt and improvise, reworking weapons and armor in the field to better suit their needs." >}}
 
 Allows you to perform upgrades or armor and weapons. There is a chance this fails and potentially destroys your equipment.
 
@@ -209,7 +215,7 @@ See [Weapon Refinement](/docs/mechanics/items/#weapon-refinement) and [Armor Ref
 
 {{< skill name="Item Customization" maxLevel="10" requires="Carpentry Lv. 3"
     type="Active" manaCost="23" cooldown="0s"
-    description="You are able to rework items to put slots in them in which runes can be slottet." >}}
+    description="A meticulous rework that opens sockets in an item's frame, letting a Runic Etcher's runes be slotted into it later." >}}
 
 Requires an [Engraving Set](/docs/mechanics/item-list/#engraving-set) which will be consumed in the process. You can choose how many slots you want to put into an item. But every slot makes it harder to succeed. Every extra slot above 1 reduces the success chance by 40%.
 
@@ -261,7 +267,7 @@ graph TD
 <br>
 {{< skill name="Ore Refinement" maxLevel="3"
     type="Active" manaCost="18" castTime="10s" cooldown="0s"
-    description="Enables the smith to refine the finest ores. A must have to produce the raw materials for weapon or armor forging." >}}
+    description="Feeds raw ore to the roar of the furnace, coaxing out the pure ingots every weapon and suit of armor is ultimately built from." >}}
 
 Lv. 1 allows you to place a [Furnace](/docs/mechanics/item-list/#furnace). Every batch burns fuel:
 [Coal](/docs/mechanics/item-list/#coal). A failed smelt loses both the ore and the fuel.
@@ -283,7 +289,7 @@ per ore level above 10, plus the smith's STR and WIL. Even a maxed smith loses r
 
 {{< skill name="Forge Weapon" maxLevel="10" requires="Ore Refinement Lv. 1 and Item Customization Lv. 5"
     type="Active" manaCost="23" castTime="10s" cooldown="0s" range="2" target="Forge"
-    description="Able to discover and forge weapon blueprints from raw ingredients. Higher skill levels reliably reach higher-level weapons." >}}
+    description="Discovers and forges weapon blueprints from smelted ingots - the Blacksmith's bread and butter. Higher skill levels reliably reach higher-level weapons; blueprints far above your skill can still be attempted, just at a steeply falling chance." >}}
 
 Lv. 1 allows you to place a Forge.
 
@@ -318,7 +324,7 @@ Lv. 1 allows you to place a Forge.
 
 {{< skill name="Weapon Repair" maxLevel="5" requires="Ore Refinement Lv. 3"
     type="Active" manaCost="33" castTime="3" cooldown="0s" range="2" target="Forge"
-    description="You can repair damaged or broken equipment to refurbish and make it usable again. Higher levels unlock repairing equipment of a higher [item level](/docs/mechanics/items/#item-level)." >}}
+    description="Hammers dents from armor and sets a fresh edge to broken blades, coaxing worn-out equipment back into fighting shape." >}}
 
 | Lv. | Max Item Level |
 | --- | -------------- |
@@ -344,7 +350,7 @@ Lv. 1 allows you to place a Forge.
 
 {{< /skill >}}
 
-### Artificer (unrefined)
+### Artificer
 
 Where Blacksmiths hammer steel, Artificers coax it into remembering spells. This path enscribes magic onto items, binds it to triggers, and crystalizes raw mana into shards other professions can build on.
 
@@ -365,37 +371,38 @@ graph TD
 
 <br>
 {{< skill name="Mana Harvester" maxLevel="10"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="19" castTime="10s" cooldown="30s"
     description="Build and operate Mana Harvesters which channel mana from the environment into raw crystals - the source of magic for many use cases." >}}
-Level 1 enables you to place a Mana Harvester
 
-| Lv. | Harvesting Time | Crystal Yield |
-| --- | --------------- | ------------- |
-| 1   | -5%             | +3%           |
-| 2   | -10%            | +6%           |
-| 3   | -15%            | +9%           |
-| 4   | -20%            | +12%          |
-| 5   | -25%            | +15%          |
-| 6   | -30%            | +18%          |
-| 7   | -35%            | +21%          |
-| 8   | -40%            | +24%          |
-| 9   | -45%            | +27%          |
-| 10  | -50%            | +30%          |
+Level 1 enables you to craft, place and use a Mana Harvester.
+
+| Lv. | Harvesting Time | Crystal Yield | Total Active Harvesters |
+| --- | --------------- | ------------- | --- |
+| 1   | -5%             | +3%           | 1 |
+| 2   | -10%            | +6%           | 1 |
+| 3   | -15%            | +9%           | 1 |
+| 4   | -20%            | +12%          | 2 |
+| 5   | -25%            | +15%          | 2 |
+| 6   | -30%            | +18%          | 2 |
+| 7   | -35%            | +21%          | 3 |
+| 8   | -40%            | +24%          | 3 |
+| 9   | -45%            | +27%          | 3 |
+| 10  | -50%            | +30%          | 4 |
 
 {{< /skill >}}
 
 {{< skill name="Manaflow Expert" maxLevel="5" requires="Mana Harvester Lv. 3"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="22" target="Gem Cutting Table"
     description="Refine the raw and unstable mana crystals harvested by a Mana Harvester into the finest arcane raw materials used to build powerful magic artifacts." >}}
-Higher levels unlock refining higher-grade crystals.
+Level  1 enables you to craft, place and use a Gem Cutting Table. Casttime depends on the prcessed material.
 
-| Lv. | Shatter Chance |
+| Lv. | Success Chance |
 | --- | -------------- |
-| 1   | -4%            |
-| 2   | -8%            |
-| 3   | -12%           |
-| 4   | -16%           |
-| 5   | -20%           |
+| 1   | 4%            |
+| 2   | 8%            |
+| 3   | 12%           |
+| 4   | 16%           |
+| 5   | 20%           |
 
 {{< /skill >}}
 
@@ -497,7 +504,7 @@ Higher levels unlock transmuting higher-grade infused resources.
 
 {{< skill name="Alchemy Mastery" maxLevel="5" requires="Alchemy Lv. 5"
     type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
-    description="Increased yield and success chance for Alchemy crafting operations." >}}
+    description="A deeper feel for the cauldron - reagents stretch further and brews take hold more reliably under this Alchemist's hand." >}}
 
 | Lv. | Success Chance | Yield Increase |
 | --- | -------------- | -------------- |
@@ -511,7 +518,7 @@ Higher levels unlock transmuting higher-grade infused resources.
 
 {{< skill name="Speedy Brewer" maxLevel="5" requires="Alchemy Lv. 3"
     type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
-    description="Increased brewing speed for all your alchemist tasks performed by you and your Bestia." >}}
+    description="A practiced rhythm at the cauldron that shaves time off every brew, shared with any Bestia working the trade alongside you." >}}
 
 | Lv. | Alchemist Crafting Speed |
 | --- | ------------------------ |
@@ -548,7 +555,7 @@ graph TD
 <br>
 {{< skill name="Quick Travel" maxLevel="5"
     type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
-    description="You and your Bestia know every kind of terrain." >}}
+    description="Years on the road teach a Master and their Bestia how to cross any terrain without losing a step." >}}
 | Lv. | Movement Speed |
 | --- | --------------- |
 | 1   | +3%              |
@@ -576,7 +583,7 @@ Level 1 lets you place a Lookout Post.
 
 {{< skill name="Fishing" maxLevel="5"
     type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
-    description="With this skill you are able to catch fish. Fish can be cooked and are used for food and trading." >}}
+    description="A patient hand with rod and net that pulls fish from any water worth casting into - as good on the plate as it is at the trade post." >}}
 
 | Lv. | Max Fish Level |
 | --- | -------------- |
@@ -611,7 +618,7 @@ graph TD
 <br>
 {{< skill name="Lumberjack" maxLevel="5"
     type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
-    description="The player is able to gather wood resources." >}}
+    description="An axeman's read of the forest - which trunks fell clean, which grain splits true, and how to bring both down efficiently." >}}
 Level 1 allows you to install a woodworker cabin.
 
 | Lv. | Gathering Time | Resource Drop Chance |
@@ -641,7 +648,7 @@ Level 1 allows you to place a trap.
 
 {{< skill name="Track Reading" maxLevel="5" requires="Trapping Lv. 3"
     type="Active" manaCost="19" castTime="6s" cooldown="10s" target="Ground"
-    description="Trained in the art of track reading you can identify the tracks that a bestia or a player has recently left in the ground" >}}
+    description="An eye trained to the forest floor, reading the tracks a Bestia or player left behind long after they've moved on." >}}
 
 Displays a track a player or bestia recently took. Shows you also the direction of nearby Bestia.
 
@@ -672,7 +679,7 @@ Level 1 allows you to place a special Bestia trap.
 
 {{< skill name="Expert Taming" maxLevel="5"
     type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
-    description="Bestia under your control gain faster experience and require less food to maintain their stamina out in the open." >}}
+    description="A Forester's patient hand with wild Bestia rubs off on them, sharpening how fast they learn and how little they need to keep going out in the open." >}}
 
 | Lv. | EXP Gain | Stamina Loss |
 | --- | -------- | ------------ |
@@ -686,7 +693,7 @@ Level 1 allows you to place a special Bestia trap.
 
 {{< skill name="Beastfriend" maxLevel="5" requires="Expert Taming Lv. 3"
     type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
-    description="Detailed knowledge of the Bestia and their behavior makes it easier for you to tame and catch them. Also increases the success chance for Bestia Trapping." >}}
+    description="A lifetime studying Bestia behavior down to the last twitch of an ear, making both the taming and the trapping of them that much easier." >}}
 
 | Lv. | Tame Chance |
 | --- | ----------- |
@@ -722,7 +729,7 @@ graph TD
 <br>
 {{< skill name="Maximize Carry Capacity" maxLevel="5" requires="Resource Sense Lv. 1"
     type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
-    description="Raises the carrying capacity of your own Master." >}}
+    description="Smarter packing and a stronger back let a Prospector carry far more than good sense would suggest." >}}
 
 | Lv. | Weight Limit |
 | --- | ------------ |
@@ -736,7 +743,7 @@ graph TD
 
 {{< skill name="Enlarge Weight Limit" maxLevel="5" requires="Maximize Carry Capacity Lv. 3"
     type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
-    description="Raises the carrying capacity of every Bestia under your control." >}}
+    description="Better-fitted saddlebags and packs let every Bestia under a Prospector's command haul that much more of the find home." >}}
 
 | Lv. | Weight Limit |
 | --- | ------------ |
@@ -802,7 +809,7 @@ graph TD
 <br>
 {{< skill name="Mining" maxLevel="5"
     type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
-    description="Specialized in digging mine shafts and gathering mineral resources." >}}
+    description="A pickaxe, a steady lamp, and the nose for where the rock is worth breaking." >}}
 Level 1 enables you to place a mining shaft.
 
 | Lv. | Mining Time | Max Resource Level |
@@ -816,8 +823,9 @@ Level 1 enables you to place a mining shaft.
 {{< /skill >}}
 
 {{< skill name="Gem Cutting" maxLevel="5" requires="Mining Lv. 3"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?" >}}
-Turns the rough gemstones a Miner digs up into cut stones fit for an Artificer's socket or a Trader's sale. Can cut raw gems recovered from mining into faceted gemstones, increasing their value and unlocking their use in socketed equipment.
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    description="Turns the rough gemstones a Miner digs up into cut stones fit for an Artificer's socket or a Trader's sale." >}}
+Can cut raw gems recovered from mining into faceted gemstones, increasing their value and unlocking their use in socketed equipment.
 Higher levels unlock cutting higher-grade gems. Level 1 allows you to place [Gem Cut Stations](item-list/#gem-cut-stations)
 
 | Lv. | Cut Success Chance |
@@ -883,9 +891,9 @@ graph TD
 ```
 
 <br>
-{{< skill name="Detect Magic" maxLevel="5"
+{{< skill name="Magic Sense" maxLevel="5"
     type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
-    description="User can detect the presence of magic nearby. It can also identify a magical spell which might be bound to an entity." >}}
+    description="A prickle at the back of the mind that flags mana at work nearby, and picks apart what spell an item or entity carries bound to it." >}}
 {{< /skill >}}
 
 {{< skill name="Sense" maxLevel="1"
@@ -895,9 +903,10 @@ Reveals the monster status values, element, HP and Mana.
 {{< /skill >}}
 
 {{< skill name="Observation" maxLevel="5"
-    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?" >}}
-You can detect the direction and distance of nearby world events like mana rifts which open, spawned bosses or other world changing events.
-Level 1 let you place an observatory.
+    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    description="A Sage's watchfulness turned outward - a sense for the direction and distance of world-changing events long before word of them travels." >}}
+Detects nearby world events like mana rifts which open, spawned bosses or other world changing events.
+Level 1 lets you place an observatory.
 
 | Lv. | Detection Distance |
 | --- | ------------------ |
@@ -911,7 +920,7 @@ Level 1 let you place an observatory.
 
 {{< skill name="Founder" maxLevel="1"
     type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
-    description="Allows you to create your own settlement by placing a city sign." >}}
+    description="The founding rite that plants a city sign in the ground and calls a settlement into being around it." >}}
 
 Only one settlement can be active at any time. You must destroy the settlement before you can place a new one. Only inactive settlements can be destroyed. This means there must be no more functional building (post office, trade post, etc.) be inside the sphere of influence of the settlement.
 
@@ -1193,7 +1202,8 @@ Higher levels extend the duration and allow higher-grade Holy Water to be used f
 {{< /skill >}}
 
 {{< skill name="Turn Undead" maxLevel="5" requires="Demon Bane Lv. 3 and Holy Light Lv. 3"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?" >}}
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    description="A judgment of pure holy mana that punches through armor and unravels the unnatural knot holding an undead together." >}}
 Higher levels raise the chance of an instant kill against sufficiently weak undead.
 
 Inflicts single target Holy, armor piercing damage. If the target is an Undead property monster, this spell has a chance of immediatly ending its existence.
@@ -1302,7 +1312,7 @@ You can identify an item.
 
 {{< skill name="Scavenger" maxLevel="10"
     type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
-    description="When breaking up and recycling items the probability to recycle a higher amount of components is increased." >}}
+    description="A scrapper's eye for what's still worth keeping - coaxes more usable components out of anything broken down for parts." >}}
 
 | Lv. | Recycle Chance |
 | --- | -------------- |
@@ -1335,7 +1345,9 @@ You can identify an item.
 
 {{< skill name="Trade Post Owner" maxLevel="5"
     type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
-    description="Allows you to build trading posts which can be used by other citizen to buy and sell items. Only a single trading post can be located inside a settlement." >}}
+    description="Sets up trading posts where other citizens can buy and sell their wares, turning any settlement into a proper marketplace." >}}
+
+Only a single trading post can be located inside a settlement.
 
 | Lv. | Trading Posts | Max Fee |
 | --- | ------------- | ------- |
@@ -1349,7 +1361,7 @@ You can identify an item.
 
 {{< skill name="Trade Agreement" maxLevel="5" requires="Trade Post Owner Lv. 3"
     type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
-    description="Allows the master to link his auction house with those of other consenting players, merging their listings into a single, wider [marketplace](/docs/mechanics/economy-trade/#linking-auction-houses)." >}}
+    description="Weaves this Trader's auction house into those of other consenting players, merging their listings into a single, wider [marketplace](/docs/mechanics/economy-trade/#linking-auction-houses)." >}}
 To get linked from other players at least level 1 in this skill is required.
 
 | Lv. | Linked Players |
@@ -1431,7 +1443,8 @@ graph TD
 
 {{< skill name="Spell Training" maxLevel="10"
     type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
-    description="Train a spell from a scroll to a Bestia. The scroll will be consumed in this process. The success chance depends on the level of the scroll." >}}
+    description="Trains a spell from a scroll into a Bestia's memory, the first step of every Sage's education." >}}
+Consumes the scroll in the process. The success chance depends on the level of the scroll.
 {{< /skill >}}
 
 {{< skill name="Free Cast" maxLevel="5"
@@ -1450,12 +1463,14 @@ graph TD
 
 {{< skill name="Scry" maxLevel="5" requires="Spell Training Lv. 2"
     type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
-    description="The caster can gather information about areas located far away from his position. This is also a helpful spell to detect possible resources in areas which might be worth exploring." >}}
+    description="Casts a Sage's sight far beyond their own eyes, scouting distant ground and the resources hiding on it before ever setting foot there." >}}
 {{< /skill >}}
 
 {{< skill name="Dispell" maxLevel="5" requires="Spell Training Lv. 2"
     type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
-    description="Cancels all magical effects on a target. Success chance is based on skill level and the target's MDEF, with a base chance of `(50 + 10 * SkillLv)%`. Requires 1 [Yellow Mana Crystal](/docs/mechanics/item-list/#yellow-mana-crystal) per cast." >}}
+    description="Unravels every magical effect clinging to a target in a single word, undoing buffs and curses alike." >}}
+
+Success chance is based on skill level and the target's MDEF, with a base chance of `(50 + 10 * SkillLv)%`. Requires 1 [Yellow Mana Crystal](/docs/mechanics/item-list/#yellow-mana-crystal) per cast.
 
 | Lv. | Base Success Chance |
 | --- | ------------------- |
@@ -1482,7 +1497,9 @@ Catches a single incoming spell while the ward holds.
 
 {{< skill name="Mana Drain" maxLevel="3" requires="Magic Rod Lv. 1"
     type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
-    description="Opens a slow siphon on the mana of everything hostile standing too close, pulling it steadily into the Sage's own reserves for a short while. Cooldown is 15s." >}}
+    description="Opens a slow siphon on the mana of everything hostile standing too close, pulling it steadily into the Sage's own reserves for a short while." >}}
+
+Cooldown is 15s.
 
 | Lv. | Range | Mana Drained per Second | Duration |
 | --- | ----- | ----------------------- | -------- |
@@ -1536,7 +1553,7 @@ A negative base means the extraction is impossible on raw talent alone and only 
 
 {{< skill name="Spell Binding" maxLevel="10" requires="Spell Enscription Lv. 3"
     type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
-    description="Allows the user to bind certain spells to entities and create trigger for them. This can be used to permanently bind spells to artifacts or setup alarms or traps for example." >}}
+    description="Binds a spell to an object or place and ties it to a trigger, giving rise to enchanted artifacts, standing alarms and hidden traps alike." >}}
 {{< /skill >}}
 
 {{< skill name="Teleport" maxLevel="2" requires="Spell Binding Lv. 3"
@@ -1617,7 +1634,7 @@ A negative base means the extraction is impossible on raw talent alone and only 
 
 {{< /skill >}}
 
-{{< skill name="Elemental Empowerment" maxLevel="3" requires="Endow Wind Lv. 1, Endow Water Lv. 1, Endow Fire Lv. 1,"
+{{< skill name="Elemental Empowerment" maxLevel="3" requires="Endow Wind Lv. 1, Endow Ice Lv. 1, Endow Fire Lv. 1 and Endow Earth Lv. 1"
     type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="The Sage's command of the elements grown wide enough to lean on the sky itself. Calls a chosen weather front - rain, gale or heat - over a large area for a time, strengthening spells and endowments of the matching element for everyone beneath it while dampening its opposite. Where a Prospector's [Weather Sense](#skill-weather-sense) only reads the sky, a Sage bends it." >}}
 
@@ -1664,7 +1681,8 @@ graph TD
 <br>
 {{< skill name="Endure" maxLevel="1"
     type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
-    description="HP and Mana regeneration is not stopped during combat." >}}
+    description="A warrior's steadied breath - the body keeps mending itself even in the thick of a fight." >}}
+HP and Mana regeneration is not stopped during combat.
 {{< /skill >}}
 
 {{< skill name="Iron Skin" maxLevel="5"
@@ -1683,7 +1701,9 @@ graph TD
 
 {{< skill name="Magic Armor" maxLevel="5"
     type="Active" manaCost="30" castTime="5s" cooldown="?" duration="5 min" range="?" target="Self"
-    description="Reduces physical and magical damage but each hit costs 2% percent of the current mana of the owner. When the mana drops below 20% the buff is cancelled." >}}
+    description="A shimmering ward of raw mana wrapped around the caster, turning aside blade and spell alike at the cost of their own reserves." >}}
+
+Each hit costs 2% of the owner's current mana. When the mana drops below 20% the buff is cancelled.
 
 | Lv. | Damage Reduction |
 | --- | ---------------- |
@@ -1697,7 +1717,7 @@ graph TD
 
 {{< skill name="Meditation" maxLevel="5"
     type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
-    description="Your Bestia and Master gain an increased HP and Mana regeneration rate." >}}
+    description="A calm, centered breathing that quickens the natural mending of both Master and Bestia alike." >}}
 
 | Lv. | HP/Mana Regeneration |
 | --- | -------------------- |
@@ -1798,7 +1818,7 @@ graph TD
 <br>
 {{< skill name="Elemental Mastery" maxLevel="5"
     type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
-    description="Increases damage or healing of spells with elemental (earth, wind, water, fire) domain." >}}
+    description="A Wizard's command over the raw forces of nature, sharpening every spell drawn from earth, wind, water or fire." >}}
 
 | Lv. | Damage/Healing |
 | --- | -------------- |
@@ -1812,7 +1832,7 @@ graph TD
 
 {{< skill name="Spiritual Mastery" maxLevel="5"
     type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
-    description="Increases damage or healing of spells with the Holy or Dark domain." >}}
+    description="A deeper communion with the currents beyond the elements, sharpening every spell drawn from Holy or Dark mana." >}}
 
 | Lv. | Damage/Healing |
 | --- | -------------- |
@@ -1921,7 +1941,8 @@ graph TD
 
 {{< skill name="Energy Coat" maxLevel="1" requires="Safety Wall Lv. 5"
     type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
-    description="Where Safety Wall turns aside physical blows, Energy Coat turns aside all of them - trading a slice of mana for every hit absorbed instead of flesh. Reduces incoming physical and magical damage by `-15%`, converting the absorbed damage into a `5%` max-mana cost per hit instead. Like Magic Armor, the buff cancels once mana drops below 10%." >}}
+    description="Where Safety Wall turns aside physical blows, Energy Coat turns aside all of them - trading a slice of mana for every hit absorbed instead of flesh." >}}
+Reduces incoming physical and magical damage by `-15%`, converting the absorbed damage into a `5%` max-mana cost per hit instead. Like Magic Armor, the buff cancels once mana drops below 10%.
 {{< /skill >}}
 
 {{< skill name="Stone Curse" maxLevel="5" requires="Safety Wall Lv. 3"
@@ -2142,7 +2163,7 @@ No fancy footwork, no elemental theatrics - just the kind of toughness that keep
 
 {{< skill name="Tough Guy" maxLevel="5"
     type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
-    description="Stamina is faster regenerated and drops slower in high demanding environments and while doing activities which would otherwise deplete your stamina." >}}
+    description="A Brawler's conditioning - stamina holds out longer under strain and comes back quicker once it's spent." >}}
 
 | Lv. | Stamina Reduction | Stamina Regeneration |
 | --- | ----------------- | -------------------- |
@@ -2190,7 +2211,7 @@ Neither predator nor prey, exactly. Hunters move like the terrain isn't there an
 
 {{< skill name="Lightfooted" maxLevel="5"
     type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
-    description="Hard terrain does not reduce the Bestia movement speed anymore. On Level 5 the terrain does not reduce movement speed at all." >}}
+    description="A Hunter's sure footing that shrugs off rough terrain most travelers have to slow down for." >}}
 
 | Lv. | Movement Reduction Negated |
 | --- | -------------------------- |
@@ -2255,7 +2276,7 @@ graph TD
 
 {{< skill name="Weapon Coating" maxLevel="5" requires="Dual Wield Lv. 2"
     type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
-    description="Coat weapons and armor to protect them against damage and strip effects." >}}
+    description="A thin, oiled coating worked into weapons and armor that turns aside damage and shrugs off attempts to strip it away." >}}
 {{< /skill >}}
 
 {{< skill name="Plagiarism" maxLevel="10"
