@@ -126,9 +126,9 @@ Channels for 10s. A Bestia can only receive a single First Aid every 60 secs. It
 {{< /skill >}}
 
 {{< skill name="Master Ritual" maxLevel="1" requires="Basic Skill Lv. 5"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="?" castTime="15s" cooldown="?" duration="?" range="?" target="Self"
     description="The rite of passage every novice eventually faces - trading the last of their raw mana-essence to be reforged as a true Bestia Master." >}}
-Automatically enabled once Lv. 7 in Basic Skill is reached. Can only be used as long as you are a Novice. Converts 25 [Void Essence](/docs/mechanics/item-list/#void-essence), 5 [Mana Dust](/docs/mechanics/item-list/#mana-dust) and 3 [Clay](/docs/mechanics/item-list/#clay) into a [Seal of Mastery](/docs/mechanics/item-list/#seal-of-mastery).
+Automatically enabled once Lv. 5 in Basic Skill is reached. Can only be used as long as you are a Novice. Converts 25 [Void Essence](/docs/mechanics/item-list/#void-essence), 5 [Mana Dust](/docs/mechanics/item-list/#mana-dust) and 3 [Clay](/docs/mechanics/item-list/#clay) into a [Seal of Mastery](/docs/mechanics/item-list/#seal-of-mastery).
 {{< /skill >}}
 
 ## Craftsman Tree
@@ -377,32 +377,32 @@ graph TD
 Level 1 enables you to craft, place and use a Mana Harvester.
 
 | Lv. | Harvesting Time | Crystal Yield | Total Active Harvesters |
-| --- | --------------- | ------------- | --- |
-| 1   | -5%             | +3%           | 1 |
-| 2   | -10%            | +6%           | 1 |
-| 3   | -15%            | +9%           | 1 |
-| 4   | -20%            | +12%          | 2 |
-| 5   | -25%            | +15%          | 2 |
-| 6   | -30%            | +18%          | 2 |
-| 7   | -35%            | +21%          | 3 |
-| 8   | -40%            | +24%          | 3 |
-| 9   | -45%            | +27%          | 3 |
-| 10  | -50%            | +30%          | 4 |
+| --- | --------------- | ------------- | ----------------------- |
+| 1   | -5%             | +3%           | 1                       |
+| 2   | -10%            | +6%           | 1                       |
+| 3   | -15%            | +9%           | 1                       |
+| 4   | -20%            | +12%          | 2                       |
+| 5   | -25%            | +15%          | 2                       |
+| 6   | -30%            | +18%          | 2                       |
+| 7   | -35%            | +21%          | 3                       |
+| 8   | -40%            | +24%          | 3                       |
+| 9   | -45%            | +27%          | 3                       |
+| 10  | -50%            | +30%          | 4                       |
 
 {{< /skill >}}
 
 {{< skill name="Manaflow Expert" maxLevel="5" requires="Mana Harvester Lv. 3"
     type="Active" manaCost="22" target="Gem Cutting Table"
     description="Refine the raw and unstable mana crystals harvested by a Mana Harvester into the finest arcane raw materials used to build powerful magic artifacts." >}}
-Level  1 enables you to craft, place and use a Gem Cutting Table. Casttime depends on the prcessed material.
+Level 1 enables you to craft, place and use a Gem Cutting Table. Casttime depends on the prcessed material.
 
 | Lv. | Success Chance |
 | --- | -------------- |
-| 1   | 4%            |
-| 2   | 8%            |
-| 3   | 12%           |
-| 4   | 16%           |
-| 5   | 20%           |
+| 1   | 4%             |
+| 2   | 8%             |
+| 3   | 12%            |
+| 4   | 16%            |
+| 5   | 20%            |
 
 {{< /skill >}}
 
