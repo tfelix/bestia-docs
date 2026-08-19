@@ -76,9 +76,9 @@ This means that the normal bestia day has 8 hours in real-time.
 
 It also means that a bestia year is 4 months in real time.
 
-* Bestia year: 4 months
-* Bestia season: spring, summer, fall, winter: each 1 month
-* Bestia day: 8 hours (2 hours night, 6 hours daytime)
+- Bestia year: 4 months
+- Bestia season: spring, summer, fall, winter: each 1 month
+- Bestia day: 8 hours (2 hours night, 6 hours daytime)
 
 The asymmetric day-night cycle allows the player to be more productive during the day while still getting a decent amount
 of night time in which, for example, special bestias can be hunted. It also allows the player to experience multiple day-night cycles within a single real-time day.

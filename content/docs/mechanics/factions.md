@@ -10,11 +10,11 @@ The Orders exist to give player conflict a shape. Players can generally fight ea
 
 {{< table >}}
 
-| Order                     | Short form | Posture    | Conviction                                                        |
-| ------------------------- | ---------- | ---------- | ----------------------------------------------------------------- |
-| The Order of Chaos        | Chaos      | Destroying | The world is already dying; hasten it so the next one can be born |
-| The Order of Eternity     | Eternity   | Preserving | This world can be held, and holding it is worth any cost          |
-| The Order of the Circle   | Circle     | Balancing  | The cycle is not to be stopped, only kept to its proper hour      |
+| Order                   | Short form | Posture    | Conviction                                                        |
+| ----------------------- | ---------- | ---------- | ----------------------------------------------------------------- |
+| The Order of Chaos      | Chaos      | Destroying | The world is already dying; hasten it so the next one can be born |
+| The Order of Eternity   | Eternity   | Preserving | This world can be held, and holding it is worth any cost          |
+| The Order of the Circle | Circle     | Balancing  | The cycle is not to be stopped, only kept to its proper hour      |
 
 {{< /table >}}
 
@@ -59,7 +59,7 @@ Members raise their Order's influence in a region by acting in line with its con
 
 Influence decays slowly if it is not maintained, so a sphere of influence has to be defended continuously rather than won once.
 
-Crucially, **influence buys present power, not persistent power.** Dominating a region grants regional bonuses, special resource generation, friendly Bestia, cheaper rituals, and the Ascendancy buff described below. It does *not* directly convert into [Advantage Points](#earning-advantage-points). Keeping the day-to-day reward separate from the cross-world reward is what stops a dominant Order from compounding its lead into the next world.
+Crucially, **influence buys present power, not persistent power.** Dominating a region grants regional bonuses, special resource generation, friendly Bestia, cheaper rituals, and the Ascendancy buff described below. It does _not_ directly convert into [Advantage Points](#earning-advantage-points). Keeping the day-to-day reward separate from the cross-world reward is what stops a dominant Order from compounding its lead into the next world.
 
 ## Ascendancy
 
@@ -87,11 +87,11 @@ One Bestia season is one real-time month, or 84 [Bestia days](/docs/mechanics/en
 
 {{< table >}}
 
-| Order    | Covenant        | Measured by                                                                                                                    |
-| -------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| Chaos    | **The Flux**    | Net mana density raised across the world, rifts opened and held open, doomsday stages advanced                                 |
-| Eternity | **The Vigil**   | Rifts sealed, region-days free of active catastrophe, settlements held above a health threshold, doomsday stages pushed back   |
-| Circle   | **Equilibrium** | Region-days spent inside the target mana band, **weighted by how contested the region is**                                     |
+| Order    | Covenant        | Measured by                                                                                                                  |
+| -------- | --------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| Chaos    | **The Flux**    | Net mana density raised across the world, rifts opened and held open, doomsday stages advanced                               |
+| Eternity | **The Vigil**   | Rifts sealed, region-days free of active catastrophe, settlements held above a health threshold, doomsday stages pushed back |
+| Circle   | **Equilibrium** | Region-days spent inside the target mana band, **weighted by how contested the region is**                                   |
 
 {{< /table >}}
 
@@ -117,7 +117,7 @@ Covenant quotas scale with the Order's membership, and slightly faster than memb
 quota = base_quota * (members / average_members) ^ 1.4
 ```
 
-The exponent above `1.0` means a large Order has to achieve *more per head* than a small one. An Order holding half the server's population faces a bar roughly `18%` harder per member than an even split, while an Order at half the average size finds it about `24%` easier.
+The exponent above `1.0` means a large Order has to achieve _more per head_ than a small one. An Order holding half the server's population faces a bar roughly `18%` harder per member than an even split, while an Order at half the average size finds it about `24%` easier.
 
 The effect is that the underdog is always the mechanically attractive Order to join, and population balance corrects itself without any hard cap on recruitment.
 
@@ -139,7 +139,7 @@ All three Orders are scored from that single number, on three different curves:
 
 A world destroyed at `80%` of its life span pays Chaos `20`, Eternity `0`, and the Circle `0`. A world that ends at `104%` pays Chaos `0`, Eternity `4`, and the Circle `40`.
 
-The Circle's ceiling is higher than the other two because its window is far narrower: Chaos scores its maximum for *any* `T` at or below 60 and Eternity for *any* `T` at or above 140, while the Circle scores nothing outside the band from 80 to 120 and has to land near the exact day to be paid well. Precision is the Circle's whole discipline, and this is where it is rewarded.
+The Circle's ceiling is higher than the other two because its window is far narrower: Chaos scores its maximum for _any_ `T` at or below 60 and Eternity for _any_ `T` at or above 140, while the Circle scores nothing outside the band from 80 to 120 and has to land near the exact day to be paid well. Precision is the Circle's whole discipline, and this is where it is rewarded.
 
 Because a single measured number drives all three curves, the state of the race is trivially legible: one gauge, publicly readable, showing where the world currently stands against its predicted hour. Fittingly, reading it accurately is a Circle speciality.
 
@@ -165,16 +165,16 @@ There is no hard cutoff. An Order that runs away with a world still gains, but t
 
 {{< table >}}
 
-| Advantage Points | Bonus  | Gain over previous row |
-| ---------------- | ------ | ---------------------- |
-| 20               | 5.7%   | —                      |
-| 40               | 9.7%   | +4.0                   |
-| 60               | 12.6%  | +2.9                   |
-| 80               | 14.7%  | +2.1                   |
-| 100              | 16.2%  | +1.5                   |
-| 150              | 18.4%  | +2.2 (over 50 points)  |
-| 200              | 19.3%  | +0.9 (over 50 points)  |
-| 300              | 19.9%  | +0.6 (over 100 points) |
+| Advantage Points | Bonus | Gain over previous row |
+| ---------------- | ----- | ---------------------- |
+| 20               | 5.7%  | —                      |
+| 40               | 9.7%  | +4.0                   |
+| 60               | 12.6% | +2.9                   |
+| 80               | 14.7% | +2.1                   |
+| 100              | 16.2% | +1.5                   |
+| 150              | 18.4% | +2.2 (over 50 points)  |
+| 200              | 19.3% | +0.9 (over 50 points)  |
+| 300              | 19.9% | +0.6 (over 100 points) |
 
 {{< /table >}}
 
@@ -193,7 +193,7 @@ Each Order's buff expresses its identity, and the three are balanced against eac
 | Chaos        | Offense   | Damage dealt                                                               | +3% damage dealt                       |
 | Eternity     | Endurance | Max HP and Max Mana                                                        | +3% max HP and Max Mana                |
 | Circle       | Tempo     | Cooldown recovery and status regeneration                                  | +3% cooldown recovery and regeneration |
-| *All Orders* | —         | EXP gain, on the same curve but toward a ceiling of `10%` instead of `20%` | —                                      |
+| _All Orders_ | —         | EXP gain, on the same curve but toward a ceiling of `10%` instead of `20%` | —                                      |
 
 {{< /table >}}
 
@@ -205,9 +205,9 @@ Some of what an Order accomplishes should outlast the world it accomplished it i
 
 {{< alert context="info" text="These are proposals. The first two are the recommended pair — one mechanical, one material — and the rest are cheap to add alongside them." />}}
 
-**Order Tree breadth** *(recommended)* — a world victory permanently unlocks additional nodes on the [Order Skill Tree](#the-order-skill-tree). The *points* available to spend reset with every world, so a long-established Order has more ways to build, not more power in absolute terms. Veterans get options; newcomers are not outgunned.
+**Order Tree breadth** _(recommended)_ — a world victory permanently unlocks additional nodes on the [Order Skill Tree](#the-order-skill-tree). The _points_ available to spend reset with every world, so a long-established Order has more ways to build, not more power in absolute terms. Veterans get options; newcomers are not outgunned.
 
-**The Reliquary** *(recommended)* — the victorious Order carries one artifact out of the dying world and into the next, housed in its new citadel. Relics accumulate as a visible hall, but only a small fixed number can be **attuned** at once, so the collection grows without the power ever doing so. Each relic grants a distinctive ritual or an otherwise-unobtainable recipe rather than a stat line.
+**The Reliquary** _(recommended)_ — the victorious Order carries one artifact out of the dying world and into the next, housed in its new citadel. Relics accumulate as a visible hall, but only a small fixed number can be **attuned** at once, so the collection grows without the power ever doing so. Each relic grants a distinctive ritual or an otherwise-unobtainable recipe rather than a stat line.
 
 **Founding advantage** — the winning Order begins the next world with its citadel already partially raised at a site of its choosing, saving weeks of collective investment. Powerful, but it is a one-shot head start that does not stack.
 

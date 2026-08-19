@@ -20,7 +20,7 @@ of this pass:
 
 - **No delta persistence.** Player edits live only in the running server's memory (`ChunkStore`, backed by an
   in-process `MemoryBlobStore` for baked chunks). A restart currently loses them — see
-  [Storage](#storage-voxels-chunks-player-edits-and-regeneration) below for why this is safe to *say* plainly
+  [Storage](#storage-voxels-chunks-player-edits-and-regeneration) below for why this is safe to _say_ plainly
   rather than a bug to hide.
 - **No client-side base generation.** The wire format, base hashing and version gate that would make it safe
   exist; nothing generates terrain client-side yet, so every chunk is sent fully merged.
@@ -28,7 +28,7 @@ of this pass:
   only an in-memory one exists.
 - **The catalogues are still code, not data files.** `BusinessCatalogue`, the biome prototype table,
   `Culture.ALL`, `Names.STYLES` are Kotlin objects. A designer changing one needs a rebuild. (Individual stage
-  *parameters* — roughly 220 of them — mostly already load from a params-text file; see
+  _parameters_ — roughly 220 of them — mostly already load from a params-text file; see
   [Parameters](#parameters).)
 - **Derived structures have one real reader.** `WalkableTile` backs zone-server's local pathfinding.
   `OpacityGrid` and `ColumnSummary` are kept fresh on every edit and queried by nothing yet.
@@ -45,7 +45,7 @@ Twenty-three stages, each declaring only what it reads (`Stage.dependencies`) an
 `WorldGenPipeline` topologically sorts them by that declaration and computes a version vector per stage (its
 own version folded with every upstream one), so retuning erosion invalidates erosion and everything
 downstream while leaving tectonics — the expensive part — untouched. After every stage runs, the pipeline
-diffs what it *declared* it would produce against what it actually wrote; a mismatch is a hard failure, not a
+diffs what it _declared_ it would produce against what it actually wrote; a mismatch is a hard failure, not a
 silent pass-through.
 
 ```mermaid
@@ -67,7 +67,7 @@ graph LR
   EC --> NG[nav_graph]
 ```
 
-The order stages are *constructed* in (`StandardWorld.stages()`) is cosmetic — the pipeline sorts by declared
+The order stages are _constructed_ in (`StandardWorld.stages()`) is cosmetic — the pipeline sorts by declared
 dependency regardless, and this has bitten the module for real once already: for most of its life,
 `GlacialStage` and `HydrologyStage` were undeclared siblings that only ran in the right order because the
 topological sort's alphabetical tie-break happened to put `"glacial"` before `"hydrology"`. A glacial trough
@@ -76,28 +76,28 @@ chunk would later carve hundreds of metres out from under it. Declaring the depe
 accident into a guarantee — and, as a side effect, gave the world its first lakes, because the priority-flood
 in hydrology had never once been handed a genuinely closed basin before the carve reached the raster.
 
-| Stage | Emits | Why it sits where it does |
-| --- | --- | --- |
-| `tectonics` | elevation, plate id, rock hardness, faults, hotspots | root; nothing to depend on |
-| `climate` | temperature, precipitation (4 seasonal fields), distance to ocean | needs tectonic elevation for the orographic sweep |
-| `erosion` | eroded elevation, sediment, tectonic basins | stream-power erosion needs precipitation |
-| `glacial` | **final** elevation, ice thickness, troughs/fjords/cirques/moraines | sole producer of final `ELEVATION`; carves last |
-| `hydrology` | flow routing, discharge, lakes, river channels | routes over the *final*, ice-carved surface |
-| `volcanism` | volcanism field, vents, lava pools | craters must exist before biomes read distance-to-crater |
-| `biomes` | biome + secondary biome + confidence, soil | classifies on climate + hydrology + volcanism |
-| `pond`, `alluvium` | moraine-dammed lakes; alluvial fans, deltas | sub-kilometre shapes the raster can't hold, fed from hydrology/erosion's own budgets |
-| `vegetation` | canopy cover | kilometre summary of the same density function the chunk tier's scatter uses |
-| `resources` | ore/mineral deposits | geology-driven placement |
-| `caves` | cave systems, passages, entrances | reads the chunk tier's own rock tuning directly |
-| `mana` | mana density | must precede history; corruption must follow it |
-| `habitability` | settleability score, movement cost | needs biomes + resources + terrain |
-| `settlements` | settlement sites, roads, bridges, sea lanes | placed before history judges them |
-| `history` | the chronicle; ruins, tombs, monuments, forts, mines, monasteries, lighthouses, shrines, wound sites | dates/holds/burns settlements already placed — does not place them |
-| `corruption` | corruption field | suppresses by the settlements history left standing |
-| `poi` | points-of-interest landmarks | reads settlements + sites + cave mouths to avoid them |
-| `spawners`, `towns`, `vegetation_stands` | bestia spawn points; street/building/district layout; vegetation stands | read corruption; `vegetation_stands` specifically needs corruption, which is why it isn't in `bio/` next to `vegetation` |
-| `economy` | businesses, roadside inns | needs the finished town layout |
-| `nav_graph` | the macro navigation graph | last — reads roads, bridges, gates and cave mouths everything above finalised |
+| Stage                                    | Emits                                                                                                | Why it sits where it does                                                                                                |
+| ---------------------------------------- | ---------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `tectonics`                              | elevation, plate id, rock hardness, faults, hotspots                                                 | root; nothing to depend on                                                                                               |
+| `climate`                                | temperature, precipitation (4 seasonal fields), distance to ocean                                    | needs tectonic elevation for the orographic sweep                                                                        |
+| `erosion`                                | eroded elevation, sediment, tectonic basins                                                          | stream-power erosion needs precipitation                                                                                 |
+| `glacial`                                | **final** elevation, ice thickness, troughs/fjords/cirques/moraines                                  | sole producer of final `ELEVATION`; carves last                                                                          |
+| `hydrology`                              | flow routing, discharge, lakes, river channels                                                       | routes over the _final_, ice-carved surface                                                                              |
+| `volcanism`                              | volcanism field, vents, lava pools                                                                   | craters must exist before biomes read distance-to-crater                                                                 |
+| `biomes`                                 | biome + secondary biome + confidence, soil                                                           | classifies on climate + hydrology + volcanism                                                                            |
+| `pond`, `alluvium`                       | moraine-dammed lakes; alluvial fans, deltas                                                          | sub-kilometre shapes the raster can't hold, fed from hydrology/erosion's own budgets                                     |
+| `vegetation`                             | canopy cover                                                                                         | kilometre summary of the same density function the chunk tier's scatter uses                                             |
+| `resources`                              | ore/mineral deposits                                                                                 | geology-driven placement                                                                                                 |
+| `caves`                                  | cave systems, passages, entrances                                                                    | reads the chunk tier's own rock tuning directly                                                                          |
+| `mana`                                   | mana density                                                                                         | must precede history; corruption must follow it                                                                          |
+| `habitability`                           | settleability score, movement cost                                                                   | needs biomes + resources + terrain                                                                                       |
+| `settlements`                            | settlement sites, roads, bridges, sea lanes                                                          | placed before history judges them                                                                                        |
+| `history`                                | the chronicle; ruins, tombs, monuments, forts, mines, monasteries, lighthouses, shrines, wound sites | dates/holds/burns settlements already placed — does not place them                                                       |
+| `corruption`                             | corruption field                                                                                     | suppresses by the settlements history left standing                                                                      |
+| `poi`                                    | points-of-interest landmarks                                                                         | reads settlements + sites + cave mouths to avoid them                                                                    |
+| `spawners`, `towns`, `vegetation_stands` | bestia spawn points; street/building/district layout; vegetation stands                              | read corruption; `vegetation_stands` specifically needs corruption, which is why it isn't in `bio/` next to `vegetation` |
+| `economy`                                | businesses, roadside inns                                                                            | needs the finished town layout                                                                                           |
+| `nav_graph`                              | the macro navigation graph                                                                           | last — reads roads, bridges, gates and cave mouths everything above finalised                                            |
 
 # Parameters
 
@@ -129,9 +129,9 @@ most-repeated caution to itself:
 
 - **`Stage.version`** — bump for a **code** change. Reaches the RNG (`GenRng.derive` hashes
   `(seed, stageId, stageVersion, coordinates...)`), so bumping it reseeds that stage and everything downstream —
-  which changes *which seeds* expose a latent bug, not just the terrain. Reserved for real behaviour changes,
+  which changes _which seeds_ expose a latent bug, not just the terrain. Reserved for real behaviour changes,
   never for retuning a constant.
-- **`Stage.paramsVersion`** — a fingerprint (`ParamsDigest`, hashed by field name, sorted) of every *value* the
+- **`Stage.paramsVersion`** — a fingerprint (`ParamsDigest`, hashed by field name, sorted) of every _value_ the
   stage reads. Never reaches the RNG, so retuning a number moves the version vector and the chunk cache key but
   leaves the actual terrain shape alone for a fixed seed — "change one number and look at the same world."
 
@@ -150,7 +150,7 @@ size (see [Benchmarks](#benchmarks)), so persisting it would only be persisting 
 the life of the server process.
 
 **2. A generated chunk base** is also a pure function — of the world tier plus a chunk coordinate — so it is
-also never *durably* stored, only cached: an in-process LRU (`ChunkCache`, 512 hot chunks by default —
+also never _durably_ stored, only cached: an in-process LRU (`ChunkCache`, 512 hot chunks by default —
 roughly what a handful of players in view distance need) in front of an optional chain of `ChunkBlobStore`
 tiers holding RLE-encoded bytes. The cache key folds in `(seed, pipelineVersion, chunkCoordinate)`, so
 retuning any stage changes every key at once — nothing stale can ever be served, and no explicit invalidation
@@ -163,7 +163,7 @@ to nothing is `AIR`. Three consequences follow directly from there being no buil
 
 - **No block id is stored.** The voxel that still has material keeps the generator's material.
 - **Occupancy only ever falls**, enforced by the one party (`ChunkStore`) holding the base to compare a
-  removal against — a removal that would *raise* occupancy is a placement system arriving by accident and is
+  removal against — a removal that would _raise_ occupancy is a placement system arriving by accident and is
   refused outright.
 - **A voxel appears once**, keyed on position rather than logged, so mining the same spot across many
   swings costs one entry, not one per swing.
@@ -177,7 +177,7 @@ single most exploited bug class in multiplayer voxel games.
 **Baking**: once a chunk's delta reaches roughly the RLE-encoded size of its own base — which, because a
 removal costs about 3 bytes and a mostly-solid base compresses far better than that, happens around 3% of
 the chunk edited, well before the 30%-coverage backstop that exists only for chunks whose base is unusually
-large to begin with — the merged result is written back as the *new* base and the delta is dropped. Heavily
+large to begin with — the merged result is written back as the _new_ base and the delta is dropped. Heavily
 mined or built-up ground gets **cheaper** to serve from then on, not more expensive, because nearly-air or
 newly-uniform ground run-length-encodes to almost nothing. Baking is also the only safe migration path across
 a pipeline version change: bake every outstanding delta first (which pins the current terrain as the new,
@@ -195,7 +195,7 @@ Three independent numbers gate whether a client may generate its own chunk bases
 block id→name mapping — same terrain, different rock), and `chunkFormatVersion` (the RLE wire format). Three
 separate numbers rather than one, because each breaks a payload a different way and the fix a client needs to
 hear is different for each. `chunkFormatVersion` mirrors `RleCodec.VERSION`, the one version number in the
-module that is *not* part of the pre-release reset above — it is a literal name
+module that is _not_ part of the pre-release reset above — it is a literal name
 (`CHUNK_ENCODING_RLE_V2`) baked into `chunk.proto`, a real statement between two build artefacts rather than
 bookkeeping with no counterparty yet.
 
@@ -235,7 +235,7 @@ A few of the biome table's shapes are worth knowing the reasoning behind, not ju
 - **A separate `CLIFF` biome was deleted outright, not merged.** It wasn't really a biome — a single slope
   threshold that capped everything under it in one grey `GRAVEL` regardless of what was actually there,
   making an ice cliff, a desert scarp and a granite crag indistinguishable. Steep ground keeps its climatic
-  biome now; how bare it looks is a separate, voxel-scale question answered from the *materialised* surface
+  biome now; how bare it looks is a separate, voxel-scale question answered from the _materialised_ surface
   gradient, which can see a fjord wall a vector feature cut and a kilometre-averaged raster cannot.
 - **Volcanic biomes have no climate prototype at all** — the classifier's seven axes can't see a lava vent,
   and giving one a prototype would claim volcanic ground has a characteristic climate, which is backwards:
@@ -265,7 +265,7 @@ features anyway — deliberately unphysical, capped at 8, where river networks s
 mat instead of a landscape. It's computed fresh from the config every time rather than stored, since a stored
 value goes stale the moment `copy()` changes the world's dimensions without updating it.
 
-What does *not* scale with `detailScale`: settlement density. Terrain wants to be denser on a small world; the
+What does _not_ scale with `detailScale`: settlement density. Terrain wants to be denser on a small world; the
 number of places worth walking to does not, so `cityTarget` is a flat density (`worldArea / areaPerCity`) —
 measured, 512 km gives roughly 292 settlements and 1024 km roughly 1171, almost exactly 4× for 4× the area.
 
@@ -283,7 +283,7 @@ masking or narrowing when none is configured — so the seed space alone is 2⁶
 a world's other parameters (dimensions, wrap flags, detail scale, and so on) feed the random-number generator
 at all — only the seed does — every one of those roughly 1.8 × 10¹⁹ seeds produces a genuinely different
 world for a fixed configuration, and changing the configuration on top of that makes the space of distinct
-*generatable* worlds unbounded in practice (dimensions and the continuous tunables in `WorldParams` have no
+_generatable_ worlds unbounded in practice (dimensions and the continuous tunables in `WorldParams` have no
 finite bound). In practice, exactly as many worlds exist as a deployment chooses to run — one, for
 `zone-server` today (`Genesis`).
 
@@ -303,7 +303,7 @@ non-committed, environment-specific source, before the world's first boot — th
 At request time (`core/ChunkHeightSampler.kt` → `voxel/ChunkMaterializer.kt`): sample the base raster, apply
 every vector feature touching the chunk in priority order (river channels, trough cross-sections, settlement
 grading, town structures), then stratify into voxels using rock hardness and soil depth. A voxel carries a
-material *and* an occupancy fraction (0–255), not just a material — a surface at 40.3 m is genuinely 30% of
+material _and_ an occupancy fraction (0–255), not just a material — a surface at 40.3 m is genuinely 30% of
 the voxel spanning 40–41 m, and the client's Surface Nets mesher (see
 [World & Terrain](/docs/client/world-terrain)) reconstructs that to a fraction of a centimetre rather than
 snapping to the nearest whole voxel. Carving (removal, whether by a player mining or by generation cutting a
@@ -337,24 +337,24 @@ World-tier build time, one JVM, one rep, measured serial against parallel (`./gr
 not any chunk materialization, which happens per-chunk on demand and separately (a single chunk materializes
 in well under a millisecond).
 
-| World size | Serial | Parallel | Speedup |
-| --- | --- | --- | --- |
-| 32 km | 58 ms | 43 ms | 1.35× |
-| 64 km | 210 ms | 150 ms | 1.40× |
-| 96 km | 511 ms | 291 ms | 1.76× |
-| 128 km (Genesis) | 676 ms | 334 ms | 2.02× |
-| 192 km | 892 ms | 617 ms | 1.45× |
-| 256 km | 1.61 s | 1.08 s | 1.49× |
-| 512 km (reference) | 15.1 s | 7.4 s | 2.05× |
-| 700 km | 52.1 s | 27.4 s | 1.90× |
-| 1024 km | 122.9 s | 94.7 s | 1.30× |
+| World size         | Serial  | Parallel | Speedup |
+| ------------------ | ------- | -------- | ------- |
+| 32 km              | 58 ms   | 43 ms    | 1.35×   |
+| 64 km              | 210 ms  | 150 ms   | 1.40×   |
+| 96 km              | 511 ms  | 291 ms   | 1.76×   |
+| 128 km (Genesis)   | 676 ms  | 334 ms   | 2.02×   |
+| 192 km             | 892 ms  | 617 ms   | 1.45×   |
+| 256 km             | 1.61 s  | 1.08 s   | 1.49×   |
+| 512 km (reference) | 15.1 s  | 7.4 s    | 2.05×   |
+| 700 km             | 52.1 s  | 27.4 s   | 1.90×   |
+| 1024 km            | 122.9 s | 94.7 s   | 1.30×   |
 
 The reference 512 km world builds in a few seconds and stays comfortably under Genesis's own boot budget; a
 1024 km world is a minute and a half even in parallel, which is squarely a "behind a progress bar" size
 rather than a "boots with the server" one.
 
 **Parallelism helps less as the world gets bigger, not more — and one stage is why.** `pond` (moraine-dammed
-lakes and oxbows) took 1.0 s at 512 km, 10.3 s at 700 km, and 50.3 s at 1024 km — for 1.9× and 4× the *area*
+lakes and oxbows) took 1.0 s at 512 km, 10.3 s at 700 km, and 50.3 s at 1024 km — for 1.9× and 4× the _area_
 respectively, that's roughly 10× and 50× the time, and it does not parallelize at all at that size (1.00× and
 1.01× speedup, against the whole pipeline's 1.90×/1.30×). At 1024 km it alone accounts for 41% of the total
 build. This is reported as a measurement, not yet a diagnosis — consistent with this module's own habit of

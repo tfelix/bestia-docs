@@ -1,7 +1,7 @@
 ---
 title: Bestia Master
 weight: 200
-description: Overview of the Bestia Master, their origin and skill system, including skill trees, progression from novice to master, and profession design guidelines.
+description: Overview of the Bestia Master, their origin and skill system, including skill trees, skill point progression, and profession design guidelines.
 ---
 
 The small intro game tells players how they became a Bestia Master: They came into direct contact with an ephemeral mana crystal that changed their nature through magic and connected them to the mana flows of the universe. They are therefore receptive to the influence of mana and are able to communicate with the beings that emerge from this mythical energy: **the Bestia**.
@@ -32,7 +32,9 @@ Ultimately, it remains important to leave the outcome of skills open in some way
 
 # Skill Progression
 
-Every master starts as novice to get into the game. Here he can only learn a certain sets of skills from the Novice skill tree. After he became level 10 he can start to prepare a small ritual to become a full **Bestia Master** which will unlock the full skill tree. After he becomes a Bestia Master the player **can not** choose anymore novice skills anymore. However every novice skill he has learned so far he can take with him. It depends on the player how long he wants to stay a novice before progressing into a full blown master.
+Every master starts out limited to the **Novice** skill tree - a small set of basics that teaches the player how to get around and how to deal with others. Once **5 skill points are invested into Basic Skill** all remaining skill trees unlock and the master can start to specialize.
+
+The Novice tree then closes behind the player: as soon as the first skill point is spent outside of it, no further novice skills can be learned. Everything learned up to that point is kept. It depends on the player how much of the Novice tree he wants to finish before branching out.
 
 On each level up the master gains 1 skillpoint to put into the skills rank. This is permanent and means a player can spend about 100 points for improving the ranks of his skills.
 
@@ -60,22 +62,20 @@ The following trees exist, they are organized in subtrees. These form the skill 
 
 ## Novice Tree
 
-In order to learn how to interact with other player you need to invest your first skill points in this skill tree. It is expected that every user learns at least Basic Skill Level 5. After you spend 5 points in **Basic Skill** the skill **Master Ritual** is automatically enabled. The player does not need to spend an additional skill point for this.
+In order to learn how to interact with other player you need to invest your first skill points in this skill tree. It is expected that every user learns at least **Basic Skill Lv. 5**, since this is the threshold which unlocks all the other skill trees.
 
-{{< alert context="info" text="It is not implicitly stated but Lv. 7 in the Novice tree is mandatory for every other skill from other trees. If you take at least one skill point in any other tree the novice tree stays locked for you." />}}
+{{< alert context="info" text="Basic Skill Lv. 5 is the gate for every other tree - no skill outside of the Novice tree can be learned before it. If you then take at least one skill point in any other tree the Novice tree stays locked for you." />}}
 
 ```mermaid
 graph TD
     BasicSkill["Basic Skill (1-5)"]
     PlayDead["Play Dead (1)"]
     FirstAid["First Aid (1-3)"]
-    MasterRitual["Master Ritual (1)"]
     Cooking["Cooking (1-3)"]
 
     BasicSkill -->|Lv.2| PlayDead
     BasicSkill -->|Lv.3| FirstAid
     BasicSkill -->|Lv.3| Cooking
-    BasicSkill -->|Lv.5| MasterRitual
 ```
 
 <br>
@@ -86,7 +86,7 @@ graph TD
 {{< skill-level level="2" >}}Allows to chat with other players via public and whisper chat.{{< /skill-level >}}
 {{< skill-level level="3" >}}Allows to use trade posts.{{< /skill-level >}}
 {{< skill-level level="4" >}}Allows sitting to double HP & Mana recovery.{{< /skill-level >}}
-{{< skill-level level="5" >}}Allows to join and create parties. Enables the user to perform the "Master Ritual".{{< /skill-level >}}
+{{< skill-level level="5" >}}Allows to join and create parties. Unlocks all the other skill trees.{{< /skill-level >}}
 {{< /skill >}}
 
 {{< skill name="Cooking" maxLevel="3" requires="Basic Skill Lv. 3"
@@ -107,7 +107,7 @@ Requires a cooking place. Lv 1 allows you to place a campfire which counts as co
     type="Active" manaCost="8" castTime="Instant" cooldown="10s" duration="Until cancelled" range="0" target="Self"
     description="Feigns death convincingly enough to slip past danger unnoticed - a novice's oldest trick for surviving what they can't yet fight." >}}
 
-Toggled on and off at will. Once the Master Ritual is performed to become a Bestia Master, this skill can no longer be used.
+Toggled on and off at will. Once the first skill point is spent outside of the Novice tree, this skill can no longer be used.
 
 {{< /skill >}}
 
@@ -123,12 +123,6 @@ Channels for 10s. A Bestia can only receive a single First Aid every 60 secs. It
 | 2   | +60%                    | +200 HP              |
 | 3   | +100%                   | +350 HP              |
 
-{{< /skill >}}
-
-{{< skill name="Master Ritual" maxLevel="1" requires="Basic Skill Lv. 5"
-    type="Active" manaCost="?" castTime="15s" cooldown="?" duration="?" range="?" target="Self"
-    description="The rite of passage every novice eventually faces - trading the last of their raw mana-essence to be reforged as a true Bestia Master." >}}
-Automatically enabled once Lv. 5 in Basic Skill is reached. Can only be used as long as you are a Novice. Converts 25 [Void Essence](/docs/mechanics/item-list/#void-essence), 5 [Mana Dust](/docs/mechanics/item-list/#mana-dust) and 3 [Clay](/docs/mechanics/item-list/#clay) into a [Seal of Mastery](/docs/mechanics/item-list/#seal-of-mastery).
 {{< /skill >}}
 
 ## Craftsman Tree
@@ -394,7 +388,7 @@ Level 1 enables you to craft, place and use a Mana Harvester.
 {{< skill name="Manaflow Expert" maxLevel="5" requires="Mana Harvester Lv. 3"
     type="Active" manaCost="22" target="Gem Cutting Table"
     description="Refine the raw and unstable mana crystals harvested by a Mana Harvester into the finest arcane raw materials used to build powerful magic artifacts." >}}
-Level 1 enables you to craft, place and use a Gem Cutting Table. Casttime depends on the prcessed material.
+Level 1 enables you to craft, place and use a Gem Cutting Table. Cast time depends on the prcessed material.
 
 | Lv. | Success Chance |
 | --- | -------------- |
@@ -407,8 +401,10 @@ Level 1 enables you to craft, place and use a Gem Cutting Table. Casttime depend
 {{< /skill >}}
 
 {{< skill name="Runic Etching" maxLevel="10" requires="Item Customization Lv. 3"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="25" cooldown="0s" target="Carving Table"
     description="Create runes from Bestia essences. These runes are imbued with the power of the Bestia and can be slotted into a weapon or piece of equipment that has been prepared with Item Customization. An attempt to convert a Bestia into an essence destroys the Bestia." >}}
+
+Cast time depends on the level of the Bestia. Level 1 allows you to create a Carving Table.
 
 | Lv. | Success Chance |
 | --- | -------------- |
@@ -426,8 +422,10 @@ Level 1 enables you to craft, place and use a Gem Cutting Table. Casttime depend
 {{< /skill >}}
 
 {{< skill name="Magic Artisan" maxLevel="10" requires="Runic Etching Lv. 5"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="38" range="2" target="Enchantment Altair"
     description="Can create magic artefacts by binding sustained enchantments to an item, going well beyond what a single etched rune can hold." >}}
+
+Level 1 allows you to create an Enchantment Altair. Cast time depends on the item level and the enchantment you want to use.
 
 | Lv. | Enchantment Chance | Destroy Chance on Failed Bind |
 | --- | ------------------ | ----------------------------- |
@@ -444,7 +442,7 @@ Level 1 enables you to craft, place and use a Gem Cutting Table. Casttime depend
 
 {{< /skill >}}
 
-### Alchemist (unrefined)
+### Alchemist
 
 Equal parts kitchen and laboratory. Alchemists turn raw ingredients - mundane or mana-soaked - into food, tonics and reagents nobody else can replicate twice. Some carry the first bandages they ever learned to wrap as a Novice all the way into a healer's toolkit.
 
@@ -456,75 +454,75 @@ graph TD
     Alchemy["Alchemy (1-10)"]
     Transmutation["Transmutation (1-10)"]
     AlchemyMastery["Alchemy Mastery (1-5)"]
-    SpeedyBrewer["Speedy Brewer (1-5)"]
 
     Herbalism -->|Lv.2| Alchemy
     Alchemy -->|Lv.5| Transmutation
     Alchemy -->|Lv.5| AlchemyMastery
-    Alchemy -->|Lv.3| SpeedyBrewer
 ```
 
 <br>
 {{< skill name="Herbalism" maxLevel="5"
-    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Passive" manaCost="4" castTime="3" range="2" target="Herbs"
     description="Teaches which roots, herbs and mana-touched growth are worth the harvest, and how to keep them potent until they reach the cauldron." >}}
-{{< skill-level level="1" >}}Can collect herbs up to level 20{{< /skill-level >}}
-{{< skill-level level="2" >}}Can collect herbs up to level 40{{< /skill-level >}}
-{{< skill-level level="3" >}}Can collect herbs up to level 60{{< /skill-level >}}
-{{< skill-level level="4" >}}Can collect herbs up to level 80{{< /skill-level >}}
-{{< skill-level level="5" >}}Can collect herbs up to level 100+{{< /skill-level >}}
+
+| Lv. | Max Herb Level |
+| --- | -------------- |
+| 1   | 20             |
+| 2   | 40             |
+| 3   | 60             |
+| 4   | 80             |
+| 5   | 100+           |
+
 {{< /skill >}}
 
 {{< skill name="Alchemy" maxLevel="10" requires="Herbalism Lv. 2"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="24" range="2" target="Alchemy Laboratory"
     description="The core craft of the Alchemist: brewing reagents down into potions, tonics and other consumables. Builds directly on what Herbalism teaches about picking the right ingredient." >}}
-{{< skill-level level="1" >}}Reliably discover and craft basic potions and elixirs up to level 10. Allows you to install Alchemist Workbenches.{{< /skill-level >}}
-{{< skill-level level="2" >}}Reliably discover and craft potions and elixirs up to level 20.{{< /skill-level >}}
-{{< skill-level level="3" >}}Reliably discover and craft potions and elixirs up to level 30.{{< /skill-level >}}
-{{< skill-level level="4" >}}Reliably discover and craft potions and elixirs up to level 40.{{< /skill-level >}}
-{{< skill-level level="5" >}}Reliably discover and craft potions and elixirs up to level 50.{{< /skill-level >}}
-{{< skill-level level="6" >}}Reliably discover and craft potions and elixirs up to level 60.{{< /skill-level >}}
-{{< skill-level level="7" >}}Reliably discover and craft potions and elixirs up to level 70.{{< /skill-level >}}
-{{< skill-level level="8" >}}Reliably discover and craft potions and elixirs up to level 80.{{< /skill-level >}}
-{{< skill-level level="9" >}}Reliably discover and craft potions and elixirs up to level 90.{{< /skill-level >}}
-{{< skill-level level="10" >}}Reliably discover and craft potions and elixirs up to level 100+.{{< /skill-level >}}
+
+Lv. 1 allows you to install Alchemy Laboratory. Higher levels let you reliably discover and craft stronger potions and elixirs.
+
+| Lv. | Max Potion Level |
+| --- | ---------------- |
+| 1   | 10               |
+| 2   | 20               |
+| 3   | 30               |
+| 4   | 40               |
+| 5   | 50               |
+| 6   | 60               |
+| 7   | 70               |
+| 8   | 80               |
+| 9   | 90               |
+| 10  | 100+             |
+
 {{< /skill >}}
 
 {{< skill name="Transmutation" maxLevel="10" requires="Alchemy Lv. 5"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="34" cooldown="0s" range="2" target="Transmutation Workbench"
     description="The Alchemist's capstone. Where Alchemy brews what nature already provides, Transmutation reshapes mundane matter itself into the rare magically-infused resources needed for strong artifact creation and weapon refinements." >}}
-Higher levels unlock transmuting higher-grade infused resources.
 
-{{< skill-level level="1" >}}Can transmute items up to Lv. 20. Allows you to install Transmutation Workbenches.{{< /skill-level >}}
-{{< skill-level level="2" >}}Can transmute items up to Lv. 40.{{< /skill-level >}}
-{{< skill-level level="3" >}}Can transmute items up to Lv. 60.{{< /skill-level >}}
-{{< skill-level level="4" >}}Can transmute items up to Lv. 80.{{< /skill-level >}}
-{{< skill-level level="5" >}}Can transmute items up to Lv. 100+.{{< /skill-level >}}
+Lv. 1 allows you to install Transmutation Workbenches. Higher levels unlock transmuting higher-grade infused resources. Cast time depends on the item level used to transmute.
+
+| Lv. | Max Item Level |
+| --- | -------------- |
+| 1   | 20             |
+| 2   | 40             |
+| 3   | 60             |
+| 4   | 80             |
+| 5   | 100+           |
+
 {{< /skill >}}
 
 {{< skill name="Alchemy Mastery" maxLevel="5" requires="Alchemy Lv. 5"
-    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Passive"
     description="A deeper feel for the cauldron - reagents stretch further and brews take hold more reliably under this Alchemist's hand." >}}
 
-| Lv. | Success Chance | Yield Increase |
+| Lv. | Success Chance | Crafting Speed |
 | --- | -------------- | -------------- |
-| 1   | +10%           | +5%            |
-| 2   | +20%           | +10%           |
-| 3   | +30%           | +15%           |
-| 4   | +40%           | +20%           |
-| 5   | +50%           | +25%           |
-
-{{< /skill >}}
-
-{{< skill name="Speedy Brewer" maxLevel="5" requires="Alchemy Lv. 3"
-    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
-    description="A practiced rhythm at the cauldron that shaves time off every brew, shared with any Bestia working the trade alongside you." >}}
-
-| Lv. | Alchemist Crafting Speed |
-| --- | ------------------------ |
-| 1   | +10%                     |
-| 2   | +20%                     |
-| 3   | +30%                     |
+| 1   | +10%           | +10%           |
+| 2   | +20%           | +20%           |
+| 3   | +30%           | +30%           |
+| 4   | +40%           | +40%           |
+| 5   | +50%           | +50%           |
 
 {{< /skill >}}
 
@@ -1646,7 +1644,7 @@ A negative base means the extraction is impossible on raw talent alone and only 
 
 {{< /skill >}}
 
-## Warrior Tree (unrefined)
+## Warrior Tree
 
 Where the other trees build, gather and study, the Warrior tree is built to fight. Wizards burn the battlefield down with elemental and arcane fury, Brawlers shrug off punishment nobody should be able to shrug off, Hunters strike up a bond with wild Bestia most people just run from, Assassins vanish before the first drop of blood even hits the ground, Knights plant themselves between danger and everyone else, and Bards and Dancers turn a battlefield into something worth listening to.
 
@@ -1680,43 +1678,41 @@ graph TD
 
 <br>
 {{< skill name="Endure" maxLevel="1"
-    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Passive"
     description="A warrior's steadied breath - the body keeps mending itself even in the thick of a fight." >}}
 HP and Mana regeneration is not stopped during combat.
 {{< /skill >}}
 
 {{< skill name="Iron Skin" maxLevel="5"
-    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Passive"
     description="The physical counterpart to a Wizard's Magic Armor: hide toughened by nothing more than sheer stubbornness. Reduces incoming physical damage. Unlike Magic Armor this costs no mana, but the reduction is more modest." >}}
 
-| Lv. | Physical Damage Reduction |
-| --- | ------------------------- |
-| 1   | -2%                       |
-| 2   | -4%                       |
-| 3   | -6%                       |
-| 4   | -8%                       |
-| 5   | -10%                      |
+| Lv. | Natural Defense Points |
+| --- | ---------------------- |
+| 1   | 30                     |
+| 2   | 60                     |
+| 3   | 90                     |
+| 4   | 120                    |
+| 5   | 150                    |
 
 {{< /skill >}}
 
-{{< skill name="Magic Armor" maxLevel="5"
-    type="Active" manaCost="30" castTime="5s" cooldown="?" duration="5 min" range="?" target="Self"
+{{< skill name="Magic Armor" maxLevel="3"
+    type="Active" manaCost="30" castTime="5s" cooldown="10s" duration="5 min" target="Self"
     description="A shimmering ward of raw mana wrapped around the caster, turning aside blade and spell alike at the cost of their own reserves." >}}
 
-Each hit costs 2% of the owner's current mana. When the mana drops below 20% the buff is cancelled.
+When active, each hit costs 2% of the owner's current mana. When the mana drops below 20% the buff is cancelled.
 
 | Lv. | Damage Reduction |
 | --- | ---------------- |
-| 1   | -6%              |
-| 2   | -12%             |
-| 3   | -18%             |
-| 4   | -24%             |
-| 5   | -30%             |
+| 1   | 10%              |
+| 2   | 20%              |
+| 3   | 30%              |
 
 {{< /skill >}}
 
 {{< skill name="Meditation" maxLevel="5"
-    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Passive"
     description="A calm, centered breathing that quickens the natural mending of both Master and Bestia alike." >}}
 
 | Lv. | HP/Mana Regeneration |
@@ -1737,98 +1733,60 @@ Fire, water, wind, earth, and the deeper currents of holy and dark magic - Wizar
 
 ```mermaid
 graph TD
+    FireBolt["Fire Bolt (1-10)"]
+    IceBolt["Ice Bolt (1-10)"]
+    ThunderBolt["Thunder Bolt (1-10)"]
+    EarthSpike["Earth Spike (1-10)"]
+
+    FireWall["Fire Wall (1-5)"]
+    MeteorStorm["Meteor Storm (1-5)"]
+    SturmGust["Sturm Gust (1-5)"]
+    WaterBall["Water Ball (1-5)"]
+    FrostNova["Frost Nova (1-5)"]
+    Quagmire["Quagmire (1-5)"]
+    ThunderStorm["Thunder Storm (1-5)"]
+    Earthquake["Earthquake (1-5)"]
+
+    FrostOrb["Frost Orb (1-5)"]
+    ThunderOfJupiter["Thunder of Jupiter (1-5)"]
+
     MagicArmor[/"Magic Armor (Warrior Tree)"/]
+    SafetyWall["Safety Wall (1-10)"]
+    StoneCurse["Stone Curse (1-5)"]
+    SuppressMagic["Suppress Magic (1-5)"]
+    SuppressAura["Suppress Aura (1-3)"]
 
-    subgraph Foundations
-        ElementalMastery(["Elemental Mastery (1-5)"])
-        SpiritualMastery(["Spiritual Mastery (1-5)"])
-        FireBolt(["Fire Bolt (1-10)"])
-        IceBolt(["Ice Bolt (1-10)"])
-        ThunderBolt(["Thunder Bolt (1-10)"])
-        EarthSpike(["Earth Spike (1-10)"])
-    end
-
-    subgraph "Elemental Amplification"
-        MasterOfFire["Master of Fire (1-5)"]
-        MasterOfWater["Master of Water (1-5)"]
-        MasterOfWind["Master of Wind (1-5)"]
-        MasterOfEarth["Master of Earth (1-5)"]
-    end
-
-    subgraph "Wards & Hexes"
-        SafetyWall["Safety Wall (1-10)"]
-        EnergyCoat["Energy Coat (1)"]
-        StoneCurse["Stone Curse (1-5)"]
-        SuppressMagic["Suppress Magic (1-5)"]
-        SuppressAura["Suppress Aura (1-3)"]
-    end
-
-    subgraph "Storm & Field Magic"
-        FireWall["Fire Wall (1-5)"]
-        MeteorStorm["Meteor Storm (1-5)"]
-        SturmGust["Sturm Gust (1-5)"]
-        WaterBall["Water Ball (1-5)"]
-        FrostNova["Frost Nova (1-5)"]
-        Quagmire["Quagmire (1-5)"]
-        ThunderStorm["Thunder Storm (1-5)"]
-        Earthquake["Earthquake (1-5)"]
-    end
-
-    subgraph "Arcane Ordnance"
-        FrostOrb["Frost Orb (1-5)"]
-        SoulBreak["Soul Break (1-5)"]
-        ThunderOfJupiter["Thunder of Jupiter (1-5)"]
-    end
-
+    SoulBreak["Soul Break (1-5)"]
     Mindbreak["Mindbreak (1-5)"]
 
-    ElementalMastery -->|Lv.2| MasterOfFire
-    ElementalMastery -->|Lv.2| MasterOfWater
-    ElementalMastery -->|Lv.2| MasterOfWind
-    ElementalMastery -->|Lv.2| MasterOfEarth
-    FireBolt -->|Lv.3| MasterOfFire
-    IceBolt -->|Lv.3| MasterOfWater
-    ThunderBolt -->|Lv.3| MasterOfWind
-    EarthSpike -->|Lv.3| MasterOfEarth
+    FireBolt -->|Lv.3| FireWall
+    FireBolt -->|Lv.10| MeteorStorm
+    EarthSpike -->|Lv.3| Earthquake
 
-    MasterOfFire -->|Lv.2| FireWall
-    MasterOfFire -->|Lv.3| MeteorStorm
-    MasterOfWater -->|Lv.3| WaterBall
-    MasterOfWater -->|Lv.3| SturmGust
-    MasterOfWater -->|Lv.4| FrostNova
-    MasterOfWind -->|Lv.2| Quagmire
-    MasterOfWind -->|Lv.3| ThunderStorm
-    MasterOfEarth -->|Lv.3| Earthquake
-
-    SafetyWall -->|Lv.3| StoneCurse
-    SafetyWall -->|Lv.5| EnergyCoat
-    StoneCurse -->|Lv.2| SuppressMagic
-    SuppressMagic -->|Lv.2| SuppressAura
-
+    IceBolt -->|Lv.1| FrostNova
+    IceBolt -->|Lv.8| WaterBall
+    IceBolt -->|Lv.10| SturmGust
     FrostNova -->|Lv.2| FrostOrb
-    ElementalMastery -->|Lv.4| SoulBreak
-    SpiritualMastery -->|Lv.2| SoulBreak
-    ThunderStorm -->|Lv.3| ThunderOfJupiter
-    MasterOfWind -->|Lv.5| ThunderOfJupiter
 
-    ElementalMastery -->|Lv.3| Mindbreak
-    SpiritualMastery -->|Lv.3| Mindbreak
+    ThunderBolt -->|Lv.2| Quagmire
+    ThunderBolt -->|Lv.3| ThunderStorm
+    ThunderStorm -->|Lv.3| ThunderOfJupiter
+
+    MagicArmor -->|Lv.3| SafetyWall
+    SafetyWall -->|Lv.3| StoneCurse
+    StoneCurse -->|Lv.2| SuppressMagic
+    MagicArmor -->|Lv.1| SuppressAura
+
+    SoulBreak -->|Lv.3| Mindbreak
+
+    %% Layout only: `~~~` renders as an invisible link and implies no requirement.
+    %% It ranks the ward/spirit branch below the elemental chains so it forms its
+    %% own row instead of widening the diagram by another two columns.
+    FrostOrb ~~~ MagicArmor
+    ThunderOfJupiter ~~~ SoulBreak
 ```
 
 <br>
-{{< skill name="Elemental Mastery" maxLevel="5"
-    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
-    description="A Wizard's command over the raw forces of nature, sharpening every spell drawn from earth, wind, water or fire." >}}
-
-| Lv. | Damage/Healing |
-| --- | -------------- |
-| 1   | +3%            |
-| 2   | +6%            |
-| 3   | +9%            |
-| 4   | +12%           |
-| 5   | +15%           |
-
-{{< /skill >}}
 
 {{< skill name="Spiritual Mastery" maxLevel="5"
     type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
@@ -2232,7 +2190,7 @@ Neither predator nor prey, exactly. Hunters move like the terrain isn't there an
 {{< /skill >}}
 -->
 
-### Assassin
+### Assassin (unrefined)
 
 Masters of hidden infiltration. They can deal high amount of single target damage and know a lot about poisons to coat their weapons.
 
@@ -2303,7 +2261,7 @@ graph TD
     description="Toggle. While active, a spell memorized via Plagiarism is not lost to a fresh copy - the Assassin keeps whatever they stole last until they switch this off and let a new hit overwrite it." >}}
 {{< /skill >}}
 
-### Knight
+### Knight (unrefined)
 
 Where a Brawler trusts bare knuckles and a Wizard trusts raw mana, a Knight trusts steel - a lot of it, worn on the body and swung in the hand. This is the tree for masters who would rather stand at the front of a fight than avoid it.
 

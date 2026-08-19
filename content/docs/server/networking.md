@@ -98,6 +98,7 @@ graph LR
    returns `null` (a well-formed but semantically invalid payload, e.g. an equip slot ordinal this
    server version doesn't know) drops the message with a warning rather than tearing down the
    connection.
+
 3. **`InMessageProcessor.process()`** looks up handlers by the message's Kotlin class from a
    `Map<KClass<*>, List<IncomingMessageHandler<*>>>` built from every Spring-injected
    `IncomingMessageHandler<*>` bean — dispatch is by class, not a string or int tag:

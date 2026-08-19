@@ -52,6 +52,7 @@ These are the base upgrade chances. The chances can be altered via skills, buffs
 
 **Example:** You upgrade a superior weapon to level 12. Until level 7 the chance of success is at 100%. Then it drops for every level: `0.9 * 0.81 * 0.72 * 0.63 * 0.53 = 0.17`, so the total chance of success for this upgrade chain is 17%.
 
+<!-- prettier-ignore -->
 {{< chart >}}
 {
 type: 'line',
@@ -103,21 +104,41 @@ The upgrade chances can be increased by leveling up the relevant [Master Skill](
 
 # Armor Refinement
 
-A refined armor grants increased **[hard defense](/docs/server/battle#value-hard_def)**. Each refinement level adds 10 armor points. These armor points are then converted into a hard-defense percentage with diminishing returns: the value asymptotically approaches 100% but never reaches it, so every additional percent of hard defense costs progressively more armor points. There is no hard cap — extremely high defense is possible in theory, just increasingly expensive.
+A refined armor grants increased **[hard defense](/docs/server/battle#value-hard_def)**. Each refinement level adds 10 defense points. All defense points from equipment, refinement, buffs and skills are summed up and then converted into a hard-defense percentage:
 
 ```kotlin
-hardDefense = armorPoints / (armorPoints + 100)
+val dp = defensePoints
+hardDefense = (dp * dp) / (dp * dp + 50 * dp + 60000)
 ```
 
+The curve deliberately starts out shallow. While defense points are low the constant `60000` dominates the denominator, so hard defense grows roughly quadratically out of zero: 50 points are worth about 4%, 100 points about 13%. That leaves room to hand out defense points in readable amounts — starter gear in the double digits, mid-game sets in the low hundreds, a fully refined endgame set somewhere around 1000 points — without a single early piece already being decisive.
+
+The curve is at its steepest around 140 defense points and flattens continuously from there. The `50 * dp` term overtakes the constant at 1200 points and governs the entire top end, so hard defense approaches 100% asymptotically but never reaches it. There is no hard cap: extremely high defense remains possible in theory, just increasingly expensive.
+
+{{< table >}}
+
+| Defense Points | Hard Defense |
+| -------------- | ------------ |
+| 50             | 3.8%         |
+| 100            | 13.3%        |
+| 200            | 36.4%        |
+| 271            | 50.0%        |
+| 500            | 74.6%        |
+| 1000           | 90.1%        |
+| 2000           | 96.2%        |
+
+{{< /table >}}
+
+<!-- prettier-ignore -->
 {{< chart >}}
 {
 type: 'line',
 data: {
-labels: Array.from({length: 101}, (_, i) => i * 10),
+labels: Array.from({length: 101}, (_, i) => i * 20),
 datasets: [
 {
 label: 'Hard Defense',
-function: function(x) { return x / (x + 100); },
+function: function(x) { return (x * x) / (x * x + 50 * x + 60000); },
 fill: false
 }
 ]
@@ -127,7 +148,7 @@ responsive: true,
 scales: {
 x: {
 type: 'linear',
-title: { display: true, text: 'Armor Points' }
+title: { display: true, text: 'Defense Points' }
 },
 y: {
 title: { display: true, text: 'Hard Defense %' },
@@ -144,6 +165,7 @@ min: 0.0
 The refine level is not capped but each higher refinement process can destroy the weapon/equipment with an increasing chance.
 The upgrade chances can be increased by leveling up the relevant [Master Skill](/docs/mechanics/master/#master-skills) or by buffs and items.
 
+<!-- prettier-ignore -->
 {{< chart >}}
 {
 type: 'line',
@@ -198,6 +220,7 @@ level 50 and `-50%` at level 100 - firmly negative, meaning a Craftsman needs a 
 level 100 item back up to a coin flip. Level 100 is only a landmark, not a ceiling - the base chance keeps falling by
 1% per level for anything higher. The total is clamped so an attempt is never above 100% nor entirely impossible.
 
+<!-- prettier-ignore -->
 {{< chart >}}
 {
 type: 'line',
@@ -280,6 +303,7 @@ lies beyond your skill"_ — telling you to level up rather than swap materials,
 The chance to learn drops with item level and rises with skill. It is floored at **0.1%** for items up to Lv. 100 and
 **0.01%** above Lv. 100, so in theory every blueprint is discoverable given enough attempts.
 
+<!-- prettier-ignore -->
 {{< chart >}}
 {
 type: 'line',
@@ -372,6 +396,7 @@ needs real investment across skill, buffs and stats to be worth attempting at al
 a level 100 item and `baseChance` drops to `-0.45`, bringing the total down to 60%: raising skill and stats raises
 the ceiling, it never flattens the curve, so the chance keeps eroding the higher the item level climbs.
 
+<!-- prettier-ignore -->
 {{< chart >}}
 {
   type: 'line',
@@ -441,6 +466,7 @@ Ore level 100 is a landmark, not a ceiling — **the base chance is never capped
 beyond it, so an Epic-tier ore at Lv. 130 leaves the 60 STR / 30 WIL smith above at just 15%. Only the total is
 clamped, so an attempt is never above 100% nor entirely impossible.
 
+<!-- prettier-ignore -->
 {{< chart >}}
 {
   type: 'line',
@@ -516,6 +542,7 @@ baseDurationSeconds = 1.2 * itemLevel * itemLevel
 baseDurationConsumablesSeconds = .3 * baseDurationSeconds
 ```
 
+<!-- prettier-ignore -->
 {{< chart >}}
 {
 type: 'line',
@@ -577,6 +604,7 @@ The maximum amount a Bestia can carry is dependent on its strength and its vital
 weightLimit = STR / 2 + VIT / 5 + 15 + LEVEL / 5
 ```
 
+<!-- prettier-ignore -->
 {{< chart >}}
 {
 type: 'line',

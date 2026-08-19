@@ -43,28 +43,28 @@ Quest generation is done with Templates similar to what the terrain auto-generat
 
 Discovery of these quests can be done in various ways:
 
-* Announcements by city majors
-* Bulletin Boards
-* NPCs in a tavern start talking to the players
-* Classical NPC interaction
+- Announcements by city majors
+- Bulletin Boards
+- NPCs in a tavern start talking to the players
+- Classical NPC interaction
 
 Try constantly challenge the player with various constraints imposed on quests:
 
-* Time limits
-* Puzzle solving mechanics
-* Escort quests
-* Resource or item gathering quests
+- Time limits
+- Puzzle solving mechanics
+- Escort quests
+- Resource or item gathering quests
 
 The auto generation allows creating such unique (semi-unique) situational experiences when there are lots of substitutions for the multiple details that make up a quest.
 Progressive Quests can be built with subsequent quests opening on completion of predecessors (the usual quest trees used on most MMORPGs).
-Sequential Multi-Quests are easily generated:  Goto X, Pickup Y, Deliver to Z -or- Patrol A then Patrol B then Patrol C .. and the locations can be shifted to 'fit' the city areas (when the civilized part of city keeps expanding into the world).
+Sequential Multi-Quests are easily generated: Goto X, Pickup Y, Deliver to Z -or- Patrol A then Patrol B then Patrol C .. and the locations can be shifted to 'fit' the city areas (when the civilized part of city keeps expanding into the world).
 
 The automatic dialog generation can use a tree like structure with templates where placeholder like items, locations and names are replaced as needed from the auto generation of quests. Sets up NPC quest-giver with a dialog tree. Many situational details can be inserted as parameters (names/locations/item types/etc) into dialog.
 Many quests/missions given by NPCs include directions to a specific place. The place can be changed (varied) and the terrain can actually be built/modified 'on-the-fly' to match the quest, so that you don't wind up going the same place other players have already done in the exact same mannor.
 
 Further resources to read:
 
-* [Dynamic_Quest_Plot_Generation_using Petri-Net Planning](http://www.academia.edu/4558587/Dynamic_Quest_Plot_Generation_using_Petri_Net_Planning)
+- [Dynamic_Quest_Plot_Generation_using Petri-Net Planning](http://www.academia.edu/4558587/Dynamic_Quest_Plot_Generation_using_Petri_Net_Planning)
 
 # Player Quests
 
@@ -84,8 +84,8 @@ The reward itself can be paid in items or in gold.
 
 # References
 
-* <https://www.rockpapershotgun.com/2016/09/02/how-to-procedurally-generate-culture/>
-* <http://www.gdcvault.com/play/1024143/Procedural-Narrative>
-* <http://pcg.wikidot.com/pcg-algorithm:procedural-puzzles-and-plot-generation>
-* <http://ieeexplore.ieee.org/abstract/document/5740836/>
-* <https://nil.cs.uno.edu/projects/glaive/>
+- <https://www.rockpapershotgun.com/2016/09/02/how-to-procedurally-generate-culture/>
+- <http://www.gdcvault.com/play/1024143/Procedural-Narrative>
+- <http://pcg.wikidot.com/pcg-algorithm:procedural-puzzles-and-plot-generation>
+- <http://ieeexplore.ieee.org/abstract/document/5740836/>
+- <https://nil.cs.uno.edu/projects/glaive/>

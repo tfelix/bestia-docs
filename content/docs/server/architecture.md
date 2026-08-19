@@ -34,21 +34,21 @@ each carrying a `@Order` that fixes its position in the chain. Most live under
 `zone-server/src/main/kotlin/net/bestia/zone/boot/`, but a few (like the item script validator
 below) live next to the domain they validate and simply share the same `@Order` numbering scheme:
 
-| Order | Runner | Purpose |
-| --- | --- | --- |
-| 1 | `WorldGenerationBootRunner` | Generate or load the world. First and slowest step — everything else stands on it (entities load at positions in it, mobs spawn onto its terrain), so it fails fast rather than after importing everything else. |
-| 100 | `ItemImporterBootRunner` | Import item definitions |
-| 101 | `MobImporterBootRunner` | Import mob definitions |
-| 102 | `SkillImporterBootRunner` | Import skill definitions |
-| 103 | `MasterSkillTreeImporterBootRunner` | Import the player skill tree |
-| 104 | `StatusEffectImporterBootRunner` | Import status effect definitions |
-| 110 | `EntityLoaderBootRunner` | Reload persisted entities into the ECS `World` |
-| 150 | `EquipmentScriptBinderBootRunner` | Bind equipment scripts to their items |
-| 200 | `ItemScriptValidator` | Validate every consumable/equip item's script reference resolves — fails boot on a mismatch |
-| `LOWEST_PRECEDENCE - 2` | `ZoneReadyBootRunner` | Flip `ZoneReadinessService` to ready, so logins are accepted only once everything above has finished |
-| `LOWEST_PRECEDENCE - 1` | `WorldBootRunner` | Start `ZoneEngine` — the ECS tick loop begins running |
-| `LOWEST_PRECEDENCE` | `SocketServerBootRunner` | Bind the Netty socket and start accepting connections |
-| `LOWEST_PRECEDENCE` | `DevDataBootstrapRunner` | Dev-only seed data (`@Profile("!test")`) |
+| Order                   | Runner                              | Purpose                                                                                                                                                                                                          |
+| ----------------------- | ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1                       | `WorldGenerationBootRunner`         | Generate or load the world. First and slowest step — everything else stands on it (entities load at positions in it, mobs spawn onto its terrain), so it fails fast rather than after importing everything else. |
+| 100                     | `ItemImporterBootRunner`            | Import item definitions                                                                                                                                                                                          |
+| 101                     | `MobImporterBootRunner`             | Import mob definitions                                                                                                                                                                                           |
+| 102                     | `SkillImporterBootRunner`           | Import skill definitions                                                                                                                                                                                         |
+| 103                     | `MasterSkillTreeImporterBootRunner` | Import the player skill tree                                                                                                                                                                                     |
+| 104                     | `StatusEffectImporterBootRunner`    | Import status effect definitions                                                                                                                                                                                 |
+| 110                     | `EntityLoaderBootRunner`            | Reload persisted entities into the ECS `World`                                                                                                                                                                   |
+| 150                     | `EquipmentScriptBinderBootRunner`   | Bind equipment scripts to their items                                                                                                                                                                            |
+| 200                     | `ItemScriptValidator`               | Validate every consumable/equip item's script reference resolves — fails boot on a mismatch                                                                                                                      |
+| `LOWEST_PRECEDENCE - 2` | `ZoneReadyBootRunner`               | Flip `ZoneReadinessService` to ready, so logins are accepted only once everything above has finished                                                                                                             |
+| `LOWEST_PRECEDENCE - 1` | `WorldBootRunner`                   | Start `ZoneEngine` — the ECS tick loop begins running                                                                                                                                                            |
+| `LOWEST_PRECEDENCE`     | `SocketServerBootRunner`            | Bind the Netty socket and start accepting connections                                                                                                                                                            |
+| `LOWEST_PRECEDENCE`     | `DevDataBootstrapRunner`            | Dev-only seed data (`@Profile("!test")`)                                                                                                                                                                         |
 
 The ordering is deliberate: the socket only opens after the tick loop is running, and
 `ZoneReadyBootRunner` gates client logins so nobody connects into a half-loaded world (see

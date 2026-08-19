@@ -6,7 +6,7 @@ description: The real script-registry pattern behind skills, status effects, con
 
 The previous version of this page said Bestia has no scripting system and that every effect is
 hardcoded. That's half right and half stale: there's no end-user or designer-facing script
-language (no Lua, no DSL, no hot-reloadable files) — but there *is* a consistent, working internal
+language (no Lua, no DSL, no hot-reloadable files) — but there _is_ a consistent, working internal
 pattern used across four different domains, and it's worth understanding as "the scripting system"
 even though every script is a compiled Kotlin class.
 
@@ -17,12 +17,12 @@ Each domain follows the same shape: a small interface, a registry that resolves 
 every reference actually resolves — so a typo surfaces as a boot warning or failure, not a runtime
 crash the first time a player triggers it.
 
-| Domain | Interface | Registry | Catalog | Boot validator |
-| --- | --- | --- | --- | --- |
-| Skills | `SkillStrategy` | `SkillScriptRegistry` | `skills.yml` | `SkillScriptBootValidator` (logs, doesn't fail boot) |
-| Status effects | `StatusEffectScript` | `StatusEffectScriptRegistry` | `status_effects.yml` | (resolved via `getOrThrow` at apply-time) |
-| Consumable items | `ItemScript` | *(injected `List<ItemScript>`)* | `items.yml` | `ItemScriptValidator`, `@Order(200)` — **fails boot** |
-| Equipment | `EquipmentScript` | `EquipmentScriptRegistry` | `items.yml` | `ItemScriptValidator` (same class, validates both) |
+| Domain           | Interface            | Registry                        | Catalog              | Boot validator                                        |
+| ---------------- | -------------------- | ------------------------------- | -------------------- | ----------------------------------------------------- |
+| Skills           | `SkillStrategy`      | `SkillScriptRegistry`           | `skills.yml`         | `SkillScriptBootValidator` (logs, doesn't fail boot)  |
+| Status effects   | `StatusEffectScript` | `StatusEffectScriptRegistry`    | `status_effects.yml` | (resolved via `getOrThrow` at apply-time)             |
+| Consumable items | `ItemScript`         | _(injected `List<ItemScript>`)_ | `items.yml`          | `ItemScriptValidator`, `@Order(200)` — **fails boot** |
+| Equipment        | `EquipmentScript`    | `EquipmentScriptRegistry`       | `items.yml`          | `ItemScriptValidator` (same class, validates both)    |
 
 All four are resolved by **simple class name**, not a fully-qualified lookup:
 
@@ -36,13 +36,13 @@ fun get(scriptName: String): SkillStrategy? = byName[scriptName]
 ```
 
 This replaced an older `applicationContext.getBean(<fully-qualified name>)` lookup that could never
-have worked — `getBean(String)` resolves a Spring *bean name* (the decapitalized simple class name
+have worked — `getBean(String)` resolves a Spring _bean name_ (the decapitalized simple class name
 for an `@Component`), not a FQN, and the old FQN pointed at a package that didn't even exist.
 
 # Skill and status-effect scripts
 
 Covered in more depth on the [Battle System](/docs/server/battle) page — `Firebolt`/`Heal`/`Blessing`
-implement `SkillStrategy` directly (a script *is* the skill's behavior, called from
+implement `SkillStrategy` directly (a script _is_ the skill's behavior, called from
 `SkillExecutionService`); `Swiftness`/`Cripple`/`BlessingStatusEffect`/`ResistedOnceMarker` implement
 `StatusEffectScript` (applied via `StatusEffectService`). `SkillScriptBootValidator` deliberately
 only **warns** for a missing skill script rather than failing boot, because most of `skills.yml`'s

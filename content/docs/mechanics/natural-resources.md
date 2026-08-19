@@ -4,14 +4,13 @@ weight: 600
 description: This page explains the types, uses, and mechanics of resources in the game, including gathering and recycling.
 ---
 
-
 Resources are raw materials that can be sold to other players. They can also be used to craft items or construct buildings.
 Resources can be obtained by the following means:
 
-* Killing enemies and looting them.
-* Gathering natural resources in the game world.
-* Using special extracting buildings or devices.
-* Recycling existing items.
+- Killing enemies and looting them.
+- Gathering natural resources in the game world.
+- Using special extracting buildings or devices.
+- Recycling existing items.
 
 {{< alert context="info" text="The loot from monsters should be somewhat logical: a dead wolf would very likely not drop iron ore or golden coins." />}}
 
@@ -107,17 +106,17 @@ baseChance = 0.30 - max(0, oreLevel - 10) * 0.01
 
 {{< table >}}
 
-| Ore                 | Ore Lv. | Category  | Base Refine Chance |
-| ------------------- | ------- | --------- | ------------------ |
-| Tin Ore             | 5       | Mundane   | 30%                |
-| Copper Ore          | 10      | Mundane   | 30%                |
-| Iron Ore            | 20      | Mundane   | 20%                |
-| Silver Ore          | 35      | Superior  | 5%                 |
-| Gold Ore            | 50      | Superior  | -10%               |
-| Mercury Ore         | 60      | Rare      | -20%               |
-| Palladium Ore       | 70      | Rare      | -30%               |
-| Mithril Ore         | 85      | Legendary | -45%               |
-| Adamantium Ore      | 100     | Legendary | -60%               |
+| Ore            | Ore Lv. | Category  | Base Refine Chance |
+| -------------- | ------- | --------- | ------------------ |
+| Tin Ore        | 5       | Mundane   | 30%                |
+| Copper Ore     | 10      | Mundane   | 30%                |
+| Iron Ore       | 20      | Mundane   | 20%                |
+| Silver Ore     | 35      | Superior  | 5%                 |
+| Gold Ore       | 50      | Superior  | -10%               |
+| Mercury Ore    | 60      | Rare      | -20%               |
+| Palladium Ore  | 70      | Rare      | -30%               |
+| Mithril Ore    | 85      | Legendary | -45%               |
+| Adamantium Ore | 100     | Legendary | -60%               |
 
 {{< /table >}}
 

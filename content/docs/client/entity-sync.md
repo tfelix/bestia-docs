@@ -86,15 +86,15 @@ class_name BestiaResource extends Resource
 `BestiaDB` (`src/Game/Bestia/bestia_db.gd`) scans `Game/Bestia/DB/*.tres` once at startup and
 looks species up by id — the same shape as `ItemDB` and `AttackDB` below.
 
-# The recurring Resource + *DB pattern
+# The recurring Resource + \*DB pattern
 
 Three separate systems reuse the same shape for static, per-id game data that's authored as
 `.tres` files and looked up at runtime by an id that matches the server's data:
 
-| Data | Resource class | DB singleton | Directory | Keyed by |
-| --- | --- | --- | --- | --- |
-| Items | `item_resource.gd` | `ItemDB` (`item_db.gd`) | `Game/Item/DB/` | `item_id` |
-| Attacks/Skills | `attack_resource.gd` | `AttackDB` (`attack_db.gd`) | `Game/Attack/DB/` | `skill_id` |
+| Data           | Resource class       | DB singleton                | Directory         | Keyed by    |
+| -------------- | -------------------- | --------------------------- | ----------------- | ----------- |
+| Items          | `item_resource.gd`   | `ItemDB` (`item_db.gd`)     | `Game/Item/DB/`   | `item_id`   |
+| Attacks/Skills | `attack_resource.gd` | `AttackDB` (`attack_db.gd`) | `Game/Attack/DB/` | `skill_id`  |
 | Bestia species | `bestia_resource.gd` | `BestiaDB` (`bestia_db.gd`) | `Game/Bestia/DB/` | `bestia_id` |
 
 Each `*DB` singleton directory-scans its folder once, caches every `Resource` by id, and hands
@@ -109,7 +109,7 @@ supports an optional `item_script` (a custom `ItemUse` subclass, `item_use.gd`) 
 behavior like a targeted potion, which routes through `MouseManager`'s item-targeting mode instead
 of firing immediately — see [Interaction](/docs/client/interaction).
 
-Live inventory *state* (what a player actually owns) is not part of this pattern — it's runtime
+Live inventory _state_ (what a player actually owns) is not part of this pattern — it's runtime
 data owned by `Game/UI/Inventory/inventory.gd` (see [UI Overview](/docs/client/ui-overview)),
 built from `InventoryComponentSMSG` and cross-referenced against `ItemDB` only for the static
 parts (icon, name, description).

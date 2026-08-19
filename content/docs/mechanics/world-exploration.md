@@ -20,9 +20,9 @@ A charted map isn't just a picture of the world — it unlocks concrete gameplay
 
 A few ground rules govern how maps work:
 
-* Every player can create their own world map in-game.
-* Players with the [Cartography](/docs/mechanics/master/#skill-cartography) skill can merge several maps into one, combining everyone's explored area.
-* At high skill levels, a cartographer can craft magical maps that go further still — sharing custom markers with friends, or surfacing known resource locations directly on the map.
+- Every player can create their own world map in-game.
+- Players with the [Cartography](/docs/mechanics/master/#skill-cartography) skill can merge several maps into one, combining everyone's explored area.
+- At high skill levels, a cartographer can craft magical maps that go further still — sharing custom markers with friends, or surfacing known resource locations directly on the map.
 
 Copying someone else's map is technically possible, but without training in Cartography it's extremely difficult and most likely to fail.
 
@@ -53,9 +53,9 @@ There are three difficulty tiers, describing both the range of the survey and it
 
 The following applies:
 
-* For every km from already-explored land, difficulty increases by `10`.
-* For every 1% of [mana concentration](/docs/mechanics/environment/#mana-concentration) in the area, difficulty increases by `0.5`.
-* Every level of [Cartography](/docs/mechanics/master/#skill-cartography) reduces difficulty by `10`.
+- For every km from already-explored land, difficulty increases by `10`.
+- For every 1% of [mana concentration](/docs/mechanics/environment/#mana-concentration) in the area, difficulty increases by `0.5`.
+- Every level of [Cartography](/docs/mechanics/master/#skill-cartography) reduces difficulty by `10`.
 
 1. Using the skill determines a difficulty `d`, based on the distance to the nearest already-charted area and the size of the area being surveyed.
 2. Between 3 and 5 locations `l` spawn around the player, at a distance of 300 to 800 meters depending on `d`. Each must be reached within a time limit `t`.

@@ -160,10 +160,6 @@ Highly concentrated mana powder, the raw material for the finest mana crystals.
 Fine, faintly glowing dust of condensed mana. Used to empower Bestia traps and ritual crafting.
 {{< /item >}}
 
-{{< item name="Void Essence" weight="0.2" type="Etc" >}}
-A cold, light-swallowing wisp gathered from where mana runs thin. A key reagent of the Master Ritual.
-{{< /item >}}
-
 {{< item name="Rough Gemstone" weight="0.3" type="Etc" >}}
 An uncut gem pried from a mineral vein. A Gem Cutter can facet it into a Cut Gemstone.
 {{< /item >}}
@@ -186,10 +182,6 @@ A lump of coal that never stops smouldering. Loaded into a blueprint to give a c
 
 {{< item name="Frost Shard" weight="0.4" type="Etc" >}}
 A sliver of ice that never melts. Loaded into a blueprint to give a craft the frost element.
-{{< /item >}}
-
-{{< item name="Seal of Mastery" weight="0.5" type="Etc" >}}
-Proof of a Novice's transformation. Forged in the Master Ritual to ascend to a true Bestia Master.
 {{< /item >}}
 
 {{< item name="Empty Bottle" weight="0.2" type="Etc" >}}
