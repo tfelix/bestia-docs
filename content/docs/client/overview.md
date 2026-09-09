@@ -42,15 +42,15 @@ flow over the same TCP socket as typed protobuf messages.
 
 # Subsystems
 
-| Page | Covers |
-| --- | --- |
-| [Networking](/docs/client/networking) | The `Envelope` wire format, `BnetSocket`, the CMSG/SMSG wrapper pattern, the login → JWT → socket-auth handshake, and disconnect handling |
-| [Scenes & Menus](/docs/client/scenes-and-menus) | Autoload singletons, `SceneManager`'s scene-transition mechanism, and the full boot flow from the main menu to being in the game world |
-| [Entity Sync](/docs/client/entity-sync) | How server entities become Godot nodes, client-side movement prediction, Master vs. Bestia, and the data-driven `Resource` + `*DB` pattern used across Items/Attacks/Bestia species |
-| [World & Terrain](/docs/client/world-terrain) | The voxel chunk streaming, decoding and meshing pipeline |
-| [Interaction](/docs/client/interaction) | The mouse state machine (move/attack/loot/targeting) and the orbit camera |
-| [UI Overview](/docs/client/ui-overview) | A map of every HUD/window screen (inventory, equipment, skills, chat, ...) |
-| [Shortcuts System](/docs/client/ui-shortcuts) | The hotbar/shortcut system in detail |
+| Page                                            | Covers                                                                                                                                                                              |
+| ----------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Networking](/docs/client/networking)           | The `Envelope` wire format, `BnetSocket`, the CMSG/SMSG wrapper pattern, the login → JWT → socket-auth handshake, and disconnect handling                                           |
+| [Scenes & Menus](/docs/client/scenes-and-menus) | Autoload singletons, `SceneManager`'s scene-transition mechanism, and the full boot flow from the main menu to being in the game world                                              |
+| [Entity Sync](/docs/client/entity-sync)         | How server entities become Godot nodes, client-side movement prediction, Master vs. Bestia, and the data-driven `Resource` + `*DB` pattern used across Items/Attacks/Bestia species |
+| [World & Terrain](/docs/client/world-terrain)   | The voxel chunk streaming, decoding and meshing pipeline                                                                                                                            |
+| [Interaction](/docs/client/interaction)         | The mouse state machine (move/attack/loot/targeting) and the orbit camera                                                                                                           |
+| [UI Overview](/docs/client/ui-overview)         | A map of every HUD/window screen (inventory, equipment, skills, chat, ...)                                                                                                          |
+| [Shortcuts System](/docs/client/ui-shortcuts)   | The hotbar/shortcut system in detail                                                                                                                                                |
 
 # Known rough edges
 

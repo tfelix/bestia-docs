@@ -29,9 +29,9 @@ Defined under `src/Manager/MouseState/`, an abstract base (`mouse_state.gd`) def
   sized to the skill's `aoe_radius`; `ENEMY`/`FRIENDLY` snaps to the closest matching `Entity`
   within `SettingsManager.skill_target_snap_distance` (holding Shift inverts the friend/enemy
   filter). Confirming calls `ConnectionManager.activate_skill(skill_id, level, position,
-  [entity_id])`.
+[entity_id])`.
 - **`MouseStateItemTargeting`** — the equivalent flow for a scripted item (`ItemUse.
-  on_targeting_click`), entered from `ItemResource.use_item` when the item needs a target instead
+on_targeting_click`), entered from `ItemResource.use_item` when the item needs a target instead
   of firing immediately.
 
 # Worked example: click to attack
@@ -87,10 +87,10 @@ the AOE indicator).
 A third-person orbit camera under `src/Game/SpringArmCamera/`, split into two scripts:
 
 - `camera_spring_arm.gd` rotates a `Node3D` (yaw/pitch, clamped) while the right mouse button is
-  held and dragged past a small pixel threshold. A clean press-and-release *without* dragging past
+  held and dragged past a small pixel threshold. A clean press-and-release _without_ dragging past
   that threshold instead fires `MouseManager.right_clicked` (context menu) and cancels any active
   skill/item targeting rather than rotating the camera. Scroll wheel adjusts `SpringArm3D.
-  spring_length` for zoom.
+spring_length` for zoom.
 - `camera_follow.gd`, on the actual `Camera3D`, lerps its position toward the spring arm's
   position every frame — decoupling render-smoothing from the arm's own collision-driven length
   changes (the spring arm itself can snap shorter instantly when it hits geometry; the camera node

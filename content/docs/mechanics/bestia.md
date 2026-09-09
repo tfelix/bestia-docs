@@ -14,24 +14,24 @@ To catch a Bestia you need a **Magic Bestia Trap**. These are manufactured with 
 
 The base catch chance depends only on the trap tier and the target's level:
 
-| Trap                                                   | Lv. 1 - 20 | Lv. 21 - 40 | Lv. 41 - 60 | Lv. 61 - 100 |     Lv. 101+     |
-| :----------------------------------------------------- | :--------: | :---------: | :---------: | :----------: | :--------------: |
-| [Bestia Trap](/docs/mechanics/item-list/#bestia-trap)  |    +60%    |    +20%     |    -20%     |     -60%     | -60% - 3(LV-100) |
-| [Super Trap](/docs/mechanics/item-list/#super-trap)    |   +100%    |    +60%     |    +20%     |     -20%     | -20% - 3(LV-100) |
-| [Mega Trap](/docs/mechanics/item-list/#mega-trap)      |   +140%    |    +100%    |    +60%     |     +20%     | +20% - 3(LV-100) |
-| [Master Trap](/docs/mechanics/item-list/#master-trap)  |   +180%    |    +140%    |    +100%    |     +60%     | +60% - 3(LV-100) |
+| Trap                                                  | Lv. 1 - 20 | Lv. 21 - 40 | Lv. 41 - 60 | Lv. 61 - 100 |     Lv. 101+     |
+| :---------------------------------------------------- | :--------: | :---------: | :---------: | :----------: | :--------------: |
+| [Bestia Trap](/docs/mechanics/item-list/#bestia-trap) |    +60%    |    +20%     |    -20%     |     -60%     | -60% - 3(LV-100) |
+| [Super Trap](/docs/mechanics/item-list/#super-trap)   |   +100%    |    +60%     |    +20%     |     -20%     | -20% - 3(LV-100) |
+| [Mega Trap](/docs/mechanics/item-list/#mega-trap)     |   +140%    |    +100%    |    +60%     |     +20%     | +20% - 3(LV-100) |
+| [Master Trap](/docs/mechanics/item-list/#master-trap) |   +180%    |    +140%    |    +100%    |     +60%     | +60% - 3(LV-100) |
 
 The `Lv. 101+` column continues the `Lv. 61 - 100` column without a jump: at exactly Lv. 100 the penalty term is zero.
 
 On top of the base chance, every bonus below contributes **percentage points**:
 
-| Source                                                                          | Bonus              |
-| :------------------------------------------------------------------------------ | :----------------- |
-| Reducing the target's HP before throwing the trap                               | up to `+30`        |
-| The trap user's [Willpower](/docs/mechanics/statusvalues/#willpower---wil)       | `+ WIL / 50`       |
-| [Bestia Trapping](/docs/mechanics/master/#skill-bestia-trapping) Lv. 1 - 5       | `+6` … `+30`       |
-| [Beastfriend](/docs/mechanics/master/#skill-beastfriend) Lv. 1 - 5               | `+5` … `+25`       |
-| Buffs on the trap user, debuffs on the target                                   | varies             |
+| Source                                                                     | Bonus        |
+| :------------------------------------------------------------------------- | :----------- |
+| Reducing the target's HP before throwing the trap                          | up to `+30`  |
+| The trap user's [Willpower](/docs/mechanics/statusvalues/#willpower---wil) | `+ WIL / 50` |
+| [Bestia Trapping](/docs/mechanics/master/#skill-bestia-trapping) Lv. 1 - 5 | `+6` … `+30` |
+| [Beastfriend](/docs/mechanics/master/#skill-beastfriend) Lv. 1 - 5         | `+5` … `+25` |
+| Buffs on the trap user, debuffs on the target                              | varies       |
 
 The HP bonus scales linearly with how far the target has been worn down, reaching its full `+30` when the Bestia is at 1% HP:
 
@@ -53,10 +53,10 @@ A result of `0%` means the Bestia cannot be caught with that setup at all — th
 
 Because the Lv. 101+ penalty is steep, the level at which catching becomes hopeless is set by how much bonus a player can assemble. Both rows below assume the target has been worn down to 1% HP:
 
-| Setup                                                             | Lv. 100 | Lv. 110 | Lv. 120 | Lv. 140 | Lv. 150 |
-| :---------------------------------------------------------------- | :-----: | :-----: | :-----: | :-----: | :-----: |
-| Mega Trap, no Forester skills, WIL 100 (`+32` total)              |  `52%`  |  `22%`  |  `0%`   |  `0%`   |  `0%`   |
-| Master Trap, maxed Forester, WIL 150 (`+88` total)                |  `95%`  |  `95%`  |  `88%`  |  `28%`  |  `0%`   |
+| Setup                                                | Lv. 100 | Lv. 110 | Lv. 120 | Lv. 140 | Lv. 150 |
+| :--------------------------------------------------- | :-----: | :-----: | :-----: | :-----: | :-----: |
+| Mega Trap, no Forester skills, WIL 100 (`+32` total) |  `52%`  |  `22%`  |  `0%`   |  `0%`   |  `0%`   |
+| Master Trap, maxed Forester, WIL 150 (`+88` total)   |  `95%`  |  `95%`  |  `88%`  |  `28%`  |  `0%`   |
 
 Bestia above Lv. 100 are meant to be rare and Bestia above Lv. 120 close to legendary — but they always stay reachable for a master who has actually specialised in catching them.
 
@@ -225,15 +225,15 @@ exp_{gain} = 4 \cdot lv + 5
 
 where `lv` is the level of the defeated entity. The following modifiers are then summed and applied once to that base:
 
-| Modifier                                                       | Effect  |
-| :------------------------------------------------------------- | :------ |
-| Each Bestia involved in the attack beyond the first            | `+20%`  |
-| The target was flagged as a boss                               | `+200%` |
+| Modifier                                                        | Effect  |
+| :-------------------------------------------------------------- | :------ |
+| Each Bestia involved in the attack beyond the first             | `+20%`  |
+| The target was flagged as a boss                                | `+200%` |
 | Each elemental level of the target (e.g. `FIRE_2` gives `+20%`) | `+10%`  |
-| The target was a player-controlled Bestia                      | `+80%`  |
-| Party bonus                                                    | `+30%`  |
-| The target was a structure                                     | `-80%`  |
-| Buffs and equipment                                            | varies  |
+| The target was a player-controlled Bestia                       | `+80%`  |
+| Party bonus                                                     | `+30%`  |
+| The target was a structure                                      | `-80%`  |
+| Buffs and equipment                                             | varies  |
 
 The `+20%` per additional Bestia grows the pool _before_ it is split, so bringing more Bestia into a fight is not a straight loss for each of them — but it is still less per head than soloing the same enemy.
 
@@ -243,12 +243,12 @@ After the killing blow is delivered, the resulting pool is distributed among the
 
 Experience is also earned by working with the world rather than fighting it:
 
-| Activity                                                          | EXP gained               |
-| :---------------------------------------------------------------- | :----------------------- |
-| Travelling                                                        | `3` per km travelled     |
-| Gathering a resource (mining, lumberjacking, herbalism, fishing)  | `2 * resource_level + 5` |
-| Crafting an item (forging, brewing, transmuting, …)               | `2 * item_level + 5`     |
-| Constructing a structure                                          | `3 * item_level + 10`    |
+| Activity                                                         | EXP gained               |
+| :--------------------------------------------------------------- | :----------------------- |
+| Travelling                                                       | `3` per km travelled     |
+| Gathering a resource (mining, lumberjacking, herbalism, fishing) | `2 * resource_level + 5` |
+| Crafting an item (forging, brewing, transmuting, …)              | `2 * item_level + 5`     |
+| Constructing a structure                                         | `3 * item_level + 10`    |
 
 Gathering and crafting sit at about half of `4 * lv + 5`, the base experience for defeating a Bestia of the same level. A Craftsman or Miner therefore progresses at roughly half the pace of a fighter — a genuine route, just a slower one.
 

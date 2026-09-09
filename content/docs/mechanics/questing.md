@@ -44,10 +44,10 @@ for.** Two charges are taken at the moment the contract is funded:
 
 {{< table >}}
 
-| Charge          | Amount                     | Where it goes                                                             |
-| --------------- | -------------------------- | ------------------------------------------------------------------------- |
-| **Broker cut**  | `5%` of the reward's value | Income for the broker NPC, and from there back into the NPC gold pool     |
-| **Posting tax** | `2%` of the reward's value | **Burned** — removed from the economy entirely                            |
+| Charge          | Amount                     | Where it goes                                                         |
+| --------------- | -------------------------- | --------------------------------------------------------------------- |
+| **Broker cut**  | `5%` of the reward's value | Income for the broker NPC, and from there back into the NPC gold pool |
+| **Posting tax** | `2%` of the reward's value | **Burned** — removed from the economy entirely                        |
 
 {{< /table >}}
 

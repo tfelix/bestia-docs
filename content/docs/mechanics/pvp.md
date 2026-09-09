@@ -21,18 +21,18 @@ If a player's reputation with an NPC falls below -100 due to negative actions, t
 
 Due to the presence of multiple factions with differing interests, defining universally bad behavior can be complex. However, certain core actions are universally considered griefing and will result in honor loss. The following actions lead to a loss of honor (usually an NPC or other player must be present in order for the honor loss to occur):
 
-| Malicious Action                               | Global Honor Loss | Honor Loss to NPC in Sight |
-| ---------------------------------------------- | :---------------: | :------------------------: |
-| Killing NPC                                    |        -10        |            -60             |
-| Killing player in non-opposing faction         |        -10        |            -50             |
-| Killing player in opposing faction w/ -10 Lv.* |        -5         |            -10             |
-| Killing a Player's Bestia                      |         0         |             -2             |
-| Stealing Item (Mundane)                        |         0         |            -10             |
-| Stealing Item (Superior)                       |        -5         |            -20             |
-| Stealing Item (Rare)                           |        -10        |            -30             |
-| Stealing Item (Legendary)                      |        -15        |            -40             |
-| Damaging a Building >10% HP                    |        -2         |            -10             |
-| Abandoning an accepted commission              |        -5         |            -20             |
+| Malicious Action                                | Global Honor Loss | Honor Loss to NPC in Sight |
+| ----------------------------------------------- | :---------------: | :------------------------: |
+| Killing NPC                                     |        -10        |            -60             |
+| Killing player in non-opposing faction          |        -10        |            -50             |
+| Killing player in opposing faction w/ -10 Lv.\* |        -5         |            -10             |
+| Killing a Player's Bestia                       |         0         |             -2             |
+| Stealing Item (Mundane)                         |         0         |            -10             |
+| Stealing Item (Superior)                        |        -5         |            -20             |
+| Stealing Item (Rare)                            |        -10        |            -30             |
+| Stealing Item (Legendary)                       |        -15        |            -40             |
+| Damaging a Building >10% HP                     |        -2         |            -10             |
+| Abandoning an accepted commission               |        -5         |            -20             |
 
 \* The victim is at least 10 levels below the attacker. Killing an opposing-faction player who is not this far below carries no honor penalty.
 

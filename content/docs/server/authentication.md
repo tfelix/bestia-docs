@@ -27,11 +27,11 @@ sequenceDiagram
 `login-server` is a stateless Spring Boot REST service — `spring-boot-starter-web`, no sockets, no
 game state. It exposes three endpoints:
 
-| Endpoint | Purpose |
-| --- | --- |
-| `POST /api/v1/auth/static` | Dev-only username + static token login. Returns a **zone-audience login token directly.** |
+| Endpoint                      | Purpose                                                                                                        |
+| ----------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `POST /api/v1/auth/static`    | Dev-only username + static token login. Returns a **zone-audience login token directly.**                      |
 | `POST /api/v1/auth/eip712sig` | Production path: verifies an EIP-712 wallet signature + NFT ownership. Returns a long-lived **refresh token.** |
-| `POST /api/v1/login` | Exchanges a refresh token for a fresh, short-lived zone login token. |
+| `POST /api/v1/login`          | Exchanges a refresh token for a fresh, short-lived zone login token.                                           |
 
 **Static login** (`StaticLoginController` → `StaticLoginService`) looks up a
 `StaticTokenLoginMethod` by username, compares the plaintext token, and — on match — issues a login

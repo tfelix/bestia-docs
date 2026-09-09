@@ -40,7 +40,7 @@ world.update(entityId, default = { Exp() }) { exp ->
 
 A component is a plain data class implementing the marker `Component` interface. `World.store()`
 lazily creates a `ComponentStore<T>` per component type. `World.query(...)` builds a `Query` that
-joins several stores by entity id, iterating the *smallest* store and skipping entities missing any
+joins several stores by entity id, iterating the _smallest_ store and skipping entities missing any
 of the rest — iteration cost is proportional to the rarest component in the join, not the whole
 world:
 
@@ -67,7 +67,7 @@ interface System {
 
 `Schedule` is `EveryTick`, `EveryTicks(n)`, or `EverySeconds(seconds)` — expensive systems (e.g.
 something that only matters every few minutes) don't need to run every tick, and when they do run
-less often, `deltaTime` is the *real* elapsed time since they last ran, not just one tick's worth, so
+less often, `deltaTime` is the _real_ elapsed time since they last ran, not just one tick's worth, so
 time-integrating logic (countdowns, decay) stays correct regardless of cadence.
 
 `SystemScheduler` groups registered systems into ordered **waves**: two systems conflict if one

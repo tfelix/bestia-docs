@@ -52,49 +52,50 @@ These are the base upgrade chances. The chances can be altered via skills, buffs
 
 **Example:** You upgrade a superior weapon to level 12. Until level 7 the chance of success is at 100%. Then it drops for every level: `0.9 * 0.81 * 0.72 * 0.63 * 0.53 = 0.17`, so the total chance of success for this upgrade chain is 17%.
 
+<!-- prettier-ignore -->
 {{< chart >}}
 {
-	type: 'line',
-	data: {
-		labels: Array.from({length: 25}, (_, i) => i + 1),
-		datasets: [
-			{
-				label: 'Mundane',
-				function: function(x) { return x <= 7 ? 1 : x >= 16 ? 0.30 : -0.0875 * x + 1.7; },
-				fill: false
-			},
-			{
-				label: 'Superior',
-				function: function(x) { return x <= 6 ? 1 : x >= 15 ? 0.25 : -0.09375 * x + 1.65625; },
-				fill: false
-			},
-      {
-				label: 'Rare',
-				function: function(x) { return x <= 6 ? 1 : x >= 14 ? 0.20 : -0.1 * x + 1.6; },
-				fill: false
-			},
-			{
-				label: 'Legendary',
-				function: function(x) { return x <= 5 ? 1 : x >= 13 ? 0.15 : -0.10625 * x + 1.53125; },
-				fill: false
-			},
-			{
-				label: 'Epic',
-        function: function(x) { return x <= 4 ? 1 : x >= 12 ? 0.10 : -0.1125 * x + 1.45; },
-				fill: false
-			}
-		]
-	},
-  options: {
-    responsive: true,
-    scales: {
-      y: {
-        title: { display: true, text: 'Upgrade Chance %' },
-        max: 1.0,
-        min: 0.0
-      }
-    }
-  }
+type: 'line',
+data: {
+labels: Array.from({length: 25}, (_, i) => i + 1),
+datasets: [
+{
+label: 'Mundane',
+function: function(x) { return x <= 7 ? 1 : x >= 16 ? 0.30 : -0.0875 * x + 1.7; },
+fill: false
+},
+{
+label: 'Superior',
+function: function(x) { return x <= 6 ? 1 : x >= 15 ? 0.25 : -0.09375 * x + 1.65625; },
+fill: false
+},
+{
+label: 'Rare',
+function: function(x) { return x <= 6 ? 1 : x >= 14 ? 0.20 : -0.1 * x + 1.6; },
+fill: false
+},
+{
+label: 'Legendary',
+function: function(x) { return x <= 5 ? 1 : x >= 13 ? 0.15 : -0.10625 * x + 1.53125; },
+fill: false
+},
+{
+label: 'Epic',
+function: function(x) { return x <= 4 ? 1 : x >= 12 ? 0.10 : -0.1125 * x + 1.45; },
+fill: false
+}
+]
+},
+options: {
+responsive: true,
+scales: {
+y: {
+title: { display: true, text: 'Upgrade Chance %' },
+max: 1.0,
+min: 0.0
+}
+}
+}
 }
 {{< /chart >}}
 
@@ -103,39 +104,59 @@ The upgrade chances can be increased by leveling up the relevant [Master Skill](
 
 # Armor Refinement
 
-A refined armor grants increased **[hard defense](/docs/server/battle#value-hard_def)**. Each refinement level adds 10 armor points. These armor points are then converted into a hard-defense percentage with diminishing returns: the value asymptotically approaches 100% but never reaches it, so every additional percent of hard defense costs progressively more armor points. There is no hard cap — extremely high defense is possible in theory, just increasingly expensive.
+A refined armor grants increased **[hard defense](/docs/server/battle#value-hard_def)**. Each refinement level adds 10 defense points. All defense points from equipment, refinement, buffs and skills are summed up and then converted into a hard-defense percentage:
 
 ```kotlin
-hardDefense = armorPoints / (armorPoints + 100)
+val dp = defensePoints
+hardDefense = (dp * dp) / (dp * dp + 50 * dp + 60000)
 ```
 
+The curve deliberately starts out shallow. While defense points are low the constant `60000` dominates the denominator, so hard defense grows roughly quadratically out of zero: 50 points are worth about 4%, 100 points about 13%. That leaves room to hand out defense points in readable amounts — starter gear in the double digits, mid-game sets in the low hundreds, a fully refined endgame set somewhere around 1000 points — without a single early piece already being decisive.
+
+The curve is at its steepest around 140 defense points and flattens continuously from there. The `50 * dp` term overtakes the constant at 1200 points and governs the entire top end, so hard defense approaches 100% asymptotically but never reaches it. There is no hard cap: extremely high defense remains possible in theory, just increasingly expensive.
+
+{{< table >}}
+
+| Defense Points | Hard Defense |
+| -------------- | ------------ |
+| 50             | 3.8%         |
+| 100            | 13.3%        |
+| 200            | 36.4%        |
+| 271            | 50.0%        |
+| 500            | 74.6%        |
+| 1000           | 90.1%        |
+| 2000           | 96.2%        |
+
+{{< /table >}}
+
+<!-- prettier-ignore -->
 {{< chart >}}
 {
-	type: 'line',
-	data: {
-		labels: Array.from({length: 101}, (_, i) => i * 10),
-		datasets: [
-			{
-				label: 'Hard Defense',
-				function: function(x) { return x / (x + 100); },
-				fill: false
-			}
-		]
-	},
-  options: {
-    responsive: true,
-    scales: {
-      x: {
-        type: 'linear',
-        title: { display: true, text: 'Armor Points' }
-      },
-      y: {
-        title: { display: true, text: 'Hard Defense %' },
-        max: 1.0,
-        min: 0.0
-      }
-    }
-  }
+type: 'line',
+data: {
+labels: Array.from({length: 101}, (_, i) => i * 20),
+datasets: [
+{
+label: 'Hard Defense',
+function: function(x) { return (x * x) / (x * x + 50 * x + 60000); },
+fill: false
+}
+]
+},
+options: {
+responsive: true,
+scales: {
+x: {
+type: 'linear',
+title: { display: true, text: 'Defense Points' }
+},
+y: {
+title: { display: true, text: 'Hard Defense %' },
+max: 1.0,
+min: 0.0
+}
+}
+}
 }
 {{< /chart >}}
 
@@ -144,56 +165,111 @@ hardDefense = armorPoints / (armorPoints + 100)
 The refine level is not capped but each higher refinement process can destroy the weapon/equipment with an increasing chance.
 The upgrade chances can be increased by leveling up the relevant [Master Skill](/docs/mechanics/master/#master-skills) or by buffs and items.
 
+<!-- prettier-ignore -->
 {{< chart >}}
 {
-	type: 'line',
-	data: {
-		labels: Array.from({length: 15}, (_, i) => i + 1),
-		datasets: [
-			{
-				label: 'Armor',
-				function: function(x) { return x <= 4 ? 1 : x > 10 ? 0.10 : -0.15 * x + 1.6; },
-				fill: false
-			}
-		]
-	},
-  options: {
-    responsive: true,
-    scales: {
-      x: {
-        type: 'linear',
-        title: { display: true, text: 'Upgrade Level' },
-        min: 1,
-        ticks: { stepSize: 1 }
-      },
-      y: {
-        title: { display: true, text: 'Chance of Success' },
-        max: 1.1,
-        min: 0
-      }
-    }
-  }
+type: 'line',
+data: {
+labels: Array.from({length: 15}, (_, i) => i + 1),
+datasets: [
+{
+label: 'Armor',
+function: function(x) { return x <= 4 ? 1 : x > 10 ? 0.10 : -0.15 * x + 1.6; },
+fill: false
+}
+]
+},
+options: {
+responsive: true,
+scales: {
+x: {
+type: 'linear',
+title: { display: true, text: 'Upgrade Level' },
+min: 1,
+ticks: { stepSize: 1 }
+},
+y: {
+title: { display: true, text: 'Chance of Success' },
+max: 1.1,
+min: 0
+}
+}
+}
 }
 {{< /chart >}}
+
+# Item Customization
+
+An item can be reworked to cut rune slots into it, which [Runic Etching](/docs/mechanics/master/#skill-runic-etching) can later
+fill. This is governed by the Craftsman's [Item Customization](/docs/mechanics/master/#skill-item-customization) skill and
+consumes an [Engraving Set](/docs/mechanics/item-list/#engraving-set) per attempt, whether it succeeds or not. A failed
+attempt can destroy the item outright - see the skill's Destroy Chance column.
+
+The chance of successfully cutting a slot has a **base chance** that depends purely on the item's own
+[level](#item-level) - higher-level gear is tougher to rework - on top of which the skill's flat Success Chance bonus and
+the crafter's DEX are added:
+
+```kotlin
+baseChance = 0.4 - max(0, itemLevel - 10) * 0.01
+chance = clamp(baseChance + skillSuccessChance + floor(DEX / 10) * 0.01, 0.01, 1.0)
+```
+
+Levels 1-10 all share the same `40%` base chance; every level above that removes another 1%, so it reaches `0%` at
+level 50 and `-50%` at level 100 - firmly negative, meaning a Craftsman needs a near-maxed
+[Item Customization](/docs/mechanics/master/#skill-item-customization) rank (and preferably some DEX) just to bring a
+level 100 item back up to a coin flip. Level 100 is only a landmark, not a ceiling - the base chance keeps falling by
+1% per level for anything higher. The total is clamped so an attempt is never above 100% nor entirely impossible.
+
+<!-- prettier-ignore -->
+{{< chart >}}
+{
+type: 'line',
+data: {
+labels: Array.from({length: 100}, (_, i) => i + 1),
+datasets: [
+{
+label: 'Base Slot Chance',
+function: function(x) { return 0.4 - Math.max(0, x - 10) * 0.01; },
+fill: false
+}
+]
+},
+options: {
+responsive: true,
+scales: {
+x: { type: 'linear', title: { display: true, text: 'Item Level' }, min: 1 },
+y: { title: { display: true, text: 'Base Chance' }, max: 0.5, min: -0.6 }
+}
+}
+}
+{{< /chart >}}
+
+**Example:** A crafter with Item Customization Lv. 1 (`+10%` Success Chance) and no notable DEX attempts a single slot
+on a level 10 item: `40% (base) - 0% (dex) + 10% (skill) - 0% (1 slot)  = 50%`. The same crafter at Item Customization Lv. 10 (`+100%`) attempting a
+level 100 item instead: `-50% (base) + 100% (skill) = 50%` - the item level penalty has eaten the entire skill bonus, leaving the same coin-flip odds despite the enormous gap in both item and skill level.
+
+Putting more than one slot into an item costs further chance on top: every extra slot above the first subtracts another
+`40` percentage points, i.e. `chance(n slots) = clamp(chance(1 slot) - 0.4 * (n - 1), 0.01, 1.0)`. So an item and skill
+combination that would land on `80%` for a single slot drops to `40%` once you ask for two.
 
 # Item Crafting
 
 Bestia uses a flexible, discovery-driven crafting system. Every player can attempt to craft anything, but crafting
 always happens in two distinct phases:
 
-1. **Discovery** – you experiment with raw materials to *learn a blueprint*. This is the risky part: it consumes the
+1. **Discovery** – you experiment with raw materials to _learn a blueprint_. This is the risky part: it consumes the
    materials and can fail.
 2. **Production** – once a blueprint is learned, you (or your Bestia) can produce that item repeatedly and reliably.
 
-What you are even *allowed* to attempt depends on the **crafting school** you use — each tied to a
+What you are even _allowed_ to attempt depends on the **crafting school** you use — each tied to a
 [Master Skill](/docs/mechanics/master/#master-skills). There are six domains of craftable, user-generated content:
 
-* **Weapons** (Blacksmith)
-* **Armor** (Blacksmith)
-* **Magical Artifacts** (Magic Artisan)
-* **Potions and Usables** (Alchemy)
-* **Meals** (Cooking)
-* **Buildings, Traps, non-magical Devices** (Craftsmanship)
+- **Weapons** (Blacksmith)
+- **Armor** (Blacksmith)
+- **Magical Artifacts** (Magic Artisan)
+- **Potions and Usables** (Alchemy)
+- **Meals** (Cooking)
+- **Buildings, Traps, non-magical Devices** (Craftsmanship)
 
 Some materials are exclusive to certain schools (a grape is useless for forging, and a Craftsman cannot forge a blade).
 The school is the only "category" you actively choose — and you choose it just by picking the craft action, never by
@@ -202,7 +278,7 @@ typing a keyword.
 ## Discovery: Learning a Blueprint
 
 Every craftable item lives at a point in a shared **feature space**. Each raw material carries its own coordinates in
-that space; when you combine materials their vectors **sum** into a single point, so the *proportion* of materials is
+that space; when you combine materials their vectors **sum** into a single point, so the _proportion_ of materials is
 the "shape" you are aiming for — far more flexible than a rigid grid pattern.
 
 Your crafting skill defines a **radius** around that point. Every known blueprint that falls inside this sphere is a
@@ -219,44 +295,45 @@ whether you learn it. A discovery attempt always consumes the materials and ends
 
 {{< /table >}}
 
-This resonance feedback removes the classic frustration of not knowing whether a combination is *impossible* or merely
-*unlucky*: a **Slipped** result means the blueprint exists — keep trying with the same materials, while **Nothing**
-means you should swap materials. If a blueprint sits just outside your radius, the game instead hints *"something faint
-lies beyond your skill"* — telling you to level up rather than swap materials, since the radius grows with skill.
+This resonance feedback removes the classic frustration of not knowing whether a combination is _impossible_ or merely
+_unlucky_: a **Slipped** result means the blueprint exists — keep trying with the same materials, while **Nothing**
+means you should swap materials. If a blueprint sits just outside your radius, the game instead hints _"something faint
+lies beyond your skill"_ — telling you to level up rather than swap materials, since the radius grows with skill.
 
 The chance to learn drops with item level and rises with skill. It is floored at **0.1%** for items up to Lv. 100 and
 **0.01%** above Lv. 100, so in theory every blueprint is discoverable given enough attempts.
 
+<!-- prettier-ignore -->
 {{< chart >}}
 {
-  type: 'line',
-  data: {
-    labels: Array.from({length: 150}, (_, i) => i + 1),
-    datasets: [
-      {
-        label: 'Skill 30',
-        function: function(x) { return Math.max(0.001, Math.min(1, Math.pow(30 / x, 2))); },
-        fill: false
-      },
-      {
-        label: 'Skill 60',
-        function: function(x) { return Math.max(0.001, Math.min(1, Math.pow(60 / x, 2))); },
-        fill: false
-      },
-      {
-        label: 'Skill 90',
-        function: function(x) { return Math.max(0.001, Math.min(1, Math.pow(90 / x, 2))); },
-        fill: false
-      }
-    ]
-  },
-  options: {
-    responsive: true,
-    scales: {
-      x: { type: 'linear', title: { display: true, text: 'Item Level' }, min: 1 },
-      y: { title: { display: true, text: 'Chance to Learn' }, max: 1.0, min: 0 }
-    }
-  }
+type: 'line',
+data: {
+labels: Array.from({length: 150}, (_, i) => i + 1),
+datasets: [
+{
+label: 'Skill 30',
+function: function(x) { return Math.max(0.001, Math.min(1, Math.pow(30 / x, 2))); },
+fill: false
+},
+{
+label: 'Skill 60',
+function: function(x) { return Math.max(0.001, Math.min(1, Math.pow(60 / x, 2))); },
+fill: false
+},
+{
+label: 'Skill 90',
+function: function(x) { return Math.max(0.001, Math.min(1, Math.pow(90 / x, 2))); },
+fill: false
+}
+]
+},
+options: {
+responsive: true,
+scales: {
+x: { type: 'linear', title: { display: true, text: 'Item Level' }, min: 1 },
+y: { title: { display: true, text: 'Chance to Learn' }, max: 1.0, min: 0 }
+}
+}
 }
 {{< /chart >}}
 
@@ -288,10 +365,140 @@ magical draught takes its school from the magical reagent you feed it. Some blue
 that cannot be substituted. This keeps the feature space small while letting one blueprint cover a whole family of
 variants.
 
+## Construction Crafting Success Chance
+
+For the Craftsmanship domain specifically — workbenches, structures, traps and other non-magical devices built with
+[Carpentry](/docs/mechanics/master/#skill-carpentry) — the Production roll above is shaped by skill rank and status
+values, not material quality alone, much like [Item Customization](#item-customization)'s slot-cutting chance. A
+**base chance** falls off with the item level being attempted, on top of which
+[Carpentry](/docs/mechanics/master/#skill-carpentry), [Master Craftsman](/docs/mechanics/master/#skill-master-craftsman),
+temporary buffs and the Craftsman's own status values are added:
+
+```kotlin
+baseChance = 0.90 - max(0, itemLevel - 10) * 0.015
+chance = clamp(baseChance + carpentryBonus + masterCraftsmanBonus + buffBonus + floor(DEX / 10) * 0.02 + floor(WIL / 10) * 0.01, 0.01, 1.0)
+```
+
+Levels 1-10 all share the same `90%` base chance, so [Carpentry](/docs/mechanics/master/#skill-carpentry) alone gets
+you the rest of the way there: Lv. 1 (+5%) reaches 95%, Lv. 2 (+10%) already caps out at 100%. Every level above 10
+removes another 1.5%, reaching `0%` at level 70 and `-30%` at level 90 - firmly negative, meaning a level 90 build
+needs real investment across skill, buffs and stats to be worth attempting at all. Bonus sources:
+
+- [Carpentry](/docs/mechanics/master/#skill-carpentry) rank — up to **+50%** at Lv. 10.
+- [Master Craftsman](/docs/mechanics/master/#skill-master-craftsman) rank — up to **+10%** at Lv. 5.
+- Temporary buffs (a support consumable, an ally's blessing, …) — typically **+5% to +10%** while active.
+- **DEX** — `+2%` per 10 points (see [Status Values](/docs/mechanics/statusvalues/#dexterity---dex)).
+- **WIL** — `+1%` per 10 points (see [Status Values](/docs/mechanics/statusvalues/#willpower---wil)).
+
+**Example:** A Craftsman attempts a level 90 item with maxed Carpentry (Lv. 10, +50%), maxed Master Craftsman (Lv. 5,
++10%), a +10% buff active, 150 DEX (+30%) and 50 WIL (+5%). `baseChance = 0.90 - 80 * 0.015 = -0.30`, so
+`chance = -0.30 + 0.50 + 0.10 + 0.10 + 0.30 + 0.05 = 0.75` — a 75% success chance. Push the same fully-maxed build to
+a level 100 item and `baseChance` drops to `-0.45`, bringing the total down to 60%: raising skill and stats raises
+the ceiling, it never flattens the curve, so the chance keeps eroding the higher the item level climbs.
+
+<!-- prettier-ignore -->
+{{< chart >}}
+{
+  type: 'line',
+  data: {
+    labels: Array.from({length: 150}, (_, i) => i + 1),
+    datasets: [
+      {
+        label: 'Base Chance (no bonuses)',
+        function: function(x) { return Math.max(0.01, 0.90 - Math.max(0, x - 10)*0.015); },
+        fill: false
+      },
+      {
+        label: 'Fully Maxed (Carpentry+Master Craftsman+Buff+DEX 150+WIL 50)',
+        function: function(x) { var base = 0.90 - Math.max(0, x - 10)*0.015; return Math.max(0.01, Math.min(1, base + 1.05)); },
+        fill: false
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    scales: {
+      x: { type: 'linear', title: { display: true, text: 'Item Level' }, min: 1 },
+      y: { title: { display: true, text: 'Success Chance' }, max: 1.0, min: 0 }
+    }
+  }
+}
+{{< /chart >}}
+
+## Ore Refinement Success Chance
+
+Raw ore is dead weight until it has been through a [Furnace](/docs/mechanics/item-list/#furnace). Smelting is
+deliberately **not** blueprint-driven — there is nothing to discover, every ore has exactly one refined form — but each
+charge still rolls against a success chance, and a failed smelt turns the whole batch into slag: the ore **and** the
+fuel are lost.
+
+The roll is governed by the Blacksmith's [Ore Refinement](/docs/mechanics/master/#skill-ore-refinement) skill and, like
+[Item Customization](#item-customization) and [Construction Crafting](#construction-crafting-success-chance), starts
+from a **base chance that falls with the level of the ore** being worked:
+
+```kotlin
+baseChance = 0.30 - max(0, oreLevel - 10) * 0.01
+chance = clamp(baseChance + oreRefinementBonus + fuelBonus + floor(STR / 10) * 0.02 + floor(WIL / 10) * 0.01, 0.01, 1.0)
+```
+
+The two simplest ores — [Tin](/docs/mechanics/item-list/#tin-ore) and [Copper](/docs/mechanics/item-list/#copper-ore) —
+sit at or below Lv. 10 and therefore share the same `30%` base chance, which a single rank of Ore Refinement already
+doubles. Every ore level above 10 removes another 1%, so the base reaches `0%` at ore level 40, `-30%` at level 70 and
+`-60%` at [Adamantium Ore](/docs/mechanics/item-list/#adamantium-ore)'s level 100. See
+[Refining](/docs/mechanics/natural-resources/#refining) for the level and base chance of every ore. Bonus sources:
+
+- [Ore Refinement](/docs/mechanics/master/#skill-ore-refinement) rank — up to **+90%** at Lv. 3.
+- **Fuel** — [Coal](/docs/mechanics/item-list/#coal) is the reference fuel at `±0%`;
+  [Charcoal](/docs/mechanics/item-list/#charcoal) burns cooler and costs `-10%`.
+- **STR** — `+2%` per 10 points; working the bellows and turning a heavy charge is physical labour
+  (see [Status Values](/docs/mechanics/statusvalues/#strength---str)).
+- **WIL** — `+1%` per 10 points; holding a furnace at temperature for hours is a matter of patience
+  (see [Status Values](/docs/mechanics/statusvalues/#willpower---wil)).
+
+**Example:** A Blacksmith with maxed [Ore Refinement](/docs/mechanics/master/#skill-ore-refinement) (Lv. 3, `+90%`)
+burning coal, at 60 STR (`+12%`) and 30 WIL (`+3%`), attempts [Adamantium Ore](/docs/mechanics/item-list/#adamantium-ore)
+(Lv. 100): `baseChance = 0.30 - 90 * 0.01 = -0.60`, so `chance = -0.60 + 0.90 + 0.00 + 0.12 + 0.03 = 0.45` — a 45%
+success chance on the hardest ore in the world, meaning even a maxed smith loses roughly every second batch. The same
+smith at 80 STR / 40 WIL reaches `50%`; feeding the furnace charcoal instead of coal costs a flat 10 points off either
+figure.
+
+Ore level 100 is a landmark, not a ceiling — **the base chance is never capped** and keeps falling by 1% per level
+beyond it, so an Epic-tier ore at Lv. 130 leaves the 60 STR / 30 WIL smith above at just 15%. Only the total is
+clamped, so an attempt is never above 100% nor entirely impossible.
+
+<!-- prettier-ignore -->
+{{< chart >}}
+{
+  type: 'line',
+  data: {
+    labels: Array.from({length: 140}, (_, i) => i + 1),
+    datasets: [
+      {
+        label: 'Base Chance (no bonuses)',
+        function: function(x) { return Math.max(0.01, 0.30 - Math.max(0, x - 10)*0.01); },
+        fill: false
+      },
+      {
+        label: 'Ore Refinement Lv. 3 + Coal + 60 STR/30 WIL',
+        function: function(x) { var base = 0.30 - Math.max(0, x - 10)*0.01; return Math.max(0.01, Math.min(1, base + 1.05)); },
+        fill: false
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    scales: {
+      x: { type: 'linear', title: { display: true, text: 'Ore Level' }, min: 1 },
+      y: { title: { display: true, text: 'Success Chance' }, max: 1.0, min: 0 }
+    }
+  }
+}
+{{< /chart >}}
+
 ## The Feature Space Axes
 
 The feature space uses a handful of **bipolar** axes. Each runs from a negative pole through a neutral `0` to a positive
-pole, so an axis that is irrelevant to an item simply sits near `0` (a potion has no *Edge*, a sword has no *Vitality*).
+pole, so an axis that is irrelevant to an item simply sits near `0` (a potion has no _Edge_, a sword has no _Vitality_).
 
 {{< table >}}
 
@@ -312,7 +519,7 @@ production-inherited facets described above. Forcing every element and school on
 dimensionality; letting the dominant reagent decide keeps the space small and flexible.
 
 **Example — Mace vs. Sword vs. Hammer.** All three are solid, resilient, mundane metal weapons, so they sit at the same
-place on every *material* axis. What separates them is pure geometry — exactly the **Heft** and **Edge** axes:
+place on every _material_ axis. What separates them is pure geometry — exactly the **Heft** and **Edge** axes:
 
 ```text
          Heft    Edge
@@ -335,24 +542,25 @@ baseDurationSeconds = 1.2 * itemLevel * itemLevel
 baseDurationConsumablesSeconds = .3 * baseDurationSeconds
 ```
 
+<!-- prettier-ignore -->
 {{< chart >}}
 {
-	type: 'line',
-	data: {
-		labels: Array.from({length: 100}, (_, i) => i + 1),
-		datasets: [
-			{
-				label: 'Craft Time / s',
-				function: function(x) { return 1.2 * x * x; },
-				fill: false
-			},
-      {
-				label: 'Craft Time Consumables / s',
-				function: function(x) { return 0.3 * 1.2 * x * x; },
-				fill: false
-			}
-		]
-	}
+type: 'line',
+data: {
+labels: Array.from({length: 100}, (_, i) => i + 1),
+datasets: [
+{
+label: 'Craft Time / s',
+function: function(x) { return 1.2 * x * x; },
+fill: false
+},
+{
+label: 'Craft Time Consumables / s',
+function: function(x) { return 0.3 * 1.2 * x * x; },
+fill: false
+}
+]
+}
 }
 {{< /chart >}}
 
@@ -396,32 +604,32 @@ The maximum amount a Bestia can carry is dependent on its strength and its vital
 weightLimit = STR / 2 + VIT / 5 + 15 + LEVEL / 5
 ```
 
+<!-- prettier-ignore -->
 {{< chart >}}
 {
-	type: 'line',
-	data: {
-		labels: Array.from({length: 100}, (_, i) => i + 1),
-		datasets: [
-			{
-				label: 'Weight Limit (High STR)',
-				function: function(x) { return 100 / 2 + 30 / 5 + 15 + x / 5; },
-				fill: false
-			},
-      {
-        label: 'Weight Limit (Medium STR)',
-        function: function(x) { return 60 / 2 + 30 / 5 + 15 + x / 5; },
-				fill: false
-			},
-      {
-        label: 'Weight Limit (Low STR, High VIT)',
-        function: function(x) { return 20 / 2 + 90 / 5 + 15 + x / 5; },
-				fill: false
-			}
-		]
-	}
+type: 'line',
+data: {
+labels: Array.from({length: 100}, (_, i) => i + 1),
+datasets: [
+{
+label: 'Weight Limit (High STR)',
+function: function(x) { return 100 / 2 + 30 / 5 + 15 + x / 5; },
+fill: false
+},
+{
+label: 'Weight Limit (Medium STR)',
+function: function(x) { return 60 / 2 + 30 / 5 + 15 + x / 5; },
+fill: false
+},
+{
+label: 'Weight Limit (Low STR, High VIT)',
+function: function(x) { return 20 / 2 + 90 / 5 + 15 + x / 5; },
+fill: false
+}
+]
+}
 }
 {{< /chart >}}
-
 
 Please note that depending on your used up weight limit regeneration of certain [status values](/docs/mechanics/statusvalues/)
 might be affected.

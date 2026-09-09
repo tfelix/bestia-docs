@@ -43,12 +43,12 @@ stats in yet).
 
 `SkillStrategyFactory.getSkillStrategy(ctx)` dispatches on `SkillType`:
 
-| `SkillType` | Strategy | Status |
-| --- | --- | --- |
+| `SkillType`                          | Strategy                                                                                                     | Status                                                                                                                                                                                         |
+| ------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `MELEE_PHYSICAL` / `RANGED_PHYSICAL` | `MeleePhysicalSkillStrategy` / `RangedPhysicalSkillStrategy`, both backed by `MeleePhysicalDamageCalculator` | **Not implemented** — `calculateDamage`, `getStatusAttack`, `getSoftDefense` and `getHardDefenseModifier` are all `TODO("Not yet implemented")`. A skill of this type throws if actually cast. |
-| `MAGIC` | — | `SkillStrategyFactory` itself hits `TODO()` for this branch; `MagicDamageCalculator` exists but is in the same unimplemented state as the physical one. |
-| `NO_DAMAGE` | Whatever `SkillScriptRegistry` resolves for the skill's `script` name | **This is what actually works today** — see below. |
-| `PASSIVE` | — | Always-on, never resolved through a strategy; activating one throws `IllegalStateException`. |
+| `MAGIC`                              | —                                                                                                            | `SkillStrategyFactory` itself hits `TODO()` for this branch; `MagicDamageCalculator` exists but is in the same unimplemented state as the physical one.                                        |
+| `NO_DAMAGE`                          | Whatever `SkillScriptRegistry` resolves for the skill's `script` name                                        | **This is what actually works today** — see below.                                                                                                                                             |
+| `PASSIVE`                            | —                                                                                                            | Always-on, never resolved through a strategy; activating one throws `IllegalStateException`.                                                                                                   |
 
 `BaseDamageCalculator` (the shared parent of the physical/magic calculators) still carries the
 original Ragnarök-derived formula as commented-out code — `BASE_ATK`, variance mod, element
@@ -84,8 +84,8 @@ Each is its own bespoke formula, not an instance of the shared RO-style calculat
 
 `skills.yml` catalogs **43 skills**, but the overwhelming majority are `PASSIVE` or `NO_DAMAGE`
 profession/crafting skills for the master skill tree (forging, alchemy, mining, cartography, ...)
-whose `script:` name has **no matching Kotlin class** — e.g. `Cooking`, `ForgeWeapon`,
-`MasterRitual`. `SkillScriptBootValidator` checks this at boot (on `ApplicationReadyEvent`, after
+whose `script:` name has **no matching Kotlin class** — e.g. `Cooking` or `ForgeWeapon`.
+`SkillScriptBootValidator` checks this at boot (on `ApplicationReadyEvent`, after
 `SkillImporterBootRunner` has populated the table) and logs a warning rather than failing the boot,
 since a hard failure would make the server unbootable against real catalog data; activating one of
 the missing skills fails at cast time instead. The two Bestia-side attack skills (`ember`,

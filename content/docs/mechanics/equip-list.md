@@ -13,14 +13,14 @@ For a more detailed breakdown, the equipment list is provided here on this separ
 # Equipment List
 
 {{< equipmentlist >}}
-  {{< equipment name="Boots" icon="boots.png" minlv="-" itemlv="10" weight="1.5" type="Footgear" >}}
+{{< equipment name="Boots" icon="boots.png" minlv="-" itemlv="10" weight="1.5" type="Footgear" >}}
 Sturdy boots made of leather, ideal for movements through rough terrain.
 
 - 4 Defense
   {{< /equipment >}}
 
   {{< equipment name="Shoes" icon="shoes.png" minlv="-" weight="0.8" itemlv="10" type="Footgear" >}}
-Light comfy boots made of high quality leather, ideal for quick movements.
+  Light comfy boots made of high quality leather, ideal for quick movements.
 
 - 2 Defense
   {{< /equipment >}}
@@ -28,7 +28,7 @@ Light comfy boots made of high quality leather, ideal for quick movements.
   {{< equipment name="Sigil of Redemption" icon="sigil-of-redemption.png" minlv="10" itemlv="73" weight="1.0" type="Accessoir" >}}
   A very expensive and rare sigil made from gold. It symbolizes your bond to your Order, but it also holds the power to undo those holy ties. It must be worn by the one performing the rite of [Banished From The Citadel](/docs/mechanics/attack-list/#banished-from-the-citadel), and is consumed by it.
   {{< /equipment >}}
-{{< /equipmentlist >}}
+  {{< /equipmentlist >}}
 
 # Contributing
 

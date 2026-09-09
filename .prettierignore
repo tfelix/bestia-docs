@@ -1,0 +1,17 @@
+# Hugo build output and generated assets.
+public/
+resources/
+assets/jsconfig.json
+
+# Prettier formats content/ (tables, spacing) — see .prettierrc.json.
+#
+# It must NOT touch the raw payload of Hugo shortcodes that carry code or math,
+# because its markdown parser reads that payload as prose and rewrites it:
+#   * {{< chart >}} holds Chart.js JavaScript. `(_, i)` became `(\_, i)` and
+#     `i * 10` became `i _ 10`, since both look like markdown emphasis.
+#   * {{< katex >}} holds LaTeX with `_` subscripts and `*`, at the same risk.
+# Both also lose their indentation, because the payload is one long paragraph.
+#
+# Those blocks are therefore fenced off in the markdown itself with a
+# `<!-- prettier-ignore -->` comment on the line directly above the opening
+# shortcode. Add that comment whenever you add a new chart or katex block.

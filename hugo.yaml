@@ -10,6 +10,12 @@ contentDir: content
 enableEmoji: true
 refLinksErrorLevel: WARNING
 
+build:
+  # Don't generate assets/jsconfig.json. It only provides editor IntelliSense for
+  # JS imported from Hugo modules (we have none) and its paths point into the
+  # machine-local Hugo module cache, so it churns between Windows and Linux.
+  noJSConfigInAssets: true
+
 module:
   imports:
     - path: github.com/colinwilson/lotusdocs

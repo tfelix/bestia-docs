@@ -9,12 +9,12 @@ description: Autoload singletons, the SceneManager transition mechanism, and the
 Four GDScript autoloads are registered project-wide (`project.godot`), available from any script
 by bare global name — no `get_node` lookup needed:
 
-| Singleton | File | Responsibility |
-| --- | --- | --- |
-| `SceneManager` | `Manager/SceneManager.gd` | Scene transitions (loading screen, threaded loads, blocking transitions) |
-| `SettingsManager` | `Manager/SettingsManager.gd` | Client version, dev login URL/credentials, gameplay tuning constants (e.g. skill-target snap distance) |
-| `ConnectionManager` | `Manager/ConnectionManager.tscn` | Owns the network layer — see [Networking](/docs/client/networking) |
-| `MouseManager` | `Manager/mouse_manager.gd` | Mouse interaction state machine — see [Interaction](/docs/client/interaction) |
+| Singleton           | File                             | Responsibility                                                                                         |
+| ------------------- | -------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| `SceneManager`      | `Manager/SceneManager.gd`        | Scene transitions (loading screen, threaded loads, blocking transitions)                               |
+| `SettingsManager`   | `Manager/SettingsManager.gd`     | Client version, dev login URL/credentials, gameplay tuning constants (e.g. skill-target snap distance) |
+| `ConnectionManager` | `Manager/ConnectionManager.tscn` | Owns the network layer — see [Networking](/docs/client/networking)                                     |
+| `MouseManager`      | `Manager/mouse_manager.gd`       | Mouse interaction state machine — see [Interaction](/docs/client/interaction)                          |
 
 There is deliberately **no** `GameManager` autoload — the game world itself is a plain scene
 (`Game/Game.tscn`), loaded like any other, not a global singleton.
