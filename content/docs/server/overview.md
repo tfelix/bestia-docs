@@ -76,6 +76,7 @@ The server code lives in the `bestia-behemoth` monorepo (Gradle multi-module,
 | [Battle System](/docs/server/battle) | Attack resolution, damage calculators, status effects, and the skill/status scripting hooks |
 | [Questing](/docs/server/quests) | Design document for a quest system — **not implemented** in `zone-server` yet |
 | [Economy Simulation](/docs/server/economy) | Design document for an NPC-side economy — **not implemented** yet |
+| [Townsfolk & Settlement Simulation](/docs/server/townsfolk) | Design document for inhabited settlements: occupations, daily schedules and a damageable economy — **not implemented** yet |
 | [World Generation](/docs/server/world-generation) | The `worldgen` pipeline (tectonics through settlements) and chunk streaming to clients |
 | [Scripting](/docs/server/scripting) | The real skill/status-effect/equipment script registries |
 
@@ -88,12 +89,16 @@ dedicated write-up.
 
 Worth knowing before you go looking for something that isn't there:
 
-- **Quests and player/NPC economy don't exist in code.** The design docs for both are kept because
-  the design work is good, but no quest, trade, or currency system exists in `zone-server` today.
+- **Quests, NPCs and the economy don't exist in code.** The design docs are kept because the design
+  work is good, but there is no quest, no shop, no currency and no town inhabitant in `zone-server`
+  today — settlements are generated in full and stand empty.
 - `AuthenticationSuccess.permissions` is defined in the protobuf schema but never populated — there's
   an explicit `TODO` for it in `ClientMessageHandler`.
 - Account ban status (`AccountStatus`, `bannedUntil` on `login-server`) is modeled but never checked
   during login.
+- A **destroyed building never comes back**: no building kind has a regrowth time, so its divergence
+  row is terminal and the loss survives every future boot. Tracked in
+  [Townsfolk](/docs/server/townsfolk/#known-blockers).
 - Both servers' JWT secrets (and login-server's Ethereum RPC/contract config) are still the
   development placeholder values in `application.yml` — not a concern for local dev, but not
   something to carry into a real deployment unexamined.

@@ -48,7 +48,9 @@ returned to anybody. They are the counterweight to minting.
 A "treasury" is a named sub-account of the NPC gold pool, not a separate pot of magic money:
 
 - **Settlement treasuries** collect the NPC share of local trade and fund local work — defending the town, clearing the
-  roads, the [Defend the City!](/docs/mechanics/questing/#world-events) type of event.
+  roads, the [Defend the City!](/docs/mechanics/questing/#world-events) type of event. They are also what a settlement
+  pays its imports and its rebuilding with; see
+  [Townsfolk & Settlement Simulation](/docs/server/townsfolk/#the-settlement-ledger).
 - **Faction treasuries** collect sacrifices and temple income and fund faction-aligned work.
 - The **world treasury** is the remainder, and it is what backs rare large-scale events when no single settlement could
   pay for them.

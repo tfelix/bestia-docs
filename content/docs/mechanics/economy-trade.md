@@ -26,6 +26,9 @@ night this NPC wealth is **redistributed equally** among all of them. This one m
 economic logic; it exists so that coin keeps circulating into player hands through NPC purchases and quest brokers
 instead of pooling wherever it happened to land.
 
+What a settlement does with its share of that gold — stocking its shops, paying for imports along the roads, and
+rebuilding what a player knocks down — is covered under [Settlements & Townsfolk](/docs/mechanics/settlements/).
+
 That NPC gold is a **closed pool**, not a second faucet: whenever an NPC pays a player — a quest reward, a purchase, a
 world-event payout — the gold must have been earned by some other NPC first. The server-side
 [World Treasury Director](/docs/server/economy/) owns that pool, budgets every NPC payout against it, and adjusts what
