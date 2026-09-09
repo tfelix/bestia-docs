@@ -72,7 +72,7 @@ The server code lives in the `bestia-behemoth` monorepo (Gradle multi-module,
 | [Networking](/docs/server/networking) | The Netty pipeline, the `Envelope` protobuf wire format, and inbound/outbound message dispatch |
 | [Authentication](/docs/server/authentication) | `login-server`'s two login paths, JWT issuance, and the zone-side handoff |
 | [Entity Component System](/docs/server/ecs) | The hand-rolled ECS: `World`, component stores, the parallel-wave scheduler, and area-of-interest sync |
-| [Artificial Intelligence](/docs/server/ai) | The live Utility AI → GOAP → Behavior Tree pipeline that drives NPCs |
+| [Artificial Intelligence](/docs/server/ai) | The live GOAP planner and behaviour trees that drive NPCs, and the perception/drive systems feeding them |
 | [Battle System](/docs/server/battle) | Attack resolution, damage calculators, status effects, and the skill/status scripting hooks |
 | [Questing](/docs/server/quests) | Design document for a quest system — **not implemented** in `zone-server` yet |
 | [Economy Simulation](/docs/server/economy) | Design document for an NPC-side economy — **not implemented** yet |
@@ -94,8 +94,6 @@ Worth knowing before you go looking for something that isn't there:
   an explicit `TODO` for it in `ClientMessageHandler`.
 - Account ban status (`AccountStatus`, `bannedUntil` on `login-server`) is modeled but never checked
   during login.
-- `ai/goap2` is a second, more generic GOAP framework living alongside the live AI pipeline. It's
-  exercised only by tests and is not wired into the running game — see [AI](/docs/server/ai).
 - Both servers' JWT secrets (and login-server's Ethereum RPC/contract config) are still the
   development placeholder values in `application.yml` — not a concern for local dev, but not
   something to carry into a real deployment unexamined.

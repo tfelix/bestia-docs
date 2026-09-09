@@ -1,113 +1,177 @@
 ---
 weight: 300
 title: Artificial Intelligence
-description: The live NPC AI pipeline — perception, Utility AI goal scoring, GOAP planning and behavior-tree execution — and the experimental goap2 framework that isn't wired in yet.
+description: The NPC AI pipeline in zone-server — GOAP chooses and sequences goals, behaviour trees carry each step out, and five ECS systems drive perception, senses, drives, planning and execution.
 ---
 
-NPC AI (`zone-server/.../ai/`) is three ECS systems layered on top of a per-entity `Brain`
-component, run in a fixed order via `@Order`:
+NPC AI lives in `zone-server/.../ai/` and rests on one sentence:
+
+> **GOAP chooses and sequences goals; behaviour trees carry each step out.**
+
+Planning answers *what to do and in what order*. A behaviour tree answers *how to actually do this
+one step* — walk there, swing, wait, lie down. Neither is asked to do the other's job, which is what
+keeps both small.
+
+The package is layered so the bottom is domain-agnostic. `ai/core` knows nothing about creatures,
+towns or combat; a **domain** supplies the vocabulary.
+
+{{< table >}}
+
+| Package                          | Contents                                                                                             |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| `ai/core/state`                  | `StateKey` (typed, with a memory scope and an *observed* flag), immutable `WorldState`, live `Blackboard` with per-fact expiry |
+| `ai/core/behavior`               | The execution contract: `BtNode`, `Status`, `BtContext`                                                |
+| `ai/core/{action,precondition,effect,goal}` | Grounded `Action` (preconditions, effects, cost, a behaviour tree and a posture), `ActionTemplate`, `Goal`, and the priority DSL |
+| `ai/core/planner`                | Forward-A\* `Planner`, `Plan`, and `EffectWriteBack`                                                   |
+| `ai/bt`                          | The tree library — sequence/selector/parallel, inverter/succeeder/repeat/cooldown, a Kotlin DSL, `Locomotion`, and parameterised leaves (`MoveTo`, `FleeFrom`, `Wander`, `UseSkill`, `Wait`, `Sleep`) |
+| `ai/perception`                  | `PerceptionSystem`, plus a pluggable `Sense` mechanism and `SenseSystem`                                |
+| `ai/ecs`                         | The `AiAgent` component, the four systems that drive it, the agent factory and shared memory            |
+| `ai/domain/bestia`               | `BestiaDomain` — the keys, goals and action templates for creatures, plus `ActivityCycle`                |
+| `ai/profile`                     | Archetype YAML under `resources/ai/*.yml`, and the player-facing standing order                         |
+
+{{< /table >}}
+
+# The agent
+
+`AiAgent` is one ECS component holding everything per-NPC: which archetype it came from, its goal
+list, its action resolver, its `Blackboard` memory, an optional shared pack memory, and the plan it
+is currently carrying out.
+
+It deliberately does **not** sync to clients. AI internals never go on the wire; what a player sees
+is the ordinary `Path`, `Position` and `Health` components the behaviour trees mutate, which
+broadcast normally.
+
+Two guards on it are load-bearing:
+
+- **`hasPerceived`** — nothing plans before it has looked at the world. An empty memory is not a
+  neutral starting point for a search; it is a set of unknowns the planner will happily resolve by
+  *assuming* an action's effects. A creature that did not know where it was would plan a journey home
+  purely because arriving somewhere is the only way it could learn a position at all.
+- **`nextThinkTick`** — planning is the expensive half, so agents are spread across ticks rather than
+  all replanning on the same one.
+
+# The pipeline
+
+Five ECS systems, each in its own scheduler wave. They conflict deliberately — every one of them
+declares the agent component as written — and a test pins that arrangement.
 
 ```mermaid
 graph LR
-  A["PerceptionSystem (order 10)"] -->|"writes Brain.latestPercept"| B["AiThinkSystem (order 20)"]
-  B -->|"selects Goal, plans"| C["AiActSystem (order 30)"]
-  C -->|"ticks behavior tree"| D["mutates Path / combat components"]
+  P["PerceptionSystem<br/>every 0.5 s"] --> S["SenseSystem<br/>every 0.5 s"]
+  S --> D["AiDriveSystem<br/>every 1 s"]
+  D --> T["AiThinkSystem<br/>every tick"]
+  T --> A["AiActSystem<br/>every tick"]
+  A --> W["Path / Health / Animation"]
 ```
 
-All three run on `Schedule.EverySeconds(0.5f)` for perception/think and `EveryTick` for act — NPCs
-re-evaluate what to do twice a second, but execute the chosen action every tick.
+**Perception** is the only writer of observations — position, health, whether an enemy is in sight,
+who and where the target is, whether it is night. It may also *clear* a belief its observations
+contradict, but it never asserts one.
 
-# Brain
+**Senses** are the extension point. A sense is a Spring component with its own interval; the sense
+system collects every one, folds their component reads into its own, and runs each on its own
+cadence. Adding one costs no new ECS system and no new scheduler wave. The one that exists today is
+foraging, which turns the world's biome raster into remembered feeding grounds.
 
-`Brain` is the per-NPC component everything hangs off: `profileId` (which `AiProfile` archetype this
-NPC uses), `homePosition`/`wanderRadius`, `latestPercept`, current `targetId`, the active `Goal` and
-`Plan`, and the behavior-tree node currently executing. It deliberately does **not** implement
-`Dirtyable` — AI internals never sync to clients directly; they become visible only through the
-`Path`/`Position`/`Health` components the behavior tree's leaves mutate.
+**Drives** move the appetites that make a creature want anything at all — hunger, tiredness and
+restlessness — integrating over real elapsed time, with sub-integer carry so a slow rate still
+accumulates instead of rounding away to nothing. Tiredness runs *backwards* while asleep, and
+continuously rather than in one jump on waking, which is what makes an interrupted night mean
+something: a creature woken halfway through wakes half-rested.
 
-# Stage 1 — Perception
+**Think** selects a goal every run, but only re-plans when the goal changed or the plan is spent.
 
-`PerceptionSystem` queries `EntityAOIService` for everything within the profile's sight radius,
-builds a list of `Percept`s (position, hostility, health%), and writes a `PerceptionSnapshot` onto
-the `Brain`. It also updates `IndividualMemory` (an `ENEMY_SIGHTING` entry with a 5-second TTL) and
-pushes `AiEvent`s (`ENEMY_SEEN`/`ENEMY_LOST`) that `AiThinkSystem` drains next cycle.
+**Act** ticks the current step's behaviour tree. On success it applies *that one action's* effects
+and advances; on failure it clears the plan so the next think cycle starts over. It also derives the
+`Animation` component from the current step's posture and whether the entity is moving.
 
-# Stage 2 — Think: Utility AI → GOAP
+# Four rules worth knowing before touching any of it
 
-`AiThinkSystem` distills the latest percept into a `DecisionContext` (own health %, whether an enemy
-is in sight, distance to the nearest one), then:
+1. **Perception owns observations; effects own beliefs.** A key marked *observed* may be **simulated**
+   during the A\* search — a walk action has to be able to imagine arriving — but the write-back
+   refuses to persist it afterwards. That distinction is what stops an agent believing what it merely
+   planned.
+2. **Effects apply on observed success**, one action at a time, not for a whole plan at plan time.
+3. **Nothing plans before it has perceived.** See `hasPerceived` above.
+4. **A goal whose desired state already holds is skipped.** So a behaviour that should *persist* while
+   some condition lasts needs a belief key that stays unsatisfied throughout it. A tiredness ceiling
+   alone is already met by a well-rested animal, so without such a key a diurnal creature would amble
+   about all night; a `RESTED` latch, cleared by perception for as long as the resting phase lasts,
+   is what makes it sleep instead.
 
-1. **`UtilityScorer.selectGoal(context)`** scores every goal the NPC's profile lists
-   (`FleeGoal`, `KillEnemyGoal`, `WanderGoal`) against its considerations and response curves, and
-   picks the winner.
-2. If the winning goal changed (or there's no active plan), the **GOAP planner** (`ai/planner/`)
-   is asked for a plan: `planner.plan(worldState, goal.desiredState, actions)`, where `actions` are
-   resolved from the profile's `actionIds` via `GoapActionRegistry`.
+# Restlessness, and why idling is an ordinary goal
 
-A goal is just a name plus a desired world state:
+Wandering has no naturally unsatisfiable state: its desired state either holds before any step is
+taken — so the planner, which only selects goals that are *not* already satisfied, would never pick
+it — or holds forever after one step, so it would never run again. Earlier code worked around that
+with a reflexive fallback outside the goal system entirely.
 
-```kotlin
-@Component
-class KillEnemyGoal : Goal {
-  override val name = "kill_enemy"
-  override val desiredState = WorldState.of(StateKey.TARGET_DEAD to true)
-}
-```
+Modelling boredom as just another rising drive removes the special case. Restlessness climbs while
+the creature has nothing better to do, the wander goal becomes available and genuinely unsatisfied, a
+bout of ambling spends it, and it climbs again. Any domain that needs a floor behaviour should reach
+for the same trick.
 
-The resulting `Plan` is a sequence of GOAP actions (`ApproachTargetAction`, `MeleeAttackAction`,
-`FleeToSafetyAction`, `WanderAction`); each action supplies its own small behavior tree via
-`.behaviorTree()`.
+# Profiles
 
-# Stage 3 — Act: behavior tree execution
+`resources/ai/*.yml` holds one archetype per file, loaded and **fail-fast validated** at boot — a typo
+in a goal or action id surfaces as a boot failure, not as a creature that stands still in production.
 
-`AiActSystem` ticks the current plan action's behavior tree every tick:
-
-```kotlin
-interface BtNode {
-  fun tick(context: BtContext): Status // SUCCESS | FAILURE | RUNNING
-}
-```
-
-Composite nodes (`Selector`, `Sequence`) and leaves (`MeleeAttackLeaf`, `FleeLeaf`, `WanderLeaf`,
-`MoveToTargetLeaf`, `InMeleeRangeLeaf`) live under `ai/behavior/`. `SUCCESS` advances
-`Brain.currentPlan` to the next action (or clears the plan if it was the last one); `FAILURE` clears
-the plan outright so the next think cycle replans from scratch; `RUNNING` just keeps executing.
-Leaves are what actually move the needle for players — they mutate the `Path`/combat components
-that are `Dirtyable` and broadcast normally.
-
-# AI profiles
-
-`AiProfileRegistry` loads every `classpath:ai/*.yml` archetype at boot (`@PostConstruct`) and
-**fail-fast validates** that every referenced goal, action, consideration input and response curve
-resolves to an actually-registered Spring bean — a typo in a profile YAML surfaces at boot, not at
-runtime:
+YAML **selects and tunes**; it cannot express behaviour:
 
 ```yaml
-# zone-server/src/main/resources/ai/aggressive-melee.yml (shape, not verbatim)
-identifier: aggressive-melee
+identifier: passiv_day_active
+faction: critters
+activity_cycle: diurnal        # sleeps at night
 perception:
-  sightRadius: 12
+  sight_radius: 7
+  aggro_memory_seconds: 30     # how long it keeps chasing whoever hit it
+wander_radius: 10
+hunger_threshold: 60
+aggression: 60
 goals:
-  - name: kill_enemy
-    considerations: [...]
-actionIds: [approach_target, melee_attack, flee_to_safety, wander]
+  - { name: KillAttacker }
+  - { name: Sleep }
+  - { name: EatVegetation }
+  - { name: Wander }
+actions: [approachTarget, attack, walkToVegetation, eatVegetation, sleep, wander]
+attacks:
+  - { id: bite, range: 1, cooldown_seconds: 2.0 }
 ```
 
-# `ai/goap2`: an experimental framework, not shipped behavior
+A goal's *priority formula* — the considerations and response curves that scale it with hunger,
+health or aggression — lives in Kotlin next to the goal, in a small DSL. That is a deliberate
+narrowing of an older format which let YAML assemble considerations out of input/curve/weight triples
+resolved through two bean registries. It costs a rebuild to retune a curve and buys type safety, one
+fewer indirection when a mob misbehaves, and a much smaller surface to validate — which matters most
+for player-supplied configuration, where the only thing a player can move is a base priority and
+every value has to be clamped.
 
-`ai/goap2/` is a **second**, more generic GOAP implementation living alongside the pipeline above —
-its own `Planner`, `Action`/`ActionTemplate`, `Precondition`/`Effect`, `Blackboard`/`WorldState`, plus
-a bestia-specific domain (`goap2/bestia/BestiaDomain.kt`) with action templates for wandering,
-eating vegetation, sleeping, returning home and attacking.
+A profile's numbers are written into the agent's memory as permanent facts when it is attached, so
+goal availability and priority read them exactly the way they read hunger or position. There is one
+place each number lives.
 
-It is **deliberately kept Spring-free** — `BestiaAiProfileLoader`'s doc comment says so explicitly,
-unlike `AiProfileRegistry`, which is `@Service` + `@PostConstruct` — and none of its classes are
-Spring beans referenced by `AiThinkSystem`, `AiActSystem`, or `EcsConfiguration`. It's exercised only
-by scenario tests (`ai/goap2/bestia/AggroScenarioTest`, `NonAggroScenarioTest`, `SharedMemoryTest`)
-plus a sibling test-only `ai/goap/MarketDomain.kt` that simulates a villager buying food at a market
-purely to validate the generic planner — **not** a player-facing economy feature, despite the name.
+Three archetypes ship today: an aggressive melee hunter that flees when hurt, a passive grazer that
+runs early, and a day-active grazer that never flees but comes after anyone who hits it. The absence
+of a goal *is* the temperament — a creature cannot want what its profile does not list.
 
-**Don't confuse the two**: NPCs in the running game are driven entirely by
-`AiThinkSystem`/`AiActSystem` and the profile-driven pipeline above. `goap2` is in-progress design
-work for a more reusable planner, worth knowing about so you don't go looking for its bestia domain
-in a live world and wonder why nothing uses it.
+# Player-owned creatures
+
+A player's own bestia carries a standing order alongside its archetype: an idle stance plus two
+clamped knobs. A stance **narrows** the archetype's goals and never widens them — it can switch off
+foraging, but it cannot teach a creature to hunt if its species never could. Player-controlled
+entities are skipped by the think system entirely.
+
+# Adding to it
+
+**A sense** (something creatures notice): implement the interface as a Spring component, give it an
+interval, and declare the components it reads. Write facts through the sense context, which routes to
+the individual, pack or world board according to the key's memory scope.
+
+**A behaviour**: add a state key, a goal with its priority formula, and an action template that
+grounds concrete actions *together with their behaviour trees*; then name the goal and action ids in a
+profile.
+
+**A whole new kind of NPC**: that is a second *domain*, not a second pipeline. See
+[Townsfolk & Settlement Simulation](/docs/server/townsfolk/), which adds one for town inhabitants and
+describes the small seam in the agent factory, the drive system and the profile registry that lets two
+domains coexist.
