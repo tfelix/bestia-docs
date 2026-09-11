@@ -175,3 +175,7 @@ profile.
 [Townsfolk & Settlement Simulation](/docs/server/townsfolk/), which adds one for town inhabitants and
 describes the small seam in the agent factory, the drive system and the profile registry that lets two
 domains coexist.
+
+**A way for an NPC to say something**: that is not part of this pipeline at all. AI internals never
+go on the wire, and what an NPC knows and can be asked is derived separately — see
+[Dialogue & NPC Conversation](/docs/server/dialogue/).

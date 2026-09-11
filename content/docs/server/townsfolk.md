@@ -325,7 +325,9 @@ per-channel and explicable to a player: a perfect siege leaves a town wretched, 
 generator, and the moment the runtime writes them there are two disagreeing world models. Instead,
 in order: price rises to its ceiling; imports surge if the roads and the money exist; a hunger
 factor throttles *non-food* capacity only, so workers are hungry and workshops idle while bread is
-still baked; and a distress flag makes the state legible to GM tooling and future dialogue.
+still baked; and a distress flag makes the state legible to GM tooling and to
+[dialogue](/docs/server/dialogue/), which reads a town's condition as something its people can be
+asked about.
 
 There is no absorbing state, because every damage channel recovers on something a player cannot
 suppress:
