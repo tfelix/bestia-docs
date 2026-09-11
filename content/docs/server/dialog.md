@@ -1,6 +1,7 @@
 ---
 weight: 350
-title: Dialogue & NPC Conversation
+title: Dialog & NPC Conversation
+aliases: ["/docs/server/dialogue/"]
 description: "Design document for talking to NPCs — a stateless conversation derived per request, a knowledge model that hands out the world's history one holder at a time, and a wire that carries translation tokens instead of sentences"
 ---
 
@@ -18,11 +19,18 @@ cannot be purely derived. It has to be **derived per NPC rather than stored**, b
 hundreds of thousands of people in it. And it has to be **translatable**, which forbids sentences on
 the wire.
 
+A note on spelling before anything else: this page says _dialog_, as the code does — the package
+is `zone-server/.../dialog/`, the catalog is `dialogs.yml`, the translation source is `dialogs.csv`.
+The one exception is the event voicing file, `townsfolk/dialogue.yml`, which is quoted under its
+real name.
+
 # What already runs
 
 More than you would expect. The one-shot popup path is complete, and it is complete in exactly the
 shape this design needs: **the server sends an id and typed arguments, and the client owns the
 text.**
+
+{{< table >}}
 
 | Piece                        | Where                               | What it does                                                                                      |
 | ---------------------------- | ----------------------------------- | ------------------------------------------------------------------------------------------------- |
@@ -34,6 +42,8 @@ text.**
 | `DialogManager`              | `bestia-client/src/Manager/`        | Autoload queue, one dialog at a time, holds behind a loading screen                               |
 | `DialogText`                 | `bestia-client/src/Game/UI/Dialog/` | Resolves `DIALOG_<id>_TEXT` through `tr()`, then fills `{named}` placeholders                     |
 | `dialogs.csv`                | `bestia-client/src/Localization/`   | The text, per locale, compiled to a `.translation` at import                                      |
+
+{{< /table >}}
 
 Two properties of that path are load-bearing here and are worth naming, because the rest of this
 page leans on both.
@@ -73,7 +83,7 @@ The client end is a stub in the chat window — see
 
 # A conversation is a function, not a tree
 
-The naive model is a dialogue tree per NPC: nodes, edges, and a cursor into it. That model fails
+The naive model is a dialog tree per NPC: nodes, edges, and a cursor into it. That model fails
 this world on the first requirement. A generated world has hundreds of settlements and hundreds of
 thousands of inhabitants, and storing a tree for each is the table
 [townsfolk](/docs/server/townsfolk/#persistence) already refuses to write for a much smaller reason.
@@ -190,7 +200,7 @@ priest gets word from other temples, ×2; a farmer hears the next valley, ×0.7;
 It is wrong, and the failure is structural rather than a matter of tuning. **A multiplier is a total
 order.** Whatever the numbers, one trade ends up a wholesale replacement for every other, a player
 works that out inside one village, and from then on every town in the world is one conversation with
-the innkeeper. The rest of the population becomes scenery that happens to have a dialogue box.
+the innkeeper. The rest of the population becomes scenery that happens to have a dialog box.
 
 One warning about how that is _checked_, learned by writing the check wrong first. The obvious test —
 no trade's memories are a superset of another's — does not measure a gradient at all. It measures
@@ -390,7 +400,7 @@ the species' level, because without a threshold every rat killed outside a villa
 single-holder memory a player was meant to hunt for is buried under vermin.
 
 The join that makes this cheap is that **a rumour ages into the same shape as a chronicle memory**.
-Both become a `Knowledge`: a key, typed slots, an importance, a time, a locality. The dialogue layer
+Both become a `Knowledge`: a key, typed slots, an importance, a time, a locality. The dialog layer
 never learns which producer a memory came from, and the assignment model above applies to a rumour
 unchanged — so a rumour can have exactly one holder too, and _somebody saw it happen_ falls out for
 free. Share is read off the rumour's **current** importance, which decays, so the whole arc comes for
@@ -412,14 +422,14 @@ disagreeing world model.
 
 # Saying it in another language
 
-`SettlementLoreService` records generated prose as **untranslatable**, and within
+`SettlementLoreService` records generated prose as **untranslatable by construction**, and within
 its own terms that is correct. This design escapes it by changing the terms.
 
 ## Nothing on the wire is a sentence
 
 `HistoryEvent.detail` is a rendered English line, baked at generation time. It is deliberately
 stored — a reader should not need a second copy of every name and relationship — and it stays,
-for the chronicle tool and for logs. **Dialogue does not use it.**
+for the chronicle tool and for logs. **Dialog does not use it.**
 
 A memory is re-derived from the parts instead:
 
@@ -569,7 +579,7 @@ key  = HISTORY_TRAVELLER_LOST_2
 args = { figure: Name("Aelred Ashfoot"), place: Name("Karth"), ago: Token("AGO_AGES") }
 ```
 
-1. The client resolves `HISTORY_TRAVELLER_LOST_2` through `tr()` against its Polish translation,
+5. The client resolves `HISTORY_TRAVELLER_LOST_2` through `tr()` against its Polish translation,
    resolves the nested `AGO_AGES` token the same way, and substitutes the two names unchanged —
    producing a Polish sentence about a Karthian place name and a Karthian person, which is exactly
    right, because neither of those words belongs to English either.
@@ -598,9 +608,9 @@ catalog validator and the occupation coverage check already follow. All of them 
 against the client's `dialogs.csv` in both directions — a declared line with no text, and a text row
 belonging to nothing:
 
-1. **Every declared key has a row**, for all three namespaces (`DIALOG_…`, `HISTORY_…`,
+4. **Every declared key has a row**, for all three namespaces (`DIALOG_…`, `HISTORY_…`,
    `RUMOUR_…` and `TALK_SMALL_…`).
-2. **No phrasing uses a placeholder its producer cannot supply.** One-directional on purpose: a
+5. **No phrasing uses a placeholder its producer cannot supply.** One-directional on purpose: a
    sentence is allowed to ignore a slot its kind offers — not every line about a battle wants the
    year — but using one nothing sends renders a literal brace at a player, in one locale, on one
    seed in twenty. Small talk is checked the other way round: it takes no arguments at all, so any
@@ -608,7 +618,7 @@ belonging to nothing:
 
 **In tests**, for the things a catalog cannot know:
 
-1. **Every declared slot is filled from real chronicles.** `HistoryLineTest` sweeps generated worlds
+6. **Every declared slot is filled from real chronicles.** `HistoryLineTest` sweeps generated worlds
    rather than a fixture, which is what found that an eruption happens to a _mountain_ and names no
    settlement, nobody and nowhere — so a line about one cannot say where it was, however much it
    would like to.
@@ -674,21 +684,30 @@ panel seems to want a session, that is a sign it is being built wrong.
 
 The first one is now the real one; townsfolk identity, which used to head this list, is done.
 
-1. **The client cannot tell an NPC from a wolf.** Identification is by visual node class and there
+1. **The conversation panel has never been run.** It is written and committed; nothing has compiled
+   or executed it. See [Building the conversation UI](#building-the-conversation-ui) below, which is
+   the checklist for the first person to open the project.
+2. **The client cannot tell an NPC from a wolf.** Identification is by visual node class and there
    is no NPC kind on the wire, so the context menu offers "Talk to" on any creature. The server
    answers nothing for a target that cannot talk, so the cost is a wasted message rather than a
    wrong answer — but it is the thing to fix before the panel is polished.
-2. **Some generated names bake English into themselves.** Settlement, civilisation and person names
+3. **Entities have no display name on the wire.** The AI agent's name is the archetype string —
+   every townsperson is `townsfolk_commoner` — so `ConversationSMSG` carries a speaker name of its
+   own. That field should go the day a real display name exists.
+4. **Some generated names bake English into themselves.** Settlement, civilisation and person names
    are invented stems and translate for free. But a site is rendered as "the barrow of X", a region
    as "X Downs", an artifact as "the Hammer of X" — the form word is English. Those names are only
    half-translatable until the form becomes a `Token` beside a `Name`. Mechanical to fix, and it
-   should be fixed before a site is quoted in dialogue.
-3. **Chat is not translated**, so an NPC line must never be delivered through it, however convenient
+   should be fixed before a site is quoted in dialog.
+5. **There is only one locale.** All four translation sources are `keys,en`. Adding a language means
+   a column _and_ appending the compiled `.translation` to the client's translation array — the
+   first without the second silently changes nothing.
+6. **Chat is not translated**, so an NPC line must never be delivered through it, however convenient
    that looks during development.
-4. **The chronicle has no spatial index.** The nearby-event query is a linear scan over the whole
+7. **The chronicle has no spatial index.** The nearby-event query is a linear scan over the whole
    log. That is fine once per settlement and wrong once per conversation, which is why the
    assignment is memoised rather than computed on open.
-5. **The settlement door lookup has a latent unit bug.** The townsfolk spawn command compares
+8. **The settlement door lookup has a latent unit bug.** The townsfolk spawn command compares
    building doors in metres against a position in tiles, skipping the voxel-size conversion its two
-   sibling call sites both apply. Harmless only while the voxel size is exactly one metre. Dialogue
+   sibling call sites both apply. Harmless only while the voxel size is exactly one metre. Dialog
    will reuse the same lookup for directions, so it should be fixed first.

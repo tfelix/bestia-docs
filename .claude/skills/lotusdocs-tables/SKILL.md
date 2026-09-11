@@ -1,6 +1,6 @@
 ---
 name: lotusdocs-tables
-description: How tables work in this Lotus Docs Hugo site — the {{< table >}} shortcode, its styling options, and what "responsive" actually does (and doesn't do). Use when authoring, styling, or fixing markdown tables under content/docs, or when asked about responsive/dynamic tables.
+description: How tables work in this Lotus Docs Hugo site — plain markdown tables by default (no {{< table >}} wrapper unless asked), the {{< table >}} shortcode, its styling options, and what "responsive" actually does (and doesn't do). Use when authoring, styling, or fixing markdown tables under content/docs, or when asked about responsive/dynamic tables.
 ---
 
 # Lotus Docs Tables
@@ -9,7 +9,14 @@ This site uses the [Lotus Docs](https://github.com/colinwilson/lotusdocs) theme 
 module (see `hugo.yaml`). Plain markdown tables render with minimal styling; the theme's
 `table` shortcode opts into Bootstrap 5 table styling.
 
-## Usage
+## Default: no shortcode
+
+**Write tables as plain markdown pipe tables, with no `{{< table >}}` … `{{< /table >}}`
+wrapper.** Only use the shortcode when the user explicitly asks for it (or for a specific
+styling option below). When editing a page, don't wrap tables that aren't wrapped. Leave
+existing wrappers alone unless the user asks you to remove them.
+
+## Using the shortcode (only when asked)
 
 Wrap a normal markdown table in the shortcode. The first positional argument is a
 space-separated list of Bootstrap table classes:
@@ -23,7 +30,8 @@ space-separated list of Bootstrap table classes:
 ```
 
 With no argument, `{{< table >}}` gives a bordered table with a borderless floating header.
-This is the form used throughout `content/docs/mechanics/`.
+Older pages (e.g. `content/docs/mechanics/`) still use this form; that isn't a reason to
+copy it into new tables.
 
 ## Supported options
 
@@ -74,7 +82,10 @@ that directory) and emit the wrapper div instead of putting the class on `<table
 
 ## Guidance for authoring
 
-- Default to bare `{{< table >}}` to match the rest of the docs.
-- Reach for `table-striped` or `table-sm` on long reference tables where row scanning matters.
+- Default to a plain markdown table with no shortcode (see above).
+- If the user asks for styling, reach for `table-striped` or `table-sm` on long reference
+  tables where row scanning matters.
 - Don't add `table-responsive` to 2-column tables — it buys nothing and is misleading.
-- Keep the markdown pipe table itself well-aligned; the surrounding docs do this consistently.
+- Keep the markdown pipe table column-aligned (padded cells). The markdown formatter
+  (Markdown Table Prettifier) does this on save, and markdownlint's MD060 `aligned` rule
+  flags tables that aren't aligned.

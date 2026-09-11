@@ -3,6 +3,7 @@
   "python-envs.pythonProjects": [],
   "[markdown]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "files.insertFinalNewline": true,
     "editor.formatOnSave": true
   }
 }
