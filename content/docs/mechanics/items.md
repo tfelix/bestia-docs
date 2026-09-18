@@ -376,7 +376,7 @@ temporary buffs and the Craftsman's own status values are added:
 
 ```kotlin
 baseChance = 0.90 - max(0, itemLevel - 10) * 0.015
-chance = clamp(baseChance + carpentryBonus + masterCraftsmanBonus + buffBonus + floor(DEX / 10) * 0.02 + floor(WIL / 10) * 0.01, 0.01, 1.0)
+chance = clamp(baseChance + carpentryBonus + masterCraftsmanBonus + buffBonus + circleBonus + floor(DEX / 10) * 0.02 + floor(WIL / 10) * 0.01, 0.01, 1.0)
 ```
 
 Levels 1-10 all share the same `90%` base chance, so [Carpentry](/docs/mechanics/master/#skill-carpentry) alone gets
@@ -387,6 +387,7 @@ needs real investment across skill, buffs and stats to be worth attempting at al
 - [Carpentry](/docs/mechanics/master/#skill-carpentry) rank — up to **+50%** at Lv. 10.
 - [Master Craftsman](/docs/mechanics/master/#skill-master-craftsman) rank — up to **+10%** at Lv. 5.
 - Temporary buffs (a support consumable, an ally's blessing, …) — typically **+5% to +10%** while active.
+- A [Mana Circle](/docs/mechanics/master/#mana-circles) — up to **+45%** with six participants on mana-rich ground.
 - **DEX** — `+2%` per 10 points (see [Status Values](/docs/mechanics/statusvalues/#dexterity---dex)).
 - **WIL** — `+1%` per 10 points (see [Status Values](/docs/mechanics/statusvalues/#willpower---wil)).
 
@@ -399,29 +400,29 @@ the ceiling, it never flattens the curve, so the chance keeps eroding the higher
 <!-- prettier-ignore -->
 {{< chart >}}
 {
-  type: 'line',
-  data: {
-    labels: Array.from({length: 150}, (_, i) => i + 1),
-    datasets: [
-      {
-        label: 'Base Chance (no bonuses)',
-        function: function(x) { return Math.max(0.01, 0.90 - Math.max(0, x - 10)*0.015); },
-        fill: false
-      },
-      {
-        label: 'Fully Maxed (Carpentry+Master Craftsman+Buff+DEX 150+WIL 50)',
-        function: function(x) { var base = 0.90 - Math.max(0, x - 10)*0.015; return Math.max(0.01, Math.min(1, base + 1.05)); },
-        fill: false
-      }
-    ]
-  },
-  options: {
-    responsive: true,
-    scales: {
-      x: { type: 'linear', title: { display: true, text: 'Item Level' }, min: 1 },
-      y: { title: { display: true, text: 'Success Chance' }, max: 1.0, min: 0 }
-    }
-  }
+type: 'line',
+data: {
+labels: Array.from({length: 150}, (_, i) => i + 1),
+datasets: [
+{
+label: 'Base Chance (no bonuses)',
+function: function(x) { return Math.max(0.01, 0.90 - Math.max(0, x - 10)*0.015); },
+fill: false
+},
+{
+label: 'Fully Maxed (Carpentry+Master Craftsman+Buff+DEX 150+WIL 50)',
+function: function(x) { var base = 0.90 - Math.max(0, x - 10)*0.015; return Math.max(0.01, Math.min(1, base + 1.05)); },
+fill: false
+}
+]
+},
+options: {
+responsive: true,
+scales: {
+x: { type: 'linear', title: { display: true, text: 'Item Level' }, min: 1 },
+y: { title: { display: true, text: 'Success Chance' }, max: 1.0, min: 0 }
+}
+}
 }
 {{< /chart >}}
 
@@ -438,7 +439,7 @@ from a **base chance that falls with the level of the ore** being worked:
 
 ```kotlin
 baseChance = 0.30 - max(0, oreLevel - 10) * 0.01
-chance = clamp(baseChance + oreRefinementBonus + fuelBonus + floor(STR / 10) * 0.02 + floor(WIL / 10) * 0.01, 0.01, 1.0)
+chance = clamp(baseChance + oreRefinementBonus + fuelBonus + circleBonus + floor(STR / 10) * 0.02 + floor(WIL / 10) * 0.01, 0.01, 1.0)
 ```
 
 The two simplest ores — [Tin](/docs/mechanics/item-list/#tin-ore) and [Copper](/docs/mechanics/item-list/#copper-ore) —
@@ -450,6 +451,7 @@ doubles. Every ore level above 10 removes another 1%, so the base reaches `0%` a
 - [Ore Refinement](/docs/mechanics/master/#skill-ore-refinement) rank — up to **+90%** at Lv. 3.
 - **Fuel** — [Coal](/docs/mechanics/item-list/#coal) is the reference fuel at `±0%`;
   [Charcoal](/docs/mechanics/item-list/#charcoal) burns cooler and costs `-10%`.
+- A [Mana Circle](/docs/mechanics/master/#mana-circles) — up to **+45%** with six participants on mana-rich ground.
 - **STR** — `+2%` per 10 points; working the bellows and turning a heavy charge is physical labour
   (see [Status Values](/docs/mechanics/statusvalues/#strength---str)).
 - **WIL** — `+1%` per 10 points; holding a furnace at temperature for hours is a matter of patience
@@ -469,29 +471,29 @@ clamped, so an attempt is never above 100% nor entirely impossible.
 <!-- prettier-ignore -->
 {{< chart >}}
 {
-  type: 'line',
-  data: {
-    labels: Array.from({length: 140}, (_, i) => i + 1),
-    datasets: [
-      {
-        label: 'Base Chance (no bonuses)',
-        function: function(x) { return Math.max(0.01, 0.30 - Math.max(0, x - 10)*0.01); },
-        fill: false
-      },
-      {
-        label: 'Ore Refinement Lv. 3 + Coal + 60 STR/30 WIL',
-        function: function(x) { var base = 0.30 - Math.max(0, x - 10)*0.01; return Math.max(0.01, Math.min(1, base + 1.05)); },
-        fill: false
-      }
-    ]
-  },
-  options: {
-    responsive: true,
-    scales: {
-      x: { type: 'linear', title: { display: true, text: 'Ore Level' }, min: 1 },
-      y: { title: { display: true, text: 'Success Chance' }, max: 1.0, min: 0 }
-    }
-  }
+type: 'line',
+data: {
+labels: Array.from({length: 140}, (_, i) => i + 1),
+datasets: [
+{
+label: 'Base Chance (no bonuses)',
+function: function(x) { return Math.max(0.01, 0.30 - Math.max(0, x - 10)*0.01); },
+fill: false
+},
+{
+label: 'Ore Refinement Lv. 3 + Coal + 60 STR/30 WIL',
+function: function(x) { var base = 0.30 - Math.max(0, x - 10)*0.01; return Math.max(0.01, Math.min(1, base + 1.05)); },
+fill: false
+}
+]
+},
+options: {
+responsive: true,
+scales: {
+x: { type: 'linear', title: { display: true, text: 'Ore Level' }, min: 1 },
+y: { title: { display: true, text: 'Success Chance' }, max: 1.0, min: 0 }
+}
+}
 }
 {{< /chart >}}
 

@@ -57,6 +57,36 @@ Skillpoints spent within a subtree (e.g. Blacksmith, Priest, Wizard, ...) do mor
 
 {{< alert context="info" text="This is independent of the 5 Lv. requirement that unlocks access to a subtree in the first place - that threshold is reached by investing in the parent tree, while being trained requires 5 points spent inside the subtree itself." />}}
 
+# Mana Circles
+
+Almost every master skill that can fail rolls against a success chance: forging a blade, cutting a rune slot, binding an
+enchantment, transmuting matter, inscribing a spell. Skill rank, status values and equipment all feed that roll, and a
+lone master eventually hits the ceiling of what those three can buy.
+
+A **Mana Circle** is how a group pushes past it. It is a placeable prop - a ring of
+[Mana Concentrate](/docs/mechanics/item-list/#mana-concentrate) laid into the ground - that anyone standing inside
+contributes to, whatever their profession. The rite is started by the master who owns the skill; everyone else is simply
+present, and presence is the whole contribution.
+
+```text
+Circle Bonus = 5 × Participants × ManaFactor   [Participants ≤ 6, caster included]
+```
+
+`ManaFactor` comes from the local [mana concentration](/docs/mechanics/environment/#mana-concentration): `0.5` in a
+drained region, `1.0` in an ordinary one, `1.5` where mana runs thick. A full circle of six in a mana-rich place is
+therefore worth `+45%` on the roll - more than any single skill in this page grants - while the same six people standing
+on drained ground get `+15%` and would have been better off scouting a different site first.
+
+Three rules keep it from becoming a formality:
+
+- The **mana cost of the rite is split evenly** across every participant, so a circle makes expensive rites affordable as
+  well as more likely to land. A participant who cannot pay their share drops out and the circle recalculates.
+- Every participant is **locked out of contributing again for 5 minutes**, and cannot act while the rite runs. Standing
+  in someone's circle is a real cost, not a favor that takes a second.
+- A circle only helps a **success roll**. It does nothing for damage, healing, movement or anything else a skill does.
+
+{{< alert context="info" text="This is the intended answer to \"my crafting rolls have plateaued\": find other players, not better gear. It is also why the highest-level artifacts are expected to be group work - see the [Encourage Social Interaction](/docs/mechanics/overview/#encourage-social-interaction) principle." />}}
+
 # Skill Trees
 
 The following trees exist, they are organized in subtrees. These form the skill trees of a master. After a level up one skill point can be spend to increase a single level of a skill.
@@ -942,12 +972,12 @@ then where it is, and finally what it actually does. Local [mana concentration](
 adds to the range in a mana-rich region and eats into it in a drained one. A target hidden under
 [Suppress Aura](#skill-suppress-aura) stays silent.
 
-| Lv. | Range | What It Reveals                                           |
-| --- | ----- | --------------------------------------------------------- |
-| 1   | 10m   | That something nearby carries mana                        |
-| 2   | 20m   | Direction and rough strength of each source               |
-| 3   | 30m   | The element the mana belongs to                           |
-| 4   | 40m   | The exact spell bound to an item or place                 |
+| Lv. | Range | What It Reveals                                                                       |
+| --- | ----- | ------------------------------------------------------------------------------------- |
+| 1   | 10m   | That something nearby carries mana                                                    |
+| 2   | 20m   | Direction and rough strength of each source                                           |
+| 3   | 30m   | The element the mana belongs to                                                       |
+| 4   | 40m   | The exact spell bound to an item or place                                             |
 | 5   | 50m   | Who bound it, and what trigger a [Spell Binding](#skill-spell-binding) is waiting for |
 
 {{< /skill >}}
@@ -1129,7 +1159,7 @@ Applies to the next spell cast by the target ally within `30s`.
 
 {{< skill name="Cure" maxLevel="1" requires="Heal Lv. 2"
     type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
-    description="Lifts the fog of Silence, Blindness and Confusion from a target's mind with a touch." >}}
+    description="Lifts the fog of [Silence, Blindness and Confusion](/docs/mechanics/statusvalues/#status-effects) from a target's mind with a touch." >}}
 {{< /skill >}}
 
 {{< skill name="Aqua Benedicta" maxLevel="1" requires="Cure Lv. 1"
@@ -1272,7 +1302,7 @@ Higher levels extend how long the veil holds.
 
 {{< skill name="Status Recovery" maxLevel="1" requires="Cure Lv. 1"
     type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
-    description="Where Cure lifts the fog from a mind, Status Recovery breaks the ice, stone and cramp from a body - lifting Stun, Freeze and Stone Curse in a single rite." >}}
+    description="Where Cure lifts the fog from a mind, Status Recovery breaks the ice, stone and cramp from a body - lifting [Stun, Freeze and Petrify](/docs/mechanics/statusvalues/#status-effects) in a single rite." >}}
 {{< /skill >}}
 
 {{< skill name="Aspersio" maxLevel="3" requires="Aqua Benedicta Lv. 1"
@@ -1978,7 +2008,7 @@ graph TD
 
 {{< skill name="Stone Curse" maxLevel="5" requires="Safety Wall Lv. 3"
     type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
-    description="Encases a target in solid stone, petrifying them where they stand. Requires 1 [Red Mana Crystal](/docs/mechanics/item-list/#red-mana-crystal) per cast." >}}
+    description="Encases a target in solid stone, applying [Petrify](/docs/mechanics/statusvalues/#status-effects) where they stand. Requires 1 [Red Mana Crystal](/docs/mechanics/item-list/#red-mana-crystal) per cast." >}}
 
 | Lv. | Petrify Chance | Duration |
 | --- | -------------- | -------- |
@@ -1992,7 +2022,7 @@ graph TD
 
 {{< skill name="Suppress Magic" maxLevel="5" requires="Stone Curse Lv. 2"
     type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
-    description="A ward of counter-mana thrown over a target mid-incantation, interrupting whatever spell they were weaving and leaving their casting muddled for a short time after." >}}
+    description="A ward of counter-mana thrown over a target mid-incantation, interrupting whatever spell they were weaving and leaving them [Silenced](/docs/mechanics/statusvalues/#status-effects) for a short time after." >}}
 
 | Lv. | Interrupt Chance | Silence Duration |
 | --- | ---------------- | ---------------- |
@@ -2396,7 +2426,7 @@ The poisons themselves are not made here - they are ordinary Alchemist goods, br
     type="Active" manaCost="24" castTime="2s" cooldown="None" duration="5 min" range="2" target="Ally"
     description="Works a brewed poison into the edge of a weapon so every strike carries a chance to leave it behind. Consumes one Alchemist-brewed poison per cast." >}}
 
-Applies the [Poison](/docs/mechanics/statusvalues/#poison) status effect on hit. The poison item decides how hard it
+Applies the [Poison](/docs/mechanics/statusvalues/#status-effects) status effect on hit. The poison item decides how hard it
 bites; this skill decides how often it lands.
 
 | Lv. | Poison Chance per Hit |
@@ -2525,7 +2555,7 @@ Higher levels extend the duration and the range at which enemies can be provoked
 
 {{< skill name="Bash" maxLevel="5" requires="Heavy Weapon Mastery Lv. 3"
     type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
-    description="A single committed swing that trades finesse for raw impact, with a chance to stagger whatever it lands on." >}}
+    description="A single committed swing that trades finesse for raw impact, with a chance to [Stagger](/docs/mechanics/statusvalues/#status-effects) whatever it lands on." >}}
 
 | Lv. | Bonus Damage | Stagger Chance |
 | --- | ------------ | -------------- |
