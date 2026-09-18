@@ -175,7 +175,7 @@ FLEE = floor((100 + BaseLv + AGI + Floor(WIL ÷ 5) + FleeModSum) * FleeModPerc)
 
 ## Critical Hit - CRIT
 
-The Critical Hit rating, which increases damage by (40 + CRIT)%. Offensive attacks do not take CRIT into account except for a few exceptions. Critical Hit also ignores Flee rate but not [Hard Defense](/docs/server/battle#value-hard_def). Critical Hit Rate is doubled when wielding a Katar type weapon. Critical Hit rate is reduced based on the enemy's Critical Hit Shield.
+The Critical Hit rating, which increases damage by (40 + CRIT)%. Offensive attacks do not take CRIT into account except for a few exceptions. Critical Hit also ignores Flee rate but not [Hard Defense](/docs/server/battle#what-actually-deals-damage-today). Critical Hit Rate is doubled when wielding a Katar type weapon. Critical Hit rate is reduced based on the enemy's Critical Hit Shield.
 
 ```text
 CRIT = WIL ÷ 3 + Bonus
@@ -185,7 +185,7 @@ CRIT = WIL ÷ 3 + Bonus
 
 ## Soft Defense - SDEF
 
-Soft defense, also known as "VIT" defense, reduces incoming physical damage directly, on top of the [hard defense](/docs/server/battle#value-hard_def) granted by armor and other equipment.
+Soft defense, also known as "VIT" defense, reduces incoming physical damage directly, on top of the [hard defense](/docs/server/battle#what-actually-deals-damage-today) granted by armor and other equipment.
 
 ```text
 SoftDEF = (floor(VIT + (STR / 5) + (AGI / 5) + (BaseLv / 4)) + SoftDefModAdditive) × SoftDefMod%

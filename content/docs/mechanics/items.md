@@ -104,7 +104,7 @@ The upgrade chances can be increased by leveling up the relevant [Master Skill](
 
 # Armor Refinement
 
-A refined armor grants increased **[hard defense](/docs/server/battle#value-hard_def)**. Each refinement level adds 10 defense points. All defense points from equipment, refinement, buffs and skills are summed up and then converted into a hard-defense percentage:
+A refined armor grants increased **[hard defense](/docs/server/battle#what-actually-deals-damage-today)**. Each refinement level adds 10 defense points. All defense points from equipment, refinement, buffs and skills are summed up and then converted into a hard-defense percentage:
 
 ```kotlin
 val dp = defensePoints
@@ -600,7 +600,7 @@ If a player killed a mob, the loot will be protected for 30 seconds so they can 
 ## Weight Limit
 
 Items weight is given by units of about 1kg per unit. The smallest division is 0.1 units which approximates to 100gr.
-The maximum amount a Bestia can carry is dependent on its strength and its vitality. The [Maximize Carry Capacity](/docs/mechanics/master/#skill-maximize-carry-capacity) and [Enlarge Weight Limit](/docs/mechanics/master/#skill-enlarge-weight-limit) skills can increase the carriable weight limit. The formula is given as:
+The maximum amount a Bestia can carry is dependent on its strength and its vitality. The [Maximize Carry Capacity](/docs/mechanics/master/#skill-maximize-carry-capacity) skill raises the carriable weight limit of the Master and of every Bestia alike. The formula is given as:
 
 ```kotlin
 weightLimit = STR / 2 + VIT / 5 + 15 + LEVEL / 5
