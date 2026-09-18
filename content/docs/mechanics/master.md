@@ -16,11 +16,14 @@ Some of this account skills can be used by every Bestia in posession of the mast
 
 {{< alert context="info" text="Don't confuse this skill system with the regular attacks a Bestia is learning by item usage or just by level up. Those are simply called attacks." />}}
 
-- The number of total skill ranks inside a tree should **be between 70-80**
 - The possible rank counts of a skill should be: **1, 3, 5 and 10**
+- Budget skills per **branch**, not per tree. A branch is a chain of 3-6 dependent skills that a player buys as a unit, and holds **15-45 ranks** - that is what one career can realistically finish.
+- Reaching the capstone of a single branch must cost **no more than 60 skill points**, so a career can finish one branch and still dabble in a second.
+- A **base tree** holds **10-25 ranks**. It teaches the basics and gates its sub-trees.
+- A **sub-tree** carries **2-6 branches**. Crafting and gathering sub-trees sit at the low end, fighting sub-trees at the high end. The Wizard is the widest of them all because it repeats the same branch shape once per element - that is width, not depth, and it costs a player nothing to ignore three quarters of it.
 - There should be some meaningful dependency of the skills forming a tree
 - In each profession tree there should form 2-3 sub-trees which create a meaningful hierarchy
-- There should be some kind of three tiers inside a tree to lead from low and basic skill to the much powerfull skills
+- There should be some kind of three tiers inside a tree to lead from low and basic skills to the much more powerful ones
 
 {{< alert context="warning" text="Most important: **No hardcoded skill effects!**" />}}
 
@@ -69,11 +72,9 @@ In order to learn how to interact with other player you need to invest your firs
 ```mermaid
 graph TD
     BasicSkill["Basic Skill (1-5)"]
-    PlayDead["Play Dead (1)"]
     FirstAid["First Aid (1-3)"]
     Cooking["Cooking (1-3)"]
 
-    BasicSkill -->|Lv.2| PlayDead
     BasicSkill -->|Lv.3| FirstAid
     BasicSkill -->|Lv.3| Cooking
 ```
@@ -95,19 +96,15 @@ graph TD
 
 Requires a cooking place. Lv 1 allows you to place a campfire which counts as cooking place.
 
+The three ranks only govern how well the Master handles a cooking place. What a Master can actually cook grows through
+**recipes**, discovered the same way a Craftsman discovers a blueprint - by experimenting with ingredients. A Lv. 1 cook
+with a long recipe book outperforms a Lv. 3 cook who never left the campfire.
+
 | Lv. | Cooking Time | Success Chance | Stamina Cost |
 | --- | ------------ | -------------- | ------------ |
 | 1   | -0%          | +0%            | 5            |
 | 2   | -20%         | +20%           | 8            |
 | 3   | -40%         | +40%           | 11           |
-
-{{< /skill >}}
-
-{{< skill name="Play Dead" maxLevel="1" requires="Basic Skill Lv. 2"
-    type="Active" manaCost="8" castTime="Instant" cooldown="10s" duration="Until cancelled" range="0" target="Self"
-    description="Feigns death convincingly enough to slip past danger unnoticed - a novice's oldest trick for surviving what they can't yet fight." >}}
-
-Toggled on and off at will. Once the first skill point is spent outside of the Novice tree, this skill can no longer be used.
 
 {{< /skill >}}
 
@@ -535,7 +532,6 @@ graph TD
     ResourceSense["Resource Sense (1-5)"]
     QuickTravel["Quick Travel (1-5)"]
     Fishing["Fishing (1-5)"]
-    Cooking["Cooking (1-3)"]
     Gate{{"5+ pts in Survival Tree"}}
     Forester(("Forester"))
     Prospector(("Prospector"))
@@ -544,7 +540,6 @@ graph TD
     ResourceSense -.-> Gate
     QuickTravel -.-> Gate
     Fishing -.-> Gate
-    Cooking -.-> Gate
     Gate -.->|unlocks| Forester
     Gate -.->|unlocks| Prospector
     Gate -.->|unlocks| Miner
@@ -713,47 +708,34 @@ Half surveyor, half treasure hunter. Prospectors chart unclaimed land, feel out 
 graph TD
     ResourceSense[/"Resource Sense (Survival Tree)"/]
     MaximizeCarryCapacity["Maximize Carry Capacity (1-5)"]
-    EnlargeWeightLimit["Enlarge Weight Limit (1-5)"]
     Cartography["Cartography (1-5)"]
     WildernessSurvival["Wilderness Survival (1-5)"]
     WeatherSense["Weather Sense (1-3)"]
 
-    ResourceSense -->|Lv.1| MaximizeCarryCapacity
-    MaximizeCarryCapacity -->|Lv.3| EnlargeWeightLimit
-    EnlargeWeightLimit -->|Lv.3| WildernessSurvival
-    WeatherSense -->|Lv.1| Cartography
+    MaximizeCarryCapacity -->|Lv.3| WildernessSurvival
+    ResourceSense -->|Lv.1| Cartography
+    Cartography -->|Lv.2| WeatherSense
 ```
 
 <br>
-{{< skill name="Maximize Carry Capacity" maxLevel="5" requires="Resource Sense Lv. 1"
-    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
-    description="Smarter packing and a stronger back let a Prospector carry far more than good sense would suggest." >}}
+{{< skill name="Maximize Carry Capacity" maxLevel="5"
+    type="Passive"
+    description="Smarter packing, better-fitted saddlebags and a stronger back. Everything a Prospector and their Bestia can shoulder gets easier to shoulder." >}}
 
-| Lv. | Weight Limit |
-| --- | ------------ |
-| 1   | +10%         |
-| 2   | +20%         |
-| 3   | +30%         |
-| 4   | +40%         |
-| 5   | +50%         |
+Raises the [weight limit](/docs/mechanics/items/#weight-limit) of the Master and of every Bestia under their command by
+the same amount.
 
-{{< /skill >}}
-
-{{< skill name="Enlarge Weight Limit" maxLevel="5" requires="Maximize Carry Capacity Lv. 3"
-    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
-    description="Better-fitted saddlebags and packs let every Bestia under a Prospector's command haul that much more of the find home." >}}
-
-| Lv. | Weight Limit |
-| --- | ------------ |
-| 1   | +10%         |
-| 2   | +20%         |
-| 3   | +30%         |
-| 4   | +40%         |
-| 5   | +50%         |
+| Lv. | Weight Limit (Master and Bestia) |
+| --- | -------------------------------- |
+| 1   | +10%                             |
+| 2   | +20%                             |
+| 3   | +30%                             |
+| 4   | +40%                             |
+| 5   | +50%                             |
 
 {{< /skill >}}
 
-{{< skill name="Wilderness Survival" maxLevel="5" requires="Enlarge Weight Limit Lv. 3"
+{{< skill name="Wilderness Survival" maxLevel="5" requires="Maximize Carry Capacity Lv. 3"
     type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Hardens the master and their Bestia against travel through hostile terrain, far from the comfort of a settlement. Reduces the stamina drain caused by hostile terrain and raises tolerance against extreme temperatures." >}}
 
@@ -767,10 +749,17 @@ graph TD
 
 {{< /skill >}}
 
-{{< skill name="Weather Sense" maxLevel="3"
-    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
-    description="An instinct for reading the sky and wind well before a storm ever arrives, letting the Prospector plan a route or a dig around what's coming." >}}
-Level 1 shows you the current wind direction and speed.
+{{< skill name="Cartography" maxLevel="5" requires="Resource Sense Lv. 1"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    description="Enables the player to chart unexplored land, revealing terrain that can be shared, traded on, or built on. See [World Exploration](/docs/mechanics/world-exploration/#cartography) for how the surveying minigame plays out." >}}
+Each level reduces the difficulty of surveying unexplored land.
+{{< /skill >}}
+
+{{< skill name="Weather Sense" maxLevel="3" requires="Cartography Lv. 2"
+    type="Passive"
+    description="Charting the same valley through a dozen seasons teaches a Prospector to read the sky above it. An instinct for what the wind is about to do, well before the storm arrives." >}}
+Level 1 shows you the current wind direction and speed. See [Weather](/docs/mechanics/environment/#weather) for what each
+front does to the world.
 
 | Lv. | Forecast Range |
 | --- | -------------- |
@@ -778,12 +767,6 @@ Level 1 shows you the current wind direction and speed.
 | 2   | 10 min         |
 | 3   | 15 min         |
 
-{{< /skill >}}
-
-{{< skill name="Cartography" maxLevel="5" requires="Weather Sense Lv. 1"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
-    description="Enables the player to chart unexplored land, revealing terrain that can be shared, traded on, or built on. See [World Exploration](/docs/mechanics/world-exploration/#cartography) for how the surveying minigame plays out." >}}
-Each level reduces the difficulty of surveying unexplored land.
 {{< /skill >}}
 
 ### Miner
@@ -1401,8 +1384,8 @@ graph TD
     Dispell["Dispell (1-5)"]
     SpellEnscription["Spell Enscription (1-10)"]
     SpellBinding["Spell Binding (1-10)"]
-    Teleport["Teleport (1-2)"]
-    WarpPortal["Warp Portal (1-10)"]
+    Teleport["Teleport (1-3)"]
+    WarpPortal["Warp Portal (1-5)"]
     MagicRod["Magic Rod (1-3)"]
     ManaDrain["Mana Drain (1-3)"]
     ManaSwap["Mana Swap (1-3)"]
@@ -1414,13 +1397,13 @@ graph TD
     ElementalEmpowerment["Elemental Empowerment (1-3)"]
 
     Observation -->|Lv.5| SpellTraining
-    Observation -->|Lv.1| Scry
+    Observation -->|Lv.3| Scry
     SpellTraining -->|Lv.2| Dispell
     SpellTraining -->|Lv.3| SpellEnscription
     SpellEnscription -->|Lv.3| SpellBinding
 
-    Scry -->|Lv.3| Teleport
-    Teleport -->|Lv.1| WarpPortal
+    Scry -->|Lv.5| Teleport
+    Teleport -->|Lv.2| WarpPortal
 
     Dispell -->|Lv.2| MagicRod
     MagicRod -->|Lv.1| ManaDrain
@@ -1554,33 +1537,29 @@ A negative base means the extraction is impossible on raw talent alone and only 
     description="Binds a spell to an object or place and ties it to a trigger, giving rise to enchanted artifacts, standing alarms and hidden traps alike." >}}
 {{< /skill >}}
 
-{{< skill name="Teleport" maxLevel="2" requires="Spell Binding Lv. 3"
+{{< skill name="Teleport" maxLevel="3" requires="Scry Lv. 5"
     type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Can teleport own bestias over a distance. To teleport somewhere one needs to setup Teleport Runes which form some kind of magical anchor - the same kind of anchor a Spell Binder learns to set for alarms and traps. They can be used as targets when trying to teleport. The teleportation gets harder and more error prone the longer distances are tried to travel. The teleported entity also gets a debuff which will prevent it from teleporting again for some time." >}}
 
-| Level | Base Success                          |
-| ----- | ------------------------------------- |
-| 1     | Teleport to a random spot within 150m |
-| 2     | Teleport back to spawn point          |
+| Lv. | Destination                           |
+| --- | ------------------------------------- |
+| 1   | Teleport to a random spot within 150m |
+| 2   | Teleport back to the spawn point      |
+| 3   | Teleport to any Teleport Rune you set |
 
 {{< /skill >}}
 
-{{< skill name="Warp Portal" maxLevel="10" requires="Teleport Lv. 1"
+{{< skill name="Warp Portal" maxLevel="5" requires="Teleport Lv. 2"
     type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="The Sage's capstone. Where Teleport moves one anchor's worth of travelers once, a Portal tears a standing hole between two anchors that anyone can walk through. To teleport somewhere one needs to setup Portal Runes which form some kind of magical anchor. As soon as a portal has opened it can be used in both directions for some time." >}}
 
 | Lv. | Simultaneous Users |
 | --- | ------------------ |
-| 1   | 1                  |
-| 2   | 2                  |
-| 3   | 3                  |
-| 4   | 4                  |
-| 5   | 5                  |
-| 6   | 6                  |
-| 7   | 7                  |
-| 8   | 8                  |
-| 9   | 9                  |
-| 10  | 10                 |
+| 1   | 2                  |
+| 2   | 4                  |
+| 3   | 6                  |
+| 4   | 8                  |
+| 5   | 10                 |
 
 {{< /skill >}}
 
@@ -1737,10 +1716,11 @@ graph TD
     IceBolt["Ice Bolt (1-10)"]
     ThunderBolt["Thunder Bolt (1-10)"]
     EarthSpike["Earth Spike (1-10)"]
+    SpiritualMastery["Spiritual Mastery (1-5)"]
 
     FireWall["Fire Wall (1-5)"]
     MeteorStorm["Meteor Storm (1-5)"]
-    SturmGust["Sturm Gust (1-5)"]
+    SturmGust["Storm Gust (1-5)"]
     WaterBall["Water Ball (1-5)"]
     FrostNova["Frost Nova (1-5)"]
     Quagmire["Quagmire (1-5)"]
@@ -1751,7 +1731,7 @@ graph TD
     ThunderOfJupiter["Thunder of Jupiter (1-5)"]
 
     MagicArmor[/"Magic Armor (Warrior Tree)"/]
-    SafetyWall["Safety Wall (1-10)"]
+    SafetyWall["Safety Wall (1-5)"]
     StoneCurse["Stone Curse (1-5)"]
     SuppressMagic["Suppress Magic (1-5)"]
     SuppressAura["Suppress Aura (1-3)"]
@@ -1775,32 +1755,19 @@ graph TD
     MagicArmor -->|Lv.3| SafetyWall
     SafetyWall -->|Lv.3| StoneCurse
     StoneCurse -->|Lv.2| SuppressMagic
-    MagicArmor -->|Lv.1| SuppressAura
+    SuppressMagic -->|Lv.2| SuppressAura
 
+    SpiritualMastery -->|Lv.2| SoulBreak
     SoulBreak -->|Lv.3| Mindbreak
 
     %% Layout only: `~~~` renders as an invisible link and implies no requirement.
     %% It ranks the ward/spirit branch below the elemental chains so it forms its
     %% own row instead of widening the diagram by another two columns.
     FrostOrb ~~~ MagicArmor
-    ThunderOfJupiter ~~~ SoulBreak
+    ThunderOfJupiter ~~~ SpiritualMastery
 ```
 
 <br>
-
-{{< skill name="Spiritual Mastery" maxLevel="5"
-    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
-    description="A deeper communion with the currents beyond the elements, sharpening every spell drawn from Holy or Dark mana." >}}
-
-| Lv. | Damage/Healing |
-| --- | -------------- |
-| 1   | +5%            |
-| 2   | +10%           |
-| 3   | +15%           |
-| 4   | +20%           |
-| 5   | +25%           |
-
-{{< /skill >}}
 
 {{< skill name="Fire Bolt" maxLevel="10"
     type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
@@ -1878,29 +1845,32 @@ graph TD
 
 {{< /skill >}}
 
-{{< skill name="Safety Wall" maxLevel="10"
+{{< skill name="Spiritual Mastery" maxLevel="5"
+    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    description="A deeper communion with the currents beyond the elements, sharpening every spell drawn from Holy or Dark mana." >}}
+
+| Lv. | Damage/Healing |
+| --- | -------------- |
+| 1   | +5%            |
+| 2   | +10%           |
+| 3   | +15%           |
+| 4   | +20%           |
+| 5   | +25%           |
+
+{{< /skill >}}
+
+{{< skill name="Safety Wall" maxLevel="5" requires="Magic Armor Lv. 3"
     type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Conjures a shimmering barrier of solidified mana in front of a target. It blocks incoming physical projectiles and melee strikes until it has absorbed enough hits or its duration runs out." >}}
 
 | Lv. | Hits Absorbed | Duration |
 | --- | ------------- | -------- |
-| 1   | 1             | 20s      |
-| 2   | 2             | 24s      |
-| 3   | 3             | 28s      |
-| 4   | 4             | 32s      |
-| 5   | 5             | 36s      |
-| 6   | 6             | 40s      |
-| 7   | 7             | 44s      |
-| 8   | 8             | 48s      |
-| 9   | 9             | 52s      |
-| 10  | 10            | 56s      |
+| 1   | 2             | 20s      |
+| 2   | 4             | 28s      |
+| 3   | 6             | 36s      |
+| 4   | 8             | 44s      |
+| 5   | 10            | 52s      |
 
-{{< /skill >}}
-
-{{< skill name="Energy Coat" maxLevel="1" requires="Safety Wall Lv. 5"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
-    description="Where Safety Wall turns aside physical blows, Energy Coat turns aside all of them - trading a slice of mana for every hit absorbed instead of flesh." >}}
-Reduces incoming physical and magical damage by `-15%`, converting the absorbed damage into a `5%` max-mana cost per hit instead. Like Magic Armor, the buff cancels once mana drops below 10%.
 {{< /skill >}}
 
 {{< skill name="Stone Curse" maxLevel="5" requires="Safety Wall Lv. 3"
