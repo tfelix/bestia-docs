@@ -12,7 +12,7 @@ The attachment to mana also explains why Bestia masters were able to survive the
 
 The bestia master can learn a set of skills. These skills are freely chosen by the player and determine the job or profession of the master.
 
-Some of this account skills can be used by every Bestia in posession of the master (or at least have an passive effect on them) others can only be used actively by the master itself.
+Some of these account skills can be used by every Bestia in possession of the master, or at least have a passive effect on them. Others can only be used actively by the master itself.
 
 {{< alert context="info" text="Don't confuse this skill system with the regular attacks a Bestia is learning by item usage or just by level up. Those are simply called attacks." />}}
 
@@ -41,11 +41,11 @@ The Novice tree then closes behind the player: as soon as the first skill point 
 
 On each level up the master gains 1 skillpoint to put into the skills rank. This is permanent and means a player can spend about 100 points for improving the ranks of his skills.
 
-{{< alert context="info" text="Since max level is not capped actually he might be able to spend more points but a progressions gets continously harder it is safe to assume every player has about 100 points." />}}
+{{< alert context="info" text="The max level is not capped, so in principle more points can be earned - but progression gets continuously harder, so it is safe to assume every player has about 100 points." />}}
 
 The skilltrees are designed as such that to reach the highest professions in each tree the player needs to spend about **60 points**.
 
-The player can decide to have mediocre profession in each tree or to max out one and have maybe half of the
+The player can decide to have a mediocre profession in each tree, or to max out one and take maybe half of the
 meaningful professions of another tree. The skilltree is a hierarchical dependency of skills.
 
 # Tree Mastery
@@ -53,7 +53,7 @@ meaningful professions of another tree. The skilltree is a hierarchical dependen
 Skillpoints spent within a subtree (e.g. Blacksmith, Priest, Wizard, ...) do more than unlock its skills - they also declare a profession to the world.
 
 - As soon as **5 or more skillpoints** are invested into a single subtree, the master becomes **trained** in that tree.
-- Being trained of a tree determines which of its associated items and weapons the master is able to use and equip.
+- Being trained in a tree determines which of its associated items and weapons the master is able to use and equip.
 
 {{< alert context="info" text="This is independent of the 5 Lv. requirement that unlocks access to a subtree in the first place - that threshold is reached by investing in the parent tree, while being trained requires 5 points spent inside the subtree itself." />}}
 
@@ -74,8 +74,8 @@ Circle Bonus = 5 × Participants × ManaFactor   [Participants ≤ 6, caster inc
 
 `ManaFactor` comes from the local [mana concentration](/docs/mechanics/environment/#mana-concentration): `0.5` in a
 drained region, `1.0` in an ordinary one, `1.5` where mana runs thick. A full circle of six in a mana-rich place is
-therefore worth `+45%` on the roll - more than any single skill in this page grants - while the same six people standing
-on drained ground get `+15%` and would have been better off scouting a different site first.
+therefore worth `+45%` on the roll - as much as most governing skills grant at max rank - while the same six people
+standing on drained ground get `+15%` and would have been better off scouting a different site first.
 
 Three rules keep it from becoming a formality:
 
@@ -97,7 +97,7 @@ The following trees exist, they are organized in subtrees. These form the skill 
 
 In order to learn how to interact with other player you need to invest your first skill points in this skill tree. It is expected that every user learns at least **Basic Skill Lv. 5**, since this is the threshold which unlocks all the other skill trees.
 
-{{< alert context="info" text="Basic Skill Lv. 5 is the gate for every other tree - no skill outside of the Novice tree can be learned before it. If you then take at least one skill point in any other tree the Novice tree stays locked for you." />}}
+{{< alert context="info" text="Basic Skill Lv. 5 is the gate for every other tree - no skill outside of the Novice tree can be learned before it. As soon as you take a single skill point in any other tree, the Novice tree closes and no further novice skills can be learned." />}}
 
 ```mermaid
 graph TD
@@ -158,7 +158,7 @@ The workbenches, forges and cauldrons of the tradesfolk turn raw ambition into t
 
 Crafting always runs in two phases: a Craftsman first **discovers a blueprint** by experimenting with raw materials, then **produces** that item from it as often as they like. The skills below govern how reliably a Craftsman discovers, produces and refines within their trade — see [Item Crafting](/docs/mechanics/items/#item-crafting) for the full system.
 
-{{< alert context="info" text="Some skills require a prop to interact with e.g. a cooking station and Lv. 1 of this skill allows you to place such a prop by using the item represenation of it from within your inventory. If you have at least one level in such a skill you will be able to cast this spell on you and craft such a prop item (if you have the resources for it) for yourself." />}}
+{{< alert context="info" text="Some skills require a prop to interact with e.g. a cooking station and Lv. 1 of this skill allows you to place such a prop by using the item representation of it from within your inventory. If you have at least one level in such a skill you will be able to cast this spell on you and craft such a prop item (if you have the resources for it) for yourself." />}}
 
 ```mermaid
 graph TD
@@ -228,7 +228,7 @@ This bonus is added on top of the item-level base chance and the crafter's DEX/W
 type="Active" manaCost="18" cooldown="0s"
 description="Time spent far from settlements teaches a Craftsman to adapt and improvise, reworking weapons and armor in the field to better suit their needs." >}}
 
-Allows you to perform upgrades or armor and weapons. There is a chance this fails and potentially destroys your equipment.
+Allows you to perform upgrades of armor and weapons. There is a chance this fails and potentially destroys your equipment.
 
 See [Weapon Refinement](/docs/mechanics/items/#weapon-refinement) and [Armor Refinement](/docs/mechanics/items/#armor-refinement) for the upgrade chances and effects.
 
@@ -409,7 +409,7 @@ things in the world that wear out - nothing else needs a repair skill.
 
 ### Artificer
 
-Where Blacksmiths hammer steel, Artificers coax it into remembering spells. This path enscribes magic onto items, binds it to triggers, and crystalizes raw mana into shards other professions can build on.
+Where Blacksmiths hammer steel, Artificers coax it into remembering spells. This path inscribes magic onto items, binds it to triggers, and crystalizes raw mana into shards other professions can build on.
 
 {{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [craftsman tree](#craftsman-tree)" />}}
 
@@ -449,9 +449,9 @@ Level 1 enables you to craft, place and use a Mana Harvester.
 {{< /skill >}}
 
 {{< skill name="Manaflow Expert" maxLevel="5" requires="Mana Harvester Lv. 3"
-    type="Active" manaCost="22" target="Gem Cutting Table"
-    description="Refine the raw and unstable mana crystals harvested by a Mana Harvester into the finest arcane raw materials used to build powerful magic artifacts." >}}
-Level 1 enables you to craft, place and use a Gem Cutting Table. Cast time depends on the prcessed material.
+    type="Active" manaCost="22" target="Crystal Lathe"
+    description="Refine the raw and unstable mana crystals harvested by a Mana Harvester into the finest arcane raw materials used to build powerful magic artifacts. The Crystal Lathe is for mana crystals only - a Miner's [Gem Cut Station](/docs/mechanics/item-list/#gem-cut-station) handles ordinary gemstones." >}}
+Level 1 enables you to craft, place and use a Crystal Lathe. Cast time depends on the processed material.
 
 | Lv. | Success Chance |
 | --- | -------------- |
@@ -485,10 +485,10 @@ Cast time depends on the level of the Bestia. Level 1 allows you to create a Car
 {{< /skill >}}
 
 {{< skill name="Magic Artisan" maxLevel="10" requires="Runic Etching Lv. 5"
-    type="Active" manaCost="38" range="2" target="Enchantment Altair"
+    type="Active" manaCost="38" range="2" target="Enchantment Altar"
     description="Can create magic artefacts by binding sustained enchantments to an item, going well beyond what a single etched rune can hold." >}}
 
-Level 1 allows you to create an Enchantment Altair. Cast time depends on the item level and the enchantment you want to use.
+Level 1 allows you to create an Enchantment Altar. Cast time depends on the item level and the enchantment you want to use.
 
 | Lv. | Enchantment Chance | Destroy Chance on Failed Bind |
 | --- | ------------------ | ----------------------------- |
@@ -589,7 +589,7 @@ Lv. 1 allows you to install Transmutation Workbenches. Higher levels unlock tran
 
 {{< /skill >}}
 
-## Survival Tree (unrefined)
+## Survival Tree
 
 Skills which allow the player to keep exploring the world and stay active longer far away from settlements are placed in this skill tree. Foresters live off the land, Prospectors chart what nobody has mapped yet, and Miners dig for what the land is hiding.
 
@@ -895,7 +895,7 @@ Level 1 enables you to place a mining shaft.
     type="Active" manaCost="20" castTime="8s" cooldown="None" range="2" target="Gem Cut Station"
     description="Turns the rough gemstones a Miner digs up into cut stones fit for an Artificer's socket or a Trader's sale." >}}
 Can cut raw gems recovered from mining into faceted gemstones, increasing their value and unlocking their use in socketed equipment.
-Higher levels unlock cutting higher-grade gems. Level 1 allows you to place [Gem Cut Stations](item-list/#gem-cut-stations)
+Higher levels unlock cutting higher-grade gems. Level 1 allows you to place a [Gem Cut Station](/docs/mechanics/item-list/#gem-cut-station)
 
 | Lv. | Cut Success Chance |
 | --- | ------------------ |
@@ -934,7 +934,7 @@ Can sense ore and gem deposits through solid rock.
 
 {{< /skill >}}
 
-## Scholar Tree (unrefined)
+## Scholar Tree
 
 The Scholar tree contains skills which help with sensing the world's events and performing rituals to shape the face of the Bestia world itself. Priests keep a party standing through blessings and holy rites, Traders keep the gears of commerce turning, and Sages chase magic to its source - inscribing, discovering, and eventually bending distance itself.
 
@@ -1112,10 +1112,9 @@ graph TD
     type="Active" manaCost="per Lv." castTime="1.5s" cooldown="None" range="9" target="Ally"
     description="Channels mana directly into a target's wounds, restoring HP in an instant. The Priest's bread and butter - simple, reliable, and the first rite every Priest learns." >}}
 
-Heals a target's HP for `[(BaseLV+INT)/8]*(4+8*SkillLV)`. When used against Undead property monsters, it is a holy attack that ignores SMDEF and INT, but deals only half damage
-
-(that is, HealValue\*ElementModifier/2).
-To use against a monster, you must shift-click it or turn on /noshift.
+Heals a target's HP for `[(BaseLV+INT)/8]*(4+8*SkillLV)`. When used against Undead property monsters, it is a holy attack that ignores SMDEF and INT, but deals only half damage - that is,
+`HealValue * ElementModifier / 2`. Targeting a monster with a healing spell has to be deliberate, so the client asks
+for a modifier key rather than a plain click.
 
 | Lv. | Mana Cost |
 | --- | --------- |
@@ -1149,11 +1148,11 @@ Applies to the next spell cast by the target ally within `30s`.
     type="Active" manaCost="22" castTime="2s" cooldown="30s" duration="per Lv." range="9" target="Party"
     description="A quiet benediction that nudges fortune to smile a little wider on the caster and their party for a short while - stalls turn up better goods, dice favor the bold, and the elusive becomes that much easier to spot." >}}
 
-| Lv. | WILL Bonus | Duration |
-| --- | ---------- | -------- |
-| 1   | +5         | 30s      |
-| 2   | +10        | 60s      |
-| 3   | +15        | 90s      |
+| Lv. | WIL Bonus | Duration |
+| --- | --------- | -------- |
+| 1   | +5        | 30s      |
+| 2   | +10       | 60s      |
+| 3   | +15       | 90s      |
 
 {{< /skill >}}
 
@@ -1189,7 +1188,8 @@ Applies to the next spell cast by the target ally within `30s`.
 {{< skill name="Increase AGI" maxLevel="5"
     type="Active" manaCost="20" castTime="Instant" cooldown="None" duration="per Lv." range="9" target="Ally"
     description="Lightens a target's limbs with borrowed haste, quickening step and swing alike." >}}
-Grants a flat `+15%` Movement Speed at any level, plus:
+Grants a flat `+15%` Movement Speed at any level, plus the table below. The movement bonus **stacks** with a
+Prospector's [Quick Travel](#skill-quick-travel), so a well-buffed traveller adds both.
 
 | Lv. | AGI | ASPD | Duration |
 | --- | --- | ---- | -------- |
@@ -1203,7 +1203,7 @@ Grants a flat `+15%` Movement Speed at any level, plus:
 
 {{< skill name="Decrease AGI" maxLevel="3" requires="Increase AGI Lv. 2"
     type="Active" manaCost="20" castTime="Instant" cooldown="5s" duration="30s" range="9" target="Enemy"
-    description="The same rite turned inward out - a mote of leaden mana that slows an enemy's step and swing instead of quickening it." >}}
+    description="The same rite turned inside out - a mote of leaden mana that slows an enemy's step and swing instead of quickening it." >}}
 
 | Lv. | Movement/Attack Speed Reduction |
 | --- | ------------------------------- |
@@ -1308,7 +1308,7 @@ Higher levels extend how long the veil holds.
 {{< skill name="Aspersio" maxLevel="3" requires="Aqua Benedicta Lv. 1"
     type="Active" manaCost="22" castTime="2s" cooldown="10s" duration="per Lv." range="2" target="Ally"
     description="Anoints a weapon with Holy Water, temporarily imbuing its strikes with the holy element. Consumes a unit of [Holy Water](/docs/mechanics/item-list/#holy-water) per cast." >}}
-Higher levels extend the duration and allow higher-grade Holy Water to be used for a stronger imbue
+Higher levels extend the duration and allow higher-grade Holy Water to be used for a stronger imbue.
 {{< /skill >}}
 
 {{< skill name="Turn Undead" maxLevel="5" requires="Demon Bane Lv. 3 and Holy Light Lv. 3"
@@ -1316,7 +1316,7 @@ Higher levels extend the duration and allow higher-grade Holy Water to be used f
     description="A judgment of pure holy mana that punches through armor and unravels the unnatural knot holding an undead together." >}}
 Higher levels raise the chance of an instant kill against sufficiently weak undead.
 
-Inflicts single target Holy, armor piercing damage. If the target is an Undead property monster, this spell has a chance of immediatly ending its existence.
+Inflicts single target Holy, armor piercing damage. If the target is an Undead property monster, this spell has a chance of immediately ending its existence.
 
 | Lv. | Base Chance of Effect |
 | --- | --------------------- |
@@ -1474,7 +1474,7 @@ Only a single trading post can be located inside a settlement.
 {{< skill name="Trade Agreement" maxLevel="5" requires="Trade Post Owner Lv. 3"
     type="Active" manaCost="30" castTime="5s" cooldown="60s" range="10" target="Player"
     description="Weaves this Trader's auction house into those of other consenting players, merging their listings into a single, wider [marketplace](/docs/mechanics/economy-trade/#linking-auction-houses)." >}}
-To get linked from other players at least level 1 in this skill is required.
+To be linked by other players, at least level 1 in this skill is required.
 
 | Lv. | Linked Players |
 | --- | -------------- |
@@ -1502,7 +1502,7 @@ To get linked from other players at least level 1 in this skill is required.
 
 ### Sage
 
-Books, wards and long nights spent staring into scrying bowls. Sages study magic itself - discovering it, enscribing it, binding it, and eventually learning to fold distance in on itself with teleportation and portals.
+Books, wards and long nights spent staring into scrying bowls. Sages study magic itself - discovering it, inscribing it, binding it, and eventually learning to fold distance in on itself with teleportation and portals.
 
 {{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [scholar tree](#scholar-tree)" />}}
 
@@ -1512,8 +1512,8 @@ graph TD
     SpellTraining["Spell Training (1-10)"]
     FreeCast["Free Cast (1-5)"]
     Scry["Scry (1-5)"]
-    Dispell["Dispell (1-5)"]
-    SpellEnscription["Spell Enscription (1-10)"]
+    Dispel["Dispel (1-5)"]
+    SpellInscription["Spell Inscription (1-10)"]
     SpellBinding["Spell Binding (1-10)"]
     Teleport["Teleport (1-3)"]
     WarpPortal["Warp Portal (1-5)"]
@@ -1529,14 +1529,14 @@ graph TD
 
     Observation -->|Lv.5| SpellTraining
     Observation -->|Lv.3| Scry
-    SpellTraining -->|Lv.2| Dispell
-    SpellTraining -->|Lv.3| SpellEnscription
-    SpellEnscription -->|Lv.3| SpellBinding
+    SpellTraining -->|Lv.2| Dispel
+    SpellTraining -->|Lv.3| SpellInscription
+    SpellInscription -->|Lv.3| SpellBinding
 
     Scry -->|Lv.5| Teleport
     Teleport -->|Lv.2| WarpPortal
 
-    Dispell -->|Lv.2| MagicRod
+    Dispel -->|Lv.2| MagicRod
     MagicRod -->|Lv.1| ManaDrain
     ManaDrain -->|Lv.2| ManaSwap
     MagicRod -->|Lv.2| LandProtector
@@ -1578,7 +1578,7 @@ Consumes the scroll in the process. The success chance depends on the level of t
     description="Casts a Sage's sight far beyond their own eyes, scouting distant ground and the resources hiding on it before ever setting foot there." >}}
 {{< /skill >}}
 
-{{< skill name="Dispell" maxLevel="5" requires="Spell Training Lv. 2"
+{{< skill name="Dispel" maxLevel="5" requires="Spell Training Lv. 2"
     type="Active" manaCost="40" castTime="2s" cooldown="15s" range="9" target="Any"
     description="Unravels every magical effect clinging to a target in a single word, undoing buffs and curses alike." >}}
 
@@ -1594,7 +1594,7 @@ Success chance is based on skill level and the target's SMDEF, with a base chanc
 
 {{< /skill >}}
 
-{{< skill name="Magic Rod" maxLevel="3" requires="Dispell Lv. 2"
+{{< skill name="Magic Rod" maxLevel="3" requires="Dispel Lv. 2"
     type="Active" manaCost="20" castTime="Instant" cooldown="20s" duration="per Lv." range="0" target="Self"
     description="A reactive ward raised at a gesture. The next single-target spell to strike the caster is caught and unravelled instead of landing, its energy siphoned back as mana. Area spells wash straight over it - only single-target magic is caught." >}}
 Catches a single incoming spell while the ward holds.
@@ -1635,7 +1635,7 @@ Cooldown is 15s.
 
 {{< skill name="Land Protector" maxLevel="3" requires="Magic Rod Lv. 2"
     type="Active" manaCost="55" castTime="3s" cooldown="40s" duration="per Lv." range="6" target="Ground"
-    description="Consecrates a patch of ground against hostile magic. While it holds, no area-of-effect or ground-targeted spell can take root inside its bounds - friend's and foe's alike." >}}
+    description="Consecrates a patch of ground against hostile magic. While it holds, no area-of-effect or ground-targeted spell can take root inside its bounds - friend and foe alike." >}}
 
 | Lv. | Radius | Duration |
 | --- | ------ | -------- |
@@ -1645,10 +1645,10 @@ Cooldown is 15s.
 
 {{< /skill >}}
 
-{{< skill name="Spell Enscription" maxLevel="10" requires="Spell Training Lv. 3"
+{{< skill name="Spell Inscription" maxLevel="10" requires="Spell Training Lv. 3"
     type="Active" manaCost="35" castTime="15s" cooldown="None" range="2" target="Bestia"
     description="Enables you to extract an attack from the memory of a Bestia onto a scroll, which can then either trigger the attack once or teach it to another Bestia instead. However, there is a chance that the mind of a Bestia is destroyed during the extraction, killing the Bestia in the process." >}}
-The base success chance depends on the level of the attack being enscribed and is further modified by skill level, equipment and intelligence (`INT / 2 + WIL / 4`):
+The base success chance depends on the level of the attack being inscribed and is further modified by skill level, equipment and intelligence (`INT / 2 + WIL / 4`):
 
 | Attack Level | Base Success |
 | ------------ | ------------ |
@@ -1663,7 +1663,7 @@ The base success chance depends on the level of the attack being enscribed and i
 A negative base means the extraction is impossible on raw talent alone and only becomes viable with strong bonuses from intelligence, skill level and equipment.
 {{< /skill >}}
 
-{{< skill name="Spell Binding" maxLevel="10" requires="Spell Enscription Lv. 3"
+{{< skill name="Spell Binding" maxLevel="10" requires="Spell Inscription Lv. 3"
     type="Active" manaCost="45" castTime="10s" cooldown="None" range="2" target="Item or Ground"
     description="Binds a spell to an object or place and ties it to a trigger, giving rise to enchanted artifacts, standing alarms and hidden traps alike." >}}
 {{< /skill >}}
@@ -2293,7 +2293,7 @@ Neither predator nor prey, exactly. Hunters move like the terrain isn't there an
 {{< /skill >}}
 -->
 
-### Assassin (unrefined)
+### Assassin
 
 Masters of hidden infiltration. They can deal high amount of single target damage and know a lot about poisons to coat their weapons.
 
@@ -2463,7 +2463,7 @@ bites; this skill decides how often it lands.
     description="Toggle. While active, a spell memorized via Plagiarism is not lost to a fresh copy - the Assassin keeps whatever they stole last until they switch this off and let a new hit overwrite it." >}}
 {{< /skill >}}
 
-### Knight (unrefined)
+### Knight
 
 Where a Brawler trusts bare knuckles and a Wizard trusts raw mana, a Knight trusts steel - a lot of it, worn on the body and swung in the hand. This is the tree for masters who would rather stand at the front of a fight than avoid it.
 

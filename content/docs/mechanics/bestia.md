@@ -74,7 +74,7 @@ Some magical actions are **both** at once. Many offensive spells—the elemental
 Bestias can learn attacks in two ways:
 
 1. **Level Up** – Each Bestia has an internal list of attacks it will learn as it gains levels. The same attack may be learned at different levels by different Bestias.
-2. **Spell Scrolls** – Players can inscribe attacks onto spell scrolls with the Sage's [Spell Enscription](/docs/mechanics/master/#skill-spell-enscription) skill (or find them as loot). These spells can be used directly from the scroll or taught to a Bestia.
+2. **Spell Scrolls** – Players can inscribe attacks onto spell scrolls with the Sage's [Spell Inscription](/docs/mechanics/master/#skill-spell-inscription) skill (or find them as loot). These spells can be used directly from the scroll or taught to a Bestia.
 
 General guidelines when Bestia are learning attacks from level ups:
 
@@ -170,7 +170,7 @@ A season lasts one real-time month, and a Bestia knows about 20 attacks spread o
 
 ### 2. Priming — which eligible attacks are attempted
 
-Before breeding starts the player may load up to **three** spell scrolls of eligible father attacks into the breeder. Those become the candidates, and the scrolls are consumed when breeding begins. Since scrolls are produced with the Sage's [Spell Enscription](/docs/mechanics/master/#skill-spell-enscription) skill, directed breeding costs real resources and pulls a second profession into the loop.
+Before breeding starts the player may load up to **three** spell scrolls of eligible father attacks into the breeder. Those become the candidates, and the scrolls are consumed when breeding begins. Since scrolls are produced with the Sage's [Spell Inscription](/docs/mechanics/master/#skill-spell-inscription) skill, directed breeding costs real resources and pulls a second profession into the loop.
 
 If nothing is primed, up to three eligible attacks are drawn at random instead — undirected breeding still works, it just gives up the control.
 
@@ -258,7 +258,7 @@ Travel experience is deliberately tiny: at Lv. 50 a single level would take almo
 
 A Bestia **Master** cannot die. Instead they are reborn on the spot with a temporary malus that reduces all of their status values by `15%` for 15 minutes.
 
-A Bestia or Master that is defeated loses `1%` of its current experience points. Carried items are protected by a spell which tries to teleport them back to a secure storage shortly after death — but remember: spells can be [dispelled](/docs/mechanics/master/#skill-dispell).
+A Bestia or Master that is defeated loses `1%` of its current experience points. Carried items are protected by a spell which tries to teleport them back to a secure storage shortly after death — but remember: spells can be [dispelled](/docs/mechanics/master/#skill-dispel).
 
 In every case, carried items suffer a durability penalty.
 

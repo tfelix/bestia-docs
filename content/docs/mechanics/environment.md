@@ -48,7 +48,7 @@ The weather will also play a role in which crops and plants grow. If the player 
 
 A rain effect, controllable in strength, should overlay the entire viewport. The rain's blowing direction should correlate
 with the wind direction (which will be more or less random). During rain the ground will show a wet effect and view distance is
-reduced. It also reduces the effectiveness of fires and might extinguish them. Fire attacks and earth attacks will only deal `50%` damage while ice or wind attacks deal `150%` damage in a wet environment. These environmental modifiers feed into the `ELEMENT_MOD` term of the [damage calculation](/docs/server/battle#damage-calculation).
+reduced. It also reduces the effectiveness of fires and might extinguish them. Fire attacks and earth attacks will only deal `50%` damage while ice or wind attacks deal `150%` damage in a wet environment. These environmental modifiers feed into the `ELEMENT_MOD` term of the [damage calculation](/docs/server/battle#what-actually-deals-damage-today).
 
 ## Fog
 
