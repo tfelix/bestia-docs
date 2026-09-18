@@ -119,7 +119,7 @@ Both timers are given in **real time**, not [Bestia time](/docs/mechanics/enviro
 | 100 & 100     | ~46 days (~1.5 mo) | ~2 days    |
 | 120 & 120     | ~73 days (~2.4 mo) | ~3 days    |
 
-Breeder upgrades, feed, buffs and items shorten both timers. A well-equipped setup typically reaches a **30 - 40%** reduction, and the total reduction is capped at **50%**.
+Breeder upgrades, feed, buffs, items and a Forester's [Bloodline Study](/docs/mechanics/master/#skill-bloodline-study) skill shorten both timers. A well-equipped setup typically reaches a **30 - 40%** reduction, and the total reduction is capped at **50%**.
 
 There is **no cooldown** on the breeder. The moment an egg is produced the same pair can immediately start the next attempt — the breeding time itself is the only limit on how fast a bloodline can be pushed forward.
 
@@ -137,7 +137,7 @@ The offspring's IVs are rolled per IV, independently:
 2. **Variance** — roll once per IV: with `70%` the seed is raised by 10%, with `20%` it stays as it is, and with `10%` it is lowered by 10%.
 3. **Clamp** — round to the nearest integer and clamp into `[0, 100]`.
 
-A dominant IV therefore drifts upward by about `6%` per generation on average (`0.7 · 1.1 + 0.2 · 1.0 + 0.1 · 0.9 = 1.06`), so a line seeded around IV 50 needs roughly a dozen generations to approach the cap of 100. Because only three IVs are dominant per clutch, the player has to decide which stats a bloodline is being bred for rather than improving everything at once.
+A dominant IV therefore drifts upward by about `6%` per generation on average (`0.7 · 1.1 + 0.2 · 1.0 + 0.1 · 0.9 = 1.06`), so a line seeded around IV 50 needs roughly a dozen generations to approach the cap of 100. Because only three IVs are dominant per clutch, the player has to decide which stats a bloodline is being bred for rather than improving everything at once. A Forester with [Bloodline Study](/docs/mechanics/master/#skill-bloodline-study) Lv. 4 draws a fourth dominant IV, which is the only way to widen that choice.
 
 **How much is an IV actually worth?** The answer is defined once, on the [Status Values](/docs/mechanics/statusvalues/#individual-values) page, and follows directly from the status value formula:
 
