@@ -1,7 +1,7 @@
 ---
 weight: 1400
 title: Companion App
-description: "How a logged-off Master keeps up their correspondence, runs their trade and reads their Order's progress — through a bound ledger rather than a magical interface."
+description: "How a logged-off Master keeps up their correspondence, runs their trade and walks the world in spirit — through a bound ledger rather than a magical interface."
 ---
 
 You close the client and the world carries on. Eggs hatch, crafts finish, auctions close, shops restock,
@@ -48,13 +48,17 @@ Five rules make the difference. Every feature below obeys all five.
 | **Reports, not omniscience**             | Every figure in the app carries a source and an age — _"grain at 11 gold in Ashfen, reported six hours ago"_                                               |
 | **Instructions fail, they do not adapt** | An order carries limits. If the price moved, it buys nothing and says so. Acting on stale news costs you, exactly as it should                             |
 | **Standing is earned in person**         | You may only write to brokers, postboxes and trade posts you have already stood in front of                                                                |
-| **The letter never beats the body**      | Every instruction is slower than doing the thing yourself, costs a fee, and can fail outright                                                              |
+| **The letter never beats the body**      | Every instruction is slower than doing the thing yourself, costs a fee, and can fail outright. [Ranging](#ranging) is the one deliberate exception         |
 
 {{< /table >}}
 
 The last rule is the load-bearing one. A player who is logged in wins every race against a player with a
 phone, at every task, always. The app is how you avoid losing ground while you are away — never how you get
 ahead of the people who are actually there.
+
+One feature breaks that rule on purpose. [Ranging](#ranging) really is the better way to chart, to sense
+and to move mana, and it is allowed to be because it asks for something a keyboard cannot give: you have
+to get up and walk. What that costs the people who cannot is set out under [Limits](#limits).
 
 Two useful things fall out of the first two rules:
 
@@ -84,6 +88,114 @@ The ledger's plain reading surface. Everything on it has an age.
 
 Each of those sends a notification when it finishes. It is worth saying plainly that the app's most valuable
 feature is probably telling you an egg you started before breakfast is ready.
+
+# Ranging
+
+The body stays put. Something else goes for a walk.
+
+A Master who is logged off is in the other dimension, and a Master in the other dimension is not lying
+idle — they are simply not _here_. The spirit still drifts along the mana bond, and where it drifts it can
+look, listen, and touch mana.
+
+**Ranging** is the app turning your real walking into that drift. Your phone moves, your spirit moves. When
+you log back in, your Master is standing exactly where you left them, because the body never went anywhere.
+
+## Anchoring and Scale
+
+The app does not map the Earth onto the world. It maps **movement**.
+
+- When you log off, the app **anchors** to where you are — both in the real world and in Bestia.
+- Every metre you walk from there moves your spirit **three metres** in Bestia. It is the same `3×` the
+  world already uses to run [Bestia time](/docs/mechanics/environment/#in-game-time) faster than real time.
+  A step here is three strides there.
+- When you log in, the anchor is thrown away. The next session starts wherever your Master actually is.
+
+The world is 128 km across, so **roughly 43 km of real walking crosses all of it** — a few weeks of ordinary
+commuting rather than an expedition.
+
+Two consequences matter more than the arithmetic.
+
+**The app never sends you anywhere real.** Only displacement counts, so no place in Bestia corresponds to
+any particular street, building or address. The app can ask you to walk _some_ distance in _some_ direction.
+It can never ask you to go to a place.
+
+**Where you live does not matter.** There are no fixed points of interest to be near or far from. A player
+in a city and a player in a village who walk the same distance range the same distance.
+
+## What a Spirit Can Do
+
+A spirit can carry mana. It cannot carry matter. That one line decides the whole feature.
+
+{{< table >}}
+
+| While ranging you can                                                                  | Using                                                                                                       |
+| -------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| Chart unexplored ground                                                                | [Cartography](/docs/mechanics/master/#skill-cartography), as below                                          |
+| Sense deposits nearby                                                                  | [Resource Sense](/docs/mechanics/master/#skill-resource-sense), whose 1–5 km reach is 0.3–1.7 km of walking |
+| Feel a rift or a doomsday brewing                                                      | [Observation](/docs/mechanics/master/#skill-observation)                                                    |
+| Raise, lower or steady [mana density](/docs/mechanics/environment/#mana-concentration) | Your Order's rites, and mana carried as mana                                                                |
+| Scout a site worth caching goods at                                                    | Your eyes — a courier does the carrying afterwards                                                          |
+
+{{< /table >}}
+
+{{< table >}}
+
+| While ranging you cannot               | Because                                                |
+| -------------------------------------- | ------------------------------------------------------ |
+| Move your Master                       | Logging in returns you to your logout position, always |
+| Fight, catch, craft or perform rituals | All of those need hands                                |
+| Pick up or carry one physical object   | A spirit carries mana, not matter                      |
+
+{{< /table >}}
+
+Ranging is reconnaissance and mana work. It is never transport, and never a shortcut across the map.
+
+## Charting on Foot
+
+[Charting an area](/docs/mechanics/world-exploration/#cartography) is already a walking minigame. Three to
+five points spawn 300 to 800 metres away, each has to be reached, and each ends in a moving-compass check.
+At `3×` that is 100 to 270 metres of real walking per point.
+
+None of it needs redesigning. The minigame was written for a player with legs, and the app simply supplies
+the legs. The difficulty tiers carry over, and so do the `10` per km from explored land, the `0.5` per
+percent of mana concentration, the `10` per level of Cartography, and the vicinity cooldown after a failure.
+
+Ground charted this way is the same ground, on the same
+[collective map](/docs/mechanics/world-exploration/#explored-world-map), as anything charted at a keyboard.
+
+## Mana Work
+
+This is where ranging stops being a pleasant side activity and starts mattering to the world.
+
+[Mana density](/docs/mechanics/environment/#mana-concentration) drives rift events, mana storms, and what
+spawns where. The three Orders disagree about it completely: Chaos wants it raised, Eternity wants it walked
+back down, the Circle wants it held inside a band. A ranging spirit carrying the right mana nudges it,
+slightly, along the ground it covers.
+
+Slightly is the point. One member's walk to work moves nothing worth measuring. Ten members covering their
+ordinary week move a region — and a rival Order ranges the same region back the other way.
+
+It fits the scoring the [Covenants](/docs/mechanics/factions/#seasonal-covenants) already use. A Covenant is
+counted in **region-days**: presence, sustained over time. That is exactly what a month of commuting
+produces. The Circle's Covenant is weighted by how contested a region is, so the best place to walk is the
+one a rival Order is walking too.
+
+And it gives the Orders something they badly need — a way for the two thirds of the membership who are at
+work to still be doing their Order's work.
+
+**It is not free.** Ranging into heavy mana draws on the sleeping body's
+[stamina](/docs/mechanics/statusvalues/#stamina---sta). The drain stops at a floor and can never kill you;
+an app must not starve somebody who forgot to close it. But you can log in tired, and a Master under a third
+of their stamina walks slower and recovers worse.
+
+## Keeping It a Walk
+
+Displacement counts only inside a band of human walking speeds, reached by any means — a wheelchair counts
+exactly as a pair of legs does. A car or a train contributes nothing.
+
+That single rule does three jobs. It keeps ranging a walking mechanic rather than a driving one. It removes
+any reason to range while doing something that needs your attention. And it defeats the simplest kind of
+location spoofing without anybody having to build a fraud system.
 
 # Standing Orders
 
@@ -170,6 +282,9 @@ about phones. The watch is where they live.
 - Regional influence — but only for regions where your Order keeps a temple, or where you have charted the
   ground yourself.
 
+If you [range](#ranging), your own month of walking is counted here too, against the same bar as everybody
+else's.
+
 Reading the world gauge accurately is [a Circle speciality](/docs/mechanics/factions/#the-order-of-the-circle),
 so the instrument that does it is Circle-made. The other two Orders can buy one, and the Circle decides what
 it costs them.
@@ -198,7 +313,7 @@ The charthouse is that promise, in your pocket:
 - Your own charted ground, drawn over the collective map of everything the server's players have explored
   between them.
 - Somewhere to plan a route, mark what you want to look at next, and queue a survey target for when you log
-  in.
+  in — or go and chart it on foot, by [ranging](#ranging).
 - Chart fragments traded with other players. Maps are items, [Cartography](/docs/mechanics/master/#skill-cartography)
   merges them and the post moves them — so the trade happens in the world, and the app only arranges it.
 
@@ -220,8 +335,9 @@ A short list, and a firm one.
 
 - **No fighting.** No combat of any kind, at any range.
 - **No moving.** Your Master is exactly where you logged out, and will be there when you get back.
+  [Ranging](#ranging) moves your spirit; it never moves your body.
 - **No travelling.** Nothing in the app shortens a journey. Couriers travel; you do not.
-- **No hands.** No crafting at a bench, no rituals, no catching, no charting, no building.
+- **No hands.** No crafting at a bench, no rituals, no catching, no building.
 - **No searching the world.** No global price board, no global quest finder, no lookup of any kind that a
   person standing in the world could not perform themselves.
 
@@ -237,5 +353,14 @@ Honest about where this stands:
 - **Notifications need a budget.** A game with this many timers can generate an unpleasant number of
   interruptions. What is worth waking somebody up for is a design question of its own, and it is not
   answered here.
+- **Ranging asks for something not everyone can give.** Making the walk genuinely the best way to chart,
+  sense and move mana is a deliberate choice, and it costs players who cannot walk far, or at all. Two
+  things soften it and neither removes it: displacement counts by any means inside the same speed band, so
+  a wheelchair counts exactly as a pair of legs; and everything ranging achieves stays achievable in the
+  world on your own two feet, only slower. That is a real trade, and it belongs in writing rather than in
+  the small print.
+- **The charting timer is unresolved.** The minigame puts a time limit on reaching each point. On a phone
+  that limit has to run in Bestia time, or come off altogether, because nothing in this game may ask
+  somebody to hurry across a road.
 - **The ledger's reach is unspecified.** How far the bond stretches, whether a finer ledger reaches further,
   and what a Master with no ledger at all can still see are all open.
