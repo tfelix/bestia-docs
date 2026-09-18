@@ -281,3 +281,29 @@ The individual values **IVs** are generated when the Bestia spawns, which makes 
 Every Bestia has base values upon which the status values are calculated. With setting these values some baseline for status values can be controlled from the designer. Every status has its designated base value.
 
 For other non-Bestia based entities like items or buildings etc. base values are usually generated via a ruleset and are assigned in a static manner.
+
+# Status Effects
+
+A status effect is a temporary condition sitting on top of an entity's status values. Skills, attacks, traps and items
+all apply them, and every one of them can be removed again - by waiting it out, by a counter-skill, or by an item.
+
+Resistance against a status effect comes from **VIT** for the physical ones and from **WIL** for the mental and magical
+ones. Neither ever reaches full immunity on its own; it only shortens the duration and lowers the chance of the effect
+landing in the first place.
+
+| Effect        | What It Does                                                              | Resisted By | Lifted By                                                                         |
+| ------------- | ------------------------------------------------------------------------- | ----------- | --------------------------------------------------------------------------------- |
+| **Silence**   | No spell or active skill can be cast. Attacks still work.                 | WIL         | [Cure](/docs/mechanics/master/#skill-cure), waiting it out                        |
+| **Blindness** | Hit rate collapses and the view distance shrinks hard.                    | WIL         | [Cure](/docs/mechanics/master/#skill-cure), waiting it out                        |
+| **Confusion** | Movement input is scrambled; the entity walks in the wrong direction.     | WIL         | [Cure](/docs/mechanics/master/#skill-cure), waiting it out                        |
+| **Stun**      | No action of any kind and no movement.                                    | VIT         | [Status Recovery](/docs/mechanics/master/#skill-status-recovery), waiting it out  |
+| **Freeze**    | Frozen solid. Cannot act, takes extra damage from physical hits.          | VIT         | [Status Recovery](/docs/mechanics/master/#skill-status-recovery), any fire damage |
+| **Petrify**   | Turned to stone. Cannot act and cannot be healed while it holds.          | VIT         | [Status Recovery](/docs/mechanics/master/#skill-status-recovery)                  |
+| **Sleep**     | Cannot act. The first hit taken wakes the entity and lands as a critical. | WIL         | any damage                                                                        |
+| **Poison**    | Loses HP every tick and regenerates none.                                 | VIT         | an antidote, waiting it out                                                       |
+| **Stagger**   | A short interruption that cancels whatever was being cast or swung.       | VIT         | passes on its own                                                                 |
+
+{{< alert context="info" text="Petrify is applied by the Wizard skill **Stone Curse**. The skill and the effect are deliberately named differently - a skill is something a master learns, an effect is something an entity suffers." />}}
+
+A status effect never stacks with itself. Re-applying one that is already running refreshes its duration instead, and
+always to the longer of the two.

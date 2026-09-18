@@ -196,6 +196,17 @@ Plain water blessed in the rite of Aqua Benedicta. The reagent behind Aspersio a
 A roll of fine chisels, needles and etching stylae. Consumed when reworking an item to cut rune slots into it.
 {{< /item >}}
 
+{{< item name="Mana Circle" weight="8" type="Usable" >}}
+A coil of mana concentrate poured into a ring on the ground. Everyone standing inside lends their presence to a rite
+performed there, raising its success chance and splitting its mana cost. Consumed when the rite resolves. See
+[Mana Circles](/docs/mechanics/master/#mana-circles).
+{{< /item >}}
+
+{{< item name="Gem Cut Station" weight="35" type="Etc" >}}
+A bench of clamps, loupes and graded grit where a Miner turns rough gemstones into cut ones. Placing one requires
+[Gem Cutting](/docs/mechanics/master/#skill-gem-cutting) Lv. 1.
+{{< /item >}}
+
 {{< item name="Breeder" weight="60" type="Etc" >}}
 A warded pen where a pair of Bestia can be left together to produce an egg. Holds exactly one male and one female at a time.
 Use it to construct it in the world.
