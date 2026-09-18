@@ -240,7 +240,7 @@ graph TD
     OreRefinement["Ore Refinement (1-3)"]
     ForgeWeapon["Forge Weapon (1-10)"]
     ForgeArmor["Forge Armor (1-10)"]
-    WeaponRepair["Weapon Repair (1-5)"]
+    WeaponRepair["Equipment Repair (1-5)"]
     WeaponryResearch["Weaponry Research (1-10)"]
     MasterSmith["Master Smith (1-5)"]
 
@@ -284,6 +284,23 @@ per ore level above 10, plus the smith's STR and WIL. Even a maxed smith loses r
 
 Lv. 1 allows you to place a Forge.
 
+| Lv. | Success Chance | Reliable Item Level |
+| --- | -------------- | ------------------- |
+| 1   | +5%            | 10                  |
+| 2   | +10%           | 20                  |
+| 3   | +15%           | 30                  |
+| 4   | +20%           | 40                  |
+| 5   | +25%           | 50                  |
+| 6   | +30%           | 60                  |
+| 7   | +35%           | 70                  |
+| 8   | +40%           | 80                  |
+| 9   | +45%           | 90                  |
+| 10  | +50%           | 100+                |
+
+There is **no hard cap**. A blueprint above the reliable item level can still be attempted - every item level above it
+costs another `5%` success chance. A Lv. 5 smith reaching for a level 80 weapon is working at a deep penalty, not
+against a locked door. See [Item Crafting](/docs/mechanics/items/#item-crafting) for the full roll.
+
 {{< /skill >}}
 
 {{< skill name="Forge Armor" maxLevel="10" requires="Ore Refinement Lv. 1 and Item Customization Lv. 5"
@@ -292,9 +309,25 @@ Lv. 1 allows you to place a Forge.
 
 Lv. 1 allows you to place a Forge.
 
+| Lv. | Success Chance | Reliable Item Level |
+| --- | -------------- | ------------------- |
+| 1   | +5%            | 10                  |
+| 2   | +10%           | 20                  |
+| 3   | +15%           | 30                  |
+| 4   | +20%           | 40                  |
+| 5   | +25%           | 50                  |
+| 6   | +30%           | 60                  |
+| 7   | +35%           | 70                  |
+| 8   | +40%           | 80                  |
+| 9   | +45%           | 90                  |
+| 10  | +50%           | 100+                |
+
+Same rule as [Forge Weapon](#skill-forge-weapon): no hard cap, but every item level above the reliable one costs another
+`5%` success chance.
+
 {{< /skill >}}
 
-{{< skill name="Weaponry Research" maxLevel="10" requires="Weapon Repair Lv. 3, Upgrade Equipment Lv. 1"
+{{< skill name="Weaponry Research" maxLevel="10" requires="Equipment Repair Lv. 3, Upgrade Equipment Lv. 1"
     type="Passive"
     description="Deeper knowledge of weapons and armor that raises the odds of successfully [refining](/docs/mechanics/items/#weapon-refinement) either one further after forging. If an upgrade fails the equipment can be destroyed." >}}
 
@@ -313,9 +346,12 @@ Lv. 1 allows you to place a Forge.
 
 {{< /skill >}}
 
-{{< skill name="Weapon Repair" maxLevel="5" requires="Ore Refinement Lv. 3"
-    type="Active" manaCost="33" castTime="3" cooldown="0s" range="2" target="Forge"
+{{< skill name="Equipment Repair" maxLevel="5" requires="Ore Refinement Lv. 3"
+    type="Active" manaCost="33" castTime="3s" cooldown="None" range="2" target="Forge"
     description="Hammers dents from armor and sets a fresh edge to broken blades, coaxing worn-out equipment back into fighting shape." >}}
+
+Restores the [durability](/docs/mechanics/items/#damaging-of-items) of weapons and armor alike. Those are the only
+things in the world that wear out - nothing else needs a repair skill.
 
 | Lv. | Max Item Level |
 | --- | -------------- |
@@ -363,7 +399,7 @@ graph TD
 <br>
 {{< skill name="Mana Harvester" maxLevel="10"
     type="Active" manaCost="19" castTime="10s" cooldown="30s"
-    description="Build and operate Mana Harvesters which channel mana from the environment into raw crystals - the source of magic for many use cases." >}}
+    description="Build and operate Mana Harvesters which channel mana from the environment into raw crystals - the source of magic for many use cases. Yield follows the local [mana concentration](/docs/mechanics/environment/#mana-concentration), so where a harvester stands matters as much as its rank." >}}
 
 Level 1 enables you to craft, place and use a Mana Harvester.
 
@@ -590,7 +626,7 @@ Level 1 lets you place a Lookout Post.
 
 ### Forester
 
-At home wherever the trees outnumber the people. Foresters live off the land - felling timber, landing the catch of the day, and striking up a bond with Bestia most masters would call unapproachable.
+At home wherever the trees outnumber the people. Foresters live off the land - felling timber, landing the catch of the day, and striking up a bond with Bestia most masters would call unapproachable. The ones who stay at it long enough stop merely catching Bestia and start shaping the bloodlines they come from.
 
 {{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [survival tree](#survival-tree)" />}}
 
@@ -602,10 +638,12 @@ graph TD
     BestiaTrapping["Bestia Trapping (1-5)"]
     ExpertTaming["Expert Taming (1-5)"]
     Beastfriend["Beastfriend (1-5)"]
+    BloodlineStudy["Bloodline Study (1-5)"]
 
     Trapping -->|Lv.3| BestiaTrapping
     Trapping -->|Lv.3| TrackReading
     ExpertTaming -->|Lv.3| Beastfriend
+    Beastfriend -->|Lv.3| BloodlineStudy
 ```
 
 <br>
@@ -698,6 +736,26 @@ Level 1 allows you to place a special Bestia trap.
 
 {{< /skill >}}
 
+{{< skill name="Bloodline Study" maxLevel="5" requires="Beastfriend Lv. 3"
+    type="Passive"
+    description="Knowing a Bestia well enough to tame it is one thing. Knowing which pair of them is worth putting in a Breeder, and why the last clutch came out the way it did, is another. The Forester's capstone." >}}
+
+Applies to every [Breeder](/docs/mechanics/bestia/#breeding) the master owns.
+
+The time reduction stacks with breeder upgrades, feed and buffs, and counts against the same **50% floor** - it lets a
+modest setup reach the cap instead of raising it. The dominant-IV column is the part that cannot be bought: at Lv. 4 a
+clutch draws a fourth dominant individual value, so a bloodline improves on four stats per generation rather than three.
+
+| Lv. | Breeding and Hatch Time | Dominant IVs per Clutch |
+| --- | ----------------------- | ----------------------- |
+| 1   | -5%                     | 3                       |
+| 2   | -10%                    | 3                       |
+| 3   | -15%                    | 3                       |
+| 4   | -20%                    | 4                       |
+| 5   | -25%                    | 4                       |
+
+{{< /skill >}}
+
 ### Prospector
 
 Half surveyor, half treasure hunter. Prospectors chart unclaimed land, feel out resources long before anyone else arrives, and travel heavier and further than sense would recommend.
@@ -737,7 +795,7 @@ the same amount.
 
 {{< skill name="Wilderness Survival" maxLevel="5" requires="Maximize Carry Capacity Lv. 3"
     type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
-    description="Hardens the master and their Bestia against travel through hostile terrain, far from the comfort of a settlement. Reduces the stamina drain caused by hostile terrain and raises tolerance against extreme temperatures." >}}
+    description="Hardens the master and their Bestia against travel through hostile terrain, far from the comfort of a settlement. Reduces the stamina drain caused by hostile terrain and raises tolerance against the [extreme temperatures](/docs/mechanics/environment/#temperature) out there." >}}
 
 | Lv. | Stamina Drain (hostile terrain) | Temperature Tolerance |
 | --- | ------------------------------- | --------------------- |
@@ -876,8 +934,22 @@ graph TD
 
 <br>
 {{< skill name="Magic Sense" maxLevel="5"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="12" castTime="2s" cooldown="10s" duration="15s" range="Self" target="Self"
     description="A prickle at the back of the mind that flags mana at work nearby, and picks apart what spell an item or entity carries bound to it." >}}
+
+Sweeps the area around the caster once per cast. What comes back gets sharper with rank: first that something is there,
+then where it is, and finally what it actually does. Local [mana concentration](/docs/mechanics/environment/#mana-concentration)
+adds to the range in a mana-rich region and eats into it in a drained one. A target hidden under
+[Suppress Aura](#skill-suppress-aura) stays silent.
+
+| Lv. | Range | What It Reveals                                           |
+| --- | ----- | --------------------------------------------------------- |
+| 1   | 10m   | That something nearby carries mana                        |
+| 2   | 20m   | Direction and rough strength of each source               |
+| 3   | 30m   | The element the mana belongs to                           |
+| 4   | 40m   | The exact spell bound to an item or place                 |
+| 5   | 50m   | Who bound it, and what trigger a [Spell Binding](#skill-spell-binding) is waiting for |
+
 {{< /skill >}}
 
 {{< skill name="Sense" maxLevel="1" requires="Magic Sense Lv. 1"
@@ -888,8 +960,13 @@ Reveals the monster status values, element, HP and Mana.
 
 {{< skill name="Observation" maxLevel="5"
     type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
-    description="A Sage's watchfulness turned outward - a sense for the direction and distance of world-changing events long before word of them travels." >}}
-Detects nearby world events like mana rifts which open, spawned bosses or other world changing events.
+    description="The Scholar's ear to the ground - a sense for the direction and distance of world-changing events long before word of them travels." >}}
+
+Detects nearby world events like mana rifts which open, spawned bosses or other world changing events. It reads
+**events**, not things: a [Resource Sense](#skill-resource-sense) finds the ore vein, a [Scry](#skill-scry) looks at a
+place you are not standing in, and a [Magic Sense](#skill-magic-sense) picks apart a single spell. Observation is the
+only one that notices something is about to happen.
+
 Level 1 lets you place an observatory.
 
 | Lv. | Detection Distance |
@@ -906,7 +983,12 @@ Level 1 lets you place an observatory.
     type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="The founding rite that plants a city sign in the ground and calls a settlement into being around it." >}}
 
-Only one settlement can be active at any time. You must destroy the settlement before you can place a new one. Only inactive settlements can be destroyed. This means there must be no more functional building (post office, trade post, etc.) be inside the sphere of influence of the settlement.
+This skill only starts a [settlement](/docs/mechanics/settlements/). It does not grow one - a town grows because
+players keep building inside it, and no further skill gates that.
+
+Only one settlement can be active at any time. You must destroy the settlement before you can place a new one. Only
+inactive settlements can be destroyed, which means no functional building (post office, trade post, etc.) may be left
+inside the settlement's sphere of influence.
 
 {{< /skill >}}
 
@@ -1632,7 +1714,7 @@ A negative base means the extraction is impossible on raw talent alone and only 
 
 {{< skill name="Elemental Empowerment" maxLevel="3" requires="Endow Wind Lv. 1, Endow Ice Lv. 1, Endow Fire Lv. 1 and Endow Earth Lv. 1"
     type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
-    description="The Sage's command of the elements grown wide enough to lean on the sky itself. Calls a chosen weather front - rain, gale or heat - over a large area for a time, strengthening spells and endowments of the matching element for everyone beneath it while dampening its opposite. Where a Prospector's [Weather Sense](#skill-weather-sense) only reads the sky, a Sage bends it." >}}
+    description="The Sage's command of the elements grown wide enough to lean on the sky itself. Calls a chosen [weather front](/docs/mechanics/environment/#weather) - rain, gale or heat - over a large area for a time, strengthening spells and endowments of the matching element for everyone beneath it while dampening its opposite. Where a Prospector's [Weather Sense](#skill-weather-sense) only reads the sky, a Sage bends it." >}}
 
 | Lv. | Area | Duration | Matching-Element Boost |
 | --- | ---- | -------- | ---------------------- |
@@ -2189,21 +2271,15 @@ Masters of hidden infiltration. They can deal high amount of single target damag
 
 ```mermaid
 graph TD
-    subgraph "Weapon Trickery"
-        StripWeapons["Strip Weapons (1-5)"]
-        DualWield["Dual Wield (1-5)"]
-        WeaponCoating["Weapon Coating (1-5)"]
-    end
+    StripWeapons["Strip Weapons (1-5)"]
+    DualWield["Dual Wield (1-5)"]
+    WeaponCoating["Weapon Coating (1-5)"]
 
-    subgraph Infiltration
-        Hide["Hide (1-5)"]
-        Cloak["Cloak (1-3)"]
-    end
+    Hide["Hide (1-5)"]
+    Cloak["Cloak (1-3)"]
 
-    subgraph Toxicology
-        PoisonResearch["Poison Research (1-10)"]
-        EnchantPoison["Enchant Poison (1-5)"]
-    end
+    PoisonResearch["Poison Research (1-10)"]
+    EnchantPoison["Enchant Poison (1-5)"]
 
     Plagiarism["Plagiarism (1-10)"]
     Preserve["Preserve (1)"]
@@ -2216,16 +2292,121 @@ graph TD
 ```
 
 <br>
-- Strip Weapons (1-5) _(placeholder)_
-- Dual Wield (1-5) requires Strip Weapons Lv. 2 _(placeholder)_
-- Hide (1-5) _(placeholder)_
-- Cloak (1-3) requires Hide Lv. 3 _(placeholder)_ - see the [cloaked Assassins](#skill-ruwach) a Priest's Ruwach can reveal
-- Poison Research (1-10) _(placeholder)_
-- Enchant Poison (1-5) requires Poison Research Lv. 3 _(placeholder)_
+{{< skill name="Strip Weapons" maxLevel="5"
+    type="Active" manaCost="22" castTime="Instant" cooldown="12s" range="2" target="Enemy"
+    description="A snap of the wrist at exactly the wrong moment for whoever is holding the weapon. Knocks a piece of equipment out of a target's hands and leaves them unable to re-equip it for a while." >}}
+
+Fails outright against a target protected by [Weapon Coating](#skill-weapon-coating).
+
+| Lv. | Strip Chance | Re-equip Blocked |
+| --- | ------------ | ---------------- |
+| 1   | 20%          | 5s               |
+| 2   | 30%          | 10s              |
+| 3   | 40%          | 15s              |
+| 4   | 50%          | 20s              |
+| 5   | 60%          | 25s              |
+
+{{< /skill >}}
+
+{{< skill name="Dual Wield" maxLevel="5" requires="Strip Weapons Lv. 2"
+    type="Passive"
+    description="Learning to disarm someone teaches you exactly how a weapon wants to be held - and that there is no good reason to stop at one. Lets the Assassin carry a one-handed weapon in each hand at a shrinking penalty." >}}
+
+The off-hand weapon always swings for less than the main hand. Rank buys that gap back.
+
+| Lv. | Off-Hand Damage | Attack Speed Penalty |
+| --- | --------------- | -------------------- |
+| 1   | 30%             | 25%                  |
+| 2   | 40%             | 20%                  |
+| 3   | 50%             | 15%                  |
+| 4   | 60%             | 10%                  |
+| 5   | 70%             | 5%                   |
+
+{{< /skill >}}
 
 {{< skill name="Weapon Coating" maxLevel="5" requires="Dual Wield Lv. 2"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="26" castTime="2s" cooldown="None" duration="10 min" range="0" target="Self"
     description="A thin, oiled coating worked into weapons and armor that turns aside damage and shrugs off attempts to strip it away." >}}
+
+Protects both hands at once. While it holds, [Strip Weapons](#skill-strip-weapons) cannot take either weapon.
+
+| Lv. | Equipment Damage Taken | Strip Resistance |
+| --- | ---------------------- | ---------------- |
+| 1   | -20%                   | 100%             |
+| 2   | -40%                   | 100%             |
+| 3   | -60%                   | 100%             |
+| 4   | -80%                   | 100%             |
+| 5   | -100%                  | 100%             |
+
+{{< /skill >}}
+
+{{< skill name="Hide" maxLevel="5"
+    type="Active" manaCost="18" castTime="Instant" cooldown="5s" duration="Until cancelled" range="0" target="Self"
+    description="Drops the Assassin flat against whatever cover is at hand. Nothing hostile can see them while they stay put - but standing still is the whole price of admission." >}}
+
+Breaks the moment the Assassin moves or attacks. Revealed by [Ruwach](#skill-ruwach) and by a [Sense](#skill-sense) cast in range.
+
+| Lv. | Mana Drain per Second | Detection Resistance |
+| --- | --------------------- | -------------------- |
+| 1   | 3                     | 10%                  |
+| 2   | 2.5                   | 20%                  |
+| 3   | 2                     | 30%                  |
+| 4   | 1.5                   | 40%                  |
+| 5   | 1                     | 50%                  |
+
+{{< /skill >}}
+
+{{< skill name="Cloak" maxLevel="3" requires="Hide Lv. 3"
+    type="Active" manaCost="30" castTime="Instant" cooldown="8s" duration="Until cancelled" range="0" target="Self"
+    description="What Hide is for standing still, Cloak is for walking. The Assassin stays unseen while moving, at the cost of speed and a steady bleed of mana." >}}
+
+Still breaks on attacking. A Priest's [Ruwach](#skill-ruwach) strips it outright.
+
+| Lv. | Movement Speed | Mana Drain per Second |
+| --- | -------------- | --------------------- |
+| 1   | 50%            | 6                     |
+| 2   | 70%            | 5                     |
+| 3   | 90%            | 4                     |
+
+{{< /skill >}}
+
+{{< skill name="Poison Research" maxLevel="10"
+    type="Passive"
+    description="A long, unhealthy familiarity with everything that should not be swallowed. Raises how hard the Assassin's own poisons bite and how well they shrug off somebody else's." >}}
+
+The poisons themselves are not made here - they are ordinary Alchemist goods, brewed with
+[Alchemy](#skill-alchemy) and bought like any other reagent. This skill only governs what an Assassin gets out of them.
+
+| Lv. | Poison Damage | Poison Resistance |
+| --- | ------------- | ----------------- |
+| 1   | +10%          | +5%               |
+| 2   | +20%          | +10%              |
+| 3   | +30%          | +15%              |
+| 4   | +40%          | +20%              |
+| 5   | +50%          | +25%              |
+| 6   | +60%          | +30%              |
+| 7   | +70%          | +35%              |
+| 8   | +80%          | +40%              |
+| 9   | +90%          | +45%              |
+| 10  | +100%         | +50%              |
+
+{{< /skill >}}
+
+{{< skill name="Enchant Poison" maxLevel="5" requires="Poison Research Lv. 3"
+    type="Active" manaCost="24" castTime="2s" cooldown="None" duration="5 min" range="2" target="Ally"
+    description="Works a brewed poison into the edge of a weapon so every strike carries a chance to leave it behind. Consumes one Alchemist-brewed poison per cast." >}}
+
+Applies the [Poison](/docs/mechanics/statusvalues/#poison) status effect on hit. The poison item decides how hard it
+bites; this skill decides how often it lands.
+
+| Lv. | Poison Chance per Hit |
+| --- | --------------------- |
+| 1   | 5%                    |
+| 2   | 10%                   |
+| 3   | 15%                   |
+| 4   | 20%                   |
+| 5   | 25%                   |
+
 {{< /skill >}}
 
 {{< skill name="Plagiarism" maxLevel="10"
@@ -2258,6 +2439,29 @@ Where a Brawler trusts bare knuckles and a Wizard trusts raw mana, a Knight trus
 
 {{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [warrior tree](#warrior-tree)" />}}
 
+```mermaid
+graph TD
+    HeavyWeaponMastery["Heavy Weapon Mastery (1-10)"]
+    HeavyArmorMastery["Heavy Armor Mastery (1-10)"]
+    Provoke["Provoke (1-5)"]
+    Bash["Bash (1-5)"]
+    Charge["Charge (1-5)"]
+    ShieldWall["Shield Wall (1-5)"]
+    AutoGuard["Auto Guard (1-5)"]
+    Juggernaut["Juggernaut (1-3)"]
+
+    HeavyWeaponMastery -->|Lv.3| Bash
+    Bash -->|Lv.3| Charge
+
+    HeavyArmorMastery -->|Lv.2| ShieldWall
+    ShieldWall -->|Lv.2| AutoGuard
+
+    HeavyArmorMastery -->|Lv.5| Juggernaut
+    Charge -->|Lv.3| Juggernaut
+    AutoGuard -->|Lv.3| Juggernaut
+```
+
+<br>
 {{< skill name="Heavy Weapon Mastery" maxLevel="10"
     type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Years spent drilling with sword, axe, mace and spear until the weight stops mattering. Increases damage dealt with heavy one- and two-handed melee weapons and reduces the accuracy penalty from wielding oversized ones." >}}
