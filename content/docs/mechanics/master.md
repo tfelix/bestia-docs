@@ -61,7 +61,7 @@ Skillpoints spent within a subtree (e.g. Blacksmith, Priest, Wizard, ...) do mor
 
 The following trees exist, they are organized in subtrees. These form the skill trees of a master. After a level up one skill point can be spend to increase a single level of a skill.
 
-{{< alert context="info" text="Each tree and sub-tree below is illustrated with a dependency diagram. Rounded nodes are entry skills with no prerequisite, a slanted node is a skill from another tree, and dashed arrows show the tree-mastery gate that unlocks a sub-tree once 5+ points are invested in its parent tree. Solid arrows are labeled with the required level in the source skill." />}}
+{{< alert context="info" text="Each tree and sub-tree below is illustrated with a dependency diagram. A slanted node is a skill borrowed from another tree, every other node is a skill of the tree itself, and a node with no incoming arrow is an entry skill with no prerequisite. Solid arrows are labeled with the required level in the source skill. Dashed arrows lead to the tree-mastery gate that unlocks a sub-tree once 5+ points are invested in its parent tree." />}}
 
 ## Novice Tree
 
@@ -136,10 +136,10 @@ graph TD
     UpgradeEquipment["Upgrade Equipment (1)"]
     MasterCraftsman["Master Craftsman (1-5)"]
     ItemCustomization["Item Customization (1-10)"]
-    Gate{{"5+ pts in Craftsman Tree"}}
-    Blacksmith(("Blacksmith"))
-    Artificer(("Artificer"))
-    Alchemist(("Alchemist"))
+    Gate["5+ pts in Craftsman Tree"]
+    Blacksmith["Blacksmith"]
+    Artificer["Artificer"]
+    Alchemist["Alchemist"]
 
     Carpentry -->|Lv.3| MasterCraftsman
     Carpentry -->|Lv.3| ItemCustomization
@@ -532,10 +532,10 @@ graph TD
     ResourceSense["Resource Sense (1-5)"]
     QuickTravel["Quick Travel (1-5)"]
     Fishing["Fishing (1-5)"]
-    Gate{{"5+ pts in Survival Tree"}}
-    Forester(("Forester"))
-    Prospector(("Prospector"))
-    Miner(("Miner"))
+    Gate["5+ pts in Survival Tree"]
+    Forester["Forester"]
+    Prospector["Prospector"]
+    Miner["Miner"]
 
     ResourceSense -.-> Gate
     QuickTravel -.-> Gate
@@ -848,21 +848,24 @@ Can sense ore and gem deposits through solid rock.
 
 ## Scholar Tree (unrefined)
 
-The Scholar tree contains skills which help with sensing the world's events and performing rituals to shape the face of the Bestia world itself. Traders keep the gears of commerce turning while Sages chase magic to its source - enscribing, discovering, and eventually bending distance itself.
+The Scholar tree contains skills which help with sensing the world's events and performing rituals to shape the face of the Bestia world itself. Priests keep a party standing through blessings and holy rites, Traders keep the gears of commerce turning, and Sages chase magic to its source - inscribing, discovering, and eventually bending distance itself.
 
 ```mermaid
 graph TD
     MagicSense["Magic Sense (1-5)"]
+    Sense["Sense (1)"]
     Observation["Observation (1-5)"]
     Founder["Founder (1)"]
     Ruwach["Ruwach (1-3)"]
-    Gate{{"5+ pts in Scholar Tree"}}
-    Priest(("Priest"))
-    Trader(("Trader"))
-    Sage(("Sage"))
+    Gate["5+ pts in Scholar Tree"]
+    Priest["Priest"]
+    Trader["Trader"]
+    Sage["Sage"]
 
     MagicSense -->|Lv.2| Ruwach
+    MagicSense -->|Lv.1| Sense
     MagicSense -.-> Gate
+    Sense -.-> Gate
     Observation -.-> Gate
     Founder -.-> Gate
     Ruwach -.-> Gate
@@ -877,7 +880,7 @@ graph TD
     description="A prickle at the back of the mind that flags mana at work nearby, and picks apart what spell an item or entity carries bound to it." >}}
 {{< /skill >}}
 
-{{< skill name="Sense" maxLevel="1"
+{{< skill name="Sense" maxLevel="1" requires="Magic Sense Lv. 1"
     type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Cast on a monster to read what mana and instinct alone can tell about it." >}}
 Reveals the monster status values, element, HP and Mana.
@@ -958,7 +961,7 @@ graph TD
     MagnusExorcismus["Magnus Exorcismus (1-3)"]
 
     Sanctuary["Sanctuary (1-3)"]
-    Resurrection["Resurrection (3)"]
+    Resurrection["Resurrection (1)"]
 
     MagicSense -->|Lv.2| Gloria
     MagicSense -->|Lv.2| Suffragium
@@ -968,13 +971,15 @@ graph TD
 
     Cure -->|Lv.1| AquaBenedicta
     Cure -->|Lv.1| StatusRecovery
-    StatusRecovery -->|Lv.2| Resurrection
-    AquaBenedicta -->|Lv.2| Aspersio
+    Heal -->|Lv.8| Resurrection
+    StatusRecovery -->|Lv.1| Resurrection
+    AquaBenedicta -->|Lv.1| Aspersio
 
     IncreaseAGI -->|Lv.2| DecreaseAGI
 
     Blessing -->|Lv.3| ImpositioManus
     Blessing -->|Lv.3| Magnificat
+    KyrieEleison -->|Lv.3| Magnificat
     KyrieEleison -->|Lv.2| Pneuma
 
     SignumCrucis -->|Lv.2| HolyLight
@@ -1121,6 +1126,18 @@ Higher levels extend how long the veil holds.
 
 {{< /skill >}}
 
+{{< skill name="Signum Crucis" maxLevel="3"
+    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    description="The sign traced in the air before every holy rite. It burns a sigil onto a target that pries their guard open, and bites hardest into things that should not be walking around in the first place. Every other holy skill a Priest learns starts here." >}}
+
+| Lv. | DEF Reduction | Extra vs Demon/Undead | Duration |
+| --- | ------------- | --------------------- | -------- |
+| 1   | 10%           | 10%                   | 30s      |
+| 2   | 20%           | 20%                   | 45s      |
+| 3   | 30%           | 30%                   | 60s      |
+
+{{< /skill >}}
+
 {{< skill name="Holy Light" maxLevel="5" requires="Signum Crucis Lv. 2"
     type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Condenses raw holy mana into a single searing beam - the Priest's answer to needing to deal damage rather than mend it." >}}
@@ -1176,7 +1193,7 @@ Higher levels extend how long the veil holds.
     description="Where Cure lifts the fog from a mind, Status Recovery breaks the ice, stone and cramp from a body - lifting Stun, Freeze and Stone Curse in a single rite." >}}
 {{< /skill >}}
 
-{{< skill name="Aspersio" maxLevel="3" requires="Aqua Benedicta Lv. 2 and Mace Mastery Lv. 2"
+{{< skill name="Aspersio" maxLevel="3" requires="Aqua Benedicta Lv. 1"
     type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Anoints a weapon with Holy Water, temporarily imbuing its strikes with the holy element. Consumes a unit of [Holy Water](/docs/mechanics/item-list/#holy-water) per cast." >}}
 Higher levels extend the duration and allow higher-grade Holy Water to be used for a stronger imbue
@@ -1191,9 +1208,11 @@ Inflicts single target Holy, armor piercing damage. If the target is an Undead p
 
 | Lv. | Base Chance of Effect |
 | --- | --------------------- |
-| 1   | -8%                   |
-| 2   | -16%                  |
-| 3   | -24%                  |
+| 1   | 8%                    |
+| 2   | 16%                   |
+| 3   | 24%                   |
+| 4   | 32%                   |
+| 5   | 40%                   |
 
 ```text
 Chance of Effect = [Base_Chance_of_Effect + (Lv ÷ 10) + (INT ÷ 10) + (WIL ÷ 10) + {1 − (Target_HP ÷ Target_MaxHP)} × 20]%
@@ -1244,7 +1263,7 @@ Deals equivalent holy damage per tick to undead and demon-type enemies standing 
 
 {{< /skill >}}
 
-{{< skill name="Resurrection" maxLevel="1" requires="Heal Lv. 8 and Status Recovery Lv. 2"
+{{< skill name="Resurrection" maxLevel="1" requires="Heal Lv. 8 and Status Recovery Lv. 1"
     type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="The rite few Priests ever get to cast and fewer still get to cast twice in a row on the same ally - channels enough mana to call a fallen Bestia or Master back over the threshold, returning them to the world with a portion of their HP restored. Long cooldown; can not be used on the caster." >}}
 {{< /skill >}}
@@ -1324,7 +1343,7 @@ You can identify an item.
 
 {{< /skill >}}
 
-{{< skill name="Trade Post Owner" maxLevel="5"
+{{< skill name="Trade Post Owner" maxLevel="5" requires="Founder Lv. 1"
     type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Sets up trading posts where other citizens can buy and sell their wares, turning any settlement into a proper marketplace." >}}
 
@@ -1379,7 +1398,7 @@ Books, wards and long nights spent staring into scrying bowls. Sages study magic
 graph TD
     Observation[/"Observation (Scholar Tree)"/]
     SpellTraining["Spell Training (1-10)"]
-    FreeCast(["Free Cast (1-5)"])
+    FreeCast["Free Cast (1-5)"]
     Scry["Scry (1-5)"]
     Dispell["Dispell (1-5)"]
     SpellEnscription["Spell Enscription (1-10)"]
@@ -1422,7 +1441,7 @@ graph TD
 
 <br>
 
-{{< skill name="Spell Training" maxLevel="10"
+{{< skill name="Spell Training" maxLevel="10" requires="Observation Lv. 5"
     type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Trains a spell from a scroll into a Bestia's memory, the first step of every Sage's education." >}}
 Consumes the scroll in the process. The success chance depends on the level of the scroll.
@@ -1442,7 +1461,7 @@ Consumes the scroll in the process. The success chance depends on the level of t
 
 {{< /skill >}}
 
-{{< skill name="Scry" maxLevel="5" requires="Spell Training Lv. 2"
+{{< skill name="Scry" maxLevel="5" requires="Observation Lv. 3"
     type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Casts a Sage's sight far beyond their own eyes, scouting distant ground and the resources hiding on it before ever setting foot there." >}}
 {{< /skill >}}
@@ -1625,20 +1644,22 @@ A negative base means the extraction is impossible on raw talent alone and only 
 
 ## Warrior Tree
 
-Where the other trees build, gather and study, the Warrior tree is built to fight. Wizards burn the battlefield down with elemental and arcane fury, Brawlers shrug off punishment nobody should be able to shrug off, Hunters strike up a bond with wild Bestia most people just run from, Assassins vanish before the first drop of blood even hits the ground, Knights plant themselves between danger and everyone else, and Bards and Dancers turn a battlefield into something worth listening to.
+Where the other trees build, gather and study, the Warrior tree is built to fight. Wizards burn the battlefield down with elemental and arcane fury, Assassins vanish before the first drop of blood even hits the ground, and Knights plant themselves between danger and everyone else.
+
+{{< alert context="warning" text="Only Wizard, Assassin and Knight ship with the initial release. Brawler, Hunter, Bard and Dancer are designed but parked - their skills are kept in this page as a comment so the work is not lost, and they do not count against any rank budget until they are unparked." />}}
 
 ```mermaid
 graph TD
-    Endure(["Endure (1)"])
-    IronSkin(["Iron Skin (1-5)"])
-    MagicArmor(["Magic Armor (1-5)"])
-    Meditation(["Meditation (1-5)"])
-    Gate{{"5+ pts in Warrior Tree"}}
-    Wizard(("Wizard"))
+    Endure["Endure (1)"]
+    IronSkin["Iron Skin (1-5)"]
+    MagicArmor["Magic Armor (1-3)"]
+    Meditation["Meditation (1-5)"]
+    Gate["5+ pts in Warrior Tree"]
+    Wizard["Wizard"]
     %% Brawler(("Brawler")) %% parked
     %% Hunter(("Hunter")) %% parked
-    Assassin(("Assassin"))
-    Knight(("Knight"))
+    Assassin["Assassin"]
+    Knight["Knight"]
     %% Bard(("Bard")) %% parked
     %% Dancer(("Dancer")) %% parked
 
@@ -1913,7 +1934,7 @@ graph TD
 
 {{< /skill >}}
 
-{{< skill name="Fire Wall" maxLevel="5" requires="Master of Fire Lv. 2"
+{{< skill name="Fire Wall" maxLevel="5" requires="Fire Bolt Lv. 3"
     type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Conjures a wall of roaring flame across a line of tiles. Anything that tries to push through is burned and shoved back the way it came." >}}
 
@@ -1927,7 +1948,7 @@ graph TD
 
 {{< /skill >}}
 
-{{< skill name="Meteor Storm" maxLevel="5" requires="Master of Fire Lv. 3"
+{{< skill name="Meteor Storm" maxLevel="5" requires="Fire Bolt Lv. 10"
     type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Calls down a rain of blazing meteors onto an area, scorching everything caught beneath it over and over as it falls." >}}
 
@@ -1941,7 +1962,7 @@ graph TD
 
 {{< /skill >}}
 
-{{< skill name="Sturm Gust" maxLevel="5" requires="Master of Water Lv. 3"
+{{< skill name="Storm Gust" maxLevel="5" requires="Ice Bolt Lv. 10"
     type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="A freezing gale that batters an area with repeated waves of ice, each one carrying a chance to freeze anything caught in the flurry solid." >}}
 
@@ -1955,7 +1976,7 @@ graph TD
 
 {{< /skill >}}
 
-{{< skill name="Water Ball" maxLevel="5" requires="Master of Water Lv. 3"
+{{< skill name="Water Ball" maxLevel="5" requires="Ice Bolt Lv. 8"
     type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Gathers the water in a 5x5 area around the caster into a single crashing orb hurled at a target. The caster must be standing in water for the spell to draw from, and it strikes once for every water tile it manages to pull from around them - up to 25 hits at once." >}}
 
@@ -1969,7 +1990,7 @@ graph TD
 
 {{< /skill >}}
 
-{{< skill name="Frost Nova" maxLevel="5" requires="Master of Water Lv. 4"
+{{< skill name="Frost Nova" maxLevel="5" requires="Ice Bolt Lv. 1"
     type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="A burst of subzero cold erupts outward from the caster, freezing anything caught too close." >}}
 
@@ -1983,7 +2004,7 @@ graph TD
 
 {{< /skill >}}
 
-{{< skill name="Quagmire" maxLevel="5" requires="Master of Wind Lv. 2"
+{{< skill name="Quagmire" maxLevel="5" requires="Thunder Bolt Lv. 2"
     type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Turns the ground in an area into thick, clinging mud. Any AGI-increasing buff on someone caught in it is stripped away, and their own AGI and DEX are dragged down for as long as they remain inside." >}}
 Regardless of level, the reduction is capped at `-25%` against other Bestia Masters and `-50%` against wild Bestia and monsters.
@@ -1998,7 +2019,7 @@ Regardless of level, the reduction is capped at `-25%` against other Bestia Mast
 
 {{< /skill >}}
 
-{{< skill name="Thunder Storm" maxLevel="5" requires="Master of Wind Lv. 3"
+{{< skill name="Thunder Storm" maxLevel="5" requires="Thunder Bolt Lv. 3"
     type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Wind churns into a raging storm overhead, calling down lightning bolts across the whole area at random." >}}
 
@@ -2012,7 +2033,7 @@ Regardless of level, the reduction is capped at `-25%` against other Bestia Mast
 
 {{< /skill >}}
 
-{{< skill name="Earthquake" maxLevel="5" requires="Master of Earth Lv. 3"
+{{< skill name="Earthquake" maxLevel="5" requires="Earth Spike Lv. 3"
     type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Splits the ground in a wide radius around the caster, the shockwave dealing repeated damage to everything caught standing on it." >}}
 
@@ -2040,7 +2061,7 @@ Regardless of level, the reduction is capped at `-25%` against other Bestia Mast
 
 {{< /skill >}}
 
-{{< skill name="Soul Break" maxLevel="5" requires="Elemental Mastery Lv. 4 and Spiritual Mastery Lv. 2"
+{{< skill name="Soul Break" maxLevel="5" requires="Spiritual Mastery Lv. 2"
     type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="Tears into a target with raw, undirected mana that ignores elemental resistance, ripping away a portion of their own mana in the process." >}}
 
@@ -2054,7 +2075,7 @@ Regardless of level, the reduction is capped at `-25%` against other Bestia Mast
 
 {{< /skill >}}
 
-{{< skill name="Thunder of Jupiter" maxLevel="5" requires="Thunder Storm Lv. 3 and Master of Wind Lv. 5"
+{{< skill name="Thunder of Jupiter" maxLevel="5" requires="Thunder Storm Lv. 3"
     type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="The Wizard's answer to a single stubborn target: a column of lightning that strikes over and over, once for every level of mastery behind it." >}}
 
@@ -2068,7 +2089,7 @@ Regardless of level, the reduction is capped at `-25%` against other Bestia Mast
 
 {{< /skill >}}
 
-{{< skill name="Mindbreak" maxLevel="5" requires="Elemental Mastery Lv. 3 or Spiritual Mastery Lv. 3"
+{{< skill name="Mindbreak" maxLevel="5" requires="Soul Break Lv. 3"
     type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
     description="The Wizard's capstone: a buff channeling so much raw magic through a Bestia at once that its armor is the first thing to give. Once applied it reduces the armor but increases magical attack of a Bestia. It cancels `Mindfocus`." >}}
 
