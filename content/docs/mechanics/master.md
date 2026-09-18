@@ -130,11 +130,11 @@ The three ranks only govern how well the Master handles a cooking place. What a 
 **recipes**, discovered the same way a Craftsman discovers a blueprint - by experimenting with ingredients. A Lv. 1 cook
 with a long recipe book outperforms a Lv. 3 cook who never left the campfire.
 
-| Lv. | Cooking Time | Success Chance | Stamina Cost |
-| --- | ------------ | -------------- | ------------ |
-| 1   | -0%          | +0%            | 5            |
-| 2   | -20%         | +20%           | 8            |
-| 3   | -40%         | +40%           | 11           |
+| Lv. | Cooking Time Reduction | Success Chance | Stamina Cost |
+| --- | ---------------------- | -------------- | ------------ |
+| 1   | 0%                     | +0%            | 5            |
+| 2   | 20%                    | +20%           | 8            |
+| 3   | 40%                    | +40%           | 11           |
 
 {{< /skill >}}
 
@@ -211,13 +211,13 @@ This bonus is added on top of the item-level base chance and the crafter's DEX/W
 type="Passive"
 description="A lifetime of calluses paid off - tools answer faster and structures rise quicker under this Craftsman's hand, and the Bestia working alongside them keep pace." >}}
 
-| Lv. | Construction Time | Success Chance |
-| --- | ----------------- | -------------- |
-| 1   | -10%              | +2%            |
-| 2   | -20%              | +4%            |
-| 3   | -30%              | +6%            |
-| 4   | -40%              | +8%            |
-| 5   | -50%              | +10%           |
+| Lv. | Construction Time Reduction | Success Chance |
+| --- | --------------------------- | -------------- |
+| 1   | 10%                         | +2%            |
+| 2   | 20%                         | +4%            |
+| 3   | 30%                         | +6%            |
+| 4   | 40%                         | +8%            |
+| 5   | 50%                         | +10%           |
 
 This bonus is added on top of the item-level base chance and the crafter's DEX/WIL — see
 [Construction Crafting Success Chance](/docs/mechanics/items/#construction-crafting-success-chance) for the full formula.
@@ -433,18 +433,18 @@ graph TD
 
 Level 1 enables you to craft, place and use a Mana Harvester.
 
-| Lv. | Harvesting Time | Crystal Yield | Total Active Harvesters |
-| --- | --------------- | ------------- | ----------------------- |
-| 1   | -5%             | +3%           | 1                       |
-| 2   | -10%            | +6%           | 1                       |
-| 3   | -15%            | +9%           | 1                       |
-| 4   | -20%            | +12%          | 2                       |
-| 5   | -25%            | +15%          | 2                       |
-| 6   | -30%            | +18%          | 2                       |
-| 7   | -35%            | +21%          | 3                       |
-| 8   | -40%            | +24%          | 3                       |
-| 9   | -45%            | +27%          | 3                       |
-| 10  | -50%            | +30%          | 4                       |
+| Lv. | Harvesting Time Reduction | Crystal Yield | Total Active Harvesters |
+| --- | ------------------------- | ------------- | ----------------------- |
+| 1   | 5%                        | +3%           | 1                       |
+| 2   | 10%                       | +6%           | 1                       |
+| 3   | 15%                       | +9%           | 1                       |
+| 4   | 20%                       | +12%          | 2                       |
+| 5   | 25%                       | +15%          | 2                       |
+| 6   | 30%                       | +18%          | 2                       |
+| 7   | 35%                       | +21%          | 3                       |
+| 8   | 40%                       | +24%          | 3                       |
+| 9   | 45%                       | +27%          | 3                       |
+| 10  | 50%                       | +30%          | 4                       |
 
 {{< /skill >}}
 
@@ -492,16 +492,16 @@ Level 1 allows you to create an Enchantment Altair. Cast time depends on the ite
 
 | Lv. | Enchantment Chance | Destroy Chance on Failed Bind |
 | --- | ------------------ | ----------------------------- |
-| 1   | +4%                | -7%                           |
-| 2   | +8%                | -14%                          |
-| 3   | +12%               | -21%                          |
-| 4   | +16%               | -28%                          |
-| 5   | +20%               | -35%                          |
-| 6   | +24%               | -42%                          |
-| 7   | +28%               | -49%                          |
-| 8   | +32%               | -56%                          |
-| 9   | +36%               | -63%                          |
-| 10  | +40%               | -70%                          |
+| 1   | +4%                | 40%                           |
+| 2   | +8%                | 37%                           |
+| 3   | +12%               | 34%                           |
+| 4   | +16%               | 31%                           |
+| 5   | +20%               | 28%                           |
+| 6   | +24%               | 25%                           |
+| 7   | +28%               | 22%                           |
+| 8   | +32%               | 19%                           |
+| 9   | +36%               | 16%                           |
+| 10  | +40%               | 13%                           |
 
 {{< /skill >}}
 
@@ -525,7 +525,7 @@ graph TD
 
 <br>
 {{< skill name="Herbalism" maxLevel="5"
-    type="Passive" manaCost="4" castTime="3" range="2" target="Herbs"
+    type="Passive"
     description="Teaches which roots, herbs and mana-touched growth are worth the harvest, and how to keep them potent until they reach the cauldron." >}}
 
 | Lv. | Max Herb Level |
@@ -613,7 +613,7 @@ graph TD
 
 <br>
 {{< skill name="Quick Travel" maxLevel="5"
-    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Passive"
     description="Years on the road teach a Master and their Bestia how to cross any terrain without losing a step." >}}
 | Lv. | Movement Speed |
 | --- | --------------- |
@@ -626,7 +626,7 @@ graph TD
 {{< /skill >}}
 
 {{< skill name="Resource Sense" maxLevel="5"
-    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Passive"
     description="The physical counterpart to a Sage's Observation: an instinct for the direction and distance of nearby physical resources - ore veins, herb patches, timber stands and game trails - long before they come into view." >}}
 Level 1 lets you place a Lookout Post.
 
@@ -641,7 +641,7 @@ Level 1 lets you place a Lookout Post.
 {{< /skill >}}
 
 {{< skill name="Fishing" maxLevel="5"
-    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Passive"
     description="A patient hand with rod and net that pulls fish from any water worth casting into - as good on the plate as it is at the trade post." >}}
 
 | Lv. | Max Fish Level |
@@ -678,22 +678,22 @@ graph TD
 
 <br>
 {{< skill name="Lumberjack" maxLevel="5"
-    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Passive"
     description="An axeman's read of the forest - which trunks fell clean, which grain splits true, and how to bring both down efficiently." >}}
 Level 1 allows you to install a woodworker cabin.
 
-| Lv. | Gathering Time | Resource Drop Chance |
-| --- | -------------- | -------------------- |
-| 1   | -10%           | +20%                 |
-| 2   | -20%           | +40%                 |
-| 3   | -30%           | +60%                 |
-| 4   | -40%           | +80%                 |
-| 5   | -50%           | +100%                |
+| Lv. | Gathering Time Reduction | Resource Drop Chance |
+| --- | ------------------------ | -------------------- |
+| 1   | 10%                      | +20%                 |
+| 2   | 20%                      | +40%                 |
+| 3   | 30%                      | +60%                 |
+| 4   | 40%                      | +80%                 |
+| 5   | 50%                      | +100%                |
 
 {{< /skill >}}
 
 {{< skill name="Trapping" maxLevel="5"
-    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Passive"
     description="Sets snares and deadfalls that keep working for the master even while they're off doing something else, passively catching small game over time for meat and pelts on a later check-in." >}}
 Level 1 allows you to place a trap.
 
@@ -724,7 +724,7 @@ Displays a track a player or bestia recently took. Shows you also the direction 
 {{< /skill >}}
 
 {{< skill name="Bestia Trapping" maxLevel="5" requires="Trapping Lv. 3"
-    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Passive"
     description="Special traps and lures empowered with mana dust to catch Bestia." >}}
 Level 1 allows you to place a special Bestia trap.
 
@@ -739,21 +739,21 @@ Level 1 allows you to place a special Bestia trap.
 {{< /skill >}}
 
 {{< skill name="Expert Taming" maxLevel="5"
-    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Passive"
     description="A Forester's patient hand with wild Bestia rubs off on them, sharpening how fast they learn and how little they need to keep going out in the open." >}}
 
-| Lv. | EXP Gain | Stamina Loss |
-| --- | -------- | ------------ |
-| 1   | +5%      | -2%          |
-| 2   | +10%     | -4%          |
-| 3   | +15%     | -6%          |
-| 4   | +20%     | -8%          |
-| 5   | +25%     | -10%         |
+| Lv. | EXP Gain | Stamina Loss Reduction |
+| --- | -------- | ---------------------- |
+| 1   | +5%      | 2%                     |
+| 2   | +10%     | 4%                     |
+| 3   | +15%     | 6%                     |
+| 4   | +20%     | 8%                     |
+| 5   | +25%     | 10%                    |
 
 {{< /skill >}}
 
 {{< skill name="Beastfriend" maxLevel="5" requires="Expert Taming Lv. 3"
-    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Passive"
     description="A lifetime studying Bestia behavior down to the last twitch of an ear, making both the taming and the trapping of them that much easier." >}}
 
 | Lv. | Tame Chance |
@@ -776,13 +776,13 @@ The time reduction stacks with breeder upgrades, feed and buffs, and counts agai
 modest setup reach the cap instead of raising it. The dominant-IV column is the part that cannot be bought: at Lv. 4 a
 clutch draws a fourth dominant individual value, so a bloodline improves on four stats per generation rather than three.
 
-| Lv. | Breeding and Hatch Time | Dominant IVs per Clutch |
-| --- | ----------------------- | ----------------------- |
-| 1   | -5%                     | 3                       |
-| 2   | -10%                    | 3                       |
-| 3   | -15%                    | 3                       |
-| 4   | -20%                    | 4                       |
-| 5   | -25%                    | 4                       |
+| Lv. | Breeding and Hatch Time Reduction | Dominant IVs per Clutch |
+| --- | --------------------------------- | ----------------------- |
+| 1   | 5%                                | 3                       |
+| 2   | 10%                               | 3                       |
+| 3   | 15%                               | 3                       |
+| 4   | 20%                               | 4                       |
+| 5   | 25%                               | 4                       |
 
 {{< /skill >}}
 
@@ -824,21 +824,21 @@ the same amount.
 {{< /skill >}}
 
 {{< skill name="Wilderness Survival" maxLevel="5" requires="Maximize Carry Capacity Lv. 3"
-    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Passive"
     description="Hardens the master and their Bestia against travel through hostile terrain, far from the comfort of a settlement. Reduces the stamina drain caused by hostile terrain and raises tolerance against the [extreme temperatures](/docs/mechanics/environment/#temperature) out there." >}}
 
-| Lv. | Stamina Drain (hostile terrain) | Temperature Tolerance |
-| --- | ------------------------------- | --------------------- |
-| 1   | -10%                            | +5%                   |
-| 2   | -20%                            | +10%                  |
-| 3   | -30%                            | +15%                  |
-| 4   | -40%                            | +20%                  |
-| 5   | -50%                            | +25%                  |
+| Lv. | Stamina Drain Reduction (hostile terrain) | Temperature Tolerance |
+| --- | ----------------------------------------- | --------------------- |
+| 1   | 10%                                       | +5%                   |
+| 2   | 20%                                       | +10%                  |
+| 3   | 30%                                       | +15%                  |
+| 4   | 40%                                       | +20%                  |
+| 5   | 50%                                       | +25%                  |
 
 {{< /skill >}}
 
 {{< skill name="Cartography" maxLevel="5" requires="Resource Sense Lv. 1"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="20" castTime="30s" cooldown="None" range="0" target="Terrain"
     description="Enables the player to chart unexplored land, revealing terrain that can be shared, traded on, or built on. See [World Exploration](/docs/mechanics/world-exploration/#cartography) for how the surveying minigame plays out." >}}
 Each level reduces the difficulty of surveying unexplored land.
 {{< /skill >}}
@@ -877,22 +877,22 @@ graph TD
 
 <br>
 {{< skill name="Mining" maxLevel="5"
-    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Passive"
     description="A pickaxe, a steady lamp, and the nose for where the rock is worth breaking." >}}
 Level 1 enables you to place a mining shaft.
 
-| Lv. | Mining Time | Max Resource Level |
-| --- | ----------- | ------------------ |
-| 1   | -10%        | 20                 |
-| 2   | -20%        | 40                 |
-| 3   | -30%        | 60                 |
-| 4   | -40%        | 80                 |
-| 5   | -50%        | 100+               |
+| Lv. | Mining Time Reduction | Max Resource Level |
+| --- | --------------------- | ------------------ |
+| 1   | 10%                   | 20                 |
+| 2   | 20%                   | 40                 |
+| 3   | 30%                   | 60                 |
+| 4   | 40%                   | 80                 |
+| 5   | 50%                   | 100+               |
 
 {{< /skill >}}
 
 {{< skill name="Gem Cutting" maxLevel="5" requires="Mining Lv. 3"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="20" castTime="8s" cooldown="None" range="2" target="Gem Cut Station"
     description="Turns the rough gemstones a Miner digs up into cut stones fit for an Artificer's socket or a Trader's sale." >}}
 Can cut raw gems recovered from mining into faceted gemstones, increasing their value and unlocking their use in socketed equipment.
 Higher levels unlock cutting higher-grade gems. Level 1 allows you to place [Gem Cut Stations](item-list/#gem-cut-stations)
@@ -908,7 +908,7 @@ Higher levels unlock cutting higher-grade gems. Level 1 allows you to place [Gem
 {{< /skill >}}
 
 {{< skill name="Cave Explorer" maxLevel="5" requires="Mining Lv. 3"
-    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Passive"
     description="Lets a Miner push shafts deeper than good sense would recommend, into ground that pays off precisely because nobody else risks it. Grants access to deeper, more dangerous mine shafts holding rarer ore veins and the odd buried structure." >}}
 
 | Lv. | Bonus Resources |
@@ -922,7 +922,7 @@ Higher levels unlock cutting higher-grade gems. Level 1 allows you to place [Gem
 {{< /skill >}}
 
 {{< skill name="Resource Sonar" maxLevel="3" requires="Cave Explorer Lv. 3"
-    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Passive"
     description="The Miner's capstone: a feel for what's underfoot precise enough to map a shaft before the first swing of the pick." >}}
 Can sense ore and gem deposits through solid rock.
 
@@ -983,13 +983,13 @@ adds to the range in a mana-rich region and eats into it in a drained one. A tar
 {{< /skill >}}
 
 {{< skill name="Sense" maxLevel="1" requires="Magic Sense Lv. 1"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="6" castTime="1s" cooldown="3s" range="12" target="Enemy"
     description="Cast on a monster to read what mana and instinct alone can tell about it." >}}
 Reveals the monster status values, element, HP and Mana.
 {{< /skill >}}
 
 {{< skill name="Observation" maxLevel="5"
-    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Passive"
     description="The Scholar's ear to the ground - a sense for the direction and distance of world-changing events long before word of them travels." >}}
 
 Detects nearby world events like mana rifts which open, spawned bosses or other world changing events. It reads
@@ -1010,7 +1010,7 @@ Level 1 lets you place an observatory.
 {{< /skill >}}
 
 {{< skill name="Founder" maxLevel="1"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="100" castTime="60s" cooldown="24h" range="0" target="Ground"
     description="The founding rite that plants a city sign in the ground and calls a settlement into being around it." >}}
 
 This skill only starts a [settlement](/docs/mechanics/settlements/). It does not grow one - a town grows because
@@ -1023,7 +1023,7 @@ inside the settlement's sphere of influence.
 {{< /skill >}}
 
 {{< skill name="Ruwach" maxLevel="3" requires="Magic Sense Lv. 2"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="14" castTime="Instant" cooldown="10s" duration="10s" range="per Lv." target="Self"
     description="A pulse of second sight that peels back concealment - hidden traps, camouflaged Hunters and cloaked Assassins stand out for what they are, and counterfeit goods stop passing as genuine. Useful to any Scholar, whether they're scrying old ruins, appraising a shady deal, or walking a party into an ambush." >}}
 Higher levels shorten how long a concealed target needs to hold still before being revealed.
 
@@ -1109,10 +1109,10 @@ graph TD
 
 <br>
 {{< skill name="Heal" maxLevel="10"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="per Lv." castTime="1.5s" cooldown="None" range="9" target="Ally"
     description="Channels mana directly into a target's wounds, restoring HP in an instant. The Priest's bread and butter - simple, reliable, and the first rite every Priest learns." >}}
 
-Heals a target's HP for `[(BaseLV+INT)/8]*(4+8*SkillLV)`. When used against Undead property monsters, it is a holy attack that ignores MDEF and INT, but deals only half damage
+Heals a target's HP for `[(BaseLV+INT)/8]*(4+8*SkillLV)`. When used against Undead property monsters, it is a holy attack that ignores SMDEF and INT, but deals only half damage
 
 (that is, HealValue\*ElementModifier/2).
 To use against a monster, you must shift-click it or turn on /noshift.
@@ -1133,20 +1133,20 @@ To use against a monster, you must shift-click it or turn on /noshift.
 {{< /skill >}}
 
 {{< skill name="Suffragium" maxLevel="3" requires="Magic Sense Lv. 2"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="18" castTime="Instant" cooldown="20s" duration="30s" range="9" target="Ally"
     description="A murmured rite that lightens the burden of spellcasting for a short while - a Sage burning through scrolls, a Priest chaining blessings and a Trader rushing a linking ritual all feel the difference equally." >}}
 Applies to the next spell cast by the target ally within `30s`.
 
 | Lv. | Cast Time Reduction |
 | --- | ------------------- |
-| 1   | -10%                |
-| 2   | -20%                |
-| 3   | -30%                |
+| 1   | 10%                 |
+| 2   | 20%                 |
+| 3   | 30%                 |
 
 {{< /skill >}}
 
 {{< skill name="Gloria" maxLevel="3" requires="Magic Sense Lv. 2"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="22" castTime="2s" cooldown="30s" duration="per Lv." range="9" target="Party"
     description="A quiet benediction that nudges fortune to smile a little wider on the caster and their party for a short while - stalls turn up better goods, dice favor the bold, and the elusive becomes that much easier to spot." >}}
 
 | Lv. | WILL Bonus | Duration |
@@ -1158,17 +1158,17 @@ Applies to the next spell cast by the target ally within `30s`.
 {{< /skill >}}
 
 {{< skill name="Cure" maxLevel="1" requires="Heal Lv. 2"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="15" castTime="Instant" cooldown="5s" range="9" target="Ally"
     description="Lifts the fog of [Silence, Blindness and Confusion](/docs/mechanics/statusvalues/#status-effects) from a target's mind with a touch." >}}
 {{< /skill >}}
 
 {{< skill name="Aqua Benedicta" maxLevel="1" requires="Cure Lv. 1"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="12" castTime="3s" cooldown="5s" range="0" target="Self"
     description="The rite of blessing plain water into [Holy Water](/docs/mechanics/item-list/#holy-water). User must be standing in water, consuming an [Empty Bottle](/docs/mechanics/item-list/#empty-bottle) in the process. Holy Water is the reagent behind Aspersio and several higher rites." >}}
 {{< /skill >}}
 
 {{< skill name="Blessing" maxLevel="10" requires="Heal Lv. 3"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="28" castTime="2s" cooldown="None" duration="per Lv." range="9" target="Party"
     description="A benediction that steadies body and mind, raising a party's core stats for a short while." >}}
 
 | Lv. | STR/INT/DEX | Duration |
@@ -1187,7 +1187,7 @@ Applies to the next spell cast by the target ally within `30s`.
 {{< /skill >}}
 
 {{< skill name="Increase AGI" maxLevel="5"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="20" castTime="Instant" cooldown="None" duration="per Lv." range="9" target="Ally"
     description="Lightens a target's limbs with borrowed haste, quickening step and swing alike." >}}
 Grants a flat `+15%` Movement Speed at any level, plus:
 
@@ -1202,19 +1202,19 @@ Grants a flat `+15%` Movement Speed at any level, plus:
 {{< /skill >}}
 
 {{< skill name="Decrease AGI" maxLevel="3" requires="Increase AGI Lv. 2"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="20" castTime="Instant" cooldown="5s" duration="30s" range="9" target="Enemy"
     description="The same rite turned inward out - a mote of leaden mana that slows an enemy's step and swing instead of quickening it." >}}
 
-| Lv. | Movement/Attack Speed |
-| --- | --------------------- |
-| 1   | -4%                   |
-| 2   | -8%                   |
-| 3   | -12%                  |
+| Lv. | Movement/Attack Speed Reduction |
+| --- | ------------------------------- |
+| 1   | 4%                              |
+| 2   | 8%                              |
+| 3   | 12%                             |
 
 {{< /skill >}}
 
 {{< skill name="Kyrie Eleison" maxLevel="3"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="30" castTime="1s" cooldown="15s" duration="60s" range="9" target="Ally"
     description="A shimmering ward of mana that stands between a target and harm, soaking up a number of hits before it gives out." >}}
 
 | Lv. | Hits Absorbed | Damage Absorbed per Hit |
@@ -1226,7 +1226,7 @@ Grants a flat `+15%` Movement Speed at any level, plus:
 {{< /skill >}}
 
 {{< skill name="Pneuma" maxLevel="3" requires="Kyrie Eleison Lv. 2"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="25" castTime="1s" cooldown="10s" duration="per Lv." range="6" target="Ground"
     description="Lays a veil of still air over a patch of ground; anything standing in it becomes untouchable by arrows, bolts and thrown weapons, though a blade still finds its mark." >}}
 Higher levels extend how long the veil holds.
 
@@ -1239,7 +1239,7 @@ Higher levels extend how long the veil holds.
 {{< /skill >}}
 
 {{< skill name="Signum Crucis" maxLevel="3"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="16" castTime="1s" cooldown="8s" duration="per Lv." range="9" target="Enemy"
     description="The sign traced in the air before every holy rite. It burns a sigil onto a target that pries their guard open, and bites hardest into things that should not be walking around in the first place. Every other holy skill a Priest learns starts here." >}}
 
 | Lv. | DEF Reduction | Extra vs Demon/Undead | Duration |
@@ -1251,7 +1251,7 @@ Higher levels extend how long the veil holds.
 {{< /skill >}}
 
 {{< skill name="Holy Light" maxLevel="5" requires="Signum Crucis Lv. 2"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="24" castTime="1.5s" cooldown="None" range="9" target="Enemy"
     description="Condenses raw holy mana into a single searing beam - the Priest's answer to needing to deal damage rather than mend it." >}}
 
 | Lv. | MATK |
@@ -1265,7 +1265,7 @@ Higher levels extend how long the veil holds.
 {{< /skill >}}
 
 {{< skill name="Demon Bane" maxLevel="3" requires="Signum Crucis Lv. 2"
-    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Passive"
     description="Years spent studying the weak points of the unholy pay off passively - every strike against a demon or undead lands that much harder." >}}
 
 | Lv. | Damage vs Demon/Undead |
@@ -1277,19 +1277,19 @@ Higher levels extend how long the veil holds.
 {{< /skill >}}
 
 {{< skill name="Divine Protection" maxLevel="3" requires="Signum Crucis Lv. 2"
-    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Passive"
     description="The defensive twin of Demon Bane - a standing ward that dulls what comes back the other way from anything unholy." >}}
 
-| Lv. | Damage Taken from Demon/Undead |
-| --- | ------------------------------ |
-| 1   | -10%                           |
-| 2   | -20%                           |
-| 3   | -30%                           |
+| Lv. | Damage Taken Reduction from Demon/Undead |
+| --- | ---------------------------------------- |
+| 1   | 10%                                      |
+| 2   | 20%                                      |
+| 3   | 30%                                      |
 
 {{< /skill >}}
 
 {{< skill name="Impositio Manus" maxLevel="3" requires="Blessing Lv. 3"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="26" castTime="1s" cooldown="20s" duration="60s" range="2" target="Ally"
     description="The laying on of hands, channeling raw striking power into a single ally rather than the whole party." >}}
 
 | Lv. | ATK and MATK |
@@ -1301,18 +1301,18 @@ Higher levels extend how long the veil holds.
 {{< /skill >}}
 
 {{< skill name="Status Recovery" maxLevel="1" requires="Cure Lv. 1"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="20" castTime="Instant" cooldown="10s" range="9" target="Ally"
     description="Where Cure lifts the fog from a mind, Status Recovery breaks the ice, stone and cramp from a body - lifting [Stun, Freeze and Petrify](/docs/mechanics/statusvalues/#status-effects) in a single rite." >}}
 {{< /skill >}}
 
 {{< skill name="Aspersio" maxLevel="3" requires="Aqua Benedicta Lv. 1"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="22" castTime="2s" cooldown="10s" duration="per Lv." range="2" target="Ally"
     description="Anoints a weapon with Holy Water, temporarily imbuing its strikes with the holy element. Consumes a unit of [Holy Water](/docs/mechanics/item-list/#holy-water) per cast." >}}
 Higher levels extend the duration and allow higher-grade Holy Water to be used for a stronger imbue
 {{< /skill >}}
 
 {{< skill name="Turn Undead" maxLevel="5" requires="Demon Bane Lv. 3 and Holy Light Lv. 3"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="30" castTime="2s" cooldown="5s" range="9" target="Enemy"
     description="A judgment of pure holy mana that punches through armor and unravels the unnatural knot holding an undead together." >}}
 Higher levels raise the chance of an instant kill against sufficiently weak undead.
 
@@ -1334,12 +1334,12 @@ Damage = Base_Damage + Base_Lv + INT
 {{< /skill >}}
 
 {{< skill name="Lex Aeterna" maxLevel="1" requires="Holy Light Lv. 3"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="18" castTime="Instant" cooldown="15s" duration="20s" range="9" target="Any"
     description="Marks a single target so that the very next hit it takes lands twice as hard. The mark breaks the instant it's used, on friend or foe alike." >}}
 {{< /skill >}}
 
 {{< skill name="Magnificat" maxLevel="3" requires="Kyrie Eleison Lv. 3 and Blessing Lv. 3"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="35" castTime="3s" cooldown="60s" duration="90s" range="9" target="Party"
     description="A hymn of thanksgiving that quickens the natural recovery of everyone within earshot." >}}
 
 | Lv. | HP/Mana Regeneration |
@@ -1351,7 +1351,7 @@ Damage = Base_Damage + Base_Lv + INT
 {{< /skill >}}
 
 {{< skill name="Magnus Exorcismus" maxLevel="3" requires="Turn Undead Lv. 3 and Holy Light Lv. 5"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="60" castTime="5s" cooldown="30s" duration="15s" range="12" target="Ground"
     description="The Priest's offensive capstone: a pillar of holy mana erupts around the caster, searing everything caught in it and the undead and demonic worst of all." >}}
 
 | Lv. | MATK | Bonus Damage vs Demon/Undead |
@@ -1363,7 +1363,7 @@ Damage = Base_Damage + Base_Lv + INT
 {{< /skill >}}
 
 {{< skill name="Sanctuary" maxLevel="3" requires="Magnificat Lv. 3 and Pneuma Lv. 2"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="50" castTime="3s" cooldown="30s" duration="30s" range="6" target="Ground"
     description="Consecrates a patch of ground into holy ground: allies standing in it are steadily mended, while any undead or demon caught inside burns instead." >}}
 Deals equivalent holy damage per tick to undead and demon-type enemies standing within.
 
@@ -1376,7 +1376,7 @@ Deals equivalent holy damage per tick to undead and demon-type enemies standing 
 {{< /skill >}}
 
 {{< skill name="Resurrection" maxLevel="1" requires="Heal Lv. 8 and Status Recovery Lv. 1"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="120" castTime="10s" cooldown="10 min" range="5" target="Ally"
     description="The rite few Priests ever get to cast and fewer still get to cast twice in a row on the same ally - channels enough mana to call a fallen Bestia or Master back over the threshold, returning them to the world with a portion of their HP restored. Long cooldown; can not be used on the caster." >}}
 {{< /skill >}}
 
@@ -1408,7 +1408,7 @@ graph TD
 
 <br>
 {{< skill name="Appraisal" maxLevel="5"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="8" castTime="2s" cooldown="3s" range="0" target="Item"
     description="Trains an eye for what goods are actually worth, cutting through both a merchant's markup and a forger's polish. Reveals an item's true condition and quality before it's bought or sold, and can flag counterfeit or mislabeled goods." >}}
 You can identify an item.
 
@@ -1423,7 +1423,7 @@ You can identify an item.
 {{< /skill >}}
 
 {{< skill name="Scavenger" maxLevel="10"
-    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Passive"
     description="A scrapper's eye for what's still worth keeping - coaxes more usable components out of anything broken down for parts." >}}
 
 | Lv. | Recycle Chance |
@@ -1442,7 +1442,7 @@ You can identify an item.
 {{< /skill >}}
 
 {{< skill name="Minting" maxLevel="5" requires="Appraisal Lv. 5, Scavenger Lv. 3"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="15" castTime="5s" cooldown="None" range="2" target="Mint"
     description="The final step between a fistful of raw gold and coin that actually spends. Allows the master to mint raw gold directly into gold coins. See [Currency](/docs/mechanics/economy-trade/#currency) for how the world's money supply is minted from mined gold." >}}
 
 | Lv. | Mint Yield |
@@ -1456,7 +1456,7 @@ You can identify an item.
 {{< /skill >}}
 
 {{< skill name="Trade Post Owner" maxLevel="5" requires="Founder Lv. 1"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="40" castTime="10s" cooldown="None" range="2" target="Ground"
     description="Sets up trading posts where other citizens can buy and sell their wares, turning any settlement into a proper marketplace." >}}
 
 Only a single trading post can be located inside a settlement.
@@ -1472,7 +1472,7 @@ Only a single trading post can be located inside a settlement.
 {{< /skill >}}
 
 {{< skill name="Trade Agreement" maxLevel="5" requires="Trade Post Owner Lv. 3"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="30" castTime="5s" cooldown="60s" range="10" target="Player"
     description="Weaves this Trader's auction house into those of other consenting players, merging their listings into a single, wider [marketplace](/docs/mechanics/economy-trade/#linking-auction-houses)." >}}
 To get linked from other players at least level 1 in this skill is required.
 
@@ -1487,7 +1487,7 @@ To get linked from other players at least level 1 in this skill is required.
 {{< /skill >}}
 
 {{< skill name="Honorable Citizen" maxLevel="5" requires="Minting Lv. 2 and Trade Agreement Lv. 1"
-    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Passive"
     description="A quiet ledger of who's been caught with sticky fingers. Anyone caught stealing from this Trader's stock, mint or linked auction listings suffers a steeper honor penalty than they otherwise would." >}}
 
 | Lv. | Honor Penalty for Robbers |
@@ -1554,13 +1554,13 @@ graph TD
 <br>
 
 {{< skill name="Spell Training" maxLevel="10" requires="Observation Lv. 5"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="25" castTime="10s" cooldown="None" range="2" target="Bestia"
     description="Trains a spell from a scroll into a Bestia's memory, the first step of every Sage's education." >}}
 Consumes the scroll in the process. The success chance depends on the level of the scroll.
 {{< /skill >}}
 
 {{< skill name="Free Cast" maxLevel="5"
-    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Passive"
     description="Trains a Sage to keep moving through an incantation instead of rooting to the spot. Raises how much movement speed is kept while a spell is being cast and lowers the chance an incoming hit breaks concentration." >}}
 
 | Lv. | Movement Speed While Casting | Interrupt Resistance |
@@ -1574,15 +1574,15 @@ Consumes the scroll in the process. The success chance depends on the level of t
 {{< /skill >}}
 
 {{< skill name="Scry" maxLevel="5" requires="Observation Lv. 3"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="30" castTime="5s" cooldown="60s" duration="20s" range="Any charted location" target="Location"
     description="Casts a Sage's sight far beyond their own eyes, scouting distant ground and the resources hiding on it before ever setting foot there." >}}
 {{< /skill >}}
 
 {{< skill name="Dispell" maxLevel="5" requires="Spell Training Lv. 2"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="40" castTime="2s" cooldown="15s" range="9" target="Any"
     description="Unravels every magical effect clinging to a target in a single word, undoing buffs and curses alike." >}}
 
-Success chance is based on skill level and the target's MDEF, with a base chance of `(50 + 10 * SkillLv)%`. Requires 1 [Yellow Mana Crystal](/docs/mechanics/item-list/#yellow-mana-crystal) per cast.
+Success chance is based on skill level and the target's SMDEF, with a base chance of `(50 + 10 * SkillLv)%`. Requires 1 [Yellow Mana Crystal](/docs/mechanics/item-list/#yellow-mana-crystal) per cast.
 
 | Lv. | Base Success Chance |
 | --- | ------------------- |
@@ -1595,7 +1595,7 @@ Success chance is based on skill level and the target's MDEF, with a base chance
 {{< /skill >}}
 
 {{< skill name="Magic Rod" maxLevel="3" requires="Dispell Lv. 2"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="20" castTime="Instant" cooldown="20s" duration="per Lv." range="0" target="Self"
     description="A reactive ward raised at a gesture. The next single-target spell to strike the caster is caught and unravelled instead of landing, its energy siphoned back as mana. Area spells wash straight over it - only single-target magic is caught." >}}
 Catches a single incoming spell while the ward holds.
 
@@ -1608,7 +1608,7 @@ Catches a single incoming spell while the ward holds.
 {{< /skill >}}
 
 {{< skill name="Mana Drain" maxLevel="3" requires="Magic Rod Lv. 1"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="25" castTime="1s" cooldown="15s" duration="per Lv." range="per Lv." target="Self"
     description="Opens a slow siphon on the mana of everything hostile standing too close, pulling it steadily into the Sage's own reserves for a short while." >}}
 
 Cooldown is 15s.
@@ -1622,7 +1622,7 @@ Cooldown is 15s.
 {{< /skill >}}
 
 {{< skill name="Mana Swap" maxLevel="3" requires="Mana Drain Lv. 2"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="45" castTime="3s" cooldown="60s" range="6" target="Enemy"
     description="A gamble of a rite that trades the caster's own pool of mana for the target's, wholesale. Higher skill makes the exchange more likely to take hold." >}}
 
 | Lv. | Swap Success Chance |
@@ -1634,7 +1634,7 @@ Cooldown is 15s.
 {{< /skill >}}
 
 {{< skill name="Land Protector" maxLevel="3" requires="Magic Rod Lv. 2"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="55" castTime="3s" cooldown="40s" duration="per Lv." range="6" target="Ground"
     description="Consecrates a patch of ground against hostile magic. While it holds, no area-of-effect or ground-targeted spell can take root inside its bounds - friend's and foe's alike." >}}
 
 | Lv. | Radius | Duration |
@@ -1646,7 +1646,7 @@ Cooldown is 15s.
 {{< /skill >}}
 
 {{< skill name="Spell Enscription" maxLevel="10" requires="Spell Training Lv. 3"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="35" castTime="15s" cooldown="None" range="2" target="Bestia"
     description="Enables you to extract an attack from the memory of a Bestia onto a scroll, which can then either trigger the attack once or teach it to another Bestia instead. However, there is a chance that the mind of a Bestia is destroyed during the extraction, killing the Bestia in the process." >}}
 The base success chance depends on the level of the attack being enscribed and is further modified by skill level, equipment and intelligence (`INT / 2 + WIL / 4`):
 
@@ -1664,12 +1664,12 @@ A negative base means the extraction is impossible on raw talent alone and only 
 {{< /skill >}}
 
 {{< skill name="Spell Binding" maxLevel="10" requires="Spell Enscription Lv. 3"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="45" castTime="10s" cooldown="None" range="2" target="Item or Ground"
     description="Binds a spell to an object or place and ties it to a trigger, giving rise to enchanted artifacts, standing alarms and hidden traps alike." >}}
 {{< /skill >}}
 
 {{< skill name="Teleport" maxLevel="3" requires="Scry Lv. 5"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="35" castTime="2s" cooldown="30s" range="0" target="Self"
     description="Can teleport own bestias over a distance. To teleport somewhere one needs to setup Teleport Runes which form some kind of magical anchor - the same kind of anchor a Spell Binder learns to set for alarms and traps. They can be used as targets when trying to teleport. The teleportation gets harder and more error prone the longer distances are tried to travel. The teleported entity also gets a debuff which will prevent it from teleporting again for some time." >}}
 
 | Lv. | Destination                           |
@@ -1681,7 +1681,7 @@ A negative base means the extraction is impossible on raw talent alone and only 
 {{< /skill >}}
 
 {{< skill name="Warp Portal" maxLevel="5" requires="Teleport Lv. 2"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="70" castTime="5s" cooldown="120s" duration="30s" range="3" target="Ground"
     description="The Sage's capstone. Where Teleport moves one anchor's worth of travelers once, a Portal tears a standing hole between two anchors that anyone can walk through. To teleport somewhere one needs to setup Portal Runes which form some kind of magical anchor. As soon as a portal has opened it can be used in both directions for some time." >}}
 
 | Lv. | Simultaneous Users |
@@ -1695,7 +1695,7 @@ A negative base means the extraction is impossible on raw talent alone and only 
 {{< /skill >}}
 
 {{< skill name="Endow Fire" maxLevel="3" requires="Free Cast Lv. 2"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="28" castTime="2s" cooldown="5s" duration="per Lv." range="5" target="Ally"
     description="Temporarily infuses an ally's weapon with the fire element, so its strikes burn as well as bite. Consumes a [Blue Mana Crystal](/docs/mechanics/item-list/#blue-mana-crystal) to carry the charge." >}}
 
 | Lv. | Duration | Bonus Fire Damage |
@@ -1707,7 +1707,7 @@ A negative base means the extraction is impossible on raw talent alone and only 
 {{< /skill >}}
 
 {{< skill name="Endow Ice" maxLevel="3" requires="Free Cast Lv. 2"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="28" castTime="2s" cooldown="5s" duration="per Lv." range="5" target="Ally"
     description="Temporarily infuses an ally's weapon with the water element, wreathing each strike in biting cold. Consumes a [Blue Mana Crystal](/docs/mechanics/item-list/#blue-mana-crystal) to carry the charge." >}}
 
 | Lv. | Duration | Bonus Water Damage |
@@ -1719,7 +1719,7 @@ A negative base means the extraction is impossible on raw talent alone and only 
 {{< /skill >}}
 
 {{< skill name="Endow Wind" maxLevel="3" requires="Free Cast Lv. 2"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="28" castTime="2s" cooldown="5s" duration="per Lv." range="5" target="Ally"
     description="Temporarily infuses an ally's weapon with the wind element, so its strikes crack like lightning. Consumes a [Blue Mana Crystal](/docs/mechanics/item-list/#blue-mana-crystal) to carry the charge." >}}
 
 | Lv. | Duration | Bonus Wind Damage |
@@ -1731,7 +1731,7 @@ A negative base means the extraction is impossible on raw talent alone and only 
 {{< /skill >}}
 
 {{< skill name="Endow Earth" maxLevel="3" requires="Free Cast Lv. 2"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="28" castTime="2s" cooldown="5s" duration="per Lv." range="5" target="Ally"
     description="Temporarily infuses an ally's weapon with the earth element, so its strikes land with the weight of stone. Consumes a [Blue Mana Crystal](/docs/mechanics/item-list/#blue-mana-crystal) to carry the charge." >}}
 
 | Lv. | Duration | Bonus Earth Damage |
@@ -1743,7 +1743,7 @@ A negative base means the extraction is impossible on raw talent alone and only 
 {{< /skill >}}
 
 {{< skill name="Elemental Empowerment" maxLevel="3" requires="Endow Wind Lv. 1, Endow Ice Lv. 1, Endow Fire Lv. 1 and Endow Earth Lv. 1"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="80" castTime="6s" cooldown="300s" duration="per Lv." range="per Lv." target="Area"
     description="The Sage's command of the elements grown wide enough to lean on the sky itself. Calls a chosen [weather front](/docs/mechanics/environment/#weather) - rain, gale or heat - over a large area for a time, strengthening spells and endowments of the matching element for everyone beneath it while dampening its opposite. Where a Prospector's [Weather Sense](#skill-weather-sense) only reads the sky, a Sage bends it." >}}
 
 | Lv. | Area | Duration | Matching-Element Boost |
@@ -1799,13 +1799,13 @@ HP and Mana regeneration is not stopped during combat.
     type="Passive"
     description="The physical counterpart to a Wizard's Magic Armor: hide toughened by nothing more than sheer stubbornness. Reduces incoming physical damage. Unlike Magic Armor this costs no mana, but the reduction is more modest." >}}
 
-| Lv. | Natural Defense Points |
-| --- | ---------------------- |
-| 1   | 30                     |
-| 2   | 60                     |
-| 3   | 90                     |
-| 4   | 120                    |
-| 5   | 150                    |
+| Lv. | SDEF |
+| --- | ---- |
+| 1   | 30   |
+| 2   | 60   |
+| 3   | 90   |
+| 4   | 120  |
+| 5   | 150  |
 
 {{< /skill >}}
 
@@ -1903,83 +1903,83 @@ graph TD
 <br>
 
 {{< skill name="Fire Bolt" maxLevel="10"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="18" castTime="2.0s" cooldown="None" range="9" target="Enemy"
     description="A quick bolt of flame hurled at a single target. The first spell most Wizards ever learn, and the one they cast the most often." >}}
 
-| Lv. | MATK  | Cast Time |
-| --- | ----- | --------- |
-| 1   | +10%  | -0.1s     |
-| 2   | +20%  | -0.2s     |
-| 3   | +30%  | -0.3s     |
-| 4   | +40%  | -0.4s     |
-| 5   | +50%  | -0.5s     |
-| 6   | +60%  | -0.6s     |
-| 7   | +70%  | -0.7s     |
-| 8   | +80%  | -0.8s     |
-| 9   | +90%  | -0.9s     |
-| 10  | +100% | -1.0s     |
+| Lv. | MATK  | Cast Time Reduction |
+| --- | ----- | ------------------- |
+| 1   | +10%  | 0.1s                |
+| 2   | +20%  | 0.2s                |
+| 3   | +30%  | 0.3s                |
+| 4   | +40%  | 0.4s                |
+| 5   | +50%  | 0.5s                |
+| 6   | +60%  | 0.6s                |
+| 7   | +70%  | 0.7s                |
+| 8   | +80%  | 0.8s                |
+| 9   | +90%  | 0.9s                |
+| 10  | +100% | 1.0s                |
 
 {{< /skill >}}
 
 {{< skill name="Ice Bolt" maxLevel="10"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="18" castTime="2.0s" cooldown="None" range="9" target="Enemy"
     description="A shard of hardened cold flung at a single target - the water-elemental counterpart to Fire Bolt." >}}
 
-| Lv. | MATK  | Cast Time |
-| --- | ----- | --------- |
-| 1   | +10%  | -0.1s     |
-| 2   | +20%  | -0.2s     |
-| 3   | +30%  | -0.3s     |
-| 4   | +40%  | -0.4s     |
-| 5   | +50%  | -0.5s     |
-| 6   | +60%  | -0.6s     |
-| 7   | +70%  | -0.7s     |
-| 8   | +80%  | -0.8s     |
-| 9   | +90%  | -0.9s     |
-| 10  | +100% | -1.0s     |
+| Lv. | MATK  | Cast Time Reduction |
+| --- | ----- | ------------------- |
+| 1   | +10%  | 0.1s                |
+| 2   | +20%  | 0.2s                |
+| 3   | +30%  | 0.3s                |
+| 4   | +40%  | 0.4s                |
+| 5   | +50%  | 0.5s                |
+| 6   | +60%  | 0.6s                |
+| 7   | +70%  | 0.7s                |
+| 8   | +80%  | 0.8s                |
+| 9   | +90%  | 0.9s                |
+| 10  | +100% | 1.0s                |
 
 {{< /skill >}}
 
 {{< skill name="Thunder Bolt" maxLevel="10"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="18" castTime="2.0s" cooldown="None" range="9" target="Enemy"
     description="A crack of lightning called down onto a single target - the wind-elemental counterpart to Fire Bolt." >}}
 
-| Lv. | MATK  | Cast Time |
-| --- | ----- | --------- |
-| 1   | +10%  | -0.1s     |
-| 2   | +20%  | -0.2s     |
-| 3   | +30%  | -0.3s     |
-| 4   | +40%  | -0.4s     |
-| 5   | +50%  | -0.5s     |
-| 6   | +60%  | -0.6s     |
-| 7   | +70%  | -0.7s     |
-| 8   | +80%  | -0.8s     |
-| 9   | +90%  | -0.9s     |
-| 10  | +100% | -1.0s     |
+| Lv. | MATK  | Cast Time Reduction |
+| --- | ----- | ------------------- |
+| 1   | +10%  | 0.1s                |
+| 2   | +20%  | 0.2s                |
+| 3   | +30%  | 0.3s                |
+| 4   | +40%  | 0.4s                |
+| 5   | +50%  | 0.5s                |
+| 6   | +60%  | 0.6s                |
+| 7   | +70%  | 0.7s                |
+| 8   | +80%  | 0.8s                |
+| 9   | +90%  | 0.9s                |
+| 10  | +100% | 1.0s                |
 
 {{< /skill >}}
 
 {{< skill name="Earth Spike" maxLevel="10"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="18" castTime="2.0s" cooldown="None" range="9" target="Enemy"
     description="A jagged spar of stone erupts beneath a single target - the earth-elemental counterpart to Fire Bolt." >}}
 
-| Lv. | MATK  | Cast Time |
-| --- | ----- | --------- |
-| 1   | +10%  | -0.1s     |
-| 2   | +20%  | -0.2s     |
-| 3   | +30%  | -0.3s     |
-| 4   | +40%  | -0.4s     |
-| 5   | +50%  | -0.5s     |
-| 6   | +60%  | -0.6s     |
-| 7   | +70%  | -0.7s     |
-| 8   | +80%  | -0.8s     |
-| 9   | +90%  | -0.9s     |
-| 10  | +100% | -1.0s     |
+| Lv. | MATK  | Cast Time Reduction |
+| --- | ----- | ------------------- |
+| 1   | +10%  | 0.1s                |
+| 2   | +20%  | 0.2s                |
+| 3   | +30%  | 0.3s                |
+| 4   | +40%  | 0.4s                |
+| 5   | +50%  | 0.5s                |
+| 6   | +60%  | 0.6s                |
+| 7   | +70%  | 0.7s                |
+| 8   | +80%  | 0.8s                |
+| 9   | +90%  | 0.9s                |
+| 10  | +100% | 1.0s                |
 
 {{< /skill >}}
 
 {{< skill name="Spiritual Mastery" maxLevel="5"
-    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Passive"
     description="A deeper communion with the currents beyond the elements, sharpening every spell drawn from Holy or Dark mana." >}}
 
 | Lv. | Damage/Healing |
@@ -1993,7 +1993,7 @@ graph TD
 {{< /skill >}}
 
 {{< skill name="Safety Wall" maxLevel="5" requires="Magic Armor Lv. 3"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="30" castTime="1s" cooldown="10s" duration="per Lv." range="6" target="Ally"
     description="Conjures a shimmering barrier of solidified mana in front of a target. It blocks incoming physical projectiles and melee strikes until it has absorbed enough hits or its duration runs out." >}}
 
 | Lv. | Hits Absorbed | Duration |
@@ -2007,7 +2007,7 @@ graph TD
 {{< /skill >}}
 
 {{< skill name="Stone Curse" maxLevel="5" requires="Safety Wall Lv. 3"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="25" castTime="1s" cooldown="15s" duration="per Lv." range="6" target="Enemy"
     description="Encases a target in solid stone, applying [Petrify](/docs/mechanics/statusvalues/#status-effects) where they stand. Requires 1 [Red Mana Crystal](/docs/mechanics/item-list/#red-mana-crystal) per cast." >}}
 
 | Lv. | Petrify Chance | Duration |
@@ -2021,7 +2021,7 @@ graph TD
 {{< /skill >}}
 
 {{< skill name="Suppress Magic" maxLevel="5" requires="Stone Curse Lv. 2"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="30" castTime="Instant" cooldown="20s" duration="per Lv." range="9" target="Enemy"
     description="A ward of counter-mana thrown over a target mid-incantation, interrupting whatever spell they were weaving and leaving them [Silenced](/docs/mechanics/statusvalues/#status-effects) for a short time after." >}}
 
 | Lv. | Interrupt Chance | Silence Duration |
@@ -2035,7 +2035,7 @@ graph TD
 {{< /skill >}}
 
 {{< skill name="Suppress Aura" maxLevel="3" requires="Suppress Magic Lv. 2"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="35" castTime="3s" cooldown="30s" duration="5 min" range="2" target="Any"
     description="Cast on an object, Bestia or Master to mute the mana clinging to it, making it invisible towards magic detection - wards, Magic Sense, and similar scrying senses." >}}
 
 | Lv. | Mana Suppression |
@@ -2047,7 +2047,7 @@ graph TD
 {{< /skill >}}
 
 {{< skill name="Fire Wall" maxLevel="5" requires="Fire Bolt Lv. 3"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="35" castTime="2s" cooldown="10s" duration="20s" range="6" target="Ground"
     description="Conjures a wall of roaring flame across a line of tiles. Anything that tries to push through is burned and shoved back the way it came." >}}
 
 | Lv. | MATK (per tick) | Knockback |
@@ -2061,7 +2061,7 @@ graph TD
 {{< /skill >}}
 
 {{< skill name="Meteor Storm" maxLevel="5" requires="Fire Bolt Lv. 10"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="70" castTime="6s" cooldown="30s" duration="10s" range="12" target="Ground"
     description="Calls down a rain of blazing meteors onto an area, scorching everything caught beneath it over and over as it falls." >}}
 
 | Lv. | MATK (per meteor) | Meteor Count |
@@ -2075,7 +2075,7 @@ graph TD
 {{< /skill >}}
 
 {{< skill name="Storm Gust" maxLevel="5" requires="Ice Bolt Lv. 10"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="65" castTime="5s" cooldown="25s" duration="10s" range="12" target="Ground"
     description="A freezing gale that batters an area with repeated waves of ice, each one carrying a chance to freeze anything caught in the flurry solid." >}}
 
 | Lv. | MATK (per tick) | Freeze Chance (per tick) |
@@ -2089,7 +2089,7 @@ graph TD
 {{< /skill >}}
 
 {{< skill name="Water Ball" maxLevel="5" requires="Ice Bolt Lv. 8"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="45" castTime="3s" cooldown="15s" range="9" target="Enemy"
     description="Gathers the water in a 5x5 area around the caster into a single crashing orb hurled at a target. The caster must be standing in water for the spell to draw from, and it strikes once for every water tile it manages to pull from around them - up to 25 hits at once." >}}
 
 | Lv. | Hits per Cast |
@@ -2103,7 +2103,7 @@ graph TD
 {{< /skill >}}
 
 {{< skill name="Frost Nova" maxLevel="5" requires="Ice Bolt Lv. 1"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="40" castTime="2s" cooldown="15s" range="per Lv." target="Self"
     description="A burst of subzero cold erupts outward from the caster, freezing anything caught too close." >}}
 
 | Lv. | Radius | Freeze Chance |
@@ -2117,22 +2117,22 @@ graph TD
 {{< /skill >}}
 
 {{< skill name="Quagmire" maxLevel="5" requires="Thunder Bolt Lv. 2"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="30" castTime="2s" cooldown="20s" duration="30s" range="9" target="Ground"
     description="Turns the ground in an area into thick, clinging mud. Any AGI-increasing buff on someone caught in it is stripped away, and their own AGI and DEX are dragged down for as long as they remain inside." >}}
-Regardless of level, the reduction is capped at `-25%` against other Bestia Masters and `-50%` against wild Bestia and monsters.
+Regardless of level, the reduction is capped at `25%` against other Bestia Masters and `50%` against wild Bestia and monsters.
 
 | Lv. | AGI/DEX Reduction (uncapped) |
 | --- | ---------------------------- |
-| 1   | -10%                         |
-| 2   | -20%                         |
-| 3   | -30%                         |
-| 4   | -40%                         |
-| 5   | -50%                         |
+| 1   | 10%                          |
+| 2   | 20%                          |
+| 3   | 30%                          |
+| 4   | 40%                          |
+| 5   | 50%                          |
 
 {{< /skill >}}
 
 {{< skill name="Thunder Storm" maxLevel="5" requires="Thunder Bolt Lv. 3"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="60" castTime="4s" cooldown="20s" duration="8s" range="12" target="Ground"
     description="Wind churns into a raging storm overhead, calling down lightning bolts across the whole area at random." >}}
 
 | Lv. | MATK (per strike) | Strike Count |
@@ -2146,7 +2146,7 @@ Regardless of level, the reduction is capped at `-25%` against other Bestia Mast
 {{< /skill >}}
 
 {{< skill name="Earthquake" maxLevel="5" requires="Earth Spike Lv. 3"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="60" castTime="4s" cooldown="25s" duration="8s" range="per Lv." target="Self"
     description="Splits the ground in a wide radius around the caster, the shockwave dealing repeated damage to everything caught standing on it." >}}
 
 | Lv. | MATK (per tick) | Radius |
@@ -2160,7 +2160,7 @@ Regardless of level, the reduction is capped at `-25%` against other Bestia Mast
 {{< /skill >}}
 
 {{< skill name="Frost Orb" maxLevel="5" requires="Frost Nova Lv. 2"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="40" castTime="3s" cooldown="12s" range="9" target="Enemy"
     description="A dense orb of packed ice hurled at a single target, hitting hard and near-guaranteed to leave them frozen solid." >}}
 
 | Lv. | MATK | Freeze Chance |
@@ -2174,7 +2174,7 @@ Regardless of level, the reduction is capped at `-25%` against other Bestia Mast
 {{< /skill >}}
 
 {{< skill name="Soul Break" maxLevel="5" requires="Spiritual Mastery Lv. 2"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="45" castTime="2s" cooldown="15s" range="9" target="Enemy"
     description="Tears into a target with raw, undirected mana that ignores elemental resistance, ripping away a portion of their own mana in the process." >}}
 
 | Lv. | MATK  | Target Mana Drained |
@@ -2188,7 +2188,7 @@ Regardless of level, the reduction is capped at `-25%` against other Bestia Mast
 {{< /skill >}}
 
 {{< skill name="Thunder of Jupiter" maxLevel="5" requires="Thunder Storm Lv. 3"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="55" castTime="4s" cooldown="20s" range="9" target="Enemy"
     description="The Wizard's answer to a single stubborn target: a column of lightning that strikes over and over, once for every level of mastery behind it." >}}
 
 | Lv. | Hits per Cast | MATK (per hit) |
@@ -2202,16 +2202,16 @@ Regardless of level, the reduction is capped at `-25%` against other Bestia Mast
 {{< /skill >}}
 
 {{< skill name="Mindbreak" maxLevel="5" requires="Soul Break Lv. 3"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
-    description="The Wizard's capstone: a buff channeling so much raw magic through a Bestia at once that its armor is the first thing to give. Once applied it reduces the armor but increases magical attack of a Bestia. It cancels `Mindfocus`." >}}
+    type="Active" manaCost="50" castTime="3s" cooldown="60s" duration="60s" range="5" target="Bestia"
+    description="The Wizard's capstone: a buff channeling so much raw magic through a Bestia at once that its armor is the first thing to give. Once applied it reduces the magic defense but increases magical attack of a Bestia. It cancels `Mindfocus`." >}}
 
-| Lv. | MATK  | MDEF  |
-| --- | ----- | ----- |
-| 1   | +20%  | -20%  |
-| 2   | +40%  | -40%  |
-| 3   | +60%  | -60%  |
-| 4   | +80%  | -80%  |
-| 5   | +100% | -100% |
+| Lv. | MATK  | SMDEF Reduction |
+| --- | ----- | --------------- |
+| 1   | +20%  | 20%             |
+| 2   | +40%  | 40%             |
+| 3   | +60%  | 60%             |
+| 4   | +80%  | 80%             |
+| 5   | +100% | 100%            |
 
 {{< /skill >}}
 
@@ -2223,21 +2223,21 @@ No fancy footwork, no elemental theatrics - just the kind of toughness that keep
 {{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [warrior tree](#warrior-tree)" />}}
 
 {{< skill name="Tough Guy" maxLevel="5"
-    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Passive"
     description="A Brawler's conditioning - stamina holds out longer under strain and comes back quicker once it's spent." >}}
 
-| Lv. | Stamina Reduction | Stamina Regeneration |
+| Lv. | Stamina Cost Reduction | Stamina Regeneration |
 | --- | ----------------- | -------------------- |
-| 1   | -10%              | +10%                 |
-| 2   | -20%              | +20%                 |
-| 3   | -30%              | +30%                 |
-| 4   | -40%              | +40%                 |
-| 5   | -50%              | +50%                 |
+| 1   | 10%              | +10%                 |
+| 2   | 20%              | +20%                 |
+| 3   | 30%              | +30%                 |
+| 4   | 40%              | +40%                 |
+| 5   | 50%              | +50%                 |
 
 {{< /skill >}}
 
 {{< skill name="Second Wind" maxLevel="3" requires="Tough Guy Lv. 3"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="0" castTime="Instant" cooldown="180s" range="0" target="Self"
     description="A Brawler's answer to running on empty: dig deep once, and get back up." >}}
 {{< skill-level level="1" >}}Once every few minutes, can trigger a burst that restores a portion of Stamina immediately.{{< /skill-level >}}
 {{< skill-level level="2" >}}The burst also restores a small portion of HP.{{< /skill-level >}}
@@ -2245,7 +2245,7 @@ No fancy footwork, no elemental theatrics - just the kind of toughness that keep
 {{< /skill >}}
 
 {{< skill name="Unbreakable" maxLevel="3" requires="Iron Skin Lv. 3 and Second Wind Lv. 2"
-    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Passive"
     description="The Brawler's capstone. Everyone else has a breaking point; this is the skill that argues otherwise." >}}
 {{< skill-level level="1" >}}Once per cooldown, an otherwise lethal hit instead leaves the Bestia at 1 HP.{{< /skill-level >}}
 {{< skill-level level="2" >}}Stagger and knockback effects are greatly reduced while above 50% HP.{{< /skill-level >}}
@@ -2259,33 +2259,33 @@ Neither predator nor prey, exactly. Hunters move like the terrain isn't there an
 {{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [warrior tree](#warrior-tree)" />}}
 
 {{< skill name="Camouflage" maxLevel="3"
-    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Passive"
     description="Teaches the Hunter to read the land well enough to disappear into it. Reduces the range at which wild Bestia and monsters notice the master, and grants a damage bonus on an opening attack from concealment." >}}
 
-| Lv. | Detection Range (wild Bestia) | Ambush Damage |
+| Lv. | Detection Range Reduction (wild Bestia) | Ambush Damage |
 | --- | ----------------------------- | ------------- |
-| 1   | -10%                          | +8%           |
-| 2   | -20%                          | +16%          |
-| 3   | -30%                          | +24%          |
+| 1   | 10%                          | +8%           |
+| 2   | 20%                          | +16%          |
+| 3   | 30%                          | +24%          |
 
 {{< /skill >}}
 
 {{< skill name="Lightfooted" maxLevel="5"
-    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Passive"
     description="A Hunter's sure footing that shrugs off rough terrain most travelers have to slow down for." >}}
 
 | Lv. | Movement Reduction Negated |
 | --- | -------------------------- |
-| 1   | -20%                       |
-| 2   | -40%                       |
-| 3   | -60%                       |
-| 4   | -80%                       |
-| 5   | -100%                      |
+| 1   | 20%                       |
+| 2   | 40%                       |
+| 3   | 60%                       |
+| 4   | 80%                       |
+| 5   | 100%                      |
 
 {{< /skill >}}
 
 {{< skill name="Master Tracker" maxLevel="3" requires="Camouflage Lv. 2 and Lightfooted Lv. 3"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="20" castTime="3s" cooldown="30s" range="0" target="Self"
     description="The Hunter's capstone: a Bestia's trail stops being a trail and starts being a map." >}}
 {{< skill-level level="1" >}}Can follow the trail of any Bestia across long distances, even hours after it passed.{{< /skill-level >}}
 {{< skill-level level="2" >}}Gains a critical strike bonus against a tracked target.{{< /skill-level >}}
@@ -2360,13 +2360,13 @@ The off-hand weapon always swings for less than the main hand. Rank buys that ga
 
 Protects both hands at once. While it holds, [Strip Weapons](#skill-strip-weapons) cannot take either weapon.
 
-| Lv. | Equipment Damage Taken | Strip Resistance |
-| --- | ---------------------- | ---------------- |
-| 1   | -20%                   | 100%             |
-| 2   | -40%                   | 100%             |
-| 3   | -60%                   | 100%             |
-| 4   | -80%                   | 100%             |
-| 5   | -100%                  | 100%             |
+| Lv. | Equipment Damage Reduction | Strip Resistance |
+| --- | -------------------------- | ---------------- |
+| 1   | 20%                        | 100%             |
+| 2   | 40%                        | 100%             |
+| 3   | 60%                        | 100%             |
+| 4   | 80%                        | 100%             |
+| 5   | 100%                       | 100%             |
 
 {{< /skill >}}
 
@@ -2440,7 +2440,7 @@ bites; this skill decides how often it lands.
 {{< /skill >}}
 
 {{< skill name="Plagiarism" maxLevel="10"
-    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Passive"
     description="A passive knack for stealing more than just gold - whenever the Assassin is struck by an enemy spell, there's a chance they memorize it well enough to cast it back once, at a reduced level. Casting the copied spell consumes it, and getting hit by a new spell overwrites whatever was memorized before." >}}
 
 | Lv. | Copy Chance | Max Spell Level Copied |
@@ -2459,7 +2459,7 @@ bites; this skill decides how often it lands.
 {{< /skill >}}
 
 {{< skill name="Preserve" maxLevel="1" requires="Plagiarism Lv. 5"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="10" castTime="Instant" cooldown="2s" duration="Until cancelled" range="0" target="Self"
     description="Toggle. While active, a spell memorized via Plagiarism is not lost to a fresh copy - the Assassin keeps whatever they stole last until they switch this off and let a new hit overwrite it." >}}
 {{< /skill >}}
 
@@ -2493,45 +2493,45 @@ graph TD
 
 <br>
 {{< skill name="Heavy Weapon Mastery" maxLevel="10"
-    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Passive"
     description="Years spent drilling with sword, axe, mace and spear until the weight stops mattering. Increases damage dealt with heavy one- and two-handed melee weapons and reduces the accuracy penalty from wielding oversized ones." >}}
 
 | Lv. | ATK (heavy melee weapons) | Accuracy Penalty Reduction |
 | --- | ------------------------- | -------------------------- |
-| 1   | +3                        | -10%                       |
-| 2   | +6                        | -20%                       |
-| 3   | +9                        | -30%                       |
-| 4   | +12                       | -40%                       |
-| 5   | +15                       | -50%                       |
-| 6   | +18                       | -60%                       |
-| 7   | +21                       | -70%                       |
-| 8   | +24                       | -80%                       |
-| 9   | +27                       | -90%                       |
-| 10  | +30                       | -100%                      |
+| 1   | +3                        | 10%                        |
+| 2   | +6                        | 20%                        |
+| 3   | +9                        | 30%                        |
+| 4   | +12                       | 40%                        |
+| 5   | +15                       | 50%                        |
+| 6   | +18                       | 60%                        |
+| 7   | +21                       | 70%                        |
+| 8   | +24                       | 80%                        |
+| 9   | +27                       | 90%                        |
+| 10  | +30                       | 100%                       |
 
 {{< /skill >}}
 
 {{< skill name="Heavy Armor Mastery" maxLevel="10"
-    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Passive"
     description="Plate and mail punish anyone who hasn't trained to move in them. This skill teaches the body to carry the weight without giving up speed, complementing the protection of Iron Skin with the ability to actually wear it." >}}
 
-| Lv. | DEF (heavy armor) | Speed Penalty Reduction |
-| --- | ----------------- | ----------------------- |
-| 1   | +2                | -5%                     |
-| 2   | +4                | -10%                    |
-| 3   | +6                | -15%                    |
-| 4   | +8                | -20%                    |
-| 5   | +10               | -25%                    |
-| 6   | +12               | -30%                    |
-| 7   | +14               | -35%                    |
-| 8   | +16               | -40%                    |
-| 9   | +18               | -45%                    |
-| 10  | +20               | -50%                    |
+| Lv. | Hard DEF (heavy armor) | Speed Penalty Reduction |
+| --- | ---------------------- | ----------------------- |
+| 1   | +2                     | 5%                      |
+| 2   | +4                     | 10%                     |
+| 3   | +6                     | 15%                     |
+| 4   | +8                     | 20%                     |
+| 5   | +10                    | 25%                     |
+| 6   | +12                    | 30%                     |
+| 7   | +14                    | 35%                     |
+| 8   | +16                    | 40%                     |
+| 9   | +18                    | 45%                     |
+| 10  | +20                    | 50%                     |
 
 {{< /skill >}}
 
 {{< skill name="Provoke" maxLevel="5"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="14" castTime="Instant" cooldown="10s" duration="per Lv." range="6" target="Enemy"
     description="A shout, a slammed shield, whatever gets the job done - forces nearby enemies to focus their attacks on the Knight instead of their allies for a short duration." >}}
 Higher levels extend the duration and the range at which enemies can be provoked.
 
@@ -2546,15 +2546,15 @@ Higher levels extend the duration and the range at which enemies can be provoked
 {{< /skill >}}
 
 {{< skill name="Shield Wall" maxLevel="5" requires="Heavy Armor Mastery Lv. 2"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="25" castTime="Instant" cooldown="15s" duration="Until cancelled" range="0" target="Self"
     description="Plants the Knight's feet and raises their shield into a proper wall. While active, incoming physical damage is reduced but movement speed drops sharply." >}}
-{{< skill-level level="1" >}}`-15%` incoming physical damage, `-50%` movement speed while active.{{< /skill-level >}}
-{{< skill-level level="3" >}}Damage reduction improves to `-25%` and the movement penalty eases to `-30%`.{{< /skill-level >}}
-{{< skill-level level="5" >}}Damage reduction improves to `-35%` and a portion of blocked damage is returned to the attacker.{{< /skill-level >}}
+{{< skill-level level="1" >}}Reduces incoming physical damage by `15%` and movement speed by `50%` while active.{{< /skill-level >}}
+{{< skill-level level="3" >}}Damage reduction improves to `25%` and the movement penalty eases to `30%`.{{< /skill-level >}}
+{{< skill-level level="5" >}}Damage reduction improves to `35%` and a portion of blocked damage is returned to the attacker.{{< /skill-level >}}
 {{< /skill >}}
 
 {{< skill name="Bash" maxLevel="5" requires="Heavy Weapon Mastery Lv. 3"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="18" castTime="Instant" cooldown="6s" range="2" target="Enemy"
     description="A single committed swing that trades finesse for raw impact, with a chance to [Stagger](/docs/mechanics/statusvalues/#status-effects) whatever it lands on." >}}
 
 | Lv. | Bonus Damage | Stagger Chance |
@@ -2568,7 +2568,7 @@ Higher levels extend the duration and the range at which enemies can be provoked
 {{< /skill >}}
 
 {{< skill name="Auto Guard" maxLevel="5" requires="Shield Wall Lv. 2"
-    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Passive"
     description="A trained reflex that raises the shield on its own the instant a blow lands, sometimes fast enough to stop it cold." >}}
 
 | Lv. | Full Block Chance |
@@ -2582,22 +2582,22 @@ Higher levels extend the duration and the range at which enemies can be provoked
 {{< /skill >}}
 
 {{< skill name="Charge" maxLevel="5" requires="Bash Lv. 3"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="22" castTime="Instant" cooldown="per Lv." range="12" target="Enemy"
     description="Closes the distance to a target in an instant, weapon first. The impact deals damage and briefly forces the target to focus the Knight, folding a gap closer and a taunt into a single swing." >}}
 Deals damage and applies a short [Provoke](#skill-provoke) effect on impact.
 
 | Lv. | Cooldown Reduction |
 | --- | ------------------ |
-| 1   | -0.5s              |
-| 2   | -1.0s              |
-| 3   | -1.5s              |
-| 4   | -2.0s              |
-| 5   | -2.5s              |
+| 1   | 0.5s               |
+| 2   | 1.0s               |
+| 3   | 1.5s               |
+| 4   | 2.0s               |
+| 5   | 2.5s               |
 
 {{< /skill >}}
 
 {{< skill name="Juggernaut" maxLevel="3" requires="Heavy Armor Mastery Lv. 5 and Charge Lv. 3 and Auto Guard Lv. 3"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="60" castTime="Instant" cooldown="120s" duration="per Lv." range="0" target="Self"
     description="The Knight's capstone. For a short time the line between wall and weapon stops meaning anything." >}}
 {{< skill-level level="1" >}}Once activated, gains `+20%` DEF and `+20%` ATK for a short duration.{{< /skill-level >}}
 {{< skill-level level="2" >}}Duration is extended and the Knight becomes immune to stagger and knockback while active.{{< /skill-level >}}
@@ -2612,7 +2612,7 @@ Where a Sage studies magic to bend it, a Bard studies it to sing along with it. 
 {{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [warrior tree](#warrior-tree)" />}}
 
 {{< skill name="Instrument Mastery" maxLevel="10"
-    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Passive"
     description="Training with stringed and wind instruments well enough to fight with them in a pinch and to make every song carry further and land harder." >}}
 
 | Lv. | ATK (instrument equipped) | Song Range/Effect |
@@ -2631,7 +2631,7 @@ Where a Sage studies magic to bend it, a Bard studies it to sing along with it. 
 {{< /skill >}}
 
 {{< skill name="Voice Training" maxLevel="5"
-    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Passive"
     description="A trained voice reaches further and holds a note longer than an untrained one ever could." >}}
 
 | Lv. | Song AoE | Song Duration |
@@ -2645,7 +2645,7 @@ Where a Sage studies magic to bend it, a Bard studies it to sing along with it. 
 {{< /skill >}}
 
 {{< skill name="Ballad of the Fallen" maxLevel="5" requires="Instrument Mastery Lv. 3"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="30" castTime="2s" cooldown="5s" duration="While playing" range="0" target="Area"
     description="A driving battle hymn that steels the resolve of everyone in earshot." >}}
 
 | Lv. | ATK and MATK (party, while playing) |
@@ -2659,7 +2659,7 @@ Where a Sage studies magic to bend it, a Bard studies it to sing along with it. 
 {{< /skill >}}
 
 {{< skill name="War March" maxLevel="5" requires="Instrument Mastery Lv. 3"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="30" castTime="2s" cooldown="5s" duration="While playing" range="0" target="Area"
     description="A quickstep tune that puts a spring in the step and a snap in the swing of everyone marching to it." >}}
 
 | Lv. | Movement/Attack Speed (party, while playing) |
@@ -2673,21 +2673,21 @@ Where a Sage studies magic to bend it, a Bard studies it to sing along with it. 
 {{< /skill >}}
 
 {{< skill name="Dissonant Chord" maxLevel="5" requires="Instrument Mastery Lv. 5"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="30" castTime="2s" cooldown="5s" duration="While playing" range="0" target="Area"
     description="Deliberately off-key and unpleasant to hear by design. Rattles nearby enemies badly enough to throw off their aim and their footing." >}}
 
-| Lv. | HIT and ASPD (enemies, while playing) |
+| Lv. | HIT and ASPD Reduction (enemies, while playing) |
 | --- | ------------------------------------- |
-| 1   | -3%                                   |
-| 2   | -6%                                   |
-| 3   | -9%                                   |
-| 4   | -12%                                  |
-| 5   | -15%                                  |
+| 1   | 3%                                   |
+| 2   | 6%                                   |
+| 3   | 9%                                   |
+| 4   | 12%                                  |
+| 5   | 15%                                  |
 
 {{< /skill >}}
 
 {{< skill name="Poem of the Netherworld" maxLevel="5" requires="Dissonant Chord Lv. 2"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="34" castTime="2s" cooldown="5s" duration="While playing" range="0" target="Area"
     description="A mournful dirge that drags at the mana of anyone unlucky enough to hear it, siphoning it into the surrounding air." >}}
 
 | Lv. | Mana Drain per Tick (enemies, while playing) |
@@ -2701,7 +2701,7 @@ Where a Sage studies magic to bend it, a Bard studies it to sing along with it. 
 {{< /skill >}}
 
 {{< skill name="Siren's Lullaby" maxLevel="3" requires="Dissonant Chord Lv. 3"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="40" castTime="2s" cooldown="5s" duration="While playing" range="0" target="Area"
     description="Not every song is meant to be heard for long. A slow, heavy melody that can lull a listener clean off their feet." >}}
 {{< skill-level level="1" >}}Small chance per tick to put an enemy in range to sleep.{{< /skill-level >}}
 {{< skill-level level="2" >}}Sleep chance and range are increased.{{< /skill-level >}}
@@ -2709,7 +2709,7 @@ Where a Sage studies magic to bend it, a Bard studies it to sing along with it. 
 {{< /skill >}}
 
 {{< skill name="Mystic Melody" maxLevel="5" requires="Voice Training Lv. 3"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="30" castTime="2s" cooldown="5s" duration="While playing" range="0" target="Area"
     description="An old wandering tune said to carry a bit of luck with it. Occasionally shakes loose a minor beneficial effect for whoever is listening." >}}
 
 | Lv. | Proc Chance per Tick |
@@ -2723,7 +2723,7 @@ Where a Sage studies magic to bend it, a Bard studies it to sing along with it. 
 {{< /skill >}}
 
 {{< skill name="Harmonic Duet" maxLevel="3" requires="Ballad of the Fallen Lv. 5 and War March Lv. 5"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="60" castTime="3s" cooldown="30s" duration="While playing" range="0" target="Area"
     description="The Bard's capstone. No song written for one voice sounds quite complete - performing alongside a master who has trained the [Dancer](#dancer) tree lets both of you play parts neither could carry alone." >}}
 {{< skill-level level="1" >}}While performing near a master with Dancer skills active, active songs and dances gain `+15%` effect strength for both performers' parties.{{< /skill-level >}}
 {{< skill-level level="2" >}}The bonus increases to `+25%` and the combined range is extended.{{< /skill-level >}}
@@ -2737,7 +2737,7 @@ Where a Bard leans on breath and instrument, a Dancer leans on footwork and nerv
 {{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [warrior tree](#warrior-tree)" />}}
 
 {{< skill name="Whip Mastery" maxLevel="10"
-    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Passive"
     description="Training with whips and chain-weapons until the reach stops feeling awkward. Increases damage dealt with whip-type weapons and the range at which they can strike." >}}
 
 | Lv. | ATK (whip equipped) | Effective Reach |
@@ -2756,7 +2756,7 @@ Where a Bard leans on breath and instrument, a Dancer leans on footwork and nerv
 {{< /skill >}}
 
 {{< skill name="Nimble Steps" maxLevel="5"
-    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Passive"
     description="A Dancer trusts footwork over plate. Rather than wearing heavy armor, they learn to simply not be where the hit lands." >}}
 
 | Lv. | FLEE (light/no armor) |
@@ -2770,35 +2770,35 @@ Where a Bard leans on breath and instrument, a Dancer leans on footwork and nerv
 {{< /skill >}}
 
 {{< skill name="Slow Grace" maxLevel="5" requires="Whip Mastery Lv. 3"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="20" castTime="Instant" cooldown="6s" duration="20s" range="4" target="Enemy"
     description="A whip-strike aimed less at the flesh than at the footing. Leaves a target's steps a beat slower for a while after." >}}
 
-| Lv. | Movement/Attack Speed (target) |
+| Lv. | Movement/Attack Speed Reduction (target) |
 | --- | ------------------------------ |
-| 1   | -3%                            |
-| 2   | -6%                            |
-| 3   | -9%                            |
-| 4   | -12%                           |
-| 5   | -15%                           |
+| 1   | 3%                            |
+| 2   | 6%                            |
+| 3   | 9%                            |
+| 4   | 12%                           |
+| 5   | 15%                           |
 
 {{< /skill >}}
 
 {{< skill name="Sultry Rhythm" maxLevel="5" requires="Slow Grace Lv. 2"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="24" castTime="1s" cooldown="10s" duration="20s" range="4" target="Enemy"
     description="A hypnotic sway that draws an enemy's guard down before they even notice it slipping." >}}
 
-| Lv. | DEF and SDEF (target) |
+| Lv. | Hard DEF and SDEF Reduction (target) |
 | --- | --------------------- |
-| 1   | -3%                   |
-| 2   | -6%                   |
-| 3   | -9%                   |
-| 4   | -12%                  |
-| 5   | -15%                  |
+| 1   | 3%                   |
+| 2   | 6%                   |
+| 3   | 9%                   |
+| 4   | 12%                  |
+| 5   | 15%                  |
 
 {{< /skill >}}
 
 {{< skill name="Venomous Flourish" maxLevel="5" requires="Slow Grace Lv. 2"
-    type="Passive" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Passive"
     description="A whip's tip can carry more than momentum. Coats each strike with a mild toxin that wears an enemy down over time." >}}
 
 | Lv. | Poison Chance per Hit |
@@ -2812,7 +2812,7 @@ Where a Bard leans on breath and instrument, a Dancer leans on footwork and nerv
 {{< /skill >}}
 
 {{< skill name="Mirage Step" maxLevel="5" requires="Nimble Steps Lv. 3"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="30" castTime="2s" cooldown="5s" duration="While dancing" range="0" target="Area"
     description="A dance performed in motion rather than in place, sharing the Dancer's own knack for not being where the hit lands with everyone nearby." >}}
 
 | Lv. | FLEE (party, while dancing) |
@@ -2826,21 +2826,21 @@ Where a Bard leans on breath and instrument, a Dancer leans on footwork and nerv
 {{< /skill >}}
 
 {{< skill name="Guiding Steps" maxLevel="5" requires="Nimble Steps Lv. 3"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="30" castTime="2s" cooldown="5s" duration="While dancing" range="0" target="Area"
     description="A steady, ground-eating rhythm that keeps a traveling party's legs fresh long after they should have given out." >}}
 
-| Lv. | Movement Speed (party, while dancing) | Stamina Drain (party, while dancing) |
+| Lv. | Movement Speed (party, while dancing) | Stamina Drain Reduction (party, while dancing) |
 | --- | ------------------------------------- | ------------------------------------ |
-| 1   | +2%                                   | -2%                                  |
-| 2   | +4%                                   | -4%                                  |
-| 3   | +6%                                   | -6%                                  |
-| 4   | +8%                                   | -8%                                  |
-| 5   | +10%                                  | -10%                                 |
+| 1   | +2%                                   | 2%                                  |
+| 2   | +4%                                   | 4%                                  |
+| 3   | +6%                                   | 6%                                  |
+| 4   | +8%                                   | 8%                                  |
+| 5   | +10%                                  | 10%                                 |
 
 {{< /skill >}}
 
 {{< skill name="Captivating Gaze" maxLevel="3" requires="Venomous Flourish Lv. 3"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="35" castTime="1s" cooldown="20s" duration="per Lv." range="6" target="Enemy"
     description="A held look and a held breath is sometimes all it takes. A single enemy loses track of who it was even fighting." >}}
 {{< skill-level level="1" >}}Small chance to force the target to attack a random nearby enemy instead of the Dancer's party for a short duration.{{< /skill-level >}}
 {{< skill-level level="2" >}}Chance and duration are increased.{{< /skill-level >}}
@@ -2848,7 +2848,7 @@ Where a Bard leans on breath and instrument, a Dancer leans on footwork and nerv
 {{< /skill >}}
 
 {{< skill name="Radiant Waltz" maxLevel="3" requires="Mirage Step Lv. 5 and Guiding Steps Lv. 5"
-    type="Active" manaCost="?" castTime="?" cooldown="?" duration="?" range="?" target="?"
+    type="Active" manaCost="60" castTime="3s" cooldown="30s" duration="While dancing" range="0" target="Area"
     description="The Dancer's capstone. No dance choreographed for one performer sounds quite complete - performing alongside a master who has trained the [Bard](#bard) tree lets both of you play parts neither could carry alone." >}}
 {{< skill-level level="1" >}}While performing near a master with Bard skills active, active songs and dances gain `+15%` effect strength for both performers' parties.{{< /skill-level >}}
 {{< skill-level level="2" >}}The bonus increases to `+25%` and the combined range is extended.{{< /skill-level >}}
