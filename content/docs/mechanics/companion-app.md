@@ -1,7 +1,7 @@
 ---
 weight: 1400
 title: Companion App
-description: "How a logged-off Master keeps up their correspondence, runs their trade and walks the world in spirit — through a bound ledger rather than a magical interface."
+description: "How a logged-off Master keeps up their correspondence, runs their trade and walks the world in spirit — through a companion app."
 ---
 
 You close the client and the world carries on. Eggs hatch, crafts finish, auctions close, shops restock,
@@ -14,23 +14,6 @@ way to play **Bestia**. It is a way to stay in correspondence with the place whi
 {{< alert context="warning" text="This page is a design document. None of it is built — the public API it depends on is still only a promise on the [REST API](/docs/api/rest-api/) page." />}}
 
 {{< alert context="info" text="**Conventions used on this page.** Unless stated otherwise, every duration is **real time**, and every amount is in whole **gold**, as on the [Economy & Trade](/docs/mechanics/economy-trade/) page." />}}
-
-# The Bonded Ledger
-
-A Bestia Master enters the world from [another dimension](/docs/mechanics/environment/), and returns to it
-whenever they leave. That is where you are when you are logged off. The mana bond that lets a Master
-commune with Bestia does not politely switch off at the same moment — it simply gets very thin.
-
-Thin enough to carry writing, and not much else.
-
-The link runs through a **Bonded Ledger**: a bound book an [Artificer](/docs/mechanics/master/#artificer)
-makes, attuned to a single Master and worthless to anybody else. Whatever the ledger can reach, the app
-shows you. It is an item like any other, so it can be dropped, stolen or worn down to nothing — and while
-you own none, the app shows you nothing but your own old notes.
-
-That matters more than flavour. It is what keeps the app inside the
-[consistent fantasy simulation](/docs/mechanics/overview/#consistent-fantasy-simulation): there is no
-floating menu outside the world, only a book somebody made, sitting somewhere, that can be taken off you.
 
 # Five Rules That Keep It Honest
 
@@ -57,8 +40,9 @@ phone, at every task, always. The app is how you avoid losing ground while you a
 ahead of the people who are actually there.
 
 One feature breaks that rule on purpose. [Ranging](#ranging) really is the better way to chart, to sense
-and to move mana, and it is allowed to be because it asks for something a keyboard cannot give: you have
-to get up and walk. What that costs the people who cannot is set out under [Limits](#limits).
+and to move mana and just to explore the Bestia world while connected to the real world, and it is allowed
+to be because it asks for something a keyboard cannot give: you have to get up and walk. What that costs the
+people who cannot is set out under [Limits](#limits).
 
 Two useful things fall out of the first two rules:
 
@@ -88,6 +72,27 @@ The ledger's plain reading surface. Everything on it has an age.
 
 Each of those sends a notification when it finishes. It is worth saying plainly that the app's most valuable
 feature is probably telling you an egg you started before breakfast is ready.
+
+# Keeping in Touch
+
+The one thing the app carries at no delay is **words**.
+
+Your party, your guild and anybody who whispers you reach you on the phone exactly as they reach you in the
+client. The bond is thin, but it is thin enough to carry writing, and writing is all this costs — no goods,
+no gold, no position. None of it is an instruction to the world, so none of it travels at courier pace, and
+none of it hands an absent player anything a present one does not already have.
+
+- **Party and guild.** Read and written from the app. The `/p` and `/g` your guildmates are typing at a
+  keyboard arrive on the phone, and what you write back lands in their chat log.
+- **Whispers**, both directions, to anybody you could whisper to in person.
+- **Local say**, does not work via the app as the master is gone.
+
+The skill gates hold. Chat and whispers still want
+[Basic Skill Lv. 2](/docs/mechanics/master/#skill-basic-skill) and parties still want Lv. 5, on a phone
+exactly as at a desk. An app does not teach you to speak.
+
+What it cannot do is put you in the fight. You can be told a raid is going badly; you cannot help with it.
+Hearing about it and being asked to come are two different things, and the second one is [a muster](#musters).
 
 # Ranging
 
@@ -188,14 +193,13 @@ work to still be doing their Order's work.
 an app must not starve somebody who forgot to close it. But you can log in tired, and a Master under a third
 of their stamina walks slower and recovers worse.
 
+{{< alert context="warning" text="Not yet decided. I am not so sure about the stamina drain." />}}
+
 ## Keeping It a Walk
 
-Displacement counts only inside a band of human walking speeds, reached by any means — a wheelchair counts
-exactly as a pair of legs does. A car or a train contributes nothing.
-
+Displacement counts only inside a band of human walking speeds, reached by any means. A car or a train contributes nothing.
 That single rule does three jobs. It keeps ranging a walking mechanic rather than a driving one. It removes
-any reason to range while doing something that needs your attention. And it defeats the simplest kind of
-location spoofing without anybody having to build a fraud system.
+any reason to range while doing something that needs your attention.
 
 # Standing Orders
 
@@ -210,6 +214,7 @@ you set that going from the app:
 - **Run a route.** Assign an idle Bestia to a postal run, and it earns the courier's cut that would
   otherwise be lost to an NPC.
 - **Work a deposit.** Send a Bestia to gather from a resource node you have already charted.
+- **Change order of your Bestia.** You can send them to different locations or switch their orders e.g. stop working in the mine and deliver goods instead.
 - **Breed.** Pair two Bestia in a [breeder](/docs/mechanics/bestia/#breeding), prime it with up to three
   scrolls, and collect the egg when it hatches.
 
@@ -316,18 +321,6 @@ The charthouse is that promise, in your pocket:
   in — or go and chart it on foot, by [ranging](#ranging).
 - Chart fragments traded with other players. Maps are items, [Cartography](/docs/mechanics/master/#skill-cartography)
   merges them and the post moves them — so the trade happens in the world, and the app only arranges it.
-
-# The Craftsman's Notebook
-
-[Discovery](/docs/mechanics/items/#discovery-learning-a-blueprint) is the best puzzle in the game and the
-worst thing to keep in your head. Your materials place a point in a seven-axis feature space, your skill
-decides how near you have to land, and every attempt answers with one of three things: you learned it, a
-pattern _slipped_ away from you, or nothing happened at all.
-
-That is a puzzle worth a notebook, and a notebook is what the app gives you: every attempt you have made,
-what each one answered, and what that leaves of the region you are hunting.
-
-{{< alert context="warning" text="The notebook must **record and reason, never search**. An app that solves the feature space for you deletes the discovery minigame, and that minigame is much of what makes crafting in **Bestia** worth doing. Drawing the conclusion is the player's job; the notebook only keeps the notes straight." />}}
 
 # What the App Cannot Do
 
