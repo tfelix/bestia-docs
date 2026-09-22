@@ -76,7 +76,7 @@ Issuers can never mint experience. The server derives the whole experience rewar
 
 ## Reward Calculation
 
-The player creating a quest must setup a reward. This reward is calculated in a fixed way and depends on the available money on the current server but will also factor in the wealth of the issuer. The reward can also be higher than the requested amount. 5% of the reward is issued to the NPC managing this quest contract, and a further 2% is burned as a posting tax — both always in gold, even when the reward itself consists of items. Payouts on NPC-issued quests are budgeted by the [World Treasury Director](/docs/server/economy/).
+The player creating a quest must setup a reward. This reward is calculated in a fixed way and depends on the available money on the current server but will also factor in the wealth of the issuer. The reward can also be higher than the requested amount. 5% of the reward is issued to the NPC managing this quest contract, and a further 2% is taken out of circulation as a posting tax, returning to the world reserve — both always in gold, even when the reward itself consists of items. Payouts on NPC-issued quests are budgeted by the [World Treasury Director](/docs/server/economy/).
 
 The difficulty of a quest, and from it the level range of the players suitable to do it, must be automatically determined; see [Difficulty and Level Range](/docs/mechanics/questing/#difficulty-and-level-range). The lower bound of that range is enforced — a master below it cannot accept the contract.
 
