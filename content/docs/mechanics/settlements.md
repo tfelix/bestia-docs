@@ -99,6 +99,18 @@ That has a few consequences worth knowing before you plan a shopping trip:
 - **A shop can refuse you.** A town with no room in its warehouses and no coin left in its treasury
   will not take your two hundredth crate of apples. It says so rather than quietly offering you a
   terrible price.
+- **You buy from a person, not a town.** The blacksmith sells iron and the apothecary sells
+  medicine; neither sells bread. What a settlement offers you is the sum of the people working in
+  it, so a hamlet with one general store is a very different shopping trip from a city.
+- **A merchant can run out of coin while the town has plenty.** Each one carries a working purse,
+  topped up from the town's treasury through the day. Sell a smith a cartload of ore and you may
+  empty them by lunchtime; the baker across the square will still pay you normally.
+- **The staples are always there.** Health and mana potions, and the handful of other things a new
+  player cannot set out without, are stocked by every general store and healer in the world and
+  never run dry. Everything above that floor is somebody's actual production.
+- **Nobody will take an endless supply of the same thing.** Sell a merchant more of a good than they
+  can shift and the price they offer falls, and keeps falling, until they stop buying it from you
+  today. This is not a punishment; it is what a real trader does with the fortieth identical dagger.
 
 Prices are **local**. You can see what things cost in the settlement you are standing in and nowhere
 else. Knowing that grain is cheap in the west and dear in the east is knowledge you earn by
@@ -173,7 +185,7 @@ Honest about what this does not do, at least at first:
   the first version of this system.
 - **There are no interiors.** Buildings have doors and no insides. Townsfolk go in and out of them;
   you cannot follow.
-- **Townsfolk do not talk.** They work, eat, drink and sleep. Conversation, quests and haggling come
-  later.
-- **Ore deposits cannot be exhausted.** Fields and forests can. Mines are still a fixture of the
-  landscape rather than a thing you can use up.
+- **Ore deposits cannot be exhausted yet.** Fields and forests can. Mines are still a fixture of
+  the landscape rather than a thing you can use up — which also means the gold that backs the
+  world's [money supply](/docs/server/money-supply/) is not minable yet either. Both change
+  together or neither does.
