@@ -21,10 +21,15 @@ denominations: everything in the game is priced in whole **gold**.
 Because coins cannot be split, every calculated fee on this page is **rounded up to the next whole gold**, and a fee
 that works out below `1` still costs `1`.
 
-To give a fresh world something to trade with, **NPCs start out holding 10% of the world's total wealth in gold**. Every
-night this NPC wealth is **redistributed equally** among all of them. This one mechanic deliberately ignores real-world
-economic logic; it exists so that coin keeps circulating into player hands through NPC purchases and quest brokers
-instead of pooling wherever it happened to land.
+To give a fresh world something to trade with, **half of all the coin the world's gold can ever make is already minted
+and in NPC hands** the day it opens. The other half is still in the ground, and the only way it becomes money is a
+player digging it up. How that number is worked out — from the gold the world generator actually places, and from how
+many players the world is meant to hold — is on the [Money Supply](/docs/server/money-supply/) page.
+
+Every day that NPC wealth is **redistributed across the settlements, weighted by population**, so a city receives a
+larger share than a hamlet. This one mechanic deliberately ignores real-world economic logic; it exists so that coin
+keeps circulating into player hands through NPC purchases and quest brokers instead of pooling wherever it happened to
+land.
 
 What a settlement does with its share of that gold — stocking its shops, paying for imports along the roads, and
 rebuilding what a player knocks down — is covered under [Settlements & Townsfolk](/docs/mechanics/settlements/).
@@ -120,12 +125,14 @@ Both fees are calculated from the **price you ask for** — the fixed price, or 
 and **never from what the item eventually sells for**. Both are also **paid up front**, out of your own pocket, at the
 moment you create the listing. Whatever the item then fetches above your asking price is yours to keep in full.
 
-**Listing fees are separate from the owner fee**, and the two stack. Unlike the owner fee, listing fees are **burned** -
-removed from the economy by the server - which is the game's main brake on inflation.
+**Listing fees are separate from the owner fee**, and the two stack. Unlike the owner fee, listing fees are **taken out
+of circulation** - the server returns them to the world's reserve rather than to anybody's pocket - which is the game's
+main brake on inflation. They are not destroyed: there is only so much gold in the world, and a fee that deleted some of
+it would shrink the money supply a little further every day.
 
 Worked example: the owner has set a **5%** owner fee, and a player lists an item as a **5-day auction** (**20%**) with a
-minimum starting bid of `1000`. Creating that listing costs **25% of 1000 = 250 gold**, payable immediately: `200` is
-burned, `25` goes to the owner's till and `25` to the NPC pool. If the auction closes at `1800`, the seller walks away
+minimum starting bid of `1000`. Creating that listing costs **25% of 1000 = 250 gold**, payable immediately: `200`
+returns to the world's reserve, `25` goes to the owner's till and `25` to the NPC pool. If the auction closes at `1800`, the seller walks away
 with the whole `1800`.
 
 Charging up front on the asking price is what keeps the marketplace honest. Nobody can paper the boards with hopeful
