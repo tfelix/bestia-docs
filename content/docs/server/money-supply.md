@@ -71,9 +71,9 @@ the same boot checks as every other recipe.
 
 | World             | Area          | Gold in ground | Coin supply | NPC share at creation | Players |
 | ----------------- | ------------- | -------------- | ----------- | --------------------- | ------- |
-| 128 km (Genesis)  | 16,384 km²    | ~35 t          | ~300 M      | 150 M                 | **300** |
-| 512 km (target)   | 262,144 km²   | ~204 t         | ~1.75 G     | 875 M                 | ~1,750  |
-| 1024 km (ceiling) | 1,048,576 km² | ~757 t         | ~6.5 G      | 3.25 G                | ~6,500  |
+| 128 km (Genesis)  | 16,384 km²    | ~35 t          | ~298 M      | ~149 M                | **298** |
+| 512 km (target)   | 262,144 km²   | ~186 t         | ~1.60 G     | ~798 M                | ~1,600  |
+| 1024 km (ceiling) | 1,048,576 km² | ~745 t         | ~6.39 G     | ~3.19 G               | ~6,385  |
 
 {{< /table >}}
 
@@ -82,8 +82,36 @@ asks for 8 t, because the three guaranteed deposits are each floored at 8 t. Any
 from a player count has to model that floor rather than assume gold scales linearly with area — below roughly 375 km
 it does not.
 
+Genesis comes out at 298 rather than a round 300, and that two-player gap is the honest width of the model: placer
+gold is counted as a share of the lode total rather than traced down the rivers it actually follows. 300 is the design
+target, 298 is what the estimate returns, and the difference sits far inside the error on the placer term.
+
 At 300 players holding around 100,000 coins each, players circulate about 30 M, a tenth of the supply, with some
 120 M still unmined. That headroom is the room the world has to grow into.
+
+## Sizing the next world from a player count
+
+The relation runs backwards too, which is how a later world gets its dimensions: a target population fixes a coin
+supply, that fixes a tonnage, and that fixes an area. `WorldSizing` searches the forward model rather than inverting
+it, because the guaranteed deposits make the gold total **flat across every world below about 375 km** - three
+deposits that may not be drawn empty already hold more than the abundance asks for at that size. An algebraic inverse
+would answer confidently in exactly the range where the true answer is "gold is not what decides this".
+
+{{< table "table-sm" >}}
+
+| Target players | Suggested world | Carries |
+| -------------- | --------------- | ------- |
+| 300            | 222 km          | 300     |
+| 1,000          | 406 km          | 1,003   |
+| 1,600          | 513 km          | 1,602   |
+| 5,000          | 907 km          | 5,009   |
+| 10,000         | 1,282 km        | 10,009  |
+
+{{< /table >}}
+
+Genesis is smaller than the 222 km its own target suggests, and is not wrong to be: below the crossover the floor
+hands a small world the gold a much larger one would get, so 128 km already carries very nearly the 300 it was sized
+for. Past the crossover the suggestion is the binding one.
 
 # The three-tier purse
 
