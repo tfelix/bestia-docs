@@ -1,0 +1,153 @@
+<!-- bestia-blueprint.html: the Bestia Blueprint Calculator. The method lives in /js/bestia-blueprint-core.js, the numbers in data/bestia_blueprint.yaml. -->
+{{- $d := site.Data.bestia_blueprint -}}
+<script type="application/json" id="bp-data">{{ $d | jsonify | safeJS }}</script>
+
+<div id="bestia-blueprint" class="bp mb-5">
+  <div class="row g-4">
+    <!-- Inputs -->
+    <div class="col-12 col-xl-5">
+      <div class="card shadow-sm mb-4">
+        <div class="card-body">
+          <h5 class="card-title">Design</h5>
+          <div class="row g-2">
+            <div class="col-6"><label class="form-label small" for="bp-level">Level</label><input class="form-control form-control-sm" id="bp-level" data-field="level" type="number" min="1" max="100" value="2"></div>
+            <div class="col-6"><label class="form-label small" for="bp-tier">Tier</label><select class="form-select form-select-sm" id="bp-tier" data-field="tier">{{ range $d.tiers }}<option value="{{ .id }}"{{ if eq .id "normal" }} selected{{ end }}>{{ .label }} ({{ .party }})</option>{{ end }}</select></div>
+            <div class="col-12"><label class="form-label small" for="bp-role">Role</label><select class="form-select form-select-sm" id="bp-role" data-field="role">{{ range $d.roles }}<option value="{{ .id }}"{{ if eq .id "brute" }} selected{{ end }}>{{ .label }}: {{ .summary }}</option>{{ end }}</select></div>
+            <div class="col-6"><label class="form-label small" for="bp-element">Element</label><select class="form-select form-select-sm" id="bp-element" data-field="element">{{ range $d.elements }}<option{{ if eq . "EARTH" }} selected{{ end }}>{{ . }}</option>{{ end }}</select></div>
+            <div class="col-6"><label class="form-label small" for="bp-element-level">Element level</label><select class="form-select form-select-sm" id="bp-element-level" data-field="elementLevel"><option value="">Suggested</option><option>1</option><option>2</option><option>3</option><option>4</option></select></div>
+            <div class="col-6"><label class="form-label small" for="bp-secondary">Second element</label><select class="form-select form-select-sm" id="bp-secondary" data-field="secondaryElement"><option value="">None</option>{{ range $d.elements }}<option>{{ . }}</option>{{ end }}</select></div>
+            <div class="col-6"><label class="form-label small" for="bp-size">Size</label><select class="form-select form-select-sm" id="bp-size" data-field="size">{{ range $d.sizes }}<option{{ if eq . "SMALL" }} selected{{ end }}>{{ . }}</option>{{ end }}</select></div>
+            <div class="col-12"><label class="form-label small" for="bp-ai">AI profile</label><select class="form-select form-select-sm" id="bp-ai" data-field="ai">{{ range $d.aiProfiles }}<option value="{{ .id }}"{{ if eq .id "passiv_day_active" }} selected{{ end }}>{{ .id }}: {{ .label }}</option>{{ end }}</select></div>
+            <div class="col-6"><label class="form-label small" for="bp-basic">Basic attack id</label><input class="form-control form-control-sm" id="bp-basic" data-field="basicAttackId" list="bp-basic-ids" value="bite"><datalist id="bp-basic-ids">{{ range $d.basicAttacks }}<option>{{ . }}</option>{{ end }}</datalist></div>
+            <div class="col-6"><label class="form-label small" for="bp-cooldown">Basic cooldown (s)</label><input class="form-control form-control-sm" id="bp-cooldown" data-field="basicCooldown" type="number" min="0.5" max="4" step="0.1" value="1.5"></div>
+            <div class="col-12 form-check ms-1 mt-2"><input class="form-check-input" type="checkbox" id="bp-today" data-field="serverToday" checked><label class="form-check-label small" for="bp-today">Server as it runs today: mobs fight as Lv 1</label></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card shadow-sm mb-4">
+        <div class="card-body">
+          <h5 class="card-title">Compendium</h5>
+          <div class="row g-2">
+            <div class="col-6"><label class="form-label small" for="bp-name">Name</label><input class="form-control form-control-sm" id="bp-name" data-field="name" value="Burrow Boar"></div>
+            <div class="col-6"><label class="form-label small" for="bp-identifier">Identifier</label><input class="form-control form-control-sm" id="bp-identifier" data-field="identifier" placeholder="from the name"></div>
+            <div class="col-6"><label class="form-label small" for="bp-epithet">Epithet</label><input class="form-control form-control-sm" id="bp-epithet" data-field="epithet" value="the field-wrecker"></div>
+            <div class="col-6"><label class="form-label small" for="bp-kind">Kind</label><input class="form-control form-control-sm" id="bp-kind" data-field="kind" list="bp-kinds" value="beast"><datalist id="bp-kinds"><option>beast</option><option>humanoid</option><option>formless</option><option>plant</option><option>insect</option><option>undead</option><option>dragon</option><option>demon</option></datalist></div>
+            <div class="col-12"><label class="form-label small" for="bp-description">Description <span class="text-body-secondary" id="bp-description-count"></span></label><textarea class="form-control form-control-sm" id="bp-description" data-field="description" rows="3" maxlength="300">Burrow Boars root up whole fields overnight and sleep through the day in their burrows. Their bristles are prized by brush-makers. They hate the wind, and a gust will send one bolting.</textarea></div>
+            <div class="col-12"><label class="form-label small" for="bp-habitat">Habitat (Ctrl-click for several)</label><select class="form-select form-select-sm" id="bp-habitat" data-field="habitat" multiple size="4">{{ range $d.biomes }}<option{{ if eq . "GRASSLAND" }} selected{{ end }}>{{ . }}</option>{{ end }}</select></div>
+            <div class="col-4"><label class="form-label small" for="bp-tmin">Temp. min (°C)</label><input class="form-control form-control-sm" id="bp-tmin" data-field="temperatureMin" type="number" value="-5"></div>
+            <div class="col-4"><label class="form-label small" for="bp-tmax">Temp. max (°C)</label><input class="form-control form-control-sm" id="bp-tmax" data-field="temperatureMax" type="number" value="30"></div>
+            <div class="col-4"><label class="form-label small" for="bp-activity">Active</label><select class="form-select form-select-sm" id="bp-activity" data-field="activity"><option>any</option><option>day</option><option selected>night</option></select></div>
+            <div class="col-12"><label class="form-label small" for="bp-defense-notes">Defence notes</label><input class="form-control form-control-sm" id="bp-defense-notes" data-field="defenseNotes" placeholder="e.g. hard DEF 10 from its hide; immune to Stun"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card shadow-sm mb-4">
+        <div class="card-body">
+          <h5 class="card-title">Loot</h5>
+          <div class="table-responsive">
+            <table class="table table-sm align-middle mb-2">
+              <thead><tr><th>Item</th><th>Tier</th><th>Value (coins)</th><th>Chance (‱)</th><th></th></tr></thead>
+              <tbody id="bp-loot"></tbody>
+            </table>
+          </div>
+          <button type="button" class="btn btn-sm btn-outline-secondary" id="bp-loot-add">Add drop</button>
+          <label class="form-label small d-block mt-3" for="bp-loot-balance">Pay for surplus loot with: <span class="text-body-secondary">less EXP ↔ more HP</span></label>
+          <input type="range" class="form-range" id="bp-loot-balance" data-field="lootBalance" min="0" max="1" step="0.1" value="0">
+          <div class="small" id="bp-loot-summary"></div>
+        </div>
+      </div>
+
+      <div class="card shadow-sm mb-4">
+        <div class="card-body">
+          <h5 class="card-title">By hand</h5>
+          <div class="form-check"><input class="form-check-input" type="checkbox" id="bp-manual"><label class="form-check-label small" for="bp-manual">Edit attributes, HP and attack power myself. The balance check still runs.</label></div>
+          <div class="row g-2 mt-1" id="bp-manual-fields" hidden>
+            {{ range slice "str" "vit" "int" "agi" "dex" "wil" }}<div class="col-4 col-md-2 col-xl-4"><label class="form-label small" for="bp-m-{{ . }}">{{ upper . }}</label><input class="form-control form-control-sm" id="bp-m-{{ . }}" data-manual="{{ . }}" type="number" min="1"></div>{{ end }}
+            <div class="col-6"><label class="form-label small" for="bp-m-hp">HP</label><input class="form-control form-control-sm" id="bp-m-hp" data-manual="hp" type="number" min="1"></div>
+            <div class="col-6"><label class="form-label small" for="bp-m-power">Attack power</label><input class="form-control form-control-sm" id="bp-m-power" data-manual="attackPower" type="number" min="0" step="0.01"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div class="col-12 col-xl-7">
+      <div id="bp-warnings"></div>
+      <div class="row g-2 mb-3" id="bp-tiles"></div>
+
+      <div class="card shadow-sm mb-4">
+        <div class="card-body">
+          <h5 class="card-title">Balance against a Lv <span data-out="level"></span> master</h5>
+          <div class="table-responsive"><table class="table table-sm mb-2" id="bp-balance"></table></div>
+          <p class="small text-body-secondary mb-0" id="bp-master"></p>
+        </div>
+      </div>
+
+      <div class="card shadow-sm mb-4">
+        <div class="card-body">
+          <h5 class="card-title">Attributes and derived values</h5>
+          <div class="table-responsive"><table class="table table-sm mb-3" id="bp-attributes"></table></div>
+          <div class="table-responsive"><table class="table table-sm mb-0" id="bp-derived"></table></div>
+        </div>
+      </div>
+
+      <div class="card shadow-sm mb-4">
+        <div class="card-body">
+          <h5 class="card-title">Damage taken by element</h5>
+          <div class="table-responsive"><table class="table table-sm mb-0 text-center" id="bp-elements"></table></div>
+        </div>
+      </div>
+
+      <div class="card shadow-sm mb-4">
+        <div class="card-body">
+          <h5 class="card-title">Learnset</h5>
+          <p class="small text-body-secondary">Tick the attacks its AI uses. Only attacks learned by its level can be active. <button type="button" class="btn btn-link btn-sm p-0 align-baseline" id="bp-attacks-reset">Use the suggestion</button></p>
+          <div class="table-responsive"><table class="table table-sm align-middle mb-0" id="bp-learnset"></table></div>
+        </div>
+      </div>
+
+      <div class="card shadow-sm mb-4">
+        <div class="card-body">
+          <h5 class="card-title">Export</h5>
+          <div class="d-flex flex-wrap gap-2 mb-3">
+            <button type="button" class="btn btn-sm btn-primary" id="bp-copy-prompt">Copy LLM prompt</button>
+            <button type="button" class="btn btn-sm btn-outline-primary" id="bp-copy-json">Copy JSON</button>
+            <button type="button" class="btn btn-sm btn-outline-primary" id="bp-download-json">Download JSON</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary" id="bp-load-toggle">Load JSON</button>
+            <span class="small align-self-center" id="bp-export-status" role="status"></span>
+          </div>
+          <div id="bp-load" hidden class="mb-3">
+            <textarea class="form-control form-control-sm font-monospace" id="bp-load-text" rows="5" placeholder="Paste an exported blueprint"></textarea>
+            <button type="button" class="btn btn-sm btn-outline-secondary mt-2" id="bp-load-apply">Load</button>
+          </div>
+          <ul class="nav nav-tabs small" role="tablist">
+            <li class="nav-item"><button type="button" class="nav-link active" data-bp-tab="json">Blueprint JSON</button></li>
+            <li class="nav-item"><button type="button" class="nav-link" data-bp-tab="mob">mob YAML</button></li>
+            <li class="nav-item"><button type="button" class="nav-link" data-bp-tab="ai">AI attacks</button></li>
+          </ul>
+          <pre class="bp-preview small border border-top-0 rounded-bottom p-2 mb-0"><code id="bp-preview"></code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Bootstrap's card and label colours ignore the theme's dark mode, so they take the page text colour. */
+  .bp .card, .bp .form-label, .bp .form-check-label, .bp .table { color: inherit; --bs-table-color: inherit; }
+  .bp .card { background-color: transparent; }
+  .bp .text-body-secondary { color: inherit !important; opacity: 0.7; }
+  .bp [data-loot="item"] { min-width: 9rem; }
+  .bp [data-loot="tier"] { min-width: 7.5rem; }
+  .bp [data-loot="value"], .bp [data-loot="chance"] { min-width: 5.5rem; }
+  .bp .bp-preview { max-height: 28rem; overflow: auto; white-space: pre; }
+  .bp .bp-tile { font-variant-numeric: tabular-nums; }
+  .bp td, .bp th { font-variant-numeric: tabular-nums; }
+  .bp #bp-balance td:first-of-type { white-space: nowrap; }
+  .bp .bp-weak { color: var(--bs-danger); font-weight: 600; }
+  .bp .bp-strong { color: var(--bs-success); font-weight: 600; }
+</style>
+<script src="{{ "js/bestia-blueprint-core.js" | relURL }}" defer></script>
+<script src="{{ "js/bestia-blueprint-ui.js" | relURL }}" defer></script>

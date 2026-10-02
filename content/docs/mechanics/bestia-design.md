@@ -12,7 +12,7 @@ hand, they drift apart. A bestia ends up too strong for its level, or worth too 
 
 This page gives one method for all of them. The idea is simple: **a Lv 10 bestia is measured against a Lv 10
 master.** The method fits the bestia to a target fight, then pays for the fight it produces with EXP and loot. Each
-step is a formula, so it can be run by hand or by a tool.
+step is a formula, so it can be run by hand or by the [Bestia Blueprint Calculator](/docs/mechanics/bestia-blueprint/).
 
 The tables on this page are read from `data/bestia_blueprint.yaml`. Change a number there and this page follows.
 
