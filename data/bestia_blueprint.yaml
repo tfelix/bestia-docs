@@ -1,0 +1,364 @@
+# The numbers behind "Designing a Bestia" (content/docs/mechanics/bestia-design.md) and the
+# Bestia Blueprint Calculator. Both pages read this file, so a change here moves both.
+
+# Copied from zone-server. When the server changes one of these, change it here too, or the
+# calculator balances against a game that no longer exists.
+server:
+  # BaseDamageCalculator
+  statusAttackWeight: 2
+  attackVariance: 0.15
+  weaponVariance: 0.05
+  critDamage: 1.4
+  minDamage: 1
+  # PhysicalAttackStrategy
+  hitWeight: 0.5
+  hitChance: { min: 0.05, max: 1.0 }
+  critChance: { min: 0.01, max: 0.95 }
+  critShieldDivisor: 5
+  # AttackSpeed
+  motionMs: { min: 100, max: 2000 }
+  bareHandedMotionMs: 700
+  # ConditionValueCalculator, the shared base values a master is built with
+  masterBaseValue: { hp: 40, mana: 20 }
+  # EffortValueCostCalculator and GainExpSystem
+  creationEffortPoints: 84
+  # Ember: 8 ticks of 1.2 s
+  dotTicks: 8
+  dotTickSeconds: 1.2
+
+# The same-level master every bestia is measured against.
+referenceMaster:
+  # Relative weight of each attribute when the master spends status points. Equal weights give the
+  # even 9/9/9/9/9/9 spread a new master starts with.
+  build: { str: 1, vit: 1, int: 1, agi: 1, dex: 1, wil: 1 }
+  # The novice knife and the starter kit from BlobBalanceTest. Weapons and armour have no level yet,
+  # so the growth per level is an assumption until they do.
+  weaponAtk: { base: 10, perLevel: 1.0 }
+  hardDefense: { base: 5, perLevel: 0.25 }
+
+# How a fight against one normal bestia of the same level should feel ("RO classic").
+pace:
+  # Swings the reference master needs, misses included.
+  playerSwings: { min: 5, target: 6, max: 8 }
+  # Share of the master's HP the bestia takes in that fight. 0.45 lets a player take two fights
+  # before resting, and makes two bestias at once a real risk.
+  hpCost: { min: 0.30, target: 0.45, max: 0.60 }
+
+# A tier scales the pace targets. A higher tier is built for a group, so one player alone loses.
+tiers:
+  - id: critter
+    label: Critter
+    party: "1 player"
+    defense: 0.5
+    offense: 0.3
+    budget: 0.5
+    activeAttacks: 0
+  - id: normal
+    label: Normal
+    party: "1 player"
+    defense: 1
+    offense: 1
+    budget: 0.8
+    activeAttacks: 1
+  - id: elite
+    label: Elite
+    party: "2-3 players"
+    defense: 3
+    offense: 1.3
+    budget: 1.0
+    activeAttacks: 2
+  - id: boss
+    label: Boss
+    party: "5+ players"
+    defense: 20
+    offense: 2
+    budget: 1.3
+    activeAttacks: 4
+
+# A role splits the attribute budget and decides which attacks the species learns.
+# basicShare is the part of its damage that comes from the basic attack while it has attacks to
+# cast. learnPattern holds one archetype per learnset slot, see learnset.levels.
+roles:
+  - id: balanced
+    label: Balanced
+    summary: No weak spot and no strong one. The reference for every other role.
+    weights: { str: 1, vit: 1, int: 1, agi: 1, dex: 1, wil: 1 }
+    basicAttack: melee
+    basicShare: 0.5
+    baseValueMana: 40
+    learnPattern: [strike, bolt, buff, power_strike, debuff, bolt, strike, dot, power_strike, heal,
+                   bolt, aoe, power_strike, debuff, bolt, ultimate, aoe, power_strike, bolt, ultimate]
+  - id: brute
+    label: Brute
+    summary: Hits hard and often, goes down fast once you get through.
+    weights: { str: 3, vit: 1.5, int: 0.3, agi: 1, dex: 1.2, wil: 0.5 }
+    basicAttack: melee
+    basicShare: 0.65
+    baseValueMana: 20
+    learnPattern: [strike, power_strike, buff, strike, debuff, power_strike, strike, buff, power_strike, debuff,
+                   strike, power_strike, aoe, buff, power_strike, power_strike, aoe, buff, power_strike, ultimate]
+  - id: tank
+    label: Tank
+    summary: Soaks damage, heals itself, wins by outlasting.
+    weights: { str: 1.5, vit: 3, int: 0.5, agi: 0.4, dex: 0.8, wil: 1.2 }
+    basicAttack: melee
+    basicShare: 0.6
+    baseValueMana: 30
+    learnPattern: [strike, buff, debuff, heal, strike, power_strike, buff, debuff, heal, strike,
+                   aoe, buff, power_strike, debuff, heal, buff, aoe, power_strike, heal, ultimate]
+  - id: skirmisher
+    label: Skirmisher
+    summary: Fast and hard to hit, fights from range.
+    weights: { str: 1.2, vit: 0.6, int: 0.3, agi: 3, dex: 2, wil: 0.8 }
+    basicAttack: ranged
+    basicShare: 0.6
+    baseValueMana: 25
+    learnPattern: [strike, shot, debuff, strike, buff, shot, power_strike, debuff, shot, strike,
+                   buff, shot, power_strike, debuff, shot, power_strike, shot, buff, aoe, ultimate]
+  - id: caster
+    label: Caster
+    summary: Weak in melee, dangerous with spells while the mana lasts.
+    weights: { str: 0.3, vit: 0.8, int: 3, agi: 0.8, dex: 1, wil: 2 }
+    basicAttack: melee
+    basicShare: 0.25
+    baseValueMana: 80
+    learnPattern: [bolt, debuff, dot, bolt, buff, bolt, aoe, debuff, bolt, dot,
+                   bolt, heal, aoe, bolt, debuff, bolt, aoe, dot, bolt, ultimate]
+  - id: support
+    label: Support
+    summary: Heals and weakens. Alone it is slow to kill, in a pack it is the one to kill first.
+    weights: { str: 0.3, vit: 1.2, int: 2, agi: 0.6, dex: 0.8, wil: 2.5 }
+    basicAttack: melee
+    basicShare: 0.4
+    baseValueMana: 70
+    learnPattern: [heal, debuff, bolt, buff, heal, debuff, bolt, buff, heal, dot,
+                   bolt, debuff, heal, buff, aoe, heal, buff, bolt, aoe, ultimate]
+
+# Learn levels of the 20 learnset slots: 15 by Lv 70 and the last 5 by Lv 100, as bestia.md says.
+learnset:
+  levels: [1, 6, 11, 16, 21, 26, 31, 36, 41, 46, 51, 56, 61, 66, 70, 76, 82, 88, 94, 100]
+  # An attack is locked at the skill level it was learned with: 1 + floor(learnLevel / skillLevelEvery).
+  skillLevelEvery: 10
+  maxSkillLevel: 10
+
+# Attack archetypes. kind decides the damage formula:
+#   physical  2·ATK·coef, then defence, like a basic swing (ranged uses RATK)
+#   magic     like Firebolt: ((lv/4 + INT)·skillLv + MATK)·coef − SoftMDEF
+#   dot       Ember: (lv/8 + INT/2 + MATK/4)·skillLv·coef per tick, no defence
+#   heal      Heal: (lv + INT)/8 · (4 + 8·skillLv)·coef on itself
+#   buff      the bestia deals `effect` more damage for `duration` seconds
+#   debuff    the player deals `effect` less damage for `duration` seconds
+# mana is base + perSkillLevel·skillLv.
+archetypes:
+  - id: strike
+    label: Strike
+    kind: physical
+    coef: 1.3
+    castTime: 0
+    cooldown: 4
+    range: 1
+    mana: { base: 2, perSkillLevel: 1 }
+  - id: power_strike
+    label: Power Strike
+    kind: physical
+    coef: 2.0
+    castTime: 0.5
+    cooldown: 8
+    range: 1
+    mana: { base: 5, perSkillLevel: 1.5 }
+  - id: shot
+    label: Shot
+    kind: physical
+    ranged: true
+    coef: 1.4
+    castTime: 0.5
+    cooldown: 5
+    range: 7
+    mana: { base: 3, perSkillLevel: 1 }
+  - id: bolt
+    label: Bolt
+    kind: magic
+    coef: 1.0
+    castTime: 1.5
+    cooldown: 4
+    range: 8
+    mana: { base: 8, perSkillLevel: 2 }
+  - id: dot
+    label: Burn
+    kind: dot
+    coef: 1.0
+    # Share of the ticks that land: a player walks out of the patch.
+    uptime: 0.5
+    castTime: 1.0
+    cooldown: 12
+    range: 6
+    aoe: true
+    mana: { base: 6, perSkillLevel: 1 }
+  - id: aoe
+    label: Burst
+    kind: magic
+    coef: 0.7
+    castTime: 2.0
+    cooldown: 12
+    range: 6
+    aoe: true
+    mana: { base: 12, perSkillLevel: 2 }
+  - id: ultimate
+    label: Signature
+    kind: magic
+    coef: 2.5
+    castTime: 3.0
+    cooldown: 30
+    range: 8
+    mana: { base: 30, perSkillLevel: 4 }
+  - id: heal
+    label: Mend
+    kind: heal
+    coef: 1.0
+    castTime: 1.5
+    cooldown: 20
+    range: 0
+    mana: { base: 10, perSkillLevel: 2 }
+  - id: buff
+    label: Enrage
+    kind: buff
+    effect: 0.25
+    duration: 15
+    castTime: 0.5
+    cooldown: 30
+    range: 0
+    mana: { base: 8, perSkillLevel: 1 }
+  - id: debuff
+    label: Hex
+    kind: debuff
+    effect: 0.2
+    duration: 10
+    castTime: 1.0
+    cooldown: 20
+    range: 6
+    mana: { base: 8, perSkillLevel: 1 }
+
+# Attacks that already exist, so a blueprint reuses them before it invents one. `element: any`
+# matches every element.
+existingAttacks:
+  - { archetype: strike, element: NORMAL, identifier: tackle, note: "docs Attack List; no skills.yml row yet" }
+  - { archetype: bolt, element: FIRE, identifier: firebolt, skillId: 5, note: "a master skill, also a bestia attack" }
+  - { archetype: dot, element: FIRE, identifier: ember, skillId: 1000, note: "the only bestia skill in skills.yml" }
+  - { archetype: heal, element: any, identifier: heal, skillId: 4, note: "a master skill" }
+  - { archetype: buff, element: any, identifier: blessing, skillId: 6, note: "a master skill; raises attributes rather than damage" }
+  - { archetype: debuff, element: any, identifier: cripple, note: "status effect only; needs a skill to apply it" }
+
+# Basic attack ids already used in AI profiles.
+basicAttacks: [claw, bite, nip]
+
+elements: [NORMAL, WATER, EARTH, FIRE, WIND, POISON, HOLY, SHADOW, GHOST, UNDEAD]
+
+# Damage a bestia takes, in percent. elementTable[defender][level − 1] lists one value per
+# attack element, in the order of `elements`. From ElementModifier.kt. A negative value heals in
+# Ragnarok Online; the server turns it into 1 damage today.
+elementTable:
+  NORMAL:
+    - [100, 100, 100, 100, 100, 100, 100, 100, 25, 100]
+    - [100, 100, 100, 100, 100, 100, 100, 100, 0, 100]
+    - [100, 100, 100, 100, 100, 100, 100, 100, 0, 100]
+    - [100, 100, 100, 100, 100, 100, 100, 100, 0, 100]
+  WATER:
+    - [100, 25, 100, 50, 175, 100, 100, 100, 100, 100]
+    - [100, 0, 100, 25, 175, 75, 100, 100, 75, 75]
+    - [100, -25, 100, 0, 200, 50, 100, 100, 50, 50]
+    - [100, -50, 100, 0, 200, 25, 75, 75, 25, 25]
+  EARTH:
+    - [100, 100, 100, 150, 50, 125, 100, 100, 100, 100]
+    - [100, 100, 50, 175, 25, 125, 100, 100, 75, 75]
+    - [100, 100, 0, 200, 0, 100, 100, 100, 50, 50]
+    - [100, 100, -25, 200, 0, 75, 75, 75, 25, 25]
+  FIRE:
+    - [100, 150, 50, 25, 100, 125, 100, 100, 100, 100]
+    - [100, 175, 25, 0, 100, 125, 100, 100, 75, 75]
+    - [100, 200, 0, -25, 100, 100, 100, 100, 50, 50]
+    - [100, 200, 0, -50, 100, 75, 75, 75, 25, 25]
+  WIND:
+    - [100, 50, 150, 100, 25, 125, 100, 100, 100, 100]
+    - [100, 25, 175, 100, 0, 125, 100, 100, 75, 75]
+    - [100, 0, 200, 100, -25, 100, 100, 100, 50, 50]
+    - [100, 0, 200, 100, -50, 75, 75, 75, 25, 25]
+  POISON:
+    - [100, 100, 100, 100, 100, 0, 100, 50, 100, 50]
+    - [100, 100, 100, 100, 100, 0, 100, 25, 75, 25]
+    - [100, 100, 100, 100, 100, 0, 125, 0, 50, 0]
+    - [100, 75, 75, 75, 75, 0, 125, -25, 25, -25]
+  HOLY:
+    - [100, 75, 75, 75, 75, 75, 0, 125, 75, 100]
+    - [100, 50, 50, 50, 50, 50, -25, 150, 50, 125]
+    - [100, 25, 25, 25, 25, 25, -50, 175, 25, 150]
+    - [100, 0, 0, 0, 0, 0, -100, 200, 0, 175]
+  SHADOW:
+    - [100, 100, 100, 100, 100, 50, 125, 0, 75, 0]
+    - [100, 75, 75, 75, 75, 25, 150, -25, 50, 0]
+    - [100, 50, 50, 50, 50, 0, 175, -50, 25, 0]
+    - [100, 25, 25, 25, 25, -25, 200, -100, 0, 0]
+  GHOST:
+    - [25, 100, 100, 100, 100, 100, 100, 100, 125, 100]
+    - [25, 100, 100, 100, 100, 75, 100, 100, 150, 100]
+    - [0, 100, 100, 100, 100, 50, 100, 100, 175, 100]
+    - [0, 100, 100, 100, 100, 25, 100, 100, 200, 100]
+  UNDEAD:
+    - [100, 100, 100, 125, 100, -25, 150, -25, 100, 0]
+    - [100, 100, 100, 150, 100, -50, 175, -50, 125, 0]
+    - [100, 125, 75, 175, 100, -75, 200, -75, 150, 0]
+    - [100, 150, 50, 200, 100, -100, 200, -100, 175, 0]
+
+# Suggested element level by bestia level. A boss gets one more, up to 4.
+elementLevels:
+  - { upTo: 25, level: 1 }
+  - { upTo: 50, level: 2 }
+  - { upTo: 75, level: 3 }
+  - { upTo: 999, level: 4 }
+
+sizes: [SMALL, MEDIUM, BIG]
+
+# AI profiles in zone-server/src/main/resources/ai/.
+aiProfiles:
+  - { id: passive_wanderer, label: "Passive - fights back when hit" }
+  - { id: passiv_day_active, label: "Passive by day - holds a grudge" }
+  - { id: aggressive_melee, label: "Aggressive - attacks on sight" }
+
+# From worldgen Biome.kt, without the water biomes.
+biomes: [ICE_SHEET, TUNDRA, TAIGA, COLD_DESERT, ALPINE, TEMPERATE_FOREST, TEMPERATE_RAINFOREST,
+         GRASSLAND, DRYLAND, DESERT, TROPICAL_SEASONAL_FOREST, TROPICAL_RAINFOREST, BOG, SWAMP,
+         RIPARIAN, BEACH, BADLANDS, VOLCANIC_FIELD, GEOTHERMAL_BASIN]
+
+# Den levels from SpawnerStage. A species only fills dens near its level.
+spawnBands:
+  - { levels: "1-8", where: "Starter ring around home towns", perKm2: 200, pack: 25 }
+  - { levels: "9-40", where: "Between the starter ring and the wilds", perKm2: 120, pack: 20 }
+  - { levels: "41-79", where: "The wilderness proper", perKm2: 60, pack: 12 }
+  - { levels: "80-100", where: "Corrupted land and boss dens", perKm2: 25, pack: 6 }
+
+# Loot. Chance is in basis points as in mob YAML: 10000 = 100 %.
+loot:
+  # Expected coin value of one kill at par: coinsPerExp · (4·lv + 5). Anchored to bread (9 coins)
+  # for a Lv 1 kill. Loot sold to NPCs drains finite treasuries (money-supply.md), so keep it modest.
+  coinsPerExp: 1.0
+  # How hard surplus loot pulls EXP down: exp · 1 / (1 + k · surplus), not below minExpFactor.
+  k: 0.5
+  minExpFactor: 0.5
+  # The other way to pay for loot: HP up by hpPerSurplus · surplus, at most maxHpBonus.
+  hpPerSurplus: 0.15
+  maxHpBonus: 0.3
+  # A bestia that drops almost nothing gives a little more EXP, at most this much.
+  maxDeficitBonus: 0.1
+  # One drop worth more than this many loot budgets is a jackpot that the average hides.
+  jackpotFactor: 100
+  tiers:
+    - { id: common, label: Common, chance: { min: 3000, max: 8000 }, use: "Body part or resource the bestia is made of" }
+    - { id: uncommon, label: Uncommon, chance: { min: 500, max: 1500 }, use: "Better part, simple consumable" }
+    - { id: rare, label: Rare, chance: { min: 50, max: 200 }, use: "Equipment, spell scroll, crafting catalyst" }
+    - { id: very_rare, label: Very rare, chance: { min: 1, max: 10 }, use: "Signature equipment, collectibles" }
+
+# Kill EXP and the level curve from bestia.md.
+exp:
+  perLevel: 4
+  base: 5
+  minThreat: 0.25
+  maxThreat: 10
