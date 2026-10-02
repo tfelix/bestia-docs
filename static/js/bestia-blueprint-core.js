@@ -17,7 +17,8 @@
   const FACTOR_RANGE = { min: 0.001, max: 100 };
   const MANA_REGEN_SECONDS = 8;
   const SIM_STEP = 0.05;
-  const MAX_FIGHT_SECONDS = 600;
+  // A boss fight against one master runs over ten minutes at low levels.
+  const MAX_FIGHT_SECONDS = 1800;
   const WILD_IV = 50;
 
   // Kotlin Int division, which the server formulas rely on.
@@ -508,9 +509,8 @@
 
     // Balance is judged on the fitted bestia; loot toughness comes on top and is not paid in EXP.
     const judged = evaluate(data, input, attrs, overrides.hp ?? fittedHp, master, ctx, normalDps);
-    const expBeforeLoot = data.exp.perLevel * level + data.exp.base;
-    const threatExp = expBeforeLoot * judged.threat;
-    const loot = lootBalance(data, input, threatExp);
+    const expBeforeLoot = (data.exp.perLevel * level + data.exp.base) * judged.threat * groupFactor(tier, elementKillBonus(input, elementLevel));
+    const loot = lootBalance(data, input, expBeforeLoot);
     const hp = overrides.hp ?? Math.round(fittedHp * (1 + loot.hpBonus));
     const final = evaluate(data, input, attrs, hp, master, ctx, normalDps);
 
@@ -545,7 +545,7 @@
       targets: { playerSwings: targetSwings, dps: round2(targetDps), fightSeconds: round2(ctx.window) },
       balance: { ...final, threat: judged.threat, defenseRatio: judged.defenseRatio, offenseRatio: judged.offenseRatio },
       loot,
-      exp: rewards(data, input, level, judged.threat, loot.expFactor, elementLevel),
+      exp: rewards(data, input, tier, level, judged.threat, loot.expFactor, elementLevel),
       elementDefense: data.elements.map((el) => ({ element: el, percent: Math.round(elementMod(data, el, bestia) * 100) })),
     };
   }
@@ -593,14 +593,31 @@
     };
   }
 
-  function rewards(data, input, level, threat, lootFactor, elementLevel) {
+  // Kill-time bonuses from bestia.md. They are not part of the YAML value.
+  const elementKillBonus = (input, elementLevel) => (input.element !== "NORMAL" ? 0.1 * elementLevel : 0);
+
+  // Threat grows with the square root of the swings, so a boss that takes 85 times the swings would
+  // pay only 13 times the EXP. A tier built for a group makes up the rest: at its targets, a kill
+  // pays the tier's expPerSwing times the EXP per swing of a normal bestia of the same element,
+  // kill-time bonuses included. The bonuses add up rather than multiply, so the element bonus counts
+  // for less on a boss.
+  function groupFactor(tier, elementBonus) {
+    if (tier.defense <= 1) return 1;
+    const tierThreat = Math.sqrt(tier.defense * tier.offense);
+    const parity = ((tier.defense / tierThreat) * (1 + elementBonus)) / (1 + (tier.killBonus || 0) + elementBonus);
+    return parity * (tier.expPerSwing ?? 1);
+  }
+
+  function rewards(data, input, tier, level, threat, lootFactor, elementLevel) {
     const e = data.exp;
     const base = e.perLevel * level + e.base;
-    const experience = Math.max(1, Math.round(base * threat * lootFactor));
-    const effectiveLevel = Math.max(1, Math.round((base * threat - e.base) / e.perLevel));
-    // Kill-time bonuses from bestia.md. They are not part of the YAML value.
-    const killBonus = (input.tier === "boss" ? 2 : 0) + (input.element !== "NORMAL" ? 0.1 * elementLevel : 0);
-    return { base, threat, lootFactor, experience, effectiveLevel, killBonus: round2(killBonus), atKill: Math.round(experience * (1 + killBonus)) };
+    const elementBonus = elementKillBonus(input, elementLevel);
+    const group = groupFactor(tier, elementBonus);
+    const experience = Math.max(1, Math.round(base * threat * group * lootFactor));
+    const killBonus = (tier.killBonus || 0) + elementBonus;
+    // One kill, bonuses included, against a normal bestia of the same level and element.
+    const normalKills = round2((threat * group * (1 + killBonus)) / (1 + elementBonus));
+    return { base, threat, groupFactor: round2(group), lootFactor, experience, normalKills, killBonus: round2(killBonus), atKill: Math.round(experience * (1 + killBonus)) };
   }
 
   function derivedOf(b) {
@@ -618,7 +635,7 @@
     const i = bp.input;
     return {
       schema: "bestia-blueprint/v1",
-      identity: { name: i.name, identifier: i.identifier, epithet: i.epithet, kind: i.kind },
+      identity: { name: i.name, identifier: i.identifier, kind: i.kind },
       compendium: {
         description: i.description,
         habitat: i.habitat,
@@ -704,7 +721,6 @@
       `level: ${bp.level}`,
       `name: ${i.name}`,
     ];
-    if (i.epithet) lines.push(`epithet: ${i.epithet}`);
     lines.push(...foldedYaml("description", i.description));
     lines.push(
       `kind: ${i.kind}`,
@@ -766,7 +782,7 @@
       "",
       aiStep,
       "3. Attacks without a skill need a skills.yml row (bestia attacks use ids 1000+), a script that uses the attack's coefficient, and the client Attack DB entry. Read the skill-system skill first. Then turn their commented learnset lines into entries.",
-      "4. Run ./gradlew :zone-server:syncBestiaDb. It writes the client bestia .tres and the name, epithet and description into bestias.csv. Translate the new rows in the other language columns of that CSV.",
+      "4. Run ./gradlew :zone-server:syncBestiaDb. It writes the client bestia .tres and the name and description into bestias.csv. Translate the new rows in the other language columns of that CSV.",
       "5. defenses.notes has no YAML key yet. Do not invent one.",
       "",
       "```json",

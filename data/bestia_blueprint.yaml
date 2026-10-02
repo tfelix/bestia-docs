@@ -34,9 +34,10 @@ referenceMaster:
   # even 9/9/9/9/9/9 spread a new master starts with.
   build: { str: 1, vit: 1, int: 1, agi: 1, dex: 1, wil: 1 }
   # The novice knife and the starter kit from BlobBalanceTest. Weapons and armour have no level yet,
-  # so the growth per level is an assumption until they do.
+  # so the growth per level is an assumption until they do. Hard DEF is a percentage. At Lv 90 it
+  # lands at 38 %, between a caster (about 27 %) and a melee in full armour (about 50 %).
   weaponAtk: { base: 10, perLevel: 1.0 }
-  hardDefense: { base: 5, perLevel: 0.25 }
+  hardDefense: { base: 5, perLevel: 0.375 }
 
 # How a fight against one normal bestia of the same level should feel ("RO classic").
 pace:
@@ -65,17 +66,24 @@ tiers:
   - id: elite
     label: Elite
     party: "2-3 players"
-    defense: 3
+    # 30 swings: 10 to 15 for each player.
+    defense: 5
     offense: 1.3
     budget: 1.0
     activeAttacks: 2
+    # EXP per swing against a normal bestia, so hunting one is worth the trouble.
+    expPerSwing: 1.75
   - id: boss
     label: Boss
     party: "5+ players"
-    defense: 20
+    # About 500 swings: 100 for each of 5 players, a fight of about two minutes like an RO MVP.
+    defense: 85
     offense: 2
     budget: 1.3
     activeAttacks: 4
+    expPerSwing: 2.5
+    # +200 % EXP at kill time, from bestia.md. It is not part of the mob YAML value.
+    killBonus: 2
 
 # A role splits the attribute budget and decides which attacks the species learns.
 # basicAttack is its default attack, melee or ranged. basicShare is the part of its damage that
@@ -331,11 +339,6 @@ aiProfiles:
   - { id: passiv_day_active, label: "Passive by day - holds a grudge" }
   - { id: aggressive_melee, label: "Aggressive - attacks on sight" }
 
-# From worldgen Biome.kt, without the water biomes.
-biomes: [ICE_SHEET, TUNDRA, TAIGA, COLD_DESERT, ALPINE, TEMPERATE_FOREST, TEMPERATE_RAINFOREST,
-         GRASSLAND, DRYLAND, DESERT, TROPICAL_SEASONAL_FOREST, TROPICAL_RAINFOREST, BOG, SWAMP,
-         RIPARIAN, BEACH, BADLANDS, VOLCANIC_FIELD, GEOTHERMAL_BASIN]
-
 # Den levels from SpawnerStage. A species only fills dens near its level.
 spawnBands:
   - { levels: "1-8", where: "Starter ring around home towns", perKm2: 200, pack: 25 }
@@ -370,4 +373,5 @@ exp:
   perLevel: 4
   base: 5
   minThreat: 0.25
-  maxThreat: 10
+  # Above a boss at its targets, which lands near 13.
+  maxThreat: 20

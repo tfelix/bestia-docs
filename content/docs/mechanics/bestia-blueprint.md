@@ -10,8 +10,10 @@ build:
 This calculator runs the method above. Pick a level, a tier and a role. It fits the attributes, attack power and HP so
 that a master of the same level gets the target fight, then prices the fight in EXP and loot.
 
-Change anything and the numbers follow. A badge says when a result leaves its target band, and a warning says why.
-Under **By hand** you can set the stats yourself and see what they do to the balance and the EXP.
+Work through the steps from top to bottom. Each step has the fields you fill in, then a grey **Result** panel that
+shows what they do. The bar at the top keeps HP, EXP and threat in view while you scroll. A badge says when a result
+leaves its target band, and a warning in the **Balance** step says why. There you can also set the stats by hand and
+see what they do to the balance and the EXP.
 
 Attacks and loot come from the [Attack List](/docs/mechanics/attack-list/) and the [Items List](/docs/mechanics/item-list/).
 A drop only needs an item and a chance; its value comes from the list.

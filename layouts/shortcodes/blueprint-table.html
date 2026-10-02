@@ -3,10 +3,10 @@
 {{- $name := .Get "name" -}}
 <table>
 {{- if eq $name "tiers" }}
-  <thead><tr><th>Tier</th><th>Built for</th><th style="text-align:right">Player swings</th><th style="text-align:right">Damage per second</th><th style="text-align:right">Attribute budget</th><th style="text-align:right">Active attacks</th></tr></thead>
+  <thead><tr><th>Tier</th><th>Built for</th><th style="text-align:right">Player swings</th><th style="text-align:right">Damage per second</th><th style="text-align:right">Attribute budget</th><th style="text-align:right">Active attacks</th><th style="text-align:right">EXP per swing</th></tr></thead>
   <tbody>
   {{- range $d.tiers }}
-    <tr><td>{{ .label }}</td><td>{{ .party }}</td><td style="text-align:right">× {{ .defense }}</td><td style="text-align:right">× {{ .offense }}</td><td style="text-align:right">× {{ .budget }}</td><td style="text-align:right">{{ .activeAttacks }}</td></tr>
+    <tr><td>{{ .label }}</td><td>{{ .party }}</td><td style="text-align:right">× {{ .defense }}</td><td style="text-align:right">× {{ .offense }}</td><td style="text-align:right">× {{ .budget }}</td><td style="text-align:right">{{ .activeAttacks }}</td><td style="text-align:right">× {{ .expPerSwing | default 1 }}</td></tr>
   {{- end }}
   </tbody>
 {{- else if eq $name "roles" }}
