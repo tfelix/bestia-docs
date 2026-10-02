@@ -1,5 +1,5 @@
 # Every attack on the Attack List page. The page renders from this file, and the Bestia Blueprint
-# Calculator loads it as JSON to reuse attacks that already exist before it invents new ones.
+# Calculator loads it as JSON: a species can only learn attacks listed here.
 #
 # archetype and element tell the calculator what kind of attack this is, see
 # data/bestia_blueprint.yaml. skill and skillId name the attack's row in zone-server's skills.yml, if it
@@ -72,3 +72,1184 @@
   bestia: false
   description: |
     A powerful ritual which severs your ties to your [Order](/docs/mechanics/factions/#switching-an-order) and leaves you unsworn. It can only be performed on yourself, and only while you wear a [Sigil of Redemption](/docs/mechanics/equip-list/#sigil-of-redemption), which the rite consumes. Gives a debuff which reduces your status values to `50%` for `Lv/2` (rounded up) days.
+
+# Physical
+- id: headbutt
+  name: Headbutt
+  level: 12
+  mana: 4
+  school: Black
+  archetype: strike
+  element: NORMAL
+  description: |
+    Lowers the head and drives the skull into the target. Crude, but it rattles anyone who takes it.
+
+- id: pounce
+  name: Pounce
+  level: 28
+  mana: 5
+  school: Black
+  archetype: strike
+  element: NORMAL
+  description: |
+    Leaps at the target from a few steps away and lands with its full weight.
+
+- id: body_slam
+  name: Body Slam
+  level: 45
+  mana: 7
+  school: Black
+  archetype: strike
+  element: NORMAL
+  description: |
+    Throws its whole body against the target. The bigger the bestia, the harder it lands.
+
+- id: thrash
+  name: Thrash
+  level: 65
+  mana: 9
+  school: Black
+  archetype: strike
+  element: NORMAL
+  description: |
+    A wild flurry of blows that hits whatever is closest, again and again.
+
+- id: ram
+  name: Ram
+  level: 5
+  mana: 6
+  school: Black
+  archetype: power_strike
+  element: NORMAL
+  description: |
+    Takes a short run-up and rams the target. Slow to start, but it hits much harder than a tackle.
+
+- id: crushing_blow
+  name: Crushing Blow
+  level: 22
+  mana: 10
+  school: Black
+  archetype: power_strike
+  element: NORMAL
+  description: |
+    A heavy blow aimed to crush rather than cut. Shields and bones bend under it.
+
+- id: bash
+  name: Bash
+  level: 35
+  mana: 11
+  school: Black
+  archetype: power_strike
+  element: NORMAL
+  description: |
+    A single committed blow that trades finesse for raw impact. Knights know it as a weapon skill.
+
+- id: savage_maul
+  name: Savage Maul
+  level: 52
+  mana: 14
+  school: Black
+  archetype: power_strike
+  element: NORMAL
+  description: |
+    Grabs the target and tears at it with everything it has.
+
+- id: rampage
+  name: Rampage
+  level: 66
+  mana: 16
+  school: Black
+  archetype: power_strike
+  element: NORMAL
+  description: |
+    Charges in a straight line and tramples the target into the ground.
+
+- id: skull_breaker
+  name: Skull Breaker
+  level: 76
+  mana: 17
+  school: Black
+  archetype: power_strike
+  element: NORMAL
+  description: |
+    A blow to the head that leaves the target seeing stars.
+
+- id: titan_blow
+  name: Titan Blow
+  level: 90
+  mana: 20
+  school: Black
+  archetype: power_strike
+  element: NORMAL
+  description: |
+    One blow with the strength of a landslide. Few survive it twice.
+
+- id: pebble_toss
+  name: Pebble Toss
+  level: 3
+  mana: 4
+  school: Black
+  archetype: shot
+  element: NORMAL
+  description: |
+    Flings a small stone at the target. It stings more than it hurts.
+
+- id: quill_shot
+  name: Quill Shot
+  level: 18
+  mana: 5
+  school: Black
+  archetype: shot
+  element: NORMAL
+  description: |
+    Shoots a single sharp quill from its back at a target in range.
+
+- id: spine_volley
+  name: Spine Volley
+  level: 35
+  mana: 7
+  school: Black
+  archetype: shot
+  element: NORMAL
+  description: |
+    Releases a burst of spines that all fly at the same target.
+
+- id: piercing_spike
+  name: Piercing Spike
+  level: 52
+  mana: 9
+  school: Black
+  archetype: shot
+  element: NORMAL
+  description: |
+    Fires a long, hardened spike that punches through light armor.
+
+- id: barbed_barrage
+  name: Barbed Barrage
+  level: 68
+  mana: 10
+  school: Black
+  archetype: shot
+  element: NORMAL
+  description: |
+    A storm of barbed darts. Each one is small, together they shred.
+
+- id: thorn_volley
+  name: Thorn Volley
+  level: 80
+  mana: 12
+  school: Black
+  archetype: shot
+  element: NORMAL
+  description: |
+    A wave of thorns as long as daggers, shot with deadly aim.
+
+
+# Arcane
+- id: mana_spark
+  name: Mana Spark
+  level: 1
+  mana: 10
+  school: Black
+  archetype: bolt
+  element: NORMAL
+  description: |
+    A small spark of raw mana. The first spell a young bestia learns.
+
+- id: force_bolt
+  name: Force Bolt
+  level: 18
+  mana: 12
+  school: Black
+  archetype: bolt
+  element: NORMAL
+  description: |
+    A bolt of pure force that knocks the air out of the target.
+
+- id: arcane_missile
+  name: Arcane Missile
+  level: 30
+  mana: 16
+  school: Black
+  archetype: bolt
+  element: NORMAL
+  description: |
+    Three small missiles of mana that seek out the same target.
+
+- id: arcane_lance
+  name: Arcane Lance
+  level: 45
+  mana: 18
+  school: Black
+  archetype: bolt
+  element: NORMAL
+  description: |
+    A lance of focused mana that hits hard and flies straight.
+
+- id: mana_spear
+  name: Mana Spear
+  level: 60
+  mana: 22
+  school: Black
+  archetype: bolt
+  element: NORMAL
+  description: |
+    A heavy spear of mana, thrown with the whole mind behind it.
+
+- id: bleeding_wound
+  name: Bleeding Wound
+  level: 25
+  mana: 9
+  school: Black
+  archetype: dot
+  element: NORMAL
+  description: |
+    Opens a wound that keeps bleeding for a while after the hit.
+
+- id: shockwave
+  name: Shockwave
+  level: 30
+  mana: 20
+  school: Black
+  archetype: aoe
+  element: NORMAL
+  description: |
+    Slams the ground and sends a wave of force through everyone close by.
+
+- id: mana_storm
+  name: Mana Storm
+  level: 60
+  mana: 26
+  school: Black
+  archetype: aoe
+  element: NORMAL
+  description: |
+    Raw mana rains down on an area and tears at everyone inside.
+
+- id: arcane_nova
+  name: Arcane Nova
+  level: 80
+  mana: 66
+  school: Black
+  archetype: ultimate
+  element: NORMAL
+  description: |
+    Gathers all its mana and releases it in one blinding blast.
+
+- id: wrath_of_the_wild
+  name: Wrath of the Wild
+  level: 95
+  mana: 70
+  school: Black
+  archetype: ultimate
+  element: NORMAL
+  description: |
+    The fury of the wild itself breaks loose. Only the oldest bestias know it.
+
+
+# Fire
+- id: fire_bolt
+  name: Fire Bolt
+  level: 5
+  mana: 12
+  school: Black
+  archetype: bolt
+  element: FIRE
+  skill: FIREBOLT
+  skillId: 5
+  description: |
+    A quick bolt of flame hurled at a single target. Masters learn it as a Wizard spell.
+
+- id: flame_fang
+  name: Flame Fang
+  level: 15
+  mana: 4
+  school: Black
+  archetype: strike
+  element: FIRE
+  description: |
+    Bites with jaws that glow like coals. The wound keeps smoking afterwards.
+
+- id: fire_wall
+  name: Fire Wall
+  level: 30
+  mana: 10
+  school: Black
+  archetype: dot
+  element: FIRE
+  description: |
+    Raises a wall of roaring flame. Anything that walks through it burns.
+
+- id: fire_ball
+  name: Fire Ball
+  level: 35
+  mana: 20
+  school: Black
+  archetype: aoe
+  element: FIRE
+  description: |
+    A ball of fire that bursts on impact and scorches everyone around the target.
+
+- id: blazing_charge
+  name: Blazing Charge
+  level: 45
+  mana: 12
+  school: Black
+  archetype: power_strike
+  element: FIRE
+  description: |
+    Wraps itself in flame and crashes into the target.
+
+- id: searing_ray
+  name: Searing Ray
+  level: 60
+  mana: 22
+  school: Black
+  archetype: bolt
+  element: FIRE
+  description: |
+    A thin ray of white-hot fire that burns straight through.
+
+- id: meteor_storm
+  name: Meteor Storm
+  level: 85
+  mana: 66
+  school: Black
+  archetype: ultimate
+  element: FIRE
+  description: |
+    Calls a rain of blazing meteors down on an area, again and again.
+
+
+# Water
+- id: ice_bolt
+  name: Ice Bolt
+  level: 5
+  mana: 10
+  school: Black
+  archetype: bolt
+  element: WATER
+  description: |
+    A shard of hardened cold flung at a single target. Masters learn it as a Wizard spell.
+
+- id: water_jet
+  name: Water Jet
+  level: 10
+  mana: 5
+  school: Black
+  archetype: shot
+  element: WATER
+  description: |
+    Spits a jet of water hard enough to knock a target off its feet.
+
+- id: frost_bite
+  name: Frost Bite
+  level: 15
+  mana: 4
+  school: Black
+  archetype: strike
+  element: WATER
+  description: |
+    A bite so cold it numbs the flesh around it.
+
+- id: frost_nova
+  name: Frost Nova
+  level: 25
+  mana: 18
+  school: Black
+  archetype: aoe
+  element: WATER
+  description: |
+    A burst of cold erupts from the caster and freezes everyone too close.
+
+- id: chilling_mist
+  name: Chilling Mist
+  level: 30
+  mana: 10
+  school: Black
+  archetype: dot
+  element: WATER
+  description: |
+    A cold fog settles on the ground. Standing in it slowly freezes the blood.
+
+- id: tidal_slam
+  name: Tidal Slam
+  level: 45
+  mana: 12
+  school: Black
+  archetype: power_strike
+  element: WATER
+  description: |
+    Strikes with the weight of a breaking wave.
+
+- id: frost_orb
+  name: Frost Orb
+  level: 50
+  mana: 20
+  school: Black
+  archetype: bolt
+  element: WATER
+  description: |
+    A dense orb of packed ice that hits hard and leaves the target shivering.
+
+- id: water_ball
+  name: Water Ball
+  level: 65
+  mana: 22
+  school: Black
+  archetype: bolt
+  element: WATER
+  description: |
+    Gathers the water around it into one crashing orb and hurls it.
+
+- id: storm_gust
+  name: Storm Gust
+  level: 85
+  mana: 66
+  school: Black
+  archetype: ultimate
+  element: WATER
+  description: |
+    A freezing gale batters an area with wave after wave of ice.
+
+
+# Earth
+- id: earth_spike
+  name: Earth Spike
+  level: 5
+  mana: 10
+  school: Black
+  archetype: bolt
+  element: EARTH
+  description: |
+    A jagged spike of stone erupts beneath a single target. Masters learn it as a Wizard spell.
+
+- id: rock_throw
+  name: Rock Throw
+  level: 10
+  mana: 5
+  school: Black
+  archetype: shot
+  element: EARTH
+  description: |
+    Tears a rock out of the ground and throws it.
+
+- id: stone_fist
+  name: Stone Fist
+  level: 15
+  mana: 4
+  school: Black
+  archetype: strike
+  element: EARTH
+  description: |
+    A blow with a fist or hoof hardened like stone.
+
+- id: sand_tomb
+  name: Sand Tomb
+  level: 30
+  mana: 10
+  school: Black
+  archetype: dot
+  element: EARTH
+  description: |
+    Whirling sand traps the target and grinds at it.
+
+- id: earthquake
+  name: Earthquake
+  level: 40
+  mana: 22
+  school: Black
+  archetype: aoe
+  element: EARTH
+  description: |
+    Splits the ground around the caster. The shockwave hits everyone standing on it.
+
+- id: boulder_slam
+  name: Boulder Slam
+  level: 50
+  mana: 14
+  school: Black
+  archetype: power_strike
+  element: EARTH
+  description: |
+    Lifts a boulder, or becomes one, and brings it down on the target.
+
+- id: stone_lance
+  name: Stone Lance
+  level: 62
+  mana: 22
+  school: Black
+  archetype: bolt
+  element: EARTH
+  description: |
+    A lance of stone shoots out of the ground and impales the target.
+
+- id: fissure
+  name: Fissure
+  level: 85
+  mana: 66
+  school: Black
+  archetype: ultimate
+  element: EARTH
+  description: |
+    The ground opens up under an area and swallows what stands on it.
+
+
+# Wind
+- id: thunder_bolt
+  name: Thunder Bolt
+  level: 5
+  mana: 10
+  school: Black
+  archetype: bolt
+  element: WIND
+  description: |
+    A crack of lightning called down onto a single target. Masters learn it as a Wizard spell.
+
+- id: wind_cutter
+  name: Wind Cutter
+  level: 10
+  mana: 5
+  school: Black
+  archetype: shot
+  element: WIND
+  description: |
+    A blade of wind that cuts at range.
+
+- id: wing_buffet
+  name: Wing Buffet
+  level: 15
+  mana: 4
+  school: Black
+  archetype: strike
+  element: WIND
+  description: |
+    Beats its wings against the target with the force of a gust.
+
+- id: static_field
+  name: Static Field
+  level: 25
+  mana: 9
+  school: Black
+  archetype: dot
+  element: WIND
+  description: |
+    Charges the air in an area. Anyone inside is shocked again and again.
+
+- id: thunder_storm
+  name: Thunder Storm
+  level: 40
+  mana: 22
+  school: Black
+  archetype: aoe
+  element: WIND
+  description: |
+    A storm churns overhead and calls lightning down across an area.
+
+- id: tempest_dive
+  name: Tempest Dive
+  level: 50
+  mana: 14
+  school: Black
+  archetype: power_strike
+  element: WIND
+  description: |
+    Dives from above, carried by a howling wind.
+
+- id: chain_lightning
+  name: Chain Lightning
+  level: 62
+  mana: 22
+  school: Black
+  archetype: bolt
+  element: WIND
+  description: |
+    A bolt of lightning that jumps through the target with a roar.
+
+- id: thunder_of_jupiter
+  name: Thunder of Jupiter
+  level: 85
+  mana: 66
+  school: Black
+  archetype: ultimate
+  element: WIND
+  description: |
+    A column of lightning strikes one target over and over.
+
+
+# Poison
+- id: venom_spit
+  name: Venom Spit
+  level: 3
+  mana: 4
+  school: Black
+  archetype: shot
+  element: POISON
+  description: |
+    Spits a glob of venom at the target. Not deadly, but it burns.
+
+- id: poison_sting
+  name: Poison Sting
+  level: 8
+  mana: 3
+  school: Black
+  archetype: strike
+  element: POISON
+  description: |
+    A quick sting that leaves a little poison behind.
+
+- id: venom_bolt
+  name: Venom Bolt
+  level: 12
+  mana: 12
+  school: Black
+  archetype: bolt
+  element: POISON
+  description: |
+    A bolt of green venom that seeps into the skin.
+
+- id: poison_cloud
+  name: Poison Cloud
+  level: 20
+  mana: 9
+  school: Black
+  archetype: dot
+  element: POISON
+  description: |
+    A cloud of foul gas that hangs over the ground. Breathing it hurts.
+
+- id: toxic_rend
+  name: Toxic Rend
+  level: 40
+  mana: 12
+  school: Black
+  archetype: power_strike
+  element: POISON
+  description: |
+    Tears into the target with claws dripping with venom.
+
+- id: miasma
+  name: Miasma
+  level: 45
+  mana: 22
+  school: Black
+  archetype: aoe
+  element: POISON
+  description: |
+    Exhales a sickly haze that poisons everyone around.
+
+- id: acid_lance
+  name: Acid Lance
+  level: 60
+  mana: 22
+  school: Black
+  archetype: bolt
+  element: POISON
+  description: |
+    A stream of acid that eats through armor and flesh.
+
+- id: pestilence
+  name: Pestilence
+  level: 85
+  mana: 66
+  school: Black
+  archetype: ultimate
+  element: POISON
+  description: |
+    Spreads a plague across an area. Even the grass withers.
+
+
+# Holy
+- id: holy_light
+  name: Holy Light
+  level: 15
+  mana: 12
+  school: Black
+  archetype: bolt
+  element: HOLY
+  description: |
+    Condenses holy mana into a single searing beam.
+
+- id: smite
+  name: Smite
+  level: 20
+  mana: 5
+  school: Black
+  archetype: strike
+  element: HOLY
+  description: |
+    A strike blessed with holy light. The unnatural fear it.
+
+- id: hallowed_ground
+  name: Hallowed Ground
+  level: 35
+  mana: 10
+  school: Black
+  archetype: dot
+  element: HOLY
+  description: |
+    Consecrates the ground. Undead and demons that stand on it burn.
+
+- id: judgement
+  name: Judgement
+  level: 50
+  mana: 14
+  school: Black
+  archetype: power_strike
+  element: HOLY
+  description: |
+    A heavy blow that falls like a verdict.
+
+- id: divine_nova
+  name: Divine Nova
+  level: 55
+  mana: 24
+  school: Black
+  archetype: aoe
+  element: HOLY
+  description: |
+    A ring of holy light bursts out from the caster.
+
+- id: turn_undead
+  name: Turn Undead
+  level: 60
+  mana: 22
+  school: Black
+  archetype: bolt
+  element: HOLY
+  description: |
+    A judgement of pure holy mana that unravels whatever keeps the undead together.
+
+- id: magnus_exorcismus
+  name: Magnus Exorcismus
+  level: 88
+  mana: 66
+  school: Black
+  archetype: ultimate
+  element: HOLY
+  description: |
+    A pillar of holy mana erupts and sears everything in it, the undead and demons worst of all.
+
+
+# Shadow
+- id: shadow_bolt
+  name: Shadow Bolt
+  level: 8
+  mana: 10
+  school: Black
+  archetype: bolt
+  element: SHADOW
+  description: |
+    A bolt of living darkness that chills the soul.
+
+- id: shadow_rake
+  name: Shadow Rake
+  level: 15
+  mana: 4
+  school: Black
+  archetype: strike
+  element: SHADOW
+  description: |
+    Rakes the target with claws made of shadow.
+
+- id: creeping_dark
+  name: Creeping Dark
+  level: 25
+  mana: 9
+  school: Black
+  archetype: dot
+  element: SHADOW
+  description: |
+    Darkness pools on the ground and gnaws at anyone inside.
+
+- id: umbral_wave
+  name: Umbral Wave
+  level: 40
+  mana: 22
+  school: Black
+  archetype: aoe
+  element: SHADOW
+  description: |
+    A wave of darkness rolls out and swallows the light.
+
+- id: eclipse_strike
+  name: Eclipse Strike
+  level: 50
+  mana: 14
+  school: Black
+  archetype: power_strike
+  element: SHADOW
+  description: |
+    For a moment the light goes out, and then the blow lands.
+
+- id: abyssal_lance
+  name: Abyssal Lance
+  level: 62
+  mana: 22
+  school: Black
+  archetype: bolt
+  element: SHADOW
+  description: |
+    A spear of darkness pulled from somewhere far below.
+
+- id: endless_night
+  name: Endless Night
+  level: 88
+  mana: 66
+  school: Black
+  archetype: ultimate
+  element: SHADOW
+  description: |
+    Night falls on an area, and everything in it is hunted.
+
+
+# Ghost
+- id: soul_strike
+  name: Soul Strike
+  level: 10
+  mana: 12
+  school: Black
+  archetype: bolt
+  element: GHOST
+  description: |
+    Hurls a fragment of spirit at the target. It passes through armor as if it were not there.
+
+- id: spectral_touch
+  name: Spectral Touch
+  level: 20
+  mana: 5
+  school: Black
+  archetype: strike
+  element: GHOST
+  description: |
+    A cold touch from a hand that is not quite there.
+
+- id: haunt
+  name: Haunt
+  level: 30
+  mana: 10
+  school: Black
+  archetype: dot
+  element: GHOST
+  description: |
+    Restless spirits cling to an area and claw at the living.
+
+- id: spirit_burst
+  name: Spirit Burst
+  level: 45
+  mana: 22
+  school: Black
+  archetype: aoe
+  element: GHOST
+  description: |
+    A burst of spirit energy that tears at everyone close by.
+
+- id: phantom_rush
+  name: Phantom Rush
+  level: 50
+  mana: 14
+  school: Black
+  archetype: power_strike
+  element: GHOST
+  description: |
+    Rushes through the target. Its body passes, the pain stays.
+
+- id: soul_break
+  name: Soul Break
+  level: 55
+  mana: 20
+  school: Black
+  archetype: bolt
+  element: GHOST
+  description: |
+    Tears into the target with raw mana and rips away some of its own.
+
+- id: soul_harvest
+  name: Soul Harvest
+  level: 88
+  mana: 66
+  school: Black
+  archetype: ultimate
+  element: GHOST
+  description: |
+    Reaches for every soul in an area and pulls.
+
+
+# Undead
+- id: bone_shard
+  name: Bone Shard
+  level: 10
+  mana: 5
+  school: Black
+  archetype: shot
+  element: UNDEAD
+  description: |
+    Flings a sharp splinter of bone.
+
+- id: rotting_grasp
+  name: Rotting Grasp
+  level: 15
+  mana: 4
+  school: Black
+  archetype: strike
+  element: UNDEAD
+  description: |
+    Grabs with a cold, rotting hand. The wound festers.
+
+- id: necrotic_bolt
+  name: Necrotic Bolt
+  level: 20
+  mana: 14
+  school: Black
+  archetype: bolt
+  element: UNDEAD
+  description: |
+    A bolt of grave energy that withers what it touches.
+
+- id: blight
+  name: Blight
+  level: 30
+  mana: 10
+  school: Black
+  archetype: dot
+  element: UNDEAD
+  description: |
+    Rot spreads across the ground. The living sicken while they stand in it.
+
+- id: bone_crusher
+  name: Bone Crusher
+  level: 45
+  mana: 12
+  school: Black
+  archetype: power_strike
+  element: UNDEAD
+  description: |
+    A blow with a club of fused bones.
+
+- id: corpse_explosion
+  name: Corpse Explosion
+  level: 55
+  mana: 24
+  school: Black
+  archetype: aoe
+  element: UNDEAD
+  description: |
+    A body bursts in a cloud of bone and rot.
+
+- id: drain_life
+  name: Drain Life
+  level: 62
+  mana: 22
+  school: Black
+  archetype: bolt
+  element: UNDEAD
+  description: |
+    Pulls the life out of the target, one heartbeat at a time.
+
+- id: grave_tide
+  name: Grave Tide
+  level: 88
+  mana: 66
+  school: Black
+  archetype: ultimate
+  element: UNDEAD
+  description: |
+    The dead rise for a moment and drag the living down with them.
+
+
+# Healing
+- id: lick_wounds
+  name: Lick Wounds
+  level: 1
+  mana: 12
+  school: White
+  archetype: heal
+  element: NORMAL
+  description: |
+    Licks its own wounds. Not much, but it keeps a young bestia going.
+
+- id: regenerate
+  name: Regenerate
+  level: 25
+  mana: 16
+  school: White
+  archetype: heal
+  element: NORMAL
+  description: |
+    Knits its own flesh back together in a few breaths.
+
+- id: sanctuary
+  name: Sanctuary
+  level: 60
+  mana: 24
+  school: White
+  archetype: heal
+  element: HOLY
+  description: |
+    Consecrates the ground. Allies standing in it are mended, while undead and demons burn instead.
+
+
+# Buffs
+- id: howl
+  name: Howl
+  level: 5
+  mana: 9
+  school: White
+  archetype: buff
+  element: NORMAL
+  description: |
+    A long howl that makes its blood run hot. It hits harder for a while.
+
+- id: enrage
+  name: Enrage
+  level: 15
+  mana: 10
+  school: White
+  archetype: buff
+  element: NORMAL
+  description: |
+    Works itself into a rage and stops caring about its wounds.
+
+- id: blessing
+  name: Blessing
+  level: 25
+  mana: 28
+  school: White
+  archetype: buff
+  element: HOLY
+  skill: BLESSING
+  skillId: 6
+  description: |
+    A benediction that steadies body and mind and raises the core stats for a while. Masters learn it as a Priest skill.
+
+- id: increase_agi
+  name: Increase AGI
+  level: 30
+  mana: 12
+  school: White
+  archetype: buff
+  element: HOLY
+  description: |
+    Lightens its limbs with borrowed haste. Step and swing both get quicker.
+
+- id: war_cry
+  name: War Cry
+  level: 40
+  mana: 13
+  school: White
+  archetype: buff
+  element: NORMAL
+  description: |
+    A roar that fills it with the will to fight.
+
+- id: bloodlust
+  name: Bloodlust
+  level: 55
+  mana: 14
+  school: White
+  archetype: buff
+  element: SHADOW
+  description: |
+    The smell of blood drives it into a frenzy.
+
+- id: berserk
+  name: Berserk
+  level: 70
+  mana: 16
+  school: White
+  archetype: buff
+  element: NORMAL
+  description: |
+    Gives up all defense for pure, raw strength.
+
+- id: primal_rage
+  name: Primal Rage
+  level: 85
+  mana: 17
+  school: White
+  archetype: buff
+  element: NORMAL
+  description: |
+    Wakes the oldest anger in its blood. Few things stand in its way then.
+
+
+# Debuffs
+- id: growl
+  name: Growl
+  level: 3
+  mana: 9
+  school: Black
+  archetype: debuff
+  element: NORMAL
+  description: |
+    A low growl that makes the target hesitate before it strikes.
+
+- id: screech
+  name: Screech
+  level: 12
+  mana: 10
+  school: Black
+  archetype: debuff
+  element: NORMAL
+  description: |
+    A piercing screech that throws off the target's aim.
+
+- id: decrease_agi
+  name: Decrease AGI
+  level: 20
+  mana: 11
+  school: Black
+  archetype: debuff
+  element: NORMAL
+  description: |
+    A mote of leaden mana that slows the target's step and swing.
+
+- id: quagmire
+  name: Quagmire
+  level: 28
+  mana: 11
+  school: Black
+  archetype: debuff
+  element: EARTH
+  description: |
+    Turns the ground into thick mud. Anyone caught in it moves and strikes slower.
+
+- id: curse
+  name: Curse
+  level: 35
+  mana: 12
+  school: Black
+  archetype: debuff
+  element: SHADOW
+  description: |
+    A whispered curse that saps the target's strength.
+
+- id: terrifying_roar
+  name: Terrifying Roar
+  level: 50
+  mana: 14
+  school: Black
+  archetype: debuff
+  element: NORMAL
+  description: |
+    A roar so fierce that the target's hands start to shake.
+
+- id: stone_curse
+  name: Stone Curse
+  level: 60
+  mana: 15
+  school: Black
+  archetype: debuff
+  element: EARTH
+  description: |
+    Slowly turns the target's limbs to stone.
+
+- id: withering_curse
+  name: Withering Curse
+  level: 75
+  mana: 16
+  school: Black
+  archetype: debuff
+  element: UNDEAD
+  description: |
+    Makes the target's body wither as if it had aged for years.
