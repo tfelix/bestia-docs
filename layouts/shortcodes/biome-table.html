@@ -1,0 +1,9 @@
+<!-- biome-table.html: the biomes from data/biomes.yaml, the same list the Bestia Blueprint Calculator offers as a habitat. -->
+<table>
+  <thead><tr><th>Biome</th><th>Group</th><th>What it is</th><th>Climate or rule</th></tr></thead>
+  <tbody>
+  {{- range site.Data.biomes }}
+    <tr><td><code>{{ .id }}</code></td><td>{{ .group }}</td><td>{{ .summary }}</td><td>{{ .climate }}</td></tr>
+  {{- end }}
+  </tbody>
+</table>

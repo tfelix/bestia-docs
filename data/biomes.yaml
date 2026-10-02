@@ -1,0 +1,32 @@
+# The biomes of the world generator, from worldgen bio/Biome.kt and BiomeStage.kt. The World
+# Generation page lists them, and the Bestia Blueprint Calculator offers the land biomes as a habitat.
+#
+# climate: for a climatic biome, the centre of its prototype in Biomes.CLIMATIC (mean temperature and
+# rain per year). Edge, geological and water biomes are placed by a rule in BiomeStage.override instead,
+# so their climate is that rule.
+- { id: OCEAN, label: Ocean, group: Water, climate: "Any; open salt water", summary: "The open sea around the continents." }
+- { id: LAKE, label: Lake, group: Water, climate: "Any; water in a closed basin", summary: "Standing fresh water inland." }
+
+- { id: ICE_SHEET, label: Ice sheet, group: Cold, climate: "Below −7 °C with more than 150 mm of snow a year", summary: "Permanent ice, high or low. No soil, no trees, no caves." }
+- { id: TUNDRA, label: Tundra, group: Cold, climate: "About −12 °C, 250 mm a year", summary: "A cold, open plain of moss, grass and low shrubs. Almost no trees." }
+- { id: TAIGA, label: Taiga, group: Cold, climate: "About −4 °C, 770 mm a year", summary: "Dense conifer forest with long, cold winters." }
+- { id: COLD_DESERT, label: Cold desert, group: Cold, climate: "About 1 °C, 40 mm a year", summary: "Dry land in a cool climate: gravel, dust and few plants. Too dry for ice." }
+- { id: ALPINE, label: Alpine, group: Cold, climate: "High, steep ground; about −8 °C", summary: "Mountains above the tree line. A few stunted trees at the edge, rock and meadow above." }
+
+- { id: TEMPERATE_FOREST, label: Temperate forest, group: Temperate, climate: "About 9 °C, 1250 mm a year", summary: "Mild forest with four seasons and rich soil." }
+- { id: TEMPERATE_RAINFOREST, label: Temperate rainforest, group: Temperate, climate: "About 8 °C, 2700 mm a year", summary: "Mild, very wet forest of tall trees, moss and ferns." }
+- { id: GRASSLAND, label: Grassland, group: Temperate, climate: "About 9 °C, 520 mm a year", summary: "Open plains of tall grass on very rich soil, with a lone tree here and there." }
+- { id: DRYLAND, label: Dryland, group: Temperate, climate: "About 14 °C, 360 mm a year, strong seasons", summary: "Half-dry open country between grassland and desert: dry grass, scrub and scattered trees. Steppe, shrubland and savanna are all dryland." }
+
+- { id: DESERT, label: Desert, group: Warm, climate: "About 24 °C, less than 180 mm a year", summary: "Hot, dry land of sand and rock with almost no plants." }
+- { id: TROPICAL_SEASONAL_FOREST, label: Tropical seasonal forest, group: Warm, climate: "About 26 °C, 1440 mm a year in a wet season", summary: "Warm forest with a wet and a dry season." }
+- { id: TROPICAL_RAINFOREST, label: Tropical rainforest, group: Warm, climate: "About 30 °C, 3400 mm a year", summary: "Hot, wet jungle under the densest canopy in the world." }
+
+- { id: BOG, label: Bog, group: Edge, climate: "Flat, wet ground below 12 °C", summary: "Open, mossy peatland with a few stunted trees. Dead matter does not rot here, so bog iron and old remains are found in it." }
+- { id: SWAMP, label: Swamp, group: Edge, climate: "Flat, wet ground at 12 °C and above", summary: "Warm forest standing in black water, like cypress or mangrove. Everything grows and rots fast." }
+- { id: RIPARIAN, label: Riparian, group: Edge, climate: "Within 1.6 km of a river through desert, cold desert, dryland or grassland", summary: "The band of trees along a river in country that has none away from it." }
+- { id: BEACH, label: Beach, group: Edge, climate: "Flat ground within 1.4 km of the ocean and below 22 m", summary: "The low, flat shore where land meets the sea." }
+- { id: BADLANDS, label: Badlands, group: Edge, climate: "Steep slopes of soft rock with less than 700 mm a year", summary: "Bare, dry hills of soft rock, cut into gullies by erosion." }
+
+- { id: VOLCANIC_FIELD, label: Volcanic field, group: Geological, climate: "Any; within about 2.75 km of a volcanic vent", summary: "The cone of a volcano and its lava fields. Fresh rock without soil or plants." }
+- { id: GEOTHERMAL_BASIN, label: Geothermal basin, group: Geological, climate: "Any; wet ground within 5 km of a vent", summary: "Valley floors near a volcano with hot springs, vents and sulfur crusts. Warm ground, some scrub, and good land for a town." }
