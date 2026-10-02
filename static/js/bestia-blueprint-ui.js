@@ -151,13 +151,14 @@
     const activeIds = new Set(bp.active.map((a) => a.slot));
     const rows = bp.learnset.map((a) => {
       const known = a.level <= bp.level;
-      const status = a.existing ? `<span class="badge text-bg-secondary">exists${a.skillId ? ` #${a.skillId}` : ""}</span>` : '<span class="badge text-bg-info">new</span>';
+      const status = a.skill ? `<span class="badge text-bg-secondary">skill #${a.skillId}</span>` : '<span class="badge text-bg-info">no skill yet</span>';
       return `<tr class="${known ? "" : "text-body-secondary"}">
         <td><input class="form-check-input" type="checkbox" data-slot="${a.slot}" ${activeIds.has(a.slot) ? "checked" : ""} ${known ? "" : "disabled"} aria-label="Active"></td>
         <td>${a.level}</td><td>${escapeHtml(a.name)}</td><td>${a.archetype.replace("_", " ")}</td><td>${a.element ? a.element.toLowerCase() : "-"}</td>
         <td>${a.skillLevel}</td><td>${a.coef != null ? fmt(a.coef, 2) : "-"}</td><td>${status}</td></tr>`;
     });
-    $("bp-learnset").innerHTML = `<thead><tr><th>Active</th><th>Lv</th><th>Attack</th><th>Archetype</th><th>Element</th><th>Skill Lv</th><th>Coefficient</th><th></th></tr></thead><tbody>${rows.join("")}</tbody>`;
+    $("bp-learnset").innerHTML = `<thead><tr><th>Active</th><th>Lv</th><th>Attack</th><th>Archetype</th><th>Element</th><th>Skill Lv</th><th>Coefficient</th><th></th></tr></thead><tbody>${rows.join("")}</tbody>
+      <caption class="small">${bp.learnset.length} of ${data.learnset.levels.length} slots have an attack from the Attack List.</caption>`;
   }
 
   function renderLoot(bp) {
@@ -225,14 +226,14 @@
       row[t.dataset.loot] = t.dataset.loot === "chance" ? Number(t.value) : t.value;
     }
     if (t.dataset.field === "ai") $("bp-ai-custom-box").hidden = t.value !== "custom";
-    if (t.dataset.field === "role" || t.dataset.field === "tier" || t.dataset.field === "level") activeSlots = null;
+    if (["role", "tier", "level", "element"].includes(t.dataset.field)) activeSlots = null;
     if (t.dataset.slot) {
       activeSlots = [...root.querySelectorAll("[data-slot]:checked")].map((el) => Number(el.dataset.slot));
     }
     schedule();
   });
   root.addEventListener("change", (e) => {
-    if (e.target.dataset.field === "role" || e.target.dataset.field === "tier") activeSlots = null;
+    if (["role", "tier", "element"].includes(e.target.dataset.field)) activeSlots = null;
     schedule();
   });
 

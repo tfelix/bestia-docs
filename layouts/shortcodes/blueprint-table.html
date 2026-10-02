@@ -17,14 +17,12 @@
   {{- end }}
   </tbody>
 {{- else if eq $name "archetypes" }}
-  <thead><tr><th>Archetype</th><th>Kind</th><th style="text-align:right">Coefficient</th><th style="text-align:right">Cast (s)</th><th style="text-align:right">Cooldown (s)</th><th style="text-align:right">Mana</th><th>Exists as</th></tr></thead>
+  <thead><tr><th>Archetype</th><th>Kind</th><th style="text-align:right">Coefficient</th><th style="text-align:right">Cast (s)</th><th style="text-align:right">Cooldown (s)</th><th style="text-align:right">Mana</th></tr></thead>
   <tbody>
   {{- range $d.archetypes }}
-    {{- $id := .id -}}
     <tr><td>{{ .label }}</td><td>{{ .kind }}{{ if .ranged }}, ranged{{ end }}{{ if .aoe }}, area{{ end }}</td>
       <td style="text-align:right">{{ with .coef }}{{ . }}{{ else }}{{ mul .effect 100 | printf "%.0f %%" }} for {{ .duration }} s{{ end }}</td>
-      <td style="text-align:right">{{ .castTime }}</td><td style="text-align:right">{{ .cooldown }}</td><td style="text-align:right">{{ .mana.base }} + {{ .mana.perSkillLevel }} × skill Lv</td>
-      <td>{{ range $i, $e := where site.Data.attacks "archetype" $id }}{{ if $i }}, {{ end }}{{ $e.name }} ({{ lower $e.element }}, Lv {{ $e.level }}){{ end }}</td></tr>
+      <td style="text-align:right">{{ .castTime }}</td><td style="text-align:right">{{ .cooldown }}</td><td style="text-align:right">{{ .mana.base }} + {{ .mana.perSkillLevel }} × skill Lv</td></tr>
   {{- end }}
   </tbody>
 {{- else if eq $name "loot" }}
