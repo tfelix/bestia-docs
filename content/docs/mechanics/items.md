@@ -27,6 +27,22 @@ it and so on. It also affects how spells interact with the item entity.
 
 {{< /table >}}
 
+# Armor Type
+
+Each piece of armor has a weight class. A master can wear every class. A bestia can only wear the classes its species
+lists, see [Designing a Bestia](/docs/mechanics/bestia-design/#10-equipment). A blob has no rigid body, so plate
+slides off it.
+
+| Armor type | Typical pieces                                |
+| ---------- | --------------------------------------------- |
+| Cloth      | Robes, tunics, hats and capes. No metal.      |
+| Light      | Leather and hide: shoes, jerkins, bucklers.   |
+| Medium     | Mail, scale and iron-shod leather.            |
+| Heavy      | Plate. Only a strong, rigid body holds it.    |
+
+Weapons and accessories have no armor type. Anyone with the free slot can wear them. The server sets the type with
+`armor-type` in `items.yml`.
+
 # Weapon Refinement
 
 Weapons and armor can be refined, which translates into extra damage dealt when the weapon is used. Each upgrade step can
