@@ -207,6 +207,17 @@ val outcome = chunkStore.carve(ChunkPos(3, 4, 0), removals) // removals: packed 
 // outcome.baked == true means this carve just replaced the delta with a new, frozen base
 ```
 
+# Biomes
+
+The world has 21 biomes in six groups. Cold, temperate and warm biomes come from the climate classifier, see
+[Biome motivation](#biome-motivation). Their climate is the centre of their prototype: a mean temperature and the
+rain per year. Edge, geological and water biomes are placed by a rule instead, in any climate where the rule holds.
+
+{{< biome-table >}}
+
+The table is read from `data/biomes.yaml`, and the [Bestia Blueprint Calculator](/docs/mechanics/bestia-design/#bestia-blueprint-calculator)
+offers the same biomes as a habitat. When `Biome.kt` changes, change that file too.
+
 # Biome motivation
 
 21 biomes today, classified by weighted distance to the nearest of several prototypes over seven normalised
