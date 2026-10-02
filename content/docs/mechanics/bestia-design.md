@@ -2,17 +2,18 @@
 weight: 310
 title: Designing a Bestia
 katex: true
+aliases: ["/docs/mechanics/bestia-blueprint/"]
 description: "A step-by-step method that turns a level into the attributes, HP, attacks, EXP and loot of a new bestia. Every number is measured against a master of the same level."
 ---
 
-{{< alert context="warning" text="This page is a design method. The formulas it measures with are the server's, but some of its outputs (element, size, defences, compendium text) have no place in the mob YAML yet. See [What the server does not do yet](#what-the-server-does-not-do-yet)." />}}
+{{< alert context="warning" text="This page is a design method. The formulas it measures with are the server's. The mob YAML fields it fills (kind, element, size, learnset and the compendium text) come with the `bestia/species-data-model` branch of bestia-behemoth, see [Server support](#server-support)." />}}
 
 A new bestia needs about twenty numbers: six attributes, HP, mana, EXP, an attack list and drop chances. Picked by
 hand, they drift apart. A bestia ends up too strong for its level, or worth too little EXP for the trouble.
 
 This page gives one method for all of them. The idea is simple: **a Lv 10 bestia is measured against a Lv 10
 master.** The method fits the bestia to a target fight, then pays for the fight it produces with EXP and loot. Each
-step is a formula, so it can be run by hand or by the [Bestia Blueprint Calculator](/docs/mechanics/bestia-blueprint/).
+step is a formula, so it can be run by hand or by the [Bestia Blueprint Calculator](#bestia-blueprint-calculator) at the end of this page.
 
 The tables on this page are read from `data/bestia_blueprint.yaml`. Change a number there and this page follows.
 
@@ -126,16 +127,31 @@ asks. Each of the 20 slots has a fixed learn level, and the role fills each slot
 - **Skill level:** an attack is locked at the level it was learned with, `1 + floor(learnLevel / 10)`, up to 10.
   This is the bestia side of the rule that a master levels a spell but a bestia does not.
 - **Element:** spells take the species element. A physical attack is NORMAL the first time; a repeat of it is the
-  species' own stronger take on it and takes the element too. A species with a second element uses it on every
-  other spell from Lv 26.
-- **Reuse first:** an attack that already exists is used once before a new one is made up. Every later slot of the
-  same archetype becomes a new attack with its own name, for example _Earth Power Strike II_.
+  species' own stronger take on it and takes the element too. A species has exactly one element.
+- **Reuse first:** a slot takes an attack from the [Attack List](/docs/mechanics/attack-list/) before a new one is made
+  up: the strongest one of the same archetype that the slot's level can already learn, and of the same element if it
+  deals damage. Each listed attack is used once. Every other slot becomes a new attack with its own name, for example
+  _Earth Power Strike II_. The calculator reads the Attack List live, so an attack added there is reused at once.
 
 ## The active attacks
 
 A wild bestia does not use all it knows. Its AI profile lists a **basic attack plus a few active attacks**: the
 newest ones it knows, one per archetype. The tier sets how many. These are the attacks the fit and the fight below
 use.
+
+## The AI profile
+
+Behaviour lives in AI profiles, `zone-server/src/main/resources/ai/*.yml`. Most species share one of a handful:
+
+- `passive_wanderer`: fights back when hit.
+- `passiv_day_active`: passive by day, holds a grudge.
+- `aggressive_melee`: attacks on sight.
+
+The calculator offers this list from `data/bestia_blueprint.yaml`. It changes rarely, so it is kept by hand: a new
+profile in bestia-behemoth gets a line there in the same change. A species that needs its own behaviour, such as a
+pack hunter or a boss with phases, picks **custom** and describes the behaviour in words. The blueprint then asks
+for a new profile named after the species, written while the mob is implemented, starting from the closest existing
+one. Once a custom profile proves useful for more than one species, it joins the list.
 
 ## Attack power
 
@@ -191,7 +207,8 @@ The element changes the fight. A GHOST bestia takes 25 % from the master's NORMA
 after that. Only a few points get through, so the fit gives it about a tenth of the HP of a NORMAL one. A player
 without an elemental weapon still needs the same six swings, but a player with one wins much faster.
 
-**Size** is SMALL, MEDIUM or BIG. The server has the Ragnarok Online size table but does not use it yet.
+**Size** is SMALL, MEDIUM or BIG. The server stores it but does not apply the Ragnarok Online size table yet: that
+table weighs a weapon type against a size, and weapons have no type yet.
 
 **Defences beyond attributes** are design intent for now:
 
@@ -227,8 +244,14 @@ EXP:
 $$budget_{loot} = 1\ coin \cdot (4 \cdot lv + 5) \cdot threat$$
 {{< /katex >}}
 
-A Lv 1 kill is worth about one loaf of bread (9 coins). The expected value of a drop table is `Σ chance × value`. The
-**loot score** is that value divided by the budget.
+A Lv 1 kill is worth about one loaf of bread (9 coins).
+
+A drop is an item from the [Items List](/docs/mechanics/item-list/) and a chance in percent. The item brings its
+reference value, so nobody prices a drop by hand. The mob YAML stores the chance in basis points (60 % is 6000). The
+expected value of a drop table is `Σ chance × value`, and the **loot score** is that value divided by the budget: 1
+means the bestia drops what it should.
+
+The chance also says what kind of item fits:
 
 {{< blueprint-table name="loot" >}}
 
@@ -254,26 +277,42 @@ Every bestia gets an entry for a future **Bestia Compendium**, the in-game book 
 [Sense](/docs/mechanics/master/#skill-sense) skill already reveals status values, element, HP and mana. The compendium
 is where a player keeps what they have learned.
 
-| Field            | Content                                                          |
-| :--------------- | :--------------------------------------------------------------- |
-| Name and epithet | `Burrow Boar`, "the field-wrecker"                               |
-| Kind             | The breeding kind: beast, humanoid, formless and so on           |
-| Description      | 1 to 3 sentences, at most 300 characters                         |
-| Habitat          | Biomes from the world generator, and a temperature range         |
-| Activity         | Day, night or any                                                |
-| Temperament      | What its AI profile does: passive, fights back, attacks on sight |
+| Field       | Content                                                                        |
+| :---------- | :----------------------------------------------------------------------------- |
+| Name        | `Burrow Boar`                                                                  |
+| Epithet     | An optional title shown after the name: "Burrow Boar, _the field-wrecker_"     |
+| Kind        | What the species is, from the list below. Two bestias only breed within a kind |
+| Description | 1 to 3 sentences, at most 300 characters                                       |
+| Habitat     | Biomes from the world generator, and a temperature range                       |
+| Activity    | Day, night or any                                                              |
+| Temperament | What its AI profile does: passive, fights back, attacks on sight               |
+
+{{< blueprint-table name="kinds" >}}
 
 **The description is flavour that helps.** It says what the bestia looks like and how it behaves, and gives one hint
 a player can use: a weakness, where it lives or what it drops. It contains no numbers, because numbers change and
 flavour text does not get updated.
 
-> _Burrow Boars root up whole fields overnight and sleep through the day in their burrows. Their bristles are prized
-> by brush-makers. They hate the wind, and a gust will send one bolting._
+> _Burrow Boars root up whole fields overnight and sleep through the day in their burrows. Tanners prize their thick
+> hides. They hate the wind, and a gust will send one bolting._
+
+## Where the text lives
+
+Players read the text in their own language, so it is translated in the client, not on the server. It is still
+written next to the stats it describes, so it cannot drift away from them:
+
+1. The mob YAML holds the English `name`, `epithet` and `description`.
+2. `./gradlew :zone-server:syncBestiaDb` copies them into `bestia-client/src/Localization/bestias.csv`, under
+   `BESTIA_<ID>`, `BESTIA_<ID>_EPITHET` and `BESTIA_<ID>_DESC`. It also writes the keys and the kind into the
+   species' `BestiaResource`. A kind's display name is the row `BESTIA_KIND_<KIND>`.
+3. Translators fill the other language columns of `bestias.csv`. The sync only ever writes the `en` column.
+4. `checkBestiaDb` runs in `./gradlew check` and fails when the CSV or a `BestiaResource` no longer matches the YAML.
+
+This is the same workflow `skills.yml` descriptions use. The server reads none of the text.
 
 # Worked example: a Lv 2 Burrow Boar
 
-A starter-ring bestia that a new player should be able to fight alone. Lv 2, normal tier, brute, EARTH 1, using the
-server as it runs today (see below).
+A starter-ring bestia that a new player should be able to fight alone. Lv 2, normal tier, brute, EARTH 1.
 
 | Step       | Result                                                                                                  |
 | :--------- | :------------------------------------------------------------------------------------------------------ |
@@ -281,33 +320,40 @@ server as it runs today (see below).
 | Targets    | 6 swings; 1.12 damage per second, so a fight of about 8 s costs 9 of the master's 20 HP                 |
 | Attributes | STR 7, VIT 9, INT 2, AGI 6, DEX 4, WIL 3                                                                |
 | Attacks    | basic bite, plus Tackle (learned at Lv 1, skill Lv 1), attack power 0.88                                |
-| HP, mana   | 136 HP, 29 mana                                                                                         |
-| Fight      | 6.0 swings, 40 % of the master's HP; 0.48 damage per second from bites and 0.64 from Tackle; threat 1.0 |
-| Loot       | bristle 60 % (4 coins), raw meat 10 % (10 coins), tusk charm 1 % (150 coins): 4.9 coins against 13      |
+| HP, mana   | 135 HP, 29 mana                                                                                         |
+| Fight      | 6.0 swings, 41 % of the master's HP; 0.48 damage per second from bites and 0.65 from Tackle; threat 1.0 |
+| Loot       | Raw Hide 60 % (6 coins), Raw Meat 30 % (4 coins), Medicinal Herb 2 % (5 coins): 4.9 coins against 13    |
 | EXP        | `(4 · 2 + 5) · 1.0 · 1.06` = **14**, and 15 at kill time with the element bonus                         |
 
-If the tusk charm were worth 1,500 coins, the loot score would rise to 1.42. With the slider on _less EXP_ the boar
-gives 11 EXP. With the slider on _tougher_ it keeps 13 EXP and gets 144 HP.
+If the boar also dropped a Rough Gemstone (400 coins) 5 % of the time, the loot score would rise to 1.92. With the
+slider on _less EXP_ the boar gives 9 EXP. With the slider on _tougher_ it keeps 13 EXP and gets 154 HP.
 
-**The blob, measured.** Today's `mob/blob.yml` (Lv 3, 10 HP, STR 6) dies to less than half a swing from a Lv 3
+**The blob, measured.** `mob/blob.yml` (Lv 3, 10 HP, STR 6) dies to less than half a swing from a Lv 3
 master. Its threat sits at the floor of 0.25, and the method gives it **5 EXP**, the value its YAML already has. By
 this method the blob is a critter, which is what it is meant to be.
 
-# What the server does not do yet
+# Server support
 
-The method assumes a few things the server does not have. Each is a follow-up in `bestia-behemoth`.
+The `bestia/species-data-model` branch of bestia-behemoth gives the mob YAML what this method fills in:
 
-- **Mobs have no level in combat.** A mob carries no `Level` component, so a fight reads every mob as Lv 1. The
-  `level/4` terms of ATK, MATK and the defences drop out, and HIT and FLEE lose the level. A blueprint can be made
-  for the server as it runs today, or for the design. The two differ most at high levels.
-- **Mobs have no element and no size.** Every entity is `NORMAL` and nothing reads the size table.
-- **Mob HP is a fixed number** in the YAML, not the HP formula. That is why this method solves HP rather than reading
-  it from a base value.
-- **Species do not learn attacks.** `Bestia.skills` exists but the importer never fills it. The AI profile's attack
-  list is all a wild bestia uses.
-- **There is no compendium and no description field.**
-- **The server's EXP curve is not this one.** `LevelUpExperienceCalculator` is exponential and drops at every tenth
-  level (Lv 19 needs about 778, Lv 20 about 287). This page follows the curve in [Bestias](/docs/mechanics/bestia/#experience).
+- **`kind`**, from the list in [the compendium entry](#9-the-compendium-entry). Required.
+- **`element`** with its level (`EARTH`, `EARTH_2`) and **`size`**. Every hit on a mob is weighed against its
+  element.
+- **`learnset`**, a list of `{ skill, level }` by `skills.yml` identifier. A player's bestia knows each attack once it
+  reaches the level.
+- **`name`, `epithet` and `description`**, the English source of the text, see
+  [Where the text lives](#where-the-text-lives).
+
+The same branch makes a wild mob fight at its own level instead of Lv 1, gives it its authored mana, so casting can
+run it dry, and switches the server's EXP curve to the one in [Bestias](/docs/mechanics/bestia/#experience).
+
+Still open:
+
+- **Size** is stored but not applied, see [step 7](#7-element-size-and-defences).
+- **Hard DEF, hard MDEF and status immunities** for mobs have no field. Note them in the blueprint's defence notes.
+- **Mob HP stays a number in the YAML** rather than the HP formula. That is on purpose: this method solves HP to the
+  fight it wants.
+- **There is no compendium window in the client yet.** The text and the kind are in its bestia DB, ready for one.
 
 # Prior art
 
@@ -321,3 +367,7 @@ The method assumes a few things the server does not have. Each is a follow-up in
   [GDC 2011 talk on RPG math](https://www.engadget.com/2011-10-12-gdc-austin-2011-kingsisles-sara-jensen-schubert-talks-rpg-math.html).
 - **Ragnarok Online**: fixed EXP per monster, drop chances in basis points, and the element and size tables the server
   already uses, see [iRO Wiki: EXP](https://irowiki.org/classic/EXP).
+
+# Bestia Blueprint Calculator
+
+{{< include "/docs/mechanics/bestia-blueprint" >}}
