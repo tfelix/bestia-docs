@@ -1,0 +1,420 @@
+# Every item on the Items List page. The page renders from this file, and the Bestia Blueprint
+# Calculator loads it as JSON to pick loot from.
+#
+# id is the item's name in zone-server's items.yml where the item exists there.
+# value is a reference price in coins, for pricing loot. Bread is 9 and a gold ore 10,000
+# (money-supply.md); everything else is a first guess placed between those anchors.
+- id: mobile_laboratory
+  name: Mobile Laboratory
+  weight: 15
+  type: Usable
+  value: 2500
+  description: |
+    Alchemists use those small and laboratories to work on new recipies or brew potions and elexiers in the wild. When it is packed up it fits into a big crate and is quite transportable. A must have equipment for every alchemist.
+    Use it to construct it in the world.
+- id: apple
+  name: Apple
+  icon: apple.png
+  weight: 0.1
+  type: Usable
+  value: 2
+  description: |
+    A fresh and jucy red apple. Looks like it came right from a tree.
+
+    Restores 20 HP
+- id: grape
+  name: Grape
+  weight: 0.1
+  type: Usable
+  value: 1
+  description: |
+    A sweet, ripe purple grape. It is said that its sugar vitalizes the brain.
+
+    Restores 10 Mana
+- id: iron_ore
+  name: Iron Ore
+  weight: 1
+  type: Etc
+  value: 20
+  description: |
+    Heavy, rugged chunks of iron ore. Blacksmiths prize these for their strength and potential. Can be used for forging.
+- id: clay
+  name: Clay
+  weight: 1
+  type: Etc
+  value: 2
+  description: |
+    Smooth, earthy clay. Malleable and perfect for shaping into bricks, pottery, or magical seals. Can be used for forging.
+- id: coal
+  name: Coal
+  weight: 0.4
+  type: Etc
+  value: 4
+  description: |
+    Glossy black lumps hewn out of a mineral seam. The reference fuel of every [Furnace](/docs/mechanics/item-list/#furnace) and what any serious smelting run burns — see [Refining](/docs/mechanics/natural-resources/#refining).
+- id: charcoal
+  name: Charcoal
+  weight: 0.2
+  type: Etc
+  value: 3
+  description: |
+    Charred, brittle pieces of wood. Cheap furnace fuel and a base for potent alchemical mixtures. Burns cooler than [Coal](/docs/mechanics/item-list/#coal) and costs `-10%` on every [ore refinement](/docs/mechanics/items/#ore-refinement-success-chance) attempt.
+- id: furnace
+  name: Furnace
+  weight: 40
+  type: Etc
+  value: 600
+  description: |
+    Blacksmiths use furnaces to smelt raw ore down into metal bars. Every batch burns [Coal](/docs/mechanics/item-list/#coal) or [Charcoal](/docs/mechanics/item-list/#charcoal), and both the ore and the fuel are lost if the smelt fails.
+    Placing one requires [Ore Refinement](/docs/mechanics/master/#skill-ore-refinement) Lv. 1. Use it to construct it in the world.
+- id: workbench_kit
+  name: Workbench
+  weight: "?"
+  type: Etc
+  value: 300
+  description: |
+    _(placeholder)_ A basic crafting station used by Carpentry to build items. Use it to construct it in the world.
+- id: small_health_potion
+  name: Small Health Potion
+  weight: 0.2
+  type: Usable
+  value: 25
+  description: |
+    A tiny vial filled with shimmering red liquid. Instantly mends minor wounds and brings a gentle warmth to the soul. Heals 45 HP.
+- id: health_potion
+  name: Health Potion
+  weight: 0.3
+  type: Usable
+  value: 80
+  description: |
+    A robust flask of vibrant crimson elixir. Favored by adventurers for its powerful restorative magic. Heals 170 HP.
+- id: small_mana_potion
+  name: Small Mana Potion
+  weight: 0.2
+  type: Usable
+  value: 30
+  description: |
+    A delicate bottle of sparkling blue essence. Recharges a mage’s spirit and restores a touch of magical energy. Restores 45 Mana.
+- id: mana_potion
+  name: Mana Potion
+  weight: 0.3
+  type: Usable
+  value: 100
+  description: |
+    A swirling flask of deep azure liquid. Pulses with arcane power, ready to fuel the most demanding spells. Restores 170 Mana.
+- id: log
+  name: Wood
+  weight: 30
+  type: Etc
+  value: 6
+  description: |
+    This is raw wood and it can be further processed into building material which is required for most buildings.
+- id: copper_ore
+  name: Copper Ore
+  weight: 1
+  type: Etc
+  value: 12
+  description: |
+    A reddish-brown ore that can be refined into copper. Used for forging and crafting.
+- id: mercury_ore
+  name: Mercury Ore
+  weight: 2
+  type: Etc
+  value: 150
+  description: |
+    A rare silvery ore containing mercury. Used for advanced alchemy and magical crafting.
+- id: palladium_ore
+  name: Palladium Ore
+  weight: 1.5
+  type: Etc
+  value: 2000
+  description: |
+    A precious metallic ore with excellent catalytic properties. Used for high-end equipment.
+- id: mithril_ore
+  name: Mithril Ore
+  weight: 0.8
+  type: Etc
+  value: 5000
+  description: |
+    A legendary lightweight ore with magical properties. Used for magic artefacts.
+- id: adamantium_ore
+  name: Adamantium Ore
+  weight: 3
+  type: Etc
+  value: 8000
+  description: |
+    The hardest material known. Used for creating the most durable items and equipment.
+- id: silver_bar
+  name: Silver Bar
+  weight: 2
+  type: Etc
+  value: 4000
+  description: |
+    A refined silver ingot with excellent conductivity. Used for crafting and magical purposes.
+- id: gold_bar
+  name: Gold Bar
+  weight: 3
+  type: Etc
+  value: 20000
+  description: |
+    A valuable refined gold ingot. Highly sought after for crafting and trade.
+- id: platin_bar
+  name: Platin Bar
+  weight: 2.5
+  type: Etc
+  value: 30000
+  description: |
+    A precious refined platinum ingot. Used for premium crafting and magical applications.
+- id: blue_mana_crystal
+  name: Blue Mana Crystal
+  weight: 0.5
+  type: Etc
+  value: 300
+  description: |
+    A common mana crystal with blue luminescence. Used for magic artefacts.
+- id: yellow_mana_crystal
+  name: Yellow Mana Crystal
+  weight: 0.5
+  type: Etc
+  value: 600
+  description: |
+    A quite rare mana crystal with golden glow. Used for magic artefacts.
+- id: red_mana_crystal
+  name: Red Mana Crystal
+  weight: 0.5
+  type: Etc
+  value: 1200
+  description: |
+    A very rare mana crystal with crimson radiance. Used for magic artefacts.
+- id: salt
+  name: Salt
+  weight: 0.1
+  type: Etc
+  value: 2
+  description: |
+    Common mineral salt. Used for food preservation and various crafting recipes.
+- id: stone
+  name: Stone
+  weight: 5
+  type: Etc
+  value: 1
+  description: |
+    Standard building stone. Essential material for construction projects.
+- id: marble
+  name: Marble
+  weight: 8
+  type: Etc
+  value: 15
+  description: |
+    High quality building stone with elegant appearance. Premium building material.
+- id: tin_ore
+  name: Tin Ore
+  weight: 1
+  type: Etc
+  value: 12
+  description: |
+    A soft, dull-grey ore. Alloyed with copper to make bronze and used in basic crafting.
+- id: silver_ore
+  name: Silver Ore
+  weight: 1
+  type: Etc
+  value: 2000
+  description: |
+    A lustrous ore streaked with silver. Smelted into silver bars for crafting and magical work.
+- id: gold_ore
+  name: Gold Ore
+  weight: 1.5
+  type: Etc
+  value: 10000
+  description: |
+    A heavy ore flecked with gold. Smelted into gold bars and, once minted, into the world's coinage.
+- id: steel_bar
+  name: Steel Bar
+  weight: 2
+  type: Etc
+  value: 120
+  description: |
+    Iron ore refined with charcoal in a furnace. The staple metal for weapons and armor.
+- id: obsidian
+  name: Obsidian
+  weight: 4
+  type: Etc
+  value: 60
+  description: |
+    A glass-like volcanic stone, brittle yet razor-sharp. Prized for cutting edges and decorative work.
+- id: mana_essence
+  name: Mana Essence
+  weight: 0.3
+  type: Etc
+  value: 150
+  description: |
+    Raw mana-bearing powder. Fed into a Mana Harvester to grow mana crystals.
+- id: pure_mana_essence
+  name: Pure Mana Essence
+  weight: 0.3
+  type: Etc
+  value: 600
+  description: |
+    A purer grade of mana powder that yields higher-quality mana crystals.
+- id: mana_concentrate
+  name: Mana Concentrate
+  weight: 0.3
+  type: Etc
+  value: 1500
+  description: |
+    Highly concentrated mana powder, the raw material for the finest mana crystals.
+- id: mana_dust
+  name: Mana Dust
+  weight: 0.2
+  type: Etc
+  value: 20
+  description: |
+    Fine, faintly glowing dust of condensed mana. Used to empower Bestia traps and ritual crafting.
+- id: rough_gem
+  name: Rough Gemstone
+  weight: 0.3
+  type: Etc
+  value: 400
+  description: |
+    An uncut gem pried from a mineral vein. A Gem Cutter can facet it into a Cut Gemstone.
+- id: cut_gemstone
+  name: Cut Gemstone
+  weight: 0.2
+  type: Etc
+  value: 1500
+  description: |
+    A faceted, polished gem. Slots into socketed equipment and fetches a high price at market.
+- id: medicinal_herb
+  name: Medicinal Herb
+  weight: 0.1
+  type: Etc
+  value: 5
+  description: |
+    A common healing herb. A staple ingredient for potions and tonics.
+- id: mana_herb
+  name: Mana Herb
+  weight: 0.1
+  type: Etc
+  value: 8
+  description: |
+    A faintly luminescent, mana-touched herb. Used in more potent alchemical brews.
+- id: embercoal
+  name: Embercoal
+  weight: 0.5
+  type: Etc
+  value: 40
+  description: |
+    A lump of coal that never stops smouldering. Loaded into a blueprint to give a craft the fire element.
+- id: frost_shard
+  name: Frost Shard
+  weight: 0.4
+  type: Etc
+  value: 40
+  description: |
+    A sliver of ice that never melts. Loaded into a blueprint to give a craft the frost element.
+- id: empty_bottle
+  name: Empty Bottle
+  weight: 0.2
+  type: Etc
+  value: 3
+  description: |
+    A plain, corked glass bottle. The vessel behind every potion, tonic and blessed draught - alchemists and priests alike never carry enough of them.
+- id: holy_water
+  name: Holy Water
+  weight: 0.3
+  type: Etc
+  value: 60
+  description: |
+    Plain water blessed in the rite of Aqua Benedicta. The reagent behind Aspersio and several higher rites.
+- id: engraving_set
+  name: Engraving Set
+  weight: 3
+  type: Etc
+  value: 250
+  description: |
+    A roll of fine chisels, needles and etching stylae. Consumed when reworking an item to cut rune slots into it.
+- id: mana_circle
+  name: Mana Circle
+  weight: 8
+  type: Usable
+  value: 1500
+  description: |
+    A coil of mana concentrate poured into a ring on the ground. Everyone standing inside lends their presence to a rite
+    performed there, raising its success chance and splitting its mana cost. Consumed when the rite resolves. See
+    [Mana Circles](/docs/mechanics/master/#mana-circles).
+- id: gem_cut_station
+  name: Gem Cut Station
+  weight: 35
+  type: Etc
+  value: 2000
+  description: |
+    A bench of clamps, loupes and graded grit where a Miner turns rough gemstones into cut ones. Placing one requires
+    [Gem Cutting](/docs/mechanics/master/#skill-gem-cutting) Lv. 1.
+- id: breeder
+  name: Breeder
+  weight: 60
+  type: Etc
+  value: 3000
+  description: |
+    A warded pen where a pair of Bestia can be left together to produce an egg. Holds exactly one male and one female at a time.
+    Use it to construct it in the world.
+- id: bestia_trap
+  name: Bestia Trap
+  weight: 1.5
+  type: Usable
+  value: 50
+  description: |
+    The entry-level Magic Bestia Trap, woven from mana dust and cheap wards. Reliable against young Bestia and hopeless against anything grown.
+    Base catch chance `+60%` against Bestia up to Lv. 20.
+- id: super_trap
+  name: Super Trap
+  weight: 1.5
+  type: Usable
+  value: 200
+  description: |
+    A reinforced Magic Bestia Trap with a second layer of binding wards. The workhorse of most Foresters.
+    Base catch chance `+100%` against Bestia up to Lv. 20.
+- id: mega_trap
+  name: Mega Trap
+  weight: 2
+  type: Usable
+  value: 800
+  description: |
+    A Magic Bestia Trap built around a caged mana crystal. Expensive enough that most masters save them for something worth keeping.
+    Base catch chance `+140%` against Bestia up to Lv. 20.
+- id: master_trap
+  name: Master Trap
+  weight: 2
+  type: Usable
+  value: 3000
+  description: |
+    The finest Magic Bestia Trap a Craftsman can produce. The only trap with any real hope against a Bestia past Lv. 100.
+    Base catch chance `+180%` against Bestia up to Lv. 20.
+- id: jelly
+  name: Jelly
+  weight: 0.1
+  type: Etc
+  value: 2
+  description: |
+    A wobbly lump of jelly left behind by a blob. Cooks use it to thicken stews.
+- id: raw_meat
+  name: Raw Meat
+  weight: 0.5
+  type: Etc
+  value: 4
+  description: |
+    A cut of fresh meat. It spoils within days unless it is salted or cooked.
+- id: raw_hide
+  name: Raw Hide
+  weight: 1
+  type: Etc
+  value: 6
+  description: |
+    The untreated hide of an animal. A tanner turns it into leather.
+- id: wool
+  name: Wool
+  weight: 0.3
+  type: Etc
+  value: 5
+  description: |
+    A tuft of soft wool. Weavers spin it into yarn for cloth.
