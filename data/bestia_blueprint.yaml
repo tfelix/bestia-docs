@@ -332,6 +332,76 @@ kinds:
   - { id: DEMON, summary: "Creatures of the void and corrupted land" }
   - { id: DRAGON, summary: "Dragons and their lesser kin" }
 
+# What a tamed bestia can wear. Mirrors EquipmentSlot and ArmorType in zone-server, in their order.
+equipment:
+  slots:
+    - { id: HEAD_UPPER, label: Upper head, group: Head }
+    - { id: HEAD_MID, label: Mid head, group: Head }
+    - { id: HEAD_LOWER, label: Lower head, group: Head }
+    - { id: ARMOR, label: Armor, group: Body }
+    - { id: GARMENT, label: Garment, group: Body }
+    - { id: FOOTGEAR, label: Footgear, group: Body }
+    - { id: RIGHT_HAND, label: Right hand, group: Hands }
+    - { id: LEFT_HAND, label: Left hand, group: Hands }
+    - { id: ACCESSORY_1, label: Accessory 1, group: Accessories }
+    - { id: ACCESSORY_2, label: Accessory 2, group: Accessories }
+  armorTypes:
+    - { id: CLOTH, label: Cloth, summary: "Robes, tunics, hats and capes. No metal." }
+    - { id: LIGHT, label: Light, summary: "Leather and hide: shoes, jerkins, bucklers." }
+    - { id: MEDIUM, label: Medium, summary: "Mail, scale and iron-shod leather." }
+    - { id: HEAVY, label: Heavy, summary: "Plate. Only a strong, rigid body holds it in place." }
+  # The calculator's starting point for each kind: what such a body can wear. A species can differ,
+  # a ghost is UNDEAD but wears nothing.
+  presets:
+    - kind: BEAST
+      slots: [HEAD_UPPER, ARMOR, GARMENT, ACCESSORY_1, ACCESSORY_2]
+      armorTypes: [CLOTH, LIGHT, MEDIUM, HEAVY]
+      note: Barding, a saddle cloth and a collar. No hands and no shoes.
+    - kind: BIRD
+      slots: [HEAD_UPPER, GARMENT, ACCESSORY_1, ACCESSORY_2]
+      armorTypes: [CLOTH, LIGHT]
+      note: Body armor would keep it from flying.
+    - kind: REPTILE
+      slots: [HEAD_UPPER, ARMOR, ACCESSORY_1, ACCESSORY_2]
+      armorTypes: [LIGHT, MEDIUM]
+      note: A low body that slides out of anything loose.
+    - kind: AQUATIC
+      slots: [HEAD_UPPER, ARMOR, ACCESSORY_1, ACCESSORY_2]
+      armorTypes: [LIGHT, MEDIUM]
+      note: Cloth soaks through, plate sinks.
+    - kind: INSECT
+      slots: [HEAD_UPPER, ARMOR, ACCESSORY_1, ACCESSORY_2]
+      armorTypes: [LIGHT, MEDIUM]
+      note: Too many legs for shoes.
+    - kind: PLANT
+      slots: [HEAD_UPPER, GARMENT, ACCESSORY_1, ACCESSORY_2]
+      armorTypes: [CLOTH]
+      note: Something draped over its leaves.
+    - kind: FORMLESS
+      slots: [GARMENT]
+      armorTypes: [CLOTH, LIGHT]
+      note: No body to strap armor to. A light cape is all that stays on.
+    - kind: ELEMENTAL
+      slots: [ACCESSORY_1, ACCESSORY_2]
+      armorTypes: []
+      note: Fire burns cloth, wind blows it away. Only charms.
+    - kind: HUMANOID
+      slots: [HEAD_UPPER, HEAD_MID, HEAD_LOWER, ARMOR, GARMENT, FOOTGEAR, RIGHT_HAND, LEFT_HAND, ACCESSORY_1, ACCESSORY_2]
+      armorTypes: [CLOTH, LIGHT, MEDIUM, HEAVY]
+      note: Built like a master, so it wears what a master wears.
+    - kind: UNDEAD
+      slots: [HEAD_UPPER, HEAD_MID, HEAD_LOWER, ARMOR, GARMENT, FOOTGEAR, RIGHT_HAND, LEFT_HAND, ACCESSORY_1, ACCESSORY_2]
+      armorTypes: [CLOTH, LIGHT, MEDIUM, HEAVY]
+      note: A skeleton still wears its old armor.
+    - kind: DEMON
+      slots: [HEAD_UPPER, HEAD_MID, HEAD_LOWER, ARMOR, GARMENT, FOOTGEAR, RIGHT_HAND, LEFT_HAND, ACCESSORY_1, ACCESSORY_2]
+      armorTypes: [CLOTH, LIGHT, MEDIUM, HEAVY]
+      note: Most walk upright and wear anything.
+    - kind: DRAGON
+      slots: [HEAD_UPPER, ARMOR, ACCESSORY_1, ACCESSORY_2]
+      armorTypes: [MEDIUM, HEAVY]
+      note: Scale barding. Too big for anything light.
+
 # AI profiles in zone-server/src/main/resources/ai/. The calculator also offers "custom": a
 # behaviour described in words, for a new profile written while the mob is implemented.
 aiProfiles:

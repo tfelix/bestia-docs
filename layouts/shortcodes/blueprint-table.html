@@ -39,6 +39,16 @@
     <tr><td><code>{{ .id }}</code></td><td>{{ .summary }}</td></tr>
   {{- end }}
   </tbody>
+{{- else if eq $name "equipment" }}
+  {{- $e := $d.equipment }}
+  <thead><tr><th>Kind</th><th>Slots</th><th>Armor types</th><th>Why</th></tr></thead>
+  <tbody>
+  {{- range $e.presets }}
+    {{- $slots := slice }}{{ range where $e.slots "id" "in" .slots }}{{ $slots = $slots | append .label }}{{ end }}
+    {{- $armor := slice }}{{ range where $e.armorTypes "id" "in" .armorTypes }}{{ $armor = $armor | append .label }}{{ end }}
+    <tr><td><code>{{ .kind }}</code></td><td>{{ if eq (len .slots) (len $e.slots) }}All{{ else }}{{ delimit $slots ", " }}{{ end }}</td><td>{{ with $armor }}{{ delimit . ", " }}{{ else }}None{{ end }}</td><td>{{ .note }}</td></tr>
+  {{- end }}
+  </tbody>
 {{- else if eq $name "spawn" }}
   <thead><tr><th>Den level</th><th>Where</th><th style="text-align:right">Creatures per km²</th><th style="text-align:right">Pack size</th></tr></thead>
   <tbody>

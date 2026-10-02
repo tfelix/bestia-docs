@@ -6,7 +6,7 @@ aliases: ["/docs/mechanics/bestia-blueprint/"]
 description: "A step-by-step method that turns a level into the attributes, HP, attacks, EXP and loot of a new bestia. Every number is measured against a master of the same level."
 ---
 
-{{< alert context="warning" text="This page is a design method. The formulas it measures with are the server's. The mob YAML fields it fills (kind, element, size, learnset and the compendium text) come with the `bestia/species-data-model` branch of bestia-behemoth, see [Server support](#server-support)." />}}
+{{< alert context="warning" text="This page is a design method. The formulas it measures with are the server's. The mob YAML fields it fills (kind, element, size, learnset, armor types and the compendium text) come with the `bestia/species-data-model` branch of bestia-behemoth, see [Server support](#server-support)." />}}
 
 A new bestia needs about twenty numbers: six attributes, HP, mana, EXP, an attack list and drop chances. Picked by
 hand, they drift apart. A bestia ends up too strong for its level, or worth too little EXP for the trouble.
@@ -26,6 +26,7 @@ flowchart LR
   E --> F[Threat]
   F --> G[EXP and loot]
   G --> H[Compendium entry]
+  H --> I[Equipment]
 ```
 
 # 1. Level and tier
@@ -330,6 +331,23 @@ written next to the stats it describes, so it cannot drift away from them:
 
 This is the same workflow `skills.yml` descriptions use. The server reads none of the text.
 
+# 10. Equipment
+
+A tamed bestia wears equipment like its master, but only what its body allows. Two lists in the mob YAML say what
+that is:
+
+- **`equip-slots`**: which of the master's ten slots the species has. A blob has no head, so it has no head slots.
+- **`armor-types`**: which [armor types](/docs/mechanics/items/#armor-type) it can wear. A blob keeps a cloth cape
+  on, but plate slides off it.
+
+The server refuses anything else. Weapons and accessories have no armor type, so for them only the slot counts. None
+of this changes the numbers above. A wild bestia wears nothing, so the method measures it without gear.
+
+The kind is the starting point. The calculator fills both lists from this table, and a species can differ from it: a
+ghost is UNDEAD, but wears nothing.
+
+{{< blueprint-table name="equipment" >}}
+
 # Worked example: a Lv 2 Burrow Boar
 
 A starter-ring bestia that a new player should be able to fight alone. Lv 2, normal tier, brute, EARTH 1.
@@ -344,6 +362,7 @@ A starter-ring bestia that a new player should be able to fight alone. Lv 2, nor
 | Fight      | 6.0 swings, 41 % of the master's HP; 0.48 damage per second from melee and 0.65 from Tackle; threat 1.0 |
 | Loot       | Raw Hide 60 % (6 coins), Raw Meat 30 % (4 coins), Medicinal Herb 2 % (5 coins): 4.9 coins against 13    |
 | EXP        | `(4 · 2 + 5) · 1.0 · 1.06` = **14**, and 15 at kill time with the element bonus                         |
+| Equipment  | BEAST preset: upper head, armor, garment and both accessories; any armor type                           |
 
 If the boar also dropped a Rough Gemstone (400 coins) 5 % of the time, the loot score would rise to 1.92. With the
 slider on _less EXP_ the boar gives 9 EXP. With the slider on _tougher_ it keeps 13 EXP and gets 154 HP.
@@ -364,6 +383,8 @@ The `bestia/species-data-model` branch of bestia-behemoth gives the mob YAML wha
 - **`default-attack`**: `MELEE`, `RANGED` or `BOTH`. The AI profile lists attack skills only.
 - **`name` and `description`**, the English source of the text, see
   [Where the text lives](#where-the-text-lives).
+- **`armor-types`** next to the older `equip-slots`, see [step 10](#10-equipment). Armor in `items.yml` has an
+  `armor-type`.
 
 The same branch makes a wild mob fight at its own level instead of Lv 1, gives it its authored mana, so casting can
 run it dry, and switches the server's EXP curve to the one in [Bestias](/docs/mechanics/bestia/#experience).
@@ -375,6 +396,8 @@ Still open:
 - **Mob HP stays a number in the YAML** rather than the HP formula. That is on purpose: this method solves HP to the
   fight it wants.
 - **There is no compendium window in the client yet.** The text and the kind are in its bestia DB, ready for one.
+- **The client does not grey out armor a bestia cannot wear yet.** Both lists are in its bestia and item DBs, ready
+  for a bestia equip window. Until then the server refuses it with a message.
 
 # Prior art
 

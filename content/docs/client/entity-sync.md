@@ -81,6 +81,7 @@ class_name BestiaResource extends Resource
 
 @export var bestia_id: int
 @export var equip_slots: int  # bitmask — which equipment slots this species has
+@export var armor_types: int  # bitmask — which armor types (cloth to heavy) it can wear
 ```
 
 `BestiaDB` (`src/Game/Bestia/bestia_db.gd`) scans `Game/Bestia/DB/*.tres` once at startup and
