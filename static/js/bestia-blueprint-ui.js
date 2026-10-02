@@ -35,9 +35,9 @@
     root.querySelectorAll("[data-field]").forEach((el) => {
       const key = el.dataset.field;
       if (el.type === "checkbox") input[key] = el.checked;
-      else if (el.multiple) input[key] = [...el.selectedOptions].map((o) => o.value);
       else input[key] = el.value;
     });
+    input.habitat = [...root.querySelectorAll("[data-habitat]:checked")].map((el) => el.value);
     input.level = Math.min(100, Math.max(1, parseInt(input.level, 10) || 1));
     input.elementLevel = input.elementLevel ? parseInt(input.elementLevel, 10) : null;
     input.lootBalance = parseFloat(input.lootBalance) || 0;
@@ -62,9 +62,9 @@
       const v = input[el.dataset.field];
       if (v === undefined) return;
       if (el.type === "checkbox") el.checked = Boolean(v);
-      else if (el.multiple) [...el.options].forEach((o) => (o.selected = (v || []).includes(o.value)));
       else el.value = v ?? "";
     });
+    if (input.habitat) root.querySelectorAll("[data-habitat]").forEach((el) => (el.checked = input.habitat.includes(el.value)));
     loot = (input.loot || []).map((row) => ({ ...row }));
     $("bp-ai-custom-box").hidden = input.ai !== "custom";
     activeSlots = input.activeSlots ?? null;
@@ -107,12 +107,16 @@
       ["Mana", fmt(bp.mana)],
       ["EXP", fmt(bp.exp.experience)],
       ["Threat", fmt(b.threat, 2)],
-      ["Worth a normal Lv", fmt(bp.exp.effectiveLevel)],
+      ["Worth normal kills", fmt(bp.exp.normalKills, 1)],
       ["Attack power", fmt(bp.attackPower, 2)],
     ];
-    $("bp-tiles").innerHTML = tiles
-      .map(([label, value]) => `<div class="col-6 col-md-4"><div class="card bp-tile h-100"><div class="card-body py-2"><div class="small text-body-secondary">${label}</div><div class="fs-4 fw-semibold">${value}</div></div></div></div>`)
-      .join("");
+    const count = bp.warnings.length;
+    const status = count
+      ? `<a class="badge text-bg-warning text-decoration-none" href="#bp-step-balance">${count} ${count === 1 ? "warning" : "warnings"}</a>`
+      : '<span class="badge text-bg-success">on target</span>';
+    $("bp-tiles").innerHTML =
+      tiles.map(([label, value]) => `<div class="bp-stat"><div class="small text-body-secondary">${label}</div><div class="fs-5 fw-semibold">${value}</div></div>`).join("") +
+      `<div class="ms-auto">${status}</div>`;
 
     const tier = bp.tier;
     const sources = Object.entries(b.dpsBySource).filter(([, v]) => v > 0).map(([k, v]) => `${escapeHtml(k)} ${fmt(v, 2)}`).join(", ");
@@ -125,7 +129,9 @@
         <tr><th scope="row">Default attacks to kill the master</th><td>${fmt(b.bestiaSwingsToKillMaster, 1)}</td><td colspan="2">mana left after the fight: ${fmt(b.manaLeftAfterWindow)} of ${fmt(bp.mana)}</td></tr>
       </tbody>`;
     const m = bp.master;
-    $("bp-master").textContent = `Reference master: ${B.ATTRIBUTES.map((k) => `${k.toUpperCase()} ${m.attrs[k]}`).join(", ")}; ${m.hp} HP; weapon ATK ${m.weaponAtk}; hard DEF ${m.hardDefense}; ${fmt(m.interval.seconds, 2)} s per swing.`;
+    $("bp-master").innerHTML = `
+      <p class="mb-1">Measured against a Lv ${bp.level} master: ${B.ATTRIBUTES.map((k) => `${k.toUpperCase()} ${m.attrs[k]}`).join(", ")}; ${m.hp} HP; weapon ATK ${m.weaponAtk}; hard DEF ${m.hardDefense}; ${fmt(m.interval.seconds, 2)} s per swing.</p>
+      <p class="mb-0">Target fight: the master needs <strong>${fmt(bp.targets.playerSwings)} swings</strong>, and the bestia deals <strong>${fmt(bp.targets.dps, 2)} damage per second</strong>.</p>`;
 
     $("bp-attributes").innerHTML = `<thead><tr>${B.ATTRIBUTES.map((k) => `<th>${k.toUpperCase()}</th>`).join("")}</tr></thead><tbody><tr>${B.ATTRIBUTES.map((k) => `<td>${bp.attributes[k]}</td>`).join("")}</tr></tbody>`;
     const d = bp.derived;

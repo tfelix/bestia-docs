@@ -42,8 +42,9 @@ species only fills dens close to its own level. A den spans its centre ±4 level
 
 - **Critter**: wildlife that fights back weakly. It is a lesson for new players, not a threat.
 - **Normal**: the bestia a player fights alone. Everything else is defined relative to it.
-- **Elite**: a pack leader or a rare spawn. A player alone loses to it.
-- **Boss**: built for a group. It sets `boss: true` in the mob YAML.
+- **Elite**: a pack leader or a rare spawn. About 30 swings, 10 to 15 for each player. A player alone loses to it.
+- **Boss**: built for a group. About 500 swings, 100 for each of five players: a fight of about two minutes, like an
+  MVP in Ragnarok Online. It sets `boss: true` in the mob YAML.
 
 # 2. The reference master
 
@@ -54,16 +55,17 @@ server rules, so it changes when they do:
 - **Spending:** each point goes into the attribute that lags furthest behind. The cost of a point rises with the
   value, `max(1, next / 3)`, the same as for a player. At Lv 1 this gives the even 9/9/9/9/9/9 spread of a new master.
 - **Gear:** the novice knife (weapon ATK 10) and the starter kit (hard DEF 5), the same pair `BlobBalanceTest` uses.
-  Weapons and armour have no item level yet. So the method assumes +1 weapon ATK and +0.25 hard DEF per level until
-  they do.
+  Weapons and armour have no item level yet. So the method assumes +1 weapon ATK and +0.375 hard DEF per level until
+  they do. Hard DEF is a percentage cut, so a Lv 90 master takes 38 % less damage. That is between a caster
+  (about 27 %) and a melee in full armour (about 50 %).
 - **HP and attack speed:** the master's own formulas, see [Status Values](/docs/mechanics/statusvalues/#health).
 
 | Level | Attributes (STR/VIT/INT/AGI/DEX/WIL) |  HP | ATK | Soft DEF | FLEE | Weapon ATK | Hard DEF | Seconds per swing |
 | ----: | :----------------------------------- | --: | --: | -------: | ---: | ---------: | -------: | ----------------: |
 |     1 | 9/9/9/9/9/9                          |  18 |  13 |       11 |  111 |         10 |        5 |              1.34 |
-|    10 | 13/13/12/12/12/12                    |  37 |  21 |       19 |  124 |         19 |        7 |              1.32 |
-|    50 | 32/31/31/31/31/31                    | 137 |  60 |       55 |  187 |         59 |       17 |              1.18 |
-|   100 | 56/56/56/56/56/55                    | 304 | 110 |      103 |  267 |        109 |       30 |              1.01 |
+|    10 | 13/13/12/12/12/12                    |  37 |  21 |       19 |  124 |         19 |        8 |              1.32 |
+|    50 | 32/31/31/31/31/31                    | 137 |  60 |       55 |  187 |         59 |       23 |              1.18 |
+|   100 | 56/56/56/56/56/55                    | 304 | 110 |      103 |  267 |        109 |       42 |              1.01 |
 
 An even spread is a choice. A real player specialises and hits harder. But an even master is the fair middle: a
 specialised player finds a normal bestia easy, and a crafter finds it hard.
@@ -198,7 +200,7 @@ defensive and an offensive rating:
 $$threat = \sqrt{\frac{swings}{6} \cdot \frac{dps}{dps_{normal}}}$$
 {{< /katex >}}
 
-A normal bestia that hits its targets has a threat of 1. An elite is near 2, a boss near 6. A bestia that was given
+A normal bestia that hits its targets has a threat of 1. An elite is near 2.5, a boss near 13. A bestia that was given
 more HP or a stronger spell than the fit asked for shows it here, and is paid for in EXP.
 
 # 7. Element, size and defences
@@ -229,14 +231,29 @@ The base comes from [Bestias](/docs/mechanics/bestia/#killing-enemies) and is sc
 
 <!-- prettier-ignore -->
 {{< katex >}}
-$$exp = (4 \cdot lv + 5) \cdot threat \cdot loot_{factor}$$
+$$exp = (4 \cdot lv + 5) \cdot threat \cdot group \cdot loot_{factor}$$
 {{< /katex >}}
 
 This is the `experience` value of the mob YAML. The kill-time bonuses from [Bestias](/docs/mechanics/bestia/#killing-enemies)
 (+200 % for a boss, +10 % per element level) come on top when the kill happens. They are not part of the YAML value.
 
-The **EXP-equivalent level**, `(exp − 5) / 4` before loot, says what the bestia is worth in normal bestias. An elite
-at Lv 50 is worth a normal one at Lv 100.
+**The group factor pays for a long fight, and rewards it.** Threat grows with the square root of the swings. On its
+own, a boss that takes 85 times the swings would give only 13 times the EXP. So for an elite or a boss, the group
+factor makes a kill at the tier's targets pay more EXP per swing than a normal bestia of the same element, kill-time
+bonuses included. How much more is the tier's **EXP per swing** from [step 1](#1-level-and-tier): 1.75 for an elite
+and 2.5 for a boss, so hunting them is worth the trouble.
+
+<!-- prettier-ignore -->
+{{< katex >}}
+$$group = perSwing \cdot \frac{defence}{\sqrt{defence \cdot offence}} \cdot \frac{1 + bonus_{element}}{1 + bonus_{tier} + bonus_{element}}$$
+{{< /katex >}}
+
+Defence and offence are the tier's too. The bonuses add up rather than multiply, which is why the element bonus
+appears at all. The factor is about 3.4 for an elite and 5.4 to 6.7 for a boss. It is 1 for a critter and a normal
+bestia.
+
+**Worth in normal kills** compares one kill, bonuses included, with a normal bestia of the same level and element. At
+its targets an elite is worth about 9 kills for 5 times the swings, and a boss about 210 kills for 85 times the swings.
 
 ## Loot
 
@@ -245,7 +262,7 @@ EXP:
 
 <!-- prettier-ignore -->
 {{< katex >}}
-$$budget_{loot} = 1\ coin \cdot (4 \cdot lv + 5) \cdot threat$$
+$$budget_{loot} = 1\ coin \cdot (4 \cdot lv + 5) \cdot threat \cdot group$$
 {{< /katex >}}
 
 A Lv 1 kill is worth about one loaf of bread (9 coins).
@@ -284,10 +301,9 @@ is where a player keeps what they have learned.
 | Field       | Content                                                                        |
 | :---------- | :----------------------------------------------------------------------------- |
 | Name        | `Burrow Boar`                                                                  |
-| Epithet     | An optional title shown after the name: "Burrow Boar, _the field-wrecker_"     |
 | Kind        | What the species is, from the list below. Two bestias only breed within a kind |
 | Description | 1 to 3 sentences, at most 300 characters                                       |
-| Habitat     | Biomes from the world generator, and a temperature range                       |
+| Habitat     | [Biomes](/docs/server/world-generation/#biomes) and a temperature range        |
 | Activity    | Day, night or any                                                              |
 | Temperament | What its AI profile does: passive, fights back, attacks on sight               |
 
@@ -305,10 +321,10 @@ flavour text does not get updated.
 Players read the text in their own language, so it is translated in the client, not on the server. It is still
 written next to the stats it describes, so it cannot drift away from them:
 
-1. The mob YAML holds the English `name`, `epithet` and `description`.
+1. The mob YAML holds the English `name` and `description`.
 2. `./gradlew :zone-server:syncBestiaDb` copies them into `bestia-client/src/Localization/bestias.csv`, under
-   `BESTIA_<ID>`, `BESTIA_<ID>_EPITHET` and `BESTIA_<ID>_DESC`. It also writes the keys and the kind into the
-   species' `BestiaResource`. A kind's display name is the row `BESTIA_KIND_<KIND>`.
+   `BESTIA_<ID>` and `BESTIA_<ID>_DESC`. It also writes the keys and the kind into the species' `BestiaResource`.
+   A kind's display name is the row `BESTIA_KIND_<KIND>`.
 3. Translators fill the other language columns of `bestias.csv`. The sync only ever writes the `en` column.
 4. `checkBestiaDb` runs in `./gradlew check` and fails when the CSV or a `BestiaResource` no longer matches the YAML.
 
@@ -346,7 +362,7 @@ The `bestia/species-data-model` branch of bestia-behemoth gives the mob YAML wha
 - **`learnset`**, a list of `{ skill, level }` by `skills.yml` identifier. A bestia, wild or owned, knows each attack
   once it reaches the level.
 - **`default-attack`**: `MELEE`, `RANGED` or `BOTH`. The AI profile lists attack skills only.
-- **`name`, `epithet` and `description`**, the English source of the text, see
+- **`name` and `description`**, the English source of the text, see
   [Where the text lives](#where-the-text-lives).
 
 The same branch makes a wild mob fight at its own level instead of Lv 1, gives it its authored mana, so casting can
