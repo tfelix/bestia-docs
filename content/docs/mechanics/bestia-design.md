@@ -114,7 +114,8 @@ of 1. That is fine: the attacks carry the damage instead.
 ## The learnset
 
 A species learns **20 attacks from Lv 1 to 100**, 15 of them by Lv 70, as [Bestias](/docs/mechanics/bestia/#attacks)
-asks. Each of the 20 slots has a fixed learn level, and the role fills each slot with an **archetype**:
+asks. Each of the 20 slots has a fixed learn level, and the role fills each slot with an **archetype**. The slot
+then takes an attack of that archetype from the [Attack List](/docs/mechanics/attack-list/):
 
 | Slot        |   1 |   2 |   3 |   4 |   5 |   6 |   7 |   8 |   9 |  10 |
 | :---------- | --: | --: | --: | --: | --: | --: | --: | --: | --: | --: |
@@ -126,12 +127,11 @@ asks. Each of the 20 slots has a fixed learn level, and the role fills each slot
 
 - **Skill level:** an attack is locked at the level it was learned with, `1 + floor(learnLevel / 10)`, up to 10.
   This is the bestia side of the rule that a master levels a spell but a bestia does not.
-- **Element:** spells take the species element. A physical attack is NORMAL the first time; a repeat of it is the
-  species' own stronger take on it and takes the element too. A species has exactly one element.
-- **Reuse first:** a slot takes an attack from the [Attack List](/docs/mechanics/attack-list/) before a new one is made
-  up: the strongest one of the same archetype that the slot's level can already learn, and of the same element if it
-  deals damage. Each listed attack is used once. Every other slot becomes a new attack with its own name, for example
-  _Earth Power Strike II_. The calculator reads the Attack List live, so an attack added there is reused at once.
+- **Which attack:** the strongest one the slot's level can already learn. An attack that deals damage must have the
+  species element or NORMAL, and one of the species element comes first. A species has exactly one element. Each
+  attack is used once.
+- **Only listed attacks:** a slot the Attack List has no attack for stays empty. To fill it, add an attack to the
+  Attack List; the calculator reads it live.
 
 ## The active attacks
 

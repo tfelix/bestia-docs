@@ -163,70 +163,53 @@
   const DAMAGE_KINDS = ["magic", "dot"];
   const isDamaging = (attack) => attack.kind === "physical" || DAMAGE_KINDS.includes(attack.kind);
 
-  // A physical attack is NORMAL the first time; a repeat is the species' own, stronger take on it.
-  function attackElement(archetype, rank, element) {
-    if (archetype.kind === "physical") return rank === 1 ? "NORMAL" : element;
-    if (!DAMAGE_KINDS.includes(archetype.kind)) return null;
-    return element;
+  // A damaging attack must have the species element or none; a heal is a heal.
+  function fitsElement(attack, archetype, element) {
+    if (archetype.kind !== "physical" && !DAMAGE_KINDS.includes(archetype.kind)) return true;
+    return attack.element === element || attack.element === "NORMAL";
   }
 
-  const ROMAN = ["", "", " II", " III", " IV", " V", " VI"];
-
-  function attackName(archetype, element) {
-    if (!element || element === "NORMAL") return archetype.label;
-    return element.charAt(0) + element.slice(1).toLowerCase() + " " + archetype.label;
-  }
-
-  // The strongest attack from the Attack List that fits the slot and is not taken yet. Element only
-  // matters for damage; a heal is a heal.
-  function existingAttackFor(data, archetype, element, slotLevel, taken) {
+  // The strongest attack from the Attack List that fits the slot and is not taken yet. One of the
+  // species' own element comes first.
+  function listedAttackFor(data, archetype, element, slotLevel, taken) {
     const fits = (attack) =>
       attack.bestia !== false &&
       attack.archetype === archetype.id &&
-      (!element || attack.element === element) &&
+      fitsElement(attack, archetype, element) &&
       attack.level <= slotLevel &&
       !taken.has(attack.id);
-    return (data.attacks || []).filter(fits).sort((x, y) => y.level - x.level)[0];
+    const ownElementFirst = (x, y) => (y.element === element) - (x.element === element) || y.level - x.level;
+    return (data.attacks || []).filter(fits).sort(ownElementFirst)[0];
   }
 
-  // The 20 attacks a species learns from Lv 1 to 100. An attack from the Attack List is used before
-  // one is made up; every later slot of the same kind becomes a new, stronger attack with its own name.
+  // Up to 20 attacks a species learns from Lv 1 to 100, all from the Attack List. A slot the list has
+  // no attack for stays empty.
   function learnset(data, roleId, element) {
     const role = byId(data.roles, roleId);
     const ls = data.learnset;
-    const ranks = {};
-    const names = {};
     const taken = new Set();
-    return role.learnPattern.map((archetypeId, slot) => {
-      const archetype = byId(data.archetypes, archetypeId);
-      const level = ls.levels[slot];
-      ranks[archetypeId] = (ranks[archetypeId] || 0) + 1;
-      const el = attackElement(archetype, ranks[archetypeId], element);
-      const existing = existingAttackFor(data, archetype, el, level, taken);
-      let name;
-      if (existing) {
-        taken.add(existing.id);
-        name = existing.name;
-      } else {
-        const plain = attackName(archetype, el);
-        names[plain] = (names[plain] || 0) + 1;
-        name = plain + ROMAN[Math.min(names[plain], ROMAN.length - 1)];
-      }
-      return {
-        slot,
-        level,
-        archetype: archetypeId,
-        kind: archetype.kind,
-        element: el,
-        skillLevel: Math.min(ls.maxSkillLevel, 1 + idiv(level, ls.skillLevelEvery)),
-        name,
-        identifier: existing ? existing.id : name.toLowerCase().replace(/ /g, "_"),
-        existing: Boolean(existing),
-        skillId: existing?.skillId ?? null,
-        skill: existing?.skill ?? null,
-        listedMana: existing?.mana ?? null,
-      };
-    });
+    return role.learnPattern
+      .map((archetypeId, slot) => {
+        const archetype = byId(data.archetypes, archetypeId);
+        const level = ls.levels[slot];
+        const attack = listedAttackFor(data, archetype, element, level, taken);
+        if (!attack) return null;
+        taken.add(attack.id);
+        return {
+          slot,
+          level,
+          archetype: archetypeId,
+          kind: archetype.kind,
+          element: attack.element,
+          skillLevel: Math.min(ls.maxSkillLevel, 1 + idiv(level, ls.skillLevelEvery)),
+          name: attack.name,
+          identifier: attack.id,
+          skillId: attack.skillId ?? null,
+          skill: attack.skill ?? null,
+          listedMana: attack.mana ?? null,
+        };
+      })
+      .filter(Boolean);
   }
 
   // The newest attacks it knows, one per archetype: what a wild one of this level would use.
@@ -680,8 +663,7 @@
   function attackJson(a) {
     const json = {
       level: a.level, name: a.name, identifier: a.identifier, archetype: a.archetype, kind: a.kind,
-      element: a.element, skillLevel: a.skillLevel, status: a.existing ? "existing" : "new",
-      skill: a.skill, skillId: a.skillId,
+      element: a.element, skillLevel: a.skillLevel, skill: a.skill, skillId: a.skillId,
     };
     if (a.coef != null) json.coefficient = round2(a.coef);
     if (a.power) json.damagePerUseVsMaster = round2(a.power);
@@ -781,7 +763,7 @@
       "```",
       "",
       aiStep,
-      "3. Attacks with status \"new\" need a skills.yml row (bestia attacks use ids 1000+), a script that uses the attack's coefficient, and the client Attack DB entry. Read the skill-system skill first. Then turn their commented learnset lines into entries.",
+      "3. Attacks without a skill need a skills.yml row (bestia attacks use ids 1000+), a script that uses the attack's coefficient, and the client Attack DB entry. Read the skill-system skill first. Then turn their commented learnset lines into entries.",
       "4. Run ./gradlew :zone-server:syncBestiaDb. It writes the client bestia .tres and the name, epithet and description into bestias.csv. Translate the new rows in the other language columns of that CSV.",
       "5. defenses.notes has no YAML key yet. Do not invent one.",
       "",
