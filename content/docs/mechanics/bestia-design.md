@@ -139,6 +139,10 @@ A wild bestia does not use all it knows. Its AI profile lists **a few active att
 knows, one per archetype. The tier sets how many. Between them it uses its **default attack**, melee or ranged as the
 role says. These are the attacks the fit and the fight below use.
 
+The default attack is never in the AI profile. The mob YAML sets it with `default-attack`: `MELEE`, `RANGED` (six
+tiles) or `BOTH`. It needs no skill and swings at the speed of an unarmed player. A bestia also falls back to it when
+it cannot use an attack skill.
+
 ## The AI profile
 
 Behaviour lives in AI profiles, `zone-server/src/main/resources/ai/*.yml`. Most species share one of a handful:
@@ -339,8 +343,9 @@ The `bestia/species-data-model` branch of bestia-behemoth gives the mob YAML wha
 - **`kind`**, from the list in [the compendium entry](#9-the-compendium-entry). Required.
 - **`element`** with its level (`EARTH`, `EARTH_2`) and **`size`**. Every hit on a mob is weighed against its
   element.
-- **`learnset`**, a list of `{ skill, level }` by `skills.yml` identifier. A player's bestia knows each attack once it
-  reaches the level.
+- **`learnset`**, a list of `{ skill, level }` by `skills.yml` identifier. A bestia, wild or owned, knows each attack
+  once it reaches the level.
+- **`default-attack`**: `MELEE`, `RANGED` or `BOTH`. The AI profile lists attack skills only.
 - **`name`, `epithet` and `description`**, the English source of the text, see
   [Where the text lives](#where-the-text-lives).
 
