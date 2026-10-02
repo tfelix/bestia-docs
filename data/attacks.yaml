@@ -5,6 +5,7 @@
 # data/bestia_blueprint.yaml. skill and skillId name the attack's row in zone-server's skills.yml, if it
 # has one; a mob YAML's learnset refers to it by skill.
 # bestia: false marks an attack a bestia cannot learn.
+# Master skills stay on the Master page, never here: a Master levels a skill up, a bestia does not.
 
 - id: minor_heal
   name: Minor Heal
@@ -16,15 +17,13 @@
   description: |
     Recovers the health of a friendly a little bit. A essential spell for every adventurer.
 
-- id: heal
-  name: Heal
+- id: mending_light
+  name: Mending Light
   icon: heal.png
   level: 45
   mana: 25
   archetype: heal
   element: HOLY
-  skill: HEAL
-  skillId: 4
   description: |
     Recovers the health of a friendly for a fairly amount. Used to treat wounds.
 
@@ -122,14 +121,14 @@
   description: |
     A heavy blow aimed to crush rather than cut. Shields and bones bend under it.
 
-- id: bash
-  name: Bash
+- id: hammer_blow
+  name: Hammer Blow
   level: 35
   mana: 11
   archetype: power_strike
   element: NORMAL
   description: |
-    A single committed blow that trades finesse for raw impact. Knights know it as a weapon skill.
+    Brings its full weight down in one blow, like a smith's hammer on the anvil.
 
 - id: savage_maul
   name: Savage Maul
@@ -315,16 +314,14 @@
 
 
 # Fire
-- id: fire_bolt
-  name: Fire Bolt
+- id: flame_dart
+  name: Flame Dart
   level: 5
-  mana: 12
+  mana: 10
   archetype: bolt
   element: FIRE
-  skill: FIREBOLT
-  skillId: 5
   description: |
-    A quick bolt of flame hurled at a single target. Masters learn it as a Wizard spell.
+    Spits a small dart of flame at a single target. Quick to cast and hard to dodge.
 
 - id: flame_fang
   name: Flame Fang
@@ -335,14 +332,14 @@
   description: |
     Bites with jaws that glow like coals. The wound keeps smoking afterwards.
 
-- id: fire_wall
-  name: Fire Wall
+- id: burning_ground
+  name: Burning Ground
   level: 30
   mana: 10
   archetype: dot
   element: FIRE
   description: |
-    Raises a wall of roaring flame. Anything that walks through it burns.
+    Sets the ground ablaze. Anything that stands in the flames burns.
 
 - id: fire_ball
   name: Fire Ball
@@ -371,25 +368,25 @@
   description: |
     A thin ray of white-hot fire that burns straight through.
 
-- id: meteor_storm
-  name: Meteor Storm
+- id: inferno
+  name: Inferno
   level: 85
   mana: 66
   archetype: ultimate
   element: FIRE
   description: |
-    Calls a rain of blazing meteors down on an area, again and again.
+    Turns an area into a sea of fire that burns again and again.
 
 
 # Water
-- id: ice_bolt
-  name: Ice Bolt
+- id: ice_shard
+  name: Ice Shard
   level: 5
   mana: 10
   archetype: bolt
   element: WATER
   description: |
-    A shard of hardened cold flung at a single target. Masters learn it as a Wizard spell.
+    Flings a sharp shard of ice at a single target.
 
 - id: water_jet
   name: Water Jet
@@ -409,14 +406,14 @@
   description: |
     A bite so cold it numbs the flesh around it.
 
-- id: frost_nova
-  name: Frost Nova
+- id: frost_breath
+  name: Frost Breath
   level: 25
   mana: 18
   archetype: aoe
   element: WATER
   description: |
-    A burst of cold erupts from the caster and freezes everyone too close.
+    Breathes a cone of freezing air over everyone in front of it.
 
 - id: chilling_mist
   name: Chilling Mist
@@ -436,43 +433,43 @@
   description: |
     Strikes with the weight of a breaking wave.
 
-- id: frost_orb
-  name: Frost Orb
+- id: hailstone
+  name: Hailstone
   level: 50
   mana: 20
   archetype: bolt
   element: WATER
   description: |
-    A dense orb of packed ice that hits hard and leaves the target shivering.
+    Hurls a hailstone the size of a fist. It hits hard and leaves the target shivering.
 
-- id: water_ball
-  name: Water Ball
+- id: torrent
+  name: Torrent
   level: 65
   mana: 22
   archetype: bolt
   element: WATER
   description: |
-    Gathers the water around it into one crashing orb and hurls it.
+    A rushing stream of water that slams into the target.
 
-- id: storm_gust
-  name: Storm Gust
+- id: blizzard
+  name: Blizzard
   level: 85
   mana: 66
   archetype: ultimate
   element: WATER
   description: |
-    A freezing gale batters an area with wave after wave of ice.
+    Calls a howling blizzard down on an area. The cold bites through any armor.
 
 
 # Earth
-- id: earth_spike
-  name: Earth Spike
+- id: stone_dart
+  name: Stone Dart
   level: 5
   mana: 10
   archetype: bolt
   element: EARTH
   description: |
-    A jagged spike of stone erupts beneath a single target. Masters learn it as a Wizard spell.
+    Shoots a sharp splinter of stone out of the ground at a single target.
 
 - id: rock_throw
   name: Rock Throw
@@ -501,14 +498,14 @@
   description: |
     Whirling sand traps the target and grinds at it.
 
-- id: earthquake
-  name: Earthquake
+- id: tremor
+  name: Tremor
   level: 40
   mana: 22
   archetype: aoe
   element: EARTH
   description: |
-    Splits the ground around the caster. The shockwave hits everyone standing on it.
+    Stamps on the ground until it shakes. Everyone close by loses their footing and gets hurt.
 
 - id: boulder_slam
   name: Boulder Slam
@@ -539,14 +536,14 @@
 
 
 # Wind
-- id: thunder_bolt
-  name: Thunder Bolt
+- id: shock
+  name: Shock
   level: 5
   mana: 10
   archetype: bolt
   element: WIND
   description: |
-    A crack of lightning called down onto a single target. Masters learn it as a Wizard spell.
+    A small arc of lightning that jumps to a single target.
 
 - id: wind_cutter
   name: Wind Cutter
@@ -575,14 +572,14 @@
   description: |
     Charges the air in an area. Anyone inside is shocked again and again.
 
-- id: thunder_storm
-  name: Thunder Storm
+- id: cyclone
+  name: Cyclone
   level: 40
   mana: 22
   archetype: aoe
   element: WIND
   description: |
-    A storm churns overhead and calls lightning down across an area.
+    A spinning wind that sweeps over an area and throws everyone about.
 
 - id: tempest_dive
   name: Tempest Dive
@@ -602,14 +599,14 @@
   description: |
     A bolt of lightning that jumps through the target with a roar.
 
-- id: thunder_of_jupiter
-  name: Thunder of Jupiter
+- id: hurricane
+  name: Hurricane
   level: 85
   mana: 66
   archetype: ultimate
   element: WIND
   description: |
-    A column of lightning strikes one target over and over.
+    A hurricane breaks loose and tears at everything in its path.
 
 
 # Poison
@@ -687,14 +684,14 @@
 
 
 # Holy
-- id: holy_light
-  name: Holy Light
+- id: sunbeam
+  name: Sunbeam
   level: 15
   mana: 12
   archetype: bolt
   element: HOLY
   description: |
-    Condenses holy mana into a single searing beam.
+    Focuses light into a single, searing beam.
 
 - id: smite
   name: Smite
@@ -732,23 +729,23 @@
   description: |
     A ring of holy light bursts out from the caster.
 
-- id: turn_undead
-  name: Turn Undead
+- id: purifying_ray
+  name: Purifying Ray
   level: 60
   mana: 22
   archetype: bolt
   element: HOLY
   description: |
-    A judgement of pure holy mana that unravels whatever keeps the undead together.
+    A ray of pure light that burns away the unnatural. The undead fear it most.
 
-- id: magnus_exorcismus
-  name: Magnus Exorcismus
+- id: pillar_of_dawn
+  name: Pillar of Dawn
   level: 88
   mana: 66
   archetype: ultimate
   element: HOLY
   description: |
-    A pillar of holy mana erupts and sears everything in it, the undead and demons worst of all.
+    A pillar of light erupts and sears everything in it, the undead and demons worst of all.
 
 
 # Shadow
@@ -862,14 +859,14 @@
   description: |
     Rushes through the target. Its body passes, the pain stays.
 
-- id: soul_break
-  name: Soul Break
+- id: soul_rend
+  name: Soul Rend
   level: 55
   mana: 20
   archetype: bolt
   element: GHOST
   description: |
-    Tears into the target with raw mana and rips away some of its own.
+    Tears at the target's spirit and rips away some of its mana.
 
 - id: soul_harvest
   name: Soul Harvest
@@ -974,14 +971,14 @@
   description: |
     Knits its own flesh back together in a few breaths.
 
-- id: sanctuary
-  name: Sanctuary
+- id: renewal
+  name: Renewal
   level: 60
   mana: 24
   archetype: heal
   element: HOLY
   description: |
-    Consecrates the ground. Allies standing in it are mended, while undead and demons burn instead.
+    A warm light surrounds it and slowly closes its wounds.
 
 
 # Buffs
@@ -1003,25 +1000,23 @@
   description: |
     Works itself into a rage and stops caring about its wounds.
 
-- id: blessing
-  name: Blessing
+- id: holy_vigor
+  name: Holy Vigor
   level: 25
-  mana: 28
+  mana: 11
   archetype: buff
   element: HOLY
-  skill: BLESSING
-  skillId: 6
   description: |
-    A benediction that steadies body and mind and raises the core stats for a while. Masters learn it as a Priest skill.
+    A warm glow fills its body. It hits harder for a while.
 
-- id: increase_agi
-  name: Increase AGI
+- id: tailwind
+  name: Tailwind
   level: 30
   mana: 12
   archetype: buff
-  element: HOLY
+  element: WIND
   description: |
-    Lightens its limbs with borrowed haste. Step and swing both get quicker.
+    A wind at its back makes every step and swing quicker.
 
 - id: war_cry
   name: War Cry
@@ -1079,17 +1074,17 @@
   description: |
     A piercing screech that throws off the target's aim.
 
-- id: decrease_agi
-  name: Decrease AGI
+- id: hamstring
+  name: Hamstring
   level: 20
   mana: 11
   archetype: debuff
   element: NORMAL
   description: |
-    A mote of leaden mana that slows the target's step and swing.
+    Bites at the target's legs. Its steps and swings get slower for a while.
 
-- id: quagmire
-  name: Quagmire
+- id: mud_trap
+  name: Mud Trap
   level: 28
   mana: 11
   archetype: debuff
@@ -1115,14 +1110,14 @@
   description: |
     A roar so fierce that the target's hands start to shake.
 
-- id: stone_curse
-  name: Stone Curse
+- id: petrifying_gaze
+  name: Petrifying Gaze
   level: 60
   mana: 15
   archetype: debuff
   element: EARTH
   description: |
-    Slowly turns the target's limbs to stone.
+    A stare that slowly turns the target's limbs to stone.
 
 - id: withering_curse
   name: Withering Curse
