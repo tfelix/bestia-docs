@@ -15,13 +15,20 @@
         <div class="card-body">
           <h5 class="card-title">{{ .name }} <small class="text-body-secondary">Lv. {{ .level }}</small>
           </h5>
-          <p class="card-text mb-1 d-flex">
-            <span class="w-50"><strong>Mana:</strong> {{ .mana }}</span>
-            <span class="w-50"><strong><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
-                  width="24px" fill="#1f1f1f">
-                  <path
-                    d="M480-120 200-272v-240L40-600l440-240 440 240v320h-80v-276l-80 44v240L480-120Zm0-332 274-148-274-148-274 148 274 148Zm0 241 200-108v-151L480-360 280-470v151l200 108Zm0-241Zm0 90Zm0 0Z" />
-                </svg></strong> {{ .school }}</span>
+          <p class="card-text mb-1 d-flex flex-wrap gap-2 align-items-center">
+            <span class="me-2"><strong>Mana:</strong> {{ .mana }}</span>
+            {{- with .element }}
+            <span class="badge text-bg-secondary">{{ lower . | title }}</span>
+            {{- end }}
+            {{- range where site.Data.bestia_blueprint.archetypes "id" .archetype }}
+            <span class="badge text-bg-secondary">{{ .label }}</span>
+            {{- end }}
+            {{- if eq .bestia false }}
+            <span class="badge text-bg-secondary">Masters only</span>
+            {{- end }}
+            {{- if .skill }}
+            <span class="badge text-bg-success">In game</span>
+            {{- end }}
           </p>
           <div class="card-text small">
             {{ .description | strings.TrimSpace | markdownify }}
