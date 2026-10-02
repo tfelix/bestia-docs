@@ -184,7 +184,7 @@ archetypes:
     range: 8
     mana: { base: 8, perSkillLevel: 2 }
   - id: dot
-    label: Burn
+    label: Damage over time
     kind: dot
     coef: 1.0
     # Share of the ticks that land: a player walks out of the patch.
@@ -195,7 +195,7 @@ archetypes:
     aoe: true
     mana: { base: 6, perSkillLevel: 1 }
   - id: aoe
-    label: Burst
+    label: Area
     kind: magic
     coef: 0.7
     castTime: 2.0
@@ -204,7 +204,7 @@ archetypes:
     aoe: true
     mana: { base: 12, perSkillLevel: 2 }
   - id: ultimate
-    label: Signature
+    label: Finisher
     kind: magic
     coef: 2.5
     castTime: 3.0
@@ -212,7 +212,7 @@ archetypes:
     range: 8
     mana: { base: 30, perSkillLevel: 4 }
   - id: heal
-    label: Mend
+    label: Heal
     kind: heal
     coef: 1.0
     castTime: 1.5
@@ -220,7 +220,7 @@ archetypes:
     range: 0
     mana: { base: 10, perSkillLevel: 2 }
   - id: buff
-    label: Enrage
+    label: Buff
     kind: buff
     effect: 0.25
     duration: 15
@@ -229,7 +229,7 @@ archetypes:
     range: 0
     mana: { base: 8, perSkillLevel: 1 }
   - id: debuff
-    label: Hex
+    label: Debuff
     kind: debuff
     effect: 0.2
     duration: 10

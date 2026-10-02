@@ -11,7 +11,6 @@
   icon: minor-heal.png
   level: 10
   mana: 10
-  school: White
   archetype: heal
   element: HOLY
   description: |
@@ -22,7 +21,6 @@
   icon: heal.png
   level: 45
   mana: 25
-  school: White
   archetype: heal
   element: HOLY
   skill: HEAL
@@ -34,7 +32,6 @@
   name: Greater Heal
   level: 80
   mana: 49
-  school: White
   archetype: heal
   element: HOLY
   description: |
@@ -45,7 +42,6 @@
   icon: tackle.png
   level: 1
   mana: 2
-  school: Black
   archetype: strike
   element: NORMAL
   description: |
@@ -55,7 +51,6 @@
   name: Ember
   level: 3
   mana: 6
-  school: Black
   archetype: dot
   element: FIRE
   skill: ember
@@ -68,7 +63,6 @@
   icon: banished-from-the-citadel.png
   level: 75
   mana: 150
-  school: Arcane
   bestia: false
   description: |
     A powerful ritual which severs your ties to your [Order](/docs/mechanics/factions/#switching-an-order) and leaves you unsworn. It can only be performed on yourself, and only while you wear a [Sigil of Redemption](/docs/mechanics/equip-list/#sigil-of-redemption), which the rite consumes. Gives a debuff which reduces your status values to `50%` for `Lv/2` (rounded up) days.
@@ -78,7 +72,6 @@
   name: Headbutt
   level: 12
   mana: 4
-  school: Black
   archetype: strike
   element: NORMAL
   description: |
@@ -88,7 +81,6 @@
   name: Pounce
   level: 28
   mana: 5
-  school: Black
   archetype: strike
   element: NORMAL
   description: |
@@ -98,7 +90,6 @@
   name: Body Slam
   level: 45
   mana: 7
-  school: Black
   archetype: strike
   element: NORMAL
   description: |
@@ -108,7 +99,6 @@
   name: Thrash
   level: 65
   mana: 9
-  school: Black
   archetype: strike
   element: NORMAL
   description: |
@@ -118,7 +108,6 @@
   name: Ram
   level: 5
   mana: 6
-  school: Black
   archetype: power_strike
   element: NORMAL
   description: |
@@ -128,7 +117,6 @@
   name: Crushing Blow
   level: 22
   mana: 10
-  school: Black
   archetype: power_strike
   element: NORMAL
   description: |
@@ -138,7 +126,6 @@
   name: Bash
   level: 35
   mana: 11
-  school: Black
   archetype: power_strike
   element: NORMAL
   description: |
@@ -148,7 +135,6 @@
   name: Savage Maul
   level: 52
   mana: 14
-  school: Black
   archetype: power_strike
   element: NORMAL
   description: |
@@ -158,7 +144,6 @@
   name: Rampage
   level: 66
   mana: 16
-  school: Black
   archetype: power_strike
   element: NORMAL
   description: |
@@ -168,7 +153,6 @@
   name: Skull Breaker
   level: 76
   mana: 17
-  school: Black
   archetype: power_strike
   element: NORMAL
   description: |
@@ -178,7 +162,6 @@
   name: Titan Blow
   level: 90
   mana: 20
-  school: Black
   archetype: power_strike
   element: NORMAL
   description: |
@@ -188,7 +171,6 @@
   name: Pebble Toss
   level: 3
   mana: 4
-  school: Black
   archetype: shot
   element: NORMAL
   description: |
@@ -198,7 +180,6 @@
   name: Quill Shot
   level: 18
   mana: 5
-  school: Black
   archetype: shot
   element: NORMAL
   description: |
@@ -208,7 +189,6 @@
   name: Spine Volley
   level: 35
   mana: 7
-  school: Black
   archetype: shot
   element: NORMAL
   description: |
@@ -218,7 +198,6 @@
   name: Piercing Spike
   level: 52
   mana: 9
-  school: Black
   archetype: shot
   element: NORMAL
   description: |
@@ -228,7 +207,6 @@
   name: Barbed Barrage
   level: 68
   mana: 10
-  school: Black
   archetype: shot
   element: NORMAL
   description: |
@@ -238,7 +216,6 @@
   name: Thorn Volley
   level: 80
   mana: 12
-  school: Black
   archetype: shot
   element: NORMAL
   description: |
@@ -250,7 +227,6 @@
   name: Mana Spark
   level: 1
   mana: 10
-  school: Black
   archetype: bolt
   element: NORMAL
   description: |
@@ -260,7 +236,6 @@
   name: Force Bolt
   level: 18
   mana: 12
-  school: Black
   archetype: bolt
   element: NORMAL
   description: |
@@ -270,7 +245,6 @@
   name: Arcane Missile
   level: 30
   mana: 16
-  school: Black
   archetype: bolt
   element: NORMAL
   description: |
@@ -280,7 +254,6 @@
   name: Arcane Lance
   level: 45
   mana: 18
-  school: Black
   archetype: bolt
   element: NORMAL
   description: |
@@ -290,7 +263,6 @@
   name: Mana Spear
   level: 60
   mana: 22
-  school: Black
   archetype: bolt
   element: NORMAL
   description: |
@@ -300,7 +272,6 @@
   name: Bleeding Wound
   level: 25
   mana: 9
-  school: Black
   archetype: dot
   element: NORMAL
   description: |
@@ -310,7 +281,6 @@
   name: Shockwave
   level: 30
   mana: 20
-  school: Black
   archetype: aoe
   element: NORMAL
   description: |
@@ -320,7 +290,6 @@
   name: Mana Storm
   level: 60
   mana: 26
-  school: Black
   archetype: aoe
   element: NORMAL
   description: |
@@ -330,7 +299,6 @@
   name: Arcane Nova
   level: 80
   mana: 66
-  school: Black
   archetype: ultimate
   element: NORMAL
   description: |
@@ -340,7 +308,6 @@
   name: Wrath of the Wild
   level: 95
   mana: 70
-  school: Black
   archetype: ultimate
   element: NORMAL
   description: |
@@ -352,7 +319,6 @@
   name: Fire Bolt
   level: 5
   mana: 12
-  school: Black
   archetype: bolt
   element: FIRE
   skill: FIREBOLT
@@ -364,7 +330,6 @@
   name: Flame Fang
   level: 15
   mana: 4
-  school: Black
   archetype: strike
   element: FIRE
   description: |
@@ -374,7 +339,6 @@
   name: Fire Wall
   level: 30
   mana: 10
-  school: Black
   archetype: dot
   element: FIRE
   description: |
@@ -384,7 +348,6 @@
   name: Fire Ball
   level: 35
   mana: 20
-  school: Black
   archetype: aoe
   element: FIRE
   description: |
@@ -394,7 +357,6 @@
   name: Blazing Charge
   level: 45
   mana: 12
-  school: Black
   archetype: power_strike
   element: FIRE
   description: |
@@ -404,7 +366,6 @@
   name: Searing Ray
   level: 60
   mana: 22
-  school: Black
   archetype: bolt
   element: FIRE
   description: |
@@ -414,7 +375,6 @@
   name: Meteor Storm
   level: 85
   mana: 66
-  school: Black
   archetype: ultimate
   element: FIRE
   description: |
@@ -426,7 +386,6 @@
   name: Ice Bolt
   level: 5
   mana: 10
-  school: Black
   archetype: bolt
   element: WATER
   description: |
@@ -436,7 +395,6 @@
   name: Water Jet
   level: 10
   mana: 5
-  school: Black
   archetype: shot
   element: WATER
   description: |
@@ -446,7 +404,6 @@
   name: Frost Bite
   level: 15
   mana: 4
-  school: Black
   archetype: strike
   element: WATER
   description: |
@@ -456,7 +413,6 @@
   name: Frost Nova
   level: 25
   mana: 18
-  school: Black
   archetype: aoe
   element: WATER
   description: |
@@ -466,7 +422,6 @@
   name: Chilling Mist
   level: 30
   mana: 10
-  school: Black
   archetype: dot
   element: WATER
   description: |
@@ -476,7 +431,6 @@
   name: Tidal Slam
   level: 45
   mana: 12
-  school: Black
   archetype: power_strike
   element: WATER
   description: |
@@ -486,7 +440,6 @@
   name: Frost Orb
   level: 50
   mana: 20
-  school: Black
   archetype: bolt
   element: WATER
   description: |
@@ -496,7 +449,6 @@
   name: Water Ball
   level: 65
   mana: 22
-  school: Black
   archetype: bolt
   element: WATER
   description: |
@@ -506,7 +458,6 @@
   name: Storm Gust
   level: 85
   mana: 66
-  school: Black
   archetype: ultimate
   element: WATER
   description: |
@@ -518,7 +469,6 @@
   name: Earth Spike
   level: 5
   mana: 10
-  school: Black
   archetype: bolt
   element: EARTH
   description: |
@@ -528,7 +478,6 @@
   name: Rock Throw
   level: 10
   mana: 5
-  school: Black
   archetype: shot
   element: EARTH
   description: |
@@ -538,7 +487,6 @@
   name: Stone Fist
   level: 15
   mana: 4
-  school: Black
   archetype: strike
   element: EARTH
   description: |
@@ -548,7 +496,6 @@
   name: Sand Tomb
   level: 30
   mana: 10
-  school: Black
   archetype: dot
   element: EARTH
   description: |
@@ -558,7 +505,6 @@
   name: Earthquake
   level: 40
   mana: 22
-  school: Black
   archetype: aoe
   element: EARTH
   description: |
@@ -568,7 +514,6 @@
   name: Boulder Slam
   level: 50
   mana: 14
-  school: Black
   archetype: power_strike
   element: EARTH
   description: |
@@ -578,7 +523,6 @@
   name: Stone Lance
   level: 62
   mana: 22
-  school: Black
   archetype: bolt
   element: EARTH
   description: |
@@ -588,7 +532,6 @@
   name: Fissure
   level: 85
   mana: 66
-  school: Black
   archetype: ultimate
   element: EARTH
   description: |
@@ -600,7 +543,6 @@
   name: Thunder Bolt
   level: 5
   mana: 10
-  school: Black
   archetype: bolt
   element: WIND
   description: |
@@ -610,7 +552,6 @@
   name: Wind Cutter
   level: 10
   mana: 5
-  school: Black
   archetype: shot
   element: WIND
   description: |
@@ -620,7 +561,6 @@
   name: Wing Buffet
   level: 15
   mana: 4
-  school: Black
   archetype: strike
   element: WIND
   description: |
@@ -630,7 +570,6 @@
   name: Static Field
   level: 25
   mana: 9
-  school: Black
   archetype: dot
   element: WIND
   description: |
@@ -640,7 +579,6 @@
   name: Thunder Storm
   level: 40
   mana: 22
-  school: Black
   archetype: aoe
   element: WIND
   description: |
@@ -650,7 +588,6 @@
   name: Tempest Dive
   level: 50
   mana: 14
-  school: Black
   archetype: power_strike
   element: WIND
   description: |
@@ -660,7 +597,6 @@
   name: Chain Lightning
   level: 62
   mana: 22
-  school: Black
   archetype: bolt
   element: WIND
   description: |
@@ -670,7 +606,6 @@
   name: Thunder of Jupiter
   level: 85
   mana: 66
-  school: Black
   archetype: ultimate
   element: WIND
   description: |
@@ -682,7 +617,6 @@
   name: Venom Spit
   level: 3
   mana: 4
-  school: Black
   archetype: shot
   element: POISON
   description: |
@@ -692,7 +626,6 @@
   name: Poison Sting
   level: 8
   mana: 3
-  school: Black
   archetype: strike
   element: POISON
   description: |
@@ -702,7 +635,6 @@
   name: Venom Bolt
   level: 12
   mana: 12
-  school: Black
   archetype: bolt
   element: POISON
   description: |
@@ -712,7 +644,6 @@
   name: Poison Cloud
   level: 20
   mana: 9
-  school: Black
   archetype: dot
   element: POISON
   description: |
@@ -722,7 +653,6 @@
   name: Toxic Rend
   level: 40
   mana: 12
-  school: Black
   archetype: power_strike
   element: POISON
   description: |
@@ -732,7 +662,6 @@
   name: Miasma
   level: 45
   mana: 22
-  school: Black
   archetype: aoe
   element: POISON
   description: |
@@ -742,7 +671,6 @@
   name: Acid Lance
   level: 60
   mana: 22
-  school: Black
   archetype: bolt
   element: POISON
   description: |
@@ -752,7 +680,6 @@
   name: Pestilence
   level: 85
   mana: 66
-  school: Black
   archetype: ultimate
   element: POISON
   description: |
@@ -764,7 +691,6 @@
   name: Holy Light
   level: 15
   mana: 12
-  school: Black
   archetype: bolt
   element: HOLY
   description: |
@@ -774,7 +700,6 @@
   name: Smite
   level: 20
   mana: 5
-  school: Black
   archetype: strike
   element: HOLY
   description: |
@@ -784,7 +709,6 @@
   name: Hallowed Ground
   level: 35
   mana: 10
-  school: Black
   archetype: dot
   element: HOLY
   description: |
@@ -794,7 +718,6 @@
   name: Judgement
   level: 50
   mana: 14
-  school: Black
   archetype: power_strike
   element: HOLY
   description: |
@@ -804,7 +727,6 @@
   name: Divine Nova
   level: 55
   mana: 24
-  school: Black
   archetype: aoe
   element: HOLY
   description: |
@@ -814,7 +736,6 @@
   name: Turn Undead
   level: 60
   mana: 22
-  school: Black
   archetype: bolt
   element: HOLY
   description: |
@@ -824,7 +745,6 @@
   name: Magnus Exorcismus
   level: 88
   mana: 66
-  school: Black
   archetype: ultimate
   element: HOLY
   description: |
@@ -836,7 +756,6 @@
   name: Shadow Bolt
   level: 8
   mana: 10
-  school: Black
   archetype: bolt
   element: SHADOW
   description: |
@@ -846,7 +765,6 @@
   name: Shadow Rake
   level: 15
   mana: 4
-  school: Black
   archetype: strike
   element: SHADOW
   description: |
@@ -856,7 +774,6 @@
   name: Creeping Dark
   level: 25
   mana: 9
-  school: Black
   archetype: dot
   element: SHADOW
   description: |
@@ -866,7 +783,6 @@
   name: Umbral Wave
   level: 40
   mana: 22
-  school: Black
   archetype: aoe
   element: SHADOW
   description: |
@@ -876,7 +792,6 @@
   name: Eclipse Strike
   level: 50
   mana: 14
-  school: Black
   archetype: power_strike
   element: SHADOW
   description: |
@@ -886,7 +801,6 @@
   name: Abyssal Lance
   level: 62
   mana: 22
-  school: Black
   archetype: bolt
   element: SHADOW
   description: |
@@ -896,7 +810,6 @@
   name: Endless Night
   level: 88
   mana: 66
-  school: Black
   archetype: ultimate
   element: SHADOW
   description: |
@@ -908,7 +821,6 @@
   name: Soul Strike
   level: 10
   mana: 12
-  school: Black
   archetype: bolt
   element: GHOST
   description: |
@@ -918,7 +830,6 @@
   name: Spectral Touch
   level: 20
   mana: 5
-  school: Black
   archetype: strike
   element: GHOST
   description: |
@@ -928,7 +839,6 @@
   name: Haunt
   level: 30
   mana: 10
-  school: Black
   archetype: dot
   element: GHOST
   description: |
@@ -938,7 +848,6 @@
   name: Spirit Burst
   level: 45
   mana: 22
-  school: Black
   archetype: aoe
   element: GHOST
   description: |
@@ -948,7 +857,6 @@
   name: Phantom Rush
   level: 50
   mana: 14
-  school: Black
   archetype: power_strike
   element: GHOST
   description: |
@@ -958,7 +866,6 @@
   name: Soul Break
   level: 55
   mana: 20
-  school: Black
   archetype: bolt
   element: GHOST
   description: |
@@ -968,7 +875,6 @@
   name: Soul Harvest
   level: 88
   mana: 66
-  school: Black
   archetype: ultimate
   element: GHOST
   description: |
@@ -980,7 +886,6 @@
   name: Bone Shard
   level: 10
   mana: 5
-  school: Black
   archetype: shot
   element: UNDEAD
   description: |
@@ -990,7 +895,6 @@
   name: Rotting Grasp
   level: 15
   mana: 4
-  school: Black
   archetype: strike
   element: UNDEAD
   description: |
@@ -1000,7 +904,6 @@
   name: Necrotic Bolt
   level: 20
   mana: 14
-  school: Black
   archetype: bolt
   element: UNDEAD
   description: |
@@ -1010,7 +913,6 @@
   name: Blight
   level: 30
   mana: 10
-  school: Black
   archetype: dot
   element: UNDEAD
   description: |
@@ -1020,7 +922,6 @@
   name: Bone Crusher
   level: 45
   mana: 12
-  school: Black
   archetype: power_strike
   element: UNDEAD
   description: |
@@ -1030,7 +931,6 @@
   name: Corpse Explosion
   level: 55
   mana: 24
-  school: Black
   archetype: aoe
   element: UNDEAD
   description: |
@@ -1040,7 +940,6 @@
   name: Drain Life
   level: 62
   mana: 22
-  school: Black
   archetype: bolt
   element: UNDEAD
   description: |
@@ -1050,7 +949,6 @@
   name: Grave Tide
   level: 88
   mana: 66
-  school: Black
   archetype: ultimate
   element: UNDEAD
   description: |
@@ -1062,7 +960,6 @@
   name: Lick Wounds
   level: 1
   mana: 12
-  school: White
   archetype: heal
   element: NORMAL
   description: |
@@ -1072,7 +969,6 @@
   name: Regenerate
   level: 25
   mana: 16
-  school: White
   archetype: heal
   element: NORMAL
   description: |
@@ -1082,7 +978,6 @@
   name: Sanctuary
   level: 60
   mana: 24
-  school: White
   archetype: heal
   element: HOLY
   description: |
@@ -1094,7 +989,6 @@
   name: Howl
   level: 5
   mana: 9
-  school: White
   archetype: buff
   element: NORMAL
   description: |
@@ -1104,7 +998,6 @@
   name: Enrage
   level: 15
   mana: 10
-  school: White
   archetype: buff
   element: NORMAL
   description: |
@@ -1114,7 +1007,6 @@
   name: Blessing
   level: 25
   mana: 28
-  school: White
   archetype: buff
   element: HOLY
   skill: BLESSING
@@ -1126,7 +1018,6 @@
   name: Increase AGI
   level: 30
   mana: 12
-  school: White
   archetype: buff
   element: HOLY
   description: |
@@ -1136,7 +1027,6 @@
   name: War Cry
   level: 40
   mana: 13
-  school: White
   archetype: buff
   element: NORMAL
   description: |
@@ -1146,7 +1036,6 @@
   name: Bloodlust
   level: 55
   mana: 14
-  school: White
   archetype: buff
   element: SHADOW
   description: |
@@ -1156,7 +1045,6 @@
   name: Berserk
   level: 70
   mana: 16
-  school: White
   archetype: buff
   element: NORMAL
   description: |
@@ -1166,7 +1054,6 @@
   name: Primal Rage
   level: 85
   mana: 17
-  school: White
   archetype: buff
   element: NORMAL
   description: |
@@ -1178,7 +1065,6 @@
   name: Growl
   level: 3
   mana: 9
-  school: Black
   archetype: debuff
   element: NORMAL
   description: |
@@ -1188,7 +1074,6 @@
   name: Screech
   level: 12
   mana: 10
-  school: Black
   archetype: debuff
   element: NORMAL
   description: |
@@ -1198,7 +1083,6 @@
   name: Decrease AGI
   level: 20
   mana: 11
-  school: Black
   archetype: debuff
   element: NORMAL
   description: |
@@ -1208,7 +1092,6 @@
   name: Quagmire
   level: 28
   mana: 11
-  school: Black
   archetype: debuff
   element: EARTH
   description: |
@@ -1218,7 +1101,6 @@
   name: Curse
   level: 35
   mana: 12
-  school: Black
   archetype: debuff
   element: SHADOW
   description: |
@@ -1228,7 +1110,6 @@
   name: Terrifying Roar
   level: 50
   mana: 14
-  school: Black
   archetype: debuff
   element: NORMAL
   description: |
@@ -1238,7 +1119,6 @@
   name: Stone Curse
   level: 60
   mana: 15
-  school: Black
   archetype: debuff
   element: EARTH
   description: |
@@ -1248,7 +1128,6 @@
   name: Withering Curse
   level: 75
   mana: 16
-  school: Black
   archetype: debuff
   element: UNDEAD
   description: |
