@@ -4,6 +4,8 @@
 {{- $habitats := where site.Data.biomes "group" "ne" "Water" -}}
 {{- $habitatGroups := slice -}}
 {{- range $habitats }}{{ if not (in $habitatGroups .group) }}{{ $habitatGroups = $habitatGroups | append .group }}{{ end }}{{ end -}}
+{{- $slotGroups := slice -}}
+{{- range $d.equipment.slots }}{{ if not (in $slotGroups .group) }}{{ $slotGroups = $slotGroups | append .group }}{{ end }}{{ end -}}
 <script type="application/json" id="bp-data">{{ $d | jsonify | safeJS }}</script>
 
 <!-- The steps follow the method from top to bottom. Each one has the fields to fill, then a Result panel with what they do. -->
@@ -117,12 +119,12 @@
         <div class="bp-wide"><label class="form-label small" for="bp-description">Description <span class="text-body-secondary" id="bp-description-count"></span></label><textarea class="form-control form-control-sm" id="bp-description" data-field="description" rows="3" maxlength="300">Burrow Boars root up whole fields overnight and sleep through the day in their burrows. Tanners prize their thick hides. They hate the wind, and a gust will send one bolting.</textarea></div>
         <div class="bp-wide">
           <div class="form-label small mb-1" id="bp-habitat-label">Habitat <span class="text-body-secondary">(one or more; hover a biome to see what it is, or read <a href="/docs/server/world-generation/#biomes">Biomes</a>)</span></div>
-          <div class="bp-habitat" role="group" aria-labelledby="bp-habitat-label">
+          <div class="bp-chips" role="group" aria-labelledby="bp-habitat-label">
             {{- range $group := $habitatGroups }}
-            <div class="bp-habitat-group">
-              <span class="bp-habitat-group-label">{{ $group }}</span>
+            <div class="bp-chip-group">
+              <span class="bp-chip-group-label">{{ $group }}</span>
               {{- range where $habitats "group" $group }}
-              <input type="checkbox" class="btn-check" id="bp-habitat-{{ .id }}" value="{{ .id }}" data-habitat autocomplete="off"{{ if eq .id "GRASSLAND" }} checked{{ end }}>
+              <input type="checkbox" class="btn-check" id="bp-habitat-{{ .id }}" value="{{ .id }}" data-pick="habitat" autocomplete="off"{{ if eq .id "GRASSLAND" }} checked{{ end }}>
               <label class="btn btn-sm btn-outline-secondary" for="bp-habitat-{{ .id }}" data-bs-toggle="tooltip" data-bs-custom-class="bp-tooltip" data-bs-html="true" data-bs-title="{{ .summary }}<div class='bp-tooltip-climate'>{{ .climate }}</div>">{{ .label }}</label>
               {{- end }}
             </div>
@@ -136,9 +138,44 @@
     </div>
   </section>
 
+  <section class="bp-step card shadow-sm mb-4" id="bp-step-equipment">
+    <div class="card-body">
+      <h5 class="card-title"><span class="bp-step-no">8</span>Equipment <a class="bp-method" href="#10-equipment">method</a></h5>
+      <p class="bp-hint">What it can wear once tamed. The kind fills in a preset. None of this changes the numbers.</p>
+      <div class="bp-fields">
+        <div class="bp-wide">
+          <div class="form-label small mb-1" id="bp-slots-label">Equipment slots</div>
+          <div class="bp-chips" role="group" aria-labelledby="bp-slots-label">
+            {{- range $group := $slotGroups }}
+            <div class="bp-chip-group">
+              <span class="bp-chip-group-label">{{ $group }}</span>
+              {{- range where $d.equipment.slots "group" $group }}
+              <input type="checkbox" class="btn-check" id="bp-slot-{{ .id }}" value="{{ .id }}" data-pick="equipSlots" autocomplete="off">
+              <label class="btn btn-sm btn-outline-secondary" for="bp-slot-{{ .id }}">{{ .label }}</label>
+              {{- end }}
+            </div>
+            {{- end }}
+          </div>
+        </div>
+        <div class="bp-wide">
+          <div class="form-label small mb-1" id="bp-armor-label">Armor types <span class="text-body-secondary">(hover one to see what it is, or read <a href="/docs/mechanics/items/#armor-type">Armor Type</a>)</span></div>
+          <div class="bp-chips" role="group" aria-labelledby="bp-armor-label">
+            <div class="bp-chip-group">
+              {{- range $d.equipment.armorTypes }}
+              <input type="checkbox" class="btn-check" id="bp-armor-{{ .id }}" value="{{ .id }}" data-pick="armorTypes" autocomplete="off">
+              <label class="btn btn-sm btn-outline-secondary" for="bp-armor-{{ .id }}" data-bs-toggle="tooltip" data-bs-custom-class="bp-tooltip" data-bs-title="{{ .summary }}">{{ .label }}</label>
+              {{- end }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="small text-body-secondary mt-2 mb-0"><button type="button" class="btn btn-link btn-sm p-0 align-baseline" id="bp-equipment-reset">Use the preset for <span data-out="kind"></span></button></p>
+    </div>
+  </section>
+
   <section class="bp-step card shadow-sm mb-4" id="bp-step-export">
     <div class="card-body">
-      <h5 class="card-title"><span class="bp-step-no">8</span>Export</h5>
+      <h5 class="card-title"><span class="bp-step-no">9</span>Export</h5>
       <p class="bp-hint">Take the blueprint to bestia-behemoth, or load one to keep working on it.</p>
       <div class="d-flex flex-wrap gap-2 mb-3">
         <button type="button" class="btn btn-sm btn-primary" id="bp-copy-prompt">Copy LLM prompt</button>
@@ -198,12 +235,12 @@
   .bp .bp-result-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; opacity: 0.7; margin-bottom: 0.5rem; }
   .bp .bp-result .table { --bs-table-bg: transparent; }
 
-  .bp .bp-habitat { display: flex; flex-direction: column; gap: 0.5rem; }
-  .bp .bp-habitat-group { display: flex; flex-wrap: wrap; align-items: center; gap: 0.375rem; }
-  .bp .bp-habitat-group-label { width: 6.5rem; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; opacity: 0.7; }
-  @media (max-width: 575px) { .bp .bp-habitat-group-label { width: 100%; } }
-  .bp .bp-habitat .btn { --bs-btn-padding-x: 0.75rem; --bs-btn-padding-y: 0.35rem; color: inherit; }
-  .bp .bp-habitat .btn-check:checked + .btn { color: #fff; background-color: var(--bs-primary); border-color: var(--bs-primary); }
+  .bp .bp-chips { display: flex; flex-direction: column; gap: 0.5rem; }
+  .bp .bp-chip-group { display: flex; flex-wrap: wrap; align-items: center; gap: 0.375rem; }
+  .bp .bp-chip-group-label { width: 6.5rem; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; opacity: 0.7; }
+  @media (max-width: 575px) { .bp .bp-chip-group-label { width: 100%; } }
+  .bp .bp-chips .btn { --bs-btn-padding-x: 0.75rem; --bs-btn-padding-y: 0.35rem; color: inherit; }
+  .bp .bp-chips .btn-check:checked + .btn { color: #fff; background-color: var(--bs-primary); border-color: var(--bs-primary); }
 
   /* The theme styles tooltips for link previews: white in light mode, with a tiny base font. */
   .tooltip.bp-tooltip { --bs-tooltip-font-size: 0.8rem; --bs-tooltip-max-width: 20rem; --bs-tooltip-color: var(--body-color); }
