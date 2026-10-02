@@ -28,6 +28,17 @@
   const fmt = (v, digits = 0) => Number(v).toLocaleString("en-US", { maximumFractionDigits: digits, minimumFractionDigits: digits });
   const slug = (name) => name.toLowerCase().trim().replace(/[^a-z0-9]+/g, "_").replace(/^_|_$/g, "") || "new_bestia";
 
+  // Toggle chips that pick several values each, by input key.
+  const PICKS = ["habitat", "equipSlots", "armorTypes"];
+  const picksOf = (key) => root.querySelectorAll(`[data-pick="${key}"]`);
+  const setPicks = (key, values) => picksOf(key).forEach((el) => (el.checked = values.includes(el.value)));
+
+  function applyEquipmentPreset(kind) {
+    const preset = data.equipment.presets.find((p) => p.kind === kind) || { slots: [], armorTypes: [] };
+    setPicks("equipSlots", preset.slots);
+    setPicks("armorTypes", preset.armorTypes);
+  }
+
   // --- Reading the form ---------------------------------------------------------------------------
 
   function readInput() {
@@ -37,7 +48,7 @@
       if (el.type === "checkbox") input[key] = el.checked;
       else input[key] = el.value;
     });
-    input.habitat = [...root.querySelectorAll("[data-habitat]:checked")].map((el) => el.value);
+    PICKS.forEach((key) => (input[key] = [...picksOf(key)].filter((el) => el.checked).map((el) => el.value)));
     input.level = Math.min(100, Math.max(1, parseInt(input.level, 10) || 1));
     input.elementLevel = input.elementLevel ? parseInt(input.elementLevel, 10) : null;
     input.lootBalance = parseFloat(input.lootBalance) || 0;
@@ -64,7 +75,9 @@
       if (el.type === "checkbox") el.checked = Boolean(v);
       else el.value = v ?? "";
     });
-    if (input.habitat) root.querySelectorAll("[data-habitat]").forEach((el) => (el.checked = input.habitat.includes(el.value)));
+    PICKS.forEach((key) => input[key] && setPicks(key, input[key]));
+    // A form saved before the equipment step existed starts from its kind's preset.
+    if (!input.equipSlots) applyEquipmentPreset($("bp-kind").value);
     loot = (input.loot || []).map((row) => ({ ...row }));
     $("bp-ai-custom-box").hidden = input.ai !== "custom";
     activeSlots = input.activeSlots ?? null;
@@ -97,6 +110,7 @@
 
     $("bp-description-count").textContent = `${input.description.length}/300`;
     root.querySelectorAll('[data-out="level"]').forEach((el) => (el.textContent = bp.level));
+    root.querySelectorAll('[data-out="kind"]').forEach((el) => (el.textContent = input.kind));
 
     $("bp-warnings").innerHTML = bp.warnings
       .map((w) => `<div class="alert alert-warning py-2 small mb-2">${escapeHtml(w)}</div>`)
@@ -239,6 +253,7 @@
   });
   root.addEventListener("change", (e) => {
     if (["role", "tier", "element"].includes(e.target.dataset.field)) activeSlots = null;
+    if (e.target.dataset.field === "kind") applyEquipmentPreset(e.target.value);
     schedule();
   });
 
@@ -264,6 +279,11 @@
 
   $("bp-attacks-reset").addEventListener("click", () => {
     activeSlots = null;
+    render();
+  });
+
+  $("bp-equipment-reset").addEventListener("click", () => {
+    applyEquipmentPreset($("bp-kind").value);
     render();
   });
 
@@ -308,6 +328,7 @@
     }
   });
 
+  applyEquipmentPreset($("bp-kind").value);
   try {
     const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
     if (saved) writeInput(saved);

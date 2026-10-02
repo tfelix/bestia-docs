@@ -648,6 +648,7 @@
       role: bp.role.id,
       element: { element: i.element, level: bp.elementLevel },
       size: i.size,
+      equipment: { slots: i.equipSlots || [], armorTypes: i.armorTypes || [] },
       attributes: Object.fromEntries(ATTRIBUTES.map((k) => [ATTRIBUTE_NAMES[k], bp.attributes[k]])),
       pools: { health: bp.hp, mana: bp.mana },
       derived: bp.derived,
@@ -746,6 +747,7 @@
     lines.push("spawn-weight: 100");
     if (bp.tier.id === "boss") lines.push("boss: true");
     if (bp.tier.id === "critter") lines.push("non-combatant: true");
+    lines.push(`equip-slots: [${(i.equipSlots || []).join(", ")}]`, `armor-types: [${(i.armorTypes || []).join(", ")}]`);
     lines.push("loot:");
     if (!bp.loot.rows.length) lines[lines.length - 1] = "loot: []";
     bp.loot.rows.forEach((r) => lines.push(`  - { item: ${r.item}, chance: ${r.basisPoints} }`));
