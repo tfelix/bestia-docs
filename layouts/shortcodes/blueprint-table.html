@@ -1,0 +1,47 @@
+<!-- blueprint-table.html: one table from data/bestia_blueprint.yaml, so the guideline cannot drift from the calculator. -->
+{{- $d := site.Data.bestia_blueprint -}}
+{{- $name := .Get "name" -}}
+<table>
+{{- if eq $name "tiers" }}
+  <thead><tr><th>Tier</th><th>Built for</th><th style="text-align:right">Player swings</th><th style="text-align:right">Damage per second</th><th style="text-align:right">Attribute budget</th><th style="text-align:right">Active attacks</th></tr></thead>
+  <tbody>
+  {{- range $d.tiers }}
+    <tr><td>{{ .label }}</td><td>{{ .party }}</td><td style="text-align:right">× {{ .defense }}</td><td style="text-align:right">× {{ .offense }}</td><td style="text-align:right">× {{ .budget }}</td><td style="text-align:right">{{ .activeAttacks }}</td></tr>
+  {{- end }}
+  </tbody>
+{{- else if eq $name "roles" }}
+  <thead><tr><th>Role</th><th style="text-align:right">STR</th><th style="text-align:right">VIT</th><th style="text-align:right">INT</th><th style="text-align:right">AGI</th><th style="text-align:right">DEX</th><th style="text-align:right">WIL</th><th>Basic attack</th><th style="text-align:right">Basic share</th><th>Plays like</th></tr></thead>
+  <tbody>
+  {{- range $d.roles }}
+    <tr><td>{{ .label }}</td><td style="text-align:right">{{ .weights.str }}</td><td style="text-align:right">{{ .weights.vit }}</td><td style="text-align:right">{{ .weights.int }}</td><td style="text-align:right">{{ .weights.agi }}</td><td style="text-align:right">{{ .weights.dex }}</td><td style="text-align:right">{{ .weights.wil }}</td><td>{{ .basicAttack }}</td><td style="text-align:right">{{ mul .basicShare 100 | printf "%.0f %%" }}</td><td>{{ .summary }}</td></tr>
+  {{- end }}
+  </tbody>
+{{- else if eq $name "archetypes" }}
+  <thead><tr><th>Archetype</th><th>Kind</th><th style="text-align:right">Coefficient</th><th style="text-align:right">Cast (s)</th><th style="text-align:right">Cooldown (s)</th><th style="text-align:right">Mana</th><th>Exists as</th></tr></thead>
+  <tbody>
+  {{- range $d.archetypes }}
+    {{- $id := .id -}}
+    <tr><td>{{ .label }}</td><td>{{ .kind }}{{ if .ranged }}, ranged{{ end }}{{ if .aoe }}, area{{ end }}</td>
+      <td style="text-align:right">{{ with .coef }}{{ . }}{{ else }}{{ mul .effect 100 | printf "%.0f %%" }} for {{ .duration }} s{{ end }}</td>
+      <td style="text-align:right">{{ .castTime }}</td><td style="text-align:right">{{ .cooldown }}</td><td style="text-align:right">{{ .mana.base }} + {{ .mana.perSkillLevel }} × skill Lv</td>
+      <td>{{ range $i, $e := where $d.existingAttacks "archetype" $id }}{{ if $i }}, {{ end }}{{ $e.identifier }}{{ if ne $e.element "any" }} ({{ lower $e.element }}){{ end }}{{ end }}</td></tr>
+  {{- end }}
+  </tbody>
+{{- else if eq $name "loot" }}
+  <thead><tr><th>Drop tier</th><th style="text-align:right">Chance</th><th>Typical drop</th></tr></thead>
+  <tbody>
+  {{- range $d.loot.tiers }}
+    <tr><td>{{ .label }}</td><td style="text-align:right">{{ div .chance.min 100.0 }} - {{ div .chance.max 100.0 }} %</td><td>{{ .use }}</td></tr>
+  {{- end }}
+  </tbody>
+{{- else if eq $name "spawn" }}
+  <thead><tr><th>Den level</th><th>Where</th><th style="text-align:right">Creatures per km²</th><th style="text-align:right">Pack size</th></tr></thead>
+  <tbody>
+  {{- range $d.spawnBands }}
+    <tr><td>{{ .levels }}</td><td>{{ .where }}</td><td style="text-align:right">{{ .perKm2 }}</td><td style="text-align:right">{{ .pack }}</td></tr>
+  {{- end }}
+  </tbody>
+{{- else }}
+  {{- errorf "blueprint-table: unknown table %q in %s" $name .Position }}
+{{- end }}
+</table>
