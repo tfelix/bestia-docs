@@ -346,7 +346,7 @@
     const b = combatant(input.level, attrs, { element: input.element, elementLevel: ctx.elementLevel });
     b.hp = hp;
     b.mana = ctx.manaFor(attrs);
-    b.interval = attackInterval(data, Math.round(input.basicCooldown * 500), attrs);
+    b.interval = attackInterval(data, data.server.bareHandedMotionMs, attrs);
     b.basic = { ranged: ctx.role.basicAttack === "ranged" };
     const buff = ctx.active.find((a) => a.kind === "buff");
     const debuff = ctx.active.find((a) => a.kind === "debuff");
@@ -532,6 +532,7 @@
       elementLevel,
       tier,
       role,
+      defaultAttack: { kind: role.basicAttack, range: role.basicAttack === "ranged" ? data.server.rangedReach : 1 },
       master,
       attributes: attrs,
       hp,
@@ -640,7 +641,7 @@
       ai: {
         profile: aiProfileOf(i),
         newProfile: i.ai === "custom" ? { behaviour: i.aiBehaviour || "" } : null,
-        defaultAttack: { kind: bp.role.basicAttack, cooldownSeconds: i.basicCooldown, range: bp.role.basicAttack === "ranged" ? 6 : 1 },
+        defaultAttack: bp.defaultAttack,
       },
       attacks: {
         attackPower: bp.attackPower,
@@ -709,6 +710,7 @@
       `kind: ${i.kind}`,
       `element: ${elementName(i.element, bp.elementLevel)}`,
       `size: ${i.size}`,
+      `default-attack: ${bp.defaultAttack.kind.toUpperCase()}`,
       `ai: ${aiProfileOf(i)}`,
       `health: ${bp.hp}`,
       `mana: ${bp.mana}`,
@@ -734,15 +736,15 @@
     return lines.join("\n");
   }
 
+  // Attack skills only: the default attack comes from the mob YAML's default-attack.
   function toAiAttacksYaml(bp) {
     const i = bp.input;
-    const range = bp.role.basicAttack === "ranged" ? 6 : 1;
     const lines = [];
     if (i.ai === "custom") lines.push(`# New profile ai/${i.identifier.replace(/_/g, "-")}.yml: ${i.aiBehaviour || "describe how it behaves"}`);
-    lines.push("attacks:", `  - { id: ${bp.role.basicAttack}, range: ${range}, base_cost: 5, cooldown_seconds: ${i.basicCooldown} }  # default attack, no skill`);
+    lines.push(bp.active.length ? "attacks:" : "attacks: []");
     bp.active.forEach((a) => {
-      const skill = a.skillId ? `, skill_id: ${a.skillId}` : ", skill_id: <add to skills.yml>";
-      lines.push(`  - { id: ${a.identifier}, range: ${a.archetypeData.range}, base_cost: 4, cooldown_seconds: ${a.archetypeData.cooldown}${skill} }`);
+      const skill = a.skillId ?? "<add to skills.yml>";
+      lines.push(`  - { id: ${a.identifier}, range: ${a.archetypeData.range}, skill_id: ${skill} }`);
     });
     return lines.join("\n");
   }
@@ -751,7 +753,7 @@
     const i = bp.input;
     const json = JSON.stringify(toJson(bp), null, 2);
     const aiStep = i.ai === "custom"
-      ? `2. Write a new AI profile zone-server/src/main/resources/ai/${i.identifier.replace(/_/g, "-")}.yml from ai.newProfile.behaviour, starting from the closest existing profile. List the default attack and attacks.active.`
+      ? `2. Write a new AI profile zone-server/src/main/resources/ai/${i.identifier.replace(/_/g, "-")}.yml from ai.newProfile.behaviour, starting from the closest existing profile. List attacks.active as its attack skills.`
       : `2. Use the AI profile ${i.ai}. If attacks.active differs from its attack list, copy it into a new profile for this species.`;
     return [
       `Add the bestia "${i.name}" to bestia-behemoth from the blueprint below. Its numbers are final; do not rebalance them.`,
