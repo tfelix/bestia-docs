@@ -164,11 +164,9 @@
   const isDamaging = (attack) => attack.kind === "physical" || DAMAGE_KINDS.includes(attack.kind);
 
   // A physical attack is NORMAL the first time; a repeat is the species' own, stronger take on it.
-  // A second element only shows up once the species has grown into it, on every other spell.
-  function attackElement(archetype, rank, slotLevel, magicIndex, element, secondaryElement) {
+  function attackElement(archetype, rank, element) {
     if (archetype.kind === "physical") return rank === 1 ? "NORMAL" : element;
     if (!DAMAGE_KINDS.includes(archetype.kind)) return null;
-    if (secondaryElement && slotLevel >= 26 && magicIndex % 2 === 1) return secondaryElement;
     return element;
   }
 
@@ -179,28 +177,36 @@
     return element.charAt(0) + element.slice(1).toLowerCase() + " " + archetype.label;
   }
 
-  // The 20 attacks a species learns from Lv 1 to 100. An existing attack is reused once; every
-  // later slot of the same kind becomes a new, stronger attack with its own name.
-  function learnset(data, roleId, element, secondaryElement) {
+  // The strongest attack from the Attack List that fits the slot and is not taken yet. Element only
+  // matters for damage; a heal is a heal.
+  function existingAttackFor(data, archetype, element, slotLevel, taken) {
+    const fits = (attack) =>
+      attack.bestia !== false &&
+      attack.archetype === archetype.id &&
+      (!element || attack.element === element) &&
+      attack.level <= slotLevel &&
+      !taken.has(attack.id);
+    return (data.attacks || []).filter(fits).sort((x, y) => y.level - x.level)[0];
+  }
+
+  // The 20 attacks a species learns from Lv 1 to 100. An attack from the Attack List is used before
+  // one is made up; every later slot of the same kind becomes a new, stronger attack with its own name.
+  function learnset(data, roleId, element) {
     const role = byId(data.roles, roleId);
     const ls = data.learnset;
     const ranks = {};
     const names = {};
-    const reused = new Set();
-    let magicIndex = 0;
+    const taken = new Set();
     return role.learnPattern.map((archetypeId, slot) => {
       const archetype = byId(data.archetypes, archetypeId);
       const level = ls.levels[slot];
       ranks[archetypeId] = (ranks[archetypeId] || 0) + 1;
-      const el = attackElement(archetype, ranks[archetypeId], level, magicIndex, element, secondaryElement);
-      if (DAMAGE_KINDS.includes(archetype.kind)) magicIndex++;
-      const existing = data.existingAttacks.find(
-        (e) => e.archetype === archetypeId && (e.element === "any" || e.element === el) && !reused.has(e.identifier)
-      );
+      const el = attackElement(archetype, ranks[archetypeId], element);
+      const existing = existingAttackFor(data, archetype, el, level, taken);
       let name;
       if (existing) {
-        reused.add(existing.identifier);
-        name = existing.identifier;
+        taken.add(existing.id);
+        name = existing.name;
       } else {
         const plain = attackName(archetype, el);
         names[plain] = (names[plain] || 0) + 1;
@@ -214,9 +220,11 @@
         element: el,
         skillLevel: Math.min(ls.maxSkillLevel, 1 + idiv(level, ls.skillLevelEvery)),
         name,
-        identifier: name.toLowerCase().replace(/ /g, "_"),
+        identifier: existing ? existing.id : name.toLowerCase().replace(/ /g, "_"),
         existing: Boolean(existing),
         skillId: existing?.skillId ?? null,
+        skill: existing?.skill ?? null,
+        listedMana: existing?.mana ?? null,
       };
     });
   }
@@ -352,8 +360,7 @@
   }
 
   function makeBestia(data, input, attrs, hp, ctx) {
-    const combatLevel = input.serverToday ? 1 : input.level;
-    const b = combatant(combatLevel, attrs, { element: input.element, elementLevel: ctx.elementLevel });
+    const b = combatant(input.level, attrs, { element: input.element, elementLevel: ctx.elementLevel });
     b.hp = hp;
     b.mana = ctx.manaFor(attrs);
     b.interval = attackInterval(data, Math.round(input.basicCooldown * 500), attrs);
@@ -436,9 +443,34 @@
     return hp;
   }
 
+  // A loot row names an item from the Items List and a chance in percent. The value and the tier
+  // follow from those, so a designer cannot price a drop by hand.
+  function lootRows(data, input) {
+    return (input.loot || [])
+      .filter((row) => row.item)
+      .map((row) => {
+        const wanted = String(row.item).trim().toLowerCase();
+        const item = (data.items || []).find((it) => it.id === wanted || it.name.toLowerCase() === wanted);
+        const percent = clamp(Number(row.chance) || 0, 0, 100);
+        // Tiers run from common to very rare, so the first one whose minimum the chance reaches is its tier.
+        const tier = data.loot.tiers.find((t) => percent >= t.chance.min) || data.loot.tiers[data.loot.tiers.length - 1];
+        return {
+          item: item ? item.id : wanted.replace(/[^a-z0-9]+/g, "_"),
+          name: item ? item.name : row.item,
+          known: Boolean(item),
+          percent,
+          // Mob YAML counts in basis points: 10000 is 100 %.
+          basisPoints: Math.max(1, Math.round(percent * 100)),
+          value: item ? item.value : 0,
+          tier: tier.id,
+        };
+      });
+  }
+
   function lootBalance(data, input, expBeforeLoot) {
     const l = data.loot;
-    const ev = (input.loot || []).reduce((sum, row) => sum + ((Number(row.chance) || 0) / 10000) * (Number(row.value) || 0), 0);
+    const rows = lootRows(data, input);
+    const ev = rows.reduce((sum, row) => sum + (row.percent / 100) * row.value, 0);
     const baseline = l.coinsPerExp * expBeforeLoot;
     const score = baseline > 0 ? ev / baseline : 0;
     const surplus = Math.max(0, score - 1);
@@ -448,8 +480,9 @@
       ? Math.max(l.minExpFactor, 1 / (1 + l.k * surplus * (1 - t)))
       : 1 + l.maxDeficitBonus * deficit;
     const hpBonus = Math.min(l.maxHpBonus, l.hpPerSurplus * surplus * t);
-    const jackpots = (input.loot || []).filter((row) => (Number(row.value) || 0) > l.jackpotFactor * baseline).map((row) => row.item);
-    return { expectedValue: round2(ev), baseline: round2(baseline), score: round2(score), expFactor: round2(expFactor), hpBonus: round2(hpBonus), jackpots };
+    const jackpots = rows.filter((row) => row.value > l.jackpotFactor * baseline).map((row) => row.name);
+    const unknown = rows.filter((row) => !row.known).map((row) => row.name);
+    return { rows, expectedValue: round2(ev), baseline: round2(baseline), score: round2(score), expFactor: round2(expFactor), hpBonus: round2(hpBonus), jackpots, unknown };
   }
 
   const round2 = (v) => Math.round(v * 100) / 100;
@@ -460,14 +493,14 @@
     const level = input.level;
     const master = referenceMaster(data, level);
     const elementLevel = input.elementLevel || suggestedElementLevel(data, level, input.tier);
-    const learned = learnset(data, input.role, input.element, input.secondaryElement);
+    const learned = learnset(data, input.role, input.element);
     const known = learned.filter((a) => a.level <= level);
     const activeSlots = input.activeSlots ?? defaultActiveSlots(data, input, known);
     const active = known
       .filter((a) => activeSlots.includes(a.slot))
       .map((a) => {
         const archetypeData = byId(data.archetypes, a.archetype);
-        return { ...a, archetypeData, coef: archetypeData.coef, mana: manaCost(archetypeData, a.skillLevel) };
+        return { ...a, archetypeData, coef: archetypeData.coef, mana: a.listedMana ?? manaCost(archetypeData, a.skillLevel) };
       });
 
     const pace = data.pace;
@@ -509,6 +542,7 @@
       warnings: [
         ...warningsFor(data, tier, final, fitted.factor, attackPower),
         ...loot.jackpots.map((item) => `${item} is worth more than ${data.loot.jackpotFactor} loot budgets. Players will farm this bestia for it alone.`),
+        ...loot.unknown.map((item) => `${item} is not on the Items List, so it counts as worth nothing. Add it to data/items.yaml.`),
       ],
       input,
       level,
@@ -611,7 +645,7 @@
       level: bp.level,
       tier: bp.tier.id,
       role: bp.role.id,
-      element: { element: i.element, level: bp.elementLevel, secondary: i.secondaryElement || null },
+      element: { element: i.element, level: bp.elementLevel },
       size: i.size,
       attributes: Object.fromEntries(ATTRIBUTES.map((k) => [ATTRIBUTE_NAMES[k], bp.attributes[k]])),
       pools: { health: bp.hp, mana: bp.mana },
@@ -620,22 +654,34 @@
         takesPercentByElement: Object.fromEntries(bp.elementDefense.map((e) => [e.element, e.percent])),
         notes: i.defenseNotes || "",
       },
-      ai: { profile: i.ai, basicAttack: { id: i.basicAttackId, cooldownSeconds: i.basicCooldown, range: bp.role.basicAttack === "ranged" ? 6 : 1 } },
+      ai: {
+        profile: aiProfileOf(i),
+        newProfile: i.ai === "custom" ? { behaviour: i.aiBehaviour || "" } : null,
+        basicAttack: { id: i.basicAttackId, cooldownSeconds: i.basicCooldown, range: bp.role.basicAttack === "ranged" ? 6 : 1 },
+      },
       attacks: {
         attackPower: bp.attackPower,
         active: bp.active.map(attackJson),
         learnset: bp.learnset.map(attackJson),
       },
-      loot: { rows: i.loot, ...bp.loot },
+      loot: {
+        drops: bp.loot.rows.map((r) => ({ item: r.item, name: r.name, chancePercent: r.percent, value: r.value, tier: r.tier })),
+        expectedValue: bp.loot.expectedValue,
+        budget: bp.loot.baseline,
+        shareOfBudget: bp.loot.score,
+        expFactor: bp.loot.expFactor,
+        hpBonus: bp.loot.hpBonus,
+      },
       rewards: bp.exp,
-      balance: { versus: `reference master Lv ${bp.level}`, serverToday: i.serverToday, targets: bp.targets, ...bp.balance },
+      balance: { versus: `reference master Lv ${bp.level}`, targets: bp.targets, ...bp.balance },
     };
   }
 
   function attackJson(a) {
     const json = {
       level: a.level, name: a.name, identifier: a.identifier, archetype: a.archetype, kind: a.kind,
-      element: a.element, skillLevel: a.skillLevel, status: a.existing ? "existing" : "new", skillId: a.skillId,
+      element: a.element, skillLevel: a.skillLevel, status: a.existing ? "existing" : "new",
+      skill: a.skill, skillId: a.skillId,
     };
     if (a.coef != null) json.coefficient = round2(a.coef);
     if (a.power) json.damagePerUseVsMaster = round2(a.power);
@@ -643,6 +689,29 @@
     return json;
   }
 
+  // A custom profile is written for this species, so it takes the species' name.
+  const aiProfileOf = (input) => (input.ai === "custom" ? input.identifier : input.ai);
+
+  // ElementModifier spells a level-1 element bare and the others with a suffix: EARTH, EARTH_2.
+  const elementName = (element, level) => (level > 1 ? `${element}_${level}` : element);
+
+  // A folded YAML block, so a long description stays readable in the file.
+  function foldedYaml(key, text) {
+    const words = String(text || "").trim().split(/\s+/).filter(Boolean);
+    const lines = [];
+    let line = "";
+    words.forEach((w) => {
+      if (line && line.length + w.length + 1 > 98) {
+        lines.push(line);
+        line = w;
+      } else line = line ? `${line} ${w}` : w;
+    });
+    if (line) lines.push(line);
+    return [`${key}: >-`, ...lines.map((l) => `  ${l}`)];
+  }
+
+  // In the shape of zone-server's mob/blob.yml. An attack without a skills.yml row has nothing to name yet,
+  // so its learnset line stays a comment until the row exists.
   function toMobYaml(bp) {
     const i = bp.input;
     const a = bp.attributes;
@@ -650,31 +719,45 @@
       "id: <next free id>",
       `identifier: ${i.identifier}`,
       `level: ${bp.level}`,
-      `ai: ${i.ai}`,
+      `name: ${i.name}`,
+    ];
+    if (i.epithet) lines.push(`epithet: ${i.epithet}`);
+    lines.push(...foldedYaml("description", i.description));
+    lines.push(
+      `kind: ${i.kind}`,
+      `element: ${elementName(i.element, bp.elementLevel)}`,
+      `size: ${i.size}`,
+      `ai: ${aiProfileOf(i)}`,
       `health: ${bp.hp}`,
       `mana: ${bp.mana}`,
       `experience: ${bp.exp.experience}`,
       `attributes: { strength: ${a.str}, intelligence: ${a.int}, vitality: ${a.vit}, dexterity: ${a.dex}, willpower: ${a.wil}, agility: ${a.agi} }`,
-      `habitat: [${(i.habitat || []).join(", ")}]`,
-    ];
-    if (i.temperatureMin !== "" && i.temperatureMax !== "" && i.temperatureMin != null && i.temperatureMax != null) {
+      "learnset:"
+    );
+    bp.learnset.forEach((attack) => {
+      lines.push(attack.skill
+        ? `  - { skill: ${attack.skill}, level: ${attack.level} }`
+        : `  # - { skill: ${attack.identifier}, level: ${attack.level} }  no skills.yml row yet`);
+    });
+    lines.push(`habitat: [${(i.habitat || []).join(", ")}]`);
+    if (i.temperatureMin != null && i.temperatureMax != null && i.temperatureMin !== "" && i.temperatureMax !== "") {
       lines.push(`temperature-min: ${i.temperatureMin}`, `temperature-max: ${i.temperatureMax}`);
     }
     lines.push("spawn-weight: 100");
     if (bp.tier.id === "boss") lines.push("boss: true");
     if (bp.tier.id === "critter") lines.push("non-combatant: true");
-    const loot = (i.loot || []).filter((r) => r.item);
-    if (loot.length) {
-      lines.push("loot:");
-      loot.forEach((r) => lines.push(`  - { item: ${r.item}, chance: ${r.chance} }`));
-    }
+    lines.push("loot:");
+    if (!bp.loot.rows.length) lines[lines.length - 1] = "loot: []";
+    bp.loot.rows.forEach((r) => lines.push(`  - { item: ${r.item}, chance: ${r.basisPoints} }`));
     return lines.join("\n");
   }
 
   function toAiAttacksYaml(bp) {
     const i = bp.input;
     const range = bp.role.basicAttack === "ranged" ? 6 : 1;
-    const lines = ["attacks:", `  - { id: ${i.basicAttackId}, range: ${range}, base_cost: 5, cooldown_seconds: ${i.basicCooldown} }`];
+    const lines = [];
+    if (i.ai === "custom") lines.push(`# New profile ai/${i.identifier.replace(/_/g, "-")}.yml: ${i.aiBehaviour || "describe how it behaves"}`);
+    lines.push("attacks:", `  - { id: ${i.basicAttackId}, range: ${range}, base_cost: 5, cooldown_seconds: ${i.basicCooldown} }`);
     bp.active.forEach((a) => {
       const skill = a.skillId ? `, skill_id: ${a.skillId}` : ", skill_id: <add to skills.yml>";
       lines.push(`  - { id: ${a.identifier}, range: ${a.archetypeData.range}, base_cost: 4, cooldown_seconds: ${a.archetypeData.cooldown}${skill} }`);
@@ -683,15 +766,24 @@
   }
 
   function llmPrompt(bp) {
+    const i = bp.input;
     const json = JSON.stringify(toJson(bp), null, 2);
+    const aiStep = i.ai === "custom"
+      ? `2. Write a new AI profile zone-server/src/main/resources/ai/${i.identifier.replace(/_/g, "-")}.yml from ai.newProfile.behaviour, starting from the closest existing profile. List the basic attack and attacks.active.`
+      : `2. Use the AI profile ${i.ai}. If attacks.active differs from its attack list, copy it into a new profile for this species.`;
     return [
-      `Add the bestia "${bp.input.name}" to bestia-behemoth from the blueprint below. Its numbers are final; do not rebalance them.`,
+      `Add the bestia "${i.name}" to bestia-behemoth from the blueprint below. Its numbers are final; do not rebalance them.`,
       "",
-      `1. Create zone-server/src/main/resources/mob/${bp.input.identifier.replace(/_/g, "-")}.yml in the shape of mob/blob.yml, with the next free id. Use pools, attributes, rewards.experience and loot.rows.`,
-      `2. Reuse the AI profile in ai.profile, or add one in zone-server/src/main/resources/ai/ if its attack list must differ. List the basic attack and attacks.active.`,
-      "3. Attacks with status \"new\" need a skills.yml row (bestia attacks use ids 1000+), a script and the client Attack DB entry. Read the skill-system skill first.",
-      "4. Add the name key BESTIA_<IDENTIFIER> to bestia-client/src/Localization/general.csv and run ./gradlew syncBestiaDb.",
-      "5. element, size, defenses and compendium have no YAML key yet. Do not invent one; leave them in the blueprint.",
+      `1. Create zone-server/src/main/resources/mob/${i.identifier.replace(/_/g, "-")}.yml from this draft, with the next free id:`,
+      "",
+      "```yaml",
+      toMobYaml(bp),
+      "```",
+      "",
+      aiStep,
+      "3. Attacks with status \"new\" need a skills.yml row (bestia attacks use ids 1000+), a script that uses the attack's coefficient, and the client Attack DB entry. Read the skill-system skill first. Then turn their commented learnset lines into entries.",
+      "4. Run ./gradlew :zone-server:syncBestiaDb. It writes the client bestia .tres and the name, epithet and description into bestias.csv. Translate the new rows in the other language columns of that CSV.",
+      "5. defenses.notes has no YAML key yet. Do not invent one.",
       "",
       "```json",
       json,

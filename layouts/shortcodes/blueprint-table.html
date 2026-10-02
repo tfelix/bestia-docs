@@ -24,14 +24,21 @@
     <tr><td>{{ .label }}</td><td>{{ .kind }}{{ if .ranged }}, ranged{{ end }}{{ if .aoe }}, area{{ end }}</td>
       <td style="text-align:right">{{ with .coef }}{{ . }}{{ else }}{{ mul .effect 100 | printf "%.0f %%" }} for {{ .duration }} s{{ end }}</td>
       <td style="text-align:right">{{ .castTime }}</td><td style="text-align:right">{{ .cooldown }}</td><td style="text-align:right">{{ .mana.base }} + {{ .mana.perSkillLevel }} × skill Lv</td>
-      <td>{{ range $i, $e := where $d.existingAttacks "archetype" $id }}{{ if $i }}, {{ end }}{{ $e.identifier }}{{ if ne $e.element "any" }} ({{ lower $e.element }}){{ end }}{{ end }}</td></tr>
+      <td>{{ range $i, $e := where site.Data.attacks "archetype" $id }}{{ if $i }}, {{ end }}{{ $e.name }} ({{ lower $e.element }}, Lv {{ $e.level }}){{ end }}</td></tr>
   {{- end }}
   </tbody>
 {{- else if eq $name "loot" }}
   <thead><tr><th>Drop tier</th><th style="text-align:right">Chance</th><th>Typical drop</th></tr></thead>
   <tbody>
   {{- range $d.loot.tiers }}
-    <tr><td>{{ .label }}</td><td style="text-align:right">{{ div .chance.min 100.0 }} - {{ div .chance.max 100.0 }} %</td><td>{{ .use }}</td></tr>
+    <tr><td>{{ .label }}</td><td style="text-align:right">{{ .chance.min }} - {{ .chance.max }} %</td><td>{{ .use }}</td></tr>
+  {{- end }}
+  </tbody>
+{{- else if eq $name "kinds" }}
+  <thead><tr><th>Kind</th><th>For</th></tr></thead>
+  <tbody>
+  {{- range $d.kinds }}
+    <tr><td><code>{{ .id }}</code></td><td>{{ .summary }}</td></tr>
   {{- end }}
   </tbody>
 {{- else if eq $name "spawn" }}

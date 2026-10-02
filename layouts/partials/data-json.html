@@ -1,0 +1,3 @@
+{{- /* Publishes one data file as /data/<name>.json, so a page script can load it at runtime. Returns its URL. */ -}}
+{{- $json := resources.FromString (printf "data/%s.json" .) (index site.Data . | jsonify) -}}
+{{- return $json.RelPermalink -}}

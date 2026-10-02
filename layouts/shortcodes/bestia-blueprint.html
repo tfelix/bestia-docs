@@ -2,7 +2,7 @@
 {{- $d := site.Data.bestia_blueprint -}}
 <script type="application/json" id="bp-data">{{ $d | jsonify | safeJS }}</script>
 
-<div id="bestia-blueprint" class="bp mb-5">
+<div id="bestia-blueprint" class="bp mb-5" data-items-url="{{ partial "data-json.html" "items" }}" data-attacks-url="{{ partial "data-json.html" "attacks" }}">
   <div class="row g-4">
     <!-- Inputs -->
     <div class="col-12 col-xl-5">
@@ -15,12 +15,11 @@
             <div class="col-12"><label class="form-label small" for="bp-role">Role</label><select class="form-select form-select-sm" id="bp-role" data-field="role">{{ range $d.roles }}<option value="{{ .id }}"{{ if eq .id "brute" }} selected{{ end }}>{{ .label }}: {{ .summary }}</option>{{ end }}</select></div>
             <div class="col-6"><label class="form-label small" for="bp-element">Element</label><select class="form-select form-select-sm" id="bp-element" data-field="element">{{ range $d.elements }}<option{{ if eq . "EARTH" }} selected{{ end }}>{{ . }}</option>{{ end }}</select></div>
             <div class="col-6"><label class="form-label small" for="bp-element-level">Element level</label><select class="form-select form-select-sm" id="bp-element-level" data-field="elementLevel"><option value="">Suggested</option><option>1</option><option>2</option><option>3</option><option>4</option></select></div>
-            <div class="col-6"><label class="form-label small" for="bp-secondary">Second element</label><select class="form-select form-select-sm" id="bp-secondary" data-field="secondaryElement"><option value="">None</option>{{ range $d.elements }}<option>{{ . }}</option>{{ end }}</select></div>
             <div class="col-6"><label class="form-label small" for="bp-size">Size</label><select class="form-select form-select-sm" id="bp-size" data-field="size">{{ range $d.sizes }}<option{{ if eq . "SMALL" }} selected{{ end }}>{{ . }}</option>{{ end }}</select></div>
-            <div class="col-12"><label class="form-label small" for="bp-ai">AI profile</label><select class="form-select form-select-sm" id="bp-ai" data-field="ai">{{ range $d.aiProfiles }}<option value="{{ .id }}"{{ if eq .id "passiv_day_active" }} selected{{ end }}>{{ .id }}: {{ .label }}</option>{{ end }}</select></div>
+            <div class="col-12"><label class="form-label small" for="bp-ai">AI profile</label><select class="form-select form-select-sm" id="bp-ai" data-field="ai">{{ range $d.aiProfiles }}<option value="{{ .id }}"{{ if eq .id "passiv_day_active" }} selected{{ end }}>{{ .id }}: {{ .label }}</option>{{ end }}<option value="custom">custom: a new profile, described below</option></select></div>
+            <div class="col-12" id="bp-ai-custom-box" hidden><label class="form-label small" for="bp-ai-custom">How it behaves</label><textarea class="form-control form-control-sm" id="bp-ai-custom" data-field="aiBehaviour" rows="2" placeholder="e.g. hunts in packs at night, flees below 20 % HP, guards its burrow"></textarea></div>
             <div class="col-6"><label class="form-label small" for="bp-basic">Basic attack id</label><input class="form-control form-control-sm" id="bp-basic" data-field="basicAttackId" list="bp-basic-ids" value="bite"><datalist id="bp-basic-ids">{{ range $d.basicAttacks }}<option>{{ . }}</option>{{ end }}</datalist></div>
             <div class="col-6"><label class="form-label small" for="bp-cooldown">Basic cooldown (s)</label><input class="form-control form-control-sm" id="bp-cooldown" data-field="basicCooldown" type="number" min="0.5" max="4" step="0.1" value="1.5"></div>
-            <div class="col-12 form-check ms-1 mt-2"><input class="form-check-input" type="checkbox" id="bp-today" data-field="serverToday" checked><label class="form-check-label small" for="bp-today">Server as it runs today: mobs fight as Lv 1</label></div>
           </div>
         </div>
       </div>
@@ -31,9 +30,9 @@
           <div class="row g-2">
             <div class="col-6"><label class="form-label small" for="bp-name">Name</label><input class="form-control form-control-sm" id="bp-name" data-field="name" value="Burrow Boar"></div>
             <div class="col-6"><label class="form-label small" for="bp-identifier">Identifier</label><input class="form-control form-control-sm" id="bp-identifier" data-field="identifier" placeholder="from the name"></div>
-            <div class="col-6"><label class="form-label small" for="bp-epithet">Epithet</label><input class="form-control form-control-sm" id="bp-epithet" data-field="epithet" value="the field-wrecker"></div>
-            <div class="col-6"><label class="form-label small" for="bp-kind">Kind</label><input class="form-control form-control-sm" id="bp-kind" data-field="kind" list="bp-kinds" value="beast"><datalist id="bp-kinds"><option>beast</option><option>humanoid</option><option>formless</option><option>plant</option><option>insect</option><option>undead</option><option>dragon</option><option>demon</option></datalist></div>
-            <div class="col-12"><label class="form-label small" for="bp-description">Description <span class="text-body-secondary" id="bp-description-count"></span></label><textarea class="form-control form-control-sm" id="bp-description" data-field="description" rows="3" maxlength="300">Burrow Boars root up whole fields overnight and sleep through the day in their burrows. Their bristles are prized by brush-makers. They hate the wind, and a gust will send one bolting.</textarea></div>
+            <div class="col-6"><label class="form-label small" for="bp-epithet">Epithet <span class="text-body-secondary">(title after the name)</span></label><input class="form-control form-control-sm" id="bp-epithet" data-field="epithet" value="the field-wrecker" placeholder="optional"></div>
+            <div class="col-6"><label class="form-label small" for="bp-kind">Kind</label><select class="form-select form-select-sm" id="bp-kind" data-field="kind">{{ range $d.kinds }}<option value="{{ .id }}" title="{{ .summary }}">{{ .id }}</option>{{ end }}</select></div>
+            <div class="col-12"><label class="form-label small" for="bp-description">Description <span class="text-body-secondary" id="bp-description-count"></span></label><textarea class="form-control form-control-sm" id="bp-description" data-field="description" rows="3" maxlength="300">Burrow Boars root up whole fields overnight and sleep through the day in their burrows. Tanners prize their thick hides. They hate the wind, and a gust will send one bolting.</textarea></div>
             <div class="col-12"><label class="form-label small" for="bp-habitat">Habitat (Ctrl-click for several)</label><select class="form-select form-select-sm" id="bp-habitat" data-field="habitat" multiple size="4">{{ range $d.biomes }}<option{{ if eq . "GRASSLAND" }} selected{{ end }}>{{ . }}</option>{{ end }}</select></div>
             <div class="col-4"><label class="form-label small" for="bp-tmin">Temp. min (°C)</label><input class="form-control form-control-sm" id="bp-tmin" data-field="temperatureMin" type="number" value="-5"></div>
             <div class="col-4"><label class="form-label small" for="bp-tmax">Temp. max (°C)</label><input class="form-control form-control-sm" id="bp-tmax" data-field="temperatureMax" type="number" value="30"></div>
@@ -48,9 +47,10 @@
           <h5 class="card-title">Loot</h5>
           <div class="table-responsive">
             <table class="table table-sm align-middle mb-2">
-              <thead><tr><th>Item</th><th>Tier</th><th>Value (coins)</th><th>Chance (‱)</th><th></th></tr></thead>
+              <thead><tr><th>Item</th><th>Chance (%)</th><th>Value, tier</th><th></th></tr></thead>
               <tbody id="bp-loot"></tbody>
             </table>
+            <datalist id="bp-items"></datalist>
           </div>
           <button type="button" class="btn btn-sm btn-outline-secondary" id="bp-loot-add">Add drop</button>
           <label class="form-label small d-block mt-3" for="bp-loot-balance">Pay for surplus loot with: <span class="text-body-secondary">less EXP ↔ more HP</span></label>
@@ -139,9 +139,8 @@
   .bp .card, .bp .form-label, .bp .form-check-label, .bp .table { color: inherit; --bs-table-color: inherit; }
   .bp .card { background-color: transparent; }
   .bp .text-body-secondary { color: inherit !important; opacity: 0.7; }
-  .bp [data-loot="item"] { min-width: 9rem; }
-  .bp [data-loot="tier"] { min-width: 7.5rem; }
-  .bp [data-loot="value"], .bp [data-loot="chance"] { min-width: 5.5rem; }
+  .bp [data-loot="item"] { min-width: 10rem; }
+  .bp [data-loot="chance"] { min-width: 5.5rem; }
   .bp .bp-preview { max-height: 28rem; overflow: auto; white-space: pre; }
   .bp .bp-tile { font-variant-numeric: tabular-nums; }
   .bp td, .bp th { font-variant-numeric: tabular-nums; }
