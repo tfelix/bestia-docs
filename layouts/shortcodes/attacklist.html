@@ -1,53 +1,156 @@
-<!-- attacklist.html: Outer structure and search bar for the attack list -->
-<div class="input-group mb-3">
-  <span class="input-group-text" id="attack-search-addon"><svg xmlns="http://www.w3.org/2000/svg" height="24px"
-      viewBox="0 -960 960 960" width="24px" fill="#1f1f1f">
-      <path
-        d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z" />
-    </svg></span>
-  <input type="text" class="form-control" id="attack-search" placeholder="Attack Name" aria-label="Attack Name"
-    aria-describedby="attack-search-addon" onkeyup="filterAttacks(this.value)">
-  <button class="btn btn-outline-secondary" type="button" id="attack-search-clear" title="Show all attacks">Clear</button>
-</div>
+<!-- attacklist.html: Outer structure, search and filters for the attack list -->
+<form class="mb-3" id="attack-filters" role="search" onsubmit="return false">
+  <div class="input-group mb-2">
+    <span class="input-group-text" id="attack-search-addon"><svg xmlns="http://www.w3.org/2000/svg" height="24px"
+        viewBox="0 -960 960 960" width="24px" fill="#1f1f1f">
+        <path
+          d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z" />
+      </svg></span>
+    <input type="search" class="form-control" name="q" id="attack-search" placeholder="Name or description"
+      aria-label="Name or description" aria-describedby="attack-search-addon">
+    <button class="btn btn-outline-secondary" type="reset" id="attack-search-clear" title="Show all attacks">Clear</button>
+  </div>
+  <div class="row g-2 mb-2">
+    <div class="col-6 col-md-4">
+      <select class="form-select form-select-sm" name="element" aria-label="Element">
+        <option value="">All elements</option>
+        {{- range site.Data.bestia_blueprint.elements }}
+        <option value="{{ . }}">{{ lower . | title }}</option>
+        {{- end }}
+      </select>
+    </div>
+    <div class="col-6 col-md-4">
+      <select class="form-select form-select-sm" name="type" aria-label="Type">
+        <option value="">All types</option>
+        {{- range site.Data.bestia_blueprint.archetypes }}
+        <option value="{{ .id }}">{{ .label }}</option>
+        {{- end }}
+      </select>
+    </div>
+    <div class="col-12 col-md-4">
+      <div class="input-group input-group-sm">
+        <span class="input-group-text">Level</span>
+        <input type="number" class="form-control" name="min" min="1" max="100" placeholder="1" aria-label="Lowest level">
+        <span class="input-group-text">to</span>
+        <input type="number" class="form-control" name="max" min="1" max="100" placeholder="100" aria-label="Highest level">
+      </div>
+    </div>
+  </div>
+  <div class="d-flex flex-wrap align-items-center gap-3">
+    <select class="form-select form-select-sm w-auto" name="sort" aria-label="Sort by">
+      <option value="level">Sort by level</option>
+      <option value="name">Sort by name</option>
+    </select>
+    <div class="form-check mb-0">
+      <input class="form-check-input" type="checkbox" name="learner" value="bestia" id="attack-bestia-only">
+      <label class="form-check-label small" for="attack-bestia-only">Bestias can learn</label>
+    </div>
+    <div class="form-check mb-0">
+      <input class="form-check-input" type="checkbox" name="game" value="yes" id="attack-in-game">
+      <label class="form-check-label small" for="attack-in-game">In game</label>
+    </div>
+    <div class="ms-auto small text-body-secondary" id="attack-count" role="status"></div>
+  </div>
+</form>
 <div class="row row-cols-1 row-cols-lg-2 g-4 mb-4" id="attack-list-container">
   {{- range site.Data.attacks }}
   {{ partial "attack-card.html" . }}
   {{- end }}
 </div>
+<p class="text-body-secondary" id="attack-none" hidden>No attack matches these filters.</p>
 <script>
-  function filterAttacks(query) {
-    const cards = document.querySelectorAll('#attack-list-container .col');
-    query = query.toLowerCase().trim();
-    cards.forEach(card => {
-      const title = card.querySelector('.card-title');
-      card.style.display = (title && title.textContent.toLowerCase().includes(query)) ? '' : 'none';
-    });
-  }
-
   (function () {
-    const input = document.getElementById('attack-search');
-    const clearBtn = document.getElementById('attack-search-clear');
+    const form = document.getElementById('attack-filters');
+    const container = document.getElementById('attack-list-container');
+    const cards = [...container.querySelectorAll(':scope > .col')];
+    const count = document.getElementById('attack-count');
+    const none = document.getElementById('attack-none');
+    const FILTERS = ['q', 'element', 'type', 'min', 'max', 'sort', 'learner', 'game'];
+
+    function readFilters() {
+      const f = Object.fromEntries(new FormData(form));
+      return {
+        words: (f.q || '').toLowerCase().split(/\s+/).filter(Boolean),
+        element: f.element,
+        type: f.type,
+        min: Number(f.min) || 1,
+        max: Number(f.max) || 100,
+        sort: f.sort,
+        learner: f.learner,
+        game: f.game,
+      };
+    }
+
+    function matches(card, f) {
+      const d = card.dataset;
+      const level = Number(d.level);
+      return f.words.every((w) => d.search.includes(w)) &&
+        (!f.element || d.element === f.element) &&
+        (!f.type || d.archetype === f.type) &&
+        level >= f.min && level <= f.max &&
+        (!f.learner || d.learner === f.learner) &&
+        (!f.game || d.inGame === f.game);
+    }
+
+    const byLevel = (a, b) => a.dataset.level - b.dataset.level || a.dataset.name.localeCompare(b.dataset.name);
+    const byName = (a, b) => a.dataset.name.localeCompare(b.dataset.name);
+
+    function apply() {
+      const f = readFilters();
+      const shown = cards.filter((card) => {
+        const show = matches(card, f);
+        card.hidden = !show;
+        return show;
+      });
+      [...cards].sort(f.sort === 'name' ? byName : byLevel).forEach((card) => container.appendChild(card));
+      count.textContent = `${shown.length} of ${cards.length} attacks`;
+      none.hidden = shown.length > 0;
+    }
+
+    // The filters live in the query string, so a filtered list can be shared as a link.
+    function saveToUrl() {
+      const params = new URLSearchParams();
+      for (const [key, value] of new FormData(form)) if (value && !(key === 'sort' && value === 'level')) params.set(key, value);
+      const query = params.toString();
+      history.replaceState(null, '', location.pathname + (query ? '?' + query : '') + location.hash);
+    }
+
+    function loadFromUrl() {
+      const params = new URLSearchParams(location.search);
+      for (const name of FILTERS) {
+        const field = form.elements[name];
+        if (!params.has(name)) continue;
+        if (field.type === 'checkbox') field.checked = params.get(name) === field.value;
+        else field.value = params.get(name);
+      }
+    }
 
     // Deep links such as /docs/mechanics/attack-list/#tackle narrow the list down to the
     // linked attack instead of only scrolling to it.
     function applyHashFilter() {
       const id = decodeURIComponent(location.hash.replace(/^#/, ''));
-      if (!id) return;
-      const card = document.getElementById(id);
-      if (!card || !card.closest('#attack-list-container')) return;
-      input.value = id.replace(/-/g, ' ');
-      filterAttacks(input.value);
+      const card = id && document.getElementById(id);
+      if (!card || !container.contains(card)) return;
+      form.reset();
+      form.elements.q.value = card.dataset.name;
+      apply();
       card.scrollIntoView({ block: 'center' });
     }
 
-    clearBtn.addEventListener('click', function () {
-      input.value = '';
-      filterAttacks('');
-      if (location.hash) history.replaceState(null, '', location.pathname + location.search);
-      input.focus();
+    form.addEventListener('input', () => {
+      apply();
+      saveToUrl();
     });
-
+    // A reset event fires before the fields are cleared.
+    form.addEventListener('reset', () => setTimeout(() => {
+      history.replaceState(null, '', location.pathname);
+      apply();
+      form.elements.q.focus();
+    }));
     window.addEventListener('hashchange', applyHashFilter);
+
+    loadFromUrl();
+    apply();
     applyHashFilter();
   })();
 </script>
