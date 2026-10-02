@@ -10,7 +10,9 @@
   <button class="btn btn-outline-secondary" type="button" id="attack-search-clear" title="Show all attacks">Clear</button>
 </div>
 <div class="row row-cols-1 row-cols-lg-2 g-4 mb-4" id="attack-list-container">
-  {{ .Inner }}
+  {{- range site.Data.attacks }}
+  {{ partial "attack-card.html" . }}
+  {{- end }}
 </div>
 <script>
   function filterAttacks(query) {
