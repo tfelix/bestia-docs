@@ -1,0 +1,74 @@
+# Every attack on the Attack List page. The page renders from this file, and the Bestia Blueprint
+# Calculator loads it as JSON to reuse attacks that already exist before it invents new ones.
+#
+# archetype and element tell the calculator what kind of attack this is, see
+# data/bestia_blueprint.yaml. skill and skillId name the attack's row in zone-server's skills.yml, if it
+# has one; a mob YAML's learnset refers to it by skill.
+# bestia: false marks an attack a bestia cannot learn.
+
+- id: minor_heal
+  name: Minor Heal
+  icon: minor-heal.png
+  level: 10
+  mana: 10
+  school: White
+  archetype: heal
+  element: HOLY
+  description: |
+    Recovers the health of a friendly a little bit. A essential spell for every adventurer.
+
+- id: heal
+  name: Heal
+  icon: heal.png
+  level: 45
+  mana: 25
+  school: White
+  archetype: heal
+  element: HOLY
+  skill: HEAL
+  skillId: 4
+  description: |
+    Recovers the health of a friendly for a fairly amount. Used to treat wounds.
+
+- id: greater_heal
+  name: Greater Heal
+  level: 80
+  mana: 49
+  school: White
+  archetype: heal
+  element: HOLY
+  description: |
+    Recovers a great amount of health of a friendly unit. It can almost bring bad even the dead.
+
+- id: tackle
+  name: Tackle
+  icon: tackle.png
+  level: 1
+  mana: 2
+  school: Black
+  archetype: strike
+  element: NORMAL
+  description: |
+    Quick attack which uses the body weight in a short range melee attack. It does only little damage but is quick and cheap.
+
+- id: ember
+  name: Ember
+  level: 3
+  mana: 6
+  school: Black
+  archetype: dot
+  element: FIRE
+  skill: ember
+  skillId: 1000
+  description: |
+    A weak fire attack which leaves a patch of burning coals on the ground which can hurt if someone steps in. It is said this is often a source of forrest fires. Lasts for `10s`.
+
+- id: banished_from_the_citadel
+  name: Banished From The Citadel
+  icon: banished-from-the-citadel.png
+  level: 75
+  mana: 150
+  school: Arcane
+  bestia: false
+  description: |
+    A powerful ritual which severs your ties to your [Order](/docs/mechanics/factions/#switching-an-order) and leaves you unsworn. It can only be performed on yourself, and only while you wear a [Sigil of Redemption](/docs/mechanics/equip-list/#sigil-of-redemption), which the rite consumes. Gives a debuff which reduces your status values to `50%` for `Lv/2` (rounded up) days.
