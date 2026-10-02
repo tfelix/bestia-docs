@@ -238,16 +238,6 @@ archetypes:
     range: 6
     mana: { base: 8, perSkillLevel: 1 }
 
-# Attacks that already exist, so a blueprint reuses them before it invents one. `element: any`
-# matches every element.
-existingAttacks:
-  - { archetype: strike, element: NORMAL, identifier: tackle, note: "docs Attack List; no skills.yml row yet" }
-  - { archetype: bolt, element: FIRE, identifier: firebolt, skillId: 5, note: "a master skill, also a bestia attack" }
-  - { archetype: dot, element: FIRE, identifier: ember, skillId: 1000, note: "the only bestia skill in skills.yml" }
-  - { archetype: heal, element: any, identifier: heal, skillId: 4, note: "a master skill" }
-  - { archetype: buff, element: any, identifier: blessing, skillId: 6, note: "a master skill; raises attributes rather than damage" }
-  - { archetype: debuff, element: any, identifier: cripple, note: "status effect only; needs a skill to apply it" }
-
 # Basic attack ids already used in AI profiles.
 basicAttacks: [claw, bite, nip]
 
@@ -317,7 +307,24 @@ elementLevels:
 
 sizes: [SMALL, MEDIUM, BIG]
 
-# AI profiles in zone-server/src/main/resources/ai/.
+# The kind of creature a bestia is: what it is made of and how it lives. Breeding needs two of
+# the same kind. Mirrors BestiaKind in zone-server; a new kind must be added in both places.
+kinds:
+  - { id: BEAST, summary: "Four-legged animals: boars, wolves, bears" }
+  - { id: BIRD, summary: "Feathered and winged animals" }
+  - { id: REPTILE, summary: "Lizards, snakes, toads and other cold-blooded animals" }
+  - { id: AQUATIC, summary: "Fish, crabs and anything that lives in water" }
+  - { id: INSECT, summary: "Insects, spiders, worms" }
+  - { id: PLANT, summary: "Living plants and fungi" }
+  - { id: FORMLESS, summary: "Blobs, slimes and other creatures without a fixed shape" }
+  - { id: ELEMENTAL, summary: "Living stone, fire, water or wind" }
+  - { id: HUMANOID, summary: "Two-legged, tool-using people: goblins, bandits, townsfolk" }
+  - { id: UNDEAD, summary: "The dead that walk: skeletons, ghosts, wraiths" }
+  - { id: DEMON, summary: "Creatures of the void and corrupted land" }
+  - { id: DRAGON, summary: "Dragons and their lesser kin" }
+
+# AI profiles in zone-server/src/main/resources/ai/. The calculator also offers "custom": a
+# behaviour described in words, for a new profile written while the mob is implemented.
 aiProfiles:
   - { id: passive_wanderer, label: "Passive - fights back when hit" }
   - { id: passiv_day_active, label: "Passive by day - holds a grudge" }
@@ -335,7 +342,7 @@ spawnBands:
   - { levels: "41-79", where: "The wilderness proper", perKm2: 60, pack: 12 }
   - { levels: "80-100", where: "Corrupted land and boss dens", perKm2: 25, pack: 6 }
 
-# Loot. Chance is in basis points as in mob YAML: 10000 = 100 %.
+# Loot. A designer gives chances in percent; the mob YAML stores basis points (10000 = 100 %).
 loot:
   # Expected coin value of one kill at par: coinsPerExp · (4·lv + 5). Anchored to bread (9 coins)
   # for a Lv 1 kill. Loot sold to NPCs drains finite treasuries (money-supply.md), so keep it modest.
@@ -350,11 +357,12 @@ loot:
   maxDeficitBonus: 0.1
   # One drop worth more than this many loot budgets is a jackpot that the average hides.
   jackpotFactor: 100
+  # A drop's tier follows from its chance in percent. It names the kind of item that fits it.
   tiers:
-    - { id: common, label: Common, chance: { min: 3000, max: 8000 }, use: "Body part or resource the bestia is made of" }
-    - { id: uncommon, label: Uncommon, chance: { min: 500, max: 1500 }, use: "Better part, simple consumable" }
-    - { id: rare, label: Rare, chance: { min: 50, max: 200 }, use: "Equipment, spell scroll, crafting catalyst" }
-    - { id: very_rare, label: Very rare, chance: { min: 1, max: 10 }, use: "Signature equipment, collectibles" }
+    - { id: common, label: Common, chance: { min: 30, max: 80 }, use: "Body part or resource the bestia is made of" }
+    - { id: uncommon, label: Uncommon, chance: { min: 5, max: 15 }, use: "Better part, simple consumable" }
+    - { id: rare, label: Rare, chance: { min: 0.5, max: 2 }, use: "Equipment, spell scroll, crafting catalyst" }
+    - { id: very_rare, label: Very rare, chance: { min: 0.01, max: 0.1 }, use: "Signature equipment, collectibles" }
 
 # Kill EXP and the level curve from bestia.md.
 exp:

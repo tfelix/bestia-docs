@@ -10,11 +10,12 @@
   const B = window.BestiaBlueprint;
   const data = JSON.parse(document.getElementById("bp-data").textContent);
   const $ = (id) => document.getElementById(id);
-  const STORAGE_KEY = "bestia-blueprint-input";
+  // Bumped when the input shape changes, so an old saved form does not break the page.
+  const STORAGE_KEY = "bestia-blueprint-input-v2";
   const DEFAULT_LOOT = [
-    { item: "boar_bristle", tier: "common", value: 4, chance: 6000 },
-    { item: "raw_meat", tier: "uncommon", value: 10, chance: 1000 },
-    { item: "tusk_charm", tier: "rare", value: 150, chance: 100 },
+    { item: "raw_hide", chance: 60 },
+    { item: "raw_meat", chance: 30 },
+    { item: "medicinal_herb", chance: 2 },
   ];
 
   // Only the player's choice of attacks lives outside the form, so it survives a re-render.
@@ -39,7 +40,6 @@
     });
     input.level = Math.min(100, Math.max(1, parseInt(input.level, 10) || 1));
     input.elementLevel = input.elementLevel ? parseInt(input.elementLevel, 10) : null;
-    input.secondaryElement = input.secondaryElement || null;
     input.basicCooldown = Math.max(0.5, parseFloat(input.basicCooldown) || 1.5);
     input.lootBalance = parseFloat(input.lootBalance) || 0;
     input.identifier = input.identifier ? slug(input.identifier) : slug(input.name);
@@ -67,6 +67,7 @@
       else el.value = v ?? "";
     });
     loot = (input.loot || []).map((row) => ({ ...row }));
+    $("bp-ai-custom-box").hidden = input.ai !== "custom";
     activeSlots = input.activeSlots ?? null;
     const manual = Boolean(input.overrides);
     $("bp-manual").checked = manual;
@@ -160,27 +161,42 @@
   }
 
   function renderLoot(bp) {
-    const tierOptions = (selected) => data.loot.tiers.map((t) => `<option value="${t.id}" ${t.id === selected ? "selected" : ""}>${t.label}</option>`).join("");
     // Rebuilding the rows would steal focus while typing, so only the row count triggers it.
     const body = $("bp-loot");
     if (body.children.length !== loot.length) {
       body.innerHTML = loot
         .map((row, i) => `<tr data-row="${i}">
-          <td><input class="form-control form-control-sm" data-loot="item" value="${escapeHtml(row.item)}"></td>
-          <td><select class="form-select form-select-sm" data-loot="tier">${tierOptions(row.tier)}</select></td>
-          <td><input class="form-control form-control-sm" data-loot="value" type="number" min="0" value="${row.value}"></td>
-          <td><input class="form-control form-control-sm" data-loot="chance" type="number" min="1" max="10000" value="${row.chance}"></td>
+          <td><input class="form-control form-control-sm" data-loot="item" list="bp-items" value="${escapeHtml(row.item)}" placeholder="start typing"></td>
+          <td><input class="form-control form-control-sm" data-loot="chance" type="number" min="0.01" max="100" step="any" value="${row.chance}"></td>
+          <td class="small" data-loot-info></td>
           <td><button type="button" class="btn btn-sm btn-outline-danger" data-loot-remove="${i}" aria-label="Remove">×</button></td></tr>`)
         .join("");
     }
+    const tierLabel = (id) => data.loot.tiers.find((t) => t.id === id).label.toLowerCase();
+    const resolved = bp.loot.rows;
+    [...body.querySelectorAll("[data-loot-info]")].forEach((cell, i) => {
+      const row = resolved.find((r) => r.name === loot[i].item || r.item === String(loot[i].item).trim().toLowerCase());
+      cell.innerHTML = !loot[i].item ? "" : row && row.known ? `${fmt(row.value)} coins, ${tierLabel(row.tier)}` : '<span class="text-warning">not on the Items List</span>';
+    });
+
     const l = bp.loot;
-    const outOfBand = loot
-      .map((row) => {
-        const t = data.loot.tiers.find((x) => x.id === row.tier);
-        return t && (row.chance < t.chance.min || row.chance > t.chance.max) ? `${escapeHtml(row.item)}: a ${t.label.toLowerCase()} drop is usually ${t.chance.min}-${t.chance.max} ‱` : null;
-      })
-      .filter(Boolean);
-    $("bp-loot-summary").innerHTML = `Expected value <strong>${fmt(l.expectedValue, 1)}</strong> coins per kill against a budget of ${fmt(l.baseline, 1)} (score ${fmt(l.score, 2)}). EXP × ${fmt(l.expFactor, 2)}, HP + ${fmt(l.hpBonus * 100)} %.${outOfBand.length ? `<br><span class="text-warning">${outOfBand.join("<br>")}</span>` : ""}`;
+    const share = l.baseline > 0 ? (l.expectedValue / l.baseline) * 100 : 0;
+    let verdict;
+    if (l.score > 1) {
+      const lessExp = Math.round((1 - l.expFactor) * 100);
+      const moreHp = Math.round(l.hpBonus * 100);
+      const paid = [lessExp ? `${lessExp} % less EXP` : null, moreHp ? `${moreHp} % more HP` : null].filter(Boolean).join(" and ");
+      verdict = `That is more than it should drop, so it pays with <strong>${paid || "nothing yet; move the slider"}</strong>.`;
+    } else {
+      const moreExp = Math.round((l.expFactor - 1) * 100);
+      verdict = moreExp > 0
+        ? `That is less than it should drop, so it gives <strong>${moreExp} % more EXP</strong> to make up for it.`
+        : "That is about what it should drop.";
+    }
+    $("bp-loot-summary").innerHTML = `
+      <p class="mb-1">One kill drops items worth <strong>${fmt(l.expectedValue, 1)} coins</strong> on average (each chance × the item's value).</p>
+      <p class="mb-1">A bestia this strong should drop about <strong>${fmt(l.baseline, 1)} coins</strong> per kill: its EXP in coins. This loot is <strong>${fmt(share)} %</strong> of that.</p>
+      <p class="mb-0">${verdict}</p>`;
   }
 
   function renderPreview() {
@@ -206,8 +222,9 @@
     const t = e.target;
     if (t.dataset.loot) {
       const row = loot[Number(t.closest("tr").dataset.row)];
-      row[t.dataset.loot] = t.dataset.loot === "value" || t.dataset.loot === "chance" ? Number(t.value) : t.value;
+      row[t.dataset.loot] = t.dataset.loot === "chance" ? Number(t.value) : t.value;
     }
+    if (t.dataset.field === "ai") $("bp-ai-custom-box").hidden = t.value !== "custom";
     if (t.dataset.field === "role" || t.dataset.field === "tier" || t.dataset.field === "level") activeSlots = null;
     if (t.dataset.slot) {
       activeSlots = [...root.querySelectorAll("[data-slot]:checked")].map((el) => Number(el.dataset.slot));
@@ -234,7 +251,7 @@
   });
 
   $("bp-loot-add").addEventListener("click", () => {
-    loot.push({ item: "", tier: "common", value: 1, chance: 5000 });
+    loot.push({ item: "", chance: 10 });
     $("bp-loot").innerHTML = "";
     render();
   });
@@ -291,5 +308,19 @@
   } catch (e) {
     // A stale or blocked store just means the defaults.
   }
-  render();
+
+  // Items and attacks come from the same files the Items List and Attack List pages render.
+  const fetchJson = (url) => fetch(url).then((r) => (r.ok ? r.json() : Promise.reject(new Error(`${url}: ${r.status}`))));
+  Promise.all([fetchJson(root.dataset.itemsUrl), fetchJson(root.dataset.attacksUrl)])
+    .then(([items, attacks]) => {
+      data.items = items;
+      data.attacks = attacks;
+      $("bp-items").innerHTML = items.map((it) => `<option value="${escapeHtml(it.id)}">${escapeHtml(it.name)}, ${it.value} coins</option>`).join("");
+    })
+    .catch((err) => {
+      data.items = [];
+      data.attacks = [];
+      $("bp-warnings").insertAdjacentHTML("beforebegin", `<div class="alert alert-danger small">Could not load the item and attack lists (${escapeHtml(err.message)}). Loot and existing attacks are missing.</div>`);
+    })
+    .finally(render);
 })();
