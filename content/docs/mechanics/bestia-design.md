@@ -1,0 +1,323 @@
+---
+weight: 310
+title: Designing a Bestia
+katex: true
+description: "A step-by-step method that turns a level into the attributes, HP, attacks, EXP and loot of a new bestia. Every number is measured against a master of the same level."
+---
+
+{{< alert context="warning" text="This page is a design method. The formulas it measures with are the server's, but some of its outputs (element, size, defences, compendium text) have no place in the mob YAML yet. See [What the server does not do yet](#what-the-server-does-not-do-yet)." />}}
+
+A new bestia needs about twenty numbers: six attributes, HP, mana, EXP, an attack list and drop chances. Picked by
+hand, they drift apart. A bestia ends up too strong for its level, or worth too little EXP for the trouble.
+
+This page gives one method for all of them. The idea is simple: **a Lv 10 bestia is measured against a Lv 10
+master.** The method fits the bestia to a target fight, then pays for the fight it produces with EXP and loot. Each
+step is a formula, so it can be run by hand or by a tool.
+
+The tables on this page are read from `data/bestia_blueprint.yaml`. Change a number there and this page follows.
+
+```mermaid
+flowchart LR
+  A[Level and tier] --> B[Reference master]
+  B --> C[Attributes from a role]
+  C --> D[Attacks]
+  D --> E[Fit damage and HP]
+  E --> F[Threat]
+  F --> G[EXP and loot]
+  G --> H[Compendium entry]
+```
+
+# 1. Level and tier
+
+**Pick the level from where the bestia should live.** The world generator places dens in four level bands, and a
+species only fills dens close to its own level. A den spans its centre ±4 levels.
+
+{{< blueprint-table name="spawn" >}}
+
+**Then pick a tier.** A tier says how many players the bestia is built for. It scales the targets of
+[step 3](#3-the-target-fight), so a higher tier is a longer and harder fight, not a different formula.
+
+{{< blueprint-table name="tiers" >}}
+
+- **Critter**: wildlife that fights back weakly. It is a lesson for new players, not a threat.
+- **Normal**: the bestia a player fights alone. Everything else is defined relative to it.
+- **Elite**: a pack leader or a rare spawn. A player alone loses to it.
+- **Boss**: built for a group. It sets `boss: true` in the mob YAML.
+
+# 2. The reference master
+
+Every check on this page is a fight against a **reference master of the same level**. It is built from the real
+server rules, so it changes when they do:
+
+- **Attribute points:** 84 at creation, plus `5 + floor(level / 2)` for every level reached.
+- **Spending:** each point goes into the attribute that lags furthest behind. The cost of a point rises with the
+  value, `max(1, next / 3)`, the same as for a player. At Lv 1 this gives the even 9/9/9/9/9/9 spread of a new master.
+- **Gear:** the novice knife (weapon ATK 10) and the starter kit (hard DEF 5), the same pair `BlobBalanceTest` uses.
+  Weapons and armour have no item level yet. So the method assumes +1 weapon ATK and +0.25 hard DEF per level until
+  they do.
+- **HP and attack speed:** the master's own formulas, see [Status Values](/docs/mechanics/statusvalues/#health).
+
+| Level | Attributes (STR/VIT/INT/AGI/DEX/WIL) |  HP | ATK | Soft DEF | FLEE | Weapon ATK | Hard DEF | Seconds per swing |
+| ----: | :----------------------------------- | --: | --: | -------: | ---: | ---------: | -------: | ----------------: |
+|     1 | 9/9/9/9/9/9                          |  18 |  13 |       11 |  111 |         10 |        5 |              1.34 |
+|    10 | 13/13/12/12/12/12                    |  37 |  21 |       19 |  124 |         19 |        7 |              1.32 |
+|    50 | 32/31/31/31/31/31                    | 137 |  60 |       55 |  187 |         59 |       17 |              1.18 |
+|   100 | 56/56/56/56/56/55                    | 304 | 110 |      103 |  267 |        109 |       30 |              1.01 |
+
+An even spread is a choice. A real player specialises and hits harder. But an even master is the fair middle: a
+specialised player finds a normal bestia easy, and a crafter finds it hard.
+
+# 3. The target fight
+
+The method needs one definition of a fair fight. It uses the pace of Ragnarok Online's classic era: a same-level
+monster takes a few swings to kill and hurts enough that two at once are a real risk.
+
+| Measure                                             | Minimum | Target | Maximum |
+| :-------------------------------------------------- | ------: | -----: | ------: |
+| Swings the master needs to kill it, misses included |       5 |      6 |       8 |
+| Share of the master's HP it takes in that fight     |    30 % |   45 % |    60 % |
+
+At the target, a player can take two fights before resting. The two numbers become two targets for the bestia:
+
+- **Defence:** HP so the master needs `6 × tier defence` swings.
+- **Offence:** damage per second so that a normal fight costs 45 % of the master's HP. That is
+  `0.45 × masterHP / (6 × masterSwingSeconds) × tier offence`.
+
+Damage per second counts **everything the bestia does**: basic attacks, spells, damage over time, buffs and the time
+it spends casting. A bestia that casts a strong spell does not get a free basic attack on top of it.
+
+# 4. Attributes from a role
+
+**The budget.** A bestia gets a share of the master's attribute total:
+
+<!-- prettier-ignore -->
+{{< katex >}}
+$$budget = \sum attributes_{master} \cdot tier_{budget}$$
+{{< /katex >}}
+
+**The role** splits the budget by weight, and decides which attacks the species learns.
+
+{{< blueprint-table name="roles" >}}
+
+**The basic attack is then fitted.** STR and DEX are raised or lowered together until the basic attack deals its
+**basic share** of the offence target. The other four attributes keep the role's split, so a caster keeps its INT.
+
+Fitting is needed because defence is subtracted, not divided. Near the target's soft DEF a single point of STR can
+add 25 % to the damage of a swing. A budget split alone would land anywhere between harmless and deadly.
+
+At low levels the fit often ends at STR 1. The master's soft DEF absorbs every swing, and each hit does the minimum
+of 1. That is fine: the attacks carry the damage instead.
+
+# 5. Attacks
+
+## The learnset
+
+A species learns **20 attacks from Lv 1 to 100**, 15 of them by Lv 70, as [Bestias](/docs/mechanics/bestia/#attacks)
+asks. Each of the 20 slots has a fixed learn level, and the role fills each slot with an **archetype**:
+
+| Slot        |   1 |   2 |   3 |   4 |   5 |   6 |   7 |   8 |   9 |  10 |
+| :---------- | --: | --: | --: | --: | --: | --: | --: | --: | --: | --: |
+| Learn level |   1 |   6 |  11 |  16 |  21 |  26 |  31 |  36 |  41 |  46 |
+| **Slot**    |  11 |  12 |  13 |  14 |  15 |  16 |  17 |  18 |  19 |  20 |
+| Learn level |  51 |  56 |  61 |  66 |  70 |  76 |  82 |  88 |  94 | 100 |
+
+{{< blueprint-table name="archetypes" >}}
+
+- **Skill level:** an attack is locked at the level it was learned with, `1 + floor(learnLevel / 10)`, up to 10.
+  This is the bestia side of the rule that a master levels a spell but a bestia does not.
+- **Element:** spells take the species element. A physical attack is NORMAL the first time; a repeat of it is the
+  species' own stronger take on it and takes the element too. A species with a second element uses it on every
+  other spell from Lv 26.
+- **Reuse first:** an attack that already exists is used once before a new one is made up. Every later slot of the
+  same archetype becomes a new attack with its own name, for example _Earth Power Strike II_.
+
+## The active attacks
+
+A wild bestia does not use all it knows. Its AI profile lists a **basic attack plus a few active attacks**: the
+newest ones it knows, one per archetype. The tier sets how many. These are the attacks the fit and the fight below
+use.
+
+## Attack power
+
+Skill scripts scale with the attacker's level and skill level. Firebolt deals `(lv/4 + INT) · skillLv`, and the
+skill level itself grows with the learn level. So spell damage grows with roughly the square of the level, while the
+master's HP grows about linearly. No attribute can hold that back.
+
+So the attacks get one shared **attack power** coefficient. It is solved so that the whole rotation meets the offence
+target. The blueprint gives it per attack, and the script of a new attack uses it like this:
+
+| Kind     | Damage of one use                                                     | Defence           |
+| :------- | :-------------------------------------------------------------------- | :---------------- |
+| physical | `2 · ATK · coef`, then like a basic swing (ranged uses RATK)          | hard and soft DEF |
+| magic    | `((lv/4 + INT) · skillLv + MATK) · coef − SoftMDEF`, never misses     | soft MDEF         |
+| dot      | `(lv/8 + INT/2 + MATK/4) · skillLv · coef` per tick, 8 ticks of 1.2 s | none              |
+| heal     | `(lv + INT)/8 · (4 + 8 · skillLv) · coef` on itself                   | —                 |
+
+The magic row is Firebolt with the coefficient over the whole attack side. On Firebolt's MATK term alone, a high-INT
+caster could not be tuned down.
+
+# 6. HP, mana and the balance check
+
+**HP is solved last.** It is set so the master needs the target number of swings. The fight includes the bestia's
+heals and debuffs, so a bestia that heals itself gets less raw HP for the same fight length.
+
+**Mana** uses the documented formula from [Status Values](/docs/mechanics/statusvalues/#mana), with the role's base
+value and a wild IV of 50. Mana regenerates every 8 s. A caster that runs dry falls back to its basic attack, and the
+fight shows that.
+
+**The fight is simulated** in steps of 50 ms, with expected values instead of dice: every swing deals its average
+damage times its hit chance. The bestia heals below 50 % HP, keeps its buff and debuff up, and otherwise casts the
+hardest-hitting attack that is ready. Hit chance, crits, attack speed and defence are the server's formulas, see
+[Battle System](/docs/server/battle/).
+
+**Threat** compares the result with a normal bestia of the same level, the way the D&D 5e monster rules average a
+defensive and an offensive rating:
+
+<!-- prettier-ignore -->
+{{< katex >}}
+$$threat = \sqrt{\frac{swings}{6} \cdot \frac{dps}{dps_{normal}}}$$
+{{< /katex >}}
+
+A normal bestia that hits its targets has a threat of 1. An elite is near 2, a boss near 6. A bestia that was given
+more HP or a stronger spell than the fit asked for shows it here, and is paid for in EXP.
+
+# 7. Element, size and defences
+
+**Element level** follows the level: 1 up to Lv 25, 2 up to Lv 50, 3 up to Lv 75 and 4 above. A boss gets one more,
+up to 4. The element decides what the bestia takes from every attack element. The table is the server's
+`ElementModifier`, which follows Ragnarok Online. An EARTH 1 bestia takes 150 % from fire and 50 % from wind.
+
+The element changes the fight. A GHOST bestia takes 25 % from the master's NORMAL swings, and soft DEF is subtracted
+after that. Only a few points get through, so the fit gives it about a tenth of the HP of a NORMAL one. A player
+without an elemental weapon still needs the same six swings, but a player with one wins much faster.
+
+**Size** is SMALL, MEDIUM or BIG. The server has the Ragnarok Online size table but does not use it yet.
+
+**Defences beyond attributes** are design intent for now:
+
+- **Hard DEF and MDEF** come only from equipment, so every mob has 0. A shelled or armoured species should note a
+  hard DEF in its blueprint for the day mobs get one.
+- **Status immunities**: a boss should resist Stun, Freeze and Petrify, or a group can lock it down for the whole
+  fight.
+
+# 8. Rewards: EXP and loot
+
+## EXP
+
+The base comes from [Bestias](/docs/mechanics/bestia/#killing-enemies) and is scaled by the threat:
+
+<!-- prettier-ignore -->
+{{< katex >}}
+$$exp = (4 \cdot lv + 5) \cdot threat \cdot loot_{factor}$$
+{{< /katex >}}
+
+This is the `experience` value of the mob YAML. The kill-time bonuses from [Bestias](/docs/mechanics/bestia/#killing-enemies)
+(+200 % for a boss, +10 % per element level) come on top when the kill happens. They are not part of the YAML value.
+
+The **EXP-equivalent level**, `(exp − 5) / 4` before loot, says what the bestia is worth in normal bestias. An elite
+at Lv 50 is worth a normal one at Lv 100.
+
+## Loot
+
+Loot is a second reward, so it is paid for like the first one. A kill has a **loot budget** in coins, worth about its
+EXP:
+
+<!-- prettier-ignore -->
+{{< katex >}}
+$$budget_{loot} = 1\ coin \cdot (4 \cdot lv + 5) \cdot threat$$
+{{< /katex >}}
+
+A Lv 1 kill is worth about one loaf of bread (9 coins). The expected value of a drop table is `Σ chance × value`. The
+**loot score** is that value divided by the budget.
+
+{{< blueprint-table name="loot" >}}
+
+**Surplus loot is paid for.** A designer decides how, with one slider:
+
+- **Less EXP:** `exp × 1 / (1 + 0.5 · surplus)`, never below half.
+- **Tougher:** HP up by `15 % · surplus`, at most 30 %.
+
+A score of 2 (twice the budget) costs a third of the EXP, or adds 15 % HP. A bestia that drops almost nothing gives up
+to 10 % more EXP.
+
+Three rules come before the numbers:
+
+- **Loot must make sense.** A wolf drops fur and fangs, not iron ore, see [Resources](/docs/mechanics/natural-resources/).
+- **Rare drops are rare.** A very rare drop with a huge value hides inside an average. Check the single item too: one
+  drop worth more than 100 times the loot budget is a jackpot, and players will farm that bestia and nothing else.
+- **Loot is money.** Players sell loot to NPCs, and NPC purses are finite, see [Money Supply](/docs/server/money-supply/).
+  Monster loot is still an unbounded faucet of items, so the budget stays modest.
+
+# 9. The compendium entry
+
+Every bestia gets an entry for a future **Bestia Compendium**, the in-game book of known species. The
+[Sense](/docs/mechanics/master/#skill-sense) skill already reveals status values, element, HP and mana. The compendium
+is where a player keeps what they have learned.
+
+| Field            | Content                                                          |
+| :--------------- | :--------------------------------------------------------------- |
+| Name and epithet | `Burrow Boar`, "the field-wrecker"                               |
+| Kind             | The breeding kind: beast, humanoid, formless and so on           |
+| Description      | 1 to 3 sentences, at most 300 characters                         |
+| Habitat          | Biomes from the world generator, and a temperature range         |
+| Activity         | Day, night or any                                                |
+| Temperament      | What its AI profile does: passive, fights back, attacks on sight |
+
+**The description is flavour that helps.** It says what the bestia looks like and how it behaves, and gives one hint
+a player can use: a weakness, where it lives or what it drops. It contains no numbers, because numbers change and
+flavour text does not get updated.
+
+> _Burrow Boars root up whole fields overnight and sleep through the day in their burrows. Their bristles are prized
+> by brush-makers. They hate the wind, and a gust will send one bolting._
+
+# Worked example: a Lv 2 Burrow Boar
+
+A starter-ring bestia that a new player should be able to fight alone. Lv 2, normal tier, brute, EARTH 1, using the
+server as it runs today (see below).
+
+| Step       | Result                                                                                                  |
+| :--------- | :------------------------------------------------------------------------------------------------------ |
+| Master     | Lv 2: STR 10, VIT 10, rest 9; 20 HP; 1.34 s per swing                                                   |
+| Targets    | 6 swings; 1.12 damage per second, so a fight of about 8 s costs 9 of the master's 20 HP                 |
+| Attributes | STR 7, VIT 9, INT 2, AGI 6, DEX 4, WIL 3                                                                |
+| Attacks    | basic bite, plus Tackle (learned at Lv 1, skill Lv 1), attack power 0.88                                |
+| HP, mana   | 136 HP, 29 mana                                                                                         |
+| Fight      | 6.0 swings, 40 % of the master's HP; 0.48 damage per second from bites and 0.64 from Tackle; threat 1.0 |
+| Loot       | bristle 60 % (4 coins), raw meat 10 % (10 coins), tusk charm 1 % (150 coins): 4.9 coins against 13      |
+| EXP        | `(4 · 2 + 5) · 1.0 · 1.06` = **14**, and 15 at kill time with the element bonus                         |
+
+If the tusk charm were worth 1,500 coins, the loot score would rise to 1.42. With the slider on _less EXP_ the boar
+gives 11 EXP. With the slider on _tougher_ it keeps 13 EXP and gets 144 HP.
+
+**The blob, measured.** Today's `mob/blob.yml` (Lv 3, 10 HP, STR 6) dies to less than half a swing from a Lv 3
+master. Its threat sits at the floor of 0.25, and the method gives it **5 EXP**, the value its YAML already has. By
+this method the blob is a critter, which is what it is meant to be.
+
+# What the server does not do yet
+
+The method assumes a few things the server does not have. Each is a follow-up in `bestia-behemoth`.
+
+- **Mobs have no level in combat.** A mob carries no `Level` component, so a fight reads every mob as Lv 1. The
+  `level/4` terms of ATK, MATK and the defences drop out, and HIT and FLEE lose the level. A blueprint can be made
+  for the server as it runs today, or for the design. The two differ most at high levels.
+- **Mobs have no element and no size.** Every entity is `NORMAL` and nothing reads the size table.
+- **Mob HP is a fixed number** in the YAML, not the HP formula. That is why this method solves HP rather than reading
+  it from a base value.
+- **Species do not learn attacks.** `Bestia.skills` exists but the importer never fills it. The AI profile's attack
+  list is all a wild bestia uses.
+- **There is no compendium and no description field.**
+- **The server's EXP curve is not this one.** `LevelUpExperienceCalculator` is exponential and drops at every tenth
+  level (Lv 19 needs about 778, Lv 20 about 287). This page follows the curve in [Bestias](/docs/mechanics/bestia/#experience).
+
+# Prior art
+
+- **D&D 5e**, _Dungeon Master's Guide_, "Creating a Monster": a monster gets a defensive and an offensive challenge
+  rating from tables by level, and the two are averaged. The threat above is the same move. See also
+  [Designing Monsters](https://www.a5e.tools/node/995).
+- **Pokémon** base stats: a species has a fixed stat total split by its battle role, and the split stays while the
+  total grows. Bestia's base values already copy this, see [Base stats](https://bulbapedia.bulbagarden.net/wiki/Base_stat).
+- **Time to kill** as the one number that sets a game's pace, from the
+  [Warhammer Online design diaries](https://gamebanshee.com/kpuw4) and Sara Jensen Schubert's
+  [GDC 2011 talk on RPG math](https://www.engadget.com/2011-10-12-gdc-austin-2011-kingsisles-sara-jensen-schubert-talks-rpg-math.html).
+- **Ragnarok Online**: fixed EXP per monster, drop chances in basis points, and the element and size tables the server
+  already uses, see [iRO Wiki: EXP](https://irowiki.org/classic/EXP).
