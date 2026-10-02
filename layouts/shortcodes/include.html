@@ -1,0 +1,6 @@
+{{- /* include.html: renders another page's content here, so a long page can keep a section in its own file. The included page should not be built on its own (build.render: never). */ -}}
+{{- with site.GetPage (.Get 0) -}}
+  {{- .Content -}}
+{{- else -}}
+  {{- errorf "include: no page %q in %s" (.Get 0) .Position -}}
+{{- end -}}
