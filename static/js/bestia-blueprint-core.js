@@ -386,7 +386,7 @@
     return Math.abs(dpsAt(below) - targetDps) < Math.abs(dpsAt(above) - targetDps) ? below : above;
   }
 
-  // Raises or lowers STR and DEX until the basic attack deals its share of the target. Buffs,
+  // Raises or lowers STR and DEX until the default attack deals its share of the target. Buffs,
   // debuffs and heals stay in the rotation because casting them costs swings.
   function fitAttributes(data, input, attrs, master, ctx, targetDps) {
     const withoutDamage = { ...ctx, active: ctx.active.filter((a) => !isDamaging(a)) };
@@ -550,7 +550,7 @@
   }
 
   // Warns only when the result misses its band. A factor stuck at its bound is not a problem on
-  // its own: a caster's basic attack sits at the floor while its spells carry the damage.
+  // its own: a caster's default attack sits at the floor while its spells carry the damage.
   function warningsFor(data, tier, balance, attributeFactor, attackPower) {
     const pace = data.pace;
     const stuck = (f) => f <= FACTOR_RANGE.min * 1.01 || f >= FACTOR_RANGE.max * 0.99;
@@ -559,7 +559,7 @@
     const warnings = [];
     if (offense < pace.hpCost.min / pace.hpCost.target || offense > pace.hpCost.max / pace.hpCost.target) {
       let cause = "Check the attribute overrides.";
-      if (stuck(attributeFactor)) cause = "WIL crits or the minimum damage of 1 keep the basic attack above its share; lower WIL.";
+      if (stuck(attributeFactor)) cause = "WIL crits or the minimum damage of 1 keep the default attack above its share; lower WIL.";
       else if (stuck(attackPower)) cause = "The attack power hit its limit.";
       warnings.push(`Damage is ${Math.round(offense * 100)} % of the target. ${cause}`);
     }
@@ -640,7 +640,7 @@
       ai: {
         profile: aiProfileOf(i),
         newProfile: i.ai === "custom" ? { behaviour: i.aiBehaviour || "" } : null,
-        basicAttack: { id: i.basicAttackId, cooldownSeconds: i.basicCooldown, range: bp.role.basicAttack === "ranged" ? 6 : 1 },
+        defaultAttack: { kind: bp.role.basicAttack, cooldownSeconds: i.basicCooldown, range: bp.role.basicAttack === "ranged" ? 6 : 1 },
       },
       attacks: {
         attackPower: bp.attackPower,
@@ -739,7 +739,7 @@
     const range = bp.role.basicAttack === "ranged" ? 6 : 1;
     const lines = [];
     if (i.ai === "custom") lines.push(`# New profile ai/${i.identifier.replace(/_/g, "-")}.yml: ${i.aiBehaviour || "describe how it behaves"}`);
-    lines.push("attacks:", `  - { id: ${i.basicAttackId}, range: ${range}, base_cost: 5, cooldown_seconds: ${i.basicCooldown} }`);
+    lines.push("attacks:", `  - { id: ${bp.role.basicAttack}, range: ${range}, base_cost: 5, cooldown_seconds: ${i.basicCooldown} }  # default attack, no skill`);
     bp.active.forEach((a) => {
       const skill = a.skillId ? `, skill_id: ${a.skillId}` : ", skill_id: <add to skills.yml>";
       lines.push(`  - { id: ${a.identifier}, range: ${a.archetypeData.range}, base_cost: 4, cooldown_seconds: ${a.archetypeData.cooldown}${skill} }`);
@@ -751,7 +751,7 @@
     const i = bp.input;
     const json = JSON.stringify(toJson(bp), null, 2);
     const aiStep = i.ai === "custom"
-      ? `2. Write a new AI profile zone-server/src/main/resources/ai/${i.identifier.replace(/_/g, "-")}.yml from ai.newProfile.behaviour, starting from the closest existing profile. List the basic attack and attacks.active.`
+      ? `2. Write a new AI profile zone-server/src/main/resources/ai/${i.identifier.replace(/_/g, "-")}.yml from ai.newProfile.behaviour, starting from the closest existing profile. List the default attack and attacks.active.`
       : `2. Use the AI profile ${i.ai}. If attacks.active differs from its attack list, copy it into a new profile for this species.`;
     return [
       `Add the bestia "${i.name}" to bestia-behemoth from the blueprint below. Its numbers are final; do not rebalance them.`,

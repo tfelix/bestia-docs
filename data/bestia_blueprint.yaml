@@ -76,7 +76,8 @@ tiers:
     activeAttacks: 4
 
 # A role splits the attribute budget and decides which attacks the species learns.
-# basicShare is the part of its damage that comes from the basic attack while it has attacks to
+# basicAttack is its default attack, melee or ranged. basicShare is the part of its damage that
+# comes from the default attack while it has attacks to
 # cast. learnPattern holds one archetype per learnset slot, see learnset.levels.
 roles:
   - id: balanced
@@ -142,7 +143,7 @@ learnset:
   maxSkillLevel: 10
 
 # Attack archetypes. kind decides the damage formula:
-#   physical  2·ATK·coef, then defence, like a basic swing (ranged uses RATK)
+#   physical  2·ATK·coef, then defence, like the default attack (ranged uses RATK)
 #   magic     like Firebolt: ((lv/4 + INT)·skillLv + MATK)·coef − SoftMDEF
 #   dot       Ember: (lv/8 + INT/2 + MATK/4)·skillLv·coef per tick, no defence
 #   heal      Heal: (lv + INT)/8 · (4 + 8·skillLv)·coef on itself
@@ -238,8 +239,6 @@ archetypes:
     range: 6
     mana: { base: 8, perSkillLevel: 1 }
 
-# Basic attack ids already used in AI profiles.
-basicAttacks: [claw, bite, nip]
 
 elements: [NORMAL, WATER, EARTH, FIRE, WIND, POISON, HOLY, SHADOW, GHOST, UNDEAD]
 

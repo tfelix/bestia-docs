@@ -84,8 +84,8 @@ At the target, a player can take two fights before resting. The two numbers beco
 - **Offence:** damage per second so that a normal fight costs 45 % of the master's HP. That is
   `0.45 × masterHP / (6 × masterSwingSeconds) × tier offence`.
 
-Damage per second counts **everything the bestia does**: basic attacks, spells, damage over time, buffs and the time
-it spends casting. A bestia that casts a strong spell does not get a free basic attack on top of it.
+Damage per second counts **everything the bestia does**: default attacks, spells, damage over time, buffs and the time
+it spends casting. A bestia that casts a strong spell does not get a free default attack on top of it.
 
 # 4. Attributes from a role
 
@@ -100,8 +100,8 @@ $$budget = \sum attributes_{master} \cdot tier_{budget}$$
 
 {{< blueprint-table name="roles" >}}
 
-**The basic attack is then fitted.** STR and DEX are raised or lowered together until the basic attack deals its
-**basic share** of the offence target. The other four attributes keep the role's split, so a caster keeps its INT.
+**The default attack is then fitted.** STR and DEX are raised or lowered together until the default attack deals
+its **default share** of the offence target. The other four attributes keep the role's split, so a caster keeps its INT.
 
 Fitting is needed because defence is subtracted, not divided. Near the target's soft DEF a single point of STR can
 add 25 % to the damage of a swing. A budget split alone would land anywhere between harmless and deadly.
@@ -135,9 +135,9 @@ then takes an attack of that archetype from the [Attack List](/docs/mechanics/at
 
 ## The active attacks
 
-A wild bestia does not use all it knows. Its AI profile lists a **basic attack plus a few active attacks**: the
-newest ones it knows, one per archetype. The tier sets how many. These are the attacks the fit and the fight below
-use.
+A wild bestia does not use all it knows. Its AI profile lists **a few active attacks**: the newest ones it
+knows, one per archetype. The tier sets how many. Between them it uses its **default attack**, melee or ranged as the
+role says. These are the attacks the fit and the fight below use.
 
 ## The AI profile
 
@@ -164,7 +164,7 @@ target. The blueprint gives it per attack, and the script of a new attack uses i
 
 | Kind     | Damage of one use                                                     | Defence           |
 | :------- | :-------------------------------------------------------------------- | :---------------- |
-| physical | `2 · ATK · coef`, then like a basic swing (ranged uses RATK)          | hard and soft DEF |
+| physical | `2 · ATK · coef`, then like the default attack (ranged uses RATK)     | hard and soft DEF |
 | magic    | `((lv/4 + INT) · skillLv + MATK) · coef − SoftMDEF`, never misses     | soft MDEF         |
 | dot      | `(lv/8 + INT/2 + MATK/4) · skillLv · coef` per tick, 8 ticks of 1.2 s | none              |
 | heal     | `(lv + INT)/8 · (4 + 8 · skillLv) · coef` on itself                   | —                 |
@@ -178,7 +178,7 @@ caster could not be tuned down.
 heals and debuffs, so a bestia that heals itself gets less raw HP for the same fight length.
 
 **Mana** uses the documented formula from [Status Values](/docs/mechanics/statusvalues/#mana), with the role's base
-value and a wild IV of 50. Mana regenerates every 8 s. A caster that runs dry falls back to its basic attack, and the
+value and a wild IV of 50. Mana regenerates every 8 s. A caster that runs dry falls back to its default attack, and the
 fight shows that.
 
 **The fight is simulated** in steps of 50 ms, with expected values instead of dice: every swing deals its average
@@ -319,9 +319,9 @@ A starter-ring bestia that a new player should be able to fight alone. Lv 2, nor
 | Master     | Lv 2: STR 10, VIT 10, rest 9; 20 HP; 1.34 s per swing                                                   |
 | Targets    | 6 swings; 1.12 damage per second, so a fight of about 8 s costs 9 of the master's 20 HP                 |
 | Attributes | STR 7, VIT 9, INT 2, AGI 6, DEX 4, WIL 3                                                                |
-| Attacks    | basic bite, plus Tackle (learned at Lv 1, skill Lv 1), attack power 0.88                                |
+| Attacks    | default melee attack, plus Tackle (learned at Lv 1, skill Lv 1), attack power 0.88                      |
 | HP, mana   | 135 HP, 29 mana                                                                                         |
-| Fight      | 6.0 swings, 41 % of the master's HP; 0.48 damage per second from bites and 0.65 from Tackle; threat 1.0 |
+| Fight      | 6.0 swings, 41 % of the master's HP; 0.48 damage per second from melee and 0.65 from Tackle; threat 1.0 |
 | Loot       | Raw Hide 60 % (6 coins), Raw Meat 30 % (4 coins), Medicinal Herb 2 % (5 coins): 4.9 coins against 13    |
 | EXP        | `(4 · 2 + 5) · 1.0 · 1.06` = **14**, and 15 at kill time with the element bonus                         |
 
