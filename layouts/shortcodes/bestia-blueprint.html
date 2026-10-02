@@ -18,8 +18,7 @@
             <div class="col-6"><label class="form-label small" for="bp-size">Size</label><select class="form-select form-select-sm" id="bp-size" data-field="size">{{ range $d.sizes }}<option{{ if eq . "SMALL" }} selected{{ end }}>{{ . }}</option>{{ end }}</select></div>
             <div class="col-12"><label class="form-label small" for="bp-ai">AI profile</label><select class="form-select form-select-sm" id="bp-ai" data-field="ai">{{ range $d.aiProfiles }}<option value="{{ .id }}"{{ if eq .id "passiv_day_active" }} selected{{ end }}>{{ .id }}: {{ .label }}</option>{{ end }}<option value="custom">custom: a new profile, described below</option></select></div>
             <div class="col-12" id="bp-ai-custom-box" hidden><label class="form-label small" for="bp-ai-custom">How it behaves</label><textarea class="form-control form-control-sm" id="bp-ai-custom" data-field="aiBehaviour" rows="2" placeholder="e.g. hunts in packs at night, flees below 20 % HP, guards its burrow"></textarea></div>
-            <div class="col-6"><label class="form-label small" for="bp-basic">Basic attack id</label><input class="form-control form-control-sm" id="bp-basic" data-field="basicAttackId" list="bp-basic-ids" value="bite"><datalist id="bp-basic-ids">{{ range $d.basicAttacks }}<option>{{ . }}</option>{{ end }}</datalist></div>
-            <div class="col-6"><label class="form-label small" for="bp-cooldown">Basic cooldown (s)</label><input class="form-control form-control-sm" id="bp-cooldown" data-field="basicCooldown" type="number" min="0.5" max="4" step="0.1" value="1.5"></div>
+            <div class="col-12"><label class="form-label small" for="bp-cooldown">Default attack cooldown (s)</label><input class="form-control form-control-sm" id="bp-cooldown" data-field="basicCooldown" type="number" min="0.5" max="4" step="0.1" value="1.5"></div>
           </div>
         </div>
       </div>

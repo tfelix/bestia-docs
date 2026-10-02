@@ -10,7 +10,7 @@
   {{- end }}
   </tbody>
 {{- else if eq $name "roles" }}
-  <thead><tr><th>Role</th><th style="text-align:right">STR</th><th style="text-align:right">VIT</th><th style="text-align:right">INT</th><th style="text-align:right">AGI</th><th style="text-align:right">DEX</th><th style="text-align:right">WIL</th><th>Basic attack</th><th style="text-align:right">Basic share</th><th>Plays like</th></tr></thead>
+  <thead><tr><th>Role</th><th style="text-align:right">STR</th><th style="text-align:right">VIT</th><th style="text-align:right">INT</th><th style="text-align:right">AGI</th><th style="text-align:right">DEX</th><th style="text-align:right">WIL</th><th>Default attack</th><th style="text-align:right">Default share</th><th>Plays like</th></tr></thead>
   <tbody>
   {{- range $d.roles }}
     <tr><td>{{ .label }}</td><td style="text-align:right">{{ .weights.str }}</td><td style="text-align:right">{{ .weights.vit }}</td><td style="text-align:right">{{ .weights.int }}</td><td style="text-align:right">{{ .weights.agi }}</td><td style="text-align:right">{{ .weights.dex }}</td><td style="text-align:right">{{ .weights.wil }}</td><td>{{ .basicAttack }}</td><td style="text-align:right">{{ mul .basicShare 100 | printf "%.0f %%" }}</td><td>{{ .summary }}</td></tr>

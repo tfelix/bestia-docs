@@ -123,7 +123,7 @@
         <tr><th scope="row">Its damage per second</th><td>${fmt(b.bestiaDps, 2)}</td><td>target ${fmt(bp.targets.dps, 2)}</td><td>${band(b.offenseRatio / tier.offense, pace.hpCost.min / pace.hpCost.target, pace.hpCost.max / pace.hpCost.target)}</td></tr>
         <tr><th scope="row">Master HP lost in the fight</th><td>${fmt(b.hpCost * 100)} %</td><td colspan="2">${tier.id === "normal" ? `target ${fmt(pace.hpCost.target * 100)} %` : `built for ${escapeHtml(tier.party)}`}</td></tr>
         <tr><th scope="row">Fight length</th><td>${fmt(b.fightSeconds, 1)} s</td><td colspan="2">damage per second from ${sources || "nothing"}</td></tr>
-        <tr><th scope="row">Basic swings to kill the master</th><td>${fmt(b.bestiaSwingsToKillMaster, 1)}</td><td colspan="2">mana left after the fight: ${fmt(b.manaLeftAfterWindow)} of ${fmt(bp.mana)}</td></tr>
+        <tr><th scope="row">Default attacks to kill the master</th><td>${fmt(b.bestiaSwingsToKillMaster, 1)}</td><td colspan="2">mana left after the fight: ${fmt(b.manaLeftAfterWindow)} of ${fmt(bp.mana)}</td></tr>
       </tbody>`;
     const m = bp.master;
     $("bp-master").textContent = `Reference master: ${B.ATTRIBUTES.map((k) => `${k.toUpperCase()} ${m.attrs[k]}`).join(", ")}; ${m.hp} HP; weapon ATK ${m.weaponAtk}; hard DEF ${m.hardDefense}; ${fmt(m.interval.seconds, 2)} s per swing.`;
