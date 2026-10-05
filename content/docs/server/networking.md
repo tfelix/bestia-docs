@@ -55,11 +55,15 @@ ch.pipeline().addLast(
   IdleStateHandler(readIdleTimeoutSeconds, 0, 0, SECONDS),           // reports a silent client
   LengthFieldBasedFrameDecoder(MAX_FRAME_LENGTH, 0, 4, 0, 4), // 4-byte length prefix, 1 MB max frame
   ProtobufDecoder(EnvelopeProto.Envelope.getDefaultInstance()),
-  ProtobufEncoder(),
-  BigEndianLengthFieldPrepender(),                            // outbound length prefix
+  BigEndianLengthFieldPrepender(),                            // outbound: length prefix + Envelope
   ClientMessageHandler(handlerContext)
 )
 ```
+
+`BigEndianLengthFieldPrepender` sizes its buffer to the frame and serialises the envelope straight
+into it, so a message is serialised once and never copied. `EnvelopeFraming` is the one definition
+of the frame; the chunk fan-out uses it to frame a message once for many clients and passes the
+bytes through the encoder untouched.
 
 The socket binds to `socket.ip-address`/`socket.port` (`127.0.0.1:8090` in dev,
 `zone-server/src/main/resources/application.yml`), started by `SocketServerBootRunner` as the very
