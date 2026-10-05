@@ -173,6 +173,19 @@ account id and calls `writeAndFlush` — there is no queuing or batching at this
 selected master, owned entities, currently active entity) are the two session maps; there is no
 single unified `Session` object combining them.
 
+# Movement requests
+
+`MoveActiveEntity` carries a path of adjacent tiles. `MoveActiveEntityHandler` checks it step by
+step from the entity's position and cuts it at the first step that is not adjacent or not
+walkable. An empty path is a stop.
+
+A path sent with `append = true` continues the walk under way instead of replacing it: it is
+checked from the walk's last waypoint and added to its end. The client sends the next leg this way
+about one round trip before the current one ends, so a long walk does not pause at every leg. An
+appended path that does not join the walk is ignored; without a walk under way it starts a new one
+like any other path. The server then sends the whole remaining path again, as it does for any path
+change.
+
 # Dirty-component sync, not full-state broadcast
 
 `zone-server` doesn't broadcast full entity state every tick. Every syncable ECS component
