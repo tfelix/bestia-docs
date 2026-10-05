@@ -226,7 +226,9 @@ directly.
 
 `ChannelRegistry` (account id → `Channel`) and `ConnectionInfoService` (account id → session:
 selected master, owned entities, currently active entity) are the two session maps; there is no
-single unified `Session` object combining them.
+single unified `Session` object combining them. A disconnect removes the account from both. Its
+bestias stay in the world: each carries an `OwnedBestia` component, and selecting the master again
+rebuilds the session's owned entities from the world.
 
 # Movement requests
 
