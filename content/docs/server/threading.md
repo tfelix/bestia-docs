@@ -61,12 +61,26 @@ while the world was locked.
 # The inbox and its two lanes
 
 `AccountInbox` keeps one mailbox per account. A mailbox runs one item at a time, in the order the items
-arrived, and holds at most 256. A message runs on the lane its handler declares:
+arrived, and holds at most 256. The kind of handler decides the lane:
 
-- **`HandlerLane.TICK`** (the default) runs on the tick thread, between two ticks or at the start of the
-  next one. The handler has the world to itself and needs no scope. It must not touch the database.
-- **`HandlerLane.IO`** runs on one of the IO threads. The handler may use the database and reaches the
-  world only through a `WorldView` scope.
+- A **`TickMessageHandler`** runs on the tick thread, between two ticks or at the start of the next one.
+  `handle(world, msg)` gets the `World` as a parameter and uses it directly, with no scope. It must not
+  touch the database.
+- An **`IoMessageHandler`** runs on one of the IO threads. `handle(msg)` may use the database and reaches
+  the world only through a `WorldView` scope.
+
+```kotlin
+@Component
+class LootItemHandler(...) : TickMessageHandler<LootItemCMSG> {
+  override val handles = LootItemCMSG::class
+
+  override fun handle(world: World, msg: LootItemCMSG): Boolean {
+    val looter = connectionInfoService.getActiveEntityId(msg.playerId)
+    world.modify(looter) { id -> add(id, ObtainItemIntent.LootItemIntent(sourceEntityItemStackId = msg.targetEntityId)) }
+    return true
+  }
+}
+```
 
 Order holds across lanes: an account's `SelectMaster` (IO) finishes before its next `MoveActiveEntity`
 (tick) starts. Connection and disconnection events go through the same inbox on the IO lane, so a new
@@ -117,8 +131,8 @@ cleanup after a disconnect use it.
 
 # Adding code
 
-- A new message handler runs on the tick unless it says `override val lane = HandlerLane.IO`. Pick IO as
-  soon as anything it calls reaches the database.
+- A new message handler is a `TickMessageHandler` unless anything it calls reaches the database; then
+  it is an `IoMessageHandler`. `TickMessageHandlerTest` fails for a tick handler that takes a repository.
 - Never wait for another thread inside a scope: the tick thread is waiting for you.
 - To change the world from a background job, call `world.post { }`, or take a scope if you need the
   answer right away.
