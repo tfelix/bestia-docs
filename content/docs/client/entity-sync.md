@@ -47,6 +47,19 @@ positions — it predicts movement locally and reconciles against authoritative 
   keeps movement visually smooth despite network jitter. Only when the discrepancy exceeds
   `_SNAP_STEPS` tiles does it snap outright (e.g. after a teleport).
 
+## Long walks
+
+A click on the ground sends one path to the clicked tile. A longer walk (to a map pin, a prop or an
+attack target) is steered by `MovementPilot` (`src/Game/Movement/movement_pilot.gd`), one leg of
+at most 24 tiles at a time, because the server cuts a path at the first step it cannot walk.
+
+The pilot sends the next leg while the current one is still walked: when the remaining steps drop
+to one round trip (`ConnectionManager.rtt_ms`, from the ping) times the speed, plus two. The leg
+starts next to the walk's last tile and goes out with `append = true`, so the server adds it to
+the walk under way (see [server Networking](/docs/server/networking#movement-requests)). The entity
+therefore walks on without stopping. If the server refuses the leg, the walk ends and the pilot
+sends a fresh one from where the entity stands.
+
 `Entity` also caches the last-known buffs, skill points, equipment and status values it has seen,
 so UI windows (Skills, Equipment, Status) can seed their display immediately when opened instead
 of waiting on the next server push.
