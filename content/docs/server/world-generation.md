@@ -346,6 +346,10 @@ holders already have. The ground-block lookup that trampling and fire use builds
 workers. Deflate stays at level 9: measured on 121 surface chunks, level 6 is 11% more bytes, and the 80 µs
 level 9 costs per chunk is paid on a worker.
 
+A player's desired set is considered every tick, but only recomputed when something it depends on moved:
+the player's chunk, or `ChunkService.slabEpoch`, which counts columns whose slabs were first computed or
+grew because somebody dug. A player standing still on a fully costed view costs one map lookup per tick.
+
 Alongside the voxels, `derived/` maintains cheap, incrementally-updated structures so hot paths never touch
 raw voxels directly: `WalkableTile` (per-column walkable spans for a given agent's step/slope profile) and
 `OpacityGrid` (a downsampled, occupancy-weighted line-of-sight grid). Both are kept fresh on every edit
