@@ -11,8 +11,11 @@ inventory, AI state — is a component on an entity, and every rule that acts on
 
 # World
 
-`ecs/core/World.kt` is the central facade: entities, component stores, the system scheduler, and
-the deferred-change queue. Its own doc comment states the tick pipeline plainly:
+Gameplay code sees `World` (`ecs/core/World.kt`), an interface with the entities, components and
+queries: `get`, `add`, `remove`, `query`, `createEntity`, `destroy`, `defer`, `post`. Systems,
+tick-lane handlers and the block of a `WorldView` scope all receive it. `EcsWorld` implements it and
+adds the engine side that only `ZoneEngine`, boot runners and tests need: the tick, the tick thread,
+the listeners and the dirty log. Its doc comment states the tick pipeline plainly:
 
 ```text
 tick(dt):
@@ -24,12 +27,14 @@ tick(dt):
 The tick thread owns the world and calls its accessors (`get`, `add`, `query`, ...) directly. Other
 threads (IO-lane handlers, schedulers, DB jobs) never call an accessor. They either `post { ... }` work
 to the tick thread, or use a `WorldView` scope (`read`/`modify`/`createEntity`), which borrows the
-world for a moment between two ticks — see [Threads and the Tick](/docs/server/threading). Structural changes requested while systems are
-iterating (`world.defer { ... }`) are automatically pushed to the next safe sync point rather than
-corrupting an in-progress iteration.
+world for a moment between two ticks — see [Threads and the Tick](/docs/server/threading). On the
+tick, `world.modify(id) { ... }` reads the same as the scope but borrows nothing: it runs the block
+only if the entity is alive. Structural changes requested while systems are iterating
+(`world.defer { ... }`) are automatically pushed to the next safe sync point rather than corrupting an
+in-progress iteration.
 
 ```kotlin
-// The common "get or create, then mutate" pattern used across systems:
+// The common "get or create, then mutate" pattern used across systems (an extension on World):
 world.update(entityId, default = { Exp() }) { exp ->
   exp.addExperience(150) // mutating through the component's own setter marks it dirty
 }
@@ -37,7 +42,7 @@ world.update(entityId, default = { Exp() }) { exp ->
 
 # Components, stores, and queries
 
-A component is a plain data class implementing the marker `Component` interface. `World.store()`
+A component is a plain data class implementing the marker `Component` interface. `EcsWorld`
 lazily creates a `ComponentStore<T>` per component type. `World.query(...)` builds a `Query` that
 joins several stores by entity id, iterating the _smallest_ store and skipping entities missing any
 of the rest — iteration cost is proportional to the rarest component in the join, not the whole
