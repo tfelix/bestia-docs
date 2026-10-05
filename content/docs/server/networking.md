@@ -155,14 +155,19 @@ An `SMSG` implementation provides `toBnetEnvelope(): EnvelopeProto.Envelope`. `O
 offers two shapes:
 
 ```kotlin
-fun sendToPlayer(playerId: Long, msg: SMSG)               // one specific account
-fun sendToAllPlayersInRange(pos: Vec3L, msg: SMSG)        // everyone in AOI range of pos
+fun sendToPlayer(playerId: Long, msg: SMSG)                            // one specific account
+fun sendToObserversOf(world: WorldView, entityId: EntityId, msg: SMSG) // everyone who sees entityId
 ```
 
-`sendToAllPlayersInRange` queries `ActivePlayerAOIService` (see [ECS](/docs/server/ecs#area-of-interest))
-for the account ids within a fixed range (100 m) of `pos`, then sends to each individually.
-Delivery itself is `ChannelRegistry.sendMessage`, which looks up the Netty `Channel` for an account
-id and calls `writeAndFlush` — there is no queuing or batching at this layer.
+`sendToObserversOf` sends a one-off event (a hit, a chat line, a heal) to the same accounts that
+get the entity's component state: the accounts holding the chunk it stands in, plus the player's own
+account (`EntityAudience`, see [ECS](/docs/server/ecs#area-of-interest)). So a client never sees a
+health drop without the hit. It reads the audience under the world lock, so a handler thread may
+call it. `ChannelRegistry.broadcast` serialises the message once and writes the same bytes to every
+recipient.
+
+Delivery to one account is `ChannelRegistry.sendMessage`, which looks up the Netty `Channel` for an
+account id and calls `writeAndFlush` — there is no queuing or batching at this layer.
 
 `ChannelRegistry` (account id → `Channel`) and `ConnectionInfoService` (account id → session:
 selected master, owned entities, currently active entity) are the two session maps; there is no
@@ -174,8 +179,8 @@ single unified `Session` object combining them.
 implements `Dirtyable` (tracks its own dirty flag — mutating it through its own setters marks it
 dirty) and reports who should receive it via `SyncTargets` (`PublicInRange`, `OwnerOnly`, or an
 explicit `Accounts` set). After each tick, `ZoneEngine` scans every dirty component, builds its
-`toEntityMessage()`, and routes it through exactly the two functions above — so e.g. `Position` is
-broadcast to everyone in range while `Inventory` or skill points go only to the owning account. See
+`toEntityMessage()`, and routes it to its audience — so e.g. `Position` goes to everyone who sees
+the entity while `Inventory` or skill points go only to the owning account. See
 [ECS](/docs/server/ecs#dirty-components-and-sync) for the mechanism in full.
 
 # Adding a new message type end-to-end
@@ -193,7 +198,7 @@ Worked through once already for `ActivateSkillCMSG`/`ActivateSkillHandler`
 4. **Handler**: `@Component class XyzHandler(...) : InMessageProcessor.IncomingMessageHandler<XyzCMSG>`
    — auto-discovered, no manual registry entry.
 5. **Kotlin SMSG** (outgoing), if a reply/broadcast is needed: implement `toBnetEnvelope()`. Use the
-   one-off broadcast shape (`DamageEntitySMSG`, sent via `sendToAllPlayersInRange`) for events, or
+   one-off broadcast shape (`DamageEntitySMSG`, sent via `sendToObserversOf`) for events, or
    the `Dirtyable`-backed entity-state shape (`SkillPointsSMSG`) for actual persistent component
    state that should auto-sync on change — don't use the state shape for one-off events.
 6. **C# client wrappers + regenerate**: see the client-side steps and the `gen-protobuf.bat` note in
