@@ -24,7 +24,7 @@ bestia-behemoth/
   bestia-client/   the Godot client (separate build, not a Gradle subproject)
 ```
 
-Each server has its own `application.yml` and its own H2 datasource — see [Database](#database)
+Each server has its own `application.yml` and its own MariaDB database — see [Database](#database)
 below.
 
 # Boot sequence
@@ -73,24 +73,32 @@ start, needed because the in-memory database resets every restart.
 
 # Database
 
-Both servers use **H2, in-memory**, via Spring Data JPA/Hibernate:
+Both servers use **MariaDB** via Spring Data JPA/Hibernate, each with its own database and its own
+`compose.yaml`:
 
-```yaml
-spring:
-  datasource:
-    url: jdbc:h2:mem:behemoth   # zone-server; login-server uses jdbc:h2:mem:login
-  jpa:
-    hibernate:
-      ddl-auto: create          # schema dropped and recreated on every start
-```
+| Server         | Database                   | Schema                                  |
+| -------------- | -------------------------- | --------------------------------------- |
+| `login-server` | `bestia_login` (port 3307) | Flyway migrations, `ddl-auto: validate` |
+| `zone-server`  | `bestia_zone` (port 3306)  | no migrations, `ddl-auto: update`       |
 
-There is no Flyway/Liquibase and no persistent volume — this is explicitly a development
-configuration, not something to assume is production-ready. Each server defines its **own** `Account`
-JPA entity independently; they are linked only by the convention that `zone-server` carries a
-`loginAccountId: Long`, never a shared entity class or shared table. The H2 web console is enabled
-on both (`spring.h2.console.enabled: true`).
+Each server defines its **own** `Account` JPA entity independently; they are linked only by the
+convention that `zone-server` carries a `loginAccountId: Long`, never a shared entity class or shared
+table. Tests run on in-memory H2.
 
-`zone-server`'s world state is a partial exception: player-owned entities are persisted (see
-`EntityLoaderBootRunner` reloading them at boot, and the `PersistAndRemove` component that persists
-a disconnecting player's entity asynchronously before removing it from the live `World`), but this
-still lives in the same schema-per-boot H2 instance as everything else.
+## How the zone writes
+
+Nothing on the tick thread talks to the database. A system or handler takes a **snapshot** of an
+entity (plain values, no live components) and hands it to `EntityWriteBehind`, which writes it on the
+DB executor (`AsyncJobExecutor`). Every write about one owner uses the same key: a master's id, or
+one shared key for the generic entity rows. So the writes for one owner land in the order they were
+taken, and a delete never overtakes an earlier write.
+
+- A master is written on every exp gain, on logout (the `PersistAndRemove` component), and by the
+  periodic save (`persistence.interval-ms`, 90 s by default). Selecting a master first waits for its
+  pending writes, so a quick relog reads what the logout wrote.
+- A drop removes the item in the database first; only then does it leave the live inventory and
+  appear on the ground. A drop can lose an item but never copy one.
+- Static content (items, species, loot tables, commodities) is read into in-memory catalogues once
+  at boot (`CatalogueWarmUpBootRunner`), so the tick never needs a lookup.
+- `TickSqlGuard`, a Hibernate statement inspector, reports any SQL that still runs on the tick
+  thread (`zone.sql-on-tick: log`). It sees lazy loads behind a service call too.
