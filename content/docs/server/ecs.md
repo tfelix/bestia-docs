@@ -76,16 +76,19 @@ run concurrently on the scheduler's own `ForkJoinPool` when `world.parallel-syst
 default `false` — the whole simulation runs single-threaded by default and this is a genuinely
 optional feature, not the normal mode).
 
-Every `System` bean is Spring-collected (`List<System>` injection) into one `World` in
-`EcsConfiguration`:
+`EcsConfiguration` builds the `World` empty. Every `System` bean is registered into it only once all
+singletons exist:
 
 ```kotlin
 @Bean
-fun ecsWorld(systems: List<System>, worldConfig: WorldConfig, zoneShardConfig: ZoneConfig): World {
-  val idGenerator = SnowflakeEntityIdGenerator(nodeId = zoneShardConfig.shardId)
-  return World(parallelSystems = worldConfig.parallelSystems, idGenerator = idGenerator, systems = systems)
-}
+fun systemRegistration(world: World, systems: ObjectProvider<System>, worldConfig: WorldConfig) =
+  SmartInitializingSingleton {
+    world.registerSystems(systems.orderedStream().toList())
+  }
 ```
+
+The World therefore depends on no system, so any service may inject the `World` or `WorldView`, even
+one that a system depends on.
 
 To add game logic: implement `System`, register it as a Spring `@Component`/`@Service` bean, and
 declare accurate `reads`/`writes` sets — that's what makes the parallel-wave scheduling safe.
