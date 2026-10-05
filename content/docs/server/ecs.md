@@ -107,10 +107,16 @@ loop, and `ZoneEngine` logs that the loop died instead of losing the thread sile
 
 # ZoneEngine: the tick loop
 
-`ecs/ZoneEngine.kt` owns the actual running loop. `start()` submits a loop to a dedicated
+`ecs/ZoneEngine.kt` owns the actual running loop. `start()` runs a loop on a dedicated
 single-thread executor (`zone-tick`) that ticks the `World` at `world.tick-rate` (20 Hz by default,
-`application.yml`) and sleeps out the remainder of each tick period. After every `world.tick(dt)`
-call, `ZoneEngine.syncDirtyComponents()` flushes whatever changed out to clients — see below.
+`application.yml`). After every `world.tick(dt)` call, `ZoneEngine.syncDirtyComponents()` flushes
+whatever changed out to clients — see below.
+
+The step is **fixed**: every tick hands the systems exactly `1 / tick-rate` seconds (50 ms), measured
+on `System.nanoTime`, so a wall-clock jump cannot produce a negative or huge delta. `FixedStepClock`
+counts the steps that are due. A late loop runs at most 3 steps back to back to catch up and drops
+the rest, so after a long pause the world runs slow for a moment instead of racing. Dropped steps
+show up in the slow-tick warning.
 
 There's also an `ecs/EcsRunner.kt`, explicitly documented as not a Spring bean by default — a
 leftover/utility alternative driver, not part of the live boot path (`WorldBootRunner` starts
