@@ -168,18 +168,23 @@ caller, because the caller is usually the tick.
 
 # Area of interest
 
-`AreaOfInterestService<T>` is a generic, auto-growing **octree** (subdivide above 40 entities per
-node, merge below 15; doubles its root extent on demand rather than dropping out-of-bounds
-entities). Two instances exist:
+`AreaOfInterestService` answers "what is inside this box" with a **uniform grid** of 32 × 32-column
+cells, one cell per chunk column. A step inside a cell is three array writes; a step into the next
+cell moves the entity between two cell lists; a query visits only the cells it overlaps and builds
+no tree. Each service holds two grids, one per `AoiLayer`, so a question about moving things never
+walks the tens of thousands of static ones (trees, rocks, buildings).
 
-- `EntityAOIService` — every entity, keyed by entity id, used for `sendToAllPlayersInRange` fan-out.
-- `ActivePlayerAOIService` — only players, keyed by account id, used to answer "who is near this
-  position" for the sync pass above.
+- `EntityAOIService` — every entity, keyed by entity id. Perception, area effects and skills ask it
+  what they can see or hit.
+- `ActivePlayerAOIService` — only players, keyed by account id. `sendToAllPlayersInRange` asks it who
+  hears a one-off event.
 
 ```kotlin
-fun queryEntitiesInCube(center: Vec3L, size: Long): Set<T>
+fun queryEntitiesInCube(center: Vec3L, size: Long, layers: Set<AoiLayer> = AoiLayer.ALL): Set<Long>
+fun forEachInCube(center: Vec3L, size: Long, layers: Set<AoiLayer>, action: (Long, Long, Long, Long) -> Unit)
+fun anyWithinHorizontal(x: Long, y: Long, radius: Long): Boolean
 ```
 
-Both are kept in sync with `Position` changes as part of `ZoneEngine.syncDirtyComponents()` — there
-is a `TODO` in that method noting it might be cleaner to update AOI directly from the movement
-system instead, which hasn't been done yet.
+The grid takes no lock: it is only touched with the world to itself (on the tick thread, or inside a
+world scope). Both services follow `Position.movedFlag` in `ZoneEngine.syncDirtyComponents()`, so
+every step is indexed, including the steps that are not sent to clients.
