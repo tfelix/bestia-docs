@@ -57,6 +57,17 @@ while the world was locked.
 | `zone-io-lane-N`      | 4          | IO-lane messages and connection events                            | only through a lease |
 | `zone-db-job-N`       | 4          | database writes, ordered per owner                                | only through a lease |
 | `zone-chunk-worker-N` | 2          | generate, encode and compress terrain; results return on the tick | no                   |
+| `scheduling-N`        | 1          | `@Scheduled` sweeps: periodic persistence, trade request expiry   | only through a lease |
+| `map-render`          | 1-4        | map tile rendering for the web map                                | no                   |
+
+No other code starts a thread. `ThreadingRulesTest` fails a class outside this list that does. A
+feature that needs a timer uses a `@Scheduled` sweep that finds the due work and hands it on: as a DB
+job, to an account's inbox, or to the tick with `world.post`. Trade requests expire that way. A state
+that only matters when it is next used expires lazily instead, like a party invitation.
+
+Services that keep state for several threads (`ConnectionInfoService`, `TradeService`) change it
+atomically: one `compute` on a concurrent map, or the per-trade monitor `TradeService` keeps because a
+trade spans two accounts' inboxes.
 
 # The inbox and its two lanes
 
@@ -136,3 +147,4 @@ cleanup after a disconnect use it.
 - Never wait for another thread inside a scope: the tick thread is waiting for you.
 - To change the world from a background job, call `world.post { }`, or take a scope if you need the
   answer right away.
+- Do not start a thread or an executor. Use the threads above; see [The threads](#the-threads).
