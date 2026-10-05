@@ -324,7 +324,9 @@ to exist before a hole can be cut through them.
 `world/stream/` on the zone-server side owns the running world's `ChunkStore` and streams merged RLE chunks
 to clients over dedicated `bnet-messages` (see [Networking](/docs/server/networking)): a `ChunkManifestSMSG`
 announces `(position, revision)` pairs for a player's view volume, the client asks only for what it doesn't
-already hold, and edits travel afterward as small `ChunkPatchSMSG` diffs fanned out to that chunk's
+already hold, and a held chunk is withdrawn only once it is one chunk past the view
+(`chunk-stream.release-margin-chunks`), so walking back and forth over the view edge does not re-send a
+row each time. Edits travel afterward as small `ChunkPatchSMSG` diffs fanned out to that chunk's
 subscribers as retained buffer duplicates — thirty players near a ten-voxel edit cost about 1.5 kB between
 them, not thirty re-sent chunks. Base-plus-delta transmission (sending a hash plus the edit list for an
 untouched chunk, instead of the full terrain) is designed for but deliberately not turned on: it requires the
