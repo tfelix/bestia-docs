@@ -18,6 +18,10 @@ into manually maintained ranges per domain:
 ```protobuf
 message Envelope {
   oneof message {
+    // The most frequent messages, in the field numbers that take one byte.
+    StateBatchSMSG state_batch = 3;
+    DamageEntitySMSG damage_entity = 4;
+
     // SYSTEM & ACCOUNT 100
     Authentication authentication = 100;
     AuthenticationSuccess authentication_success = 102;
@@ -39,6 +43,46 @@ messages end in `SMSG` (`DamageEntitySMSG`); a handful of bidirectional/shared m
 suffix (`Master`, `Ping`/`Pong`). Field numbers within a range are hand-assigned sequentially —
 adding a message means taking the highest number in its block and adding one, never reusing or
 leaving a gap.
+
+## Entity state: one batch per client per tick
+
+Entity state (every synced component, and the vanish of an entity) does not travel as one envelope
+per component. Each sync sends every client one `StateBatchSMSG`:
+
+```protobuf
+message StateBatchSMSG {
+  uint64 server_tick = 1;              // 0 when sent outside the tick's sync
+  repeated EntityUpdate updates = 2;
+}
+message EntityUpdate {
+  fixed64 entity_id = 1;               // once, for all of the entity's components
+  repeated ComponentDelta components = 2;
+  VanishEntitySMSG vanish = 3;         // set when the entity left the view or the world
+}
+message ComponentDelta {
+  oneof component {
+    PositionComponent position = 1;    // the most frequent components take tags 1-15
+    PathComponentSMSG path = 2;
+    ...
+  }
+}
+```
+
+The component messages themselves have no `entity_id` any more; `EntityUpdate` names the entity
+once. `server_tick` lets the client order state in time. A component message sent on its own, in
+answer to a request (a skill list, say), is a batch of one with tick 0.
+
+On the server, a changed component's update is built once per tick as an `EntityUpdate` and the
+same instance goes into the batch of every client that sees the entity. `StateBatchSMSG` frames a
+batch from each update's cached bytes, so a shared update is serialised once, however many clients
+get it: an embedded message and a `bytes` field look the same on the wire.
+
+A path is a `DeltaPath`: the first waypoint, then each following one as three small numbers, its
+difference to the last (`DeltaPaths` on the server, `DeltaPathConvert` on the client). A 24-step
+leg is about 85 bytes instead of about 330. `Vec3` uses `sint64`, so a negative coordinate stays
+small too.
+
+These changes made the wire incompatible with older clients, so the protocol version is 2.
 
 Codegen is two separate pipelines that both have to run after editing a `.proto` file: Kotlin
 classes regenerate automatically on the next Gradle build; the C# classes consumed by the Godot
@@ -193,7 +237,9 @@ implements `Dirtyable` (tracks its own dirty flag — mutating it through its ow
 dirty) and reports who should receive it via `SyncTargets` (`PublicInRange`, `OwnerOnly`, or an
 explicit `Accounts` set). After each tick, `ZoneEngine` scans every dirty component, builds its
 `toEntityMessage()`, and routes it to its audience — so e.g. `Position` goes to everyone who sees
-the entity while `Inventory` or skill points go only to the owning account. See
+the entity while `Inventory` or skill points go only to the owning account. Everything one client
+is told in one sync goes out as one `StateBatchSMSG` (see
+[above](#entity-state-one-batch-per-client-per-tick)). See
 [ECS](/docs/server/ecs#dirty-components-and-sync) for the mechanism in full.
 
 # Adding a new message type end-to-end
@@ -213,6 +259,8 @@ Worked through once already for `ActivateSkillCMSG`/`ActivateSkillHandler`
 5. **Kotlin SMSG** (outgoing), if a reply/broadcast is needed: implement `toBnetEnvelope()`. Use the
    one-off broadcast shape (`DamageEntitySMSG`, sent via `sendToObserversOf`) for events, or
    the `Dirtyable`-backed entity-state shape (`SkillPointsSMSG`) for actual persistent component
-   state that should auto-sync on change — don't use the state shape for one-off events.
+   state that should auto-sync on change — don't use the state shape for one-off events. A state
+   message is an `EntitySMSG`: it implements `writeTo(update)` and gets a `ComponentDelta` field
+   instead of an `Envelope` field.
 6. **C# client wrappers + regenerate**: see the client-side steps and the `gen-protobuf.bat` note in
    [client Networking](/docs/client/networking#adding-a-new-message-type).

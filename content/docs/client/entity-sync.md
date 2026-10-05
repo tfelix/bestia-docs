@@ -40,7 +40,8 @@ anything that needs "my own character" (HUD, camera, input).
 `src/Game/Entity/entity.gd` (`class_name Entity extends Node3D`) doesn't just snap to server
 positions — it predicts movement locally and reconciles against authoritative updates:
 
-- A `PathComponentSMSG` gives a queue of tile waypoints and a speed; `Entity` walks that queue
+- A `PathComponentSMSG` gives a queue of tile waypoints (sent as a `DeltaPath` and decoded by
+  `DeltaPathConvert`) and a speed; `Entity` walks that queue
   itself every frame instead of waiting for a position update per tile.
 - An authoritative `PositionComponent` (a whole-tile correction) is folded in gradually by
   nudging speed over a short `_CORRECTION_TIME` window, rather than snapping instantly — this
