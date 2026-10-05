@@ -59,6 +59,7 @@ something that isn't there yet:
 
 - Pet/owned-Bestia ownership isn't wired up: `EntityManager` only ever tracks one owned entity
   (the player's Master).
-- The `Ping`/`Pong` keepalive exists but liveness detection isn't wired to it yet — a lost
-  connection is currently only detected when the TCP stream itself errors or closes.
+- The client pings the zone every 10 s so the zone can detect a dead client, but the client does
+  not use the pong to detect a dead server. It notices a lost connection only when the TCP stream
+  errors or closes.
 - The right-click **Context Menu** is a stub with no actions yet.

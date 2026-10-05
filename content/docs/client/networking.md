@@ -215,9 +215,14 @@ unexpected server-side drop — only the latter shows the ConnectionLost screen.
 screen sends the player back to the main menu, which re-runs the whole handshake on the next
 "Play" press.
 
-A `Ping`/`Pong` keepalive exists (sent on a timer while authenticated) but — per a TODO in the
-source — isn't yet used to actively detect a stalled connection; liveness currently relies on the
-TCP stream erroring or closing on its own.
+Once authenticated, `ConnectionManager` sends a `Ping` every 10 s (`PingTimer`) and stops on
+disconnect. The zone closes a connection that sends nothing for 30 s with
+`Disconnected("IDLE_TIMEOUT")`, so the ping is what keeps an idle player connected. The time from
+`Ping` to `Pong` is kept in `ConnectionManager.rtt_ms` (-1 before the first pong). The server side
+of this is in [server Networking](/docs/server/networking#liveness-and-backpressure).
+
+The client itself does not detect a dead server faster than TCP does: it notices a lost
+connection when the stream errors or closes.
 
 ## Adding a new message type
 

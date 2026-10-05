@@ -51,6 +51,8 @@ Built in `SocketServer.kt`, one `ClientMessageHandler` instance per connection:
 
 ```kotlin
 ch.pipeline().addLast(
+  SlowConsumerGuard(unwritableTimeoutSeconds, maxWriteBacklogBytes), // drops a client that stops reading
+  IdleStateHandler(readIdleTimeoutSeconds, 0, 0, SECONDS),           // reports a silent client
   LengthFieldBasedFrameDecoder(MAX_FRAME_LENGTH, 0, 4, 0, 4), // 4-byte length prefix, 1 MB max frame
   ProtobufDecoder(EnvelopeProto.Envelope.getDefaultInstance()),
   ProtobufEncoder(),
@@ -62,6 +64,30 @@ ch.pipeline().addLast(
 The socket binds to `socket.ip-address`/`socket.port` (`127.0.0.1:8090` in dev,
 `zone-server/src/main/resources/application.yml`), started by `SocketServerBootRunner` as the very
 last boot step (see [Architecture](/docs/server/architecture#boot-sequence)).
+
+# Liveness and backpressure
+
+The server must notice two kinds of broken client: one that is gone, and one that is still there but
+no longer reads. Both are closed through the normal disconnect path, so their master leaves the
+world.
+
+| Problem                        | Detection                                                                                                 | Setting (`socket.*`)                                    |
+| ------------------------------ | --------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
+| Client is gone (half-open TCP) | Nothing arrives for 30 s. `ClientMessageHandler` sends `Disconnected("IDLE_TIMEOUT")` and closes.         | `read-idle-timeout-seconds`                             |
+| Client stopped reading         | The channel stays unwritable for 10 s, or more than 4 MiB wait to be sent. `SlowConsumerGuard` closes it. | `unwritable-timeout-seconds`, `max-write-backlog-bytes` |
+
+The client keeps an idle connection alive with a `Ping` every 10 s, so a silent player is not
+dropped. A channel counts as unwritable above 256 KiB of unsent bytes and recovers below 64 KiB
+(`write-buffer-high-bytes`, `write-buffer-low-bytes`).
+
+Netty never refuses a write, so the guard is the only bound on what one connection may queue.
+Writes to a busy channel still go out. The one exception is the chunk stream: the manifest and the
+chunk push skip a busy channel and retry on a later tick, because a chunk payload is large and the
+stream can send it again. Everything else, chunk patches included, is sent once and never repeated,
+so skipping it would leave the client wrong for good.
+
+A disconnect notice waits at most 2 s for the bytes to leave. A peer that never takes them is closed
+anyway.
 
 # Inbound: socket → Envelope → CMSG → handler
 
