@@ -179,15 +179,21 @@ Two different questions have two different answers:
   (`EntityVisibility.observersOf`, backed by the chunk subscriptions of the terrain stream), plus
   the player's own account. `EntityAudience` holds this rule. Component state and one-off events
   (`OutMessageProcessor.sendToObserversOf`) both use it, so they always reach the same clients.
-- **What is near this position?** `EntityAOIService`, an `AreaOfInterestService<T>` keyed by entity
-  id. It is a generic, auto-growing **octree** (subdivide above 40 entities per node, merge below
-  15; doubles its root extent on demand rather than dropping out-of-bounds entities). Game logic
-  uses it for range queries, such as the victims of an area effect.
+- **What is near this position?** `EntityAOIService`, an `AreaOfInterestService`, keyed by entity
+  id. Game logic uses it for range queries, such as perception and the victims of an area effect.
+
+`AreaOfInterestService` answers "what is inside this box" with a **uniform grid** of 32 × 32-column
+cells, one cell per chunk column. A step inside a cell is three array writes; a step into the next
+cell moves the entity between two cell lists; a query visits only the cells it overlaps and builds
+no tree. Each service holds two grids, one per `AoiLayer`, so a question about moving things never
+walks the tens of thousands of static ones (trees, rocks, buildings).
 
 ```kotlin
-fun queryEntitiesInCube(center: Vec3L, size: Long): Set<T>
+fun queryEntitiesInCube(center: Vec3L, size: Long, layers: Set<AoiLayer> = AoiLayer.ALL): Set<Long>
+fun forEachInCube(center: Vec3L, size: Long, layers: Set<AoiLayer>, action: (Long, Long, Long, Long) -> Unit)
+fun anyWithinHorizontal(x: Long, y: Long, radius: Long): Boolean
 ```
 
-Both indexes are kept in sync with `Position` changes as part of
-`ZoneEngine.syncDirtyComponents()` — there is a `TODO` in that method noting it might be cleaner to
-update them directly from the movement system instead, which hasn't been done yet.
+The grid takes no lock: it is only touched with the world to itself (on the tick thread, or inside a
+world scope). The index follows `Position.movedFlag` in `ZoneEngine.syncDirtyComponents()`, so
+every step is indexed, including the steps that are not sent to clients.
