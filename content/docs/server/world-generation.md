@@ -334,6 +334,18 @@ client to regenerate bit-identical base terrain, and the Godot client is C# — 
 from the server's Kotlin/JVM one — which is exactly the case that makes shipping this without real bandwidth
 numbers to justify it dangerous.
 
+Generating a chunk takes milliseconds, so the tick thread does not do it. An unedited chunk a player asks
+for is materialised, RLE-encoded and deflated on a `zone-chunk-worker` thread (`ChunkWorkers`,
+`chunk-stream.encode-workers`, 2 by default), at most `chunk-stream.encodes-per-tick` (16) started per tick
+across all players, and each chunk only once however many players want it. The finished payload is handed
+back to the tick and sent on a later tick; until then the chunk waits in the player's send queue. Two
+chunks are still encoded at once on the tick: the one the player stands on, because arriving on nothing is
+worse than a hitch, and any chunk somebody has edited, whose base is already hot. A carve does not encode
+the new revision just to decide between a patch and a snapshot; it compares against the payload size the
+holders already have. The ground-block lookup that trampling and fire use builds its columns on the same
+workers. Deflate stays at level 9: measured on 121 surface chunks, level 6 is 11% more bytes, and the 80 µs
+level 9 costs per chunk is paid on a worker.
+
 Alongside the voxels, `derived/` maintains cheap, incrementally-updated structures so hot paths never touch
 raw voxels directly: `WalkableTile` (per-column walkable spans for a given agent's step/slope profile) and
 `OpacityGrid` (a downsampled, occupancy-weighted line-of-sight grid). Both are kept fresh on every edit

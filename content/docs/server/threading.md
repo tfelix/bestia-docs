@@ -50,12 +50,13 @@ while the world was locked.
 
 # The threads
 
-| Thread            | How many   | What it does                                                    | Touches the World         |
-| ----------------- | ---------- | --------------------------------------------------------------- | ------------------------- |
-| `zone-tick`       | 1          | systems, client sync, tick-lane messages, posted work           | yes, without a lock       |
-| Netty event loops | 1 per core | decode frames, put them into the inbox, write bytes             | no                        |
-| `zone-io-lane-N`  | 4          | IO-lane messages and connection events                          | only through a lease      |
-| `zone-db-job-N`   | 4          | database writes, ordered per owner                              | only through a lease      |
+| Thread                | How many   | What it does                                                      | Touches the World    |
+| --------------------- | ---------- | ----------------------------------------------------------------- | -------------------- |
+| `zone-tick`           | 1          | systems, client sync, tick-lane messages, posted work             | yes, without a lock  |
+| Netty event loops     | 1 per core | decode frames, put them into the inbox, write bytes               | no                   |
+| `zone-io-lane-N`      | 4          | IO-lane messages and connection events                            | only through a lease |
+| `zone-db-job-N`       | 4          | database writes, ordered per owner                                | only through a lease |
+| `zone-chunk-worker-N` | 2          | generate, encode and compress terrain; results return on the tick | no                   |
 
 # The inbox and its two lanes
 
