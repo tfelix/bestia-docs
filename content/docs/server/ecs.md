@@ -149,9 +149,14 @@ sealed interface SyncTargets {
 }
 ```
 
-`Position` changes also update the area-of-interest services (below) in the same pass. Outbound
-sends are handed off to a small worker pool (`AsyncJobExecutor`) so the tick thread never blocks on
-network I/O — see [Networking](/docs/server/networking#dirty-component-sync-not-full-state-broadcast).
+`Position` changes also update the area-of-interest services (below) in the same pass. The
+messages go into the tick's `TickOutbox` and leave as one batch per account when the tick ends, so
+the tick thread never blocks on network I/O — see
+[Networking](/docs/server/networking#outbound-smsg--outmessageprocessor--channel).
+
+`AsyncJobExecutor` is for database and other blocking work only. Its four workers each queue at most
+2048 jobs; a job that does not fit is dropped and counted (and logged) rather than run on the
+caller, because the caller is usually the tick.
 A component explicitly removed from a still-alive entity (implementing `Removable`) gets one more
 sync call with `removed = true`; a whole entity being destroyed instead triggers a `VanishEntitySMSG`
 broadcast to the union of every synced component's targets.

@@ -128,8 +128,14 @@ fun sendToAllPlayersInRange(pos: Vec3L, msg: SMSG)        // everyone in AOI ran
 
 `sendToAllPlayersInRange` queries `ActivePlayerAOIService` (see [ECS](/docs/server/ecs#area-of-interest))
 for the account ids within a fixed range (100 m) of `pos`, then sends to each individually.
-Delivery itself is `ChannelRegistry.sendMessage`, which looks up the Netty `Channel` for an account
-id and calls `writeAndFlush` — there is no queuing or batching at this layer.
+
+What happens next depends on the thread. **On the tick**, a send joins the account's batch in
+`TickOutbox`; when the tick ends, each account's batch is written in the order it was sent and
+flushed once (`ChannelRegistry.sendMessages`). A client therefore gets one flush per tick, not one
+per changed entity, and since `channel.write` only queues onto the channel's event loop, the tick
+never waits on the network. **From any other thread**, the send goes out at once. Chunk data is the
+exception: `NettyChunkFanOut` encodes a chunk once and writes the shared bytes to every holder
+directly.
 
 `ChannelRegistry` (account id → `Channel`) and `ConnectionInfoService` (account id → session:
 selected master, owned entities, currently active entity) are the two session maps; there is no
