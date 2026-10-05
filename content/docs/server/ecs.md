@@ -58,11 +58,14 @@ world.query(Position::class, Speed::class).each { id ->
 
 # Systems and the wave scheduler
 
-A `System` declares how often it runs and which component types it reads/writes:
+A `System` declares how often it runs, where in the tick it runs, and which component types it
+reads/writes:
 
 ```kotlin
 interface System {
   val schedule: Schedule get() = Schedule.EveryTick
+  val phase: Phase
+  val after: Set<KClass<out System>> get() = emptySet()
   val reads: ComponentClassSet get() = emptySet()
   val writes: ComponentClassSet get() = emptySet()
   fun update(world: World, deltaTime: Float)
@@ -74,12 +77,43 @@ something that only matters every few minutes) don't need to run every tick, and
 less often, `deltaTime` is the _real_ elapsed time since they last ran, not just one tick's worth, so
 time-integrating logic (countdowns, decay) stays correct regardless of cadence.
 
-`SystemScheduler` groups registered systems into ordered **waves**: two systems conflict if one
-writes a component type the other reads or writes, and a system is placed in the earliest wave
-strictly after any conflicting, earlier-registered system. Non-conflicting systems within a wave may
-run concurrently on the scheduler's own `ForkJoinPool` when `world.parallel-systems: true` (`application.yml`,
-default `false` — the whole simulation runs single-threaded by default and this is a genuinely
-optional feature, not the normal mode).
+## The tick order
+
+A tick runs in **phases**, in this order: `AI`, `MOVEMENT`, `ACTIONS`, `WORLD`, `STATUS`, `COMBAT`,
+`RECOVERY`, `ITEMS`, `DEATH`, `SPAWN`, `UPKEEP`, `PERSIST`. Inside a phase, `after` names the systems
+that must run first:
+
+```kotlin
+@Component
+class CarryCapacitySystem(...) : System {
+  override val phase = Phase.ITEMS
+  override val after = setOf(ObtainItemIntentSystem::class, GainExpSystem::class)
+  ...
+}
+```
+
+Two systems **conflict** if one writes a component type the other reads or writes. `TickOrder`
+resolves the order at boot and refuses to start when two conflicting systems of one phase are not
+ordered by `after`, or when a system names a system of a later phase. Systems the rules leave
+unordered run by name. An `after` can also order systems that share no component but whose effects
+a client sees in sequence, such as the ground overlay after the chunk stream.
+
+`SystemScheduler` then groups the systems into **waves**. A system goes in a later wave than every
+system it conflicts with or runs after, and phases never share a wave. Systems within a wave may run
+concurrently on the scheduler's own `ForkJoinPool` when `world.parallel-systems: true`
+(`application.yml`, default `false` — the whole simulation runs single-threaded by default and this
+is a genuinely optional feature, not the normal mode).
+
+## Declared access is checked
+
+The declarations are the whole contract, so a system must declare every component it touches,
+including what its helpers touch on other entities. A shared helper exposes its own set for that
+(`EntityWriteBehind.READS`, `AttackExecutionService.READS` and `WRITES`). With
+`world.undeclared-access: fail` — set in tests, and in every `testWorld()` — a system that touches an
+undeclared component fails for that tick with the system and component named. Production runs with
+`off`, which costs nothing.
+
+## Registration
 
 `EcsConfiguration` builds the `World` empty. Every `System` bean is registered into it only once all
 singletons exist:
@@ -88,15 +122,15 @@ singletons exist:
 @Bean
 fun systemRegistration(world: World, systems: ObjectProvider<System>, worldConfig: WorldConfig) =
   SmartInitializingSingleton {
-    world.registerSystems(systems.orderedStream().toList())
+    world.registerSystems(systems.stream().toList())
   }
 ```
 
 The World therefore depends on no system, so any service may inject the `World` or `WorldView`, even
 one that a system depends on.
 
-To add game logic: implement `System`, register it as a Spring `@Component`/`@Service` bean, and
-declare accurate `reads`/`writes` sets — that's what makes the parallel-wave scheduling safe.
+To add game logic: implement `System`, register it as a Spring `@Component`/`@Service` bean, give it
+a `phase`, and declare accurate `reads`/`writes` sets. Boot tells you which `after` it still needs.
 
 ## When a system fails
 
