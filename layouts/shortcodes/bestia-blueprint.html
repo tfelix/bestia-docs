@@ -64,6 +64,7 @@
       <p class="bp-hint">Pick how it behaves and which of its attacks the AI uses. The attack power is fitted to them.</p>
       <div class="bp-fields">
         <div class="bp-wide"><label class="form-label small" for="bp-ai">AI profile</label><select class="form-select form-select-sm" id="bp-ai" data-field="ai">{{ range $d.aiProfiles }}<option value="{{ .id }}"{{ if eq .id "passiv_day_active" }} selected{{ end }}>{{ .id }}: {{ .label }}</option>{{ end }}<option value="custom">custom: a new profile, described below</option></select></div>
+        <div><label class="form-label small" for="bp-aspd">ASPD <span class="text-body-secondary">(how fast its default attack is)</span></label><input class="form-control form-control-sm" id="bp-aspd" data-field="aspd" type="number" min="0" max="190" value="{{ $d.server.defaultSpeciesAspd }}"></div>
         <div class="bp-wide" id="bp-ai-custom-box" hidden><label class="form-label small" for="bp-ai-custom">How it behaves</label><textarea class="form-control form-control-sm" id="bp-ai-custom" data-field="aiBehaviour" rows="2" placeholder="e.g. hunts in packs at night, flees below 20 % HP, guards its burrow"></textarea></div>
       </div>
       <div class="form-label small mt-3 mb-1">Active attacks</div>

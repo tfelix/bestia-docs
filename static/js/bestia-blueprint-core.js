@@ -49,6 +49,9 @@
     };
   }
 
+  // A species is authored in ASPD, like AttackSpeed.baseMotionMs on the server.
+  const speciesMotionMs = (data, aspd) => data.server.motionMs.max - aspd * 10;
+
   function attackInterval(data, baseMotionMs, attrs) {
     const s = data.server;
     const reduced = baseMotionMs - idiv(baseMotionMs * (4 * attrs.agi + attrs.dex), 1000);
@@ -347,7 +350,7 @@
     const b = combatant(input.level, attrs, { element: input.element, elementLevel: ctx.elementLevel });
     b.hp = hp;
     b.mana = ctx.manaFor(attrs);
-    b.interval = attackInterval(data, data.server.bareHandedMotionMs, attrs);
+    b.interval = attackInterval(data, speciesMotionMs(data, input.aspd), attrs);
     b.basic = { ranged: ctx.role.basicAttack === "ranged" };
     const buff = ctx.active.find((a) => a.kind === "buff");
     const debuff = ctx.active.find((a) => a.kind === "debuff");
@@ -472,6 +475,7 @@
   const round2 = (v) => Math.round(v * 100) / 100;
 
   function build(data, input) {
+    input = { ...input, aspd: input.aspd ?? data.server.defaultSpeciesAspd };
     const tier = byId(data.tiers, input.tier);
     const role = byId(data.roles, input.role);
     const level = input.level;
@@ -532,7 +536,7 @@
       elementLevel,
       tier,
       role,
-      defaultAttack: { kind: role.basicAttack, range: role.basicAttack === "ranged" ? data.server.rangedReach : 1 },
+      defaultAttack: { kind: role.basicAttack, range: role.basicAttack === "ranged" ? data.server.rangedReach : 1, aspd: input.aspd },
       master,
       attributes: attrs,
       hp,
@@ -728,6 +732,7 @@
       `element: ${elementName(i.element, bp.elementLevel)}`,
       `size: ${i.size}`,
       `default-attack: ${bp.defaultAttack.kind.toUpperCase()}`,
+      `aspd: ${bp.defaultAttack.aspd}`,
       `ai: ${aiProfileOf(i)}`,
       `health: ${bp.hp}`,
       `mana: ${bp.mana}`,

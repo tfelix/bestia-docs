@@ -51,6 +51,8 @@
     PICKS.forEach((key) => (input[key] = [...picksOf(key)].filter((el) => el.checked).map((el) => el.value)));
     input.level = Math.min(100, Math.max(1, parseInt(input.level, 10) || 1));
     input.elementLevel = input.elementLevel ? parseInt(input.elementLevel, 10) : null;
+    const aspd = parseInt(input.aspd, 10);
+    input.aspd = Number.isNaN(aspd) ? data.server.defaultSpeciesAspd : Math.min(190, Math.max(0, aspd));
     input.lootBalance = parseFloat(input.lootBalance) || 0;
     input.identifier = input.identifier ? slug(input.identifier) : slug(input.name);
     input.temperatureMin = input.temperatureMin === "" ? null : Number(input.temperatureMin);
