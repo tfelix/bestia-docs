@@ -17,7 +17,7 @@ sequenceDiagram
   C->>L: POST /api/v1/auth/static (or eip712sig)
   L-->>C: 200 { token: JWT }
   C->>Z: TCP connect
-  C->>Z: Authentication(token, clientVersion)
+  C->>Z: Authentication(token, clientVersion, protocolVersion)
   Z->>Z: LoginTokenValidator (shared secret, no DB call)
   Z-->>C: AuthenticationSuccess
 ```
@@ -71,7 +71,7 @@ fun createLoginToken(accountId: Long, role: Role): String {
 ```
 
 The **login token** (`audience = "zone"`) is what actually crosses into zone-server — as the payload
-of the socket's first `Authentication` message, sent as `Authentication(token, clientVersion)`.
+of the socket's first `Authentication` message, sent as `Authentication(token, clientVersion, protocolVersion)`.
 
 # zone-server: independent re-validation
 
@@ -103,7 +103,15 @@ enum class Role(val authorities: Set<Authority>) {
 
 `JwtAuthenticationProcessor` wraps `LoginTokenValidator` behind the generic
 `AuthenticationProcessor` interface that `ClientMessageHandler.authenticateChannel` calls on a
-connection's first message. On success:
+connection's first message.
+
+Before the token is checked, the zone compares the message's `protocol_version` with its own
+(`ProtocolVersion.PROTOCOL_VERSION_CURRENT` in `authentication.proto`, the one value both sides
+compile against). A client of any other version, including one built before the field existed
+(which sends 0), is refused with `PROTOCOL_MISMATCH` and the client shows "client outdated".
+Raise that value with every change an older peer would read wrongly.
+
+On success:
 
 1. The zone gates on its own readiness (`ZoneReadinessService.isReady()`) — a login arriving before
    world generation/entity reload has finished is rejected with `SERVER_NOT_READY`, not accepted
