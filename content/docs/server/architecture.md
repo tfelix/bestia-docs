@@ -94,8 +94,15 @@ one shared key for the generic entity rows. So the writes for one owner land in 
 taken, and a delete never overtakes an earlier write.
 
 - A master is written on every exp gain, on logout (the `PersistAndRemove` component), and by the
-  periodic save (`persistence.interval-ms`, 90 s by default). Selecting a master first waits for its
-  pending writes, so a quick relog reads what the logout wrote.
+  periodic save. Selecting a master first waits for its pending writes, so a quick relog reads what
+  the logout wrote.
+- The periodic save (`EntityPersistenceSystem`) runs on the tick. It saves each `Persistent` entity
+  once per `persistence.interval-ms` (90 s by default) and spreads them over that time, a slice every
+  second. An entity whose snapshot equals the last one queued is skipped. A failed write is retried by
+  the next save. A blob row is updated in place, and Hibernate batches the updates.
+- On shutdown, `PersistOnShutdown` stops the tick, saves what changed, flushes the economy ledger and
+  gives the DB executor up to 30 s to finish.
+- Wild den packs are not saved: a den makes a fresh pack when a player comes near.
 - A drop removes the item in the database first; only then does it leave the live inventory and
   appear on the ground. A drop can lose an item but never copy one.
 - Static content (items, species, loot tables, commodities) is read into in-memory catalogues once
