@@ -159,10 +159,6 @@ counts the steps that are due. A late loop runs at most 3 steps back to back to 
 the rest, so after a long pause the world runs slow for a moment instead of racing. Dropped steps
 show up in the slow-tick warning.
 
-There's also an `ecs/EcsRunner.kt`, explicitly documented as not a Spring bean by default — a
-leftover/utility alternative driver, not part of the live boot path (`WorldBootRunner` starts
-`ZoneEngine`, not `EcsRunner`).
-
 # Dirty components and sync
 
 A component says whether it needs re-sending through the `Dirtyable` interface:

@@ -97,7 +97,9 @@ Order holds across lanes: an account's `SelectMaster` (IO) finishes before its n
 (tick) starts. Connection and disconnection events go through the same inbox on the IO lane, so a new
 connection's session is never announced before the old one's teardown.
 
-A full inbox, or a handler that throws, closes the connection with `INBOX_OVERFLOW` or
+A handler that throws a `BestiaException` refused the request: the client gets an
+`OperationError` with `REQUEST_REFUSED`, the refusal is logged, and the connection stays open. A full
+inbox, or a handler that throws anything else, closes the connection with `INBOX_OVERFLOW` or
 `INTERNAL_SERVER_ERROR:<code>`. Dropping a message instead would leave the client and the server
 disagreeing about a trade or an equipped item.
 

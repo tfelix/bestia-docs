@@ -47,7 +47,7 @@ stats in yet).
 | ------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `MELEE_PHYSICAL` / `RANGED_PHYSICAL` | `MeleePhysicalSkillStrategy` / `RangedPhysicalSkillStrategy`, both backed by `MeleePhysicalDamageCalculator` | **Not implemented** — `calculateDamage`, `getStatusAttack`, `getSoftDefense` and `getHardDefenseModifier` are all `TODO("Not yet implemented")`. A skill of this type throws if actually cast. |
 | `MAGIC`                              | —                                                                                                            | `SkillStrategyFactory` itself hits `TODO()` for this branch; `MagicDamageCalculator` exists but is in the same unimplemented state as the physical one.                                        |
-| `NO_DAMAGE`                          | Whatever `SkillScriptRegistry` resolves for the skill's `script` name                                        | **This is what actually works today** — see below.                                                                                                                                             |
+| `NO_DAMAGE`                          | Whatever `SkillStrategyFactory` resolves for the skill's `script` name                                       | **This is what actually works today** — see below.                                                                                                                                             |
 | `PASSIVE`                            | —                                                                                                            | Always-on, never resolved through a strategy; activating one throws `IllegalStateException`.                                                                                                   |
 
 `BaseDamageCalculator` (the shared parent of the physical/magic calculators) still carries the
@@ -66,7 +66,7 @@ Two paths work:
 implementation"** — `Random.nextInt(1, 7)` damage, no range/line-of-sight check, no formula at all.
 
 **Script-based skills** (`SkillType.NO_DAMAGE`): each is a small `@Component` implementing
-`SkillStrategy` directly, resolved by name via `SkillScriptRegistry`. Only three exist today:
+`SkillStrategy` directly, resolved by name via `SkillStrategyFactory`. Only three exist today:
 
 ```kotlin
 // Firebolt.kt — a channelled single-target bolt (skills.yml id 5)
