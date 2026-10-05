@@ -19,7 +19,7 @@ crash the first time a player triggers it.
 
 | Domain           | Interface            | Registry                        | Catalog              | Boot validator                                          |
 | ---------------- | -------------------- | ------------------------------- | -------------------- | ------------------------------------------------------- |
-| Skills           | `SkillStrategy`      | `SkillScriptRegistry`           | `skills.yml`         | `SkillScriptBootValidator` (logs, doesn't fail boot)    |
+| Skills           | `SkillStrategy`      | `SkillStrategyFactory`          | `skills.yml`         | `SkillScriptBootValidator` (logs, doesn't fail boot)    |
 | Status effects   | `StatusEffectScript` | `StatusEffectScriptRegistry`    | `status_effects.yml` | `StatusEffectCatalogBootValidator` — **fails boot**     |
 | Consumable items | `ItemScript`         | _(injected `List<ItemScript>`)_ | `items.yml`          | `ItemScriptValidator` — **fails boot**                  |
 | Equipment        | `EquipmentScript`    | `EquipmentScriptRegistry`       | `items.yml`          | `ItemScriptValidator` (same class, validates both)      |
@@ -30,12 +30,10 @@ after the importers and binders, and before the zone accepts a login or starts i
 All four are resolved by **simple class name**, not a fully-qualified lookup:
 
 ```kotlin
-// SkillScriptRegistry.kt
+// SkillStrategyFactory.kt
 private val byName: Map<String, SkillStrategy> = scripts
   .mapNotNull { script -> script::class.simpleName?.let { it to script } }
   .toMap()
-
-fun get(scriptName: String): SkillStrategy? = byName[scriptName]
 ```
 
 This replaced an older `applicationContext.getBean(<fully-qualified name>)` lookup that could never
