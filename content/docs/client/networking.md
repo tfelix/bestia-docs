@@ -45,26 +45,15 @@ no Godot dependency, so `EnvelopeFrameReaderTest` covers it. A frame that claims
 means the stream is out of step for good, so the socket disconnects instead of allocating it. The
 socket sets `NoDelay`, because every message is small and waits on latency, not bandwidth.
 
-Godot's `_Process(double delta)` drains that queue **on the main thread** once per frame and
-dispatches by checking each `oneof` field in turn:
+Godot's `_Process(double delta)` drains that queue **on the main thread** once per frame. It handles
+`Disconnected` itself and hands every other envelope to `EnvelopeDecoder`
+(`src/Bnet/Message/EnvelopeDecoder.cs`), one table entry per case:
 
 ```csharp
-else if (envelope.DamageEntity != null)
-{
-  var msg = Entity.DamageEntitySMSG.FromProto(envelope.DamageEntity);
-  EmitSignal(SignalName.MessageReceived, msg);
-}
-else if (envelope.ChunkData != null)
-{
-  // Converted but not decoded here — decoding a login's worth of chunks inline would
-  // spike this one frame. ChunkStreamManager decodes a budgeted amount per frame instead.
-  var msg = Map.ChunkDataSMSG.FromProto(envelope.ChunkData);
-  EmitSignal(SignalName.MessageReceived, msg);
-}
-else
-{
-  GD.PrintErr($"BnetSocket: Envelope message '{envelope.MessageCase}' was not handled!");
-}
+[Envelope.MessageOneofCase.DamageEntity] = e => Entity.DamageEntitySMSG.FromProto(e.DamageEntity),
+// Converted but not decoded here — decoding a login's worth of chunks inline would
+// spike this one frame. ChunkStreamManager decodes a budgeted amount per frame instead.
+[Envelope.MessageOneofCase.ChunkData] = e => Map.ChunkDataSMSG.FromProto(e.ChunkData),
 ```
 
 Entity state arrives as one `StateBatchSMSG` per server tick (see
@@ -73,6 +62,10 @@ Entity state arrives as one `StateBatchSMSG` per server tick (see
 wrapper's `FromProto(entityId, proto)` takes the id from the batch's `EntityUpdate`, because the
 component message no longer carries it. `BnetSocket.LastServerTick` keeps the newest tick. So the
 rest of the client still sees one `EntitySMSG` per component, as before.
+
+`EnvelopeCases` reads off the proto descriptor which cases the server sends. `EnvelopeDecoderTest`
+fails when one of them has no entry, unless it is listed in `EnvelopeCases.NotUsedYet`, and `BnetSocket`
+reports any such case as an error at start-up.
 
 Every incoming message — regardless of type — is re-emitted through **one** Godot signal,
 `MessageReceived(ISMSG message)`. There's no per-message routing at this layer; every downstream
@@ -252,9 +245,8 @@ the client-side steps are:
 1. Add the C# wrapper under `src/Bnet/Message/<Domain>/`, implementing `ICMSG.ToEnvelope()` or a
    static `ISMSG.FromProto(...)`, following `AttackEntityCMSG.cs` / `DamageEntitySMSG.cs` above as
    templates.
-2. For an incoming message, add an `else if (envelope.Xyz != null) { ... }` branch to
-   `BnetSocket`'s dispatch chain — messages that reach the final `else` just print an unhandled-
-   envelope warning instead of failing loudly.
+2. For an incoming message, add one entry to `EnvelopeDecoder`. `EnvelopeDecoderTest` fails until
+   you do.
 3. For an outgoing message, add a thin `send_xyz(...)` wrapper method to
    `connection_manager.gd` that instantiates the C# class and calls `_socket.SendMessage(...)`.
    Incoming `EntitySMSG` subclasses need no extra branch — they're already caught generically by

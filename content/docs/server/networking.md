@@ -146,7 +146,7 @@ graph LR
   C -->|not yet authed| D[AuthenticationProcessor]
   C -->|authed| E[MessageEnvelopeReceivedEvent]
   E --> F[BnetMessageProcessorAdapter]
-  F -->|"envelope.hasXxx()"| G["internal CMSG"]
+  F -->|"handler's WireDecoder"| G["internal CMSG"]
   G --> H[InMessageProcessor]
   H --> J["AccountInbox<br/>tick or IO lane"]
   J --> I["IncomingMessageHandler&lt;T&gt; bean"]
@@ -158,22 +158,21 @@ graph LR
    [Authentication](/docs/server/authentication)). Once authenticated, every further message is
    wrapped in a `MessageEnvelopeReceivedEvent` and published as a plain Spring `ApplicationEvent`.
 2. **`BnetMessageProcessorAdapter.handleMessageEnvelopeReceived`** (an `@EventListener`)
-   pattern-matches the `oneof` and converts the raw protobuf into an internal `CMSG` object:
+   looks up the handler for the envelope's case and reads the raw protobuf into an internal `CMSG`
+   with that handler's decoder. Each handler declares the case it answers:
 
    ```kotlin
-   val internalMessage = when {
-     envelope.hasAttackEntity() -> AttackEntityCMSG.fromBnet(accountId, envelope.attackEntity)
-     envelope.hasUseItem() -> UseItemCMSG.fromBnet(accountId, envelope.useItem)
-     ...
-     else -> throw UnknownBnetMessageException(envelope)
+   override val wire = decoder(MessageCase.ATTACK_ENTITY) { accountId, envelope ->
+     AttackEntityCMSG.fromBnet(accountId, envelope.attackEntity)
    }
    ```
 
-   Adding a new incoming message type means adding a branch here — this is the one place
-   registration is manual; everything downstream auto-wires through Spring. A message with no
-   branch closes the connection with `UNKNOWN_MESSAGE`. The log names only its case and unknown
-   field numbers, never its content, because a message can carry a login token. A `fromBnet` that
-   returns `null` (a well-formed but semantically invalid payload, e.g. an equip slot ordinal this
+   An envelope no handler takes closes the connection with `UNKNOWN_MESSAGE`. The log names only its
+   case and unknown field numbers, never its content, because a message can carry a login token. The
+   adapter refuses to start when a case a client sends has no handler, so a message added to the
+   envelope cannot silently go unanswered; a case counts as client-sent unless its message type ends
+   in `SMSG`, it is the handshake's `Authentication`, or it is on a short list the server sends under
+   another name. A decoder that returns `null` (a well-formed but semantically invalid payload, e.g. an equip slot ordinal this
    server version doesn't know) drops the message with a warning rather than tearing down the
    connection.
 
@@ -264,16 +263,15 @@ Worked through once already for `ActivateSkillCMSG`/`ActivateSkillHandler`
    `oneof` inside the correct numbered range.
 2. **Kotlin CMSG** (incoming): `data class XyzCMSG(...) : CMSG` with a companion
    `fun fromBnet(accountId: Long, proto: ...): XyzCMSG`.
-3. **Dispatch branch**: add `envelope.hasXyz() -> XyzCMSG.fromBnet(...)` to
-   `BnetMessageProcessorAdapter`'s `when`.
-4. **Handler**: `@Component class XyzHandler(...) : TickMessageHandler<XyzCMSG>` — auto-discovered, no
-   manual registry entry. It must be an `IoMessageHandler<XyzCMSG>` instead as soon as anything it calls
-   reaches the database.
-5. **Kotlin SMSG** (outgoing), if a reply/broadcast is needed: implement `toBnetEnvelope()`. Use the
+3. **Handler**: `@Component class XyzHandler(...) : TickMessageHandler<XyzCMSG>` with
+   `override val wire = decoder(MessageCase.XYZ) { ... }` — auto-discovered, no manual registry
+   entry. It must be an `IoMessageHandler<XyzCMSG>` instead as soon as anything it calls reaches the
+   database. Boot fails if you forget the handler.
+4. **Kotlin SMSG** (outgoing), if a reply/broadcast is needed: implement `toBnetEnvelope()`. Use the
    one-off broadcast shape (`DamageEntitySMSG`, sent via `sendToObserversOf`) for events, or
    the `Dirtyable`-backed entity-state shape (`SkillPointsSMSG`) for actual persistent component
    state that should auto-sync on change — don't use the state shape for one-off events. A state
    message is an `EntitySMSG`: it implements `writeTo(update)` and gets a `ComponentDelta` field
    instead of an `Envelope` field.
-6. **C# client wrappers + regenerate**: see the client-side steps and the `gen-protobuf.bat` note in
+5. **C# client wrappers + regenerate**: see the client-side steps and the `gen-protobuf.bat` note in
    [client Networking](/docs/client/networking#adding-a-new-message-type).
