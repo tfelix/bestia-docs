@@ -48,8 +48,9 @@ Two guards on it are load-bearing:
 
 # The pipeline
 
-Six ECS systems, each in its own scheduler wave. They conflict deliberately — every one of them
-declares the agent component as written — and a test pins that arrangement.
+Six ECS systems in the `AI` phase, each in its own scheduler wave. They conflict deliberately — every
+one of them declares the agent component as written — so each names the one before it in `after`, and
+a test pins that arrangement.
 
 ```mermaid
 graph LR
