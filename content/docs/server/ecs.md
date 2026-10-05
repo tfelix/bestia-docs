@@ -123,13 +123,13 @@ each dirty instance builds its `toEntityMessage()` and resolves who should recei
 
 ```kotlin
 sealed interface SyncTargets {
-  data object PublicInRange : SyncTargets            // broadcast to everyone in AOI range
+  data object PublicInRange : SyncTargets            // everyone who sees the entity
   data object OwnerOnly : SyncTargets                 // only the owning account
   data class Accounts(val accountIds: Set<Long>) : SyncTargets  // an explicit set (e.g. + party)
 }
 ```
 
-`Position` changes also update the area-of-interest services (below) in the same pass. Outbound
+`Position` changes also update the spatial index and the visibility index (below) in the same pass. Outbound
 sends are handed off to a small worker pool (`AsyncJobExecutor`) so the tick thread never blocks on
 network I/O — see [Networking](/docs/server/networking#dirty-component-sync-not-full-state-broadcast).
 A component explicitly removed from a still-alive entity (implementing `Removable`) gets one more
@@ -138,18 +138,21 @@ broadcast to the union of every synced component's targets.
 
 # Area of interest
 
-`AreaOfInterestService<T>` is a generic, auto-growing **octree** (subdivide above 40 entities per
-node, merge below 15; doubles its root extent on demand rather than dropping out-of-bounds
-entities). Two instances exist:
+Two different questions have two different answers:
 
-- `EntityAOIService` — every entity, keyed by entity id, used for `sendToAllPlayersInRange` fan-out.
-- `ActivePlayerAOIService` — only players, keyed by account id, used to answer "who is near this
-  position" for the sync pass above.
+- **Who sees this entity?** The accounts holding the chunk it stands in
+  (`EntityVisibility.observersOf`, backed by the chunk subscriptions of the terrain stream), plus
+  the player's own account. `EntityAudience` holds this rule. Component state and one-off events
+  (`OutMessageProcessor.sendToObserversOf`) both use it, so they always reach the same clients.
+- **What is near this position?** `EntityAOIService`, an `AreaOfInterestService<T>` keyed by entity
+  id. It is a generic, auto-growing **octree** (subdivide above 40 entities per node, merge below
+  15; doubles its root extent on demand rather than dropping out-of-bounds entities). Game logic
+  uses it for range queries, such as the victims of an area effect.
 
 ```kotlin
 fun queryEntitiesInCube(center: Vec3L, size: Long): Set<T>
 ```
 
-Both are kept in sync with `Position` changes as part of `ZoneEngine.syncDirtyComponents()` — there
-is a `TODO` in that method noting it might be cleaner to update AOI directly from the movement
-system instead, which hasn't been done yet.
+Both indexes are kept in sync with `Position` changes as part of
+`ZoneEngine.syncDirtyComponents()` — there is a `TODO` in that method noting it might be cleaner to
+update them directly from the movement system instead, which hasn't been done yet.
