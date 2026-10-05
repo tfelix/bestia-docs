@@ -91,6 +91,20 @@ fun ecsWorld(systems: List<System>, worldConfig: WorldConfig, zoneShardConfig: Z
 To add game logic: implement `System`, register it as a Spring `@Component`/`@Service` bean, and
 declare accurate `reads`/`writes` sets — that's what makes the parallel-wave scheduling safe.
 
+## When a system fails
+
+One broken system must not stop the world, so failures are contained at three levels:
+
+- **Per system.** The scheduler catches what a system throws, logs it, and goes on with the next
+  system. The deferred changes and the client sync still happen on that tick. A system that fails
+  5 ticks in a row (`SystemScheduler.MAX_CONSECUTIVE_FAILURES`) is switched off with an ERROR log.
+- **Per entity.** Inside a tick, `query(...).each` skips an entity whose action throws. More than 8
+  failures in one pass is a bug in the system, not in one entity, so it counts as a system failure.
+- **Per deferred change and command.** One that throws is logged; the rest still apply.
+
+Only errors after which the JVM cannot be trusted (out of memory, internal VM errors) end the tick
+loop, and `ZoneEngine` logs that the loop died instead of losing the thread silently.
+
 # ZoneEngine: the tick loop
 
 `ecs/ZoneEngine.kt` owns the actual running loop. `start()` submits a loop to a dedicated
