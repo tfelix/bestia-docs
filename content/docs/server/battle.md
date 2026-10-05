@@ -85,7 +85,7 @@ Each is its own bespoke formula, not an instance of the shared RO-style calculat
 `skills.yml` catalogs **43 skills**, but the overwhelming majority are `PASSIVE` or `NO_DAMAGE`
 profession/crafting skills for the master skill tree (forging, alchemy, mining, cartography, ...)
 whose `script:` name has **no matching Kotlin class** — e.g. `Cooking` or `ForgeWeapon`.
-`SkillScriptBootValidator` checks this at boot (on `ApplicationReadyEvent`, after
+`SkillScriptBootValidator` checks this at boot (from `ContentValidationBootRunner`, after
 `SkillImporterBootRunner` has populated the table) and logs a warning rather than failing the boot,
 since a hard failure would make the server unbootable against real catalog data; activating one of
 the missing skills fails at cast time instead. The two Bestia-side attack skills (`ember`,

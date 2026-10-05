@@ -17,12 +17,15 @@ Each domain follows the same shape: a small interface, a registry that resolves 
 every reference actually resolves — so a typo surfaces as a boot warning or failure, not a runtime
 crash the first time a player triggers it.
 
-| Domain           | Interface            | Registry                        | Catalog              | Boot validator                                        |
-| ---------------- | -------------------- | ------------------------------- | -------------------- | ----------------------------------------------------- |
-| Skills           | `SkillStrategy`      | `SkillScriptRegistry`           | `skills.yml`         | `SkillScriptBootValidator` (logs, doesn't fail boot)  |
-| Status effects   | `StatusEffectScript` | `StatusEffectScriptRegistry`    | `status_effects.yml` | (resolved via `getOrThrow` at apply-time)             |
-| Consumable items | `ItemScript`         | _(injected `List<ItemScript>`)_ | `items.yml`          | `ItemScriptValidator`, `@Order(200)` — **fails boot** |
-| Equipment        | `EquipmentScript`    | `EquipmentScriptRegistry`       | `items.yml`          | `ItemScriptValidator` (same class, validates both)    |
+| Domain           | Interface            | Registry                        | Catalog              | Boot validator                                          |
+| ---------------- | -------------------- | ------------------------------- | -------------------- | ------------------------------------------------------- |
+| Skills           | `SkillStrategy`      | `SkillScriptRegistry`           | `skills.yml`         | `SkillScriptBootValidator` (logs, doesn't fail boot)    |
+| Status effects   | `StatusEffectScript` | `StatusEffectScriptRegistry`    | `status_effects.yml` | `StatusEffectCatalogBootValidator` — **fails boot**     |
+| Consumable items | `ItemScript`         | _(injected `List<ItemScript>`)_ | `items.yml`          | `ItemScriptValidator` — **fails boot**                  |
+| Equipment        | `EquipmentScript`    | `EquipmentScriptRegistry`       | `items.yml`          | `ItemScriptValidator` (same class, validates both)      |
+
+Every validator is a `CatalogValidator`. `ContentValidationBootRunner` (`@Order(200)`) runs them all
+after the importers and binders, and before the zone accepts a login or starts its tick.
 
 All four are resolved by **simple class name**, not a fully-qualified lookup:
 
@@ -73,7 +76,7 @@ class SmallHealthPotionScript(
 
 Unlike the skill/status registries, `ItemScript` beans are consumed as a plain injected
 `List<ItemScript>` and keyed by `itemId` rather than by name. `ItemScriptValidator`
-(`item/script/`, `@Order(200)` — after `EquipmentScriptBinderBootRunner` at 150) checks two things
+(`item/script/`, run by `ContentValidationBootRunner` after `EquipmentScriptBinderBootRunner`) checks two things
 and **throws** (failing the boot) if either is violated: no two scripts claim the same `itemId`, and
 every `USABLE` item in the catalog has a matching script. Unlike skills, there's no "not built yet"
 escape hatch here — a usable item with no script is treated as a data error.
