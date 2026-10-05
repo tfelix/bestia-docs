@@ -104,9 +104,10 @@ graph LR
 ```
 
 1. **`ClientMessageHandler.channelRead0`** — if the channel isn't authenticated yet, the first
-   message must be an `Authentication` envelope, routed to `authenticateChannel`. Once
-   authenticated, every further message is wrapped in a `MessageEnvelopeReceivedEvent` and published
-   as a plain Spring `ApplicationEvent`.
+   message must be an `Authentication` envelope, routed to `authenticateChannel`. Its protocol
+   version must match the zone's, or the connection is closed with `PROTOCOL_MISMATCH` (see
+   [Authentication](/docs/server/authentication)). Once authenticated, every further message is
+   wrapped in a `MessageEnvelopeReceivedEvent` and published as a plain Spring `ApplicationEvent`.
 2. **`BnetMessageProcessorAdapter.handleMessageEnvelopeReceived`** (an `@EventListener`)
    pattern-matches the `oneof` and converts the raw protobuf into an internal `CMSG` object:
 
@@ -120,7 +121,9 @@ graph LR
    ```
 
    Adding a new incoming message type means adding a branch here — this is the one place
-   registration is manual; everything downstream auto-wires through Spring. A `fromBnet` that
+   registration is manual; everything downstream auto-wires through Spring. A message with no
+   branch closes the connection with `UNKNOWN_MESSAGE`. The log names only its case and unknown
+   field numbers, never its content, because a message can carry a login token. A `fromBnet` that
    returns `null` (a well-formed but semantically invalid payload, e.g. an equip slot ordinal this
    server version doesn't know) drops the message with a warning rather than tearing down the
    connection.

@@ -168,7 +168,7 @@ sequenceDiagram
   L-->>C: 200 { token: JWT }
   C->>Z: TCP connect
   Z-->>C: ConnectionStatusChanged(Connected)
-  C->>Z: Authentication(token, clientVersion)
+  C->>Z: Authentication(token, clientVersion, protocolVersion)
   Z-->>C: AuthenticationSuccess
   Note over C: scene transition to Master Select unblocks here
 ```
@@ -178,13 +178,14 @@ sequenceDiagram
    and starts a **blocking** scene transition to Master Select (see
    [Scenes & Menus](/docs/client/scenes-and-menus)) while calling `_socket.ConnectToServer()`.
 2. **Socket auth**: once `BnetSocket` reports `Connected`, `ConnectionManager` sends an
-   `Authentication(token, clientVersion)` CMSG as the _first_ message on the socket:
+   `Authentication(token, clientVersion)` CMSG as the _first_ message on the socket. The C# wrapper
+   adds the protocol version itself (`ProtocolVersion.Current`):
 
    ```gdscript
    if status == 1: # Connected
        if _connection_state == ConnectionState.DISCONNECTED:
            _connection_state = ConnectionState.CONNECTED_NOT_AUTHED
-           var auth_msg = Authentication.new(_login_token, SettingsManager.version)
+           var auth_msg = Authentication.new(_login_token, SettingsManager.VERSION)
            _socket.SendMessage(auth_msg)
    ```
 
@@ -197,8 +198,11 @@ handoff section. The client never re-derives trust locally; it just carries the 
 
 ## Disconnects
 
-There's no automatic reconnect. Any drop routes to `Menu/ConnectionLost`, keyed by an error enum
-(`LOGIN_OFFLINE`, `LOGIN_ERROR`, `ZONE_CONNECTION_LOST`):
+There's no automatic reconnect. Any drop routes to `Menu/ConnectionLost`, keyed by
+`ConnectionManager.ConnectionError` (`ZONE_CONNECTION_LOST`, or `PROTOCOL_MISMATCH` when the zone
+refused this client's protocol version). The zone names its reason in a `Disconnected` message
+before it closes; `BnetSocket.LastDisconnectReason` keeps it, read on the socket thread because the
+close can reach the main thread before the message does:
 
 ```gdscript
 if status == 0: # Disconnected
@@ -206,6 +210,8 @@ if status == 0: # Disconnected
     if _intentional_disconnect:
         _intentional_disconnect = false
         SceneManager.goto_scene("res://Menu/Main/Main.tscn")
+    elif _socket.LastDisconnectReason == "PROTOCOL_MISMATCH":
+        _goto_connection_lost(ConnectionError.PROTOCOL_MISMATCH)
     else:
         _goto_connection_lost(ConnectionError.ZONE_CONNECTION_LOST)
 ```
