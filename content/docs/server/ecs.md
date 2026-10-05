@@ -124,13 +124,13 @@ leftover/utility alternative driver, not part of the live boot path (`WorldBootR
 
 # Dirty components and sync
 
-The `World` keeps no separate change-tracking ledger. A component is the single source of truth for
-whether it needs re-sending, via the `Dirtyable` interface:
+A component says whether it needs re-sending through the `Dirtyable` interface:
 
 ```kotlin
 interface Dirtyable {
-  fun isDirty(): Boolean
-  fun markDirty()   // force a resync even though nothing changed (e.g. client re-requests state)
+  val dirtyFlag: DirtyFlag
+  fun isDirty(): Boolean   // dirtyFlag.isSet
+  fun markDirty()          // force a resync even though nothing changed (e.g. client re-requests state)
   fun clearDirty()
   fun toEntityMessage(entityId: Long, removed: Boolean = false): EntitySMSG
   fun syncTargets(world: World, entityId: EntityId): SyncTargets
@@ -138,8 +138,11 @@ interface Dirtyable {
 ```
 
 Mutating a `Dirtyable` component through its own setters marks it dirty; a freshly added component
-starts dirty. Each tick, `ZoneEngine` scans every registered `Dirtyable` component type, and for
-each dirty instance builds its `toEntityMessage()` and resolves who should receive it:
+starts dirty. When its `DirtyFlag` goes from clean to dirty, it enters the entity into the world's
+`DirtyLog` — the component store attached the flag when the component was added. Each tick,
+`ZoneEngine` drains that log rather than scanning every store, so an idle world costs nothing to
+sync. For each entry that is still dirty it builds `toEntityMessage()` and resolves who should
+receive it:
 
 ```kotlin
 sealed interface SyncTargets {
@@ -149,17 +152,19 @@ sealed interface SyncTargets {
 }
 ```
 
-`Position` changes also update the area-of-interest services (below) in the same pass. The
-messages go into the tick's `TickOutbox` and leave as one batch per account when the tick ends, so
-the tick thread never blocks on network I/O — see
+`Position` has a second flag, `movedFlag`, with its own log: every step re-indexes the entity in the
+area-of-interest services (below), even the steps that are not sent. The messages go into the
+tick's `TickOutbox` and leave as one batch per account when the tick ends, so the tick thread never
+blocks on network I/O — see
 [Networking](/docs/server/networking#outbound-smsg--outmessageprocessor--channel).
+
+A component explicitly removed from a still-alive entity (implementing `Removable`) gets one more
+sync call with `removed = true`; a whole entity being destroyed instead triggers a `VanishEntitySMSG`
+broadcast to the union of every synced component's targets.
 
 `AsyncJobExecutor` is for database and other blocking work only. Its four workers each queue at most
 2048 jobs; a job that does not fit is dropped and counted (and logged) rather than run on the
 caller, because the caller is usually the tick.
-A component explicitly removed from a still-alive entity (implementing `Removable`) gets one more
-sync call with `removed = true`; a whole entity being destroyed instead triggers a `VanishEntitySMSG`
-broadcast to the union of every synced component's targets.
 
 # Area of interest
 

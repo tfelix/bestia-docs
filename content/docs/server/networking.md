@@ -152,8 +152,8 @@ single unified `Session` object combining them.
 `zone-server` doesn't broadcast full entity state every tick. Every syncable ECS component
 implements `Dirtyable` (tracks its own dirty flag — mutating it through its own setters marks it
 dirty) and reports who should receive it via `SyncTargets` (`PublicInRange`, `OwnerOnly`, or an
-explicit `Accounts` set). After each tick, `ZoneEngine` scans every dirty component, builds its
-`toEntityMessage()`, and routes it through exactly the two functions above — so e.g. `Position` is
+explicit `Accounts` set). After each tick, `ZoneEngine` takes the components that became dirty from
+the dirty log, builds each one's `toEntityMessage()`, and routes it through exactly the two functions above — so e.g. `Position` is
 broadcast to everyone in range while `Inventory` or skill points go only to the owning account. See
 [ECS](/docs/server/ecs#dirty-components-and-sync) for the mechanism in full.
 
