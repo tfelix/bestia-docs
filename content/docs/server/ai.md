@@ -48,17 +48,23 @@ Two guards on it are load-bearing:
 
 # The pipeline
 
-Five ECS systems, each in its own scheduler wave. They conflict deliberately — every one of them
+Six ECS systems, each in its own scheduler wave. They conflict deliberately — every one of them
 declares the agent component as written — and a test pins that arrangement.
 
 ```mermaid
 graph LR
-  P["PerceptionSystem<br/>every 0.5 s"] --> S["SenseSystem<br/>every 0.5 s"]
+  L["AiDetailSystem<br/>every 1 s"] --> P["PerceptionSystem<br/>every 0.5 s"]
+  P --> S["SenseSystem<br/>per sense"]
   S --> D["AiDriveSystem<br/>every 1 s"]
-  D --> T["AiThinkSystem<br/>every tick"]
+  D --> T["AiThinkSystem<br/>every 0.5 s"]
   T --> A["AiActSystem<br/>every tick"]
   A --> W["Path / Health / Animation"]
 ```
+
+The times are per agent at full detail. Each system runs every tick but visits an agent only on its
+turn, so the agents are spread over the ticks (see [Detail tiers](#detail-tiers)).
+
+**Detail** decides how much processing each agent gets. The other stages only read it.
 
 **Perception** is the only writer of observations — position, health, whether an enemy is in sight,
 who and where the target is, whether it is night. It may also _clear_ a belief its observations
@@ -80,6 +86,36 @@ something: a creature woken halfway through wakes half-rested.
 **Act** ticks the current step's behaviour tree. On success it applies _that one action's_ effects
 and advances; on failure it clears the plan so the next think cycle starts over. It also derives the
 `Animation` component from the current step's posture and whether the entity is moving.
+
+# Detail tiers
+
+Most creatures in a zone are ones no player is looking at. They still live: a creature nobody sees
+gets hungry, eats, sleeps and wanders. It is only processed less often.
+
+| Tier         | When                                                   | Processed                                 |
+| ------------ | ------------------------------------------------------ | ----------------------------------------- |
+| `FULL`       | a player within 96 tiles, in a fight, or player-driven | at the full rate                          |
+| `REDUCED`    | someone holds its chunk, but no player is near         | `throttle-factor` (4) times less often    |
+| `BACKGROUND` | nobody holds its chunk                                 | `background-factor` (20) times less often |
+
+Both factors are under `ambient-spawn` in `application.yml`. When a stage skips an agent, the agent
+gets all the time that passed on its next turn. So hunger, memory timers and walks advance at the same
+speed, only in bigger steps. An agent in the background tier also walks in coarse steps
+(`CoarseMovement`).
+
+**The floor.** A profile can set `min_detail: full`, `reduced` or `background` (the default). A world
+boss can set `full` to keep its full rate when nobody is near. Only creatures the server fills the world
+with (the `AiThrottleable` marker) may drop to `BACKGROUND`. Den mobs, `/spawn`ed mobs and player
+bestias stay at `REDUCED` or higher.
+
+**Spread over ticks.** An agent's turn comes on a tick picked from a hash of its id (`TickBuckets`).
+So a hundred creatures do not all think on the same tick.
+
+**Wake ticks.** A leaf that only waits (`Wait`, `Sleep`, `Labour`, the pause in `Wander`) tells the act
+stage when it next has work. The act stage leaves the agent alone until then, unless a new plan
+arrives. A sequence or selector passes this on only from its first child, because it re-checks the
+earlier children on every tick. `UntilHour` caps the wake at half a second, so the hour is still checked
+as often as perception updates it.
 
 # Four rules worth knowing before touching any of it
 
