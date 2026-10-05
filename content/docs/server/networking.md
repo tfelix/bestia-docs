@@ -177,20 +177,19 @@ graph LR
    server version doesn't know) drops the message with a warning rather than tearing down the
    connection.
 
-3. **`InMessageProcessor.submit()`** puts the message into the sender's `AccountInbox`, which runs an
-   account's messages one at a time and in order, each on its handler's lane: the tick thread, or an
-   IO thread for handlers that need the database (`override val lane = HandlerLane.IO`). Everything up
-   to here ran on the Netty event loop and only decoded. See
+3. **`InMessageProcessor.submit()`** finds the one handler for the message's Kotlin class among every
+   Spring-injected `IncomingMessageHandler<*>` bean — dispatch is by class, not a string or int tag —
+   and puts the message into the sender's `AccountInbox`, which runs an account's messages one at a
+   time and in order. A `TickMessageHandler` runs on the tick thread and gets the `World`; an
+   `IoMessageHandler` runs on an IO thread, for handlers that need the database. Everything up to here
+   ran on the Netty event loop and only decoded. See
    [Threads and the Tick](/docs/server/threading#the-inbox-and-its-two-lanes).
-4. **`InMessageProcessor.process()`** looks up handlers by the message's Kotlin class from a
-   `Map<KClass<*>, List<IncomingMessageHandler<*>>>` built from every Spring-injected
-   `IncomingMessageHandler<*>` bean — dispatch is by class, not a string or int tag:
 
    ```kotlin
    @Component
-   class AttackEntityHandler(...) : InMessageProcessor.IncomingMessageHandler<AttackEntityCMSG> {
+   class AttackEntityHandler(...) : TickMessageHandler<AttackEntityCMSG> {
      override val handles = AttackEntityCMSG::class
-     override fun handle(msg: AttackEntityCMSG): Boolean { ... }
+     override fun handle(world: World, msg: AttackEntityCMSG): Boolean { ... }
    }
    ```
 
@@ -267,10 +266,9 @@ Worked through once already for `ActivateSkillCMSG`/`ActivateSkillHandler`
    `fun fromBnet(accountId: Long, proto: ...): XyzCMSG`.
 3. **Dispatch branch**: add `envelope.hasXyz() -> XyzCMSG.fromBnet(...)` to
    `BnetMessageProcessorAdapter`'s `when`.
-4. **Handler**: `@Component class XyzHandler(...) : InMessageProcessor.IncomingMessageHandler<XyzCMSG>`
-   — auto-discovered, no manual registry entry. It runs on the tick thread unless it declares
-   `override val lane = HandlerLane.IO`, which it must as soon as anything it calls reaches the
-   database.
+4. **Handler**: `@Component class XyzHandler(...) : TickMessageHandler<XyzCMSG>` — auto-discovered, no
+   manual registry entry. It must be an `IoMessageHandler<XyzCMSG>` instead as soon as anything it calls
+   reaches the database.
 5. **Kotlin SMSG** (outgoing), if a reply/broadcast is needed: implement `toBnetEnvelope()`. Use the
    one-off broadcast shape (`DamageEntitySMSG`, sent via `sendToObserversOf`) for events, or
    the `Dirtyable`-backed entity-state shape (`SkillPointsSMSG`) for actual persistent component
