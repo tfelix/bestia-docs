@@ -84,6 +84,21 @@ until the block is done. The block runs on the caller's own thread, inside its o
 never at the same time as the tick. A nested scope inside a lease runs inline. A borrower that is not
 granted the world within 5 s gets an exception.
 
+Only a scope borrows. A single accessor such as `world.get` called from any other thread throws an
+`IllegalStateException` instead of taking a lease of its own. Two accessors in a row would otherwise be
+two leases, with a whole tick in between, so a check and the action that depends on it belong in one
+scope:
+
+```kotlin
+// One lease: nothing can change between the check and the remove.
+worldView.modify(entityId) { id ->
+  if (has(id, LogoutIntent::class)) remove(id, LogoutIntent::class)
+}
+```
+
+A scope returns values, not components. A component that leaves the scope can be changed by the tick
+while the caller still reads it.
+
 Before the engine starts (at boot, and in unit tests that tick by hand) there is no tick thread, and
 all callers share a plain monitor instead.
 

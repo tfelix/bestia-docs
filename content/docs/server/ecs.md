@@ -12,20 +12,19 @@ inventory, AI state — is a component on an entity, and every rule that acts on
 # World
 
 `ecs/core/World.kt` is the central facade: entities, component stores, the system scheduler, and
-the command/deferred-change queues. Its own doc comment states the tick pipeline plainly:
+the deferred-change queue. Its own doc comment states the tick pipeline plainly:
 
 ```text
 tick(dt):
   1. run posted work          -> tick-lane messages, leases, skill resolutions
-  2. drain external commands  -> onCommand handlers
-  3. run due systems          -> scheduler (parallel waves)
-  4. apply deferred structural changes emitted by systems
+  2. run due systems          -> scheduler (parallel waves)
+  3. apply deferred structural changes emitted by systems
 ```
 
-The tick thread owns the world and touches it with no lock. Other threads (IO-lane handlers,
-schedulers, DB jobs) either `post { ... }` work to the tick thread, or use a `WorldView` scope
-(`read`/`modify`/`createEntity`), which borrows the world for a moment between two ticks — see
-[Threads and the Tick](/docs/server/threading). Structural changes requested while systems are
+The tick thread owns the world and calls its accessors (`get`, `add`, `query`, ...) directly. Other
+threads (IO-lane handlers, schedulers, DB jobs) never call an accessor. They either `post { ... }` work
+to the tick thread, or use a `WorldView` scope (`read`/`modify`/`createEntity`), which borrows the
+world for a moment between two ticks — see [Threads and the Tick](/docs/server/threading). Structural changes requested while systems are
 iterating (`world.defer { ... }`) are automatically pushed to the next safe sync point rather than
 corrupting an in-progress iteration.
 
@@ -100,7 +99,7 @@ One broken system must not stop the world, so failures are contained at three le
   5 ticks in a row (`SystemScheduler.MAX_CONSECUTIVE_FAILURES`) is switched off with an ERROR log.
 - **Per entity.** Inside a tick, `query(...).each` skips an entity whose action throws. More than 8
   failures in one pass is a bug in the system, not in one entity, so it counts as a system failure.
-- **Per deferred change and command.** One that throws is logged; the rest still apply.
+- **Per deferred change and posted task.** One that throws is logged; the rest still apply.
 
 Only errors after which the JVM cannot be trusted (out of memory, internal VM errors) end the tick
 loop, and `ZoneEngine` logs that the loop died instead of losing the thread silently.
