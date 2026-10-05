@@ -16,18 +16,18 @@ the command/deferred-change queues. Its own doc comment states the tick pipeline
 
 ```text
 tick(dt):
-  1. apply deferred structural changes queued last tick
+  1. run posted work          -> tick-lane messages, leases, skill resolutions
   2. drain external commands  -> onCommand handlers
   3. run due systems          -> scheduler (parallel waves)
   4. apply deferred structural changes emitted by systems
 ```
 
-Only the tick thread mutates ECS state directly. Other threads (network handlers, importers) may
-call `World.send(command)` to enqueue intent, or `World.locked { ... }` / `World.read { ... }` to
-take the world lock for a synchronous read — a single `ReentrantLock` guards all access, reentrant
-so systems running inside `tick` (which already holds it) can freely call `get`/`add`/etc.
-Structural changes requested while systems are iterating (`world.defer { ... }`) are automatically
-pushed to the next safe sync point rather than corrupting an in-progress iteration.
+The tick thread owns the world and touches it with no lock. Other threads (IO-lane handlers,
+schedulers, DB jobs) either `post { ... }` work to the tick thread, or use a `WorldView` scope
+(`read`/`modify`/`createEntity`), which borrows the world for a moment between two ticks — see
+[Threads and the Tick](/docs/server/threading). Structural changes requested while systems are
+iterating (`world.defer { ... }`) are automatically pushed to the next safe sync point rather than
+corrupting an in-progress iteration.
 
 ```kotlin
 // The common "get or create, then mutate" pattern used across systems:
@@ -73,7 +73,7 @@ time-integrating logic (countdowns, decay) stays correct regardless of cadence.
 `SystemScheduler` groups registered systems into ordered **waves**: two systems conflict if one
 writes a component type the other reads or writes, and a system is placed in the earliest wave
 strictly after any conflicting, earlier-registered system. Non-conflicting systems within a wave may
-run concurrently on the common `ForkJoinPool` when `world.parallel-systems: true` (`application.yml`,
+run concurrently on the scheduler's own `ForkJoinPool` when `world.parallel-systems: true` (`application.yml`,
 default `false` — the whole simulation runs single-threaded by default and this is a genuinely
 optional feature, not the normal mode).
 

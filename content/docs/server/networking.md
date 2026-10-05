@@ -74,7 +74,8 @@ graph LR
   E --> F[BnetMessageProcessorAdapter]
   F -->|"envelope.hasXxx()"| G["internal CMSG"]
   G --> H[InMessageProcessor]
-  H --> I["IncomingMessageHandler&lt;T&gt; bean"]
+  H --> J["AccountInbox<br/>tick or IO lane"]
+  J --> I["IncomingMessageHandler&lt;T&gt; bean"]
 ```
 
 1. **`ClientMessageHandler.channelRead0`** — if the channel isn't authenticated yet, the first
@@ -99,7 +100,12 @@ graph LR
    server version doesn't know) drops the message with a warning rather than tearing down the
    connection.
 
-3. **`InMessageProcessor.process()`** looks up handlers by the message's Kotlin class from a
+3. **`InMessageProcessor.submit()`** puts the message into the sender's `AccountInbox`, which runs an
+   account's messages one at a time and in order, each on its handler's lane: the tick thread, or an
+   IO thread for handlers that need the database (`override val lane = HandlerLane.IO`). Everything up
+   to here ran on the Netty event loop and only decoded. See
+   [Threads and the Tick](/docs/server/threading#the-inbox-and-its-two-lanes).
+4. **`InMessageProcessor.process()`** looks up handlers by the message's Kotlin class from a
    `Map<KClass<*>, List<IncomingMessageHandler<*>>>` built from every Spring-injected
    `IncomingMessageHandler<*>` bean — dispatch is by class, not a string or int tag:
 
@@ -164,7 +170,9 @@ Worked through once already for `ActivateSkillCMSG`/`ActivateSkillHandler`
 3. **Dispatch branch**: add `envelope.hasXyz() -> XyzCMSG.fromBnet(...)` to
    `BnetMessageProcessorAdapter`'s `when`.
 4. **Handler**: `@Component class XyzHandler(...) : InMessageProcessor.IncomingMessageHandler<XyzCMSG>`
-   — auto-discovered, no manual registry entry.
+   — auto-discovered, no manual registry entry. It runs on the tick thread unless it declares
+   `override val lane = HandlerLane.IO`, which it must as soon as anything it calls reaches the
+   database.
 5. **Kotlin SMSG** (outgoing), if a reply/broadcast is needed: implement `toBnetEnvelope()`. Use the
    one-off broadcast shape (`DamageEntitySMSG`, sent via `sendToAllPlayersInRange`) for events, or
    the `Dirtyable`-backed entity-state shape (`SkillPointsSMSG`) for actual persistent component
