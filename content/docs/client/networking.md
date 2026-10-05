@@ -67,6 +67,13 @@ else
 }
 ```
 
+Entity state arrives as one `StateBatchSMSG` per server tick (see
+[server Networking](/docs/server/networking#entity-state-one-batch-per-client-per-tick)).
+`Entity.StateBatchMessages.Unpack` turns it back into the usual wrappers, in order: each component
+wrapper's `FromProto(entityId, proto)` takes the id from the batch's `EntityUpdate`, because the
+component message no longer carries it. `BnetSocket.LastServerTick` keeps the newest tick. So the
+rest of the client still sees one `EntitySMSG` per component, as before.
+
 Every incoming message — regardless of type — is re-emitted through **one** Godot signal,
 `MessageReceived(ISMSG message)`. There's no per-message routing at this layer; every downstream
 listener (GDScript's `ConnectionManager`, the C# `ChunkStreamManager`) filters the same signal for

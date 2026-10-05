@@ -129,16 +129,18 @@ sealed interface SyncTargets {
 }
 ```
 
-`Position` changes also update the spatial index and the visibility index (below) in the same pass. Outbound
-sends are handed off to a small worker pool (`AsyncJobExecutor`) so the tick thread never blocks on
-network I/O — see [Networking](/docs/server/networking#dirty-component-sync-not-full-state-broadcast).
+`Position` changes also update the spatial index and the visibility index (below) in the same pass.
+Everything the sync has for one account, changes, removals, vanishes and snapshots, goes out as one
+`StateBatchSMSG` stamped with `World.tickCount`. The sends are handed off to a small worker pool
+(`AsyncJobExecutor`), one job per account, so the tick thread never blocks on network I/O — see
+[Networking](/docs/server/networking#entity-state-one-batch-per-client-per-tick).
 An account that starts to see an entity (it walked into view, or the account received the chunk the
 entity stands in) gets a full snapshot instead (`EntitySnapshotBuilder`): every component it may
 see, visual first, then position, speed and path. That account skips the entity's changed
 components in the same tick, so a spawning entity reaches each client once and in order.
 A component explicitly removed from a still-alive entity (implementing `Removable`) gets one more
-sync call with `removed = true`; a whole entity being destroyed instead triggers a `VanishEntitySMSG`
-broadcast to the union of every synced component's targets.
+sync call with `removed = true`; a whole entity being destroyed instead gets a `VanishEntitySMSG`
+in the next sync's batches, addressed to the union of every synced component's targets.
 
 # Area of interest
 
