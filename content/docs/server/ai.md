@@ -81,7 +81,11 @@ accumulates instead of rounding away to nothing. Tiredness runs _backwards_ whil
 continuously rather than in one jump on waking, which is what makes an interrupted night mean
 something: a creature woken halfway through wakes half-rested.
 
-**Think** selects a goal every run, but only re-plans when the goal changed or the plan is spent.
+**Think** selects a goal every run, but only re-plans when the goal changed or the plan is spent. If
+no plan exists for the chosen goal, that goal is set aside for 5 s and the next one is tried, up to
+three per think. So a creature that cannot reach food still wanders or rests instead of standing still.
+All agents that think on one tick share a budget of 5 000 search steps. Whoever is left when it runs
+out thinks on the next tick. A search that has started always runs to its end.
 
 **Act** ticks the current step's behaviour tree. On success it applies _that one action's_ effects
 and advances; on failure it clears the plan so the next think cycle starts over. It also derives the
