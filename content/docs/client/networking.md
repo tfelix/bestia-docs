@@ -34,10 +34,16 @@ graph LR
 ## BnetSocket
 
 `BnetSocket` (`src/Bnet/BnetSocket.cs`) is a Godot `Node` (`[GlobalClass]`) that owns the actual TCP connection. Connecting
-spins up a background thread (`SocketThreadWorker`) that reads raw bytes into a buffer, pulls out
-complete length-prefixed frames (capped at `MaxFrameLength = 1_048_576`, matching the server's
-`SocketServer.MAX_FRAME_LENGTH`), parses each as an `Envelope`, and pushes it onto a
-`ConcurrentQueue<Envelope>`.
+spins up a background thread (`SocketThreadWorker`) that reads raw bytes, hands them to an
+`EnvelopeFrameReader` to cut out complete length-prefixed frames (capped at
+`MaxFrameLength = 1_048_576`, matching the server's `SocketServer.MAX_FRAME_LENGTH`), parses each as
+an `Envelope`, and pushes it onto a `ConcurrentQueue<Envelope>`.
+
+`EnvelopeFrameReader` hands each frame out where it lies in its buffer and moves only an unfinished
+frame, once per read, so every byte is copied once however many reads a large frame takes. It has
+no Godot dependency, so `EnvelopeFrameReaderTest` covers it. A frame that claims more than the limit
+means the stream is out of step for good, so the socket disconnects instead of allocating it. The
+socket sets `NoDelay`, because every message is small and waits on latency, not bandwidth.
 
 Godot's `_Process(double delta)` drains that queue **on the main thread** once per frame and
 dispatches by checking each `oneof` field in turn:
