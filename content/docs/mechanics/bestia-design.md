@@ -143,8 +143,11 @@ knows, one per archetype. The tier sets how many. Between them it uses its **def
 role says. These are the attacks the fit and the fight below use.
 
 The default attack is never in the AI profile. The mob YAML sets it with `default-attack`: `MELEE`, `RANGED` (six
-tiles) or `BOTH`. It needs no skill and swings at the speed of an unarmed player. A bestia also falls back to it when
-it cannot use an attack skill.
+tiles) or `BOTH`. It needs no skill. A bestia also falls back to it when it cannot use an attack skill.
+
+How often it attacks is the species' **ASPD**, `aspd` in the mob YAML, 80 if it is not set. AGI and DEX shorten the
+time between attacks, as they do for a master. At 80 a slow critter like the blob attacks every 2.3 s, close to
+Ragnarok Online's Poring. An unarmed master has 130 and swings every 1.3 s; a quick hunter can be set closer to that.
 
 ## The AI profile
 
@@ -356,15 +359,15 @@ A starter-ring bestia that a new player should be able to fight alone. Lv 2, nor
 | :--------- | :------------------------------------------------------------------------------------------------------ |
 | Master     | Lv 2: STR 10, VIT 10, rest 9; 20 HP; 1.34 s per swing                                                   |
 | Targets    | 6 swings; 1.12 damage per second, so a fight of about 8 s costs 9 of the master's 20 HP                 |
-| Attributes | STR 7, VIT 9, INT 2, AGI 6, DEX 4, WIL 3                                                                |
-| Attacks    | default melee attack, plus Tackle (learned at Lv 1, skill Lv 1), attack power 0.88                      |
+| Attributes | STR 8, VIT 9, INT 2, AGI 6, DEX 2, WIL 3                                                                |
+| Attacks    | default melee attack every 2.34 s (ASPD 80), plus Tackle (learned at Lv 1), attack power 0.83           |
 | HP, mana   | 135 HP, 29 mana                                                                                         |
-| Fight      | 6.0 swings, 41 % of the master's HP; 0.48 damage per second from melee and 0.65 from Tackle; threat 1.0 |
+| Fight      | 6.0 swings, 35 % of the master's HP; 0.44 damage per second from melee, 0.64 from Tackle; threat 0.98   |
 | Loot       | Raw Hide 60 % (6 coins), Raw Meat 30 % (4 coins), Medicinal Herb 2 % (5 coins): 4.9 coins against 13    |
-| EXP        | `(4 · 2 + 5) · 1.0 · 1.06` = **14**, and 15 at kill time with the element bonus                         |
+| EXP        | `(4 · 2 + 5) · 0.98 · 1.06` = **14**, and 15 at kill time with the element bonus                        |
 | Equipment  | BEAST preset: upper head, armor, garment and both accessories; any armor type                           |
 
-If the boar also dropped a Rough Gemstone (400 coins) 5 % of the time, the loot score would rise to 1.92. With the
+If the boar also dropped a Rough Gemstone (400 coins) 5 % of the time, the loot score would rise to 1.95. With the
 slider on _less EXP_ the boar gives 9 EXP. With the slider on _tougher_ it keeps 13 EXP and gets 154 HP.
 
 **The blob, measured.** `mob/blob.yml` (Lv 3, 10 HP, STR 6) dies to less than half a swing from a Lv 3
@@ -380,7 +383,8 @@ The `bestia/species-data-model` branch of bestia-behemoth gives the mob YAML wha
   element.
 - **`learnset`**, a list of `{ skill, level }` by `skills.yml` identifier. A bestia, wild or owned, knows each attack
   once it reaches the level.
-- **`default-attack`**: `MELEE`, `RANGED` or `BOTH`. The AI profile lists attack skills only.
+- **`default-attack`**: `MELEE`, `RANGED` or `BOTH`, and **`aspd`**, how fast it is. The AI profile lists attack
+  skills only.
 - **`name` and `description`**, the English source of the text, see
   [Where the text lives](#where-the-text-lives).
 - **`armor-types`** next to the older `equip-slots`, see [step 10](#10-equipment). Armor in `items.yml` has an

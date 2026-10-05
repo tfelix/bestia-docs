@@ -18,6 +18,8 @@ server:
   # AttackSpeed
   motionMs: { min: 100, max: 2000 }
   bareHandedMotionMs: 700
+  # A species without an aspd in its mob YAML. Slower than an unarmed player's 130.
+  defaultSpeciesAspd: 80
   # BattleAttack.getBasicRangedAttack, a ranged species' default attack
   rangedReach: 6
   # ConditionValueCalculator, the shared base values a master is built with
