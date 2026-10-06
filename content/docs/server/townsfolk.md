@@ -225,9 +225,9 @@ eviction only runs on materialised columns. The damage sweep must therefore appl
 deadline itself, read-only — and must *not* evict, which would make the economy a third writer of a
 map whose contract names exactly two.
 
-**Ore deposits cannot be exhausted and this will not be half-built.** Ore is voxels: no prop, no
-durable identity, no persisted terrain-edit channel. The later mechanism is a mine-head prop at the
-deposit, which slots into the felled-prop channel unchanged.
+**Ore deposits cannot be exhausted and this will not be half-built.** Ore is voxels: no prop and no
+durable identity. Carved voxels are saved (`chunk_edit`), but nothing knows a deposit as a whole. The
+later mechanism is a mine-head prop at the deposit, which slots into the felled-prop channel unchanged.
 
 # Stability invariants
 
@@ -623,5 +623,5 @@ Two of these are live bugs in shipped code and must be fixed before any of this 
    account — so a city's worth of townsfolk would be written to the database and rehydrated at boot
    as ownerless mobs, growing every restart. A separate spawner, sharing the component set.
 5. **Fifteen of the thirty-one trades cannot produce anything** until their output item exists.
-6. **Ore deposits cannot be exhausted** — no prop, no identity, no persisted terrain-edit channel.
+6. **Ore deposits cannot be exhausted** — no prop and no identity; carved voxels are saved, a deposit is not.
 7. **Monster loot is an unbounded item faucet**, and the economy is only as bounded as its faucets.
