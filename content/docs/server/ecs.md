@@ -99,6 +99,11 @@ ordered by `after`, or when a system names a system of a later phase. Systems th
 unordered run by name. An `after` can also order systems that share no component but whose effects
 a client sees in sequence, such as the ground overlay after the chunk stream.
 
+`before` says the same from the other side. `ActorSignatureSystem` declares
+`before = setOf(MoveSystem::class)` rather than `MoveSystem` naming it in `after`, because a slice may
+only name slices below it, and movement sits below spoor (see
+[Code layout](/docs/server/architecture#code-layout-slices-and-tiers)). The order is the same either way.
+
 `SystemScheduler` then groups the systems into **waves**. A system goes in a later wave than every
 system it conflicts with or runs after, and phases never share a wave. Systems within a wave may run
 concurrently on the scheduler's own `ForkJoinPool` when `world.parallel-systems: true`
@@ -109,7 +114,8 @@ is a genuinely optional feature, not the normal mode).
 
 The declarations are the whole contract, so a system must declare every component it touches,
 including what its helpers touch on other entities. A shared helper exposes its own set for that
-(`EntityWriteBehind.READS`, `AttackExecutionService.READS` and `WRITES`). With
+(`EntityWriteBehind.reads`, the union of every persister's `reads`, and `AttackExecutionService.READS`
+and `WRITES`). With
 `world.undeclared-access: fail` — set in tests, and in every `testWorld()` — a system that touches an
 undeclared component fails for that tick with the system and component named. Production runs with
 `off`, which costs nothing.

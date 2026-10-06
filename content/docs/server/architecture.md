@@ -1,7 +1,7 @@
 ---
 weight: 100
 title: Server Architecture
-description: The zone-server/login-server split, the module layout of the bestia-behemoth monorepo, the boot sequence, and the database setup.
+description: The zone-server/login-server split, the module layout of the bestia-behemoth monorepo, the zone's code layout in slices, the boot sequence, and the database setup.
 ---
 
 Both servers are plain **Spring Boot** applications (`ZoneServerApplication.kt` /
@@ -71,6 +71,45 @@ start, needed because the in-memory database resets every restart.
   entities/components/systems, then flushes whatever changed to clients over the socket.
 - Everything else (AI, battle, world generation, ...) is a set of ECS systems and supporting
   services layered on top of these three.
+
+# Code layout: slices and tiers
+
+The zone-server code is cut into **slices**: one top-level package under `net.bestia.zone` per feature
+(`battle`, `item`, `party`, `townsfolk`, ...) or per piece of shared machinery (`message`,
+`persistence`, `engine`, ...). A slice holds its feature's services, components, systems and messages.
+Components and systems sit in `<slice>.ecs`.
+
+The slices form a stack, lowest first. A slice may only depend on slices below it:
+
+```text
+root < util < geometry < ecs (the kernel, ecs.core) < config < message < session < sync < persistence
+< identity < aoi < entity < logout < navigation < movement < world < script < place < skill < dialog
+< battle < weather < ground < item < bestia < spoor < prop < casting < ai < spawn
+< account < party < economy < crafting < cartography < townsfolk < master < respawn < trade < capture
+< chat < control < internal < socket < metrics < engine < boot
+```
+
+`FeatureSliceRulesTest` reads the compiled classes and fails on any dependency that points up the
+stack, and on a new top-level package that has no place in it. A stack cannot hold a cycle, so the
+slices never form one.
+
+## When a lower slice needs a higher one
+
+The lower slice declares a small interface, a **port**, and the higher slice implements it. Spring
+wires in the implementation. For example, `battle` makes a pristine prop fightable through
+`CombatTargetPromotion`, which the prop slice's `PropPromotionService` implements, and the item slice
+loads the rows that hold containers through `ContainerOwners`, which the account slice implements.
+Each port has exactly one implementation. Systems follow the same rule: a system in a higher slice
+declares `before` when the lower system may not name it (see [ECS](/docs/server/ecs#the-tick-order)).
+
+## Where a new class goes
+
+- Into the slice of the feature it belongs to. A new feature is a new top-level package; give it a
+  place in the stack in `FeatureSliceRulesTest`.
+- Components and systems into `<slice>.ecs`.
+- When the class needs a slice above its own, add a port to its own slice instead.
+- `ecs.core` is the kernel. It may only use `util`, the root `BestiaException` and the JDK. `util` and
+  `geometry` use nothing else in the zone.
 
 # Database
 
