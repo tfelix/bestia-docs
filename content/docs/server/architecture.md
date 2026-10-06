@@ -37,6 +37,7 @@ below) live next to the domain they validate and simply share the same `@Order` 
 | Order                   | Runner                              | Purpose                                                                                                                                                                                                          |
 | ----------------------- | ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 1                       | `WorldGenerationBootRunner`         | Generate or load the world. First and slowest step — everything else stands on it (entities load at positions in it, mobs spawn onto its terrain), so it fails fast rather than after importing everything else. |
+| 8                       | `ChunkEditBootRunner`               | Put back the terrain players dug, saved by an earlier run                                                                                                                                                        |
 | 100                     | `ItemImporterBootRunner`            | Import item definitions                                                                                                                                                                                          |
 | 101                     | `MobImporterBootRunner`             | Import mob definitions                                                                                                                                                                                           |
 | 102                     | `SkillImporterBootRunner`           | Import skill definitions                                                                                                                                                                                         |
@@ -101,7 +102,10 @@ taken, and a delete never overtakes an earlier write.
   second. An entity whose snapshot equals the last one queued is skipped. A failed write is retried by
   the next save. A blob row is updated in place, and Hibernate batches the updates.
 - On shutdown, `PersistOnShutdown` stops the tick, saves what changed, flushes the economy ledger and
-  gives the DB executor up to 30 s to finish.
+  the terrain edits, and gives the DB executor up to 30 s to finish.
+- Terrain edits: every edited chunk is one `chunk_edit` row. `ChunkEditJournal` writes the chunks edited
+  since its last write every 10 s, keyed by chunk; see
+  [World Generation](/docs/server/world-generation#storage-voxels-chunks-player-edits-and-regeneration).
 - Wild den packs are not saved: a den makes a fresh pack when a player comes near.
 - A drop removes the item in the database first; only then does it leave the live inventory and
   appear on the ground. A drop can lose an item but never copy one.

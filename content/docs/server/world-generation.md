@@ -18,10 +18,6 @@ points of interest, town layout, economy, spawners, and the macro navigation gra
 materialization, RLE encoding, delta tracking, baking, and streaming to `zone-server`. The genuine gaps, as
 of this pass:
 
-- **No delta persistence.** Player edits live only in the running server's memory (`ChunkStore`, backed by an
-  in-process `MemoryBlobStore` for baked chunks). A restart currently loses them — see
-  [Storage](#storage-voxels-chunks-player-edits-and-regeneration) below for why this is safe to _say_ plainly
-  rather than a bug to hide.
 - **No client-side base generation.** The wire format, base hashing and version gate that would make it safe
   exist; nothing generates terrain client-side yet, so every chunk is sent fully merged.
 - **No disk or object-store cache tier.** `ChunkCache` chains against `ChunkBlobStore` implementations, and
@@ -156,8 +152,8 @@ tiers holding RLE-encoded bytes. The cache key folds in `(seed, pipelineVersion,
 retuning any stage changes every key at once — nothing stale can ever be served, and no explicit invalidation
 pass is needed.
 
-**3. Player edits are a sparse delta on top of the base**, and this is the one piece of world state that is
-**not currently durably persisted anywhere**. `ChunkDelta` holds, per touched voxel, how much of it is left —
+**3. Player edits are a sparse delta on top of the base**, kept in memory while the server runs and saved to
+the zone's database (see _Saving edits_ below). `ChunkDelta` holds, per touched voxel, how much of it is left —
 never a block id, because it's derivable: unchanged material is whatever the generator put there, and carved
 to nothing is `AIR`. Three consequences follow directly from there being no building system, only removal:
 
@@ -183,8 +179,17 @@ newly-uniform ground run-length-encodes to almost nothing. Baking is also the on
 a pipeline version change: bake every outstanding delta first (which pins the current terrain as the new,
 frozen base), then ship the new generator; every untouched chunk simply regenerates against the new version.
 
+**Saving edits**: every edited chunk is one `chunk_edit` row, stored the way `ChunkStore` holds it — the
+removals while it is a delta, the deflated RLE blob once it is baked — together with its revision and the
+`shapeVersion` and `pipelineVersion` it was dug under. `ChunkEditJournal` writes the chunks edited since the
+last write every `chunk-stream.edit-flush-seconds` (10 s by default) and once more at shutdown; the write is a
+DB job, so the tick never waits for it. At boot, `ChunkEditBootRunner` puts the rows back before any player
+can log in, with their revisions, so a client that cached a chunk is told it is current. A row whose versions
+disagree with the live world is dropped: removals only mean something on the base they were taken from. A
+crash loses at most the last flush interval of digging.
+
 **4. The world's identity** — name, seed, dimensions, `wrapX`/`wrapY`, and the three-part version vector below
-— is the one thing genuinely persisted today, as a real JPA row (`PersistedWorld`). A hash over every field
+— is persisted as a real JPA row (`PersistedWorld`). A hash over every field
 that decides terrain shape (`shapeVersion`) is stored alongside it and recomputed from the row on every boot,
 specifically so a field that matters to generation and was never given a database column shows up as a
 mismatch rather than as a world that silently regenerates slightly wrong forever (this caught a real bug once:
@@ -321,7 +326,8 @@ snapping to the nearest whole voxel. Carving (removal, whether by a player minin
 mine shaft through its own masonry) is written last, in a second pass over the same buffer — additions have
 to exist before a hole can be cut through them.
 
-`world/stream/` on the zone-server side owns the running world's `ChunkStore` and streams merged RLE chunks
+`world/stream/` on the zone-server side owns the running world's `ChunkStore`, saves its edits through
+`ChunkEditJournal`, and streams merged RLE chunks
 to clients over dedicated `bnet-messages` (see [Networking](/docs/server/networking)): a `ChunkManifestSMSG`
 announces `(position, revision)` pairs for a player's view volume, the client asks only for what it doesn't
 already hold, and a held chunk is withdrawn only once it is one chunk past the view
