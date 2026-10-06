@@ -66,7 +66,8 @@ start, needed because the in-memory database resets every restart.
 - **[Networking](/docs/server/networking)** — the Netty pipeline and the `Envelope` protobuf that
   every message, in both directions, travels as.
 - **[Authentication](/docs/server/authentication)** — how `login-server` issues a JWT and how
-  `zone-server` independently re-validates it; the two servers never call each other directly.
+  `zone-server` independently re-validates it. The only call between the servers is the login
+  server asking the zones to kick an account.
 - **[ECS](/docs/server/ecs)** — `ZoneEngine` drives a single-threaded tick loop over a `World` of
   entities/components/systems, then flushes whatever changed to clients over the socket.
 - Everything else (AI, battle, world generation, ...) is a set of ECS systems and supporting

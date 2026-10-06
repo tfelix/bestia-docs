@@ -4,9 +4,9 @@ title: Authentication
 description: How login-server issues a JWT (wallet-signature or dev static login) and how zone-server independently re-validates it — the only link between the two servers.
 ---
 
-`login-server` and `zone-server` never call each other. There is no shared database and no service
-discovery — the entire trust relationship between them is a signed JWT that the client carries from
-one to the other.
+`login-server` and `zone-server` share no database and no service discovery. A login is trusted
+through a signed JWT that the client carries from one to the other. The one call between the servers
+goes from login to zone, to kick an account: see [Kicking an account](#kicking-an-account).
 
 ```mermaid
 sequenceDiagram
@@ -126,10 +126,26 @@ Auth success does **not** spawn a game entity. That happens later, once the clie
 active one carrying a selected master and its owned entities. See
 [Networking](/docs/server/networking) for what happens to messages after this point.
 
+# Kicking an account
+
+When the login server ends an account's sessions (`AccountSessionTerminator`: a GM kick or ban, an
+account recovery, or a banned account asking for a new token), it also ends the game session.
+`ZoneKickListener` waits until the change is committed, then `HttpZoneKicker` posts to
+`/internal/v1/accounts/{accountId}/kick` on every zone in `zone-directory.zones`, all in parallel.
+Each call carries a service token: a JWT from the login server for the audience `zone-internal`,
+scoped to this one account and to `kick`, valid for 30 seconds.
+
+On the zone, `InternalApiFilter` checks the token (`ServiceTokenValidator`), and
+`InternalAccountController` closes the account's connection. It also remembers the account in
+`KickedAccounts`, so a login token issued before the kick is refused. A zone answers the same
+whether or not the account plays there. The call is best effort: a zone that cannot be reached is
+logged and skipped, and its player keeps playing until they disconnect, but cannot log in again.
+
+The zone serves `/internal/` on port 8091, next to the map tiles. A proxy in front of the tiles must
+never route `/internal/` from outside: the service token is then the only thing that guards it.
+
 # Known gaps
 
-- `AccountStatus` (`ACTIVE` / `PERMA_BANNED` / `BANNED_UNTIL`) and `Account.bannedUntil` are modeled
-  on `login-server` but **never checked** during login — ban enforcement doesn't exist yet.
 - `AuthenticationSuccess.permissions` is defined in the protobuf schema but zone-server never
   populates it (`// TODO Send the available permissions to the client` in `ClientMessageHandler`).
 - `Eip712Verifier`'s `verifyingContract` is hardcoded to `"0x0"` rather than read from config.
