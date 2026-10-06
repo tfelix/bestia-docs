@@ -162,8 +162,9 @@ taken, and a delete never overtakes an earlier write.
 - A failed DB job is logged with its owner key and counted (`zone_db_jobs_failed_total`). An item
   grant goes to the live inventory first, so its write is tried again when it lost a lock race; each
   such failure rolls back, so a second try cannot grant twice.
-- On shutdown, `PersistOnShutdown` stops the tick, saves what changed, flushes the economy ledger and
-  the terrain edits, and gives the DB executor up to 30 s to finish.
+- On shutdown, `PersistOnShutdown` stops the tick, saves what changed, flushes the economy ledger,
+  the terrain edits and the ground wear and blood levels, and gives the DB executor up to 30 s to
+  finish.
 - Terrain edits: every edited chunk is one `chunk_edit` row. `ChunkEditJournal` writes the chunks edited
   since its last write every 10 s, keyed by chunk; see
   [World Generation](/docs/server/world-generation#storage-voxels-chunks-player-edits-and-regeneration).
