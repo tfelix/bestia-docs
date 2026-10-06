@@ -27,11 +27,13 @@ graph LR
 
   C -- "HTTPS POST /api/v1/auth/..." --> LOGIN
   C <-- "TCP, length-prefixed Envelope frames" --> ZONE
+  LOGIN -- "HTTP POST /internal/.../kick" --> ZONE
 ```
 
-Trust between the two servers is carried entirely in a signed JWT — there is no RPC call, shared
-database, or service discovery between `login-server` and `zone-server`. See
-[Authentication](/docs/server/authentication) for the full handoff.
+Trust between the two servers is carried in a signed JWT. There is no shared database and no service
+discovery between `login-server` and `zone-server`. The one call between them goes from login to zone,
+to kick an account. See [Authentication](/docs/server/authentication) for the full handoff and the
+kick.
 
 # Tech stack
 
