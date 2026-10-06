@@ -139,7 +139,9 @@ cleanup after a disconnect use it.
 - **`TickOutbox`.** A send made on the tick joins the account's batch and is flushed once when the tick
   ends. `channel.write` only queues onto the event loop.
 - **`EntityWriteBehind` and `AsyncJobExecutor`.** The tick takes a snapshot; the write runs on the DB
-  executor, keyed by its owner. See [Architecture](/docs/server/architecture#how-the-zone-writes).
+  executor, keyed by its owner. A status or skill point spend is a tick-lane message for this reason:
+  it changes the components, and the master's write-behind saves it. See
+  [Architecture](/docs/server/architecture#how-the-zone-writes).
 - **In-memory catalogues.** Items, species, loot tables, skills and commodity ids are loaded once at boot.
 - **`TickSqlGuard`.** Hibernate shows it every statement. A statement on the tick thread, or inside a
   lease, is logged (`zone.sql-on-tick: log`); in tests it fails (`fail`).

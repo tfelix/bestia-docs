@@ -94,13 +94,24 @@ DB executor (`AsyncJobExecutor`). Every write about one owner uses the same key:
 one shared key for the generic entity rows. So the writes for one owner land in the order they were
 taken, and a delete never overtakes an earlier write.
 
-- A master is written on every exp gain, on logout (the `PersistAndRemove` component), and by the
-  periodic save. Selecting a master first waits for its pending writes, so a quick relog reads what
-  the logout wrote.
+- A master is written on every exp gain, on every status or skill point spend, on logout (the
+  `PersistAndRemove` component), and by the periodic save. Selecting a master first waits for its
+  pending writes, so a quick relog reads what the logout wrote.
+- While a master is online its components are the authority, and `MasterEntityPersister` is the only
+  writer of its level, exp, points, effort values and learned skill levels. A spend changes the
+  components on the tick and is saved like any other change: the points and the skill levels they
+  bought land in one transaction, so a crash loses both or neither.
+- Party and inventory changes still write the `master` row directly, under a row lock. `Master` uses
+  `@DynamicUpdate`, so such a write sets only the columns it changed and cannot put back a level the
+  persister just saved. A party change locks the party row first; the party component on each member
+  changes only after the commit, and a member who logs in gets it back from the row.
 - The periodic save (`EntityPersistenceSystem`) runs on the tick. It saves each `Persistent` entity
   once per `persistence.interval-ms` (90 s by default) and spreads them over that time, a slice every
   second. An entity whose snapshot equals the last one queued is skipped. A failed write is retried by
   the next save. A blob row is updated in place, and Hibernate batches the updates.
+- A failed DB job is logged with its owner key and counted (`zone_db_jobs_failed_total`). An item
+  grant goes to the live inventory first, so its write is tried again when it lost a lock race; each
+  such failure rolls back, so a second try cannot grant twice.
 - On shutdown, `PersistOnShutdown` stops the tick, saves what changed, flushes the economy ledger and
   the terrain edits, and gives the DB executor up to 30 s to finish.
 - Terrain edits: every edited chunk is one `chunk_edit` row. `ChunkEditJournal` writes the chunks edited
