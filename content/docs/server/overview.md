@@ -40,8 +40,9 @@ database, or service discovery between `login-server` and `zone-server`. See
 | Language / runtime            | Kotlin on the JVM, both servers are Spring Boot applications                                                                       |
 | Client transport              | Raw TCP (Netty), length-prefixed [Protocol Buffers](/docs/server/networking)                                                       |
 | Login transport               | HTTPS REST + JSON                                                                                                                  |
-| Persistence                   | H2, in-memory, schema recreated on every boot (`ddl-auto: create`) — no migration tooling, dev-only today                          |
+| Persistence                   | MariaDB via JPA; the zone has no migrations yet (`ddl-auto: update`), tests run on in-memory H2                                    |
 | Game loop                     | Custom [ECS](/docs/server/ecs), single dedicated tick thread, default 20 Hz                                                        |
+| Metrics                       | Micrometer, scraped as Prometheus text from a loopback port — see [Metrics and Logs](/docs/server/observability)                   |
 | World generation              | Standalone `worldgen` Gradle module, invoked at boot — see [World Generation](/docs/server/world-generation)                       |
 | Wire protocol source of truth | `bnet-messages`, a Gradle module generating both the Kotlin (server) and C# (client) protobuf classes from the same `.proto` files |
 
@@ -72,6 +73,7 @@ The server code lives in the `bestia-behemoth` monorepo (Gradle multi-module,
 | [Networking](/docs/server/networking)             | The Netty pipeline, the `Envelope` protobuf wire format, and inbound/outbound message dispatch         |
 | [Authentication](/docs/server/authentication)     | `login-server`'s two login paths, JWT issuance, and the zone-side handoff                              |
 | [Entity Component System](/docs/server/ecs)       | The hand-rolled ECS: `World`, component stores, the parallel-wave scheduler, and area-of-interest sync |
+| [Metrics and Logs](/docs/server/observability)    | What the zone measures about itself, where to scrape it, and how to add a meter                        |
 | [Artificial Intelligence](/docs/server/ai)        | The live Utility AI → GOAP → Behavior Tree pipeline that drives NPCs                                   |
 | [Battle System](/docs/server/battle)              | Attack resolution, damage calculators, status effects, and the skill/status scripting hooks            |
 | [Questing](/docs/server/quests)                   | Design document for a quest system — **not implemented** in `zone-server` yet                          |

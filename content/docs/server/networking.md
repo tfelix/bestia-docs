@@ -91,18 +91,23 @@ committed to the repo alongside the `.proto` change.
 
 # The Netty pipeline
 
-Built in `SocketServer.kt`, one `ClientMessageHandler` instance per connection:
+Built in `ZoneChannelInitializer.kt`, one `ClientMessageHandler` instance per connection:
 
 ```kotlin
 ch.pipeline().addLast(
-  SlowConsumerGuard(unwritableTimeoutSeconds, maxWriteBacklogBytes), // drops a client that stops reading
-  IdleStateHandler(readIdleTimeoutSeconds, 0, 0, SECONDS),           // reports a silent client
-  LengthFieldBasedFrameDecoder(MAX_FRAME_LENGTH, 0, 4, 0, 4), // 4-byte length prefix, 1 MB max frame
+  TrafficCounter(traffic),                                    // counts bytes and flushes for the metrics
+  SlowConsumerGuard(unwritableTimeoutSeconds, maxWriteBacklogBytes, traffic), // drops a client that stops reading
+  IdleStateHandler(readIdleTimeoutSeconds, 0, 0, SECONDS),    // reports a silent client
+  connectionLimit,                                            // caps connections per address
+  EnvelopeFrameDecoder(maxFrameBytesBeforeAuth, maxFrameBytes), // 4-byte length prefix, smaller before login
   ProtobufDecoder(EnvelopeProto.Envelope.getDefaultInstance()),
   BigEndianLengthFieldPrepender(),                            // outbound: length prefix + Envelope
   ClientMessageHandler(handlerContext)
 )
 ```
+
+`TrafficCounter` sits at the head, so it counts the framed bytes that actually go out, chunk payloads
+included; see [Metrics and Logs](/docs/server/observability).
 
 `BigEndianLengthFieldPrepender` sizes its buffer to the frame and serialises the envelope straight
 into it, so a message is serialised once and never copied. `EnvelopeFraming` is the one definition
@@ -112,6 +117,14 @@ bytes through the encoder untouched.
 The socket binds to `socket.ip-address`/`socket.port` (`127.0.0.1:8090` in dev,
 `zone-server/src/main/resources/application.yml`), started by `SocketServerBootRunner` as the very
 last boot step (see [Architecture](/docs/server/architecture#boot-sequence)).
+
+The zone listens on three ports, all on loopback by default:
+
+| Port | What                                                                      |
+| ---- | ------------------------------------------------------------------------- |
+| 8090 | The game socket above                                                     |
+| 8091 | HTTP: the map tiles, and `/internal/` for the login server                |
+| 8092 | HTTP: metrics and health ([Metrics and Logs](/docs/server/observability)) |
 
 # Liveness and backpressure
 
