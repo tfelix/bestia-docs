@@ -157,7 +157,8 @@ The step is **fixed**: every tick hands the systems exactly `1 / tick-rate` seco
 on `System.nanoTime`, so a wall-clock jump cannot produce a negative or huge delta. `FixedStepClock`
 counts the steps that are due. A late loop runs at most 3 steps back to back to catch up and drops
 the rest, so after a long pause the world runs slow for a moment instead of racing. Dropped steps
-show up in the slow-tick warning.
+show up in the slow-tick warning and in `zone_tick_dropped_steps_total`; see
+[Metrics and Logs](/docs/server/observability).
 
 # Dirty components and sync
 
@@ -206,7 +207,8 @@ in the next sync's batches, addressed to the union of every synced component's t
 
 `AsyncJobExecutor` is for database and other blocking work only. Its four workers each queue at most
 2048 jobs; a job that does not fit is dropped and counted (and logged) rather than run on the
-caller, because the caller is usually the tick.
+caller, because the caller is usually the tick. Dropped and failed jobs, the queue per worker and the
+time jobs wait and run are all exported as metrics.
 
 # Area of interest
 

@@ -59,6 +59,8 @@ while the world was locked.
 | `zone-chunk-worker-N` | 2          | generate, encode and compress terrain; results return on the tick | no                   |
 | `scheduling-N`        | 1          | `@Scheduled` sweeps: periodic persistence, trade request expiry   | only through a lease |
 | `map-render`          | 1-4        | map tile rendering for the web map                                | no                   |
+| Tomcat, port 8091     | up to 200  | map tile requests and the login server's `/internal/` calls       | no                   |
+| Tomcat, port 8092     | up to 200  | metrics scrapes                                                   | no                   |
 
 No other code starts a thread. `ThreadingRulesTest` fails a class outside this list that does. A
 feature that needs a timer uses a `@Scheduled` sweep that finds the due work and hands it on: as a DB
