@@ -269,7 +269,7 @@ owning account. Everything one client is told in one sync goes out as one `State
 # Adding a new message type end-to-end
 
 Worked through once already for `ActivateSkillCMSG`/`ActivateSkillHandler`
-(`zone-server/.../battle/attack/`) — use those as a template.
+(`zone-server/.../casting/`) — use those as a template.
 
 1. **Proto**: new file under `bnet-messages/src/main/proto/messages/<domain>/` (`*_cmsg.proto` /
    `*_smsg.proto`), then wire it into `envelope.proto`: an `import` line plus a field in the

@@ -66,15 +66,15 @@ What has been added since, all of it running on the server:
 
 {{< table >}}
 
-| Piece                  | Where                                            | What it does                                                                |
-| ---------------------- | ------------------------------------------------ | --------------------------------------------------------------------------- |
-| `KnowledgeService`     | `zone-server/.../ai/knowledge/`                  | Who in a town holds which memory, built lazily per settlement               |
-| `ConversationService`  | `zone-server/.../dialog/conversation/`           | The only builder of a conversation node; samples the root                   |
-| `DialogTopicProvider`  | same                                             | The extension point — standing, knowledge, occupation, small talk, farewell |
-| `HistoryLineCatalogue` | `zone-server/.../ai/knowledge/`                  | How many ways each `EventKind` can be said, and with which slots            |
-| `SmallTalkCatalogue`   | `zone-server/.../dialog/conversation/smalltalk/` | The mundane pool and the one knob that rations it                           |
-| `RumourRegistry`       | `zone-server/.../ai/rumour/`                     | What each town has heard lately, the only durable table here                |
-| `ConversationSMSG`     | `bnet-messages/.../system/`                      | Speaker, a speech `Line`, `repeated Option`                                 |
+| Piece                  | Where                                               | What it does                                                                |
+| ---------------------- | --------------------------------------------------- | --------------------------------------------------------------------------- |
+| `KnowledgeService`     | `zone-server/.../townsfolk/knowledge/`              | Who in a town holds which memory, built lazily per settlement               |
+| `ConversationService`  | `zone-server/.../townsfolk/conversation/`           | The only builder of a conversation node; samples the root                   |
+| `DialogTopicProvider`  | same                                                | The extension point — standing, knowledge, occupation, small talk, farewell |
+| `HistoryLineCatalogue` | `zone-server/.../townsfolk/knowledge/`              | How many ways each `EventKind` can be said, and with which slots            |
+| `SmallTalkCatalogue`   | `zone-server/.../townsfolk/conversation/smalltalk/` | The mundane pool and the one knob that rations it                           |
+| `RumourRegistry`       | `zone-server/.../townsfolk/rumour/`                 | What each town has heard lately, the only durable table here                |
+| `ConversationSMSG`     | `bnet-messages/.../system/`                         | Speaker, a speech `Line`, `repeated Option`                                 |
 
 {{< /table >}}
 
