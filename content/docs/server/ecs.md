@@ -4,10 +4,11 @@ title: Entity Component System
 description: The hand-rolled ECS that runs the game loop — World, component stores, the parallel-wave scheduler, and how component changes reach clients.
 ---
 
-`zone-server`'s game loop is a **hand-rolled ECS** (no external ECS library) living under
-`zone-server/src/main/kotlin/net/bestia/zone/ecs/`. Everything gameplay-related — position, health,
-inventory, AI state — is a component on an entity, and every rule that acts on that data is a
-`System`.
+`zone-server`'s game loop is a **hand-rolled ECS** (no external ECS library). Its kernel lives in
+`zone-server/src/main/kotlin/net/bestia/zone/ecs/core/`; each feature keeps its components and systems
+in its own `ecs` sub-package, such as `battle/ecs/` or `item/ecs/`. Everything gameplay-related —
+position, health, inventory, AI state — is a component on an entity, and every rule that acts on that
+data is a `System`.
 
 # World
 
@@ -148,7 +149,7 @@ loop, and `ZoneEngine` logs that the loop died instead of losing the thread sile
 
 # ZoneEngine: the tick loop
 
-`ecs/ZoneEngine.kt` owns the actual running loop. `start()` runs a loop on a dedicated
+`engine/ZoneEngine.kt` owns the actual running loop. `start()` runs a loop on a dedicated
 single-thread executor (`zone-tick`) that ticks the `World` at `world.tick-rate` (20 Hz by default,
 `application.yml`). After every `world.tick(dt)` call, `ZoneEngine.syncDirtyComponents()` flushes
 whatever changed out to clients — see below.
