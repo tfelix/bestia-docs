@@ -76,8 +76,17 @@ start, needed because the in-memory database resets every restart.
 
 The zone-server code is cut into **slices**: one top-level package under `net.bestia.zone` per feature
 (`battle`, `item`, `party`, `townsfolk`, ...) or per piece of shared machinery (`message`,
-`persistence`, `engine`, ...). A slice holds its feature's services, components, systems and messages.
-Components and systems sit in `<slice>.ecs`.
+`persistence`, `engine`, ...). Inside a slice, the code is sorted by what it is:
+
+| Package               | Holds                                                                             |
+| --------------------- | --------------------------------------------------------------------------------- |
+| `<slice>`             | services, configs, and the SMSGs the slice sends                                  |
+| `<slice>.ecs`         | components, systems and intents; each `*ComponentSMSG` sits next to its component |
+| `<slice>.net`         | what a client can send the slice: CMSGs, their handlers, chat commands            |
+| `<slice>.persistence` | JPA entities, repositories and entity persisters                                  |
+
+`FeatureSliceRulesTest` keeps the last two packages honest: nothing outside a `net` package depends on
+one, and every entity and repository lives in a `persistence` package.
 
 The slices form a stack, lowest first. A slice may only depend on slices below it:
 
@@ -106,7 +115,8 @@ declares `before` when the lower system may not name it (see [ECS](/docs/server/
 
 - Into the slice of the feature it belongs to. A new feature is a new top-level package; give it a
   place in the stack in `FeatureSliceRulesTest`.
-- Components and systems into `<slice>.ecs`.
+- Components and systems into `<slice>.ecs`, CMSGs and handlers into `<slice>.net`, entities and
+  repositories into `<slice>.persistence`.
 - When the class needs a slice above its own, add a port to its own slice instead.
 - `ecs.core` is the kernel. It may only use `util`, the root `BestiaException` and the JDK. `util` and
   `geometry` use nothing else in the zone.

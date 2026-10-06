@@ -26,7 +26,7 @@ graph TD
 `SkillExecutionService.execute()` is the single chokepoint for every activated skill: it builds a
 `BattleContext` via `BattleContextFactory`, resolves a `SkillStrategy` for the skill's `SkillType`,
 checks range/line-of-sight (`strategy.isAttackPossible`), consumes mana, then applies whatever
-`Damage` the strategy returns — `HitDamage`/`CriticalHit` stage a `Damage` ECS component that
+`Damage` the strategy returns — `HitDamage`/`CriticalHit` stage an `IncomingDamage` ECS component that
 `ReceivedDamageSystem` (order 50) drains into `Health` next tick (also handling death, interrupting
 casts, and combat-timeout tracking); `Heal` applies directly; `Buff` calls
 `StatusEffectService.applyEffect` instead of touching health at all.
