@@ -79,10 +79,19 @@ A player who steals an item is also marked with the **Thief** debuff, which gran
 
 # Protected Zones
 
-Areas around the starting locations of new players are enchanted and designated as Protected Zones. Within these zones:
+Every home village where new players arrive has a **ward stone**. The stone carries a powerful spell, and its field reaches about **3.5 km** in every direction. That field is the Protected Zone.
 
-- Killing a player or NPC directly reduces honor by a flat 10 points (no level-based reduction is applied), even if no observer is in sight. Because all honor loss inside a Protected Zone is doubled (see below), such a kill costs **20 honor** in total.
-- Actions leading to honor loss are multiplied by 2, while honor-increasing actions are multiplied by 1.5.
+Everything a player owns inside the field is warded: the master, their bestias and their crafting stations. The ward is invisible and lasts a few seconds. The stone renews it as long as its owner stays in the field. While a ward holds:
+
+- No harm passes between players. A warded player cannot be hurt, debuffed or have their stations broken by another player, and cannot do any of that to another player either. This holds in both directions, so nobody can attack into the field from just outside it, or out of it from inside.
+- Monsters are not affected. A creature still attacks a warded player, and a warded player still fights back.
+- An attack or harmful skill aimed at a warded target does not start. The attacker is told that a ward stone protects the target.
+
+A hidden ward cannot be dispelled. The only way to end the protection is to deal with the stone itself, which takes a very strong player.
+
+{{< alert context="warning" text="Countering a ward stone is not designed yet: how its magic can be suppressed, how much it takes to destroy it, and whether a destroyed stone returns." />}}
+
+Honor still applies inside the field. Killing an NPC there costs a flat 10 honor (no level-based reduction), even if no observer is in sight. All honor loss inside a Protected Zone is doubled, so such a kill costs **20 honor** in total. Honor-increasing actions are multiplied by 1.5.
 
 # War Zone
 
