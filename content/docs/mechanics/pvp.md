@@ -6,6 +6,8 @@ description: "How honor and reputation shape player conflict in Bestia: NPC memo
 
 In Bestia, players can perform malicious actions that negatively impact others. This is by design, but there are incentives to discourage such behavior, especially to protect low-level players from griefing. Players who maintain good behavior and increase their honor level will receive rewards. Conversely, those with negative honor will gain a bad reputation and face repercussions, potentially becoming targets for player-initiated hunts.
 
+Nobody can harm what they own. A player's own skills, attacks and fires never hurt the player, their bestias or their crafting stations, anywhere in the world. This also means a player cannot knock down their own station.
+
 # Reputation System
 
 Each NPC maintains an internal reputation list for players. This list is adjusted based on player behavior, whether positive or negative. It is tracked on two levels:
@@ -32,6 +34,8 @@ Due to the presence of multiple factions with differing interests, defining univ
 | Stealing Item (Rare)                            |        -10        |            -30             |
 | Stealing Item (Legendary)                       |        -15        |            -40             |
 | Damaging a Building >10% HP                     |        -2         |            -10             |
+| Dispelling a ward stone                         |        -5         |            -20             |
+| Destroying a ward stone                         |        -20        |            -100            |
 | Abandoning an accepted commission               |        -5         |            -20             |
 
 \* The victim is at least 10 levels below the attacker. Killing an opposing-faction player who is not this far below carries no honor penalty.
@@ -81,15 +85,15 @@ A player who steals an item is also marked with the **Thief** debuff, which gran
 
 Every home village where new players arrive has a **ward stone**. The stone carries a powerful spell, and its field reaches about **3.5 km** in every direction. That field is the Protected Zone.
 
-Everything a player owns inside the field is warded: the master, their bestias and their crafting stations. The ward is invisible and lasts a few seconds. The stone renews it as long as its owner stays in the field. While a ward holds:
+Everything a player owns inside the field is warded: the master, their bestias and their crafting stations. Everybody can see the ward as a buff on the warded entity. It lasts a few seconds, and the stone renews it as long as its owner stays in the field. While a ward holds:
 
 - No harm passes between players. A warded player cannot be hurt, debuffed or have their stations broken by another player, and cannot do any of that to another player either. This holds in both directions, so nobody can attack into the field from just outside it, or out of it from inside.
 - Monsters are not affected. A creature still attacks a warded player, and a warded player still fights back.
-- An attack or harmful skill aimed at a warded target does not start. The attacker is told that a ward stone protects the target.
+- An attack or harmful skill aimed at a warded target does not start. Clicking a warded bestia only selects it, and if an attack is sent anyway, the attacker is told that a ward stone protects the target.
 
-A hidden ward cannot be dispelled. The only way to end the protection is to deal with the stone itself, which takes a very strong player.
+The ward on a player cannot be dispelled. The only way to end the protection is to deal with the stone itself, which takes a very strong player. The stone's own spell shields it, so nothing can harm the stone while its magic holds. Only once that magic is countered can the stone be attacked. A destroyed stone is gone for the rest of the world incarnation, and so is its Protected Zone.
 
-{{< alert context="warning" text="Countering a ward stone is not designed yet: how its magic can be suppressed, how much it takes to destroy it, and whether a destroyed stone returns." />}}
+{{< alert context="warning" text="How a ward stone's magic is countered is not designed yet." />}}
 
 Honor still applies inside the field. Killing an NPC there costs a flat 10 honor (no level-based reduction), even if no observer is in sight. All honor loss inside a Protected Zone is doubled, so such a kill costs **20 honor** in total. Honor-increasing actions are multiplied by 1.5.
 
