@@ -339,7 +339,6 @@ equipment:
   slots:
     - { id: HEAD_UPPER, label: Upper head, group: Head }
     - { id: HEAD_MID, label: Mid head, group: Head }
-    - { id: HEAD_LOWER, label: Lower head, group: Head }
     - { id: ARMOR, label: Armor, group: Body }
     - { id: GARMENT, label: Garment, group: Body }
     - { id: FOOTGEAR, label: Footgear, group: Body }
@@ -388,15 +387,15 @@ equipment:
       armorTypes: []
       note: Fire burns cloth, wind blows it away. Only charms.
     - kind: HUMANOID
-      slots: [HEAD_UPPER, HEAD_MID, HEAD_LOWER, ARMOR, GARMENT, FOOTGEAR, RIGHT_HAND, LEFT_HAND, ACCESSORY_1, ACCESSORY_2]
+      slots: [HEAD_UPPER, HEAD_MID, ARMOR, GARMENT, FOOTGEAR, RIGHT_HAND, LEFT_HAND, ACCESSORY_1, ACCESSORY_2]
       armorTypes: [CLOTH, LIGHT, MEDIUM, HEAVY]
       note: Built like a master, so it wears what a master wears.
     - kind: UNDEAD
-      slots: [HEAD_UPPER, HEAD_MID, HEAD_LOWER, ARMOR, GARMENT, FOOTGEAR, RIGHT_HAND, LEFT_HAND, ACCESSORY_1, ACCESSORY_2]
+      slots: [HEAD_UPPER, HEAD_MID, ARMOR, GARMENT, FOOTGEAR, RIGHT_HAND, LEFT_HAND, ACCESSORY_1, ACCESSORY_2]
       armorTypes: [CLOTH, LIGHT, MEDIUM, HEAVY]
       note: A skeleton still wears its old armor.
     - kind: DEMON
-      slots: [HEAD_UPPER, HEAD_MID, HEAD_LOWER, ARMOR, GARMENT, FOOTGEAR, RIGHT_HAND, LEFT_HAND, ACCESSORY_1, ACCESSORY_2]
+      slots: [HEAD_UPPER, HEAD_MID, ARMOR, GARMENT, FOOTGEAR, RIGHT_HAND, LEFT_HAND, ACCESSORY_1, ACCESSORY_2]
       armorTypes: [CLOTH, LIGHT, MEDIUM, HEAVY]
       note: Most walk upright and wear anything.
     - kind: DRAGON

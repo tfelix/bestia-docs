@@ -339,7 +339,7 @@ This is the same workflow `skills.yml` descriptions use. The server reads none o
 A tamed bestia wears equipment like its master, but only what its body allows. Two lists in the mob YAML say what
 that is:
 
-- **`equip-slots`**: which of the master's ten slots the species has. A blob has no head, so it has no head slots.
+- **`equip-slots`**: which of the master's nine slots the species has. A blob has no head, so it has no head slots.
 - **`armor-types`**: which [armor types](/docs/mechanics/items/#armor-type) it can wear. A blob keeps a cloth cape
   on, but plate slides off it.
 
