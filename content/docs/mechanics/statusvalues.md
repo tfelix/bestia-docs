@@ -185,11 +185,13 @@ CRIT = WIL ÷ 3 + Bonus
 
 ## Soft Defense - SDEF
 
-Soft defense, also known as "VIT" defense, reduces incoming physical damage directly, on top of the [hard defense](/docs/server/battle#what-actually-deals-damage-today) granted by armor and other equipment.
+Soft defense, also known as "VIT" defense, reduces incoming physical damage directly, on top of the [hard defense](/docs/server/battle#what-actually-deals-damage-today) granted by armor and other equipment. It uses the player formula of Ragnarok Online (pre-renewal): half of VIT, plus a random part that is rolled for every hit.
 
 ```text
-SoftDEF = (floor(VIT + (STR / 5) + (AGI / 5) + (BaseLv / 4)) + SoftDefModAdditive) × SoftDefMod%
+SoftDEF = floor(VIT / 2) + rnd(0 … floor(VIT × (VIT − 15) / 150))
 ```
+
+Below 16 VIT there is no random part. At the same level, soft defense takes about 15% off a hit. The older formula `VIT + STR/5 + AGI/5 + BaseLv/4` took about half of it. With that formula, every point of VIT from gear brought a fighter closer to immunity.
 
 ## Soft Magic Defense - SMDEF
 
@@ -227,14 +229,18 @@ Hit/s = 1000 / ((200 - ASPD) * 10 + 70)
 This is derived from the player's Base Level, STR, DEX, and WIL. This is always considered as Neutral property.
 
 ```text
-ATK = (BaseLevel ÷ 4) + STR + (DEX ÷ 5) + (WIL ÷ 3)
+ATK = (BaseLevel ÷ 4) + STR + (STR ÷ 10)² + (DEX ÷ 5) + (WIL ÷ 3)
 ```
 
 when using ranged weapons the formula becomes:
 
 ```text
-ATK = (BaseLevel ÷ 4) + DEX + (STR ÷ 5) + (WIL ÷ 3)
+ATK = (BaseLevel ÷ 4) + DEX + (DEX ÷ 10)² + (STR ÷ 5) + (WIL ÷ 3)
 ```
+
+The squared term comes from Ragnarok Online. It lets attack grow faster than the flat soft defense at high levels.
+
+{{< alert context="warning" text="Bestia has no stat cap, and Ragnarok Online's squared terms rely on its cap of 99. A build that stacks one attribute with gear grows very fast: a full set of top-rolled STR items at Lv 100 deals about ten times the damage of a master without gear. See [Forging](/docs/mechanics/forging/#what-the-numbers-mean)." />}}
 
 ### Weapon Attack - WATK
 
@@ -249,7 +255,7 @@ WATK = (BaseWeaponDamage + Variance + StatBonus + RefinementBonus + OverUpgradeB
 This is derived from the player's Base Level, INT, and WIL. Just like ATK, this is always considered as Neutral property unless a spell defines otherwise.
 
 ```text
-MATK = (BaseLevel ÷ 4) + INT + (WIL ÷ 5)
+MATK = (BaseLevel ÷ 4) + INT + (INT ÷ 7)² + (WIL ÷ 5)
 ```
 
 # Effort Values
