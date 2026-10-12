@@ -35,11 +35,14 @@ referenceMaster:
   # Relative weight of each attribute when the master spends status points. Equal weights give the
   # even 9/9/9/9/9/9 spread a new master starts with.
   build: { str: 1, vit: 1, int: 1, agi: 1, dex: 1, wil: 1 }
-  # The novice knife and the starter kit from BlobBalanceTest. Weapons and armour have no level yet,
-  # so the growth per level is an assumption until they do. Hard DEF is a percentage. At Lv 90 it
-  # lands at 38 %, between a caster (about 27 %) and a melee in full armour (about 50 %).
+  # The novice knife and the starter kit from BlobBalanceTest. The growth of base ATK and DEF per level
+  # is an assumption. Hard DEF is a percentage. At Lv 90 it lands at 38 %, between a caster (about
+  # 27 %) and a melee in full armour (about 50 %).
   weaponAtk: { base: 10, perLevel: 1.0 }
   hardDefense: { base: 5, perLevel: 0.375 }
+  # The random stats of an average-roll kit: nine items of the master's level, each rolling about a
+  # third of the top value (level / 3), so about one point per level in all. See the forging page.
+  gearPointsPerLevel: 1
 
 # How a fight against one normal bestia of the same level should feel ("RO classic").
 pace:

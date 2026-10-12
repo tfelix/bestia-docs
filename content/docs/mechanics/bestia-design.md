@@ -56,17 +56,20 @@ server rules, so it changes when they do:
 - **Spending:** each point goes into the attribute that lags furthest behind. The cost of a point rises with the
   value, `max(1, next / 3)`, the same as for a player. At Lv 1 this gives the even 9/9/9/9/9/9 spread of a new master.
 - **Gear:** the novice knife (weapon ATK 10) and the starter kit (hard DEF 5), the same pair `BlobBalanceTest` uses.
-  Weapons and armour have no item level yet. So the method assumes +1 weapon ATK and +0.375 hard DEF per level until
-  they do. Hard DEF is a percentage cut, so a Lv 90 master takes 38 % less damage. That is between a caster
-  (about 27 %) and a melee in full armour (about 50 %).
+  The method assumes +1 weapon ATK and +0.375 hard DEF per level on top. Hard DEF is a percentage cut, so a Lv 90
+  master takes 38 % less damage. That is between a caster (about 27 %) and a melee in full armour (about 50 %).
+- **Random stats on the gear:** an average-roll kit of the master's level, about one attribute point per level, spread
+  like the master's own points. See [What the Numbers Mean](/docs/mechanics/forging/#what-the-numbers-mean).
 - **HP and attack speed:** the master's own formulas, see [Status Values](/docs/mechanics/statusvalues/#health).
 
 | Level | Attributes (STR/VIT/INT/AGI/DEX/WIL) |  HP | ATK | Soft DEF | FLEE | Weapon ATK | Hard DEF | Seconds per swing |
 | ----: | :----------------------------------- | --: | --: | -------: | ---: | ---------: | -------: | ----------------: |
-|     1 | 9/9/9/9/9/9                          |  18 |  13 |       11 |  111 |         10 |        5 |              1.34 |
-|    10 | 13/13/12/12/12/12                    |  37 |  21 |       19 |  124 |         19 |        8 |              1.32 |
-|    50 | 32/31/31/31/31/31                    | 137 |  60 |       55 |  187 |         59 |       23 |              1.18 |
-|   100 | 56/56/56/56/56/55                    | 304 | 110 |      103 |  267 |        109 |       42 |              1.01 |
+|     1 | 9/9/9/9/9/9                          |  18 |  13 |        4 |  111 |         10 |        5 |              1.34 |
+|    10 | 15/15/14/14/14/14                    |  37 |  24 |        7 |  126 |         19 |        8 |              1.30 |
+|    50 | 40/39/39/39/39/39                    | 145 |  88 |   19 + 6 |  196 |         59 |       23 |              1.13 |
+|   100 | 73/73/73/73/73/72                    | 337 | 185 |  36 + 28 |  287 |        109 |       42 |              0.89 |
+
+Soft DEF is the fixed part, plus the most the roll on each hit can add.
 
 An even spread is a choice. A real player specialises and hits harder. But an even master is the fair middle: a
 specialised player finds a normal bestia easy, and a crafter finds it hard.
@@ -109,8 +112,8 @@ its **default share** of the offence target. The other four attributes keep the 
 Fitting is needed because defence is subtracted, not divided. Near the target's soft DEF a single point of STR can
 add 25 % to the damage of a swing. A budget split alone would land anywhere between harmless and deadly.
 
-At low levels the fit often ends at STR 1. The master's soft DEF absorbs every swing, and each hit does the minimum
-of 1. That is fine: the attacks carry the damage instead.
+At low levels the fit can end near STR 1, and the default attack does little damage. That is fine: the attacks carry
+the damage instead.
 
 # 5. Attacks
 
@@ -359,18 +362,18 @@ A starter-ring bestia that a new player should be able to fight alone. Lv 2, nor
 | :--------- | :------------------------------------------------------------------------------------------------------ |
 | Master     | Lv 2: STR 10, VIT 10, rest 9; 20 HP; 1.34 s per swing                                                   |
 | Targets    | 6 swings; 1.12 damage per second, so a fight of about 8 s costs 9 of the master's 20 HP                 |
-| Attributes | STR 8, VIT 9, INT 2, AGI 6, DEX 2, WIL 3                                                                |
-| Attacks    | default melee attack every 2.34 s (ASPD 80), plus Tackle (learned at Lv 1), attack power 0.83           |
-| HP, mana   | 135 HP, 29 mana                                                                                         |
-| Fight      | 6.0 swings, 35 % of the master's HP; 0.44 damage per second from melee, 0.64 from Tackle; threat 0.98   |
-| Loot       | Raw Hide 60 % (6 coins), Raw Meat 30 % (4 coins), Medicinal Herb 2 % (5 coins): 4.9 coins against 13    |
-| EXP        | `(4 · 2 + 5) · 0.98 · 1.06` = **14**, and 15 at kill time with the element bonus                        |
+| Attributes | STR 3, VIT 9, INT 2, AGI 6, DEX 1, WIL 3                                                                |
+| Attacks    | default melee attack every 2.34 s (ASPD 80), plus Tackle (learned at Lv 1), attack power 0.98           |
+| HP, mana   | 181 HP, 29 mana                                                                                         |
+| Fight      | 6.0 swings, 33 % of the master's HP; 0.41 damage per second from melee, 0.62 from Tackle; threat 0.96   |
+| Loot       | Raw Hide 60 % (6 coins), Raw Meat 30 % (4 coins), Medicinal Herb 2 % (5 coins): 4.9 coins against 12    |
+| EXP        | `(4 · 2 + 5) · 0.96 · 1.06` = **13**, and 14 at kill time with the element bonus                        |
 | Equipment  | BEAST preset: upper head, armor, garment and both accessories; any armor type                           |
 
-If the boar also dropped a Rough Gemstone (400 coins) 5 % of the time, the loot score would rise to 1.95. With the
-slider on _less EXP_ the boar gives 9 EXP. With the slider on _tougher_ it keeps 13 EXP and gets 154 HP.
+If the boar also dropped a Rough Gemstone (400 coins) 5 % of the time, the loot score would rise to 2.0. With the
+slider on _less EXP_ the boar gives 8 EXP. With the slider on _tougher_ it gives 12 EXP and gets 208 HP.
 
-**The blob, measured.** `mob/blob.yml` (Lv 3, 10 HP, STR 6) dies to less than half a swing from a Lv 3
+**The blob, measured.** `mob/blob.yml` (Lv 3, 10 HP, STR 2) dies to less than half a swing from a Lv 3
 master. Its threat sits at the floor of 0.25, and the method gives it **5 EXP**, the value its YAML already has. By
 this method the blob is a critter, which is what it is meant to be.
 
