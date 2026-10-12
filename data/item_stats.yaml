@@ -1,0 +1,44 @@
+# The item stats of the forging page and its calculator. Mirrors the server's ItemStat (points per unit),
+# StatPool and ItemLevel; change both together.
+levelsPerPoint: 3
+pointsPerSocket: 5
+# Forge Weapon / Forge Armor: reliable item level per skill level, and the rank at which the smith sets no limit.
+reliableLevelPerRank: 10
+uncappedAtRank: 10
+materialHeadroom: 20
+categories:
+  - { label: Mundane, upTo: 20 }
+  - { label: Superior, upTo: 50 }
+  - { label: Rare, upTo: 80 }
+  - { label: Legendary, upTo: 100 }
+  - { label: Epic, upTo: null }
+stats:
+  - { id: STR, label: STR, unitsPerPoint: 1, pool: ATTRIBUTE }
+  - { id: AGI, label: AGI, unitsPerPoint: 1, pool: ATTRIBUTE }
+  - { id: VIT, label: VIT, unitsPerPoint: 1, pool: ATTRIBUTE }
+  - { id: INT, label: INT, unitsPerPoint: 1, pool: ATTRIBUTE }
+  - { id: DEX, label: DEX, unitsPerPoint: 1, pool: ATTRIBUTE }
+  - { id: WIL, label: WIL, unitsPerPoint: 1, pool: ATTRIBUTE }
+  - { id: ATK, label: ATK, unitsPerPoint: 2, pool: OFFENSE }
+  - { id: MATK, label: MATK, unitsPerPoint: 2, pool: OFFENSE }
+  - { id: HIT, label: HIT, unitsPerPoint: 1, pool: OFFENSE }
+  - { id: CRIT, label: CRIT, unitsPerPoint: 0.3333333333, pool: OFFENSE }
+  - { id: DEF, label: "DEF %", unitsPerPoint: 1, pool: DEFENSE }
+  - { id: MDEF, label: "MDEF %", unitsPerPoint: 1, pool: DEFENSE }
+  - { id: FLEE, label: FLEE, unitsPerPoint: 1, pool: DEFENSE }
+  - { id: MAX_HP, label: "Max HP %", unitsPerPoint: 1, pool: DEFENSE }
+  - { id: MAX_MANA, label: "Max mana %", unitsPerPoint: 1, pool: ARCANE }
+  - { id: CAST_TIME, label: "Faster casting %", unitsPerPoint: 1, pool: ARCANE }
+  - { id: HP_REGEN, label: "HP recovery %", unitsPerPoint: 5, pool: ARCANE }
+  - { id: MANA_REGEN, label: "Mana recovery %", unitsPerPoint: 5, pool: ARCANE }
+  - { id: STAMINA_REGEN, label: "Stamina recovery %", unitsPerPoint: 5, pool: ARCANE }
+  - { id: RESIST_NORMAL, label: "Neutral resistance %", unitsPerPoint: 3, pool: RESIST }
+  - { id: RESIST_WATER, label: "Water resistance %", unitsPerPoint: 3, pool: RESIST }
+  - { id: RESIST_EARTH, label: "Earth resistance %", unitsPerPoint: 3, pool: RESIST }
+  - { id: RESIST_FIRE, label: "Fire resistance %", unitsPerPoint: 3, pool: RESIST }
+  - { id: RESIST_WIND, label: "Wind resistance %", unitsPerPoint: 3, pool: RESIST }
+  - { id: RESIST_POISON, label: "Poison resistance %", unitsPerPoint: 3, pool: RESIST }
+  - { id: RESIST_HOLY, label: "Holy resistance %", unitsPerPoint: 3, pool: RESIST }
+  - { id: RESIST_SHADOW, label: "Shadow resistance %", unitsPerPoint: 3, pool: RESIST }
+  - { id: RESIST_GHOST, label: "Ghost resistance %", unitsPerPoint: 3, pool: RESIST }
+  - { id: RESIST_UNDEAD, label: "Undead resistance %", unitsPerPoint: 3, pool: RESIST }
