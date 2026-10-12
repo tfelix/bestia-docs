@@ -333,6 +333,8 @@ There is **no hard cap**. A blueprint above the reliable item level can still be
 costs another `5%` success chance. A Lv. 5 smith reaching for a level 80 weapon is working at a deep penalty, not
 against a locked door. See [Item Crafting](/docs/mechanics/items/#item-crafting) for the full roll.
 
+The reliable item level also caps the random stats a forged copy can roll, see [The Cap](/docs/mechanics/forging/#the-cap).
+
 {{< /skill >}}
 
 {{< skill name="Forge Armor" maxLevel="10" requires="Ore Refinement Lv. 1 and Item Customization Lv. 5"
@@ -355,7 +357,7 @@ Lv. 1 allows you to place a Forge.
 | 10  | +50%           | 100+                |
 
 Same rule as [Forge Weapon](#skill-forge-weapon): no hard cap, but every item level above the reliable one costs another
-`5%` success chance.
+`5%` success chance. The reliable item level caps random stats the same way.
 
 {{< /skill >}}
 
