@@ -28,18 +28,22 @@
 
   // --- Status values (DerivedStatusValues.kt, DefenseValues.kt) -------------------------------
 
+  const square = (v) => v * v;
+
   function combatant(level, attrs, extra = {}) {
     const a = attrs;
     return {
       level,
       attrs: a,
-      atk: idiv(level, 4) + a.str + idiv(a.dex, 5) + idiv(a.wil, 3),
-      ratk: idiv(level, 4) + a.dex + idiv(a.str, 5) + idiv(a.wil, 3),
-      matk: idiv(level, 4) + a.int + idiv(a.wil, 5),
+      atk: idiv(level, 4) + a.str + square(idiv(a.str, 10)) + idiv(a.dex, 5) + idiv(a.wil, 3),
+      ratk: idiv(level, 4) + a.dex + square(idiv(a.dex, 10)) + idiv(a.str, 5) + idiv(a.wil, 3),
+      matk: idiv(level, 4) + a.int + square(idiv(a.int, 7)) + idiv(a.wil, 5),
       hit: 175 + level + a.dex + idiv(a.wil, 3),
       flee: 100 + level + a.agi + idiv(a.wil, 5),
       crit: idiv(a.wil, 3),
-      def: a.vit + idiv(a.str, 5) + idiv(a.agi, 5) + idiv(level, 4),
+      // RO's player soft DEF: a fixed half of VIT, plus a roll below defSpread on every hit.
+      def: idiv(a.vit, 2),
+      defSpread: Math.max(0, idiv(a.vit * (a.vit - 15), 150)),
       mdef: a.int + idiv(a.vit, 5) + idiv(a.dex, 5) + idiv(level, 4),
       element: "NORMAL",
       elementLevel: 1,
@@ -91,9 +95,16 @@
     return attrs;
   }
 
+  // An average-roll kit adds about one point per level, spread like the build. See the forging page.
+  function withGear(attrs, weights, points) {
+    const total = ATTRIBUTES.reduce((sum, k) => sum + weights[k], 0);
+    return Object.fromEntries(ATTRIBUTES.map((k) => [k, attrs[k] + Math.round((points * weights[k]) / total)]));
+  }
+
   function referenceMaster(data, level) {
     const rm = data.referenceMaster;
-    const attrs = spendPoints(statusPointsUpTo(data, level), rm.build);
+    const spent = spendPoints(statusPointsUpTo(data, level), rm.build);
+    const attrs = withGear(spent, rm.build, rm.gearPointsPerLevel * level);
     const master = combatant(level, attrs, {
       weaponAtk: Math.round(rm.weaponAtk.base + rm.weaponAtk.perLevel * (level - 1)),
       hardDefense: Math.round(rm.hardDefense.base + rm.hardDefense.perLevel * (level - 1)),
@@ -126,7 +137,8 @@
     baseAtk = Math.max(1, baseAtk * elementMod(data, element, defender));
 
     const hardDef = hardDefenseFactor(defender.hardDefense);
-    let softDef = defender.def;
+    // The expected roll, which is what an expected-damage figure needs.
+    let softDef = defender.def + (defender.defSpread || 0) / 2;
     if (opts.ranged) softDef += defender.attrs.vit / 2 + defender.attrs.str / 6;
     const normal = Math.max(s.minDamage, Math.floor(baseAtk * hardDef) - softDef);
     const crit = Math.max(s.minDamage, Math.floor(baseAtk * s.critDamage * Math.max(1, hardDef)));
