@@ -25,6 +25,9 @@ graph TB
   SIM -.->|lease| DIR
   SIM <-->|events| BUS["Message bus<br/>party · chat · trade escrow · economy"]
   SIM -.->|write-behind| DB[("Database<br/>owner column · @Version")]
+  W["Companion app"] -->|"REST · WebSocket"| API["<b>API service</b><br/>REST · live push · map tiles"]
+  API -->|route lookup| DIR
+  API <-->|"requests,<br/>pushes"| BUS
 ```
 
 This is a target shape, not a spec. The boxes are roles, not processes: the first version runs the gateway
@@ -32,7 +35,9 @@ role inside every zone node. Clients only talk to the gateway, so an entity can 
 reconnect. Each node is the single writer for its chunk cells. Neighbours see border entities as read-only
 ghosts, and they replicate and hand over directly between nodes, not through a broker. Party, chat, trade and
 economy leave the World and talk over a bus. [Spatial Cells](/docs/server/spatial-cells) explains the nodes,
-the gateway role and the handoff.
+the gateway role and the handoff. The companion app does not use the gateway. A separate
+[API Service](/docs/server/api-service) serves its REST calls and live pushes, as a second client of the
+directory and the bus.
 
 # What blocks it today
 
