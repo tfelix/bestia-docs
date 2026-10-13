@@ -341,7 +341,7 @@ The rule underneath all of them: **the app never grants a power that exists only
 Honest about where this stands:
 
 - **None of it exists yet.** The public API is a promise on the [REST API](/docs/api/rest-api/) page and
-  nothing more. Most of what the app would read — quests, NPCs, shops, currency, the whole economy — is
+  nothing more. [API Service](/docs/server/api-service/) sketches how it would be served. Most of what the app would read — quests, NPCs, shops, currency, the whole economy — is
   designed but not implemented, and the servers currently drop their database on every restart.
 - **Notifications need a budget.** A game with this many timers can generate an unpleasant number of
   interruptions. What is worth waking somebody up for is a design question of its own, and it is not
