@@ -279,18 +279,21 @@ HTTP to kick an account.
 | Replication and relay of messages     | High rate, low latency             | Direct node-to-node Netty with protobuf                |
 | Handoff and calls between nodes       | Rare, reliable, in order           | A second stream on the same link, plus the epoch fence |
 | Region table, node ids and membership | Rare, and **consistent**           | etcd with leases                                       |
-| Session directory, account to node    | Frequent reads, may be a bit stale | Redis                                                  |
-| Party, chat, trade escrow, economy    | Low rate, must arrive              | Open. A broker fits, because the rate is low           |
+| Session directory, account to node    | Frequent reads, may be a bit stale | Valkey                                                 |
+| Party, chat, trade escrow, economy    | Low rate, must arrive              | Valkey: pub/sub for chat, Streams for the rest         |
 
 Netty, the framed protobuf codec and the fan-out are in the repository, so the first two jobs need no new
 dependency. A broker is not advised for them. It adds a hop on exactly the path that is being sped up, in
 exchange for subscriptions that `ChunkSubscriptionService` already does. Ordering inside one TCP connection
 is also exactly the guarantee needed, and a broker cannot give it.
 
+The last two rows share one Valkey deployment. [API Service](/docs/server/api-service#stores-and-technology)
+gives the reasons, the licence and the failover setup, and adds the companion app as a second client.
+
 The region table and the session directory must not share a store. **etcd holds a lock.** The region
 assignment is the fence that makes two writers of one entity impossible, and that is the one failure this
 design cannot absorb, because two writers duplicate a player's items. The same lease can give each node its
-`zone.shard-id`, so two nodes never mint the same snowflake node part. **Redis holds a cache.** A stale
+`zone.shard-id`, so two nodes never mint the same snowflake node part. **Valkey holds a cache.** A stale
 `account → node` entry costs one extra hop or one dropped message, which is what an unknown account costs
 today.
 
