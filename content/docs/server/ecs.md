@@ -193,9 +193,15 @@ receive it:
 sealed interface SyncTargets {
   data object PublicInRange : SyncTargets            // everyone who sees the entity
   data object OwnerOnly : SyncTargets                 // only the owning account
-  data class Accounts(val accountIds: Set<Long>) : SyncTargets  // an explicit set (e.g. + party)
+  data object OwnerAndParty : SyncTargets             // the owner and its party, wherever they stand
+  data class Accounts(val accountIds: Set<Long>) : SyncTargets  // an explicit set
 }
 ```
+
+`Health` and `Mana` of a player's entities use `OwnerAndParty`. Who that is depends on who plays what, which a
+component cannot see, so the sync resolves it through `EntityAudience.ownerAndParty`: the owner, plus each party
+member who is playing the master the party lists for them. A master's bars reach the party while it is played, a
+Bestia's only while it is the entity its owner drives.
 
 `Position` has a second flag, `movedFlag`, with its own log: every step re-indexes the entity in the
 area-of-interest services (below), even the steps that are not sent.

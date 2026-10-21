@@ -16,13 +16,13 @@ master's party and guild behind until they switch back.
 Founding a party, and inviting players into it, needs [Basic Skill](/docs/mechanics/master/#skill-basic-skill)
 Lv. 5. Joining one needs nothing. Whoever founds a party **owns** it:
 
-| Rule               | Value                                                                                    |
-| :----------------- | :--------------------------------------------------------------------------------------- |
-| Seats              | `12`, the owner's included. An invitation waiting for an answer holds a seat too.        |
-| Party name         | Unique, up to `20` plain letters, digits and single spaces.                              |
-| Invitations        | By master name, to a master that is being played. Unanswered, one lapses after `60` s.  |
-| Inviting, kicking  | The owner only.                                                                          |
-| Leaving            | Anyone. There is no new owner: when the owner leaves, the party ends for everyone.       |
+| Rule              | Value                                                                                  |
+| :---------------- | :------------------------------------------------------------------------------------- |
+| Seats             | `12`, the owner's included. An invitation waiting for an answer holds a seat too.      |
+| Party name        | Unique, up to `20` plain letters, digits and single spaces.                            |
+| Invitations       | By master name, to a master that is being played. Unanswered, one lapses after `60` s. |
+| Inviting, kicking | The owner only.                                                                        |
+| Leaving           | Anyone. There is no new owner: when the owner leaves, the party ends for everyone.     |
 
 The party window (`Alt+P`) lists every member with their master's health and mana, and beneath it the Bestia they
 are playing, if they play one. These bars are live wherever the members stand.
@@ -34,9 +34,9 @@ Party members talk with `/p`; only the party hears it.
 The owner picks how the party shares what a kill is worth. Each attacker's part of a kill's experience - see
 [Killing Enemies](/docs/mechanics/bestia/#killing-enemies) - then goes:
 
-| Mode           | Where an attacker's part goes                                                                                      |
-| :------------- | :----------------------------------------------------------------------------------------------------------------- |
-| **Each take**  | To the attacker, as outside a party.                                                                               |
+| Mode           | Where an attacker's part goes                                                                                        |
+| :------------- | :------------------------------------------------------------------------------------------------------------------- |
+| **Each take**  | To the attacker, as outside a party.                                                                                 |
 | **Even share** | `+30%`, then split evenly between every member **within 100 m of the kill**. Each share goes to the member's master. |
 
 A member counts as near the kill when their master or the Bestia they play stands within `100 m` of it, measured flat
@@ -59,16 +59,16 @@ anybody may pick it up. Options under consideration:
 
 # Guilds
 
-A guild is founded with a **Founder's Seal**, a rare item of the level 40 to 50 range, spent in the founding. The
+A guild is founded with a **Founder's Seal**, a rare item of level 45, spent in the founding. The
 master who uses it names the guild and leads it. A guild name is unique, up to `24` plain letters, digits and single
 spaces; a name that is taken is refused and the seal is kept.
 
-| Rule        | Value                                                                                            |
-| :---------- | :----------------------------------------------------------------------------------------------- |
-| Seats       | `32`, plus `2` for each level of Guild Extension, up to `52`.                                    |
-| Invitations | By master name, as for parties. Each one waiting for an answer holds a seat.                     |
+| Rule        | Value                                                                                              |
+| :---------- | :------------------------------------------------------------------------------------------------- |
+| Seats       | `32`, plus `2` for each level of Guild Extension, up to `52`.                                      |
+| Invitations | By master name, as for parties. Each one waiting for an answer holds a seat.                       |
 | Leader      | Can never be kicked, cannot leave, and cannot be handed over yet. Ends the guild by disbanding it. |
-| Disbanding  | The leader only, confirmed by typing the guild's name. The seal is not given back.              |
+| Disbanding  | The leader only, confirmed by typing the guild's name. The seal is not given back.                 |
 
 A master leading a guild cannot be deleted; the guild has to be disbanded first.
 
@@ -79,11 +79,11 @@ Guild members talk with `/g`. The guild window (`Alt+G`) is only offered inside 
 A guild has up to `10` ranks. Founding makes two: **Guild Master**, the leader's, and **Member**, which newcomers
 join. Each rank has a name, a tax and three permissions:
 
-| Permission        | Allows                                                    |
-| :---------------- | :-------------------------------------------------------- |
-| **Invite**        | Inviting players into the guild.                          |
-| **Kick**          | Removing members of a lower rank.                         |
-| **Manage ranks**  | Adding, editing and deleting the ranks below one's own, and moving members of lower ranks onto them. |
+| Permission       | Allows                                                                                               |
+| :--------------- | :--------------------------------------------------------------------------------------------------- |
+| **Invite**       | Inviting players into the guild.                                                                     |
+| **Kick**         | Removing members of a lower rank.                                                                    |
+| **Manage ranks** | Adding, editing and deleting the ranks below one's own, and moving members of lower ranks onto them. |
 
 The leader's rank holds every permission and only the leader may rename it or change its tax; nobody else can be put
 on it. Everyone else acts only **below their own rank**, so no rank can grant itself more or remove those above it.
@@ -95,8 +95,8 @@ Every rank pays a tax of `1%` to `80%` - `5%` for both founding ranks. That shar
 receives goes to the guild instead, after any party sharing, rounded down. It is taken from what a member's master
 and Bestia earn alike.
 
-A guild levels like a master does, on the curve of Ragnarok Online's guilds scaled down to Bestia's experience: the
-step to the next level grows by `2,000` each level.
+A guild levels like a master does, on the curve of Ragnarok Online's guilds scaled down to Bestia's experience. From
+one level to the next, the experience needed rises by `4,000`, then `6,000`, then `8,000`, and so on.
 
 <!-- prettier-ignore -->
 {{< katex display >}}

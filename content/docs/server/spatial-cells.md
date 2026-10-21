@@ -133,11 +133,11 @@ and no way for a system to write to a ghost by accident.
 
 **Which components replicate needs no new rule.** Replicate those whose `syncTargets` resolves to
 `PublicInRange`. That is what a stranger may see, and it is the filter the snapshot builder already applies.
-`OwnerOnly` components never replicate. Components addressed to `Accounts(ids)` reach their accounts through
-routing (below), not through a ghost.
+`OwnerOnly` components never replicate. Components addressed to `Accounts(ids)` or `OwnerAndParty` reach their
+accounts through routing (below), not through a ghost.
 
 `Health` shows that the rule is right. It returns `PublicInRange` for an entity with no `Account` and
-`Accounts(party + owner)` for one with an owner. A mob ghost carries HP, and a player ghost does not. That is
+`OwnerAndParty` for one with an owner. A mob ghost carries HP, and a player ghost does not. That is
 what happens in one process today.
 
 ## Simulation ghost: a real, marked entity
@@ -206,8 +206,8 @@ How each audience resolves:
 - **`OwnerOnly`** is one account id, taken from the entity's `Account` component, and handed to the router.
   This works without any change. **It alone makes a bestia that is simulated on another node update its
   owner's client.** No ghost, no subscription, nothing spatial is involved.
-- **`Accounts(ids)`** works the same, per account. Group them by node, so a party spread over three nodes
-  costs three messages and not five.
+- **`Accounts(ids)`** works the same, per account, and so does **`OwnerAndParty`** once it is resolved to the
+  owner and the party. Group them by node, so a party spread over three nodes costs three messages and not five.
 - **`PublicInRange`** is the one that changes. Locally it fans out to `subscribersOf(chunk)` as today. Remotely
   it goes **once per subscribed node**, and each node resolves its own local observers. Thirty players on one
   node who watch a boss on another cost the owner one message.

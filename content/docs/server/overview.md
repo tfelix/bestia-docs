@@ -92,8 +92,9 @@ The server code lives in the `bestia-behemoth` monorepo (Gradle multi-module,
 | [World Generation](/docs/server/world-generation) | The `worldgen` pipeline (tectonics through settlements) and chunk streaming to clients                 |
 | [Scripting](/docs/server/scripting)               | The real skill/status-effect/equipment script registries                                               |
 
-A few smaller systems exist and work but don't have their own page yet: **party** and **chat**
-(`zone-server/.../party/`, `.../chat/`) follow the same CMSG/handler pattern as everything else, and
+A few smaller systems exist and work but don't have their own page yet: **party**, **guild** and **chat**
+(`zone-server/.../party/`, `.../guild/`, `.../chat/`) follow the same CMSG/handler pattern as everything else
+(the rules they enforce are on [Parties & Guilds](/docs/mechanics/party-guild)), and
 **items/inventory/equipment/loot** (`.../item/`) back the battle and economy pages without a
 dedicated write-up.
 
