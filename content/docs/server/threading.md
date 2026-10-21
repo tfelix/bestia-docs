@@ -58,9 +58,9 @@ while the world was locked.
 | `zone-db-job-N`       | 4          | database writes, ordered per owner                                | only through a lease |
 | `zone-chunk-worker-N` | 2          | generate, encode and compress terrain; results return on the tick | no                   |
 | `scheduling-N`        | 1          | `@Scheduled` sweeps: periodic persistence, trade request expiry   | only through a lease |
-| `map-render`          | 1-4        | map tile rendering for the web map                                | no                   |
-| Tomcat, port 8091     | up to 200  | map tile requests and the login server's `/internal/` calls       | no                   |
-| Tomcat, port 8092     | up to 200  | metrics scrapes                                                   | no                   |
+| `map-render`          | 1-4        | map tile rendering for the map                                    | no                   |
+| metrics exporter, port 8092 | a few | metrics scrapes                                              | no                   |
+| bus readers and request server | a few, and virtual threads | bus questions, kick orders (`bus` module) | only through a lease |
 
 No other code starts a thread. `ThreadingRulesTest` fails a class outside this list that does. A
 feature that needs a timer uses a `@Scheduled` sweep that finds the due work and hands it on: as a DB

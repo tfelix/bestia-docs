@@ -9,12 +9,13 @@ description: What zone-server measures about itself — tick time per system, qu
 `zone-server` serves its metrics as Prometheus text on a port of their own:
 
 ```sh
-curl -s 127.0.0.1:8092/actuator/prometheus | grep ^zone_
+curl -s 127.0.0.1:8092/metrics | grep ^zone_
 ```
 
-The port binds to loopback only (`management.server` in `application.yml`). It is not the tile port
-(8091) and not the game socket (8090), so a proxy in front of the tiles never reaches it. Only
-`health` and `prometheus` are exposed.
+The port binds to loopback only (`metrics.address` and `metrics.port` in `application.yml`), apart from the game
+socket (8090). The zone runs no Spring web server, so this is the Prometheus client's own exporter
+(`PrometheusEndpoint`), a small JDK HTTP server over the meter registry. Besides `/metrics` it answers `/-/healthy`
+for a liveness probe, and nothing else.
 
 # What is measured
 

@@ -16,11 +16,13 @@ Gradle multi-module build, declared in `settings.gradle`:
 ```text
 bestia-behemoth/
   zone-server/     the game server (this page + most of the /docs/server/* pages)
-  login-server/    stateless REST auth — see Authentication
+  login-server/    REST auth with passkeys — see Authentication
+  api-service/     REST + WebSocket for the companion app, and the game client's map — see API Service
+  bus/             the contract and Valkey transport between zone, api-service and login-server
   bnet-messages/   protobuf message contracts, generates both Kotlin and C# classes
-  shared/          Role/Authority + EIP-712 DTOs, shared by both servers (not a shared DB)
+  shared/          Role/Authority/KickReason, shared by the servers (not a shared DB)
   worldgen/        standalone world-generation pipeline, invoked by zone-server at boot
-  cli-client/      headless Kotlin dev client
+  companion-app/   the companion web app (SvelteKit, npm; not a Gradle subproject)
   bestia-client/   the Godot client (separate build, not a Gradle subproject)
 ```
 
@@ -66,8 +68,8 @@ start, needed because the in-memory database resets every restart.
 - **[Networking](/docs/server/networking)** — the Netty pipeline and the `Envelope` protobuf that
   every message, in both directions, travels as.
 - **[Authentication](/docs/server/authentication)** — how `login-server` issues a JWT and how
-  `zone-server` independently re-validates it. The only call between the servers is the login
-  server asking the zones to kick an account.
+  `zone-server` independently re-validates it. The only message between the servers is the login
+  server's kick order, over the zone's Valkey.
 - **[ECS](/docs/server/ecs)** — `ZoneEngine` drives a single-threaded tick loop over a `World` of
   entities/components/systems, then flushes whatever changed to clients over the socket.
 - Everything else (AI, battle, world generation, ...) is a set of ECS systems and supporting

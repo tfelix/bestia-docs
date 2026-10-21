@@ -1,18 +1,19 @@
 ---
 weight: 10
 title: Overview
-description: Technical map of Bestia's server side — two independent Kotlin/Spring Boot services, how they split responsibilities, and where every subsystem lives.
+description: Technical map of Bestia's server side — independent Kotlin/Spring Boot services, how they split responsibilities, and where every subsystem lives.
 ---
 
 The server side of Bestia is **not** Godot — Godot only exists on the client
-([bestia-client](/docs/client/overview)). The backend is two independent **Kotlin / Spring Boot**
-JVM services with no shared database, talking to the client and to each other over two very
-different protocols:
+([bestia-client](/docs/client/overview)). The backend is independent **Kotlin / Spring Boot**
+JVM services with no shared database:
 
-- **`login-server`** — a stateless REST service. Its only job is turning proof of identity (a
-  wallet signature, or a dev static token) into a signed JWT. It never touches game state.
+- **`login-server`** — a REST service. Its job is turning a passkey sign-in into signed tokens. It never
+  touches game state.
 - **`zone-server`** — the actual game: a Netty TCP socket, a hand-rolled ECS running a fixed-tick
-  simulation loop, world generation/streaming, AI, combat, inventory, party and chat.
+  simulation loop, world generation/streaming, AI, combat, inventory, party and chat. It runs no web server.
+- **`api-service`** — the world's HTTP face: the [API Service](/docs/server/api-service) behind the companion app,
+  and the game client's map. It asks the zone for everything over a message bus in the zone's Valkey.
 
 ```mermaid
 graph LR
@@ -23,17 +24,22 @@ graph LR
   subgraph Backend [bestia-behemoth monorepo]
     LOGIN["login-server<br/>Spring Boot REST, issues JWT"]
     ZONE["zone-server<br/>Netty TCP, protobuf Envelope, ECS tick loop"]
+    API["api-service<br/>REST + WebSocket"]
+    V[("Valkey<br/>owned by the zone")]
   end
 
   C -- "HTTPS POST /api/v1/auth/..." --> LOGIN
   C <-- "TCP, length-prefixed Envelope frames" --> ZONE
-  LOGIN -- "HTTP POST /internal/.../kick" --> ZONE
+  C -- "HTTP, the map" --> API
+  LOGIN -- "kick orders" --> V
+  API <-- "requests, events" --> V
+  ZONE <-- "answers, events, kicks" --> V
 ```
 
-Trust between the two servers is carried in a signed JWT. There is no shared database and no service
-discovery between `login-server` and `zone-server`. The one call between them goes from login to zone,
-to kick an account. See [Authentication](/docs/server/authentication) for the full handoff and the
-kick.
+Trust between login and zone is carried in a signed JWT. There is no shared database and no service
+discovery between `login-server` and `zone-server`. The one message between them goes from login to zone,
+over the zone's Valkey, to kick an account. See [Authentication](/docs/server/authentication) for the full
+handoff and the kick.
 
 # Tech stack
 
@@ -62,9 +68,11 @@ The server code lives in the `bestia-behemoth` monorepo (Gradle multi-module,
 | `zone-server`   | The game server: sockets, ECS, AI, combat, world                                                                 |
 | `login-server`  | Stateless REST auth service                                                                                      |
 | `bnet-messages` | Protobuf message contracts — the wire format shared by client and server                                         |
-| `shared`        | A handful of Kotlin types shared by both servers (`Role`, `Authority`, EIP-712 DTOs) — **not** a shared database |
+| `shared`        | A handful of Kotlin types shared by the servers (`Role`, `Authority`, `KickReason`) — **not** a shared database  |
 | `worldgen`      | Standalone terrain/world generation pipeline, consumed by `zone-server` at boot                                  |
-| `cli-client`    | Headless Kotlin dev/test client — exercises the socket + REST protocol without Godot                             |
+| `api-service`   | REST and WebSocket for the companion app, and the game client's map — see [API Service](/docs/server/api-service) |
+| `bus`           | The contract and Valkey transport between zone, api-service and login-server                                     |
+| `companion-app` | The companion web app (SvelteKit PWA) — see [Companion App](/docs/mechanics/companion-app/)                      |
 | `bestia-client` | The Godot (C#/GDScript) game client — see the [client docs](/docs/client/overview)                               |
 
 # Subsystems

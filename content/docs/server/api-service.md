@@ -1,12 +1,13 @@
 ---
 weight: 190
 title: API Service
-description: How the companion app's REST API and WebSocket run as their own service next to the zone - the Valkey bus they talk over, how a question reaches the zone and an event reaches a phone, the map, the push notifications and the stores.
+description: How the companion app's REST API and WebSocket run as their own service next to the zone - the Valkey bus they talk over, how a question reaches the zone and an event reaches a phone, the map it also serves the game, the push notifications and the stores.
 ---
 
 The [Companion App](/docs/mechanics/companion-app/) talks to one service: `api-service`, a Spring Boot module of its
 own next to `login-server` and `zone-server`. It serves a REST API (JSON) and a WebSocket, and it never touches the
-game's database. Every question about the world goes to the zone over a message bus, and the zone answers it.
+game's database. Every question about the world goes to the zone over a message bus, and the zone answers it. The
+game client gets its map here too: the api-service is the world's one HTTP surface, and the zone runs no web server.
 
 {{< alert context="info" text="Version 1 is built: sign-in, Masters, Bestia, bags, the map, live events and push notifications, and changing a Bestia's standing order. What the [Companion App](/docs/mechanics/companion-app/) page describes beyond that waits for the game systems it needs." />}}
 
@@ -28,6 +29,8 @@ socket. The api-service owns HTTP and WebSocket for the app. They share no proce
 graph TB
   A["Companion app<br/>PWA · phone"] -->|"/api/v1/auth/companion"| L["<b>login-server</b><br/>passkeys · companion token"]
   A -->|"/v1/companion · REST + WebSocket"| API["<b>api-service</b><br/>auth · cache · push"]
+  G["Game client"] -->|"map, with its socket's ticket"| API
+  L -->|"kick orders"| V
   API <-->|"requests, replies,<br/>events, directory"| V[("Valkey<br/>owned by the zone")]
   Z["Zone nodes"] <-->|"answer, publish,<br/>register sessions"| V
   API --> DB[("bestia_api<br/>push subscriptions")]
@@ -44,7 +47,7 @@ Every API path starts with its version: `/v1/companion/...`.
 
 Valkey belongs to the zone: `zone-server/compose.yaml` runs it, and `zone-server/valkey/users.acl` gives each
 service a user that reaches only its own keys and channels. A cluster of zone nodes needs it anyway; the
-api-service is one of its clients. The contract both sides speak lives in the `bus` module: Kotlin classes for
+api-service and the login server are its clients. The contract both sides speak lives in the `bus` module: Kotlin classes for
 every request, answer and event, serialized as JSON, with a map tile's PNG framed beside the JSON rather than in
 base64.
 
@@ -55,6 +58,7 @@ base64.
 | Answers               | pub/sub channel `api:{instance}:replies`      | zone        | the asking api-service        |
 | Events                | stream `events`, the newest 10 000 kept       | zone        | api-service, twice (see below) |
 | Writes already done   | `bus:idem:{account}:{key}`, 10 minutes        | zone        | zone                          |
+| Kicks                 | stream `kicks`, the newest 10 000 kept        | login-server | every zone node, a group each |
 
 **The tick never waits for Valkey.** The zone appends events from a bounded outbox on its own thread; a full
 outbox drops and counts. Requests are answered on virtual threads, at most 64 at a time per node; one more is
@@ -145,8 +149,12 @@ The api-service keeps tile bytes by ETag. A repeat request goes to the zone as a
 the zone is enough to answer from the cache, so a PNG crosses the bus once. A `ChartsChanged` event drops the
 Master's cached ETags.
 
-The game client still fetches its own tiles from the zone's HTTP port. Moving it onto the api-service is the next
-step, and then the zone's HTTP port is left with the internal kick only.
+The game client's map comes from here as well, on the same routes, under the Master the player has selected. It has
+no companion token: it sends `Authorization: Ticket <ticket>`, the opaque value the zone handed it in
+`AuthenticationSuccess`, bound to its socket and forgotten when the socket closes. The api-service accepts a ticket on
+the map routes only, never for a standing order or push, and asks the zone whose it is (`ZoneQuery.WhoseTicket`);
+the answer is kept for 30 seconds and dropped when the account leaves the world. The zone then checks the Master is
+that account's, as for the app.
 
 # Sign-in
 
@@ -159,12 +167,13 @@ hold. The api-service therefore cannot mint a zone token.
 
 | Service     | HTTP | Database                 | Valkey user |
 | ----------- | ---- | ------------------------ | ----------- |
-| login-server | 8080 | `bestia_login`, 3307    | none        |
-| zone-server | 8091 | `bestia_zone`, 3306      | `zone`      |
+| login-server | 8080 | `bestia_login`, 3307    | `login`, which may only append kicks |
+| zone-server | metrics only, 8092 on loopback (game socket 8090) | `bestia_zone`, 3306 | `zone` |
 | api-service | 8095 | `bestia_api`, 3308       | `api`       |
 | Valkey      | 6379 | from `zone-server/compose.yaml` | |
 
-The api-service needs the zone's Valkey, so in development the zone starts first.
+The api-service and the login server need the zone's Valkey, so in development the zone starts first. The login
+server connects on its first kick, so it starts without Valkey; its kicks are lost until Valkey is up.
 
 # Availability
 
@@ -184,10 +193,8 @@ See the [Redis licences](https://redis.io/legal/licenses/) and the [history of V
 
 # Next
 
-1. Serve the game client's map through the api-service and take the tile port off the zone.
-2. Move the kick from HTTP to the bus, which removes the zone's last HTTP endpoint.
-3. Chat over the socket, once guild and party chat exist in the zone.
-4. A read model fed by the events, if questions to the zone ever grow heavy.
+1. Chat over the socket, once guild and party chat exist in the zone.
+2. A read model fed by the events, if questions to the zone ever grow heavy.
 
 # Open problems
 

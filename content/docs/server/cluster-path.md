@@ -6,10 +6,10 @@ description: What keeps zone-server on one process today, which seams already he
 
 {{< alert context="warning" text="Nothing on this page is built. zone-server runs as one process today. This page lists what stands in the way and the order in which to remove it." />}}
 
-One process owns all players, all rows and all global counters. There is no cluster infrastructure yet: no
-Redis, etcd or message broker, and no link between two zones. The only link between processes is the login
-server calling a zone over HTTP to kick an account. Some seams already help, and a few pieces of state stand in
-the way.
+One process owns all players, all rows and all global counters. There is little cluster infrastructure yet: the
+zone runs a Valkey for the [API Service](/docs/server/api-service) and the login server's kicks, with a directory
+of which node holds an account, but there is no etcd and no link between two zones. Some seams already help, and
+a few pieces of state stand in the way.
 
 # A target shape
 
@@ -48,7 +48,7 @@ one node with its own database, so state that stays inside one node is fine ther
 | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ----- |
 | **World**<br>`World`                                                                                     | The tick thread is the only writer, but a World belongs to one process. Nothing copies or moves a whole entity to another process. There is no ghost, no region and no silent removal.                                                                                                                                                                         | One single-writer World per region, with a [handoff](/docs/server/spatial-cells#handoff) | Cells |
 | **Sessions**<br>`ConnectionInfoService`                                                                  | A per-process map decides which entity an account controls. It has no epoch. A stale teardown is stopped only by channel identity in `ChannelRegistry`.                                                                                                                                                                                                        | Directory with lease and session epoch                                                   | Cells |
-| **Channels, tickets, zone list**<br>`ChannelRegistry`, `HttpTicketService`, login server `ZoneDirectory` | "One connection per account" holds only inside one node. The login server has a static list of zones and kicks an account on every one of them, because it cannot see where the player is.                                                                                                                                                                     | Gateway role; the directory answers "which node"                                         | Cells |
+| **Channels, tickets**<br>`ChannelRegistry`, `HttpTicketService`                                         | "One connection per account" holds only inside one node, and a ticket is known only to the node that minted it. The login server already reaches every node: its kicks go to a stream each node reads in a group of its own, because it cannot see where the player is.                                                                                        | Gateway role; the directory answers "which node"                                         | Cells |
 | **Party, trade, whisper**<br>`PartyService`, `TradeService`, `ChatHandler`                               | State sits in per-process maps. Each one reads and writes both players in the local World.                                                                                                                                                                                                                                                                     | Bus service; trade as two-phase escrow                                                   | Cells |
 | **World coin reserve**<br>`WorldReserve`                                                                 | The balance lives in memory and is saved as one absolute value. With two nodes, the last writer wins.                                                                                                                                                                                                                                                          | Atomic SQL deltas, or one owner                                                          | Cells |
 | **Rumour ids**<br>`RumourRegistry`                                                                       | The next id is `max(id) + 1` at boot. Two nodes collide.                                                                                                                                                                                                                                                                                                       | DB sequence or snowflake                                                                 | Cells |
@@ -77,15 +77,16 @@ one node with its own database, so state that stays inside one node is fine ther
   entity between nodes, but they only carry mutable state such as position and HP. A handoff needs more.
 - **One writer per World.** The tick thread owns the World, and handlers reach it through the inbox. See
   [Threads and the Tick](/docs/server/threading).
-- **Login and zone** share no database, only a token. The login server already calls zones over HTTP.
+- **Login and zone** share no database, only a token. The login server already reaches every zone node, through
+  the `kicks` stream in Valkey.
 
 # Two ways to grow
 
 **Realm shards.** Run many separate copies of the world, one node each, with one database per realm. Players
 connect straight to their realm, as they do today, so this path needs no gateway process. What is missing:
 
-- The login server must know the realm list and hand out the right socket endpoint. `ZoneDirectory` is a
-  static list of zone HTTP addresses for kicks today.
+- The login server must know the realm list and hand out the right socket endpoint. It knows no zone at all
+  today: its kicks go to every node through the stream.
 - The login token must name its realm.
 - Terrain edits must survive a restart.
 

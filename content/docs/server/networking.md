@@ -118,13 +118,13 @@ The socket binds to `socket.ip-address`/`socket.port` (`127.0.0.1:8090` in dev,
 `zone-server/src/main/resources/application.yml`), started by `SocketServerBootRunner` as the very
 last boot step (see [Architecture](/docs/server/architecture#boot-sequence)).
 
-The zone listens on three ports, all on loopback by default:
+The zone listens on two ports, both on loopback by default. It runs no web server: the map and everything else
+over HTTP is the [API Service](/docs/server/api-service)'s, and the login server reaches the zone over Valkey.
 
-| Port | What                                                                      |
-| ---- | ------------------------------------------------------------------------- |
-| 8090 | The game socket above                                                     |
-| 8091 | HTTP: the map tiles, and `/internal/` for the login server                |
-| 8092 | HTTP: metrics and health ([Metrics and Logs](/docs/server/observability)) |
+| Port | What                                                                              |
+| ---- | --------------------------------------------------------------------------------- |
+| 8090 | The game socket above                                                             |
+| 8092 | HTTP: metrics and a liveness probe ([Metrics and Logs](/docs/server/observability)) |
 
 # Liveness and backpressure
 
