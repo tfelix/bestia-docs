@@ -91,9 +91,17 @@ save as `asOf`. Bestia stay in the world when their Master leaves, so they are m
 A write carries an `Idempotency-Key`. The zone stores its reply under that key for ten minutes, and a repeat gets
 the same reply without running again, so an app can safely resend after a `504`.
 
-The one write today is a Bestia's standing order. It takes effect at once, as in the game: the zone stores it and
-rebuilds the creature's agent, through the same service the game's own handler uses, in the account's inbox so
-it is ordered with whatever the game client sends at the same moment.
+There are two writes today, and both run in the account's inbox, so they are ordered with whatever the game client
+sends at the same moment.
+
+- **A Bestia's standing order** takes effect at once, as in the game: the zone stores it and rebuilds the creature's
+  agent, through the same service the game's own handler uses.
+- **A line of party or guild chat**, `POST /v1/companion/masters/{id}/chat` with `{channel, text}`, goes out through
+  the same code as a line typed in the game. Members being played see it in their chat window, and every member gets
+  a `ChatLine` event. The rules are the game's: Basic Skill Lv. 2, read from the Master's last save when nobody
+  plays it (`403`); a Master in no such party or guild is refused (`409`); a line is 1 to 200 characters, with
+  control characters stripped. Local say has no app counterpart, because the Master is not in the world to be heard.
+  The answer is empty, and the line itself comes back over the socket like everybody else's.
 
 # Events
 
@@ -107,15 +115,17 @@ The zone appends to the `events` stream:
 | `StanceChanged`  | A Bestia was given a new standing order, from the game or the app     |
 | `Presence`       | An account entered or left the world (from the directory heartbeat)  |
 | `ChartsChanged`  | What a Master can see of the map may have changed                     |
+| `ChatLine`       | A line of party or guild chat, from the game or the app: one per member, played or not, the sender included |
 
 The api-service reads the stream twice:
 
 - **Every instance follows it** and sends each event to the account's open sockets, and drops the account's
-  cached answers. A socket that reconnects sends the last event id it saw and gets what it missed, as far as the
-  stream still holds.
+  cached answers, except on `ChatLine`, which changes none. A socket that reconnects sends the last event id it saw
+  and gets what it missed, as far as the stream still holds. That is the only chat history there is: the zone keeps
+  none, and the app keeps what it heard in the browser.
 - **One consumer group, `webpush`,** turns events into notifications for accounts that are not in the world and
   have no socket open. An event is acknowledged once handled, so each is notified once however many instances
-  run.
+  run. Chat is never a notification.
 
 # The WebSocket
 
@@ -193,7 +203,7 @@ See the [Redis licences](https://redis.io/legal/licenses/) and the [history of V
 
 # Next
 
-1. Chat over the socket. Party and guild chat now exist in the zone; the bus does not carry them yet.
+1. Whispers in the app, both ways. The zone has them; the bus and the game client's `/w` do not yet.
 2. A read model fed by the events, if questions to the zone ever grow heavy.
 
 # Open problems
@@ -202,5 +212,7 @@ See the [Redis licences](https://redis.io/legal/licenses/) and the [history of V
   api-service instances an account connected to another one can still be notified.
 - **A refresh lost in flight.** Refresh tokens rotate on every use and a spent one ends the session. An app killed
   between the server's rotation and storing the new cookie is signed out and signs in again with its passkey.
+- **Chat in a shared stream.** Every group line is one event per member on the `events` stream, which keeps the
+  newest 10 000. A busy guild can push a sleeping phone's other events out before it reconnects.
 - **The session epoch after a failover.** The epoch of the cluster design lives in the directory, and a failover
   can count it back.
