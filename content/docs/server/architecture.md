@@ -94,11 +94,11 @@ one, and every entity and repository lives in a `persistence` package.
 The slices form a stack, lowest first. A slice may only depend on slices below it:
 
 ```text
-root < util < geometry < ecs (the kernel, ecs.core) < config < message < session < sync < persistence
-< identity < aoi < entity < logout < navigation < movement < world < water < script < place < skill
-< dialog < battle < weather < ground < item < bestia < spoor < prop < casting < ai < spawn
+root < util < geometry < ecs (the kernel, ecs.core) < config < bus < message < session < sync
+< persistence < identity < aoi < entity < logout < navigation < movement < world < water < script < place
+< skill < dialog < battle < weather < ground < item < bestia < spoor < prop < casting < ai < spawn
 < account < party < guild < economy < crafting < cartography < townsfolk < master < respawn < trade
-< capture < chat < control < companion < internal < socket < metrics < engine < boot
+< capture < chat < control < companion < socket < metrics < engine < boot
 ```
 
 `FeatureSliceRulesTest` reads the compiled classes and fails on any dependency that points up the
