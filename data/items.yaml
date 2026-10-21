@@ -418,3 +418,12 @@
   value: 5
   description: |
     A tuft of soft wool. Weavers spin it into yarn for cloth.
+- id: founders_seal
+  name: Founder's Seal
+  weight: 0.5
+  type: Usable
+  value: 120000
+  description: |
+    A heavy signet of gold and aetherite, its face still blank, waiting for a name.
+
+    Founds a guild with its bearer as the guild master, and is spent in the founding. See [Guilds](/docs/mechanics/party-guild/#guilds).

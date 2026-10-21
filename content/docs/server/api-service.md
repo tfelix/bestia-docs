@@ -193,7 +193,7 @@ See the [Redis licences](https://redis.io/legal/licenses/) and the [history of V
 
 # Next
 
-1. Chat over the socket, once guild and party chat exist in the zone.
+1. Chat over the socket. Party and guild chat now exist in the zone; the bus does not carry them yet.
 2. A read model fed by the events, if questions to the zone ever grow heavy.
 
 # Open problems

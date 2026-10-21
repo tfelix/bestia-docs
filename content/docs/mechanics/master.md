@@ -117,7 +117,7 @@ graph TD
 {{< skill-level level="2" >}}Allows to chat with other players via public and whisper chat.{{< /skill-level >}}
 {{< skill-level level="3" >}}Allows to use trade posts.{{< /skill-level >}}
 {{< skill-level level="4" >}}Allows sitting to double HP & Mana recovery.{{< /skill-level >}}
-{{< skill-level level="5" >}}Allows to join and create parties. Unlocks all the other skill trees.{{< /skill-level >}}
+{{< skill-level level="5" >}}Allows to create parties and invite players into them. Joining a party needs no rank. Unlocks all the other skill trees.{{< /skill-level >}}
 {{< /skill >}}
 
 {{< skill name="Cooking" maxLevel="3" requires="Basic Skill Lv. 3"

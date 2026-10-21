@@ -225,19 +225,22 @@ exp_{gain} = 4 \cdot lv + 5
 
 where `lv` is the level of the defeated entity. The following modifiers are then summed and applied once to that base:
 
-| Modifier                                                        | Effect  |
-| :-------------------------------------------------------------- | :------ |
-| Each Bestia involved in the attack beyond the first             | `+20%`  |
-| The target was flagged as a boss                                | `+200%` |
-| Each elemental level of the target (e.g. `FIRE_2` gives `+20%`) | `+10%`  |
-| The target was a player-controlled Bestia                       | `+80%`  |
-| Party bonus                                                     | `+30%`  |
-| The target was a structure                                      | `-80%`  |
-| Buffs and equipment                                             | varies  |
+| Modifier                                                         | Effect             |
+| :--------------------------------------------------------------- | :----------------- |
+| Each player involved in the attack beyond the first              | `+15%`, at most `+150%` |
+| The target was flagged as a boss                                 | `+200%`            |
+| Each elemental level of the target (e.g. `FIRE_2` gives `+20%`)  | `+10%`             |
+| The target was a player-controlled Bestia                        | `+80%`             |
+| The target was a structure                                       | `-80%`             |
+| Buffs and equipment                                              | varies             |
 
-The `+20%` per additional Bestia grows the pool _before_ it is split, so bringing more Bestia into a fight is not a straight loss for each of them — but it is still less per head than soloing the same enemy.
+Players are counted by account, so a master and its own Bestia fighting together are one player. The `+15%` per additional player grows the pool _before_ it is split, so bringing more players into a fight is not a straight loss for each of them — but it is still less per head than soloing the same enemy.
 
-After the killing blow is delivered, the resulting pool is distributed among the damage dealers in proportion to the damage each of them contributed. For every receiver it is then resolved where the experience actually goes — into a guild, for example — and otherwise it is credited to the Bestia itself.
+After the killing blow is delivered, the resulting pool is distributed among the damage dealers in proportion to the damage each of them contributed. Where each portion then goes:
+
+1. **Party.** In a party set to _Even share_, a portion gets `+30%` and is split evenly between the members near the kill; see [Parties](/docs/mechanics/party-guild/#sharing-experience). This bonus is separate from, and on top of, the one for several players above. In a party set to _Each take_, or outside a party, the attacker keeps its portion.
+2. **Guild.** A guild member pays its rank's tax on what it receives; see [Guild Tax](/docs/mechanics/party-guild/#tax-and-guild-experience).
+3. What is left is credited to whoever received it - the attacking Bestia itself, or a member's master when the portion was shared.
 
 ## Environment Interaction
 

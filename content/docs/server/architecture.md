@@ -95,10 +95,10 @@ The slices form a stack, lowest first. A slice may only depend on slices below i
 
 ```text
 root < util < geometry < ecs (the kernel, ecs.core) < config < message < session < sync < persistence
-< identity < aoi < entity < logout < navigation < movement < world < script < place < skill < dialog
-< battle < weather < ground < item < bestia < spoor < prop < casting < ai < spawn
-< account < party < economy < crafting < cartography < townsfolk < master < respawn < trade < capture
-< chat < control < internal < socket < metrics < engine < boot
+< identity < aoi < entity < logout < navigation < movement < world < water < script < place < skill
+< dialog < battle < weather < ground < item < bestia < spoor < prop < casting < ai < spawn
+< account < party < guild < economy < crafting < cartography < townsfolk < master < respawn < trade
+< capture < chat < control < companion < internal < socket < metrics < engine < boot
 ```
 
 `FeatureSliceRulesTest` reads the compiled classes and fails on any dependency that points up the
@@ -111,7 +111,9 @@ The lower slice declares a small interface, a **port**, and the higher slice imp
 wires in the implementation. For example, `battle` makes a pristine prop fightable through
 `CombatTargetPromotion`, which the prop slice's `PropPromotionService` implements, and the item slice
 loads the rows that hold containers through `ContainerOwners`, which the account slice implements.
-Each port has exactly one implementation. Systems follow the same rule: a system in a higher slice
+Most ports have exactly one implementation. A few are listeners and take any number: `spawn`'s
+`KillExpLevy` (the guild's tax) and `battle`'s `LevelUpListener` (which refreshes party and guild
+rosters). Systems follow the same rule: a system in a higher slice
 declares `before` when the lower system may not name it (see [ECS](/docs/server/ecs#the-tick-order)).
 
 ## Where a new class goes
@@ -157,6 +159,12 @@ taken, and a delete never overtakes an earlier write.
   `@DynamicUpdate`, so such a write sets only the columns it changed and cannot put back a level the
   persister just saved. A party change locks the party row first; the party component on each member
   changes only after the commit, and a member who logs in gets it back from the row.
+- A guild lives in its own rows (`guild`, `guild_rank`, `guild_member`) and never writes the `master` row.
+  Every guild change locks the guild row first. The EXP its tax raises is gathered in memory on the tick and
+  written once per `guild.exp-flush-seconds` (30 s), one transaction per guild, so a crash loses at most
+  that much.
+- Party rosters and guild state go out from the DB executor too, on one key per party or guild, so a
+  roster built just before a kick can never reach the kicked member after the kick did.
 - The periodic save (`EntityPersistenceSystem`) runs on the tick. It saves each `Persistent` entity
   once per `persistence.interval-ms` (90 s by default) and spreads them over that time, a slice every
   second. An entity whose snapshot equals the last one queued is skipped. A failed write is retried by
