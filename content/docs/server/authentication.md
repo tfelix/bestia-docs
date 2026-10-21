@@ -83,7 +83,7 @@ token itself:
 ```kotlin
 val claims = Jwts.parser().verifyWith(secretKey).build().parseSignedClaims(token).payload
 require(claims.issuer == "login")
-require(claims.audience.contains("zone"))
+require(claims.audience == setOf("zone"))  // exactly, so a token for several audiences is no zone login
 val role = Role.valueOf(claims.get("role", String::class.java))
 // accountId = claims.subject.toLong(); authorities = role.authorities
 ```
@@ -144,7 +144,32 @@ logged and skipped, and its player keeps playing until they disconnect, but cann
 The zone serves `/internal/` on port 8091, next to the map tiles. A proxy in front of the tiles must
 never route `/internal/` from outside: the service token is then the only thing that guards it.
 
+# The companion app
+
+The [Companion App](/docs/mechanics/companion-app/) signs in through the same passkey page as the game, under
+`/api/v1/auth/companion/{start,exchange,refresh,logout}`. Every login session and every refresh token records which
+client it is for, `GAME` or `COMPANION` (`login_session.client`, `refresh_token.client`, migration V8), and a grant
+is refused for the other client: a companion code cannot be exchanged for a zone token, and a game refresh token
+cannot open a companion session.
+
+| Step     | Game                                   | Companion app                                              |
+| -------- | -------------------------------------- | ---------------------------------------------------------- |
+| Redirect | a loopback literal (`RedirectUriValidator`) | exactly one of `companion-login.redirect-uris`        |
+| Token    | zone login token, `jwt.secret`         | companion token, audience `companion`, `jwt.companion-secret` |
+| Refresh  | the client stores the refresh token    | an httpOnly, SameSite=Strict cookie on `/api/v1/auth/companion` |
+
+The companion token is checked by the [API Service](/docs/server/api-service/), which holds the companion key and
+not the zone's, so it cannot mint a zone token. `LoginDeploymentGuard` refuses, outside development, a companion
+key that is the committed one, shorter than 32 bytes, or the same as `jwt.secret`. The app keeps its access token
+in memory only, and refreshes in one tab at a time (the Web Locks API), because two tabs presenting the same
+cookie would look like a stolen copy and end the session.
+
+`LoginGrants` holds the checks both clients share: claiming the code, PKCE, the account, bans.
+
 # Known gaps
+
+- This page still describes the static and EIP-712 logins in its first sections; both are gone, and passkeys are
+  the only login method.
 
 - `AuthenticationSuccess.permissions` is defined in the protobuf schema but zone-server never
   populates it (`// TODO Send the available permissions to the client` in `ClientMessageHandler`).

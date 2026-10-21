@@ -1,219 +1,199 @@
 ---
 weight: 190
 title: API Service
-description: How the REST API and the live WebSocket for the companion app could run as their own service next to several zone nodes - which node it asks, how chat is pushed, where the map tiles come from and which stores it needs. Design only; none of it is built.
+description: How the companion app's REST API and WebSocket run as their own service next to the zone - the Valkey bus they talk over, how a question reaches the zone and an event reaches a phone, the map, the push notifications and the stores.
 ---
 
-{{< alert context="warning" text="Nothing on this page is built. zone-server still serves the map tiles and a kick endpoint over HTTP. This page says where that HTTP surface goes once the [Companion App](/docs/mechanics/companion-app/) and the public [REST API](/docs/api/rest-api/) exist." />}}
+The [Companion App](/docs/mechanics/companion-app/) talks to one service: `api-service`, a Spring Boot module of its
+own next to `login-server` and `zone-server`. It serves a REST API (JSON) and a WebSocket, and it never touches the
+game's database. Every question about the world goes to the zone over a message bus, and the zone answers it.
+
+{{< alert context="info" text="Version 1 is built: sign-in, Masters, Bestia, bags, the map, live events and push notifications, and changing a Bestia's standing order. What the [Companion App](/docs/mechanics/companion-app/) page describes beyond that waits for the game systems it needs." />}}
 
 # Why a separate service
 
-The companion app needs a REST API and a live channel for chat. Both could live inside zone-server. They should
-not, for three reasons:
-
-- **A web fault must not stop the game.** A crash, a slow client or an attack on the API then touches no tick.
-- **There will be several zone nodes.** A web client cannot know which node holds its account. One service can
-  look that up. If every node did it, the same code would run many times.
-- **The zone loses its HTTP port.** It keeps only the management port on loopback (metrics and health). The map
-  tiles and the kick endpoint leave. The zone then talks to game clients, to the bus and to its database.
+- **A web fault must not stop the game.** A crash, a slow phone or an attack on the API touches no tick.
+- **There will be several zone nodes.** One service looks up which node holds an account; the nodes do not each
+  run the same web code.
+- **The game owns its data.** The api-service has no read access to the zone's tables. A web tier that reads a
+  game's tables breaks quietly with every update of the game, so it asks instead, and the zone answers from its
+  repositories and its live world.
 
 This service is not the [gateway role](/docs/server/spatial-cells#the-gateway-role). That role owns the game
-socket. The API service owns HTTP and WebSocket for the app. They share no process.
+socket. The api-service owns HTTP and WebSocket for the app. They share no process.
 
 # Shape
 
 ```mermaid
 graph TB
-  A["Companion app<br/>web · phone"] -->|"REST · WebSocket"| API["<b>API service</b><br/>auth · rate limits · tiles"]
-  API <-->|"directory lookup,<br/>requests, pushed events"| V[("Valkey<br/>directory · pub/sub · streams")]
-  Z["Zone nodes"] <-->|"register sessions,<br/>answer, publish"| V
-  API -->|"read-only view"| DB[("Realm database")]
-  Z -.->|write-behind| DB
+  A["Companion app<br/>PWA · phone"] -->|"/api/v1/auth/companion"| L["<b>login-server</b><br/>passkeys · companion token"]
+  A -->|"/v1/companion · REST + WebSocket"| API["<b>api-service</b><br/>auth · cache · push"]
+  API <-->|"requests, replies,<br/>events, directory"| V[("Valkey<br/>owned by the zone")]
+  Z["Zone nodes"] <-->|"answer, publish,<br/>register sessions"| V
+  API --> DB[("bestia_api<br/>push subscriptions")]
+  Z --> ZDB[("bestia_zone")]
 ```
 
-The directory and the bus are one Valkey deployment. The cluster design plans the same two parts
-([Path to a Cluster](/docs/server/cluster-path)), so the API service is a second client of them, not a second
-system.
+A reverse proxy puts the app, `/api/v1/auth/companion` (login-server) and `/v1/companion` (api-service) on one
+origin, so nothing is cross-origin and the refresh cookie is first-party. The dev server of `companion-app/`
+plays that proxy on `localhost:5173`.
 
-# Five kinds of call
+Every API path starts with its version: `/v1/companion/...`.
 
-| Kind           | Example                                   | Path                                                                                       |
-| -------------- | ----------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Static data    | Item and bestia catalogues                | Served by the API service. No zone is asked.                                               |
-| Map tiles      | The map window                            | Rendered by the API service. No zone is asked. See [Map tiles](#map-tiles).                |
-| Persisted data | The post, crafts and auctions of a Master | Read from the realm database.                                                              |
-| Live data      | Position, who is online                   | A request to the node of the account, with a timeout. See [Which zone](#which-zone).       |
-| Writes         | An order to buy grain                     | An instruction, answered at once. See [Writes are instructions](#writes-are-instructions). |
+# The bus
 
-Most companion app reads are for a Master who is logged off. Their data is in the database, so most calls never
-reach a zone.
+Valkey belongs to the zone: `zone-server/compose.yaml` runs it, and `zone-server/valkey/users.acl` gives each
+service a user that reaches only its own keys and channels. A cluster of zone nodes needs it anyway; the
+api-service is one of its clients. The contract both sides speak lives in the `bus` module: Kotlin classes for
+every request, answer and event, serialized as JSON, with a map tile's PNG framed beside the JSON rather than in
+base64.
 
-# Which zone
+| What                  | Valkey                                        | Written by  | Read by                       |
+| --------------------- | --------------------------------------------- | ----------- | ----------------------------- |
+| Who is in the world   | `dir:account:{id}`, a key with a 30 s TTL     | zone        | api-service                   |
+| Questions             | pub/sub channel `zone:{node}:requests`        | api-service | that zone node                |
+| Answers               | pub/sub channel `api:{instance}:replies`      | zone        | the asking api-service        |
+| Events                | stream `events`, the newest 10 000 kept       | zone        | api-service, twice (see below) |
+| Writes already done   | `bus:idem:{account}:{key}`, 10 minutes        | zone        | zone                          |
 
-The API service does not choose a zone per request. It looks the account up.
+**The tick never waits for Valkey.** The zone appends events from a bounded outbox on its own thread; a full
+outbox drops and counts. Requests are answered on virtual threads, at most 64 at a time per node; one more is
+answered "busy" at once rather than queued.
 
-1. It reads the account's entry in the session directory. The cluster design already has this directory. It maps
-   an account to its gateway node and to the node that owns its master
-   ([gateway role](/docs/server/spatial-cells#the-gateway-role)).
-2. The gateway role receives every message addressed to that account. So the request goes to the request channel
-   of that node.
-3. The request carries a correlation id, the reply channel of the calling API instance and a timeout. The zone
-   answers on that channel. The API service then completes the waiting HTTP call, or answers `504` when the
-   timeout runs out.
-4. If there is no entry, the account is not connected. The API service answers from the database.
+# A question to the zone
 
-An entry has a TTL, and the node renews it while the account is connected. A node that dies stops renewing, so
-its accounts count as offline after the TTL.
+1. The api-service looks the account up in the directory. No entry means the account is not in the world, and
+   the question goes to the realm's default node (one node today).
+2. It publishes `{correlationId, replyTo, deadline, accountId, idempotencyKey?, query}`. The account is the one
+   the api-service authenticated; nothing in the query can name another.
+3. The zone checks every master in the query against `master.account_id`. Absent and not yours read the same:
+   `NOT_FOUND`.
+4. It answers on `replyTo`. A question nobody listens to fails at once (`503`); one with no answer in five
+   seconds is a `504`.
 
-A request about a place, not an account, goes to the node that owns the region. The region table stays in etcd
-([Transport](/docs/server/spatial-cells#transport)).
+| Reply          | HTTP                    |
+| -------------- | ----------------------- |
+| `OK`           | 200                     |
+| `NOT_MODIFIED` | 304                     |
+| `NOT_FOUND`    | 404                     |
+| `INVALID`      | 400                     |
+| `BUSY`         | 503 with `Retry-After`  |
 
-Waiting costs little: on virtual threads, a blocked request holds no platform thread. A request that nobody
-answers ends as a timeout, and the caller may retry a read.
+A Master being played is read where it stands in the world; any other from its row, with the time of its last
+save as `asOf`. Bestia stay in the world when their Master leaves, so they are mostly read live.
 
-# Live push
+# Writes
 
-Chat is the first push. A zone publishes a line to a channel, for example `chat:guild:{id}`. It does not know or
-care whether a web client is listening. Every API instance subscribes and forwards the line to its WebSocket
-sessions. The other direction is the same path reversed: the API service publishes, and the zones deliver the
-line to the in-game clients of that guild.
+A write carries an `Idempotency-Key`. The zone stores its reply under that key for ten minutes, and a repeat gets
+the same reply without running again, so an app can safely resend after a `504`.
 
-Rules for this path:
+The one write today is a Bestia's standing order. It takes effect at once, as in the game: the zone stores it and
+rebuilds the creature's agent, through the same service the game's own handler uses, in the account's inbox so
+it is ordered with whatever the game client sends at the same moment.
 
-- **The client never names a channel.** After the sign-in, the API service derives the channels from the
-  account's memberships (guild, party, whispers) and subscribes for that session. A user cannot ask for the
-  guild chat of someone else.
-- **The gates stay on the game side.** A chat line from the app passes the same check as one from the client.
-  [Basic Skill](/docs/mechanics/master/#skill-basic-skill) Lv. 2 for chat and Lv. 5 for parties hold. The API
-  service does not copy the rule.
-- **Pub/sub can lose a message.** A client that was away misses lines. History is stored in the database, and a
-  reconnecting client asks for what it missed.
-- **Guild and party chat do not exist in the zone yet.** Public and whisper chat work in one process today.
+# Events
 
-# Writes are instructions
+The zone appends to the `events` stream:
 
-The [Companion App](/docs/mechanics/companion-app/#five-rules-that-keep-it-honest) never acts directly. It writes
-an instruction. The instruction travels at courier pace, is carried out on arrival, and the answer comes back the
-same way. So a write is not a request that waits for a reply.
+| Event            | When                                                                 |
+| ---------------- | -------------------------------------------------------------------- |
+| `HomeFell`       | A Master's home town fell and it was given a new one                  |
+| `BestiaDiedAway` | An owned Bestia died while nobody played its Master                   |
+| `ConstructionDone` | A player's construction site became a structure                     |
+| `StanceChanged`  | A Bestia was given a new standing order, from the game or the app     |
+| `Presence`       | An account entered or left the world (from the directory heartbeat)  |
+| `ChartsChanged`  | What a Master can see of the map may have changed                     |
 
-1. The API service checks the instruction and stores it with an idempotency key from the client.
-2. It answers `202 Accepted` with the instruction id.
-3. The world picks the instruction up when it is due. The result arrives as a push and in the ledger.
+The api-service reads the stream twice:
 
-A stream with a consumer group and acknowledgements carries the instruction to the nodes. Delivery is
-at-least-once, so a node treats a repeated instruction id as already done. Where the instruction is kept safe
-is an [open problem](#open-problems).
+- **Every instance follows it** and sends each event to the account's open sockets, and drops the account's
+  cached answers. A socket that reconnects sends the last event id it saw and gets what it missed, as far as the
+  stream still holds.
+- **One consumer group, `webpush`,** turns events into notifications for accounts that are not in the world and
+  have no socket open. An event is acknowledged once handled, so each is notified once however many instances
+  run.
 
-# Map tiles
+# The WebSocket
 
-The map API moves out of the zone with the REST API. It can, because a tile needs only two inputs, and neither
-needs a live zone:
+`/v1/companion/ws`. A browser cannot put a header on a WebSocket handshake, so the first frame authenticates:
+`{"type":"auth","token":...,"lastEventId":...}`. The app never names what it wants to hear; it hears its own
+account's events. A socket lives as long as its token and is then closed with code 4001, and the app reconnects
+with a fresh token.
 
-- **The world.** `MapTileService` reads the generated world and does not touch the ECS. The API service needs the
-  `worldgen` module and the world store. Terrain edits must first be in a shared durable store, which the
-  [cluster path](/docs/server/cluster-path#order-of-work) needs anyway.
-- **The charts a Master holds.** A partly charted tile depends on which ground the asker has surveyed, and a chart
-  is an item in the inventory. The API service therefore needs the chart coverage of the account.
+# Push notifications
 
-For the coverage, start with a read-only database view that holds only the chart items, inside one realm. This
-is a deliberate exception to "no shared database between servers": the API service reads, and never writes. The
-zone already raises a `ChartsChangedEvent` when charts change. Published on the bus, it can feed a read model
-later, and the view can go.
+Web Push, with the payload encrypted to the browser's keys (RFC 8291) and the sender proven by VAPID (RFC 8292),
+both in the api-service itself on the JDK's own cryptography. Subscriptions and preferences are the only data the
+api-service stores, in `bestia_api`.
 
-A fully charted tile is the same bytes for everyone, so it can stay `public` and `immutable` and sit behind a
-CDN. The bounded render pool moves with the code, so a burst of tile requests cannot become a burst of renders.
+- A subscription may only point at a known push service (FCM, Mozilla, Apple, Windows). It is a URL this service
+  will POST to, so without that list any player could aim it at an internal address.
+- Each account chooses its categories and quiet hours, in its own time zone.
+- At most six notifications an hour per account; the rest of the hour's events are dropped.
+- A push service that answers 404 or 410 has forgotten the subscription, and it is deleted.
 
-# Stores and technology
+On iPhone and iPad a web app receives notifications only once it is on the Home Screen. The app says so.
 
-| Job                                                           | Store                                                                   |
-| ------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| Session directory, account to node                            | Valkey. TTL keys, renewed by the node.                                  |
-| Live requests and replies                                     | Valkey pub/sub. A small helper maps a correlation id to a waiting call. |
-| Chat and other pushes                                         | Valkey pub/sub                                                          |
-| Instructions, kicks and bans, trade escrow and economy events | Valkey Streams with consumer groups and acknowledgements                |
-| Region table and node ids                                     | etcd, as in [Spatial Cells](/docs/server/spatial-cells#transport)       |
+# The map
 
-**Why Valkey and no broker.** The directory needs a key-value store with TTLs, and that store can also carry the
-messages. The rate is low. One system is less to run, secure and keep available than two. The code talks to two
-small interfaces, `Directory` and `NodeBus` in `shared`, so the transport can change. A broker such as RabbitMQ
-becomes the better choice if the stream code grows, or if the web side wants Spring's STOMP relay for browsers.
+The map is asked of the zone, because the world is not static: the zone renders tiles from the live world and the
+Master's charts, with the same rules as the game client's map. A fully charted tile is the same bytes for everyone
+and immutable; a partly charted one revalidates against an ETag that carries the coverage digest; a 404 is ground
+the Master has not charted.
 
-**What must not use pub/sub.** Pub/sub drops a message when the listener is away. A lost kick leaves a banned
-player connected. Kicks, bans, instructions and escrow use streams.
+The api-service keeps tile bytes by ETag. A repeat request goes to the zone as a conditional one, and a 304 from
+the zone is enough to answer from the cache, so a PNG crosses the bus once. A `ChartsChanged` event drops the
+Master's cached ETags.
 
-**The kick moves first.** Today the login server posts the kick over HTTP to every zone, because it cannot see
-where the player is. With the directory, one stream entry for the account's node replaces that call. It removes
-the internal HTTP endpoint of the zone and the zone list of the login server, and it is the first real use of the
-bus.
+The game client still fetches its own tiles from the zone's HTTP port. Moving it onto the api-service is the next
+step, and then the zone's HTTP port is left with the internal kick only.
 
-**Sign-in and access.** The app signs in with a passkey, like the client. The login server issues a token with an
-audience of its own for the API service, and no existing token can stand in for it
-([Authentication](/docs/server/authentication)). Each service gets its own Valkey user (ACL), limited to the
-channels and streams it needs.
+# Sign-in
 
-# Keeping the game safe
+The companion app signs in like the game: PKCE, the login server's own passkey page, a single-use code. See
+[Authentication](/docs/server/authentication#the-companion-app). What comes out is a companion token, audience
+`companion`, signed with a key of its own (`jwt.companion-secret`) that only the login server and the api-service
+hold. The api-service therefore cannot mint a zone token.
 
-The API service must never be a way to slow the game down.
+# Stores and ports
 
-- **The tick never waits for Valkey.** The zone publishes through a bounded outbox on another thread. A full outbox
-  drops pushes and fails stream writes loudly.
-- **A bus request never touches the world on the listener thread.** It goes through the inbox of the account, and
-  the rules of [Threads and the Tick](/docs/server/threading) apply: take a short lease, return values and not
-  components.
-- **The API service limits itself.** It has a rate limit per account, a circuit breaker towards the zones and a
-  cap on requests in flight per node.
-- **If Valkey is down, one node plays on.** Nothing in the game of a single node depends on it. With cells, the
-  directory also routes game messages between nodes, so its loss then hurts the game. That is why it needs
-  failover.
+| Service     | HTTP | Database                 | Valkey user |
+| ----------- | ---- | ------------------------ | ----------- |
+| login-server | 8080 | `bestia_login`, 3307    | none        |
+| zone-server | 8091 | `bestia_zone`, 3306      | `zone`      |
+| api-service | 8095 | `bestia_api`, 3308       | `api`       |
+| Valkey      | 6379 | from `zone-server/compose.yaml` | |
+
+The api-service needs the zone's Valkey, so in development the zone starts first.
 
 # Availability
 
-Valkey has the same failover system as Redis, called **Sentinel**. It gives high availability and does not shard
-data. The directory is small, so sharding is not needed.
-
-- Run one primary, one or two replicas and three Sentinel processes. When a majority of the Sentinels agree that
-  the primary is down, they elect a leader. The leader promotes a replica, repoints the others and tells the
-  clients the new address.
-- Replication is asynchronous, so a failover can lose the newest writes. Nodes re-register their sessions on the
-  next heartbeat, so the directory heals itself. Anything that must never be lost must not live only here.
-- Development needs a single instance. Add Sentinel before production.
+Valkey has the same failover as Redis, **Sentinel**: one primary, one or two replicas and three Sentinels. When a
+majority agree the primary is down, they promote a replica. Replication is asynchronous, so a failover can lose the
+newest writes: directory entries heal on the next heartbeat, a lost question times out, and a lost write is safe
+to resend because of its idempotency key. Development runs a single instance.
 
 # Licence
 
-The stack keeps to open source licences. That rules out Redis 7.4 to 7.8, which is released under RSALv2 and
-SSPLv1. Neither is an open source licence. Redis 8 added AGPLv3 as a third option, which is open source, but it
-is copyleft with a network clause.
+The stack keeps to open source licences. That rules out Redis 7.4 to 7.8 (RSALv2 and SSPLv1). Redis 8 added AGPLv3,
+which is open source but copyleft with a network clause. **Valkey** is the fork of Redis 7.2.4 under BSD-3-Clause,
+run by the Linux Foundation, and everything the bus uses - TTL keys, pub/sub, streams, consumer groups, ACL users -
+is part of that baseline. Lettuce talks to it unchanged.
 
-**Valkey** is a fork of Redis 7.2.4 under BSD-3-Clause, run by the Linux Foundation. It has no terms to track,
-and it is the choice here. Everything this page uses is part of the Redis 7.2 baseline: TTL keys, `SET NX PX`,
-`INCR`, Lua, pub/sub and streams. The Lettuce client of Spring Data Redis should connect to it unchanged. A test
-against Valkey must show that before the design relies on it.
+See the [Redis licences](https://redis.io/legal/licenses/) and the [history of Valkey](https://valkey.io/topics/history/).
 
-See the [Redis licences](https://redis.io/legal/licenses/) and the
-[history of Valkey](https://valkey.io/topics/history/).
+# Next
 
-# Order of work
-
-Each step can ship on its own.
-
-1. Run Valkey in development. Add `Directory` and `NodeBus` to `shared`, with a Valkey implementation.
-2. Move the kick from HTTP to a stream. Remove the internal endpoint of the zone.
-3. Build the API service with the static data and the map tiles. Move `MapTileController` out of the zone.
-4. Add reads of persisted data from the read-only view.
-5. Add live reads over the bus, once the directory exists.
-6. Add chat push, once guild and party chat exist in the zone.
-7. Add instructions.
+1. Serve the game client's map through the api-service and take the tile port off the zone.
+2. Move the kick from HTTP to the bus, which removes the zone's last HTTP endpoint.
+3. Chat over the socket, once guild and party chat exist in the zone.
+4. A read model fed by the events, if questions to the zone ever grow heavy.
 
 # Open problems
 
-- **Where an instruction is kept safe.** A stream is simple, but a failover can lose the newest entries, and an
-  instruction that moves gold must not vanish after a `202`. Two ways: a table in the database of the API
-  service with the stream as the wake-up, or a stream with persistence that waits for its replicas.
-- **The session epoch after a failover.** The epoch lives in the directory. After a failover it can count back,
-  and a stale gateway could pass the check. It may be seeded from the clock, or kept in the database.
-- **Chart coverage.** The read-only view is the cheap start. The event-fed read model is cleaner and costs more.
-- **The weight of `worldgen` in the API service.** Rendering tiles needs the world. How large that dependency is,
-  and how long it takes to start, is not measured.
-- **Notifications while the app is closed.** A WebSocket lives only while the app is open. A finished craft or
-  egg needs a mobile push provider. The [Companion App](/docs/mechanics/companion-app/#limits) page leaves the
-  budget for notifications open, and this page does not cover them.
+- **Notifications across instances.** Whether an account has a socket open is known per instance, so with several
+  api-service instances an account connected to another one can still be notified.
+- **A refresh lost in flight.** Refresh tokens rotate on every use and a spent one ends the session. An app killed
+  between the server's rotation and storing the new cookie is signed out and signs in again with its passkey.
+- **The session epoch after a failover.** The epoch of the cluster design lives in the directory, and a failover
+  can count it back.
