@@ -11,7 +11,7 @@ you are sitting in front of the game.
 The **companion app** is a thin link back into a world you are currently absent from. It is not a second
 way to play **Bestia**. It is a way to stay in correspondence with the place while you are somewhere else.
 
-{{< alert context="warning" text="This page is a design document. None of it is built — the public API it depends on is still only a promise on the [REST API](/docs/api/rest-api/) page." />}}
+{{< alert context="warning" text="This page is a design document, and version 1 builds only part of it: signing in, your Masters and Bestia and their bags, the [Charthouse](#the-charthouse) map, live events and notifications, and [standing orders](#standing-orders) for your Bestia. The rest waits for the game systems it needs. How it runs is on the [API Service](/docs/server/api-service/) page." />}}
 
 {{< alert context="info" text="**Conventions used on this page.** Unless stated otherwise, every duration is **real time**, and every amount is in whole **gold**, as on the [Economy & Trade](/docs/mechanics/economy-trade/) page." />}}
 
@@ -27,7 +27,7 @@ Five rules make the difference. Every feature below obeys all five.
 
 | Rule                                     | What it means                                                                                                                                              |
 | ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Instructions, not actions**            | You never do anything yourself. You write an instruction, it travels at courier pace, it is carried out on arrival, and the answer comes back the same way |
+| **Instructions, not actions**            | You never do anything yourself. You write an instruction, it travels at courier pace, it is carried out on arrival, and the answer comes back the same way. Orders to your own Bestia are the exception: see [Standing Orders](#standing-orders) |
 | **Reports, not omniscience**             | Every figure in the app carries a source and an age — _"grain at 11 gold in Ashfen, reported six hours ago"_                                               |
 | **Instructions fail, they do not adapt** | An order carries limits. If the price moved, it buys nothing and says so. Acting on stale news costs you, exactly as it should                             |
 | **Standing is earned in person**         | You may only write to brokers, postboxes and trade posts you have already stood in front of                                                                |
@@ -222,6 +222,15 @@ This is deliberately the slow, safe half of the game. None of it makes you stron
 better supplied, which is what the [crafting economy](/docs/mechanics/overview/#advanced-crafting-system)
 actually runs on.
 
+**An order to your own Bestia arrives at once.** It is the one instruction that does not travel at courier pace:
+the mana bond already carries your words to your party without delay, and an order to a creature bound to you is
+words too. What is slow is the doing. Whether a Bestia acting without its Master nearby should do so worse - more
+slowly, less carefully, less willingly - is an open question of design, not of transport.
+
+Version 1 builds the first of these orders: a Bestia's **stance** (hold, patrol, forage or defend) and its
+**aggression**, the same standing order the game itself offers. Routes, deposits and breeding wait for the
+systems they belong to.
+
 It is not free of risk either. A Bestia on the road can be killed, and whatever it was carrying is lost with
 it. [Insurance](/docs/mechanics/economy-trade/#insurance) already exists as the answer, and a standing order
 is exactly the situation it was written for.
@@ -340,12 +349,16 @@ The rule underneath all of them: **the app never grants a power that exists only
 
 Honest about where this stands:
 
-- **None of it exists yet.** The public API is a promise on the [REST API](/docs/api/rest-api/) page and
-  nothing more. [API Service](/docs/server/api-service/) sketches how it would be served. Most of what the app would read — quests, NPCs, shops, currency, the whole economy — is
-  designed but not implemented, and the servers currently drop their database on every restart.
-- **Notifications need a budget.** A game with this many timers can generate an unpleasant number of
-  interruptions. What is worth waking somebody up for is a design question of its own, and it is not
-  answered here.
+- **Most of it waits for the game.** Version 1 is a web app (`companion-app/`) on the
+  [API Service](/docs/server/api-service/): sign-in, Masters, Bestia, bags, the map, live events and stance orders.
+  Most of what the rest of this page reads — post, auctions, quests, guilds, covenants, the whole economy — is
+  designed but not implemented in the game.
+- **Notifications have a budget, and a small one.** Version 1 wakes you for three things only: your home town
+  falling, a Bestia killed while you are away, and a construction finished. Each can be turned off, quiet hours
+  are your own, and no account gets more than six an hour. What else is worth waking somebody up for stays a
+  design question.
+- **Ranging needs a native app.** A web app cannot follow a phone's position with the screen off, so ranging
+  comes with a native shell around the same app, not before it.
 - **Ranging asks for something not everyone can give.** Making the walk genuinely the best way to chart,
   sense and move mana is a deliberate choice, and it costs players who cannot walk far, or at all. Two
   things soften it and neither removes it: displacement counts by any means inside the same speed band, so

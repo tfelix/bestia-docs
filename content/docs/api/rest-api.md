@@ -10,7 +10,8 @@ The Bestia game will get an extensive and public API to allow external developer
 A first consumer for that API is already designed: the [Companion App](/docs/mechanics/companion-app/)
 page sets out what a mobile client would read and write, and the rules it has to obey.
 
-The API will not run inside the zone-server. A separate service will serve it, and push live data such as chat
-over a WebSocket. See [API Service](/docs/server/api-service/).
+It does not run inside the zone-server. A separate service serves it, under `/v1/companion/`, and pushes live
+events over a WebSocket. See [API Service](/docs/server/api-service/). The service describes itself as an OpenAPI
+document at `/v1/companion/openapi.json`, which the companion app generates its types from.
 
 {{< alert context="warning" text="The REST API will get fully designed and documented when the game is live." />}}
