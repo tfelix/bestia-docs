@@ -602,6 +602,39 @@ irretrievably destroyed.
 
 Items on the ground can suffer damage from attacks. They are affected by Area Of Effect spells and can be targeted manually, although they are not auto-targeted like enemies.
 
+## Item Material
+
+Every item is made of a material, and the material decides how a stack lying on the ground fares when something damages it. A pile of paper is gone in a flash of fire, while a pile of iron ingots shrugs the same flames off.
+
+The server sets the material with `material` in `items.yml`. It is required: an item without one does not load. How each material behaves is described once, in `item-materials.yml`:
+
+- **Integrity** is how much damage a stack can take before it is destroyed. It belongs to the whole stack, not to a single item, so every unit in a pile burns alike and fifty apples are no sturdier than one.
+- **Hardness** comes off every hit. A hit at or below the hardness does nothing, however often it lands.
+- **Element multipliers** are the percentage of a hit that lands, per attack element. An element that is not listed lands in full. Water is listed already for floods, which do not exist yet.
+
+```kotlin
+damage = max(0, hit * elementMultiplier / 100 - hardness)
+```
+
+The damage adds up over the time a stack lies on the ground, and the stack is destroyed once the total reaches its integrity. The values are shaped right rather than balanced, and will be tuned.
+
+{{< table >}}
+
+| Material | Integrity | Hardness | Fire | Water |
+| -------- | --------- | -------- | ---- | ----- |
+| Paper    | 10        | 0        | 300% | 300%  |
+| Plant    | 20        | 0        | 200% | 100%  |
+| Food     | 30        | 0        | 150% | 150%  |
+| Cloth    | 30        | 0        | 200% | 50%   |
+| Leather  | 80        | 2        | 100% | 50%   |
+| Wood     | 100       | 3        | 150% | 25%   |
+| Glass    | 40        | 5        | 50%  | 0%    |
+| Crystal  | 200       | 10       | 25%  | 0%    |
+| Metal    | 400       | 15       | 0%   | 0%    |
+| Stone    | 500       | 20       | 0%   | 0%    |
+
+{{< /table >}}
+
 ## Item Status Values
 
 In order to let items participate in the battle system they need status values. An item's status value distribution is based upon their type (weapon, potion, book etc) and the total amount of points to distribute is given by the item level. See [Status Values](/docs/mechanics/statusvalues/) for how these points translate into combat stats.
