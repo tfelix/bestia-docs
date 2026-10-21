@@ -63,14 +63,39 @@ The following applies:
 
 # Explored World Map
 
-Explored areas are stored as squares to keep the data compact. The complete explored map lives on the server as a
-Run-Length Encoded (RLE) data structure, at a smallest resolution of 100m.
+A map is an item. Each **chart** records the ground it covers as a grid of 64 m cells, and what a player sees on their
+map is everything covered by all the charts they carry. Charts come from surveying with
+[Cartography](/docs/mechanics/master/#skill-cartography), and every new master starts with a chart of the 5 km around
+their home. The explored area belongs to the chart, not to the player, so a chart that is traded, dropped or looted
+takes its ground with it.
 
-The server generates a single base terrain map, and each player's map is a sub-section of it — every player map keeps
-its own data, so it only ever displays what that particular map instance has actually explored. Building the display
-map works like this on the server:
+The server draws a single base map of the whole world, and each player's map is cut out of it:
 
-1. Determine which area the player's map covers.
-2. Decode the RLE-encoded explored area for that region.
-3. Overlay it on the server's complete map to extract only the explored, visible data, discarding the rest.
-4. Send the resulting display data to the client.
+1. Ground no chart covers is never sent, not even as an empty picture, so nothing about it reaches the client.
+2. Ground that is fully charted is the same picture for everyone and can be cached for good.
+3. At the edge of a chart, the map fades out over the last 160 m instead of stopping at a hard line.
+
+## What a Map Shows
+
+On charted ground a map shows the terrain, water, roads, settlements, ruins and landmarks, each labelled with its
+name. Close in, at the scale of a town's streets, it also marks the **services**: the places where a player can
+actually get something done.
+
+| Service    | What it marks                                                              |
+| ---------- | -------------------------------------------------------------------------- |
+| Merchant   | A shop with someone behind the counter: the general store, a baker, a miller |
+| Market     | A town's market building                                                   |
+| Inn        | An inn inside a settlement (roadside inns are already marked as landmarks) |
+| Temple     | A temple and its priest                                                    |
+| Guard      | The barracks, where the guard is when it is not on the street              |
+| Ward stone | The ward stone raised at a home settlement                                 |
+
+A few rules decide what appears:
+
+- **Only on charted ground.** A shop one street past the edge of your charts stays hidden until you chart that street.
+- **Only what someone runs.** A business appears once the town has someone who works there, so every marker is a
+  place you can walk into and use. More trades will show up as more townsfolk take them on.
+- **The world as it is now.** A map is not a snapshot of the day it was charted. If a building is knocked down or a
+  ward stone is broken, it disappears from every map that covers it.
+- **Opening hours.** Selecting a service shows its name, its settlement and its keeper's hours, and a service that is
+  closed is drawn dimmed. Selecting it a second time sets off towards it.
