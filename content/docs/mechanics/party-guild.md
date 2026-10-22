@@ -63,28 +63,35 @@ A guild is founded with a **Founder's Seal**, a rare item of level 45, spent in 
 master who uses it names the guild and leads it. A guild name is unique, up to `24` plain letters, digits and single
 spaces; a name that is taken is refused and the seal is kept.
 
-| Rule        | Value                                                                                              |
-| :---------- | :------------------------------------------------------------------------------------------------- |
-| Seats       | `16`, plus `4` for each level of Guild Extension, up to `56`.                                      |
-| Invitations | By master name, as for parties. Each one waiting for an answer holds a seat.                       |
-| Leader      | Can never be kicked, cannot leave, and cannot be handed over yet. Ends the guild by disbanding it. |
-| Disbanding  | The leader only, confirmed by typing the guild's name. The seal is not given back.                 |
+| Rule        | Value                                                                                                     |
+| :---------- | :-------------------------------------------------------------------------------------------------------- |
+| Seats       | `16`, plus `4` for each level of Guild Extension, up to `56`.                                             |
+| Invitations | By master name, as for parties. Each one waiting for an answer holds a seat.                              |
+| Kicking     | Expels the member, with a reason of up to `60` characters. It cannot be invited again until it is lifted. |
+| Leader      | Can never be kicked and cannot leave. Hands the guild to another member, or ends it by disbanding it.     |
+| Disbanding  | The leader only, confirmed by typing the guild's name. The seal is not given back.                        |
 
-A master leading a guild cannot be deleted; the guild has to be disbanded first.
+Handing the guild over makes the other member the leader, on the leader's rank; the old leader takes the rank the
+new one had. A master leading a guild cannot be deleted; the guild has to be handed over or disbanded first.
+
+The guild keeps its newest `32` expelled masters, with their reasons, on the Members tab. A rank that may kick lifts
+an expulsion there.
 
 Guild members talk with `/g`. The guild window (`Alt+G`) is only offered inside a guild.
 
 ## Ranks and Permissions
 
 A guild has up to `10` ranks. Founding makes two: **Guild Master**, the leader's, and **Member**, which newcomers
-join. Each rank has a name, a tax and four permissions:
+join. Each rank has a name, a tax and five permissions. The name is the member's title: it shows under the master's
+name, after the guild's, for everyone who points at the master or one of its Bestia.
 
-| Permission           | Allows                                                                                               |
-| :------------------- | :--------------------------------------------------------------------------------------------------- |
-| **Invite**           | Inviting players into the guild.                                                                     |
-| **Kick**             | Removing members of a lower rank.                                                                    |
-| **Manage ranks**     | Adding, editing and deleting the ranks below one's own, and moving members of lower ranks onto them. |
-| **Use guild skills** | Casting the guild's active skills, and planting its War Banner. The leader always may.               |
+| Permission             | Allows                                                                                               |
+| :--------------------- | :--------------------------------------------------------------------------------------------------- |
+| **Invite**             | Inviting players into the guild.                                                                     |
+| **Kick**               | Removing members of a lower rank, and lifting expulsions.                                            |
+| **Manage ranks**       | Adding, editing and deleting the ranks below one's own, and moving members of lower ranks onto them. |
+| **Use guild skills**   | Casting the guild's active skills, and planting its War Banner. The leader always may.               |
+| **Message of the day** | Writing the guild's [message of the day](#message-of-the-day). The leader always may.                |
 
 The leader's rank holds every permission and only the leader may rename it or change its tax; nobody else can be put
 on it. Everyone else acts only **below their own rank**, so no rank can grant itself more or remove those above it.
@@ -92,7 +99,7 @@ A rank that still has members cannot be deleted, and neither can the last rank b
 
 ## Tax and Guild Experience
 
-Every rank pays a tax of `1%` to `80%` - `5%` for both founding ranks. That share of the kill experience each member
+Every rank pays a tax of `1%` to `50%` - `5%` for both founding ranks. That share of the kill experience each member
 receives goes to the guild instead, after any party sharing, rounded down. It is taken from what a member's master
 and Bestia earn alike.
 
@@ -116,6 +123,32 @@ exp_{guild}(L) = 2000 \cdot \left(\frac{L (L + 1)}{2} + 1\right)
 |        50 |                     - |        41,748,000 |
 
 Level `50` is the highest. The guild window shows how much each member has paid in.
+
+## Message of the Day
+
+The leader, or a rank allowed to, writes a message of the day: a headline of up to `60` characters and a text of up
+to `240`. Every member reads it in a window after each loading screen - when they log in, and after every teleport -
+as in Ragnarok Online. It is plain text in any script; markup is shown as typed.
+
+## Members, the Map and the Log
+
+The Members tab lists every member, online or not. For an online member it shows where they are and their master's
+health and mana; for an offline one, the area their master left the world in and how long ago.
+
+Every other member being played is a violet dot on the map and the minimap, wherever they stand. The dot follows the
+entity they play, their master or a Bestia, and moves in steps of a few metres.
+
+The Log tab tells what happened in the guild, newest first: who joined, left or was kicked and why, rank changes,
+skills learned, a new message of the day or emblem, a new leader. A guild keeps its newest `200` entries.
+
+## Emblem
+
+A guild that learned [Guild Emblem](#skill-guild-emblem) carries an emblem: a picture of `32 × 32` pixels, which its
+leader picks in the guild window. Any picture will do; its middle square is shrunk to that size. It shows in the
+guild window, beside the name of every member and their Bestia, and in the companion app.
+
+An emblem is drawn only at whole-number sizes - `32`, `64` or `96` pixels - with every pixel kept square, so a picture
+drawn at `32 × 32` stays crisp everywhere.
 
 ## Guild Skills
 
@@ -160,7 +193,7 @@ graph TD
 <br>
 
 {{< skill name="Guild Emblem" maxLevel="1" type="Passive"
-    description="The guild may carry an emblem. It shows on its members, its Stronghold and its banners. The emblem itself comes in a later update." >}}
+    description="The guild may carry an [emblem](#emblem), which its leader picks. It shows on its members, its Stronghold and its banners." >}}
 {{< /skill >}}
 
 {{< skill name="Official Guild Approval" maxLevel="1" requires="Guild Emblem Lv. 1" type="Passive"
