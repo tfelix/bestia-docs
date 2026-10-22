@@ -127,8 +127,8 @@ Level `50` is the highest. The guild window shows how much each member has paid 
 ## Message of the Day
 
 The leader, or a rank allowed to, writes a message of the day: a headline of up to `60` characters and a text of up
-to `240`. Every member reads it in a window after each loading screen - when they log in, and after every teleport -
-as in Ragnarok Online. It is plain text in any script; markup is shown as typed.
+to `240`. Every member reads it in the chat, in yellow, after each loading screen - when they log in, and after every
+teleport - as in Ragnarok Online. It is plain text in any script; markup is shown as typed.
 
 ## Members, the Map and the Log
 
