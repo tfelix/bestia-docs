@@ -301,9 +301,9 @@ Three rules come before the numbers:
 
 # 9. The compendium entry
 
-Every bestia gets an entry for a future **Bestia Compendium**, the in-game book of known species. The
-[Sense](/docs/mechanics/master/#skill-sense) skill already reveals status values, element, HP and mana. The compendium
-is where a player keeps what they have learned.
+Every bestia gets an entry in the [Bestia Compendium](/docs/mechanics/bestia-compendium/), the in-game book of known
+species. The [Sense](/docs/mechanics/master/#skill-sense) skill already reveals status values, element, HP and mana.
+The compendium is where a player keeps what they have learned.
 
 | Field       | Content                                                                        |
 | :---------- | :----------------------------------------------------------------------------- |
@@ -402,7 +402,7 @@ Still open:
 - **Hard DEF, hard MDEF and status immunities** for mobs have no field. Note them in the blueprint's defence notes.
 - **Mob HP stays a number in the YAML** rather than the HP formula. That is on purpose: this method solves HP to the
   fight it wants.
-- **There is no compendium window in the client yet.** The text and the kind are in its bestia DB, ready for one.
+- **Activity and temperament are not shown in the compendium yet.** It shows name, kind, habitat and description.
 - **The client does not grey out armor a bestia cannot wear yet.** Both lists are in its bestia and item DBs, ready
   for a bestia equip window. Until then the server refuses it with a message.
 

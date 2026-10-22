@@ -331,6 +331,15 @@ The charthouse is that promise, in your pocket:
 - Chart fragments traded with other players. Maps are items, [Cartography](/docs/mechanics/master/#skill-cartography)
   merges them and the post moves them — so the trade happens in the world, and the app only arranges it.
 
+# The Compendium
+
+The app carries your [Bestia Compendium](/docs/mechanics/bestia-compendium/): every species number, with the ones
+you have seen filled in, a search, and a filter for seen and caught species. From a seen species, the map shows
+where it lives on the ground you have charted.
+
+It stays within the rules above. The book holds only what you learned in the world yourself, and the habitat on the
+map is limited to your own charts.
+
 # What the App Cannot Do
 
 A short list, and a firm one.
@@ -350,8 +359,8 @@ The rule underneath all of them: **the app never grants a power that exists only
 Honest about where this stands:
 
 - **Most of it waits for the game.** Version 1 is a web app (`companion-app/`) on the
-  [API Service](/docs/server/api-service/): sign-in, Masters, Bestia, bags, the map, live events, stance orders, and
-  party and guild chat. Whispers do not reach the app yet.
+  [API Service](/docs/server/api-service/): sign-in, Masters, Bestia, bags, the map, live events, stance orders,
+  party and guild chat, and the Bestia Compendium. Whispers do not reach the app yet.
   Most of what the rest of this page reads — post, auctions, quests, guilds, covenants, the whole economy — is
   designed but not implemented in the game.
 - **Notifications have a budget, and a small one.** Version 1 wakes you for three things only: your home town
