@@ -29,7 +29,7 @@ socket. The api-service owns HTTP and WebSocket for the app. They share no proce
 graph TB
   A["Companion app<br/>PWA · phone"] -->|"/api/v1/auth/companion"| L["<b>login-server</b><br/>passkeys · companion token"]
   A -->|"/v1/companion · REST + WebSocket"| API["<b>api-service</b><br/>auth · cache · push"]
-  G["Game client"] -->|"map, with its socket's ticket"| API
+  G["Game client"] -->|"map and emblems, with its socket's ticket"| API
   L -->|"kick orders"| V
   API <-->|"requests, replies,<br/>events, directory"| V[("Valkey<br/>owned by the zone")]
   Z["Zone nodes"] <-->|"answer, publish,<br/>register sessions"| V
@@ -162,9 +162,25 @@ Master's cached ETags.
 The game client's map comes from here as well, on the same routes, under the Master the player has selected. It has
 no companion token: it sends `Authorization: Ticket <ticket>`, the opaque value the zone handed it in
 `AuthenticationSuccess`, bound to its socket and forgotten when the socket closes. The api-service accepts a ticket on
-the map routes only, never for a standing order or push, and asks the zone whose it is (`ZoneQuery.WhoseTicket`);
+the map and [emblem](#guild-emblems) routes only, never for a standing order or push, and asks the zone whose it is (`ZoneQuery.WhoseTicket`);
 the answer is kept for 30 seconds and dropped when the account leaves the world. The zone then checks the Master is
 that account's, as for the app.
+
+# Guild emblems
+
+`GET /v1/companion/emblems/{hash}.png` is a guild's [emblem](/docs/mechanics/party-guild/#emblem), named by the
+SHA-256 of its PNG. The zone keeps emblems with the guilds; the api-service asks for one by hash
+(`ZoneQuery.GuildEmblem`, the PNG in the reply's body, as for a tile) and keeps it, so it crosses the bus once. A hash
+names one picture forever, so the answer is public and immutable, and every client keeps its copy for good: a new
+emblem is a new hash.
+
+The emblem is not checked against the asker: it shows on every member's name tag, so whoever can see one may see the
+picture. The leader uploads it over the game socket, not here, so the zone checks the rank and the Guild Emblem
+skill and stores the picture in one transaction. A 32 × 32 PNG of at most 8 KiB is decoded and written out again,
+so nothing hidden in the upload is ever served.
+
+`GET /v1/companion/masters/{id}/guild` is the Master's guild as the game's guild window shows it: name, level,
+message of the day, emblem hash, and every member with rank, level, and, for one offline, where and when it left.
 
 # Sign-in
 

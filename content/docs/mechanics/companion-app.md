@@ -11,7 +11,7 @@ you are sitting in front of the game.
 The **companion app** is a thin link back into a world you are currently absent from. It is not a second
 way to play **Bestia**. It is a way to stay in correspondence with the place while you are somewhere else.
 
-{{< alert context="warning" text="This page is a design document, and version 1 builds only part of it: signing in, your Masters and Bestia and their bags, the [Charthouse](#the-charthouse) map, live events and notifications, [standing orders](#standing-orders) for your Bestia, and party and guild [chat](#keeping-in-touch). The rest waits for the game systems it needs. How it runs is on the [API Service](/docs/server/api-service/) page." />}}
+{{< alert context="warning" text="This page is a design document, and version 1 builds only part of it: signing in, your Masters and Bestia and their bags, the [Charthouse](#the-charthouse) map, live events and notifications, [standing orders](#standing-orders) for your Bestia, party and guild [chat](#keeping-in-touch), and each Master's guild. The rest waits for the game systems it needs. How it runs is on the [API Service](/docs/server/api-service/) page." />}}
 
 {{< alert context="info" text="**Conventions used on this page.** Unless stated otherwise, every duration is **real time**, and every amount is in whole **gold**, as on the [Economy & Trade](/docs/mechanics/economy-trade/) page." />}}
 
@@ -83,7 +83,8 @@ no gold, no position. None of it is an instruction to the world, so none of it t
 none of it hands an absent player anything a present one does not already have.
 
 - **Party and guild.** Read and written from the app. The `/p` and `/g` your guildmates are typing at a
-  keyboard arrive on the phone, and what you write back lands in their chat log.
+  keyboard arrive on the phone, and what you write back lands in their chat log. A Master's page shows its guild
+  too: the emblem, the message of the day, and every member, online or where and when they left.
 - **Whispers**, both directions, to anybody you could whisper to in person.
 - **Local say**, does not work via the app as the master is gone.
 
@@ -350,8 +351,8 @@ The rule underneath all of them: **the app never grants a power that exists only
 Honest about where this stands:
 
 - **Most of it waits for the game.** Version 1 is a web app (`companion-app/`) on the
-  [API Service](/docs/server/api-service/): sign-in, Masters, Bestia, bags, the map, live events, stance orders, and
-  party and guild chat. Whispers do not reach the app yet.
+  [API Service](/docs/server/api-service/): sign-in, Masters, Bestia, bags, the map, live events, stance orders,
+  party and guild chat, and each Master's guild. Whispers do not reach the app yet.
   Most of what the rest of this page reads — post, auctions, quests, guilds, covenants, the whole economy — is
   designed but not implemented in the game.
 - **Notifications have a budget, and a small one.** Version 1 wakes you for three things only: your home town
