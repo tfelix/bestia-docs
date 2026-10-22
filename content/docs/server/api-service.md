@@ -115,6 +115,7 @@ The zone appends to the `events` stream:
 | `StanceChanged`  | A Bestia was given a new standing order, from the game or the app     |
 | `Presence`       | An account entered or left the world (from the directory heartbeat)  |
 | `ChartsChanged`  | What a Master can see of the map may have changed                     |
+| `CompendiumChanged` | A Master saw or caught a species for the first time                |
 | `ChatLine`       | A line of party or guild chat, from the game or the app: one per member, played or not, the sender included |
 
 The api-service reads the stream twice:
@@ -165,6 +166,11 @@ no companion token: it sends `Authorization: Ticket <ticket>`, the opaque value 
 the map routes only, never for a standing order or push, and asks the zone whose it is (`ZoneQuery.WhoseTicket`);
 the answer is kept for 30 seconds and dropped when the account leaves the world. The zone then checks the Master is
 that account's, as for the app.
+
+A habitat overlay, `map/h/{species}/{level}/{x}/{y}.png`, lies over a tile of the same path and shows where a species
+lives (see [Bestia Compendium](/docs/mechanics/bestia-compendium/#habitat-on-the-map)). It is masked by the charts like
+the tile, and the zone answers 404 for a species the Master has not seen. It is always `private, no-cache`: who may
+see it depends on the Master's compendium, so it is never cached publicly and never kept by the api-service.
 
 # Sign-in
 
