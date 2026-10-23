@@ -119,7 +119,7 @@ The socket binds to `socket.ip-address`/`socket.port` (`127.0.0.1:8090` in dev,
 last boot step (see [Architecture](/docs/server/architecture#boot-sequence)).
 
 The zone listens on two ports, both on loopback by default. It runs no web server: the map and everything else
-over HTTP is the [API Service](/docs/server/api-service)'s, and the login server reaches the zone over Valkey.
+over HTTP is the [API Server](/docs/server/api-server)'s, and the login server reaches the zone over Valkey.
 
 | Port | What                                                                              |
 | ---- | --------------------------------------------------------------------------------- |

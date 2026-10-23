@@ -17,8 +17,8 @@ Gradle multi-module build, declared in `settings.gradle`:
 bestia-behemoth/
   zone-server/     the game server (this page + most of the /docs/server/* pages)
   login-server/    REST auth with passkeys — see Authentication
-  api-service/     REST + WebSocket for the companion app, and the game client's map — see API Service
-  bus/             the contract and Valkey transport between zone, api-service and login-server
+  api-server/     REST + WebSocket for the companion app, and the game client's map — see API Server
+  bus/             the contract and Valkey transport between zone, api-server and login-server
   bnet-messages/   protobuf message contracts, generates both Kotlin and C# classes
   shared/          Role/Authority/KickReason, shared by the servers (not a shared DB)
   worldgen/        standalone world-generation pipeline, invoked by zone-server at boot

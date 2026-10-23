@@ -7,7 +7,7 @@ description: What keeps zone-server on one process today, which seams already he
 {{< alert context="warning" text="Nothing on this page is built. zone-server runs as one process today. This page lists what stands in the way and the order in which to remove it." />}}
 
 One process owns all players, all rows and all global counters. There is little cluster infrastructure yet: the
-zone runs a Valkey for the [API Service](/docs/server/api-service) and the login server's kicks, with a directory
+zone runs a Valkey for the [API Server](/docs/server/api-server) and the login server's kicks, with a directory
 of which node holds an account, but there is no etcd and no link between two zones. Some seams already help, and
 a few pieces of state stand in the way.
 
@@ -25,7 +25,7 @@ graph TB
   SIM -.->|lease| DIR
   SIM <-->|events| BUS["Message bus<br/>party · chat · trade escrow · economy"]
   SIM -.->|write-behind| DB[("Database<br/>owner column · @Version")]
-  W["Companion app"] -->|"REST · WebSocket"| API["<b>API service</b><br/>REST · live push · map tiles"]
+  W["Companion app"] -->|"REST · WebSocket"| API["<b>API server</b><br/>REST · live push · map tiles"]
   API -->|route lookup| DIR
   API <-->|"requests,<br/>pushes"| BUS
 ```
@@ -36,7 +36,7 @@ reconnect. Each node is the single writer for its chunk cells. Neighbours see bo
 ghosts, and they replicate and hand over directly between nodes, not through a broker. Party, chat, trade and
 economy leave the World and talk over a bus. [Spatial Cells](/docs/server/spatial-cells) explains the nodes,
 the gateway role and the handoff. The companion app does not use the gateway. A separate
-[API Service](/docs/server/api-service) serves its REST calls and live pushes, as a second client of the
+[API Server](/docs/server/api-server) serves its REST calls and live pushes, as a second client of the
 directory and the bus.
 
 # What blocks it today

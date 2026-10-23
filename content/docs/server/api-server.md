@@ -1,13 +1,15 @@
 ---
 weight: 190
-title: API Service
+aliases:
+  - /docs/server/api-service/
+title: API Server
 description: How the companion app's REST API and WebSocket run as their own service next to the zone - the Valkey bus they talk over, how a question reaches the zone and an event reaches a phone, the map it also serves the game, the push notifications and the stores.
 ---
 
-The [Companion App](/docs/mechanics/companion-app/) talks to one service: `api-service`, a Spring Boot module of its
+The [Companion App](/docs/mechanics/companion-app/) talks to one service: `api-server`, a Spring Boot module of its
 own next to `login-server` and `zone-server`. It serves a REST API (JSON) and a WebSocket, and it never touches the
 game's database. Every question about the world goes to the zone over a message bus, and the zone answers it. The
-game client gets its map here too: the api-service is the world's one HTTP surface, and the zone runs no web server.
+game client gets its map here too: the api-server is the world's one HTTP surface, and the zone runs no web server.
 
 {{< alert context="info" text="Version 1 is built: sign-in, Masters, Bestia, bags, the map, live events and push notifications, and changing a Bestia's standing order. What the [Companion App](/docs/mechanics/companion-app/) page describes beyond that waits for the game systems it needs." />}}
 
@@ -16,19 +18,19 @@ game client gets its map here too: the api-service is the world's one HTTP surfa
 - **A web fault must not stop the game.** A crash, a slow phone or an attack on the API touches no tick.
 - **There will be several zone nodes.** One service looks up which node holds an account; the nodes do not each
   run the same web code.
-- **The game owns its data.** The api-service has no read access to the zone's tables. A web tier that reads a
+- **The game owns its data.** The api-server has no read access to the zone's tables. A web tier that reads a
   game's tables breaks quietly with every update of the game, so it asks instead, and the zone answers from its
   repositories and its live world.
 
 This service is not the [gateway role](/docs/server/spatial-cells#the-gateway-role). That role owns the game
-socket. The api-service owns HTTP and WebSocket for the app. They share no process.
+socket. The api-server owns HTTP and WebSocket for the app. They share no process.
 
 # Shape
 
 ```mermaid
 graph TB
   A["Companion app<br/>PWA · phone"] -->|"/api/v1/auth/companion"| L["<b>login-server</b><br/>passkeys · companion token"]
-  A -->|"/v1/companion · REST + WebSocket"| API["<b>api-service</b><br/>auth · cache · push"]
+  A -->|"/v1/companion · REST + WebSocket"| API["<b>api-server</b><br/>auth · cache · push"]
   G["Game client"] -->|"map and emblems, with its socket's ticket"| API
   L -->|"kick orders"| V
   API <-->|"requests, replies,<br/>events, directory"| V[("Valkey<br/>owned by the zone")]
@@ -37,7 +39,7 @@ graph TB
   Z --> ZDB[("bestia_zone")]
 ```
 
-A reverse proxy puts the app, `/api/v1/auth/companion` (login-server) and `/v1/companion` (api-service) on one
+A reverse proxy puts the app, `/api/v1/auth/companion` (login-server) and `/v1/companion` (api-server) on one
 origin, so nothing is cross-origin and the refresh cookie is first-party. The dev server of `companion-app/`
 plays that proxy on `localhost:5173`.
 
@@ -47,16 +49,16 @@ Every API path starts with its version: `/v1/companion/...`.
 
 Valkey belongs to the zone: `zone-server/compose.yaml` runs it, and `zone-server/valkey/users.acl` gives each
 service a user that reaches only its own keys and channels. A cluster of zone nodes needs it anyway; the
-api-service and the login server are its clients. The contract both sides speak lives in the `bus` module: Kotlin classes for
+api-server and the login server are its clients. The contract both sides speak lives in the `bus` module: Kotlin classes for
 every request, answer and event, serialized as JSON, with a map tile's PNG framed beside the JSON rather than in
 base64.
 
 | What                  | Valkey                                        | Written by  | Read by                       |
 | --------------------- | --------------------------------------------- | ----------- | ----------------------------- |
-| Who is in the world   | `dir:account:{id}`, a key with a 30 s TTL     | zone        | api-service                   |
-| Questions             | pub/sub channel `zone:{node}:requests`        | api-service | that zone node                |
-| Answers               | pub/sub channel `api:{instance}:replies`      | zone        | the asking api-service        |
-| Events                | stream `events`, the newest 10 000 kept       | zone        | api-service, twice (see below) |
+| Who is in the world   | `dir:account:{id}`, a key with a 30 s TTL     | zone        | api-server                   |
+| Questions             | pub/sub channel `zone:{node}:requests`        | api-server | that zone node                |
+| Answers               | pub/sub channel `api:{instance}:replies`      | zone        | the asking api-server        |
+| Events                | stream `events`, the newest 10 000 kept       | zone        | api-server, twice (see below) |
 | Writes already done   | `bus:idem:{account}:{key}`, 10 minutes        | zone        | zone                          |
 | Kicks                 | stream `kicks`, the newest 10 000 kept        | login-server | every zone node, a group each |
 
@@ -66,10 +68,10 @@ answered "busy" at once rather than queued.
 
 # A question to the zone
 
-1. The api-service looks the account up in the directory. No entry means the account is not in the world, and
+1. The api-server looks the account up in the directory. No entry means the account is not in the world, and
    the question goes to the realm's default node (one node today).
 2. It publishes `{correlationId, replyTo, deadline, accountId, idempotencyKey?, query}`. The account is the one
-   the api-service authenticated; nothing in the query can name another.
+   the api-server authenticated; nothing in the query can name another.
 3. The zone checks every master in the query against `master.account_id`. Absent and not yours read the same:
    `NOT_FOUND`.
 4. It answers on `replyTo`. A question nobody listens to fails at once (`503`); one with no answer in five
@@ -126,7 +128,7 @@ The zone appends to the `events` stream:
 | `ChatLine`       | A line of party or guild chat, from the game or the app: one per member, played or not, the sender included |
 | `JourneyEnded`   | A Bestia's journey ended: arrived, or stuck, without a known way, or dead, and where |
 
-The api-service reads the stream twice:
+The api-server reads the stream twice:
 
 - **Every instance follows it** and sends each event to the account's open sockets, and drops the account's
   cached answers, except on `ChatLine`, which changes none. A socket that reconnects sends the last event id it saw
@@ -146,8 +148,8 @@ with a fresh token.
 # Push notifications
 
 Web Push, with the payload encrypted to the browser's keys (RFC 8291) and the sender proven by VAPID (RFC 8292),
-both in the api-service itself on the JDK's own cryptography. Subscriptions and preferences are the only data the
-api-service stores, in `bestia_api`.
+both in the api-server itself on the JDK's own cryptography. Subscriptions and preferences are the only data the
+api-server stores, in `bestia_api`.
 
 - A subscription may only point at a known push service (FCM, Mozilla, Apple, Windows). It is a URL this service
   will POST to, so without that list any player could aim it at an internal address.
@@ -164,13 +166,13 @@ Master's charts, with the same rules as the game client's map. A fully charted t
 and immutable; a partly charted one revalidates against an ETag that carries the coverage digest; a 404 is ground
 the Master has not charted.
 
-The api-service keeps tile bytes by ETag. A repeat request goes to the zone as a conditional one, and a 304 from
+The api-server keeps tile bytes by ETag. A repeat request goes to the zone as a conditional one, and a 304 from
 the zone is enough to answer from the cache, so a PNG crosses the bus once. A `ChartsChanged` event drops the
 Master's cached ETags.
 
 The game client's map comes from here as well, on the same routes, under the Master the player has selected. It has
 no companion token: it sends `Authorization: Ticket <ticket>`, the opaque value the zone handed it in
-`AuthenticationSuccess`, bound to its socket and forgotten when the socket closes. The api-service accepts a ticket on
+`AuthenticationSuccess`, bound to its socket and forgotten when the socket closes. The api-server accepts a ticket on
 the map and [emblem](#guild-emblems) routes only, never for a standing order or push, and asks the zone whose it is (`ZoneQuery.WhoseTicket`);
 the answer is kept for 30 seconds and dropped when the account leaves the world. The zone then checks the Master is
 that account's, as for the app.
@@ -178,12 +180,12 @@ that account's, as for the app.
 A habitat overlay, `map/h/{species}/{level}/{x}/{y}.png`, lies over a tile of the same path and shows where a species
 lives (see [Bestia Compendium](/docs/mechanics/bestia-compendium/#habitat-on-the-map)). It is masked by the charts like
 the tile, and the zone answers 404 for a species the Master has not seen. It is always `private, no-cache`: who may
-see it depends on the Master's compendium, so it is never cached publicly and never kept by the api-service.
+see it depends on the Master's compendium, so it is never cached publicly and never kept by the api-server.
 
 # Guild emblems
 
 `GET /v1/companion/emblems/{hash}.png` is a guild's [emblem](/docs/mechanics/party-guild/#emblem), named by the
-SHA-256 of its PNG. The zone keeps emblems with the guilds; the api-service asks for one by hash
+SHA-256 of its PNG. The zone keeps emblems with the guilds; the api-server asks for one by hash
 (`ZoneQuery.GuildEmblem`, the PNG in the reply's body, as for a tile) and keeps it, so it crosses the bus once. A hash
 names one picture forever, so the answer is public and immutable, and every client keeps its copy for good: a new
 emblem is a new hash.
@@ -200,8 +202,8 @@ message of the day, emblem hash, and every member with rank, level, and, for one
 
 The companion app signs in like the game: PKCE, the login server's own passkey page, a single-use code. See
 [Authentication](/docs/server/authentication#the-companion-app). What comes out is a companion token, audience
-`companion`, signed with a key of its own (`jwt.companion-secret`) that only the login server and the api-service
-hold. The api-service therefore cannot mint a zone token.
+`companion`, signed with a key of its own (`jwt.companion-secret`) that only the login server and the api-server
+hold. The api-server therefore cannot mint a zone token.
 
 # Stores and ports
 
@@ -209,10 +211,10 @@ hold. The api-service therefore cannot mint a zone token.
 | ----------- | ---- | ------------------------ | ----------- |
 | login-server | 8080 | `bestia_login`, 3307    | `login`, which may only append kicks |
 | zone-server | metrics only, 8092 on loopback (game socket 8090) | `bestia_zone`, 3306 | `zone` |
-| api-service | 8095 | `bestia_api`, 3308       | `api`       |
+| api-server | 8095 | `bestia_api`, 3308       | `api`       |
 | Valkey      | 6379 | from `zone-server/compose.yaml` | |
 
-The api-service and the login server need the zone's Valkey, so in development the zone starts first. The login
+The api-server and the login server need the zone's Valkey, so in development the zone starts first. The login
 server connects on its first kick, so it starts without Valkey; its kicks are lost until Valkey is up.
 
 # Availability
@@ -239,7 +241,7 @@ See the [Redis licences](https://redis.io/legal/licenses/) and the [history of V
 # Open problems
 
 - **Notifications across instances.** Whether an account has a socket open is known per instance, so with several
-  api-service instances an account connected to another one can still be notified.
+  api-server instances an account connected to another one can still be notified.
 - **A refresh lost in flight.** Refresh tokens rotate on every use and a spent one ends the session. An app killed
   between the server's rotation and storing the new cookie is signed out and signs in again with its passkey.
 - **Chat in a shared stream.** Every group line is one event per member on the `events` stream, which keeps the
