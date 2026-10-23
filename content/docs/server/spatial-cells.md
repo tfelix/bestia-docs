@@ -276,7 +276,7 @@ the protocol carries.
 # Transport
 
 There are four jobs with different needs. Do not use one mechanism for all of them. Of these, zone-server has
-only Valkey today, run for the [API Service](/docs/server/api-service) and the login server's kicks, with a
+only Valkey today, run for the [API Server](/docs/server/api-server) and the login server's kicks, with a
 directory of which node holds an account.
 
 | Job                                   | Needs                              | Suggested choice                                       |
@@ -292,7 +292,7 @@ dependency. A broker is not advised for them. It adds a hop on exactly the path 
 exchange for subscriptions that `ChunkSubscriptionService` already does. Ordering inside one TCP connection
 is also exactly the guarantee needed, and a broker cannot give it.
 
-The last two rows share one Valkey deployment. [API Service](/docs/server/api-service#availability)
+The last two rows share one Valkey deployment. [API Server](/docs/server/api-server#availability)
 gives the reasons, the licence and the failover setup, and adds the companion app as a second client.
 
 The region table and the session directory must not share a store. **etcd holds a lock.** The region

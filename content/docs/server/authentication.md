@@ -84,7 +84,7 @@ token are signed with `jwt.secret`, which the zone holds as `zone.jwt-auth-secre
 | zone token      | `zone`         | `jwt.login-token-minutes` (2)           | the socket handshake, once (`jti`)                           |
 | refresh token   | none: opaque, stored as a digest | `game-login.refresh-token-days` (30), sliding | `/refresh`, rotated on every use            |
 | api token       | `login-api`    | `jwt.api-token-minutes` (15)            | the game client's calls to `/api/v1/admin/**`                |
-| companion token | `companion`    | `jwt.companion-token-minutes` (15)      | the companion app's calls to the [API Service](/docs/server/api-service/), signed with `jwt.companion-secret` |
+| companion token | `companion`    | `jwt.companion-token-minutes` (15)      | the companion app's calls to the [API Server](/docs/server/api-server/), signed with `jwt.companion-secret` |
 
 The zone token only has to survive the walk from the login server to the socket: the socket checks it once at the
 handshake, and the game's HTTP calls carry the session's own ticket (below). The api token names an account and
@@ -122,7 +122,7 @@ The zone never contacts the login server. On a connection's first message,
 On success the channel is registered in `ChannelRegistry` by account, and `AuthenticationSuccess` carries an HTTP
 ticket (`HttpTicketService`): an opaque value bound to this socket and forgotten when it closes, which the game
 sends as `Authorization: Ticket <ticket>` when it fetches its map from the
-[API Service](/docs/server/api-service/). An `AccountConnectedEvent` registers the account's authorities in
+[API Server](/docs/server/api-server/). An `AccountConnectedEvent` registers the account's authorities in
 `ConnectionInfoService`. No game entity is spawned yet: that happens once the client sends `SelectMasterCMSG`. See
 [Networking](/docs/server/networking) for what happens to messages after this.
 
@@ -186,7 +186,7 @@ companion session.
 | Token    | zone token, `jwt.secret`                    | companion token, audience `companion`, `jwt.companion-secret`   |
 | Refresh  | the client stores the refresh token         | an httpOnly, SameSite=Strict cookie on `/api/v1/auth/companion` |
 
-The companion token is checked by the [API Service](/docs/server/api-service/), which holds the companion key and
+The companion token is checked by the [API Server](/docs/server/api-server/), which holds the companion key and
 not the zone's, so it cannot mint a zone token. The app keeps its access token in memory only, and refreshes in one
 tab at a time (the Web Locks API), because two tabs presenting the same cookie would look like a stolen copy and
 end the session.

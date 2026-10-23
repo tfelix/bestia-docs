@@ -12,7 +12,7 @@ JVM services with no shared database:
   touches game state.
 - **`zone-server`** — the actual game: a Netty TCP socket, a hand-rolled ECS running a fixed-tick
   simulation loop, world generation/streaming, AI, combat, inventory, party and chat. It runs no web server.
-- **`api-service`** — the world's HTTP face: the [API Service](/docs/server/api-service) behind the companion app,
+- **`api-server`** — the world's HTTP face: the [API Server](/docs/server/api-server) behind the companion app,
   and the game client's map. It asks the zone for everything over a message bus in the zone's Valkey.
 
 ```mermaid
@@ -24,7 +24,7 @@ graph LR
   subgraph Backend [bestia-behemoth monorepo]
     LOGIN["login-server<br/>Spring Boot REST, issues JWT"]
     ZONE["zone-server<br/>Netty TCP, protobuf Envelope, ECS tick loop"]
-    API["api-service<br/>REST + WebSocket"]
+    API["api-server<br/>REST + WebSocket"]
     V[("Valkey<br/>owned by the zone")]
   end
 
@@ -70,8 +70,8 @@ The server code lives in the `bestia-behemoth` monorepo (Gradle multi-module,
 | `bnet-messages` | Protobuf message contracts — the wire format shared by client and server                                         |
 | `shared`        | A handful of Kotlin types shared by the servers (`Role`, `Authority`, `KickReason`) — **not** a shared database  |
 | `worldgen`      | Standalone terrain/world generation pipeline, consumed by `zone-server` at boot                                  |
-| `api-service`   | REST and WebSocket for the companion app, and the game client's map — see [API Service](/docs/server/api-service) |
-| `bus`           | The contract and Valkey transport between zone, api-service and login-server                                     |
+| `api-server`   | REST and WebSocket for the companion app, and the game client's map — see [API Server](/docs/server/api-server) |
+| `bus`           | The contract and Valkey transport between zone, api-server and login-server                                     |
 | `companion-app` | The companion web app (SvelteKit PWA) — see [Companion App](/docs/mechanics/companion-app/)                      |
 | `bestia-client` | The Godot (C#/GDScript) game client — see the [client docs](/docs/client/overview)                               |
 

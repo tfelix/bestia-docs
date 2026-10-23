@@ -11,7 +11,7 @@ A first consumer for that API is already designed: the [Companion App](/docs/mec
 page sets out what a mobile client would read and write, and the rules it has to obey.
 
 It does not run inside the zone-server. A separate service serves it, under `/v1/companion/`, and pushes live
-events over a WebSocket. See [API Service](/docs/server/api-service/). The service describes itself as an OpenAPI
+events over a WebSocket. See [API Server](/docs/server/api-server/). The service describes itself as an OpenAPI
 document at `/v1/companion/openapi.json`, which the companion app generates its types from.
 
 {{< alert context="warning" text="The REST API will get fully designed and documented when the game is live." />}}
