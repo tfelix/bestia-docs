@@ -243,16 +243,14 @@ rebuilds the session's owned entities from the world.
 
 # Movement requests
 
-`MoveActiveEntity` carries a path of adjacent tiles. `MoveActiveEntityHandler` checks it step by
-step from the entity's position and cuts it at the first step that is not adjacent or not
-walkable. An empty path is a stop.
+`MoveEntity` names one of the account's own entities - its master or any bestia - and its waypoints, and
+the server sends it on a journey; no waypoints stops it. `append` adds the waypoints after the destination.
+See [Long-Distance Travel]({{< ref "server/long-distance-travel" >}}).
 
-A path sent with `append = true` continues the walk under way instead of replacing it: it is
-checked from the walk's last waypoint and added to its end. The client sends the next leg this way
-about one round trip before the current one ends, so a long walk does not pause at every leg. An
-appended path that does not join the walk is ignored; without a walk under way it starts a new one
-like any other path. The server then sends the whole remaining path again, as it does for any path
-change.
+The entity id grants nothing new: selecting another owned entity and moving it was always open to a client.
+The client still walks a click at once and sends the steps it walks as `first_leg`. `ClientLeg` walks them as
+sent when each step is adjacent and walkable, and cuts them at the first that is not; a leg that starts on the
+walk under way joins it there, so the step under way is kept. Past those steps the journey plans the way.
 
 # Dirty-component sync, not full-state broadcast
 

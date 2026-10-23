@@ -198,6 +198,17 @@ clamped knobs. A stance **narrows** the archetype's goals and never widens them 
 foraging, but it cannot teach a creature to hunt if its species never could. Player-controlled
 entities are skipped by the think system entirely.
 
+A bestia on a **journey its player ordered** is skipped the same way: it keeps walking, attacked or not, until
+it arrives (see [Long-Distance Travel]({{< ref "server/long-distance-travel" >}})). When the AI takes a bestia
+back - after a journey, a switch to another entity or a logout - its home becomes where it stands, so a
+patrolling bestia patrols where the player left it.
+
+**Hostility** is still not factions. Masters are everyone's enemy, and wild creatures also see owned bestias
+as enemies, so a bestia out on its own is found. Owned bestias do not hunt each other.
+
+An NPC travels far with the `TravelTo` leaf. It starts the same journey a player orders and renews its lease
+each time it is ticked; a plan that moves on lets the lease lapse.
+
 # Adding to it
 
 **A sense** (something creatures notice): implement the interface as a Spring component, give it an
