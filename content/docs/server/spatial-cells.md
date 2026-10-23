@@ -170,6 +170,11 @@ node id where the account id goes, and it attaches to hooks that exist today.
 | `observersOf(entityId)`                                                   | Returns the local accounts and the remote nodes     |
 | `EntityVisibility.Delivery(accountId, appeared, vanished)`                | `NodeDelivery(nodeId, appeared, vanished)`          |
 
+Which chunks are *simulated* is a separate question from which a client holds. `ChunkResidency` refcounts
+every holder: all clients together are one, and each simulation anchor - every master and player bestia - is
+another (see [Long-Distance Travel]({{< ref "server/long-distance-travel" >}})). Walk data and ground marks
+follow residency; props and what each client is owed follow the subscription.
+
 **Subscribe by chunk, not by entity.** An entity subscription has a discovery problem. A node must know an
 entity exists before it can subscribe, which costs a round trip for every mob that walks into view. A chunk is
 a static address and needs no discovery. The number of subscriptions follows the view volume, not the
@@ -318,6 +323,6 @@ can cross a border. The blockers that are not about space, such as global sweeps
   `SpawnerSystem` fills a den when local players are near. Two nodes that see the same den on a border
   will both stock it, with different entity ids. Authority over a den has to follow authority over the region.
 - **Navigation stops at the border.** Local pathfinding treats chunks that are not resident as impassable, and
-  residency follows chunk subscription, so the far side of a border reads as unwalkable. `MacroGraphService`
-  is one graph with one version counter, so a bridge that is destroyed on one node stays walkable on the
-  others.
+  residency follows the players and anchors of one node, so the far side of a border reads as unwalkable.
+  `MacroGraphService` holds one blocked-edge overlay, so a bridge destroyed on one node stays walkable on the
+  others until a traveller there sees it.

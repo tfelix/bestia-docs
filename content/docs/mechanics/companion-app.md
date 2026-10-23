@@ -229,8 +229,16 @@ words too. What is slow is the doing. Whether a Bestia acting without its Master
 slowly, less carefully, less willingly - is an open question of design, not of transport.
 
 Version 1 builds the first of these orders: a Bestia's **stance** (hold, patrol, forage or defend) and its
-**aggression**, the same standing order the game itself offers. Routes, deposits and breeding wait for the
-systems they belong to.
+**aggression**, the same standing order the game itself offers.
+
+Version 2 builds **sending a Bestia somewhere**. On the app's map you pick a Bestia, tap the stops it should
+pass, and send it; it walks there on its own, however far, while you are away. A way you send Bestia along
+often can be kept as a **route** by name - "Ironhill → Ashford" unless you call it something else - and sent
+again, either way, with one tap. The map shows each Bestia's way ahead in its colour, the same as in the game.
+A Bestia learns the roads as it goes: it walks to a fallen bridge nobody of yours has seen, and only then
+goes round, and what it saw is known to all your Bestia. If it finds no way on, the app tells you where it
+stopped. See [Long-Distance Travel](/docs/server/long-distance-travel/). Postal runs, deposits and breeding
+wait for the systems they belong to.
 
 It is not free of risk either. A Bestia on the road can be killed, and whatever it was carrying is lost with
 it. [Insurance](/docs/mechanics/economy-trade/#insurance) already exists as the answer, and a standing order

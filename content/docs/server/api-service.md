@@ -91,8 +91,8 @@ save as `asOf`. Bestia stay in the world when their Master leaves, so they are m
 A write carries an `Idempotency-Key`. The zone stores its reply under that key for ten minutes, and a repeat gets
 the same reply without running again, so an app can safely resend after a `504`.
 
-There are two writes today, and both run in the account's inbox, so they are ordered with whatever the game client
-sends at the same moment.
+The writes run in the account's inbox, so they are ordered with whatever the game client sends at the same
+moment.
 
 - **A Bestia's standing order** takes effect at once, as in the game: the zone stores it and rebuilds the creature's
   agent, through the same service the game's own handler uses.
@@ -102,6 +102,13 @@ sends at the same moment.
   plays it (`403`); a Master in no such party or guild is refused (`409`); a line is 1 to 200 characters, with
   control characters stripped. Local say has no app counterpart, because the Master is not in the world to be heard.
   The answer is empty, and the line itself comes back over the socket like everybody else's.
+- **A Bestia's journey**, `PUT /v1/companion/masters/{id}/bestias/{bestiaId}/journey` with waypoints in
+  metres, or a saved route's id and `reverse`, sends it off as a map click in the game does; `DELETE` stops it.
+  A Bestia out of the world after a restart answers `404` until its Master is selected again. The roster lists
+  where each Bestia is travelling. See [Long-Distance Travel]({{< ref "server/long-distance-travel" >}}).
+- **Saved routes**, `GET`/`POST /v1/companion/masters/{id}/routes` and `PATCH`/`DELETE .../routes/{routeId}`,
+  keep a Master's routes by name. Every write answers with the whole list; `400 ROUTE_LIMIT` means it keeps
+  as many as it may.
 
 # Events
 
@@ -117,6 +124,7 @@ The zone appends to the `events` stream:
 | `ChartsChanged`  | What a Master can see of the map may have changed                     |
 | `CompendiumChanged` | A Master saw or caught a species for the first time                |
 | `ChatLine`       | A line of party or guild chat, from the game or the app: one per member, played or not, the sender included |
+| `JourneyEnded`   | A Bestia's journey ended: arrived, or stuck, without a known way, or dead, and where |
 
 The api-service reads the stream twice:
 
@@ -126,7 +134,7 @@ The api-service reads the stream twice:
   none, and the app keeps what it heard in the browser.
 - **One consumer group, `webpush`,** turns events into notifications for accounts that are not in the world and
   have no socket open. An event is acknowledged once handled, so each is notified once however many instances
-  run. Chat is never a notification.
+  run. Chat is never a notification, and neither is a journey's end the player saw in the game.
 
 # The WebSocket
 
