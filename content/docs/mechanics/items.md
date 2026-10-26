@@ -297,30 +297,47 @@ Some materials are exclusive to certain schools (a grape is useless for forging,
 The school is the only "category" you actively choose — and you choose it just by picking the craft action, never by
 typing a keyword.
 
+## Starter Blueprints
+
+A new player cannot be expected to discover their first tools. So every master knows a short list of **starter
+blueprints** from the start: the first meal, the first ingots, the first sword and armor. The server keeps this list
+in one config file (`starter_kit.yml`). A change to the list applies to every master, old and new.
+
+Discovery starts after the starter blueprints. By then a player knows how the crafting window works.
+
 ## Discovery: Learning a Blueprint
 
 Every craftable item lives at a point in a shared **feature space**. Each raw material carries its own coordinates in
-that space; when you combine materials their vectors **sum** into a single point, so the _proportion_ of materials is
-the "shape" you are aiming for — far more flexible than a rigid grid pattern.
+that space. When you combine materials, their vectors are **averaged** into a single point, weighted by amount. So the
+_proportion_ of materials is the "shape" you are aiming for — far more flexible than a rigid grid pattern. A
+blueprint's point is the average of its own recipe inputs, so the known recipe always lands exactly on it.
 
 Your crafting skill defines a **radius** around that point. Every known blueprint that falls inside this sphere is a
 candidate. Starting from the lowest-level candidate, the game rolls against your skill and the item's difficulty to see
-whether you learn it. A discovery attempt always consumes the materials and ends in one of three ways:
+whether you learn it. A discovery attempt always consumes the materials and ends in one of four ways:
 
 {{< table >}}
 
-| Outcome     | Condition                | In-game feedback                             |
-| ----------- | ------------------------ | -------------------------------------------- |
-| **Learned** | in range, roll succeeded | "You grasp the pattern — blueprint learned!" |
-| **Slipped** | in range, roll failed    | "A pattern resonates here but slips away…"   |
-| **Nothing** | nothing in range         | "These materials resonate with nothing."     |
+| Outcome          | Condition                              | In-game feedback                                        |
+| ---------------- | -------------------------------------- | ------------------------------------------------------- |
+| **Learned**      | in range, roll succeeded               | "You grasp the pattern — blueprint learned!"            |
+| **Slipped**      | in range, roll failed                  | "A pattern resonates here but slips away…"              |
+| **Beyond skill** | just outside your radius               | "Something faint lies beyond your skill."               |
+| **Nothing**      | nothing in range, with a hint (if any) | "These materials resonate with nothing. Too brittle..." |
 
 {{< /table >}}
 
 This resonance feedback removes the classic frustration of not knowing whether a combination is _impossible_ or merely
-_unlucky_: a **Slipped** result means the blueprint exists — keep trying with the same materials, while **Nothing**
-means you should swap materials. If a blueprint sits just outside your radius, the game instead hints _"something faint
-lies beyond your skill"_ — telling you to level up rather than swap materials, since the radius grows with skill.
+_unlucky_:
+
+- **Slipped** means the blueprint exists. Keep trying with the same materials.
+- **Beyond skill** means you are close, but your radius is too small. Level up the skill rather than swap materials.
+- **Nothing** means you should swap materials. It also tells you **where to go**: it names the one or two axes with
+  the biggest gap to the nearest blueprint you do not know yet, for example _"too brittle, too light"_. Each attempt
+  moves you closer, so discovery is a search you can reason about, not a lottery. If the school has no unknown
+  blueprint left, there is no hint.
+
+Salvaging an item never teaches its blueprint. Discovery and shared recipes are the only ways to learn one.
 
 The chance to learn drops with item level and rises with skill. It is floored at **0.1%** for items up to Lv. 100 and
 **0.01%** above Lv. 100, so in theory every blueprint is discoverable given enough attempts.
@@ -372,11 +389,42 @@ Minor Poison    -0.9     -0.5        0.0
 Drop a healing herb into your mix and it lands at positive Vitality (Health Potion territory); drop a deathcap in and
 the very same recipe lands at negative Vitality (Poison territory). Same skill, same station — a different mushroom.
 
+## The Crafting Window
+
+The feature space is hidden math, so the crafting window shows it as pictures:
+
+- **Material tooltips** name the axes a material pushes, for example _"fluid, restorative"_ for a healing herb. A player
+  who wants a healing potion can reason that they need fluid and restorative materials.
+- A **radar chart** with one spoke per axis shows the current mix as a shape. It changes as you add or remove
+  materials. When you pick a blueprint you already know, its outline is drawn on top. Unknown blueprints are never
+  drawn: finding them is the game.
+
+The radar chart is only a view of the vectors. There is no grid, and the position of a material in the window does not
+matter.
+
 ## Production: Crafting a Known Item
 
 Once a blueprint is learned it is saved to your **blueprint list**, and you or your Bestia can produce the item on
-demand. Production success is determined by the **level and quality of the raw materials** used — higher-level materials
-mean a higher success chance. On a failed production the materials are lost.
+demand. Production has no minigame. A craft by hand is not better than a craft by a Bestia.
+
+The success chance uses two sources:
+
+- The **skill levels** always come from the master, also when their Bestia crafts.
+- The **status values** (DEX and WIL) come from whoever crafts: the master, or the Bestia they control. A Bestia with
+  high DEX is a good crafter.
+
+The materials come from the crafter's own inventory, and the item goes there too. On a failed production the materials
+are lost.
+
+### Crafted By
+
+A crafted item remembers **who made it and where**: _"Crafted by Alice in Genesis"_. The maker is always the master,
+also when their Bestia did the work. Both names are copies taken at craft time, so they stay when the master is
+deleted or the world is reset.
+
+This holds for stackable items too. Potions made by two masters never merge into one pile: you hold one pile of
+Alice's potions and one of Bob's. Looted, bought and starter items have no maker and stack with each other. A crafted
+pile sold to an NPC shop loses its maker, because a shop keeps only counts.
 
 A learned blueprint can be **inscribed onto paper** as a shareable **recipe** and handed to other players, who consume
 the recipe to learn the blueprint themselves. Learning from a recipe takes time depending on the item level.
@@ -394,7 +442,8 @@ For the Craftsmanship domain specifically — workbenches, structures, traps and
 values, not material quality alone, much like [Item Customization](#item-customization)'s slot-cutting chance. A
 **base chance** falls off with the item level being attempted, on top of which
 [Carpentry](/docs/mechanics/master/#skill-carpentry), [Master Craftsman](/docs/mechanics/master/#skill-master-craftsman),
-temporary buffs and the Craftsman's own status values are added:
+temporary buffs and the Craftsman's own status values are added. The DEX and WIL terms apply to every craft, not only
+to Craftsmanship, and they use the status values of whoever crafts (see [Production](#production-crafting-a-known-item)):
 
 ```kotlin
 baseChance = 0.90 - max(0, itemLevel - 10) * 0.015
