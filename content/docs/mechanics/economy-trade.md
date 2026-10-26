@@ -94,6 +94,19 @@ Trading is where the player-driven economy actually becomes visible. Players **b
 which means they can keep selling while logged off — and it means a well-placed marketplace is a genuine source of
 income for its owner.
 
+## The Start Towns' Auction Houses
+
+The world provides the first auction houses: the **market hall of each start town** is one. New masters arrive in
+these towns, so they find a market from their first day. Every other town gets an auction house only when a player
+builds one.
+
+- The start towns' houses have **no owner**, so they charge **no owner fee**. Listing fees apply as below.
+- The three are **linked**: a listing put up in one shows in all of them, as if by a
+  [Trade Agreement](#linking-auction-houses).
+- **Click the building** to open its window. No clerk stands behind a counter; the hall itself is the way in.
+
+{{< alert context="info" text="Until the [postal system](#postal-system) exists, unsold goods and sale proceeds wait in the auction house's **Collect** tab. A fixed-price listing runs for **5 days**." />}}
+
 ## Building an Auction House
 
 Building an auction house requires the [Trade Post Owner](/docs/mechanics/master/#skill-trade-post-owner) master skill,
