@@ -701,6 +701,30 @@ Bestias in time. Trading must be fast to do to reduce the annoyance.
 If a Bestia/Entity is killed and has had some items inside its inventory usually the items are dropped and can be looted.
 If a player killed a mob, the loot will be protected for 30 seconds so they can exclusively loot it.
 
+## Exchanging Items with Your Own Bestias
+
+A Master and its Bestias hand items to each other without a trade window. Any two of them can do it: the Master and a
+Bestia, either way round, or two Bestias. Neither has to be the one the player is controlling.
+
+- **Reach:** the two have to stand within 5 m of each other, and at most 3 m apart in height. A Bestia on a ledge above
+  the Master cannot pass anything down.
+- **Opening it:** the inventory window shows a button for each of the player's other entities, greyed out while it
+  stands too far away. Clicking one shows its bag beside the inventory. Right-clicking one of your own Bestias in the
+  world and choosing *Exchange items* does the same. The bag stays chosen while the Bestia walks off and comes back by
+  itself when it returns.
+- **Moving items:**
+  - Drag an item from one bag to the other to move the whole stack.
+  - Hold Ctrl when dropping it to choose how many.
+  - Shift-click an item to move its whole stack.
+  - Right-click an item to choose *Move all*, *Move one* or *Move amount...*.
+- **Limits:** the receiver's [weight limit](#weight-limit) applies. Only as much as it can still carry is offered,
+  and a move that would overload it is refused. Worn gear has to be taken off first, and a crafted stack keeps its
+  maker.
+- **Cost:** moving items is instant and free.
+
+A trade with another player is made by the Master alone, from the Master's own bag. A Bestia hands its goods to the
+Master first.
+
 ## Weight Limit
 
 Items weight is given by units of about 1kg per unit. The smallest division is 0.1 units which approximates to 100gr.
