@@ -649,6 +649,22 @@ irretrievably destroyed.
 | 1 - 29%    | Increasing Damage Effects |
 | 0%         | Item breaks unrecoverably |
 
+## Stackable Gear
+
+Most gear never stacks: every copy carries its own durability. A torch is different. Unlit torches are all the same, so
+they share one pile. Durability only matters once a torch burns.
+
+- **Wearing one splits it off.** Putting a torch into the light source slot takes one torch off the pile. That copy gets
+  its own durability and burns down. The rest of the pile stays untouched.
+- **A partly burnt torch stays a copy of its own.** It shows its own wear bar in the bag and never merges back into the
+  pile. It can be worn again later.
+- **An unused torch goes back.** A torch taken off before it ever burned folds back into its pile. A torch carried
+  through the day therefore does not clutter the bag.
+- **Burnt time cannot be repaired.** Equipment repair, upgrades and rune slots refuse a partly burnt torch. A repair would
+  turn a stub into a fresh torch.
+
+Stackable gear cannot have random stats, because rolled copies are not interchangeable.
+
 Items on the ground can suffer damage from attacks. They are affected by Area Of Effect spells and can be targeted manually, although they are not auto-targeted like enemies.
 
 ## Item Material
