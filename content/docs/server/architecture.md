@@ -181,6 +181,11 @@ taken, and a delete never overtakes an earlier write.
 - Wild den packs are not saved: a den makes a fresh pack when a player comes near.
 - A drop removes the item in the database first; only then does it leave the live inventory and
   appear on the ground. A drop can lose an item but never copy one.
+- Handing an item between a master and its own bestias (`TransferItemHandler`) takes it out of the giver's
+  live inventory on the tick that checks the move. Nothing else can reach it after that. The database move
+  follows as one transaction on the master's job key, which locks both container rows: the master first,
+  then the bestias by id. The item is given back only if that transaction rolls back. If the database
+  finds the giver no longer holds the item, the live bag showed more than it had, and the item stays gone.
 - Static content (items, species, loot tables, commodities) is read into in-memory catalogues once
   at boot (`CatalogueWarmUpBootRunner`), so the tick never needs a lookup.
 - `TickSqlGuard`, a Hibernate statement inspector, reports any SQL that still runs on the tick
