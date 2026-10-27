@@ -58,6 +58,23 @@ Clouds of fog will move slowly over the map, reducing the sight of AI entities. 
 
 During night time the player will need light sources in order to improve the visibility of enemies or terrain. There will be certain items (e.g. torches, candles etc.) as well as spells to make light.
 
+### Light Sources
+
+A master has a special **light source** equipment slot next to the regular gear. A torch or lamp worn there lights itself
+as soon as it gets dark and goes out again at dawn. No click is needed. "Dark" means less than half of the daylight is
+left, so the light already burns through late dusk and early dawn, not only in full night.
+
+- The light is cast around the master and every player nearby sees it.
+- The server decides when the light burns, because it is also the one that burns the item down.
+- A torch burns for about one real hour. It does not burn during the day.
+- When the worn torch burns out, the next torch from the bag is lit at once: a partly burnt one first, then a fresh one
+  from the pile. When none is left, the player is told so.
+- Every new master starts with 5 torches in the bag. One has to be put into the slot once, after that the slot refills
+  itself.
+
+How a torch can be stackable and still burn down is explained in
+[stackable gear](/docs/mechanics/items/#stackable-gear).
+
 ## Sky and Moon
 
 The sky follows the time of day and the weather. Clouds cover as much of the sky as the weather says. Storms
