@@ -26,6 +26,17 @@ A route is planned on two tiers, the split [navigation]({{< ref "server/ai" >}})
 - **Detailed:** the local A* over the walk data of the ground as it is now, 32 tiles at a time. Player
   edits change it at once.
 
+Between them, `RegionGrid` splits the world into 32 m cells that are either dry or water. Bridge decks count
+as dry. It lays the stretches off the graph round water: from the traveller onto the course, and from the
+course to the waypoint.
+
+The graph's nodes stand kilometres apart, so the nearest node to either end can lie far behind it. A short
+walk past a town could be led into the town centre and back out. So `RoutePlanner` measures the course,
+legs included. When it is more than a quarter longer than the straight line, and the ends are within 8 km,
+the planner also asks the grid for a way straight there. It takes that way when the course is more than a
+quarter longer. A road a little longer still wins, because the grid knows water but not slopes. The straight
+way is never taken over a bridge the knower believes is down, since the grid takes every deck for ground.
+
 The coarse planner does **not** read whether an edge is truly blocked. It reads what the traveller's
 **knower** believes:
 
