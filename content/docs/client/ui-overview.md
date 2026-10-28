@@ -13,8 +13,9 @@ page — see [Shortcuts System](/docs/client/ui-shortcuts) — everything else i
 | Party                | `Party/party.gd`, `Party/party_member_row.gd`                        | The party window (Alt+P). Rows built in code: online light, owner star, name, level, the master's HP and mana bars, and an indented row for the bestia the member plays. The owner gets the EXP mode, inviting by name and a kick cross per row. Seeded from `PartyInfoSMSG`, then kept live from Health/Mana entity updates.     |
 | Guild                | `Guild/guild.gd`, `guild_member_row.gd`, `guild_rank_row.gd`         | The guild window (Alt+G), only enabled while in a guild. Tabs Overview (EXP, skill points, emblem, message of the day), Members (live area and vitals from each `GuildMemberBeacon`, last area and "seen" for offline members, the expelled), Ranks, Skills and Log; every control shows only what the player's own rank allows. Also asks the Founder's Seal's name (`ask_to_found`), confirms a disband by the typed guild name, and writes the message of the day into the chat after every loading screen.                   |
 | Bestia Compendium    | `Compendium/compendium.gd`, `compendium_row.gd`, `ModelView/`        | The compendium window (Alt+B). Every listed species by number from `BestiaDB`; `CompendiumSMSG` says which are seen and caught. Unseen entries show a silhouette and "???". The detail shows the portrait, a turning 3D model and "Show on map", which sets the map's habitat overlay.                                            |
+| Shop                 | `Shop/shop.gd`, `Shop/shop_basket.gd`                                | One merchant's counter, opened by talking to them on shift. A basket of wares to buy (steppers) and goods to sell from the docked inventory; the footer shows buy and sell totals, the balance paid or received, and gold and load before and after. The basket is quoted by the server as it changes (`ShopQuoteCMSG`); *Confirm trade* sends it as one `ShopTradeCMSG`. |
 | Invitations          | `Invitation/invitation_tray.gd`, `invitation_prompt.gd`              | Non-modal Yes/No prompts at the top of the screen for party and guild invitations, one per kind, with a bar running down to when the server stops waiting. Letting one run out sends nothing.                                                                                                                                     |
-| Inventory            | `Inventory/inventory.gd`, `InventoryItem/`, `DropAmountDialog/`      | Live per-entity item list built from `InventoryComponentSMSG`, split into usable/equip grids. Supports drag-to-equip and drag-to-ground-drop (amount-confirm dialog for stacks > 1).                                                                                                                                              |
+| Inventory            | `Inventory/inventory.gd`, `InventoryItem/`, `DropAmountDialog/`      | Live per-entity item list built from `InventoryComponentSMSG`, split into usable/equip/etc tabs, with a name search and a sort menu (name, amount, weight; shop value while a shop is open). Supports drag-to-equip and drag-to-ground-drop (amount-confirm dialog for stacks > 1).                                                                                                                                              |
 | Equipment            | `Equipment/equipment.gd`, `EquipSlot/`                               | One `EquipSlot` per `EquipmentSlot.Slot`. Greys out slots the viewed entity's species doesn't have (Master = all slots, Bestia = `BestiaDB.get_equip_slots`, see [Entity Sync](/docs/client/entity-sync)). Equip/unequip round-trips through `ConnectionManager`.                                                                 |
 | HUD (Master Profile) | `MasterProfile/master_profile.gd`, `ProfileBar/`, `ProfilePortrait/` | Top HUD: name, level, position, HP/mana/stamina/exp bars, carry weight. Also hosts the toggle buttons for Inventory/Skills/Equipment/Status/Party/Guild — polls `Input.is_action_just_pressed` rather than `_unhandled_input`, since sibling `Window`s can steal input focus.                                                     |
 | Skills               | `Skills/skills.gd`, `SkillRow/`                                      | Renders a `SkillListSMSG` as rows; buffers point spends locally per row until Confirm (`ConnectionManager.invest_skill_points`). Hides the point-spend UI when viewing a Bestia's skill tree (server-authoritative, no client investment). Skill data itself comes from `AttackDB` (see [Entity Sync](/docs/client/entity-sync)). |
@@ -41,6 +42,22 @@ A few small, self-contained effects under `src/Game/VFX/`, driven directly by se
   `aoe_radius` while in skill-targeting mode (see [Interaction](/docs/client/interaction)).
 - **`EntitySnapIndicator/`** — a scene-only marker shown over whichever entity a skill-target snap
   has currently picked.
+
+# The shop and the docked inventory
+
+Opening a shop also opens the inventory and places the two windows side by side. While the shop is
+open the inventory shows the merchant's price for one on every item they buy and fades the rest, and
+items already in the sell basket are not drawn. The gestures are the same on both sides:
+
+| Gesture            | In the inventory                         | On a shop row          |
+| ------------------ | ---------------------------------------- | ---------------------- |
+| Double-click       | Sell the whole pile                      | Add one                |
+| Shift-click        | Ask how many to sell                     | Ask how many           |
+| Drag onto the shop | Sell one, or ask how many for a stack    | -                      |
+| `+` / `-`          | -                                        | One more or fewer; ten with Shift |
+
+The footer blocks *Confirm trade* with a reason when the trade would be refused: prices still being
+quoted, not enough gold, too heavy, or the town refusing a line.
 
 # The WidgetWindow pattern
 

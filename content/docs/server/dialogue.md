@@ -155,16 +155,19 @@ options is not a conversation.
 
 ## The occupation's options are never sampled
 
-A merchant always has _buy_ and _sell_. This is not a special case bolted onto a random system, it
-is the point of the pinned tier: an option a player cannot rely on is an option they will not learn.
-The occupation catalog gains one block per trade, beside the shift and rest hours it already
-carries, and the boot check that already refuses an unstaffed trade grows a second clause refusing
-a topic with no provider behind it.
+A merchant at work does not start a conversation at all. Talking to them opens their shop window, and
+the window's _Chat_ button asks for the conversation's root. This is the point of the pinned tier
+taken one step further: the thing a player wants from a shopkeeper is the counter, so the counter is
+the answer.
 
-The action tier ships **stubbed**: a merchant's _show me your wares_ appears and answers "not yet".
-That is deliberate. Reserving the slot now costs one enum value, and it means wiring the shop to the
-[settlement ledger](/docs/server/townsfolk/#the-settlement-ledger) later is a new provider rather
-than a redesign of the node model.
+Inside the conversation a merchant keeps one pinned option. On shift it is _Let's trade_, which opens
+the counter again. Off shift it is _When are you open?_, answered with the opening and closing hour,
+and the counter refuses trades with `SHOP_CLOSED`. The hours are the merchant's shift moved by their own
+day offset, the same pair that puts them at their post, so a shop is never open with nobody behind it.
+
+Every way into a shop (talking, _Let's trade_, `OpenShopCMSG`) goes through one `ShopCounter`, so they
+cannot disagree about when a shop is open. The shop itself is described in
+[Settlements](/docs/mechanics/settlements/#shops-and-stock).
 
 ## Rotation, and why it is per day
 
