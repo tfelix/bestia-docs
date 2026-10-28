@@ -1,10 +1,10 @@
 ---
 weight: 550
 title: Economy Simulation
-description: "Design document for an NPC-side economy — the World Treasury Director, the NPC gold pool, and the conservation invariant. Not yet implemented in zone-server."
+description: "Design document for an NPC-side economy — the World Treasury Director, the NPC gold pool, and the conservation invariant. Partly implemented in zone-server."
 ---
 
-{{< alert context="warning" text="Partly implemented. The settlement side of this design runs today — settlement ledgers, treasuries, stock and price movement all exist, see [Townsfolk &amp; Settlement Simulation](/docs/server/townsfolk/). The world-level 'World Treasury Director' described below does not, and until it does there is one place in the running code where gold is created from nothing. Closing that is the work this page specifies." />}}
+{{< alert context="warning" text="Partly implemented. The conservation invariant holds in the running code: settlement ledgers, treasuries, stock and price movement run, and every coin a settlement gains without a player trade comes out of the world reserve. See [Townsfolk &amp; Settlement Simulation](/docs/server/townsfolk/) and [Money Supply](/docs/server/money-supply/). The 'World Treasury Director' does not exist yet: there is no payout budget, no `payout_modifier` and no price or wage feedback from the pool ratio. The only NPC payout today is a shop buying from a player, and the settlement treasury limits it." />}}
 
 Bestia's economy is [entirely player-driven](/docs/mechanics/economy-trade/): players find the gold, mint the coins and
 set the prices. That works right up to the point where **NPCs** start handing out money — quest rewards, purchases,
