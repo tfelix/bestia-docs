@@ -234,3 +234,12 @@ Because the whole economy hangs off one invariant, it has to be measurable at ru
 - The metric named against each entry in [Dangers to watch](#dangers-to-watch)
 
 A drift in the money supply that minting does not account for is a **bug**, and this is where it becomes visible.
+
+Part of this exists today, on the Zone World dashboard in Grafana:
+
+- `zone_economy_coin_held{holder}`: coin held by the reserve, by the settlement treasuries, and by players. The
+  players' share is the rest of the fixed supply, not counted from their bags, so on its own it cannot reveal a leak.
+- `zone_economy_coins_total{flow, source}`: coin leaving the reserve (`minted`) and returning (`returned`), by
+  `settlement`, `mint` or `auction_fee`.
+- `zone_economy_settlements_disturbed`: towns whose stock, price or treasury is away from their reference.
+- `zone_economy_shop_*`: merchant trades, coin and goods moved, and refusals by reason.
