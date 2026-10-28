@@ -116,6 +116,21 @@ Prices are **local**. You can see what things cost in the settlement you are sta
 else. Knowing that grain is cheap in the west and dear in the east is knowledge you earn by
 travelling, and it is the whole basis of playing a merchant.
 
+## Trading at the counter
+
+**A shop keeps its keeper's hours.** Talk to a merchant during their shift and their shop opens straight
+away. Off shift they will chat, and tell you when they open, but they will not trade.
+
+**One trade, both ways.** You fill a basket from both sides: the merchant's wares, and the goods you
+want to sell from your bag. The shop shows what you buy, what you sell, and the balance: what you pay,
+or what you receive. Only that balance changes hands, so selling pays for buying. A merchant who is out
+of coin can still take your grain in part payment for flour.
+
+**The price you are shown is the most you pay.** Every unit is priced against a town with one more or
+one fewer of it, so a basket is quoted as you fill it. If prices move against you before you confirm,
+the trade is refused and you see the new total. A basket you could not carry is refused too; nothing is
+left at your feet.
+
 ## Hauling goods for profit
 
 Buying low in one town and selling high in another is intended, profitable, and self-limiting. Each
