@@ -25,8 +25,8 @@ a desk does.
 | Rename or delete a mark   | click it, then **Rename** or **Delete**          | tap it, then **Rename** or **Delete** |
 | Show the grid             | **Grid** (or G)                                  | **Grid**                              |
 
-Leaving route mode drops the stops planned so far. In the game Escape undoes one thing at a time: the card,
-then route mode, then the map itself. A click on the minimap opens the full map at that point.
+Leaving route mode drops the stops planned so far. In the game **Go**, **Clear** and **Keep as route** each end
+route mode as well, and Escape undoes one thing at a time: the card, then route mode, then the map itself. A click on the minimap opens the full map at that point.
 
 # The Card
 
