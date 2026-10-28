@@ -4,7 +4,7 @@ title: Money Supply
 description: "How much gold exists in a Bestia world, where it comes from, and the three-tier purse that keeps the total constant. Derives the coin supply from a target player population and the generator's own ore tonnage."
 ---
 
-{{< alert context="warning" text="This page is a design document. The settlement economy it builds on is implemented — see [Townsfolk & Settlement Simulation](/docs/server/townsfolk/) — but the world reserve, the NPC float and the minting chain described below are not. The numbers are derived rather than invented, and the derivation is the part worth reviewing." />}}
+{{< alert context="warning" text="Partly implemented. Running today: the configured supply (`economy.coin-supply`, half of it in settlement treasuries at world creation), the world reserve, settlement income drawn from the reserve, minting out of the reserve, and auction listing fees paid back into it. Not built yet: the NPC float, the Minting skill's recovery rate, and the other sinks (posting tax, repairs, upkeep). The numbers are derived rather than invented, and the derivation is the part worth reviewing." />}}
 
 The [Economy Simulation](/docs/server/economy/) page states the rule: NPCs never conjure money. This page answers the
 question that rule implies but does not settle — **how much money is there in the first place?**
@@ -135,8 +135,9 @@ graph TD
 
 - **The world reserve** holds gold that has not been minted yet, plus everything the world has taken back. It is the
   counterparty that makes the loop closed rather than notional.
-- **Settlement treasuries** already exist and already work. What changes is where their income comes from: today they
-  revert toward a derived target out of nowhere, which is the one place in the running code where gold is created.
+- **Settlement treasuries** drift back toward what a town of that size ought to hold. The reserve pays every coin of
+  that drift, and takes back every coin a town loses by it. A town can never gain more than the reserve still holds,
+  so an empty reserve leaves a drained town drained.
 - **The NPC float** is what one merchant carries. It is refilled from the town's treasury and returned to it, so a
   shopkeeper can genuinely run out of coin on a busy afternoon while the town behind them is still solvent.
 
@@ -165,6 +166,10 @@ master wastes most of the bar, and Minting Lv. 5 wastes almost none. The waste g
 than vanishing. The skill therefore makes a player better at extracting value from gold they already hold, which is
 what the skill is _for_, without letting them print.
 
+Today the skill does not exist yet. Every mint turns one `gold_bar` into exactly 10,000 coins, and it never fails. A
+failed mint would spend the bar outside the reserve. When the reserve cannot cover the coins, the craft is refused
+before the bar is spent.
+
 # Invariants
 
 These continue the numbering used by the [settlement simulation](/docs/server/townsfolk/).
@@ -173,7 +178,8 @@ These continue the numbering used by the [settlement simulation](/docs/server/to
   by a player sum to a constant, and that constant is the configured supply. A drift is a bug, not a balance issue.
 - **I24 — Minting is one way.** No path converts a `gold_coin` back into a `gold_bar`. A coin is money for good.
 - **I25 — Treasuries are capped.** No settlement treasury exceeds its ceiling; the overflow returns to the reserve
-  rather than accumulating where it landed.
+  rather than accumulating where it landed. Today the cap only applies to player trade: a shop refuses to sell to a
+  player when the payment would take its treasury above three times the reference.
 - **I26 — A float is bounded.** Killing a merchant yields pocket change, never a payday, because a float is a working
   purse and not a bank.
 
@@ -183,10 +189,13 @@ Both are in code that already runs, and both are easy to get wrong while changin
 
 - **Long catch-ups discard time.** A settlement left alone for a year is simulated as thirty days, deliberately. With a
   reserve as counterparty, the discarded interval must not silently create or destroy gold — the reserve has to be
-  reconciled against what was actually simulated, not against what was skipped.
+  reconciled against what was actually simulated, not against what was skipped. _Handled:_ the reserve is charged with
+  the treasury change of the simulated days only.
 - **Ledger rows delete themselves.** A settlement's row disappears once it has decayed back to its reference, which is
   what keeps the table small. That stays correct only if the same reversion that erases the row has already made the
-  reserve whole.
+  reserve whole. _Still open:_ a row is dropped while its treasury is within 5% of the reference, and the next
+  catch-up starts again from the exact reference without charging the reserve. Up to 5% of one treasury appears or
+  disappears each time this happens.
 
 # The end of the gold
 

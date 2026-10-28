@@ -4,7 +4,7 @@ title: Townsfolk & Settlement Simulation
 description: "Design document for inhabited settlements — the three simulation tiers, the deviation-based economy ledger and its stability invariants, and the GOAP domain that gives townsfolk occupations and daily schedules."
 ---
 
-{{< alert context="warning" text="This page is a design document, not a description of running code. There are no NPCs, no shops and no currency in `zone-server` today — the only 'market' code in the repository is a GOAP planner test scenario. The design below is what is being built, and the [Known blockers](#known-blockers) section is honest about what has to be fixed first." />}}
+{{< alert context="warning" text="Partly implemented. `zone-server` runs townsfolk with occupations, shifts and homes, the settlement ledger (stock, price and treasury) and NPC shops. Treasuries draw their income from the world reserve, see [Money Supply](/docs/server/money-supply/). Other parts of this page are still design." />}}
 
 Settlements are generated in full — streets, districts, buildings with door bearings, a roster of
 thirty-one trades per town derived from population and terrain — and then stand completely empty.
@@ -79,9 +79,12 @@ anywhere.
 
 Three numbers carry the design:
 
-**`util = 0.8`.** A settlement in equilibrium runs its trades at four-fifths and holds a fifth in
-reserve, so a shock is absorbed by *raising utilisation* rather than by starving. Without it, every
-negative shock is permanent.
+**Restocking effort.** A settlement in equilibrium produces exactly what it eats, so full output
+alone would leave an emptied store empty. When a store is below its seasonal reference, the town
+works harder: up to 60% more output, fully committed once the store is down by a third. The extra
+effort is scaled by `run`, so burnt fields or a mill without grain cannot make up the shortfall.
+Without it, every negative shock is permanent, because imports cost money and a robbed town may
+have none. A store holding `n` days of cover refills from empty in about `n / 0.6` days.
 
 **`κ` is inter-settlement trade, expressed as a decay rate** rather than as caravans. It is scaled by
 the road traffic the generator already records on each settlement, so a crossroads town refills a
@@ -277,12 +280,14 @@ NPC-to-NPC trade is internal to the ledger and moves no money: simulating per-NP
 nothing and costs exactly the state this design refuses to keep. But a treasury that *only* moves on
 player trades is a one-way ratchet, because players are net sellers early and net buyers late. So
 the treasury mean-reverts to what a settlement of that size and wealth ought to hold, over about
-twenty game-days.
+sixty game-days. The target shrinks with what the town still produces, so a town that lost its
+workshops is poor as well as idle.
 
 That is not a second faucet. A player who dumps ten thousand apples drives the treasury below its
 reference, it refills slowly, and their *second* load sells into a thinner purse. The fiction is
 taxes and trade with the un-simulated world beyond the map — which is what a 128 km world is
-embedded in.
+embedded in. The coin for that refill comes out of the world reserve, and a town cannot gain more
+than the reserve holds. See [Money Supply](/docs/server/money-supply/#the-three-tier-purse).
 
 ## Structure and time
 
@@ -448,6 +453,9 @@ Calibrated against the existing creature goal scale, so the two domains could co
 
 {{< /table >}}
 
+The restock errand moves no goods and no coin. The shelves belong to the settlement ledger, which
+already counts this delivery in its throughput, so the errand only makes the delivery visible.
+
 The crossovers are chosen against each other rather than for feel. At 23:00 sleep beats a starving
 NPC's urge to shop, so nobody buys bread at eleven at night. At noon work beats moderate tiredness.
 Eating becomes *eligible* well before it becomes *preferable*, which reads as getting peckish,
@@ -466,6 +474,12 @@ otherwise makes this harder to reason about later.
 opening hours. These *should* be authored — the value of "the baker opens at five" is precisely that
 a player can learn it, and an NPC that re-picked its house nightly reads as broken rather than as
 alive.
+
+A shop's opening hours are its keeper's shift. Outside it the server refuses to trade
+(`SHOP_CLOSED`). It uses the same day offset that puts the keeper at their post, so the counter is
+never open with nobody behind it. Each person's whole day is moved by up to 30 minutes
+(`day-jitter-minutes`), and the map shows the stated shift without that offset. So a shop may open
+or close a little before or after the hours on the map.
 
 **Emergent:** whether it goes to work today at all. When it eats. Whether it goes to the inn. How it
 copes with a blocked route. And what happens when the mill burns — the withdrawal returns less than

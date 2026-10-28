@@ -98,4 +98,5 @@ A few rules decide what appears:
 - **The world as it is now.** A map is not a snapshot of the day it was charted. If a building is knocked down or a
   ward stone is broken, it disappears from every map that covers it.
 - **Opening hours.** Selecting a service shows its name, its settlement and its keeper's hours, and a service that is
-  closed is drawn dimmed. Selecting it a second time sets off towards it.
+  closed is drawn dimmed. Selecting it a second time sets off towards it. A shop is open while its keeper is at work,
+  and a keeper may arrive or leave up to half an hour off the hours shown.
