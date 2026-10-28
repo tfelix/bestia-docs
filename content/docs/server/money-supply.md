@@ -177,9 +177,9 @@ These continue the numbering used by the [settlement simulation](/docs/server/to
 - **I23 — Conservation.** The world reserve, every settlement treasury, every NPC float and every `gold_coin` item held
   by a player sum to a constant, and that constant is the configured supply. A drift is a bug, not a balance issue.
 - **I24 — Minting is one way.** No path converts a `gold_coin` back into a `gold_bar`. A coin is money for good.
-- **I25 — Treasuries are capped.** No settlement treasury exceeds its ceiling; the overflow returns to the reserve
-  rather than accumulating where it landed. Today the cap only applies to player trade: a shop refuses to sell to a
-  player when the payment would take its treasury above three times the reference.
+- **I25 — Surpluses go home.** A settlement treasury takes any amount of coin, but what it holds above its target
+  drains back to the reserve over about ten game-days rather than accumulating where it landed. A shop never refuses
+  to sell because its town is rich.
 - **I26 — A float is bounded.** Killing a merchant yields pocket change, never a payday, because a float is a working
   purse and not a bank.
 

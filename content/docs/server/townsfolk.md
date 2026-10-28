@@ -272,7 +272,7 @@ the tests can cite them.
 | I6 | Every unit a player buys leaves the ledger; every unit sold enters it          |
 | I7 | Coins paid out equal coins removed from the treasury, exactly                  |
 | I8 | The treasury never goes negative — a shop that cannot pay refuses              |
-| I9 | The treasury is capped — a town that cannot absorb more refuses to buy         |
+| I9 | The treasury is not capped — what it holds above its target drains to the world reserve in about ten game-days |
 
 {{< /table >}}
 
@@ -281,7 +281,9 @@ nothing and costs exactly the state this design refuses to keep. But a treasury 
 player trades is a one-way ratchet, because players are net sellers early and net buyers late. So
 the treasury mean-reverts to what a settlement of that size and wealth ought to hold, over about
 sixty game-days. The target shrinks with what the town still produces, so a town that lost its
-workshops is poor as well as idle.
+workshops is poor as well as idle. A surplus goes the other way much faster, over about ten
+game-days, so coin players paid into one town soon reaches the reserve and the other towns. A shop
+never refuses to sell because its town is rich; only the goods on offer limit a purchase.
 
 That is not a second faucet. A player who dumps ten thousand apples drives the treasury below its
 reference, it refills slowly, and their *second* load sells into a thinner purse. The fiction is
@@ -350,7 +352,7 @@ So health returns to full in bounded time from any state, and by I17 the ledger 
 | Attack                          | What stops it                                                                                                  |
 | ------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | Buy out every shop              | I12 — only the surplus above the local reserve is on offer. This is also just what a caravan does                |
-| Dump ten thousand apples        | I4 and I9, by **refusal** rather than a bad price. A bad price still transfers money                             |
+| Dump ten thousand apples        | I4 and I8, by **refusal** rather than a bad price: the warehouse fills, or the purse runs out                    |
 | Camp a farm and burn it forever | It should work — a siege should work. Bounded by I20's ceiling, by the fire system's own limits, and by the camper having to physically spread out over a 7–20 km catchment |
 | Arbitrage two towns             | Spread at both ends, plus **settling unit by unit against the live price function, never a snapshot**, so the marginal prices converge and the arbitrage extinguishes itself |
 | Craft money out of NPC goods    | I21                                                                                                              |
