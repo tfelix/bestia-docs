@@ -385,7 +385,8 @@ Same rule as [Forge Weapon](#skill-forge-weapon): no hard cap, but every item le
     description="Hammers dents from armor and sets a fresh edge to broken blades, coaxing worn-out equipment back into fighting shape." >}}
 
 Restores the [durability](/docs/mechanics/items/#damaging-of-items) of weapons and armor alike. Those are the only
-things in the world that wear out - nothing else needs a repair skill.
+things in the world that wear out and can be repaired. A [light source](/docs/mechanics/environment/#light-sources) burns
+down as well, but burnt time is gone: no repair gives it back.
 
 | Lv. | Max Item Level |
 | --- | -------------- |
