@@ -102,6 +102,24 @@
   value: 100
   description: |
     A swirling flask of deep azure liquid. Pulses with arcane power, ready to fuel the most demanding spells. Restores 170 Mana.
+- id: fly_wing
+  name: Fly Wing
+  weight: 0.05
+  type: Usable
+  value: 40
+  description: |
+    A pale feather that never quite settles in the hand.
+
+    Crushed, it whisks its bearer to a random spot up to 150 m away, on ground already in sight, so the world never has to load. Only the bearer goes: a master's bestias stay where they are, and a bestia can carry and use a wing of its own. Wings of either kind cannot be used again for 3.5 seconds.
+- id: butterfly_wing
+  name: Butterfly Wing
+  weight: 0.05
+  type: Usable
+  value: 120
+  description: |
+    A butterfly's wing, dusted in amber scales that glow like embers.
+
+    Crushed, it carries its bearer home to their save point. Only the bearer goes. The journey is long enough that the world has to load around them.
 - id: log
   name: Wood
   weight: 30
