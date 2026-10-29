@@ -75,6 +75,19 @@ left, so the light already burns through late dusk and early dawn, not only in f
 How a torch can be stackable and still burn down is explained in
 [stackable gear](/docs/mechanics/items/#stackable-gear).
 
+## Sky and Moon
+
+The sky follows the time of day and the weather. Clouds cover as much of the sky as the weather says. Storms
+turn them into a dark, heavy deck. They drift with the wind, together with their shadows on the ground.
+
+The moon goes through one full cycle of phases per Bestia month. The server's calendar sets the month length;
+today that is 30 Bestia days, about 10 real days. A full moon rises at sunset. A new moon stands next to the sun
+and cannot be seen. How bright the night is depends on the phase and on how high the moon is. Even on a
+moonless night, 40% of the full-moon light remains, so the terrain stays readable.
+
+The sky can also take on a mood that tints the sky and its light. This is meant for
+[doomsday](/docs/mechanics/doomsday) events, for example a red sky when the end of the world approaches.
+
 # Mana Concentration
 
 The system regularly evaluates mana emitters (bestia, spell usage, items) and sinks and calculates a mana density. Depending on the density of mana in a certain region, this increases the probability of rift events which spawn powerful bestia, or of other devastating events like mana storms.

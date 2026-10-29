@@ -26,6 +26,17 @@ A route is planned on two tiers, the split [navigation]({{< ref "server/ai" >}})
 - **Detailed:** the local A* over the walk data of the ground as it is now, 32 tiles at a time. Player
   edits change it at once.
 
+Between them, `RegionGrid` splits the world into 32 m cells that are either dry or water. Bridge decks count
+as dry. It lays the stretches off the graph round water: from the traveller onto the course, and from the
+course to the waypoint.
+
+The graph's nodes stand kilometres apart, so the nearest node to either end can lie far behind it. A short
+walk past a town could be led into the town centre and back out. So `RoutePlanner` measures the course,
+legs included. When it is more than a quarter longer than the straight line, and the ends are within 8 km,
+the planner also asks the grid for a way straight there. It takes that way when the course is more than a
+quarter longer. A road a little longer still wins, because the grid knows water but not slopes. The straight
+way is never taken over a bridge the knower believes is down, since the grid takes every deck for ground.
+
 The coarse planner does **not** read whether an edge is truly blocked. It reads what the traveller's
 **knower** believes:
 
@@ -118,10 +129,18 @@ A bestia's journey is kept in its row (`player_bestia.journey`), so it goes on a
 
 # Saved routes
 
-A **saved route** is a named list of waypoints a master keeps, at most 32. With no name given it is named from
-the places it starts and ends in ("Ironhill → Ashford"); a blank rename gives that name back. A route saved
-from the map starts where the entity stands, so it can be sent back the other way. To send one, the client
-sends its waypoints itself with its name and id, so the tick never reads the database.
+A **saved route** is a named list of waypoints a master keeps, at most 32, in map metres. With no name given it
+is named from the places it starts and ends in ("Ironhill → Ashford"); a blank rename gives that name back. A
+route saved from the map starts where the entity stands, so it can be sent back the other way. To send one, the
+game sends its waypoints itself with its name and notebook key, so the tick never reads the database; the
+companion app names only the key, and the zone reads the route.
+
+Routes are kept in the master's **notebook**, the one store for what a player keeps - routes, map marks, map
+preferences, and later settings shared between the two apps. `NotebookService` numbers every write to a
+collection and tells both apps of it after the commit: the game by `NotebookChangedSMSG` on its socket, the
+companion by a `NotebookChanged` event on its live stream. Each app applies the next number, ignores what it
+has seen, and lists the collection again when the number jumps, so a route saved in one app appears in the
+other at once. See [Using the Map](/docs/mechanics/map/).
 
 # Open problems
 
