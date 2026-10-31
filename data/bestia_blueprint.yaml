@@ -418,7 +418,8 @@ spawnBands:
   - { levels: "1-8", where: "Starter ring around home towns", perKm2: 200, pack: 25 }
   - { levels: "9-40", where: "Between the starter ring and the wilds", perKm2: 120, pack: 20 }
   - { levels: "41-79", where: "The wilderness proper", perKm2: 60, pack: 12 }
-  - { levels: "80-100", where: "Corrupted land and boss dens", perKm2: 25, pack: 6 }
+  - { levels: "80-100", where: "Corrupted land", perKm2: 25, pack: 6 }
+  - { levels: "33-120", where: "Boss dens: rare in the wilds above Lv 40, more in corruption", perKm2: "-", pack: 1 }
 
 # Loot. A designer gives chances in percent; the mob YAML stores basis points (10000 = 100 %).
 loot:
