@@ -14,6 +14,8 @@
   mana: 10
   archetype: heal
   element: HOLY
+  skill: minor_heal
+  skillId: 1001
   description: |
     Recovers the health of a friendly a little bit. A essential spell for every adventurer.
 
@@ -24,6 +26,8 @@
   mana: 25
   archetype: heal
   element: HOLY
+  skill: mending_light
+  skillId: 1002
   description: |
     Recovers the health of a friendly for a fairly amount. Used to treat wounds.
 
@@ -33,6 +37,8 @@
   mana: 49
   archetype: heal
   element: HOLY
+  skill: greater_heal
+  skillId: 1003
   description: |
     Recovers a great amount of health of a friendly unit. It can almost bring bad even the dead.
 
@@ -43,6 +49,8 @@
   mana: 2
   archetype: strike
   element: NORMAL
+  skill: tackle
+  skillId: 1004
   description: |
     Quick attack which uses the body weight in a short range melee attack. It does only little damage but is quick and cheap.
 
@@ -73,6 +81,8 @@
   mana: 4
   archetype: strike
   element: NORMAL
+  skill: headbutt
+  skillId: 1005
   description: |
     Lowers the head and drives the skull into the target. Crude, but it rattles anyone who takes it.
 
@@ -82,6 +92,8 @@
   mana: 5
   archetype: strike
   element: NORMAL
+  skill: pounce
+  skillId: 1006
   description: |
     Leaps at the target from a few steps away and lands with its full weight.
 
@@ -91,6 +103,8 @@
   mana: 7
   archetype: strike
   element: NORMAL
+  skill: body_slam
+  skillId: 1007
   description: |
     Throws its whole body against the target. The bigger the bestia, the harder it lands.
 
@@ -100,6 +114,8 @@
   mana: 9
   archetype: strike
   element: NORMAL
+  skill: thrash
+  skillId: 1008
   description: |
     A wild flurry of blows that hits whatever is closest, again and again.
 
@@ -109,6 +125,8 @@
   mana: 6
   archetype: power_strike
   element: NORMAL
+  skill: ram
+  skillId: 1009
   description: |
     Takes a short run-up and rams the target. Slow to start, but it hits much harder than a tackle.
 
@@ -118,6 +136,8 @@
   mana: 10
   archetype: power_strike
   element: NORMAL
+  skill: crushing_blow
+  skillId: 1010
   description: |
     A heavy blow aimed to crush rather than cut. Shields and bones bend under it.
 
@@ -127,6 +147,8 @@
   mana: 11
   archetype: power_strike
   element: NORMAL
+  skill: hammer_blow
+  skillId: 1011
   description: |
     Brings its full weight down in one blow, like a smith's hammer on the anvil.
 
@@ -136,6 +158,8 @@
   mana: 14
   archetype: power_strike
   element: NORMAL
+  skill: savage_maul
+  skillId: 1012
   description: |
     Grabs the target and tears at it with everything it has.
 
@@ -145,6 +169,8 @@
   mana: 16
   archetype: power_strike
   element: NORMAL
+  skill: rampage
+  skillId: 1013
   description: |
     Charges in a straight line and tramples the target into the ground.
 
@@ -154,6 +180,8 @@
   mana: 17
   archetype: power_strike
   element: NORMAL
+  skill: skull_breaker
+  skillId: 1014
   description: |
     A blow to the head that leaves the target seeing stars.
 
@@ -163,6 +191,8 @@
   mana: 20
   archetype: power_strike
   element: NORMAL
+  skill: titan_blow
+  skillId: 1015
   description: |
     One blow with the strength of a landslide. Few survive it twice.
 
@@ -172,6 +202,8 @@
   mana: 4
   archetype: shot
   element: NORMAL
+  skill: pebble_toss
+  skillId: 1016
   description: |
     Flings a small stone at the target. It stings more than it hurts.
 
@@ -181,6 +213,8 @@
   mana: 5
   archetype: shot
   element: NORMAL
+  skill: quill_shot
+  skillId: 1017
   description: |
     Shoots a single sharp quill from its back at a target in range.
 
@@ -190,6 +224,8 @@
   mana: 7
   archetype: shot
   element: NORMAL
+  skill: spine_volley
+  skillId: 1018
   description: |
     Releases a burst of spines that all fly at the same target.
 
@@ -199,6 +235,8 @@
   mana: 9
   archetype: shot
   element: NORMAL
+  skill: piercing_spike
+  skillId: 1019
   description: |
     Fires a long, hardened spike that punches through light armor.
 
@@ -208,6 +246,8 @@
   mana: 10
   archetype: shot
   element: NORMAL
+  skill: barbed_barrage
+  skillId: 1020
   description: |
     A storm of barbed darts. Each one is small, together they shred.
 
@@ -217,6 +257,8 @@
   mana: 12
   archetype: shot
   element: NORMAL
+  skill: thorn_volley
+  skillId: 1021
   description: |
     A wave of thorns as long as daggers, shot with deadly aim.
 
@@ -228,6 +270,8 @@
   mana: 10
   archetype: bolt
   element: NORMAL
+  skill: mana_spark
+  skillId: 1022
   description: |
     A small spark of raw mana. The first spell a young bestia learns.
 
@@ -237,6 +281,8 @@
   mana: 12
   archetype: bolt
   element: NORMAL
+  skill: force_bolt
+  skillId: 1023
   description: |
     A bolt of pure force that knocks the air out of the target.
 
@@ -246,6 +292,8 @@
   mana: 16
   archetype: bolt
   element: NORMAL
+  skill: arcane_missile
+  skillId: 1024
   description: |
     Three small missiles of mana that seek out the same target.
 
@@ -255,6 +303,8 @@
   mana: 18
   archetype: bolt
   element: NORMAL
+  skill: arcane_lance
+  skillId: 1025
   description: |
     A lance of focused mana that hits hard and flies straight.
 
@@ -264,6 +314,8 @@
   mana: 22
   archetype: bolt
   element: NORMAL
+  skill: mana_spear
+  skillId: 1026
   description: |
     A heavy spear of mana, thrown with the whole mind behind it.
 
@@ -273,6 +325,8 @@
   mana: 9
   archetype: dot
   element: NORMAL
+  skill: bleeding_wound
+  skillId: 1027
   description: |
     Opens a wound that keeps bleeding for a while after the hit.
 
@@ -282,6 +336,8 @@
   mana: 20
   archetype: aoe
   element: NORMAL
+  skill: shockwave
+  skillId: 1028
   description: |
     Slams the ground and sends a wave of force through everyone close by.
 
@@ -291,6 +347,8 @@
   mana: 26
   archetype: aoe
   element: NORMAL
+  skill: mana_storm
+  skillId: 1029
   description: |
     Raw mana rains down on an area and tears at everyone inside.
 
@@ -300,6 +358,8 @@
   mana: 66
   archetype: ultimate
   element: NORMAL
+  skill: arcane_nova
+  skillId: 1030
   description: |
     Gathers all its mana and releases it in one blinding blast.
 
@@ -309,6 +369,8 @@
   mana: 70
   archetype: ultimate
   element: NORMAL
+  skill: wrath_of_the_wild
+  skillId: 1031
   description: |
     The fury of the wild itself breaks loose. Only the oldest bestias know it.
 
@@ -320,6 +382,8 @@
   mana: 10
   archetype: bolt
   element: FIRE
+  skill: flame_dart
+  skillId: 1032
   description: |
     Spits a small dart of flame at a single target. Quick to cast and hard to dodge.
 
@@ -329,6 +393,8 @@
   mana: 4
   archetype: strike
   element: FIRE
+  skill: flame_fang
+  skillId: 1033
   description: |
     Bites with jaws that glow like coals. The wound keeps smoking afterwards.
 
@@ -338,6 +404,8 @@
   mana: 10
   archetype: dot
   element: FIRE
+  skill: burning_ground
+  skillId: 1034
   description: |
     Sets the ground ablaze. Anything that stands in the flames burns.
 
@@ -347,6 +415,8 @@
   mana: 20
   archetype: aoe
   element: FIRE
+  skill: fire_ball
+  skillId: 1035
   description: |
     A ball of fire that bursts on impact and scorches everyone around the target.
 
@@ -356,6 +426,8 @@
   mana: 12
   archetype: power_strike
   element: FIRE
+  skill: blazing_charge
+  skillId: 1036
   description: |
     Wraps itself in flame and crashes into the target.
 
@@ -365,6 +437,8 @@
   mana: 22
   archetype: bolt
   element: FIRE
+  skill: searing_ray
+  skillId: 1037
   description: |
     A thin ray of white-hot fire that burns straight through.
 
@@ -374,6 +448,8 @@
   mana: 66
   archetype: ultimate
   element: FIRE
+  skill: inferno
+  skillId: 1038
   description: |
     Turns an area into a sea of fire that burns again and again.
 
@@ -385,6 +461,8 @@
   mana: 10
   archetype: bolt
   element: WATER
+  skill: ice_shard
+  skillId: 1039
   description: |
     Flings a sharp shard of ice at a single target.
 
@@ -394,6 +472,8 @@
   mana: 5
   archetype: shot
   element: WATER
+  skill: water_jet
+  skillId: 1040
   description: |
     Spits a jet of water hard enough to knock a target off its feet.
 
@@ -403,6 +483,8 @@
   mana: 4
   archetype: strike
   element: WATER
+  skill: frost_bite
+  skillId: 1041
   description: |
     A bite so cold it numbs the flesh around it.
 
@@ -412,6 +494,8 @@
   mana: 18
   archetype: aoe
   element: WATER
+  skill: frost_breath
+  skillId: 1042
   description: |
     Breathes a cone of freezing air over everyone in front of it.
 
@@ -421,6 +505,8 @@
   mana: 10
   archetype: dot
   element: WATER
+  skill: chilling_mist
+  skillId: 1043
   description: |
     A cold fog settles on the ground. Standing in it slowly freezes the blood.
 
@@ -430,6 +516,8 @@
   mana: 12
   archetype: power_strike
   element: WATER
+  skill: tidal_slam
+  skillId: 1044
   description: |
     Strikes with the weight of a breaking wave.
 
@@ -439,6 +527,8 @@
   mana: 20
   archetype: bolt
   element: WATER
+  skill: hailstone
+  skillId: 1045
   description: |
     Hurls a hailstone the size of a fist. It hits hard and leaves the target shivering.
 
@@ -448,6 +538,8 @@
   mana: 22
   archetype: bolt
   element: WATER
+  skill: torrent
+  skillId: 1046
   description: |
     A rushing stream of water that slams into the target.
 
@@ -457,6 +549,8 @@
   mana: 66
   archetype: ultimate
   element: WATER
+  skill: blizzard
+  skillId: 1047
   description: |
     Calls a howling blizzard down on an area. The cold bites through any armor.
 
@@ -468,6 +562,8 @@
   mana: 10
   archetype: bolt
   element: EARTH
+  skill: stone_dart
+  skillId: 1048
   description: |
     Shoots a sharp splinter of stone out of the ground at a single target.
 
@@ -477,6 +573,8 @@
   mana: 5
   archetype: shot
   element: EARTH
+  skill: rock_throw
+  skillId: 1049
   description: |
     Tears a rock out of the ground and throws it.
 
@@ -486,6 +584,8 @@
   mana: 4
   archetype: strike
   element: EARTH
+  skill: stone_fist
+  skillId: 1050
   description: |
     A blow with a fist or hoof hardened like stone.
 
@@ -495,6 +595,8 @@
   mana: 10
   archetype: dot
   element: EARTH
+  skill: sand_tomb
+  skillId: 1051
   description: |
     Whirling sand traps the target and grinds at it.
 
@@ -504,6 +606,8 @@
   mana: 22
   archetype: aoe
   element: EARTH
+  skill: tremor
+  skillId: 1052
   description: |
     Stamps on the ground until it shakes. Everyone close by loses their footing and gets hurt.
 
@@ -513,6 +617,8 @@
   mana: 14
   archetype: power_strike
   element: EARTH
+  skill: boulder_slam
+  skillId: 1053
   description: |
     Lifts a boulder, or becomes one, and brings it down on the target.
 
@@ -522,6 +628,8 @@
   mana: 22
   archetype: bolt
   element: EARTH
+  skill: stone_lance
+  skillId: 1054
   description: |
     A lance of stone shoots out of the ground and impales the target.
 
@@ -531,6 +639,8 @@
   mana: 66
   archetype: ultimate
   element: EARTH
+  skill: fissure
+  skillId: 1055
   description: |
     The ground opens up under an area and swallows what stands on it.
 
@@ -542,6 +652,8 @@
   mana: 10
   archetype: bolt
   element: WIND
+  skill: shock
+  skillId: 1056
   description: |
     A small arc of lightning that jumps to a single target.
 
@@ -551,6 +663,8 @@
   mana: 5
   archetype: shot
   element: WIND
+  skill: wind_cutter
+  skillId: 1057
   description: |
     A blade of wind that cuts at range.
 
@@ -560,6 +674,8 @@
   mana: 4
   archetype: strike
   element: WIND
+  skill: wing_buffet
+  skillId: 1058
   description: |
     Beats its wings against the target with the force of a gust.
 
@@ -569,6 +685,8 @@
   mana: 9
   archetype: dot
   element: WIND
+  skill: static_field
+  skillId: 1059
   description: |
     Charges the air in an area. Anyone inside is shocked again and again.
 
@@ -578,6 +696,8 @@
   mana: 22
   archetype: aoe
   element: WIND
+  skill: cyclone
+  skillId: 1060
   description: |
     A spinning wind that sweeps over an area and throws everyone about.
 
@@ -587,6 +707,8 @@
   mana: 14
   archetype: power_strike
   element: WIND
+  skill: tempest_dive
+  skillId: 1061
   description: |
     Dives from above, carried by a howling wind.
 
@@ -596,6 +718,8 @@
   mana: 22
   archetype: bolt
   element: WIND
+  skill: chain_lightning
+  skillId: 1062
   description: |
     A bolt of lightning that jumps through the target with a roar.
 
@@ -605,6 +729,8 @@
   mana: 66
   archetype: ultimate
   element: WIND
+  skill: hurricane
+  skillId: 1063
   description: |
     A hurricane breaks loose and tears at everything in its path.
 
@@ -616,6 +742,8 @@
   mana: 4
   archetype: shot
   element: POISON
+  skill: venom_spit
+  skillId: 1064
   description: |
     Spits a glob of venom at the target. Not deadly, but it burns.
 
@@ -625,6 +753,8 @@
   mana: 3
   archetype: strike
   element: POISON
+  skill: poison_sting
+  skillId: 1065
   description: |
     A quick sting that leaves a little poison behind.
 
@@ -634,6 +764,8 @@
   mana: 12
   archetype: bolt
   element: POISON
+  skill: venom_bolt
+  skillId: 1066
   description: |
     A bolt of green venom that seeps into the skin.
 
@@ -643,6 +775,8 @@
   mana: 9
   archetype: dot
   element: POISON
+  skill: poison_cloud
+  skillId: 1067
   description: |
     A cloud of foul gas that hangs over the ground. Breathing it hurts.
 
@@ -652,6 +786,8 @@
   mana: 12
   archetype: power_strike
   element: POISON
+  skill: toxic_rend
+  skillId: 1068
   description: |
     Tears into the target with claws dripping with venom.
 
@@ -661,6 +797,8 @@
   mana: 22
   archetype: aoe
   element: POISON
+  skill: miasma
+  skillId: 1069
   description: |
     Exhales a sickly haze that poisons everyone around.
 
@@ -670,6 +808,8 @@
   mana: 22
   archetype: bolt
   element: POISON
+  skill: acid_lance
+  skillId: 1070
   description: |
     A stream of acid that eats through armor and flesh.
 
@@ -679,6 +819,8 @@
   mana: 66
   archetype: ultimate
   element: POISON
+  skill: pestilence
+  skillId: 1071
   description: |
     Spreads a plague across an area. Even the grass withers.
 
@@ -690,6 +832,8 @@
   mana: 12
   archetype: bolt
   element: HOLY
+  skill: sunbeam
+  skillId: 1072
   description: |
     Focuses light into a single, searing beam.
 
@@ -699,6 +843,8 @@
   mana: 5
   archetype: strike
   element: HOLY
+  skill: smite
+  skillId: 1073
   description: |
     A strike blessed with holy light. The unnatural fear it.
 
@@ -708,6 +854,8 @@
   mana: 10
   archetype: dot
   element: HOLY
+  skill: hallowed_ground
+  skillId: 1074
   description: |
     Consecrates the ground. Undead and demons that stand on it burn.
 
@@ -717,6 +865,8 @@
   mana: 14
   archetype: power_strike
   element: HOLY
+  skill: judgement
+  skillId: 1075
   description: |
     A heavy blow that falls like a verdict.
 
@@ -726,6 +876,8 @@
   mana: 24
   archetype: aoe
   element: HOLY
+  skill: divine_nova
+  skillId: 1076
   description: |
     A ring of holy light bursts out from the caster.
 
@@ -735,6 +887,8 @@
   mana: 22
   archetype: bolt
   element: HOLY
+  skill: purifying_ray
+  skillId: 1077
   description: |
     A ray of pure light that burns away the unnatural. The undead fear it most.
 
@@ -744,6 +898,8 @@
   mana: 66
   archetype: ultimate
   element: HOLY
+  skill: pillar_of_dawn
+  skillId: 1078
   description: |
     A pillar of light erupts and sears everything in it, the undead and demons worst of all.
 
@@ -755,6 +911,8 @@
   mana: 10
   archetype: bolt
   element: SHADOW
+  skill: shadow_bolt
+  skillId: 1079
   description: |
     A bolt of living darkness that chills the soul.
 
@@ -764,6 +922,8 @@
   mana: 4
   archetype: strike
   element: SHADOW
+  skill: shadow_rake
+  skillId: 1080
   description: |
     Rakes the target with claws made of shadow.
 
@@ -773,6 +933,8 @@
   mana: 9
   archetype: dot
   element: SHADOW
+  skill: creeping_dark
+  skillId: 1081
   description: |
     Darkness pools on the ground and gnaws at anyone inside.
 
@@ -782,6 +944,8 @@
   mana: 22
   archetype: aoe
   element: SHADOW
+  skill: umbral_wave
+  skillId: 1082
   description: |
     A wave of darkness rolls out and swallows the light.
 
@@ -791,6 +955,8 @@
   mana: 14
   archetype: power_strike
   element: SHADOW
+  skill: eclipse_strike
+  skillId: 1083
   description: |
     For a moment the light goes out, and then the blow lands.
 
@@ -800,6 +966,8 @@
   mana: 22
   archetype: bolt
   element: SHADOW
+  skill: abyssal_lance
+  skillId: 1084
   description: |
     A spear of darkness pulled from somewhere far below.
 
@@ -809,6 +977,8 @@
   mana: 66
   archetype: ultimate
   element: SHADOW
+  skill: endless_night
+  skillId: 1085
   description: |
     Night falls on an area, and everything in it is hunted.
 
@@ -820,6 +990,8 @@
   mana: 12
   archetype: bolt
   element: GHOST
+  skill: soul_strike
+  skillId: 1086
   description: |
     Hurls a fragment of spirit at the target. It passes through armor as if it were not there.
 
@@ -829,6 +1001,8 @@
   mana: 5
   archetype: strike
   element: GHOST
+  skill: spectral_touch
+  skillId: 1087
   description: |
     A cold touch from a hand that is not quite there.
 
@@ -838,6 +1012,8 @@
   mana: 10
   archetype: dot
   element: GHOST
+  skill: haunt
+  skillId: 1088
   description: |
     Restless spirits cling to an area and claw at the living.
 
@@ -847,6 +1023,8 @@
   mana: 22
   archetype: aoe
   element: GHOST
+  skill: spirit_burst
+  skillId: 1089
   description: |
     A burst of spirit energy that tears at everyone close by.
 
@@ -856,6 +1034,8 @@
   mana: 14
   archetype: power_strike
   element: GHOST
+  skill: phantom_rush
+  skillId: 1090
   description: |
     Rushes through the target. Its body passes, the pain stays.
 
@@ -865,6 +1045,8 @@
   mana: 20
   archetype: bolt
   element: GHOST
+  skill: soul_rend
+  skillId: 1091
   description: |
     Tears at the target's spirit and rips away some of its mana.
 
@@ -874,6 +1056,8 @@
   mana: 66
   archetype: ultimate
   element: GHOST
+  skill: soul_harvest
+  skillId: 1092
   description: |
     Reaches for every soul in an area and pulls.
 
@@ -885,6 +1069,8 @@
   mana: 5
   archetype: shot
   element: UNDEAD
+  skill: bone_shard
+  skillId: 1093
   description: |
     Flings a sharp splinter of bone.
 
@@ -894,6 +1080,8 @@
   mana: 4
   archetype: strike
   element: UNDEAD
+  skill: rotting_grasp
+  skillId: 1094
   description: |
     Grabs with a cold, rotting hand. The wound festers.
 
@@ -903,6 +1091,8 @@
   mana: 14
   archetype: bolt
   element: UNDEAD
+  skill: necrotic_bolt
+  skillId: 1095
   description: |
     A bolt of grave energy that withers what it touches.
 
@@ -912,6 +1102,8 @@
   mana: 10
   archetype: dot
   element: UNDEAD
+  skill: blight
+  skillId: 1096
   description: |
     Rot spreads across the ground. The living sicken while they stand in it.
 
@@ -921,6 +1113,8 @@
   mana: 12
   archetype: power_strike
   element: UNDEAD
+  skill: bone_crusher
+  skillId: 1097
   description: |
     A blow with a club of fused bones.
 
@@ -930,6 +1124,8 @@
   mana: 24
   archetype: aoe
   element: UNDEAD
+  skill: corpse_explosion
+  skillId: 1098
   description: |
     A body bursts in a cloud of bone and rot.
 
@@ -939,6 +1135,8 @@
   mana: 22
   archetype: bolt
   element: UNDEAD
+  skill: drain_life
+  skillId: 1099
   description: |
     Pulls the life out of the target, one heartbeat at a time.
 
@@ -948,6 +1146,8 @@
   mana: 66
   archetype: ultimate
   element: UNDEAD
+  skill: grave_tide
+  skillId: 1100
   description: |
     The dead rise for a moment and drag the living down with them.
 
@@ -959,6 +1159,8 @@
   mana: 12
   archetype: heal
   element: NORMAL
+  skill: lick_wounds
+  skillId: 1101
   description: |
     Licks its own wounds. Not much, but it keeps a young bestia going.
 
@@ -968,6 +1170,8 @@
   mana: 16
   archetype: heal
   element: NORMAL
+  skill: regenerate
+  skillId: 1102
   description: |
     Knits its own flesh back together in a few breaths.
 
@@ -977,6 +1181,8 @@
   mana: 24
   archetype: heal
   element: HOLY
+  skill: renewal
+  skillId: 1103
   description: |
     A warm light surrounds it and slowly closes its wounds.
 
@@ -988,6 +1194,8 @@
   mana: 9
   archetype: buff
   element: NORMAL
+  skill: howl
+  skillId: 1104
   description: |
     A long howl that makes its blood run hot. It hits harder for a while.
 
@@ -997,6 +1205,8 @@
   mana: 10
   archetype: buff
   element: NORMAL
+  skill: enrage
+  skillId: 1105
   description: |
     Works itself into a rage and stops caring about its wounds.
 
@@ -1006,6 +1216,8 @@
   mana: 11
   archetype: buff
   element: HOLY
+  skill: holy_vigor
+  skillId: 1106
   description: |
     A warm glow fills its body. It hits harder for a while.
 
@@ -1015,6 +1227,8 @@
   mana: 12
   archetype: buff
   element: WIND
+  skill: tailwind
+  skillId: 1107
   description: |
     A wind at its back makes every step and swing quicker.
 
@@ -1024,6 +1238,8 @@
   mana: 13
   archetype: buff
   element: NORMAL
+  skill: war_cry
+  skillId: 1108
   description: |
     A roar that fills it with the will to fight.
 
@@ -1033,6 +1249,8 @@
   mana: 14
   archetype: buff
   element: SHADOW
+  skill: bloodlust
+  skillId: 1109
   description: |
     The smell of blood drives it into a frenzy.
 
@@ -1042,6 +1260,8 @@
   mana: 16
   archetype: buff
   element: NORMAL
+  skill: berserk
+  skillId: 1110
   description: |
     Gives up all defense for pure, raw strength.
 
@@ -1051,6 +1271,8 @@
   mana: 17
   archetype: buff
   element: NORMAL
+  skill: primal_rage
+  skillId: 1111
   description: |
     Wakes the oldest anger in its blood. Few things stand in its way then.
 
@@ -1062,6 +1284,8 @@
   mana: 9
   archetype: debuff
   element: NORMAL
+  skill: growl
+  skillId: 1112
   description: |
     A low growl that makes the target hesitate before it strikes.
 
@@ -1071,6 +1295,8 @@
   mana: 10
   archetype: debuff
   element: NORMAL
+  skill: screech
+  skillId: 1113
   description: |
     A piercing screech that throws off the target's aim.
 
@@ -1080,6 +1306,8 @@
   mana: 11
   archetype: debuff
   element: NORMAL
+  skill: hamstring
+  skillId: 1114
   description: |
     Bites at the target's legs. Its steps and swings get slower for a while.
 
@@ -1089,6 +1317,8 @@
   mana: 11
   archetype: debuff
   element: EARTH
+  skill: mud_trap
+  skillId: 1115
   description: |
     Turns the ground into thick mud. Anyone caught in it moves and strikes slower.
 
@@ -1098,6 +1328,8 @@
   mana: 12
   archetype: debuff
   element: SHADOW
+  skill: curse
+  skillId: 1116
   description: |
     A whispered curse that saps the target's strength.
 
@@ -1107,6 +1339,8 @@
   mana: 14
   archetype: debuff
   element: NORMAL
+  skill: terrifying_roar
+  skillId: 1117
   description: |
     A roar so fierce that the target's hands start to shake.
 
@@ -1116,6 +1350,8 @@
   mana: 15
   archetype: debuff
   element: EARTH
+  skill: petrifying_gaze
+  skillId: 1118
   description: |
     A stare that slowly turns the target's limbs to stone.
 
@@ -1125,5 +1361,387 @@
   mana: 16
   archetype: debuff
   element: UNDEAD
+  skill: withering_curse
+  skillId: 1119
   description: |
     Makes the target's body wither as if it had aged for years.
+
+# Utility: what a caught bestia does outside a fight. A role never picks these; a species takes them in place of
+# an attack slot, see /docs/mechanics/bestia-design/#the-learnset. script names the zone-server script, and the
+# keys after it are that script's settings: yields (chance in basis points), status, or lines.
+- id: forage
+  name: Forage
+  level: 1
+  mana: 4
+  archetype: utility
+  skill: forage
+  skillId: 2000
+  script: Gather
+  cooldown: 300
+  yields: [{ item: grain, chance: 4000 }, { item: bramble_berries, chance: 4000 }, { item: wild_herb, chance: 2000 }]
+  description: |
+    Snuffles through the undergrowth and turns up grain, berries or herbs at its feet. Works once every five minutes.
+
+- id: shed_wool
+  name: Shed Wool
+  level: 5
+  mana: 4
+  archetype: utility
+  skill: shed_wool
+  skillId: 2001
+  script: Gather
+  cooldown: 600
+  yields: [{ item: wool, chance: 10000 }, { item: soft_fur, chance: 3000 }]
+  description: |
+    Shakes out a fleece of wool, and sometimes a tuft of soft fur. Works once every ten minutes.
+
+- id: unearth
+  name: Unearth
+  level: 10
+  mana: 6
+  archetype: utility
+  skill: unearth
+  skillId: 2002
+  script: Gather
+  cooldown: 600
+  yields: [{ item: clay, chance: 5000 }, { item: gold_coin, chance: 3000 }, { item: rough_gem, chance: 800 }]
+  description: |
+    Digs where it smells something buried: clay, a lost coin, now and then a rough gem.
+
+- id: go_fishing
+  name: Go Fishing
+  level: 5
+  mana: 4
+  archetype: utility
+  skill: go_fishing
+  skillId: 2003
+  script: Gather
+  cooldown: 300
+  yields: [{ item: raw_fish, chance: 7000 }, { item: sea_pearl, chance: 300 }]
+  description: |
+    Dives in and comes back with a fish. Once in a long while the fish has swallowed a pearl.
+
+- id: gather_herbs
+  name: Gather Herbs
+  level: 5
+  mana: 4
+  archetype: utility
+  skill: gather_herbs
+  skillId: 2004
+  script: Gather
+  cooldown: 300
+  yields: [{ item: wild_herb, chance: 8000 }, { item: spore_dust, chance: 2000 }, { item: medicine, chance: 500 }]
+  description: |
+    Picks the herbs it knows are good to eat, and a few you would not have known about.
+
+- id: spin_silk
+  name: Spin Silk
+  level: 5
+  mana: 6
+  archetype: utility
+  skill: spin_silk
+  skillId: 2005
+  script: Gather
+  cooldown: 600
+  yields: [{ item: silk_thread, chance: 10000 }]
+  description: |
+    Spins a spool of fine silk thread for tailors.
+
+- id: collect_honey
+  name: Collect Honey
+  level: 20
+  mana: 6
+  archetype: utility
+  skill: collect_honey
+  skillId: 2006
+  script: Gather
+  cooldown: 600
+  yields: [{ item: honeycomb, chance: 8000 }]
+  description: |
+    Raids a wild hive and brings back a dripping honeycomb, stings and all.
+
+- id: mine_ore
+  name: Mine Ore
+  level: 15
+  mana: 8
+  archetype: utility
+  skill: mine_ore
+  skillId: 2007
+  script: Gather
+  cooldown: 600
+  yields: [{ item: iron_ore, chance: 6000 }, { item: coal, chance: 4000 }, { item: gold_ore, chance: 800 }]
+  description: |
+    Breaks a lump of ore out of the nearest rock. It never asks which rock is yours.
+
+- id: fell_branches
+  name: Fell Branches
+  level: 20
+  mana: 6
+  archetype: utility
+  skill: fell_branches
+  skillId: 2008
+  script: Gather
+  cooldown: 300
+  yields: [{ item: log, chance: 10000 }]
+  description: |
+    Tears down a heavy branch for firewood or timber.
+
+- id: drip_jelly
+  name: Drip Jelly
+  level: 1
+  mana: 2
+  archetype: utility
+  skill: drip_jelly
+  skillId: 2009
+  script: Gather
+  cooldown: 300
+  yields: [{ item: jelly, chance: 10000 }]
+  description: |
+    Wobbles until a blob of jelly drips off. It does not seem to mind.
+
+- id: salt_crust
+  name: Salt Crust
+  level: 25
+  mana: 6
+  archetype: utility
+  skill: salt_crust
+  skillId: 2010
+  script: Gather
+  cooldown: 600
+  yields: [{ item: salt, chance: 8000 }]
+  description: |
+    Scrapes the salt that dries on its hide after a swim in the sea.
+
+- id: warm_fur
+  name: Warm Fur
+  level: 10
+  mana: 10
+  archetype: utility
+  skill: warm_fur
+  skillId: 2011
+  script: ApplyStatus
+  target: FRIENDLY
+  cooldown: 120
+  status: WARMED
+  description: |
+    Huddles up against a friend. For five minutes and more, the cold has to be `15 °C` colder before it hurts them.
+
+- id: cooling_mist
+  name: Cooling Mist
+  level: 10
+  mana: 10
+  archetype: utility
+  skill: cooling_mist
+  skillId: 2012
+  script: ApplyStatus
+  target: FRIENDLY
+  cooldown: 120
+  status: COOLED
+  description: |
+    Wraps a friend in cool mist. For five minutes and more, the heat has to be `15 °C` hotter before it hurts them.
+
+- id: gale_step
+  name: Gale Step
+  level: 15
+  mana: 10
+  archetype: utility
+  skill: gale_step
+  skillId: 2013
+  script: ApplyStatus
+  target: FRIENDLY
+  cooldown: 60
+  status: SWIFTNESS
+  description: |
+    Puts the wind at a friend's back, so they run faster for a while.
+
+- id: benediction
+  name: Benediction
+  level: 30
+  mana: 16
+  archetype: utility
+  skill: benediction
+  skillId: 2014
+  script: ApplyStatus
+  target: FRIENDLY
+  cooldown: 120
+  status: BLESSING
+  description: |
+    Lays a blessing on a friend: more strength, dexterity and intelligence for a while.
+
+- id: leaf_disguise
+  name: Leaf Disguise
+  level: 5
+  mana: 4
+  archetype: utility
+  skill: leaf_disguise
+  skillId: 2015
+  script: PlayDead
+  target: FRIENDLY
+  cooldown: 60
+  description: |
+    Hides under a leaf and is very sure nobody can see it. Wild bestia mostly agree and walk past.
+
+- id: shadow_meld
+  name: Shadow Meld
+  level: 40
+  mana: 10
+  archetype: utility
+  skill: shadow_meld
+  skillId: 2016
+  script: PlayDead
+  target: FRIENDLY
+  cooldown: 60
+  description: |
+    Sinks into its own shadow. Wild bestia look straight through it.
+
+- id: play_dead
+  name: Play Dead
+  level: 1
+  mana: 2
+  archetype: utility
+  skill: play_dead
+  skillId: 2017
+  script: PlayDead
+  target: FRIENDLY
+  cooldown: 60
+  description: |
+    Flops over with its feet in the air. Convincing enough for most wild bestia.
+
+- id: sniff_trail
+  name: Sniff Trail
+  level: 5
+  mana: 6
+  archetype: utility
+  skill: sniff_trail
+  skillId: 2018
+  script: ReadTracks
+  target: GROUND
+  cooldown: 30
+  description: |
+    Puts its nose to the ground and reads the tracks there: who passed, how many and how long ago.
+
+- id: keen_eye
+  name: Keen Eye
+  level: 20
+  mana: 8
+  archetype: utility
+  skill: keen_eye
+  skillId: 2019
+  script: ReadTracks
+  target: GROUND
+  cooldown: 30
+  description: |
+    Circles above and reads the tracks below from the air.
+
+- id: kindle
+  name: Kindle
+  level: 1
+  mana: 3
+  archetype: utility
+  skill: kindle
+  skillId: 2020
+  script: Kindle
+  target: GROUND
+  cooldown: 30
+  description: |
+    Breathes on dry grass until it catches. Good for a campfire, bad for a forest. It does no damage of its own.
+
+- id: splash
+  name: Splash
+  level: 1
+  mana: 1
+  archetype: utility
+  skill: splash
+  skillId: 2021
+  script: Proclaim
+  target: FRIENDLY
+  cooldown: 5
+  lines:
+    - "*splash* *splash* ...But nothing happened."
+    - "*flops around with great pride* Nothing happened."
+    - "*splash!* It is very pleased with itself."
+  description: |
+    Splashes around with all its might. Nothing happens. Nothing ever happens.
+
+- id: cackle
+  name: Cackle
+  level: 10
+  mana: 2
+  archetype: utility
+  skill: cackle
+  skillId: 2022
+  script: Proclaim
+  target: FRIENDLY
+  cooldown: 20
+  lines:
+    - "Hee-hee-hee-hee!"
+    - "Ha-HAAA! Ha-ha-ha!"
+    - "*laughs at something only it finds funny*"
+  description: |
+    Laughs out loud. Everyone nearby hears it, and nobody likes it.
+
+- id: mock
+  name: Mock
+  level: 5
+  mana: 2
+  archetype: utility
+  skill: mock
+  skillId: 2023
+  script: Proclaim
+  target: FRIENDLY
+  cooldown: 20
+  lines:
+    - "Oo-oo-AA-AA!"
+    - "*sticks out its tongue at you*"
+    - "*waves something shiny it just took from you*"
+  description: |
+    Makes rude faces and noises at whoever is looking.
+
+- id: wail
+  name: Wail
+  level: 30
+  mana: 4
+  archetype: utility
+  skill: wail
+  skillId: 2024
+  script: Proclaim
+  target: FRIENDLY
+  cooldown: 20
+  lines:
+    - "Ooooooooooh..."
+    - "Why... why did you leave me in the bog..."
+    - "*a wail that freezes the blood*"
+  description: |
+    Wails in grief. It frightens nobody it is fond of.
+
+- id: proclaim_doom
+  name: Proclaim Doom
+  level: 1
+  mana: 6
+  archetype: utility
+  skill: proclaim_doom
+  skillId: 2025
+  script: Proclaim
+  target: FRIENDLY
+  cooldown: 20
+  lines:
+    - "DOOM!"
+    - "I am the Master of Doom. And of more doom."
+    - "Your doom is near. Very near. Do not look behind you."
+    - "Doom, doom, doom-di-doom..."
+    - "Kneel before the Doommaster of Doom!"
+  description: |
+    Announces the doom of everyone nearby, at length. The doom never quite arrives.
+
+- id: tend_wounds
+  name: Tend Wounds
+  level: 15
+  mana: 12
+  archetype: utility
+  skill: tend_wounds
+  skillId: 2026
+  script: FirstAid
+  target: FRIENDLY
+  cooldown: 60
+  description: |
+    Patches up a friend's wounds. A body can only be tended once a minute.
