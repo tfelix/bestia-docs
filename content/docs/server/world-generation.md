@@ -95,6 +95,23 @@ in hydrology had never once been handed a genuinely closed basin before the carv
 | `economy`                                | businesses, roadside inns                                                                            | needs the finished town layout                                                                                           |
 | `nav_graph`                              | the macro navigation graph                                                                           | last — reads roads, bridges, gates and cave mouths everything above finalised                                            |
 
+# Bestia dens
+
+The `spawners` stage places one `BESTIA_SPAWN` marker per den. A den carries a level range, a pack size, a radius,
+its biome, its corruption and its temperature. The zone server turns a marker into creatures when a player comes near,
+and picks the species from the biome and the level range.
+
+Levels come from a danger curve (distance from towns, remoteness, height, biome). Corrupted land is its own band,
+80 to 100. Every band has its own creature density per square kilometre, so starter country is full and the endgame
+is sparse.
+
+**Boss dens.** A den in wild country (its ordinary levels reach above `midMaxLevel`, 40) may roll to be a boss den
+instead: `wildBossChance` (1 %) outside corruption, `corruptedBossChance` (2.5 %) inside. A boss den keeps the lower
+end of its country's range and raises the top by `bossLevelBonus` (20), capped at `bossMaxLevel` (120). So the wilds
+hold bosses from about level 33 to 100, and only the deepest corruption reaches 120. A boss den holds one creature.
+The home safety ring caps the ordinary levels first, so no boss den rolls near a home town. On the default world
+(seed 11753242, 128 km) this gives 152 boss dens: 43 in the wilds and 109 in corruption.
+
 # Parameters
 
 Roughly 220 tunables across ~20 `*Params` data classes, threaded through one `WorldParams` object so a params

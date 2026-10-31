@@ -32,7 +32,8 @@ flowchart LR
 # 1. Level and tier
 
 **Pick the level from where the bestia should live.** The world generator places dens in four level bands, and a
-species only fills dens close to its own level. A den spans its centre ±4 levels.
+species only fills dens close to its own level. A den spans its centre ±4 levels. A boss den spans its country's
+range plus up to 20 levels, so a boss fits from about Lv 42 in the wilds up to Lv 120 in deep corruption.
 
 {{< blueprint-table name="spawn" >}}
 
