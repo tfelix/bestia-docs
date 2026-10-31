@@ -1,0 +1,43 @@
+<!-- bestialist.html: every species of data/bestias.yaml, one table per level band, bosses and event bestia apart -->
+{{- $all := site.Data.bestias -}}
+{{- $attacks := site.Data.attacks -}}
+{{- $groups := slice
+  (dict "title" "Low level" "rows" (where (where (where $all "eventOnly" "!=" true) "tier" "!=" "boss") "level" "le" 15))
+  (dict "title" "Mid level" "rows" (where (where (where (where $all "eventOnly" "!=" true) "tier" "!=" "boss") "level" "gt" 15) "level" "le" 55))
+  (dict "title" "High level" "rows" (where (where (where $all "eventOnly" "!=" true) "tier" "!=" "boss") "level" "gt" 55))
+  (dict "title" "Bosses" "rows" (where (where $all "eventOnly" "!=" true) "tier" "boss"))
+  (dict "title" "Event bestia" "rows" (where $all "eventOnly" true))
+-}}
+{{- range $groups }}
+<h2 id="{{ .title | urlize }}">{{ .title }} <small class="text-body-secondary">({{ len .rows }})</small></h2>
+<div class="table-responsive mb-4">
+  <table class="table table-sm align-middle">
+    <thead>
+      <tr><th>#</th><th>Bestia</th><th>Lv</th><th>Tier</th><th>Kind</th><th>Element</th><th>Size</th><th>Habitat</th><th>Utility skills</th><th>Loot</th><th>Inspired by</th></tr>
+    </thead>
+    <tbody>
+      {{- range sort .rows "level" }}
+      <tr id="{{ .identifier | replaceRE "_" "-" }}">
+        <td>{{ .id }}</td>
+        <td><strong>{{ .name }}</strong><br><small class="text-body-secondary">{{ .description }}</small></td>
+        <td>{{ .level }}</td>
+        <td>{{ .tier | title }}</td>
+        <td>{{ .kind | lower | title }}</td>
+        <td>{{ .element | lower | title }}</td>
+        <td>{{ .size | lower | title }}</td>
+        <td><small>{{ if .habitat }}{{ delimit (apply .habitat "lower" ".") ", " | replaceRE "_" " " }}{{ else if .corruptedOnly }}corrupted land{{ else }}events only{{ end }}</small></td>
+        <td><small>
+          {{- $skills := slice -}}
+          {{- with .learnset }}{{ range .replace }}{{ $skills = $skills | append .skill }}{{ end }}{{ range .add }}{{ $skills = $skills | append .skill }}{{ end }}{{ end -}}
+          {{- range $i, $skill := $skills -}}
+          {{- range where $attacks "id" $skill }}{{ if $i }}, {{ end }}<a href="/docs/mechanics/attack-list/#{{ replace (lower .name) " " "-" }}">{{ .name }}</a>{{ end -}}
+          {{- end -}}
+        </small></td>
+        <td><small>{{ range $i, $row := .loot }}{{ if $i }}, {{ end }}{{ $row.item | replaceRE "_" " " }} {{ $row.chance }}%{{ end }}</small></td>
+        <td><small>{{ .inspiredBy }}</small></td>
+      </tr>
+      {{- end }}
+    </tbody>
+  </table>
+</div>
+{{- end }}
