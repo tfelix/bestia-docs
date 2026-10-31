@@ -164,6 +164,7 @@ learnset:
 #   heal      Heal: (lv + INT)/8 · (4 + 8·skillLv)·coef on itself
 #   buff      the bestia deals `effect` more damage for `duration` seconds
 #   debuff    the player deals `effect` less damage for `duration` seconds
+#   utility   no damage; each utility attack names its own script on the Attack List
 # mana is base + perSkillLevel·skillLv.
 archetypes:
   - id: strike
@@ -253,6 +254,14 @@ archetypes:
     cooldown: 20
     range: 6
     mana: { base: 8, perSkillLevel: 1 }
+  # Not an attack: gathering, scouting, a status for the master. No role picks it, and the fit ignores it.
+  - id: utility
+    label: Utility
+    kind: utility
+    castTime: 0
+    cooldown: 60
+    range: 0
+    mana: { base: 4, perSkillLevel: 0 }
 
 
 elements: [NORMAL, WATER, EARTH, FIRE, WIND, POISON, HOLY, SHADOW, GHOST, UNDEAD]
