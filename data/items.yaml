@@ -427,3 +427,185 @@
     A heavy signet of gold and aetherite, its face still blank, waiting for a name.
 
     Founds a guild with its bearer as the guild master, and is spent in the founding. See [Guilds](/docs/mechanics/party-guild/#guilds).
+# Bestia materials (zone-server items 76-95). A value is about one loot budget, 4·lv + 5, of the
+# bestias that drop it, so a common drop at 30-80 % stays near par in the Blueprint Calculator.
+- id: feather
+  name: Feather
+  weight: 0.05
+  type: Etc
+  value: 3
+  description: |
+    A long flight feather, light enough to lift on a breath.
+
+    Drops from bestias.
+- id: sharp_fang
+  name: Sharp Fang
+  weight: 0.05
+  type: Etc
+  value: 6
+  description: |
+    A curved fang with an edge still keen enough to draw blood.
+
+    Drops from bestias.
+- id: horn
+  name: Horn
+  weight: 0.2
+  type: Etc
+  value: 15
+  description: |
+    A ridged horn, broken off clean at the root.
+
+    Drops from bestias.
+- id: soft_fur
+  name: Soft Fur
+  weight: 0.1
+  type: Etc
+  value: 5
+  description: |
+    A tuft of soft fur, warm and thick.
+
+    Drops from bestias.
+- id: chitin
+  name: Chitin
+  weight: 0.2
+  type: Etc
+  value: 18
+  description: |
+    A plate of insect shell, hard as horn and light as bark.
+
+    Drops from bestias.
+- id: silk_thread
+  name: Silk Thread
+  weight: 0.05
+  type: Etc
+  value: 12
+  description: |
+    A skein of raw silk, finer than hair and stronger than it looks.
+
+    Drops from bestias.
+- id: honeycomb
+  name: Honeycomb
+  weight: 0.1
+  type: Etc
+  value: 10
+  description: |
+    A slab of wax comb, still dripping with honey.
+
+    Drops from bestias.
+- id: venom_sac
+  name: Venom Sac
+  weight: 0.1
+  type: Etc
+  value: 25
+  description: |
+    A small, swollen gland full of venom. Handle it with care.
+
+    Drops from bestias.
+- id: spore_dust
+  name: Spore Dust
+  weight: 0.05
+  type: Etc
+  value: 10
+  description: |
+    A pinch of fine spores that makes the nose itch.
+
+    Drops from bestias.
+- id: reptile_scale
+  name: Reptile Scale
+  weight: 0.1
+  type: Etc
+  value: 20
+  description: |
+    A tough, overlapping scale, cool and smooth to the touch.
+
+    Drops from bestias.
+- id: dragon_scale
+  name: Dragon Scale
+  weight: 0.3
+  type: Etc
+  value: 1500
+  description: |
+    A scale as wide as a palm. No blade has ever scratched it, and no fire has ever warmed it.
+
+    Drops from bestias.
+- id: sea_pearl
+  name: Sea Pearl
+  weight: 0.05
+  type: Etc
+  value: 300
+  description: |
+    A round pearl with a soft, sea-green sheen.
+
+    Drops from bestias.
+- id: star_core
+  name: Star Core
+  weight: 0.1
+  type: Etc
+  value: 2500
+  description: |
+    A small, heavy stone that glows like a star seen through mist.
+
+    Drops from bestias.
+- id: frost_crystal
+  name: Frost Crystal
+  weight: 0.1
+  type: Etc
+  value: 250
+  description: |
+    A crystal of blue ice that does not melt, not even in the hand.
+
+    Drops from bestias.
+- id: ember_core
+  name: Ember Core
+  weight: 0.1
+  type: Etc
+  value: 300
+  description: |
+    A smouldering core, too hot to hold for long.
+
+    Drops from bestias.
+- id: ectoplasm
+  name: Ectoplasm
+  weight: 0.05
+  type: Etc
+  value: 45
+  description: |
+    A cold, pale jelly that a spirit left behind.
+
+    Drops from bestias.
+- id: bone_shard
+  name: Bone Shard
+  weight: 0.1
+  type: Etc
+  value: 4
+  description: |
+    A splinter of old bone, dry and brittle.
+
+    Drops from bestias.
+- id: old_bandage
+  name: Old Bandage
+  weight: 0.05
+  type: Etc
+  value: 3
+  description: |
+    A strip of yellowed linen. Whatever it once wrapped is long gone.
+
+    Drops from bestias.
+- id: shadow_shard
+  name: Shadow Shard
+  weight: 0.05
+  type: Etc
+  value: 600
+  description: |
+    A black shard that seems to drink the light around it.
+
+    Drops from bestias.
+- id: golden_carapace
+  name: Golden Carapace
+  weight: 0.3
+  type: Etc
+  value: 1200
+  description: |
+    A curved shell plate that shines like beaten gold, and weighs nearly as much.
+
+    Drops from bestias.
