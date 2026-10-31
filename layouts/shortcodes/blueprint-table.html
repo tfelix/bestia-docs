@@ -21,7 +21,7 @@
   <tbody>
   {{- range $d.archetypes }}
     <tr><td>{{ .label }}</td><td>{{ .kind }}{{ if .ranged }}, ranged{{ end }}{{ if .aoe }}, area{{ end }}</td>
-      <td style="text-align:right">{{ with .coef }}{{ . }}{{ else }}{{ mul .effect 100 | printf "%.0f %%" }} for {{ .duration }} s{{ end }}</td>
+      <td style="text-align:right">{{ with .coef }}{{ . }}{{ else }}{{ if .effect }}{{ mul .effect 100 | printf "%.0f %%" }} for {{ .duration }} s{{ else }}none{{ end }}{{ end }}</td>
       <td style="text-align:right">{{ .castTime }}</td><td style="text-align:right">{{ .cooldown }}</td><td style="text-align:right">{{ .mana.base }} + {{ .mana.perSkillLevel }} × skill Lv</td></tr>
   {{- end }}
   </tbody>
