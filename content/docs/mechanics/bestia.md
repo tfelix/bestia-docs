@@ -8,6 +8,10 @@ In areas of high mana concentration, so-called **mini rift events** form. At the
 
 Which species spawns is decided by the surrounding environment: every Bestia has an affinity for certain biomes and spawns with the corresponding probability in each of them.
 
+## Boss dens
+
+A boss lives alone in a **boss den**. Boss dens appear only in wild country, where the ordinary dens are above level 40, and never near the home towns. They are rare in the open wilds (about one den in a hundred) and more common on corrupted land (about one in forty). A boss den covers the level of the country around it plus up to 20 levels more, so a boss is always harder than the packs nearby. The wilds hold the softer bosses (from about level 42), and only the deepest corruption holds bosses up to level 120. Which boss a den holds is decided by its biome, like any other Bestia; a boss that needs corruption never appears in clean wilds.
+
 # Catching Bestias
 
 To catch a Bestia you need a **Magic Bestia Trap**. These are manufactured with the Craftsman's [Carpentry](/docs/mechanics/master/#skill-carpentry) skill and empowered with [Mana Dust](/docs/mechanics/item-list/#mana-dust). Four tiers exist, each one better than the last at holding a high-level Bestia.
