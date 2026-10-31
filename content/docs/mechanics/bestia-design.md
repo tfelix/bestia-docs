@@ -119,7 +119,7 @@ the damage instead.
 
 ## The learnset
 
-A species learns **20 attacks from Lv 1 to 100**, 15 of them by Lv 70, as [Bestias](/docs/mechanics/bestia/#attacks)
+A species learns **about 20 skills from Lv 1 to 100**, 15 of them by Lv 70, as [Bestias](/docs/mechanics/bestia/#attacks)
 asks. Each of the 20 slots has a fixed learn level, and the role fills each slot with an **archetype**. The slot
 then takes an attack of that archetype from the [Attack List](/docs/mechanics/attack-list/):
 
@@ -138,6 +138,15 @@ then takes an attack of that archetype from the [Attack List](/docs/mechanics/at
   attack is used once.
 - **Only listed attacks:** a slot the Attack List has no attack for stays empty. To fill it, add an attack to the
   Attack List; the calculator reads it live.
+
+### Utility skills and the size of a learnset
+
+A bestia is also caught for what it does outside a fight. **Utility** skills on the Attack List gather items, keep
+a master warm, read tracks or just make a noise. No role picks them. A species takes one or two in place of attack
+slots, at the slot's learn level, chosen to fit what it is: a yak sheds wool, a fox sniffs trails.
+
+So 20 is the usual size of a learnset, not a fixed one. A species may drop a slot or add one, so learnsets run from
+about 18 to 22 skills. A utility skill is never one of the active attacks and the fit below ignores it.
 
 ## The active attacks
 
