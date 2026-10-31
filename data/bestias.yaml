@@ -1,0 +1,2919 @@
+# Every bestia species of the game, the source of the Bestia List page and of zone-server's mob YAMLs.
+# tools/bestia_export.py runs the Bestia Blueprint Calculator on each row and writes the mob YAML.
+#
+# tier, role, element, kind and size are the calculator's inputs, see data/bestia_blueprint.yaml. element
+# is the base element; the level follows from level and tier. loot chances are in percent.
+# learnset changes the learnset the role builds: replace puts a utility skill in a slot (1 to 20), drop
+# removes a slot and add learns one more skill at a level. look is the placeholder body on the client.
+# handTuned keeps the stats of an existing mob YAML and only writes its learnset.
+
+- id: 1
+  identifier: blob
+  name: Blob
+  level: 3
+  tier: critter
+  role: balanced
+  kind: FORMLESS
+  element: NORMAL
+  size: SMALL
+  habitat:
+  - GRASSLAND
+  - DRYLAND
+  - RIPARIAN
+  - BEACH
+  - TEMPERATE_FOREST
+  ai: passive_wanderer
+  description: A quivering lump of jelly that rolls through grass and dunes. It is harmless unless provoked, and leaves sticky
+    jelly behind when it bursts.
+  inspiredBy: RO Poring
+  loot:
+  - item: jelly
+    chance: 100
+  - item: apple
+    chance: 100
+  handTuned: true
+  learnset:
+    replace:
+    - slot: 2
+      skill: drip_jelly
+  look:
+    colour: '#d08b1a'
+- id: 5
+  identifier: fieldrat
+  name: Fieldrat
+  level: 1
+  tier: critter
+  role: balanced
+  kind: BEAST
+  element: NORMAL
+  size: SMALL
+  habitat:
+  - GRASSLAND
+  - DRYLAND
+  ai: passive_wanderer
+  description: A plump brown rat that lives in the furrows at the edge of fields. It bolts at the first footstep, so approach
+    it from downwind.
+  inspiredBy: Rattata
+  loot:
+  - item: grain
+    chance: 30
+  - item: raw_hide
+    chance: 10
+  learnset:
+    replace:
+    - slot: 2
+      skill: forage
+    - slot: 3
+      skill: play_dead
+  look:
+    colour: '#8a6a4a'
+- id: 6
+  identifier: burrow_boar
+  name: Burrow Boar
+  level: 6
+  tier: normal
+  role: brute
+  kind: BEAST
+  element: EARTH
+  size: MEDIUM
+  habitat:
+  - GRASSLAND
+  - TEMPERATE_FOREST
+  ai: passive_wanderer
+  description: Roots up fields with its broad snout and charges whoever bothers it. Its thick hide shrugs off stones, but
+    a sharp gust makes it stumble.
+  inspiredBy: RO Savage Babe, Swinub
+  loot:
+  - item: raw_meat
+    chance: 40
+  - item: raw_hide
+    chance: 25
+  - item: sharp_fang
+    chance: 5
+  learnset:
+    replace:
+    - slot: 4
+      skill: unearth
+  look:
+    colour: '#6b4a3a'
+- id: 7
+  identifier: moonhop
+  name: Moonhop
+  level: 4
+  tier: normal
+  role: skirmisher
+  kind: BEAST
+  element: NORMAL
+  size: SMALL
+  habitat:
+  - GRASSLAND
+  - TEMPERATE_FOREST
+  ai: passive_wanderer
+  description: A long-eared hopper that comes out to graze at dusk. Tailors in every start town want its soft pelt.
+  inspiredBy: RO Lunatic, Buneary
+  loot:
+  - item: soft_fur
+    chance: 20
+  - item: raw_meat
+    chance: 20
+  - item: apple
+    chance: 10
+  learnset:
+    replace:
+    - slot: 3
+      skill: play_dead
+    add:
+    - skill: gale_step
+      level: 30
+  look:
+    colour: '#d8d0e8'
+- id: 8
+  identifier: sproutling
+  name: Sproutling
+  level: 5
+  tier: normal
+  role: caster
+  kind: PLANT
+  element: EARTH
+  size: SMALL
+  habitat:
+  - TEMPERATE_FOREST
+  - GRASSLAND
+  ai: passive_wanderer
+  description: Buries itself so only its leaves show, then screams when stepped on. Watch for grass that grows in odd tufts.
+  inspiredBy: RO Mandragora, Oddish
+  loot:
+  - item: wild_herb
+    chance: 40
+  - item: flax
+    chance: 10
+  learnset:
+    replace:
+    - slot: 2
+      skill: gather_herbs
+    - slot: 6
+      skill: leaf_disguise
+  look:
+    colour: '#7bbf4e'
+- id: 9
+  identifier: leafcrawler
+  name: Leafcrawler
+  level: 2
+  tier: normal
+  role: tank
+  kind: INSECT
+  element: EARTH
+  size: SMALL
+  habitat:
+  - TEMPERATE_FOREST
+  - TEMPERATE_RAINFOREST
+  ai: passive_wanderer
+  description: A fat green caterpillar that chews leaves all day. It spits sticky silk that slows the legs of anyone who bothers
+    it.
+  inspiredBy: RO Fabre, Caterpie
+  loot:
+  - item: silk_thread
+    chance: 15
+  - item: chitin
+    chance: 10
+  - item: apple
+    chance: 10
+  learnset:
+    replace:
+    - slot: 3
+      skill: spin_silk
+  look:
+    colour: '#9acd32'
+- id: 10
+  identifier: buzzlet
+  name: Buzzlet
+  level: 7
+  tier: normal
+  role: skirmisher
+  kind: INSECT
+  element: WIND
+  size: SMALL
+  habitat:
+  - GRASSLAND
+  - RIPARIAN
+  ai: aggressive_melee
+  description: A fly that swarms around anything that smells of fruit. Alone it is a nuisance; in a cloud it is a problem.
+  inspiredBy: RO Chonchon, Yanma
+  loot:
+  - item: chitin
+    chance: 15
+  - item: apple
+    chance: 15
+  learnset:
+    drop:
+    - 20
+  look:
+    colour: '#4a5a6a'
+- id: 11
+  identifier: pecklet
+  name: Pecklet
+  level: 3
+  tier: normal
+  role: skirmisher
+  kind: BIRD
+  element: FIRE
+  size: SMALL
+  habitat:
+  - DRYLAND
+  - GRASSLAND
+  ai: passive_wanderer
+  description: A chick that hatches in sun-baked sand and still wears half its eggshell. Its pecks are warm, so it fears water
+    more than swords.
+  inspiredBy: RO Picky, Torchic
+  loot:
+  - item: feather
+    chance: 30
+  - item: grain
+    chance: 10
+  learnset:
+    replace:
+    - slot: 2
+      skill: kindle
+  look:
+    colour: '#f5c242'
+- id: 12
+  identifier: shellsnip
+  name: Shellsnip
+  level: 5
+  tier: normal
+  role: tank
+  kind: AQUATIC
+  element: WATER
+  size: SMALL
+  habitat:
+  - BEACH
+  - OCEAN
+  ai: passive_wanderer
+  description: Scuttles sideways along the tideline and snaps at bare toes. Its shell turns blows from the front; strike it
+    from the side.
+  inspiredBy: RO Vadon, Krabby
+  loot:
+  - item: raw_fish
+    chance: 20
+  - item: chitin
+    chance: 15
+  - item: salt
+    chance: 10
+  learnset:
+    replace:
+    - slot: 3
+      skill: go_fishing
+  look:
+    colour: '#e2553f'
+- id: 13
+  identifier: puddlehop
+  name: Puddlehop
+  level: 4
+  tier: normal
+  role: caster
+  kind: AQUATIC
+  element: WATER
+  size: SMALL
+  habitat:
+  - RIPARIAN
+  - LAKE
+  - BOG
+  ai: passive_wanderer
+  description: A round frog whose belly swirl hypnotises flies. It croaks loudest just before rain.
+  inspiredBy: RO Roda Frog, Poliwag
+  loot:
+  - item: reed_stalk
+    chance: 30
+  - item: raw_meat
+    chance: 10
+  learnset:
+    replace:
+    - slot: 3
+      skill: cooling_mist
+  look:
+    colour: '#4fa3d1'
+- id: 14
+  identifier: splashfin
+  name: Splashfin
+  level: 2
+  tier: critter
+  role: balanced
+  kind: AQUATIC
+  element: WATER
+  size: SMALL
+  habitat:
+  - LAKE
+  - RIPARIAN
+  - GEOTHERMAL_BASIN
+  ai: passive_wanderer
+  description: A golden fish that leaps out of the water for no reason anyone can name. On land it only splashes, and it is
+    very proud of it.
+  inspiredBy: Magikarp
+  loot:
+  - item: raw_fish
+    chance: 40
+  - item: sea_pearl
+    chance: 1
+  learnset:
+    replace:
+    - slot: 1
+      skill: splash
+    drop:
+    - 3
+    - 4
+  look:
+    colour: '#ffb000'
+- id: 15
+  identifier: snowpup
+  name: Snowpup
+  level: 9
+  tier: normal
+  role: skirmisher
+  kind: BEAST
+  element: WATER
+  size: SMALL
+  habitat:
+  - TUNDRA
+  - TAIGA
+  ai: passive_wanderer
+  description: A white fox cub that dives head-first into snowdrifts to catch mice. Its fur keeps it warm in deep frost, but
+    it pants in summer sun.
+  inspiredBy: Alolan Vulpix, RO Baby Desert Wolf
+  loot:
+  - item: soft_fur
+    chance: 25
+  - item: raw_meat
+    chance: 15
+  - item: frost_crystal
+    chance: 3
+  learnset:
+    replace:
+    - slot: 2
+      skill: sniff_trail
+    - slot: 4
+      skill: warm_fur
+  look:
+    colour: '#f4f8ff'
+- id: 16
+  identifier: waddler
+  name: Waddler
+  level: 11
+  tier: normal
+  role: tank
+  kind: BIRD
+  element: WATER
+  size: MEDIUM
+  habitat:
+  - ICE_SHEET
+  - TUNDRA
+  ai: passive_wanderer
+  description: A proud penguin that slides on its belly faster than most can run. It guards the colony's ice holes and pecks
+    anyone who comes close.
+  inspiredBy: Piplup
+  loot:
+  - item: feather
+    chance: 25
+  - item: raw_fish
+    chance: 25
+  learnset:
+    replace:
+    - slot: 3
+      skill: go_fishing
+  look:
+    colour: '#2a3440'
+- id: 17
+  identifier: stingtail
+  name: Stingtail
+  level: 12
+  tier: normal
+  role: skirmisher
+  kind: INSECT
+  element: POISON
+  size: SMALL
+  habitat:
+  - DESERT
+  - BADLANDS
+  ai: aggressive_melee
+  description: Hides under hot stones and stings whatever steps near. Carry an antidote before you lift a rock in the desert.
+  inspiredBy: RO Scorpion, Skorupi
+  loot:
+  - item: venom_sac
+    chance: 15
+  - item: chitin
+    chance: 20
+  look:
+    colour: '#b5651d'
+- id: 18
+  identifier: monkling
+  name: Monkling
+  level: 8
+  tier: normal
+  role: skirmisher
+  kind: BEAST
+  element: NORMAL
+  size: SMALL
+  habitat:
+  - TROPICAL_SEASONAL_FOREST
+  - TROPICAL_RAINFOREST
+  ai: passive_wanderer
+  description: A cheeky monkey that snatches shiny things and flees into the canopy. Keep a hand on your purse under the trees.
+  inspiredBy: RO Yoyo, Aipom
+  loot:
+  - item: apple
+    chance: 25
+  - item: bramble_berries
+    chance: 20
+  - item: gold_coin
+    chance: 5
+  learnset:
+    replace:
+    - slot: 2
+      skill: mock
+    - slot: 5
+      skill: forage
+  look:
+    colour: '#a0522d'
+- id: 19
+  identifier: bogsnail
+  name: Bogsnail
+  level: 7
+  tier: normal
+  role: tank
+  kind: AQUATIC
+  element: POISON
+  size: SMALL
+  habitat:
+  - BOG
+  - SWAMP
+  ai: passive_wanderer
+  description: A slow snail that leaves a toxic slime trail across the peat. Do not walk where the moss glistens.
+  inspiredBy: RO Ambernite, Shellos
+  loot:
+  - item: clay
+    chance: 20
+  - item: venom_sac
+    chance: 8
+  learnset:
+    drop:
+    - 19
+  look:
+    colour: '#556b2f'
+- id: 20
+  identifier: glimmerwing
+  name: Glimmerwing
+  level: 9
+  tier: normal
+  role: support
+  kind: INSECT
+  element: WIND
+  size: SMALL
+  habitat:
+  - TROPICAL_RAINFOREST
+  - TROPICAL_SEASONAL_FOREST
+  ai: passive_wanderer
+  description: A butterfly with wings like stained glass. The dust it sheds makes eyes heavy, so do not fight it in a clearing
+    full of them.
+  inspiredBy: RO Creamy, Butterfree
+  loot:
+  - item: silk_thread
+    chance: 15
+  - item: mana_dust
+    chance: 10
+  learnset:
+    replace:
+    - slot: 4
+      skill: spin_silk
+  look:
+    colour: '#ff7fd0'
+- id: 21
+  identifier: puffcap
+  name: Puffcap
+  level: 10
+  tier: normal
+  role: caster
+  kind: PLANT
+  element: POISON
+  size: SMALL
+  habitat:
+  - TEMPERATE_RAINFOREST
+  - BOG
+  ai: passive_wanderer
+  description: A walking mushroom that puffs out spores when hit. Fire makes short work of it, and of the spores too.
+  inspiredBy: RO Spore, Foongus
+  loot:
+  - item: spore_dust
+    chance: 30
+  - item: wild_herb
+    chance: 15
+  learnset:
+    replace:
+    - slot: 3
+      skill: gather_herbs
+  look:
+    colour: '#c0392b'
+- id: 22
+  identifier: pebblit
+  name: Pebblit
+  level: 13
+  tier: normal
+  role: tank
+  kind: ELEMENTAL
+  element: EARTH
+  size: SMALL
+  habitat:
+  - ALPINE
+  - COLD_DESERT
+  - BADLANDS
+  - VOLCANIC_FIELD
+  ai: passive_wanderer
+  description: A rock with arms that rolls downhill on purpose. It looks like any other stone until it gets up.
+  inspiredBy: Geodude
+  loot:
+  - item: quarried_stone
+    chance: 30
+  - item: iron_ore
+    chance: 10
+  - item: coal
+    chance: 10
+  learnset:
+    replace:
+    - slot: 4
+      skill: mine_ore
+  look:
+    colour: '#8e8e8e'
+- id: 23
+  identifier: lanternwisp
+  name: Lanternwisp
+  level: 14
+  tier: normal
+  role: caster
+  kind: FORMLESS
+  element: GHOST
+  size: SMALL
+  habitat:
+  - BOG
+  - SWAMP
+  ai: aggressive_melee
+  description: A pale flame that bobs over the marsh at night and leads travellers astray. Plain blows pass through it; magic
+    does not.
+  inspiredBy: RO Whisper, Litwick
+  loot:
+  - item: ectoplasm
+    chance: 20
+  - item: mana_dust
+    chance: 15
+  learnset:
+    replace:
+    - slot: 6
+      skill: shadow_meld
+    add:
+    - skill: kindle
+      level: 20
+  look:
+    colour: '#b8f0ff'
+    glow: 0.5
+- id: 24
+  identifier: bristlehog
+  name: Bristlehog
+  level: 16
+  tier: normal
+  role: tank
+  kind: BEAST
+  element: EARTH
+  size: SMALL
+  habitat:
+  - TEMPERATE_FOREST
+  - GRASSLAND
+  ai: passive_wanderer
+  description: Curls into a spiky ball when threatened and rolls at its attacker. Hit it before it curls up.
+  inspiredBy: Sandshrew
+  loot:
+  - item: raw_hide
+    chance: 20
+  - item: sharp_fang
+    chance: 10
+  - item: bramble_berries
+    chance: 15
+  learnset:
+    replace:
+    - slot: 5
+      skill: forage
+  look:
+    colour: '#7a5c3c'
+- id: 25
+  identifier: smokit
+  name: Smokit
+  level: 18
+  tier: normal
+  role: skirmisher
+  kind: BEAST
+  element: NORMAL
+  size: SMALL
+  habitat:
+  - TEMPERATE_FOREST
+  - TEMPERATE_RAINFOREST
+  ai: passive_wanderer
+  description: A raccoon that balances a leaf on its head and swears it is a disguise. It hoards mushrooms and trinkets in
+    hollow logs.
+  inspiredBy: RO Smokie, Zigzagoon
+  loot:
+  - item: soft_fur
+    chance: 15
+  - item: wild_herb
+    chance: 15
+  - item: gold_coin
+    chance: 8
+  learnset:
+    replace:
+    - slot: 3
+      skill: leaf_disguise
+    - slot: 6
+      skill: forage
+  look:
+    colour: '#5c5c5c'
+- id: 26
+  identifier: hookbeak
+  name: Hookbeak
+  level: 22
+  tier: normal
+  role: skirmisher
+  kind: BIRD
+  element: WIND
+  size: MEDIUM
+  habitat:
+  - GRASSLAND
+  - DRYLAND
+  - ALPINE
+  ai: aggressive_melee
+  description: A ragged hawk that dives on anything smaller than itself, and some things that are not. It strikes out of the
+    sun, so look up on open ground.
+  inspiredBy: Spearow, Fearow
+  loot:
+  - item: feather
+    chance: 35
+  - item: raw_meat
+    chance: 15
+  learnset:
+    replace:
+    - slot: 4
+      skill: keen_eye
+    - slot: 7
+      skill: gale_step
+  look:
+    colour: '#8b5a2b'
+- id: 27
+  identifier: tallhorn
+  name: Tallhorn
+  level: 20
+  tier: normal
+  role: tank
+  kind: BEAST
+  element: NORMAL
+  size: BIG
+  habitat:
+  - GRASSLAND
+  - DRYLAND
+  - TROPICAL_SEASONAL_FOREST
+  ai: passive_wanderer
+  description: Grazes in great herds that stamp the plains flat. Harm one calf and the whole herd turns on you.
+  inspiredBy: Tauros
+  loot:
+  - item: raw_meat
+    chance: 35
+  - item: raw_hide
+    chance: 30
+  - item: horn
+    chance: 15
+  learnset:
+    drop:
+    - 18
+  look:
+    colour: '#c19a6b'
+- id: 28
+  identifier: ashpelt_wolf
+  name: Ashpelt Wolf
+  level: 28
+  tier: normal
+  role: brute
+  kind: BEAST
+  element: NORMAL
+  size: MEDIUM
+  habitat:
+  - TAIGA
+  - TEMPERATE_FOREST
+  ai: aggressive_melee
+  description: Grey wolves that hunt in packs under the pines. They circle before they bite; keep your back to a tree.
+  inspiredBy: RO Wolf, Mightyena
+  loot:
+  - item: raw_hide
+    chance: 30
+  - item: raw_meat
+    chance: 20
+  - item: sharp_fang
+    chance: 15
+  learnset:
+    replace:
+    - slot: 3
+      skill: sniff_trail
+  look:
+    colour: '#6e6e6e'
+- id: 29
+  identifier: conehurler
+  name: Conehurler
+  level: 24
+  tier: normal
+  role: skirmisher
+  kind: PLANT
+  element: EARTH
+  size: SMALL
+  habitat:
+  - TAIGA
+  ai: aggressive_melee
+  description: Looks like a pine cone on a branch until it drops on your head. It throws cones that burst into splinters.
+  inspiredBy: Pineco
+  loot:
+  - item: log
+    chance: 25
+  - item: wild_herb
+    chance: 10
+  look:
+    colour: '#8b5e3c'
+- id: 30
+  identifier: honeymaw
+  name: Honeymaw
+  level: 34
+  tier: normal
+  role: brute
+  kind: BEAST
+  element: EARTH
+  size: BIG
+  habitat:
+  - TEMPERATE_FOREST
+  - TAIGA
+  ai: passive_wanderer
+  description: A huge bear that raids bee nests and sleeps it off in the sun. Wake it at your own risk; it is far quicker
+    than it looks.
+  inspiredBy: RO Bigfoot, Ursaring
+  loot:
+  - item: honeycomb
+    chance: 20
+  - item: raw_hide
+    chance: 25
+  - item: sharp_fang
+    chance: 10
+  learnset:
+    replace:
+    - slot: 5
+      skill: collect_honey
+  look:
+    colour: '#7b4b2a'
+- id: 31
+  identifier: crag_ram
+  name: Crag Ram
+  level: 30
+  tier: normal
+  role: brute
+  kind: BEAST
+  element: EARTH
+  size: MEDIUM
+  habitat:
+  - ALPINE
+  - BADLANDS
+  ai: aggressive_melee
+  description: Leaps from ledge to ledge where no path exists. It charges from above and tries to knock climbers off the cliff.
+  inspiredBy: Gogoat
+  loot:
+  - item: horn
+    chance: 25
+  - item: wool
+    chance: 20
+  learnset:
+    replace:
+    - slot: 6
+      skill: shed_wool
+  look:
+    colour: '#bcae98'
+- id: 32
+  identifier: harpy
+  name: Harpy
+  level: 44
+  tier: normal
+  role: skirmisher
+  kind: BIRD
+  element: WIND
+  size: MEDIUM
+  habitat:
+  - ALPINE
+  - BADLANDS
+  ai: aggressive_melee
+  description: Half woman, half vulture, all temper. Harpies nest on cliff tops and shriek to call the flock.
+  inspiredBy: RO Harpy, Braviary
+  loot:
+  - item: feather
+    chance: 40
+  - item: sharp_fang
+    chance: 10
+  learnset:
+    replace:
+    - slot: 7
+      skill: keen_eye
+  look:
+    colour: '#9b7653'
+- id: 33
+  identifier: woolhorn_yak
+  name: Woolhorn Yak
+  level: 26
+  tier: normal
+  role: tank
+  kind: BEAST
+  element: WATER
+  size: BIG
+  habitat:
+  - COLD_DESERT
+  - TUNDRA
+  - ALPINE
+  ai: passive_wanderer
+  description: A shaggy yak whose wool never freezes. Nomads follow its herds, and its wool sells well in the warm south.
+  inspiredBy: Mamoswine, Bouffalant
+  loot:
+  - item: wool
+    chance: 40
+  - item: raw_meat
+    chance: 25
+  - item: horn
+    chance: 10
+  learnset:
+    replace:
+    - slot: 2
+      skill: shed_wool
+    - slot: 6
+      skill: warm_fur
+  look:
+    colour: '#4b3621'
+- id: 34
+  identifier: snowcap
+  name: Snowcap
+  level: 32
+  tier: normal
+  role: caster
+  kind: ELEMENTAL
+  element: WATER
+  size: MEDIUM
+  habitat:
+  - TUNDRA
+  - ICE_SHEET
+  ai: aggressive_melee
+  description: A snowman that came alive in a blizzard and never thawed. Fire melts its grin off fast, and it knows to keep
+    its distance.
+  inspiredBy: RO Snowier, Snorunt
+  loot:
+  - item: frost_crystal
+    chance: 15
+  - item: coal
+    chance: 15
+  - item: mana_dust
+    chance: 10
+  learnset:
+    replace:
+    - slot: 5
+      skill: cooling_mist
+  look:
+    colour: '#ffffff'
+- id: 35
+  identifier: tuskseal
+  name: Tuskseal
+  level: 36
+  tier: normal
+  role: tank
+  kind: AQUATIC
+  element: WATER
+  size: BIG
+  habitat:
+  - ICE_SHEET
+  - OCEAN
+  - BEACH
+  ai: passive_wanderer
+  description: A walrus that dozes on ice floes in big groups. Mothers with pups attack anything that comes near.
+  inspiredBy: Walrein
+  loot:
+  - item: raw_fish
+    chance: 30
+  - item: raw_hide
+    chance: 20
+  - item: horn
+    chance: 15
+  learnset:
+    replace:
+    - slot: 3
+      skill: go_fishing
+    - slot: 8
+      skill: salt_crust
+  look:
+    colour: '#9c8f84'
+- id: 36
+  identifier: jellyveil
+  name: Jellyveil
+  level: 27
+  tier: normal
+  role: support
+  kind: AQUATIC
+  element: WATER
+  size: MEDIUM
+  habitat:
+  - OCEAN
+  - BEACH
+  ai: passive_wanderer
+  description: A see-through jellyfish that washes up after storms. Its threads sting and numb the limbs, so do not wade in
+    after a storm.
+  inspiredBy: RO Marina, Tentacool
+  loot:
+  - item: jelly
+    chance: 30
+  - item: venom_sac
+    chance: 8
+  - item: sea_pearl
+    chance: 2
+  learnset:
+    replace:
+    - slot: 4
+      skill: cooling_mist
+  look:
+    colour: '#a0d8ef'
+    glow: 0.2
+- id: 37
+  identifier: stardrift
+  name: Stardrift
+  level: 23
+  tier: normal
+  role: caster
+  kind: AQUATIC
+  element: WATER
+  size: SMALL
+  habitat:
+  - BEACH
+  - OCEAN
+  ai: passive_wanderer
+  description: A starfish with a glowing core that spins across the sand at night. The core is a crafting gem, and it knows
+    it.
+  inspiredBy: Staryu
+  loot:
+  - item: salt
+    chance: 20
+  - item: raw_fish
+    chance: 10
+  - item: star_core
+    chance: 4
+  look:
+    colour: '#ffcc66'
+    glow: 0.4
+- id: 38
+  identifier: mudjaw
+  name: Mudjaw
+  level: 38
+  tier: normal
+  role: brute
+  kind: REPTILE
+  element: WATER
+  size: BIG
+  habitat:
+  - RIPARIAN
+  - SWAMP
+  - LAKE
+  ai: aggressive_melee
+  description: 'Lies as still as a log in shallow water. River folk say: if a log has eyes, walk the other way.'
+  inspiredBy: Feraligatr
+  loot:
+  - item: reptile_scale
+    chance: 25
+  - item: raw_meat
+    chance: 25
+  - item: sharp_fang
+    chance: 10
+  learnset:
+    replace:
+    - slot: 6
+      skill: go_fishing
+  look:
+    colour: '#4b5320'
+- id: 39
+  identifier: bloatfrog
+  name: Bloatfrog
+  level: 33
+  tier: normal
+  role: caster
+  kind: AQUATIC
+  element: POISON
+  size: MEDIUM
+  habitat:
+  - SWAMP
+  - BOG
+  ai: aggressive_melee
+  description: A swollen toad with poison sacs in its cheeks. It puffs up before it spits; that is your moment to move.
+  inspiredBy: RO Toad, Toxicroak
+  loot:
+  - item: venom_sac
+    chance: 20
+  - item: raw_meat
+    chance: 15
+  look:
+    colour: '#7fbf3f'
+- id: 40
+  identifier: drowned_one
+  name: Drowned One
+  level: 42
+  tier: normal
+  role: brute
+  kind: UNDEAD
+  element: UNDEAD
+  size: MEDIUM
+  habitat:
+  - BOG
+  - SWAMP
+  - LAKE
+  ai: aggressive_melee
+  description: A peat-soaked corpse that crawls out of the bog when the mist is thick. Holy light and fire send it back down.
+  inspiredBy: RO Zombie
+  loot:
+  - item: bone_shard
+    chance: 25
+  - item: old_bandage
+    chance: 10
+  - item: ectoplasm
+    chance: 8
+  look:
+    colour: '#5f6f5a'
+- id: 41
+  identifier: dune_scarab
+  name: Dune Scarab
+  level: 25
+  tier: normal
+  role: tank
+  kind: INSECT
+  element: EARTH
+  size: SMALL
+  habitat:
+  - DESERT
+  - DRYLAND
+  ai: passive_wanderer
+  description: Rolls balls of dung across the dunes and buries them with lost coins inside. Dig where it digs.
+  inspiredBy: RO Thief Bug, Dwebble
+  loot:
+  - item: chitin
+    chance: 30
+  - item: gold_coin
+    chance: 15
+  learnset:
+    replace:
+    - slot: 3
+      skill: unearth
+  look:
+    colour: '#2f4f4f'
+- id: 42
+  identifier: mummy
+  name: Mummy
+  level: 48
+  tier: normal
+  role: tank
+  kind: UNDEAD
+  element: UNDEAD
+  size: MEDIUM
+  habitat:
+  - DESERT
+  - BADLANDS
+  ai: aggressive_melee
+  description: A wrapped corpse that guards tombs long after its masters turned to dust. Its loose bandages burn well.
+  inspiredBy: RO Mummy, Cofagrigus
+  loot:
+  - item: old_bandage
+    chance: 40
+  - item: cloth
+    chance: 15
+  - item: gold_coin
+    chance: 10
+  look:
+    colour: '#d9cbb0'
+- id: 43
+  identifier: sidewinder
+  name: Sidewinder
+  level: 37
+  tier: normal
+  role: skirmisher
+  kind: REPTILE
+  element: POISON
+  size: MEDIUM
+  habitat:
+  - DESERT
+  - DRYLAND
+  ai: aggressive_melee
+  description: A sand viper that moves sideways and leaves strange tracks on the dunes. Its venom slows the heart, so a cure
+    is worth its weight in water.
+  inspiredBy: RO Side Winder, Seviper
+  loot:
+  - item: reptile_scale
+    chance: 25
+  - item: venom_sac
+    chance: 20
+  learnset:
+    replace:
+    - slot: 5
+      skill: sniff_trail
+  look:
+    colour: '#d2b48c'
+- id: 44
+  identifier: cackler
+  name: Cackler
+  level: 21
+  tier: normal
+  role: brute
+  kind: BEAST
+  element: NORMAL
+  size: MEDIUM
+  habitat:
+  - DRYLAND
+  - BADLANDS
+  ai: aggressive_melee
+  description: A spotted scavenger whose laugh carries far. Where the cackling starts, something weak is about to die; make
+    sure it is not you.
+  inspiredBy: RO Desert Wolf, Mightyena
+  loot:
+  - item: raw_hide
+    chance: 25
+  - item: bone_shard
+    chance: 15
+  - item: sharp_fang
+    chance: 10
+  learnset:
+    replace:
+    - slot: 3
+      skill: cackle
+    - slot: 7
+      skill: sniff_trail
+  look:
+    colour: '#a68a64'
+- id: 45
+  identifier: basker
+  name: Basker
+  level: 29
+  tier: normal
+  role: balanced
+  kind: REPTILE
+  element: FIRE
+  size: MEDIUM
+  habitat:
+  - BADLANDS
+  - DESERT
+  - VOLCANIC_FIELD
+  ai: passive_wanderer
+  description: A lizard that soaks up sun on hot rocks until its scales glow. Hunt it in the cold morning, before it has warmed
+    up.
+  inspiredBy: Salandit, Charmander
+  loot:
+  - item: reptile_scale
+    chance: 25
+  - item: ember_core
+    chance: 3
+  learnset:
+    replace:
+    - slot: 4
+      skill: kindle
+  look:
+    colour: '#e2725b'
+- id: 46
+  identifier: boulderkin
+  name: Boulderkin
+  level: 52
+  tier: elite
+  role: tank
+  kind: ELEMENTAL
+  element: EARTH
+  size: BIG
+  habitat:
+  - BADLANDS
+  - ALPINE
+  ai: passive_wanderer
+  description: A walking hill of stone, slow to anger and slower to stop. Wind cuts into its cracks; blades just ring.
+  inspiredBy: RO Golem, Golem
+  loot:
+  - item: quarried_stone
+    chance: 40
+  - item: iron_ore
+    chance: 20
+  - item: rough_gem
+    chance: 5
+  learnset:
+    replace:
+    - slot: 5
+      skill: mine_ore
+  look:
+    colour: '#7d7461'
+- id: 47
+  identifier: cinderpup
+  name: Cinderpup
+  level: 35
+  tier: normal
+  role: brute
+  kind: BEAST
+  element: FIRE
+  size: MEDIUM
+  habitat:
+  - VOLCANIC_FIELD
+  - BADLANDS
+  ai: aggressive_melee
+  description: A pup with an ember for a nose. Wild ones guard hot vents in packs; tamed ones make the best watchdogs alive.
+  inspiredBy: Growlithe
+  loot:
+  - item: raw_hide
+    chance: 20
+  - item: sharp_fang
+    chance: 10
+  - item: ember_core
+    chance: 6
+  learnset:
+    replace:
+    - slot: 3
+      skill: kindle
+    add:
+    - skill: tend_wounds
+      level: 30
+  look:
+    colour: '#ff6a00'
+- id: 48
+  identifier: magmaslug
+  name: Magmaslug
+  level: 40
+  tier: normal
+  role: caster
+  kind: FORMLESS
+  element: FIRE
+  size: SMALL
+  habitat:
+  - VOLCANIC_FIELD
+  - GEOTHERMAL_BASIN
+  ai: passive_wanderer
+  description: A blob of living lava that oozes over cooling rock. It leaves a burning trail, so never follow it in light
+    boots.
+  inspiredBy: Slugma
+  loot:
+  - item: coal
+    chance: 25
+  - item: ember_core
+    chance: 10
+  learnset:
+    replace:
+    - slot: 3
+      skill: kindle
+  look:
+    colour: '#ff4500'
+    glow: 0.3
+- id: 49
+  identifier: spoutle
+  name: Spoutle
+  level: 31
+  tier: normal
+  role: tank
+  kind: REPTILE
+  element: WATER
+  size: MEDIUM
+  habitat:
+  - GEOTHERMAL_BASIN
+  - LAKE
+  ai: passive_wanderer
+  description: A turtle that sleeps in hot springs with only its nose above water. Startle it and it shoots a jet of scalding
+    water.
+  inspiredBy: Squirtle, Torkoal
+  loot:
+  - item: reptile_scale
+    chance: 20
+  - item: salt
+    chance: 15
+  learnset:
+    replace:
+    - slot: 4
+      skill: cooling_mist
+  look:
+    colour: '#5f9ea0'
+- id: 50
+  identifier: sulphur_imp
+  name: Sulphur Imp
+  level: 46
+  tier: normal
+  role: caster
+  kind: DEMON
+  element: FIRE
+  size: SMALL
+  habitat:
+  - GEOTHERMAL_BASIN
+  - VOLCANIC_FIELD
+  ai: aggressive_melee
+  description: A little horned trickster that smells of rotten eggs. It plays pranks on travellers by the vents, and some
+    pranks explode.
+  inspiredBy: RO Deviruchi, Impidimp
+  loot:
+  - item: coal
+    chance: 20
+  - item: ember_core
+    chance: 5
+  - item: shadow_shard
+    chance: 4
+  learnset:
+    replace:
+    - slot: 3
+      skill: mock
+    - slot: 8
+      skill: kindle
+  look:
+    colour: '#c8b400'
+- id: 51
+  identifier: sunmane
+  name: Sunmane
+  level: 45
+  tier: elite
+  role: brute
+  kind: BEAST
+  element: HOLY
+  size: BIG
+  habitat:
+  - TROPICAL_SEASONAL_FOREST
+  - DRYLAND
+  ai: aggressive_melee
+  description: A lion with a mane that glows like dawn, leading its pride over the savanna. Shadow creatures avoid its land,
+    and so should you.
+  inspiredBy: Pyroar, Solgaleo
+  loot:
+  - item: raw_hide
+    chance: 35
+  - item: sharp_fang
+    chance: 20
+  - item: mana_crystal
+    chance: 3
+  learnset:
+    replace:
+    - slot: 9
+      skill: benediction
+  look:
+    colour: '#ffd700'
+    glow: 0.3
+- id: 52
+  identifier: scythid
+  name: Scythid
+  level: 39
+  tier: normal
+  role: skirmisher
+  kind: INSECT
+  element: WIND
+  size: MEDIUM
+  habitat:
+  - TROPICAL_SEASONAL_FOREST
+  - TROPICAL_RAINFOREST
+  ai: aggressive_melee
+  description: A mantis with sickle arms that waits motionless in tall grass. It is fast but light; heavy blows knock it flat.
+  inspiredBy: RO Mantis, Scyther
+  loot:
+  - item: chitin
+    chance: 30
+  - item: sharp_fang
+    chance: 10
+  learnset:
+    drop:
+    - 17
+  look:
+    colour: '#3cb371'
+- id: 53
+  identifier: snapvine
+  name: Snapvine
+  level: 26
+  tier: normal
+  role: brute
+  kind: PLANT
+  element: EARTH
+  size: MEDIUM
+  habitat:
+  - TROPICAL_RAINFOREST
+  - SWAMP
+  ai: aggressive_melee
+  description: A rooted flytrap that bites anything in reach. It cannot move, so fight it from afar.
+  inspiredBy: RO Flora, Victreebel
+  loot:
+  - item: wild_herb
+    chance: 25
+  - item: log
+    chance: 15
+  look:
+    colour: '#228b22'
+- id: 54
+  identifier: mossback_stag
+  name: Mossback Stag
+  level: 41
+  tier: normal
+  role: tank
+  kind: BEAST
+  element: EARTH
+  size: BIG
+  habitat:
+  - TEMPERATE_RAINFOREST
+  - TAIGA
+  ai: passive_wanderer
+  description: A stag with ferns growing in its antlers. It is gentle, but in rutting season it fights anything with horns,
+    and anything without.
+  inspiredBy: Sawsbuck
+  loot:
+  - item: horn
+    chance: 25
+  - item: raw_hide
+    chance: 25
+  - item: wild_herb
+    chance: 15
+  learnset:
+    replace:
+    - slot: 4
+      skill: gather_herbs
+  look:
+    colour: '#556b2f'
+- id: 55
+  identifier: kobold_scrapper
+  name: Kobold Scrapper
+  level: 24
+  tier: normal
+  role: balanced
+  kind: HUMANOID
+  element: NORMAL
+  size: SMALL
+  habitat:
+  - COLD_DESERT
+  - ALPINE
+  - BADLANDS
+  ai: aggressive_melee
+  description: Small dog-faced miners that dig for ore and fight over every scrap. Their camps are full of stolen tools.
+  inspiredBy: RO Kobold
+  loot:
+  - item: iron_ore
+    chance: 20
+  - item: nails
+    chance: 15
+  - item: coal
+    chance: 15
+  learnset:
+    replace:
+    - slot: 3
+      skill: mine_ore
+    - slot: 6
+      skill: unearth
+  look:
+    colour: '#b87333'
+- id: 56
+  identifier: stormstrider
+  name: Stormstrider
+  level: 56
+  tier: normal
+  role: skirmisher
+  kind: BIRD
+  element: WIND
+  size: BIG
+  habitat:
+  - GRASSLAND
+  - DRYLAND
+  ai: passive_wanderer
+  description: A huge flightless bird that runs fastest in a thunderstorm. Riders dream of taming one; most only ever see
+    its tail.
+  inspiredBy: RO Grand Peco, Zebstrika
+  loot:
+  - item: feather
+    chance: 40
+  - item: raw_meat
+    chance: 25
+  learnset:
+    replace:
+    - slot: 3
+      skill: gale_step
+  look:
+    colour: '#4682b4'
+- id: 57
+  identifier: weeping_willow
+  name: Weeping Willow
+  level: 57
+  tier: normal
+  role: caster
+  kind: PLANT
+  element: EARTH
+  size: BIG
+  habitat:
+  - RIPARIAN
+  - SWAMP
+  - TEMPERATE_RAINFOREST
+  ai: aggressive_melee
+  description: An old willow that drags its branches through the water and drowns what it catches. Fire is the only thing
+    it fears.
+  inspiredBy: RO Elder Willow, Trevenant
+  loot:
+  - item: log
+    chance: 40
+  - item: wild_herb
+    chance: 20
+  - item: spore_dust
+    chance: 10
+  learnset:
+    replace:
+    - slot: 6
+      skill: fell_branches
+  look:
+    colour: '#6b8e23'
+- id: 58
+  identifier: needlewalker
+  name: Needlewalker
+  level: 59
+  tier: normal
+  role: tank
+  kind: PLANT
+  element: EARTH
+  size: MEDIUM
+  habitat:
+  - DESERT
+  - DRYLAND
+  ai: passive_wanderer
+  description: A cactus that walks to new water at night. It fires needles when touched, and its flesh holds water for thirsty
+    travellers.
+  inspiredBy: RO Muka, Cacturne
+  loot:
+  - item: wild_herb
+    chance: 20
+  - item: medicine
+    chance: 8
+  - item: flax
+    chance: 10
+  learnset:
+    replace:
+    - slot: 5
+      skill: gather_herbs
+  look:
+    colour: '#2e8b57'
+- id: 59
+  identifier: duskstalker
+  name: Duskstalker
+  level: 60
+  tier: normal
+  role: skirmisher
+  kind: BEAST
+  element: SHADOW
+  size: MEDIUM
+  habitat:
+  - TAIGA
+  - TEMPERATE_FOREST
+  ai: aggressive_melee
+  description: A black lynx that hunts only in darkness and vanishes into its own shadow. Carry a light; it will not attack
+    inside one.
+  inspiredBy: Absol
+  loot:
+  - item: soft_fur
+    chance: 25
+  - item: sharp_fang
+    chance: 15
+  - item: shadow_shard
+    chance: 5
+  learnset:
+    replace:
+    - slot: 5
+      skill: shadow_meld
+    - slot: 8
+      skill: sniff_trail
+  look:
+    colour: '#1c1c24'
+- id: 60
+  identifier: vine_constrictor
+  name: Vine Constrictor
+  level: 61
+  tier: normal
+  role: brute
+  kind: REPTILE
+  element: EARTH
+  size: BIG
+  habitat:
+  - TROPICAL_RAINFOREST
+  - SWAMP
+  ai: aggressive_melee
+  description: A giant snake the colour of jungle vines. It drops from the canopy and squeezes; a friend nearby is the best
+    cure.
+  inspiredBy: RO Anacondaq, Arbok
+  loot:
+  - item: reptile_scale
+    chance: 35
+  - item: raw_meat
+    chance: 20
+  look:
+    colour: '#2f6f3f'
+- id: 61
+  identifier: rimehulk_yeti
+  name: Rimehulk Yeti
+  level: 62
+  tier: normal
+  role: brute
+  kind: BEAST
+  element: WATER
+  size: BIG
+  habitat:
+  - TUNDRA
+  - ALPINE
+  - ICE_SHEET
+  ai: aggressive_melee
+  description: A shaggy giant whose roar starts avalanches. It hurls blocks of ice, so never let it take the high ground.
+  inspiredBy: RO Sasquatch, Abomasnow
+  loot:
+  - item: soft_fur
+    chance: 30
+  - item: raw_meat
+    chance: 25
+  - item: frost_crystal
+    chance: 12
+  learnset:
+    replace:
+    - slot: 6
+      skill: warm_fur
+  look:
+    colour: '#e8f0ff'
+- id: 62
+  identifier: geyser_drake
+  name: Geyser Drake
+  level: 63
+  tier: normal
+  role: caster
+  kind: DRAGON
+  element: WATER
+  size: MEDIUM
+  habitat:
+  - GEOTHERMAL_BASIN
+  - VOLCANIC_FIELD
+  ai: aggressive_melee
+  description: A slender drake that sleeps in boiling pools and breathes steam. Its scales stay warm long after it dies.
+  inspiredBy: Dragonair
+  loot:
+  - item: reptile_scale
+    chance: 25
+  - item: salt
+    chance: 10
+  - item: dragon_scale
+    chance: 3
+  learnset:
+    replace:
+    - slot: 5
+      skill: cooling_mist
+  look:
+    colour: '#87cefa'
+- id: 63
+  identifier: merrow_raider
+  name: Merrow Raider
+  level: 64
+  tier: normal
+  role: balanced
+  kind: HUMANOID
+  element: WATER
+  size: MEDIUM
+  habitat:
+  - BEACH
+  - OCEAN
+  ai: aggressive_melee
+  description: Fish-folk with tridents who raid the coast at high tide. They flee to the sea when hurt, so finish the fight
+    on the sand.
+  inspiredBy: RO Merman
+  loot:
+  - item: raw_fish
+    chance: 30
+  - item: gold_coin
+    chance: 15
+  - item: sea_pearl
+    chance: 6
+  learnset:
+    replace:
+    - slot: 4
+      skill: go_fishing
+  look:
+    colour: '#2e8b8b'
+- id: 64
+  identifier: dustwraith
+  name: Dustwraith
+  level: 66
+  tier: normal
+  role: caster
+  kind: FORMLESS
+  element: GHOST
+  size: MEDIUM
+  habitat:
+  - COLD_DESERT
+  - DESERT
+  ai: aggressive_melee
+  description: A whirl of dust and an old grudge drifting over cold dunes. Ordinary weapons pass through it; enchanted ones
+    do not.
+  inspiredBy: RO Wraith, Dusclops
+  loot:
+  - item: ectoplasm
+    chance: 25
+  - item: shadow_shard
+    chance: 4
+  look:
+    colour: '#c2b280'
+    glow: 0.2
+- id: 65
+  identifier: hill_ogre
+  name: Hill Ogre
+  level: 67
+  tier: normal
+  role: brute
+  kind: HUMANOID
+  element: EARTH
+  size: BIG
+  habitat:
+  - GRASSLAND
+  - BADLANDS
+  - ALPINE
+  ai: aggressive_melee
+  description: A huge brute that clubs first and thinks never. Its swings are wide; stay close and keep moving.
+  inspiredBy: RO High Orc, Machamp
+  loot:
+  - item: raw_meat
+    chance: 30
+  - item: log
+    chance: 20
+  - item: gold_coin
+    chance: 15
+  - item: iron_ore
+    chance: 10
+  learnset:
+    replace:
+    - slot: 8
+      skill: fell_branches
+  look:
+    colour: '#8f9779'
+- id: 66
+  identifier: kelpie
+  name: Kelpie
+  level: 68
+  tier: normal
+  role: caster
+  kind: BEAST
+  element: WATER
+  size: BIG
+  habitat:
+  - LAKE
+  - RIPARIAN
+  ai: passive_wanderer
+  description: A water horse that waits by the shore, calm and saddled. Whoever climbs on is dragged into the lake.
+  inspiredBy: Keldeo
+  loot:
+  - item: raw_hide
+    chance: 25
+  - item: reed_stalk
+    chance: 20
+  - item: sea_pearl
+    chance: 5
+  learnset:
+    replace:
+    - slot: 4
+      skill: gale_step
+  look:
+    colour: '#2f4f6f'
+- id: 67
+  identifier: moonmare
+  name: Moonmare
+  level: 69
+  tier: normal
+  role: support
+  kind: BEAST
+  element: HOLY
+  size: BIG
+  habitat:
+  - TEMPERATE_RAINFOREST
+  - TEMPERATE_FOREST
+  ai: passive_wanderer
+  description: A pale unicorn seen only on moonlit nights. It flees at the sight of drawn weapons; only a gentle master can
+    tame it.
+  inspiredBy: Galarian Rapidash
+  loot:
+  - item: horn
+    chance: 20
+  - item: soft_fur
+    chance: 20
+  - item: mana_crystal
+    chance: 6
+  learnset:
+    replace:
+    - slot: 6
+      skill: benediction
+    - slot: 9
+      skill: tend_wounds
+  look:
+    colour: '#f0f8ff'
+    glow: 0.3
+- id: 68
+  identifier: stormback_ape
+  name: Stormback Ape
+  level: 71
+  tier: normal
+  role: brute
+  kind: BEAST
+  element: WIND
+  size: BIG
+  habitat:
+  - TROPICAL_SEASONAL_FOREST
+  - TROPICAL_RAINFOREST
+  ai: aggressive_melee
+  description: A silver-backed ape that beats its chest like thunder. It throws whole branches and fights harder when its
+    troop is near.
+  inspiredBy: Primeape, Passimian
+  loot:
+  - item: raw_hide
+    chance: 30
+  - item: apple
+    chance: 25
+  - item: log
+    chance: 15
+  learnset:
+    replace:
+    - slot: 5
+      skill: fell_branches
+  look:
+    colour: '#a9a9a9'
+- id: 69
+  identifier: brineserpent
+  name: Brineserpent
+  level: 72
+  tier: normal
+  role: brute
+  kind: AQUATIC
+  element: WATER
+  size: BIG
+  habitat:
+  - OCEAN
+  - BEACH
+  ai: aggressive_melee
+  description: A sea serpent that rises from the surf during storms. Fishers wait for calm weather for a reason.
+  inspiredBy: RO Strouf, Gyarados
+  loot:
+  - item: reptile_scale
+    chance: 30
+  - item: salt
+    chance: 25
+  - item: sea_pearl
+    chance: 5
+  learnset:
+    replace:
+    - slot: 7
+      skill: salt_crust
+  look:
+    colour: '#20639b'
+- id: 70
+  identifier: banshee
+  name: Banshee
+  level: 74
+  tier: normal
+  role: caster
+  kind: UNDEAD
+  element: GHOST
+  size: MEDIUM
+  habitat:
+  - BOG
+  - SWAMP
+  ai: aggressive_melee
+  description: A weeping ghost whose wail freezes the blood. Cover your ears and close in fast.
+  inspiredBy: RO Banshee, Mismagius
+  loot:
+  - item: ectoplasm
+    chance: 30
+  - item: cloth
+    chance: 15
+  - item: shadow_shard
+    chance: 5
+  learnset:
+    replace:
+    - slot: 3
+      skill: wail
+  look:
+    colour: '#d8e4ec'
+    glow: 0.3
+- id: 71
+  identifier: hydra
+  name: Hydra
+  level: 76
+  tier: elite
+  role: brute
+  kind: REPTILE
+  element: POISON
+  size: BIG
+  habitat:
+  - SWAMP
+  - BOG
+  ai: aggressive_melee
+  description: A many-headed swamp lizard that bites with each head in turn. Burn the stumps, or the heads grow back.
+  inspiredBy: RO Hydra, Hydreigon
+  loot:
+  - item: reptile_scale
+    chance: 40
+  - item: venom_sac
+    chance: 30
+  - item: dragon_scale
+    chance: 3
+  look:
+    colour: '#4c7a34'
+- id: 72
+  identifier: frost_wyvern
+  name: Frost Wyvern
+  level: 78
+  tier: elite
+  role: skirmisher
+  kind: DRAGON
+  element: WATER
+  size: BIG
+  habitat:
+  - ICE_SHEET
+  - ALPINE
+  ai: aggressive_melee
+  description: A white wyvern that nests in glacier cracks and breathes freezing wind. It must land to breathe again; that
+    is when you strike.
+  inspiredBy: RO Acidus, Salamence
+  loot:
+  - item: frost_crystal
+    chance: 20
+  - item: dragon_scale
+    chance: 8
+  look:
+    colour: '#dff6ff'
+- id: 73
+  identifier: salamander
+  name: Salamander
+  level: 79
+  tier: normal
+  role: caster
+  kind: ELEMENTAL
+  element: FIRE
+  size: MEDIUM
+  habitat:
+  - VOLCANIC_FIELD
+  ai: aggressive_melee
+  description: A lizard of pure flame that swims through lava. Water hurts it badly; getting close enough to splash it is
+    the hard part.
+  inspiredBy: RO Salamander, Charmeleon
+  loot:
+  - item: ember_core
+    chance: 25
+  - item: reptile_scale
+    chance: 15
+  learnset:
+    replace:
+    - slot: 2
+      skill: kindle
+  look:
+    colour: '#ff3d00'
+    glow: 0.5
+- id: 74
+  identifier: dune_devourer
+  name: Dune Devourer
+  level: 82
+  tier: normal
+  role: brute
+  kind: REPTILE
+  element: EARTH
+  size: BIG
+  habitat:
+  - DESERT
+  - COLD_DESERT
+  ai: aggressive_melee
+  description: A sand serpent that hunts by feeling footsteps through the dunes. Stand still and it may pass you by.
+  inspiredBy: Sandaconda, Steelix
+  loot:
+  - item: reptile_scale
+    chance: 35
+  - item: gold_coin
+    chance: 15
+  - item: rough_gem
+    chance: 8
+  learnset:
+    replace:
+    - slot: 4
+      skill: unearth
+  look:
+    colour: '#c2a878'
+- id: 75
+  identifier: canyon_wyvern
+  name: Canyon Wyvern
+  level: 84
+  tier: elite
+  role: skirmisher
+  kind: DRAGON
+  element: WIND
+  size: BIG
+  habitat:
+  - BADLANDS
+  - ALPINE
+  ai: aggressive_melee
+  description: A wyvern that rides the hot winds out of the canyons. Its screech knocks climbers off the walls.
+  inspiredBy: RO Ferus, Noivern
+  loot:
+  - item: sharp_fang
+    chance: 20
+  - item: dragon_scale
+    chance: 10
+  learnset:
+    replace:
+    - slot: 6
+      skill: keen_eye
+  look:
+    colour: '#b5651d'
+- id: 76
+  identifier: rift_crawler
+  name: Rift Crawler
+  level: 90
+  tier: normal
+  role: caster
+  kind: FORMLESS
+  element: GHOST
+  size: BIG
+  habitat: []
+  ai: aggressive_melee
+  description: A tangle of limbs from the other side of the Rift. It flickers between worlds; strike when it is solid.
+  inspiredBy: RO Dark Illusion, Nihilego
+  loot:
+  - item: ectoplasm
+    chance: 25
+  - item: void_essence
+    chance: 12
+  - item: aetherite_shard
+    chance: 5
+  corruptedOnly: true
+  learnset:
+    replace:
+    - slot: 7
+      skill: shadow_meld
+  look:
+    colour: '#5b2a86'
+    glow: 0.4
+- id: 77
+  identifier: fallen_knight
+  name: Fallen Knight
+  level: 92
+  tier: normal
+  role: tank
+  kind: UNDEAD
+  element: UNDEAD
+  size: MEDIUM
+  habitat: []
+  ai: aggressive_melee
+  description: Empty armour still holding the line it swore to hold before the Rift. It never retreats and never tires; holy
+    blades break its oath.
+  inspiredBy: RO Raydric, Aegislash
+  loot:
+  - item: iron_ingot
+    chance: 25
+  - item: bone_shard
+    chance: 25
+  - item: iron_helmet
+    chance: 1
+  corruptedOnly: true
+  look:
+    colour: '#4a4a55'
+- id: 78
+  identifier: fallen_seraph
+  name: Fallen Seraph
+  level: 96
+  tier: elite
+  role: caster
+  kind: DEMON
+  element: SHADOW
+  size: BIG
+  habitat: []
+  ai: aggressive_melee
+  description: An angel the corruption twisted into a mockery of itself. Its halo has turned black, and it hates light.
+  inspiredBy: RO Fallen Bishop, Archangeling
+  loot:
+  - item: feather
+    chance: 30
+  - item: shadow_shard
+    chance: 20
+  - item: void_essence
+    chance: 8
+  corruptedOnly: true
+  look:
+    colour: '#2b1b3a'
+    glow: 0.3
+- id: 79
+  identifier: blob_queen
+  name: Blob Queen
+  level: 42
+  tier: boss
+  role: tank
+  kind: FORMLESS
+  element: NORMAL
+  size: BIG
+  habitat:
+  - GRASSLAND
+  - RIPARIAN
+  ai: aggressive_melee
+  description: When enough blobs gather they merge into a quivering queen with a jelly crown. She splits off blobs when hurt,
+    so clear the small ones fast.
+  inspiredBy: RO Angeling and Deviling, Ditto
+  loot:
+  - item: jelly
+    chance: 100
+  - item: apple
+    chance: 50
+  - item: mana_crystal
+    chance: 15
+  - item: gold_ring
+    chance: 10
+  learnset:
+    replace:
+    - slot: 2
+      skill: drip_jelly
+  look:
+    colour: '#ffb6c1'
+- id: 80
+  identifier: golden_scarab
+  name: Golden Scarab
+  level: 48
+  tier: boss
+  role: tank
+  kind: INSECT
+  element: FIRE
+  size: MEDIUM
+  habitat:
+  - DESERT
+  - BADLANDS
+  ai: aggressive_melee
+  description: A beetle with a shell of beaten gold that nests in buried treasure vaults. Magic slides off its shell; steel
+    does not.
+  inspiredBy: RO Golden Thief Bug
+  loot:
+  - item: golden_carapace
+    chance: 40
+  - item: rough_gem
+    chance: 30
+  - item: gold_bar
+    chance: 15
+  learnset:
+    replace:
+    - slot: 4
+      skill: unearth
+  look:
+    colour: '#ffd700'
+- id: 81
+  identifier: flamestripe
+  name: Flamestripe
+  level: 50
+  tier: boss
+  role: brute
+  kind: BEAST
+  element: FIRE
+  size: BIG
+  habitat:
+  - TROPICAL_SEASONAL_FOREST
+  - DRYLAND
+  ai: aggressive_melee
+  description: A tiger whose stripes burn like coals. The savanna burns where it hunts, and it waits for prey in the smoke.
+  inspiredBy: RO Eddga, Incineroar
+  loot:
+  - item: raw_hide
+    chance: 60
+  - item: sharp_fang
+    chance: 40
+  - item: ember_core
+    chance: 40
+  learnset:
+    replace:
+    - slot: 3
+      skill: kindle
+  look:
+    colour: '#ff8c00'
+- id: 82
+  identifier: hive_queen
+  name: Hive Queen
+  level: 54
+  tier: boss
+  role: support
+  kind: INSECT
+  element: WIND
+  size: BIG
+  habitat:
+  - TEMPERATE_FOREST
+  - GRASSLAND
+  ai: aggressive_melee
+  description: Queen of a hive the size of a house. She never fights alone; a cloud of guards follows her.
+  inspiredBy: RO Mistress, Vespiquen
+  loot:
+  - item: honeycomb
+    chance: 80
+  - item: chitin
+    chance: 60
+  - item: venom_sac
+    chance: 30
+  learnset:
+    replace:
+    - slot: 4
+      skill: collect_honey
+  look:
+    colour: '#f4c430'
+- id: 83
+  identifier: orc_overlord
+  name: Orc Overlord
+  level: 58
+  tier: boss
+  role: brute
+  kind: HUMANOID
+  element: EARTH
+  size: BIG
+  habitat:
+  - TEMPERATE_RAINFOREST
+  - TAIGA
+  ai: aggressive_melee
+  description: Warlord of the forest clans, in armour made of trophies. His war horn calls every orc nearby.
+  inspiredBy: RO Orc Lord, Orc Hero
+  loot:
+  - item: gold_coin
+    chance: 60
+  - item: iron_ingot
+    chance: 40
+  - item: iron_helmet
+    chance: 10
+  look:
+    colour: '#556b2f'
+- id: 84
+  identifier: lakesong_undine
+  name: Lakesong Undine
+  level: 62
+  tier: boss
+  role: support
+  kind: ELEMENTAL
+  element: WATER
+  size: MEDIUM
+  habitat:
+  - LAKE
+  - RIPARIAN
+  ai: passive_wanderer
+  description: A spirit of clear water who sings on still lakes at dawn. She is calm until the lake is fouled, then she floods
+    the shore.
+  inspiredBy: Suicune, Primarina
+  loot:
+  - item: sea_pearl
+    chance: 40
+  - item: mana_crystal
+    chance: 40
+  - item: aetherite_shard
+    chance: 10
+  learnset:
+    replace:
+    - slot: 4
+      skill: cooling_mist
+    - slot: 8
+      skill: tend_wounds
+  look:
+    colour: '#40e0d0'
+- id: 85
+  identifier: drowned_captain
+  name: Drowned Captain
+  level: 64
+  tier: boss
+  role: balanced
+  kind: UNDEAD
+  element: UNDEAD
+  size: MEDIUM
+  habitat:
+  - OCEAN
+  - BEACH
+  ai: aggressive_melee
+  description: The ghost captain of a wrecked ship, still giving orders to a dead crew. He comes with the fog, and his crew
+    comes with him.
+  inspiredBy: RO Drake, Dhelmise
+  loot:
+  - item: gold_bar
+    chance: 30
+  - item: sea_pearl
+    chance: 30
+  - item: gold_ring
+    chance: 15
+  look:
+    colour: '#2f4f4f'
+- id: 86
+  identifier: ninefold_vixen
+  name: Ninefold Vixen
+  level: 66
+  tier: boss
+  role: caster
+  kind: BEAST
+  element: FIRE
+  size: MEDIUM
+  habitat:
+  - TEMPERATE_FOREST
+  - ALPINE
+  ai: aggressive_melee
+  description: A fox with nine flaming tails who jumps between old shrines. Each tail is a spell; count them as they go out.
+  inspiredBy: RO Moonlight Flower, Ninetales
+  loot:
+  - item: soft_fur
+    chance: 80
+  - item: ember_core
+    chance: 40
+  - item: mana_crystal
+    chance: 20
+  learnset:
+    replace:
+    - slot: 3
+      skill: kindle
+  look:
+    colour: '#ff7f50'
+- id: 87
+  identifier: ancient_rootfather
+  name: Ancient Rootfather
+  level: 68
+  tier: boss
+  role: tank
+  kind: PLANT
+  element: EARTH
+  size: BIG
+  habitat:
+  - TEMPERATE_RAINFOREST
+  - TEMPERATE_FOREST
+  ai: passive_wanderer
+  description: The oldest tree in the forest, which walks only once in many years. Whole groves grow on its back, and it wakes
+    angry when they are cut.
+  inspiredBy: Torterra
+  loot:
+  - item: log
+    chance: 100
+  - item: wild_herb
+    chance: 80
+  - item: aetherite_shard
+    chance: 10
+  learnset:
+    replace:
+    - slot: 3
+      skill: fell_branches
+    - slot: 7
+      skill: gather_herbs
+  look:
+    colour: '#5d4037'
+- id: 88
+  identifier: lantern_mother
+  name: Lantern Mother
+  level: 70
+  tier: boss
+  role: caster
+  kind: FORMLESS
+  element: GHOST
+  size: MEDIUM
+  habitat:
+  - BOG
+  ai: aggressive_melee
+  description: The great flame every lantern wisp comes from. Put out her wisps and she grows weak.
+  inspiredBy: RO Whisper, Chandelure
+  loot:
+  - item: ectoplasm
+    chance: 80
+  - item: mana_crystal
+    chance: 30
+  learnset:
+    replace:
+    - slot: 4
+      skill: wail
+  look:
+    colour: '#a0ffe0'
+    glow: 0.8
+- id: 89
+  identifier: sand_pharaoh
+  name: Sand Pharaoh
+  level: 72
+  tier: boss
+  role: caster
+  kind: UNDEAD
+  element: SHADOW
+  size: BIG
+  habitat:
+  - DESERT
+  ai: aggressive_melee
+  description: A buried king who rises when his tomb is disturbed. His curse follows whoever takes his gold.
+  inspiredBy: RO Pharaoh and Osiris, Cofagrigus
+  loot:
+  - item: old_bandage
+    chance: 60
+  - item: gold_bar
+    chance: 40
+  - item: gold_ring
+    chance: 25
+  look:
+    colour: '#daa520'
+- id: 90
+  identifier: rafflesia_queen
+  name: Rafflesia Queen
+  level: 74
+  tier: boss
+  role: caster
+  kind: PLANT
+  element: POISON
+  size: BIG
+  habitat:
+  - SWAMP
+  - TROPICAL_RAINFOREST
+  ai: aggressive_melee
+  description: A giant flower whose stench carries for miles. Its pollen poisons the air around it; fight upwind.
+  inspiredBy: RO Rafflesia, Vileplume
+  loot:
+  - item: spore_dust
+    chance: 80
+  - item: venom_sac
+    chance: 50
+  - item: medicine
+    chance: 30
+  learnset:
+    replace:
+    - slot: 4
+      skill: gather_herbs
+  look:
+    colour: '#b22222'
+- id: 91
+  identifier: fumarole_dragon
+  name: Fumarole Dragon
+  level: 78
+  tier: boss
+  role: caster
+  kind: DRAGON
+  element: POISON
+  size: BIG
+  habitat:
+  - GEOTHERMAL_BASIN
+  ai: aggressive_melee
+  description: A dragon that sleeps in sulphur vents and breathes poison gas. Where the hot springs turn yellow, it is near.
+  inspiredBy: RO Detardeurus, Eternatus
+  loot:
+  - item: dragon_scale
+    chance: 50
+  - item: venom_sac
+    chance: 40
+  - item: coal
+    chance: 40
+  look:
+    colour: '#c5c522'
+- id: 92
+  identifier: antlered_ancient
+  name: Antlered Ancient
+  level: 80
+  tier: boss
+  role: support
+  kind: BEAST
+  element: HOLY
+  size: BIG
+  habitat:
+  - TAIGA
+  - TEMPERATE_RAINFOREST
+  ai: passive_wanderer
+  description: A white stag with antlers of light, the old guardian of the forest. Shadow creatures cannot stand near it.
+  inspiredBy: Xerneas
+  loot:
+  - item: horn
+    chance: 80
+  - item: mana_crystal
+    chance: 40
+  - item: aetherite_shard
+    chance: 15
+  learnset:
+    replace:
+    - slot: 5
+      skill: benediction
+    - slot: 9
+      skill: tend_wounds
+  look:
+    colour: '#fffaf0'
+    glow: 0.8
+- id: 93
+  identifier: garm
+  name: Garm
+  level: 82
+  tier: boss
+  role: brute
+  kind: BEAST
+  element: WATER
+  size: BIG
+  habitat:
+  - TUNDRA
+  - TAIGA
+  ai: aggressive_melee
+  description: A giant wolf of ice whose howl brings blizzards. The wolf packs of the north follow it.
+  inspiredBy: RO Garm, Zacian
+  loot:
+  - item: soft_fur
+    chance: 80
+  - item: sharp_fang
+    chance: 60
+  - item: frost_crystal
+    chance: 60
+  learnset:
+    replace:
+    - slot: 3
+      skill: sniff_trail
+    - slot: 6
+      skill: warm_fur
+  look:
+    colour: '#b0e0e6'
+- id: 94
+  identifier: stormcaller_roc
+  name: Stormcaller Roc
+  level: 84
+  tier: boss
+  role: skirmisher
+  kind: BIRD
+  element: WIND
+  size: BIG
+  habitat:
+  - ALPINE
+  ai: aggressive_melee
+  description: A huge bird that nests on peaks and calls lightning with its wings. Earth magic grounds it.
+  inspiredBy: Zapdos
+  loot:
+  - item: feather
+    chance: 100
+  - item: mana_crystal
+    chance: 30
+  learnset:
+    replace:
+    - slot: 4
+      skill: keen_eye
+    - slot: 7
+      skill: gale_step
+  look:
+    colour: '#ffe066'
+- id: 95
+  identifier: rimetusk_ancient
+  name: Rimetusk Ancient
+  level: 86
+  tier: boss
+  role: tank
+  kind: BEAST
+  element: WATER
+  size: BIG
+  habitat:
+  - ICE_SHEET
+  ai: aggressive_melee
+  description: A mammoth older than the ice it walks on. It sleeps frozen for years and wakes up hungry.
+  inspiredBy: RO Ktullanux, Mamoswine
+  loot:
+  - item: wool
+    chance: 80
+  - item: horn
+    chance: 80
+  - item: frost_crystal
+    chance: 50
+  learnset:
+    replace:
+    - slot: 5
+      skill: warm_fur
+  look:
+    colour: '#8b7d6b'
+- id: 96
+  identifier: baphor
+  name: Baphor, the Horned Abbot
+  level: 88
+  tier: boss
+  role: brute
+  kind: DEMON
+  element: SHADOW
+  size: BIG
+  habitat:
+  - BADLANDS
+  ai: aggressive_melee
+  description: A goat-headed demon with a huge scythe who preaches to the corrupted. Its sermons summon lesser demons.
+  inspiredBy: RO Baphomet
+  loot:
+  - item: horn
+    chance: 50
+  - item: shadow_shard
+    chance: 60
+  - item: void_essence
+    chance: 20
+  corruptedOnly: true
+  look:
+    colour: '#3b2f2f'
+- id: 97
+  identifier: magma_titan
+  name: Magma Titan
+  level: 94
+  tier: boss
+  role: tank
+  kind: ELEMENTAL
+  element: FIRE
+  size: BIG
+  habitat:
+  - VOLCANIC_FIELD
+  - GEOTHERMAL_BASIN
+  ai: aggressive_melee
+  description: A walking volcano that sleeps under the lava fields. When it wakes, the ground cracks and new vents open.
+  inspiredBy: Groudon, Heatran
+  loot:
+  - item: ember_core
+    chance: 80
+  - item: iron_ore
+    chance: 60
+  - item: gold_ore
+    chance: 30
+  learnset:
+    replace:
+    - slot: 4
+      skill: kindle
+    - slot: 8
+      skill: mine_ore
+  look:
+    colour: '#ff5500'
+    glow: 0.6
+- id: 98
+  identifier: jade_sky_serpent
+  name: Jade Sky Serpent
+  level: 95
+  tier: boss
+  role: caster
+  kind: DRAGON
+  element: WIND
+  size: BIG
+  habitat:
+  - TROPICAL_RAINFOREST
+  ai: passive_wanderer
+  description: A green dragon that circles above the rain clouds and rarely lands. It only comes down when the jungle burns.
+  inspiredBy: Rayquaza
+  loot:
+  - item: dragon_scale
+    chance: 80
+  - item: mana_crystal
+    chance: 40
+  - item: aetherite_shard
+    chance: 20
+  learnset:
+    replace:
+    - slot: 5
+      skill: gale_step
+  look:
+    colour: '#00a86b'
+- id: 99
+  identifier: hollow_king
+  name: The Hollow King
+  level: 100
+  tier: boss
+  role: caster
+  kind: UNDEAD
+  element: UNDEAD
+  size: BIG
+  habitat: []
+  ai: aggressive_melee
+  description: The king who ruled before the Rift and refused to die with his kingdom. He holds the corrupted land with an
+    army of the dead.
+  inspiredBy: RO Lord of Death and Dark Lord, Giratina
+  loot:
+  - item: bone_shard
+    chance: 80
+  - item: gold_bar
+    chance: 60
+  - item: void_essence
+    chance: 40
+  corruptedOnly: true
+  look:
+    colour: '#3c3c3c'
+- id: 100
+  identifier: ember_phoenix
+  name: Ember Phoenix
+  level: 105
+  tier: boss
+  role: caster
+  kind: BIRD
+  element: FIRE
+  size: BIG
+  habitat:
+  - VOLCANIC_FIELD
+  ai: aggressive_melee
+  description: A bird of living flame that rises from fresh lava once in a long while. It is reborn from its ashes, so the
+    fight is never quite over.
+  inspiredBy: Ho-Oh, Moltres
+  loot:
+  - item: feather
+    chance: 100
+  - item: ember_core
+    chance: 80
+  - item: aetherite_shard
+    chance: 25
+  learnset:
+    replace:
+    - slot: 3
+      skill: kindle
+    add:
+    - skill: tend_wounds
+      level: 50
+  look:
+    colour: '#ff4500'
+    glow: 1.0
+- id: 101
+  identifier: ossuary_wyrm
+  name: Ossuary Wyrm
+  level: 108
+  tier: boss
+  role: brute
+  kind: DRAGON
+  element: UNDEAD
+  size: BIG
+  habitat:
+  - COLD_DESERT
+  ai: aggressive_melee
+  description: The bones of an ancient dragon, raised by the corruption. It cannot be poisoned or frightened, but it can be
+    broken.
+  inspiredBy: RO Detardeurus, fossil Pokémon
+  loot:
+  - item: bone_shard
+    chance: 100
+  - item: dragon_scale
+    chance: 50
+  - item: void_essence
+    chance: 20
+  corruptedOnly: true
+  look:
+    colour: '#e8e0d0'
+- id: 102
+  identifier: leviathan
+  name: Leviathan
+  level: 112
+  tier: boss
+  role: brute
+  kind: DRAGON
+  element: WATER
+  size: BIG
+  habitat:
+  - OCEAN
+  ai: aggressive_melee
+  description: A sea dragon as long as an island that surfaces only far out at sea. The waves it makes reach every coast.
+  inspiredBy: Kyogre
+  loot:
+  - item: dragon_scale
+    chance: 80
+  - item: salt
+    chance: 80
+  - item: sea_pearl
+    chance: 60
+  learnset:
+    replace:
+    - slot: 5
+      skill: salt_crust
+  look:
+    colour: '#003366'
+- id: 103
+  identifier: behemoth
+  name: Behemoth
+  level: 120
+  tier: boss
+  role: brute
+  kind: BEAST
+  element: EARTH
+  size: BIG
+  habitat:
+  - GRASSLAND
+  - DRYLAND
+  ai: aggressive_melee
+  description: A horned giant that walks the plains once in an age and leaves valleys in its tracks. The game is named after
+    it; nobody has brought one down yet.
+  inspiredBy: Groudon, Final Fantasy
+  loot:
+  - item: raw_meat
+    chance: 100
+  - item: raw_hide
+    chance: 100
+  - item: horn
+    chance: 100
+  - item: aetherite_shard
+    chance: 30
+  look:
+    colour: '#5a4632'
+- id: 2
+  identifier: doom_master_of_doom
+  name: Doommaster of Doom
+  level: 100
+  tier: boss
+  role: caster
+  kind: DEMON
+  element: SHADOW
+  size: BIG
+  habitat: []
+  ai: aggressive_melee
+  description: A towering figure in an oversized black cloak that hides its hands and feet. Its head is an orange skull with
+    red glowing eyes and a mouth full of fangs. It is the master of doom, and also of more doom.
+  inspiredBy: RO Lord of Death, Dusknoir
+  loot:
+  - item: shadow_shard
+    chance: 80
+  - item: void_essence
+    chance: 40
+  - item: gold_coin
+    chance: 100
+  eventOnly: true
+  learnset:
+    replace:
+    - slot: 1
+      skill: proclaim_doom
+  look:
+    colour: '#111111'
+- id: 104
+  identifier: grinlantern
+  name: Grinlantern
+  level: 31
+  tier: normal
+  role: caster
+  kind: PLANT
+  element: FIRE
+  size: SMALL
+  habitat: []
+  ai: passive_wanderer
+  description: A pumpkin with a candle inside and a grin nobody carved. It only grows on the night the dead walk.
+  inspiredBy: RO Jakk, Pumpkaboo
+  loot:
+  - item: bramble_berries
+    chance: 30
+  - item: ember_core
+    chance: 10
+  eventOnly: true
+  learnset:
+    replace:
+    - slot: 1
+      skill: kindle
+  look:
+    colour: '#ff8c1a'
+    shape: SPHERE
+    glow: 0.5
+- id: 105
+  identifier: giftbox_mimic
+  name: Giftbox Mimic
+  level: 40
+  tier: normal
+  role: tank
+  kind: FORMLESS
+  element: WATER
+  size: SMALL
+  habitat: []
+  ai: passive_wanderer
+  description: A present with a bow that hops through the snow at midwinter. Open it gently; sometimes it bites.
+  inspiredBy: RO Antonio and Mimic, Delibird
+  loot:
+  - item: gold_coin
+    chance: 60
+  - item: apple
+    chance: 30
+  - item: gold_ring
+    chance: 5
+  eventOnly: true
+  look:
+    colour: '#c0392b'
+    shape: BOX
+- id: 106
+  identifier: bloomhare
+  name: Bloomhare
+  level: 20
+  tier: normal
+  role: support
+  kind: BEAST
+  element: HOLY
+  size: SMALL
+  habitat: []
+  ai: passive_wanderer
+  description: A hare with blossoms in its ears that hides painted eggs in spring meadows. Find its eggs and it may come to
+    you.
+  inspiredBy: Buneary, Togepi
+  loot:
+  - item: soft_fur
+    chance: 30
+  - item: wild_herb
+    chance: 30
+  eventOnly: true
+  learnset:
+    replace:
+    - slot: 2
+      skill: gather_herbs
+    - slot: 5
+      skill: tend_wounds
+    add:
+    - skill: benediction
+      level: 40
+  look:
+    colour: '#ffc0cb'
+- id: 107
+  identifier: not_a_blob
+  name: Not-a-Blob
+  level: 50
+  tier: normal
+  role: skirmisher
+  kind: FORMLESS
+  element: GHOST
+  size: SMALL
+  habitat: []
+  ai: passive_wanderer
+  description: It looks exactly like a blob. It is not a blob. Your sword passes right through it, which a real blob would
+    never allow.
+  inspiredBy: Ditto, RO Ghostring
+  loot:
+  - item: jelly
+    chance: 50
+  - item: ectoplasm
+    chance: 20
+  eventOnly: true
+  learnset:
+    replace:
+    - slot: 1
+      skill: splash
+    - slot: 3
+      skill: play_dead
+  look:
+    colour: '#d08b1a'
+    glow: 0.3
