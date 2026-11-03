@@ -64,7 +64,7 @@
     - slot: 2
       skill: forage
     - slot: 3
-      skill: play_dead
+      skill: burrow
   look:
     colour: '#8a6a4a'
 - id: 6
@@ -121,7 +121,7 @@
   learnset:
     replace:
     - slot: 3
-      skill: play_dead
+      skill: burrow
     add:
     - skill: gale_step
       level: 30
@@ -152,7 +152,7 @@
     - slot: 2
       skill: gather_herbs
     - slot: 6
-      skill: leaf_disguise
+      skill: burrow
   look:
     colour: '#7bbf4e'
 - id: 9
@@ -233,7 +233,7 @@
   learnset:
     replace:
     - slot: 2
-      skill: kindle
+      skill: flame_weapon
   look:
     colour: '#f5c242'
 - id: 12
@@ -262,7 +262,7 @@
   learnset:
     replace:
     - slot: 3
-      skill: go_fishing
+      skill: forage
   look:
     colour: '#e2553f'
 - id: 13
@@ -378,7 +378,7 @@
   learnset:
     replace:
     - slot: 3
-      skill: go_fishing
+      skill: forage
   look:
     colour: '#2a3440'
 - id: 17
@@ -565,9 +565,9 @@
   learnset:
     replace:
     - slot: 6
-      skill: shadow_meld
+      skill: shadow_cloak
     add:
-    - skill: kindle
+    - skill: flame_weapon
       level: 20
   look:
     colour: '#b8f0ff'
@@ -626,7 +626,7 @@
   learnset:
     replace:
     - slot: 3
-      skill: leaf_disguise
+      skill: burrow
     - slot: 6
       skill: forage
   look:
@@ -905,7 +905,7 @@
   learnset:
     replace:
     - slot: 3
-      skill: go_fishing
+      skill: forage
     - slot: 8
       skill: salt_crust
   look:
@@ -992,7 +992,7 @@
   learnset:
     replace:
     - slot: 6
-      skill: go_fishing
+      skill: forage
   look:
     colour: '#4b5320'
 - id: 39
@@ -1175,7 +1175,7 @@
   learnset:
     replace:
     - slot: 4
-      skill: kindle
+      skill: flame_weapon
   look:
     colour: '#e2725b'
 - id: 46
@@ -1231,9 +1231,9 @@
   learnset:
     replace:
     - slot: 3
-      skill: kindle
+      skill: flame_weapon
     add:
-    - skill: tend_wounds
+    - skill: benediction
       level: 30
   look:
     colour: '#ff6a00'
@@ -1261,7 +1261,7 @@
   learnset:
     replace:
     - slot: 3
-      skill: kindle
+      skill: flame_weapon
   look:
     colour: '#ff4500'
     glow: 0.3
@@ -1320,7 +1320,7 @@
     - slot: 3
       skill: mock
     - slot: 8
-      skill: kindle
+      skill: flame_weapon
   look:
     colour: '#c8b400'
 - id: 51
@@ -1514,7 +1514,7 @@
   learnset:
     replace:
     - slot: 6
-      skill: fell_branches
+      skill: uproot
   look:
     colour: '#6b8e23'
 - id: 58
@@ -1572,7 +1572,7 @@
   learnset:
     replace:
     - slot: 5
-      skill: shadow_meld
+      skill: shadow_cloak
     - slot: 8
       skill: sniff_trail
   look:
@@ -1683,7 +1683,7 @@
   learnset:
     replace:
     - slot: 4
-      skill: go_fishing
+      skill: forage
   look:
     colour: '#2e8b8b'
 - id: 64
@@ -1738,7 +1738,7 @@
   learnset:
     replace:
     - slot: 8
-      skill: fell_branches
+      skill: uproot
   look:
     colour: '#8f9779'
 - id: 66
@@ -1797,7 +1797,7 @@
     - slot: 6
       skill: benediction
     - slot: 9
-      skill: tend_wounds
+      skill: gale_step
   look:
     colour: '#f0f8ff'
     glow: 0.3
@@ -1827,7 +1827,7 @@
   learnset:
     replace:
     - slot: 5
-      skill: fell_branches
+      skill: uproot
   look:
     colour: '#a9a9a9'
 - id: 69
@@ -1957,7 +1957,7 @@
   learnset:
     replace:
     - slot: 2
-      skill: kindle
+      skill: flame_weapon
   look:
     colour: '#ff3d00'
     glow: 0.5
@@ -2039,7 +2039,7 @@
   learnset:
     replace:
     - slot: 7
-      skill: shadow_meld
+      skill: shadow_cloak
   look:
     colour: '#5b2a86'
     glow: 0.4
@@ -2176,7 +2176,7 @@
   learnset:
     replace:
     - slot: 3
-      skill: kindle
+      skill: flame_weapon
   look:
     colour: '#ff8c00'
 - id: 82
@@ -2259,7 +2259,7 @@
     - slot: 4
       skill: cooling_mist
     - slot: 8
-      skill: tend_wounds
+      skill: benediction
   look:
     colour: '#40e0d0'
 - id: 85
@@ -2312,7 +2312,7 @@
   learnset:
     replace:
     - slot: 3
-      skill: kindle
+      skill: flame_weapon
   look:
     colour: '#ff7f50'
 - id: 87
@@ -2341,7 +2341,7 @@
   learnset:
     replace:
     - slot: 3
-      skill: fell_branches
+      skill: uproot
     - slot: 7
       skill: gather_herbs
   look:
@@ -2473,7 +2473,7 @@
     - slot: 5
       skill: benediction
     - slot: 9
-      skill: tend_wounds
+      skill: gale_step
   look:
     colour: '#fffaf0'
     glow: 0.8
@@ -2610,7 +2610,7 @@
   learnset:
     replace:
     - slot: 4
-      skill: kindle
+      skill: flame_weapon
     - slot: 8
       skill: mine_ore
   look:
@@ -2692,9 +2692,9 @@
   learnset:
     replace:
     - slot: 3
-      skill: kindle
+      skill: flame_weapon
     add:
-    - skill: tend_wounds
+    - skill: benediction
       level: 50
   look:
     colour: '#ff4500'
@@ -2828,7 +2828,7 @@
   learnset:
     replace:
     - slot: 1
-      skill: kindle
+      skill: flame_weapon
   look:
     colour: '#ff8c1a'
     shape: SPHERE
@@ -2882,7 +2882,7 @@
     - slot: 2
       skill: gather_herbs
     - slot: 5
-      skill: tend_wounds
+      skill: gale_step
     add:
     - skill: benediction
       level: 40
@@ -2913,7 +2913,7 @@
     - slot: 1
       skill: splash
     - slot: 3
-      skill: play_dead
+      skill: burrow
   look:
     colour: '#d08b1a'
     glow: 0.3
