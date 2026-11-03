@@ -1309,18 +1309,6 @@
   description: |
     A roar so fierce that foes close by may run away in fear.
 
-- id: petrifying_gaze
-  name: Petrifying Gaze
-  level: 60
-  mana: 15
-  archetype: debuff
-  element: EARTH
-  skill: petrifying_gaze
-  skillId: 1118
-  script: PetrifyingGaze
-  description: |
-    A stare that stiffens every foe in front of it. A foe already stiff turns to stone for a moment.
-
 - id: withering_curse
   name: Withering Curse
   level: 75
@@ -1660,7 +1648,7 @@
   range: 1
   castTime: 0
   description: |
-    Knocks the weapon out of the target's hand. A wild bestia hits softer for a while instead.
+    Knocks the weapon out of the target's hand, and it stays empty for a while. A wild bestia hits softer instead.
 
 - id: strip_armor
   name: Strip Armor
@@ -1674,7 +1662,7 @@
   range: 1
   castTime: 0
   description: |
-    Tears the target's armour off. A wild bestia's hide guards less for a while instead.
+    Tears the target's armour off. Nothing can be worn in its place for a while.
 
 - id: corrode
   name: Corrode

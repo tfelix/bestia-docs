@@ -1865,7 +1865,7 @@
   tier: normal
   role: caster
   kind: UNDEAD
-  element: GHOST
+  element: UNDEAD
   size: MEDIUM
   habitat:
   - BOG
@@ -2379,7 +2379,7 @@
   tier: boss
   role: caster
   kind: UNDEAD
-  element: SHADOW
+  element: UNDEAD
   size: BIG
   habitat:
   - DESERT
