@@ -94,14 +94,29 @@ the missing skills fails at cast time instead. The two Bestia-side attack skills
 
 # Status effects
 
-A separate, working system from damage: `StatusEffectService.applyEffect()` resolves a
-`StatusEffectDefinition` (`status_effects.yml`) and its `StatusEffectScript`, applies stacking rules
-via the `StatusEffects` ECS component, and flags the entity for a status-value recalc. Four scripts
-exist: `Swiftness` (buff), `Cripple` (a flat -15% speed debuff), `BlessingStatusEffect` (applied by
-the `BLESSING` skill), and `ResistedOnceMarker` (internal bookkeeping only, never synced to the
-client — tracks that an entity already resisted a debuff once this encounter). This mirrors the
-skill-script pattern one level down — see [Scripting](/docs/server/scripting) for the shared
-registry/boot-validation mechanism both use.
+A separate, working system from damage. `StatusEffectService.applyEffect()` resolves a `StatusEffectDefinition`
+(`status_effects.yml`) and its `StatusEffectScript`. It applies the effect to the `StatusEffects` ECS component and
+flags the entity for a status-value recalc. This mirrors the skill-script pattern one level down; see
+[Scripting](/docs/server/scripting) for the registry and boot validation both use. What each effect does is on the
+[Status Effects](/docs/mechanics/status-effects/) page.
+
+A script changes status values in `apply()`, which runs on every recalc. For everything else it has hooks:
+
+- **`onApply`** runs once when the effect lands, not on a refresh. STUN cancels a cast or a channel here.
+- **`onRemove`** runs when the effect ends, with the `RemovalReason`. ENRAGED hands over to FATIGUE here.
+- **`onDamageTaken`** returns how much of a hit reaches the bearer's health. BARRIER absorbs here, FROZEN breaks.
+- **`onActed`** runs when the bearer walks a tile, attacks, casts or uses an item. BLEEDING hurts here, and HIDDEN and
+  CLOAKED end.
+
+Around the scripts:
+
+- **`tryInflict`** in `StatusEffectService` is the entry point for a skill that only sometimes lands an effect. It
+  checks `status-immunities`, rolls the chance against the target's resist and shortens the duration. See
+  [Resist](/docs/mechanics/status-effects/#resist).
+- **`ActionGuard`** refuses a move, attack, cast or item request that an effect's `actionLocks` forbid (STUN, FROZEN,
+  FEARED, ...). It is silent: the client already shows the effect.
+- **`HealService`** is where every heal from a skill, an item or an effect meets health. SICK halves the heal there,
+  and any heal ends BLEEDING. Natural regeneration does not go through it.
 
 # Summary
 

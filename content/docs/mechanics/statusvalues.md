@@ -32,10 +32,11 @@ statusValue = (baseValue + individualValue) * level / 100 + effortValue
 - Main influence value for magic domain related effects and power/damage of magic based attacks and skills.
 - Increases the duration of magical effects from the player (buffs, skills, etc)
 - Increases the total amount of available mana
+- Helps to resist Stoning, Blind, Sick, Confused and Controlled ([status effects](/docs/mechanics/status-effects/#resist))
 
 ## Willpower - WIL
 
-- Increases resistance against enemy spells and magic effects.
+- Helps to resist Frozen, Stoning, Withered, Feared and Controlled ([status effects](/docs/mechanics/status-effects/#resist))
 - Increases mana regeneration over time
 - Increases the duration of magic effects from the player
 - Reduces cast duration of spells
@@ -53,6 +54,7 @@ statusValue = (baseValue + individualValue) * level / 100 + effortValue
 - Increases the maximum HP amount slightly
 - Increases the maximum stamina amount slightly
 - Increases [ore refinement success chance](/docs/mechanics/items/#ore-refinement-success-chance) by 2% every 10 STR - working the bellows and turning a heavy charge is physical labour
+- Helps to resist Stun, Bleeding, Slowed, Withered and Feared ([status effects](/docs/mechanics/status-effects/#resist))
 
 ## Vitality - VIT
 
@@ -62,6 +64,7 @@ statusValue = (baseValue + individualValue) * level / 100 + effortValue
 - Increases the stamina regeneration
 - Increases the maximum amount of stamina
 - Increases resistance against temperature
+- Helps to resist Stun, Frozen, Poison and Sick ([status effects](/docs/mechanics/status-effects/#resist))
 
 ## Dexterity - DEX
 
@@ -71,12 +74,14 @@ statusValue = (baseValue + individualValue) * level / 100 + effortValue
 - Increases upgrade chance of items and equipment by 1% every 10 DEX.
 - Increases the chance to successfully cut a rune slot into an item by 1% every 10 DEX, see [Item Customization](/docs/mechanics/items/#item-customization).
 - Increases [construction crafting success chance](/docs/mechanics/items/#construction-crafting-success-chance) by 2% every 10 DEX.
+- Helps to resist Burning, Blind, Confused and Stiffened ([status effects](/docs/mechanics/status-effects/#resist))
 
 ## Agility - AGI
 
 - Increases the attack rate
 - Increases the walking speed
 - Increases the dodge chance (flee rate) for physical attacks (melee and ranged)
+- Helps to resist Poison, Bleeding, Burning, Slowed and Stiffened ([status effects](/docs/mechanics/status-effects/#resist))
 
 # Status Based Values
 
@@ -290,26 +295,8 @@ For other non-Bestia based entities like items or buildings etc. base values are
 
 # Status Effects
 
-A status effect is a temporary condition sitting on top of an entity's status values. Skills, attacks, traps and items
-all apply them, and every one of them can be removed again - by waiting it out, by a counter-skill, or by an item.
+A status effect is a temporary condition on top of an entity's status values. Every effect, how it is resisted and
+the rules they share are on the [Status Effects](/docs/mechanics/status-effects/) page.
 
-Resistance against a status effect comes from **VIT** for the physical ones and from **WIL** for the mental and magical
-ones. Neither ever reaches full immunity on its own; it only shortens the duration and lowers the chance of the effect
-landing in the first place.
-
-| Effect        | What It Does                                                              | Resisted By | Lifted By                                                                         |
-| ------------- | ------------------------------------------------------------------------- | ----------- | --------------------------------------------------------------------------------- |
-| **Silence**   | No spell or active skill can be cast. Attacks still work.                 | WIL         | [Cure](/docs/mechanics/master/#skill-cure), waiting it out                        |
-| **Blindness** | Hit rate collapses and the view distance shrinks hard.                    | WIL         | [Cure](/docs/mechanics/master/#skill-cure), waiting it out                        |
-| **Confusion** | Movement input is scrambled; the entity walks in the wrong direction.     | WIL         | [Cure](/docs/mechanics/master/#skill-cure), waiting it out                        |
-| **Stun**      | No action of any kind and no movement.                                    | VIT         | [Status Recovery](/docs/mechanics/master/#skill-status-recovery), waiting it out  |
-| **Freeze**    | Frozen solid. Cannot act, takes extra damage from physical hits.          | VIT         | [Status Recovery](/docs/mechanics/master/#skill-status-recovery), any fire damage |
-| **Petrify**   | Turned to stone. Cannot act and cannot be healed while it holds.          | VIT         | [Status Recovery](/docs/mechanics/master/#skill-status-recovery)                  |
-| **Sleep**     | Cannot act. The first hit taken wakes the entity and lands as a critical. | WIL         | any damage                                                                        |
-| **Poison**    | Loses HP every tick and regenerates none.                                 | VIT         | an antidote, waiting it out                                                       |
-| **Stagger**   | A short interruption that cancels whatever was being cast or swung.       | VIT         | passes on its own                                                                 |
-
-{{< alert context="info" text="Petrify is applied by the Wizard skill **Stone Curse**. The skill and the effect are deliberately named differently - a skill is something a master learns, an effect is something an entity suffers." />}}
-
-A status effect never stacks with itself. Re-applying one that is already running refreshes its duration instead, and
-always to the longer of the two.
+Each attribute helps to resist some effects, always together with a second attribute. No attribute alone makes an
+entity immune: resist is capped at 80%.
