@@ -665,6 +665,9 @@ they share one pile. Durability only matters once a torch burns.
 
 Stackable gear cannot have random stats, because rolled copies are not interchangeable.
 
+Ammunition is not worn at all. The quiver only points at it in the bag, and each shot takes one. See
+[Ranged Combat](/docs/mechanics/ranged-combat/).
+
 Items on the ground can suffer damage from attacks. They are affected by Area Of Effect spells and can be targeted manually, although they are not auto-targeted like enemies.
 
 ## Item Material
