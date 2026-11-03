@@ -55,25 +55,32 @@ def plain_text(markdown):
 
 
 def attack_row(attack, archetypes):
+    """An attack's skills.yml row: its archetype's numbers, unless the attack names its own."""
     archetype = archetypes[attack["archetype"]]
-    target = "AOE_GROUND" if attack["archetype"] in AOE_RADIUS else TARGET_BY_KIND.get(archetype["kind"], "ENEMY")
+    default_target = "AOE_GROUND" if attack["archetype"] in AOE_RADIUS else TARGET_BY_KIND.get(archetype["kind"], "ENEMY")
+    target = attack.get("targetType", default_target)
+    reach = attack.get("range", archetype["range"])
     row = {
         "id": attack["skillId"],
         "identifier": attack["skill"],
         "name": attack["name"],
-        "script": SCRIPT_BY_ARCHETYPE[attack["archetype"]],
+        "script": attack.get("script", SCRIPT_BY_ARCHETYPE[attack["archetype"]]),
         "archetype": attack["archetype"].upper(),
         "element": attack["element"],
-        "power": archetype.get("coef", 1.0),
-        "cooldown": archetype["cooldown"],
-        "castTime": archetype["castTime"],
+        "power": attack.get("coef", archetype.get("coef", 1.0)),
+        "cooldown": attack.get("cooldown", archetype["cooldown"]),
+        "castTime": attack.get("castTime", archetype["castTime"]),
         "targetType": target,
-        "range": archetype["range"],
-        "needsLineOfSight": archetype["range"] > 1,
+        "range": reach,
+        "needsLineOfSight": reach > 1,
         "manaCost": attack["mana"],
     }
     if target == "AOE_GROUND":
-        row["aoeRadius"] = AOE_RADIUS[attack["archetype"]]
+        row["aoeRadius"] = attack.get("aoeRadius", AOE_RADIUS.get(attack["archetype"], 1.0))
+    if "status" in attack:
+        row["status"] = attack["status"]
+    if "mechanics" in attack:
+        row["mechanics"] = attack["mechanics"]
     return row
 
 
@@ -96,6 +103,8 @@ def utility_row(attack):
         row["yields"] = attack["yields"]
     if "lines" in attack:
         row["lines"] = attack["lines"]
+    if "mechanics" in attack:
+        row["mechanics"] = attack["mechanics"]
     return row
 
 
@@ -156,6 +165,17 @@ SCALE_BY_SIZE = {"SMALL": 0.6, "MEDIUM": 1.0, "BIG": 1.6}
 BOSS_SCALE = 1.5
 BOSS_GLOW = 0.6
 SPAWN_WEIGHT_BY_TIER = {"critter": 100, "normal": 100, "elite": 30, "boss": 100}
+# Body weight in kilograms by size, doubled for a boss; a row's own `weight` wins.
+WEIGHT_BY_SIZE = {"SMALL": 15, "MEDIUM": 60, "BIG": 250}
+# What a boss shrugs off unless its row lists its own `statusImmunities`: crowd control would make it a punching bag.
+BOSS_IMMUNITIES = ["STUN", "FROZEN", "STONING", "FEARED", "CONFUSED", "CONTROLLED"]
+# Spells have no Normal element, so a Normal species casts in the element of where it lives; a row's own
+# `magicElement` wins. The first habitat decides.
+MAGIC_ELEMENT_BY_BIOME = {
+    "ICE_SHEET": "WATER", "TUNDRA": "WATER", "TAIGA": "WATER", "COLD_DESERT": "WATER", "OCEAN": "WATER",
+    "LAKE": "WATER", "RIPARIAN": "WATER", "BEACH": "WATER", "DESERT": "FIRE", "DRYLAND": "FIRE", "BADLANDS": "FIRE",
+    "VOLCANIC_FIELD": "FIRE", "GEOTHERMAL_BASIN": "FIRE", "ALPINE": "WIND", "GRASSLAND": "WIND",
+}
 
 NODE_BRIDGE = """
 const core = require(process.argv[1]);
@@ -206,7 +226,27 @@ def calculator_input(species, presets, active_slots=None):
         "temperatureMin": temperature[0] if temperature else None,
         "temperatureMax": temperature[1] if temperature else None,
         "loot": species.get("loot", []), "activeSlots": active_slots,
+        "magicElement": magic_element_of(species),
     }
+
+
+def magic_element_of(species):
+    if "magicElement" in species:
+        return species["magicElement"]
+    first = (species.get("habitat") or [None])[0]
+    return MAGIC_ELEMENT_BY_BIOME.get(first, "EARTH")
+
+
+def weight_of(species):
+    if "weight" in species:
+        return species["weight"]
+    return WEIGHT_BY_SIZE[species["size"]] * (2 if species["tier"] == "boss" else 1)
+
+
+def immunities_of(species):
+    if "statusImmunities" in species:
+        return species["statusImmunities"]
+    return BOSS_IMMUNITIES if species["tier"] == "boss" else []
 
 
 def edited_learnset(species, bp):
@@ -222,7 +262,14 @@ def edited_learnset(species, bp):
     learned = sorted(by_slot.values(), key=lambda a: (a["level"], a["slot"]))
     for added in edits.get("add", []):
         learned.append({"slot": None, "level": added["level"], "skill": added["skill"], "archetype": "utility"})
-    return sorted(learned, key=lambda a: a["level"])
+    # A replacement may name a skill the role already picks for another slot; a species learns it once, earliest.
+    seen = set()
+    unique = []
+    for attack in sorted(learned, key=lambda a: a["level"]):
+        if attack["skill"] not in seen:
+            seen.add(attack["skill"])
+            unique.append(attack)
+    return unique
 
 
 def active_slots(species, learned, tiers):
@@ -261,6 +308,7 @@ def mob_yaml(species, bp, learned, active):
         f"aspd: {bp['defaultAttack']['aspd']}",
         f"ai: {i['ai']}",
         f"attack-power: {bp['attackPower']}",
+        f"weight: {weight_of(i)}",
         f"health: {bp['hp']}",
         f"mana: {bp['mana']}",
         f"experience: {bp['experience']}",
@@ -275,6 +323,8 @@ def mob_yaml(species, bp, learned, active):
     lines.append(f"spawn-weight: {SPAWN_WEIGHT_BY_TIER[i['tier']]}")
     if i["tier"] == "boss":
         lines.append("boss: true")
+    if immunities_of(i):
+        lines.append(f"status-immunities: [{', '.join(immunities_of(i))}]")
     if i["tier"] == "critter":
         lines.append("non-combatant: true")
     if i.get("eventOnly"):
