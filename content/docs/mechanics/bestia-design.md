@@ -42,7 +42,8 @@ range plus up to 20 levels, so a boss fits from about Lv 42 in the wilds up to L
 
 {{< blueprint-table name="tiers" >}}
 
-- **Critter**: wildlife that fights back weakly. It is a lesson for new players, not a threat.
+- **Critter**: wildlife that fights back weakly. It is a lesson for new players, not a threat, so it can be attacked
+  like any other bestia: it is not `non-combatant` in the mob YAML.
 - **Normal**: the bestia a player fights alone. Everything else is defined relative to it.
 - **Elite**: a pack leader or a rare spawn. About 30 swings, 10 to 15 for each player. A player alone loses to it.
 - **Boss**: built for a group. About 500 swings, 100 for each of five players: a fight of about two minutes, like an

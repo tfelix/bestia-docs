@@ -325,8 +325,6 @@ def mob_yaml(species, bp, learned, active):
         lines.append("boss: true")
     if immunities_of(i):
         lines.append(f"status-immunities: [{', '.join(immunities_of(i))}]")
-    if i["tier"] == "critter":
-        lines.append("non-combatant: true")
     if i.get("eventOnly"):
         lines.append("event-only: true")
     if i.get("corruptedOnly"):
