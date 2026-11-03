@@ -6,7 +6,7 @@ description: Those who master the tools of survival will thrive in a dangerous w
 
 Here find an overview of the available attacks Bestias can learn. A Bestia will only learn a certain subset of those attacks. Finding out which Bestia will learn which attack is part of the fun for the players to explore.
 
-For a better overview the attack list is on a sperate page. If you are interested in general information checkout the dedicated section about [attacks and skill](/docs/mechanics/attacks).
+For a better overview the attack list is on a sperate page. If you are interested in general information checkout the dedicated section about [attacks and skill](/docs/mechanics/bestia/#attacks).
 
 {{< alert context="info" text="The list here might not be always up to date. Add a missing attack to `data/attacks.yaml`: this page and the [Bestia Blueprint Calculator](/docs/mechanics/bestia-design/#bestia-blueprint-calculator) both read that file." />}}
 
