@@ -69,7 +69,7 @@ Wild Bestias never wear gear. A species whose default attack is ranged shoots wi
 Every new master starts with a Novice Bow and 100 arrows in the bag. The novice knife stays in hand, and the quiver
 already points at the arrows, so putting the bow on is all it takes to shoot.
 
-| Item       | Type   | ATK | Range   | Notes                    |
-| ---------- | ------ | --- | ------- | ------------------------ |
-| Novice Bow | Weapon | 7   | 5 tiles | Two-handed, novices only |
-| Arrow      | Ammo   | 3   | -       | Neutral, weighs 0.01 kg  |
+| Item       | Type   | ATK | Range    | Notes                    |
+| ---------- | ------ | --- | -------- | ------------------------ |
+| Novice Bow | Weapon | 7   | 12 tiles | Two-handed, novices only |
+| Arrow      | Ammo   | 3   | -        | Neutral, weighs 0.01 kg  |
