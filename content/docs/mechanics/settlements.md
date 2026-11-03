@@ -153,11 +153,9 @@ the map that you can walk to and damage.
 | Burn the fields in a town's catchment | Grain output falls; flour follows; bread gets scarce and dear                 | Rain, then regrowth                    |
 | Fell the woods around it           | Timber and charcoal dry up; the smiths lose their fuel                          | Trees regrow on their own              |
 | Burn down the mill                 | Grain no longer becomes flour at all, however much grain there is               | The town rebuilds it — when it can pay |
-| Kill the baker *(later)*           | The bakery shuts                                                                | An apprentice takes over in a few days |
+| Kill the baker                     | The bakery shuts                                                                | An apprentice takes over in a few days |
 
 {{< /table >}}
-
-The last row is designed but not part of the first version — see [Limits](#limits).
 
 The chain matters more than any single link. Burning the fields does not just make grain expensive;
 it makes flour expensive, and then bread, and then the baker has nothing to do all day. You can see
@@ -195,9 +193,10 @@ purse you can permanently empty.
 
 Honest about what this does not do, at least at first:
 
-- **Townsfolk cannot be killed yet.** They will flee a fight rather than die in one. Killing NPCs is
-  designed — it costs [honor](/docs/mechanics/pvp/#negative-honor), heavily — but it is not part of
-  the first version of this system.
+- **Townsfolk cannot be killed inside a ward field.** The ward stone of a home village protects its
+  townsfolk like it protects players, see [Protected Zones](/docs/mechanics/pvp/#protected-zones).
+  Everywhere else they flee a fight, and they can die in one. That costs
+  [honor](/docs/mechanics/pvp/#negative-honor), heavily.
 - **There are no interiors.** Buildings have doors and no insides. Townsfolk go in and out of them;
   you cannot follow.
 - **Ore deposits cannot be exhausted yet.** Fields and forests can. Mines are still a fixture of

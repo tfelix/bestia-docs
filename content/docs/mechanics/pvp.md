@@ -10,39 +10,65 @@ Nobody can harm what they own. A player's own skills, attacks and fires never hu
 
 # Reputation System
 
-Each NPC maintains an internal reputation list for players. This list is adjusted based on player behavior, whether positive or negative. It is tracked on two levels:
+Honor belongs to a Bestia Master, not to the account. Each Master of an account has their own. It is tracked on two levels:
 
-- Global player honor
-- Local NPC honor
+- **Global honor.** What the whole world thinks of the Master. Certain actions change it at once.
+- **Local honor.** What the people of one settlement think of the Master. Most actions change only this.
 
-Certain actions immediately have a global influence on player honor, while others only influence the local NPC honor rating towards the player. However, if an NPC has witnessed too many of a player's misdeeds and the negative honor for this NPC becomes too high, it will communicate this to friends and family. This means a random amount of 10-40% of the negative honor the NPC perceived is transformed into a global honor penalty.
+Local honor itself starts with a single person and travels from there:
 
-If a player's reputation with an NPC falls below -100 due to negative actions, the NPC will remember this permanently. Higher reputation values gradually return to the default of 0 and are eventually removed from the list. Players start with a global **20 honor** and every NPC starts with a **local honor of 10** towards every new player.
+1. **The witness holds a grudge.** A townsperson who saw a misdeed remembers it personally. Only this person knows at first. Their shop prices and their mood towards the Master change straight away.
+2. **The town hears of it.** Over the next [Bestia day](/docs/mechanics/environment/#in-game-time) the witness tells the people around them. Half of their grudge becomes the settlement's local honor, so every townsperson there now treats the Master the same way.
+3. **Nearby towns hear of it.** Once a settlement's local honor falls below **-100**, the news spreads to the towns around it as a rumour. It reaches them at walking pace, and it weakens with distance: a village next door hears most of it, a town far away hears little or nothing. Their townsfolk mention the Master by name when asked about recent events.
+
+Players start with a global **20 honor** and every settlement starts with a **local honor of 10** towards every new Master. A settlement whose local honor falls below **-100** remembers it permanently. Values above that slowly return to the default.
+
+Global honor has a ceiling of **+100**. Good deeds beyond that are not banked, so a Master cannot save up honor and then spend it on a massacre.
+
+## Witnesses
+
+Most honor loss needs a witness. A witness is a townsperson or another player who can see the offender at that moment, or the offence happens inside a settlement. A player who sees it costs the offender only the global part of the loss, because players do not set a town's prices. A misdeed that nobody saw costs nothing, with one exception: the [Protected Zones](#protected-zones) see everything.
+
+# Self-Defense
+
+Players can always defend themselves without any penalty.
+
+The first player who harms another player becomes the **Aggressor** for **180 seconds**. Everybody can see this as a debuff. Harming the Aggressor back, or killing them, costs no honor and has no other negative effect. A defender never becomes the Aggressor by fighting back.
+
+A player who attacks an Aggressor that is fighting somebody else is defending too. They also stay free of penalty.
 
 # Negative Honor
 
 Due to the presence of multiple factions with differing interests, defining universally bad behavior can be complex. However, certain core actions are universally considered griefing and will result in honor loss. The following actions lead to a loss of honor (usually an NPC or other player must be present in order for the honor loss to occur):
 
-| Malicious Action                                | Global Honor Loss | Honor Loss to NPC in Sight |
-| ----------------------------------------------- | :---------------: | :------------------------: |
-| Killing NPC                                     |        -10        |            -60             |
-| Killing player in non-opposing faction          |        -10        |            -50             |
-| Killing player in opposing faction w/ -10 Lv.\* |        -5         |            -10             |
-| Killing a Player's Bestia                       |         0         |             -2             |
-| Stealing Item (Mundane)                         |         0         |            -10             |
-| Stealing Item (Superior)                        |        -5         |            -20             |
-| Stealing Item (Rare)                            |        -10        |            -30             |
-| Stealing Item (Legendary)                       |        -15        |            -40             |
-| Damaging a Building >10% HP                     |        -2         |            -10             |
-| Dispelling a ward stone                         |        -5         |            -20             |
-| Destroying a ward stone                         |        -20        |            -100            |
-| Abandoning an accepted commission               |        -5         |            -20             |
+| Malicious Action                                | Global Honor Loss | Local Honor Loss |
+| ----------------------------------------------- | :---------------: | :--------------: |
+| Killing NPC                                     |        -10        |       -60        |
+| Killing player in non-opposing faction          |        -10        |       -50        |
+| Killing player in opposing faction w/ -10 Lv.\* |        -5         |       -10        |
+| Killing a Player's Bestia                       |         0         |        -2        |
+| Stealing Item (Mundane)                         |         0         |       -10        |
+| Stealing Item (Superior)                        |        -5         |       -20        |
+| Stealing Item (Rare)                            |        -10        |       -30        |
+| Stealing Item (Legendary)                       |        -15        |       -40        |
+| Damaging a Building >10% HP                     |        -2         |       -10        |
+| Dispelling a ward stone                         |        -5         |       -20        |
+| Destroying a ward stone                         |        -20        |       -100       |
+| Abandoning an accepted commission               |        -5         |       -20        |
 
 \* The victim is at least 10 levels below the attacker. Killing an opposing-faction player who is not this far below carries no honor penalty.
 
-Abandoning a commission means dropping an assigned contract, letting it expire without a serious attempt, or dumping the cargo — not merely failing at it. The local honor loss falls on the **broker NPC** who held the contract, and brokers talk to each other, so a player who makes a habit of it finds the boards of a whole town closed to them. The forfeited [collateral](/docs/mechanics/questing/#collateral) is a separate, purely financial consequence on top.
+The local loss falls on the witness first and reaches the settlement later, as described in the [Reputation System](#reputation-system). Killing or harming an [Aggressor](#self-defense) is never a malicious action, whoever the victim is.
 
-If no negative honor is received for a full [real-time](/docs/mechanics/environment/#in-game-time) day, the accumulated negative honor decays by 1 point per real-time day. Positive honor can be earned on top of that.
+Until the [Orders](/docs/mechanics/factions) are part of the game, every Master counts as unsworn, so every other player is in a non-opposing faction.
+
+Abandoning a commission means dropping an assigned contract, letting it expire without a serious attempt, or dumping the cargo — not merely failing at it. The local honor loss falls on the **broker NPC** who held the contract, and brokers talk to each other like every other witness, so a player who makes a habit of it finds the boards of a whole town closed to them. The forfeited [collateral](/docs/mechanics/questing/#collateral) is a separate, purely financial consequence on top.
+
+If no negative honor is received for a full [real-time](/docs/mechanics/environment/#in-game-time) day, the accumulated negative honor decays by 1 point per real-time day. The time a Master is offline counts too. Positive honor can be earned on top of that.
+
+{{< alert context="warning" text="The decay rate is an **initial value for balancing**. At 1 point per day a single NPC kill (-10 global) takes ten days to fade, which may turn out too slow." />}}
+
+{{< alert context="warning" text="**Not decided yet:** whether burning the fields around a town or felling its woods costs honor. Today it does not, although it is the main way to [hurt a settlement](/docs/mechanics/settlements/#what-you-can-break)." />}}
 
 If a player steals something that belongs to an NPC or another player, they lose honor for each item taken, depending on the item level. Stealing means picking up an item from a storage space that does not belong to the player. The owner can also grant certain players access rights to a chest; in this case, removing items is not considered stealing.
 
@@ -50,7 +76,7 @@ If a player steals something that belongs to an NPC or another player, they lose
 
 Looting a dead NPC or player, however, does not lead to a reduction of honor.
 
-When effects are calculated, the global player honor and the local NPC honor value are added together. Once a player's honor drops below 0, negative effects begin to take place. These effects include:
+When effects are calculated, the global honor, the settlement's local honor and the personal grudge of the townsperson the Master deals with are added together. Once a player's honor drops below 0, negative effects begin to take place. These effects include:
 
 | Honor Amount | Effect                                                                                                                |
 | ------------ | --------------------------------------------------------------------------------------------------------------------- |
@@ -58,7 +84,7 @@ When effects are calculated, the global player honor and the local NPC honor val
 | < -60        | Some NPCs might start to act hostile, attacking the player or fleeing. Trading is no longer possible.                 |
 | < -100       | NPCs will permanently remember the player and spread the word, so more NPCs start to act hostile towards the player.¹ |
 
-¹ NPCs only spread the word if their local honor value drops below -100; the global player honor part has no effect here.
+¹ The word only spreads once a settlement's local honor drops below -100; the global honor part has no effect here.
 
 Prices for trades with an NPC, when negative local honor is present, are calculated as follows:
 
@@ -68,16 +94,22 @@ price_inc_percent = -5/3 * honor
 
 This formula only applies while the combined honor is in the `(0, -60]` range. At exactly `-60` the price increase reaches `+100%`, and below `-60` trading with the NPC is no longer possible at all (see the effects table above).
 
+The same share comes off what the merchant pays for goods the player sells. A merchant who dislikes a Master charges more and pays less.
+
+A positive combined honor can earn a small discount, but it never closes the gap between what a shop sells for and what it buys for. A shop always [buys lower than it sells](/docs/mechanics/settlements/#shops-and-stock), whoever is at the counter.
+
 # Positive Honor
 
 A positive honor level leads to very friendly NPCs, which might even give the player discounts or gifts from time to time. To increase your honor level again, you can:
 
 - Kill a player with negative honor, which is indicated by certain debuffs visible to other players.
 - Help an NPC, for example by healing or resurrecting a dead NPC.
-- Defend an NPC or a low-level player from an attacker.
+- Defend an NPC or a low-level player from an [Aggressor](#self-defense).
 - Complete an NPC's quest, or fulfil a player [commission](/docs/mechanics/questing/) held by that NPC as broker.
 - Return a stolen item to its rightful owner (see the **Thief** mechanic below).
 - Trade fairly and repeatedly with the same NPC over time.
+
+Killing a player with negative honor pays at most what the victim's honor is below 0, and only once per victim per real-time day. A Master cannot farm honor from a second character of their own.
 
 A player who steals an item is also marked with the **Thief** debuff, which grants any player who kills them **5 extra honor**. The killing player also receives an honor reward for each item returned to the original owner within 6 real-time hours (18 [Bestia](/docs/mechanics/environment/#in-game-time) hours).
 
@@ -85,9 +117,9 @@ A player who steals an item is also marked with the **Thief** debuff, which gran
 
 Every home village where new players arrive has a **ward stone**. The stone carries a powerful spell, and its field reaches about **3.5 km** in every direction. That field is the Protected Zone.
 
-Everything a player owns inside the field is warded: the master, their bestias and their crafting stations. Everybody can see the ward as a buff on the warded entity. It lasts a few seconds, and the stone renews it as long as its owner stays in the field. While a ward holds:
+Everything a player owns inside the field is warded: the master, their bestias and their crafting stations. The townsfolk of the village are warded the same way. Everybody can see the ward as a buff on the warded entity. It lasts a few seconds, and the stone renews it as long as its owner stays in the field. While a ward holds:
 
-- No harm passes between players. A warded player cannot be hurt, debuffed or have their stations broken by another player, and cannot do any of that to another player either. This holds in both directions, so nobody can attack into the field from just outside it, or out of it from inside.
+- No harm passes between players, or from players to townsfolk. A warded player cannot be hurt, debuffed or have their stations broken by another player, and cannot do any of that to another player either. This holds in both directions, so nobody can attack into the field from just outside it, or out of it from inside.
 - Monsters are not affected. A creature still attacks a warded player, and a warded player still fights back.
 - An attack or harmful skill aimed at a warded target does not start. Clicking a warded bestia only selects it, and if an attack is sent anyway, the attacker is told that a ward stone protects the target.
 
@@ -95,7 +127,7 @@ The ward on a player cannot be dispelled. The only way to end the protection is 
 
 {{< alert context="warning" text="How a ward stone's magic is countered is not designed yet." />}}
 
-Honor still applies inside the field. Killing an NPC there costs a flat 10 honor (no level-based reduction), even if no observer is in sight. All honor loss inside a Protected Zone is doubled, so such a kill costs **20 honor** in total. Honor-increasing actions are multiplied by 1.5.
+Honor still applies inside the field. Killing an NPC there is only possible once the ward stone's magic is countered. It then costs a flat 10 honor (no level-based reduction), even if no observer is in sight. All honor loss inside a Protected Zone is doubled, so such a kill costs **20 honor** in total. Honor-increasing actions are multiplied by 1.5.
 
 # War Zone
 
