@@ -1,0 +1,28 @@
+<!-- statuslist.html: every status effect of data/status_effects.yaml, one table per polarity -->
+{{- $all := site.Data.status_effects -}}
+{{- $groups := slice
+  (dict "title" "Debuffs" "rows" (where $all "polarity" "DEBUFF"))
+  (dict "title" "Buffs" "rows" (where $all "polarity" "BUFF"))
+  (dict "title" "Other effects" "rows" (where $all "polarity" "NEUTRAL"))
+-}}
+{{- range $groups }}
+<h2 id="{{ .title | urlize }}">{{ .title }} <small class="text-body-secondary">({{ len .rows }})</small></h2>
+<div class="table-responsive mb-4">
+  <table class="table table-sm align-middle">
+    <thead>
+      <tr><th>#</th><th>Status</th><th>Effect</th><th>Resisted by</th><th>Dispellable</th></tr>
+    </thead>
+    <tbody>
+      {{- range sort .rows "id" }}
+      <tr id="{{ .identifier | lower | replaceRE "_" "-" }}">
+        <td>{{ .id }}</td>
+        <td><strong>{{ .name }}</strong><br><small class="text-body-secondary"><code>{{ .identifier }}</code></small></td>
+        <td>{{ .effect | markdownify }}</td>
+        <td>{{ with .resist }}{{ delimit . " + " }}{{ else }}–{{ end }}</td>
+        <td>{{ if .dispellable }}Yes{{ else }}No{{ end }}</td>
+      </tr>
+      {{- end }}
+    </tbody>
+  </table>
+</div>
+{{- end }}
