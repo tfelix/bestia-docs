@@ -160,8 +160,8 @@ block for what makes it more than a number:
   rolls them on every tick, so its chances are small.
 - **Areas and channels**: an area may drift, give mana, keep a status on whoever stands in it or heal friends. A
   channelled spell keeps acting after its cast while the caster holds still.
-- **Special cases** run their own script: Turn Undead, Control Undead, Dispel, the strips, Ultima, Ultima Fist,
-  Detect and Petrifying Gaze.
+- **Special cases** run their own script: Turn Undead, Control Undead, Dispel, the strips, Ultima, Ultima Fist
+  and Detect.
 
 Some rules keep attacks comparable:
 

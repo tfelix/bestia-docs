@@ -74,14 +74,14 @@ statusValue = (baseValue + individualValue) * level / 100 + effortValue
 - Increases upgrade chance of items and equipment by 1% every 10 DEX.
 - Increases the chance to successfully cut a rune slot into an item by 1% every 10 DEX, see [Item Customization](/docs/mechanics/items/#item-customization).
 - Increases [construction crafting success chance](/docs/mechanics/items/#construction-crafting-success-chance) by 2% every 10 DEX.
-- Helps to resist Burning, Blind, Confused and Stiffened ([status effects](/docs/mechanics/status-effects/#resist))
+- Helps to resist Burning, Blind and Confused ([status effects](/docs/mechanics/status-effects/#resist))
 
 ## Agility - AGI
 
 - Increases the attack rate
 - Increases the walking speed
 - Increases the dodge chance (flee rate) for physical attacks (melee and ranged)
-- Helps to resist Poison, Bleeding, Burning, Slowed and Stiffened ([status effects](/docs/mechanics/status-effects/#resist))
+- Helps to resist Poison, Bleeding, Burning and Slowed ([status effects](/docs/mechanics/status-effects/#resist))
 
 # Status Based Values
 
