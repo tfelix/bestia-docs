@@ -1,0 +1,401 @@
+# Every status effect a player can see, as zone-server's status_effects.yml defines it. The Status Effects page
+# renders this file with the statuslist shortcode.
+#
+# `id` and `identifier` match zone-server. Internal bookkeeping effects (cooldown markers, INVULNERABLE) are left out.
+# `resist` names the two attributes that shake the effect off; an empty list means it always lands.
+# `dispellable: false` means no dispel or cure can remove it.
+#
+# Ids 31 and up follow the order of the skill rework game PRs (03 to 06). Check them against status_effects.yml
+# once those PRs land.
+
+- id: 1
+  identifier: SWIFTNESS
+  name: Swiftness
+  polarity: BUFF
+  resist: []
+  effect: Move speed +10% per level.
+  dispellable: true
+
+- id: 2
+  identifier: CRIPPLE
+  name: Cripple
+  polarity: DEBUFF
+  resist: []
+  effect: Move speed −15% for 15 s.
+  dispellable: true
+
+- id: 5
+  identifier: BLESSING
+  name: Blessing
+  polarity: BUFF
+  resist: []
+  effect: STR, DEX and INT +1 per level. On an Undead target it halves DEX and INT instead.
+  dispellable: true
+
+- id: 7
+  identifier: PLAY_DEAD
+  name: Play Dead
+  polarity: BUFF
+  resist: []
+  effect: Wild bestias do not notice the master and forget that it hurt them. Only the master skill gives it.
+  dispellable: true
+
+- id: 10
+  identifier: WARDED
+  name: Warded
+  polarity: BUFF
+  resist: []
+  effect: The bearer and other players cannot harm each other. A ward stone's aura renews it while the bearer stays in the field.
+  dispellable: false
+
+- id: 11
+  identifier: WARD_AURA
+  name: Ward Aura
+  polarity: NEUTRAL
+  resist: []
+  effect: The spell on a ward stone. It gives WARDED to everything a player owns near the stone.
+  dispellable: false
+
+- id: 12
+  identifier: GUILD_AURA
+  name: Guild Aura
+  polarity: BUFF
+  resist: []
+  effect: Members near their guild leader get the stat auras of the guild.
+  dispellable: false
+
+- id: 13
+  identifier: BATTLE_ORDERS
+  name: Battle Orders
+  polarity: BUFF
+  resist: []
+  effect: STR, DEX and INT +5 for 180 s.
+  dispellable: false
+
+- id: 14
+  identifier: GUILD_REGENERATION
+  name: Guild Regeneration
+  polarity: BUFF
+  resist: []
+  effect: HP, mana and stamina regen +50% per level for 60 s.
+  dispellable: false
+
+- id: 15
+  identifier: EMERGENCY_MOVE
+  name: Emergency Move
+  polarity: BUFF
+  resist: []
+  effect: Move speed +25% for 10 s.
+  dispellable: true
+
+- id: 17
+  identifier: EMPOWERED
+  name: Empowered
+  polarity: BUFF
+  resist: []
+  effect: The bestia deals about 25% more damage for 15 s.
+  dispellable: true
+
+- id: 18
+  identifier: WEAKENED
+  name: Weakened
+  polarity: DEBUFF
+  resist: []
+  effect: ATK −20%.
+  dispellable: true
+
+- id: 19
+  identifier: WARMED
+  name: Warmed
+  polarity: BUFF
+  resist: []
+  effect: The bearer stands more cold before it suffers from it.
+  dispellable: true
+
+- id: 20
+  identifier: COOLED
+  name: Cooled
+  polarity: BUFF
+  resist: []
+  effect: The bearer stands more heat before it suffers from it. It ends BURNING.
+  dispellable: true
+
+- id: 21
+  identifier: STUN
+  name: Stun
+  polarity: DEBUFF
+  resist: [VIT, STR]
+  effect: No moving, attacks, casts or items. It cancels a cast or a channel.
+  dispellable: true
+
+- id: 22
+  identifier: FROZEN
+  name: Frozen
+  polarity: DEBUFF
+  resist: [VIT, WIL]
+  effect: Locked like STUN; the element becomes Water 1 and DEF/MDEF +10%. Any damage breaks it and it ends BURNING; a Fire element target is immune.
+  dispellable: true
+
+- id: 23
+  identifier: STONING
+  name: Stoning
+  polarity: DEBUFF
+  resist: [WIL, INT]
+  effect: A 10 s warning in which the target can still act. A cure stops it; otherwise STONE follows.
+  dispellable: true
+
+- id: 24
+  identifier: STONE
+  name: Stone
+  polarity: DEBUFF
+  resist: []
+  effect: Locked for 30 s. The element becomes Earth 1 and DEF/MDEF +90%. Damage does not break it.
+  dispellable: true
+
+- id: 25
+  identifier: IMMOBILIZED
+  name: Immobilized
+  polarity: DEBUFF
+  resist: []
+  effect: The target cannot move. It can still attack, cast and use items.
+  dispellable: true
+
+- id: 26
+  identifier: SLOWED
+  name: Slowed
+  polarity: DEBUFF
+  resist: [AGI, STR]
+  effect: Move speed −10% per level.
+  dispellable: true
+
+- id: 27
+  identifier: CONFUSED
+  name: Confused
+  polarity: DEBUFF
+  resist: [INT, DEX]
+  effect: Every move goes to a random tile near the one asked for.
+  dispellable: true
+
+- id: 28
+  identifier: FEARED
+  name: Feared
+  polarity: DEBUFF
+  resist: [WIL, STR]
+  effect: The entity runs from the source of its fear. No moves by request, no attacks and no skills; potions and usable items still work.
+  dispellable: true
+
+- id: 29
+  identifier: BLIND
+  name: Blind
+  polarity: DEBUFF
+  resist: [INT, DEX]
+  effect: HIT −25%, and ranged skills reach 3 tiles at most. A bestia sees only 2 tiles; a player sees a black vignette.
+  dispellable: true
+
+- id: 30
+  identifier: STIFFENED
+  name: Stiffened
+  polarity: DEBUFF
+  resist: [DEX, AGI]
+  effect: Move speed and ASPD −30%. A second Petrifying Gaze stuns the target for 2 s.
+  dispellable: true
+
+- id: 31
+  identifier: POISON
+  name: Poison
+  polarity: DEBUFF
+  resist: [VIT, AGI]
+  effect: Lose 1% max HP every 2 s, but never the last HP. No natural HP regen, and DEF −25%.
+  dispellable: true
+
+- id: 32
+  identifier: BLEEDING
+  name: Bleeding
+  polarity: DEBUFF
+  resist: [STR, AGI]
+  effect: Lose 2% max HP per tile walked and per attack or cast; it can kill. Standing still makes it run out twice as fast, and any heal ends it.
+  dispellable: true
+
+- id: 33
+  identifier: BURNING
+  name: Burning
+  polarity: DEBUFF
+  resist: [AGI, DEX]
+  effect: Fire damage of 2% max HP per second, scaled by the target's fire element factor. Each second has a 15% chance to set the ground on fire; FROZEN, COOLED or water ends it.
+  dispellable: true
+
+- id: 34
+  identifier: SICK
+  name: Sick
+  polarity: DEBUFF
+  resist: [VIT, INT]
+  effect: Heals received ×0.5.
+  dispellable: true
+
+- id: 35
+  identifier: WITHERED
+  name: Withered
+  polarity: DEBUFF
+  resist: [STR, WIL]
+  effect: Max HP −20%, VIT −20% and HP regen −50%.
+  dispellable: true
+
+- id: 36
+  identifier: REGENERATING
+  name: Regenerating
+  polarity: BUFF
+  resist: []
+  effect: Heals 3% max HP every 2 s.
+  dispellable: true
+
+- id: 37
+  identifier: LIFESTEAL
+  name: Lifesteal
+  polarity: BUFF
+  resist: []
+  effect: Heals the bearer by 50% of the damage it deals.
+  dispellable: true
+
+- id: 38
+  identifier: MANA_SEALED
+  name: Mana Sealed
+  polarity: DEBUFF
+  resist: []
+  effect: No natural mana regen for 300 s.
+  dispellable: false
+
+- id: 39
+  identifier: ENRAGED
+  name: Enraged
+  polarity: BUFF
+  resist: []
+  effect: ATK and DEF +25% for 15 s. When it ends, FATIGUE follows.
+  dispellable: true
+
+- id: 40
+  identifier: FATIGUE
+  name: Fatigue
+  polarity: DEBUFF
+  resist: []
+  effect: ATK, DEF and ASPD −20% for 8 s, and Enrage cannot be cast.
+  dispellable: true
+
+- id: 41
+  identifier: BERSERK
+  name: Berserk
+  polarity: BUFF
+  resist: []
+  effect: DEF and MDEF drop to 0. ATK +60% and ASPD +30%.
+  dispellable: true
+
+- id: 42
+  identifier: TAILWIND
+  name: Tailwind
+  polarity: BUFF
+  resist: []
+  effect: ASPD +20% and move speed +25%.
+  dispellable: true
+
+- id: 43
+  identifier: ENDOWED
+  name: Endowed
+  polarity: BUFF
+  resist: []
+  effect: Auto-attacks and Neutral melee skills hit with the element of the endow.
+  dispellable: true
+
+- id: 44
+  identifier: ARMOR_ENDOWED
+  name: Armor Endowed
+  polarity: BUFF
+  resist: []
+  effect: The bearer's defence element becomes the element of the coat.
+  dispellable: true
+
+- id: 45
+  identifier: HIT_DOWN
+  name: Hit Down
+  polarity: DEBUFF
+  resist: []
+  effect: HIT −25%.
+  dispellable: true
+
+- id: 46
+  identifier: ASPD_DOWN
+  name: ASPD Down
+  polarity: DEBUFF
+  resist: []
+  effect: ASPD −40%.
+  dispellable: true
+
+- id: 47
+  identifier: QUAGMIRED
+  name: Quagmired
+  polarity: DEBUFF
+  resist: []
+  effect: Only while inside the zone. DEX and AGI ×0.5 and move speed −30%; it removes SWIFTNESS and TAILWIND.
+  dispellable: true
+
+- id: 48
+  identifier: SHELTERED
+  name: Sheltered
+  polarity: BUFF
+  resist: []
+  effect: Ranged physical hits on the bearer miss. Magic and melee still hit (like Pneuma).
+  dispellable: true
+
+- id: 49
+  identifier: REFLECT
+  name: Reflect
+  polarity: BUFF
+  resist: []
+  effect: Single-target skill damage bounces back to the caster. After two bounces it lands.
+  dispellable: true
+
+- id: 50
+  identifier: BARRIER
+  name: Barrier
+  polarity: BUFF
+  resist: []
+  effect: Absorbs damage until its pool is used up (like Kyrie Eleison).
+  dispellable: true
+
+- id: 51
+  identifier: CORROSIVE
+  name: Corrosive
+  polarity: BUFF
+  resist: []
+  effect: A master who hits the bearer in melee wears out the weapon.
+  dispellable: true
+
+- id: 52
+  identifier: CONTROLLED
+  name: Controlled
+  polarity: DEBUFF
+  resist: [INT, WIL]
+  effect: A wild undead fights for the caster's side.
+  dispellable: true
+
+- id: 53
+  identifier: HIDDEN
+  name: Hidden
+  polarity: BUFF
+  resist: []
+  effect: Concealed. The bearer cannot move and area attacks skip it. Mana drains; any action ends it.
+  dispellable: true
+
+- id: 54
+  identifier: CLOAKED
+  name: Cloaked
+  polarity: BUFF
+  resist: []
+  effect: Concealed. The bearer moves 30% slower and area attacks still hit it. Mana drains; any action ends it.
+  dispellable: true
+
+- id: 55
+  identifier: CHANNELING
+  name: Channeling
+  polarity: NEUTRAL
+  resist: []
+  effect: The bearer channels a skill. It cannot move or auto-attack; see [Channeling](#channeling).
+  dispellable: true
