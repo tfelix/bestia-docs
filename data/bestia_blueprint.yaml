@@ -179,7 +179,7 @@ archetypes:
     label: Power Strike
     kind: physical
     coef: 2.0
-    castTime: 0.5
+    castTime: 0
     cooldown: 8
     range: 1
     mana: { base: 5, perSkillLevel: 1.5 }
@@ -234,7 +234,7 @@ archetypes:
     coef: 1.0
     castTime: 1.5
     cooldown: 20
-    range: 0
+    range: 5
     mana: { base: 10, perSkillLevel: 2 }
   - id: buff
     label: Buff
@@ -243,7 +243,7 @@ archetypes:
     duration: 15
     castTime: 0.5
     cooldown: 30
-    range: 0
+    range: 5
     mana: { base: 8, perSkillLevel: 1 }
   - id: debuff
     label: Debuff

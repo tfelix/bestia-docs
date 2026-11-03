@@ -149,6 +149,45 @@ slots, at the slot's learn level, chosen to fit what it is: a yak sheds wool, a 
 So 20 is the usual size of a learnset, not a fixed one. A species may drop a slot or add one, so learnsets run from
 about 18 to 22 skills. A utility skill is never one of the active attacks and the fit below ignores it.
 
+### What an attack does beyond its damage
+
+An attack on the [Attack List](/docs/mechanics/attack-list) is its archetype's damage formula plus a **mechanics**
+block for what makes it more than a number:
+
+- **Blows**: several hits per cast, each with the full coefficient. A row with more blows sets a lower coefficient.
+- **Movement**: a dash or a leap brings the caster to its target first, and a knockback pushes the target away.
+- **Riders**: [status effects](/docs/mechanics/status-effects) a hit may leave, each with its own chance. An area
+  rolls them on every tick, so its chances are small.
+- **Areas and channels**: an area may drift, give mana, keep a status on whoever stands in it or heal friends. A
+  channelled spell keeps acting after its cast while the caster holds still.
+- **Special cases** run their own script: Turn Undead, Control Undead, Dispel, the strips, Ultima, Ultima Fist,
+  Detect and Petrifying Gaze.
+
+Some rules keep attacks comparable:
+
+- **Melee has no cast time.** A strike or power strike lands at once; only its cooldown limits it.
+- **Spells have an element.** A Normal species casts in its magic element, which follows where it lives (cold and
+  water: Water, hot and dry: Fire, high and open: Wind, anything else: Earth) unless the species names one.
+- **Effects cost mana.** An attack's mana is its old cost times one plus the sum of these premiums:
+
+  | Effect | Premium |
+  |---|---|
+  | A status rider under 20 % | +10 % |
+  | A status rider of 20 to 50 % | +20 % |
+  | A status rider over 50 % | +35 % |
+  | The rider is a stun, freeze, stone or fear | that premium ×1.5 |
+  | Dash, leap or knockback | +15 % |
+  | Ignores defence | +25 % |
+  | Chains to more targets | +40 % |
+  | Lifesteal | +30 % |
+  | Uses up an item | −20 % |
+
+- **Hard crowd control comes later.** An attack that may stun, freeze, petrify or frighten is learned 5 levels later.
+- **Bosses shrug off crowd control.** A boss is immune to stun, freeze, stone, fear, confusion and control unless its
+  row says otherwise (`statusImmunities` in `data/bestias.yaml`).
+- **Weight.** Every species has a body weight from its size (small 15 kg, medium 60 kg, big 250 kg, double for a
+  boss) unless its row names one. A body slam hits harder from a heavier body.
+
 ## The active attacks
 
 A wild bestia does not use all it knows. Its AI profile lists **a few active attacks**: the newest ones it

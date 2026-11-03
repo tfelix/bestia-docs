@@ -198,9 +198,22 @@
     return (data.attacks || []).filter(fits).sort(ownElementFirst)[0];
   }
 
+  // What a row is worth per cast: its own coefficient, or its archetype's, times the blows it lands.
+  function rowCoefOf(attack, archetype) {
+    const mechanics = attack.mechanics || {};
+    const hits = ((mechanics.hitsMin ?? 1) + (mechanics.hitsMax ?? mechanics.hitsMin ?? 1)) / 2;
+    return (attack.coef ?? archetype.coef ?? 1) * hits;
+  }
+
+  // Spells have no Normal element, so a Normal species casts them in its magic element.
+  function slotElement(archetype, element, magicElement) {
+    const casts = archetype.kind === "magic" || archetype.kind === "dot";
+    return casts && element === "NORMAL" && magicElement ? magicElement : element;
+  }
+
   // Up to 20 attacks a species learns from Lv 1 to 100, all from the Attack List. A slot the list has
   // no attack for stays empty.
-  function learnset(data, roleId, element) {
+  function learnset(data, roleId, element, magicElement) {
     const role = byId(data.roles, roleId);
     const ls = data.learnset;
     const taken = new Set();
@@ -208,7 +221,7 @@
       .map((archetypeId, slot) => {
         const archetype = byId(data.archetypes, archetypeId);
         const level = ls.levels[slot];
-        const attack = listedAttackFor(data, archetype, element, level, taken);
+        const attack = listedAttackFor(data, archetype, slotElement(archetype, element, magicElement), level, taken);
         if (!attack) return null;
         taken.add(attack.id);
         return {
@@ -223,6 +236,9 @@
           skillId: attack.skillId ?? null,
           skill: attack.skill ?? null,
           listedMana: attack.mana ?? null,
+          rowCoef: rowCoefOf(attack, archetype),
+          castTime: attack.castTime ?? archetype.castTime,
+          cooldown: attack.cooldown ?? archetype.cooldown,
         };
       })
       .filter(Boolean);
@@ -301,8 +317,8 @@
       const a = attacks[choice];
       const arch = a.archetypeData;
       mana -= a.mana;
-      ready[choice] = t + arch.castTime + arch.cooldown;
-      bestiaFreeAt = t + Math.max(arch.castTime, bestia.interval.seconds);
+      ready[choice] = t + a.castTime + a.cooldown;
+      bestiaFreeAt = t + Math.max(a.castTime, bestia.interval.seconds);
       if (a.kind === "physical") {
         hurt(physicalPerSwing(data, bestia, master, { coef: a.coef, ranged: arch.ranged }).expected, a.identifier);
       } else if (a.kind === "magic") {
@@ -419,7 +435,7 @@
   // Skill scripts scale with level/4 times the skill level, which attributes cannot reach. So the
   // attacks get one shared coefficient instead, solved so the whole rotation meets the target.
   function fitAttackPower(data, input, attrs, master, ctx, targetDps) {
-    const scaled = (f) => ctx.active.filter(isDamaging).forEach((a) => (a.coef = a.archetypeData.coef * f));
+    const scaled = (f) => ctx.active.filter(isDamaging).forEach((a) => (a.coef = a.rowCoef * f));
     const power = solveFactor((f) => {
       scaled(f);
       return offenseDps(data, input, attrs, master, ctx);
@@ -493,14 +509,14 @@
     const level = input.level;
     const master = referenceMaster(data, level);
     const elementLevel = input.elementLevel || suggestedElementLevel(data, level, input.tier);
-    const learned = learnset(data, input.role, input.element);
+    const learned = learnset(data, input.role, input.element, input.magicElement);
     const known = learned.filter((a) => a.level <= level);
     const activeSlots = input.activeSlots ?? defaultActiveSlots(data, input, known);
     const active = known
       .filter((a) => activeSlots.includes(a.slot))
       .map((a) => {
         const archetypeData = byId(data.archetypes, a.archetype);
-        return { ...a, archetypeData, coef: archetypeData.coef, mana: a.listedMana ?? manaCost(archetypeData, a.skillLevel) };
+        return { ...a, archetypeData, coef: a.rowCoef, mana: a.listedMana ?? manaCost(archetypeData, a.skillLevel) };
       });
 
     const pace = data.pace;
@@ -520,7 +536,7 @@
       : fitAttributes(data, input, splitBudget(budget, role.weights), master, ctx, targetDps * basicShare);
     const attrs = fitted.attrs;
     const attackPower = overrides.attackPower ?? (hasAttacks ? fitAttackPower(data, input, attrs, master, ctx, targetDps) : 1);
-    if (overrides.attackPower != null) active.filter(isDamaging).forEach((a) => (a.coef = a.archetypeData.coef * attackPower));
+    if (overrides.attackPower != null) active.filter(isDamaging).forEach((a) => (a.coef = a.rowCoef * attackPower));
     const fittedHp = fitHp(data, input, attrs, master, ctx, targetSwings);
 
     // Balance is judged on the fitted bestia; loot toughness comes on top and is not paid in EXP.
@@ -534,8 +550,7 @@
     withPower(data, bestia, master, active);
     // Attacks it learns later scale the same way, so a script author gets one rule per species.
     learned.forEach((a) => {
-      const arch = byId(data.archetypes, a.archetype);
-      if (isDamaging(a)) a.coef = round2(arch.coef * attackPower);
+      if (isDamaging(a)) a.coef = round2(a.rowCoef * attackPower);
     });
     return {
       warnings: [
