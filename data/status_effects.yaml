@@ -398,4 +398,12 @@
   polarity: NEUTRAL
   resist: []
   effect: The bearer channels a skill. It cannot move or auto-attack; see [Channeling](#channeling).
+  dispellable: false
+
+- id: 56
+  identifier: EXPOSED
+  name: Exposed
+  polarity: DEBUFF
+  resist: []
+  effect: What Strip Armor leaves on a wild bestia, which wears no armour to take off. DEF -25%.
   dispellable: true
