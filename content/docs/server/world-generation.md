@@ -20,8 +20,8 @@ of this pass:
 
 - **No client-side base generation.** The wire format, base hashing and version gate that would make it safe
   exist; nothing generates terrain client-side yet, so every chunk is sent fully merged.
-- **No disk or object-store cache tier.** `ChunkCache` chains against `ChunkBlobStore` implementations, and
-  only an in-memory one exists.
+- **No disk or object-store cache tier.** Generated chunks are cached in memory only, so a restart generates
+  each chunk again on first use. See [Chunk Caching](/docs/server/chunk-caching).
 - **The catalogues are still code, not data files.** `BusinessCatalogue`, the biome prototype table,
   `Culture.ALL`, `Names.STYLES` are Kotlin objects. A designer changing one needs a rebuild. (Individual stage
   _parameters_ — roughly 220 of them — mostly already load from a params-text file; see
@@ -163,11 +163,11 @@ size (see [Benchmarks](#benchmarks)), so persisting it would only be persisting 
 the life of the server process.
 
 **2. A generated chunk base** is also a pure function — of the world tier plus a chunk coordinate — so it is
-also never _durably_ stored, only cached: an in-process LRU (`ChunkCache`, 512 hot chunks by default —
-roughly what a handful of players in view distance need) in front of an optional chain of `ChunkBlobStore`
-tiers holding RLE-encoded bytes. The cache key folds in `(seed, pipelineVersion, chunkCoordinate)`, so
-retuning any stage changes every key at once — nothing stale can ever be served, and no explicit invalidation
-pass is needed.
+also never _durably_ stored, only cached: an in-process LRU of decoded chunks (`ChunkCache`, 128 in
+zone-server) with the encoded wire payloads behind it, so a chunk that falls out of the LRU is decoded again
+rather than generated again — [Chunk Caching](/docs/server/chunk-caching) walks through it with examples.
+`ChunkCache`'s key folds in `(seed, pipelineVersion, chunkCoordinate)`, so retuning any stage changes every key
+at once — nothing stale can ever be served, and no explicit invalidation pass is needed.
 
 **3. Player edits are a sparse delta on top of the base**, kept in memory while the server runs and saved to
 the zone's database (see _Saving edits_ below). `ChunkDelta` holds, per touched voxel, how much of it is left —
@@ -361,7 +361,9 @@ Generating a chunk takes milliseconds, so the tick thread does not do it. An une
 for is materialised, RLE-encoded and deflated on a `zone-chunk-worker` thread (`ChunkWorkers`,
 `chunk-stream.encode-workers`, 2 by default), at most `chunk-stream.encodes-per-tick` (16) started per tick
 across all players, and each chunk only once however many players want it. The finished payload is handed
-back to the tick and sent on a later tick; until then the chunk waits in the player's send queue. Two
+back to the tick and sent on a later tick; until then the chunk waits in the player's send queue. The
+payload then stays in the encoded cache, for the next player and for the hot cache to rebuild from (see
+[Chunk Caching](/docs/server/chunk-caching)). Two
 chunks are still encoded at once on the tick: the one the player stands on, because arriving on nothing is
 worse than a hitch, and any chunk somebody has edited, whose base is already hot. A carve does not encode
 the new revision just to decide between a patch and a snapshot; it compares against the payload size the
