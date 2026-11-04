@@ -180,8 +180,8 @@ A bad harvest is absorbed by working harder, not by starving — which is why on
 hard year rather than a collapse.
 
 **The roads.** Shortages pull goods in from neighbours, along the road network, paid for out of the
-town's treasury. A town on a highway barely notices a bad month. A town at the end of a track feels
-everything. This is also why cutting a road hurts a settlement that never saw the attack.
+town's treasury. A town on a cobbled road barely notices a bad month. A village at the end of a trail
+feels everything. This is also why cutting a road hurts a settlement that never saw the attack.
 
 **Money that comes back.** A settlement's coin drifts back toward what a place its size and wealth
 ought to hold. Sell it a mountain of loot and it will pay well for the first load and poorly for the
@@ -189,6 +189,22 @@ next, and be ready for you again in a week or two. It is not a bottomless purse 
 purse you can permanently empty.
 
 {{< alert context="info" text="Where a settlement's coin comes from in the first place, and why NPCs can never conjure it, is covered under [Currency](/docs/mechanics/economy-trade/#currency) and the [World Treasury Director](/docs/server/economy/)." />}}
+
+# The Roads Between Them
+
+How good a road is depends on how much trade runs along it, and you can tell the three kinds apart
+both underfoot and on the map:
+
+- **Trails** lead out to villages and hamlets. A strip of beaten earth a stride or two wide that
+  wanders about and, on its quietest stretches, nearly disappears into the grass. Dotted on the map.
+- **Dirt roads** join towns. Wider and rutted, with water standing in the ruts in wet country and
+  grass growing down the middle where few carts pass. Dashed on the map.
+- **Cobbled roads** carry the busiest trade between cities. Paved, a steady width and nearly
+  straight, with a strip of beaten earth along each side. A double line on the map.
+
+None of them runs dead straight: they swing round whatever was in the way when they were first
+walked. And a road does not stop at the edge of town. It carries on as the high street to the
+market, and the town grew up along it.
 
 # Limits
 
