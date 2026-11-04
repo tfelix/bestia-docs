@@ -247,9 +247,18 @@ axes (temperature, precipitation, seasonality, temperature range, elevation, slo
 **not** a Whittaker-style lookup table, because a table partitions climate space into rectangles, and
 rectangles read as dead-straight biome boundaries on a map, which no real landscape has. A nearest-prototype
 classifier's boundaries follow the shape of the climate instead, and the runner-up's score doubles as a blend
-weight for soft transitions — though it needs a cutoff and a coherent dither field before it's usable as one;
-raw, its calibration is not close to 0–1 (median 0.066 among cells with any runner-up at all), so using it
-directly produces a near-uniform 50/50 checkerboard at every boundary rather than a gradient.
+weight for soft transitions — once it is ranked against the world's own distribution, which makes it a share,
+and applied through a coherent patch field rather than per column, which reads as a checkerboard.
+
+Where a boundary falls on the map and how it is drawn on the ground are separate questions. The biome raster is
+kilometre cells, so the chunk tier looks it up through three displacements: a kilometre warp that curves an edge
+on the map, a 160 m warp that bends it over the distance a player sees, and a fray that lets each biome take
+patches of ground from the other within about 25 m of the line, from both sides. The confidence dither cannot do
+the last part alone: a cell's runner-up is its nearest rival in climate, not the biome next door, so across most
+edges only one side would mix. Cover thresholds on smooth kilometre fields — the snow line, shingle on a cold
+shore, lake ice, blight — are dithered across a band in patches for the same reason: a bilinear field compared
+against a constant draws a contour that is straight inside every cell. `./gradlew :worldgen:probe -Pedges`
+measures every such boundary in a world.
 
 A few of the biome table's shapes are worth knowing the reasoning behind, not just the result:
 
