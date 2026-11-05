@@ -173,7 +173,7 @@ The following trees exist, they are organized in subtrees. These form the skill 
 
 ## Novice Tree
 
-In order to learn how to interact with other player you need to invest your first skill points in this skill tree. It is expected that every user learns at least **Basic Skill Lv. 5**, since this is the threshold which unlocks all the other skill trees.
+In order to learn how to interact with other players you need to invest your first skill points in this skill tree. It is expected that every user learns at least **Basic Skill Lv. 5**, since this is the threshold which unlocks all the other skill trees.
 
 {{< alert context="info" text="Basic Skill Lv. 5 is the gate for every other tree - no skill outside of the Novice tree can be learned before it. As soon as you take a single skill point in any other tree, the Novice tree closes and no further novice skills can be learned." />}}
 
@@ -217,16 +217,16 @@ with a long recipe book outperforms a Lv. 3 cook who never left the campfire.
 {{< /skill >}}
 
 {{< skill name="First Aid" maxLevel="3" requires="Basic Skill Lv. 3"
-    type="Active" manaCost="per Lv." castTime="Channeled" cooldown="3min" duration="10s" range="2" target="Bestia"
-    description="Apply bandages to a Bestia or yourself, channeling a steady mend into whatever's bleeding." >}}
+    type="Active" manaCost="per Lv." castTime="Channeled" cooldown="3min" duration="10s" range="2" target="Self or Ally"
+    description="Apply bandages to yourself or to a friendly Bestia or master, channeling a steady mend into whatever's bleeding." >}}
 
-Channels for 10s. A Bestia can only receive a single First Aid every 60 secs. It will heal whatever limit is reached first.
+Channels for 10s. A target can only receive a single First Aid every 60 secs. It will heal whatever limit is reached first.
 
-| Lv. | Max HP Healed (% based) | Max HP Healed (flat) |
-| --- | ----------------------- | -------------------- |
-| 1   | +30%                    | +100 HP              |
-| 2   | +60%                    | +200 HP              |
-| 3   | +100%                   | +350 HP              |
+| Lv. | Max HP Healed (% based) | Max HP Healed (flat) | Mana |
+| --- | ----------------------- | -------------------- | ---- |
+| 1   | +30%                    | +100 HP              | 12   |
+| 2   | +60%                    | +200 HP              | 16   |
+| 3   | +100%                   | +350 HP              | 20   |
 
 {{< /skill >}}
 
