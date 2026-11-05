@@ -518,7 +518,7 @@ down as well, but burnt time is gone: no repair gives it back.
 
 ### Artificer
 
-Where Blacksmiths hammer steel, Artificers coax it into remembering spells. This path inscribes magic onto items, binds it to triggers, and crystalizes raw mana into shards other professions can build on.
+Where Blacksmiths hammer steel, Artificers coax it into remembering spells. This path inscribes magic onto items, binds it to triggers, and crystallizes raw mana into shards other professions can build on.
 
 {{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [craftsman tree](#craftsman-tree)" />}}
 
@@ -533,14 +533,15 @@ graph TD
     ManaHarvester -->|Lv.3| ManaflowExpert
     ItemCustomization -->|Lv.3| RunicEtching
     RunicEtching -->|Lv.5| MagicArtisan
+    ManaflowExpert -->|Lv.3| MagicArtisan
 ```
 
 <br>
 {{< skill name="Mana Harvester" maxLevel="10"
-    type="Active" manaCost="19" castTime="10s" cooldown="30s"
+    type="Active" manaCost="19" castTime="10s" cooldown="30s" range="2" target="Ground"
     description="Build and operate Mana Harvesters which channel mana from the environment into raw crystals - the source of magic for many use cases. Yield follows the local [mana concentration](/docs/mechanics/environment/#mana-concentration), so where a harvester stands matters as much as its rank." >}}
 
-Level 1 enables you to craft, place and use a Mana Harvester.
+Level 1 enables you to place a Mana Harvester.
 
 | Lv. | Harvesting Time Reduction | Crystal Yield | Total Active Harvesters |
 | --- | ------------------------- | ------------- | ----------------------- |
@@ -558,46 +559,56 @@ Level 1 enables you to craft, place and use a Mana Harvester.
 {{< /skill >}}
 
 {{< skill name="Manaflow Expert" maxLevel="5" requires="Mana Harvester Lv. 3"
-    type="Active" manaCost="22" target="Crystal Lathe"
+    type="Active" manaCost="22" castTime="10s" cooldown="0s" range="2" target="Crystal Lathe"
     description="Refine the raw and unstable mana crystals harvested by a Mana Harvester into the finest arcane raw materials used to build powerful magic artifacts. The Crystal Lathe is for mana crystals only - a Miner's [Gem Cut Station](/docs/mechanics/item-list/#gem-cut-station) handles ordinary gemstones." >}}
-Level 1 enables you to craft, place and use a Crystal Lathe. Cast time depends on the processed material.
+Level 1 enables you to place a Crystal Lathe. The cast only places the lathe or opens its recipes. The refining itself
+takes the [craft duration](/docs/mechanics/items/#craft-duration) of the crystal's item level.
 
-| Lv. | Success Chance |
-| --- | -------------- |
-| 1   | 4%             |
-| 2   | 8%             |
-| 3   | 12%            |
-| 4   | 16%            |
-| 5   | 20%            |
+| Lv. | Success Chance | Max Crystal Level |
+| --- | -------------- | ----------------- |
+| 1   | +4%            | 20                |
+| 2   | +8%            | 40                |
+| 3   | +12%           | 60                |
+| 4   | +16%           | 80                |
+| 5   | +20%           | 100+              |
+
+A crystal above your max crystal level cannot be refined.
 
 {{< /skill >}}
 
 {{< skill name="Runic Etching" maxLevel="10" requires="Item Customization Lv. 3"
-    type="Active" manaCost="25" cooldown="0s" target="Carving Table"
+    type="Active" manaCost="25" castTime="10s" cooldown="0s" range="2" target="Carving Table"
     description="Create runes from Bestia essences. These runes are imbued with the power of the Bestia and can be slotted into a weapon or piece of equipment that has been prepared with Item Customization. An attempt to convert a Bestia into an essence destroys the Bestia." >}}
 
-Cast time depends on the level of the Bestia. Level 1 allows you to create a Carving Table.
+Level 1 allows you to place a Carving Table. The Bestia to convert must stand next to the table. The cast only places
+the table or opens its recipes. The etching itself takes the [craft duration](/docs/mechanics/items/#craft-duration) of
+the Bestia's level.
 
-| Lv. | Success Chance |
-| --- | -------------- |
-| 1   | +5%            |
-| 2   | +10%           |
-| 3   | +15%           |
-| 4   | +20%           |
-| 5   | +25%           |
-| 6   | +30%           |
-| 7   | +35%           |
-| 8   | +40%           |
-| 9   | +45%           |
-| 10  | +50%           |
+| Lv. | Success Chance | Reliable Bestia Level |
+| --- | -------------- | --------------------- |
+| 1   | +5%            | 10                    |
+| 2   | +10%           | 20                    |
+| 3   | +15%           | 30                    |
+| 4   | +20%           | 40                    |
+| 5   | +25%           | 50                    |
+| 6   | +30%           | 60                    |
+| 7   | +35%           | 70                    |
+| 8   | +40%           | 80                    |
+| 9   | +45%           | 90                    |
+| 10  | +50%           | 100+                  |
+
+Same rule as [Forge Weapon](#skill-forge-weapon): no hard cap, but every Bestia level above the reliable one costs another
+`5%` success chance.
 
 {{< /skill >}}
 
-{{< skill name="Magic Artisan" maxLevel="10" requires="Runic Etching Lv. 5"
-    type="Active" manaCost="38" range="2" target="Enchantment Altar"
-    description="Can create magic artefacts by binding sustained enchantments to an item, going well beyond what a single etched rune can hold." >}}
+{{< skill name="Magic Artisan" maxLevel="10" requires="Runic Etching Lv. 5 and Manaflow Expert Lv. 3"
+    type="Active" manaCost="38" castTime="10s" cooldown="0s" range="2" target="Enchantment Altar"
+    description="Can create magic artifacts by binding sustained enchantments to an item, going well beyond what a single etched rune can hold." >}}
 
-Level 1 allows you to create an Enchantment Altar. Cast time depends on the item level and the enchantment you want to use.
+Level 1 allows you to place an Enchantment Altar. Every binding needs refined mana crystals. The cast only places the
+altar or opens its recipes. The binding itself takes the [craft duration](/docs/mechanics/items/#craft-duration) of the
+item level.
 
 | Lv. | Enchantment Chance | Destroy Chance on Failed Bind |
 | --- | ------------------ | ----------------------------- |
