@@ -734,6 +734,7 @@ Skills which allow the player to keep exploring the world and stay active longer
 graph TD
     ResourceSense["Resource Sense (1-5)"]
     QuickTravel["Quick Travel (1-5)"]
+    WeatherResistance["Weather Resistance (1-5)"]
     Fishing["Fishing (1-5)"]
     Gate["5+ pts in Survival Tree"]
     Forester["Forester"]
@@ -742,6 +743,7 @@ graph TD
 
     ResourceSense -.-> Gate
     QuickTravel -.-> Gate
+    WeatherResistance -.-> Gate
     Fishing -.-> Gate
     Gate -.->|unlocks| Forester
     Gate -.->|unlocks| Prospector
@@ -752,20 +754,37 @@ graph TD
 {{< skill name="Quick Travel" maxLevel="5"
     type="Passive"
     description="Years on the road teach a Master and their Bestia how to cross any terrain without losing a step." >}}
+
 | Lv. | Movement Speed |
-| --- | --------------- |
-| 1   | +3%              |
-| 2   | +6%              |
-| 3   | +9%              |
-| 4   | +12%             |
-| 5   | +15%             |
+| --- | -------------- |
+| 1   | +3%            |
+| 2   | +6%            |
+| 3   | +9%            |
+| 4   | +12%           |
+| 5   | +15%           |
+
+{{< /skill >}}
+
+{{< skill name="Weather Resistance" maxLevel="5"
+    type="Passive"
+    description="Nights in the snow and noons in the desert teach a Master and their Bestia to shrug off the weather. Widens the band of [temperatures](/docs/mechanics/environment/#temperature) they can bear, on the cold side and the hot side alike." >}}
+
+| Lv. | Temperature Tolerance |
+| --- | --------------------- |
+| 1   | ±3 °C                 |
+| 2   | ±6 °C                 |
+| 3   | ±9 °C                 |
+| 4   | ±12 °C                |
+| 5   | ±15 °C                |
 
 {{< /skill >}}
 
 {{< skill name="Resource Sense" maxLevel="5"
-    type="Passive"
+    type="Active" manaCost="15" castTime="2s" cooldown="60s" target="Self"
     description="The physical counterpart to a Sage's Observation: an instinct for the direction and distance of nearby physical resources - ore veins, herb patches, timber stands and game trails - long before they come into view." >}}
-Level 1 lets you place a Lookout Post.
+
+Each cast points to the nearest resources of every kind within the detection distance. The accuracy decides how close
+the shown direction and distance are to the truth.
 
 | Lv. | Detection Distance | Detection Accuracy |
 | --- | ------------------ | ------------------ |
@@ -780,6 +799,9 @@ Level 1 lets you place a Lookout Post.
 {{< skill name="Fishing" maxLevel="5"
     type="Passive"
     description="A patient hand with rod and net that pulls fish from any water worth casting into - as good on the plate as it is at the trade post." >}}
+
+Anyone with a [fishing rod](/docs/mechanics/items/#weapon-type) can fish, but an untrained angler only catches fish and
+loot up to level 10. Each rank raises the level of what a master can pull out of seas and lakes.
 
 | Lv. | Max Fish Level |
 | --- | -------------- |
