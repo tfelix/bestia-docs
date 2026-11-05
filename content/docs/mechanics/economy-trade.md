@@ -113,8 +113,8 @@ junk priced at a million gold, because the fee for asking is real and it is due 
 item. Setting a sane starting bid is the cheap move; greed costs gold whether it pays off or not.
 
 **If a listing runs out its duration without finding a buyer**, the auction house simply **posts the item back to you**
-through the [postal system](/docs/mechanics/postal/) to your home post office — it is never lost, and you do not have to be online for it to find its way
-home.
+as [auction mail](/docs/mechanics/postal/#auction-mail) — it is never lost, and you do not have to be online for it to
+find its way home. The coin of a sale reaches you the same way.
 
 The fees, however, are **not refunded**. You paid for the marketplace's time and the owner's floor space, and you got both. That is the honest cost of a listing that asked for too much.
 

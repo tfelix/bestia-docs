@@ -285,8 +285,7 @@ Or send a [dispatch](/docs/mechanics/postal/#dispatches) to a broker there, and 
   the order is filled at whatever the price turns out to be, and anything above your limit is simply not
   bought. You find out afterwards.
 - **Relisting.** Items an auction house [posted back to you](/docs/mechanics/economy-trade/#how-auctions-work)
-  wait at your home post office. Putting them up again at a house in that town costs a fresh listing fee and no
-  travel. Anywhere else, they go by post first.
+  wait in your mailbox and can be collected at any post office. Putting them up again costs a fresh listing fee.
 - **Collection.** Send a carrier to empty your trade post's till and send the coin on to you as a
   [post note](/docs/mechanics/postal/#gold-by-pigeon), for the usual note fee.
 
