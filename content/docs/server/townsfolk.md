@@ -173,7 +173,7 @@ already has, whose `coal` input nothing currently produces — then `raw_fish`, 
 A `gold_coin` item, stackable, **weightless**. Weightless because the design forbids smaller
 denominations and a fresh master's entire carrying capacity is about twenty-five kilos — at any
 non-zero coin weight, ordinary shopping becomes a logistics puzzle. The [postal
-system](/docs/mechanics/economy-trade/#postal-fees-and-delivery-time) already prices gold as a
+system](/docs/mechanics/postal/#gold-by-pigeon) already prices gold as a
 percentage fee rather than as freight, which is the reading consistent with the rest of the design.
 
 [Minting](/docs/mechanics/master/#skill-minting) stays out of scope here. Coin enters the world only
