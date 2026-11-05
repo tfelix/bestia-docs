@@ -367,7 +367,7 @@ The Success Chance below is added on top of a **base chance that drops as the it
 
 ### Blacksmith
 
-Steel remembers who beat it into shape. Blacksmiths turn raw ore into finest weaponry and armor which protects its carrier even in the mid of the harshest environments and hottest battles.
+Steel remembers who beat it into shape. Blacksmiths turn raw ore into the finest weaponry and armor, which protects its wearer even in the midst of the harshest environments and hottest battles.
 
 {{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [craftsman tree](#craftsman-tree)" />}}
 
@@ -378,7 +378,7 @@ graph TD
     OreRefinement["Ore Refinement (1-3)"]
     ForgeWeapon["Forge Weapon (1-10)"]
     ForgeArmor["Forge Armor (1-10)"]
-    WeaponRepair["Equipment Repair (1-5)"]
+    EquipmentRepair["Equipment Repair (1-5)"]
     WeaponryResearch["Weaponry Research (1-10)"]
     MasterSmith["Master Smith (1-5)"]
 
@@ -387,8 +387,8 @@ graph TD
     OreRefinement -->|Lv.1| ForgeWeapon
     OreRefinement -->|Lv.1| ForgeArmor
     UpgradeEquipment -->|Lv.1| WeaponryResearch
-    OreRefinement -->|Lv.3| WeaponRepair
-    WeaponRepair -->|Lv.3| WeaponryResearch
+    OreRefinement -->|Lv.3| EquipmentRepair
+    EquipmentRepair -->|Lv.3| WeaponryResearch
     ForgeWeapon -->|Lv.8| MasterSmith
     ForgeArmor -->|Lv.8| MasterSmith
 ```
@@ -467,7 +467,7 @@ Same rule as [Forge Weapon](#skill-forge-weapon): no hard cap, but every item le
 
 {{< /skill >}}
 
-{{< skill name="Weaponry Research" maxLevel="10" requires="Equipment Repair Lv. 3, Upgrade Equipment Lv. 1"
+{{< skill name="Weaponry Research" maxLevel="10" requires="Equipment Repair Lv. 3 and Upgrade Equipment Lv. 1"
     type="Passive"
     description="Deeper knowledge of weapons and armor that raises the odds of successfully [refining](/docs/mechanics/items/#weapon-refinement) either one further after forging. If an upgrade fails the equipment can be destroyed." >}}
 
@@ -487,7 +487,7 @@ Same rule as [Forge Weapon](#skill-forge-weapon): no hard cap, but every item le
 {{< /skill >}}
 
 {{< skill name="Equipment Repair" maxLevel="5" requires="Ore Refinement Lv. 3"
-    type="Active" manaCost="33" castTime="3s" cooldown="None" range="2" target="Forge"
+    type="Active" manaCost="33" castTime="3s" cooldown="0s" range="2" target="Forge"
     description="Hammers dents from armor and sets a fresh edge to broken blades, coaxing worn-out equipment back into fighting shape." >}}
 
 Restores the [durability](/docs/mechanics/items/#damaging-of-items) of weapons and armor alike. Those are the only
