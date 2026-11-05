@@ -102,8 +102,8 @@ when you change your home office still goes to the old one.
 freight_fee = 10 * road_km * weight_kg
 ```
 
-`road_km` is the length of the way along the roads, not the straight line. Like every fee, it is rounded up to the
-next whole gold, and it is at least `1`.
+`road_km` is the length of the way along the roads, not the straight line. Where the way leaves the road, every km
+counts double. Like every fee, it is rounded up to the next whole gold, and it is at least `1`.
 
 The post holds the fee until the parcel arrives. Then **60%** goes to the player courier who carried it, and **40%**
 returns to the world reserve. When the coach carries it, the whole fee returns to the world reserve. No gold is made
@@ -122,7 +122,8 @@ A parcel does not leave at once. At the post office it goes into the **sack** fo
 waits for the next **coach**. Until then it hangs on the post office's **route board**, where a player can take it
 instead.
 
-- **The coach leaves on a timetable**, every **3 hours**. The post office shows when the next one leaves.
+- **The coach leaves on a timetable**, every **2 to 6 hours**, by the office's [level](#office-levels). The post
+  office shows when the next one leaves.
 - **The coach is slow on purpose.** It takes **twice as long** as a master walking the same road. That leaves room for
   a player courier to take the job, rest, fight on the way, and still arrive first.
 - **The coach is under the post's protection.** It is a real wagon on the road, but nobody can attack it. This is
@@ -132,6 +133,8 @@ instead.
 coach_hours   = 2 * road_km / 14.4          (a master walks about 4 m/s, or 14.4 km/h)
 latest_arrival = time of the next coach + coach_hours
 ```
+
+For an office with a coach every 3 hours:
 
 | Road   | A master walking | The coach   | Latest arrival, if the coach just left |
 | ------ | ---------------- | ----------- | -------------------------------------- |
@@ -216,4 +219,53 @@ This is the one way a parcel is lost, and it takes a dead courier, a strong Sage
 carries valuable sacks on a dangerous road has a reason to hire an escort. A sender who cannot accept the risk ticks
 **coach only**.
 
-{{< alert context="warning" text="Not built yet. The coach timetable, the coach speed, the 10 kg limit, the 60/40 split, the seal strength and the day of being struck off are all placeholders. The seal needs [item enchantments](/docs/server/item-enchantments/) first." />}}
+# Post Offices
+
+## In Generated Settlements
+
+Every generated village and town has a post office at its market square. A hamlet has none. The office is run by a
+**postmaster**, one of the [townsfolk](/docs/mechanics/settlements/#the-trades), who takes in and hands out parcels
+during their working hours. Letters need no office.
+
+## In Player Cities
+
+A [founded settlement](/docs/mechanics/master/#skill-founder) gets a post office only when its players build one.
+
+- **It is a construction** like any other building. Whoever may build in the settlement can put it up. A settlement
+  holds at most one.
+- **The post runs it.** When it is finished, the post takes it over and sends a postmaster. It has no owner and no
+  owner fee. The seal and the promise must not depend on a player who logs off, and no player should set the price of
+  a public service.
+- **An [auction house](/docs/mechanics/economy-trade/#building-an-auction-house) needs it.** Unsold goods and coin
+  travel by post, so a settlement needs a post office before it can hold an auction house.
+
+The city gains in other ways. Its residents can make it their home post office, couriers come for its route board,
+and it can hold a market.
+
+The coach drives to every post office, also off the road. There every km
+[counts double](#fees), for the coach time and for the fee. A city founded on a road gets cheaper and faster post.
+
+## Office Levels
+
+| Level | Coach every | Who has it                                    |
+| ----- | ----------- | --------------------------------------------- |
+| 1     | 6 h         | A new post office in a player city            |
+| 2     | 3 h         | Generated villages and towns                  |
+| 3     | 2 h         | Start towns, and a player city that builds up |
+
+An upgrade costs materials, like the building itself. A higher level shortens the latest arrival time of every parcel
+sent from that office.
+
+It does not make a courier's work harder. The coach is still twice as slow as a walking master, so a courier always
+has one full walking time to spare. Only the wait for the next coach gets shorter, so a sack hangs on the route board
+for less time.
+
+## Losing an Office
+
+A post office is a building and can be attacked like one. When it is destroyed or torn down, the promise still holds:
+
+- Sacks waiting there are sent on by their seal, through the nearest other office, and keep their latest arrival time.
+- Every master whose home office it was gets the nearest office instead, and a pigeon to say so. Parcels on the way to
+  them go there too.
+
+{{< alert context="warning" text="Not built yet. The coach timetable, the office levels, the coach speed, the double km off the road, the 10 kg limit, the 60/40 split, the seal strength and the day of being struck off are all placeholders. The seal needs [item enchantments](/docs/server/item-enchantments/) first." />}}

@@ -70,7 +70,7 @@ priest and a barracks becomes guards.
 | **Craft**    | Baker, miller, butcher, brewer, vintner, blacksmith, armourer, carpenter, mason, potter, charcoal burner, tanner, dyer, weaver, tailor, jeweller, bookbinder, alchemist, shipwright |
 | **Trade**    | General store, market trader, fishmonger, banker                                            |
 | **Service**  | Innkeeper, stablehand, healer, apothecary                                                   |
-| **Admin**    | Scribe                                                                                      |
+| **Admin**    | Scribe, postmaster                                                                          |
 | **Clergy**   | Priest                                                                                      |
 | **Military** | Guard                                                                                       |
 
