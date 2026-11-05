@@ -520,7 +520,7 @@ down as well, but burnt time is gone: no repair gives it back.
 
 ### Alchemist
 
-Equal parts kitchen and laboratory. Alchemists turn raw ingredients - mundane or mana-soaked - into food, tonics and reagents nobody else can replicate twice. Some carry the first bandages they ever learned to wrap as a Novice all the way into a healer's toolkit.
+Equal parts kitchen and laboratory. Alchemists turn raw ingredients - mundane or mana-soaked - into tonics and reagents nobody else can make. Some carry the first bandages they ever learned to wrap as a Novice all the way into a healer's toolkit.
 
 {{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [craftsman tree](#craftsman-tree)" />}}
 
@@ -549,42 +549,59 @@ graph TD
 | 4   | 80             |
 | 5   | 100+           |
 
+The herb level is the herb's [item level](/docs/mechanics/items/#item-level). A herb above your max level cannot be
+gathered.
+
 {{< /skill >}}
 
 {{< skill name="Alchemy" maxLevel="10" requires="Herbalism Lv. 2"
-    type="Active" manaCost="24" range="2" target="Alchemy Laboratory"
+    type="Active" manaCost="24" castTime="10s" cooldown="0s" range="2" target="Alchemy Laboratory"
     description="The core craft of the Alchemist: brewing reagents down into potions, tonics and other consumables. Builds directly on what Herbalism teaches about picking the right ingredient." >}}
 
-Lv. 1 allows you to install Alchemy Laboratory. Higher levels let you reliably discover and craft stronger potions and elixirs.
+Lv. 1 allows you to place an Alchemy Laboratory. Higher levels let you reliably discover and craft stronger potions
+and elixirs.
 
-| Lv. | Max Potion Level |
-| --- | ---------------- |
-| 1   | 10               |
-| 2   | 20               |
-| 3   | 30               |
-| 4   | 40               |
-| 5   | 50               |
-| 6   | 60               |
-| 7   | 70               |
-| 8   | 80               |
-| 9   | 90               |
-| 10  | 100+             |
+| Lv. | Success Chance | Reliable Item Level |
+| --- | -------------- | ------------------- |
+| 1   | +5%            | 10                  |
+| 2   | +10%           | 20                  |
+| 3   | +15%           | 30                  |
+| 4   | +20%           | 40                  |
+| 5   | +25%           | 50                  |
+| 6   | +30%           | 60                  |
+| 7   | +35%           | 70                  |
+| 8   | +40%           | 80                  |
+| 9   | +45%           | 90                  |
+| 10  | +50%           | 100+                |
+
+Same rule as [Forge Weapon](#skill-forge-weapon): no hard cap, but every item level above the reliable one costs another
+`5%` success chance. The cast only places the laboratory or opens its recipes. The brew itself takes the
+[craft duration](/docs/mechanics/items/#craft-duration) of the potion's item level.
 
 {{< /skill >}}
 
 {{< skill name="Transmutation" maxLevel="10" requires="Alchemy Lv. 5"
-    type="Active" manaCost="34" cooldown="0s" range="2" target="Transmutation Workbench"
+    type="Active" manaCost="34" castTime="10s" cooldown="0s" range="2" target="Transmutation Workbench"
     description="The Alchemist's capstone. Where Alchemy brews what nature already provides, Transmutation reshapes mundane matter itself into the rare magically-infused resources needed for strong artifact creation and weapon refinements." >}}
 
-Lv. 1 allows you to install Transmutation Workbenches. Higher levels unlock transmuting higher-grade infused resources. Cast time depends on the item level used to transmute.
+Lv. 1 allows you to place a Transmutation Workbench. Higher levels unlock transmuting higher-grade infused resources.
 
-| Lv. | Max Item Level |
-| --- | -------------- |
-| 1   | 20             |
-| 2   | 40             |
-| 3   | 60             |
-| 4   | 80             |
-| 5   | 100+           |
+| Lv. | Success Chance | Reliable Item Level |
+| --- | -------------- | ------------------- |
+| 1   | +5%            | 10                  |
+| 2   | +10%           | 20                  |
+| 3   | +15%           | 30                  |
+| 4   | +20%           | 40                  |
+| 5   | +25%           | 50                  |
+| 6   | +30%           | 60                  |
+| 7   | +35%           | 70                  |
+| 8   | +40%           | 80                  |
+| 9   | +45%           | 90                  |
+| 10  | +50%           | 100+                |
+
+Same rule as [Alchemy](#skill-alchemy): no hard cap, but every item level above the reliable one costs another `5%`
+success chance. The transmutation itself takes the [craft duration](/docs/mechanics/items/#craft-duration) of the
+resource's item level.
 
 {{< /skill >}}
 
@@ -594,11 +611,11 @@ Lv. 1 allows you to install Transmutation Workbenches. Higher levels unlock tran
 
 | Lv. | Success Chance | Crafting Speed |
 | --- | -------------- | -------------- |
-| 1   | +10%           | +10%           |
-| 2   | +20%           | +20%           |
-| 3   | +30%           | +30%           |
-| 4   | +40%           | +40%           |
-| 5   | +50%           | +50%           |
+| 1   | +5%            | +10%           |
+| 2   | +10%           | +20%           |
+| 3   | +15%           | +30%           |
+| 4   | +20%           | +40%           |
+| 5   | +25%           | +50%           |
 
 {{< /skill >}}
 
