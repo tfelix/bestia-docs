@@ -292,7 +292,7 @@ graph TD
 
 <br>
 {{< skill name="Carpentry" maxLevel="10"
-    type="Active" manaCost="20" cooldown="0 s" range="2" target="Workbench"
+    type="Active" manaCost="20" cooldown="0s" range="2" target="Workbench"
     description="Turns raw timber and honest labor into the workbenches, furniture and structures every settlement needs to stand on its own." >}}
 
 Lv. 1 allows you to build a [workbench](/docs/mechanics/item-list/#workbench), which you can use for crafting. The time it needs to craft an item depends on the item level you want to craft.
@@ -316,8 +316,8 @@ This bonus is added on top of the item-level base chance and the crafter's DEX/W
 {{< /skill >}}
 
 {{< skill name="Master Craftsman" maxLevel="5" requires="Carpentry Lv. 3"
-type="Passive"
-description="A lifetime of calluses paid off - tools answer faster and structures rise quicker under this Craftsman's hand, and the Bestia working alongside them keep pace." >}}
+    type="Passive"
+    description="A lifetime of calluses paid off - tools answer faster and structures rise quicker under this Craftsman's hand, and the Bestia working alongside them keep pace." >}}
 
 | Lv. | Construction Time Reduction | Success Chance |
 | --- | --------------------------- | -------------- |
@@ -333,8 +333,8 @@ This bonus is added on top of the item-level base chance and the crafter's DEX/W
 {{< /skill >}}
 
 {{< skill name="Upgrade Equipment" maxLevel="1"
-type="Active" manaCost="18" cooldown="0s"
-description="Time spent far from settlements teaches a Craftsman to adapt and improvise, reworking weapons and armor in the field to better suit their needs." >}}
+    type="Active" manaCost="18" cooldown="0s"
+    description="Time spent far from settlements teaches a Craftsman to adapt and improvise, reworking weapons and armor in the field to better suit their needs." >}}
 
 Allows you to perform upgrades of armor and weapons. There is a chance this fails and potentially destroys your equipment.
 
