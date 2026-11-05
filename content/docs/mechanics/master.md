@@ -180,9 +180,13 @@ In order to learn how to interact with other players you need to invest your fir
 ```mermaid
 graph TD
     BasicSkill["Basic Skill (1-5)"]
+    CallBestia["Call Bestia (1)"]
+    Sprint["Sprint (1-3)"]
     FirstAid["First Aid (1-3)"]
     Cooking["Cooking (1-3)"]
 
+    BasicSkill -->|Lv.1| CallBestia
+    BasicSkill -->|Lv.2| Sprint
     BasicSkill -->|Lv.3| FirstAid
     BasicSkill -->|Lv.3| Cooking
 ```
@@ -196,6 +200,30 @@ graph TD
 {{< skill-level level="3" >}}Allows to use trade posts.{{< /skill-level >}}
 {{< skill-level level="4" >}}Allows sitting to double HP & Mana recovery.{{< /skill-level >}}
 {{< skill-level level="5" >}}Allows to create parties and invite players into them. Joining a party needs no rank. Unlocks all the other skill trees.{{< /skill-level >}}
+{{< /skill >}}
+
+{{< skill name="Call Bestia" maxLevel="1" requires="Basic Skill Lv. 1"
+    type="Active" manaCost="10" castTime="5s" cooldown="5min" range="0" target="Self"
+    description="A whistle every Bestia learns to answer. Calls the master's Bestias back from wherever they wandered off to." >}}
+
+Every Bestia the master owns that is out in the world, and not in storage, appears next to the master when the channel
+ends. Taking damage breaks the channel. A Bestia that is fighting does not answer, so the skill cannot
+pull one out of a lost fight.
+
+{{< /skill >}}
+
+{{< skill name="Sprint" maxLevel="3" requires="Basic Skill Lv. 2"
+    type="Active" castTime="Instant" cooldown="30s" duration="5s" range="0" target="Self"
+    description="A burst of speed for when walking away is not fast enough - the first escape every wanderer learns, and the one they never stop using." >}}
+
+Costs stamina instead of mana. Ends early when the master attacks or casts a skill.
+
+| Lv. | Movement Speed | Stamina Cost |
+| --- | -------------- | ------------ |
+| 1   | +30%           | 20           |
+| 2   | +40%           | 20           |
+| 3   | +50%           | 20           |
+
 {{< /skill >}}
 
 {{< skill name="Cooking" maxLevel="3" requires="Basic Skill Lv. 3"
@@ -220,7 +248,7 @@ with a long recipe book outperforms a Lv. 3 cook who never left the campfire.
     type="Active" manaCost="per Lv." castTime="Channeled" cooldown="3min" duration="10s" range="2" target="Self or Ally"
     description="Apply bandages to yourself or to a friendly Bestia or master, channeling a steady mend into whatever's bleeding." >}}
 
-Channels for 10s. A target can only receive a single First Aid every 60 secs. It will heal whatever limit is reached first.
+Channels for 10s. A target can only receive a single First Aid every 60 secs. It heals the smaller of the two amounts, so the flat value caps it.
 
 | Lv. | Max HP Healed (% based) | Max HP Healed (flat) | Mana |
 | --- | ----------------------- | -------------------- | ---- |
