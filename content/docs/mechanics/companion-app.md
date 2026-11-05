@@ -27,11 +27,11 @@ Five rules make the difference. Every feature below obeys all five.
 
 | Rule                                     | What it means                                                                                                                                              |
 | ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Instructions, not actions**            | You never do anything yourself. You write an instruction, it travels at courier pace, it is carried out on arrival, and the answer comes back the same way. Orders to your own Bestia are the exception: see [Standing Orders](#standing-orders) |
+| **Instructions, not actions**            | You never do anything yourself. You write an instruction, it goes by road as a [dispatch](/docs/mechanics/postal/#dispatches), it is carried out on arrival, and the answer comes back the same way. Orders to your own Bestia are the exception: see [Standing Orders](#standing-orders) |
 | **Reports, not omniscience**             | Every figure in the app carries a source and an age — _"grain at 11 gold in Ashfen, reported six hours ago"_                                               |
 | **Instructions fail, they do not adapt** | An order carries limits. If the price moved, it buys nothing and says so. Acting on stale news costs you, exactly as it should                             |
 | **Standing is earned in person**         | You may only write to brokers, postboxes and trade posts you have already stood in front of                                                                |
-| **The letter never beats the body**      | Every instruction is slower than doing the thing yourself, costs a fee, and can fail outright. [Ranging](#ranging) is the one deliberate exception         |
+| **The dispatch never beats the body**    | Every instruction is slower than doing the thing yourself, costs a fee, and can fail outright. [Ranging](#ranging) is the one deliberate exception         |
 
 {{< /table >}}
 
@@ -47,7 +47,8 @@ people who cannot is set out under [Limits](#limits).
 Two useful things fall out of the first two rules:
 
 **Information becomes a trade good.** The app only knows what a courier told it. A player who travels knows
-more, and can sell what they know. That is a profession the app creates rather than one it deletes.
+more, and can sell what they know, by pigeon and at once. That is a profession the app creates rather than one
+it deletes.
 
 **Nothing teleports.** Your trade post's [owner fees](/docs/mechanics/economy-trade/#building-an-auction-house)
 still have to be collected in person, so the app dispatches a carrier to fetch them — and a carrier can be
@@ -86,6 +87,8 @@ none of it hands an absent player anything a present one does not already have.
   keyboard arrive on the phone, and what you write back lands in their chat log. A Master's page shows its guild
   too: the emblem, the message of the day, and every member, online or where and when they left.
 - **Whispers**, both directions, to anybody you could whisper to in person.
+- **Letters**, read and written, by [pigeon](/docs/mechanics/postal/#letters). Unlike a whisper, a letter waits for
+  a player who is offline.
 - **Local say**, does not work via the app as the master is gone.
 
 The skill gates hold. Chat and whispers still want
@@ -267,7 +270,7 @@ That last one deserves a warning rather than a footnote. Signing still enforces 
 cannot get to, and the deadline runs out while you sleep: you lose the stake, you lose honor, and the
 brokers talk. The app hands you rope. What you do with it is your business.
 
-# Trading by Letter
+# Trading by Dispatch
 
 Prices in **Bestia** are [local by design](/docs/mechanics/settlements/#shops-and-stock). You see what things
 cost where you are standing and nowhere else, because knowing that grain is cheap in the west is knowledge
@@ -275,9 +278,10 @@ you earn by travelling — and that is the whole basis of playing a merchant. A 
 at once would delete the profession in an afternoon.
 
 So the app does not show you prices. It shows you **reports**, and it lets you act on them the way a merchant
-abroad always has: through an agent, by letter.
+abroad always has: through an agent. Write to a player you trust in Ashfen, and your pigeon reaches them at once.
+Or send a [dispatch](/docs/mechanics/postal/#dispatches) to a broker there, and it goes by road.
 
-- **Limit orders.** _Buy forty sacks of grain at Ashfen, no more than 12 gold the sack._ The letter travels,
+- **Limit orders.** _Buy forty sacks of grain at Ashfen, no more than 12 gold the sack._ The dispatch travels,
   the order is filled at whatever the price turns out to be, and anything above your limit is simply not
   bought. You find out afterwards.
 - **Relisting.** Items an auction house [posted back to you](/docs/mechanics/economy-trade/#how-auctions-work)

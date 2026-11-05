@@ -26,6 +26,7 @@ A post nobody trusts is a post nobody uses. So the risk of the road lies with th
 # Pigeons
 
 Words and coin weigh nothing, so a **pigeon** carries them. A pigeon is instant and finds the player wherever they are.
+It follows the mana bond, like chat, so it only finds masters.
 
 ## Letters
 
@@ -50,6 +51,20 @@ note_fee = send_amount * 0.015
 ```
 
 Like every fee, the note fee is rounded up to the next whole gold.
+
+## Dispatches
+
+A broker, an auction house or a trade post has no mana bond, so a pigeon cannot find it. An order to a place goes as
+a **dispatch**, by road:
+
+- A dispatch travels like a parcel that weighs nothing. It leaves from your home post office, rides the next coach or
+  a courier's sack, and has a latest arrival time.
+- It never arrives at once, even in its own town. It always waits for the next coach.
+- It costs `1` gold. The answer comes back the same way.
+
+Words to a person are instant. Orders to the world are not. Most dispatches come from the
+[companion app](/docs/mechanics/companion-app/#trading-by-dispatch), and this keeps its rule that a player who is
+there always beats a player with a phone.
 
 # Parcels
 
