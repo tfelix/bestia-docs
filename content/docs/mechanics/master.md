@@ -48,14 +48,92 @@ The skilltrees are designed as such that to reach the highest professions in eac
 The player can decide to have a mediocre profession in each tree, or to max out one and take maybe half of the
 meaningful professions of another tree. The skilltree is a hierarchical dependency of skills.
 
-# Tree Mastery
+# Professions
 
-Skillpoints spent within a subtree (e.g. Blacksmith, Sage, Wizard, ...) do more than unlock its skills - they also declare a profession to the world.
+Skill points spent in a sub-tree (Blacksmith, Sage, Wizard, ...) do more than unlock its skills. They also make the
+master a member of that **profession**, and the profession decides which weapons and armor the master can use.
 
-- As soon as **5 or more skillpoints** are invested into a single subtree, the master becomes **trained** in that tree.
-- Being trained in a tree determines which of its associated items and weapons the master is able to use and equip.
+- A sub-tree counts as a profession from its **first skill point**. One point in Knight is enough to pick up a sword.
+- A master has **at most two professions**: the two sub-trees with the most points. A master with 8 points in Sage, 8
+  in Knight and 2 in Forester is a **Sage / Knight**.
+- The master may use every weapon type that one of the two professions allows, and the heavier of their two armor
+  types.
+- Points in a base tree (Novice, Craftsman, Survival, Scholar, Warrior) belong to no profession.
+- Holding a weapon in each hand needs the Assassin skill [Dual Wield](#skill-dual-wield). No profession allows it on
+  its own.
 
-{{< alert context="info" text="This is independent of the 5 Lv. requirement that unlocks access to a subtree in the first place - that threshold is reached by investing in the parent tree, while being trained requires 5 points spent inside the subtree itself." />}}
+{{< alert context="info" text="A sub-tree only opens after 5 points in its parent tree, so the first levels after the Novice tree pass without a profession. The novice equipment carries a master through them." />}}
+
+## Changing Professions
+
+The two professions follow the skill points. A third sub-tree replaces one of the current two only when it has **more**
+points than it. On a tie the master keeps the profession they already have, so two equal sub-trees never decide the
+gear by chance.
+
+When a profession is lost, everything it allowed and nothing else allows goes back to the bag. Nothing is destroyed,
+and the master can wear it again as soon as the profession comes back.
+
+## Base Equipment
+
+Every master can use these, with or without a profession:
+
+- Cloth armor
+- Slings
+- Tools: pickaxe, hatchet, fishing rod
+- The novice equipment below
+
+## Novice Equipment
+
+Every new master starts with a novice set. It is weak, but it ignores professions: every master can use it at any
+level. A Novice can try out each way of fighting before spending a point outside the Novice tree, and a master who
+just left it is never unarmed while their first profession opens.
+
+| Item          | Weapon or armor type | Slot                   |
+| ------------- | -------------------- | ---------------------- |
+| Novice Knife  | Dagger               | Right hand             |
+| Novice Sword  | Sword                | Right hand             |
+| Novice Bow    | Bow                  | Right hand, two-handed |
+| Novice Rod    | Wand                 | Right hand             |
+| Novice Shield | Light shield         | Left hand              |
+| Novice Helmet | -                    | Head                   |
+| Novice Shirt  | Cloth                | Armor                  |
+| Novice Boots  | Light                | Footgear               |
+
+The [Novice Bow](/docs/mechanics/ranged-combat/#novice-bow) comes with 100 arrows. The novice health and mana potions
+are not equipment and stay for Novices only.
+
+## Equipment per Profession
+
+Armor is limited by its heaviest type. A master who may wear Medium armor may also wear Light and Cloth. Shields carry
+an armor type as well and follow the same rule, see [Armor Type](/docs/mechanics/items/#armor-type). The weapon types
+are listed in [Weapon Type](/docs/mechanics/items/#weapon-type).
+
+| Profession                | Tree      | Armor  | Weapon Types                                                   |
+| ------------------------- | --------- | ------ | -------------------------------------------------------------- |
+| [Blacksmith](#blacksmith) | Craftsman | Medium | Mace, Hammer, Axe, Greataxe                                    |
+| [Alchemist](#alchemist)   | Craftsman | Light  | Dagger, Mace, Thrown                                           |
+| Artificer (parked)        | Craftsman | Medium | Dagger, Wand, Staff, Crossbow                                  |
+| [Forester](#forester)     | Survival  | Medium | Axe, Greataxe, Spear, Bow                                      |
+| [Prospector](#prospector) | Survival  | Medium | Sword, Spear, Crossbow                                         |
+| [Miner](#miner)           | Survival  | Medium | Mace, Hammer, Greataxe                                         |
+| [Trader](#trader)         | Scholar   | Light  | Sword, Crossbow                                                |
+| [Sage](#sage)             | Scholar   | Cloth  | Wand, Staff, Tome                                              |
+| Priest (parked)           | Scholar   | Medium | Mace, Staff, Tome                                              |
+| [Wizard](#wizard)         | Warrior   | Cloth  | Wand, Staff, Tome                                              |
+| [Assassin](#assassin)     | Warrior   | Light  | Dagger, Fist, Sword, Thrown                                    |
+| [Knight](#knight)         | Warrior   | Heavy  | Sword, Greatsword, Axe, Greataxe, Mace, Hammer, Spear, Polearm |
+| Brawler (parked)          | Warrior   | Light  | Fist, Staff                                                    |
+| Hunter (parked)           | Warrior   | Light  | Spear, Bow, Crossbow, Thrown                                   |
+| Bard (parked)             | Warrior   | Light  | Sword, Bow, Instrument                                         |
+| Dancer (parked)           | Warrior   | Light  | Whip, Bow, Thrown                                              |
+
+Heavy armor comes from the Knight alone, so a master who wants plate gives one of their two professions to it. Every
+fighting profession owns at least one weapon type few others share - the Knight's greatsword and polearm, the
+Assassin's fist weapons, the Dancer's whip, the Bard's instrument, the casters' tome - while every crafting and
+gathering profession can still defend itself.
+
+Bestias are not affected by professions. A bestia wears what its species allows, see
+[Designing a Bestia](/docs/mechanics/bestia-design/#10-equipment).
 
 # Mana Circles
 
@@ -1906,7 +1984,8 @@ Fails outright against a target protected by [Weapon Coating](#skill-weapon-coat
     type="Passive"
     description="Learning to disarm someone teaches you exactly how a weapon wants to be held - and that there is no good reason to stop at one. Lets the Assassin carry a one-handed weapon in each hand at a shrinking penalty." >}}
 
-The off-hand weapon always swings for less than the main hand. Rank buys that gap back.
+Without this skill no master can hold a weapon in the left hand, whatever their professions allow. The off-hand
+weapon always swings for less than the main hand. Rank buys that gap back.
 
 | Lv. | Off-Hand Damage | Attack Speed Penalty |
 | --- | --------------- | -------------------- |

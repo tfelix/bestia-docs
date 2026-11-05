@@ -71,5 +71,5 @@ already points at the arrows, so putting the bow on is all it takes to shoot.
 
 | Item       | Type   | ATK | Range    | Notes                    |
 | ---------- | ------ | --- | -------- | ------------------------ |
-| Novice Bow | Weapon | 7   | 12 tiles | Two-handed, novices only |
+| Novice Bow | Weapon | 7   | 12 tiles | Two-handed, every master |
 | Arrow      | Ammo   | 3   | -        | Neutral, weighs 0.01 kg  |

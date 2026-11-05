@@ -33,9 +33,9 @@ see [Forging](#forging-and-random-stats). A character needs this level to wear t
 
 # Armor Type
 
-Each piece of armor has a weight class. A master can wear every class. A bestia can only wear the classes its species
-lists, see [Designing a Bestia](/docs/mechanics/bestia-design/#10-equipment). A blob has no rigid body, so plate
-slides off it.
+Each piece of armor has a weight class. A master wears the classes their
+[professions](/docs/mechanics/master/#professions) allow. A bestia can only wear the classes its species lists, see
+[Designing a Bestia](/docs/mechanics/bestia-design/#10-equipment). A blob has no rigid body, so plate slides off it.
 
 | Armor type | Typical pieces                                |
 | ---------- | --------------------------------------------- |
@@ -44,8 +44,45 @@ slides off it.
 | Medium     | Mail, scale and iron-shod leather.            |
 | Heavy      | Plate. Only a strong, rigid body holds it.    |
 
-Weapons and accessories have no armor type. Anyone with the free slot can wear them. The server sets the type with
-`armor-type` in `items.yml`.
+Weapons have a [weapon type](#weapon-type) instead. Accessories have neither, so anyone with the free slot can wear
+them. The server sets the type with `armor-type` in `items.yml`.
+
+# Weapon Type
+
+Each weapon has a weapon type. A master can only use the types their
+[professions](/docs/mechanics/master/#professions) allow. A bestia is not limited by weapon type, only by the slots of
+its species.
+
+| Group  | Weapon type | Hands    | Typical pieces                                |
+| ------ | ----------- | -------- | --------------------------------------------- |
+| Light  | Dagger      | One      | Knife, dirk, stiletto                         |
+|        | Fist        | One      | Knuckles, claws, cestus                       |
+|        | Whip        | One      | Whip, chain whip                              |
+| Blade  | Sword       | One      | Sabre, rapier, longsword                      |
+|        | Greatsword  | Two      | Claymore, zweihander                          |
+| Axe    | Axe         | One      | Battle axe, broad axe                         |
+|        | Greataxe    | Two      | Bardiche, war axe                             |
+| Blunt  | Mace        | One      | Club, flail, morning star                     |
+|        | Hammer      | Two      | Warhammer, sledgehammer                       |
+| Reach  | Spear       | One      | Short spear, boar spear                       |
+|        | Polearm     | Two      | Halberd, glaive, lance                        |
+| Magic  | Wand        | One      | Wand, rod                                     |
+|        | Staff       | Two      | Quarterstaff, mage staff                      |
+|        | Tome        | Off-hand | Grimoire, prayer book                         |
+| Ranged | Bow         | Two      | Short bow, long bow. Shoots arrows.           |
+|        | Crossbow    | Two      | Light and heavy crossbow. Shoots bolts.       |
+|        | Sling       | One      | Sling. Shoots stones.                         |
+|        | Thrown      | One      | Throwing knife, shuriken, javelin, bomb flask |
+| Song   | Instrument  | Two      | Lute, harp, flute                             |
+| Work   | Tool        | One      | Pickaxe, hatchet, fishing rod                 |
+
+- A two-handed weapon leaves no room for anything in the left hand.
+- The left hand holds a shield or a tome. A second weapon in the left hand needs
+  [Dual Wield](/docs/mechanics/master/#skill-dual-wield).
+- Bows, crossbows and slings shoot from the [quiver](/docs/mechanics/ranged-combat/#the-quiver). A thrown weapon is its
+  own ammunition: each throw uses up one piece of the stack in hand.
+- Tools hit weakly. Their real job is gathering, which is why every master can hold one.
+- There are no firearms in the world of Bestia.
 
 # Weapon Refinement
 
