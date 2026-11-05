@@ -96,6 +96,11 @@ every parcel you have: where it is now, and when it will arrive.
 the office you stand at, like any other parcel: with a fee and a latest arrival time. A parcel already on the road
 when you change your home office still goes to the old one.
 
+## Auction Mail
+
+What an auction house owes you, the coin of a sale or goods that did not sell, needs no coach. It is in your mailbox
+at once, and you collect it at **any** post office.
+
 ## Fees
 
 ```text
