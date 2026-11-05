@@ -42,51 +42,9 @@ the reason prices need no manual intervention to stay sane.
 
 # Postal System
 
-Inspired by [World of Warcraft](https://en.wikipedia.org/wiki/World_of_Warcraft), **Bestia** has a proper **postal
-system** for sending letters, items and gold between players and places. It is also the backbone of the
-[quest system](/docs/mechanics/questing/) — commission rewards arrive by mail rather than from a quest giver standing
-around waiting for you.
-
-Unlike the mailbox in most games, this one **lives in the world**. NPC couriers handle deliveries by default, but players
-can train and assign their **Bestias** to run routes instead, and a delivery can be a commission in its own right. If
-nobody picks up a delivery within its time frame, an NPC courier finishes the job — the parcel still arrives, but the
-courier's cut of the delivery fees is lost to whoever might have earned it.
-
-The system is meant to be used constantly, and it is built to be generous rather than punishing: it is how players
-gather their equipment and move their money without spending an evening walking.
-
-## Sending and Receiving
-
-To send a parcel, interact with a **postbox**, write your message and pay the listed fee. You then choose a destination
-postbox. By default only postboxes **within 10km** are listed — to send further, you need to own a **map**, which grants
-access to the game map and reveals the postboxes on it. Maps are drawn with the
-[Cartography](/docs/mechanics/master/#skill-cartography) master skill and are traded as items like anything else.
-
-Once a parcel has arrived, you can collect it at the destination postbox **or at any postbox within 10km of it**. Nobody
-has to stand and wait at one specific box for a package to land.
-
-## Postal Fees and Delivery Time
-
-Cost and travel time follow these formulas:
-
-```text
-freight_fee   = 10 * distance_km * freight_weight_kg
-currency_fee  = send_amount * 0.015
-delivery_time = 0.1 + distance_km / 30
-```
-
-`currency_fee` is a flat `1.5%` of any gold you send. `delivery_time` is given in hours, which works out to a courier
-pace of roughly `30 km/h` plus about six minutes of handling at each end. Parcels containing **only gold or only text**
-skip the wait entirely and arrive instantly.
-
-## Insurance
-
-Deliveries can be **insured** for an extra fee. If an insured parcel is lost — usually because the courier was killed
-before finishing the route — a **teleportation spell** triggers and sends the goods on to their destination by itself.
-That safety net is deliberately slow: the parcel takes a further **0.5 to 1 days** (randomised) to surface in the
-recipient's postbox, so insurance can never be abused as a shortcut past normal delivery times.
-
-{{< alert context="warning" text="The insurance fee itself is still **TBD** and needs a formula. It should scale with the declared value of the goods, and it must stay cheap enough to be the obvious choice on a dangerous long haul while never being cheaper than eating the loss on a trivial one." />}}
+Letters, gold and parcels travel between players by post. A pigeon carries letters and gold notes at once. Parcels go
+by road, on an NPC coach or with a player who takes the job, and every parcel is sealed so that it arrives by the time
+the post office promised. The [Postal System](/docs/mechanics/postal/) page has the rules and the fees.
 
 # Auction House
 
@@ -105,7 +63,7 @@ builds one.
   [Trade Agreement](#linking-auction-houses).
 - **Click the building** to open its window. No clerk stands behind a counter; the hall itself is the way in.
 
-{{< alert context="info" text="Until the [postal system](#postal-system) exists, unsold goods and sale proceeds wait in the auction house's **Collect** tab. A fixed-price listing runs for **5 days**." />}}
+{{< alert context="info" text="Until the [postal system](/docs/mechanics/postal/) exists, unsold goods and sale proceeds wait in the auction house's **Collect** tab. A fixed-price listing runs for **5 days**." />}}
 
 ## Building an Auction House
 
@@ -153,7 +111,7 @@ junk priced at a million gold, because the fee for asking is real and it is due 
 item. Setting a sane starting bid is the cheap move; greed costs gold whether it pays off or not.
 
 **If a listing runs out its duration without finding a buyer**, the auction house simply **posts the item back to you**
-through the [postal system](#postal-system) — it is never lost, and you do not have to be online for it to find its way
+through the [postal system](/docs/mechanics/postal/) to your home post office — it is never lost, and you do not have to be online for it to find its way
 home.
 
 The fees, however, are **not refunded**. You paid for the marketplace's time and the owner's floor space, and you got both. That is the honest cost of a listing that asked for too much.
@@ -165,6 +123,6 @@ Auction houses belonging to different players can be **linked** using the
 Linked houses share their listings, turning a handful of local shops into one broad marketplace and making goods far easier to find - for buyers and sellers alike.
 
 Winning an auction at a linked house leaves the buyer a choice: **pay a delivery fee** and have the item posted over by
-the [postal system](#postal-system), or travel and fetch it. Unclaimed items are held for **up to 10 days**. After that
+the [postal system](/docs/mechanics/postal/), or travel and fetch it. Unclaimed items are held for **up to 10 days**. After that
 the item goes back to the original seller, who **keeps the payment** — so it is worth remembering where you bought
 something.

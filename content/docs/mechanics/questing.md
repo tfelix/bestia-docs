@@ -167,8 +167,8 @@ On settlement:
 - **Completed on time** — collateral is returned in full, on top of the reward.
 - **Failed after a genuine attempt** (the courier was killed en route, the escortee died to something that outmatched
   the team) — **half** the collateral goes to the issuer as compensation, half returns to the accepter. This mirrors the
-  [postal insurance](/docs/mechanics/economy-trade/#insurance) logic, which already accepts "the courier died" as a real
-  outcome of the world rather than as cheating.
+  [post's couriers](/docs/mechanics/postal/#the-deadline), where being killed on the road is a real outcome of the world
+  rather than cheating.
 - **Abandoned** — the accepter drops the contract, lets it expire without a serious attempt, or dumps the cargo — the
   **full** collateral goes to the issuer, **and the accepter loses honor**. Brokers keep a ledger and they talk: an
   abandoned contract costs `-5` global honor and `-20` local honor with the broker who held it, on the same scale as the
@@ -193,8 +193,8 @@ full. Somebody is already on the road.
 
 ## Rewards, Experience and Settlement
 
-Rewards are delivered through the [postal system](/docs/mechanics/economy-trade/#postal-system) — you do not report back
-to a magical quest-giver. On failure or expiry, escrow returns to the issuer minus fees, and any collateral forfeited by
+Rewards are delivered through the [postal system](/docs/mechanics/postal/) — gold by pigeon, items to your home post
+office. You do not report back to a magical quest-giver. On failure or expiry, escrow returns to the issuer minus fees, and any collateral forfeited by
 a failed accepter is paid to the issuer as compensation.
 
 Experience deserves special care. Player commissions **do not let issuers mint experience**. The server decides the
@@ -235,15 +235,14 @@ only the gold its issuer chose to attach. Work has to be work.
 
 ## Discovery
 
-Finding commissions stays physical and range-limited, matching the postal system's locality rules:
+Finding commissions stays physical and range-limited:
 
 - **Bulletin boards** at settlements
 - **Town-crier NPCs** and tavern chatter announcing local needs
 - **Classical NPC interaction**
 
 There is deliberately no global, world-spanning "quest finder." If you want to know what is needed far away, you travel,
-send word, or own a [map](/docs/mechanics/economy-trade/#sending-and-receiving) that reveals the distant postboxes you can
-reach — the same locality rules that govern parcels govern how far your reach extends.
+or you [write](/docs/mechanics/postal/#letters) to somebody who is there.
 
 # NPC Commissions
 

@@ -59,14 +59,14 @@ The ledger's plain reading surface. Everything on it has an age.
 
 {{< table >}}
 
-| What you see                              | Why it matters while you are away                                          |
-| ----------------------------------------- | -------------------------------------------------------------------------- |
-| Post waiting, and parcels still in flight | Delivery takes `0.1 + distance_km / 30` hours, so you can watch one coming |
-| Auction listings and when they expire     | A 1, 2 or 5 day listing that finds no buyer is posted back to you          |
-| Owner fees piling up in your trade post   | An unattended marketplace does not bank its own profits                    |
-| The craft queue                           | `1.2 * itemLevel²` seconds — over three hours for a Legendary piece        |
-| Breeder and egg timers                    | `25 * (lv1 * lv2)^1.3` seconds to breed, then up to two days to hatch      |
-| Mana Harvester progress                   | Crystals grow out of ambient mana whether anybody is watching or not       |
+| What you see                              | Why it matters while you are away                                     |
+| ----------------------------------------- | --------------------------------------------------------------------- |
+| Post waiting, and parcels still in flight | Every parcel has a latest arrival time, so you can watch one coming   |
+| Auction listings and when they expire     | A 1, 2 or 5 day listing that finds no buyer is posted back to you     |
+| Owner fees piling up in your trade post   | An unattended marketplace does not bank its own profits               |
+| The craft queue                           | `1.2 * itemLevel²` seconds — over three hours for a Legendary piece   |
+| Breeder and egg timers                    | `25 * (lv1 * lv2)^1.3` seconds to breed, then up to two days to hatch |
+| Mana Harvester progress                   | Crystals grow out of ambient mana whether anybody is watching or not  |
 
 {{< /table >}}
 
@@ -206,14 +206,14 @@ any reason to range while doing something that needs your attention.
 
 Your Master is doing nothing while you are away. Your Bestia need not be.
 
-The [postal system](/docs/mechanics/economy-trade/#postal-system) already lets players train and assign
-Bestia to run delivery routes instead of leaving it to NPC couriers, and a Bestia already earns
+The [postal system](/docs/mechanics/postal/#carrying-the-mail) already lets players send their Bestia to
+carry the mail instead of leaving it to the coach, and a Bestia already earns
 [experience for ordinary work](/docs/mechanics/bestia/#environment-interaction) — `3` per km travelled,
 `2 * resource_level + 5` per unit gathered, at roughly half the rate of fighting. Standing Orders are how
 you set that going from the app:
 
 - **Run a route.** Assign an idle Bestia to a postal run, and it earns the courier's cut that would
-  otherwise be lost to an NPC.
+  otherwise return to the world reserve.
 - **Work a deposit.** Send a Bestia to gather from a resource node you have already charted.
 - **Change order of your Bestia.** You can send them to different locations or switch their orders e.g. stop working in the mine and deliver goods instead.
 - **Breed.** Pair two Bestia in a [breeder](/docs/mechanics/bestia/#breeding), prime it with up to three
@@ -241,8 +241,8 @@ stopped. See [Long-Distance Travel](/docs/server/long-distance-travel/). Postal 
 wait for the systems they belong to.
 
 It is not free of risk either. A Bestia on the road can be killed, and whatever it was carrying is lost with
-it. [Insurance](/docs/mechanics/economy-trade/#insurance) already exists as the answer, and a standing order
-is exactly the situation it was written for.
+it. Mail is the exception: the post's [seal](/docs/mechanics/postal/#the-seal) sends a sack on, unless somebody
+breaks it in time.
 
 # The Broker's Wire
 
@@ -281,9 +281,10 @@ abroad always has: through an agent, by letter.
   the order is filled at whatever the price turns out to be, and anything above your limit is simply not
   bought. You find out afterwards.
 - **Relisting.** Items an auction house [posted back to you](/docs/mechanics/economy-trade/#how-auctions-work)
-  are already sitting in a postbox beside it. Putting them up again costs a fresh listing fee and no travel.
-- **Collection.** Send a carrier to empty your trade post's till and post the coin on to you, for the usual
-  [freight fee](/docs/mechanics/economy-trade/#postal-fees-and-delivery-time).
+  wait at your home post office. Putting them up again at a house in that town costs a fresh listing fee and no
+  travel. Anywhere else, they go by post first.
+- **Collection.** Send a carrier to empty your trade post's till and send the coin on to you as a
+  [post note](/docs/mechanics/postal/#gold-by-pigeon), for the usual note fee.
 
 Trading on news six hours old is a real disadvantage, and it is meant to be. A merchant standing in the
 market beats you every time. What you get in exchange is that your capital is not idle for the fourteen
