@@ -274,6 +274,48 @@ Putting more than one slot into an item costs further chance on top: every extra
 `40` percentage points, i.e. `chance(n slots) = clamp(chance(1 slot) - 0.4 * (n - 1), 0.01, 1.0)`. So an item and skill
 combination that would land on `80%` for a single slot drops to `40%` once you ask for two.
 
+# Enchantments
+
+A [status effect](/docs/mechanics/status-effects/) sits on a creature. An **enchantment** is a spell bound to one
+item instead. It stays with the item wherever the item goes: in a hand, in a bag, in a chest, on the ground or in a
+parcel. Give an enchanted sword to a friend, and the enchantment goes with it.
+
+- **Only items with an identity hold one.** Gear and parcels do. A pile of apples does not.
+- **Its time runs in real time**, whether the item is used, stored or lying on the ground.
+- **It does not stack.** The same enchantment again refreshes its time. An item holds one element at a time, so a
+  new endow replaces the old one.
+- **It has a strength.** The strength makes it harder to [dispel](#dispelling-an-enchantment).
+
+| Enchantment                                     | Bound by                                                            | What it does                                                                 | Lasts           | Dispellable                       |
+| ----------------------------------------------- | ------------------------------------------------------------------- | ---------------------------------------------------------------------------- | --------------- | --------------------------------- |
+| Endow Fire, Ice, Wind, Earth                    | The Sage's [Endow](/docs/mechanics/master/#skill-endow-fire) skills | The weapon strikes with the element while somebody wields it                 | 60 to 180 s     | Only on the ground                |
+| [Postal Seal](/docs/mechanics/postal/#the-seal) | The post office                                                     | The parcel cannot be opened. When it falls to the ground, it sends itself on | Until delivered | Only on the ground, strength `70` |
+
+**Endow binds to the weapon.** A master's endow sits on the weapon in their hand, not on the master. Putting the
+weapon away keeps the element on the weapon, and drawing another weapon does not carry it over. A creature that
+fights without a weapon, like most Bestia, carries the endow on its body as a status effect, as before.
+
+**Permanent enchantments use the same rules.** The enchantments that the parked Artificer skill Magic Artisan binds
+at an altar are enchantments without an end time. They cannot be dispelled.
+[Essences](/docs/mechanics/forging/#sockets-and-essences) in a socket are not enchantments: they are part of the item.
+
+## Dispelling an Enchantment
+
+[Dispel](/docs/mechanics/master/#skill-dispel) reaches an enchantment only when it is **cast at the item itself**, lying on
+the ground. Cast at a creature, it lifts the creature's status effects and leaves every item alone, worn or carried.
+Otherwise one Dispel would strip a fighter's whole gear, and that would make it too strong.
+
+Against an enchantment, the target's SMDEF does not count. The strength does:
+
+```text
+chance = Dispel base chance - strength
+```
+
+A Dispel Lv. 5 (`100%`) against a Postal Seal (`70`) succeeds `30%` of the time. Dispel Lv. 2 (`70%`) and below never
+break it.
+A dropped endowed weapon has strength `0`, so its endow falls at once. An endow on a Bestia's body is a status effect,
+so Dispel lifts it like any buff.
+
 # Item Crafting
 
 Bestia uses a flexible, discovery-driven crafting system. Every player can attempt to craft anything, but crafting
