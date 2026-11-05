@@ -73,6 +73,8 @@ so the materials are usually pooled by a group of players or a whole guild. Thes
 
 - Once an auction house stands, **no other auction house may be placed within a 5km radius**, and no settlement may hold
   more than one.
+- The settlement needs a [post office](/docs/mechanics/postal/#in-player-cities) first, because unsold goods and coin
+  travel by post.
 - The owner sets an **owner fee** of at least **1%** on every new listing. The ceiling is granted by their Trade Post
   Owner level, rising from **5% at Lv. 1 to 25% at Lv. 5**.
 - The owner fee is charged on top of the listing fees below, and the seller pays it up front. It **accumulates inside
