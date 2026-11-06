@@ -1002,12 +1002,12 @@ If it's buried, a Miner will find a way to it. Equal parts pickaxe and stubbornn
 graph TD
     Mining["Mining (1-5)"]
     GemCutting["Gem Cutting (1-5)"]
-    CaveExplorer["Cave Explorer (1-5)"]
+    RichVeins["Rich Veins (1-5)"]
     ResourceSonar["Resource Sonar (1-3)"]
 
     Mining -->|Lv.3| GemCutting
-    Mining -->|Lv.3| CaveExplorer
-    CaveExplorer -->|Lv.3| ResourceSonar
+    Mining -->|Lv.3| RichVeins
+    RichVeins -->|Lv.3| ResourceSonar
 ```
 
 <br>
@@ -1048,21 +1048,23 @@ Same rule as [Forge Weapon](#skill-forge-weapon): no hard cap, but every gem lev
 
 {{< /skill >}}
 
-{{< skill name="Cave Explorer" maxLevel="5" requires="Mining Lv. 3"
+{{< skill name="Rich Veins" maxLevel="5" requires="Mining Lv. 3"
     type="Passive"
-    description="Lets a Miner push shafts deeper than good sense would recommend, into ground that pays off precisely because nobody else risks it. Grants access to deeper, more dangerous mine shafts holding rarer ore veins and the odd buried structure." >}}
+    description="A Miner learns to follow a vein instead of hacking at it, and the rock gives up more for every swing." >}}
 
-| Lv. | Bonus Resources |
-| --- | --------------- |
-| 1   | +10%            |
-| 2   | +20%            |
-| 3   | +30%            |
-| 4   | +40%            |
-| 5   | +50%            |
+Each ore or gem block the master mines has a chance to drop a second piece.
+
+| Lv. | Second Piece Chance |
+| --- | ------------------- |
+| 1   | 10%                 |
+| 2   | 20%                 |
+| 3   | 30%                 |
+| 4   | 40%                 |
+| 5   | 50%                 |
 
 {{< /skill >}}
 
-{{< skill name="Resource Sonar" maxLevel="3" requires="Cave Explorer Lv. 3"
+{{< skill name="Resource Sonar" maxLevel="3" requires="Rich Veins Lv. 3"
     type="Passive"
     description="The Miner's capstone: a feel for what's underfoot precise enough to map a shaft before the first swing of the pick." >}}
 Can sense ore and gem deposits through solid rock.
