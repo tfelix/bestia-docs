@@ -88,6 +88,28 @@ The **Type** column reuses the base resource types listed above, plus the refine
 
 In Bestia, Mana is considered a resource. It permeates the land, and there are regions with different concentration levels. As higher mana levels usually mean more unstable biomes, it is up to the player to "harvest" mana and specialize in the extraction of this resource. The raw material is a mana-bearing powder (the Mana Essences listed above); when fed into a Mana Harvester it slowly grows into a mana crystal as the device draws mana from the surrounding environment. Mana crystals can also be found directly in the world, for example while mining. These crystals have various powerful magical usages.
 
+## Felling Trees
+
+Trees are where wood comes from. A grown tree drops four logs when it is felled.
+
+A tree that is removed leaves a stump. It does not matter how: chopped down, burnt, or blown apart by a
+spell. The stump grows back in stages, and each stage takes one real week.
+
+| Stage      | Size                  | Logs when felled |
+| ---------- | --------------------- | ---------------- |
+| Stump      | Cut just above ground | Cannot be felled |
+| Sapling    | About a third         | None             |
+| Young tree | About two thirds      | 2                |
+| Grown tree | Full                  | 4                |
+
+A stump only sprouts if a grown tree stands within 12 m of it. If none does, it stays a stump and tries
+again a week later. So a forest grows back from its edges, one ring of trees at a time. A forest that was
+cut down completely never comes back.
+
+A sapling or a young tree can be felled again. It turns back into a stump and starts over.
+
+A tree whose ground was dug away is gone for good, stump and all. Nothing grows back over a hole.
+
 # Refining
 
 Ore must be processed into metal bars before it is usable — steel, for example, is refined from iron ore together with

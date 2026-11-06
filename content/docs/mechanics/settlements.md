@@ -151,7 +151,7 @@ the map that you can walk to and damage.
 | What you do                        | What happens                                                                    | How it recovers                        |
 | ---------------------------------- | ------------------------------------------------------------------------------- | -------------------------------------- |
 | Burn the fields in a town's catchment | Grain output falls; flour follows; bread gets scarce and dear                 | Rain, then regrowth                    |
-| Fell the woods around it           | Timber and charcoal dry up; the smiths lose their fuel                          | Trees regrow on their own              |
+| Fell the woods around it           | Timber and charcoal dry up; the smiths lose their fuel                          | Regrows from the trees left standing, over three weeks or more |
 | Burn down the mill                 | Grain no longer becomes flour at all, however much grain there is               | The town rebuilds it — when it can pay |
 | Kill the baker                     | The bakery shuts                                                                | An apprentice takes over in a few days |
 
@@ -161,8 +161,9 @@ The chain matters more than any single link. Burning the fields does not just ma
 it makes flour expensive, and then bread, and then the baker has nothing to do all day. You can see
 the failure travel.
 
-**None of it is permanent.** Scorched ground heals when it rains, and nobody can stop it raining.
-Woods regrow. A destroyed building is rebuilt out of the settlement's own treasury, which means a
+**Almost none of it is permanent.** Scorched ground heals when it rains, and nobody can stop it raining.
+Woods regrow from the trees left standing, but a wood cut down to the last tree stays gone (see
+[Felling Trees](/docs/mechanics/natural-resources/#felling-trees)). A destroyed building is rebuilt out of the settlement's own treasury, which means a
 rich city puts its mill back up in a day and a poor hamlet takes a season — and a hamlet whose
 treasury you keep draining stays a ruin for as long as you keep at it.
 
