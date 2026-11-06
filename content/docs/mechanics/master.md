@@ -734,6 +734,7 @@ Skills which allow the player to keep exploring the world and stay active longer
 graph TD
     ResourceSense["Resource Sense (1-5)"]
     QuickTravel["Quick Travel (1-5)"]
+    MaximizeCarryCapacity["Maximize Carry Capacity (1-5)"]
     WeatherResistance["Weather Resistance (1-5)"]
     Fishing["Fishing (1-5)"]
     Gate["5+ pts in Survival Tree"]
@@ -743,6 +744,7 @@ graph TD
 
     ResourceSense -.-> Gate
     QuickTravel -.-> Gate
+    MaximizeCarryCapacity -.-> Gate
     WeatherResistance -.-> Gate
     Fishing -.-> Gate
     Gate -.->|unlocks| Forester
@@ -762,6 +764,24 @@ graph TD
 | 3   | +9%            |
 | 4   | +12%           |
 | 5   | +15%           |
+
+{{< /skill >}}
+
+{{< skill name="Maximize Carry Capacity" maxLevel="5"
+    type="Passive"
+    description="Smarter packing, better-fitted saddlebags and a stronger back. Everything a Master and their Bestia can shoulder gets easier to shoulder." >}}
+
+Raises the [weight limit](/docs/mechanics/items/#weight-limit) of the Master and of every Bestia under their command by
+the same amount. It sits in the trunk because every gathering profession - Forester, Prospector and Miner alike - lives
+off what it can carry home.
+
+| Lv. | Weight Limit (Master and Bestia) |
+| --- | -------------------------------- |
+| 1   | +15%                             |
+| 2   | +30%                             |
+| 3   | +45%                             |
+| 4   | +60%                             |
+| 5   | +75%                             |
 
 {{< /skill >}}
 
@@ -934,59 +954,26 @@ clutch draws a fourth dominant individual value, so a bloodline improves on four
 
 ### Prospector
 
-Half surveyor, half treasure hunter. Prospectors chart unclaimed land, feel out resources long before anyone else arrives, and travel heavier and further than sense would recommend.
+Half surveyor, half treasure hunter. Prospectors chart unclaimed land, feel out resources long before anyone else arrives, and travel further than sense would recommend.
 
 {{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [survival tree](#survival-tree)" />}}
 
 ```mermaid
 graph TD
     ResourceSense[/"Resource Sense (Survival Tree)"/]
-    MaximizeCarryCapacity["Maximize Carry Capacity (1-5)"]
     Cartography["Cartography (1-5)"]
-    WildernessSurvival["Wilderness Survival (1-5)"]
     WeatherSense["Weather Sense (1-3)"]
 
-    MaximizeCarryCapacity -->|Lv.3| WildernessSurvival
     ResourceSense -->|Lv.1| Cartography
     Cartography -->|Lv.2| WeatherSense
 ```
 
 <br>
-{{< skill name="Maximize Carry Capacity" maxLevel="5"
-    type="Passive"
-    description="Smarter packing, better-fitted saddlebags and a stronger back. Everything a Prospector and their Bestia can shoulder gets easier to shoulder." >}}
-
-Raises the [weight limit](/docs/mechanics/items/#weight-limit) of the Master and of every Bestia under their command by
-the same amount.
-
-| Lv. | Weight Limit (Master and Bestia) |
-| --- | -------------------------------- |
-| 1   | +10%                             |
-| 2   | +20%                             |
-| 3   | +30%                             |
-| 4   | +40%                             |
-| 5   | +50%                             |
-
-{{< /skill >}}
-
-{{< skill name="Wilderness Survival" maxLevel="5" requires="Maximize Carry Capacity Lv. 3"
-    type="Passive"
-    description="Hardens the master and their Bestia against travel through hostile terrain, far from the comfort of a settlement. Reduces the stamina drain caused by hostile terrain and raises tolerance against the [extreme temperatures](/docs/mechanics/environment/#temperature) out there." >}}
-
-| Lv. | Stamina Drain Reduction (hostile terrain) | Temperature Tolerance |
-| --- | ----------------------------------------- | --------------------- |
-| 1   | 10%                                       | +5%                   |
-| 2   | 20%                                       | +10%                  |
-| 3   | 30%                                       | +15%                  |
-| 4   | 40%                                       | +20%                  |
-| 5   | 50%                                       | +25%                  |
-
-{{< /skill >}}
-
 {{< skill name="Cartography" maxLevel="5" requires="Resource Sense Lv. 1"
-    type="Active" manaCost="20" castTime="30s" cooldown="None" range="0" target="Terrain"
+    type="Active" manaCost="50" castTime="30s" cooldown="None" range="0" target="Terrain"
     description="Enables the player to chart unexplored land, revealing terrain that can be shared, traded on, or built on. See [World Exploration](/docs/mechanics/world-exploration/#cartography) for how the surveying minigame plays out." >}}
-Each level reduces the difficulty of surveying unexplored land.
+Each level reduces the difficulty of surveying unexplored land by `10`. The minigame on that page is a draft; its details
+are still to be decided.
 {{< /skill >}}
 
 {{< skill name="Weather Sense" maxLevel="3" requires="Cartography Lv. 2"
@@ -994,6 +981,8 @@ Each level reduces the difficulty of surveying unexplored land.
     description="Charting the same valley through a dozen seasons teaches a Prospector to read the sky above it. An instinct for what the wind is about to do, well before the storm arrives." >}}
 Level 1 shows you the current wind direction and speed. See [Weather](/docs/mechanics/environment/#weather) for what each
 front does to the world.
+
+{{< alert context="info" text="To do: give the weather types more effects of their own, so that seeing them coming matters more and this skill gains weight." />}}
 
 | Lv. | Forecast Range |
 | --- | -------------- |
