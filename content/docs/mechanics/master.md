@@ -824,12 +824,10 @@ graph TD
     Lumberjack["Lumberjack (1-5)"]
     Trapping["Trapping (1-5)"]
     TrackReading["Track Reading (1-5)"]
-    BestiaTrapping["Bestia Trapping (1-5)"]
     ExpertTaming["Expert Taming (1-5)"]
     Beastfriend["Beastfriend (1-5)"]
     BloodlineStudy["Bloodline Study (1-5)"]
 
-    Trapping -->|Lv.3| BestiaTrapping
     Trapping -->|Lv.3| TrackReading
     ExpertTaming -->|Lv.3| Beastfriend
     Beastfriend -->|Lv.3| BloodlineStudy
@@ -851,18 +849,20 @@ graph TD
 {{< /skill >}}
 
 {{< skill name="Trapping" maxLevel="5"
-    type="Active" manaCost="10" castTime="3s" cooldown="0s" range="2" target="Ground"
-    description="Sets snares and deadfalls that keep working for the master even while they're off doing something else, passively catching small game over time for meat and pelts on a later check-in." >}}
+    type="Passive"
+    description="Knowing where to set a trap, how to bait it and when to spring it. Mana dust and patience do the rest." >}}
 
-Each cast places a snare, up to the number of traps the table allows.
+Raises the catch chance of every [Bestia trap](/docs/mechanics/bestia/#catching-bestias) the master throws. Anyone can
+throw a Bestia trap; this skill only makes it hold better. The traps themselves are made with
+[Carpentry](#skill-carpentry).
 
-| Lv. | Catch Chance | Max Traps |
-| --- | ------------ | --------- |
-| 1   | +6%          | 1         |
-| 2   | +12%         | 2         |
-| 3   | +18%         | 3         |
-| 4   | +24%         | 4         |
-| 5   | +30%         | 5         |
+| Lv. | Catch Chance |
+| --- | ------------ |
+| 1   | +6%          |
+| 2   | +12%         |
+| 3   | +18%         |
+| 4   | +24%         |
+| 5   | +30%         |
 
 {{< /skill >}}
 
@@ -881,23 +881,6 @@ trail.
 | 3   | 9 tiles       | What made it, and its level |
 | 4   | 12 tiles      | The name of another master  |
 | 5   | 15 tiles      | -                           |
-
-{{< /skill >}}
-
-{{< skill name="Bestia Trapping" maxLevel="5" requires="Trapping Lv. 3"
-    type="Passive"
-    description="Special traps and lures empowered with mana dust to catch Bestia." >}}
-
-Raises the chance of every [Bestia trap](/docs/mechanics/bestia/#catching-bestias) the master throws. The traps
-themselves are made with [Carpentry](#skill-carpentry).
-
-| Lv. | Catch Chance |
-| --- | ------------ |
-| 1   | +6%          |
-| 2   | +12%         |
-| 3   | +18%         |
-| 4   | +24%         |
-| 5   | +30%         |
 
 {{< /skill >}}
 

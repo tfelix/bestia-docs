@@ -34,7 +34,7 @@ On top of the base chance, every bonus below contributes **percentage points**:
 | :------------------------------------------------------------------------- | :----------- |
 | Reducing the target's HP before throwing the trap                          | up to `+30`  |
 | The trap user's [Willpower](/docs/mechanics/statusvalues/#willpower---wil) | `+ WIL / 50` |
-| [Bestia Trapping](/docs/mechanics/master/#skill-bestia-trapping) Lv. 1 - 5 | `+6` … `+30` |
+| [Trapping](/docs/mechanics/master/#skill-trapping) Lv. 1 - 5               | `+6` … `+30` |
 | [Beastfriend](/docs/mechanics/master/#skill-beastfriend) Lv. 1 - 5         | `+5` … `+25` |
 | Buffs on the trap user, debuffs on the target                              | varies       |
 
