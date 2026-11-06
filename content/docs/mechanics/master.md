@@ -560,7 +560,7 @@ Level 1 enables you to place a Mana Harvester.
 
 {{< skill name="Manaflow Expert" maxLevel="5" requires="Mana Harvester Lv. 3"
     type="Active" manaCost="22" castTime="10s" cooldown="0s" range="2" target="Crystal Lathe"
-    description="Refine the raw and unstable mana crystals harvested by a Mana Harvester into the finest arcane raw materials used to build powerful magic artifacts. The Crystal Lathe is for mana crystals only - a Miner's [Gem Cut Station](/docs/mechanics/item-list/#gem-cut-station) handles ordinary gemstones." >}}
+    description="Refine the raw and unstable mana crystals harvested by a Mana Harvester into the finest arcane raw materials used to build powerful magic artifacts. The Crystal Lathe is for mana crystals only - a Miner's [Gem Cutting](#skill-gem-cutting) handles ordinary gemstones." >}}
 Level 1 enables you to place a Crystal Lathe. The cast only places the lathe or opens its recipes. The refining itself
 takes the [craft duration](/docs/mechanics/items/#craft-duration) of the crystal's item level.
 
@@ -1014,7 +1014,9 @@ graph TD
 {{< skill name="Mining" maxLevel="5"
     type="Passive"
     description="A pickaxe, a steady lamp, and the nose for where the rock is worth breaking." >}}
-Level 1 enables you to place a mining shaft.
+
+Anyone with a [pickaxe](/docs/mechanics/items/#weapon-type) can mine, but an untrained miner only gets resources up to
+level 10. Level 1 lets you craft a pickaxe.
 
 | Lv. | Mining Time Reduction | Max Resource Level |
 | --- | --------------------- | ------------------ |
@@ -1027,18 +1029,22 @@ Level 1 enables you to place a mining shaft.
 {{< /skill >}}
 
 {{< skill name="Gem Cutting" maxLevel="5" requires="Mining Lv. 3"
-    type="Active" manaCost="20" castTime="8s" cooldown="None" range="2" target="Gem Cut Station"
+    type="Active" manaCost="20" castTime="10s" cooldown="0s" range="2" target="Gem Cut Station"
     description="Turns the rough gemstones a Miner digs up into cut stones fit for an Artificer's socket or a Trader's sale." >}}
-Can cut raw gems recovered from mining into faceted gemstones, increasing their value and unlocking their use in socketed equipment.
-Higher levels unlock cutting higher-grade gems. Level 1 allows you to place a [Gem Cut Station](/docs/mechanics/item-list/#gem-cut-station)
 
-| Lv. | Cut Success Chance |
-| --- | ------------------ |
-| 1   | +8%                |
-| 2   | +16%               |
-| 3   | +24%               |
-| 4   | +32%               |
-| 5   | +40%               |
+Level 1 allows you to place a Gem Cut Station. The cast only places the station or opens its recipes. The cutting itself
+takes the [craft duration](/docs/mechanics/items/#craft-duration) of the gem's item level. A failed cut shatters the gem.
+
+| Lv. | Success Chance | Reliable Gem Level |
+| --- | -------------- | ------------------ |
+| 1   | +8%            | 20                 |
+| 2   | +16%           | 40                 |
+| 3   | +24%           | 60                 |
+| 4   | +32%           | 80                 |
+| 5   | +40%           | 100+               |
+
+Same rule as [Forge Weapon](#skill-forge-weapon): no hard cap, but every gem level above the reliable one costs another
+`5%` success chance.
 
 {{< /skill >}}
 
