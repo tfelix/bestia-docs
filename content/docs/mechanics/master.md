@@ -839,7 +839,6 @@ graph TD
 {{< skill name="Lumberjack" maxLevel="5"
     type="Passive"
     description="An axeman's read of the forest - which trunks fell clean, which grain splits true, and how to bring both down efficiently." >}}
-Level 1 allows you to install a woodworker cabin.
 
 | Lv. | Gathering Time Reduction | Resource Drop Chance |
 | --- | ------------------------ | -------------------- |
@@ -852,9 +851,10 @@ Level 1 allows you to install a woodworker cabin.
 {{< /skill >}}
 
 {{< skill name="Trapping" maxLevel="5"
-    type="Passive"
+    type="Active" manaCost="10" castTime="3s" cooldown="0s" range="2" target="Ground"
     description="Sets snares and deadfalls that keep working for the master even while they're off doing something else, passively catching small game over time for meat and pelts on a later check-in." >}}
-Level 1 allows you to place a trap.
+
+Each cast places a snare, up to the number of traps the table allows.
 
 | Lv. | Catch Chance | Max Traps |
 | --- | ------------ | --------- |
@@ -867,25 +867,29 @@ Level 1 allows you to place a trap.
 {{< /skill >}}
 
 {{< skill name="Track Reading" maxLevel="5" requires="Trapping Lv. 3"
-    type="Active" manaCost="19" castTime="6s" cooldown="10s" target="Ground"
+    type="Active" manaCost="8" castTime="Instant" cooldown="0s" range="4" target="Ground"
     description="An eye trained to the forest floor, reading the tracks a Bestia or player left behind long after they've moved on." >}}
 
-Displays a track a player or bestia recently took. Shows you also the direction of nearby Bestia.
+Reads what has walked over a patch of ground: how many passed, and how fresh the trail is. Ground that takes no print -
+rock, paving, ice - keeps no tracks at all, at any rank. Each rank searches a wider patch and tells more about the
+trail.
 
-| Lv. | Bestia Indicator Max Distance | Oldest Detectable Track |
-| --- | ----------------------------- | ----------------------- |
-| 1   | 100m                          | 1h                      |
-| 2   | 200m                          | 3h                      |
-| 3   | 300m                          | 6h                      |
-| 4   | 400m                          | 12h                     |
-| 5   | 500m                          | 1d                      |
+| Lv. | Search Radius | Also Reads                  |
+| --- | ------------- | --------------------------- |
+| 1   | 3 tiles       | -                           |
+| 2   | 6 tiles       | Which way the trail led     |
+| 3   | 9 tiles       | What made it, and its level |
+| 4   | 12 tiles      | The name of another master  |
+| 5   | 15 tiles      | -                           |
 
 {{< /skill >}}
 
 {{< skill name="Bestia Trapping" maxLevel="5" requires="Trapping Lv. 3"
     type="Passive"
     description="Special traps and lures empowered with mana dust to catch Bestia." >}}
-Level 1 allows you to place a special Bestia trap.
+
+Raises the chance of every [Bestia trap](/docs/mechanics/bestia/#catching-bestias) the master throws. The traps
+themselves are made with [Carpentry](#skill-carpentry).
 
 | Lv. | Catch Chance |
 | --- | ------------ |
