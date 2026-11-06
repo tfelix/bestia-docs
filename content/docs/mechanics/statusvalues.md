@@ -158,7 +158,8 @@ STAR = BaseSTR_rec + floor(VIT / 6) + floor(WIL / 8)
 FinalSTAR = floor(STAR * (1 + STARMod * 0.01))
 ```
 
-`STARMod` is a percentage bonus contributed by gear, buffs, and passive skills.
+`STARMod` is a percentage bonus contributed by gear, buffs, and passive skills. For a bestia, the weather it likes or
+dislikes also adds to it, see [Weather and Bestia](/docs/mechanics/weather-and-bestia/#weather-likes-and-dislikes).
 
 ## Hit Rate - HIT
 

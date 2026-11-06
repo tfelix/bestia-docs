@@ -12,27 +12,9 @@ Bestia Masters enter the current world from another, not further specified, dime
 
 # Temperature
 
-Each Bestia has a certain sweet spot of tolerable temperature. There are several kinds of base temperature ranges in which Bestia thrive:
-
-{{< table >}}
-
-| Temperature Kind   | Base Temperature Range [°C] |
-| ------------------ | --------------------------- |
-| Low Temperature    | -20 - 15                    |
-| Medium Temperature | 10 - 30                     |
-| High Temperature   | 25 - 45                     |
-
-{{< /table >}}
-
-Bestia Master always have a **Medium Temperature** sweet spot.
-
-`Vitality` and `Willpower` increases resistance against the temperatures. Specialized equipment or status effects can also affect temperature resistance.
-
-The formula is as follows:
-
-```kotlin
-tolerableTemperature = baseTemperature ± sqrt(VIT / 2 * WILL / 4)
-```
+Each Bestia species has its own comfort window of tolerable temperature, taken from the biomes it lives in. A Bestia
+Master always has the window -6 °C to 34 °C. `Vitality`, `Willpower`, skills and status effects widen the window. How
+the window works and what happens outside of it is described in [Weather and Bestia](/docs/mechanics/weather-and-bestia/).
 
 For items and structures this calculation is a bit different. Usually these items have some threshold above or below which they will start to malfunction (or perhaps even catch fire!).
 
@@ -40,7 +22,7 @@ For items and structures this calculation is a bit different. Usually these item
 
 The weather system in Bestia plays a crucial role. It also affects visibility as well as the behavior of NPCs and mobs. Depending on the weather, the NPCs and the player character will need improved shelter or equipment to avoid a loss of stamina.
 
-The weather also influences the temperature, which will in turn decide if and how much stamina an entity regenerates or loses.
+The weather also influences the temperature, which will in turn decide if and how much stamina an entity regenerates or loses. See [Weather and Bestia](/docs/mechanics/weather-and-bestia/).
 
 The weather will also play a role in which crops and plants grow. If the player decides to plant salad in the desert, this won't work quite well.
 
