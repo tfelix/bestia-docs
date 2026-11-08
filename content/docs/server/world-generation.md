@@ -12,9 +12,9 @@ running world with a database row and a socket to serve it over.
 
 # What's implemented
 
-Almost all of it. 23 world-tier stages run end to end — tectonics, climate, erosion, glaciation, hydrology,
+Almost all of it. 25 world-tier stages run end to end — tectonics, climate, erosion, glaciation, hydrology,
 volcanism, biomes, vegetation, resources, caves, mana, habitability, settlements, history, corruption,
-points of interest, town layout, economy, spawners, and the macro navigation graph — plus chunk
+points of interest, town layout, economy, spawners, the macro navigation graph, hills and set dressing — plus chunk
 materialization, RLE encoding, delta tracking, baking, and streaming to `zone-server`. The genuine gaps, as
 of this pass:
 
@@ -36,7 +36,7 @@ of this pass:
 
 # The pipeline
 
-Twenty-three stages, each declaring only what it reads (`Stage.dependencies`) and what it produces
+Twenty-five stages, each declaring only what it reads (`Stage.dependencies`) and what it produces
 (`Stage.outputs` — raster layers, vector features, the history log, or the navigation graph).
 `WorldGenPipeline` topologically sorts them by that declaration and computes a version vector per stage (its
 own version folded with every upstream one), so retuning erosion invalidates erosion and everything
@@ -61,6 +61,8 @@ graph LR
   COP --> STV["spawners, towns, vegetation_stands"]
   STV --> EC[economy]
   EC --> NG[nav_graph]
+  EC --> KN[knolls]
+  KN --> DR[dressing]
 ```
 
 The order stages are _constructed_ in (`StandardWorld.stages()`) is cosmetic — the pipeline sorts by declared
@@ -94,6 +96,8 @@ in hydrology had never once been handed a genuinely closed basin before the carv
 | `spawners`, `towns`, `vegetation_stands` | bestia spawn points; street/building/district layout; vegetation stands                              | read corruption; `vegetation_stands` specifically needs corruption, which is why it isn't in `bio/` next to `vegetation` |
 | `economy`                                | businesses, roadside inns                                                                            | needs the finished town layout                                                                                           |
 | `nav_graph`                              | the macro navigation graph                                                                           | last — reads roads, bridges, gates and cave mouths everything above finalised                                            |
+| `knolls`                                 | hills: wandering clusters of low rounded knolls                                                      | after everything built, so hills go round the ways: one reaching a road is slid aside, else lowered until the road cuts it |
+| `dressing`                               | set dressing: piers, boats, wells, windmills, cemeteries, signposts, milestones, lanterns, cairns     | after the hills (a windmill wants the highest one); the dense half - fences, crops, headstones - is derived per chunk    |
 
 # Bestia dens
 
@@ -111,6 +115,35 @@ end of its country's range and raises the top by `bossLevelBonus` (20), capped a
 hold bosses from about level 33 to 100, and only the deepest corruption reaches 120. A boss den holds one creature.
 The home safety ring caps the ordinary levels first, so no boss den rolls near a home town. On the default world
 (seed 11753242, 128 km) this gives 152 boss dens: 43 in the wilds and 109 in corruption.
+
+# Living detail
+
+The stages above decide where things are at kilometre scale. A few of the last ones exist only to make the
+ground between settlements look lived in.
+
+- **Rivers start small and end wide.** A headwater holds the narrowest channel the voxel grid can draw for its
+  first three kilometres, in a tight floodplain. Every river that reaches the sea opens into its own estuary,
+  drawn per river: most widen modestly, a few become a broad funnel. A steep run to the sea favours a wide
+  mouth; a flat one, where a delta forms instead, favours a small one.
+- **Hills go round the ways.** `knolls` lays clusters of low rounded hills in districts of hill country, after
+  every road, field and building exists. A hill keeps clear of anything built. One that reaches a road is slid
+  aside, so the road runs between two rises; failing that it is lowered until the road cuts through it as a
+  bank a player can climb. Roads are planned on kilometre cells and could never see a hill this size, which is
+  why the hills move rather than the roads.
+- **Things to pick up and break.** Boulders lie on stony ground (thin soil, rocky biomes, glacial moraines) and
+  break for quarried stone, flint and the odd rough gem. Loose stones and fallen sticks are picked up as they
+  lie and grow back. A flint and a stick make a stone knife; two stones and a stick make a stone hatchet.
+- **Set dressing.** Piers with boats tied up off waterfront towns, wells on the greens, a windmill on the highest
+  hill above a village's fields, and a walled cemetery at the edge of every village and town. Its first
+  headstones belong to the figures the chronicle remembers who died at home; any of them can be read. Fields are
+  fenced in dry-stone, hedge, post-and-rail or wattle by the ground they lie on, and carry wheat, barley or
+  cabbage with haystacks and a scarecrow. Signposts stand where a lane meets a road, and milestones line the
+  trunk roads; both name where each way leads and how far. Cairns mark the top of a trail's climb, and rock
+  outcrops crown hills in dry country. Every roadside inn now has a house.
+- **The everflame.** The last two or three kilometres of every road into a settlement are lined with lanterns.
+  Their pale blue-green magic flame burns brighter as the day goes and lights the road at night. Each
+  settlement has a lamplighter who walks one line of them at dusk on most evenings.
+
 
 # Parameters
 
