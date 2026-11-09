@@ -2352,6 +2352,8 @@ Neither predator nor prey, exactly. Hunters move through the wild like the terra
 
 {{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [warrior tree](#warrior-tree)" />}}
 
+The Hunter has two routes. The **Archer** fights with the bow from as far away as the eye reaches. The **Tracker** marks the prey, hunts it down with spear and Bestias, and moves fast through the wild.
+
 ```mermaid
 graph TD
     Camouflage["Camouflage (1-3)"]
@@ -2364,8 +2366,12 @@ graph TD
     ChargeArrow["Charge Arrow (1)"]
     ImproveConcentration["Improve Concentration (1-5)"]
     ArrowCrafting["Arrow Crafting (1)"]
+    Javelin["Javelin (1-5)"]
+    PackHunt["Pack Hunt (1-3)"]
 
     Camouflage -->|Lv.2| HuntersMark
+    Trailblazer -->|Lv.2| Javelin
+    HuntersMark -->|Lv.3| PackHunt
 
     OwlsEye -->|Lv.3| VulturesEye
     OwlsEye -->|Lv.3| DoubleStrafe
@@ -2420,6 +2426,29 @@ Marks one target. While the mark lasts, the target shows on the master's map, an
 | 3   | +9%                              |
 | 4   | +12%                             |
 | 5   | +15%                             |
+
+{{< /skill >}}
+
+{{< skill name="Javelin" maxLevel="5" requires="Trailblazer Lv. 2"
+    type="Active" manaCost="14" castTime="Instant" cooldown="3s" range="7" target="Enemy"
+    description="Not every hunt is won with a bow." >}}
+
+Needs a spear or a thrown weapon. Hurls it at a target up to `7` tiles away for `150% + 30%/Lv.` ATK. A spear comes back
+to hand; a thrown weapon is used up like ammunition.
+
+{{< /skill >}}
+
+{{< skill name="Pack Hunt" maxLevel="3" requires="Hunter's Mark Lv. 3"
+    type="Passive"
+    description="The Hunter's Bestias learn whom to go for." >}}
+
+The master's Bestias deal more damage to the target of Hunter's Mark.
+
+| Lv. | Bestia Damage vs Marked Target |
+| --- | ------------------------------ |
+| 1   | +10%                           |
+| 2   | +20%                           |
+| 3   | +30%                           |
 
 {{< /skill >}}
 
@@ -2736,6 +2765,8 @@ Where a Brawler trusts bare knuckles and a Wizard trusts raw mana, a Knight trus
 
 {{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [warrior tree](#warrior-tree)" />}}
 
+The Knight has two routes. The **Vanguard** hits hard with heavy weapons and charges in. The **Guardian** holds the line with plate and shield and takes the blows meant for others.
+
 ```mermaid
 graph TD
     HeavyWeaponMastery["Heavy Weapon Mastery (1-10)"]
@@ -2746,12 +2777,16 @@ graph TD
     ShieldWall["Shield Wall (1-5)"]
     AutoGuard["Auto Guard (1-5)"]
     Juggernaut["Juggernaut (1-3)"]
+    Devotion["Devotion (1-3)"]
+    BrandishSpear["Brandish Spear (1-5)"]
 
     HeavyWeaponMastery -->|Lv.3| Bash
     Bash -->|Lv.3| Charge
+    HeavyWeaponMastery -->|Lv.3| BrandishSpear
 
     HeavyArmorMastery -->|Lv.2| ShieldWall
     ShieldWall -->|Lv.2| AutoGuard
+    ShieldWall -->|Lv.2| Devotion
 
     HeavyArmorMastery -->|Lv.5| Juggernaut
     Charge -->|Lv.3| Juggernaut
@@ -2845,6 +2880,14 @@ Needs a shield. At Lv. 5 it also returns `10%` of the blocked damage to the atta
 
 {{< /skill >}}
 
+{{< skill name="Brandish Spear" maxLevel="5" requires="Heavy Weapon Mastery Lv. 3"
+    type="Active" manaCost="12" castTime="Instant" cooldown="4s" range="1" target="Area"
+    description="A long weapon swung wide, clearing the ground in front of the Knight." >}}
+
+Needs a spear or a polearm. Hits every enemy in a 3×3 area in front of the Knight for `120% + 40%/Lv.` ATK.
+
+{{< /skill >}}
+
 {{< skill name="Auto Guard" maxLevel="5" requires="Shield Wall Lv. 2"
     type="Passive"
     description="A trained reflex that raises the shield on its own the instant a blow lands, sometimes fast enough to stop it cold." >}}
@@ -2858,6 +2901,21 @@ Needs a shield.
 | 3   | +12%              |
 | 4   | +16%              |
 | 5   | +20%              |
+
+{{< /skill >}}
+
+{{< skill name="Devotion" maxLevel="3" requires="Shield Wall Lv. 2"
+    type="Active" manaCost="25" castTime="Instant" cooldown="30s" duration="per Lv." range="7" target="Ally"
+    description="The Knight steps between an ally and harm, and the harm goes to the Knight." >}}
+
+While it lasts, all damage the ally takes goes to the Knight instead. It ends early when the ally moves more than `7m`
+away.
+
+| Lv. | Duration |
+| --- | -------- |
+| 1   | 15s      |
+| 2   | 30s      |
+| 3   | 45s      |
 
 {{< /skill >}}
 
