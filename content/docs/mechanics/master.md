@@ -589,9 +589,11 @@ A crystal above your max crystal level cannot be refined.
 
 {{< skill name="Runic Etching" maxLevel="10" requires="Item Customization Lv. 3"
     type="Active" manaCost="25" castTime="10s" cooldown="0s" range="2" target="Carving Table"
-    description="Create runes from Bestia essences. These runes are imbued with the power of the Bestia and can be slotted into a weapon or piece of equipment that has been prepared with Item Customization. An attempt to convert a Bestia into an essence destroys the Bestia." >}}
+    description="Binds the essence of a Bestia into a cut gem. The Essence Gem carries the power of the Bestia and fits into any socket of a weapon or piece of equipment. Converting a Bestia destroys it." >}}
 
-Level 1 allows you to place a Carving Table. The Bestia to convert must stand next to the table. The cast only places
+Level 1 allows you to place a Carving Table. The Bestia to convert must stand next to the table, and the etching uses up
+a cut gem. The gem limits the Bestia level, see [Sockets and Essences](/docs/mechanics/items/#sockets-and-essences). A
+failed etching shatters the gem too. The cast only places
 the table or opens its recipes. The etching itself takes the [craft duration](/docs/mechanics/items/#craft-duration) of
 the Bestia's level.
 
@@ -1203,10 +1205,11 @@ away.
 
 {{< skill name="Gem Cutting" maxLevel="5" requires="Mining Lv. 3"
     type="Active" manaCost="20" castTime="10s" cooldown="0s" range="2" target="Gem Cut Station"
-    description="Turns the rough gemstones a Miner digs up into cut stones fit for an Artificer's socket or a Trader's sale." >}}
+    description="Turns the rough gemstones a Miner digs up into cut gems, the vessels an Artificer binds Bestia essences into." >}}
 
 Level 1 allows you to place a Gem Cut Station. The cast only places the station or opens its recipes. The cutting itself
 takes the [craft duration](/docs/mechanics/items/#craft-duration) of the gem's item level. A failed cut shatters the gem.
+The five gems and what they hold are listed under [Sockets and Essences](/docs/mechanics/items/#sockets-and-essences).
 
 | Lv. | Success Chance | Reliable Gem Level |
 | --- | -------------- | ------------------ |
@@ -1271,7 +1274,7 @@ Blasting Charge, brewed with [Alchemy](#skill-alchemy).
     type="Passive"
     description="A Miner who has cut enough stones sees what a rough gem holds before the first cut." >}}
 
-Shows the quality of a rough gem.
+Shows which gem an unknown [Rough Gemstone](/docs/mechanics/item-list/#rough-gemstone) is, before the cut.
 
 | Lv. | Gem Cutting Success |
 | --- | ------------------- |

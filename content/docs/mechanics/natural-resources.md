@@ -72,7 +72,7 @@ The **Type** column reuses the base resource types listed above, plus the refine
 | Blue Mana Crystal   | Mana    | Used for magic artefacts. Quite a common crystal.                                           |
 | Yellow Mana Crystal | Mana    | Used for magic artefacts. Quite rare.                                                       |
 | Red Mana Crystal    | Mana    | Used for magic artefacts. Very rare.                                                        |
-| Rough Gemstone      | Crystal | Uncut gemstones pried from mineral veins. Cut and faceted for use in socketed equipment.    |
+| Rough Gems          | Crystal | Amethyst, emerald, ruby, pyrelith and diamond. Cut into vessels for Bestia essences.        |
 | Coal                | Mineral | A black mineral fuel dug from seams. The reference fuel of every furnace.                   |
 | Charcoal            | Mineral | Wood burned down into fuel. Cheaper than coal, but never gets a furnace as hot.             |
 | Salt                | Mineral | Common mineral salt. Used for food preservation and various crafting recipes.               |
