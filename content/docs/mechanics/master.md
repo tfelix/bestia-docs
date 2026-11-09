@@ -1195,18 +1195,13 @@ Coin has its own kind of magic. Traders read markets instead of mana flows, link
 
 ```mermaid
 graph TD
-    Founder[/"Founder (Scholar Tree)"/]
-    Appraisal["Appraisal (1-5)"]
     Scavenger["Scavenger (1-10)"]
     TradePostOwner["Trade Post Owner (1-5)"]
     Minting["Minting (1-5)"]
     TradeAgreement["Trade Agreement (1-5)"]
     HonorableCitizen["Honorable Citizen (1-5)"]
 
-    Appraisal -->|Lv.5| Minting
     Scavenger -->|Lv.3| Minting
-
-    Founder -->|Lv.1| TradePostOwner
     TradePostOwner -->|Lv.3| TradeAgreement
 
     Minting -->|Lv.2| HonorableCitizen
@@ -1214,21 +1209,6 @@ graph TD
 ```
 
 <br>
-{{< skill name="Appraisal" maxLevel="5"
-    type="Active" manaCost="8" castTime="2s" cooldown="3s" range="0" target="Item"
-    description="Trains an eye for what goods are actually worth, cutting through both a merchant's markup and a forger's polish. Reveals an item's true condition and quality before it's bought or sold, and can flag counterfeit or mislabeled goods." >}}
-You can identify an item.
-
-| Lv. | Item Level Identified |
-| --- | --------------------- |
-| 1   | 20                    |
-| 2   | 40                    |
-| 3   | 60                    |
-| 4   | 80                    |
-| 5   | 100                   |
-
-{{< /skill >}}
-
 {{< skill name="Scavenger" maxLevel="10"
     type="Passive"
     description="A scrapper's eye for what's still worth keeping - coaxes more usable components out of anything broken down for parts." >}}
@@ -1248,33 +1228,40 @@ You can identify an item.
 
 {{< /skill >}}
 
-{{< skill name="Minting" maxLevel="5" requires="Appraisal Lv. 5, Scavenger Lv. 3"
-    type="Active" manaCost="15" castTime="5s" cooldown="None" range="2" target="Mint"
-    description="The final step between a fistful of raw gold and coin that actually spends. Allows the master to mint raw gold directly into gold coins. See [Currency](/docs/mechanics/economy-trade/#currency) for how the world's money supply is minted from mined gold." >}}
+{{< skill name="Minting" maxLevel="5" requires="Scavenger Lv. 3"
+    type="Active" manaCost="15" castTime="10s" cooldown="0s" range="2" target="Mint"
+    description="The final step between a fistful of raw gold and coin that actually spends. Allows the master to mint gold bars into gold coins. See [Currency](/docs/mechanics/economy-trade/#currency) for how the world's money supply is minted from mined gold." >}}
 
-| Lv. | Mint Yield |
-| --- | ---------- |
-| 1   | +10%       |
-| 2   | +20%       |
-| 3   | +30%       |
-| 4   | +40%       |
-| 5   | +50%       |
+Level 1 allows you to place a Mint. The cast only places the mint or opens its recipes. The minting itself takes the
+[craft duration](/docs/mechanics/items/#craft-duration) of the bar.
+
+A mint never creates gold. It recovers a share of the gold in a bar as coin, and the rest goes back to the world
+reserve. See [Minting yield is a recovery rate](/docs/server/money-supply/#minting-yield-is-a-recovery-rate-not-a-bonus).
+
+| Lv. | Gold Recovered as Coin |
+| --- | ---------------------- |
+| 1   | 60%                    |
+| 2   | 70%                    |
+| 3   | 80%                    |
+| 4   | 90%                    |
+| 5   | 100%                   |
 
 {{< /skill >}}
 
-{{< skill name="Trade Post Owner" maxLevel="5" requires="Founder Lv. 1"
-    type="Active" manaCost="40" castTime="10s" cooldown="None" range="2" target="Ground"
-    description="Sets up trading posts where other citizens can buy and sell their wares, turning any settlement into a proper marketplace." >}}
+{{< skill name="Trade Post Owner" maxLevel="5"
+    type="Active" manaCost="40" castTime="10s" cooldown="0s" range="2" target="Ground"
+    description="Builds an auction house where other citizens can buy and sell their wares, turning any settlement into a proper marketplace." >}}
 
-Only a single trading post can be located inside a settlement.
+Only one auction house can stand inside a settlement, and none within 5km of another. See
+[Building an Auction House](/docs/mechanics/economy-trade/#building-an-auction-house).
 
-| Lv. | Trading Posts | Max Fee |
-| --- | ------------- | ------- |
-| 1   | 1             | +5%     |
-| 2   | 2             | +10%    |
-| 3   | 3             | +15%    |
-| 4   | 4             | +20%    |
-| 5   | 5             | +25%    |
+| Lv. | Auction Houses | Max Owner Fee |
+| --- | -------------- | ------------- |
+| 1   | 1              | 5%            |
+| 2   | 2              | 10%           |
+| 3   | 3              | 15%           |
+| 4   | 4              | 20%           |
+| 5   | 5              | 25%           |
 
 {{< /skill >}}
 

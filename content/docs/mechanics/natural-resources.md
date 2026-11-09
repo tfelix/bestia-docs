@@ -168,7 +168,7 @@ examples.
 
 # Item Recycling
 
-For each item there is a list of base resources which the item is roughly based upon (this list is also used when forging or creating the item). When an attempt is made to recycle the item, there is a chance that the item is destroyed and the resources are lost. The skill [Scavenger](/docs/mechanics/master) can increase the success chance.
+For each item there is a list of base resources which the item is roughly based upon (this list is also used when forging or creating the item). When an attempt is made to recycle the item, there is a chance that the item is destroyed and the resources are lost. The skill [Scavenger](/docs/mechanics/master/#skill-scavenger) can increase the success chance.
 
 The base chance for item recycling is:
 
@@ -192,8 +192,8 @@ If a recycling attempt is performed successfully, the amount of captured resourc
 | 21 - 60  | 50%                   |
 | > 60     | 30%                   |
 
-The amount reclaimed is driven by the care taken while stripping the item apart rather than by raw knowledge, so `DEX` carries the most weight, `WIL` (steady focus) contributes a little, and the appropriate skill adds a flat bonus:
+The amount reclaimed is driven by the care taken while stripping the item apart rather than by raw knowledge, so `DEX` carries the most weight, `WIL` (steady focus) contributes a little, and no skill adds to it:
 
 ```kotlin
-  R_total = R_base + DEX / 15 + WIL / 30 + R_skill
+  R_total = R_base + DEX / 15 + WIL / 30
 ```
