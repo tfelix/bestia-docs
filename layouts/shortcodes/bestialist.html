@@ -13,7 +13,7 @@
 <div class="table-responsive mb-4">
   <table class="table table-sm align-middle">
     <thead>
-      <tr><th>#</th><th>Bestia</th><th>Lv</th><th>Tier</th><th>Kind</th><th>Element</th><th>Size</th><th>Habitat</th><th>Utility skills</th><th>Loot</th><th>Inspired by</th></tr>
+      <tr><th>#</th><th>Bestia</th><th>Lv</th><th>Tier</th><th>Kind</th><th>Element</th><th>Size</th><th>Habitat</th><th>Utility skills</th><th>Loot</th></tr>
     </thead>
     <tbody>
       {{- range sort .rows "level" }}
@@ -34,7 +34,6 @@
           {{- end -}}
         </small></td>
         <td><small>{{ range $i, $row := .loot }}{{ if $i }}, {{ end }}{{ $row.item | replaceRE "_" " " }} {{ $row.chance }}%{{ end }}</small></td>
-        <td><small>{{ .inspiredBy }}</small></td>
       </tr>
       {{- end }}
     </tbody>
