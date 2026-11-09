@@ -245,7 +245,7 @@ ATK = (BaseLevel ÷ 4) + DEX + (DEX ÷ 10)² + (STR ÷ 5) + (WIL ÷ 3)
 
 The squared term comes from Ragnarok Online. It lets attack grow faster than the flat soft defense at high levels.
 
-{{< alert context="warning" text="Bestia has no stat cap, and Ragnarok Online's squared terms rely on its cap of 99. A build that stacks one attribute with gear grows very fast: a full set of top-rolled STR items at Lv 100 deals about ten times the damage of a master without gear. See [Forging](/docs/mechanics/forging/#what-the-numbers-mean)." />}}
+{{< alert context="warning" text="Bestia has no stat cap, and Ragnarok Online's squared terms rely on its cap of 99. A build that stacks one attribute with gear grows very fast: a full set of top-rolled STR items at Lv 100 deals about ten times the damage of a master without gear. See [Forging](/docs/mechanics/items/#what-the-numbers-mean)." />}}
 
 ### Weapon Attack - WATK
 

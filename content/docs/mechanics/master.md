@@ -333,7 +333,7 @@ There is **no hard cap**. A blueprint above the reliable item level can still be
 costs another `5%` success chance. A Lv. 5 smith reaching for a level 80 weapon is working at a deep penalty, not
 against a locked door. See [Item Crafting](/docs/mechanics/items/#item-crafting) for the full roll.
 
-The reliable item level also caps the random stats a forged copy can roll, see [The Cap](/docs/mechanics/forging/#the-cap).
+The reliable item level also caps the random stats a forged copy can roll, see [The Cap](/docs/mechanics/items/#the-cap).
 
 {{< /skill >}}
 
