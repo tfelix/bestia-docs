@@ -476,7 +476,8 @@ Lv. 1 allows you to place a Forge.
 | 10  | +50%           | 100+                |
 
 Same rule as [Forge Weapon](#skill-forge-weapon): no hard cap, but every item level above the reliable one costs another
-`5%` success chance. The reliable item level caps random stats the same way.
+`5%` success chance. Alchemy also brews the cures for body effects, such as an Antidote against
+[Poison](/docs/mechanics/status-effects/#all-status-effects). Status Recovery only clears the mind. The reliable item level caps random stats the same way.
 
 {{< /skill >}}
 
@@ -641,16 +642,20 @@ Equal parts kitchen and laboratory. Alchemists turn raw ingredients - mundane or
 
 {{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [craftsman tree](#craftsman-tree)" />}}
 
+The Alchemist has two routes. The **Brewer** gathers herbs, brews potions and cures and throws them to whoever needs them. The **Transmuter** turns ordinary matter into rare resources.
+
 ```mermaid
 graph TD
     Herbalism["Herbalism (1-5)"]
     Alchemy["Alchemy (1-10)"]
     Transmutation["Transmutation (1-10)"]
     AlchemyMastery["Alchemy Mastery (1-5)"]
+    PotionPitcher["Potion Pitcher (1-5)"]
 
     Herbalism -->|Lv.2| Alchemy
     Alchemy -->|Lv.5| Transmutation
     Alchemy -->|Lv.5| AlchemyMastery
+    Alchemy -->|Lv.3| PotionPitcher
 ```
 
 <br>
@@ -692,7 +697,8 @@ and elixirs.
 | 10  | +50%           | 100+                |
 
 Same rule as [Forge Weapon](#skill-forge-weapon): no hard cap, but every item level above the reliable one costs another
-`5%` success chance. The cast only places the laboratory or opens its recipes. The brew itself takes the
+`5%` success chance. Alchemy also brews the cures for body effects, such as an Antidote against
+[Poison](/docs/mechanics/status-effects/#all-status-effects). Status Recovery only clears the mind. The cast only places the laboratory or opens its recipes. The brew itself takes the
 [craft duration](/docs/mechanics/items/#craft-duration) of the potion's item level.
 
 {{< /skill >}}
@@ -733,6 +739,23 @@ resource's item level.
 | 3   | +15%           | +30%           |
 | 4   | +20%           | +40%           |
 | 5   | +25%           | +50%           |
+
+{{< /skill >}}
+
+{{< skill name="Potion Pitcher" maxLevel="5" requires="Alchemy Lv. 3"
+    type="Active" manaCost="1" castTime="Instant" cooldown="1s" range="7" target="Ally"
+    description="Why walk over with a potion when you can throw it?" >}}
+
+Throws a potion from the bag onto an ally up to `7` tiles away. It works as if the ally had drunk it, and the
+Alchemist's hand makes it work better.
+
+| Lv. | Potion Effect |
+| --- | ------------- |
+| 1   | +10%          |
+| 2   | +20%          |
+| 3   | +30%          |
+| 4   | +40%          |
+| 5   | +50%          |
 
 {{< /skill >}}
 
