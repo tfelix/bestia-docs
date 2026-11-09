@@ -269,15 +269,6 @@ A Bestia or Master that is defeated loses `1%` of its current experience points.
 
 In every case, carried items suffer a durability penalty.
 
-### Hard Mode
-
-A player can opt into **Hard Mode** for a `+3%` experience and `+3%` loot bonus. In exchange, dying costs `5%` of current experience instead of `1%`, and carried items are not protected by the teleport spell.
-
-Toggling Hard Mode carries a **15 minute real-time cooldown**, which exists to stop players from flicking the mode off the moment a situation turns dicey. Two exceptions keep that cooldown from becoming a trap:
-
-- Inside a [Protected Zone](/docs/mechanics/pvp/#protected-zones) the mode can be toggled freely, with no cooldown at all. Committing to the risk should be a decision made before heading out, not something a player gets locked out of while standing at a workbench.
-- Immediately **after a death** the mode may be switched once regardless of the cooldown, which then restarts from that switch. The penalty for the death that just happened has already been paid, so there is nothing to dodge.
-
 ### Permanent Death
 
 Bestia, unlike their Master, can be lost for good. A killing blow is fatal in the permanent sense when its **overkill damage** — the damage dealt in excess of the Bestia's remaining HP — is at least equal to the Bestia's maximum HP.
