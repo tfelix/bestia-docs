@@ -17,13 +17,17 @@ Some of these account skills can be used by every Bestia in possession of the ma
 {{< alert context="info" text="Don't confuse this skill system with the regular attacks a Bestia is learning by item usage or just by level up. Those are simply called attacks." />}}
 
 - The possible rank counts of a skill should be: **1, 3, 5 and 10**
-- Budget skills per **branch**, not per tree. A branch is a chain of 3-6 dependent skills that a player buys as a unit, and holds **15-45 ranks** - that is what one career can realistically finish.
-- Reaching the capstone of a single branch must cost **no more than 60 skill points**, so a career can finish one branch and still dabble in a second.
+- Every profession offers **two routes**, two different ways to play it. A Priest can hunt Demons and the Undead or be
+  the full support of a party; a Hunter can be an archer or a tracker. A route is a chain of dependent skills that a
+  player buys as a unit, and its capstone is part of it.
+- A **fighting profession** (the Warrior sub-trees, Priest and Sage) holds about **55-60 ranks**: two routes of about
+  **25** each, plus a few shared skills.
+- A **job profession** (crafting, gathering and trade) holds about **30-40 ranks**: two routes of about **15-20** each.
 - A **base tree** holds **10-25 ranks**. It teaches the basics and gates its sub-trees.
-- A **sub-tree** carries **2-6 branches**. Crafting and gathering sub-trees sit at the low end, fighting sub-trees at the high end. The Wizard is the widest of them all because it repeats the same branch shape once per element - that is width, not depth, and it costs a player nothing to ignore three quarters of it.
-- There should be some meaningful dependency of the skills forming a tree
-- In each profession tree there should form 2-3 sub-trees which create a meaningful hierarchy
-- There should be some kind of three tiers inside a tree to lead from low and basic skills to the much more powerful ones
+- The Wizard is the widest sub-tree because it repeats the same skills once per element. That is width, not depth: a
+  Wizard picks the elements they want and ignores the rest.
+- There should be some kind of three tiers inside a route to lead from low and basic skills to the much more powerful
+  ones.
 
 {{< alert context="warning" text="Most important: **No hardcoded skill effects!**" />}}
 
@@ -43,10 +47,17 @@ On each level up the master gains 1 skillpoint to put into the skills rank. This
 
 {{< alert context="info" text="The max level is not capped, so in principle more points can be earned - but progression gets continuously harder, so it is safe to assume every player has about 100 points." />}}
 
-The skilltrees are designed as such that to reach the highest professions in each tree the player needs to spend about **60 points**.
+Of the about 100 points, 5 go into Basic Skill and 5 into each base tree a master uses, to open its sub-trees. That
+leaves about **85 points** for professions. Some builds that fit:
 
-The player can decide to have a mediocre profession in each tree, or to max out one and take maybe half of the
-meaningful professions of another tree. The skilltree is a hierarchical dependency of skills.
+| Build                                               | Points       |
+| --------------------------------------------------- | ------------ |
+| A job and a fighting profession                     | 35 + 50      |
+| A job and one route of two fighting professions     | 35 + 25 + 25 |
+| A full fighting profession and one route of another | 55 + 25      |
+
+A master who spreads over three sub-trees still has only two professions, see below: the third one gives its skills
+but not its equipment.
 
 # Professions
 
