@@ -1071,16 +1071,22 @@ If it's buried, a Miner will find a way to it. Equal parts pickaxe and stubbornn
 
 {{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [survival tree](#survival-tree)" />}}
 
+The Miner has two routes. The **Digger** gets more ore out of the rock, faster. The **Gem Cutter** turns rough stones into cut gems.
+
 ```mermaid
 graph TD
     Mining["Mining (1-5)"]
     GemCutting["Gem Cutting (1-5)"]
     RichVeins["Rich Veins (1-5)"]
     ResourceSonar["Resource Sonar (1-3)"]
+    Blasting["Blasting (1-5)"]
+    GemLore["Gem Lore (1-3)"]
 
     Mining -->|Lv.3| GemCutting
     Mining -->|Lv.3| RichVeins
     RichVeins -->|Lv.3| ResourceSonar
+    Mining -->|Lv.3| Blasting
+    GemCutting -->|Lv.1| GemLore
 ```
 
 <br>
@@ -1148,6 +1154,37 @@ Can sense ore and gem deposits through solid rock.
 | 1   | 5m          |
 | 2   | 10m         |
 | 3   | 15m         |
+
+{{< /skill >}}
+
+{{< skill name="Blasting" maxLevel="5" requires="Mining Lv. 3"
+    type="Active" manaCost="10" castTime="2s" cooldown="10s" range="3" target="Ground"
+    description="When the pick is too slow, a Miner reaches for something louder." >}}
+
+Sets a blasting charge that breaks every block around it `3s` later, and hurts whoever stands too close. Consumes a
+Blasting Charge, brewed with [Alchemy](#skill-alchemy).
+
+| Lv. | Radius |
+| --- | ------ |
+| 1   | 1m     |
+| 2   | 2m     |
+| 3   | 3m     |
+| 4   | 4m     |
+| 5   | 5m     |
+
+{{< /skill >}}
+
+{{< skill name="Gem Lore" maxLevel="3" requires="Gem Cutting Lv. 1"
+    type="Passive"
+    description="A Miner who has cut enough stones sees what a rough gem holds before the first cut." >}}
+
+Shows the quality of a rough gem.
+
+| Lv. | Gem Cutting Success |
+| --- | ------------------- |
+| 1   | +5%                 |
+| 2   | +10%                |
+| 3   | +15%                |
 
 {{< /skill >}}
 
