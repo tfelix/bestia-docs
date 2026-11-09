@@ -123,7 +123,7 @@ are listed in [Weapon Type](/docs/mechanics/items/#weapon-type).
 | [Assassin](#assassin)     | Warrior   | Light  | Dagger, Fist, Sword, Thrown                                    |
 | [Knight](#knight)         | Warrior   | Heavy  | Sword, Greatsword, Axe, Greataxe, Mace, Hammer, Spear, Polearm |
 | [Brawler](#brawler)       | Warrior   | Light  | Fist, Staff                                                    |
-| Hunter (parked)           | Warrior   | Light  | Spear, Bow, Crossbow, Thrown                                   |
+| [Hunter](#hunter)         | Warrior   | Light  | Spear, Bow, Crossbow, Thrown                                   |
 | Bard (parked)             | Warrior   | Light  | Sword, Bow, Instrument                                         |
 | Dancer (parked)           | Warrior   | Light  | Whip, Bow, Thrown                                              |
 
@@ -1158,7 +1158,7 @@ Reveals the monster status values, element, HP and Mana.
 
 {{< skill name="Ruwach" maxLevel="1" requires="Magic Sense Lv. 2"
     type="Active" manaCost="14" castTime="Instant" cooldown="10s" duration="10s" range="10m" target="Self"
-    description="A pulse of second sight that peels back concealment - hidden traps, camouflaged Hunters and cloaked Assassins stand out for what they are. Useful to any Scholar, whether they're scrying old ruins or walking a party into an ambush." >}}
+    description="A pulse of second sight that peels back concealment - hidden traps, hiding Bestia and cloaked Assassins stand out for what they are. Useful to any Scholar, whether they're scrying old ruins or walking a party into an ambush." >}}
 
 While it is active, everything hidden within 10m of the caster is revealed. Detection resistance, such as that of
 [Hide](#skill-hide), does not help against it.
@@ -1927,9 +1927,9 @@ The weapon takes on the element, so the [element table](/docs/mechanics/bestia-d
 
 ## Warrior Tree
 
-Where the other trees build, gather and study, the Warrior tree is built to fight. Wizards burn the battlefield down with elemental and arcane fury, Brawlers fight with fist and staff, Assassins strike from hiding with poisoned blades, and Knights hold the front line in plate.
+Where the other trees build, gather and study, the Warrior tree is built to fight. Wizards burn the battlefield down with elemental and arcane fury, Brawlers fight with fist and staff, Hunters shoot from afar, Assassins strike from hiding with poisoned blades, and Knights hold the front line in plate.
 
-{{< alert context="warning" text="Wizard, Brawler, Assassin and Knight ship with the initial release. Hunter, Bard and Dancer are designed but parked - their skills are kept in this page as a comment so the work is not lost. No parked tree counts against any rank budget until it is unparked." />}}
+{{< alert context="warning" text="Wizard, Brawler, Hunter, Assassin and Knight ship with the initial release. Bard and Dancer are designed but parked - their skills are kept in this page as a comment so the work is not lost. No parked tree counts against any rank budget until it is unparked." />}}
 
 ```mermaid
 graph TD
@@ -1940,7 +1940,7 @@ graph TD
     Gate["5+ pts in Warrior Tree"]
     Wizard["Wizard"]
     Brawler["Brawler"]
-    %% Hunter(("Hunter")) %% parked
+    Hunter["Hunter"]
     Assassin["Assassin"]
     Knight["Knight"]
     %% Bard(("Bard")) %% parked
@@ -1952,7 +1952,7 @@ graph TD
     Meditation -.-> Gate
     Gate -.->|unlocks| Wizard
     Gate -.->|unlocks| Brawler
-    %% Gate -.->|unlocks| Hunter
+    Gate -.->|unlocks| Hunter
     Gate -.->|unlocks| Assassin
     Gate -.->|unlocks| Knight
     %% Gate -.->|unlocks| Bard
@@ -2574,47 +2574,158 @@ Dashes up to `6m` to the target.
 
 {{< /skill >}}
 
-<!-- Parked
 ### Hunter
 
-Neither predator nor prey, exactly. Hunters move like the terrain isn't there and build the kind of bond with wild Bestia that makes taming look almost effortless.
+Neither predator nor prey, exactly. Hunters move through the wild like the terrain isn't there, see their quarry long before it sees them, and finish the job from further away than most can aim.
 
 {{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [warrior tree](#warrior-tree)" />}}
 
+```mermaid
+graph TD
+    Camouflage["Camouflage (1-3)"]
+    Trailblazer["Trailblazer (1-5)"]
+    HuntersMark["Hunter's Mark (1-5)"]
+    OwlsEye["Owl's Eye (1-5)"]
+    VulturesEye["Vulture's Eye (1-5)"]
+    DoubleStrafe["Double Strafe (1-10)"]
+    ArrowShower["Arrow Shower (1-5)"]
+    ChargeArrow["Charge Arrow (1)"]
+    ImproveConcentration["Improve Concentration (1-5)"]
+    ArrowCrafting["Arrow Crafting (1)"]
+
+    Camouflage -->|Lv.2| HuntersMark
+
+    OwlsEye -->|Lv.3| VulturesEye
+    OwlsEye -->|Lv.3| DoubleStrafe
+    DoubleStrafe -->|Lv.5| ArrowShower
+    VulturesEye -->|Lv.3| ChargeArrow
+    VulturesEye -->|Lv.1| ImproveConcentration
+```
+
+<br>
 {{< skill name="Camouflage" maxLevel="3"
     type="Passive"
-    description="Teaches the Hunter to read the land well enough to disappear into it. Reduces the range at which wild Bestia and monsters notice the master, and grants a damage bonus on an opening attack from concealment." >}}
+    description="Teaches the Hunter to read the land well enough to disappear into it." >}}
 
-| Lv. | Detection Range Reduction (wild Bestia) | Ambush Damage |
-| --- | ----------------------------- | ------------- |
-| 1   | 10%                          | +8%           |
-| 2   | 20%                          | +16%          |
-| 3   | 30%                          | +24%          |
+Wild Bestia notice the master later. Camouflage does not hide the master, so [Ruwach](#skill-ruwach) has nothing to
+reveal.
+
+| Lv. | Notice Range of Wild Bestia |
+| --- | --------------------------- |
+| 1   | -10%                        |
+| 2   | -20%                        |
+| 3   | -30%                        |
 
 {{< /skill >}}
 
-{{< skill name="Lightfooted" maxLevel="5"
+{{< skill name="Trailblazer" maxLevel="5"
     type="Passive"
-    description="A Hunter's sure footing that shrugs off rough terrain most travelers have to slow down for." >}}
+    description="A Hunter's sure footing, at home where the road ends." >}}
 
-| Lv. | Movement Reduction Negated |
-| --- | -------------------------- |
-| 1   | 20%                       |
-| 2   | 40%                       |
-| 3   | 60%                       |
-| 4   | 80%                       |
-| 5   | 100%                      |
+The master walks faster on any ground that is not a made road or paving.
+
+| Lv. | Walk Speed off Roads |
+| --- | -------------------- |
+| 1   | +3%                  |
+| 2   | +6%                  |
+| 3   | +9%                  |
+| 4   | +12%                 |
+| 5   | +15%                 |
 
 {{< /skill >}}
 
-{{< skill name="Master Tracker" maxLevel="3" requires="Camouflage Lv. 2 and Lightfooted Lv. 3"
-    type="Active" manaCost="20" castTime="3s" cooldown="30s" range="0" target="Self"
-    description="The Hunter's capstone: a Bestia's trail stops being a trail and starts being a map." >}}
-{{< skill-level level="1" >}}Can follow the trail of any Bestia across long distances, even hours after it passed.{{< /skill-level >}}
-{{< skill-level level="2" >}}Gains a critical strike bonus against a tracked target.{{< /skill-level >}}
-{{< skill-level level="3" >}}Trail-tracking range and duration are both doubled.{{< /skill-level >}}
+{{< skill name="Hunter's Mark" maxLevel="5" requires="Camouflage Lv. 2"
+    type="Active" manaCost="15" castTime="Instant" cooldown="10s" duration="30s" range="9" target="Enemy"
+    description="Once the Hunter has picked their prey, it does not get away." >}}
+
+Marks one target. While the mark lasts, the target shows on the master's map, and its [Hide](#skill-hide) and
+[Cloak](#skill-cloak) do not work against the master. A new mark ends the old one.
+
+| Lv. | Critical Rate against the Target |
+| --- | -------------------------------- |
+| 1   | +3%                              |
+| 2   | +6%                              |
+| 3   | +9%                              |
+| 4   | +12%                             |
+| 5   | +15%                             |
+
 {{< /skill >}}
--->
+
+{{< skill name="Owl's Eye" maxLevel="5"
+    type="Passive"
+    description="Eyes trained on far and small things, until the aim follows them by itself." >}}
+
+`+1 DEX` per level.
+
+{{< /skill >}}
+
+{{< skill name="Vulture's Eye" maxLevel="5" requires="Owl's Eye Lv. 3"
+    type="Passive"
+    description="Patience on the draw, until the arrow lands where the eye already is." >}}
+
+Only with a bow.
+
+| Lv. | Bow Range | HIT |
+| --- | --------- | --- |
+| 1   | +1 tile   | +2  |
+| 2   | +2 tiles  | +4  |
+| 3   | +3 tiles  | +6  |
+| 4   | +4 tiles  | +8  |
+| 5   | +5 tiles  | +10 |
+
+{{< /skill >}}
+
+{{< skill name="Double Strafe" maxLevel="10" requires="Owl's Eye Lv. 3"
+    type="Active" manaCost="12" castTime="Instant" cooldown="0s" range="Bow" target="Enemy"
+    description="Two arrows off the string before the first one lands." >}}
+
+Needs a bow. Shoots two arrows at the target for `100% + 10%/Lv.` ATK each, but takes only one arrow out of the
+quiver.
+
+{{< /skill >}}
+
+{{< skill name="Arrow Shower" maxLevel="5" requires="Double Strafe Lv. 5"
+    type="Active" manaCost="15" castTime="Instant" cooldown="1s" range="Bow" target="Ground"
+    description="A volley loosed high, coming down on everyone below it." >}}
+
+Needs a bow. Hits every enemy in a 3×3 area for `80% + 10%/Lv.` ATK and knocks them back `1m`. Takes one arrow out of
+the quiver.
+
+{{< /skill >}}
+
+{{< skill name="Charge Arrow" maxLevel="1" requires="Vulture's Eye Lv. 3"
+    type="Active" manaCost="15" castTime="1.5s" cooldown="10s" range="Bow" target="Enemy"
+    description="A shot drawn so far back it lifts the target off its feet." >}}
+
+Needs a bow. One shot for `150%` ATK that knocks the target back `6m`. Useful to keep a melee fighter at a distance.
+
+{{< /skill >}}
+
+{{< skill name="Improve Concentration" maxLevel="5" requires="Vulture's Eye Lv. 1"
+    type="Active" manaCost="25" castTime="Instant" cooldown="0s" duration="60s" range="0" target="Self"
+    description="The Hunter's senses, sharpened to a point." >}}
+
+When cast, it reveals everything hidden within `3m` of the master.
+
+| Lv. | AGI | DEX |
+| --- | --- | --- |
+| 1   | +2  | +2  |
+| 2   | +4  | +4  |
+| 3   | +6  | +6  |
+| 4   | +8  | +8  |
+| 5   | +10 | +10 |
+
+{{< /skill >}}
+
+{{< skill name="Arrow Crafting" maxLevel="1"
+    type="Active" manaCost="0" castTime="Instant" cooldown="0s" range="2" target="Ground"
+    description="A Hunter who runs out of arrows in the wild does not have to walk back to town." >}}
+
+Opens the crafting window with the arrow recipes. It needs no station: two
+Reed Stalks and a [Feather](/docs/mechanics/item-list/#feather) make 20
+[regular arrows](/docs/mechanics/ranged-combat/#novice-bow). Special arrows come later.
+
+{{< /skill >}}
 
 ### Assassin
 
