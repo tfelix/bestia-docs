@@ -118,7 +118,7 @@ are listed in [Weapon Type](/docs/mechanics/items/#weapon-type).
 | [Miner](#miner)           | Survival  | Medium | Mace, Hammer, Greataxe                                         |
 | [Trader](#trader)         | Scholar   | Light  | Sword, Crossbow                                                |
 | [Sage](#sage)             | Scholar   | Cloth  | Wand, Staff, Tome                                              |
-| Priest                    | Scholar   | Medium | Mace, Staff, Tome                                              |
+| [Priest](#priest)         | Scholar   | Medium | Mace, Staff, Tome                                              |
 | [Wizard](#wizard)         | Warrior   | Cloth  | Wand, Staff, Tome                                              |
 | [Assassin](#assassin)     | Warrior   | Light  | Dagger, Fist, Sword, Thrown                                    |
 | [Knight](#knight)         | Warrior   | Heavy  | Sword, Greatsword, Axe, Greataxe, Mace, Hammer, Spear, Polearm |
@@ -2742,82 +2742,95 @@ graph TD
 <br>
 {{< skill name="Heavy Weapon Mastery" maxLevel="10"
     type="Passive"
-    description="Years spent drilling with sword, axe, mace and spear until the weight stops mattering. Increases damage dealt with heavy one- and two-handed melee weapons and reduces the accuracy penalty from wielding oversized ones." >}}
+    description="Years spent drilling with sword, axe, mace and spear until the weight stops mattering. Increases damage dealt with the Knight's melee weapons." >}}
 
-| Lv. | ATK (heavy melee weapons) | Accuracy Penalty Reduction |
-| --- | ------------------------- | -------------------------- |
-| 1   | +3                        | 10%                        |
-| 2   | +6                        | 20%                        |
-| 3   | +9                        | 30%                        |
-| 4   | +12                       | 40%                        |
-| 5   | +15                       | 50%                        |
-| 6   | +18                       | 60%                        |
-| 7   | +21                       | 70%                        |
-| 8   | +24                       | 80%                        |
-| 9   | +27                       | 90%                        |
-| 10  | +30                       | 100%                       |
+Counts for every weapon type the Knight may use: Sword, Greatsword, Axe, Greataxe, Mace, Hammer, Spear and Polearm.
+
+| Lv. | ATK |
+| --- | --- |
+| 1   | +3  |
+| 2   | +6  |
+| 3   | +9  |
+| 4   | +12 |
+| 5   | +15 |
+| 6   | +18 |
+| 7   | +21 |
+| 8   | +24 |
+| 9   | +27 |
+| 10  | +30 |
 
 {{< /skill >}}
 
 {{< skill name="Heavy Armor Mastery" maxLevel="10"
     type="Passive"
-    description="Plate and mail punish anyone who hasn't trained to move in them. This skill teaches the body to carry the weight without giving up speed, complementing the protection of Iron Skin with the ability to actually wear it." >}}
+    description="Plate and mail punish anyone who hasn't trained to wear them. This skill teaches the body to carry the weight, complementing the protection of Iron Skin." >}}
 
-| Lv. | Hard DEF (heavy armor) | Speed Penalty Reduction |
-| --- | ---------------------- | ----------------------- |
-| 1   | +2                     | 5%                      |
-| 2   | +4                     | 10%                     |
-| 3   | +6                     | 15%                     |
-| 4   | +8                     | 20%                     |
-| 5   | +10                    | 25%                     |
-| 6   | +12                    | 30%                     |
-| 7   | +14                    | 35%                     |
-| 8   | +16                    | 40%                     |
-| 9   | +18                    | 45%                     |
-| 10  | +20                    | 50%                     |
+| Lv. | Hard DEF (heavy armor) |
+| --- | ---------------------- |
+| 1   | +2                     |
+| 2   | +4                     |
+| 3   | +6                     |
+| 4   | +8                     |
+| 5   | +10                    |
+| 6   | +12                    |
+| 7   | +14                    |
+| 8   | +16                    |
+| 9   | +18                    |
+| 10  | +20                    |
 
 {{< /skill >}}
 
 {{< skill name="Provoke" maxLevel="5"
     type="Active" manaCost="14" castTime="Instant" cooldown="10s" duration="per Lv." range="6" target="Enemy"
-    description="A shout, a slammed shield, whatever gets the job done - forces nearby enemies to focus their attacks on the Knight instead of their allies for a short duration." >}}
-Higher levels extend the duration and the range at which enemies can be provoked.
+    description="A shout, a slammed shield, whatever gets the job done - forces a monster to attack the Knight instead of their allies for a short duration." >}}
 
-| Lv. | Chance-to-Target Bonus |
-| --- | ---------------------- |
-| 1   | +10%                   |
-| 2   | +20%                   |
-| 3   | +30%                   |
-| 4   | +40%                   |
-| 5   | +50%                   |
+Works on monsters and wild Bestias only. A master cannot be forced to fight.
+
+| Lv. | Duration |
+| --- | -------- |
+| 1   | 4s       |
+| 2   | 5s       |
+| 3   | 6s       |
+| 4   | 7s       |
+| 5   | 8s       |
 
 {{< /skill >}}
 
 {{< skill name="Shield Wall" maxLevel="5" requires="Heavy Armor Mastery Lv. 2"
     type="Active" manaCost="25" castTime="Instant" cooldown="15s" duration="Until cancelled" range="0" target="Self"
     description="Plants the Knight's feet and raises their shield into a proper wall. While active, incoming physical damage is reduced but movement speed drops sharply." >}}
-{{< skill-level level="1" >}}Reduces incoming physical damage by `15%` and movement speed by `50%` while active.{{< /skill-level >}}
-{{< skill-level level="3" >}}Damage reduction improves to `25%` and the movement penalty eases to `30%`.{{< /skill-level >}}
-{{< skill-level level="5" >}}Damage reduction improves to `35%` and a portion of blocked damage is returned to the attacker.{{< /skill-level >}}
+
+Needs a shield. At Lv. 5 it also returns `10%` of the blocked damage to the attacker.
+
+| Lv. | Physical Damage Taken | Movement Speed |
+| --- | --------------------- | -------------- |
+| 1   | -15%                  | -50%           |
+| 2   | -20%                  | -40%           |
+| 3   | -25%                  | -30%           |
+| 4   | -30%                  | -30%           |
+| 5   | -35%                  | -30%           |
+
 {{< /skill >}}
 
 {{< skill name="Bash" maxLevel="5" requires="Heavy Weapon Mastery Lv. 3"
     type="Active" manaCost="18" castTime="Instant" cooldown="6s" range="2" target="Enemy"
-    description="A single committed swing that trades finesse for raw impact, with a chance to [Stagger](/docs/mechanics/statusvalues/#status-effects) whatever it lands on." >}}
+    description="A single committed swing that trades finesse for raw impact, with a chance to [Stun](/docs/mechanics/status-effects/#all-status-effects) whatever it lands on for `1s`." >}}
 
-| Lv. | Bonus Damage | Stagger Chance |
-| --- | ------------ | -------------- |
-| 1   | +20%         | +5%            |
-| 2   | +40%         | +10%           |
-| 3   | +60%         | +15%           |
-| 4   | +80%         | +20%           |
-| 5   | +100%        | +25%           |
+| Lv. | Bonus Damage | Stun Chance |
+| --- | ------------ | ----------- |
+| 1   | +20%         | +5%         |
+| 2   | +40%         | +10%        |
+| 3   | +60%         | +15%        |
+| 4   | +80%         | +20%        |
+| 5   | +100%        | +25%        |
 
 {{< /skill >}}
 
 {{< skill name="Auto Guard" maxLevel="5" requires="Shield Wall Lv. 2"
     type="Passive"
     description="A trained reflex that raises the shield on its own the instant a blow lands, sometimes fast enough to stop it cold." >}}
+
+Needs a shield.
 
 | Lv. | Full Block Chance |
 | --- | ----------------- |
@@ -2832,24 +2845,31 @@ Higher levels extend the duration and the range at which enemies can be provoked
 {{< skill name="Charge" maxLevel="5" requires="Bash Lv. 3"
     type="Active" manaCost="22" castTime="Instant" cooldown="per Lv." range="12" target="Enemy"
     description="Closes the distance to a target in an instant, weapon first. The impact deals damage and briefly forces the target to focus the Knight, folding a gap closer and a taunt into a single swing." >}}
-Deals damage and applies a short [Provoke](#skill-provoke) effect on impact.
 
-| Lv. | Cooldown Reduction |
-| --- | ------------------ |
-| 1   | 0.5s               |
-| 2   | 1.0s               |
-| 3   | 1.5s               |
-| 4   | 2.0s               |
-| 5   | 2.5s               |
+Deals `150%` ATK and applies a `3s` [Provoke](#skill-provoke) effect on impact.
+
+| Lv. | Cooldown |
+| --- | -------- |
+| 1   | 14.5s    |
+| 2   | 14s      |
+| 3   | 13.5s    |
+| 4   | 13s      |
+| 5   | 12.5s    |
 
 {{< /skill >}}
 
 {{< skill name="Juggernaut" maxLevel="3" requires="Heavy Armor Mastery Lv. 5 and Charge Lv. 3 and Auto Guard Lv. 3"
-    type="Active" manaCost="60" castTime="Instant" cooldown="120s" duration="per Lv." range="0" target="Self"
+    type="Active" manaCost="60" castTime="Instant" cooldown="per Lv." duration="per Lv." range="0" target="Self"
     description="The Knight's capstone. For a short time the line between wall and weapon stops meaning anything." >}}
-{{< skill-level level="1" >}}Once activated, gains `+20%` DEF and `+20%` ATK for a short duration.{{< /skill-level >}}
-{{< skill-level level="2" >}}Duration is extended and the Knight becomes immune to stagger and knockback while active.{{< /skill-level >}}
-{{< skill-level level="3" >}}Cooldown is reduced and a fully blocked hit (via [Auto Guard](#skill-auto-guard)) refreshes the remaining duration.{{< /skill-level >}}
+
+Gains `+20%` DEF and `+20%` ATK while active.
+
+| Lv. | Duration | Cooldown | Extra                                                                         |
+| --- | -------- | -------- | ----------------------------------------------------------------------------- |
+| 1   | 10s      | 120s     |                                                                               |
+| 2   | 15s      | 120s     | Immune to Stun and knockback                                                  |
+| 3   | 15s      | 90s      | A hit fully blocked by [Auto Guard](#skill-auto-guard) refreshes the duration |
+
 {{< /skill >}}
 
 <!-- Parked
