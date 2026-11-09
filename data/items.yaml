@@ -344,6 +344,15 @@
   value: 60
   description: |
     Plain water blessed in the rite of Aqua Benedicta. The reagent behind Aspersio and several higher rites.
+- id: basic_poison
+  name: Basic Poison
+  weight: 0.2
+  type: Etc
+  value: 40
+  description: |
+    The first poison an Alchemist learns to brew. Worked into a blade with
+    [Enchant Poison](/docs/mechanics/master/#skill-enchant-poison), every cut may leave it behind. Stronger poisons
+    follow later.
 - id: engraving_set
   name: Engraving Set
   weight: 3
