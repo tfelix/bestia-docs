@@ -1011,16 +1011,30 @@ Half surveyor, half treasure hunter. Prospectors chart unclaimed land, found set
 
 {{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [survival tree](#survival-tree)" />}}
 
+The Prospector has two routes. The **Cartographer** charts the land, reads the weather, founds settlements and keeps a party alive in the wild. The **Treasure Hunter** finds what is buried and hollow, and digs it up or sells the map.
+
 ```mermaid
 graph TD
     ResourceSense[/"Resource Sense (Survival Tree)"/]
     Cartography["Cartography (1-5)"]
     WeatherSense["Weather Sense (1-3)"]
     Founder["Founder (1)"]
+    BaseCamp["Base Camp (1-3)"]
+    TreasureSense["Treasure Sense (1-5)"]
+    EchoSounding["Echo Sounding (1-5)"]
+    TreasureMap["Treasure Map (1-3)"]
+    Excavation["Excavation (1-3)"]
 
     ResourceSense -->|Lv.1| Cartography
     Cartography -->|Lv.2| WeatherSense
     Cartography -->|Lv.3| Founder
+    WeatherSense -->|Lv.1| BaseCamp
+
+    ResourceSense -->|Lv.2| TreasureSense
+    TreasureSense -->|Lv.2| EchoSounding
+    TreasureSense -->|Lv.3| TreasureMap
+    Cartography -->|Lv.1| TreasureMap
+    TreasureSense -->|Lv.1| Excavation
 ```
 
 <br>
@@ -1062,6 +1076,85 @@ inactive settlements can be destroyed, which means no functional building (post 
 inside the settlement's sphere of influence.
 
 {{< alert context="info" text="To do: player settlements need a design of their own. The [settlements](/docs/mechanics/settlements/) page only covers the towns the world generates." />}}
+
+{{< /skill >}}
+
+{{< skill name="Base Camp" maxLevel="3" requires="Weather Sense Lv. 1"
+    type="Active" manaCost="30" castTime="5s" cooldown="5 min" duration="per Lv." range="2" target="Campfire"
+    description="Out where the roads end, a good camp is the difference between an expedition and a rescue." >}}
+
+Turns a campfire, such as the one [Cooking](#skill-cooking) places, into a camp. Party members and their Bestias within
+`5m` bear the weather better: `±5 °C` [temperature tolerance](/docs/mechanics/environment/#temperature), in both
+directions. Only one camp per master can stand.
+
+| Lv. | Duration | Extra                                                                                                                 |
+| --- | -------- | --------------------------------------------------------------------------------------------------------------------- |
+| 1   | 30 min   |                                                                                                                       |
+| 2   | 60 min   | +50% HP and stamina regeneration. Storms and [mana storms](/docs/mechanics/doomsday/#mana-storms) do not reach inside |
+| 3   | 90 min   | As Lv. 2. Party members who die respawn at the camp                                                                   |
+
+{{< /skill >}}
+
+{{< skill name="Treasure Sense" maxLevel="5" requires="Resource Sense Lv. 2"
+    type="Active" manaCost="15" castTime="2s" cooldown="30s" range="per Lv." target="Self"
+    description="A Prospector's nose for what someone buried and never came back for." >}}
+
+Senses treasure caches nearby. The world generator hides caches at ruins, old camps and cliff faces.
+
+{{< alert context="warning" text="The world generator does not place treasure caches yet." />}}
+
+| Lv. | Radius | Also Reveals            |
+| --- | ------ | ----------------------- |
+| 1   | 20m    |                         |
+| 2   | 40m    |                         |
+| 3   | 60m    | How deep the cache lies |
+| 4   | 80m    | How deep the cache lies |
+| 5   | 100m   | How deep and how rich   |
+
+{{< /skill >}}
+
+{{< skill name="Echo Sounding" maxLevel="5" requires="Treasure Sense Lv. 2"
+    type="Active" manaCost="20" castTime="2s" cooldown="20s" range="per Lv." target="Self"
+    description="Knock on the world and listen to where it sounds hollow." >}}
+
+A sound pulse that marks hollow spaces nearby on the map: cave openings, hollows and buried chambers. Where
+[Resource Sonar](#skill-resource-sonar) finds ore in the rock, Echo Sounding finds the empty space in it. It becomes more
+useful as the world generator digs more caves.
+
+| Lv. | Radius | Also Reveals                       |
+| --- | ------ | ---------------------------------- |
+| 1   | 10m    |                                    |
+| 2   | 15m    |                                    |
+| 3   | 20m    | How deep and how large a hollow is |
+| 4   | 25m    | How deep and how large             |
+| 5   | 30m    | How deep and how large             |
+
+{{< /skill >}}
+
+{{< skill name="Treasure Map" maxLevel="3" requires="Treasure Sense Lv. 3 and Cartography Lv. 1"
+    type="Active" manaCost="20" castTime="5s" cooldown="0s" range="2" target="Ground"
+    description="Not every Prospector wants to dig. Some would rather sell the map." >}}
+
+Charts a sensed treasure cache onto a sheet of blank vellum. The map is an item that can be traded or sold, so whoever
+holds it can dig the cache up.
+
+| Lv. | Marked Spot |
+| --- | ----------- |
+| 1   | Within 50m  |
+| 2   | Within 25m  |
+| 3   | Exact       |
+
+{{< /skill >}}
+
+{{< skill name="Excavation" maxLevel="3" requires="Treasure Sense Lv. 1"
+    type="Passive"
+    description="Knowing where to dig and how not to break what lies below." >}}
+
+| Lv. | Dig Time | Chance for the Best Item |
+| --- | -------- | ------------------------ |
+| 1   | -20%     | +5%                      |
+| 2   | -40%     | +10%                     |
+| 3   | -60%     | +15%                     |
 
 {{< /skill >}}
 
