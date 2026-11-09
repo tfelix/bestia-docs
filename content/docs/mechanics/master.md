@@ -1528,38 +1528,38 @@ Coin has its own kind of magic. Traders read markets instead of mana flows, link
 
 {{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [scholar tree](#scholar-tree)" />}}
 
+The Trader has two routes. The **Merchant** buys cheap, sells dear and runs stalls and auction houses. The **Moneyer** recovers scrap and mints coin.
+
 ```mermaid
 graph TD
-    Scavenger["Scavenger (1-10)"]
+    Scavenger["Scavenger (1-5)"]
     TradePostOwner["Trade Post Owner (1-5)"]
     Minting["Minting (1-5)"]
     TradeAgreement["Trade Agreement (1-5)"]
     HonorableCitizen["Honorable Citizen (1-5)"]
+    Haggling["Haggling (1-5)"]
+    StreetStall["Street Stall (1-5)"]
 
     Scavenger -->|Lv.3| Minting
     TradePostOwner -->|Lv.3| TradeAgreement
+    Haggling -->|Lv.2| StreetStall
 
     Minting -->|Lv.2| HonorableCitizen
     TradeAgreement -->|Lv.1| HonorableCitizen
 ```
 
 <br>
-{{< skill name="Scavenger" maxLevel="10"
+{{< skill name="Scavenger" maxLevel="5"
     type="Passive"
     description="A scrapper's eye for what's still worth keeping - coaxes more usable components out of anything broken down for parts." >}}
 
 | Lv. | Recycle Chance |
 | --- | -------------- |
-| 1   | +5%            |
-| 2   | +10%           |
-| 3   | +15%           |
-| 4   | +20%           |
-| 5   | +25%           |
-| 6   | +30%           |
-| 7   | +35%           |
-| 8   | +40%           |
-| 9   | +45%           |
-| 10  | +50%           |
+| 1   | +10%           |
+| 2   | +20%           |
+| 3   | +30%           |
+| 4   | +40%           |
+| 5   | +50%           |
 
 {{< /skill >}}
 
@@ -1597,6 +1597,37 @@ Only one auction house can stand inside a settlement, and none within 5km of ano
 | 3   | 3              | 15%           |
 | 4   | 4              | 20%           |
 | 5   | 5              | 25%           |
+
+{{< /skill >}}
+
+{{< skill name="Haggling" maxLevel="5"
+    type="Passive"
+    description="A Trader never pays the price on the sign." >}}
+
+| Lv. | Buying from a Merchant | Selling to a Merchant |
+| --- | ---------------------- | --------------------- |
+| 1   | -2%                    | +2%                   |
+| 2   | -4%                    | +4%                   |
+| 3   | -6%                    | +6%                   |
+| 4   | -8%                    | +8%                   |
+| 5   | -10%                   | +10%                  |
+
+{{< /skill >}}
+
+{{< skill name="Street Stall" maxLevel="5" requires="Haggling Lv. 2"
+    type="Active" manaCost="10" castTime="5s" cooldown="0s" duration="1h" range="1" target="Ground"
+    description="A cloth on the ground and a few goods on it - every road is a market for a Trader." >}}
+
+Sets up a market stall where the Trader stands. Other players buy the listed items from it. The stall closes when the
+Trader walks away or after `1h`. Unlike an [auction house](#skill-trade-post-owner) it needs no settlement.
+
+| Lv. | Listings |
+| --- | -------- |
+| 1   | 3        |
+| 2   | 5        |
+| 3   | 7        |
+| 4   | 9        |
+| 5   | 11       |
 
 {{< /skill >}}
 
