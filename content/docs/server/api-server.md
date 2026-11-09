@@ -178,7 +178,7 @@ the answer is kept for 30 seconds and dropped when the account leaves the world.
 that account's, as for the app.
 
 A habitat overlay, `map/h/{species}/{level}/{x}/{y}.png`, lies over a tile of the same path and shows where a species
-lives (see [Bestia Compendium](/docs/mechanics/bestia-compendium/#habitat-on-the-map)). It is masked by the charts like
+lives (see [Bestia Compendium](/docs/mechanics/bestia/#habitat-on-the-map)). It is masked by the charts like
 the tile, and the zone answers 404 for a species the Master has not seen. It is always `private, no-cache`: who may
 see it depends on the Master's compendium, so it is never cached publicly and never kept by the api-server.
 
