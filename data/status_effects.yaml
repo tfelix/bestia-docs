@@ -397,7 +397,7 @@
   name: Armor Stripped
   polarity: DEBUFF
   resist: []
-  effect: Left by Strip Armor for 15 s. The armour slot stays empty; nothing can be equipped there until it ends.
+  effect: Left by Strip Equipment for 5 s per level, or by a bestia's Strip Armor for 15 s. The armour slot stays empty; nothing can be equipped there until it ends.
   dispellable: true
 
 - id: 60
@@ -405,7 +405,7 @@
   name: Disarmed
   polarity: DEBUFF
   resist: []
-  effect: Left by Disarm for 15 s. The weapon hand stays empty; no weapon can be equipped until it ends.
+  effect: Left by Strip Equipment for 5 s per level, or by a bestia's Disarm for 15 s. The weapon hand stays empty; no weapon can be equipped until it ends. A dual wielder loses both weapons.
   dispellable: true
 
 - id: 62
@@ -414,4 +414,36 @@
   polarity: DEBUFF
   resist: [INT, WIL]
   effect: Left by Suppress Magic for 3 s plus 1 s per level. No casts, and a cast in progress is lost. Moving and attacks still work.
+  dispellable: true
+
+- id: 63
+  identifier: HEADGEAR_STRIPPED
+  name: Headgear Stripped
+  polarity: DEBUFF
+  resist: []
+  effect: Left by Strip Equipment for 5 s per level. Both head slots stay empty; nothing can be equipped there until it ends.
+  dispellable: true
+
+- id: 64
+  identifier: GARMENT_STRIPPED
+  name: Garment Stripped
+  polarity: DEBUFF
+  resist: []
+  effect: Left by Strip Equipment for 5 s per level. The garment slot stays empty; nothing can be equipped there until it ends.
+  dispellable: true
+
+- id: 65
+  identifier: FOOTGEAR_STRIPPED
+  name: Footgear Stripped
+  polarity: DEBUFF
+  resist: []
+  effect: Left by Strip Equipment for 5 s per level. The footgear slot stays empty; nothing can be equipped there until it ends.
+  dispellable: true
+
+- id: 66
+  identifier: SHIELD_STRIPPED
+  name: Shield Stripped
+  polarity: DEBUFF
+  resist: []
+  effect: Left by Strip Equipment for 5 s per level. The shield hand stays empty. On a dual wielder it takes both weapons instead; nothing can be equipped there until it ends.
   dispellable: true

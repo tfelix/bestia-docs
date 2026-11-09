@@ -2474,12 +2474,16 @@ Masters of hidden infiltration. They can deal high amount of single target damag
 
 ```mermaid
 graph TD
-    StripWeapons["Strip Weapons (1-5)"]
+    StripEquipment["Strip Equipment (1-5)"]
     DualWield["Dual Wield (1-5)"]
-    WeaponCoating["Weapon Coating (1-5)"]
+    EquipmentCoating["Equipment Coating (1-5)"]
+    GutPunch["Gut Punch (1-3)"]
+    SonicBlow["Sonic Blow (1-5)"]
 
     Hide["Hide (1-5)"]
     Cloak["Cloak (1-3)"]
+    Backstab["Backstab (1-5)"]
+    ShadowStep["Shadow Step (1-3)"]
 
     PoisonResearch["Poison Research (1-10)"]
     EnchantPoison["Enchant Poison (1-5)"]
@@ -2487,31 +2491,39 @@ graph TD
     Plagiarism["Plagiarism (1-10)"]
     Preserve["Preserve (1)"]
 
-    StripWeapons -->|Lv.2| DualWield
-    DualWield -->|Lv.2| WeaponCoating
+    StripEquipment -->|Lv.2| DualWield
+    StripEquipment -->|Lv.3| EquipmentCoating
+    StripEquipment -->|Lv.2| GutPunch
+    DualWield -->|Lv.3| SonicBlow
     Hide -->|Lv.3| Cloak
+    Hide -->|Lv.2| Backstab
+    Backstab -->|Lv.3| ShadowStep
+    Cloak -->|Lv.1| ShadowStep
     PoisonResearch -->|Lv.3| EnchantPoison
     Plagiarism -->|Lv.5| Preserve
 ```
 
 <br>
-{{< skill name="Strip Weapons" maxLevel="5"
+{{< skill name="Strip Equipment" maxLevel="5"
     type="Active" manaCost="22" castTime="Instant" cooldown="12s" range="2" target="Enemy"
-    description="A snap of the wrist at exactly the wrong moment for whoever is holding the weapon. Knocks a piece of equipment out of a target's hands and leaves them unable to re-equip it for a while." >}}
+    description="A snap of the wrist at exactly the wrong moment for whoever is wearing it. Knocks a random piece of equipment off a target and leaves them unable to put it back on for a while." >}}
 
-Fails outright against a target protected by [Weapon Coating](#skill-weapon-coating).
+The slot is chosen at random. Accessories cannot be stripped. Stripping the weapon takes the weapon hand, not a shield.
+Stripping the shield takes the shield hand. On a dual wielder both take the two weapons. Each slot stays empty while its
+[stripped status effect](/docs/mechanics/status-effects/#all-status-effects) lasts. Fails outright against a piece
+protected by [Equipment Coating](#skill-equipment-coating).
 
-| Lv. | Strip Chance | Re-equip Blocked |
-| --- | ------------ | ---------------- |
-| 1   | 20%          | 5s               |
-| 2   | 30%          | 10s              |
-| 3   | 40%          | 15s              |
-| 4   | 50%          | 20s              |
-| 5   | 60%          | 25s              |
+| Lv. | Strip Chance | Slot Blocked |
+| --- | ------------ | ------------ |
+| 1   | 20%          | 5s           |
+| 2   | 30%          | 10s          |
+| 3   | 40%          | 15s          |
+| 4   | 50%          | 20s          |
+| 5   | 60%          | 25s          |
 
 {{< /skill >}}
 
-{{< skill name="Dual Wield" maxLevel="5" requires="Strip Weapons Lv. 2"
+{{< skill name="Dual Wield" maxLevel="5" requires="Strip Equipment Lv. 2"
     type="Passive"
     description="Learning to disarm someone teaches you exactly how a weapon wants to be held - and that there is no good reason to stop at one. Lets the Assassin carry a one-handed weapon in each hand at a shrinking penalty." >}}
 
@@ -2528,19 +2540,49 @@ weapon always swings for less than the main hand. Rank buys that gap back.
 
 {{< /skill >}}
 
-{{< skill name="Weapon Coating" maxLevel="5" requires="Dual Wield Lv. 2"
+{{< skill name="Equipment Coating" maxLevel="5" requires="Strip Equipment Lv. 3"
     type="Active" manaCost="26" castTime="2s" cooldown="None" duration="10 min" range="0" target="Self"
-    description="A thin, oiled coating worked into weapons and armor that turns aside damage and shrugs off attempts to strip it away." >}}
+    description="A thin, oiled coating worked into weapons and armor that slows their wear and shrugs off attempts to strip them away." >}}
 
-Protects both hands at once. While it holds, [Strip Weapons](#skill-strip-weapons) cannot take either weapon.
+Coats every piece the Assassin wears. While it holds, [Strip Equipment](#skill-strip-equipment) cannot take any of them.
 
-| Lv. | Equipment Damage Reduction | Strip Resistance |
-| --- | -------------------------- | ---------------- |
-| 1   | 20%                        | 100%             |
-| 2   | 40%                        | 100%             |
-| 3   | 60%                        | 100%             |
-| 4   | 80%                        | 100%             |
-| 5   | 100%                       | 100%             |
+| Lv. | Durability Wear |
+| --- | --------------- |
+| 1   | -20%            |
+| 2   | -40%            |
+| 3   | -60%            |
+| 4   | -80%            |
+| 5   | -100%           |
+
+{{< /skill >}}
+
+{{< skill name="Gut Punch" maxLevel="3" requires="Strip Equipment Lv. 2"
+    type="Active" manaCost="20" castTime="Instant" cooldown="30s" range="1" target="Enemy"
+    description="A short, vicious blow below the ribs that leaves the target doubled over, stunned and gasping for air." >}}
+
+Applies [Stun](/docs/mechanics/status-effects/#all-status-effects). A boss recovers twice as fast.
+
+| Lv. | Stun Duration |
+| --- | ------------- |
+| 1   | 4s            |
+| 2   | 5s            |
+| 3   | 6s            |
+
+{{< /skill >}}
+
+{{< skill name="Sonic Blow" maxLevel="5" requires="Dual Wield Lv. 3"
+    type="Active" manaCost="20" castTime="Instant" cooldown="5s" range="1" target="Enemy"
+    description="Eight strikes in a single heartbeat, split across both blades. Too fast to parry, too many to count." >}}
+
+The damage is shared evenly between the eight hits.
+
+| Lv. | ATK over All Hits |
+| --- | ----------------- |
+| 1   | 340%              |
+| 2   | 380%              |
+| 3   | 420%              |
+| 4   | 460%              |
+| 5   | 500%              |
 
 {{< /skill >}}
 
@@ -2575,6 +2617,34 @@ Still breaks on attacking. [Ruwach](#skill-ruwach) strips it outright.
 
 {{< /skill >}}
 
+{{< skill name="Backstab" maxLevel="5" requires="Hide Lv. 2"
+    type="Active" manaCost="16" castTime="Instant" cooldown="8s" range="1" target="Enemy"
+    description="A blade driven in from behind, by someone the target never saw coming." >}}
+
+Only works from [Hide](#skill-hide) or [Cloak](#skill-cloak), and only from behind the target. The strike ends the hiding.
+
+| Lv. | ATK  |
+| --- | ---- |
+| 1   | 200% |
+| 2   | 250% |
+| 3   | 300% |
+| 4   | 350% |
+| 5   | 400% |
+
+{{< /skill >}}
+
+{{< skill name="Shadow Step" maxLevel="3" requires="Backstab Lv. 3 and Cloak Lv. 1"
+    type="Active" manaCost="15" castTime="Instant" cooldown="20s" range="per Lv." target="Enemy"
+    description="Slips through the shadows to stand right behind a target, still hidden, so that a Backstab can follow." >}}
+
+| Lv. | Range |
+| --- | ----- |
+| 1   | 4m    |
+| 2   | 6m    |
+| 3   | 8m    |
+
+{{< /skill >}}
+
 {{< skill name="Poison Research" maxLevel="10"
     type="Passive"
     description="A long, unhealthy familiarity with everything that should not be swallowed. Raises how hard the Assassin's own poisons bite and how well they shrug off somebody else's." >}}
@@ -2599,7 +2669,7 @@ The poisons themselves are not made here - they are ordinary Alchemist goods, br
 
 {{< skill name="Enchant Poison" maxLevel="5" requires="Poison Research Lv. 3"
     type="Active" manaCost="24" castTime="2s" cooldown="None" duration="5 min" range="2" target="Ally"
-    description="Works a brewed poison into the edge of a weapon so every strike carries a chance to leave it behind. Consumes one Alchemist-brewed poison per cast." >}}
+    description="Works a brewed poison into the edge of a weapon so every strike carries a chance to leave it behind. Consumes one Alchemist-brewed poison, such as [Basic Poison](/docs/mechanics/item-list/#basic-poison), per cast." >}}
 
 Applies the [Poison](/docs/mechanics/statusvalues/#status-effects) status effect on hit. The poison item decides how hard it
 bites; this skill decides how often it lands.
@@ -2616,20 +2686,23 @@ bites; this skill decides how often it lands.
 
 {{< skill name="Plagiarism" maxLevel="10"
     type="Passive"
-    description="A passive knack for stealing more than just gold - whenever the Assassin is struck by an enemy spell, there's a chance they memorize it well enough to cast it back once, at a reduced level. Casting the copied spell consumes it, and getting hit by a new spell overwrites whatever was memorized before." >}}
+    description="A passive knack for stealing more than just gold - whenever the Assassin is struck by an enemy spell, there's a chance they memorize it well enough to cast it back once. Casting the copied spell consumes it, and getting hit by a new spell overwrites whatever was memorized before." >}}
 
-| Lv. | Copy Chance | Max Spell Level Copied |
-| --- | ----------- | ---------------------- |
-| 1   | 5%          | 10                     |
-| 2   | 10%         | 20                     |
-| 3   | 15%         | 30                     |
-| 4   | 20%         | 40                     |
-| 5   | 25%         | 50                     |
-| 6   | 30%         | 60                     |
-| 7   | 35%         | 70                     |
-| 8   | 40%         | 80                     |
-| 9   | 45%         | 90                     |
-| 10  | 50%         | 100+                   |
+Bestia attacks can be copied too. The cap is the attack level, as for [Spell Inscription](#skill-spell-inscription). A
+master's spell counts 10 attack levels per skill level, so Plagiarism Lv. 3 copies a Fire Bolt up to Lv. 3.
+
+| Lv. | Copy Chance | Max Attack Level Copied |
+| --- | ----------- | ----------------------- |
+| 1   | 5%          | 10                      |
+| 2   | 10%         | 20                      |
+| 3   | 15%         | 30                      |
+| 4   | 20%         | 40                      |
+| 5   | 25%         | 50                      |
+| 6   | 30%         | 60                      |
+| 7   | 35%         | 70                      |
+| 8   | 40%         | 80                      |
+| 9   | 45%         | 90                      |
+| 10  | 50%         | 100+                    |
 
 {{< /skill >}}
 
