@@ -2020,7 +2020,7 @@ graph TD
     IceBolt["Ice Bolt (1-10)"]
     ThunderBolt["Thunder Bolt (1-10)"]
     EarthSpike["Earth Spike (1-10)"]
-    SpiritualMastery["Spiritual Mastery (1-5)"]
+    ArcaneMastery["Arcane Mastery (1-5)"]
 
     FireWall["Fire Wall (1-5)"]
     MeteorStorm["Meteor Storm (1-5)"]
@@ -2061,14 +2061,14 @@ graph TD
     StoneCurse -->|Lv.2| SuppressMagic
     SuppressMagic -->|Lv.2| SuppressAura
 
-    SpiritualMastery -->|Lv.2| SoulBreak
+    ArcaneMastery -->|Lv.2| SoulBreak
     SoulBreak -->|Lv.3| Mindbreak
 
     %% Layout only: `~~~` renders as an invisible link and implies no requirement.
     %% It ranks the ward/spirit branch below the elemental chains so it forms its
     %% own row instead of widening the diagram by another two columns.
     FrostOrb ~~~ MagicArmor
-    ThunderOfJupiter ~~~ SpiritualMastery
+    ThunderOfJupiter ~~~ ArcaneMastery
 ```
 
 <br>
@@ -2149,17 +2149,17 @@ graph TD
 
 {{< /skill >}}
 
-{{< skill name="Spiritual Mastery" maxLevel="5"
+{{< skill name="Arcane Mastery" maxLevel="5"
     type="Passive"
-    description="A deeper communion with the currents beyond the elements, sharpening every spell drawn from Holy or Dark mana." >}}
+    description="A deeper communion with raw mana beyond the elements, sharpening the spells that draw on it: Soul Break and Mindbreak." >}}
 
-| Lv. | Damage/Healing |
-| --- | -------------- |
-| 1   | +5%            |
-| 2   | +10%           |
-| 3   | +15%           |
-| 4   | +20%           |
-| 5   | +25%           |
+| Lv. | Raw-Mana Spell Damage |
+| --- | --------------------- |
+| 1   | +5%                   |
+| 2   | +10%                  |
+| 3   | +15%                  |
+| 4   | +20%                  |
+| 5   | +25%                  |
 
 {{< /skill >}}
 
@@ -2179,9 +2179,9 @@ graph TD
 
 {{< skill name="Stone Curse" maxLevel="5" requires="Safety Wall Lv. 3"
     type="Active" manaCost="25" castTime="1s" cooldown="15s" duration="per Lv." range="6" target="Enemy"
-    description="Encases a target in solid stone, applying [Petrify](/docs/mechanics/statusvalues/#status-effects) where they stand. Requires 1 [Red Mana Crystal](/docs/mechanics/item-list/#red-mana-crystal) per cast." >}}
+    description="Encases a target in solid stone, applying [Stoning](/docs/mechanics/status-effects/#all-status-effects) where they stand. Stoning turns into Stone unless it is cured first. Requires 1 [Red Mana Crystal](/docs/mechanics/item-list/#red-mana-crystal) per cast." >}}
 
-| Lv. | Petrify Chance | Duration |
+| Lv. | Stoning Chance | Duration |
 | --- | -------------- | -------- |
 | 1   | 20%            | 5s       |
 | 2   | 30%            | 8s       |
@@ -2193,7 +2193,7 @@ graph TD
 
 {{< skill name="Suppress Magic" maxLevel="5" requires="Stone Curse Lv. 2"
     type="Active" manaCost="30" castTime="Instant" cooldown="20s" duration="per Lv." range="9" target="Enemy"
-    description="A ward of counter-mana thrown over a target mid-incantation, interrupting whatever spell they were weaving and leaving them [Silenced](/docs/mechanics/statusvalues/#status-effects) for a short time after." >}}
+    description="A ward of counter-mana thrown over a target mid-incantation, interrupting whatever spell they were weaving and leaving them [Silenced](/docs/mechanics/status-effects/#all-status-effects) for a short time after." >}}
 
 | Lv. | Interrupt Chance | Silence Duration |
 | --- | ---------------- | ---------------- |
@@ -2219,15 +2219,15 @@ graph TD
 
 {{< skill name="Fire Wall" maxLevel="5" requires="Fire Bolt Lv. 3"
     type="Active" manaCost="35" castTime="2s" cooldown="10s" duration="20s" range="6" target="Ground"
-    description="Conjures a wall of roaring flame across a line of tiles. Anything that tries to push through is burned and shoved back the way it came." >}}
+    description="Conjures a wall of roaring flame across the ground. Anything that tries to push through is burned and shoved back the way it came." >}}
 
 | Lv. | MATK (per tick) | Knockback |
 | --- | --------------- | --------- |
-| 1   | +10%            | 1 tile    |
-| 2   | +20%            | 1 tile    |
-| 3   | +30%            | 2 tiles   |
-| 4   | +40%            | 2 tiles   |
-| 5   | +50%            | 3 tiles   |
+| 1   | +10%            | 1m        |
+| 2   | +20%            | 1m        |
+| 3   | +30%            | 2m        |
+| 4   | +40%            | 2m        |
+| 5   | +50%            | 3m        |
 
 {{< /skill >}}
 
@@ -2261,15 +2261,17 @@ graph TD
 
 {{< skill name="Water Ball" maxLevel="5" requires="Ice Bolt Lv. 8"
     type="Active" manaCost="45" castTime="3s" cooldown="15s" range="9" target="Enemy"
-    description="Gathers the water in a 5x5 area around the caster into a single crashing orb hurled at a target. The caster must be standing in water for the spell to draw from, and it strikes once for every water tile it manages to pull from around them - up to 25 hits at once." >}}
+    description="Gathers the water in a 5x5 area around the caster into a single crashing orb hurled at a target. The caster must be standing in water for the spell to draw from, and it strikes once for every water tile it manages to pull from around them." >}}
 
-| Lv. | Hits per Cast |
-| --- | ------------- |
-| 1   | 5             |
-| 2   | 10            |
-| 3   | 15            |
-| 4   | 20            |
-| 5   | 25            |
+The hits per cast are the number of water tiles around the caster, but never more than the cap of the skill level.
+
+| Lv. | Max Hits per Cast |
+| --- | ----------------- |
+| 1   | 5                 |
+| 2   | 10                |
+| 3   | 15                |
+| 4   | 20                |
+| 5   | 25                |
 
 {{< /skill >}}
 
@@ -2344,7 +2346,7 @@ Regardless of level, the reduction is capped at `25%` against other Bestia Maste
 
 {{< /skill >}}
 
-{{< skill name="Soul Break" maxLevel="5" requires="Spiritual Mastery Lv. 2"
+{{< skill name="Soul Break" maxLevel="5" requires="Arcane Mastery Lv. 2"
     type="Active" manaCost="45" castTime="2s" cooldown="15s" range="9" target="Enemy"
     description="Tears into a target with raw, undirected mana that ignores elemental resistance, ripping away a portion of their own mana in the process." >}}
 
@@ -2374,7 +2376,7 @@ Regardless of level, the reduction is capped at `25%` against other Bestia Maste
 
 {{< skill name="Mindbreak" maxLevel="5" requires="Soul Break Lv. 3"
     type="Active" manaCost="50" castTime="3s" cooldown="60s" duration="60s" range="5" target="Bestia"
-    description="The Wizard's capstone: a buff channeling so much raw magic through a Bestia at once that its armor is the first thing to give. Once applied it reduces the magic defense but increases magical attack of a Bestia. It cancels `Mindfocus`." >}}
+    description="A buff channeling so much raw magic through one of the master's Bestias at once that its armor is the first thing to give. Once applied it reduces the magic defense but increases magical attack of the Bestia." >}}
 
 | Lv. | MATK  | SMDEF Reduction |
 | --- | ----- | --------------- |
