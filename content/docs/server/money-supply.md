@@ -157,8 +157,8 @@ specific ending.
 
 ## Minting yield is a recovery rate, not a bonus
 
-The [Minting](/docs/mechanics/master/#skill-minting) skill grants what its table calls a yield of `+10%` to `+50%`.
-Read as a multiplier on the coins a bar produces, **that skill would create gold out of nothing** and break the
+The [Minting](/docs/mechanics/master/#skill-minting) skill sets how much of a bar's gold becomes coin: `60%` at Lv. 1
+and `100%` at Lv. 5. A multiplier on the coins a bar produces **would create gold out of nothing** and break the
 invariant this page exists to state.
 
 So it is not a multiplier. A bar contains a fixed amount of gold, and minting recovers a _share_ of it: an unskilled
@@ -166,7 +166,8 @@ master wastes most of the bar, and Minting Lv. 5 wastes almost none. The waste g
 than vanishing. The skill therefore makes a player better at extracting value from gold they already hold, which is
 what the skill is _for_, without letting them print.
 
-Today the skill does not exist yet. Every mint turns one `gold_bar` into exactly 10,000 coins, and it never fails. A
+Today the mint recipe needs Minting Lv. 1, but the recovery rate is not built yet. Every mint turns one `gold_bar` into
+exactly 10,000 coins, and it never fails. A
 failed mint would spend the bar outside the reserve. When the reserve cannot cover the coins, the craft is refused
 before the bar is spent.
 
