@@ -2664,17 +2664,17 @@ The master's Bestias deal more damage to the target of Hunter's Mark.
 
 {{< skill name="Vulture's Eye" maxLevel="5" requires="Owl's Eye Lv. 3"
     type="Passive"
-    description="Patience on the draw, until the arrow lands where the eye already is." >}}
+    description="Patience on the draw, until the shot lands where the eye already is." >}}
 
-Only with a bow.
+Works with every ranged weapon: bow, crossbow and thrown weapons, so [Javelin](#skill-javelin) gains from it too.
 
-| Lv. | Bow Range | HIT |
-| --- | --------- | --- |
-| 1   | +1 tile   | +2  |
-| 2   | +2 tiles  | +4  |
-| 3   | +3 tiles  | +6  |
-| 4   | +4 tiles  | +8  |
-| 5   | +5 tiles  | +10 |
+| Lv. | Range    | HIT |
+| --- | -------- | --- |
+| 1   | +1 tile  | +2  |
+| 2   | +2 tiles | +4  |
+| 3   | +3 tiles | +6  |
+| 4   | +4 tiles | +8  |
+| 5   | +5 tiles | +10 |
 
 {{< /skill >}}
 
