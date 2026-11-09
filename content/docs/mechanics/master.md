@@ -1147,8 +1147,7 @@ graph TD
 
 Sweeps the area around the caster once per cast. What comes back gets sharper with rank: first that something is there,
 then where it is, and finally what it actually does. Local [mana concentration](/docs/mechanics/environment/#mana-concentration)
-adds to the range in a mana-rich region and eats into it in a drained one. A target hidden under
-[Suppress Aura](#skill-suppress-aura) stays silent.
+adds to the range in a mana-rich region and eats into it in a drained one.
 
 | Lv. | Range | What It Reveals                                                                       |
 | --- | ----- | ------------------------------------------------------------------------------------- |
@@ -2020,52 +2019,45 @@ Fire, water, wind, earth, and the deeper currents of holy and dark magic - Wizar
 
 {{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [warrior tree](#warrior-tree)" />}}
 
+The Wizard has two routes. The **Elementalist** casts the bolts and the great area spells of the elements they choose. The **Arcanist** controls the field with walls, curses and raw mana.
+
 ```mermaid
 graph TD
-    FireBolt["Fire Bolt (1-10)"]
-    IceBolt["Ice Bolt (1-10)"]
-    ThunderBolt["Thunder Bolt (1-10)"]
-    EarthSpike["Earth Spike (1-10)"]
-    ArcaneMastery["Arcane Mastery (1-5)"]
+    FireBolt["Fire Bolt (1-5)"]
+    IceBolt["Ice Bolt (1-5)"]
+    ThunderBolt["Thunder Bolt (1-5)"]
+    EarthSpike["Earth Spike (1-5)"]
+    ArcaneMastery["Arcane Mastery (1-3)"]
 
-    FireWall["Fire Wall (1-5)"]
-    MeteorStorm["Meteor Storm (1-5)"]
-    SturmGust["Storm Gust (1-5)"]
-    WaterBall["Water Ball (1-5)"]
-    FrostNova["Frost Nova (1-5)"]
-    Quagmire["Quagmire (1-5)"]
-    ThunderStorm["Thunder Storm (1-5)"]
-    Earthquake["Earthquake (1-5)"]
-
-    FrostOrb["Frost Orb (1-5)"]
-    ThunderOfJupiter["Thunder of Jupiter (1-5)"]
+    FireWall["Fire Wall (1-3)"]
+    MeteorStorm["Meteor Storm (1-3)"]
+    SturmGust["Storm Gust (1-3)"]
+    FrostNova["Frost Nova (1-3)"]
+    Quagmire["Quagmire (1-3)"]
+    ThunderStorm["Thunder Storm (1-3)"]
+    Earthquake["Earthquake (1-3)"]
 
     MagicArmor[/"Magic Armor (Warrior Tree)"/]
-    SafetyWall["Safety Wall (1-5)"]
-    StoneCurse["Stone Curse (1-5)"]
-    SuppressMagic["Suppress Magic (1-5)"]
-    SuppressAura["Suppress Aura (1-3)"]
+    SafetyWall["Safety Wall (1-3)"]
+    StoneCurse["Stone Curse (1-3)"]
+    SuppressMagic["Suppress Magic (1-3)"]
 
-    SoulBreak["Soul Break (1-5)"]
-    Mindbreak["Mindbreak (1-5)"]
+    SoulBreak["Soul Break (1-3)"]
+    Mindbreak["Mindbreak (1-3)"]
 
     FireBolt -->|Lv.3| FireWall
-    FireBolt -->|Lv.10| MeteorStorm
+    FireBolt -->|Lv.5| MeteorStorm
     EarthSpike -->|Lv.3| Earthquake
 
     IceBolt -->|Lv.1| FrostNova
-    IceBolt -->|Lv.8| WaterBall
-    IceBolt -->|Lv.10| SturmGust
-    FrostNova -->|Lv.2| FrostOrb
+    IceBolt -->|Lv.5| SturmGust
 
     ThunderBolt -->|Lv.2| Quagmire
     ThunderBolt -->|Lv.3| ThunderStorm
-    ThunderStorm -->|Lv.3| ThunderOfJupiter
 
     MagicArmor -->|Lv.3| SafetyWall
     SafetyWall -->|Lv.3| StoneCurse
     StoneCurse -->|Lv.2| SuppressMagic
-    SuppressMagic -->|Lv.2| SuppressAura
 
     ArcaneMastery -->|Lv.2| SoulBreak
     SoulBreak -->|Lv.3| Mindbreak
@@ -2073,229 +2065,165 @@ graph TD
     %% Layout only: `~~~` renders as an invisible link and implies no requirement.
     %% It ranks the ward/spirit branch below the elemental chains so it forms its
     %% own row instead of widening the diagram by another two columns.
-    FrostOrb ~~~ MagicArmor
-    ThunderOfJupiter ~~~ ArcaneMastery
+    FrostNova ~~~ MagicArmor
+    ThunderStorm ~~~ ArcaneMastery
 ```
 
 <br>
 
-{{< skill name="Fire Bolt" maxLevel="10"
+{{< skill name="Fire Bolt" maxLevel="5"
     type="Active" manaCost="18" castTime="2.0s" cooldown="None" range="9" target="Enemy"
     description="A quick bolt of flame hurled at a single target. The first spell most Wizards ever learn, and the one they cast the most often." >}}
 
 | Lv. | MATK  | Cast Time Reduction |
 | --- | ----- | ------------------- |
-| 1   | +10%  | 0.1s                |
-| 2   | +20%  | 0.2s                |
-| 3   | +30%  | 0.3s                |
-| 4   | +40%  | 0.4s                |
-| 5   | +50%  | 0.5s                |
-| 6   | +60%  | 0.6s                |
-| 7   | +70%  | 0.7s                |
-| 8   | +80%  | 0.8s                |
-| 9   | +90%  | 0.9s                |
-| 10  | +100% | 1.0s                |
+| 1   | +20%  | 0.2s                |
+| 2   | +40%  | 0.4s                |
+| 3   | +60%  | 0.6s                |
+| 4   | +80%  | 0.8s                |
+| 5   | +100% | 1.0s                |
 
 {{< /skill >}}
 
-{{< skill name="Ice Bolt" maxLevel="10"
+{{< skill name="Ice Bolt" maxLevel="5"
     type="Active" manaCost="18" castTime="2.0s" cooldown="None" range="9" target="Enemy"
     description="A shard of hardened cold flung at a single target - the water-elemental counterpart to Fire Bolt." >}}
 
 | Lv. | MATK  | Cast Time Reduction |
 | --- | ----- | ------------------- |
-| 1   | +10%  | 0.1s                |
-| 2   | +20%  | 0.2s                |
-| 3   | +30%  | 0.3s                |
-| 4   | +40%  | 0.4s                |
-| 5   | +50%  | 0.5s                |
-| 6   | +60%  | 0.6s                |
-| 7   | +70%  | 0.7s                |
-| 8   | +80%  | 0.8s                |
-| 9   | +90%  | 0.9s                |
-| 10  | +100% | 1.0s                |
+| 1   | +20%  | 0.2s                |
+| 2   | +40%  | 0.4s                |
+| 3   | +60%  | 0.6s                |
+| 4   | +80%  | 0.8s                |
+| 5   | +100% | 1.0s                |
 
 {{< /skill >}}
 
-{{< skill name="Thunder Bolt" maxLevel="10"
+{{< skill name="Thunder Bolt" maxLevel="5"
     type="Active" manaCost="18" castTime="2.0s" cooldown="None" range="9" target="Enemy"
     description="A crack of lightning called down onto a single target - the wind-elemental counterpart to Fire Bolt." >}}
 
 | Lv. | MATK  | Cast Time Reduction |
 | --- | ----- | ------------------- |
-| 1   | +10%  | 0.1s                |
-| 2   | +20%  | 0.2s                |
-| 3   | +30%  | 0.3s                |
-| 4   | +40%  | 0.4s                |
-| 5   | +50%  | 0.5s                |
-| 6   | +60%  | 0.6s                |
-| 7   | +70%  | 0.7s                |
-| 8   | +80%  | 0.8s                |
-| 9   | +90%  | 0.9s                |
-| 10  | +100% | 1.0s                |
+| 1   | +20%  | 0.2s                |
+| 2   | +40%  | 0.4s                |
+| 3   | +60%  | 0.6s                |
+| 4   | +80%  | 0.8s                |
+| 5   | +100% | 1.0s                |
 
 {{< /skill >}}
 
-{{< skill name="Earth Spike" maxLevel="10"
+{{< skill name="Earth Spike" maxLevel="5"
     type="Active" manaCost="18" castTime="2.0s" cooldown="None" range="9" target="Enemy"
     description="A jagged spar of stone erupts beneath a single target - the earth-elemental counterpart to Fire Bolt." >}}
 
 | Lv. | MATK  | Cast Time Reduction |
 | --- | ----- | ------------------- |
-| 1   | +10%  | 0.1s                |
-| 2   | +20%  | 0.2s                |
-| 3   | +30%  | 0.3s                |
-| 4   | +40%  | 0.4s                |
-| 5   | +50%  | 0.5s                |
-| 6   | +60%  | 0.6s                |
-| 7   | +70%  | 0.7s                |
-| 8   | +80%  | 0.8s                |
-| 9   | +90%  | 0.9s                |
-| 10  | +100% | 1.0s                |
+| 1   | +20%  | 0.2s                |
+| 2   | +40%  | 0.4s                |
+| 3   | +60%  | 0.6s                |
+| 4   | +80%  | 0.8s                |
+| 5   | +100% | 1.0s                |
 
 {{< /skill >}}
 
-{{< skill name="Arcane Mastery" maxLevel="5"
+{{< skill name="Arcane Mastery" maxLevel="3"
     type="Passive"
     description="A deeper communion with raw mana beyond the elements, sharpening the spells that draw on it: Soul Break and Mindbreak." >}}
 
 | Lv. | Raw-Mana Spell Damage |
 | --- | --------------------- |
 | 1   | +5%                   |
-| 2   | +10%                  |
-| 3   | +15%                  |
-| 4   | +20%                  |
-| 5   | +25%                  |
+| 2   | +15%                  |
+| 3   | +25%                  |
 
 {{< /skill >}}
 
-{{< skill name="Safety Wall" maxLevel="5" requires="Magic Armor Lv. 3"
+{{< skill name="Safety Wall" maxLevel="3" requires="Magic Armor Lv. 3"
     type="Active" manaCost="30" castTime="1s" cooldown="10s" duration="per Lv." range="6" target="Ally"
     description="Conjures a shimmering barrier of solidified mana in front of a target. It blocks incoming physical projectiles and melee strikes until it has absorbed enough hits or its duration runs out." >}}
 
 | Lv. | Hits Absorbed | Duration |
 | --- | ------------- | -------- |
 | 1   | 2             | 20s      |
-| 2   | 4             | 28s      |
-| 3   | 6             | 36s      |
-| 4   | 8             | 44s      |
-| 5   | 10            | 52s      |
+| 2   | 6             | 36s      |
+| 3   | 10            | 52s      |
 
 {{< /skill >}}
 
-{{< skill name="Stone Curse" maxLevel="5" requires="Safety Wall Lv. 3"
+{{< skill name="Stone Curse" maxLevel="3" requires="Safety Wall Lv. 3"
     type="Active" manaCost="25" castTime="1s" cooldown="15s" duration="per Lv." range="6" target="Enemy"
     description="Encases a target in solid stone, applying [Stoning](/docs/mechanics/status-effects/#all-status-effects) where they stand. Stoning turns into Stone unless it is cured first. Requires 1 [Red Mana Crystal](/docs/mechanics/item-list/#red-mana-crystal) per cast." >}}
 
 | Lv. | Stoning Chance | Duration |
 | --- | -------------- | -------- |
 | 1   | 20%            | 5s       |
-| 2   | 30%            | 8s       |
-| 3   | 40%            | 11s      |
-| 4   | 50%            | 14s      |
-| 5   | 60%            | 17s      |
+| 2   | 40%            | 11s      |
+| 3   | 60%            | 17s      |
 
 {{< /skill >}}
 
-{{< skill name="Suppress Magic" maxLevel="5" requires="Stone Curse Lv. 2"
+{{< skill name="Suppress Magic" maxLevel="3" requires="Stone Curse Lv. 2"
     type="Active" manaCost="30" castTime="Instant" cooldown="20s" duration="per Lv." range="9" target="Enemy"
     description="A ward of counter-mana thrown over a target mid-incantation, interrupting whatever spell they were weaving and leaving them [Silenced](/docs/mechanics/status-effects/#all-status-effects) for a short time after." >}}
 
 | Lv. | Interrupt Chance | Silence Duration |
 | --- | ---------------- | ---------------- |
 | 1   | 20%              | 3s               |
-| 2   | 30%              | 4s               |
-| 3   | 40%              | 5s               |
-| 4   | 50%              | 6s               |
-| 5   | 60%              | 7s               |
+| 2   | 40%              | 5s               |
+| 3   | 60%              | 7s               |
 
 {{< /skill >}}
 
-{{< skill name="Suppress Aura" maxLevel="3" requires="Suppress Magic Lv. 2"
-    type="Active" manaCost="35" castTime="3s" cooldown="30s" duration="5 min" range="2" target="Any"
-    description="Cast on an object, Bestia or Master to mute the mana clinging to it, making it invisible towards magic detection - wards, Magic Sense, and similar scrying senses." >}}
-
-| Lv. | Mana Suppression |
-| --- | ---------------- |
-| 1   | 40%              |
-| 2   | 70%              |
-| 3   | 100%             |
-
-{{< /skill >}}
-
-{{< skill name="Fire Wall" maxLevel="5" requires="Fire Bolt Lv. 3"
+{{< skill name="Fire Wall" maxLevel="3" requires="Fire Bolt Lv. 3"
     type="Active" manaCost="35" castTime="2s" cooldown="10s" duration="20s" range="6" target="Ground"
     description="Conjures a wall of roaring flame across the ground. Anything that tries to push through is burned and shoved back the way it came." >}}
 
 | Lv. | MATK (per tick) | Knockback |
 | --- | --------------- | --------- |
 | 1   | +10%            | 1m        |
-| 2   | +20%            | 1m        |
-| 3   | +30%            | 2m        |
-| 4   | +40%            | 2m        |
-| 5   | +50%            | 3m        |
+| 2   | +30%            | 2m        |
+| 3   | +50%            | 3m        |
 
 {{< /skill >}}
 
-{{< skill name="Meteor Storm" maxLevel="5" requires="Fire Bolt Lv. 10"
+{{< skill name="Meteor Storm" maxLevel="3" requires="Fire Bolt Lv. 5"
     type="Active" manaCost="70" castTime="6s" cooldown="30s" duration="10s" range="12" target="Ground"
     description="Calls down a rain of blazing meteors onto an area, scorching everything caught beneath it over and over as it falls." >}}
 
 | Lv. | MATK (per meteor) | Meteor Count |
 | --- | ----------------- | ------------ |
 | 1   | +10%              | 3            |
-| 2   | +20%              | 4            |
-| 3   | +30%              | 5            |
-| 4   | +40%              | 6            |
-| 5   | +50%              | 7            |
+| 2   | +30%              | 5            |
+| 3   | +50%              | 7            |
 
 {{< /skill >}}
 
-{{< skill name="Storm Gust" maxLevel="5" requires="Ice Bolt Lv. 10"
+{{< skill name="Storm Gust" maxLevel="3" requires="Ice Bolt Lv. 5"
     type="Active" manaCost="65" castTime="5s" cooldown="25s" duration="10s" range="12" target="Ground"
     description="A freezing gale that batters an area with repeated waves of ice, each one carrying a chance to freeze anything caught in the flurry solid." >}}
 
 | Lv. | MATK (per tick) | Freeze Chance (per tick) |
 | --- | --------------- | ------------------------ |
 | 1   | +8%             | 5%                       |
-| 2   | +16%            | 10%                      |
-| 3   | +24%            | 15%                      |
-| 4   | +32%            | 20%                      |
-| 5   | +40%            | 25%                      |
+| 2   | +24%            | 15%                      |
+| 3   | +40%            | 25%                      |
 
 {{< /skill >}}
 
-{{< skill name="Water Ball" maxLevel="5" requires="Ice Bolt Lv. 8"
-    type="Active" manaCost="45" castTime="3s" cooldown="15s" range="9" target="Enemy"
-    description="Gathers the water in a 5x5 area around the caster into a single crashing orb hurled at a target. The caster must be standing in water for the spell to draw from, and it strikes once for every water tile it manages to pull from around them." >}}
-
-The hits per cast are the number of water tiles around the caster, but never more than the cap of the skill level.
-
-| Lv. | Max Hits per Cast |
-| --- | ----------------- |
-| 1   | 5                 |
-| 2   | 10                |
-| 3   | 15                |
-| 4   | 20                |
-| 5   | 25                |
-
-{{< /skill >}}
-
-{{< skill name="Frost Nova" maxLevel="5" requires="Ice Bolt Lv. 1"
+{{< skill name="Frost Nova" maxLevel="3" requires="Ice Bolt Lv. 1"
     type="Active" manaCost="40" castTime="2s" cooldown="15s" range="per Lv." target="Self"
     description="A burst of subzero cold erupts outward from the caster, freezing anything caught too close." >}}
 
 | Lv. | Radius | Freeze Chance |
 | --- | ------ | ------------- |
 | 1   | 2m     | 15%           |
-| 2   | 3m     | 25%           |
-| 3   | 4m     | 35%           |
-| 4   | 5m     | 45%           |
-| 5   | 6m     | 55%           |
+| 2   | 4m     | 35%           |
+| 3   | 6m     | 55%           |
 
 {{< /skill >}}
 
-{{< skill name="Quagmire" maxLevel="5" requires="Thunder Bolt Lv. 2"
+{{< skill name="Quagmire" maxLevel="3" requires="Thunder Bolt Lv. 2"
     type="Active" manaCost="30" castTime="2s" cooldown="20s" duration="30s" range="9" target="Ground"
     description="Turns the ground in an area into thick, clinging mud. Any AGI-increasing buff on someone caught in it is stripped away, and their own AGI and DEX are dragged down for as long as they remain inside." >}}
 Regardless of level, the reduction is capped at `25%` against other Bestia Masters and `50%` against wild Bestia and monsters.
@@ -2303,94 +2231,56 @@ Regardless of level, the reduction is capped at `25%` against other Bestia Maste
 | Lv. | AGI/DEX Reduction (uncapped) |
 | --- | ---------------------------- |
 | 1   | 10%                          |
-| 2   | 20%                          |
-| 3   | 30%                          |
-| 4   | 40%                          |
-| 5   | 50%                          |
+| 2   | 30%                          |
+| 3   | 50%                          |
 
 {{< /skill >}}
 
-{{< skill name="Thunder Storm" maxLevel="5" requires="Thunder Bolt Lv. 3"
+{{< skill name="Thunder Storm" maxLevel="3" requires="Thunder Bolt Lv. 3"
     type="Active" manaCost="60" castTime="4s" cooldown="20s" duration="8s" range="12" target="Ground"
     description="Wind churns into a raging storm overhead, calling down lightning bolts across the whole area at random." >}}
 
 | Lv. | MATK (per strike) | Strike Count |
 | --- | ----------------- | ------------ |
 | 1   | +10%              | 3            |
-| 2   | +20%              | 4            |
-| 3   | +30%              | 5            |
-| 4   | +40%              | 6            |
-| 5   | +50%              | 7            |
+| 2   | +30%              | 5            |
+| 3   | +50%              | 7            |
 
 {{< /skill >}}
 
-{{< skill name="Earthquake" maxLevel="5" requires="Earth Spike Lv. 3"
+{{< skill name="Earthquake" maxLevel="3" requires="Earth Spike Lv. 3"
     type="Active" manaCost="60" castTime="4s" cooldown="25s" duration="8s" range="per Lv." target="Self"
     description="Splits the ground in a wide radius around the caster, the shockwave dealing repeated damage to everything caught standing on it." >}}
 
 | Lv. | MATK (per tick) | Radius |
 | --- | --------------- | ------ |
 | 1   | +10%            | 2m     |
-| 2   | +20%            | 3m     |
-| 3   | +30%            | 4m     |
-| 4   | +40%            | 5m     |
-| 5   | +50%            | 6m     |
+| 2   | +30%            | 4m     |
+| 3   | +50%            | 6m     |
 
 {{< /skill >}}
 
-{{< skill name="Frost Orb" maxLevel="5" requires="Frost Nova Lv. 2"
-    type="Active" manaCost="40" castTime="3s" cooldown="12s" range="9" target="Enemy"
-    description="A dense orb of packed ice hurled at a single target, hitting hard and near-guaranteed to leave them frozen solid." >}}
-
-| Lv. | MATK | Freeze Chance |
-| --- | ---- | ------------- |
-| 1   | +15% | 30%           |
-| 2   | +30% | 40%           |
-| 3   | +45% | 50%           |
-| 4   | +60% | 60%           |
-| 5   | +75% | 70%           |
-
-{{< /skill >}}
-
-{{< skill name="Soul Break" maxLevel="5" requires="Arcane Mastery Lv. 2"
+{{< skill name="Soul Break" maxLevel="3" requires="Arcane Mastery Lv. 2"
     type="Active" manaCost="45" castTime="2s" cooldown="15s" range="9" target="Enemy"
     description="Tears into a target with raw, undirected mana that ignores elemental resistance, ripping away a portion of their own mana in the process." >}}
 
 | Lv. | MATK  | Target Mana Drained |
 | --- | ----- | ------------------- |
 | 1   | +20%  | 5%                  |
-| 2   | +40%  | 10%                 |
-| 3   | +60%  | 15%                 |
-| 4   | +80%  | 20%                 |
-| 5   | +100% | 25%                 |
+| 2   | +60%  | 15%                 |
+| 3   | +100% | 25%                 |
 
 {{< /skill >}}
 
-{{< skill name="Thunder of Jupiter" maxLevel="5" requires="Thunder Storm Lv. 3"
-    type="Active" manaCost="55" castTime="4s" cooldown="20s" range="9" target="Enemy"
-    description="The Wizard's answer to a single stubborn target: a column of lightning that strikes over and over, once for every level of mastery behind it." >}}
-
-| Lv. | Hits per Cast | MATK (per hit) |
-| --- | ------------- | -------------- |
-| 1   | 1             | +20%           |
-| 2   | 2             | +20%           |
-| 3   | 3             | +20%           |
-| 4   | 4             | +20%           |
-| 5   | 5             | +20%           |
-
-{{< /skill >}}
-
-{{< skill name="Mindbreak" maxLevel="5" requires="Soul Break Lv. 3"
+{{< skill name="Mindbreak" maxLevel="3" requires="Soul Break Lv. 3"
     type="Active" manaCost="50" castTime="3s" cooldown="60s" duration="60s" range="5" target="Bestia"
     description="A buff channeling so much raw magic through one of the master's Bestias at once that its armor is the first thing to give. Once applied it reduces the magic defense but increases magical attack of the Bestia." >}}
 
 | Lv. | MATK  | SMDEF Reduction |
 | --- | ----- | --------------- |
 | 1   | +20%  | 20%             |
-| 2   | +40%  | 40%             |
-| 3   | +60%  | 60%             |
-| 4   | +80%  | 80%             |
-| 5   | +100% | 100%            |
+| 2   | +60%  | 60%             |
+| 3   | +100% | 100%            |
 
 {{< /skill >}}
 
