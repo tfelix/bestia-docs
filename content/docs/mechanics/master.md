@@ -295,6 +295,9 @@ graph TD
 
 Lv. 1 allows you to build a [workbench](/docs/mechanics/item-list/#workbench), which you can use for crafting. The time it needs to craft an item depends on the item level you want to craft.
 
+Carpentry also makes the kits for the buildings in the wild: the Observation Outpost, the Mining Shaft and the
+Lumberjack Cabin. To build one, the master needs level 1 of the skill that uses it.
+
 | Lv. | Success Chance | Max Item Level |
 | --- | -------------- | -------------- |
 | 1   | +5%            | 10             |
@@ -728,7 +731,7 @@ resource's item level.
 
 ## Survival Tree
 
-Skills which allow the player to keep exploring the world and stay active longer far away from settlements are placed in this skill tree. Foresters live off the land, Prospectors chart what nobody has mapped yet, and Miners dig for what the land is hiding.
+Skills which allow the player to keep exploring the world and stay active longer far away from settlements are placed in this skill tree. Foresters live off the land, Prospectors chart what nobody has mapped yet and found towns on it, and Miners dig for what the land is hiding.
 
 ```mermaid
 graph TD
@@ -858,6 +861,8 @@ graph TD
     type="Passive"
     description="An axeman's read of the forest - which trunks fell clean, which grain splits true, and how to bring both down efficiently." >}}
 
+Level 1 lets you build a Lumberjack Cabin from a kit. Bestias can work the cabin while you are away.
+
 | Lv. | Gathering Time Reduction | Resource Drop Chance |
 | --- | ------------------------ | -------------------- |
 | 1   | 10%                      | +20%                 |
@@ -954,7 +959,7 @@ clutch draws a fourth dominant individual value, so a bloodline improves on four
 
 ### Prospector
 
-Half surveyor, half treasure hunter. Prospectors chart unclaimed land, feel out resources long before anyone else arrives, and travel further than sense would recommend.
+Half surveyor, half treasure hunter. Prospectors chart unclaimed land, found settlements on it, feel out resources long before anyone else arrives, and travel further than sense would recommend.
 
 {{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [survival tree](#survival-tree)" />}}
 
@@ -963,9 +968,11 @@ graph TD
     ResourceSense[/"Resource Sense (Survival Tree)"/]
     Cartography["Cartography (1-5)"]
     WeatherSense["Weather Sense (1-3)"]
+    Founder["Founder (1)"]
 
     ResourceSense -->|Lv.1| Cartography
     Cartography -->|Lv.2| WeatherSense
+    Cartography -->|Lv.3| Founder
 ```
 
 <br>
@@ -989,6 +996,21 @@ front does to the world.
 | 1   | 5 min          |
 | 2   | 10 min         |
 | 3   | 15 min         |
+
+{{< /skill >}}
+
+{{< skill name="Founder" maxLevel="1" requires="Cartography Lv. 3"
+    type="Active" manaCost="100" castTime="60s" cooldown="24h" range="0" target="Ground"
+    description="The founding rite that plants a city sign in the ground and calls a settlement into being around it." >}}
+
+A Prospector charts the land first and then claims it. This skill only starts a settlement. It does not grow one - a
+town grows because players keep building inside it, and no further skill gates that.
+
+Only one settlement can be active at any time. You must destroy the settlement before you can place a new one. Only
+inactive settlements can be destroyed, which means no functional building (post office, trade post, etc.) may be left
+inside the settlement's sphere of influence.
+
+{{< alert context="info" text="To do: player settlements need a design of their own. The [settlements](/docs/mechanics/settlements/) page only covers the towns the world generates." />}}
 
 {{< /skill >}}
 
@@ -1016,7 +1038,8 @@ graph TD
     description="A pickaxe, a steady lamp, and the nose for where the rock is worth breaking." >}}
 
 Anyone with a [pickaxe](/docs/mechanics/items/#weapon-type) can mine, but an untrained miner only gets resources up to
-level 10. Level 1 lets you craft a pickaxe.
+level 10. Level 1 lets you craft a pickaxe and build a Mining Shaft from a kit. Bestias can work the shaft while you are
+away.
 
 | Lv. | Mining Time Reduction | Max Resource Level |
 | --- | --------------------- | ------------------ |
@@ -1079,7 +1102,7 @@ Can sense ore and gem deposits through solid rock.
 
 ## Scholar Tree
 
-The Scholar tree contains skills which help with sensing the world's events and performing rituals to shape the face of the Bestia world itself. Traders keep the gears of commerce turning, and Sages chase magic to its source - inscribing, discovering, and eventually bending distance itself.
+The Scholar tree contains skills which help with sensing mana, hidden things and the world's events. Traders keep the gears of commerce turning, and Sages chase magic to its source - inscribing, discovering, and eventually bending distance itself.
 
 {{< alert context="warning" text="Only Trader and Sage ship with the initial release. Priest is designed but parked in the hidden page `parked-skills.md` and does not count against any rank budget until it is unparked." />}}
 
@@ -1087,21 +1110,20 @@ The Scholar tree contains skills which help with sensing the world's events and 
 graph TD
     MagicSense["Magic Sense (1-5)"]
     Sense["Sense (1)"]
+    Ruwach["Ruwach (1)"]
     Observation["Observation (1-5)"]
-    Founder["Founder (1)"]
-    Ruwach["Ruwach (1-3)"]
     Gate["5+ pts in Scholar Tree"]
     %% Priest["Priest"] %% parked
     Trader["Trader"]
     Sage["Sage"]
 
-    MagicSense -->|Lv.2| Ruwach
     MagicSense -->|Lv.1| Sense
+    MagicSense -->|Lv.2| Ruwach
+    MagicSense -->|Lv.3| Observation
     MagicSense -.-> Gate
     Sense -.-> Gate
-    Observation -.-> Gate
-    Founder -.-> Gate
     Ruwach -.-> Gate
+    Observation -.-> Gate
     %% Gate -.->|unlocks| Priest
     Gate -.->|unlocks| Trader
     Gate -.->|unlocks| Sage
@@ -1133,8 +1155,17 @@ adds to the range in a mana-rich region and eats into it in a drained one. A tar
 Reveals the monster status values, element, HP and Mana.
 {{< /skill >}}
 
-{{< skill name="Observation" maxLevel="5"
-    type="Passive"
+{{< skill name="Ruwach" maxLevel="1" requires="Magic Sense Lv. 2"
+    type="Active" manaCost="14" castTime="Instant" cooldown="10s" duration="10s" range="10m" target="Self"
+    description="A pulse of second sight that peels back concealment - hidden traps, camouflaged Hunters and cloaked Assassins stand out for what they are. Useful to any Scholar, whether they're scrying old ruins or walking a party into an ambush." >}}
+
+While it is active, everything hidden within 10m of the caster is revealed. Detection resistance, such as that of
+[Hide](#skill-hide), does not help against it.
+
+{{< /skill >}}
+
+{{< skill name="Observation" maxLevel="5" requires="Magic Sense Lv. 3"
+    type="Active" manaCost="20" castTime="5s" cooldown="60s" range="0" target="Observation Outpost"
     description="The Scholar's ear to the ground - a sense for the direction and distance of world-changing events long before word of them travels." >}}
 
 Detects nearby world events like mana rifts which open, spawned bosses or other world changing events. It reads
@@ -1142,7 +1173,9 @@ Detects nearby world events like mana rifts which open, spawned bosses or other 
 place you are not standing in, and a [Magic Sense](#skill-magic-sense) picks apart a single spell. Observation is the
 only one that notices something is about to happen.
 
-Level 1 lets you place an observatory.
+It only works at an Observation Outpost, and the distance counts from the outpost. An outpost is built in the wild from
+an outpost kit, which is made with [Carpentry](#skill-carpentry). Level 1 is needed to build it. A Bestia can keep watch
+there while you are away.
 
 | Lv. | Detection Distance |
 | --- | ------------------ |
@@ -1151,32 +1184,6 @@ Level 1 lets you place an observatory.
 | 3   | 3km                |
 | 4   | 4km                |
 | 5   | 5km                |
-
-{{< /skill >}}
-
-{{< skill name="Founder" maxLevel="1"
-    type="Active" manaCost="100" castTime="60s" cooldown="24h" range="0" target="Ground"
-    description="The founding rite that plants a city sign in the ground and calls a settlement into being around it." >}}
-
-This skill only starts a [settlement](/docs/mechanics/settlements/). It does not grow one - a town grows because
-players keep building inside it, and no further skill gates that.
-
-Only one settlement can be active at any time. You must destroy the settlement before you can place a new one. Only
-inactive settlements can be destroyed, which means no functional building (post office, trade post, etc.) may be left
-inside the settlement's sphere of influence.
-
-{{< /skill >}}
-
-{{< skill name="Ruwach" maxLevel="3" requires="Magic Sense Lv. 2"
-    type="Active" manaCost="14" castTime="Instant" cooldown="10s" duration="10s" range="per Lv." target="Self"
-    description="A pulse of second sight that peels back concealment - hidden traps, camouflaged Hunters and cloaked Assassins stand out for what they are, and counterfeit goods stop passing as genuine. Useful to any Scholar, whether they're scrying old ruins, appraising a shady deal, or walking a party into an ambush." >}}
-Higher levels shorten how long a concealed target needs to hold still before being revealed.
-
-| Lv. | Detection Range |
-| --- | --------------- |
-| 1   | +3m             |
-| 2   | +6m             |
-| 3   | +9m             |
 
 {{< /skill >}}
 
@@ -2175,7 +2182,8 @@ Protects both hands at once. While it holds, [Strip Weapons](#skill-strip-weapon
     type="Active" manaCost="18" castTime="Instant" cooldown="5s" duration="Until cancelled" range="0" target="Self"
     description="Drops the Assassin flat against whatever cover is at hand. Nothing hostile can see them while they stay put - but standing still is the whole price of admission." >}}
 
-Breaks the moment the Assassin moves or attacks. Revealed by [Ruwach](#skill-ruwach) and by a [Sense](#skill-sense) cast in range.
+Breaks the moment the Assassin moves or attacks. Detection resistance works against eyes, not against
+[Ruwach](#skill-ruwach), which always reveals.
 
 | Lv. | Mana Drain per Second | Detection Resistance |
 | --- | --------------------- | -------------------- |
@@ -2191,7 +2199,7 @@ Breaks the moment the Assassin moves or attacks. Revealed by [Ruwach](#skill-ruw
     type="Active" manaCost="30" castTime="Instant" cooldown="8s" duration="Until cancelled" range="0" target="Self"
     description="What Hide is for standing still, Cloak is for walking. The Assassin stays unseen while moving, at the cost of speed and a steady bleed of mana." >}}
 
-Still breaks on attacking. A Priest's [Ruwach](#skill-ruwach) strips it outright.
+Still breaks on attacking. [Ruwach](#skill-ruwach) strips it outright.
 
 | Lv. | Movement Speed | Mana Drain per Second |
 | --- | -------------- | --------------------- |
