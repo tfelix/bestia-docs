@@ -1,6 +1,7 @@
 ---
 title: World Exploration
 weight: 1100
+aliases: ["/docs/mechanics/map/"]
 description: Explains how players explore and map the game world, including cartography mechanics, difficulty factors, and how explored maps are stored and rendered.
 ---
 
@@ -100,3 +101,49 @@ A few rules decide what appears:
 - **Opening hours.** Selecting a service shows its name, its settlement and its keeper's hours, and a service that is
   closed is drawn dimmed. Selecting it a second time sets off towards it. A shop is open while its keeper is at work,
   and a keeper may arrive or leave up to half an hour off the hours shown.
+
+## Using the Map
+
+The explored world map is the same map in the game (M) and in the companion app, and it is worked the same way in
+both: one action asks what is there, and a card says what can be done about it. Nothing needs a second mouse button,
+so a phone works the map as well as a desk does.
+
+### The Card
+
+What a click or a tap opens. It names what is there - a town, a shop, an inn, one of your marks, one of your
+Bestias or open ground - with its grid reference and how far it is from the Bestia you are sending, and offers
+**Go here**, **Add to route** and, on open ground, **Mark here**.
+
+A town's card also lists every shop, market, inn, temple, guard post and ward stone it has that you have
+charted, each with its own **Go** - even at a zoom where none of them are drawn.
+
+### Grid References
+
+The world is cut into squares of 8 km, named like a chessboard: a letter for the column counted from the west,
+a number for the row counted from the south. A 128 km world runs from **A1** in the south-west to **P16**.
+
+Inside a square a place is given by equal halves of digits, east first and then north, and the more digits the
+finer the cell:
+
+| Reference       | Names a cell of |
+| --------------- | --------------- |
+| `H12`           | 8 km            |
+| `H12 4 3`       | 1 km            |
+| `H12 41 37`     | 100 m           |
+| `H12 413 372`   | 10 m            |
+| `H12 4130 3725` | 1 m             |
+
+The first digit of each half is 0 to 7, since a square is 8 km across. `H12 4137` is the same as `H12 41 37`.
+
+The map shows the reference under the pointer, and the card shows the reference of whatever it is about.
+The search box takes a reference or the name of a place you have charted. For a GM, `/mm` takes one too -
+`/mm H12 41 37`, or a settlement's name.
+
+### Marks, Routes and Preferences
+
+Your marks, your saved routes and how you like the map drawn - which kinds of service the legend hides, and
+whether the grid is shown - are kept on the server, in your **notebook**, one for each master. The game and the
+companion app read and write the same notebook, so a route saved in one shows up in the other at once, without
+reloading. A master keeps up to 200 marks and 32 routes.
+
+Settings that belong to one device rather than to you - graphics, sound, the window - stay on that device.
