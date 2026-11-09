@@ -1968,15 +1968,15 @@ HP and Mana regeneration is not stopped during combat.
 
 {{< skill name="Iron Skin" maxLevel="5"
     type="Passive"
-    description="The physical counterpart to a Wizard's Magic Armor: hide toughened by nothing more than sheer stubbornness. Reduces incoming physical damage. Unlike Magic Armor this costs no mana, but the reduction is more modest." >}}
+    description="Hide toughened by nothing more than sheer stubbornness. Reduces incoming physical damage. Unlike Magic Armor this costs no mana, but the reduction is more modest." >}}
 
-| Lv. | SDEF |
-| --- | ---- |
-| 1   | 30   |
-| 2   | 60   |
-| 3   | 90   |
-| 4   | 120  |
-| 5   | 150  |
+| Lv. | Physical Damage Taken |
+| --- | --------------------- |
+| 1   | -3%                   |
+| 2   | -6%                   |
+| 3   | -9%                   |
+| 4   | -12%                  |
+| 5   | -15%                  |
 
 {{< /skill >}}
 
@@ -1996,7 +1996,7 @@ When active, each hit costs 2% of the owner's current mana. When the mana drops 
 
 {{< skill name="Meditation" maxLevel="5"
     type="Passive"
-    description="A calm, centered breathing that quickens the natural mending of both Master and Bestia alike." >}}
+    description="A calm, centered breathing that quickens the master's natural mending." >}}
 
 | Lv. | HP/Mana Regeneration |
 | --- | -------------------- |
