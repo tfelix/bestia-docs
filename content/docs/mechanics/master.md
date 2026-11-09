@@ -1597,26 +1597,24 @@ Books, wards and long nights spent staring into scrying bowls. Sages study magic
 
 {{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [scholar tree](#scholar-tree)" />}}
 
+The Sage has two routes. The **Scribe** trains, inscribes and binds spells and opens the way with Teleport and Warp Portal. The **Battle Sage** fights magic itself: dispels, wards, mana drain and endowed weapons.
+
 ```mermaid
 graph TD
     MagicSense[/"Magic Sense (Scholar Tree)"/]
     Observation[/"Observation (Scholar Tree)"/]
-    SpellTraining["Spell Training (1-10)"]
+    SpellTraining["Spell Training (1-5)"]
     FreeCast["Free Cast (1-5)"]
     Scry["Scry (1-5)"]
     Dispel["Dispel (1-5)"]
-    SpellInscription["Spell Inscription (1-10)"]
-    SpellBinding["Spell Binding (1-10)"]
+    SpellInscription["Spell Inscription (1-5)"]
+    SpellBinding["Spell Binding (1-5)"]
     Teleport["Teleport (1-2)"]
     WarpPortal["Warp Portal (1-5)"]
     MagicRod["Magic Rod (1-3)"]
     ManaDrain["Mana Drain (1-3)"]
-    ManaSwap["Mana Swap (1-3)"]
     LandProtector["Land Protector (1-3)"]
-    EndowFire["Endow Fire (1-3)"]
-    EndowIce["Endow Ice (1-3)"]
-    EndowWind["Endow Wind (1-3)"]
-    EndowEarth["Endow Earth (1-3)"]
+    Endow["Endow (1-3)"]
 
     MagicSense -->|Lv.3| SpellTraining
     Observation -->|Lv.3| Scry
@@ -1629,18 +1627,14 @@ graph TD
 
     Dispel -->|Lv.2| MagicRod
     MagicRod -->|Lv.1| ManaDrain
-    ManaDrain -->|Lv.2| ManaSwap
     MagicRod -->|Lv.2| LandProtector
 
-    FreeCast -->|Lv.2| EndowFire
-    FreeCast -->|Lv.2| EndowIce
-    FreeCast -->|Lv.2| EndowWind
-    FreeCast -->|Lv.2| EndowEarth
+    FreeCast -->|Lv.2| Endow
 ```
 
 <br>
 
-{{< skill name="Spell Training" maxLevel="10" requires="Magic Sense Lv. 3"
+{{< skill name="Spell Training" maxLevel="5" requires="Magic Sense Lv. 3"
     type="Active" manaCost="25" castTime="10s" cooldown="None" range="2" target="Bestia"
     description="Trains a spell from a scroll into a Bestia's memory, the first step of every Sage's education." >}}
 
@@ -1649,16 +1643,11 @@ table as [Spell Inscription](#skill-spell-inscription). Each level adds to it.
 
 | Lv. | Success Chance |
 | --- | -------------- |
-| 1   | +5%            |
-| 2   | +10%           |
-| 3   | +15%           |
-| 4   | +20%           |
-| 5   | +25%           |
-| 6   | +30%           |
-| 7   | +35%           |
-| 8   | +40%           |
-| 9   | +45%           |
-| 10  | +50%           |
+| 1   | +10%           |
+| 2   | +20%           |
+| 3   | +30%           |
+| 4   | +40%           |
+| 5   | +50%           |
 
 {{< /skill >}}
 
@@ -1737,18 +1726,6 @@ Each second drains a share of each target's max mana.
 
 {{< /skill >}}
 
-{{< skill name="Mana Swap" maxLevel="3" requires="Mana Drain Lv. 2"
-    type="Active" manaCost="45" castTime="3s" cooldown="60s" range="6" target="Enemy"
-    description="A gamble of a rite that trades the caster's own pool of mana for the target's, wholesale. Higher skill makes the exchange more likely to take hold." >}}
-
-| Lv. | Swap Success Chance |
-| --- | ------------------- |
-| 1   | 33%                 |
-| 2   | 66%                 |
-| 3   | 100%                |
-
-{{< /skill >}}
-
 {{< skill name="Land Protector" maxLevel="3" requires="Magic Rod Lv. 2"
     type="Active" manaCost="55" castTime="3s" cooldown="40s" duration="per Lv." range="6" target="Ground"
     description="Consecrates a patch of ground against hostile magic. While it holds, no area-of-effect or ground-targeted spell can take root inside its bounds - friend and foe alike." >}}
@@ -1761,7 +1738,7 @@ Each second drains a share of each target's max mana.
 
 {{< /skill >}}
 
-{{< skill name="Spell Inscription" maxLevel="10" requires="Spell Training Lv. 3"
+{{< skill name="Spell Inscription" maxLevel="5" requires="Spell Training Lv. 3"
     type="Active" manaCost="35" castTime="15s" cooldown="None" range="2" target="Bestia"
     description="Enables you to extract an attack from the memory of a Bestia onto a scroll, which can then either trigger the attack once or teach it to another Bestia instead. However, there is a chance that the mind of a Bestia is destroyed during the extraction, killing the Bestia in the process." >}}
 The base success chance depends on the level of the attack being inscribed and is further modified by skill level, equipment and intelligence (`INT / 2 + WIL / 4`):
@@ -1779,7 +1756,7 @@ The base success chance depends on the level of the attack being inscribed and i
 A negative base means the extraction is impossible on raw talent alone and only becomes viable with strong bonuses from intelligence, skill level and equipment.
 {{< /skill >}}
 
-{{< skill name="Spell Binding" maxLevel="10" requires="Spell Inscription Lv. 3"
+{{< skill name="Spell Binding" maxLevel="5" requires="Spell Inscription Lv. 3"
     type="Active" manaCost="45" castTime="10s" cooldown="None" range="2" target="Item or Ground"
     description="Binds a spell to an object or place and ties it to a trigger, giving rise to enchanted artifacts, standing alarms and hidden traps alike." >}}
 
@@ -1818,59 +1795,18 @@ Every cast consumes a Portal Rune, which costs more than a Teleport Rune.
 
 {{< /skill >}}
 
-{{< skill name="Endow Fire" maxLevel="3" requires="Free Cast Lv. 2"
+{{< skill name="Endow" maxLevel="3" requires="Free Cast Lv. 2"
     type="Active" manaCost="28" castTime="2s" cooldown="5s" duration="per Lv." range="5" target="Ally"
-    description="Temporarily infuses an ally's weapon with the fire element, so its strikes burn as well as bite. Consumes a [Blue Mana Crystal](/docs/mechanics/item-list/#blue-mana-crystal) to carry the charge." >}}
+    description="Temporarily infuses an ally's weapon with an element, so its strikes burn, freeze, crack or crush as well as bite. Consumes a [Blue Mana Crystal](/docs/mechanics/item-list/#blue-mana-crystal) to carry the charge." >}}
 
-The weapon takes on the element, so the [element table](/docs/mechanics/bestia-design/#7-element-size-and-defences) applies. The bonus damage comes on top.
+The caster picks the element when casting: fire, water, wind or earth. The weapon takes on the element, so the
+[element table](/docs/mechanics/bestia-design/#7-element-size-and-defences) applies. The bonus damage comes on top.
 
-| Lv. | Duration | Bonus Fire Damage |
-| --- | -------- | ----------------- |
-| 1   | 60s      | +5%               |
-| 2   | 120s     | +10%              |
-| 3   | 180s     | +15%              |
-
-{{< /skill >}}
-
-{{< skill name="Endow Ice" maxLevel="3" requires="Free Cast Lv. 2"
-    type="Active" manaCost="28" castTime="2s" cooldown="5s" duration="per Lv." range="5" target="Ally"
-    description="Temporarily infuses an ally's weapon with the water element, wreathing each strike in biting cold. Consumes a [Blue Mana Crystal](/docs/mechanics/item-list/#blue-mana-crystal) to carry the charge." >}}
-
-The weapon takes on the element, so the [element table](/docs/mechanics/bestia-design/#7-element-size-and-defences) applies. The bonus damage comes on top.
-
-| Lv. | Duration | Bonus Water Damage |
-| --- | -------- | ------------------ |
-| 1   | 60s      | +5%                |
-| 2   | 120s     | +10%               |
-| 3   | 180s     | +15%               |
-
-{{< /skill >}}
-
-{{< skill name="Endow Wind" maxLevel="3" requires="Free Cast Lv. 2"
-    type="Active" manaCost="28" castTime="2s" cooldown="5s" duration="per Lv." range="5" target="Ally"
-    description="Temporarily infuses an ally's weapon with the wind element, so its strikes crack like lightning. Consumes a [Blue Mana Crystal](/docs/mechanics/item-list/#blue-mana-crystal) to carry the charge." >}}
-
-The weapon takes on the element, so the [element table](/docs/mechanics/bestia-design/#7-element-size-and-defences) applies. The bonus damage comes on top.
-
-| Lv. | Duration | Bonus Wind Damage |
-| --- | -------- | ----------------- |
-| 1   | 60s      | +5%               |
-| 2   | 120s     | +10%              |
-| 3   | 180s     | +15%              |
-
-{{< /skill >}}
-
-{{< skill name="Endow Earth" maxLevel="3" requires="Free Cast Lv. 2"
-    type="Active" manaCost="28" castTime="2s" cooldown="5s" duration="per Lv." range="5" target="Ally"
-    description="Temporarily infuses an ally's weapon with the earth element, so its strikes land with the weight of stone. Consumes a [Blue Mana Crystal](/docs/mechanics/item-list/#blue-mana-crystal) to carry the charge." >}}
-
-The weapon takes on the element, so the [element table](/docs/mechanics/bestia-design/#7-element-size-and-defences) applies. The bonus damage comes on top.
-
-| Lv. | Duration | Bonus Earth Damage |
-| --- | -------- | ------------------ |
-| 1   | 60s      | +5%                |
-| 2   | 120s     | +10%               |
-| 3   | 180s     | +15%               |
+| Lv. | Duration | Bonus Damage of the Element |
+| --- | -------- | --------------------------- |
+| 1   | 60s      | +5%                         |
+| 2   | 120s     | +10%                        |
+| 3   | 180s     | +15%                        |
 
 {{< /skill >}}
 
