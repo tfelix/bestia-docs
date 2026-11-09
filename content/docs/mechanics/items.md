@@ -927,10 +927,26 @@ A socket is an open slot for a bestia essence, like a card slot in Ragnarok Onli
 Every socket raises the item level by 5 points, both ways. So cutting a socket into an item makes it harder to
 wear, and harder to cut the next one.
 
-Essences are made with Runic Etching, which is not part of the game yet. These rules are set:
+An essence lives in a gem. [Runic Etching](/docs/mechanics/master/#skill-runic-etching) binds the essence of a Bestia
+into a cut gem, and the result is an **Essence Gem**. Runic Etching is not part of the game yet. These rules are set:
 
-- **Every essence fits every socket.** There is no level limit.
+- **Every essence gem fits every socket.** There is no level limit on the socket side.
+- **The gem limits the Bestia.** A cut gem has no power of its own. Its only property is how strong an essence it can
+  hold, and that follows how rare it is. A rarer gem holds every lower level too.
 - An essence brings its own stats. It does not change the item level: the socket already paid for it.
+
+| Gem      | Found                                     | Holds Bestias up to |
+| -------- | ----------------------------------------- | ------------------- |
+| Amethyst | Shallow geodes, common                    | Lv. 20              |
+| Emerald  | Deep in granite                           | Lv. 40              |
+| Ruby     | In marble where plates collide            | Lv. 60              |
+| Pyrelith | In cooled lava, in strong volcanic fields | Lv. 80              |
+| Diamond  | Deepest of all, under the oldest land     | Any level           |
+
+Mining a gem voxel gives a rough gem of its kind, and [Gem Cutting](/docs/mechanics/master/#skill-gem-cutting) turns it
+into a cut gem. A failed cut and a failed etching both shatter the gem, so a strong essence costs a rare gem for every
+try. A [Rough Gemstone](/docs/mechanics/item-list/#rough-gemstone) from a Bestia's digging or a treasure cache is one of
+the five, unknown until it is cut.
 
 ## Item Level Calculator
 

@@ -294,14 +294,84 @@
   type: Etc
   value: 400
   description: |
-    An uncut gem pried from a mineral vein. A Gem Cutter can facet it into a Cut Gemstone.
-- id: cut_gemstone
-  name: Cut Gemstone
+    An uncut stone from a Bestia's digging or a treasure cache. It is one of the five gems, but only the cut tells which.
+- id: rough_amethyst
+  name: Rough Amethyst
+  weight: 0.3
+  type: Etc
+  value: 50
+  description: |
+    A violet crystal from a shallow geode. The commonest gem in the world. It is still caught in rock. Gem Cutting turns it into a Cut Amethyst.
+- id: rough_emerald
+  name: Rough Emerald
+  weight: 0.3
+  type: Etc
+  value: 300
+  description: |
+    A green crystal from deep granite. It is still caught in rock. Gem Cutting turns it into a Cut Emerald.
+- id: rough_ruby
+  name: Rough Ruby
+  weight: 0.3
+  type: Etc
+  value: 600
+  description: |
+    A deep red crystal from marble. It is still caught in rock. Gem Cutting turns it into a Cut Ruby.
+- id: rough_pyrelith
+  name: Rough Pyrelith
+  weight: 0.3
+  type: Etc
+  value: 1000
+  description: |
+    A gem that grew in the gas pockets of a cooled lava flow. It is warm to the touch. It is still caught in rock. Gem Cutting turns it into a Cut Pyrelith.
+- id: rough_diamond
+  name: Rough Diamond
+  weight: 0.3
+  type: Etc
+  value: 2000
+  description: |
+    The hardest stone there is, from the roots of the oldest land. It is still caught in rock. Gem Cutting turns it into a Cut Diamond.
+- id: cut_amethyst
+  name: Cut Amethyst
   weight: 0.2
   type: Etc
-  value: 1500
+  value: 150
   description: |
-    A faceted, polished gem. Slots into socketed equipment and fetches a high price at market.
+    A faceted amethyst. It has no power of its own. Runic Etching binds the essence of a Bestia up to level 20 into it.
+- id: cut_emerald
+  name: Cut Emerald
+  weight: 0.2
+  type: Etc
+  value: 900
+  description: |
+    A faceted emerald. It has no power of its own. Runic Etching binds the essence of a Bestia up to level 40 into it.
+- id: cut_ruby
+  name: Cut Ruby
+  weight: 0.2
+  type: Etc
+  value: 1800
+  description: |
+    A faceted ruby. It has no power of its own. Runic Etching binds the essence of a Bestia up to level 60 into it.
+- id: cut_pyrelith
+  name: Cut Pyrelith
+  weight: 0.2
+  type: Etc
+  value: 3000
+  description: |
+    A faceted Pyrelith. It has no power of its own. Runic Etching binds the essence of a Bestia up to level 80 into it.
+- id: cut_diamond
+  name: Cut Diamond
+  weight: 0.2
+  type: Etc
+  value: 6000
+  description: |
+    A faceted diamond. It has no power of its own. Runic Etching binds the essence of a Bestia of any level into it.
+- id: essence_gem
+  name: Essence Gem
+  weight: 0.2
+  type: Etc
+  value: 1000
+  description: |
+    A cut gem with the essence of a Bestia bound inside. It glows with the creature's power and fits into any socket.
 - id: medicinal_herb
   name: Medicinal Herb
   weight: 0.1
