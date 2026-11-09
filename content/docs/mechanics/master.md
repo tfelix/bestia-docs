@@ -872,15 +872,19 @@ At home wherever the trees outnumber the people. Foresters live off the land - f
 
 {{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [survival tree](#survival-tree)" />}}
 
+The Forester has two routes. The **Woodsman** fells and replants the forest, sets traps and reads tracks. The **Beastmaster** tames Bestia and breeds better bloodlines.
+
 ```mermaid
 graph TD
     Lumberjack["Lumberjack (1-5)"]
+    Replanting["Replanting (1-3)"]
     Trapping["Trapping (1-5)"]
     TrackReading["Track Reading (1-5)"]
     ExpertTaming["Expert Taming (1-5)"]
     Beastfriend["Beastfriend (1-5)"]
     BloodlineStudy["Bloodline Study (1-5)"]
 
+    Lumberjack -->|Lv.2| Replanting
     Trapping -->|Lv.3| TrackReading
     ExpertTaming -->|Lv.3| Beastfriend
     Beastfriend -->|Lv.3| BloodlineStudy
@@ -900,6 +904,20 @@ Level 1 lets you build a Lumberjack Cabin from a kit. Bestias can work the cabin
 | 3   | 30%                      | +60%                 |
 | 4   | 40%                      | +80%                 |
 | 5   | 50%                      | +100%                |
+
+{{< /skill >}}
+
+{{< skill name="Replanting" maxLevel="3" requires="Lumberjack Lv. 2"
+    type="Active" manaCost="5" castTime="3s" cooldown="0s" range="2" target="Tree Stump"
+    description="A Forester takes from the forest and gives back." >}}
+
+Plants a sapling in a tree stump and consumes a log. The new tree grows back faster than one left to nature.
+
+| Lv. | Regrowth Time | Extra                             |
+| --- | ------------- | --------------------------------- |
+| 1   | -25%          |                                   |
+| 2   | -50%          |                                   |
+| 3   | -75%          | The grown tree gives one more log |
 
 {{< /skill >}}
 
