@@ -65,6 +65,20 @@ neighbour chunk.
 
 A wall is an edge, not a cell. A 4 × 4 room has a 4 × 4 floor inside, not 2 × 2.
 
+A quarter turn turns a piece the way the client turns a model by the same yaw: x+ becomes y−. The client
+keeps its own copy of the pieces and the rasterizer, to predict steps. Both are checked against one golden
+file, `structure-cells.golden.json`.
+
+The first pieces, from `structure-pieces.yml`:
+
+| Piece | Cells |
+|---|---|
+| Wall | 2 m wide, 3 m high, on the x+ border of its cells. |
+| Floor | 2 × 2 m, half a cell thick. On the ground it is a half step up. |
+| Stairs | 1 m wide, 6 tiles long, rising 0.5 m per tile to 3 m. |
+
+A storey is 3 m: a floor stands at 0.5, the next one at 3.5, and six tiles of stairs connect them.
+
 ## Walk table
 
 The walk table (`WalkableTile`) already holds several standing surfaces per column: cave floors, bridges,
@@ -112,7 +126,9 @@ the door's state and owner at query time. Opening a door never rebuilds a walk t
 Each slice is one branch and one pull request, stacked on the previous.
 
 1. **Collision core.** Walls, floors and stairs block movement and lead to an upper floor. Server rules and
-   client prediction agree.
+   client prediction agree. Pieces are drawn as the cells they block until they have models. Still open: kit
+   items and a build mode that can place a piece above the ground, and re-grounding whoever stood on a piece
+   that is removed.
 2. **Line of sight** for attacks and spells, terrain included.
 3. **AI perception** through line of sight, cached per observer and target for a few ticks.
 4. **HP, support, undermining.** Pieces take damage and die. Support is a search down to the ground. A piece
