@@ -382,6 +382,8 @@ Steel remembers who beat it into shape. Blacksmiths turn raw ore into the finest
 
 {{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [craftsman tree](#craftsman-tree)" />}}
 
+The Blacksmith has two routes. The **Forger** smelts ore and forges weapons and armor. The **Refiner** repairs and upgrades what already exists.
+
 ```mermaid
 graph TD
     ItemCustomization[/"Item Customization (Craftsman Tree)"/]
@@ -390,7 +392,7 @@ graph TD
     ForgeWeapon["Forge Weapon (1-10)"]
     ForgeArmor["Forge Armor (1-10)"]
     EquipmentRepair["Equipment Repair (1-5)"]
-    WeaponryResearch["Weaponry Research (1-10)"]
+    WeaponryResearch["Weaponry Research (1-5)"]
     MasterSmith["Master Smith (1-5)"]
 
     ItemCustomization -->|Lv.5| ForgeWeapon
@@ -478,22 +480,17 @@ Same rule as [Forge Weapon](#skill-forge-weapon): no hard cap, but every item le
 
 {{< /skill >}}
 
-{{< skill name="Weaponry Research" maxLevel="10" requires="Equipment Repair Lv. 3 and Upgrade Equipment Lv. 1"
+{{< skill name="Weaponry Research" maxLevel="5" requires="Equipment Repair Lv. 3 and Upgrade Equipment Lv. 1"
     type="Passive"
     description="Deeper knowledge of weapons and armor that raises the odds of successfully [refining](/docs/mechanics/items/#weapon-refinement) either one further after forging. If an upgrade fails the equipment can be destroyed." >}}
 
 | Lv. | Upgrade Success | Forging Success |
 | --- | --------------- | --------------- |
-| 1   | +4%             | +1%             |
-| 2   | +8%             | +2%             |
-| 3   | +12%            | +3%             |
-| 4   | +16%            | +4%             |
-| 5   | +20%            | +5%             |
-| 6   | +24%            | +6%             |
-| 7   | +28%            | +7%             |
-| 8   | +32%            | +8%             |
-| 9   | +36%            | +9%             |
-| 10  | +40%            | +10%            |
+| 1   | +8%             | +2%             |
+| 2   | +16%            | +4%             |
+| 3   | +24%            | +6%             |
+| 4   | +32%            | +8%             |
+| 5   | +40%            | +10%            |
 
 {{< /skill >}}
 
