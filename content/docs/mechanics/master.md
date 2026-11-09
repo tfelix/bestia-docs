@@ -1203,33 +1203,32 @@ Priests channel mana into blessings that keep a party alive - restoring health, 
 
 {{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [scholar tree](#scholar-tree)" />}}
 
+The Priest has two routes. The **Cleric** is the full support of a party: heals, blessings and wards. The **Exorcist** hunts Demons and the Undead with holy light and holy water.
+
 ```mermaid
 graph TD
     MagicSense[/"Magic Sense (Scholar Tree)"/]
 
     Heal["Heal (1-10)"]
 
-    Suffragium["Suffragium (1-3)"]
-    Gloria["Gloria (1-3)"]
+    Suffragium["Suffragium (1)"]
+    Gloria["Gloria (1)"]
 
     AquaBenedicta["Aqua Benedicta (1)"]
     StatusRecovery["Status Recovery (1)"]
     Aspersio["Aspersio (1-3)"]
 
-    Blessing["Blessing (1-10)"]
-    IncreaseAGI["Increase AGI (1-5)"]
-    DecreaseAGI["Decrease AGI (1-3)"]
+    Blessing["Blessing (1-5)"]
+    IncreaseAGI["Increase AGI (1-3)"]
     KyrieEleison["Kyrie Eleison (1-3)"]
-    ImpositioManus["Impositio Manus (1-3)"]
     Pneuma["Pneuma (1)"]
     Magnificat["Magnificat (1-3)"]
 
 
     SignumCrucis["Signum Crucis (1-3)"]
     HolyLight["Holy Light (1-5)"]
-    DemonBane["Demon Bane (1-3)"]
-    DivineProtection["Divine Protection (1-3)"]
-    TurnUndead["Turn Undead (1-5)"]
+    DemonBane["Demon Bane (1-5)"]
+    TurnUndead["Turn Undead (1-3)"]
     LexAeterna["Lex Aeterna (1)"]
     MagnusExorcismus["Magnus Exorcismus (1-3)"]
 
@@ -1242,21 +1241,18 @@ graph TD
     Heal -->|Lv.2| StatusRecovery
     Heal -->|Lv.3| Blessing
 
-    StatusRecovery -->|Lv.1| AquaBenedicta
+    SignumCrucis -->|Lv.1| AquaBenedicta
     Heal -->|Lv.8| Resurrection
     StatusRecovery -->|Lv.1| Resurrection
     AquaBenedicta -->|Lv.1| Aspersio
 
-    IncreaseAGI -->|Lv.2| DecreaseAGI
 
-    Blessing -->|Lv.3| ImpositioManus
     Blessing -->|Lv.3| Magnificat
     KyrieEleison -->|Lv.3| Magnificat
     KyrieEleison -->|Lv.2| Pneuma
 
     SignumCrucis -->|Lv.2| HolyLight
     SignumCrucis -->|Lv.2| DemonBane
-    SignumCrucis -->|Lv.2| DivineProtection
     HolyLight -->|Lv.3| LexAeterna
     HolyLight -->|Lv.3| TurnUndead
     HolyLight -->|Lv.5| MagnusExorcismus
@@ -1291,60 +1287,42 @@ for a modifier key rather than a plain click.
 
 {{< /skill >}}
 
-{{< skill name="Suffragium" maxLevel="3" requires="Magic Sense Lv. 2"
+{{< skill name="Suffragium" maxLevel="1" requires="Magic Sense Lv. 2"
     type="Active" manaCost="18" castTime="Instant" cooldown="20s" duration="30s" range="9" target="Ally"
     description="A murmured rite that lightens the burden of spellcasting for a short while - a Sage burning through scrolls, a Priest chaining blessings and a Trader rushing a linking ritual all feel the difference equally." >}}
-Applies to the next spell cast by the target ally within `30s`.
-
-| Lv. | Cast Time Reduction |
-| --- | ------------------- |
-| 1   | 10%                 |
-| 2   | 20%                 |
-| 3   | 30%                 |
-
+The next spell the target ally casts within `30s` has `30%` less cast time.
 {{< /skill >}}
 
-{{< skill name="Gloria" maxLevel="3" requires="Magic Sense Lv. 2"
-    type="Active" manaCost="22" castTime="2s" cooldown="30s" duration="per Lv." range="9" target="Party"
+{{< skill name="Gloria" maxLevel="1" requires="Magic Sense Lv. 2"
+    type="Active" manaCost="22" castTime="2s" cooldown="30s" duration="90s" range="9" target="Party"
     description="A quiet benediction that lets a crafter's hands find the better cut. Every item the party starts crafting while it holds rolls its random stats with better odds." >}}
 
-The bonus is added to the chance of every [random stat](/docs/mechanics/items/#forging-and-random-stats) slot and socket of the item.
-
-| Lv. | Random Stat Chance | Duration |
-| --- | ------------------ | -------- |
-| 1   | +5%                | 30s      |
-| 2   | +10%               | 60s      |
-| 3   | +15%               | 90s      |
+`+15%` to the chance of every [random stat](/docs/mechanics/items/#forging-and-random-stats) slot and socket of the item.
 
 {{< /skill >}}
 
-{{< skill name="Aqua Benedicta" maxLevel="1" requires="Status Recovery Lv. 1"
+{{< skill name="Aqua Benedicta" maxLevel="1" requires="Signum Crucis Lv. 1"
     type="Active" manaCost="12" castTime="3s" cooldown="5s" range="0" target="Self"
     description="The rite of blessing plain water into [Holy Water](/docs/mechanics/item-list/#holy-water). User must be standing in water, consuming an [Empty Bottle](/docs/mechanics/item-list/#empty-bottle) in the process. Holy Water is the reagent behind Aspersio and several higher rites." >}}
 {{< /skill >}}
 
-{{< skill name="Blessing" maxLevel="10" requires="Heal Lv. 3"
+{{< skill name="Blessing" maxLevel="5" requires="Heal Lv. 3"
     type="Active" manaCost="28" castTime="2s" cooldown="None" duration="per Lv." range="9" target="Party"
-    description="A benediction that steadies body and mind, raising a party's core stats for a short while." >}}
+    description="A benediction that steadies body and mind and lends striking power, raising a party's core stats for a short while." >}}
 
 On an Undead or Demon target it turns into a curse: it halves DEX and INT instead.
 
-| Lv. | STR/INT/DEX | HIT | Duration |
-| --- | ----------- | --- | -------- |
-| 1   | +1          | +2  | 60s      |
-| 2   | +2          | +4  | 80s      |
-| 3   | +3          | +6  | 100s     |
-| 4   | +4          | +8  | 120s     |
-| 5   | +5          | +10 | 140s     |
-| 6   | +6          | +12 | 160s     |
-| 7   | +7          | +14 | 180s     |
-| 8   | +8          | +16 | 200s     |
-| 9   | +9          | +18 | 220s     |
-| 10  | +10         | +20 | 240s     |
+| Lv. | STR/INT/DEX | HIT | ATK and MATK | Duration |
+| --- | ----------- | --- | ------------ | -------- |
+| 1   | +2          | +4  | +3           | 80s      |
+| 2   | +4          | +8  | +6           | 120s     |
+| 3   | +6          | +12 | +9           | 160s     |
+| 4   | +8          | +16 | +12          | 200s     |
+| 5   | +10         | +20 | +15          | 240s     |
 
 {{< /skill >}}
 
-{{< skill name="Increase AGI" maxLevel="5"
+{{< skill name="Increase AGI" maxLevel="3"
     type="Active" manaCost="20" castTime="Instant" cooldown="None" duration="per Lv." range="9" target="Ally"
     description="Lightens a target's limbs with borrowed haste, quickening step and swing alike." >}}
 Grants a flat `+15%` Movement Speed at any level, plus the table below. The bonus only lasts while the buff holds, and
@@ -1353,22 +1331,8 @@ it **stacks** with the permanent [Quick Travel](#skill-quick-travel), so a well-
 | Lv. | AGI | ASPD | Duration |
 | --- | --- | ---- | -------- |
 | 1   | +4  | +1%  | 80s      |
-| 2   | +5  | +2%  | 100s     |
-| 3   | +6  | +3%  | 120s     |
-| 4   | +7  | +4%  | 140s     |
-| 5   | +8  | +5%  | 160s     |
-
-{{< /skill >}}
-
-{{< skill name="Decrease AGI" maxLevel="3" requires="Increase AGI Lv. 2"
-    type="Active" manaCost="20" castTime="Instant" cooldown="5s" duration="30s" range="9" target="Enemy"
-    description="The same rite turned inside out - a mote of leaden mana that slows an enemy's step and swing instead of quickening it." >}}
-
-| Lv. | Movement/Attack Speed Reduction |
-| --- | ------------------------------- |
-| 1   | 4%                              |
-| 2   | 8%                              |
-| 3   | 12%                             |
+| 2   | +6  | +3%  | 120s     |
+| 3   | +8  | +5%  | 160s     |
 
 {{< /skill >}}
 
@@ -1418,39 +1382,17 @@ The veil covers a radius of 3m.
 
 {{< /skill >}}
 
-{{< skill name="Demon Bane" maxLevel="3" requires="Signum Crucis Lv. 2"
+{{< skill name="Demon Bane" maxLevel="5" requires="Signum Crucis Lv. 2"
     type="Passive"
-    description="Years spent studying the weak points of the unholy pay off passively - every strike against a demon or undead lands that much harder." >}}
+    description="Years spent studying the weak points of the unholy pay off - every strike against a Demon or Undead lands harder, and what they strike back with lands softer." >}}
 
-| Lv. | Damage vs Demon/Undead |
-| --- | ---------------------- |
-| 1   | +8%                    |
-| 2   | +16%                   |
-| 3   | +24%                   |
-
-{{< /skill >}}
-
-{{< skill name="Divine Protection" maxLevel="3" requires="Signum Crucis Lv. 2"
-    type="Passive"
-    description="The defensive twin of Demon Bane - a standing ward that dulls what comes back the other way from anything unholy." >}}
-
-| Lv. | Damage Taken Reduction from Demon/Undead |
-| --- | ---------------------------------------- |
-| 1   | 10%                                      |
-| 2   | 20%                                      |
-| 3   | 30%                                      |
-
-{{< /skill >}}
-
-{{< skill name="Impositio Manus" maxLevel="3" requires="Blessing Lv. 3"
-    type="Active" manaCost="26" castTime="1s" cooldown="20s" duration="60s" range="2" target="Ally"
-    description="The laying on of hands, channeling raw striking power into a single ally rather than the whole party." >}}
-
-| Lv. | ATK and MATK |
-| --- | ------------ |
-| 1   | +5           |
-| 2   | +10          |
-| 3   | +15          |
+| Lv. | Damage vs Demon/Undead | Damage Taken from Demon/Undead |
+| --- | ---------------------- | ------------------------------ |
+| 1   | +5%                    | -6%                            |
+| 2   | +10%                   | -12%                           |
+| 3   | +15%                   | -18%                           |
+| 4   | +20%                   | -24%                           |
+| 5   | +25%                   | -30%                           |
 
 {{< /skill >}}
 
@@ -1474,7 +1416,7 @@ The veil covers a radius of 3m.
 
 {{< /skill >}}
 
-{{< skill name="Turn Undead" maxLevel="5" requires="Demon Bane Lv. 3 and Holy Light Lv. 3"
+{{< skill name="Turn Undead" maxLevel="3" requires="Demon Bane Lv. 3 and Holy Light Lv. 3"
     type="Active" manaCost="30" castTime="2s" cooldown="5s" range="9" target="Enemy"
     description="A judgment of pure holy mana that punches through armor and unravels the unnatural knot holding an undead together." >}}
 Higher levels raise the chance of an instant kill against sufficiently weak undead.
@@ -1484,10 +1426,8 @@ Inflicts single target Holy, armor piercing damage. If the target is an Undead p
 | Lv. | Base Chance of Effect |
 | --- | --------------------- |
 | 1   | 8%                    |
-| 2   | 16%                   |
-| 3   | 24%                   |
-| 4   | 32%                   |
-| 5   | 40%                   |
+| 2   | 24%                   |
+| 3   | 40%                   |
 
 ```text
 Chance of Effect = [Base_Chance_of_Effect + (BaseLv ÷ 10) + (INT ÷ 10) + (WIL ÷ 10) + {1 − (Target_HP ÷ Target_MaxHP)} × 20]%
