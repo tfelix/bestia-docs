@@ -122,7 +122,7 @@ are listed in [Weapon Type](/docs/mechanics/items/#weapon-type).
 | [Wizard](#wizard)         | Warrior   | Cloth  | Wand, Staff, Tome                                              |
 | [Assassin](#assassin)     | Warrior   | Light  | Dagger, Fist, Sword, Thrown                                    |
 | [Knight](#knight)         | Warrior   | Heavy  | Sword, Greatsword, Axe, Greataxe, Mace, Hammer, Spear, Polearm |
-| Brawler (parked)          | Warrior   | Light  | Fist, Staff                                                    |
+| [Brawler](#brawler)       | Warrior   | Light  | Fist, Staff                                                    |
 | Hunter (parked)           | Warrior   | Light  | Spear, Bow, Crossbow, Thrown                                   |
 | Bard (parked)             | Warrior   | Light  | Sword, Bow, Instrument                                         |
 | Dancer (parked)           | Warrior   | Light  | Whip, Bow, Thrown                                              |
@@ -1927,9 +1927,9 @@ The weapon takes on the element, so the [element table](/docs/mechanics/bestia-d
 
 ## Warrior Tree
 
-Where the other trees build, gather and study, the Warrior tree is built to fight. Wizards burn the battlefield down with elemental and arcane fury, Assassins strike from hiding with poisoned blades, and Knights hold the front line in plate.
+Where the other trees build, gather and study, the Warrior tree is built to fight. Wizards burn the battlefield down with elemental and arcane fury, Brawlers fight with fist and staff, Assassins strike from hiding with poisoned blades, and Knights hold the front line in plate.
 
-{{< alert context="warning" text="Wizard, Assassin and Knight ship with the initial release. Brawler, Hunter, Bard and Dancer are designed but parked - their skills are kept in this page as a comment so the work is not lost. No parked tree counts against any rank budget until it is unparked." />}}
+{{< alert context="warning" text="Wizard, Brawler, Assassin and Knight ship with the initial release. Hunter, Bard and Dancer are designed but parked - their skills are kept in this page as a comment so the work is not lost. No parked tree counts against any rank budget until it is unparked." />}}
 
 ```mermaid
 graph TD
@@ -1939,7 +1939,7 @@ graph TD
     Meditation["Meditation (1-5)"]
     Gate["5+ pts in Warrior Tree"]
     Wizard["Wizard"]
-    %% Brawler(("Brawler")) %% parked
+    Brawler["Brawler"]
     %% Hunter(("Hunter")) %% parked
     Assassin["Assassin"]
     Knight["Knight"]
@@ -1951,7 +1951,7 @@ graph TD
     MagicArmor -.-> Gate
     Meditation -.-> Gate
     Gate -.->|unlocks| Wizard
-    %% Gate -.->|unlocks| Brawler
+    Gate -.->|unlocks| Brawler
     %% Gate -.->|unlocks| Hunter
     Gate -.->|unlocks| Assassin
     Gate -.->|unlocks| Knight
@@ -2388,43 +2388,193 @@ Regardless of level, the reduction is capped at `25%` against other Bestia Maste
 
 {{< /skill >}}
 
-<!-- Parked
 ### Brawler
 
-No fancy footwork, no elemental theatrics - just the kind of toughness that keeps going long after everyone else has called it quits.
+No fancy footwork, no elemental theatrics - just fists, a staff, and the kind of toughness that keeps going long after everyone else has called it quits.
 
 {{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [warrior tree](#warrior-tree)" />}}
 
+```mermaid
+graph TD
+    IronSkin[/"Iron Skin (Warrior Tree)"/]
+    ToughGuy["Tough Guy (1-5)"]
+    SecondWind["Second Wind (1-3)"]
+    Unbreakable["Unbreakable (1-3)"]
+    IronFist["Iron Fist (1-10)"]
+    TripleBlow["Triple Blow (1-10)"]
+    ChainCombo["Chain Combo (1-5)"]
+    BattleFury["Battle Fury (1-3)"]
+    UltimaFist["Ultima Fist (1-5)"]
+    StaffSweep["Staff Sweep (1-5)"]
+    Rush["Rush (1)"]
+
+    ToughGuy -->|Lv.3| SecondWind
+    SecondWind -->|Lv.2| Unbreakable
+    IronSkin -->|Lv.3| Unbreakable
+    ToughGuy -->|Lv.3| BattleFury
+
+    IronFist -->|Lv.3| TripleBlow
+    TripleBlow -->|Lv.5| ChainCombo
+    BattleFury -->|Lv.3| UltimaFist
+    ChainCombo -->|Lv.3| UltimaFist
+
+    StaffSweep -->|Lv.2| Rush
+```
+
+<br>
 {{< skill name="Tough Guy" maxLevel="5"
     type="Passive"
     description="A Brawler's conditioning - stamina holds out longer under strain and comes back quicker once it's spent." >}}
 
 | Lv. | Stamina Cost Reduction | Stamina Regeneration |
-| --- | ----------------- | -------------------- |
-| 1   | 10%              | +10%                 |
-| 2   | 20%              | +20%                 |
-| 3   | 30%              | +30%                 |
-| 4   | 40%              | +40%                 |
-| 5   | 50%              | +50%                 |
+| --- | ---------------------- | -------------------- |
+| 1   | 10%                    | +10%                 |
+| 2   | 20%                    | +20%                 |
+| 3   | 30%                    | +30%                 |
+| 4   | 40%                    | +40%                 |
+| 5   | 50%                    | +50%                 |
 
 {{< /skill >}}
 
 {{< skill name="Second Wind" maxLevel="3" requires="Tough Guy Lv. 3"
-    type="Active" manaCost="0" castTime="Instant" cooldown="180s" range="0" target="Self"
+    type="Active" manaCost="0" castTime="Instant" cooldown="per Lv." range="0" target="Self"
     description="A Brawler's answer to running on empty: dig deep once, and get back up." >}}
-{{< skill-level level="1" >}}Once every few minutes, can trigger a burst that restores a portion of Stamina immediately.{{< /skill-level >}}
-{{< skill-level level="2" >}}The burst also restores a small portion of HP.{{< /skill-level >}}
-{{< skill-level level="3" >}}Cooldown between bursts is reduced.{{< /skill-level >}}
+
+| Lv. | Stamina Restored | HP Restored | Cooldown |
+| --- | ---------------- | ----------- | -------- |
+| 1   | 50%              | -           | 180s     |
+| 2   | 50%              | 20%         | 180s     |
+| 3   | 50%              | 20%         | 120s     |
+
 {{< /skill >}}
 
 {{< skill name="Unbreakable" maxLevel="3" requires="Iron Skin Lv. 3 and Second Wind Lv. 2"
     type="Passive"
     description="The Brawler's capstone. Everyone else has a breaking point; this is the skill that argues otherwise." >}}
-{{< skill-level level="1" >}}Once per cooldown, an otherwise lethal hit instead leaves the Bestia at 1 HP.{{< /skill-level >}}
-{{< skill-level level="2" >}}Stagger and knockback effects are greatly reduced while above 50% HP.{{< /skill-level >}}
-{{< skill-level level="3" >}}Cooldown of the lethal-hit save is reduced.{{< /skill-level >}}
+
+Once per cooldown, an otherwise lethal hit leaves the master at 1 HP instead.
+
+| Lv. | Cooldown | Extra                                             |
+| --- | -------- | ------------------------------------------------- |
+| 1   | 10 min   |                                                   |
+| 2   | 10 min   | Stun and knockback last half as long above 50% HP |
+| 3   | 6 min    | Stun and knockback last half as long above 50% HP |
+
 {{< /skill >}}
 
+{{< skill name="Iron Fist" maxLevel="10"
+    type="Passive"
+    description="Knuckles hardened on posts, walls and the occasional jaw." >}}
+
+| Lv. | ATK with Fist Weapons |
+| --- | --------------------- |
+| 1   | +3                    |
+| 2   | +6                    |
+| 3   | +9                    |
+| 4   | +12                   |
+| 5   | +15                   |
+| 6   | +18                   |
+| 7   | +21                   |
+| 8   | +24                   |
+| 9   | +27                   |
+| 10  | +30                   |
+
+{{< /skill >}}
+
+{{< skill name="Triple Blow" maxLevel="10" requires="Iron Fist Lv. 3"
+    type="Passive"
+    description="Every swing carries the chance to become three, faster than the eye can follow." >}}
+
+A basic attack that triggers strikes three times for `200%` ATK in all.
+
+| Lv. | Chance per Basic Attack |
+| --- | ----------------------- |
+| 1   | 3%                      |
+| 2   | 6%                      |
+| 3   | 9%                      |
+| 4   | 12%                     |
+| 5   | 15%                     |
+| 6   | 18%                     |
+| 7   | 21%                     |
+| 8   | 24%                     |
+| 9   | 27%                     |
+| 10  | 30%                     |
+
+{{< /skill >}}
+
+{{< skill name="Chain Combo" maxLevel="5" requires="Triple Blow Lv. 5"
+    type="Active" manaCost="15" castTime="Instant" cooldown="None" range="1" target="Enemy"
+    description="Follows a Triple Blow at once with four more hits, before the target has found its feet." >}}
+
+Can only be used right after a [Triple Blow](#skill-triple-blow).
+
+| Lv. | ATK over Four Hits |
+| --- | ------------------ |
+| 1   | 300%               |
+| 2   | 350%               |
+| 3   | 400%               |
+| 4   | 450%               |
+| 5   | 500%               |
+
+{{< /skill >}}
+
+{{< skill name="Battle Fury" maxLevel="3" requires="Tough Guy Lv. 3"
+    type="Active" manaCost="20" castTime="Instant" cooldown="60s" duration="per Lv." range="0" target="Self"
+    description="Works the Brawler into a red haze: more strength behind every blow, less care for what comes back." >}}
+
+Applies [Berserk](/docs/mechanics/status-effects/#all-status-effects): `+60%` ATK and `+30%` attack speed, but no DEF.
+
+| Lv. | Duration |
+| --- | -------- |
+| 1   | 10s      |
+| 2   | 20s      |
+| 3   | 30s      |
+
+{{< /skill >}}
+
+{{< skill name="Ultima Fist" maxLevel="5" requires="Battle Fury Lv. 3 and Chain Combo Lv. 3"
+    type="Active" manaCost="10" castTime="Instant" cooldown="None" range="1" target="Enemy"
+    description="The Brawler's finisher: every last drop of mana poured into a single blow." >}}
+
+Only while Berserk and with at least half the mana. Deals `ATK * (4 + mana spent / 10)` and spends all mana. Afterwards
+the Berserk ends and [Mana Sealed](/docs/mechanics/status-effects/#all-status-effects) stops mana regeneration for
+`5 min`.
+
+| Lv. | Damage Bonus |
+| --- | ------------ |
+| 1   | +10%         |
+| 2   | +20%         |
+| 3   | +30%         |
+| 4   | +40%         |
+| 5   | +50%         |
+
+{{< /skill >}}
+
+{{< skill name="Staff Sweep" maxLevel="5"
+    type="Active" manaCost="20" castTime="Instant" cooldown="6s" range="0" target="Self"
+    description="A wide sweep of the staff that clears a circle around the Brawler." >}}
+
+Needs a staff. Hits every enemy within `2m` and knocks them back `1m`.
+
+| Lv. | ATK  |
+| --- | ---- |
+| 1   | 120% |
+| 2   | 140% |
+| 3   | 160% |
+| 4   | 180% |
+| 5   | 200% |
+
+{{< /skill >}}
+
+{{< skill name="Rush" maxLevel="1" requires="Staff Sweep Lv. 2"
+    type="Active" manaCost="12" castTime="Instant" cooldown="10s" range="6" target="Enemy"
+    description="Covers the ground to a target in a single burst of speed." >}}
+
+Dashes up to `6m` to the target.
+
+{{< /skill >}}
+
+<!-- Parked
 ### Hunter
 
 Neither predator nor prey, exactly. Hunters move like the terrain isn't there and build the kind of bond with wild Bestia that makes taming look almost effortless.
