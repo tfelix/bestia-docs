@@ -2505,11 +2505,13 @@ Masters of hidden infiltration. They can deal high amount of single target damag
 
 {{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [warrior tree](#warrior-tree)" />}}
 
+The Assassin has two routes. The **Shadow** strikes from hiding with Hide, Cloak, Backstab and Shadow Step. The **Duelist** fights in the open with two blades and poison. Strip Equipment and Plagiarism serve both.
+
 ```mermaid
 graph TD
     StripEquipment["Strip Equipment (1-5)"]
     DualWield["Dual Wield (1-5)"]
-    EquipmentCoating["Equipment Coating (1-5)"]
+    EquipmentCoating["Equipment Coating (1-3)"]
     GutPunch["Gut Punch (1-3)"]
     SonicBlow["Sonic Blow (1-5)"]
 
@@ -2518,11 +2520,10 @@ graph TD
     Backstab["Backstab (1-5)"]
     ShadowStep["Shadow Step (1-3)"]
 
-    PoisonResearch["Poison Research (1-10)"]
+    PoisonResearch["Poison Research (1-5)"]
     EnchantPoison["Enchant Poison (1-5)"]
 
-    Plagiarism["Plagiarism (1-10)"]
-    Preserve["Preserve (1)"]
+    Plagiarism["Plagiarism (1-5)"]
 
     StripEquipment -->|Lv.2| DualWield
     StripEquipment -->|Lv.3| EquipmentCoating
@@ -2533,7 +2534,6 @@ graph TD
     Backstab -->|Lv.3| ShadowStep
     Cloak -->|Lv.1| ShadowStep
     PoisonResearch -->|Lv.3| EnchantPoison
-    Plagiarism -->|Lv.5| Preserve
 ```
 
 <br>
@@ -2573,7 +2573,7 @@ weapon always swings for less than the main hand. Rank buys that gap back.
 
 {{< /skill >}}
 
-{{< skill name="Equipment Coating" maxLevel="5" requires="Strip Equipment Lv. 3"
+{{< skill name="Equipment Coating" maxLevel="3" requires="Strip Equipment Lv. 3"
     type="Active" manaCost="26" castTime="2s" cooldown="None" duration="10 min" range="0" target="Self"
     description="A thin, oiled coating worked into weapons and armor that slows their wear and shrugs off attempts to strip them away." >}}
 
@@ -2582,10 +2582,8 @@ Coats every piece the Assassin wears. While it holds, [Strip Equipment](#skill-s
 | Lv. | Durability Wear |
 | --- | --------------- |
 | 1   | -20%            |
-| 2   | -40%            |
-| 3   | -60%            |
-| 4   | -80%            |
-| 5   | -100%           |
+| 2   | -60%            |
+| 3   | -100%           |
 
 {{< /skill >}}
 
@@ -2678,7 +2676,7 @@ Only works from [Hide](#skill-hide) or [Cloak](#skill-cloak), and only from behi
 
 {{< /skill >}}
 
-{{< skill name="Poison Research" maxLevel="10"
+{{< skill name="Poison Research" maxLevel="5"
     type="Passive"
     description="A long, unhealthy familiarity with everything that should not be swallowed. Raises how hard the Assassin's own poisons bite and how well they shrug off somebody else's." >}}
 
@@ -2687,16 +2685,11 @@ The poisons themselves are not made here - they are ordinary Alchemist goods, br
 
 | Lv. | Poison Damage | Poison Resistance |
 | --- | ------------- | ----------------- |
-| 1   | +10%          | +5%               |
-| 2   | +20%          | +10%              |
-| 3   | +30%          | +15%              |
-| 4   | +40%          | +20%              |
-| 5   | +50%          | +25%              |
-| 6   | +60%          | +30%              |
-| 7   | +70%          | +35%              |
-| 8   | +80%          | +40%              |
-| 9   | +90%          | +45%              |
-| 10  | +100%         | +50%              |
+| 1   | +20%          | +10%              |
+| 2   | +40%          | +20%              |
+| 3   | +60%          | +30%              |
+| 4   | +80%          | +40%              |
+| 5   | +100%         | +50%              |
 
 {{< /skill >}}
 
@@ -2717,31 +2710,24 @@ bites; this skill decides how often it lands.
 
 {{< /skill >}}
 
-{{< skill name="Plagiarism" maxLevel="10"
+{{< skill name="Plagiarism" maxLevel="5"
     type="Passive"
     description="A passive knack for stealing more than just gold - whenever the Assassin is struck by an enemy spell, there's a chance they memorize it well enough to cast it back once. Casting the copied spell consumes it, and getting hit by a new spell overwrites whatever was memorized before." >}}
 
 Bestia attacks can be copied too. The cap is the attack level, as for [Spell Inscription](#skill-spell-inscription). A
-master's spell counts 10 attack levels per skill level, so Plagiarism Lv. 3 copies a Fire Bolt up to Lv. 3.
+master's spell counts 10 attack levels per skill level, so Plagiarism Lv. 2 copies a Fire Bolt up to Lv. 4.
+
+At Lv. 5 the Assassin keeps what they stole: a new spell no longer overwrites the copy, which is only lost when it is
+cast.
 
 | Lv. | Copy Chance | Max Attack Level Copied |
 | --- | ----------- | ----------------------- |
-| 1   | 5%          | 10                      |
-| 2   | 10%         | 20                      |
-| 3   | 15%         | 30                      |
-| 4   | 20%         | 40                      |
-| 5   | 25%         | 50                      |
-| 6   | 30%         | 60                      |
-| 7   | 35%         | 70                      |
-| 8   | 40%         | 80                      |
-| 9   | 45%         | 90                      |
-| 10  | 50%         | 100+                    |
+| 1   | 10%         | 20                      |
+| 2   | 20%         | 40                      |
+| 3   | 30%         | 60                      |
+| 4   | 40%         | 80                      |
+| 5   | 50%         | 100+                    |
 
-{{< /skill >}}
-
-{{< skill name="Preserve" maxLevel="1" requires="Plagiarism Lv. 5"
-    type="Active" manaCost="10" castTime="Instant" cooldown="2s" duration="Until cancelled" range="0" target="Self"
-    description="Toggle. While active, a spell memorized via Plagiarism is not lost to a fresh copy - the Assassin keeps whatever they stole last until they switch this off and let a new hit overwrite it." >}}
 {{< /skill >}}
 
 ### Knight
