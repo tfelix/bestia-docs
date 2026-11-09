@@ -346,7 +346,7 @@ The charthouse is that promise, in your pocket:
 
 # The Compendium
 
-The app carries your [Bestia Compendium](/docs/mechanics/bestia-compendium/): every species number, with the ones
+The app carries your [Bestia Compendium](/docs/mechanics/bestia/#bestia-compendium): every species number, with the ones
 you have seen filled in, a search, and a filter for seen and caught species. From a seen species, the map shows
 where it lives on the ground you have charted.
 
