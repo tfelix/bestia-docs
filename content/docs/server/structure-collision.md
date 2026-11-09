@@ -79,6 +79,35 @@ The first pieces, from `structure-pieces.yml`:
 
 A storey is 3 m: a floor stands at 0.5, the next one at 3.5, and six tiles of stairs connect them.
 
+## Nothing hangs in the air
+
+Every piece has a **stability**. A piece with a cell on terrain has 1. Two pieces touch when a cell of one is in,
+beside, above or below a cell of the other. A piece takes the best stability of the pieces it touches, less a
+loss set by its material:
+
+| Material | Rests on or hangs from | Held from the side | Minimum |
+|---|---|---|---|
+| Wood | −0.125 | −0.2 | 0.1 |
+
+A piece below the minimum cannot be placed. A floor on a wall has 0.875 and carries three more floors out beside
+it: a balcony or a short bridge stands, a long one does not. A pillar put under it makes it stable again.
+
+The stability is settled from the ground up whenever a piece stands or falls. When a piece falls, the pieces it
+held may drop below the minimum. Collapsing them is slice 4; until then they stay.
+
+## Building
+
+Wall, floor and stairs kits put a piece down through the normal kit flow, up to 6 tiles from the builder. On the
+client the kit holds a see-through ghost. A ray from the pointer walks the voxels and stops at the first built
+cell, wall or terrain:
+
+- The ghost goes into the free cell in front of what was hit.
+- Aimed at the top metre of a wall, it goes on top of the wall. This is how a ceiling snaps onto walls.
+- A wall aimed at a floor stands in the floor's half cell, so walls line up across a house.
+
+The ghost is red where its cells are taken or nothing holds it, and a click there is not sent. The client does not
+check the stability, so a piece reaching too far out can still be refused by the server.
+
 ## Walk table
 
 The walk table (`WalkableTile`) already holds several standing surfaces per column: cave floors, bridges,
@@ -126,9 +155,9 @@ the door's state and owner at query time. Opening a door never rebuilds a walk t
 Each slice is one branch and one pull request, stacked on the previous.
 
 1. **Collision core.** Walls, floors and stairs block movement and lead to an upper floor. Server rules and
-   client prediction agree. Pieces are drawn as the cells they block until they have models. Still open: kit
-   items and a build mode that can place a piece above the ground, and re-grounding whoever stood on a piece
-   that is removed.
+   client prediction agree. Pieces need support to be placed, and kits with a snapping build mode put them up.
+   Pieces are drawn as the cells they block until they have models. Still open: re-grounding whoever stood on a
+   piece that is removed.
 2. **Line of sight** for attacks and spells, terrain included.
 3. **AI perception** through line of sight, cached per observer and target for a few ticks.
 4. **HP, support, undermining.** Pieces take damage and die. Support is a search down to the ground. A piece
