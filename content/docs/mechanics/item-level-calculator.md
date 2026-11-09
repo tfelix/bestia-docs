@@ -1,6 +1,6 @@
 ---
 title: Item Level Calculator
-description: "The calculator section of Forging & Random Stats, kept in its own file."
+description: "The calculator section of Forging and Random Stats, kept in its own file."
 build:
   render: never
   list: never
