@@ -214,6 +214,9 @@ to nothing is `AIR`. Three consequences follow directly from there being no buil
 - **A voxel appears once**, keyed on position rather than logged, so mining the same spot across many
   swings costs one entry, not one per swing.
 
+Player-built walls and floors stay out of the voxels on purpose. They live in a cell overlay beside them, see
+[Structure Collision](/docs/server/structure-collision).
+
 Every read goes through one path: `ChunkStore.merged(chunk)` returns the baked blob if the chunk has one,
 otherwise the cached/generated base with any delta applied. There is deliberately no API that hands out an
 unmerged base to a caller that might be authoritative over anything — line of sight, projectile collision and
