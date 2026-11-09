@@ -985,17 +985,20 @@ are still to be decided.
 
 {{< skill name="Weather Sense" maxLevel="3" requires="Cartography Lv. 2"
     type="Passive"
-    description="Charting the same valley through a dozen seasons teaches a Prospector to read the sky above it. An instinct for what the wind is about to do, well before the storm arrives." >}}
+    description="Charting the same valley through a dozen seasons teaches a Prospector to read the sky above it. An instinct for what the wind is about to do, well before the storm arrives, and for where the mana runs thick or thin." >}}
 Level 1 shows you the current wind direction and speed. See [Weather](/docs/mechanics/environment/#weather) for what each
 front does to the world.
 
+It also reads the [mana in the land](/docs/mechanics/environment/#mana-concentration). Level 1 shows the mana
+concentration where you stand. Higher levels point to the nearest stronger and weaker mana fields.
+
 {{< alert context="info" text="To do: give the weather types more effects of their own, so that seeing them coming matters more and this skill gains weight." />}}
 
-| Lv. | Forecast Range |
-| --- | -------------- |
-| 1   | 5 min          |
-| 2   | 10 min         |
-| 3   | 15 min         |
+| Lv. | Forecast Range | Mana Field Range |
+| --- | -------------- | ---------------- |
+| 1   | 5 min          | Where you stand  |
+| 2   | 10 min         | 1km              |
+| 3   | 15 min         | 2km              |
 
 {{< /skill >}}
 
@@ -1302,6 +1305,7 @@ Books, wards and long nights spent staring into scrying bowls. Sages study magic
 
 ```mermaid
 graph TD
+    MagicSense[/"Magic Sense (Scholar Tree)"/]
     Observation[/"Observation (Scholar Tree)"/]
     SpellTraining["Spell Training (1-10)"]
     FreeCast["Free Cast (1-5)"]
@@ -1309,7 +1313,7 @@ graph TD
     Dispel["Dispel (1-5)"]
     SpellInscription["Spell Inscription (1-10)"]
     SpellBinding["Spell Binding (1-10)"]
-    Teleport["Teleport (1-3)"]
+    Teleport["Teleport (1-2)"]
     WarpPortal["Warp Portal (1-5)"]
     MagicRod["Magic Rod (1-3)"]
     ManaDrain["Mana Drain (1-3)"]
@@ -1319,9 +1323,8 @@ graph TD
     EndowIce["Endow Ice (1-3)"]
     EndowWind["Endow Wind (1-3)"]
     EndowEarth["Endow Earth (1-3)"]
-    ElementalEmpowerment["Elemental Empowerment (1-3)"]
 
-    Observation -->|Lv.5| SpellTraining
+    MagicSense -->|Lv.3| SpellTraining
     Observation -->|Lv.3| Scry
     SpellTraining -->|Lv.2| Dispel
     SpellTraining -->|Lv.3| SpellInscription
@@ -1339,18 +1342,30 @@ graph TD
     FreeCast -->|Lv.2| EndowIce
     FreeCast -->|Lv.2| EndowWind
     FreeCast -->|Lv.2| EndowEarth
-    EndowWind -->|Lv.1| ElementalEmpowerment
-    EndowIce -->|Lv.1| ElementalEmpowerment
-    EndowFire -->|Lv.1| ElementalEmpowerment
-    EndowEarth -->|Lv.1| ElementalEmpowerment
 ```
 
 <br>
 
-{{< skill name="Spell Training" maxLevel="10" requires="Observation Lv. 5"
+{{< skill name="Spell Training" maxLevel="10" requires="Magic Sense Lv. 3"
     type="Active" manaCost="25" castTime="10s" cooldown="None" range="2" target="Bestia"
     description="Trains a spell from a scroll into a Bestia's memory, the first step of every Sage's education." >}}
-Consumes the scroll in the process. The success chance depends on the level of the scroll.
+
+Consumes the scroll, also when the training fails. The base chance depends on the level of the spell and uses the same
+table as [Spell Inscription](#skill-spell-inscription). Each level adds to it.
+
+| Lv. | Success Chance |
+| --- | -------------- |
+| 1   | +5%            |
+| 2   | +10%           |
+| 3   | +15%           |
+| 4   | +20%           |
+| 5   | +25%           |
+| 6   | +30%           |
+| 7   | +35%           |
+| 8   | +40%           |
+| 9   | +45%           |
+| 10  | +50%           |
+
 {{< /skill >}}
 
 {{< skill name="Free Cast" maxLevel="5"
@@ -1370,6 +1385,17 @@ Consumes the scroll in the process. The success chance depends on the level of t
 {{< skill name="Scry" maxLevel="5" requires="Observation Lv. 3"
     type="Active" manaCost="30" castTime="5s" cooldown="60s" duration="20s" range="Any charted location" target="Location"
     description="Casts a Sage's sight far beyond their own eyes, scouting distant ground and the resources hiding on it before ever setting foot there." >}}
+
+The Sage sees the chosen spot for 20s. Only [charted](#skill-cartography) land can be scried.
+
+| Lv. | View Radius |
+| --- | ----------- |
+| 1   | 20m         |
+| 2   | 40m         |
+| 3   | 60m         |
+| 4   | 80m         |
+| 5   | 100m        |
+
 {{< /skill >}}
 
 {{< skill name="Dispel" maxLevel="5" requires="Spell Training Lv. 2"
@@ -1377,6 +1403,8 @@ Consumes the scroll in the process. The success chance depends on the level of t
     description="Unravels every magical effect clinging to a target in a single word, undoing buffs and curses alike." >}}
 
 Success chance is based on skill level and the target's SMDEF, with a base chance of `(50 + 10 * SkillLv)%`. Requires 1 [Yellow Mana Crystal](/docs/mechanics/item-list/#yellow-mana-crystal) per cast.
+
+{{< alert context="info" text="To do: decide whether Dispel is how a [ward stone](/docs/mechanics/pvp/#protected-zones) can be countered. The honor table already lists dispelling one." />}}
 
 | Lv. | Base Success Chance |
 | --- | ------------------- |
@@ -1405,13 +1433,13 @@ Catches a single incoming spell while the ward holds.
     type="Active" manaCost="25" castTime="1s" cooldown="15s" duration="per Lv." range="per Lv." target="Self"
     description="Opens a slow siphon on the mana of everything hostile standing too close, pulling it steadily into the Sage's own reserves for a short while." >}}
 
-Cooldown is 15s.
+Each second drains a share of each target's max mana.
 
-| Lv. | Range | Mana Drained per Second | Duration |
-| --- | ----- | ----------------------- | -------- |
-| 1   | 2m    | 1%                      | 10s      |
-| 2   | 4m    | 2%                      | 20s      |
-| 3   | 6m    | 3%                      | 30s      |
+| Lv. | Range | Max Mana Drained per Second | Duration |
+| --- | ----- | --------------------------- | -------- |
+| 1   | 2m    | 1%                          | 10s      |
+| 2   | 4m    | 2%                          | 20s      |
+| 3   | 6m    | 3%                          | 30s      |
 
 {{< /skill >}}
 
@@ -1460,23 +1488,31 @@ A negative base means the extraction is impossible on raw talent alone and only 
 {{< skill name="Spell Binding" maxLevel="10" requires="Spell Inscription Lv. 3"
     type="Active" manaCost="45" castTime="10s" cooldown="None" range="2" target="Item or Ground"
     description="Binds a spell to an object or place and ties it to a trigger, giving rise to enchanted artifacts, standing alarms and hidden traps alike." >}}
+
+{{< alert context="warning" text="To be designed: which spells can be bound, which triggers exist, and what each level adds." />}}
+
 {{< /skill >}}
 
-{{< skill name="Teleport" maxLevel="3" requires="Scry Lv. 5"
+{{< skill name="Teleport" maxLevel="2" requires="Scry Lv. 5"
     type="Active" manaCost="35" castTime="2s" cooldown="30s" range="0" target="Self"
-    description="Can teleport own bestias over a distance. To teleport somewhere one needs to setup Teleport Runes which form some kind of magical anchor - the same kind of anchor a Spell Binder learns to set for alarms and traps. They can be used as targets when trying to teleport. The teleportation gets harder and more error prone the longer distances are tried to travel. The teleported entity also gets a debuff which will prevent it from teleporting again for some time." >}}
+    description="Moves the Sage and their Bestias close by in a single step." >}}
 
-| Lv. | Destination                           |
-| --- | ------------------------------------- |
-| 1   | Teleport to a random spot within 150m |
-| 2   | Teleport back to the spawn point      |
-| 3   | Teleport to any Teleport Rune you set |
+Every cast consumes a Teleport Rune. A teleported entity cannot teleport again for 5 minutes.
+
+| Lv. | Destination                  |
+| --- | ---------------------------- |
+| 1   | A random spot within 150m    |
+| 2   | The master's home settlement |
 
 {{< /skill >}}
 
 {{< skill name="Warp Portal" maxLevel="5" requires="Teleport Lv. 2"
     type="Active" manaCost="70" castTime="5s" cooldown="120s" duration="30s" range="3" target="Ground"
-    description="The Sage's capstone. Where Teleport moves one anchor's worth of travelers once, a Portal tears a standing hole between two anchors that anyone can walk through. To teleport somewhere one needs to setup Portal Runes which form some kind of magical anchor. As soon as a portal has opened it can be used in both directions for some time." >}}
+    description="The Sage's capstone. Where Teleport moves only the Sage and their Bestias, a Portal tears a standing hole that anyone can walk through. As soon as a portal has opened it can be used in both directions for some time." >}}
+
+Every cast consumes a Portal Rune, which costs more than a Teleport Rune.
+
+{{< alert context="info" text="To do: decide where a portal leads. Runes are spent on the cast, so they cannot mark the far end." />}}
 
 | Lv. | Simultaneous Users |
 | --- | ------------------ |
@@ -1492,6 +1528,8 @@ A negative base means the extraction is impossible on raw talent alone and only 
     type="Active" manaCost="28" castTime="2s" cooldown="5s" duration="per Lv." range="5" target="Ally"
     description="Temporarily infuses an ally's weapon with the fire element, so its strikes burn as well as bite. Consumes a [Blue Mana Crystal](/docs/mechanics/item-list/#blue-mana-crystal) to carry the charge." >}}
 
+The weapon takes on the element, so the [element table](/docs/mechanics/bestia-design/#7-element-size-and-defences) applies. The bonus damage comes on top.
+
 | Lv. | Duration | Bonus Fire Damage |
 | --- | -------- | ----------------- |
 | 1   | 60s      | +5%               |
@@ -1503,6 +1541,8 @@ A negative base means the extraction is impossible on raw talent alone and only 
 {{< skill name="Endow Ice" maxLevel="3" requires="Free Cast Lv. 2"
     type="Active" manaCost="28" castTime="2s" cooldown="5s" duration="per Lv." range="5" target="Ally"
     description="Temporarily infuses an ally's weapon with the water element, wreathing each strike in biting cold. Consumes a [Blue Mana Crystal](/docs/mechanics/item-list/#blue-mana-crystal) to carry the charge." >}}
+
+The weapon takes on the element, so the [element table](/docs/mechanics/bestia-design/#7-element-size-and-defences) applies. The bonus damage comes on top.
 
 | Lv. | Duration | Bonus Water Damage |
 | --- | -------- | ------------------ |
@@ -1516,6 +1556,8 @@ A negative base means the extraction is impossible on raw talent alone and only 
     type="Active" manaCost="28" castTime="2s" cooldown="5s" duration="per Lv." range="5" target="Ally"
     description="Temporarily infuses an ally's weapon with the wind element, so its strikes crack like lightning. Consumes a [Blue Mana Crystal](/docs/mechanics/item-list/#blue-mana-crystal) to carry the charge." >}}
 
+The weapon takes on the element, so the [element table](/docs/mechanics/bestia-design/#7-element-size-and-defences) applies. The bonus damage comes on top.
+
 | Lv. | Duration | Bonus Wind Damage |
 | --- | -------- | ----------------- |
 | 1   | 60s      | +5%               |
@@ -1528,23 +1570,13 @@ A negative base means the extraction is impossible on raw talent alone and only 
     type="Active" manaCost="28" castTime="2s" cooldown="5s" duration="per Lv." range="5" target="Ally"
     description="Temporarily infuses an ally's weapon with the earth element, so its strikes land with the weight of stone. Consumes a [Blue Mana Crystal](/docs/mechanics/item-list/#blue-mana-crystal) to carry the charge." >}}
 
+The weapon takes on the element, so the [element table](/docs/mechanics/bestia-design/#7-element-size-and-defences) applies. The bonus damage comes on top.
+
 | Lv. | Duration | Bonus Earth Damage |
 | --- | -------- | ------------------ |
 | 1   | 60s      | +5%                |
 | 2   | 120s     | +10%               |
 | 3   | 180s     | +15%               |
-
-{{< /skill >}}
-
-{{< skill name="Elemental Empowerment" maxLevel="3" requires="Endow Wind Lv. 1, Endow Ice Lv. 1, Endow Fire Lv. 1 and Endow Earth Lv. 1"
-    type="Active" manaCost="80" castTime="6s" cooldown="300s" duration="per Lv." range="per Lv." target="Area"
-    description="The Sage's command of the elements grown wide enough to lean on the sky itself. Calls a chosen [weather front](/docs/mechanics/environment/#weather) - rain, gale or heat - over a large area for a time, strengthening spells and endowments of the matching element for everyone beneath it while dampening its opposite. Where a Prospector's [Weather Sense](#skill-weather-sense) only reads the sky, a Sage bends it." >}}
-
-| Lv. | Area | Duration | Matching-Element Boost |
-| --- | ---- | -------- | ---------------------- |
-| 1   | 15m  | 60s      | +10%                   |
-| 2   | 30m  | 120s     | +20%                   |
-| 3   | 45m  | 180s     | +30%                   |
 
 {{< /skill >}}
 
