@@ -124,12 +124,11 @@ are listed in [Weapon Type](/docs/mechanics/items/#weapon-type).
 | [Knight](#knight)         | Warrior   | Heavy  | Sword, Greatsword, Axe, Greataxe, Mace, Hammer, Spear, Polearm |
 | [Brawler](#brawler)       | Warrior   | Light  | Fist, Staff                                                    |
 | [Hunter](#hunter)         | Warrior   | Light  | Spear, Bow, Crossbow, Thrown                                   |
-| Bard (parked)             | Warrior   | Light  | Sword, Bow, Instrument                                         |
-| Dancer (parked)           | Warrior   | Light  | Whip, Bow, Thrown                                              |
+| [Bard](#bard)             | Warrior   | Light  | Whip, Bow, Instrument                                          |
 
 Heavy armor comes from the Knight alone, so a master who wants plate gives one of their two professions to it. Every
 fighting profession owns at least one weapon type few others share - the Knight's greatsword and polearm, the
-Assassin's fist weapons, the Dancer's whip, the Bard's instrument, the casters' tome - while every crafting and
+Assassin's fist weapons, the Bard's whip and instrument, the casters' tome - while every crafting and
 gathering profession can still defend itself.
 
 Bestias are not affected by professions. A bestia wears what its species allows, see
@@ -1927,9 +1926,7 @@ The weapon takes on the element, so the [element table](/docs/mechanics/bestia-d
 
 ## Warrior Tree
 
-Where the other trees build, gather and study, the Warrior tree is built to fight. Wizards burn the battlefield down with elemental and arcane fury, Brawlers fight with fist and staff, Hunters shoot from afar, Assassins strike from hiding with poisoned blades, and Knights hold the front line in plate.
-
-{{< alert context="warning" text="Wizard, Brawler, Hunter, Assassin and Knight ship with the initial release. Bard and Dancer are designed but parked - their skills are kept in this page as a comment so the work is not lost. No parked tree counts against any rank budget until it is unparked." />}}
+Where the other trees build, gather and study, the Warrior tree is built to fight. Wizards burn the battlefield down with elemental and arcane fury, Brawlers fight with fist and staff, Hunters shoot from afar, Assassins strike from hiding with poisoned blades, Knights hold the front line in plate, and Bards fight or play their allies to victory.
 
 ```mermaid
 graph TD
@@ -1943,8 +1940,7 @@ graph TD
     Hunter["Hunter"]
     Assassin["Assassin"]
     Knight["Knight"]
-    %% Bard(("Bard")) %% parked
-    %% Dancer(("Dancer")) %% parked
+    Bard["Bard"]
 
     Endure -.-> Gate
     IronSkin -.-> Gate
@@ -1955,8 +1951,7 @@ graph TD
     Gate -.->|unlocks| Hunter
     Gate -.->|unlocks| Assassin
     Gate -.->|unlocks| Knight
-    %% Gate -.->|unlocks| Bard
-    %% Gate -.->|unlocks| Dancer
+    Gate -.->|unlocks| Bard
 ```
 
 <br>
@@ -3133,29 +3128,100 @@ Gains `+20%` DEF and `+20%` ATK while active.
 
 {{< /skill >}}
 
-<!-- Parked
 ### Bard
 
-Where a Sage studies magic to bend it, a Bard studies it to sing along with it. Every note carried on the wind can steady an ally's arm or unstring an enemy's nerve. A Bard alone can hearten a party; a Bard standing next to a [Dancer](#dancer) can do quite a lot more.
+Bards fight and perform with the same hands. Some lash out with whip and lute and leave their enemies stumbling; others
+stay at the back and play until everyone around them, Bestia included, hits harder, moves faster and walks further.
+Most do a bit of both.
 
 {{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [warrior tree](#warrior-tree)" />}}
 
+The Bard has two routes. The **fighter** route fights with whip and instrument and weakens enemies. The **support**
+route plays songs.
+
+A **song** needs an instrument in hand. It buffs every party member and their Bestias within `3` tiles for `60s`.
+Different songs stack, and playing the same song again refreshes it.
+
+```mermaid
+graph TD
+    InstrumentMastery["Instrument Mastery (1-10)"]
+    NimbleSteps["Nimble Steps (1-5)"]
+    HobblingLash["Hobbling Lash (1-5)"]
+    DiscordStrike["Discord Strike (1-5)"]
+    DissonantChord["Dissonant Chord (1-5)"]
+    VoiceTraining["Voice Training (1-5)"]
+    BattleHymn["Battle Hymn (1-5)"]
+    WarMarch["War March (1-5)"]
+    MirageDance["Mirage Dance (1-5)"]
+    WanderersTune["Wanderer's Tune (1-5)"]
+    GrandPerformance["Grand Performance (1-3)"]
+
+    InstrumentMastery -->|Lv.3| HobblingLash
+    InstrumentMastery -->|Lv.3| DiscordStrike
+    DiscordStrike -->|Lv.3| DissonantChord
+
+    BattleHymn -->|Lv.2| WarMarch
+    VoiceTraining -->|Lv.3| MirageDance
+    BattleHymn -->|Lv.5| GrandPerformance
+    WarMarch -->|Lv.5| GrandPerformance
+```
+
+<br>
 {{< skill name="Instrument Mastery" maxLevel="10"
     type="Passive"
-    description="Training with stringed and wind instruments well enough to fight with them in a pinch and to make every song carry further and land harder." >}}
+    description="Training with lute, flute and whip until each one is as much a weapon as an instrument." >}}
 
-| Lv. | ATK (instrument equipped) | Song Range/Effect |
-| --- | ------------------------- | ----------------- |
-| 1   | +2                        | +3%               |
-| 2   | +4                        | +6%               |
-| 3   | +6                        | +9%               |
-| 4   | +8                        | +12%              |
-| 5   | +10                       | +15%              |
-| 6   | +12                       | +18%              |
-| 7   | +14                       | +21%              |
-| 8   | +16                       | +24%              |
-| 9   | +18                       | +27%              |
-| 10  | +20                       | +30%              |
+`+2 ATK` per level with an instrument or a whip.
+
+{{< /skill >}}
+
+{{< skill name="Nimble Steps" maxLevel="5"
+    type="Passive"
+    description="A Bard trusts footwork over plate and simply is not where the hit lands." >}}
+
+`+2 FLEE` per level in light armor, cloth or no armor.
+
+{{< /skill >}}
+
+{{< skill name="Hobbling Lash" maxLevel="5" requires="Instrument Mastery Lv. 3"
+    type="Active" manaCost="15" castTime="Instant" cooldown="6s" range="4" target="Enemy"
+    description="A whip strike aimed less at the flesh than at the footing." >}}
+
+Needs a whip. Hits for `120% + 20%/Lv.` ATK and leaves the target
+[Slowed](/docs/mechanics/status-effects/#all-status-effects) (`-20%` move speed).
+
+| Lv. | Slowed |
+| --- | ------ |
+| 1   | 4s     |
+| 2   | 5s     |
+| 3   | 6s     |
+| 4   | 7s     |
+| 5   | 8s     |
+
+{{< /skill >}}
+
+{{< skill name="Discord Strike" maxLevel="5" requires="Instrument Mastery Lv. 3"
+    type="Active" manaCost="18" castTime="1s" cooldown="2s" range="9" target="Enemy"
+    description="One sharp, ugly note, played loud enough to hurt." >}}
+
+Needs an instrument. A sound wave that hits the target for `150% + 30%/Lv.` ATK.
+
+{{< /skill >}}
+
+{{< skill name="Dissonant Chord" maxLevel="5" requires="Discord Strike Lv. 3"
+    type="Active" manaCost="30" castTime="2s" cooldown="20s" duration="20s" range="0" target="Area"
+    description="Off-key on purpose. Rattles nearby enemies badly enough to throw off their aim and their swing." >}}
+
+Needs an instrument. Every enemy within `3` tiles gets [ASPD Down](/docs/mechanics/status-effects/#all-status-effects)
+and loses HIT.
+
+| Lv. | HIT  |
+| --- | ---- |
+| 1   | -3%  |
+| 2   | -6%  |
+| 3   | -9%  |
+| 4   | -12% |
+| 5   | -15% |
 
 {{< /skill >}}
 
@@ -3163,224 +3229,52 @@ Where a Sage studies magic to bend it, a Bard studies it to sing along with it. 
     type="Passive"
     description="A trained voice reaches further and holds a note longer than an untrained one ever could." >}}
 
-| Lv. | Song AoE | Song Duration |
-| --- | -------- | ------------- |
-| 1   | +1 tile  | +10%          |
-| 2   | +2 tiles | +20%          |
-| 3   | +3 tiles | +30%          |
-| 4   | +4 tiles | +40%          |
-| 5   | +5 tiles | +50%          |
+| Lv. | Song Radius | Song Duration |
+| --- | ----------- | ------------- |
+| 1   | +1 tile     | +10%          |
+| 2   | +2 tiles    | +20%          |
+| 3   | +3 tiles    | +30%          |
+| 4   | +4 tiles    | +40%          |
+| 5   | +5 tiles    | +50%          |
 
 {{< /skill >}}
 
-{{< skill name="Ballad of the Fallen" maxLevel="5" requires="Instrument Mastery Lv. 3"
-    type="Active" manaCost="30" castTime="2s" cooldown="5s" duration="While playing" range="0" target="Area"
-    description="A driving battle hymn that steels the resolve of everyone in earshot." >}}
+{{< skill name="Battle Hymn" maxLevel="5"
+    type="Active" manaCost="30" castTime="2s" cooldown="5s" duration="60s" range="0" target="Party"
+    description="A driving hymn that steels the arm of everyone in earshot." >}}
 
-| Lv. | ATK and MATK (party, while playing) |
-| --- | ----------------------------------- |
-| 1   | +2%                                 |
-| 2   | +4%                                 |
-| 3   | +6%                                 |
-| 4   | +8%                                 |
-| 5   | +10%                                |
+A song. `+3% ATK and MATK` per level.
 
 {{< /skill >}}
 
-{{< skill name="War March" maxLevel="5" requires="Instrument Mastery Lv. 3"
-    type="Active" manaCost="30" castTime="2s" cooldown="5s" duration="While playing" range="0" target="Area"
-    description="A quickstep tune that puts a spring in the step and a snap in the swing of everyone marching to it." >}}
+{{< skill name="War March" maxLevel="5" requires="Battle Hymn Lv. 2"
+    type="Active" manaCost="30" castTime="2s" cooldown="5s" duration="60s" range="0" target="Party"
+    description="A quickstep tune that puts a spring in the step and a snap in the swing." >}}
 
-| Lv. | Movement/Attack Speed (party, while playing) |
-| --- | -------------------------------------------- |
-| 1   | +2%                                          |
-| 2   | +4%                                          |
-| 3   | +6%                                          |
-| 4   | +8%                                          |
-| 5   | +10%                                         |
+A song. `+2% movement and attack speed` per level.
 
 {{< /skill >}}
 
-{{< skill name="Dissonant Chord" maxLevel="5" requires="Instrument Mastery Lv. 5"
-    type="Active" manaCost="30" castTime="2s" cooldown="5s" duration="While playing" range="0" target="Area"
-    description="Deliberately off-key and unpleasant to hear by design. Rattles nearby enemies badly enough to throw off their aim and their footing." >}}
+{{< skill name="Mirage Dance" maxLevel="5" requires="Voice Training Lv. 3"
+    type="Active" manaCost="30" castTime="2s" cooldown="5s" duration="60s" range="0" target="Party"
+    description="A dance that shares the Bard's knack for not being where the hit lands." >}}
 
-| Lv. | HIT and ASPD Reduction (enemies, while playing) |
-| --- | ------------------------------------- |
-| 1   | 3%                                   |
-| 2   | 6%                                   |
-| 3   | 9%                                   |
-| 4   | 12%                                  |
-| 5   | 15%                                  |
+A song. `+3 FLEE` per level.
 
 {{< /skill >}}
 
-{{< skill name="Poem of the Netherworld" maxLevel="5" requires="Dissonant Chord Lv. 2"
-    type="Active" manaCost="34" castTime="2s" cooldown="5s" duration="While playing" range="0" target="Area"
-    description="A mournful dirge that drags at the mana of anyone unlucky enough to hear it, siphoning it into the surrounding air." >}}
+{{< skill name="Wanderer's Tune" maxLevel="5"
+    type="Active" manaCost="20" castTime="2s" cooldown="5s" duration="10 min" range="0" target="Party"
+    description="A steady, ground-eating rhythm that keeps a travelling party's legs fresh long after they should have given out." >}}
 
-| Lv. | Mana Drain per Tick (enemies, while playing) |
-| --- | -------------------------------------------- |
-| 1   | +2%                                          |
-| 2   | +4%                                          |
-| 3   | +6%                                          |
-| 4   | +8%                                          |
-| 5   | +10%                                         |
+A song that lasts `10 min` instead of `60s`. `-10%` stamina drain per level. Made for long journeys with a Bestia team.
 
 {{< /skill >}}
 
-{{< skill name="Siren's Lullaby" maxLevel="3" requires="Dissonant Chord Lv. 3"
-    type="Active" manaCost="40" castTime="2s" cooldown="5s" duration="While playing" range="0" target="Area"
-    description="Not every song is meant to be heard for long. A slow, heavy melody that can lull a listener clean off their feet." >}}
-{{< skill-level level="1" >}}Small chance per tick to put an enemy in range to sleep.{{< /skill-level >}}
-{{< skill-level level="2" >}}Sleep chance and range are increased.{{< /skill-level >}}
-{{< skill-level level="3" >}}Sleep chance is increased further and the effect ignores a portion of the target's status resistance.{{< /skill-level >}}
-{{< /skill >}}
-
-{{< skill name="Mystic Melody" maxLevel="5" requires="Voice Training Lv. 3"
-    type="Active" manaCost="30" castTime="2s" cooldown="5s" duration="While playing" range="0" target="Area"
-    description="An old wandering tune said to carry a bit of luck with it. Occasionally shakes loose a minor beneficial effect for whoever is listening." >}}
-
-| Lv. | Proc Chance per Tick |
-| --- | -------------------- |
-| 1   | +3%                  |
-| 2   | +6%                  |
-| 3   | +9%                  |
-| 4   | +12%                 |
-| 5   | +15%                 |
-
-{{< /skill >}}
-
-{{< skill name="Harmonic Duet" maxLevel="3" requires="Ballad of the Fallen Lv. 5 and War March Lv. 5"
-    type="Active" manaCost="60" castTime="3s" cooldown="30s" duration="While playing" range="0" target="Area"
-    description="The Bard's capstone. No song written for one voice sounds quite complete - performing alongside a master who has trained the [Dancer](#dancer) tree lets both of you play parts neither could carry alone." >}}
-{{< skill-level level="1" >}}While performing near a master with Dancer skills active, active songs and dances gain `+15%` effect strength for both performers' parties.{{< /skill-level >}}
-{{< skill-level level="2" >}}The bonus increases to `+25%` and the combined range is extended.{{< /skill-level >}}
-{{< skill-level level="3" >}}The bonus increases to `+40%` and a single additional song or dance from each performer can be active at the same time.{{< /skill-level >}}
-{{< /skill >}}
-
-### Dancer
-
-Where a Bard leans on breath and instrument, a Dancer leans on footwork and nerve - closing the distance, reading an enemy's weak step, and turning a whip into an argument nobody wins. A Dancer alone can unravel a fight from the inside; a Dancer standing next to a [Bard](#bard) can do quite a lot more.
-
-{{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [warrior tree](#warrior-tree)" />}}
-
-{{< skill name="Whip Mastery" maxLevel="10"
+{{< skill name="Grand Performance" maxLevel="3" requires="Battle Hymn Lv. 5 and War March Lv. 5"
     type="Passive"
-    description="Training with whips and chain-weapons until the reach stops feeling awkward. Increases damage dealt with whip-type weapons and the range at which they can strike." >}}
+    description="The Bard's capstone. Every song lands a little harder once the crowd knows who is playing." >}}
 
-| Lv. | ATK (whip equipped) | Effective Reach |
-| --- | ------------------- | --------------- |
-| 1   | +2                  | +3%             |
-| 2   | +4                  | +6%             |
-| 3   | +6                  | +9%             |
-| 4   | +8                  | +12%            |
-| 5   | +10                 | +15%            |
-| 6   | +12                 | +18%            |
-| 7   | +14                 | +21%            |
-| 8   | +16                 | +24%            |
-| 9   | +18                 | +27%            |
-| 10  | +20                 | +30%            |
+`+10%` per level to the effect of every song the master plays.
 
 {{< /skill >}}
-
-{{< skill name="Nimble Steps" maxLevel="5"
-    type="Passive"
-    description="A Dancer trusts footwork over plate. Rather than wearing heavy armor, they learn to simply not be where the hit lands." >}}
-
-| Lv. | FLEE (light/no armor) |
-| --- | --------------------- |
-| 1   | +2%                   |
-| 2   | +4%                   |
-| 3   | +6%                   |
-| 4   | +8%                   |
-| 5   | +10%                  |
-
-{{< /skill >}}
-
-{{< skill name="Slow Grace" maxLevel="5" requires="Whip Mastery Lv. 3"
-    type="Active" manaCost="20" castTime="Instant" cooldown="6s" duration="20s" range="4" target="Enemy"
-    description="A whip-strike aimed less at the flesh than at the footing. Leaves a target's steps a beat slower for a while after." >}}
-
-| Lv. | Movement/Attack Speed Reduction (target) |
-| --- | ------------------------------ |
-| 1   | 3%                            |
-| 2   | 6%                            |
-| 3   | 9%                            |
-| 4   | 12%                           |
-| 5   | 15%                           |
-
-{{< /skill >}}
-
-{{< skill name="Sultry Rhythm" maxLevel="5" requires="Slow Grace Lv. 2"
-    type="Active" manaCost="24" castTime="1s" cooldown="10s" duration="20s" range="4" target="Enemy"
-    description="A hypnotic sway that draws an enemy's guard down before they even notice it slipping." >}}
-
-| Lv. | Hard DEF and SDEF Reduction (target) |
-| --- | --------------------- |
-| 1   | 3%                   |
-| 2   | 6%                   |
-| 3   | 9%                   |
-| 4   | 12%                  |
-| 5   | 15%                  |
-
-{{< /skill >}}
-
-{{< skill name="Venomous Flourish" maxLevel="5" requires="Slow Grace Lv. 2"
-    type="Passive"
-    description="A whip's tip can carry more than momentum. Coats each strike with a mild toxin that wears an enemy down over time." >}}
-
-| Lv. | Poison Chance per Hit |
-| --- | --------------------- |
-| 1   | +2%                   |
-| 2   | +4%                   |
-| 3   | +6%                   |
-| 4   | +8%                   |
-| 5   | +10%                  |
-
-{{< /skill >}}
-
-{{< skill name="Mirage Step" maxLevel="5" requires="Nimble Steps Lv. 3"
-    type="Active" manaCost="30" castTime="2s" cooldown="5s" duration="While dancing" range="0" target="Area"
-    description="A dance performed in motion rather than in place, sharing the Dancer's own knack for not being where the hit lands with everyone nearby." >}}
-
-| Lv. | FLEE (party, while dancing) |
-| --- | --------------------------- |
-| 1   | +2%                         |
-| 2   | +4%                         |
-| 3   | +6%                         |
-| 4   | +8%                         |
-| 5   | +10%                        |
-
-{{< /skill >}}
-
-{{< skill name="Guiding Steps" maxLevel="5" requires="Nimble Steps Lv. 3"
-    type="Active" manaCost="30" castTime="2s" cooldown="5s" duration="While dancing" range="0" target="Area"
-    description="A steady, ground-eating rhythm that keeps a traveling party's legs fresh long after they should have given out." >}}
-
-| Lv. | Movement Speed (party, while dancing) | Stamina Drain Reduction (party, while dancing) |
-| --- | ------------------------------------- | ------------------------------------ |
-| 1   | +2%                                   | 2%                                  |
-| 2   | +4%                                   | 4%                                  |
-| 3   | +6%                                   | 6%                                  |
-| 4   | +8%                                   | 8%                                  |
-| 5   | +10%                                  | 10%                                 |
-
-{{< /skill >}}
-
-{{< skill name="Captivating Gaze" maxLevel="3" requires="Venomous Flourish Lv. 3"
-    type="Active" manaCost="35" castTime="1s" cooldown="20s" duration="per Lv." range="6" target="Enemy"
-    description="A held look and a held breath is sometimes all it takes. A single enemy loses track of who it was even fighting." >}}
-{{< skill-level level="1" >}}Small chance to force the target to attack a random nearby enemy instead of the Dancer's party for a short duration.{{< /skill-level >}}
-{{< skill-level level="2" >}}Chance and duration are increased.{{< /skill-level >}}
-{{< skill-level level="3" >}}Chance is increased further and the effect ignores a portion of the target's status resistance.{{< /skill-level >}}
-{{< /skill >}}
-
-{{< skill name="Radiant Waltz" maxLevel="3" requires="Mirage Step Lv. 5 and Guiding Steps Lv. 5"
-    type="Active" manaCost="60" castTime="3s" cooldown="30s" duration="While dancing" range="0" target="Area"
-    description="The Dancer's capstone. No dance choreographed for one performer sounds quite complete - performing alongside a master who has trained the [Bard](#bard) tree lets both of you play parts neither could carry alone." >}}
-{{< skill-level level="1" >}}While performing near a master with Bard skills active, active songs and dances gain `+15%` effect strength for both performers' parties.{{< /skill-level >}}
-{{< skill-level level="2" >}}The bonus increases to `+25%` and the combined range is extended.{{< /skill-level >}}
-{{< skill-level level="3" >}}The bonus increases to `+40%` and a single additional song or dance from each performer can be active at the same time.{{< /skill-level >}}
-{{< /skill >}}
--->
