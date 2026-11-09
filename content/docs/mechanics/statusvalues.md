@@ -32,11 +32,11 @@ statusValue = (baseValue + individualValue) * level / 100 + effortValue
 - Main influence value for magic domain related effects and power/damage of magic based attacks and skills.
 - Increases the duration of magical effects from the player (buffs, skills, etc)
 - Increases the total amount of available mana
-- Helps to resist Stoning, Blind, Sick, Confused and Controlled ([status effects](/docs/mechanics/status-effects/#resist))
+- Helps to resist Stoning, Blind, Sick, Confused, Controlled and Silenced ([status effects](/docs/mechanics/status-effects/#resist))
 
 ## Willpower - WIL
 
-- Helps to resist Frozen, Stoning, Withered, Feared and Controlled ([status effects](/docs/mechanics/status-effects/#resist))
+- Helps to resist Frozen, Stoning, Withered, Feared, Controlled and Silenced ([status effects](/docs/mechanics/status-effects/#resist))
 - Increases mana regeneration over time
 - Increases the duration of magic effects from the player
 - Reduces cast duration of spells

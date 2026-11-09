@@ -407,3 +407,11 @@
   resist: []
   effect: Left by Disarm for 15 s. The weapon hand stays empty; no weapon can be equipped until it ends.
   dispellable: true
+
+- id: 62
+  identifier: SILENCED
+  name: Silenced
+  polarity: DEBUFF
+  resist: [INT, WIL]
+  effect: Left by Suppress Magic for 3 s plus 1 s per level. No casts, and a cast in progress is lost. Moving and attacks still work.
+  dispellable: true
