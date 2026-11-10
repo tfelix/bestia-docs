@@ -299,11 +299,12 @@ Each try spends one Empty Paper and one Ink. Each level reduces the difficulty o
 {{< skill name="Weather Sense" maxLevel="3" requires="Cartography Lv. 2"
     type="Passive"
     description="Charting the same valley through a dozen seasons teaches a Prospector to read the sky above it. An instinct for what the wind is about to do, well before the storm arrives, and for where the mana runs thick or thin." >}}
-Level 1 shows you the current wind direction and speed. See [Weather](/docs/mechanics/world/environment/#weather) for what each
-front does to the world.
+Everyone sees the wind on the compass. Weather Sense shows the next change of weather before it arrives, 5 minutes
+ahead per level. See [Weather](/docs/mechanics/world/environment/#weather) for what each front does to the world.
 
 It also reads the [mana in the land](/docs/mechanics/world/environment/#mana-concentration). Level 1 shows the mana
-concentration where you stand. Higher levels point to the nearest stronger and weaker mana fields.
+concentration where you stand. Levels 2 and 3 put two marks on the compass: towards the nearest place where the mana
+is at least 10% stronger, and towards the nearest place where it is at least 10% weaker, each with its distance.
 
 {{< alert context="info" text="To do: give the weather types more effects of their own, so that seeing them coming matters more and this skill gains weight." />}}
 
