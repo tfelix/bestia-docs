@@ -1,5 +1,5 @@
 ---
-weight: 800
+weight: 1400
 title: Questing
 description: "Bestia's player-driven questing system: funded contracts, gather and transport commissions, escrow and reward settlement, and rare faction-contested world events like mana rifts."
 ---
