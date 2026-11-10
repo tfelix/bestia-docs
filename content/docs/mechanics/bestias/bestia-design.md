@@ -61,7 +61,7 @@ server rules, so it changes when they do:
   The method assumes +1 weapon ATK and +0.375 hard DEF per level on top. Hard DEF is a percentage cut, so a Lv 90
   master takes 38 % less damage. That is between a caster (about 27 %) and a melee in full armour (about 50 %).
 - **Random stats on the gear:** an average-roll kit of the master's level, about one attribute point per level, spread
-  like the master's own points. See [What the Numbers Mean](/docs/mechanics/items-crafting/items/#what-the-numbers-mean).
+  like the master's own points. See [What the Numbers Mean](/docs/mechanics/items-crafting/crafting/#what-the-numbers-mean).
 - **HP and attack speed:** the master's own formulas, see [Status Values](/docs/mechanics/combat/statusvalues/#health).
 
 | Level | Attributes (STR/VIT/INT/AGI/DEX/WIL) |  HP | ATK | Soft DEF | FLEE | Weapon ATK | Hard DEF | Seconds per swing |

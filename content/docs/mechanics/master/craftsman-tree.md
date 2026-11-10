@@ -6,7 +6,7 @@ description: "Blacksmith, Artificer and Alchemist: the skills that discover, pro
 
 The workbenches, forges and cauldrons of the tradesfolk turn raw ambition into things a player can actually use. Every blade, trinket and bottled miracle a master ever relies on started out as somebody's Craftsman skill paying off.
 
-Crafting always runs in two phases: a Craftsman first **discovers a blueprint** by experimenting with raw materials, then **produces** that item from it as often as they like. The skills below govern how reliably a Craftsman discovers, produces and refines within their trade — see [Item Crafting](/docs/mechanics/items-crafting/items/#item-crafting) for the full system.
+Crafting always runs in two phases: a Craftsman first **discovers a blueprint** by experimenting with raw materials, then **produces** that item from it as often as they like. The skills below govern how reliably a Craftsman discovers, produces and refines within their trade — see [Item Crafting](/docs/mechanics/items-crafting/crafting/#item-crafting) for the full system.
 
 {{< alert context="info" text="A skill that works at a station unlocks the kit for that station at Lv. 1. The kit is crafted in Handiwork and placed from the bag, see [Crafting Stations](/docs/mechanics/items-crafting/crafting-stations/#kits-place-stations)." />}}
 
@@ -56,7 +56,7 @@ Lumberjack Cabin. To build one, the master needs level 1 of the skill that uses 
 | 10  | +50%           | 100+           |
 
 This bonus is added on top of the item-level base chance and the crafter's DEX/WIL — see
-[Construction Crafting Success Chance](/docs/mechanics/items-crafting/items/#construction-crafting-success-chance) for the full formula.
+[Construction Crafting Success Chance](/docs/mechanics/items-crafting/crafting/#construction-crafting-success-chance) for the full formula.
 
 {{< /skill >}}
 
@@ -73,7 +73,7 @@ This bonus is added on top of the item-level base chance and the crafter's DEX/W
 | 5   | 50%                         | +10%           |
 
 This bonus is added on top of the item-level base chance and the crafter's DEX/WIL — see
-[Construction Crafting Success Chance](/docs/mechanics/items-crafting/items/#construction-crafting-success-chance) for the full formula.
+[Construction Crafting Success Chance](/docs/mechanics/items-crafting/crafting/#construction-crafting-success-chance) for the full formula.
 
 {{< /skill >}}
 
@@ -158,7 +158,7 @@ There is **no ore level cap** - the bonus is added on top of an ore-level base c
 [Tin](/docs/mechanics/items-crafting/item-list/#tin-ore) and [Copper](/docs/mechanics/items-crafting/item-list/#copper-ore) and keeps falling by 1%
 per ore level above 10, plus the smith's STR and WIL. Even a maxed smith loses roughly every second batch of
 [Adamantium Ore](/docs/mechanics/items-crafting/item-list/#adamantium-ore). See
-[Ore Refinement Success Chance](/docs/mechanics/items-crafting/items/#ore-refinement-success-chance) for the full formula and
+[Ore Refinement Success Chance](/docs/mechanics/items-crafting/crafting/#ore-refinement-success-chance) for the full formula and
 [Refining](/docs/mechanics/items-crafting/natural-resources/#refining) for the level of every ore.
 
 {{< /skill >}}
@@ -184,9 +184,9 @@ Lv. 1 allows you to place a Forge.
 
 There is **no hard cap**. A blueprint above the reliable item level can still be attempted - every item level above it
 costs another `5%` success chance. A Lv. 5 smith reaching for a level 80 weapon is working at a deep penalty, not
-against a locked door. See [Item Crafting](/docs/mechanics/items-crafting/items/#item-crafting) for the full roll.
+against a locked door. See [Item Crafting](/docs/mechanics/items-crafting/crafting/#item-crafting) for the full roll.
 
-The reliable item level also caps the random stats a forged copy can roll, see [The Cap](/docs/mechanics/items-crafting/items/#the-cap).
+The reliable item level also caps the random stats a forged copy can roll, see [The Cap](/docs/mechanics/items-crafting/crafting/#the-cap).
 
 {{< /skill >}}
 
@@ -307,7 +307,7 @@ Level 1 enables you to place a Mana Harvester.
     type="Active" manaCost="22" castTime="10s" cooldown="0s" range="2" target="Crystal Lathe"
     description="Refine the raw and unstable mana crystals harvested by a Mana Harvester into the finest arcane raw materials used to build powerful magic artifacts. The Crystal Lathe is for mana crystals only - a Miner's [Gem Cutting](/docs/mechanics/master/survival-tree/#skill-gem-cutting) handles ordinary gemstones." >}}
 Level 1 enables you to place a Crystal Lathe. The cast only places the lathe or opens its recipes. The refining itself
-takes the [craft duration](/docs/mechanics/items-crafting/items/#craft-duration) of the crystal's item level.
+takes the [craft duration](/docs/mechanics/items-crafting/crafting/#craft-duration) of the crystal's item level.
 
 | Lv. | Success Chance | Max Crystal Level |
 | --- | -------------- | ----------------- |
@@ -326,9 +326,9 @@ A crystal above your max crystal level cannot be refined.
     description="Binds the essence of a Bestia into a cut gem. The Essence Gem carries the power of the Bestia and fits into any socket of a weapon or piece of equipment. Converting a Bestia destroys it." >}}
 
 Level 1 allows you to place a Carving Table. The Bestia to convert must stand next to the table, and the etching uses up
-a cut gem. The gem limits the Bestia level, see [Sockets and Essences](/docs/mechanics/items-crafting/items/#sockets-and-essences). A
+a cut gem. The gem limits the Bestia level, see [Sockets and Essences](/docs/mechanics/items-crafting/crafting/#sockets-and-essences). A
 failed etching shatters the gem too. The cast only places
-the table or opens its recipes. The etching itself takes the [craft duration](/docs/mechanics/items-crafting/items/#craft-duration) of
+the table or opens its recipes. The etching itself takes the [craft duration](/docs/mechanics/items-crafting/crafting/#craft-duration) of
 the Bestia's level.
 
 | Lv. | Success Chance | Reliable Bestia Level |
@@ -354,7 +354,7 @@ Same rule as [Forge Weapon](#skill-forge-weapon): no hard cap, but every Bestia 
     description="Can create magic artifacts by binding sustained enchantments to an item, going well beyond what a single etched rune can hold." >}}
 
 Level 1 allows you to place an Enchantment Altar. Every binding needs refined mana crystals. The cast only places the
-altar or opens its recipes. The binding itself takes the [craft duration](/docs/mechanics/items-crafting/items/#craft-duration) of the
+altar or opens its recipes. The binding itself takes the [craft duration](/docs/mechanics/items-crafting/crafting/#craft-duration) of the
 item level.
 
 | Lv. | Enchantment Chance | Destroy Chance on Failed Bind |
@@ -435,7 +435,7 @@ and elixirs.
 Same rule as [Forge Weapon](#skill-forge-weapon): no hard cap, but every item level above the reliable one costs another
 `5%` success chance. Alchemy also brews the cures for body effects, such as an Antidote against
 [Poison](/docs/mechanics/combat/status-effects/#all-status-effects). Status Recovery only clears the mind. The cast only places the laboratory or opens its recipes. The brew itself takes the
-[craft duration](/docs/mechanics/items-crafting/items/#craft-duration) of the potion's item level.
+[craft duration](/docs/mechanics/items-crafting/crafting/#craft-duration) of the potion's item level.
 
 {{< /skill >}}
 
@@ -459,7 +459,7 @@ Lv. 1 allows you to place a Transmutation Workbench. Higher levels unlock transm
 | 10  | +50%           | 100+                |
 
 Same rule as [Alchemy](#skill-alchemy): no hard cap, but every item level above the reliable one costs another `5%`
-success chance. The transmutation itself takes the [craft duration](/docs/mechanics/items-crafting/items/#craft-duration) of the
+success chance. The transmutation itself takes the [craft duration](/docs/mechanics/items-crafting/crafting/#craft-duration) of the
 resource's item level.
 
 {{< /skill >}}

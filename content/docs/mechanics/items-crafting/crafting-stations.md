@@ -9,7 +9,7 @@ shows what you can make there, anywhere else it shows what you can make by hand.
 or one of your Bestias works through it, and a Bestia keeps working while you are logged out.
 
 This page is about the window and the stations. How a blueprint is discovered and how good a craft turns out is in
-[Item Crafting](/docs/mechanics/items-crafting/items/#item-crafting).
+[Item Crafting](/docs/mechanics/items-crafting/crafting/#item-crafting).
 
 # Opening the Window
 
@@ -73,7 +73,7 @@ From left to right:
    **Queue** adds it to the station's queue.
 
 **Discover a recipe** is a large button under the recipe list. It opens the
-[discovery view](/docs/mechanics/items-crafting/items/#the-crafting-window) of the picked skill, and its back button returns to the
+[discovery view](/docs/mechanics/items-crafting/crafting/#the-crafting-window) of the picked skill, and its back button returns to the
 list. Discovery is not queued: it runs at once.
 
 The header names the station and shows what it needs to keep working: a campfire shows its burn time and an **Add
@@ -102,7 +102,7 @@ until there is room.
 
 Each item in an entry is crafted on its own and rolls its own success. A failed item loses its share of the ingredients,
 as every failed craft does. The success chance follows the
-[production rules](/docs/mechanics/items-crafting/items/#production-crafting-a-known-item): skill levels from the master, DEX and WIL
+[production rules](/docs/mechanics/items-crafting/crafting/#production-crafting-a-known-item): skill levels from the master, DEX and WIL
 from the worker.
 
 Finished items go into the **worker's bag**.

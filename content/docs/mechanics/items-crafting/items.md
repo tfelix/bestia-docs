@@ -16,7 +16,7 @@ Each item has a level assigned. This level is important to determine how hard or
 it and so on. It also affects how spells interact with the item entity.
 
 The level of a forged item is not fixed. A copy starts at its item's base level, and its stats and sockets raise it -
-see [Forging](#forging-and-random-stats). A character needs this level to wear the copy.
+see [Forging](/docs/mechanics/items-crafting/crafting/#forging-and-random-stats). A character needs this level to wear the copy.
 
 {{< table >}}
 
@@ -305,7 +305,7 @@ on a level 10 item: `40% (base) - 0% (dex) + 10% (skill) - 0% (1 slot)  = 50%`. 
 level 100 item instead: `-50% (base) + 100% (skill) = 50%` - the item level penalty has eaten the entire skill bonus, leaving the same coin-flip odds despite the enormous gap in both item and skill level.
 
 Every slot that is cut raises the item level, like a socket rolled at the forge - see
-[Sockets and Essences](#sockets-and-essences). So the next slot is harder to cut.
+[Sockets and Essences](/docs/mechanics/items-crafting/crafting/#sockets-and-essences). So the next slot is harder to cut.
 
 Putting more than one slot into an item costs further chance on top: every extra slot above the first subtracts another
 `40` percentage points, i.e. `chance(n slots) = clamp(chance(1 slot) - 0.4 * (n - 1), 0.01, 1.0)`. So an item and skill
@@ -334,7 +334,7 @@ fights without a weapon, like most Bestia, carries the endow on its body as a st
 
 **Permanent enchantments use the same rules.** The enchantments that the parked Artificer skill Magic Artisan binds
 at an altar are enchantments without an end time. They cannot be dispelled.
-[Essences](#sockets-and-essences) in a socket are not enchantments: they are part of the item.
+[Essences](/docs/mechanics/items-crafting/crafting/#sockets-and-essences) in a socket are not enchantments: they are part of the item.
 
 ## Dispelling an Enchantment
 

@@ -186,7 +186,7 @@ The next spell the target ally casts within `30s` has `30%` less cast time.
     type="Active" manaCost="22" castTime="2s" cooldown="30s" duration="90s" range="9" target="Party"
     description="A quiet benediction that lets a crafter's hands find the better cut. Every item the party starts crafting while it holds rolls its random stats with better odds." >}}
 
-`+15%` to the chance of every [random stat](/docs/mechanics/items-crafting/items/#forging-and-random-stats) slot and socket of the item.
+`+15%` to the chance of every [random stat](/docs/mechanics/items-crafting/crafting/#forging-and-random-stats) slot and socket of the item.
 
 {{< /skill >}}
 
@@ -419,7 +419,7 @@ graph TD
     description="The final step between a fistful of raw gold and coin that actually spends. Allows the master to mint gold bars into gold coins. See [Currency](/docs/mechanics/towns-trade/economy-trade/#currency) for how the world's money supply is minted from mined gold." >}}
 
 Level 1 allows you to place a Mint. The cast only places the mint or opens its recipes. The minting itself takes the
-[craft duration](/docs/mechanics/items-crafting/items/#craft-duration) of the bar.
+[craft duration](/docs/mechanics/items-crafting/crafting/#craft-duration) of the bar.
 
 A mint never creates gold. It recovers a share of the gold in a bar as coin, and the rest goes back to the world
 reserve. See [Minting yield is a recovery rate](/docs/server/money-supply/#minting-yield-is-a-recovery-rate-not-a-bonus).
