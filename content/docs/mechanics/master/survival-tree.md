@@ -290,10 +290,10 @@ graph TD
 
 <br>
 {{< skill name="Cartography" maxLevel="5" requires="Resource Sense Lv. 1"
-    type="Active" manaCost="50" castTime="30s" cooldown="None" range="0" target="Terrain"
-    description="Enables the player to chart unexplored land, revealing terrain that can be shared, traded on, or built on. See [World Exploration](/docs/mechanics/world/world-exploration/#cartography) for how the surveying minigame plays out." >}}
-Each level reduces the difficulty of surveying unexplored land by `10`. The minigame on that page is a draft; its details
-are still to be decided.
+    type="Active" manaCost="50" castTime="3s" cooldown="None" range="0" target="Self"
+    description="Enables the player to chart unexplored land, revealing terrain that can be shared, traded on, or built on. Used at your own theodolite; see [World Exploration](/docs/mechanics/world/world-exploration/#cartography) for the survey and its needle game." >}}
+Each try spends one Empty Paper and one Ink. Each level reduces the difficulty of a survey by `10`. Level 3 opens the
+3 km survey and level 5 the 5 km survey.
 {{< /skill >}}
 
 {{< skill name="Weather Sense" maxLevel="3" requires="Cartography Lv. 2"
@@ -391,7 +391,7 @@ useful as the world generator digs more caves.
     type="Active" manaCost="20" castTime="5s" cooldown="0s" range="2" target="Ground"
     description="Not every Prospector wants to dig. Some would rather sell the map." >}}
 
-Charts a sensed treasure cache onto a sheet of blank vellum. The map is an item that can be traded or sold, so whoever
+Charts a sensed treasure cache onto a sheet of empty paper. The map is an item that can be traded or sold, so whoever
 holds it can dig the cache up.
 
 | Lv. | Marked Spot |
