@@ -73,7 +73,7 @@ its species.
 |        | Sling       | One      | Sling. Shoots stones.                         |
 |        | Thrown      | One      | Throwing knife, shuriken, javelin, bomb flask |
 | Song   | Instrument  | Two      | Lute, harp, flute                             |
-| Work   | Tool        | One      | Pickaxe, hatchet, fishing rod                 |
+| Work   | Tool        | One      | Pickaxe, hatchet, shovel, fishing rod         |
 
 - A two-handed weapon leaves no room for anything in the left hand.
 - The left hand holds a shield or a tome. A second weapon in the left hand needs

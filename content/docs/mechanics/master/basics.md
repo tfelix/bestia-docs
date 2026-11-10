@@ -90,7 +90,7 @@ Every master can use these, with or without a profession:
 
 - Cloth armor
 - Slings
-- Tools: pickaxe, hatchet, fishing rod
+- Tools: pickaxe, hatchet, shovel, fishing rod
 - The novice equipment below
 
 ## Novice Equipment
