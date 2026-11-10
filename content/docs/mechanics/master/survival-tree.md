@@ -314,11 +314,15 @@ concentration where you stand. Higher levels point to the nearest stronger and w
 A Prospector charts the land first and then claims it. This skill only starts a settlement. It does not grow one - a
 town grows because players keep building inside it, and no further skill gates that.
 
-Only one settlement can be active at any time. You must destroy the settlement before you can place a new one. Only
-inactive settlements can be destroyed, which means no functional building (post office, trade post, etc.) may be left
-inside the settlement's sphere of influence.
+The cast plants a sign site under a name chosen before casting. Anyone can help build it, and the town exists once the
+sign is finished. The spot must be at least `5 km` from every other settlement and outside every ward field.
 
-{{< alert context="info" text="To do: player settlements need a design of their own. The [settlements](/docs/mechanics/towns-trade/settlements/) page only covers the towns the world generates." />}}
+Only one settlement can be active at any time. You must tear down or hand over the settlement before you can place a new
+one. Only inactive settlements can be torn down, which means no post office or auction house may be left inside the
+settlement's sphere of influence.
+
+See [Player Settlements](/docs/mechanics/towns-trade/player-settlements/) for the sphere, the sign and what happens when
+it falls.
 
 {{< /skill >}}
 
