@@ -13,24 +13,26 @@ This page is about the window and the stations. How a blueprint is discovered an
 
 # Opening the Window
 
-| You are...                            | The window opens as | It shows                                              |
-| ------------------------------------- | ------------------- | ----------------------------------------------------- |
-| next to one of your stations          | that station        | the skills that work at this station                  |
-| anywhere else                         | **Handiwork**       | everything that needs no station                      |
-| casting a crafting skill at a station | that station        | the cast skill already selected                       |
-| casting a crafting skill elsewhere    | **Handiwork**       | the cast skill already selected, with its kits on top |
+| You are...                            | The window opens as                      | It shows                                              |
+| ------------------------------------- | ---------------------------------------- | ----------------------------------------------------- |
+| clicking one of your stations         | that station                             | the skills that work at this station                  |
+| pressing Alt+C                        | the station in reach, else **Handiwork** | the skills that work there                            |
+| casting a crafting skill at a station | that station                             | the cast skill already selected                       |
+| casting a crafting skill elsewhere    | **Handiwork**                            | the cast skill already selected, with its kits on top |
 
 "Next to" means within about 3 m. A skill that works at more than one kind of station shows up at each of them.
 
 **Handiwork** is the station you always carry. Every master can open it. It lists a **Basics** entry for everyone, and
 one entry for each learned skill that has something to make without a station:
 
-| Entry                                                          | Makes without a station           |
-| -------------------------------------------------------------- | --------------------------------- |
-| Basics (every master)                                          | Torch, stone knife, stone hatchet |
-| [Cooking](/docs/mechanics/master/#skill-cooking) Lv. 1         | [Campfire kit](#campfires)        |
-| [Carpentry](/docs/mechanics/master/#skill-carpentry) Lv. 1     | Workbench kit                     |
-| [Arrow Crafting](/docs/mechanics/master/#skill-arrow-crafting) | Arrows                            |
+| Entry                                                                | Makes without a station           |
+| -------------------------------------------------------------------- | --------------------------------- |
+| Basics (every master)                                                | Torch, stone knife, stone hatchet |
+| [Cooking](/docs/mechanics/master/#skill-cooking) Lv. 1               | [Campfire kit](#campfires)        |
+| [Carpentry](/docs/mechanics/master/#skill-carpentry) Lv. 1           | Workbench kit                     |
+| [Ore Refinement](/docs/mechanics/master/#skill-ore-refinement) Lv. 1 | Furnace kit                       |
+| [Forge Weapon](/docs/mechanics/master/#skill-forge-weapon) Lv. 1     | Forge kit                         |
+| [Arrow Crafting](/docs/mechanics/master/#skill-arrow-crafting)       | Arrows                            |
 
 ## Kits Place Stations
 
@@ -79,8 +81,9 @@ wood** button.
 
 # The Queue
 
-The queue belongs to the station, not to the crafter. A station holds up to 10 queue entries. Handiwork has a queue of
-its own. It lives on whoever opened it: the master, or the Bestia they control.
+The queue belongs to the station, not to the crafter. A station holds up to 10 queue entries, each of up to 99 items.
+Handiwork has no queue: **Make 5** there crafts five in a row, by whoever opened the window, until the materials run
+out.
 
 ## Ingredients Are Paid In
 
@@ -110,11 +113,13 @@ A queue **pauses** when one of these is true, and it picks up again on its own o
 - The worker's bag is full or too heavy for the next item.
 - The station cannot work right now, for example a campfire that went out.
 - The worker is the master, and the master disconnected. The item in progress stops where it was.
+- The worker can no longer make the recipe, for example because the item is beyond its skill now.
 
 ## Bestia Workers
 
-The worker is picked in the queue panel: the master or one of their Bestias. A Bestia worker walks to the station and
-stays there until the queue is empty or another worker is picked.
+The worker is picked in the queue panel: the master or one of their Bestias. A Bestia worker's home becomes the
+station, and it strays no further than 2 m from it. Its own AI walks it back after a fight or a meal. It stays until
+another worker is picked.
 
 **A Bestia keeps working while its master is logged out.** A Bestia already stays in the world when its master leaves,
 so nothing else changes for it. The station stays in the world as well: as long as a Bestia works at a station or stands
