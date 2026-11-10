@@ -112,7 +112,7 @@ needs only work: up to 5 min.
 # On the Map
 
 A player town appears on the [world map](/docs/mechanics/world/world-exploration/) for everyone who has charted the
-spot of its sign, in the game and in the [companion app](/docs/mechanics/companion-app/). The map shows its name and its
-sphere. The town card lists its post office and its auction house like the services of a generated town.
+spot of its sign, in the game and in the [companion app](/docs/mechanics/companion-app/). The map shows its sign under
+its name, and its post office and auction house as services of the town.
 
-{{< alert context="warning" text="Not built yet. All numbers on this page are placeholders." />}}
+{{< alert context="warning" text="All numbers on this page are placeholders. Not built yet: the sphere's outline on the map, and repairing wall, floor and stair pieces from the client, which cannot click them." />}}
