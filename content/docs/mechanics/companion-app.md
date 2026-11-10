@@ -228,8 +228,8 @@ actually runs on.
 
 **An order to your own Bestia arrives at once.** It is the one instruction that does not travel at courier pace:
 the mana bond already carries your words to your party without delay, and an order to a creature bound to you is
-words too. What is slow is the doing. Whether a Bestia acting without its Master nearby should do so worse - more
-slowly, less carefully, less willingly - is an open question of design, not of transport.
+words too. What is slow is the doing. A Bestia works as well without its Master as with it: the limits are materials,
+regrowth, craft times and its own stamina, not your absence.
 
 Version 1 builds the first of these orders: a Bestia's **stance** (hold, patrol, forage or defend) and its
 **aggression**, the same standing order the game itself offers.
@@ -242,6 +242,10 @@ A Bestia learns the roads as it goes: it walks to a fallen bridge nobody of your
 goes round, and what it saw is known to all your Bestia. If it finds no way on, the app tells you where it
 stopped. See [Long-Distance Travel](/docs/server/long-distance-travel/). Postal runs, deposits and breeding
 wait for the systems they belong to.
+
+A later version replaces the stance with full [Bestia Orders](/docs/mechanics/bestias/bestia-orders/): a job such as
+guard, gather, craft or mine, the places it needs, how careful the Bestia is and how it looks after itself. The app is
+where you set them while you are away, and its Workshop lets a Bestia craft from a station's queue.
 
 It is not free of risk either. A Bestia on the road can be killed, and whatever it was carrying is lost with
 it. Mail is the exception: the post's [seal](/docs/mechanics/towns-trade/postal/#the-seal) sends a sack on, unless somebody
@@ -361,7 +365,8 @@ A short list, and a firm one.
 - **No moving.** Your Master is exactly where you logged out, and will be there when you get back.
   [Ranging](#ranging) moves your spirit; it never moves your body.
 - **No travelling.** Nothing in the app shortens a journey. Couriers travel; you do not.
-- **No hands.** No crafting at a bench, no rituals, no catching, no building.
+- **No hands.** No crafting at a bench, no rituals, no catching, no building. You can queue work at a station
+  for a Bestia to do, paid from a chest next to the station, but the Bestia does the work at its own pace, not you.
 - **No searching the world.** No global price board, no global quest finder, no lookup of any kind that a
   person standing in the world could not perform themselves.
 
@@ -378,8 +383,8 @@ Honest about where this stands:
   designed but not implemented in the game.
 - **Notifications have a budget, and a small one.** Version 1 wakes you for three things only: your home town
   falling, a Bestia killed while you are away, and a construction finished. Each can be turned off, quiet hours
-  are your own, and no account gets more than six an hour. What else is worth waking somebody up for stays a
-  design question.
+  are your own, and no account gets more than six an hour. [Bestia Orders](/docs/mechanics/bestias/bestia-orders/#in-the-companion-app)
+  add four more: a Bestia fell, stopped working, is under attack, or a station finished its queue.
 - **Ranging needs a native app.** A web app cannot follow a phone's position with the screen off, so ranging
   comes with a native shell around the same app, not before it.
 - **Ranging asks for something not everyone can give.** Making the walk genuinely the best way to chart,

@@ -121,6 +121,10 @@ The worker is picked in the queue panel: the master or one of their Bestias. A B
 station, and it strays no further than 2 m from it. Its own AI walks it back after a fight or a meal. It stays until
 another worker is picked.
 
+[Bestia Orders](/docs/mechanics/bestias/bestia-orders/#craft) (planned) add a third choice, **any free crafter**: the
+first idle Bestia whose job is Craft takes the station over. They also let a station pay its ingredients from a camp
+chest next to it, which is how the Companion App queues work while you are away.
+
 **A Bestia keeps working while its master is logged out.** A Bestia already stays in the world when its master leaves,
 so nothing else changes for it. The station stays in the world as well: as long as a Bestia works at a station or stands
 next to it, the station is never unloaded. A station nobody is near can be unloaded, but it keeps its queue and what it
