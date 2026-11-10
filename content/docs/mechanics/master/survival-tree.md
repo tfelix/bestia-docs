@@ -378,7 +378,8 @@ Senses treasure caches nearby. The world generator hides caches at ruins, old ca
     type="Active" manaCost="20" castTime="2s" cooldown="20s" range="per Lv." target="Self"
     description="Knock on the world and listen to where it sounds hollow." >}}
 
-A sound pulse that marks hollow spaces nearby on the map: cave openings, hollows and buried chambers. Where
+A sound pulse that marks hollow spaces nearby on the compass, for 20 seconds and with a line in the chat: caves,
+hollows and buried chambers. A hollow is a pocket of air under the ground; the open sky is not one. Where
 [Resource Sonar](#skill-resource-sonar) finds ore in the rock, Echo Sounding finds the empty space in it. It becomes more
 useful as the world generator digs more caves.
 
