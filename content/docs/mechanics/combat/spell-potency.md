@@ -67,7 +67,7 @@ judge a seal before trying it.
 
 # Edge: One Curve for Every Contest
 
-Every contest uses the same curve. `A` is the attacker's Potency, `D` the defender's:
+Every contest, except [Dispel](#dispel), uses the same curve. `A` is the attacker's Potency, `D` the defender's:
 
 ```text
 Edge = 0.5 + (A - D) / 50        clamped to 0 .. 1
@@ -84,17 +84,15 @@ Edge = 0.5 + (A - D) / 50        clamped to 0 .. 1
 
 Equal spells are a coin flip. A lead of 25 always wins, and a gap of 25 never does. When the outcome is yes or no, Edge
 is the chance. When the outcome is an amount, like a detection range, Edge is the share of it that the attacker gets.
-Players learn one rule and can read every contest from it.
+Players learn one rule and can read every contest from it. Dispel is the exception: a Dispel at full rank should work on
+everything that is not stronger than itself, so it does not start at a coin flip.
 
-| Contest                 | Attacker                         | Defender                              | Outcome                     |
-| ----------------------- | -------------------------------- | ------------------------------------- | --------------------------- |
-| Lift a buff             | Dispel                           | The buff                              | Lifted or not               |
-| Break an enchantment    | Dispel at an item on the ground  | The enchantment, e.g. a Postal Seal   | Broken or not               |
-| Shake off a debuff      | The debuff                       | The target's [Resolve](#resist)       | Chance and duration         |
-| Find a hidden creature  | Detect, Ruwach, Magic Sense      | HIDDEN, CLOAKED, Suppress Aura        | How close you must stand    |
-| Catch or block a spell  | Magic Rod, Land Protector        | The incoming spell                    | Caught, blocked or not      |
-| Reach a far place       | Teleport, Warp Portal, Scry      | The [Disturbance](#against-the-world) | How far off you land or see |
-| Bring down a ward stone | Dispel with a [ritual](#rituals) | The stone's ward                      | Countered or not            |
+| Contest                | Attacker                    | Defender                              | Outcome                     |
+| ---------------------- | --------------------------- | ------------------------------------- | --------------------------- |
+| Shake off a debuff     | The debuff                  | The target's [Resolve](#resist)       | Chance and duration         |
+| Find a hidden creature | Detect, Ruwach, Magic Sense | HIDDEN, CLOAKED, Suppress Aura        | How close you must stand    |
+| Catch or block a spell | Magic Rod, Land Protector   | The incoming spell                    | Caught, blocked or not      |
+| Reach a far place      | Teleport, Warp Portal, Scry | The [Disturbance](#against-the-world) | How far off you land or see |
 
 Potency alone **never changes the numbers in a skill's own table**: damage, healing, duration, radius, number of users.
 Those come from the rank, as before. Only a [ritual charge](#how-every-skill-reacts-to-a-charge) raises them, and only
@@ -104,24 +102,46 @@ by a little.
 
 ## Dispel
 
-Dispel rolls **once per buff** on the target, each against the Potency of that buff. A Master Sage (`80`) lifts an
-adept's Blessing (`49`) for sure, but lifts another master's buff only half of the time. A dabbler (`33`) can clean off
-faint buffs and nothing else. Buffs that are not dispellable stay out of it, as before.
+Dispel keeps the base chance of its rank, `(50 + 10 × SkillLv)%`, so Lv. 5 has `100%`. The Potency of the target only
+lowers it, and only when that Potency is higher than the Dispel's own:
 
-This replaces the base chance `(50 + 10 × SkillLv)%` and the target's SMDEF. The rank is now part of the Dispel's
-Potency, and the defence is the buff's own Potency.
+```text
+chance = base chance × min(1, P dispel / P target)
+```
+
+Equal Potency keeps the full base chance. A target with twice the Potency halves it. The chance gets small but never
+reaches zero, so a very strong spell is a long shot, not out of reach.
+
+| P target ÷ P dispel | Chance at Lv. 5 |
+| ------------------- | --------------- |
+| 1 or less           | 100%            |
+| 1.5                 | 67%             |
+| 2                   | 50%             |
+| 4                   | 25%             |
+| 10                  | 10%             |
+| 20                  | 5%              |
+
+Dispel rolls **once per buff** on the target. A Master Sage (`P 80`, Lv. 5) lifts an adept's Blessing (`49`) and every
+other buff up to `80` for sure. The strongest buff a ritual can make (`150`) falls `53%` of the time. A dabbler (`P 33`,
+Lv. 2, base `70%`) lifts a faint buff up to `33` `70%` of the time, the adept's Blessing `47%` and a master's buff
+`29%`. Buffs that are not dispellable stay out of it, as before.
+
+This replaces the target's SMDEF: the defence is now the Potency of the buff. The rank counts twice, in the base chance
+and in the Dispel's own Potency.
 
 ## Enchantments and Seals
 
 An [enchantment](/docs/mechanics/items-crafting/items/#enchantments) takes the Potency of the one who bound it as its strength. Some
-enchantments have a fixed Potency instead, see [Fixed Potency](#fixed-potency).
+enchantments have a fixed Potency instead, see [Fixed Potency](#fixed-potency). A Dispel meets the strength by the rule
+above.
 
-The [Postal Seal](/docs/mechanics/towns-trade/postal/#breaking-a-seal) has `P 90`. A Master Sage (`80`) breaks it `30%` of the time.
-With Dispel's 15 s cooldown they get two tries in the 30 s the sack lies on the ground, `51%` together. These are the
-odds the postal page has today. An adept (`49`) has no chance.
+The [Postal Seal](/docs/mechanics/towns-trade/postal/#breaking-a-seal) has `P 350`. A Master Sage (`P 80`, Lv. 5) breaks
+it `23%` of the time per try. With Dispel's 15 s cooldown they get two tries in the 30 s the sack lies on the ground,
+`40%` together. An adept (`P 49`, Lv. 3) has `11%` per try and a dabbler (`P 33`, Lv. 2) `7%`.
 
-A gang can charge a [ritual](#rituals) before the ambush and break the seal for sure. That takes six players, a circle
-next to the road and a kill within one minute of the charge, so it stays rare.
+A gang can charge a [ritual](#rituals) before the ambush. A full circle lifts the leader's Dispel to the cap of `150`,
+and the seal breaks `43%` of the time on that one try. That takes six players, a circle next to the road and a kill
+within one minute of the charge, so it stays rare.
 
 ## Resist
 
@@ -199,11 +219,12 @@ uses it for where its far end opens.
 
 # Fixed Potency
 
-Spells that no player cast have a fixed Potency.
+Spells that no player cast have a fixed Potency. Against a Dispel, a fixed Potency is just the wanted chance turned
+around: `P target = P dispel ÷ chance`. So it can be far above what one caster reaches.
 
 | Spell                                                           | P   | Why                                                                  |
 | --------------------------------------------------------------- | --- | -------------------------------------------------------------------- |
-| [Postal Seal](/docs/mechanics/towns-trade/postal/#the-seal)     | 90  | A strong solo Sage has a real chance.                                |
+| [Postal Seal](/docs/mechanics/towns-trade/postal/#the-seal)     | 350 | A strong solo Sage breaks it about once in four tries (`23%`).       |
 | [Ward stone](/docs/mechanics/society/pvp/#protected-zones) aura | 174 | 24 above the [ritual cap](#the-charge), so the best circle has `2%`. |
 | Permanent enchantments of the Artificer                         | -   | They cannot be dispelled at all.                                     |
 
@@ -313,13 +334,9 @@ When this concept is accepted, these pages change:
 
 - [Status Effects](/docs/mechanics/combat/status-effects/): Ritual Charge and Ritual Fatigue join the list. The list follows
   the server, so they come with the server work.
-- [Master Skills](/docs/mechanics/master/basics/): Dispel loses its base chance table. Suppress Aura loses its suppression
+- [Master Skills](/docs/mechanics/master/basics/): Suppress Aura loses its suppression
   column. [Mana Circles](/docs/mechanics/master/basics/#mana-circles) run as a ritual with a charge, so a crafting rite and a
   spell ritual are the same thing. Bestias may now join.
-- [Items](/docs/mechanics/items-crafting/items/#dispelling-an-enchantment): the formula `Dispel base chance - strength` becomes
-  `Edge(P dispel - strength)`. A dropped endowed weapon keeps the binder's Potency instead of `0`.
-- [Postal System](/docs/mechanics/towns-trade/postal/#breaking-a-seal): the seal gets `P 90`. The odds stay the same, and a charged
-  gang can break it for sure.
 - [PvP](/docs/mechanics/society/pvp/#protected-zones): the ward stone gets `P 174` and the charged Dispel as its counter.
 
 # Server Notes
@@ -330,7 +347,7 @@ level. Potency changes that in a few places:
 - One calculator turns a cast into a Potency. It needs the skill rank, the caster's level and status values, the
   equipment bonus and the mana concentration at the caster.
 - `ActiveStatusEffect` and the item enchantment carry that Potency. The enchantment's `strength` is the same value.
-- `StatusEffectService.dispel` rolls Edge per effect. `StatusResistance.of` takes Resolve and Potency in place of the
+- `StatusEffectService.dispel` rolls the base chance times the Potency ratio per effect. `StatusResistance.of` takes Resolve and Potency in place of the
   level lead. The `Detecting` system compares the two Potencies per target.
 - Ritual Charge and Ritual Fatigue are status effects. The charge holds its bonus and participant count. The skill
   pipeline spends the charge on the next cast and hands its bonus to the calculator and to the skill script, which

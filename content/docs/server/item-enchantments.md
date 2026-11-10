@@ -68,8 +68,8 @@ When an enchanted item drops, the ground item entity gets an `ItemEnchantments` 
 makes it a normal entity for the rest of the server:
 
 - **Dispel can target it.** `Dispel.isCastPossible` asks for an entity battle context today. A ground item with
-  enchantments must count as a valid target. The chance is `Dispel base chance - strength`, and the target's SMDEF does
-  not apply.
+  enchantments must count as a valid target. The chance is `Dispel base chance × min(1, P dispel / strength)`, and the
+  target's SMDEF does not apply.
 - **The postal seal counts down on it.** `PostalSealScript.onDropped` adds a `SealReturn(remainingSeconds = 30)`
   component. A `SealReturnSystem` counts it down. At zero it removes the ground entity and gives the parcel back to the
   post. A successful dispel removes the seal first, so the system finds nothing to return, and the parcel opens into
