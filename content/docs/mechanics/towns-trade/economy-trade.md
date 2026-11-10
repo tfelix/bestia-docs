@@ -68,20 +68,28 @@ builds one.
 ## Building an Auction House
 
 Building an auction house requires the [Trade Post Owner](/docs/mechanics/master/scholar-tree/#skill-trade-post-owner) master skill,
-which also caps how many a single master may operate (one at Lv. 1, up to five at Lv. 5). It is an expensive building,
-so the materials are usually pooled by a group of players or a whole guild. These special rules apply:
+which also caps how many a single master may operate (one at Lv. 1, up to five at Lv. 5). The skill uses up an
+**auction house kit**, a [Carpentry](/docs/mechanics/master/craftsman-tree/#skill-carpentry) Lv. 5 recipe that is
+expensive enough that a group or a whole guild usually pools the materials. Anybody can help with the build. These
+special rules apply:
 
-- Once an auction house stands, **no other auction house may be placed within a 5km radius**, and no settlement may hold
-  more than one.
-- The settlement needs a [post office](/docs/mechanics/towns-trade/postal/#in-player-cities) first, because unsold goods and coin
-  travel by post.
-- The owner sets an **owner fee** of at least **1%** on every new listing. The ceiling is granted by their Trade Post
-  Owner level, rising from **5% at Lv. 1 to 25% at Lv. 5**.
-- The owner fee is charged on top of the listing fees below, and the seller pays it up front. It **accumulates inside
-  the auction house** and has to be collected in person every so often — an unattended marketplace does not bank its
-  own profits.
-- **Half of every owner fee collected is passed on to NPCs**, the game's stand-in for taxation. In practice an owner
-  keeps half of the rate they advertise.
+- It can only stand in a [player settlement](/docs/mechanics/towns-trade/player-settlements/), and no settlement may hold
+  more than one. **No other auction house may be placed within a 5km radius.**
+- The settlement needs a working [post office](/docs/mechanics/towns-trade/postal/#in-player-cities) first, because unsold
+  goods and coin travel by post.
+- The owner sets an **owner fee** at the house, from **1%** up to the ceiling of their Trade Post Owner level: **5% at
+  Lv. 1 to 25% at Lv. 5**. A new rate applies to new listings only, and the owner can change it once per 24 h.
+- The owner fee is charged on top of the listing fees below, and the seller pays it up front. **Half of it is passed on
+  to NPCs**, the game's stand-in for taxation. In practice an owner keeps half of the rate they advertise.
+- The owner's half **accumulates in the house's till** and has to be collected in person. The till has no limit, but an
+  unattended marketplace does not bank its own profits.
+- An auction house belongs to the master who built it. It cannot be handed over. The owner can tear it down while it
+  holds no listings.
+
+An auction house is a building and can be attacked. **When it is destroyed**, every listing goes back to its seller by
+post, every bid goes back to its bidder, and the coin in the till spills on the ground as loot. When its
+[settlement falls](/docs/mechanics/towns-trade/player-settlements/#when-the-sign-falls), it closes the same way, but the
+till is posted to the owner.
 
 ## How Auctions Work
 
@@ -112,6 +120,23 @@ Charging up front on the asking price is what keeps the marketplace honest. Nobo
 junk priced at a million gold, because the fee for asking is real and it is due before anyone has even looked at the
 item. Setting a sane starting bid is the cheap move; greed costs gold whether it pays off or not.
 
+## Bidding
+
+An auction runs for its full time and goes to the highest bid:
+
+- **A bid takes the coin from your bag at once.** It is held by the auction house.
+- The first bid must be at least the starting bid.
+- **The next bid must be at least 5% higher** than the current one, and at least `1` gold higher.
+- **An outbid player gets the coin back** by [pigeon](/docs/mechanics/towns-trade/postal/#gold-by-pigeon).
+- The seller can set a **buyout price**. A bid of that price ends the auction at once.
+- The end time does not move. A bid in the last second wins like any other.
+- An auction with a bid on it cannot be cancelled.
+
+When it ends, the goods wait for the winner like any other purchase (see [Collecting](#collecting)), and the seller gets
+the coin as auction mail.
+
+## Unsold Listings
+
 **If a listing runs out its duration without finding a buyer**, the auction house simply **posts the item back to you**
 as [auction mail](/docs/mechanics/towns-trade/postal/#auction-mail) — it is never lost, and you do not have to be online for it to
 find its way home. The coin of a sale reaches you the same way.
@@ -121,10 +146,27 @@ The fees, however, are **not refunded**. You paid for the marketplace's time and
 ## Linking Auction Houses
 
 Auction houses belonging to different players can be **linked** using the
-[Trade Agreement](/docs/mechanics/master/scholar-tree/#skill-trade-agreement) master skill, provided every owner involved agrees.
-Linked houses share their listings, turning a handful of local shops into one broad marketplace and making goods far easier to find - for buyers and sellers alike.
+[Trade Agreement](/docs/mechanics/master/scholar-tree/#skill-trade-agreement) master skill, provided both owners agree.
+Linked houses share their listings, turning a handful of local shops into one broad marketplace and making goods far
+easier to find - for buyers and sellers alike.
 
-Winning an auction at a linked house leaves the buyer a choice: **pay a delivery fee** and have the item posted over by
-the [postal system](/docs/mechanics/towns-trade/postal/), or travel and fetch it. Unclaimed items are held for **up to 10 days**. After that
-the item goes back to the original seller, who **keeps the payment** — so it is worth remembering where you bought
-something.
+- A link joins two **owners**: every house of one shows the listings of every house of the other.
+- Links are **direct**. If A is linked to B and B to C, A's houses do not show C's listings.
+- The houses of one owner always share their listings.
+- Either owner can cut a link at one of their houses. Goods already sold still wait where they are.
+- The start towns' houses have no owner and cannot be linked.
+
+A seller can cancel a listing at any house that shows it. The goods then come home as free auction mail.
+
+## Collecting
+
+Goods you buy or win in the house you stand in are handed over at once. Goods from a linked house **wait at that
+house**. The **Won & Bought** window shows everything waiting for you: what it is, where it waits and how many days are
+left. From there you can:
+
+- **Send it by post.** You pay the normal [parcel fee](/docs/mechanics/towns-trade/postal/#fees) from that house's post
+  office to your home office, and the goods come as auction mail.
+- **Collect it in person.** Your master, or one of your Bestias, stands at that house and takes it.
+
+Goods not collected or posted within **10 days** go back to the seller, who **keeps the payment** - so it is worth
+remembering where you bought something.

@@ -42,6 +42,9 @@ Lv. 1 allows you to build a [workbench](/docs/mechanics/items-crafting/item-list
 Carpentry also makes the kits for the buildings in the wild: the Observation Outpost, the Mining Shaft and the
 Lumberjack Cabin. To build one, the master needs level 1 of the skill that uses it.
 
+For [player settlements](/docs/mechanics/towns-trade/player-settlements/) it makes the post office kit (Lv. 3) and the
+auction house kit (Lv. 5).
+
 | Lv. | Success Chance | Max Item Level |
 | --- | -------------- | -------------- |
 | 1   | +5%            | 10             |

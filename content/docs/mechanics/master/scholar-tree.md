@@ -438,7 +438,9 @@ reserve. See [Minting yield is a recovery rate](/docs/server/money-supply/#minti
     type="Active" manaCost="40" castTime="10s" cooldown="0s" range="2" target="Ground"
     description="Builds an auction house where other citizens can buy and sell their wares, turning any settlement into a proper marketplace." >}}
 
-Only one auction house can stand inside a settlement, and none within 5km of another. See
+Casting it on the ground uses up an auction house kit from your bag and starts a construction site. It needs a
+[player settlement](/docs/mechanics/towns-trade/player-settlements/) with a working post office. Only one auction house
+can stand inside a settlement, and none within 5km of another. See
 [Building an Auction House](/docs/mechanics/towns-trade/economy-trade/#building-an-auction-house).
 
 | Lv. | Auction Houses | Max Owner Fee |
@@ -485,7 +487,11 @@ Trader walks away or after `1h`. Unlike an [auction house](#skill-trade-post-own
 {{< skill name="Trade Agreement" maxLevel="5" requires="Trade Post Owner Lv. 3"
     type="Active" manaCost="30" castTime="5s" cooldown="60s" range="10" target="Player"
     description="Weaves this Trader's auction house into those of other consenting players, merging their listings into a single, wider [marketplace](/docs/mechanics/towns-trade/economy-trade/#linking-auction-houses)." >}}
-To be linked by other players, at least level 1 in this skill is required.
+Cast it on another auction house owner. They are asked, and once they accept, all houses of both of you show each
+other's listings. To be linked by other players, at least level 1 in this skill is required.
+
+Links are direct: if you are linked to B and B to C, your houses do not show C's listings. Either side can cut a link at
+one of their houses.
 
 | Lv. | Linked Players |
 | --- | -------------- |

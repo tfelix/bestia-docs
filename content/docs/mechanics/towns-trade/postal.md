@@ -238,13 +238,18 @@ during their working hours. Letters need no office.
 
 A [founded settlement](/docs/mechanics/master/survival-tree/#skill-founder) gets a post office only when its players build one.
 
-- **It is a construction** like any other building. Whoever may build in the settlement can put it up. A settlement
-  holds at most one.
+- **It is a construction** like any other building, from a **post office kit** (a
+  [Carpentry](/docs/mechanics/master/craftsman-tree/#skill-carpentry) Lv. 3 recipe). Anybody can put it up inside the
+  settlement's sphere. A settlement holds at most one.
 - **The post runs it.** When it is finished, the post takes it over and sends a postmaster. It has no owner and no
   owner fee. The seal and the promise must not depend on a player who logs off, and no player should set the price of
   a public service.
 - **An [auction house](/docs/mechanics/towns-trade/economy-trade/#building-an-auction-house) needs it.** Unsold goods and coin
   travel by post, so a settlement needs a post office before it can hold an auction house.
+
+- **It only works inside a settlement.** When the city sign falls, the office is [lost](#losing-an-office) at once,
+  even though the building still stands. It decays and breaks after 96 h, unless a new settlement
+  [reclaims](/docs/mechanics/towns-trade/player-settlements/#when-the-sign-falls) it first.
 
 The city gains in other ways. Its residents can make it their home post office, couriers come for its route board,
 and it can hold a market.

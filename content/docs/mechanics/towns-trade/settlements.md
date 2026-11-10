@@ -11,6 +11,8 @@ than its population implies. This page is about the people who fill it in — wh
 where the goods in their shops actually come from, and what happens when a player sets fire to the
 field those goods grow in.
 
+Players can found towns of their own. Those are covered under [Player Settlements](/docs/mechanics/towns-trade/player-settlements/).
+
 {{< alert context="warning" text="This page is a design document. Settlements are generated today, but nothing lives in them yet — see the server-side [Townsfolk & Settlement Simulation](/docs/server/townsfolk/) page for the implementation plan and its current state." />}}
 
 {{< alert context="info" text="**Conventions used on this page.** Times of day and durations refer to **in-game** [Bestia time](/docs/mechanics/world/environment/#in-game-time), where one day lasts eight real hours. Prices are in whole **gold**, as everywhere else." />}}
