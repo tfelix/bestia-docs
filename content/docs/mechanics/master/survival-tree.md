@@ -79,8 +79,12 @@ off what it can carry home.
     type="Active" manaCost="15" castTime="2s" cooldown="60s" target="Self"
     description="The physical counterpart to a Sage's Observation: an instinct for the direction and distance of nearby physical resources - ore veins, herb patches, timber stands and game trails - long before they come into view." >}}
 
-Each cast points to the nearest resources of every kind within the detection distance. The accuracy decides how close
-the shown direction and distance are to the truth.
+Each cast points to the nearest thing of each kind within the detection distance: an ore deposit, ground where rare
+[herbs](/docs/mechanics/items-crafting/natural-resources/#herbs) grow, a forest, and a wild bestia. The marks show on
+the compass for 60 seconds, with a line in the chat. Nothing is put on the map.
+
+Without accuracy a shown spot can be off by up to 40% of its distance. The accuracy takes that share away: at level 5
+a spot 1 km away is off by at most 200 m.
 
 | Lv. | Detection Distance | Detection Accuracy |
 | --- | ------------------ | ------------------ |
