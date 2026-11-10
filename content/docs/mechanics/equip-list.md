@@ -1,7 +1,7 @@
 ---
 title: Equipment List
 weight: 9200
-description: Those who master the tools of survival will thrive in a dangerous world. A list of all available attacks.
+description: Every piece of equipment that Bestias and Bestia Masters can wear or wield.
 ---
 
 Here you will find an overview of the available equipment items Bestias and Bestia Master can use.
