@@ -13,7 +13,7 @@ master's party and guild behind until they switch back.
 
 # Parties
 
-Founding a party, and inviting players into it, needs [Basic Skill](/docs/mechanics/master/basics/#skill-basic-skill)
+Founding a party, and inviting players into it, needs [Basic Skill](/docs/mechanics/master/novice-tree/#skill-basic-skill)
 Lv. 5. Joining one needs nothing. Whoever founds a party **owns** it:
 
 | Rule              | Value                                                                                  |

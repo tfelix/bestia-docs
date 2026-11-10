@@ -15,7 +15,7 @@ A boss lives alone in a **boss den**. Boss dens appear only in wild country, whe
 
 # Catching Bestias
 
-To catch a Bestia you need a **Magic Bestia Trap**. These are manufactured with the Craftsman's [Carpentry](/docs/mechanics/master/basics/#skill-carpentry) skill and empowered with [Mana Dust](/docs/mechanics/items-crafting/item-list/#mana-dust). Four tiers exist, each one better than the last at holding a high-level Bestia.
+To catch a Bestia you need a **Magic Bestia Trap**. These are manufactured with the Craftsman's [Carpentry](/docs/mechanics/master/craftsman-tree/#skill-carpentry) skill and empowered with [Mana Dust](/docs/mechanics/items-crafting/item-list/#mana-dust). Four tiers exist, each one better than the last at holding a high-level Bestia.
 
 The base catch chance depends only on the trap tier and the target's level:
 
@@ -34,8 +34,8 @@ On top of the base chance, every bonus below contributes **percentage points**:
 | :------------------------------------------------------------------------- | :----------- |
 | Reducing the target's HP before throwing the trap                          | up to `+30`  |
 | The trap user's [Willpower](/docs/mechanics/combat/statusvalues/#willpower---wil) | `+ WIL / 50` |
-| [Trapping](/docs/mechanics/master/basics/#skill-trapping) Lv. 1 - 5               | `+6` … `+30` |
-| [Beastfriend](/docs/mechanics/master/basics/#skill-beastfriend) Lv. 1 - 5         | `+5` … `+25` |
+| [Trapping](/docs/mechanics/master/survival-tree/#skill-trapping) Lv. 1 - 5               | `+6` … `+30` |
+| [Beastfriend](/docs/mechanics/master/survival-tree/#skill-beastfriend) Lv. 1 - 5         | `+5` … `+25` |
 | Buffs on the trap user, debuffs on the target                              | varies       |
 
 The HP bonus scales linearly with how far the target has been worn down, reaching its full `+30` when the Bestia is at 1% HP:
@@ -79,7 +79,7 @@ Some magical actions are **both** at once. Many offensive spells—the elemental
 Bestias can learn attacks in two ways:
 
 1. **Level Up** – Each Bestia has an internal list of attacks it will learn as it gains levels. The same attack may be learned at different levels by different Bestias.
-2. **Spell Scrolls** – Players can inscribe attacks onto spell scrolls with the Sage's [Spell Inscription](/docs/mechanics/master/basics/#skill-spell-inscription) skill (or find them as loot). These spells can be used directly from the scroll or taught to a Bestia.
+2. **Spell Scrolls** – Players can inscribe attacks onto spell scrolls with the Sage's [Spell Inscription](/docs/mechanics/master/scholar-tree/#skill-spell-inscription) skill (or find them as loot). These spells can be used directly from the scroll or taught to a Bestia.
 
 General guidelines when Bestia are learning attacks from level ups:
 
@@ -124,7 +124,7 @@ Both timers are given in **real time**, not [Bestia time](/docs/mechanics/world/
 | 100 & 100     | ~46 days (~1.5 mo) | ~2 days    |
 | 120 & 120     | ~73 days (~2.4 mo) | ~3 days    |
 
-Breeder upgrades, feed, buffs, items and a Forester's [Bloodline Study](/docs/mechanics/master/basics/#skill-bloodline-study) skill shorten both timers. A well-equipped setup typically reaches a **30 - 40%** reduction, and the total reduction is capped at **50%**.
+Breeder upgrades, feed, buffs, items and a Forester's [Bloodline Study](/docs/mechanics/master/survival-tree/#skill-bloodline-study) skill shorten both timers. A well-equipped setup typically reaches a **30 - 40%** reduction, and the total reduction is capped at **50%**.
 
 There is **no cooldown** on the breeder. The moment an egg is produced the same pair can immediately start the next attempt — the breeding time itself is the only limit on how fast a bloodline can be pushed forward.
 
@@ -142,7 +142,7 @@ The offspring's IVs are rolled per IV, independently:
 2. **Variance** — roll once per IV: with `70%` the seed is raised by 10%, with `20%` it stays as it is, and with `10%` it is lowered by 10%.
 3. **Clamp** — round to the nearest integer and clamp into `[0, 100]`.
 
-A dominant IV therefore drifts upward by about `6%` per generation on average (`0.7 · 1.1 + 0.2 · 1.0 + 0.1 · 0.9 = 1.06`), so a line seeded around IV 50 needs roughly a dozen generations to approach the cap of 100. Because only three IVs are dominant per clutch, the player has to decide which stats a bloodline is being bred for rather than improving everything at once. A Forester with [Bloodline Study](/docs/mechanics/master/basics/#skill-bloodline-study) Lv. 4 draws a fourth dominant IV, which is the only way to widen that choice.
+A dominant IV therefore drifts upward by about `6%` per generation on average (`0.7 · 1.1 + 0.2 · 1.0 + 0.1 · 0.9 = 1.06`), so a line seeded around IV 50 needs roughly a dozen generations to approach the cap of 100. Because only three IVs are dominant per clutch, the player has to decide which stats a bloodline is being bred for rather than improving everything at once. A Forester with [Bloodline Study](/docs/mechanics/master/survival-tree/#skill-bloodline-study) Lv. 4 draws a fourth dominant IV, which is the only way to widen that choice.
 
 **How much is an IV actually worth?** The answer is defined once, on the [Status Values](/docs/mechanics/combat/statusvalues/#individual-values) page, and follows directly from the status value formula:
 
@@ -175,7 +175,7 @@ A season lasts one real-time month, and a Bestia knows about 20 attacks spread o
 
 ### 2. Priming — which eligible attacks are attempted
 
-Before breeding starts the player may load up to **three** spell scrolls of eligible father attacks into the breeder. Those become the candidates, and the scrolls are consumed when breeding begins. Since scrolls are produced with the Sage's [Spell Inscription](/docs/mechanics/master/basics/#skill-spell-inscription) skill, directed breeding costs real resources and pulls a second profession into the loop.
+Before breeding starts the player may load up to **three** spell scrolls of eligible father attacks into the breeder. Those become the candidates, and the scrolls are consumed when breeding begins. Since scrolls are produced with the Sage's [Spell Inscription](/docs/mechanics/master/scholar-tree/#skill-spell-inscription) skill, directed breeding costs real resources and pulls a second profession into the loop.
 
 If nothing is primed, up to three eligible attacks are drawn at random instead — undirected breeding still works, it just gives up the control.
 
@@ -188,7 +188,7 @@ Each candidate rolls independently. All terms are percentage points:
 P_{transfer} = 30\% + \min\big(30,\ lv_{father} - lv_{attack}\big) + 2 \cdot Beastfriend_{Lv}
 {{< /katex >}}
 
-A father can only pass on an attack he has learned, so the middle term is never negative. It rewards levelling a stud well past the attack you actually want from him: the chance runs from `30%` for a father who has only just learned the attack up to `70%` for one who is 30 levels past it and backed by [Beastfriend](/docs/mechanics/master/basics/#skill-beastfriend) Lv. 5.
+A father can only pass on an attack he has learned, so the middle term is never negative. It rewards levelling a stud well past the attack you actually want from him: the chance runs from `30%` for a father who has only just learned the attack up to `70%` for one who is 30 levels past it and backed by [Beastfriend](/docs/mechanics/master/survival-tree/#skill-beastfriend) Lv. 5.
 
 A successful roll resolves like this:
 
@@ -344,7 +344,7 @@ Travel experience is deliberately tiny: at Lv. 50 a single level would take almo
 
 A Bestia **Master** cannot die. Instead they are reborn on the spot with a temporary malus that reduces all of their status values by `15%` for 15 minutes.
 
-A Bestia or Master that is defeated loses `1%` of its current experience points. Carried items are protected by a spell which tries to teleport them back to a secure storage shortly after death — but remember: spells can be [dispelled](/docs/mechanics/master/basics/#skill-dispel).
+A Bestia or Master that is defeated loses `1%` of its current experience points. Carried items are protected by a spell which tries to teleport them back to a secure storage shortly after death — but remember: spells can be [dispelled](/docs/mechanics/master/scholar-tree/#skill-dispel).
 
 In every case, carried items suffer a durability penalty.
 

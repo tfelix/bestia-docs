@@ -113,7 +113,7 @@ loot up to level 10. Each rank raises the level of what a master can pull out of
 
 At home wherever the trees outnumber the people. Foresters live off the land - felling timber, landing the catch of the day, and striking up a bond with Bestia most masters would call unapproachable. The ones who stay at it long enough stop merely catching Bestia and start shaping the bloodlines they come from.
 
-{{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [survival tree](#survival-tree)" />}}
+{{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [survival tree](/docs/mechanics/master/survival-tree/)" />}}
 
 The Forester has two routes. The **Woodsman** fells and replants the forest, sets traps and reads tracks. The **Beastmaster** tames Bestia and breeds better bloodlines.
 
@@ -170,7 +170,7 @@ Plants a sapling in a tree stump and consumes a log. The new tree grows back fas
 
 Raises the catch chance of every [Bestia trap](/docs/mechanics/bestias/bestia/#catching-bestias) the master throws. Anyone can
 throw a Bestia trap; this skill only makes it hold better. The traps themselves are made with
-[Carpentry](#skill-carpentry).
+[Carpentry](/docs/mechanics/master/craftsman-tree/#skill-carpentry).
 
 | Lv. | Catch Chance |
 | --- | ------------ |
@@ -252,7 +252,7 @@ clutch draws a fourth dominant individual value, so a bloodline improves on four
 
 Half surveyor, half treasure hunter. Prospectors chart unclaimed land, found settlements on it, feel out resources long before anyone else arrives, and travel further than sense would recommend.
 
-{{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [survival tree](#survival-tree)" />}}
+{{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [survival tree](/docs/mechanics/master/survival-tree/)" />}}
 
 The Prospector has two routes. The **Cartographer** charts the land, reads the weather, founds settlements and keeps a party alive in the wild. The **Treasure Hunter** finds what is buried and hollow, and digs it up or sells the map.
 
@@ -326,7 +326,7 @@ inside the settlement's sphere of influence.
     type="Active" manaCost="30" castTime="5s" cooldown="5 min" duration="per Lv." range="2" target="Campfire"
     description="Out where the roads end, a good camp is the difference between an expedition and a rescue." >}}
 
-Turns a campfire, such as the one [Cooking](#skill-cooking) places, into a camp. Party members and their Bestias within
+Turns a campfire, such as the one [Cooking](/docs/mechanics/master/novice-tree/#skill-cooking) places, into a camp. Party members and their Bestias within
 `5m` bear the weather better: `±5 °C` [temperature tolerance](/docs/mechanics/world/environment/#temperature), in both
 directions. Only one camp per master can stand.
 
@@ -405,7 +405,7 @@ holds it can dig the cache up.
 
 If it's buried, a Miner will find a way to it. Equal parts pickaxe and stubbornness, this path turns raw earth - literally - into opportunity.
 
-{{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [survival tree](#survival-tree)" />}}
+{{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [survival tree](/docs/mechanics/master/survival-tree/)" />}}
 
 The Miner has two routes. The **Digger** gets more ore out of the rock, faster. The **Gem Cutter** turns rough stones into cut gems.
 
@@ -460,7 +460,7 @@ The five gems and what they hold are listed under [Sockets and Essences](/docs/m
 | 4   | +32%           | 80                 |
 | 5   | +40%           | 100+               |
 
-Same rule as [Forge Weapon](#skill-forge-weapon): no hard cap, but every gem level above the reliable one costs another
+Same rule as [Forge Weapon](/docs/mechanics/master/craftsman-tree/#skill-forge-weapon): no hard cap, but every gem level above the reliable one costs another
 `5%` success chance.
 
 {{< /skill >}}
@@ -499,7 +499,7 @@ Can sense ore and gem deposits through solid rock.
     description="When the pick is too slow, a Miner reaches for something louder." >}}
 
 Sets a blasting charge that breaks every block around it `3s` later, and hurts whoever stands too close. Consumes a
-Blasting Charge, brewed with [Alchemy](#skill-alchemy).
+Blasting Charge, brewed with [Alchemy](/docs/mechanics/master/craftsman-tree/#skill-alchemy).
 
 | Lv. | Radius |
 | --- | ------ |

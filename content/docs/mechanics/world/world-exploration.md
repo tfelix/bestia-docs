@@ -17,12 +17,12 @@ A charted map isn't just a picture of the world — it unlocks concrete gameplay
 1. Most spells can only be targeted at locations inside an already-charted area.
 2. AI-assisted movement for a controlled Bestia only works within charted territory.
 3. [Public world events](/docs/mechanics/world/questing/#world-events) are only announced on, and synced across, the maps players own.
-4. Mineral prospecting with the [Mining](/docs/mechanics/master/basics/#skill-mining) skill only works inside charted areas.
+4. Mineral prospecting with the [Mining](/docs/mechanics/master/survival-tree/#skill-mining) skill only works inside charted areas.
 
 A few ground rules govern how maps work:
 
 - Every player can create their own world map in-game.
-- Players with the [Cartography](/docs/mechanics/master/basics/#skill-cartography) skill can merge several maps into one, combining everyone's explored area.
+- Players with the [Cartography](/docs/mechanics/master/survival-tree/#skill-cartography) skill can merge several maps into one, combining everyone's explored area.
 - At high skill levels, a cartographer can craft magical maps that go further still — sharing custom markers with friends, or surfacing known resource locations directly on the map.
 
 Copying someone else's map is technically possible, but without training in Cartography it's extremely difficult and most likely to fail.
@@ -56,7 +56,7 @@ The following applies:
 
 - For every km from already-explored land, difficulty increases by `10`.
 - For every 1% of [mana concentration](/docs/mechanics/world/environment/#mana-concentration) in the area, difficulty increases by `0.5`.
-- Every level of [Cartography](/docs/mechanics/master/basics/#skill-cartography) reduces difficulty by `10`.
+- Every level of [Cartography](/docs/mechanics/master/survival-tree/#skill-cartography) reduces difficulty by `10`.
 
 1. Using the skill determines a difficulty `d`, based on the distance to the nearest already-charted area and the size of the area being surveyed.
 2. Between 3 and 5 locations `l` spawn around the player, at a distance of 300 to 800 meters depending on `d`. Each must be reached within a time limit `t`.
@@ -66,7 +66,7 @@ The following applies:
 
 A map is an item. Each **chart** records the ground it covers as a grid of 64 m cells, and what a player sees on their
 map is everything covered by all the charts they carry. Charts come from surveying with
-[Cartography](/docs/mechanics/master/basics/#skill-cartography), and every new master starts with a chart of the 5 km around
+[Cartography](/docs/mechanics/master/survival-tree/#skill-cartography), and every new master starts with a chart of the 5 km around
 their home. The explored area belongs to the chart, not to the player, so a chart that is traded, dropped or looted
 takes its ground with it.
 

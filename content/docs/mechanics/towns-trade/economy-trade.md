@@ -14,7 +14,7 @@ system** that moves goods and coin across the map, and the **auction houses** wh
 # Currency
 
 All currency in the world originates from gold deposits that players discover and mine themselves. Raw gold becomes
-money only once a master turns it into **gold coins** with the [Minting](/docs/mechanics/master/basics/#skill-minting) skill —
+money only once a master turns it into **gold coins** with the [Minting](/docs/mechanics/master/scholar-tree/#skill-minting) skill —
 there is no other tap. Gold coins are the single currency for every trade and transaction, and there are no smaller
 denominations: everything in the game is priced in whole **gold**.
 
@@ -67,7 +67,7 @@ builds one.
 
 ## Building an Auction House
 
-Building an auction house requires the [Trade Post Owner](/docs/mechanics/master/basics/#skill-trade-post-owner) master skill,
+Building an auction house requires the [Trade Post Owner](/docs/mechanics/master/scholar-tree/#skill-trade-post-owner) master skill,
 which also caps how many a single master may operate (one at Lv. 1, up to five at Lv. 5). It is an expensive building,
 so the materials are usually pooled by a group of players or a whole guild. These special rules apply:
 
@@ -121,7 +121,7 @@ The fees, however, are **not refunded**. You paid for the marketplace's time and
 ## Linking Auction Houses
 
 Auction houses belonging to different players can be **linked** using the
-[Trade Agreement](/docs/mechanics/master/basics/#skill-trade-agreement) master skill, provided every owner involved agrees.
+[Trade Agreement](/docs/mechanics/master/scholar-tree/#skill-trade-agreement) master skill, provided every owner involved agrees.
 Linked houses share their listings, turning a handful of local shops into one broad marketplace and making goods far easier to find - for buyers and sellers alike.
 
 Winning an auction at a linked house leaves the buyer a choice: **pay a delivery fee** and have the item posted over by

@@ -66,7 +66,7 @@
   value: 600
   description: |
     Blacksmiths use furnaces to smelt raw ore down into metal bars. Every batch burns [Coal](/docs/mechanics/items-crafting/item-list/#coal) or [Charcoal](/docs/mechanics/items-crafting/item-list/#charcoal), and both the ore and the fuel are lost if the smelt fails.
-    Placing one requires [Ore Refinement](/docs/mechanics/master/basics/#skill-ore-refinement) Lv. 1. Use it to construct it in the world.
+    Placing one requires [Ore Refinement](/docs/mechanics/master/craftsman-tree/#skill-ore-refinement) Lv. 1. Use it to construct it in the world.
 - id: workbench_kit
   name: Workbench
   weight: "?"
@@ -421,7 +421,7 @@
   value: 40
   description: |
     The first poison an Alchemist learns to brew. Worked into a blade with
-    [Enchant Poison](/docs/mechanics/master/basics/#skill-enchant-poison), every cut may leave it behind. Stronger poisons
+    [Enchant Poison](/docs/mechanics/master/warrior-tree/#skill-enchant-poison), every cut may leave it behind. Stronger poisons
     follow later.
 - id: engraving_set
   name: Engraving Set
@@ -446,7 +446,7 @@
   value: 2000
   description: |
     A bench of clamps, loupes and graded grit where a Miner turns rough gemstones into cut ones. Placing one requires
-    [Gem Cutting](/docs/mechanics/master/basics/#skill-gem-cutting) Lv. 1.
+    [Gem Cutting](/docs/mechanics/master/survival-tree/#skill-gem-cutting) Lv. 1.
 - id: breeder
   name: Breeder
   weight: 60

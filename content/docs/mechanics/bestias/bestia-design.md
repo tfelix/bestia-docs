@@ -352,7 +352,7 @@ Three rules come before the numbers:
 # 9. The compendium entry
 
 Every bestia gets an entry in the [Bestia Compendium](/docs/mechanics/bestias/bestia/#bestia-compendium), the in-game book of known
-species. The [Sense](/docs/mechanics/master/basics/#skill-sense) skill already reveals status values, element, HP and mana.
+species. The [Sense](/docs/mechanics/master/scholar-tree/#skill-sense) skill already reveals status values, element, HP and mana.
 The compendium is where a player keeps what they have learned.
 
 | Field       | Content                                                                        |

@@ -54,7 +54,7 @@ About `100` is the ceiling of one caster. Everything above needs a [ritual](#rit
 ## Potency Bands
 
 Players see Potency as a band, not as a number. A caster sees the band of their own skills in the skill window.
-[Magic Sense](/docs/mechanics/master/basics/#skill-magic-sense) Lv. 4 shows the band of a spell it picks apart, so a Sage can
+[Magic Sense](/docs/mechanics/master/scholar-tree/#skill-magic-sense) Lv. 4 shows the band of a spell it picks apart, so a Sage can
 judge a seal before trying it.
 
 | Band         | P          |
@@ -170,11 +170,11 @@ come close. Suppress Aura's own column "Mana Suppression" goes away: its rank no
 
 The same contest decides every spell that stops another spell:
 
-- [Magic Rod](/docs/mechanics/master/basics/#skill-magic-rod) catches a single-target spell with a chance of
+- [Magic Rod](/docs/mechanics/master/scholar-tree/#skill-magic-rod) catches a single-target spell with a chance of
   `Edge(P rod - P spell)`. A failed catch lets the spell land, and the rod stays up for the next one.
-- [Land Protector](/docs/mechanics/master/basics/#skill-land-protector) rolls once for each ground spell cast into it. A
+- [Land Protector](/docs/mechanics/master/scholar-tree/#skill-land-protector) rolls once for each ground spell cast into it. A
   stronger spell can still take root.
-- [Suppress Magic](/docs/mechanics/master/basics/#skill-suppress-magic) multiplies its interrupt chance by
+- [Suppress Magic](/docs/mechanics/master/warrior-tree/#skill-suppress-magic) multiplies its interrupt chance by
   `Edge(P suppress - P spell)` of the spell it tries to break.
 
 # Against the World
@@ -189,12 +189,12 @@ defender's Potency.
 | A [Mana Storm](/docs/mechanics/world/doomsday/#mana-storms) at either end | +40       |
 | An open rift nearby                                                 | +60       |
 
-A [Teleport](/docs/mechanics/master/basics/#skill-teleport) lands off target by up to `1.4 km × (1 - Edge(P - D))`. This is the
+A [Teleport](/docs/mechanics/master/scholar-tree/#skill-teleport) lands off target by up to `1.4 km × (1 - Edge(P - D))`. This is the
 story from the [Master Skills](/docs/mechanics/master/basics/#master-skills) page in numbers: Saferu (`P 80`) jumps 8 km
 (`D 50`) into a mana storm (`D 90`). Edge is `30%`, and the group lands up to 980 m off target. Without the storm the
 group lands on the rune. A jump of 20 km (`D 110`) is a lottery for one caster and exact with a ritual charge.
 
-[Scry](/docs/mechanics/master/basics/#skill-scry) uses the same Edge for how clearly it shows the far place. A Warp Portal
+[Scry](/docs/mechanics/master/scholar-tree/#skill-scry) uses the same Edge for how clearly it shows the far place. A Warp Portal
 uses it for where its far end opens.
 
 # Fixed Potency

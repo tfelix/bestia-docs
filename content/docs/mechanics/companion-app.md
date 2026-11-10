@@ -92,7 +92,7 @@ none of it hands an absent player anything a present one does not already have.
 - **Local say**, does not work via the app as the master is gone.
 
 The skill gates hold. Chat and whispers still want
-[Basic Skill Lv. 2](/docs/mechanics/master/basics/#skill-basic-skill) and parties still want Lv. 5, on a phone
+[Basic Skill Lv. 2](/docs/mechanics/master/novice-tree/#skill-basic-skill) and parties still want Lv. 5, on a phone
 exactly as at a desk. An app does not teach you to speak.
 
 What it cannot do is put you in the fight. You can be told a raid is going badly; you cannot help with it.
@@ -139,9 +139,9 @@ A spirit can carry mana. It cannot carry matter. That one line decides the whole
 
 | While ranging you can                                                                  | Using                                                                                                       |
 | -------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| Chart unexplored ground                                                                | [Cartography](/docs/mechanics/master/basics/#skill-cartography), as below                                          |
-| Sense deposits nearby                                                                  | [Resource Sense](/docs/mechanics/master/basics/#skill-resource-sense), whose 1–5 km reach is 0.3–1.7 km of walking |
-| Feel a rift or a doomsday brewing                                                      | [Observation](/docs/mechanics/master/basics/#skill-observation)                                                    |
+| Chart unexplored ground                                                                | [Cartography](/docs/mechanics/master/survival-tree/#skill-cartography), as below                                          |
+| Sense deposits nearby                                                                  | [Resource Sense](/docs/mechanics/master/survival-tree/#skill-resource-sense), whose 1–5 km reach is 0.3–1.7 km of walking |
+| Feel a rift or a doomsday brewing                                                      | [Observation](/docs/mechanics/master/scholar-tree/#skill-observation)                                                    |
 | Raise, lower or steady [mana density](/docs/mechanics/world/environment/#mana-concentration) | Your Order's rites, and mana carried as mana                                                                |
 | Scout a site worth caching goods at                                                    | Your eyes — a courier does the carrying afterwards                                                          |
 
@@ -341,7 +341,7 @@ The charthouse is that promise, in your pocket:
   between them.
 - Somewhere to plan a route, mark what you want to look at next, and queue a survey target for when you log
   in — or go and chart it on foot, by [ranging](#ranging).
-- Chart fragments traded with other players. Maps are items, [Cartography](/docs/mechanics/master/basics/#skill-cartography)
+- Chart fragments traded with other players. Maps are items, [Cartography](/docs/mechanics/master/survival-tree/#skill-cartography)
   merges them and the post moves them — so the trade happens in the world, and the app only arranges it.
 
 # The Compendium

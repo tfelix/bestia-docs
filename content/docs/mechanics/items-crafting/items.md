@@ -78,7 +78,7 @@ its species.
 
 - A two-handed weapon leaves no room for anything in the left hand.
 - The left hand holds a shield or a tome. A second weapon in the left hand needs
-  [Dual Wield](/docs/mechanics/master/basics/#skill-dual-wield).
+  [Dual Wield](/docs/mechanics/master/warrior-tree/#skill-dual-wield).
 - Bows, crossbows and slings shoot from the [quiver](/docs/mechanics/combat/ranged-combat/#the-quiver). A thrown weapon is its
   own ammunition: each throw uses up one piece of the stack in hand.
 - Tools hit weakly. Their real job is gathering, which is why every master can hold one.
@@ -257,8 +257,8 @@ min: 0
 
 # Item Customization
 
-An item can be reworked to cut rune slots into it, which [Runic Etching](/docs/mechanics/master/basics/#skill-runic-etching) can later
-fill. This is governed by the Craftsman's [Item Customization](/docs/mechanics/master/basics/#skill-item-customization) skill and
+An item can be reworked to cut rune slots into it, which [Runic Etching](/docs/mechanics/master/craftsman-tree/#skill-runic-etching) can later
+fill. This is governed by the Craftsman's [Item Customization](/docs/mechanics/master/craftsman-tree/#skill-item-customization) skill and
 consumes an [Engraving Set](/docs/mechanics/items-crafting/item-list/#engraving-set) per attempt, whether it succeeds or not. A failed
 attempt can destroy the item outright - see the skill's Destroy Chance column.
 
@@ -273,7 +273,7 @@ chance = clamp(baseChance + skillSuccessChance + floor(DEX / 10) * 0.01, 0.01, 1
 
 Levels 1-10 all share the same `40%` base chance; every level above that removes another 1%, so it reaches `0%` at
 level 50 and `-50%` at level 100 - firmly negative, meaning a Craftsman needs a near-maxed
-[Item Customization](/docs/mechanics/master/basics/#skill-item-customization) rank (and preferably some DEX) just to bring a
+[Item Customization](/docs/mechanics/master/craftsman-tree/#skill-item-customization) rank (and preferably some DEX) just to bring a
 level 100 item back up to a coin flip. Level 100 is only a landmark, not a ceiling - the base chance keeps falling by
 1% per level for anything higher. The total is clamped so an attempt is never above 100% nor entirely impossible.
 
@@ -339,7 +339,7 @@ at an altar are enchantments without an end time. They cannot be dispelled.
 
 ## Dispelling an Enchantment
 
-[Dispel](/docs/mechanics/master/basics/#skill-dispel) reaches an enchantment only when it is **cast at the item itself**, lying on
+[Dispel](/docs/mechanics/master/scholar-tree/#skill-dispel) reaches an enchantment only when it is **cast at the item itself**, lying on
 the ground. Cast at a creature, it lifts the creature's status effects and leaves every item alone, worn or carried.
 Otherwise one Dispel would strip a fighter's whole gear, and that would make it too strong.
 
@@ -522,10 +522,10 @@ variants.
 ## Construction Crafting Success Chance
 
 For the Craftsmanship domain specifically — workbenches, structures, traps and other non-magical devices built with
-[Carpentry](/docs/mechanics/master/basics/#skill-carpentry) — the Production roll above is shaped by skill rank and status
+[Carpentry](/docs/mechanics/master/craftsman-tree/#skill-carpentry) — the Production roll above is shaped by skill rank and status
 values, not material quality alone, much like [Item Customization](#item-customization)'s slot-cutting chance. A
 **base chance** falls off with the item level being attempted, on top of which
-[Carpentry](/docs/mechanics/master/basics/#skill-carpentry), [Master Craftsman](/docs/mechanics/master/basics/#skill-master-craftsman),
+[Carpentry](/docs/mechanics/master/craftsman-tree/#skill-carpentry), [Master Craftsman](/docs/mechanics/master/craftsman-tree/#skill-master-craftsman),
 temporary buffs and the Craftsman's own status values are added. The DEX and WIL terms apply to every craft, not only
 to Craftsmanship, and they use the status values of whoever crafts (see [Production](#production-crafting-a-known-item)):
 
@@ -534,13 +534,13 @@ baseChance = 0.90 - max(0, itemLevel - 10) * 0.015
 chance = clamp(baseChance + carpentryBonus + masterCraftsmanBonus + buffBonus + circleBonus + floor(DEX / 10) * 0.02 + floor(WIL / 10) * 0.01, 0.01, 1.0)
 ```
 
-Levels 1-10 all share the same `90%` base chance, so [Carpentry](/docs/mechanics/master/basics/#skill-carpentry) alone gets
+Levels 1-10 all share the same `90%` base chance, so [Carpentry](/docs/mechanics/master/craftsman-tree/#skill-carpentry) alone gets
 you the rest of the way there: Lv. 1 (+5%) reaches 95%, Lv. 2 (+10%) already caps out at 100%. Every level above 10
 removes another 1.5%, reaching `0%` at level 70 and `-30%` at level 90 - firmly negative, meaning a level 90 build
 needs real investment across skill, buffs and stats to be worth attempting at all. Bonus sources:
 
-- [Carpentry](/docs/mechanics/master/basics/#skill-carpentry) rank — up to **+50%** at Lv. 10.
-- [Master Craftsman](/docs/mechanics/master/basics/#skill-master-craftsman) rank — up to **+10%** at Lv. 5.
+- [Carpentry](/docs/mechanics/master/craftsman-tree/#skill-carpentry) rank — up to **+50%** at Lv. 10.
+- [Master Craftsman](/docs/mechanics/master/craftsman-tree/#skill-master-craftsman) rank — up to **+10%** at Lv. 5.
 - Temporary buffs (a support consumable, an ally's blessing, …) — typically **+5% to +10%** while active.
 - A [Mana Circle](/docs/mechanics/master/basics/#mana-circles) — up to **+45%** with six participants on mana-rich ground.
 - **DEX** — `+2%` per 10 points (see [Status Values](/docs/mechanics/combat/statusvalues/#dexterity---dex)).
@@ -588,7 +588,7 @@ deliberately **not** blueprint-driven — there is nothing to discover, every or
 charge still rolls against a success chance, and a failed smelt turns the whole batch into slag: the ore **and** the
 fuel are lost.
 
-The roll is governed by the Blacksmith's [Ore Refinement](/docs/mechanics/master/basics/#skill-ore-refinement) skill and, like
+The roll is governed by the Blacksmith's [Ore Refinement](/docs/mechanics/master/craftsman-tree/#skill-ore-refinement) skill and, like
 [Item Customization](#item-customization) and [Construction Crafting](#construction-crafting-success-chance), starts
 from a **base chance that falls with the level of the ore** being worked:
 
@@ -603,7 +603,7 @@ doubles. Every ore level above 10 removes another 1%, so the base reaches `0%` a
 `-60%` at [Adamantium Ore](/docs/mechanics/items-crafting/item-list/#adamantium-ore)'s level 100. See
 [Refining](/docs/mechanics/items-crafting/natural-resources/#refining) for the level and base chance of every ore. Bonus sources:
 
-- [Ore Refinement](/docs/mechanics/master/basics/#skill-ore-refinement) rank — up to **+90%** at Lv. 3.
+- [Ore Refinement](/docs/mechanics/master/craftsman-tree/#skill-ore-refinement) rank — up to **+90%** at Lv. 3.
 - **Fuel** — [Coal](/docs/mechanics/items-crafting/item-list/#coal) is the reference fuel at `±0%`;
   [Charcoal](/docs/mechanics/items-crafting/item-list/#charcoal) burns cooler and costs `-10%`.
 - A [Mana Circle](/docs/mechanics/master/basics/#mana-circles) — up to **+45%** with six participants on mana-rich ground.
@@ -612,7 +612,7 @@ doubles. Every ore level above 10 removes another 1%, so the base reaches `0%` a
 - **WIL** — `+1%` per 10 points; holding a furnace at temperature for hours is a matter of patience
   (see [Status Values](/docs/mechanics/combat/statusvalues/#willpower---wil)).
 
-**Example:** A Blacksmith with maxed [Ore Refinement](/docs/mechanics/master/basics/#skill-ore-refinement) (Lv. 3, `+90%`)
+**Example:** A Blacksmith with maxed [Ore Refinement](/docs/mechanics/master/craftsman-tree/#skill-ore-refinement) (Lv. 3, `+90%`)
 burning coal, at 60 STR (`+12%`) and 30 WIL (`+3%`), attempts [Adamantium Ore](/docs/mechanics/items-crafting/item-list/#adamantium-ore)
 (Lv. 100): `baseChance = 0.30 - 90 * 0.01 = -0.60`, so `chance = -0.60 + 0.90 + 0.00 + 0.12 + 0.03 = 0.45` — a 45%
 success chance on the hardest ore in the world, meaning even a maxed smith loses roughly every second batch. The same
@@ -738,7 +738,7 @@ The item level of a copy follows from all three. A copy with more or bigger stat
 
 Forging itself (discovering a blueprint, the success chance, craft time) is described in
 [Item Crafting](#item-crafting) and in the skills
-[Forge Weapon](/docs/mechanics/master/basics/#skill-forge-weapon) and [Forge Armor](/docs/mechanics/master/basics/#skill-forge-armor).
+[Forge Weapon](/docs/mechanics/master/craftsman-tree/#skill-forge-weapon) and [Forge Armor](/docs/mechanics/master/craftsman-tree/#skill-forge-armor).
 
 ## Templates
 
@@ -836,7 +836,7 @@ level.
 The item level is the level a character needs to wear the copy. It also sets the item's
 [category](/docs/mechanics/items-crafting/items/#item-level), and with it the refinement bonus and chances, the chance to cut
 another socket with [Item Customization](/docs/mechanics/items-crafting/items/#item-customization), and which
-[Equipment Repair](/docs/mechanics/master/basics/#skill-equipment-repair) rank can fix it. The upgrade level is not part of
+[Equipment Repair](/docs/mechanics/master/craftsman-tree/#skill-equipment-repair) rank can fix it. The upgrade level is not part of
 the item level.
 
 ### What the Numbers Mean
@@ -891,8 +891,8 @@ The cap comes from the smith and from the material:
 cap = min(reliableItemLevel, mainMaterialLevel + 20)
 ```
 
-- `reliableItemLevel` is the "Reliable Item Level" of [Forge Weapon](/docs/mechanics/master/basics/#skill-forge-weapon) or
-  [Forge Armor](/docs/mechanics/master/basics/#skill-forge-armor): 10 per skill level. At skill level 10 the smith sets no
+- `reliableItemLevel` is the "Reliable Item Level" of [Forge Weapon](/docs/mechanics/master/craftsman-tree/#skill-forge-weapon) or
+  [Forge Armor](/docs/mechanics/master/craftsman-tree/#skill-forge-armor): 10 per skill level. At skill level 10 the smith sets no
   limit, only the material does.
 - `mainMaterialLevel` is the level of the input the recipe needs most of, for example the iron of an iron sword,
   not its coal.
@@ -931,7 +931,7 @@ A socket is an open slot for a bestia essence, like a card slot in Ragnarok Onli
 Every socket raises the item level by 5 points, both ways. So cutting a socket into an item makes it harder to
 wear, and harder to cut the next one.
 
-An essence lives in a gem. [Runic Etching](/docs/mechanics/master/basics/#skill-runic-etching) binds the essence of a Bestia
+An essence lives in a gem. [Runic Etching](/docs/mechanics/master/craftsman-tree/#skill-runic-etching) binds the essence of a Bestia
 into a cut gem, and the result is an **Essence Gem**. Runic Etching is not part of the game yet. These rules are set:
 
 - **Every essence gem fits every socket.** There is no level limit on the socket side.
@@ -947,7 +947,7 @@ into a cut gem, and the result is an **Essence Gem**. Runic Etching is not part 
 | Pyrelith | In cooled lava, in strong volcanic fields | Lv. 80              |
 | Diamond  | Deepest of all, under the oldest land     | Any level           |
 
-Mining a gem voxel gives a rough gem of its kind, and [Gem Cutting](/docs/mechanics/master/basics/#skill-gem-cutting) turns it
+Mining a gem voxel gives a rough gem of its kind, and [Gem Cutting](/docs/mechanics/master/survival-tree/#skill-gem-cutting) turns it
 into a cut gem. A failed cut and a failed etching both shatter the gem, so a strong essence costs a rare gem for every
 try. A [Rough Gemstone](/docs/mechanics/items-crafting/item-list/#rough-gemstone) from a Bestia's digging or a treasure cache is one of
 the five, unknown until it is cut.
@@ -1066,7 +1066,7 @@ Master first.
 ## Weight Limit
 
 Items weight is given by units of about 1kg per unit. The smallest division is 0.1 units which approximates to 100gr.
-The maximum amount a Bestia can carry is dependent on its strength and its vitality. The [Maximize Carry Capacity](/docs/mechanics/master/basics/#skill-maximize-carry-capacity) skill raises the carriable weight limit of the Master and of every Bestia alike. The formula is given as:
+The maximum amount a Bestia can carry is dependent on its strength and its vitality. The [Maximize Carry Capacity](/docs/mechanics/master/survival-tree/#skill-maximize-carry-capacity) skill raises the carriable weight limit of the Master and of every Bestia alike. The formula is given as:
 
 ```kotlin
 weightLimit = STR / 2 + VIT / 5 + 15 + LEVEL / 5

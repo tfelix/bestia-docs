@@ -16,7 +16,7 @@ A threat does not necessarily have to be perceived directly. A meteor, or severe
 
 No Doomsday strikes all at once. Whatever form it takes, a threat escalates through progressively more severe stages, giving the player community time to notice it, organise around it, and decide whether to fight it or feed it:
 
-1. **Omens** — subtle, easily-missed signs: strange weather, restless or fleeing Bestia, minor shifts in local [mana concentration](/docs/mechanics/world/environment/#mana-concentration). A Scholar with the [Observation](/docs/mechanics/master/basics/#skill-observation) skill can pick up the direction and distance of the brewing event long before most players notice.
+1. **Omens** — subtle, easily-missed signs: strange weather, restless or fleeing Bestia, minor shifts in local [mana concentration](/docs/mechanics/world/environment/#mana-concentration). A Scholar with the [Observation](/docs/mechanics/master/scholar-tree/#skill-observation) skill can pick up the direction and distance of the brewing event long before most players notice.
 2. **Onset** — the threat manifests in a bounded area and begins to affect nearby regions. Damage is still local and reversible.
 3. **Escalation** — the effect intensifies and spreads, region by region, feeding on whatever fuels it (usually mana). This is the long middle phase where the outcome is genuinely in the players' hands.
 4. **Cataclysm** — if never contained, the threat reaches critical mass and the world is lost. A new world is then generated in its place.
@@ -73,7 +73,7 @@ The burn chases [mana density](/docs/mechanics/world/environment/#mana-concentra
 
 ## The Destroyer
 
-Old legends stir first — restless Bestia, an ominous reading on a Scholar's [Observation](/docs/mechanics/master/basics/#skill-observation) — and then a colossal unique Bestia awakens and begins a slow, deliberate march toward the nearest player city.
+Old legends stir first — restless Bestia, an ominous reading on a Scholar's [Observation](/docs/mechanics/master/scholar-tree/#skill-observation) — and then a colossal unique Bestia awakens and begins a slow, deliberate march toward the nearest player city.
 
 Its path is predictable enough to plan around, but every settlement it razes heals and empowers it, so each city lost makes the next harder to save. Players meet it with server-wide raids at defensible chokepoints, environmental traps, and siege devices researched at an Order's [citadel](/docs/mechanics/society/factions/#citadels-and-temples) — while **Chaos** may try to lure or empower it toward its rivals. If The Destroyer reaches and levels the major cities, the world collapses with them.
 
@@ -111,7 +111,7 @@ As it worsens the continents themselves fracture — land routes sever, and whol
 
 Mana rifts are a normal, ongoing feature of every world: **Chaos** opens and feeds them while **Eternity** seals them, and their number is one of the ways the Orders bend a region's [mana density](/docs/mechanics/world/environment/#mana-concentration). The Void Tear is simply the worst-case version of this everyday mechanic — what happens when rifts in a high-mana region are left to grow and merge unchecked.
 
-It starts in an area with a strong mana presence, where a first rift opens up. Rifts are detectable with spells that reveal large mana concentrations, and can also be found using dedicated rift-detection spells or devices; a Scholar's [Observation](/docs/mechanics/master/basics/#skill-observation) skill lets players approximately pinpoint a rift's origin.
+It starts in an area with a strong mana presence, where a first rift opens up. Rifts are detectable with spells that reveal large mana concentrations, and can also be found using dedicated rift-detection spells or devices; a Scholar's [Observation](/docs/mechanics/master/scholar-tree/#skill-observation) skill lets players approximately pinpoint a rift's origin.
 
 Left open, a rift **widens over time and periodically spawns waves of increasingly powerful Bestia** that roam out to attack nearby settlements. A widening rift also raises the local mana density, which makes further rifts more likely nearby — and once two grow into one another they merge. The Void Tear is what forms when enough of them merge: a persistent tear that anchors a raid-scale world boss and continuously floods the region with mana, which can in turn seed a [Mana Crystal Infestation](#mana-crystal-infestation).
 
@@ -123,4 +123,4 @@ In areas with a very high mana concentration, a Mana Infestation can manifest. I
 
 Each crystal is a **destructible object with its own health pool** that pulses damage into every creature or structure in its vicinity, turning the ground around it into a no-go zone. Worse, the crystals **self-replicate**: at intervals each node seeds child crystals nearby, so an ignored infestation grows geometrically, converting whole regions into lethal dead zones and eventually consuming the entire planet.
 
-The crystals themselves can be destroyed, and there is a strong incentive to do so: shattered nodes drop [Blue, Yellow, and Red Mana Crystals](/docs/mechanics/items-crafting/natural-resources/#list-of-resources), the raw material for [refining](/docs/mechanics/master/basics/#skill-manaflow-expert) into powerful magic artifacts. Raid groups therefore have to clear nodes faster than they can replicate. Anything that **drains or banishes mana** slows the spread, and lowering a region's overall mana density removes the fuel the infestation feeds on. Left alone, the crystals win by sheer arithmetic.
+The crystals themselves can be destroyed, and there is a strong incentive to do so: shattered nodes drop [Blue, Yellow, and Red Mana Crystals](/docs/mechanics/items-crafting/natural-resources/#list-of-resources), the raw material for [refining](/docs/mechanics/master/craftsman-tree/#skill-manaflow-expert) into powerful magic artifacts. Raid groups therefore have to clear nodes faster than they can replicate. Anything that **drains or banishes mana** slows the spread, and lowering a region's overall mana density removes the fuel the infestation feeds on. Left alone, the crystals win by sheer arithmetic.
