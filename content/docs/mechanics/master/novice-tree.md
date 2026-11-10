@@ -28,8 +28,8 @@ graph TD
     description="The first lessons every wanderer learns before mana ever answers their call - how to speak with others, strike a fair trade, and hold their own among strangers." >}}
 {{< skill-level level="1" >}}Allows to trade with other players.{{< /skill-level >}}
 {{< skill-level level="2" >}}Allows to chat with other players via public and whisper chat.{{< /skill-level >}}
-{{< skill-level level="3" >}}Allows to use trade posts.{{< /skill-level >}}
-{{< skill-level level="4" >}}Allows sitting to double HP & Mana recovery.{{< /skill-level >}}
+{{< skill-level level="3" >}}Allows to list and buy at trade posts. Browsing them needs no rank.{{< /skill-level >}}
+{{< skill-level level="4" >}}Sitting doubles HP & Mana recovery, for the master and for the master's Bestias when they sit.{{< /skill-level >}}
 {{< skill-level level="5" >}}Allows to create parties and invite players into them. Joining a party needs no rank. Unlocks all the other skill trees.{{< /skill-level >}}
 {{< /skill >}}
 
@@ -79,7 +79,9 @@ with a long recipe book outperforms a Lv. 3 cook who never left the campfire.
     type="Active" manaCost="per Lv." castTime="Channeled" cooldown="3min" duration="10s" range="2" target="Self or Ally"
     description="Apply bandages to yourself or to a friendly Bestia or master, channeling a steady mend into whatever's bleeding." >}}
 
-Channels for 10s. A target can only receive a single First Aid every 60 secs. It heals the smaller of the two amounts, so the flat value caps it.
+Uses one Bandage when the cast starts, then channels for 10s and heals in a pulse every 2s. A hit breaks the channel;
+what was healed so far stays. A target can only receive a single First Aid every 60 secs. The pulses together heal the
+smaller of the two amounts, so the flat value caps it.
 
 | Lv. | Max HP Healed (% based) | Max HP Healed (flat) | Mana |
 | --- | ----------------------- | -------------------- | ---- |
