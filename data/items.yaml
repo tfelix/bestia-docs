@@ -447,14 +447,39 @@
   description: |
     A bench of clamps, loupes and graded grit where a Miner turns rough gemstones into cut ones. Placing one requires
     [Gem Cutting](/docs/mechanics/master/survival-tree/#skill-gem-cutting) Lv. 1.
-- id: breeder
-  name: Breeder
+- id: breeding_farm
+  name: Breeding Farm
   weight: 60
   type: Etc
   value: 3000
   description: |
-    A warded pen where a pair of Bestia can be left together to produce an egg. Holds exactly one male and one female at a time.
-    Use it to construct it in the world.
+    A fenced pen with a nesting hut, where a male and a female Bestia of the same kind lay an egg. Does one clutch at a
+    time and needs a Nesting Bundle for each. Made with Carpentry Lv. 2. Use it to construct it in the world.
+    See [Breeding](/docs/mechanics/bestias/bestia/#breeding).
+- id: incubator
+  name: Incubator
+  weight: 40
+  type: Etc
+  value: 2500
+  description: |
+    A warm clay oven over an ember core. Hatches one Bestia egg at a time. Made with Carpentry Lv. 3. Use it to
+    construct it in the world. See [Hatching the Egg](/docs/mechanics/bestias/bestia/#hatching-the-egg).
+- id: nesting_bundle
+  name: Nesting Bundle
+  weight: 0.5
+  type: Etc
+  value: 40
+  description: |
+    Reeds, fur and feathers bound into a nest. A Breeding Farm uses up one for each clutch. Made at a Workbench with
+    Carpentry Lv. 1 from a reed stalk, a soft fur and a feather.
+- id: bestia_egg
+  name: Bestia Egg
+  weight: 2
+  type: Etc
+  value: 0
+  description: |
+    A Bestia egg from a Breeding Farm. It knows its species, its sex and its individual values, and only hatches in an
+    Incubator. Not stackable: every egg is one Bestia.
 - id: bestia_trap
   name: Bestia Trap
   weight: 1.5

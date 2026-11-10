@@ -90,29 +90,89 @@ An overview of the attacks themselves lives on the [Attack List](/docs/mechanics
 
 # Breeding
 
-Bestia can be bred in order to improve their [status values](/docs/mechanics/combat/statusvalues) and to pass powerful attacks down a bloodline. To breed a pair, the following criteria must be met:
+Bestia can be bred in order to improve their [individual values](#individual-values) and to pass powerful attacks
+down a bloodline. Breeding takes two buildings, and each does one job at a time:
 
-- A male and a female are required.
-- Both must be of the same kind (humanoid, formless, etc.).
-- Both must be at least **Lv. 10**.
+1. A **[Breeding Farm](/docs/mechanics/items-crafting/item-list/#breeding-farm)** pairs two Bestia and lays an
+   **egg**.
+2. An **[Incubator](/docs/mechanics/items-crafting/item-list/#incubator)** hatches the egg into a new Bestia.
 
-Both parents are placed into a [Breeder](/docs/mechanics/items-crafting/item-list/#breeder), a structure that has to be built and placed on the map. After a waiting time derived from both parents' levels an egg is produced:
+Both are put down from a kit, like a [crafting station](/docs/mechanics/items-crafting/crafting-stations/#kits-place-stations).
+The kits are made at a Workbench with [Carpentry](/docs/mechanics/master/craftsman-tree/#skill-carpentry):
+
+| Kit           | Carpentry | Materials                          |
+| :------------ | :-------: | :--------------------------------- |
+| Breeding Farm |   Lv. 2   | 12 plank, 6 reed stalk, 4 soft fur |
+| Incubator     |   Lv. 3   | 6 plank, 4 brick, 2 ember core     |
+
+Any master can breed. A Forester's [Bloodline Study](/docs/mechanics/master/survival-tree/#skill-bloodline-study) makes it
+faster and better, but it is not needed.
+
+## The Pair
+
+Every Bestia is **male** or **female**, half and half. The sex is rolled when the Bestia is caught or hatched and never
+changes. To breed a pair:
+
+- One is male and one is female.
+- Both are of the same kind (humanoid, formless, etc.).
+- Both are at least **Lv. 10**.
+- Both belong to the owner of the farm.
+
+## Laying an Egg
+
+The owner opens the farm, picks the two parents and puts in one
+**[Nesting Bundle](/docs/mechanics/items-crafting/item-list/#nesting-bundle)**. The bundle is made at a Workbench with
+Carpentry Lv. 1 from a reed stalk, a soft fur and a feather.
+
+1. **Travel.** The parents walk to the farm on their own, from wherever they are, like a Bestia
+   [sent somewhere](/docs/server/long-distance-travel/). Nothing is used up yet.
+2. **Breeding.** When both have arrived, the bundle is used up and the timer starts. The parents stay near the farm. They
+   can still be attacked.
+3. **Egg.** When the timer ends, the farm holds an egg. It holds it until the owner takes it out. While an egg waits, no
+   new clutch can start.
+
+If a parent is called away, sent off or dies before the egg is laid, the clutch fails. The timer is lost and so is the
+bundle.
+
+After the egg is taken, the pair stays at the farm. One more bundle starts the next clutch with the same pair. There is
+**no cooldown**: the breeding time and the bundles are the only limits on how fast a bloodline can be pushed forward.
+
+The breeding time depends on both parents' levels:
 
 <!-- prettier-ignore -->
 {{< katex display >}}
 t_{breed} = 25 \cdot (lv_1 \cdot lv_2)^{1.3}\ [s_{real}]
 {{< /katex >}}
 
-This is the same as \\(25 \cdot \bar{L}^{2.6}\\) with \\(\bar{L} = \sqrt{lv_1 \cdot lv_2}\\), the geometric mean of the two parents' levels — so an unevenly matched pair breeds at the pace of its average.
+This is the same as \\(25 \cdot \bar{L}^{2.6}\\) with \\(\bar{L} = \sqrt{lv_1 \cdot lv_2}\\), the geometric mean of the
+two parents' levels. An unevenly matched pair breeds at the pace of its average.
 
-The egg then has to hatch, which takes a much shorter, slightly randomised time:
+## Hatching the Egg
+
+An egg is an item. It can be carried, stored, sold and traded. It knows its species, its sex and its individual values
+already, and the [IV grades](#individual-values) show on it.
+
+An egg only hatches inside an Incubator. The owner of the incubator puts it in, and the hatch timer runs:
 
 <!-- prettier-ignore -->
 {{< katex display >}}
 t_{hatch} = rand(0.9,\ 1.0) \cdot 18 \cdot lv_1 \cdot lv_2\ [s_{real}]
 {{< /katex >}}
 
-Both timers are given in **real time**, not [Bestia time](/docs/mechanics/world/environment/#in-game-time):
+The random factor is rolled when the egg is laid, so the time does not change when it moves. An egg that is taken out
+early **keeps its progress**. Another incubator continues where the first one stopped, so a half-hatched egg can be
+traded.
+
+When the timer ends, the Bestia hatches next to the incubator at **Lv. 1** and belongs to the incubator's owner. If the
+owner has no free Bestia slot, the egg waits in the incubator, ready, until a slot is free.
+
+The offspring is always of the **female's** species, so every generation has to be raised to Lv. 10 again before it can
+breed in turn.
+
+## Timers
+
+Both timers are given in **real time**, not [Bestia time](/docs/mechanics/world/environment/#in-game-time). They run
+while the owner is logged out.
 
 | Parent levels | Breeding time      | Hatch time |
 | :------------ | :----------------- | :--------- |
@@ -124,17 +184,32 @@ Both timers are given in **real time**, not [Bestia time](/docs/mechanics/world/
 | 100 & 100     | ~46 days (~1.5 mo) | ~2 days    |
 | 120 & 120     | ~73 days (~2.4 mo) | ~3 days    |
 
-Breeder upgrades, feed, buffs, items and a Forester's [Bloodline Study](/docs/mechanics/master/survival-tree/#skill-bloodline-study) skill shorten both timers. A well-equipped setup typically reaches a **30 - 40%** reduction, and the total reduction is capped at **50%**.
-
-There is **no cooldown** on the breeder. The moment an egg is produced the same pair can immediately start the next attempt — the breeding time itself is the only limit on how fast a bloodline can be pushed forward.
-
-The offspring is always of the **female's** species and hatches at **Lv. 1**, so every generation has to be raised to Lv. 10 again before it can breed in turn.
+The owner's [Bloodline Study](/docs/mechanics/master/survival-tree/#skill-bloodline-study) shortens both timers: the
+farm owner's for breeding, the incubator owner's for hatching. Upgrades, feed and buffs are planned to shorten them
+too. All of it counts against one cap: a timer is never shorter than **50%** of its base.
 
 {{< alert context="info" text="Note the deliberate tension in the timers: because individual values do not depend on level, the cheapest way to ladder IVs is to keep a dedicated breeding line at exactly Lv. 10 and accept the ~3 hour timer. High-level parents only become worth their far longer timer when the goal is inheriting a powerful attack, since a father can only pass on an attack he has actually learned himself." />}}
 
-## Individual Value Evolution
+## Individual Values
 
-A Bestia has nine individual values: one for each of the six [status values](/docs/mechanics/combat/statusvalues/#status-values) (INT, WIL, STR, VIT, DEX, AGI) and one each for HP, Mana and Stamina — the `ivHp`, `ivMana` and `ivSta` terms in the [status based value](/docs/mechanics/combat/statusvalues/#status-based-values) formulas. Each one ranges from `0` to `100`.
+A Bestia has nine individual values: one for each of the six [status values](/docs/mechanics/combat/statusvalues/#status-values)
+(INT, WIL, STR, VIT, DEX, AGI) and one each for HP, Mana and Stamina — the `ivHp`, `ivMana` and `ivSta` terms in the
+[status based value](/docs/mechanics/combat/statusvalues/#status-based-values) formulas. Each one ranges from `0` to
+`100`. A caught Bestia rolls each of its nine IVs evenly between `0` and `100`.
+
+Players see a **grade** for each IV. A master with [Bloodline Study](/docs/mechanics/master/survival-tree/#skill-bloodline-study)
+Lv. 1 or more sees the exact numbers instead.
+
+| IV       | Grade     |
+| :------- | :-------- |
+| 0 - 19   | Poor      |
+| 20 - 39  | Fair      |
+| 40 - 59  | Good      |
+| 60 - 79  | Great     |
+| 80 - 94  | Excellent |
+| 95 - 100 | Perfect   |
+
+## Individual Value Evolution
 
 The offspring's IVs are rolled per IV, independently:
 
@@ -142,7 +217,7 @@ The offspring's IVs are rolled per IV, independently:
 2. **Variance** — roll once per IV: with `70%` the seed is raised by 10%, with `20%` it stays as it is, and with `10%` it is lowered by 10%.
 3. **Clamp** — round to the nearest integer and clamp into `[0, 100]`.
 
-A dominant IV therefore drifts upward by about `6%` per generation on average (`0.7 · 1.1 + 0.2 · 1.0 + 0.1 · 0.9 = 1.06`), so a line seeded around IV 50 needs roughly a dozen generations to approach the cap of 100. Because only three IVs are dominant per clutch, the player has to decide which stats a bloodline is being bred for rather than improving everything at once. A Forester with [Bloodline Study](/docs/mechanics/master/survival-tree/#skill-bloodline-study) Lv. 4 draws a fourth dominant IV, which is the only way to widen that choice.
+A dominant IV therefore drifts upward by about `6%` per generation on average (`0.7 · 1.1 + 0.2 · 1.0 + 0.1 · 0.9 = 1.06`), so a line seeded around IV 50 needs roughly a dozen generations to approach the cap of 100. Because only three IVs are dominant per clutch, the player has to decide which stats a bloodline is being bred for rather than improving everything at once. A Forester with [Bloodline Study](/docs/mechanics/master/survival-tree/#skill-bloodline-study) Lv. 4 draws a fourth dominant IV, which is the only way to widen that choice. The farm owner's skill counts.
 
 **How much is an IV actually worth?** The answer is defined once, on the [Status Values](/docs/mechanics/combat/statusvalues/#individual-values) page, and follows directly from the status value formula:
 
@@ -162,7 +237,7 @@ The player influences the outcome on three levels.
 
 ### 1. Season — which attacks are eligible
 
-Only attacks whose learn level falls inside the current [Bestia season's](/docs/mechanics/world/environment/#in-game-time) band are eligible:
+Only attacks whose learn level falls inside the current [Bestia season's](/docs/mechanics/world/environment/#in-game-time) band are eligible. The season is the one at the farm when the egg is laid:
 
 | Attack Lv. Range | Season Of Breeding |
 | :--------------- | -----------------: |
@@ -175,9 +250,9 @@ A season lasts one real-time month, and a Bestia knows about 20 attacks spread o
 
 ### 2. Priming — which eligible attacks are attempted
 
-Before breeding starts the player may load up to **three** spell scrolls of eligible father attacks into the breeder. Those become the candidates, and the scrolls are consumed when breeding begins. Since scrolls are produced with the Sage's [Spell Inscription](/docs/mechanics/master/scholar-tree/#skill-spell-inscription) skill, directed breeding costs real resources and pulls a second profession into the loop.
+Up to three eligible attacks are drawn at random. These are the candidates.
 
-If nothing is primed, up to three eligible attacks are drawn at random instead — undirected breeding still works, it just gives up the control.
+{{< alert context="warning" text="**Planned.** The player will be able to load up to three spell scrolls of eligible father attacks into the farm. Those become the candidates instead, and the scrolls are used up when breeding begins. Spell scrolls come from the Sage's [Spell Inscription](/docs/mechanics/master/scholar-tree/#skill-spell-inscription) skill, which does not exist in the game yet." />}}
 
 ### 3. Investment — how likely each candidate is to land
 
