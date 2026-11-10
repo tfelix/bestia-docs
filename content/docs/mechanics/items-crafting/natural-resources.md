@@ -156,8 +156,8 @@ Every smelt burns fuel alongside the ore, and a failed batch loses both.
 
 {{< table >}}
 
-| Fuel                                            | Modifier | Notes                                                                        |
-| ----------------------------------------------- | -------- | ---------------------------------------------------------------------------- |
+| Fuel                                                           | Modifier | Notes                                                                        |
+| -------------------------------------------------------------- | -------- | ---------------------------------------------------------------------------- |
 | [Coal](/docs/mechanics/items-crafting/item-list/#coal)         | ±0%      | The reference fuel. Mined from seams in mountains and caves.                 |
 | [Charcoal](/docs/mechanics/items-crafting/item-list/#charcoal) | -10%     | Burned down from wood. Cheap and craftable, but never gets a furnace as hot. |
 

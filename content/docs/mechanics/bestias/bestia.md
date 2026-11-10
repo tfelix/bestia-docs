@@ -19,8 +19,8 @@ To catch a Bestia you need a **Magic Bestia Trap**. These are manufactured with 
 
 The base catch chance depends only on the trap tier and the target's level:
 
-| Trap                                                  | Lv. 1 - 20 | Lv. 21 - 40 | Lv. 41 - 60 | Lv. 61 - 100 |     Lv. 101+     |
-| :---------------------------------------------------- | :--------: | :---------: | :---------: | :----------: | :--------------: |
+| Trap                                                                 | Lv. 1 - 20 | Lv. 21 - 40 | Lv. 41 - 60 | Lv. 61 - 100 |     Lv. 101+     |
+| :------------------------------------------------------------------- | :--------: | :---------: | :---------: | :----------: | :--------------: |
 | [Bestia Trap](/docs/mechanics/items-crafting/item-list/#bestia-trap) |    +60%    |    +20%     |    -20%     |     -60%     | -60% - 3(LV-100) |
 | [Super Trap](/docs/mechanics/items-crafting/item-list/#super-trap)   |   +100%    |    +60%     |    +20%     |     -20%     | -20% - 3(LV-100) |
 | [Mega Trap](/docs/mechanics/items-crafting/item-list/#mega-trap)     |   +140%    |    +100%    |    +60%     |     +20%     | +20% - 3(LV-100) |
@@ -30,13 +30,13 @@ The `Lv. 101+` column continues the `Lv. 61 - 100` column without a jump: at exa
 
 On top of the base chance, every bonus below contributes **percentage points**:
 
-| Source                                                                     | Bonus        |
-| :------------------------------------------------------------------------- | :----------- |
-| Reducing the target's HP before throwing the trap                          | up to `+30`  |
+| Source                                                                            | Bonus        |
+| :-------------------------------------------------------------------------------- | :----------- |
+| Reducing the target's HP before throwing the trap                                 | up to `+30`  |
 | The trap user's [Willpower](/docs/mechanics/combat/statusvalues/#willpower---wil) | `+ WIL / 50` |
-| [Trapping](/docs/mechanics/master/survival-tree/#skill-trapping) Lv. 1 - 5               | `+6` … `+30` |
-| [Beastfriend](/docs/mechanics/master/survival-tree/#skill-beastfriend) Lv. 1 - 5         | `+5` … `+25` |
-| Buffs on the trap user, debuffs on the target                              | varies       |
+| [Trapping](/docs/mechanics/master/survival-tree/#skill-trapping) Lv. 1 - 5        | `+6` … `+30` |
+| [Beastfriend](/docs/mechanics/master/survival-tree/#skill-beastfriend) Lv. 1 - 5  | `+5` … `+25` |
+| Buffs on the trap user, debuffs on the target                                     | varies       |
 
 The HP bonus scales linearly with how far the target has been worn down, reaching its full `+30` when the Bestia is at 1% HP:
 
@@ -211,11 +211,11 @@ one yet.
 The compendium lists **every species number**, from the first to the last. The game is open source, so hiding which
 numbers exist would protect nothing. What a master has not seen yet stays blacked out:
 
-| State  | What the entry shows                                                                                                                           |
-| :----- | :--------------------------------------------------------------------------------------------------------------------------------------------- |
-| Unseen | The number, a black silhouette and `???`                                                                                                       |
+| State  | What the entry shows                                                                                                                                   |
+| :----- | :----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Unseen | The number, a black silhouette and `???`                                                                                                               |
 | Seen   | Portrait, live model, name, kind, habitat, the [description](/docs/mechanics/bestias/bestia-design/#9-the-compendium-entry) and when it was first seen |
-| Caught | Everything a seen entry shows, plus a caught mark                                                                                              |
+| Caught | Everything a seen entry shows, plus a caught mark                                                                                                      |
 
 Townsfolk and creatures made for game masters are not bestias a master would study. A mob YAML with
 `compendium: false` keeps a species out of the book entirely.

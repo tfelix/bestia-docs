@@ -119,23 +119,23 @@ Armor is limited by its heaviest type. A master who may wear Medium armor may al
 an armor type as well and follow the same rule, see [Armor Type](/docs/mechanics/items-crafting/items/#armor-type). The weapon types
 are listed in [Weapon Type](/docs/mechanics/items-crafting/items/#weapon-type).
 
-| Profession                | Tree      | Armor  | Weapon Types                                                   |
-| ------------------------- | --------- | ------ | -------------------------------------------------------------- |
+| Profession                                                      | Tree      | Armor  | Weapon Types                                                   |
+| --------------------------------------------------------------- | --------- | ------ | -------------------------------------------------------------- |
 | [Blacksmith](/docs/mechanics/master/craftsman-tree/#blacksmith) | Craftsman | Medium | Mace, Hammer, Axe, Greataxe                                    |
 | [Alchemist](/docs/mechanics/master/craftsman-tree/#alchemist)   | Craftsman | Light  | Dagger, Mace, Thrown                                           |
 | [Artificer](/docs/mechanics/master/craftsman-tree/#artificer)   | Craftsman | Medium | Dagger, Wand, Staff, Crossbow                                  |
-| [Forester](/docs/mechanics/master/survival-tree/#forester)     | Survival  | Medium | Axe, Greataxe, Spear, Bow                                      |
-| [Prospector](/docs/mechanics/master/survival-tree/#prospector) | Survival  | Medium | Sword, Spear, Crossbow                                         |
-| [Miner](/docs/mechanics/master/survival-tree/#miner)           | Survival  | Medium | Mace, Hammer, Greataxe                                         |
-| [Trader](/docs/mechanics/master/scholar-tree/#trader)         | Scholar   | Light  | Sword, Crossbow                                                |
-| [Sage](/docs/mechanics/master/scholar-tree/#sage)             | Scholar   | Cloth  | Wand, Staff, Tome                                              |
-| [Priest](/docs/mechanics/master/scholar-tree/#priest)         | Scholar   | Medium | Mace, Staff, Tome                                              |
-| [Wizard](/docs/mechanics/master/warrior-tree/#wizard)         | Warrior   | Cloth  | Wand, Staff, Tome                                              |
-| [Assassin](/docs/mechanics/master/warrior-tree/#assassin)     | Warrior   | Light  | Dagger, Fist, Sword, Thrown                                    |
-| [Knight](/docs/mechanics/master/warrior-tree/#knight)         | Warrior   | Heavy  | Sword, Greatsword, Axe, Greataxe, Mace, Hammer, Spear, Polearm |
-| [Brawler](/docs/mechanics/master/warrior-tree/#brawler)       | Warrior   | Light  | Fist, Staff                                                    |
-| [Hunter](/docs/mechanics/master/warrior-tree/#hunter)         | Warrior   | Light  | Spear, Bow, Crossbow, Thrown                                   |
-| [Bard](/docs/mechanics/master/warrior-tree/#bard)             | Warrior   | Light  | Whip, Bow, Instrument                                          |
+| [Forester](/docs/mechanics/master/survival-tree/#forester)      | Survival  | Medium | Axe, Greataxe, Spear, Bow                                      |
+| [Prospector](/docs/mechanics/master/survival-tree/#prospector)  | Survival  | Medium | Sword, Spear, Crossbow                                         |
+| [Miner](/docs/mechanics/master/survival-tree/#miner)            | Survival  | Medium | Mace, Hammer, Greataxe                                         |
+| [Trader](/docs/mechanics/master/scholar-tree/#trader)           | Scholar   | Light  | Sword, Crossbow                                                |
+| [Sage](/docs/mechanics/master/scholar-tree/#sage)               | Scholar   | Cloth  | Wand, Staff, Tome                                              |
+| [Priest](/docs/mechanics/master/scholar-tree/#priest)           | Scholar   | Medium | Mace, Staff, Tome                                              |
+| [Wizard](/docs/mechanics/master/warrior-tree/#wizard)           | Warrior   | Cloth  | Wand, Staff, Tome                                              |
+| [Assassin](/docs/mechanics/master/warrior-tree/#assassin)       | Warrior   | Light  | Dagger, Fist, Sword, Thrown                                    |
+| [Knight](/docs/mechanics/master/warrior-tree/#knight)           | Warrior   | Heavy  | Sword, Greatsword, Axe, Greataxe, Mace, Hammer, Spear, Polearm |
+| [Brawler](/docs/mechanics/master/warrior-tree/#brawler)         | Warrior   | Light  | Fist, Staff                                                    |
+| [Hunter](/docs/mechanics/master/warrior-tree/#hunter)           | Warrior   | Light  | Spear, Bow, Crossbow, Thrown                                   |
+| [Bard](/docs/mechanics/master/warrior-tree/#bard)               | Warrior   | Light  | Whip, Bow, Instrument                                          |
 
 Heavy armor comes from the Knight alone, so a master who wants plate gives one of their two professions to it. Every
 fighting profession owns at least one weapon type few others share - the Knight's greatsword and polearm, the
