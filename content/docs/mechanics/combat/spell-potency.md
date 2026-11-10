@@ -26,9 +26,9 @@ P = Rank + Level + Mind + Focus + Place
 | ----- | ----------------------------------------------------------------------------------------------------------------------------- | ----------- |
 | Rank  | `30 × rank / max rank` of the skill, rounded down. Dispel Lv. 3 of 5 gives `18`. A Bestia attack of level 7 gives `21`.       | `0 .. 30`   |
 | Level | `level / 4` of the caster, master or Bestia.                                                                                  | `0 .. 30`   |
-| Mind  | `30 × M / (M + 100)` with `M = INT + WIL / 2`. The same flattening curve as [Resist](/docs/mechanics/status-effects/#resist). | `0 .. 30`   |
+| Mind  | `30 × M / (M + 100)` with `M = INT + WIL / 2`. The same flattening curve as [Resist](/docs/mechanics/combat/status-effects/#resist). | `0 .. 30`   |
 | Focus | Equipment and buffs that add Potency, like a Sage's staff.                                                                    | `0 .. 10`   |
-| Place | Local [mana concentration](/docs/mechanics/environment/#mana-concentration): drained `-10`, ordinary `0`, thick `+10`.        | `-10 .. 10` |
+| Place | Local [mana concentration](/docs/mechanics/world/environment/#mana-concentration): drained `-10`, ordinary `0`, thick `+10`.        | `-10 .. 10` |
 
 The rank says how well the skill is known. Level and Mind say who knows it. Masters and Bestias use the same formula.
 
@@ -54,7 +54,7 @@ About `100` is the ceiling of one caster. Everything above needs a [ritual](#rit
 ## Potency Bands
 
 Players see Potency as a band, not as a number. A caster sees the band of their own skills in the skill window.
-[Magic Sense](/docs/mechanics/master/#skill-magic-sense) Lv. 4 shows the band of a spell it picks apart, so a Sage can
+[Magic Sense](/docs/mechanics/master/basics/#skill-magic-sense) Lv. 4 shows the band of a spell it picks apart, so a Sage can
 judge a seal before trying it.
 
 | Band         | P          |
@@ -113,10 +113,10 @@ Potency, and the defence is the buff's own Potency.
 
 ## Enchantments and Seals
 
-An [enchantment](/docs/mechanics/items/#enchantments) takes the Potency of the one who bound it as its strength. Some
+An [enchantment](/docs/mechanics/items-crafting/items/#enchantments) takes the Potency of the one who bound it as its strength. Some
 enchantments have a fixed Potency instead, see [Fixed Potency](#fixed-potency).
 
-The [Postal Seal](/docs/mechanics/postal/#breaking-a-seal) has `P 90`. A Master Sage (`80`) breaks it `30%` of the time.
+The [Postal Seal](/docs/mechanics/towns-trade/postal/#breaking-a-seal) has `P 90`. A Master Sage (`80`) breaks it `30%` of the time.
 With Dispel's 15 s cooldown they get two tries in the 30 s the sack lies on the ground, `51%` together. These are the
 odds the postal page has today. An adept (`49`) has no chance.
 
@@ -133,7 +133,7 @@ Resolve = 30 + level / 4 + Mind + Focus        level / 4 at most 30
 
 `30` stands for the creature's own mind, which it knows as well as a fully learned skill. A caster at max rank with the
 same level and Mind as the target meets it as an equal. Resolve and Potency replace the level term of the
-[resist formula](/docs/mechanics/status-effects/#resist):
+[resist formula](/docs/mechanics/combat/status-effects/#resist):
 
 ```text
 S = attribute1 + attribute2
@@ -151,11 +151,11 @@ INT 20 and WIL 20 give Mind `6`, so its Resolve is `30 + 10 + 6 = 46`.
 | Master  | 80  | 1%  | 30%                 |
 
 Brutes with high VIT but a dull mind still shrug off a weak caster. A master caster cuts through their body's
-resistance. [Immunities](/docs/mechanics/status-effects/#immunities) stay absolute: no Potency lands a stun on a boss.
+resistance. [Immunities](/docs/mechanics/combat/status-effects/#immunities) stay absolute: no Potency lands a stun on a boss.
 
 ## Concealment and Detection
 
-HIDDEN, CLOAKED and [Suppress Aura](/docs/mechanics/master/#skill-suppress-aura) take the Potency of the one who hid.
+HIDDEN, CLOAKED and [Suppress Aura](/docs/mechanics/master/basics/#skill-suppress-aura) take the Potency of the one who hid.
 A detecting skill finds a concealed target only within part of its range:
 
 ```text
@@ -170,11 +170,11 @@ come close. Suppress Aura's own column "Mana Suppression" goes away: its rank no
 
 The same contest decides every spell that stops another spell:
 
-- [Magic Rod](/docs/mechanics/master/#skill-magic-rod) catches a single-target spell with a chance of
+- [Magic Rod](/docs/mechanics/master/basics/#skill-magic-rod) catches a single-target spell with a chance of
   `Edge(P rod - P spell)`. A failed catch lets the spell land, and the rod stays up for the next one.
-- [Land Protector](/docs/mechanics/master/#skill-land-protector) rolls once for each ground spell cast into it. A
+- [Land Protector](/docs/mechanics/master/basics/#skill-land-protector) rolls once for each ground spell cast into it. A
   stronger spell can still take root.
-- [Suppress Magic](/docs/mechanics/master/#skill-suppress-magic) multiplies its interrupt chance by
+- [Suppress Magic](/docs/mechanics/master/basics/#skill-suppress-magic) multiplies its interrupt chance by
   `Edge(P suppress - P spell)` of the spell it tries to break.
 
 # Against the World
@@ -186,15 +186,15 @@ defender's Potency.
 | ------------------------------------------------------------------- | --------- |
 | Any long-range spell                                                | 10        |
 | Distance                                                            | +5 per km |
-| A [Mana Storm](/docs/mechanics/doomsday/#mana-storms) at either end | +40       |
+| A [Mana Storm](/docs/mechanics/world/doomsday/#mana-storms) at either end | +40       |
 | An open rift nearby                                                 | +60       |
 
-A [Teleport](/docs/mechanics/master/#skill-teleport) lands off target by up to `1.4 km × (1 - Edge(P - D))`. This is the
-story from the [Master Skills](/docs/mechanics/master/#master-skills) page in numbers: Saferu (`P 80`) jumps 8 km
+A [Teleport](/docs/mechanics/master/basics/#skill-teleport) lands off target by up to `1.4 km × (1 - Edge(P - D))`. This is the
+story from the [Master Skills](/docs/mechanics/master/basics/#master-skills) page in numbers: Saferu (`P 80`) jumps 8 km
 (`D 50`) into a mana storm (`D 90`). Edge is `30%`, and the group lands up to 980 m off target. Without the storm the
 group lands on the rune. A jump of 20 km (`D 110`) is a lottery for one caster and exact with a ritual charge.
 
-[Scry](/docs/mechanics/master/#skill-scry) uses the same Edge for how clearly it shows the far place. A Warp Portal
+[Scry](/docs/mechanics/master/basics/#skill-scry) uses the same Edge for how clearly it shows the far place. A Warp Portal
 uses it for where its far end opens.
 
 # Fixed Potency
@@ -203,20 +203,20 @@ Spells that no player cast have a fixed Potency.
 
 | Spell                                                   | P   | Why                                                                  |
 | ------------------------------------------------------- | --- | -------------------------------------------------------------------- |
-| [Postal Seal](/docs/mechanics/postal/#the-seal)         | 90  | A strong solo Sage has a real chance.                                |
-| [Ward stone](/docs/mechanics/pvp/#protected-zones) aura | 174 | 24 above the [ritual cap](#the-charge), so the best circle has `2%`. |
+| [Postal Seal](/docs/mechanics/towns-trade/postal/#the-seal)         | 90  | A strong solo Sage has a real chance.                                |
+| [Ward stone](/docs/mechanics/society/pvp/#protected-zones) aura | 174 | 24 above the [ritual cap](#the-charge), so the best circle has `2%`. |
 | Permanent enchantments of the Artificer                 | -   | They cannot be dispelled at all.                                     |
 
 # Refresh
 
-[Effects do not stack](/docs/mechanics/status-effects/#no-stacking): a second cast refreshes the first. With Potency, a
+[Effects do not stack](/docs/mechanics/combat/status-effects/#no-stacking): a second cast refreshes the first. With Potency, a
 **weaker cast cannot refresh a stronger one**. It fails, and the caster is told so. Otherwise an ally with a faint
 buff could lower a friend's protection, and an enemy could cover a strong curse with a weak one to make it easy to lift.
 
 # Rituals
 
 One caster tops out at about `P 100`. A **ritual** is how a group pushes the next skill of one master further. It uses
-the [Mana Circle](/docs/mechanics/master/#mana-circles), a ring of Mana Concentrate laid into the ground with a focus
+the [Mana Circle](/docs/mechanics/master/basics/#mana-circles), a ring of Mana Concentrate laid into the ground with a focus
 stone in its middle.
 
 ## How a Ritual Runs
@@ -228,7 +228,7 @@ stone in its middle.
    Ritual Fatigue cannot join.
 3. **Start.** The leader uses the focus stone. Nobody can join any more. Every participant pays a quarter of their
    maximum mana and starts to channel.
-4. **Hold for 30 seconds.** The [channeling rules](/docs/mechanics/status-effects/#channeling) apply to each
+4. **Hold for 30 seconds.** The [channeling rules](/docs/mechanics/combat/status-effects/#channeling) apply to each
    participant: damage, STUN, FROZEN, STONE or a move ends their part. A helper who drops out adds nothing. If the
    leader drops out, the ritual fails. Guarding the circle is the job of whoever is not in it.
 5. **Charge.** When the 30 seconds are over, the leader gets the buff **Ritual Charge**. It holds the
@@ -288,7 +288,7 @@ says so before the leader wastes a ritual on it.
 ## What Rituals Are For
 
 - **Countering a ward stone.** A Dispel with a charge is the counter-magic the
-  [Protected Zones](/docs/mechanics/pvp/#protected-zones) wait for. It takes a full circle of strong players, many
+  [Protected Zones](/docs/mechanics/society/pvp/#protected-zones) wait for. It takes a full circle of strong players, many
   tries and a village that does not drive them away.
 - **Long or stormy jumps.** A charged Teleport or Warp Portal lands where it should, even through a mana storm.
 - **Lasting work.** A charged Spell Binding makes a trap or alarm that only another charged skill can find or lift. A
@@ -302,7 +302,7 @@ says so before the leader wastes a ritual on it.
 
 These are not designed yet, but they fit the same rule:
 
-- **Orders.** The rituals of the [Orders](/docs/mechanics/factions/) at temples and citadels are charged skills.
+- **Orders.** The rituals of the [Orders](/docs/mechanics/society/factions/) at temples and citadels are charged skills.
   "Cheaper rituals" in a dominated region can be a better ManaFactor there.
 - **Doomsday.** A rift can carry a Potency that grows each day it stays open. A sealing ritual is a contest against it.
   The longer the world waits, the closer the rift comes to the cap, and the luckier the circle must be.
@@ -311,16 +311,16 @@ These are not designed yet, but they fit the same rule:
 
 When this concept is accepted, these pages change:
 
-- [Status Effects](/docs/mechanics/status-effects/): Ritual Charge and Ritual Fatigue join the list. The list follows
+- [Status Effects](/docs/mechanics/combat/status-effects/): Ritual Charge and Ritual Fatigue join the list. The list follows
   the server, so they come with the server work.
-- [Master Skills](/docs/mechanics/master/): Dispel loses its base chance table. Suppress Aura loses its suppression
-  column. [Mana Circles](/docs/mechanics/master/#mana-circles) run as a ritual with a charge, so a crafting rite and a
+- [Master Skills](/docs/mechanics/master/basics/): Dispel loses its base chance table. Suppress Aura loses its suppression
+  column. [Mana Circles](/docs/mechanics/master/basics/#mana-circles) run as a ritual with a charge, so a crafting rite and a
   spell ritual are the same thing. Bestias may now join.
-- [Items](/docs/mechanics/items/#dispelling-an-enchantment): the formula `Dispel base chance - strength` becomes
+- [Items](/docs/mechanics/items-crafting/items/#dispelling-an-enchantment): the formula `Dispel base chance - strength` becomes
   `Edge(P dispel - strength)`. A dropped endowed weapon keeps the binder's Potency instead of `0`.
-- [Postal System](/docs/mechanics/postal/#breaking-a-seal): the seal gets `P 90`. The odds stay the same, and a charged
+- [Postal System](/docs/mechanics/towns-trade/postal/#breaking-a-seal): the seal gets `P 90`. The odds stay the same, and a charged
   gang can break it for sure.
-- [PvP](/docs/mechanics/pvp/#protected-zones): the ward stone gets `P 174` and the charged Dispel as its counter.
+- [PvP](/docs/mechanics/society/pvp/#protected-zones): the ward stone gets `P 174` and the charged Dispel as its counter.
 
 # Server Notes
 

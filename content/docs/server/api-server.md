@@ -178,13 +178,13 @@ the answer is kept for 30 seconds and dropped when the account leaves the world.
 that account's, as for the app.
 
 A habitat overlay, `map/h/{species}/{level}/{x}/{y}.png`, lies over a tile of the same path and shows where a species
-lives (see [Bestia Compendium](/docs/mechanics/bestia/#habitat-on-the-map)). It is masked by the charts like
+lives (see [Bestia Compendium](/docs/mechanics/bestias/bestia/#habitat-on-the-map)). It is masked by the charts like
 the tile, and the zone answers 404 for a species the Master has not seen. It is always `private, no-cache`: who may
 see it depends on the Master's compendium, so it is never cached publicly and never kept by the api-server.
 
 # Guild emblems
 
-`GET /v1/companion/emblems/{hash}.png` is a guild's [emblem](/docs/mechanics/party-guild/#emblem), named by the
+`GET /v1/companion/emblems/{hash}.png` is a guild's [emblem](/docs/mechanics/society/party-guild/#emblem), named by the
 SHA-256 of its PNG. The zone keeps emblems with the guilds; the api-server asks for one by hash
 (`ZoneQuery.GuildEmblem`, the PNG in the reply's body, as for a tile) and keeps it, so it crosses the bus once. A hash
 names one picture forever, so the answer is public and immutable, and every client keeps its copy for good: a new

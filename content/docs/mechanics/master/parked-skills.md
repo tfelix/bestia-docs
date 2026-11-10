@@ -7,7 +7,7 @@ build:
   publishResources: false
 ---
 
-These sub-trees were cut from the [Bestia Master](/docs/mechanics/master/) page to reduce the scope of the initial
+These sub-trees were cut from the [Bestia Master](/docs/mechanics/master/basics/) page to reduce the scope of the initial
 release. This page is never rendered. Each section below is the original text, unchanged, so it can be pasted back as is.
 
 To unpark a sub-tree:

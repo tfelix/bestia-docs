@@ -140,7 +140,7 @@ preferences, and later settings shared between the two apps. `NotebookService` n
 collection and tells both apps of it after the commit: the game by `NotebookChangedSMSG` on its socket, the
 companion by a `NotebookChanged` event on its live stream. Each app applies the next number, ignores what it
 has seen, and lists the collection again when the number jumps, so a route saved in one app appears in the
-other at once. See [Using the Map](/docs/mechanics/world-exploration/#using-the-map).
+other at once. See [Using the Map](/docs/mechanics/world/world-exploration/#using-the-map).
 
 # Open problems
 

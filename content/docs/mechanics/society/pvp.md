@@ -18,7 +18,7 @@ Honor belongs to a Bestia Master, not to the account. Each Master of an account 
 Local honor itself starts with a single person and travels from there:
 
 1. **The witness holds a grudge.** A townsperson who saw a misdeed remembers it personally. Only this person knows at first. Their shop prices and their mood towards the Master change straight away.
-2. **The town hears of it.** Over the next [Bestia day](/docs/mechanics/environment/#in-game-time) the witness tells the people around them. Half of their grudge becomes the settlement's local honor, so every townsperson there now treats the Master the same way.
+2. **The town hears of it.** Over the next [Bestia day](/docs/mechanics/world/environment/#in-game-time) the witness tells the people around them. Half of their grudge becomes the settlement's local honor, so every townsperson there now treats the Master the same way.
 3. **Nearby towns hear of it.** Once a settlement's local honor falls below **-100**, the news spreads to the towns around it as a rumour. It reaches them at walking pace, and it weakens with distance: a village next door hears most of it, a town far away hears little or nothing. Their townsfolk mention the Master by name when asked about recent events.
 
 Players start with a global **20 honor** and every settlement starts with a **local honor of 10** towards every new Master. A settlement whose local honor falls below **-100** remembers it permanently. Values above that slowly return to the default.
@@ -60,15 +60,15 @@ Due to the presence of multiple factions with differing interests, defining univ
 
 The local loss falls on the witness first and reaches the settlement later, as described in the [Reputation System](#reputation-system). Killing or harming an [Aggressor](#self-defense) is never a malicious action, whoever the victim is.
 
-Until the [Orders](/docs/mechanics/factions) are part of the game, every Master counts as unsworn, so every other player is in a non-opposing faction.
+Until the [Orders](/docs/mechanics/society/factions) are part of the game, every Master counts as unsworn, so every other player is in a non-opposing faction.
 
-Abandoning a commission means dropping an assigned contract, letting it expire without a serious attempt, or dumping the cargo — not merely failing at it. The local honor loss falls on the **broker NPC** who held the contract, and brokers talk to each other like every other witness, so a player who makes a habit of it finds the boards of a whole town closed to them. The forfeited [collateral](/docs/mechanics/questing/#collateral) is a separate, purely financial consequence on top.
+Abandoning a commission means dropping an assigned contract, letting it expire without a serious attempt, or dumping the cargo — not merely failing at it. The local honor loss falls on the **broker NPC** who held the contract, and brokers talk to each other like every other witness, so a player who makes a habit of it finds the boards of a whole town closed to them. The forfeited [collateral](/docs/mechanics/world/questing/#collateral) is a separate, purely financial consequence on top.
 
-If no negative honor is received for a full [real-time](/docs/mechanics/environment/#in-game-time) day, the accumulated negative honor decays by 1 point per real-time day. The time a Master is offline counts too. Positive honor can be earned on top of that.
+If no negative honor is received for a full [real-time](/docs/mechanics/world/environment/#in-game-time) day, the accumulated negative honor decays by 1 point per real-time day. The time a Master is offline counts too. Positive honor can be earned on top of that.
 
 {{< alert context="warning" text="The decay rate is an **initial value for balancing**. At 1 point per day a single NPC kill (-10 global) takes ten days to fade, which may turn out too slow." />}}
 
-{{< alert context="warning" text="**Not decided yet:** whether burning the fields around a town or felling its woods costs honor. Today it does not, although it is the main way to [hurt a settlement](/docs/mechanics/settlements/#what-you-can-break)." />}}
+{{< alert context="warning" text="**Not decided yet:** whether burning the fields around a town or felling its woods costs honor. Today it does not, although it is the main way to [hurt a settlement](/docs/mechanics/towns-trade/settlements/#what-you-can-break)." />}}
 
 If a player steals something that belongs to an NPC or another player, they lose honor for each item taken, depending on the item level. Stealing means picking up an item from a storage space that does not belong to the player. The owner can also grant certain players access rights to a chest; in this case, removing items is not considered stealing.
 
@@ -96,7 +96,7 @@ This formula only applies while the combined honor is in the `(0, -60]` range. A
 
 The same share comes off what the merchant pays for goods the player sells. A merchant who dislikes a Master charges more and pays less.
 
-A positive combined honor can earn a small discount, but it never closes the gap between what a shop sells for and what it buys for. A shop always [buys lower than it sells](/docs/mechanics/settlements/#shops-and-stock), whoever is at the counter.
+A positive combined honor can earn a small discount, but it never closes the gap between what a shop sells for and what it buys for. A shop always [buys lower than it sells](/docs/mechanics/towns-trade/settlements/#shops-and-stock), whoever is at the counter.
 
 # Positive Honor
 
@@ -105,13 +105,13 @@ A positive honor level leads to very friendly NPCs, which might even give the pl
 - Kill a player with negative honor, which is indicated by certain debuffs visible to other players.
 - Help an NPC, for example by healing or resurrecting a dead NPC.
 - Defend an NPC or a low-level player from an [Aggressor](#self-defense).
-- Complete an NPC's quest, or fulfil a player [commission](/docs/mechanics/questing/) held by that NPC as broker.
+- Complete an NPC's quest, or fulfil a player [commission](/docs/mechanics/world/questing/) held by that NPC as broker.
 - Return a stolen item to its rightful owner (see the **Thief** mechanic below).
 - Trade fairly and repeatedly with the same NPC over time.
 
 Killing a player with negative honor pays at most what the victim's honor is below 0, and only once per victim per real-time day. A Master cannot farm honor from a second character of their own.
 
-A player who steals an item is also marked with the **Thief** debuff, which grants any player who kills them **5 extra honor**. The killing player also receives an honor reward for each item returned to the original owner within 6 real-time hours (18 [Bestia](/docs/mechanics/environment/#in-game-time) hours).
+A player who steals an item is also marked with the **Thief** debuff, which grants any player who kills them **5 extra honor**. The killing player also receives an honor reward for each item returned to the original owner within 6 real-time hours (18 [Bestia](/docs/mechanics/world/environment/#in-game-time) hours).
 
 # Protected Zones
 
@@ -131,7 +131,7 @@ Honor still applies inside the field. Killing an NPC there is only possible once
 
 # War Zone
 
-The system continuously counts kills of enemy [faction](/docs/mechanics/factions) players within an area. Once these kills exceed a threshold in a short period, a war zone is automatically declared around that area (note that killing players from another faction does not necessarily reduce honor, but it also does not increase it). This war zone usually has a radius of 1 km, and inside it the following effects occur:
+The system continuously counts kills of enemy [faction](/docs/mechanics/society/factions) players within an area. Once these kills exceed a threshold in a short period, a war zone is automatically declared around that area (note that killing players from another faction does not necessarily reduce honor, but it also does not increase it). This war zone usually has a radius of 1 km, and inside it the following effects occur:
 
 - Damaging or destroying buildings has no honor penalty.
 - Killing players or their bestias of opposing factions has no honor penalty, regardless of level difference.

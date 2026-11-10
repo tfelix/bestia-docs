@@ -6,7 +6,7 @@ description: "Design document for an NPC-side economy — the World Treasury Dir
 
 {{< alert context="warning" text="Partly implemented. The conservation invariant holds in the running code: settlement ledgers, treasuries, stock and price movement run, and every coin a settlement gains without a player trade comes out of the world reserve. See [Townsfolk &amp; Settlement Simulation](/docs/server/townsfolk/) and [Money Supply](/docs/server/money-supply/). The 'World Treasury Director' does not exist yet: there is no payout budget, no `payout_modifier` and no price or wage feedback from the pool ratio. The only NPC payout today is a shop buying from a player, and the settlement treasury limits it." />}}
 
-Bestia's economy is [entirely player-driven](/docs/mechanics/economy-trade/): players find the gold, mint the coins and
+Bestia's economy is [entirely player-driven](/docs/mechanics/towns-trade/economy-trade/): players find the gold, mint the coins and
 set the prices. That works right up to the point where **NPCs** start handing out money — quest rewards, purchases,
 world-event payouts — because an NPC that pays out gold it never earned is an inflation faucet with no bottom.
 
@@ -18,7 +18,7 @@ incarnation that owns the NPC side of the money supply, and it exists to enforce
 > If an NPC pays out gold, some other NPC must have earned it first.
 
 There is exactly **one** faucet in the world — a player turning raw gold into coins with the
-[Minting](/docs/mechanics/master/#skill-minting) skill — and everything else is a transfer or a sink. NPCs are not a
+[Minting](/docs/mechanics/master/basics/#skill-minting) skill — and everything else is a transfer or a sink. NPCs are not a
 faucet. They hold a share of the money supply, they move it around, and the Director makes sure the share only grows
 because players sold them something, never because a payout was invented.
 
@@ -32,8 +32,8 @@ and the rest is still in the ground waiting to be mined.
 | Direction  | Flow                                                                                            |
 | ---------- | ----------------------------------------------------------------------------------------------- |
 | **Into**   | Players selling resources, items and services to NPCs                                           |
-| **Into**   | Broker cuts on player [commissions](/docs/mechanics/questing/#funding-and-escrow)               |
-| **Into**   | The NPC share of [auction owner fees](/docs/mechanics/economy-trade/#building-an-auction-house) |
+| **Into**   | Broker cuts on player [commissions](/docs/mechanics/world/questing/#funding-and-escrow)               |
+| **Into**   | The NPC share of [auction owner fees](/docs/mechanics/towns-trade/economy-trade/#building-an-auction-house) |
 | **Out of** | Rewards on NPC-issued commissions                                                               |
 | **Out of** | World-event payouts from settlement, faction and world treasuries                               |
 | **Out of** | NPCs paying players for goods and labour                                                        |
@@ -41,8 +41,8 @@ and the rest is still in the ground waiting to be mined.
 {{< /table >}}
 
 Sinks return to the reserve rather than deleting money: the
-[auction listing fees](/docs/mechanics/economy-trade/#how-auctions-work) and the commission
-[posting tax](/docs/mechanics/questing/#funding-and-escrow) take coin **out of circulation** and put it back in the
+[auction listing fees](/docs/mechanics/towns-trade/economy-trade/#how-auctions-work) and the commission
+[posting tax](/docs/mechanics/world/questing/#funding-and-escrow) take coin **out of circulation** and put it back in the
 world reserve, where it re-enters slowly through the settlements.
 
 In the short run that is indistinguishable from burning — the coin is gone from player hands and stops pushing prices
@@ -54,7 +54,7 @@ the finite gold in the ground, a world that burns has an ending it was never des
 A "treasury" is a named sub-account of the NPC gold pool, not a separate pot of magic money:
 
 - **Settlement treasuries** collect the NPC share of local trade and fund local work — defending the town, clearing the
-  roads, the [Defend the City!](/docs/mechanics/questing/#world-events) type of event. They are also what a settlement
+  roads, the [Defend the City!](/docs/mechanics/world/questing/#world-events) type of event. They are also what a settlement
   pays its imports and its rebuilding with; see
   [Townsfolk & Settlement Simulation](/docs/server/townsfolk/#the-settlement-ledger).
 - **Faction treasuries** collect sacrifices and temple income and fund faction-aligned work.
@@ -92,7 +92,7 @@ Two further throttles apply on top:
   evenly is the one concession to realism: a city of twenty thousand does more trade in a day than a hamlet does in a
   season.
 - **Regional repeat decay.** Repeated world events in the same region pay a
-  [diminishing share](/docs/mechanics/questing/#funding-and-repeat-events), so a treasury cannot be farmed by players who
+  [diminishing share](/docs/mechanics/world/questing/#funding-and-repeat-events), so a treasury cannot be farmed by players who
   manufacture the emergency they then get paid to resolve.
 
 # Price and Wage Feedback
@@ -104,7 +104,7 @@ without an invisible hand:
   selling to NPCs is attractive and gold flows back out of the pool.
 - **What NPCs charge** scales inversely. When the pool is thin, NPC goods get expensive, players buy from each other
   instead, and NPC coin is conserved.
-- Per-NPC [honor](/docs/mechanics/pvp/#negative-honor) modifiers are applied afterwards, so a player's reputation still
+- Per-NPC [honor](/docs/mechanics/society/pvp/#negative-honor) modifiers are applied afterwards, so a player's reputation still
   moves their personal prices on top of the world-wide baseline.
 
 The result is a soft, self-correcting band rather than fixed price tables — and, importantly, no scripted "gold sink

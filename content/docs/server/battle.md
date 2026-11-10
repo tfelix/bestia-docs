@@ -33,7 +33,7 @@ casts, and combat-timeout tracking); `Heal` applies directly; `Buff` calls
 
 `BattleContextFactory` builds real data from live ECS state — position, level, `StatusValues`,
 and `DefenseValues` (a genuinely implemented soft-defense formula, `VIT + STR/5 + AGI/5 + lvl/4` for
-physical, `INT + VIT/5 + DEX/5 + lvl/4` for magic, matching [Status Values](/docs/mechanics/statusvalues)).
+physical, `INT + VIT/5 + DEX/5 + lvl/4` for magic, matching [Status Values](/docs/mechanics/combat/statusvalues)).
 Two things it deliberately fakes today, called out inline in its own source: **every entity is
 `Element.NORMAL`** (no per-entity element component exists yet), and **every entity fights
 bare-handed** (`Weapon(atk = 0, matk = 0, upgradeLevel = 0)` — no equipment system feeds real weapon
@@ -98,7 +98,7 @@ A separate, working system from damage. `StatusEffectService.applyEffect()` reso
 (`status_effects.yml`) and its `StatusEffectScript`. It applies the effect to the `StatusEffects` ECS component and
 flags the entity for a status-value recalc. This mirrors the skill-script pattern one level down; see
 [Scripting](/docs/server/scripting) for the registry and boot validation both use. What each effect does is on the
-[Status Effects](/docs/mechanics/status-effects/) page.
+[Status Effects](/docs/mechanics/combat/status-effects/) page.
 
 A script changes status values in `apply()`, which runs on every recalc. For everything else it has hooks:
 
@@ -112,7 +112,7 @@ Around the scripts:
 
 - **`tryInflict`** in `StatusEffectService` is the entry point for a skill that only sometimes lands an effect. It
   checks `status-immunities`, rolls the chance against the target's resist and shortens the duration. See
-  [Resist](/docs/mechanics/status-effects/#resist).
+  [Resist](/docs/mechanics/combat/status-effects/#resist).
 - **`ActionGuard`** refuses a move, attack, cast or item request that an effect's `actionLocks` forbid (STUN, FROZEN,
   FEARED, ...). It is silent: the client already shows the effect.
 - **`HealService`** is where every heal from a skill, an item or an effect meets health. SICK halves the heal there,

@@ -30,7 +30,7 @@
     const input = document.getElementById('item-search');
     const clearBtn = document.getElementById('item-search-clear');
 
-    // Deep links such as /docs/mechanics/item-list/#void-essence narrow the list down to
+    // Deep links such as /docs/mechanics/items-crafting/item-list/#void-essence narrow the list down to
     // the linked item instead of only scrolling to it, so a single item is easy to read.
     function applyHashFilter() {
       const id = decodeURIComponent(location.hash.replace(/^#/, ''));

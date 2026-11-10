@@ -13,7 +13,7 @@ field those goods grow in.
 
 {{< alert context="warning" text="This page is a design document. Settlements are generated today, but nothing lives in them yet — see the server-side [Townsfolk & Settlement Simulation](/docs/server/townsfolk/) page for the implementation plan and its current state." />}}
 
-{{< alert context="info" text="**Conventions used on this page.** Times of day and durations refer to **in-game** [Bestia time](/docs/mechanics/environment/#in-game-time), where one day lasts eight real hours. Prices are in whole **gold**, as everywhere else." />}}
+{{< alert context="info" text="**Conventions used on this page.** Times of day and durations refer to **in-game** [Bestia time](/docs/mechanics/world/environment/#in-game-time), where one day lasts eight real hours. Prices are in whole **gold**, as everywhere else." />}}
 
 # A Day in a Village
 
@@ -163,7 +163,7 @@ the failure travel.
 
 **Almost none of it is permanent.** Scorched ground heals when it rains, and nobody can stop it raining.
 Woods regrow from the trees left standing, but a wood cut down to the last tree stays gone (see
-[Felling Trees](/docs/mechanics/natural-resources/#felling-trees)). A destroyed building is rebuilt out of the settlement's own treasury, which means a
+[Felling Trees](/docs/mechanics/items-crafting/natural-resources/#felling-trees)). A destroyed building is rebuilt out of the settlement's own treasury, which means a
 rich city puts its mill back up in a day and a poor hamlet takes a season — and a hamlet whose
 treasury you keep draining stays a ruin for as long as you keep at it.
 
@@ -188,7 +188,7 @@ ought to hold. Sell it a mountain of loot and it will pay well for the first loa
 next, and be ready for you again in a week or two. It is not a bottomless purse and it is not a
 purse you can permanently empty.
 
-{{< alert context="info" text="Where a settlement's coin comes from in the first place, and why NPCs can never conjure it, is covered under [Currency](/docs/mechanics/economy-trade/#currency) and the [World Treasury Director](/docs/server/economy/)." />}}
+{{< alert context="info" text="Where a settlement's coin comes from in the first place, and why NPCs can never conjure it, is covered under [Currency](/docs/mechanics/towns-trade/economy-trade/#currency) and the [World Treasury Director](/docs/server/economy/)." />}}
 
 # The Roads Between Them
 
@@ -211,9 +211,9 @@ market, and the town grew up along it.
 Honest about what this does not do, at least at first:
 
 - **Townsfolk cannot be killed inside a ward field.** The ward stone of a home village protects its
-  townsfolk like it protects players, see [Protected Zones](/docs/mechanics/pvp/#protected-zones).
+  townsfolk like it protects players, see [Protected Zones](/docs/mechanics/society/pvp/#protected-zones).
   Everywhere else they flee a fight, and they can die in one. That costs
-  [honor](/docs/mechanics/pvp/#negative-honor), heavily.
+  [honor](/docs/mechanics/society/pvp/#negative-honor), heavily.
 - **There are no interiors.** Buildings have doors and no insides. Townsfolk go in and out of them;
   you cannot follow.
 - **Ore deposits cannot be exhausted yet.** Fields and forests can. Mines are still a fixture of

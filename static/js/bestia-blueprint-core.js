@@ -1,6 +1,6 @@
 /*
  * The calculation behind the Bestia Blueprint Calculator. No DOM in here, so node can load it
- * for checks. The method is described on /docs/mechanics/bestia-design/ and every number comes
+ * for checks. The method is described on /docs/mechanics/bestias/bestia-design/ and every number comes
  * from data/bestia_blueprint.yaml.
  *
  * Fights are simulated with expected values instead of dice: every swing deals its average damage

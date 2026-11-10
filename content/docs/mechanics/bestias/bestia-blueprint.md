@@ -15,7 +15,7 @@ shows what they do. The bar at the top keeps HP, EXP and threat in view while yo
 leaves its target band, and a warning in the **Balance** step says why. There you can also set the stats by hand and
 see what they do to the balance and the EXP.
 
-Attacks and loot come from the [Attack List](/docs/mechanics/attack-list/) and the [Items List](/docs/mechanics/item-list/).
+Attacks and loot come from the [Attack List](/docs/mechanics/combat/attack-list/) and the [Items List](/docs/mechanics/items-crafting/item-list/).
 A drop only needs an item and a chance; its value comes from the list.
 
 When the bestia is done, **Copy LLM prompt** gives a prompt with the blueprint as JSON. Paste it into a coding

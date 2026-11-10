@@ -11,7 +11,7 @@ goods with it, commissions pay their rewards with it, and players send each othe
 The difference is that **Bestia's** post lives in the world. A parcel is carried on a real road, by an NPC coach or by
 a player who takes the job. Carrying the mail is paid work for masters and their Bestia.
 
-{{< alert context="info" text="**Conventions used on this page.** Every amount is in whole **gold**, and every duration is **real time**, as on the [Economy & Trade](/docs/mechanics/economy-trade/) page. All numbers are first drafts for balancing." />}}
+{{< alert context="info" text="**Conventions used on this page.** Every amount is in whole **gold**, and every duration is **real time**, as on the [Economy & Trade](/docs/mechanics/towns-trade/economy-trade/) page. All numbers are first drafts for balancing." />}}
 
 # The Promise
 
@@ -36,7 +36,7 @@ It follows the mana bond, like chat, so it only finds masters.
   difference to [chat](/docs/mechanics/companion-app/#keeping-in-touch): chat reaches only who is online right now and
   is gone afterwards.
 - **A letter costs `1` gold**, so nobody fills a mailbox with spam.
-- Writing letters needs [Basic Skill](/docs/mechanics/master/#skill-basic-skill) Lv. 2, the same as whispers.
+- Writing letters needs [Basic Skill](/docs/mechanics/master/basics/#skill-basic-skill) Lv. 2, the same as whispers.
 
 The game's own notices come by pigeon too: a sold auction, a commission reward, a parcel that has arrived, a parcel
 that was robbed.
@@ -76,8 +76,8 @@ At a post office you name the recipient, put in the items and pay the [freight f
 latest arrival time.
 
 - A parcel weighs at most **10 kg**. Bulk freight is work for
-  [Transport commissions](/docs/mechanics/questing/) and for players
-  [hauling goods for profit](/docs/mechanics/settlements/#hauling-goods-for-profit), not for the post.
+  [Transport commissions](/docs/mechanics/world/questing/) and for players
+  [hauling goods for profit](/docs/mechanics/towns-trade/settlements/#hauling-goods-for-profit), not for the post.
 - A parcel to a player whose home office is the office you stand at arrives at once.
 - **Coach only.** Tick it, and the parcel never rides with a player courier. It cannot be
   [robbed](#breaking-a-seal), but it never arrives before the coach. Use it for something you cannot afford to lose.
@@ -112,13 +112,13 @@ counts double. Like every fee, it is rounded up to the next whole gold, and it i
 
 The post holds the fee until the parcel arrives. Then **60%** goes to the player courier who carried it, and **40%**
 returns to the world reserve. When the coach carries it, the whole fee returns to the world reserve. No gold is made
-and none is lost, see [Currency](/docs/mechanics/economy-trade/#currency).
+and none is lost, see [Currency](/docs/mechanics/towns-trade/economy-trade/#currency).
 
 ## Uncollected Parcels
 
 A parcel waits **30 days** at the recipient's home office. Then it goes back to the sender's home office, for free. If
 the sender does not collect it either within another 30 days, the post sells it in the start towns'
-[auction house](/docs/mechanics/economy-trade/#the-start-towns-auction-houses), and the money returns to the world
+[auction house](/docs/mechanics/towns-trade/economy-trade/#the-start-towns-auction-houses), and the money returns to the world
 reserve.
 
 # The Sack and the Coach
@@ -160,7 +160,7 @@ Any master can take parcels from a route board, and so can a Bestia that its mas
 - **You see the destination, the weight and the pay.** You do not see what is inside. Every parcel is sealed.
 - **You take as many parcels as you can carry.** The rest stays for the next courier or the coach.
 - **The road must not be far above you.** A route has a
-  [difficulty](/docs/mechanics/questing/#difficulty-and-level-range) like a Transport commission, and a master below
+  [difficulty](/docs/mechanics/world/questing/#difficulty-and-level-range) like a Transport commission, and a master below
   its lower bound cannot take it.
 - **A sack cannot be dropped, traded or stored.** It goes to its destination or back to the post.
 
@@ -171,7 +171,7 @@ master is paid, and its master answers for it.
 
 Your deadline is the latest arrival time of the parcels you carry. Deliver them before it, and you are paid your 60%
 of their fees at once. A Bestia also earns its usual
-[experience for travelling](/docs/mechanics/bestia/#environment-interaction).
+[experience for travelling](/docs/mechanics/bestias/bestia/#environment-interaction).
 
 **If you miss the deadline**, the seal sends the parcels on, and they arrive on time anyway. You are paid nothing, and
 you are **struck off**: you cannot take post work for **1 day**. Logging out does not stop the deadline. For a Bestia,
@@ -182,7 +182,7 @@ seal sends it on. You are paid nothing for it, but you are not struck off. Being
 
 ## The Seal
 
-Every parcel carries a **Postal Seal**, an [enchantment](/docs/mechanics/items/#enchantments) the post office binds to
+Every parcel carries a **Postal Seal**, an [enchantment](/docs/mechanics/items-crafting/items/#enchantments) the post office binds to
 it. The seal is the guarantee:
 
 - **Nobody can open a sealed parcel**, the courier included.
@@ -198,7 +198,7 @@ and whoever holds it is now its courier, with the same deadline and the full pay
 
 - A party member can save a fallen friend's run this way, and so can a stranger who passes by.
 - So can the one who killed the courier. Delivering the sack is honest work from then on. The kill already cost its
-  [honor](/docs/mechanics/pvp/#negative-honor).
+  [honor](/docs/mechanics/society/pvp/#negative-honor).
 - Taking over is not stealing, because nothing in the sack is opened.
 - The rules of the route board apply: you must be able to carry it, the road must not be far above you, and you must
   not be struck off. Somebody who could not take the sack at the board cannot pick it up either.
@@ -206,7 +206,7 @@ and whoever holds it is now its courier, with the same deadline and the full pay
 ## Breaking a Seal
 
 The other way to use those 30 seconds is to rob the sack. A sealed sack on the ground can be hit with
-[Dispel](/docs/mechanics/master/#skill-dispel). The seal has strength `70`:
+[Dispel](/docs/mechanics/master/basics/#skill-dispel). The seal has strength `70`:
 
 ```text
 chance = Dispel base chance - 70
@@ -216,7 +216,7 @@ Only a Sage with Dispel Lv. 5 has a real chance, `30%` per try. Dispel's cooldow
 tries, about `51%` together. A gang with several Sages gets more.
 
 When a seal breaks, the sack opens and its parcels spill onto the ground. Taking them counts as
-[stealing](/docs/mechanics/pvp/#negative-honor) for every item, with the honor loss of its item level. The senders get a
+[stealing](/docs/mechanics/society/pvp/#negative-honor) for every item, with the honor loss of its item level. The senders get a
 pigeon: their parcel was robbed, and where. The post pays back their freight fee in full, because no courier was paid
 for it. The goods are lost.
 
@@ -229,19 +229,19 @@ carries valuable sacks on a dangerous road has a reason to hire an escort. A sen
 ## In Generated Settlements
 
 Every generated village and town has a post office at its market square. A hamlet has none. The office is run by a
-**postmaster**, one of the [townsfolk](/docs/mechanics/settlements/#the-trades), who takes in and hands out parcels
+**postmaster**, one of the [townsfolk](/docs/mechanics/towns-trade/settlements/#the-trades), who takes in and hands out parcels
 during their working hours. Letters need no office.
 
 ## In Player Cities
 
-A [founded settlement](/docs/mechanics/master/#skill-founder) gets a post office only when its players build one.
+A [founded settlement](/docs/mechanics/master/basics/#skill-founder) gets a post office only when its players build one.
 
 - **It is a construction** like any other building. Whoever may build in the settlement can put it up. A settlement
   holds at most one.
 - **The post runs it.** When it is finished, the post takes it over and sends a postmaster. It has no owner and no
   owner fee. The seal and the promise must not depend on a player who logs off, and no player should set the price of
   a public service.
-- **An [auction house](/docs/mechanics/economy-trade/#building-an-auction-house) needs it.** Unsold goods and coin
+- **An [auction house](/docs/mechanics/towns-trade/economy-trade/#building-an-auction-house) needs it.** Unsold goods and coin
   travel by post, so a settlement needs a post office before it can hold an auction house.
 
 The city gains in other ways. Its residents can make it their home post office, couriers come for its route board,

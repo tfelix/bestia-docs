@@ -30,7 +30,7 @@ says so in the chat itself instead of asking the server for something nobody wou
 
 Emoting needs **Basic Skill rank 2**, the same rank as chat: body language is talking too, and Ragnarok Online gates
 its emotions at exactly that Basic Skill level. Ranks 1 to 5 of Basic Skill are described on the
-[master](/docs/mechanics/master/#skill-basic-skill) page.
+[master](/docs/mechanics/master/basics/#skill-basic-skill) page.
 
 ## Who sees it
 

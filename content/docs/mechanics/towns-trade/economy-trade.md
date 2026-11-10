@@ -9,12 +9,12 @@ gold, mint the money, haul the freight and run the marketplaces, and the world's
 decide those things are worth. This page covers the three systems that carry all of it — the **currency**, the **postal
 system** that moves goods and coin across the map, and the **auction houses** where most trading actually happens.
 
-{{< alert context="info" text="**Conventions used on this page.** Unless stated otherwise, every amount and fee is expressed in **gold**, and every duration in hours or days refers to **real time**, not in-game [Bestia time](/docs/mechanics/environment/#in-game-time)." />}}
+{{< alert context="info" text="**Conventions used on this page.** Unless stated otherwise, every amount and fee is expressed in **gold**, and every duration in hours or days refers to **real time**, not in-game [Bestia time](/docs/mechanics/world/environment/#in-game-time)." />}}
 
 # Currency
 
 All currency in the world originates from gold deposits that players discover and mine themselves. Raw gold becomes
-money only once a master turns it into **gold coins** with the [Minting](/docs/mechanics/master/#skill-minting) skill —
+money only once a master turns it into **gold coins** with the [Minting](/docs/mechanics/master/basics/#skill-minting) skill —
 there is no other tap. Gold coins are the single currency for every trade and transaction, and there are no smaller
 denominations: everything in the game is priced in whole **gold**.
 
@@ -32,7 +32,7 @@ keeps circulating into player hands through NPC purchases and quest brokers inst
 land.
 
 What a settlement does with its share of that gold — stocking its shops, paying for imports along the roads, and
-rebuilding what a player knocks down — is covered under [Settlements & Townsfolk](/docs/mechanics/settlements/).
+rebuilding what a player knocks down — is covered under [Settlements & Townsfolk](/docs/mechanics/towns-trade/settlements/).
 
 That NPC gold is a **closed pool**, not a second faucet: whenever an NPC pays a player — a quest reward, a purchase, a
 world-event payout — the gold must have been earned by some other NPC first. The server-side
@@ -44,7 +44,7 @@ the reason prices need no manual intervention to stay sane.
 
 Letters, gold and parcels travel between players by post. A pigeon carries letters and gold notes at once. Parcels go
 by road, on an NPC coach or with a player who takes the job, and every parcel is sealed so that it arrives by the time
-the post office promised. The [Postal System](/docs/mechanics/postal/) page has the rules and the fees.
+the post office promised. The [Postal System](/docs/mechanics/towns-trade/postal/) page has the rules and the fees.
 
 # Auction House
 
@@ -63,17 +63,17 @@ builds one.
   [Trade Agreement](#linking-auction-houses).
 - **Click the building** to open its window. No clerk stands behind a counter; the hall itself is the way in.
 
-{{< alert context="info" text="Until the [postal system](/docs/mechanics/postal/) exists, unsold goods and sale proceeds wait in the auction house's **Collect** tab. A fixed-price listing runs for **5 days**." />}}
+{{< alert context="info" text="Until the [postal system](/docs/mechanics/towns-trade/postal/) exists, unsold goods and sale proceeds wait in the auction house's **Collect** tab. A fixed-price listing runs for **5 days**." />}}
 
 ## Building an Auction House
 
-Building an auction house requires the [Trade Post Owner](/docs/mechanics/master/#skill-trade-post-owner) master skill,
+Building an auction house requires the [Trade Post Owner](/docs/mechanics/master/basics/#skill-trade-post-owner) master skill,
 which also caps how many a single master may operate (one at Lv. 1, up to five at Lv. 5). It is an expensive building,
 so the materials are usually pooled by a group of players or a whole guild. These special rules apply:
 
 - Once an auction house stands, **no other auction house may be placed within a 5km radius**, and no settlement may hold
   more than one.
-- The settlement needs a [post office](/docs/mechanics/postal/#in-player-cities) first, because unsold goods and coin
+- The settlement needs a [post office](/docs/mechanics/towns-trade/postal/#in-player-cities) first, because unsold goods and coin
   travel by post.
 - The owner sets an **owner fee** of at least **1%** on every new listing. The ceiling is granted by their Trade Post
   Owner level, rising from **5% at Lv. 1 to 25% at Lv. 5**.
@@ -113,7 +113,7 @@ junk priced at a million gold, because the fee for asking is real and it is due 
 item. Setting a sane starting bid is the cheap move; greed costs gold whether it pays off or not.
 
 **If a listing runs out its duration without finding a buyer**, the auction house simply **posts the item back to you**
-as [auction mail](/docs/mechanics/postal/#auction-mail) — it is never lost, and you do not have to be online for it to
+as [auction mail](/docs/mechanics/towns-trade/postal/#auction-mail) — it is never lost, and you do not have to be online for it to
 find its way home. The coin of a sale reaches you the same way.
 
 The fees, however, are **not refunded**. You paid for the marketplace's time and the owner's floor space, and you got both. That is the honest cost of a listing that asked for too much.
@@ -121,10 +121,10 @@ The fees, however, are **not refunded**. You paid for the marketplace's time and
 ## Linking Auction Houses
 
 Auction houses belonging to different players can be **linked** using the
-[Trade Agreement](/docs/mechanics/master/#skill-trade-agreement) master skill, provided every owner involved agrees.
+[Trade Agreement](/docs/mechanics/master/basics/#skill-trade-agreement) master skill, provided every owner involved agrees.
 Linked houses share their listings, turning a handful of local shops into one broad marketplace and making goods far easier to find - for buyers and sellers alike.
 
 Winning an auction at a linked house leaves the buyer a choice: **pay a delivery fee** and have the item posted over by
-the [postal system](/docs/mechanics/postal/), or travel and fetch it. Unclaimed items are held for **up to 10 days**. After that
+the [postal system](/docs/mechanics/towns-trade/postal/), or travel and fetch it. Unclaimed items are held for **up to 10 days**. After that
 the item goes back to the original seller, who **keeps the payment** — so it is worth remembering where you bought
 something.

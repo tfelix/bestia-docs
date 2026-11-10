@@ -53,8 +53,8 @@ The world is divided into regions, and each region tracks a separate **influence
 Members raise their Order's influence in a region by acting in line with its conviction:
 
 - Performing rituals at a temple or citadel located in that region.
-- Bending the region's [mana density](/docs/mechanics/environment/#mana-concentration) toward their goal — **Chaos** by opening and feeding mana rifts, **Eternity** by sealing them, and **the Circle** by holding the density inside a stable target band.
-- Winning fights against opposing Orders inside a [war zone](/docs/mechanics/pvp) within that region.
+- Bending the region's [mana density](/docs/mechanics/world/environment/#mana-concentration) toward their goal — **Chaos** by opening and feeding mana rifts, **Eternity** by sealing them, and **the Circle** by holding the density inside a stable target band.
+- Winning fights against opposing Orders inside a [war zone](/docs/mechanics/society/pvp) within that region.
 - Completing faction quests and drawing faction-friendly Bestia into the region.
 
 Influence decays slowly if it is not maintained, so a sphere of influence has to be defended continuously rather than won once.
@@ -83,7 +83,7 @@ Covenants begin with the **second** season and run every month thereafter until 
 
 ## Seasonal Covenants
 
-One Bestia season is one real-time month, or 84 [Bestia days](/docs/mechanics/environment/#in-game-time). At the start of each season every Order is set a **Covenant** — a public quota on its own axis, shown to everyone as a progress bar. Each Order is measured only against its own axis, so all three can succeed or fail in the same season; the competition between them happens in the world state they share, not in the scoring formula.
+One Bestia season is one real-time month, or 84 [Bestia days](/docs/mechanics/world/environment/#in-game-time). At the start of each season every Order is set a **Covenant** — a public quota on its own axis, shown to everyone as a progress bar. Each Order is measured only against its own axis, so all three can succeed or fail in the same season; the competition between them happens in the world state they share, not in the scoring formula.
 
 {{< table >}}
 
@@ -123,7 +123,7 @@ The effect is that the underdog is always the mechanically attractive Order to j
 
 ## Earning Advantage Points
 
-When the world's fate is finally decided, a **world-end tally** is calculated. Let `T` be the percentage of the world's predetermined life span at which the world actually ended — or, where a doomsday was averted and the world outlived its estimate, the point it eventually reached. The life span is fixed when the world is generated (see [Doomsday](/docs/mechanics/doomsday)).
+When the world's fate is finally decided, a **world-end tally** is calculated. Let `T` be the percentage of the world's predetermined life span at which the world actually ended — or, where a doomsday was averted and the world outlived its estimate, the point it eventually reached. The life span is fixed when the world is generated (see [Doomsday](/docs/mechanics/world/doomsday)).
 
 All three Orders are scored from that single number, on three different curves:
 
@@ -219,20 +219,20 @@ Some of what an Order accomplishes should outlast the world it accomplished it i
 
 # The Order Skill Tree
 
-Each Order maintains its own skill tree, parallel to and independent of the player's [Master skill trees](/docs/mechanics/master). Progression in one does not consume progression in the other, so a player's Order never constrains their class build — and no spell, class or craft is gated behind faction membership. What the Orders grant is rituals, temple services, global buffs, and access to their own research.
+Each Order maintains its own skill tree, parallel to and independent of the player's [Master skill trees](/docs/mechanics/master/basics). Progression in one does not consume progression in the other, so a player's Order never constrains their class build — and no spell, class or craft is gated behind faction membership. What the Orders grant is rituals, temple services, global buffs, and access to their own research.
 
 {{< alert context="warning" text="**Concept pending.** The Order skill trees are not yet designed. What is settled: they are a separate progression track from the Master trees, their spendable points reset each world, and their available nodes can be permanently widened by [persistent achievements](#persistent-achievements)." />}}
 
 # Switching an Order
 
-Leaving an Order is possible, deliberate, and expensive. It is done through the ritual [Banished from the Citadel](/docs/mechanics/attack-list/#banished-from-the-citadel), which a Master performs **on themselves** — nobody can be forced out of their Order by another player.
+Leaving an Order is possible, deliberate, and expensive. It is done through the ritual [Banished from the Citadel](/docs/mechanics/combat/attack-list/#banished-from-the-citadel), which a Master performs **on themselves** — nobody can be forced out of their Order by another player.
 
 The ritual requires:
 
-- A [Sigil of Redemption](/docs/mechanics/equip-list/#sigil-of-redemption), worn by the Master performing the rite and **consumed** by it. The Sigil is a very costly and rare item.
+- A [Sigil of Redemption](/docs/mechanics/items-crafting/equip-list/#sigil-of-redemption), worn by the Master performing the rite and **consumed** by it. The Sigil is a very costly and rare item.
 - The scroll itself, which must be found as a drop. It cannot be memorized.
 
-On completion the Master's ties are severed and they become **unsworn**, carrying a debuff that reduces all status values to `50%` for `Lv/2` (rounded up) [Bestia days](/docs/mechanics/environment/#in-game-time), based on the Master's level. **A level 74 Master carries this debuff for 37 Bestia days.** While unsworn, a Master receives no Ascendancy, no Faction Advantage buff, and no access to any Order's temple services.
+On completion the Master's ties are severed and they become **unsworn**, carrying a debuff that reduces all status values to `50%` for `Lv/2` (rounded up) [Bestia days](/docs/mechanics/world/environment/#in-game-time), based on the Master's level. **A level 74 Master carries this debuff for 37 Bestia days.** While unsworn, a Master receives no Ascendancy, no Faction Advantage buff, and no access to any Order's temple services.
 
 Once the debuff expires the Master may petition any Order, including the one they left.
 

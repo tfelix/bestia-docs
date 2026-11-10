@@ -5,7 +5,7 @@ weight: 300
 aliases: ["/docs/mechanics/bestia-compendium/"]
 ---
 
-In areas of high mana concentration, so-called **mini rift events** form. At these neuralgic points Bestia materialise and enter the respective world. Bestia therefore spawn on the map on their own, and they do so more often where the [mana concentration](/docs/mechanics/environment/#mana-concentration) is higher.
+In areas of high mana concentration, so-called **mini rift events** form. At these neuralgic points Bestia materialise and enter the respective world. Bestia therefore spawn on the map on their own, and they do so more often where the [mana concentration](/docs/mechanics/world/environment/#mana-concentration) is higher.
 
 Which species spawns is decided by the surrounding environment: every Bestia has an affinity for certain biomes and spawns with the corresponding probability in each of them.
 
@@ -15,16 +15,16 @@ A boss lives alone in a **boss den**. Boss dens appear only in wild country, whe
 
 # Catching Bestias
 
-To catch a Bestia you need a **Magic Bestia Trap**. These are manufactured with the Craftsman's [Carpentry](/docs/mechanics/master/#skill-carpentry) skill and empowered with [Mana Dust](/docs/mechanics/item-list/#mana-dust). Four tiers exist, each one better than the last at holding a high-level Bestia.
+To catch a Bestia you need a **Magic Bestia Trap**. These are manufactured with the Craftsman's [Carpentry](/docs/mechanics/master/basics/#skill-carpentry) skill and empowered with [Mana Dust](/docs/mechanics/items-crafting/item-list/#mana-dust). Four tiers exist, each one better than the last at holding a high-level Bestia.
 
 The base catch chance depends only on the trap tier and the target's level:
 
 | Trap                                                  | Lv. 1 - 20 | Lv. 21 - 40 | Lv. 41 - 60 | Lv. 61 - 100 |     Lv. 101+     |
 | :---------------------------------------------------- | :--------: | :---------: | :---------: | :----------: | :--------------: |
-| [Bestia Trap](/docs/mechanics/item-list/#bestia-trap) |    +60%    |    +20%     |    -20%     |     -60%     | -60% - 3(LV-100) |
-| [Super Trap](/docs/mechanics/item-list/#super-trap)   |   +100%    |    +60%     |    +20%     |     -20%     | -20% - 3(LV-100) |
-| [Mega Trap](/docs/mechanics/item-list/#mega-trap)     |   +140%    |    +100%    |    +60%     |     +20%     | +20% - 3(LV-100) |
-| [Master Trap](/docs/mechanics/item-list/#master-trap) |   +180%    |    +140%    |    +100%    |     +60%     | +60% - 3(LV-100) |
+| [Bestia Trap](/docs/mechanics/items-crafting/item-list/#bestia-trap) |    +60%    |    +20%     |    -20%     |     -60%     | -60% - 3(LV-100) |
+| [Super Trap](/docs/mechanics/items-crafting/item-list/#super-trap)   |   +100%    |    +60%     |    +20%     |     -20%     | -20% - 3(LV-100) |
+| [Mega Trap](/docs/mechanics/items-crafting/item-list/#mega-trap)     |   +140%    |    +100%    |    +60%     |     +20%     | +20% - 3(LV-100) |
+| [Master Trap](/docs/mechanics/items-crafting/item-list/#master-trap) |   +180%    |    +140%    |    +100%    |     +60%     | +60% - 3(LV-100) |
 
 The `Lv. 101+` column continues the `Lv. 61 - 100` column without a jump: at exactly Lv. 100 the penalty term is zero.
 
@@ -33,9 +33,9 @@ On top of the base chance, every bonus below contributes **percentage points**:
 | Source                                                                     | Bonus        |
 | :------------------------------------------------------------------------- | :----------- |
 | Reducing the target's HP before throwing the trap                          | up to `+30`  |
-| The trap user's [Willpower](/docs/mechanics/statusvalues/#willpower---wil) | `+ WIL / 50` |
-| [Trapping](/docs/mechanics/master/#skill-trapping) Lv. 1 - 5               | `+6` … `+30` |
-| [Beastfriend](/docs/mechanics/master/#skill-beastfriend) Lv. 1 - 5         | `+5` … `+25` |
+| The trap user's [Willpower](/docs/mechanics/combat/statusvalues/#willpower---wil) | `+ WIL / 50` |
+| [Trapping](/docs/mechanics/master/basics/#skill-trapping) Lv. 1 - 5               | `+6` … `+30` |
+| [Beastfriend](/docs/mechanics/master/basics/#skill-beastfriend) Lv. 1 - 5         | `+5` … `+25` |
 | Buffs on the trap user, debuffs on the target                              | varies       |
 
 The HP bonus scales linearly with how far the target has been worn down, reaching its full `+30` when the Bestia is at 1% HP:
@@ -69,7 +69,7 @@ Bestia above Lv. 100 are meant to be rare and Bestia above Lv. 120 close to lege
 
 In Bestia, there are two main types of magical actions:
 
-1. **Skills** – Learned by a Bestia Master. Skills have levels and can be upgraded in a skill tree as the Master levels up. These are controlled by the player using skill points. See [Bestia Master](/docs/mechanics/master/) for the full skill tree.
+1. **Skills** – Learned by a Bestia Master. Skills have levels and can be upgraded in a skill tree as the Master levels up. These are controlled by the player using skill points. See [Bestia Master](/docs/mechanics/master/basics/) for the full skill tree.
 2. **Attacks** – Learned by a Bestia as it levels up, at fixed, predefined levels. These can be battle-related or utility magic.
 
 Each skill or attack is characterized by its **level** and **elemental aspect**.
@@ -79,24 +79,24 @@ Some magical actions are **both** at once. Many offensive spells—the elemental
 Bestias can learn attacks in two ways:
 
 1. **Level Up** – Each Bestia has an internal list of attacks it will learn as it gains levels. The same attack may be learned at different levels by different Bestias.
-2. **Spell Scrolls** – Players can inscribe attacks onto spell scrolls with the Sage's [Spell Inscription](/docs/mechanics/master/#skill-spell-inscription) skill (or find them as loot). These spells can be used directly from the scroll or taught to a Bestia.
+2. **Spell Scrolls** – Players can inscribe attacks onto spell scrolls with the Sage's [Spell Inscription](/docs/mechanics/master/basics/#skill-spell-inscription) skill (or find them as loot). These spells can be used directly from the scroll or taught to a Bestia.
 
 General guidelines when Bestia are learning attacks from level ups:
 
 - **From Lv. 1–100**, a Bestia should learn **about 20** attacks.
 - Around **15 attacks** are learned between **Lv. 1–70**, and the last 5 (the most powerful ones) **between Lv. 71–100**.
 
-An overview of the attacks themselves lives on the [Attack List](/docs/mechanics/attack-list) page.
+An overview of the attacks themselves lives on the [Attack List](/docs/mechanics/combat/attack-list) page.
 
 # Breeding
 
-Bestia can be bred in order to improve their [status values](/docs/mechanics/statusvalues) and to pass powerful attacks down a bloodline. To breed a pair, the following criteria must be met:
+Bestia can be bred in order to improve their [status values](/docs/mechanics/combat/statusvalues) and to pass powerful attacks down a bloodline. To breed a pair, the following criteria must be met:
 
 - A male and a female are required.
 - Both must be of the same kind (humanoid, formless, etc.).
 - Both must be at least **Lv. 10**.
 
-Both parents are placed into a [Breeder](/docs/mechanics/item-list/#breeder), a structure that has to be built and placed on the map. After a waiting time derived from both parents' levels an egg is produced:
+Both parents are placed into a [Breeder](/docs/mechanics/items-crafting/item-list/#breeder), a structure that has to be built and placed on the map. After a waiting time derived from both parents' levels an egg is produced:
 
 <!-- prettier-ignore -->
 {{< katex display >}}
@@ -112,7 +112,7 @@ The egg then has to hatch, which takes a much shorter, slightly randomised time:
 t_{hatch} = rand(0.9,\ 1.0) \cdot 18 \cdot lv_1 \cdot lv_2\ [s_{real}]
 {{< /katex >}}
 
-Both timers are given in **real time**, not [Bestia time](/docs/mechanics/environment/#in-game-time):
+Both timers are given in **real time**, not [Bestia time](/docs/mechanics/world/environment/#in-game-time):
 
 | Parent levels | Breeding time      | Hatch time |
 | :------------ | :----------------- | :--------- |
@@ -124,7 +124,7 @@ Both timers are given in **real time**, not [Bestia time](/docs/mechanics/enviro
 | 100 & 100     | ~46 days (~1.5 mo) | ~2 days    |
 | 120 & 120     | ~73 days (~2.4 mo) | ~3 days    |
 
-Breeder upgrades, feed, buffs, items and a Forester's [Bloodline Study](/docs/mechanics/master/#skill-bloodline-study) skill shorten both timers. A well-equipped setup typically reaches a **30 - 40%** reduction, and the total reduction is capped at **50%**.
+Breeder upgrades, feed, buffs, items and a Forester's [Bloodline Study](/docs/mechanics/master/basics/#skill-bloodline-study) skill shorten both timers. A well-equipped setup typically reaches a **30 - 40%** reduction, and the total reduction is capped at **50%**.
 
 There is **no cooldown** on the breeder. The moment an egg is produced the same pair can immediately start the next attempt — the breeding time itself is the only limit on how fast a bloodline can be pushed forward.
 
@@ -134,7 +134,7 @@ The offspring is always of the **female's** species and hatches at **Lv. 1**, so
 
 ## Individual Value Evolution
 
-A Bestia has nine individual values: one for each of the six [status values](/docs/mechanics/statusvalues/#status-values) (INT, WIL, STR, VIT, DEX, AGI) and one each for HP, Mana and Stamina — the `ivHp`, `ivMana` and `ivSta` terms in the [status based value](/docs/mechanics/statusvalues/#status-based-values) formulas. Each one ranges from `0` to `100`.
+A Bestia has nine individual values: one for each of the six [status values](/docs/mechanics/combat/statusvalues/#status-values) (INT, WIL, STR, VIT, DEX, AGI) and one each for HP, Mana and Stamina — the `ivHp`, `ivMana` and `ivSta` terms in the [status based value](/docs/mechanics/combat/statusvalues/#status-based-values) formulas. Each one ranges from `0` to `100`.
 
 The offspring's IVs are rolled per IV, independently:
 
@@ -142,9 +142,9 @@ The offspring's IVs are rolled per IV, independently:
 2. **Variance** — roll once per IV: with `70%` the seed is raised by 10%, with `20%` it stays as it is, and with `10%` it is lowered by 10%.
 3. **Clamp** — round to the nearest integer and clamp into `[0, 100]`.
 
-A dominant IV therefore drifts upward by about `6%` per generation on average (`0.7 · 1.1 + 0.2 · 1.0 + 0.1 · 0.9 = 1.06`), so a line seeded around IV 50 needs roughly a dozen generations to approach the cap of 100. Because only three IVs are dominant per clutch, the player has to decide which stats a bloodline is being bred for rather than improving everything at once. A Forester with [Bloodline Study](/docs/mechanics/master/#skill-bloodline-study) Lv. 4 draws a fourth dominant IV, which is the only way to widen that choice.
+A dominant IV therefore drifts upward by about `6%` per generation on average (`0.7 · 1.1 + 0.2 · 1.0 + 0.1 · 0.9 = 1.06`), so a line seeded around IV 50 needs roughly a dozen generations to approach the cap of 100. Because only three IVs are dominant per clutch, the player has to decide which stats a bloodline is being bred for rather than improving everything at once. A Forester with [Bloodline Study](/docs/mechanics/master/basics/#skill-bloodline-study) Lv. 4 draws a fourth dominant IV, which is the only way to widen that choice.
 
-**How much is an IV actually worth?** The answer is defined once, on the [Status Values](/docs/mechanics/statusvalues/#individual-values) page, and follows directly from the status value formula:
+**How much is an IV actually worth?** The answer is defined once, on the [Status Values](/docs/mechanics/combat/statusvalues/#individual-values) page, and follows directly from the status value formula:
 
 ```text
 statusValue = (baseValue + individualValue) * level / 100 + effortValue
@@ -162,7 +162,7 @@ The player influences the outcome on three levels.
 
 ### 1. Season — which attacks are eligible
 
-Only attacks whose learn level falls inside the current [Bestia season's](/docs/mechanics/environment/#in-game-time) band are eligible:
+Only attacks whose learn level falls inside the current [Bestia season's](/docs/mechanics/world/environment/#in-game-time) band are eligible:
 
 | Attack Lv. Range | Season Of Breeding |
 | :--------------- | -----------------: |
@@ -175,7 +175,7 @@ A season lasts one real-time month, and a Bestia knows about 20 attacks spread o
 
 ### 2. Priming — which eligible attacks are attempted
 
-Before breeding starts the player may load up to **three** spell scrolls of eligible father attacks into the breeder. Those become the candidates, and the scrolls are consumed when breeding begins. Since scrolls are produced with the Sage's [Spell Inscription](/docs/mechanics/master/#skill-spell-inscription) skill, directed breeding costs real resources and pulls a second profession into the loop.
+Before breeding starts the player may load up to **three** spell scrolls of eligible father attacks into the breeder. Those become the candidates, and the scrolls are consumed when breeding begins. Since scrolls are produced with the Sage's [Spell Inscription](/docs/mechanics/master/basics/#skill-spell-inscription) skill, directed breeding costs real resources and pulls a second profession into the loop.
 
 If nothing is primed, up to three eligible attacks are drawn at random instead — undirected breeding still works, it just gives up the control.
 
@@ -188,7 +188,7 @@ Each candidate rolls independently. All terms are percentage points:
 P_{transfer} = 30\% + \min\big(30,\ lv_{father} - lv_{attack}\big) + 2 \cdot Beastfriend_{Lv}
 {{< /katex >}}
 
-A father can only pass on an attack he has learned, so the middle term is never negative. It rewards levelling a stud well past the attack you actually want from him: the chance runs from `30%` for a father who has only just learned the attack up to `70%` for one who is 30 levels past it and backed by [Beastfriend](/docs/mechanics/master/#skill-beastfriend) Lv. 5.
+A father can only pass on an attack he has learned, so the middle term is never negative. It rewards levelling a stud well past the attack you actually want from him: the chance runs from `30%` for a father who has only just learned the attack up to `70%` for one who is 30 levels past it and backed by [Beastfriend](/docs/mechanics/master/basics/#skill-beastfriend) Lv. 5.
 
 A successful roll resolves like this:
 
@@ -214,7 +214,7 @@ numbers exist would protect nothing. What a master has not seen yet stays blacke
 | State  | What the entry shows                                                                                                                           |
 | :----- | :--------------------------------------------------------------------------------------------------------------------------------------------- |
 | Unseen | The number, a black silhouette and `???`                                                                                                       |
-| Seen   | Portrait, live model, name, kind, habitat, the [description](/docs/mechanics/bestia-design/#9-the-compendium-entry) and when it was first seen |
+| Seen   | Portrait, live model, name, kind, habitat, the [description](/docs/mechanics/bestias/bestia-design/#9-the-compendium-entry) and when it was first seen |
 | Caught | Everything a seen entry shows, plus a caught mark                                                                                              |
 
 Townsfolk and creatures made for game masters are not bestias a master would study. A mob YAML with
@@ -244,7 +244,7 @@ A master who owned bestias before the compendium existed finds those species alr
 - **Live model.** The species' 3D model on neutral ground, seen at an angle from above. It turns slowly and can be
   dragged to turn it. Only the game client shows it; the companion app shows the portrait alone.
 - **Name, kind and description.** The translated text from the mob YAML, see
-  [Where the text lives](/docs/mechanics/bestia-design/#where-the-text-lives).
+  [Where the text lives](/docs/mechanics/bestias/bestia-design/#where-the-text-lives).
 - **Habitat.** The [biomes](/docs/server/world-generation/#biomes) the species spawns in. An empty habitat means
   anywhere on land.
 
@@ -252,7 +252,7 @@ The list can be searched by name and number, and filtered to all, seen or caught
 
 ## Habitat on the map
 
-A seen species can be shown on the [map](/docs/mechanics/world-exploration/#explored-world-map), to help hunt it. The
+A seen species can be shown on the [map](/docs/mechanics/world/world-exploration/#explored-world-map), to help hunt it. The
 overlay only covers ground the master's charts show: it never reveals uncharted land.
 
 It has two layers:
@@ -321,8 +321,8 @@ Players are counted by account, so a master and its own Bestia fighting together
 
 After the killing blow is delivered, the resulting pool is distributed among the damage dealers in proportion to the damage each of them contributed. Where each portion then goes:
 
-1. **Party.** In a party set to _Even share_, a portion gets `+30%` and is split evenly between the members near the kill; see [Parties](/docs/mechanics/party-guild/#sharing-experience). This bonus is separate from, and on top of, the one for several players above. In a party set to _Each take_, or outside a party, the attacker keeps its portion.
-2. **Guild.** A guild member pays its rank's tax on what it receives; see [Guild Tax](/docs/mechanics/party-guild/#tax-and-guild-experience).
+1. **Party.** In a party set to _Even share_, a portion gets `+30%` and is split evenly between the members near the kill; see [Parties](/docs/mechanics/society/party-guild/#sharing-experience). This bonus is separate from, and on top of, the one for several players above. In a party set to _Each take_, or outside a party, the attacker keeps its portion.
+2. **Guild.** A guild member pays its rank's tax on what it receives; see [Guild Tax](/docs/mechanics/society/party-guild/#tax-and-guild-experience).
 3. What is left is credited to whoever received it - the attacker itself, or a member's master when the portion was shared.
 
 ## Environment Interaction
@@ -344,7 +344,7 @@ Travel experience is deliberately tiny: at Lv. 50 a single level would take almo
 
 A Bestia **Master** cannot die. Instead they are reborn on the spot with a temporary malus that reduces all of their status values by `15%` for 15 minutes.
 
-A Bestia or Master that is defeated loses `1%` of its current experience points. Carried items are protected by a spell which tries to teleport them back to a secure storage shortly after death — but remember: spells can be [dispelled](/docs/mechanics/master/#skill-dispel).
+A Bestia or Master that is defeated loses `1%` of its current experience points. Carried items are protected by a spell which tries to teleport them back to a secure storage shortly after death — but remember: spells can be [dispelled](/docs/mechanics/master/basics/#skill-dispel).
 
 In every case, carried items suffer a durability penalty.
 

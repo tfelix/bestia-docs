@@ -61,8 +61,8 @@ server rules, so it changes when they do:
   The method assumes +1 weapon ATK and +0.375 hard DEF per level on top. Hard DEF is a percentage cut, so a Lv 90
   master takes 38 % less damage. That is between a caster (about 27 %) and a melee in full armour (about 50 %).
 - **Random stats on the gear:** an average-roll kit of the master's level, about one attribute point per level, spread
-  like the master's own points. See [What the Numbers Mean](/docs/mechanics/items/#what-the-numbers-mean).
-- **HP and attack speed:** the master's own formulas, see [Status Values](/docs/mechanics/statusvalues/#health).
+  like the master's own points. See [What the Numbers Mean](/docs/mechanics/items-crafting/items/#what-the-numbers-mean).
+- **HP and attack speed:** the master's own formulas, see [Status Values](/docs/mechanics/combat/statusvalues/#health).
 
 | Level | Attributes (STR/VIT/INT/AGI/DEX/WIL) |  HP | ATK | Soft DEF | FLEE | Weapon ATK | Hard DEF | Seconds per swing |
 | ----: | :----------------------------------- | --: | --: | -------: | ---: | ---------: | -------: | ----------------: |
@@ -121,9 +121,9 @@ the damage instead.
 
 ## The learnset
 
-A species learns **about 20 skills from Lv 1 to 100**, 15 of them by Lv 70, as [Bestias](/docs/mechanics/bestia/#attacks)
+A species learns **about 20 skills from Lv 1 to 100**, 15 of them by Lv 70, as [Bestias](/docs/mechanics/bestias/bestia/#attacks)
 asks. Each of the 20 slots has a fixed learn level, and the role fills each slot with an **archetype**. The slot
-then takes an attack of that archetype from the [Attack List](/docs/mechanics/attack-list/):
+then takes an attack of that archetype from the [Attack List](/docs/mechanics/combat/attack-list/):
 
 | Slot        |   1 |   2 |   3 |   4 |   5 |   6 |   7 |   8 |   9 |  10 |
 | :---------- | --: | --: | --: | --: | --: | --: | --: | --: | --: | --: |
@@ -152,12 +152,12 @@ about 18 to 22 skills. A utility skill is never one of the active attacks and th
 
 ### What an attack does beyond its damage
 
-An attack on the [Attack List](/docs/mechanics/attack-list) is its archetype's damage formula plus a **mechanics**
+An attack on the [Attack List](/docs/mechanics/combat/attack-list) is its archetype's damage formula plus a **mechanics**
 block for what makes it more than a number:
 
 - **Blows**: several hits per cast, each with the full coefficient. A row with more blows sets a lower coefficient.
 - **Movement**: a dash or a leap brings the caster to its target first, and a knockback pushes the target away.
-- **Riders**: [status effects](/docs/mechanics/status-effects) a hit may leave, each with its own chance. An area
+- **Riders**: [status effects](/docs/mechanics/combat/status-effects) a hit may leave, each with its own chance. An area
   rolls them on every tick, so its chances are small.
 - **Areas and channels**: an area may drift, give mana, keep a status on whoever stands in it or heal friends. A
   channelled spell keeps acting after its cast while the caster holds still.
@@ -240,7 +240,7 @@ caster could not be tuned down.
 **HP is solved last.** It is set so the master needs the target number of swings. The fight includes the bestia's
 heals and debuffs, so a bestia that heals itself gets less raw HP for the same fight length.
 
-**Mana** uses the documented formula from [Status Values](/docs/mechanics/statusvalues/#mana), with the role's base
+**Mana** uses the documented formula from [Status Values](/docs/mechanics/combat/statusvalues/#mana), with the role's base
 value and a wild IV of 50. Mana regenerates every 8 s. A caster that runs dry falls back to its default attack, and the
 fight shows that.
 
@@ -284,14 +284,14 @@ table weighs a weapon type against a size, and weapons have no type yet.
 
 ## EXP
 
-The base comes from [Bestias](/docs/mechanics/bestia/#killing-enemies) and is scaled by the threat:
+The base comes from [Bestias](/docs/mechanics/bestias/bestia/#killing-enemies) and is scaled by the threat:
 
 <!-- prettier-ignore -->
 {{< katex >}}
 $$exp = (4 \cdot lv + 5) \cdot threat \cdot group \cdot loot_{factor}$$
 {{< /katex >}}
 
-This is the `experience` value of the mob YAML. The kill-time bonuses from [Bestias](/docs/mechanics/bestia/#killing-enemies)
+This is the `experience` value of the mob YAML. The kill-time bonuses from [Bestias](/docs/mechanics/bestias/bestia/#killing-enemies)
 (+200 % for a boss, +10 % per element level) come on top when the kill happens. They are not part of the YAML value.
 
 **The group factor pays for a long fight, and rewards it.** Threat grows with the square root of the swings. On its
@@ -324,7 +324,7 @@ $$budget_{loot} = 1\ coin \cdot (4 \cdot lv + 5) \cdot threat \cdot group$$
 
 A Lv 1 kill is worth about one loaf of bread (9 coins).
 
-A drop is an item from the [Items List](/docs/mechanics/item-list/) and a chance in percent. The item brings its
+A drop is an item from the [Items List](/docs/mechanics/items-crafting/item-list/) and a chance in percent. The item brings its
 reference value, so nobody prices a drop by hand. The mob YAML stores the chance in basis points (60 % is 6000). The
 expected value of a drop table is `Σ chance × value`, and the **loot score** is that value divided by the budget: 1
 means the bestia drops what it should.
@@ -343,7 +343,7 @@ to 10 % more EXP.
 
 Three rules come before the numbers:
 
-- **Loot must make sense.** A wolf drops fur and fangs, not iron ore, see [Resources](/docs/mechanics/natural-resources/).
+- **Loot must make sense.** A wolf drops fur and fangs, not iron ore, see [Resources](/docs/mechanics/items-crafting/natural-resources/).
 - **Rare drops are rare.** A very rare drop with a huge value hides inside an average. Check the single item too: one
   drop worth more than 100 times the loot budget is a jackpot, and players will farm that bestia and nothing else.
 - **Loot is money.** Players sell loot to NPCs, and NPC purses are finite, see [Money Supply](/docs/server/money-supply/).
@@ -351,8 +351,8 @@ Three rules come before the numbers:
 
 # 9. The compendium entry
 
-Every bestia gets an entry in the [Bestia Compendium](/docs/mechanics/bestia/#bestia-compendium), the in-game book of known
-species. The [Sense](/docs/mechanics/master/#skill-sense) skill already reveals status values, element, HP and mana.
+Every bestia gets an entry in the [Bestia Compendium](/docs/mechanics/bestias/bestia/#bestia-compendium), the in-game book of known
+species. The [Sense](/docs/mechanics/master/basics/#skill-sense) skill already reveals status values, element, HP and mana.
 The compendium is where a player keeps what they have learned.
 
 | Field       | Content                                                                        |
@@ -393,7 +393,7 @@ A tamed bestia wears equipment like its master, but only what its body allows. T
 that is:
 
 - **`equip-slots`**: which of the master's nine slots the species has. A blob has no head, so it has no head slots.
-- **`armor-types`**: which [armor types](/docs/mechanics/items/#armor-type) it can wear. A blob keeps a cloth cape
+- **`armor-types`**: which [armor types](/docs/mechanics/items-crafting/items/#armor-type) it can wear. A blob keeps a cloth cape
   on, but plate slides off it.
 
 The server refuses anything else. Weapons and accessories have no armor type, so for them only the slot counts. None
@@ -444,7 +444,7 @@ The `bestia/species-data-model` branch of bestia-behemoth gives the mob YAML wha
   `armor-type`.
 
 The same branch makes a wild mob fight at its own level instead of Lv 1, gives it its authored mana, so casting can
-run it dry, and switches the server's EXP curve to the one in [Bestias](/docs/mechanics/bestia/#experience).
+run it dry, and switches the server's EXP curve to the one in [Bestias](/docs/mechanics/bestias/bestia/#experience).
 
 Still open:
 

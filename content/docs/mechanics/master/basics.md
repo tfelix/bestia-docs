@@ -110,14 +110,14 @@ just left it is never unarmed while their first profession opens.
 | Novice Shirt  | Cloth                | Armor                  |
 | Novice Boots  | Light                | Footgear               |
 
-The [Novice Bow](/docs/mechanics/ranged-combat/#novice-bow) comes with 100 arrows. The novice health and mana potions
+The [Novice Bow](/docs/mechanics/combat/ranged-combat/#novice-bow) comes with 100 arrows. The novice health and mana potions
 are not equipment and stay for Novices only.
 
 ## Equipment per Profession
 
 Armor is limited by its heaviest type. A master who may wear Medium armor may also wear Light and Cloth. Shields carry
-an armor type as well and follow the same rule, see [Armor Type](/docs/mechanics/items/#armor-type). The weapon types
-are listed in [Weapon Type](/docs/mechanics/items/#weapon-type).
+an armor type as well and follow the same rule, see [Armor Type](/docs/mechanics/items-crafting/items/#armor-type). The weapon types
+are listed in [Weapon Type](/docs/mechanics/items-crafting/items/#weapon-type).
 
 | Profession                | Tree      | Armor  | Weapon Types                                                   |
 | ------------------------- | --------- | ------ | -------------------------------------------------------------- |
@@ -143,7 +143,7 @@ Assassin's fist weapons, the Bard's whip and instrument, the casters' tome - whi
 gathering profession can still defend itself.
 
 Bestias are not affected by professions. A bestia wears what its species allows, see
-[Designing a Bestia](/docs/mechanics/bestia-design/#10-equipment).
+[Designing a Bestia](/docs/mechanics/bestias/bestia-design/#10-equipment).
 
 # Mana Circles
 
@@ -152,7 +152,7 @@ enchantment, transmuting matter, inscribing a spell. Skill rank, status values a
 lone master eventually hits the ceiling of what those three can buy.
 
 A **Mana Circle** is how a group pushes past it. It is a placeable prop - a ring of
-[Mana Concentrate](/docs/mechanics/item-list/#mana-concentrate) laid into the ground - that anyone standing inside
+[Mana Concentrate](/docs/mechanics/items-crafting/item-list/#mana-concentrate) laid into the ground - that anyone standing inside
 contributes to, whatever their profession. The rite is started by the master who owns the skill; everyone else is simply
 present, and presence is the whole contribution.
 
@@ -160,7 +160,7 @@ present, and presence is the whole contribution.
 Circle Bonus = 5 × Participants × ManaFactor   [Participants ≤ 6, caster included]
 ```
 
-`ManaFactor` comes from the local [mana concentration](/docs/mechanics/environment/#mana-concentration): `0.5` in a
+`ManaFactor` comes from the local [mana concentration](/docs/mechanics/world/environment/#mana-concentration): `0.5` in a
 drained region, `1.0` in an ordinary one, `1.5` where mana runs thick. A full circle of six in a mana-rich place is
 therefore worth `+45%` on the roll - as much as most governing skills grant at max rank - while the same six people
 standing on drained ground get `+15%` and would have been better off scouting a different site first.
@@ -240,7 +240,7 @@ Costs stamina instead of mana. Ends early when the master attacks or casts a ski
     type="Active" castTime="Instant" cooldown="None"
     description="The Master and his Bestia can learn recipes and start to cook meals on fire places. Food helps a Bestia to keep its health and stamina up and usually apply buff effects when they are eaten." >}}
 
-Needs a burning [campfire](/docs/mechanics/crafting-stations/#campfires) within about 3 m. Lv. 1 unlocks the campfire kit.
+Needs a burning [campfire](/docs/mechanics/items-crafting/crafting-stations/#campfires) within about 3 m. Lv. 1 unlocks the campfire kit.
 
 The three ranks only govern how well the Master handles a cooking place. What a Master can actually cook grows through
 **recipes**, discovered the same way a Craftsman discovers a blueprint - by experimenting with ingredients. A Lv. 1 cook
@@ -272,9 +272,9 @@ Channels for 10s. A target can only receive a single First Aid every 60 secs. It
 
 The workbenches, forges and cauldrons of the tradesfolk turn raw ambition into things a player can actually use. Every blade, trinket and bottled miracle a master ever relies on started out as somebody's Craftsman skill paying off.
 
-Crafting always runs in two phases: a Craftsman first **discovers a blueprint** by experimenting with raw materials, then **produces** that item from it as often as they like. The skills below govern how reliably a Craftsman discovers, produces and refines within their trade — see [Item Crafting](/docs/mechanics/items/#item-crafting) for the full system.
+Crafting always runs in two phases: a Craftsman first **discovers a blueprint** by experimenting with raw materials, then **produces** that item from it as often as they like. The skills below govern how reliably a Craftsman discovers, produces and refines within their trade — see [Item Crafting](/docs/mechanics/items-crafting/items/#item-crafting) for the full system.
 
-{{< alert context="info" text="A skill that works at a station unlocks the kit for that station at Lv. 1. The kit is crafted in Handiwork and placed from the bag, see [Crafting Stations](/docs/mechanics/crafting-stations/#kits-place-stations)." />}}
+{{< alert context="info" text="A skill that works at a station unlocks the kit for that station at Lv. 1. The kit is crafted in Handiwork and placed from the bag, see [Crafting Stations](/docs/mechanics/items-crafting/crafting-stations/#kits-place-stations)." />}}
 
 ```mermaid
 graph TD
@@ -303,7 +303,7 @@ graph TD
     type="Active" manaCost="20" cooldown="0s" range="2" target="Workbench"
     description="Turns raw timber and honest labor into the workbenches, furniture and structures every settlement needs to stand on its own." >}}
 
-Lv. 1 allows you to build a [workbench](/docs/mechanics/item-list/#workbench), which you can use for crafting. The time it needs to craft an item depends on the item level you want to craft.
+Lv. 1 allows you to build a [workbench](/docs/mechanics/items-crafting/item-list/#workbench), which you can use for crafting. The time it needs to craft an item depends on the item level you want to craft.
 
 Carpentry also makes the kits for the buildings in the wild: the Observation Outpost, the Mining Shaft and the
 Lumberjack Cabin. To build one, the master needs level 1 of the skill that uses it.
@@ -322,7 +322,7 @@ Lumberjack Cabin. To build one, the master needs level 1 of the skill that uses 
 | 10  | +50%           | 100+           |
 
 This bonus is added on top of the item-level base chance and the crafter's DEX/WIL — see
-[Construction Crafting Success Chance](/docs/mechanics/items/#construction-crafting-success-chance) for the full formula.
+[Construction Crafting Success Chance](/docs/mechanics/items-crafting/items/#construction-crafting-success-chance) for the full formula.
 
 {{< /skill >}}
 
@@ -339,7 +339,7 @@ This bonus is added on top of the item-level base chance and the crafter's DEX/W
 | 5   | 50%                         | +10%           |
 
 This bonus is added on top of the item-level base chance and the crafter's DEX/WIL — see
-[Construction Crafting Success Chance](/docs/mechanics/items/#construction-crafting-success-chance) for the full formula.
+[Construction Crafting Success Chance](/docs/mechanics/items-crafting/items/#construction-crafting-success-chance) for the full formula.
 
 {{< /skill >}}
 
@@ -349,7 +349,7 @@ This bonus is added on top of the item-level base chance and the crafter's DEX/W
 
 Allows you to perform upgrades of armor and weapons. There is a chance this fails and potentially destroys your equipment.
 
-See [Weapon Refinement](/docs/mechanics/items/#weapon-refinement) and [Armor Refinement](/docs/mechanics/items/#armor-refinement) for the upgrade chances and effects.
+See [Weapon Refinement](/docs/mechanics/items-crafting/items/#weapon-refinement) and [Armor Refinement](/docs/mechanics/items-crafting/items/#armor-refinement) for the upgrade chances and effects.
 
 {{< /skill >}}
 
@@ -357,9 +357,9 @@ See [Weapon Refinement](/docs/mechanics/items/#weapon-refinement) and [Armor Ref
     type="Active" manaCost="23" cooldown="0s"
     description="A meticulous rework that opens sockets in an item's frame, letting a Runic Etcher's runes be slotted into it later." >}}
 
-Requires an [Engraving Set](/docs/mechanics/item-list/#engraving-set) which will be consumed in the process. You can choose how many slots you want to put into an item. But every slot makes it harder to succeed. Every extra slot above 1 reduces the success chance by 40%.
+Requires an [Engraving Set](/docs/mechanics/items-crafting/item-list/#engraving-set) which will be consumed in the process. You can choose how many slots you want to put into an item. But every slot makes it harder to succeed. Every extra slot above 1 reduces the success chance by 40%.
 
-The Success Chance below is added on top of a **base chance that drops as the item's own level rises**. See [Item Customization](/docs/mechanics/items/#item-customization) for the full formula and worked examples.
+The Success Chance below is added on top of a **base chance that drops as the item's own level rises**. See [Item Customization](/docs/mechanics/items-crafting/items/#item-customization) for the full formula and worked examples.
 
 | Lv. | Success Chance | Destroy Chance On Failure | Max Slots |
 | --- | -------------- | ------------------------- | --------- |
@@ -411,8 +411,8 @@ graph TD
     type="Active" manaCost="18" castTime="10s" cooldown="0s"
     description="Feeds raw ore to the roar of the furnace, coaxing out the pure ingots every weapon and suit of armor is ultimately built from." >}}
 
-Lv. 1 allows you to place a [Furnace](/docs/mechanics/item-list/#furnace). Every batch burns fuel:
-[Coal](/docs/mechanics/item-list/#coal). A failed smelt loses both the ore and the fuel.
+Lv. 1 allows you to place a [Furnace](/docs/mechanics/items-crafting/item-list/#furnace). Every batch burns fuel:
+[Coal](/docs/mechanics/items-crafting/item-list/#coal). A failed smelt loses both the ore and the fuel.
 
 | Lv. | Ore Refinement Success |
 | --- | ---------------------- |
@@ -421,11 +421,11 @@ Lv. 1 allows you to place a [Furnace](/docs/mechanics/item-list/#furnace). Every
 | 3   | +90%                   |
 
 There is **no ore level cap** - the bonus is added on top of an ore-level base chance that starts at `30%` for
-[Tin](/docs/mechanics/item-list/#tin-ore) and [Copper](/docs/mechanics/item-list/#copper-ore) and keeps falling by 1%
+[Tin](/docs/mechanics/items-crafting/item-list/#tin-ore) and [Copper](/docs/mechanics/items-crafting/item-list/#copper-ore) and keeps falling by 1%
 per ore level above 10, plus the smith's STR and WIL. Even a maxed smith loses roughly every second batch of
-[Adamantium Ore](/docs/mechanics/item-list/#adamantium-ore). See
-[Ore Refinement Success Chance](/docs/mechanics/items/#ore-refinement-success-chance) for the full formula and
-[Refining](/docs/mechanics/natural-resources/#refining) for the level of every ore.
+[Adamantium Ore](/docs/mechanics/items-crafting/item-list/#adamantium-ore). See
+[Ore Refinement Success Chance](/docs/mechanics/items-crafting/items/#ore-refinement-success-chance) for the full formula and
+[Refining](/docs/mechanics/items-crafting/natural-resources/#refining) for the level of every ore.
 
 {{< /skill >}}
 
@@ -450,9 +450,9 @@ Lv. 1 allows you to place a Forge.
 
 There is **no hard cap**. A blueprint above the reliable item level can still be attempted - every item level above it
 costs another `5%` success chance. A Lv. 5 smith reaching for a level 80 weapon is working at a deep penalty, not
-against a locked door. See [Item Crafting](/docs/mechanics/items/#item-crafting) for the full roll.
+against a locked door. See [Item Crafting](/docs/mechanics/items-crafting/items/#item-crafting) for the full roll.
 
-The reliable item level also caps the random stats a forged copy can roll, see [The Cap](/docs/mechanics/items/#the-cap).
+The reliable item level also caps the random stats a forged copy can roll, see [The Cap](/docs/mechanics/items-crafting/items/#the-cap).
 
 {{< /skill >}}
 
@@ -477,13 +477,13 @@ Lv. 1 allows you to place a Forge.
 
 Same rule as [Forge Weapon](#skill-forge-weapon): no hard cap, but every item level above the reliable one costs another
 `5%` success chance. Alchemy also brews the cures for body effects, such as an Antidote against
-[Poison](/docs/mechanics/status-effects/#all-status-effects). Status Recovery only clears the mind. The reliable item level caps random stats the same way.
+[Poison](/docs/mechanics/combat/status-effects/#all-status-effects). Status Recovery only clears the mind. The reliable item level caps random stats the same way.
 
 {{< /skill >}}
 
 {{< skill name="Weaponry Research" maxLevel="5" requires="Equipment Repair Lv. 3 and Upgrade Equipment Lv. 1"
     type="Passive"
-    description="Deeper knowledge of weapons and armor that raises the odds of successfully [refining](/docs/mechanics/items/#weapon-refinement) either one further after forging. If an upgrade fails the equipment can be destroyed." >}}
+    description="Deeper knowledge of weapons and armor that raises the odds of successfully [refining](/docs/mechanics/items-crafting/items/#weapon-refinement) either one further after forging. If an upgrade fails the equipment can be destroyed." >}}
 
 | Lv. | Upgrade Success | Forging Success |
 | --- | --------------- | --------------- |
@@ -499,8 +499,8 @@ Same rule as [Forge Weapon](#skill-forge-weapon): no hard cap, but every item le
     type="Active" manaCost="33" castTime="3s" cooldown="0s" range="2" target="Forge"
     description="Hammers dents from armor and sets a fresh edge to broken blades, coaxing worn-out equipment back into fighting shape." >}}
 
-Restores the [durability](/docs/mechanics/items/#damaging-of-items) of weapons and armor alike. Those are the only
-things in the world that wear out and can be repaired. A [light source](/docs/mechanics/environment/#light-sources) burns
+Restores the [durability](/docs/mechanics/items-crafting/items/#damaging-of-items) of weapons and armor alike. Those are the only
+things in the world that wear out and can be repaired. A [light source](/docs/mechanics/world/environment/#light-sources) burns
 down as well, but burnt time is gone: no repair gives it back.
 
 | Lv. | Max Item Level |
@@ -550,7 +550,7 @@ graph TD
 <br>
 {{< skill name="Mana Harvester" maxLevel="10"
     type="Active" manaCost="19" castTime="10s" cooldown="30s" range="2" target="Ground"
-    description="Build and operate Mana Harvesters which channel mana from the environment into raw crystals - the source of magic for many use cases. Yield follows the local [mana concentration](/docs/mechanics/environment/#mana-concentration), so where a harvester stands matters as much as its rank." >}}
+    description="Build and operate Mana Harvesters which channel mana from the environment into raw crystals - the source of magic for many use cases. Yield follows the local [mana concentration](/docs/mechanics/world/environment/#mana-concentration), so where a harvester stands matters as much as its rank." >}}
 
 Level 1 enables you to place a Mana Harvester.
 
@@ -573,7 +573,7 @@ Level 1 enables you to place a Mana Harvester.
     type="Active" manaCost="22" castTime="10s" cooldown="0s" range="2" target="Crystal Lathe"
     description="Refine the raw and unstable mana crystals harvested by a Mana Harvester into the finest arcane raw materials used to build powerful magic artifacts. The Crystal Lathe is for mana crystals only - a Miner's [Gem Cutting](#skill-gem-cutting) handles ordinary gemstones." >}}
 Level 1 enables you to place a Crystal Lathe. The cast only places the lathe or opens its recipes. The refining itself
-takes the [craft duration](/docs/mechanics/items/#craft-duration) of the crystal's item level.
+takes the [craft duration](/docs/mechanics/items-crafting/items/#craft-duration) of the crystal's item level.
 
 | Lv. | Success Chance | Max Crystal Level |
 | --- | -------------- | ----------------- |
@@ -592,9 +592,9 @@ A crystal above your max crystal level cannot be refined.
     description="Binds the essence of a Bestia into a cut gem. The Essence Gem carries the power of the Bestia and fits into any socket of a weapon or piece of equipment. Converting a Bestia destroys it." >}}
 
 Level 1 allows you to place a Carving Table. The Bestia to convert must stand next to the table, and the etching uses up
-a cut gem. The gem limits the Bestia level, see [Sockets and Essences](/docs/mechanics/items/#sockets-and-essences). A
+a cut gem. The gem limits the Bestia level, see [Sockets and Essences](/docs/mechanics/items-crafting/items/#sockets-and-essences). A
 failed etching shatters the gem too. The cast only places
-the table or opens its recipes. The etching itself takes the [craft duration](/docs/mechanics/items/#craft-duration) of
+the table or opens its recipes. The etching itself takes the [craft duration](/docs/mechanics/items-crafting/items/#craft-duration) of
 the Bestia's level.
 
 | Lv. | Success Chance | Reliable Bestia Level |
@@ -620,7 +620,7 @@ Same rule as [Forge Weapon](#skill-forge-weapon): no hard cap, but every Bestia 
     description="Can create magic artifacts by binding sustained enchantments to an item, going well beyond what a single etched rune can hold." >}}
 
 Level 1 allows you to place an Enchantment Altar. Every binding needs refined mana crystals. The cast only places the
-altar or opens its recipes. The binding itself takes the [craft duration](/docs/mechanics/items/#craft-duration) of the
+altar or opens its recipes. The binding itself takes the [craft duration](/docs/mechanics/items-crafting/items/#craft-duration) of the
 item level.
 
 | Lv. | Enchantment Chance | Destroy Chance on Failed Bind |
@@ -673,7 +673,7 @@ graph TD
 | 4   | 80             |
 | 5   | 100+           |
 
-The herb level is the herb's [item level](/docs/mechanics/items/#item-level). A herb above your max level cannot be
+The herb level is the herb's [item level](/docs/mechanics/items-crafting/items/#item-level). A herb above your max level cannot be
 gathered.
 
 {{< /skill >}}
@@ -700,8 +700,8 @@ and elixirs.
 
 Same rule as [Forge Weapon](#skill-forge-weapon): no hard cap, but every item level above the reliable one costs another
 `5%` success chance. Alchemy also brews the cures for body effects, such as an Antidote against
-[Poison](/docs/mechanics/status-effects/#all-status-effects). Status Recovery only clears the mind. The cast only places the laboratory or opens its recipes. The brew itself takes the
-[craft duration](/docs/mechanics/items/#craft-duration) of the potion's item level.
+[Poison](/docs/mechanics/combat/status-effects/#all-status-effects). Status Recovery only clears the mind. The cast only places the laboratory or opens its recipes. The brew itself takes the
+[craft duration](/docs/mechanics/items-crafting/items/#craft-duration) of the potion's item level.
 
 {{< /skill >}}
 
@@ -725,7 +725,7 @@ Lv. 1 allows you to place a Transmutation Workbench. Higher levels unlock transm
 | 10  | +50%           | 100+                |
 
 Same rule as [Alchemy](#skill-alchemy): no hard cap, but every item level above the reliable one costs another `5%`
-success chance. The transmutation itself takes the [craft duration](/docs/mechanics/items/#craft-duration) of the
+success chance. The transmutation itself takes the [craft duration](/docs/mechanics/items-crafting/items/#craft-duration) of the
 resource's item level.
 
 {{< /skill >}}
@@ -806,7 +806,7 @@ graph TD
     type="Passive"
     description="Smarter packing, better-fitted saddlebags and a stronger back. Everything a Master and their Bestia can shoulder gets easier to shoulder." >}}
 
-Raises the [weight limit](/docs/mechanics/items/#weight-limit) of the Master and of every Bestia under their command by
+Raises the [weight limit](/docs/mechanics/items-crafting/items/#weight-limit) of the Master and of every Bestia under their command by
 the same amount. It sits in the trunk because every gathering profession - Forester, Prospector and Miner alike - lives
 off what it can carry home.
 
@@ -822,7 +822,7 @@ off what it can carry home.
 
 {{< skill name="Weather Resistance" maxLevel="5"
     type="Passive"
-    description="Nights in the snow and noons in the desert teach a Master and their Bestia to shrug off the weather. Widens the band of [temperatures](/docs/mechanics/environment/#temperature) they can bear, on the cold side and the hot side alike." >}}
+    description="Nights in the snow and noons in the desert teach a Master and their Bestia to shrug off the weather. Widens the band of [temperatures](/docs/mechanics/world/environment/#temperature) they can bear, on the cold side and the hot side alike." >}}
 
 | Lv. | Temperature Tolerance |
 | --- | --------------------- |
@@ -855,7 +855,7 @@ the shown direction and distance are to the truth.
     type="Passive"
     description="A patient hand with rod and net that pulls fish from any water worth casting into - as good on the plate as it is at the trade post." >}}
 
-Anyone with a [fishing rod](/docs/mechanics/items/#weapon-type) can fish, but an untrained angler only catches fish and
+Anyone with a [fishing rod](/docs/mechanics/items-crafting/items/#weapon-type) can fish, but an untrained angler only catches fish and
 loot up to level 10. Each rank raises the level of what a master can pull out of seas and lakes.
 
 | Lv. | Max Fish Level |
@@ -927,7 +927,7 @@ Plants a sapling in a tree stump and consumes a log. The new tree grows back fas
     type="Passive"
     description="Knowing where to set a trap, how to bait it and when to spring it. Mana dust and patience do the rest." >}}
 
-Raises the catch chance of every [Bestia trap](/docs/mechanics/bestia/#catching-bestias) the master throws. Anyone can
+Raises the catch chance of every [Bestia trap](/docs/mechanics/bestias/bestia/#catching-bestias) the master throws. Anyone can
 throw a Bestia trap; this skill only makes it hold better. The traps themselves are made with
 [Carpentry](#skill-carpentry).
 
@@ -991,7 +991,7 @@ trail.
     type="Passive"
     description="Knowing a Bestia well enough to tame it is one thing. Knowing which pair of them is worth putting in a Breeder, and why the last clutch came out the way it did, is another. The Forester's capstone." >}}
 
-Applies to every [Breeder](/docs/mechanics/bestia/#breeding) the master owns.
+Applies to every [Breeder](/docs/mechanics/bestias/bestia/#breeding) the master owns.
 
 The time reduction stacks with breeder upgrades, feed and buffs, and counts against the same **50% floor** - it lets a
 modest setup reach the cap instead of raising it. The dominant-IV column is the part that cannot be bought: at Lv. 4 a
@@ -1042,7 +1042,7 @@ graph TD
 <br>
 {{< skill name="Cartography" maxLevel="5" requires="Resource Sense Lv. 1"
     type="Active" manaCost="50" castTime="30s" cooldown="None" range="0" target="Terrain"
-    description="Enables the player to chart unexplored land, revealing terrain that can be shared, traded on, or built on. See [World Exploration](/docs/mechanics/world-exploration/#cartography) for how the surveying minigame plays out." >}}
+    description="Enables the player to chart unexplored land, revealing terrain that can be shared, traded on, or built on. See [World Exploration](/docs/mechanics/world/world-exploration/#cartography) for how the surveying minigame plays out." >}}
 Each level reduces the difficulty of surveying unexplored land by `10`. The minigame on that page is a draft; its details
 are still to be decided.
 {{< /skill >}}
@@ -1050,10 +1050,10 @@ are still to be decided.
 {{< skill name="Weather Sense" maxLevel="3" requires="Cartography Lv. 2"
     type="Passive"
     description="Charting the same valley through a dozen seasons teaches a Prospector to read the sky above it. An instinct for what the wind is about to do, well before the storm arrives, and for where the mana runs thick or thin." >}}
-Level 1 shows you the current wind direction and speed. See [Weather](/docs/mechanics/environment/#weather) for what each
+Level 1 shows you the current wind direction and speed. See [Weather](/docs/mechanics/world/environment/#weather) for what each
 front does to the world.
 
-It also reads the [mana in the land](/docs/mechanics/environment/#mana-concentration). Level 1 shows the mana
+It also reads the [mana in the land](/docs/mechanics/world/environment/#mana-concentration). Level 1 shows the mana
 concentration where you stand. Higher levels point to the nearest stronger and weaker mana fields.
 
 {{< alert context="info" text="To do: give the weather types more effects of their own, so that seeing them coming matters more and this skill gains weight." />}}
@@ -1077,7 +1077,7 @@ Only one settlement can be active at any time. You must destroy the settlement b
 inactive settlements can be destroyed, which means no functional building (post office, trade post, etc.) may be left
 inside the settlement's sphere of influence.
 
-{{< alert context="info" text="To do: player settlements need a design of their own. The [settlements](/docs/mechanics/settlements/) page only covers the towns the world generates." />}}
+{{< alert context="info" text="To do: player settlements need a design of their own. The [settlements](/docs/mechanics/towns-trade/settlements/) page only covers the towns the world generates." />}}
 
 {{< /skill >}}
 
@@ -1086,13 +1086,13 @@ inside the settlement's sphere of influence.
     description="Out where the roads end, a good camp is the difference between an expedition and a rescue." >}}
 
 Turns a campfire, such as the one [Cooking](#skill-cooking) places, into a camp. Party members and their Bestias within
-`5m` bear the weather better: `±5 °C` [temperature tolerance](/docs/mechanics/environment/#temperature), in both
+`5m` bear the weather better: `±5 °C` [temperature tolerance](/docs/mechanics/world/environment/#temperature), in both
 directions. Only one camp per master can stand.
 
 | Lv. | Duration | Extra                                                                                                                 |
 | --- | -------- | --------------------------------------------------------------------------------------------------------------------- |
 | 1   | 30 min   |                                                                                                                       |
-| 2   | 60 min   | +50% HP and stamina regeneration. Storms and [mana storms](/docs/mechanics/doomsday/#mana-storms) do not reach inside |
+| 2   | 60 min   | +50% HP and stamina regeneration. Storms and [mana storms](/docs/mechanics/world/doomsday/#mana-storms) do not reach inside |
 | 3   | 90 min   | As Lv. 2. Party members who die respawn at the camp                                                                   |
 
 {{< /skill >}}
@@ -1189,7 +1189,7 @@ graph TD
     type="Passive"
     description="A pickaxe, a steady lamp, and the nose for where the rock is worth breaking." >}}
 
-Anyone with a [pickaxe](/docs/mechanics/items/#weapon-type) can mine, but an untrained miner only gets resources up to
+Anyone with a [pickaxe](/docs/mechanics/items-crafting/items/#weapon-type) can mine, but an untrained miner only gets resources up to
 level 10. Level 1 lets you craft a pickaxe and build a Mining Shaft from a kit. Bestias can work the shaft while you are
 away.
 
@@ -1208,8 +1208,8 @@ away.
     description="Turns the rough gemstones a Miner digs up into cut gems, the vessels an Artificer binds Bestia essences into." >}}
 
 Level 1 allows you to place a Gem Cut Station. The cast only places the station or opens its recipes. The cutting itself
-takes the [craft duration](/docs/mechanics/items/#craft-duration) of the gem's item level. A failed cut shatters the gem.
-The five gems and what they hold are listed under [Sockets and Essences](/docs/mechanics/items/#sockets-and-essences).
+takes the [craft duration](/docs/mechanics/items-crafting/items/#craft-duration) of the gem's item level. A failed cut shatters the gem.
+The five gems and what they hold are listed under [Sockets and Essences](/docs/mechanics/items-crafting/items/#sockets-and-essences).
 
 | Lv. | Success Chance | Reliable Gem Level |
 | --- | -------------- | ------------------ |
@@ -1274,7 +1274,7 @@ Blasting Charge, brewed with [Alchemy](#skill-alchemy).
     type="Passive"
     description="A Miner who has cut enough stones sees what a rough gem holds before the first cut." >}}
 
-Shows which gem an unknown [Rough Gemstone](/docs/mechanics/item-list/#rough-gemstone) is, before the cut.
+Shows which gem an unknown [Rough Gemstone](/docs/mechanics/items-crafting/item-list/#rough-gemstone) is, before the cut.
 
 | Lv. | Gem Cutting Success |
 | --- | ------------------- |
@@ -1317,7 +1317,7 @@ graph TD
     description="A prickle at the back of the mind that flags mana at work nearby, and picks apart what spell an item or entity carries bound to it." >}}
 
 Sweeps the area around the caster once per cast. What comes back gets sharper with rank: first that something is there,
-then where it is, and finally what it actually does. Local [mana concentration](/docs/mechanics/environment/#mana-concentration)
+then where it is, and finally what it actually does. Local [mana concentration](/docs/mechanics/world/environment/#mana-concentration)
 adds to the range in a mana-rich region and eats into it in a drained one.
 
 | Lv. | Range | What It Reveals                                                                       |
@@ -1468,13 +1468,13 @@ The next spell the target ally casts within `30s` has `30%` less cast time.
     type="Active" manaCost="22" castTime="2s" cooldown="30s" duration="90s" range="9" target="Party"
     description="A quiet benediction that lets a crafter's hands find the better cut. Every item the party starts crafting while it holds rolls its random stats with better odds." >}}
 
-`+15%` to the chance of every [random stat](/docs/mechanics/items/#forging-and-random-stats) slot and socket of the item.
+`+15%` to the chance of every [random stat](/docs/mechanics/items-crafting/items/#forging-and-random-stats) slot and socket of the item.
 
 {{< /skill >}}
 
 {{< skill name="Aqua Benedicta" maxLevel="1" requires="Signum Crucis Lv. 1"
     type="Active" manaCost="12" castTime="3s" cooldown="5s" range="0" target="Self"
-    description="The rite of blessing plain water into [Holy Water](/docs/mechanics/item-list/#holy-water). User must be standing in water, consuming an [Empty Bottle](/docs/mechanics/item-list/#empty-bottle) in the process. Holy Water is the reagent behind Aspersio and several higher rites." >}}
+    description="The rite of blessing plain water into [Holy Water](/docs/mechanics/items-crafting/item-list/#holy-water). User must be standing in water, consuming an [Empty Bottle](/docs/mechanics/items-crafting/item-list/#empty-bottle) in the process. Holy Water is the reagent behind Aspersio and several higher rites." >}}
 {{< /skill >}}
 
 {{< skill name="Blessing" maxLevel="5" requires="Heal Lv. 3"
@@ -1569,7 +1569,7 @@ The veil covers a radius of 3m.
 
 {{< skill name="Status Recovery" maxLevel="1" requires="Heal Lv. 2"
     type="Active" manaCost="20" castTime="Instant" cooldown="10s" range="9" target="Ally"
-    description="Clears the fog from a target's mind - lifting [Blind, Confused and Feared](/docs/mechanics/statusvalues/#status-effects) in a single rite." >}}
+    description="Clears the fog from a target's mind - lifting [Blind, Confused and Feared](/docs/mechanics/combat/statusvalues/#status-effects) in a single rite." >}}
 
 {{< alert context="info" text="To do: effects on the body, such as Stun, Frozen, Stone and Poison, need a cure of their own." />}}
 
@@ -1577,7 +1577,7 @@ The veil covers a radius of 3m.
 
 {{< skill name="Aspersio" maxLevel="3" requires="Aqua Benedicta Lv. 1"
     type="Active" manaCost="22" castTime="2s" cooldown="10s" duration="per Lv." range="2" target="Ally"
-    description="Anoints a weapon with Holy Water, temporarily imbuing its strikes with the holy element. Consumes one [Holy Water](/docs/mechanics/item-list/#holy-water) per cast." >}}
+    description="Anoints a weapon with Holy Water, temporarily imbuing its strikes with the holy element. Consumes one [Holy Water](/docs/mechanics/items-crafting/item-list/#holy-water) per cast." >}}
 
 | Lv. | Duration |
 | --- | -------- |
@@ -1698,10 +1698,10 @@ graph TD
 
 {{< skill name="Minting" maxLevel="5" requires="Scavenger Lv. 3"
     type="Active" manaCost="15" castTime="10s" cooldown="0s" range="2" target="Mint"
-    description="The final step between a fistful of raw gold and coin that actually spends. Allows the master to mint gold bars into gold coins. See [Currency](/docs/mechanics/economy-trade/#currency) for how the world's money supply is minted from mined gold." >}}
+    description="The final step between a fistful of raw gold and coin that actually spends. Allows the master to mint gold bars into gold coins. See [Currency](/docs/mechanics/towns-trade/economy-trade/#currency) for how the world's money supply is minted from mined gold." >}}
 
 Level 1 allows you to place a Mint. The cast only places the mint or opens its recipes. The minting itself takes the
-[craft duration](/docs/mechanics/items/#craft-duration) of the bar.
+[craft duration](/docs/mechanics/items-crafting/items/#craft-duration) of the bar.
 
 A mint never creates gold. It recovers a share of the gold in a bar as coin, and the rest goes back to the world
 reserve. See [Minting yield is a recovery rate](/docs/server/money-supply/#minting-yield-is-a-recovery-rate-not-a-bonus).
@@ -1721,7 +1721,7 @@ reserve. See [Minting yield is a recovery rate](/docs/server/money-supply/#minti
     description="Builds an auction house where other citizens can buy and sell their wares, turning any settlement into a proper marketplace." >}}
 
 Only one auction house can stand inside a settlement, and none within 5km of another. See
-[Building an Auction House](/docs/mechanics/economy-trade/#building-an-auction-house).
+[Building an Auction House](/docs/mechanics/towns-trade/economy-trade/#building-an-auction-house).
 
 | Lv. | Auction Houses | Max Owner Fee |
 | --- | -------------- | ------------- |
@@ -1766,7 +1766,7 @@ Trader walks away or after `1h`. Unlike an [auction house](#skill-trade-post-own
 
 {{< skill name="Trade Agreement" maxLevel="5" requires="Trade Post Owner Lv. 3"
     type="Active" manaCost="30" castTime="5s" cooldown="60s" range="10" target="Player"
-    description="Weaves this Trader's auction house into those of other consenting players, merging their listings into a single, wider [marketplace](/docs/mechanics/economy-trade/#linking-auction-houses)." >}}
+    description="Weaves this Trader's auction house into those of other consenting players, merging their listings into a single, wider [marketplace](/docs/mechanics/towns-trade/economy-trade/#linking-auction-houses)." >}}
 To be linked by other players, at least level 1 in this skill is required.
 
 | Lv. | Linked Players |
@@ -1887,9 +1887,9 @@ The Sage sees the chosen spot for 20s. Only [charted](#skill-cartography) land c
     type="Active" manaCost="40" castTime="2s" cooldown="15s" range="9" target="Any"
     description="Unravels every magical effect clinging to a target in a single word, undoing buffs and curses alike." >}}
 
-Success chance is based on skill level and the target's SMDEF, with a base chance of `(50 + 10 * SkillLv)%`. Requires 1 [Yellow Mana Crystal](/docs/mechanics/item-list/#yellow-mana-crystal) per cast.
+Success chance is based on skill level and the target's SMDEF, with a base chance of `(50 + 10 * SkillLv)%`. Requires 1 [Yellow Mana Crystal](/docs/mechanics/items-crafting/item-list/#yellow-mana-crystal) per cast.
 
-{{< alert context="info" text="To do: decide whether Dispel is how a [ward stone](/docs/mechanics/pvp/#protected-zones) can be countered. The honor table already lists dispelling one." />}}
+{{< alert context="info" text="To do: decide whether Dispel is how a [ward stone](/docs/mechanics/society/pvp/#protected-zones) can be countered. The honor table already lists dispelling one." />}}
 
 | Lv. | Base Success Chance |
 | --- | ------------------- |
@@ -1999,10 +1999,10 @@ Every cast consumes a Portal Rune, which costs more than a Teleport Rune.
 
 {{< skill name="Endow" maxLevel="3" requires="Free Cast Lv. 2"
     type="Active" manaCost="28" castTime="2s" cooldown="5s" duration="per Lv." range="5" target="Ally"
-    description="Temporarily infuses an ally's weapon with an element, so its strikes burn, freeze, crack or crush as well as bite. Consumes a [Blue Mana Crystal](/docs/mechanics/item-list/#blue-mana-crystal) to carry the charge." >}}
+    description="Temporarily infuses an ally's weapon with an element, so its strikes burn, freeze, crack or crush as well as bite. Consumes a [Blue Mana Crystal](/docs/mechanics/items-crafting/item-list/#blue-mana-crystal) to carry the charge." >}}
 
 The caster picks the element when casting: fire, water, wind or earth. The weapon takes on the element, so the
-[element table](/docs/mechanics/bestia-design/#7-element-size-and-defences) applies. The bonus damage comes on top.
+[element table](/docs/mechanics/bestias/bestia-design/#7-element-size-and-defences) applies. The bonus damage comes on top.
 
 | Lv. | Duration | Bonus Damage of the Element |
 | --- | -------- | --------------------------- |
@@ -2231,7 +2231,7 @@ graph TD
 
 {{< skill name="Stone Curse" maxLevel="3" requires="Safety Wall Lv. 3"
     type="Active" manaCost="25" castTime="1s" cooldown="15s" duration="per Lv." range="6" target="Enemy"
-    description="Encases a target in solid stone, applying [Stoning](/docs/mechanics/status-effects/#all-status-effects) where they stand. Stoning turns into Stone unless it is cured first. Requires 1 [Red Mana Crystal](/docs/mechanics/item-list/#red-mana-crystal) per cast." >}}
+    description="Encases a target in solid stone, applying [Stoning](/docs/mechanics/combat/status-effects/#all-status-effects) where they stand. Stoning turns into Stone unless it is cured first. Requires 1 [Red Mana Crystal](/docs/mechanics/items-crafting/item-list/#red-mana-crystal) per cast." >}}
 
 | Lv. | Stoning Chance | Duration |
 | --- | -------------- | -------- |
@@ -2243,7 +2243,7 @@ graph TD
 
 {{< skill name="Suppress Magic" maxLevel="3" requires="Stone Curse Lv. 2"
     type="Active" manaCost="30" castTime="Instant" cooldown="20s" duration="per Lv." range="9" target="Enemy"
-    description="A ward of counter-mana thrown over a target mid-incantation, interrupting whatever spell they were weaving and leaving them [Silenced](/docs/mechanics/status-effects/#all-status-effects) for a short time after." >}}
+    description="A ward of counter-mana thrown over a target mid-incantation, interrupting whatever spell they were weaving and leaving them [Silenced](/docs/mechanics/combat/status-effects/#all-status-effects) for a short time after." >}}
 
 | Lv. | Interrupt Chance | Silence Duration |
 | --- | ---------------- | ---------------- |
@@ -2496,7 +2496,7 @@ Can only be used right after a [Triple Blow](#skill-triple-blow).
     type="Active" manaCost="20" castTime="Instant" cooldown="60s" duration="per Lv." range="0" target="Self"
     description="Works the Brawler into a red haze: more strength behind every blow, less care for what comes back." >}}
 
-Applies [Berserk](/docs/mechanics/status-effects/#all-status-effects): `+60%` ATK and `+30%` attack speed, but no DEF.
+Applies [Berserk](/docs/mechanics/combat/status-effects/#all-status-effects): `+60%` ATK and `+30%` attack speed, but no DEF.
 
 | Lv. | Duration |
 | --- | -------- |
@@ -2511,7 +2511,7 @@ Applies [Berserk](/docs/mechanics/status-effects/#all-status-effects): `+60%` AT
     description="The Brawler's finisher: every last drop of mana poured into a single blow." >}}
 
 Only while Berserk and with at least half the mana. Deals `ATK * (4 + mana spent / 10)` and spends all mana. Afterwards
-the Berserk ends and [Mana Sealed](/docs/mechanics/status-effects/#all-status-effects) stops mana regeneration for
+the Berserk ends and [Mana Sealed](/docs/mechanics/combat/status-effects/#all-status-effects) stops mana regeneration for
 `5 min`.
 
 | Lv. | Damage Bonus |
@@ -2725,8 +2725,8 @@ When cast, it reveals everything hidden within `3m` of the master.
     description="A Hunter who runs out of arrows in the wild does not have to walk back to town." >}}
 
 Opens the crafting window with the arrow recipes. It needs no station: two
-Reed Stalks and a [Feather](/docs/mechanics/item-list/#feather) make 20
-[regular arrows](/docs/mechanics/ranged-combat/#novice-bow). Special arrows come later.
+Reed Stalks and a [Feather](/docs/mechanics/items-crafting/item-list/#feather) make 20
+[regular arrows](/docs/mechanics/combat/ranged-combat/#novice-bow). Special arrows come later.
 
 {{< /skill >}}
 
@@ -2774,7 +2774,7 @@ graph TD
 
 The slot is chosen at random. Accessories cannot be stripped. Stripping the weapon takes the weapon hand, not a shield.
 Stripping the shield takes the shield hand. On a dual wielder both take the two weapons. Each slot stays empty while its
-[stripped status effect](/docs/mechanics/status-effects/#all-status-effects) lasts. Fails outright against a piece
+[stripped status effect](/docs/mechanics/combat/status-effects/#all-status-effects) lasts. Fails outright against a piece
 protected by [Equipment Coating](#skill-equipment-coating).
 
 | Lv. | Strip Chance | Slot Blocked |
@@ -2822,7 +2822,7 @@ Coats every piece the Assassin wears. While it holds, [Strip Equipment](#skill-s
     type="Active" manaCost="20" castTime="Instant" cooldown="30s" range="1" target="Enemy"
     description="A short, vicious blow below the ribs that leaves the target doubled over, stunned and gasping for air." >}}
 
-Applies [Stun](/docs/mechanics/status-effects/#all-status-effects). A boss recovers twice as fast.
+Applies [Stun](/docs/mechanics/combat/status-effects/#all-status-effects). A boss recovers twice as fast.
 
 | Lv. | Stun Duration |
 | --- | ------------- |
@@ -2926,9 +2926,9 @@ The poisons themselves are not made here - they are ordinary Alchemist goods, br
 
 {{< skill name="Enchant Poison" maxLevel="5" requires="Poison Research Lv. 3"
     type="Active" manaCost="24" castTime="2s" cooldown="None" duration="5 min" range="2" target="Ally"
-    description="Works a brewed poison into the edge of a weapon so every strike carries a chance to leave it behind. Consumes one Alchemist-brewed poison, such as [Basic Poison](/docs/mechanics/item-list/#basic-poison), per cast." >}}
+    description="Works a brewed poison into the edge of a weapon so every strike carries a chance to leave it behind. Consumes one Alchemist-brewed poison, such as [Basic Poison](/docs/mechanics/items-crafting/item-list/#basic-poison), per cast." >}}
 
-Applies the [Poison](/docs/mechanics/statusvalues/#status-effects) status effect on hit. The poison item decides how hard it
+Applies the [Poison](/docs/mechanics/combat/statusvalues/#status-effects) status effect on hit. The poison item decides how hard it
 bites; this skill decides how often it lands.
 
 | Lv. | Poison Chance per Hit |
@@ -3070,7 +3070,7 @@ Needs a shield. At Lv. 5 it also returns `10%` of the blocked damage to the atta
 
 {{< skill name="Bash" maxLevel="5" requires="Heavy Weapon Mastery Lv. 3"
     type="Active" manaCost="18" castTime="Instant" cooldown="6s" range="2" target="Enemy"
-    description="A single committed swing that trades finesse for raw impact, with a chance to [Stun](/docs/mechanics/status-effects/#all-status-effects) whatever it lands on for `1s`." >}}
+    description="A single committed swing that trades finesse for raw impact, with a chance to [Stun](/docs/mechanics/combat/status-effects/#all-status-effects) whatever it lands on for `1s`." >}}
 
 | Lv. | Bonus Damage | Stun Chance |
 | --- | ------------ | ----------- |
@@ -3211,7 +3211,7 @@ graph TD
     description="A whip strike aimed less at the flesh than at the footing." >}}
 
 Needs a whip. Hits for `120% + 20%/Lv.` ATK and leaves the target
-[Slowed](/docs/mechanics/status-effects/#all-status-effects) (`-20%` move speed).
+[Slowed](/docs/mechanics/combat/status-effects/#all-status-effects) (`-20%` move speed).
 
 | Lv. | Slowed |
 | --- | ------ |
@@ -3235,7 +3235,7 @@ Needs an instrument. A sound wave that hits the target for `150% + 30%/Lv.` ATK.
     type="Active" manaCost="30" castTime="2s" cooldown="20s" duration="20s" range="0" target="Area"
     description="Off-key on purpose. Rattles nearby enemies badly enough to throw off their aim and their swing." >}}
 
-Needs an instrument. Every enemy within `3` tiles gets [ASPD Down](/docs/mechanics/status-effects/#all-status-effects)
+Needs an instrument. Every enemy within `3` tiles gets [ASPD Down](/docs/mechanics/combat/status-effects/#all-status-effects)
 and loses HIT.
 
 | Lv. | HIT  |

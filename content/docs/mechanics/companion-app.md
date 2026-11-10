@@ -13,13 +13,13 @@ way to play **Bestia**. It is a way to stay in correspondence with the place whi
 
 {{< alert context="warning" text="This page is a design document, and version 1 builds only part of it: signing in, your Masters and Bestia and their bags, the [Charthouse](#the-charthouse) map, live events and notifications, [standing orders](#standing-orders) for your Bestia, party and guild [chat](#keeping-in-touch), and each Master's guild. The rest waits for the game systems it needs. How it runs is on the [API Server](/docs/server/api-server/) page." />}}
 
-{{< alert context="info" text="**Conventions used on this page.** Unless stated otherwise, every duration is **real time**, and every amount is in whole **gold**, as on the [Economy & Trade](/docs/mechanics/economy-trade/) page." />}}
+{{< alert context="info" text="**Conventions used on this page.** Unless stated otherwise, every duration is **real time**, and every amount is in whole **gold**, as on the [Economy & Trade](/docs/mechanics/towns-trade/economy-trade/) page." />}}
 
 # Five Rules That Keep It Honest
 
 The app can act on the world, not merely watch it. That is a dangerous power to hand a phone, because the
-game's principles rule out the obvious version of it — no [global price board](/docs/mechanics/settlements/#shops-and-stock),
-no [global quest finder](/docs/mechanics/questing/#discovery), no magical interfaces.
+game's principles rule out the obvious version of it — no [global price board](/docs/mechanics/towns-trade/settlements/#shops-and-stock),
+no [global quest finder](/docs/mechanics/world/questing/#discovery), no magical interfaces.
 
 Five rules make the difference. Every feature below obeys all five.
 
@@ -27,7 +27,7 @@ Five rules make the difference. Every feature below obeys all five.
 
 | Rule                                     | What it means                                                                                                                                              |
 | ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Instructions, not actions**            | You never do anything yourself. You write an instruction, it goes by road as a [dispatch](/docs/mechanics/postal/#dispatches), it is carried out on arrival, and the answer comes back the same way. Orders to your own Bestia are the exception: see [Standing Orders](#standing-orders) |
+| **Instructions, not actions**            | You never do anything yourself. You write an instruction, it goes by road as a [dispatch](/docs/mechanics/towns-trade/postal/#dispatches), it is carried out on arrival, and the answer comes back the same way. Orders to your own Bestia are the exception: see [Standing Orders](#standing-orders) |
 | **Reports, not omniscience**             | Every figure in the app carries a source and an age — _"grain at 11 gold in Ashfen, reported six hours ago"_                                               |
 | **Instructions fail, they do not adapt** | An order carries limits. If the price moved, it buys nothing and says so. Acting on stale news costs you, exactly as it should                             |
 | **Standing is earned in person**         | You may only write to brokers, postboxes and trade posts you have already stood in front of                                                                |
@@ -50,7 +50,7 @@ Two useful things fall out of the first two rules:
 more, and can sell what they know, by pigeon and at once. That is a profession the app creates rather than one
 it deletes.
 
-**Nothing teleports.** Your trade post's [owner fees](/docs/mechanics/economy-trade/#building-an-auction-house)
+**Nothing teleports.** Your trade post's [owner fees](/docs/mechanics/towns-trade/economy-trade/#building-an-auction-house)
 still have to be collected in person, so the app dispatches a carrier to fetch them — and a carrier can be
 robbed. The rule survives intact, and somebody gets paid for the errand.
 
@@ -87,12 +87,12 @@ none of it hands an absent player anything a present one does not already have.
   keyboard arrive on the phone, and what you write back lands in their chat log. A Master's page shows its guild
   too: the emblem, the message of the day, and every member, online or where and when they left.
 - **Whispers**, both directions, to anybody you could whisper to in person.
-- **Letters**, read and written, by [pigeon](/docs/mechanics/postal/#letters). Unlike a whisper, a letter waits for
+- **Letters**, read and written, by [pigeon](/docs/mechanics/towns-trade/postal/#letters). Unlike a whisper, a letter waits for
   a player who is offline.
 - **Local say**, does not work via the app as the master is gone.
 
 The skill gates hold. Chat and whispers still want
-[Basic Skill Lv. 2](/docs/mechanics/master/#skill-basic-skill) and parties still want Lv. 5, on a phone
+[Basic Skill Lv. 2](/docs/mechanics/master/basics/#skill-basic-skill) and parties still want Lv. 5, on a phone
 exactly as at a desk. An app does not teach you to speak.
 
 What it cannot do is put you in the fight. You can be told a raid is going badly; you cannot help with it.
@@ -115,7 +115,7 @@ The app does not map the Earth onto the world. It maps **movement**.
 
 - When you log off, the app **anchors** to where you are — both in the real world and in Bestia.
 - Every metre you walk from there moves your spirit **three metres** in Bestia. It is the same `3×` the
-  world already uses to run [Bestia time](/docs/mechanics/environment/#in-game-time) faster than real time.
+  world already uses to run [Bestia time](/docs/mechanics/world/environment/#in-game-time) faster than real time.
   A step here is three strides there.
 - When you log in, the anchor is thrown away. The next session starts wherever your Master actually is.
 
@@ -139,10 +139,10 @@ A spirit can carry mana. It cannot carry matter. That one line decides the whole
 
 | While ranging you can                                                                  | Using                                                                                                       |
 | -------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| Chart unexplored ground                                                                | [Cartography](/docs/mechanics/master/#skill-cartography), as below                                          |
-| Sense deposits nearby                                                                  | [Resource Sense](/docs/mechanics/master/#skill-resource-sense), whose 1–5 km reach is 0.3–1.7 km of walking |
-| Feel a rift or a doomsday brewing                                                      | [Observation](/docs/mechanics/master/#skill-observation)                                                    |
-| Raise, lower or steady [mana density](/docs/mechanics/environment/#mana-concentration) | Your Order's rites, and mana carried as mana                                                                |
+| Chart unexplored ground                                                                | [Cartography](/docs/mechanics/master/basics/#skill-cartography), as below                                          |
+| Sense deposits nearby                                                                  | [Resource Sense](/docs/mechanics/master/basics/#skill-resource-sense), whose 1–5 km reach is 0.3–1.7 km of walking |
+| Feel a rift or a doomsday brewing                                                      | [Observation](/docs/mechanics/master/basics/#skill-observation)                                                    |
+| Raise, lower or steady [mana density](/docs/mechanics/world/environment/#mana-concentration) | Your Order's rites, and mana carried as mana                                                                |
 | Scout a site worth caching goods at                                                    | Your eyes — a courier does the carrying afterwards                                                          |
 
 {{< /table >}}
@@ -161,7 +161,7 @@ Ranging is reconnaissance and mana work. It is never transport, and never a shor
 
 ## Charting on Foot
 
-[Charting an area](/docs/mechanics/world-exploration/#cartography) is already a walking minigame. Three to
+[Charting an area](/docs/mechanics/world/world-exploration/#cartography) is already a walking minigame. Three to
 five points spawn 300 to 800 metres away, each has to be reached, and each ends in a moving-compass check.
 At `3×` that is 100 to 270 metres of real walking per point.
 
@@ -170,13 +170,13 @@ the legs. The difficulty tiers carry over, and so do the `10` per km from explor
 percent of mana concentration, the `10` per level of Cartography, and the vicinity cooldown after a failure.
 
 Ground charted this way is the same ground, on the same
-[collective map](/docs/mechanics/world-exploration/#explored-world-map), as anything charted at a keyboard.
+[collective map](/docs/mechanics/world/world-exploration/#explored-world-map), as anything charted at a keyboard.
 
 ## Mana Work
 
 This is where ranging stops being a pleasant side activity and starts mattering to the world.
 
-[Mana density](/docs/mechanics/environment/#mana-concentration) drives rift events, mana storms, and what
+[Mana density](/docs/mechanics/world/environment/#mana-concentration) drives rift events, mana storms, and what
 spawns where. The three Orders disagree about it completely: Chaos wants it raised, Eternity wants it walked
 back down, the Circle wants it held inside a band. A ranging spirit carrying the right mana nudges it,
 slightly, along the ground it covers.
@@ -184,7 +184,7 @@ slightly, along the ground it covers.
 Slightly is the point. One member's walk to work moves nothing worth measuring. Ten members covering their
 ordinary week move a region — and a rival Order ranges the same region back the other way.
 
-It fits the scoring the [Covenants](/docs/mechanics/factions/#seasonal-covenants) already use. A Covenant is
+It fits the scoring the [Covenants](/docs/mechanics/society/factions/#seasonal-covenants) already use. A Covenant is
 counted in **region-days**: presence, sustained over time. That is exactly what a month of commuting
 produces. The Circle's Covenant is weighted by how contested a region is, so the best place to walk is the
 one a rival Order is walking too.
@@ -193,7 +193,7 @@ And it gives the Orders something they badly need — a way for the two thirds o
 work to still be doing their Order's work.
 
 **It is not free.** Ranging into heavy mana draws on the sleeping body's
-[stamina](/docs/mechanics/statusvalues/#stamina---sta). The drain stops at a floor and can never kill you;
+[stamina](/docs/mechanics/combat/statusvalues/#stamina---sta). The drain stops at a floor and can never kill you;
 an app must not starve somebody who forgot to close it. But you can log in tired, and a Master under a third
 of their stamina walks slower and recovers worse.
 
@@ -209,9 +209,9 @@ any reason to range while doing something that needs your attention.
 
 Your Master is doing nothing while you are away. Your Bestia need not be.
 
-The [postal system](/docs/mechanics/postal/#carrying-the-mail) already lets players send their Bestia to
+The [postal system](/docs/mechanics/towns-trade/postal/#carrying-the-mail) already lets players send their Bestia to
 carry the mail instead of leaving it to the coach, and a Bestia already earns
-[experience for ordinary work](/docs/mechanics/bestia/#environment-interaction) — `3` per km travelled,
+[experience for ordinary work](/docs/mechanics/bestias/bestia/#environment-interaction) — `3` per km travelled,
 `2 * resource_level + 5` per unit gathered, at roughly half the rate of fighting. Standing Orders are how
 you set that going from the app:
 
@@ -219,7 +219,7 @@ you set that going from the app:
   otherwise return to the world reserve.
 - **Work a deposit.** Send a Bestia to gather from a resource node you have already charted.
 - **Change order of your Bestia.** You can send them to different locations or switch their orders e.g. stop working in the mine and deliver goods instead.
-- **Breed.** Pair two Bestia in a [breeder](/docs/mechanics/bestia/#breeding), prime it with up to three
+- **Breed.** Pair two Bestia in a [breeder](/docs/mechanics/bestias/bestia/#breeding), prime it with up to three
   scrolls, and collect the egg when it hatches.
 
 This is deliberately the slow, safe half of the game. None of it makes you stronger in a fight. It makes you
@@ -244,7 +244,7 @@ stopped. See [Long-Distance Travel](/docs/server/long-distance-travel/). Postal 
 wait for the systems they belong to.
 
 It is not free of risk either. A Bestia on the road can be killed, and whatever it was carrying is lost with
-it. Mail is the exception: the post's [seal](/docs/mechanics/postal/#the-seal) sends a sack on, unless somebody
+it. Mail is the exception: the post's [seal](/docs/mechanics/towns-trade/postal/#the-seal) sends a sack on, unless somebody
 breaks it in time.
 
 # The Broker's Wire
@@ -252,7 +252,7 @@ breaks it in time.
 The most useful thing an absent player can do for the people who are present is **put paid work on the
 boards**.
 
-Every commission is [funded into escrow before anybody sees it](/docs/mechanics/questing/#funding-and-escrow),
+Every commission is [funded into escrow before anybody sees it](/docs/mechanics/world/questing/#funding-and-escrow),
 so a commission posted from a phone is real, paid work waiting for whoever is online to pick it up. Your
 gathering backlog gets done while you are at your desk job, and somebody who is logged in gets a job that
 was worth doing.
@@ -265,29 +265,29 @@ was worth doing.
 - **Sign** a contract from wherever you are.
 
 That last one deserves a warning rather than a footnote. Signing still enforces the
-[level floor](/docs/mechanics/questing/#difficulty-and-level-range), and it still posts
-[collateral](/docs/mechanics/questing/#collateral) the moment you put your name to it. Sign something you
+[level floor](/docs/mechanics/world/questing/#difficulty-and-level-range), and it still posts
+[collateral](/docs/mechanics/world/questing/#collateral) the moment you put your name to it. Sign something you
 cannot get to, and the deadline runs out while you sleep: you lose the stake, you lose honor, and the
 brokers talk. The app hands you rope. What you do with it is your business.
 
 # Trading by Dispatch
 
-Prices in **Bestia** are [local by design](/docs/mechanics/settlements/#shops-and-stock). You see what things
+Prices in **Bestia** are [local by design](/docs/mechanics/towns-trade/settlements/#shops-and-stock). You see what things
 cost where you are standing and nowhere else, because knowing that grain is cheap in the west is knowledge
 you earn by travelling — and that is the whole basis of playing a merchant. A phone that showed every price
 at once would delete the profession in an afternoon.
 
 So the app does not show you prices. It shows you **reports**, and it lets you act on them the way a merchant
 abroad always has: through an agent. Write to a player you trust in Ashfen, and your pigeon reaches them at once.
-Or send a [dispatch](/docs/mechanics/postal/#dispatches) to a broker there, and it goes by road.
+Or send a [dispatch](/docs/mechanics/towns-trade/postal/#dispatches) to a broker there, and it goes by road.
 
 - **Limit orders.** _Buy forty sacks of grain at Ashfen, no more than 12 gold the sack._ The dispatch travels,
   the order is filled at whatever the price turns out to be, and anything above your limit is simply not
   bought. You find out afterwards.
-- **Relisting.** Items an auction house [posted back to you](/docs/mechanics/economy-trade/#how-auctions-work)
+- **Relisting.** Items an auction house [posted back to you](/docs/mechanics/towns-trade/economy-trade/#how-auctions-work)
   wait in your mailbox and can be collected at any post office. Putting them up again costs a fresh listing fee.
 - **Collection.** Send a carrier to empty your trade post's till and send the coin on to you as a
-  [post note](/docs/mechanics/postal/#gold-by-pigeon), for the usual note fee.
+  [post note](/docs/mechanics/towns-trade/postal/#gold-by-pigeon), for the usual note fee.
 
 Trading on news six hours old is a real disadvantage, and it is meant to be. A merchant standing in the
 market beats you every time. What you get in exchange is that your capital is not idle for the fourteen
@@ -295,16 +295,16 @@ hours a day you are not playing.
 
 # The Covenant Watch
 
-An Order's [Seasonal Covenant](/docs/mechanics/factions/#seasonal-covenants) runs for one real month, and is
+An Order's [Seasonal Covenant](/docs/mechanics/society/factions/#seasonal-covenants) runs for one real month, and is
 already described as a public quota "shown to everyone as a progress bar". The world's own fate is already
 described as "one gauge, publicly readable, showing where the world currently stands against its predicted
-hour". Both were specified on the [Factions](/docs/mechanics/factions/) page long before anybody thought
+hour". Both were specified on the [Factions](/docs/mechanics/society/factions/) page long before anybody thought
 about phones. The watch is where they live.
 
 - Your Order's Covenant bar for the season now running, and what it managed last season.
 - The world gauge `T` — how far this world has run against its predetermined life span. It is the single
   number all three Orders are ultimately scored on.
-- The current [Doomsday](/docs/mechanics/doomsday/) stage, from Omens through to Cataclysm. A doomsday takes
+- The current [Doomsday](/docs/mechanics/world/doomsday/) stage, from Omens through to Cataclysm. A doomsday takes
   six months to a year to unfold, which is a pace a phone suits far better than a play session does.
 - Regional influence — but only for regions where your Order keeps a temple, or where you have charted the
   ground yourself.
@@ -312,13 +312,13 @@ about phones. The watch is where they live.
 If you [range](#ranging), your own month of walking is counted here too, against the same bar as everybody
 else's.
 
-Reading the world gauge accurately is [a Circle speciality](/docs/mechanics/factions/#the-order-of-the-circle),
+Reading the world gauge accurately is [a Circle speciality](/docs/mechanics/society/factions/#the-order-of-the-circle),
 so the instrument that does it is Circle-made. The other two Orders can buy one, and the Circle decides what
 it costs them.
 
 ## Musters
 
-[World events](/docs/mechanics/questing/#world-events) are rare, emergent and over quickly. They need bodies
+[World events](/docs/mechanics/world/questing/#world-events) are rare, emergent and over quickly. They need bodies
 at short notice, and most of an Order is at work.
 
 A **muster** is a call an Order puts out to its members' ledgers: _a rift has opened at Ashfen, and we are
@@ -331,7 +331,7 @@ you what already happened. A muster tells you something is happening now, and as
 
 # The Charthouse
 
-[World Exploration](/docs/mechanics/world-exploration/) promises this outright: the world "is meant to be
+[World Exploration](/docs/mechanics/world/world-exploration/) promises this outright: the world "is meant to be
 mapped collectively by the playerbase, and anyone can check that collective progress by viewing the shared
 world map online."
 
@@ -341,12 +341,12 @@ The charthouse is that promise, in your pocket:
   between them.
 - Somewhere to plan a route, mark what you want to look at next, and queue a survey target for when you log
   in — or go and chart it on foot, by [ranging](#ranging).
-- Chart fragments traded with other players. Maps are items, [Cartography](/docs/mechanics/master/#skill-cartography)
+- Chart fragments traded with other players. Maps are items, [Cartography](/docs/mechanics/master/basics/#skill-cartography)
   merges them and the post moves them — so the trade happens in the world, and the app only arranges it.
 
 # The Compendium
 
-The app carries your [Bestia Compendium](/docs/mechanics/bestia/#bestia-compendium): every species number, with the ones
+The app carries your [Bestia Compendium](/docs/mechanics/bestias/bestia/#bestia-compendium): every species number, with the ones
 you have seen filled in, a search, and a filter for seen and caught species. From a seen species, the map shows
 where it lives on the ground you have charted.
 

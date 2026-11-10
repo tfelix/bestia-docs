@@ -94,7 +94,7 @@ The server code lives in the `bestia-behemoth` monorepo (Gradle multi-module,
 
 A few smaller systems exist and work but don't have their own page yet: **party**, **guild** and **chat**
 (`zone-server/.../party/`, `.../guild/`, `.../chat/`) follow the same CMSG/handler pattern as everything else
-(the rules they enforce are on [Parties & Guilds](/docs/mechanics/party-guild)), and
+(the rules they enforce are on [Parties & Guilds](/docs/mechanics/society/party-guild)), and
 **items/inventory/equipment/loot** (`.../item/`) back the battle and economy pages without a
 dedicated write-up.
 

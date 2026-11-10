@@ -10,7 +10,7 @@ This document details the **key game mechanics and design principles**, providin
 
 At the heart of the game is a **world torn apart** by a cataclysmic event, known as the **Rift**. During this time magic surged uncontrollably, merging two realities and warping their physical properties, leading to widespread devastation. The player, a survivor of this catastrophe, is thrust into a **harsh new world**, forced to adapt, explore and rebuild.
 
-But **survival is just the beginning**. Players will gather resources, forge alliances and rivalries, and ultimately shape the fate of the world. The theme of **destruction and rebirth** runs throughout the game, with players aligning themselves with different **factions**, each pursuing its own vision for the fate of the world (see [The Factions](/docs/mechanics/factions) for more details).
+But **survival is just the beginning**. Players will gather resources, forge alliances and rivalries, and ultimately shape the fate of the world. The theme of **destruction and rebirth** runs throughout the game, with players aligning themselves with different **factions**, each pursuing its own vision for the fate of the world (see [The Factions](/docs/mechanics/society/factions) for more details).
 
 This document will continue to evolve, expanding on these foundations and refining the game’s mechanics as development progresses.
 
@@ -42,7 +42,7 @@ Many game mechanics should require interaction with other players. Rituals that 
 
 In keeping with our commitment to fantasy realism, items are typically not obtained by defeating monsters. Instead, they must be crafted. Raw materials are found throughout the world, and almost all equipment is either manufactured by players or purchased from NPCs. NPC vendors have limited stock, which must be replenished and delivered, leading to the establishment of trade routes. Prices are determined by supply and demand, with NPCs aiming to maximize their profits. Players should be able to easily participate in this economic cycle as both producers and consumers.
 
-For more details on professions, refer to the [Craftsman Tree](/docs/mechanics/master/#craftsman-tree) section.
+For more details on professions, refer to the [Craftsman Tree](/docs/mechanics/master/basics/#craftsman-tree) section.
 
 # Modern Artificial Intelligence
 

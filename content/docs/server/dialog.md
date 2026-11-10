@@ -177,7 +177,7 @@ day offset, the same pair that puts them at their post, so a shop is never open 
 
 Every way into a shop (talking, _Let's trade_, `OpenShopCMSG`) goes through one `ShopCounter`, so they
 cannot disagree about when a shop is open. The shop itself is described in
-[Settlements](/docs/mechanics/settlements/#shops-and-stock).
+[Settlements](/docs/mechanics/towns-trade/settlements/#shops-and-stock).
 
 ## Rotation, and why it is per day
 
