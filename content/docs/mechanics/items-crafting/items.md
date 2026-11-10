@@ -954,7 +954,7 @@ the five, unknown until it is cut.
 
 ## Item Level Calculator
 
-{{< include "/docs/mechanics/item-level-calculator" >}}
+{{< include "/docs/mechanics/items-crafting/item-level-calculator" >}}
 
 # Damaging of Items
 

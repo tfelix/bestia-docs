@@ -471,4 +471,4 @@ Still open:
 
 # Bestia Blueprint Calculator
 
-{{< include "/docs/mechanics/bestia-blueprint" >}}
+{{< include "/docs/mechanics/bestias/bestia-blueprint" >}}
