@@ -80,6 +80,7 @@ The **Type** column reuses the base resource types listed above, plus the refine
 | Medicinal Herb      | Herb    | A common healing herb gathered in the wild. A base ingredient for many potions.             |
 | Mana Herb           | Herb    | A mana-touched herb found in high-mana regions. Used in more potent alchemical brews.       |
 | Wood                | Wood    | Standard building material.                                                                 |
+| Resin               | Wood    | Sticky and burnable. Lights torches and campfires.                                          |
 | Stone               | Stone   | Standard building material.                                                                 |
 | Marble              | Stone   | High quality building material.                                                             |
 | Obsidian            | Stone   | A glass-like, very hard material.                                                           |
@@ -90,7 +91,8 @@ In Bestia, Mana is considered a resource. It permeates the land, and there are r
 
 ## Felling Trees
 
-Trees are where wood comes from. A grown tree drops four logs when it is felled.
+Trees are where wood comes from. A grown tree drops four logs when it is felled, and some
+[resin](/docs/mechanics/crafting-stations/#resin).
 
 A tree that is removed leaves a stump. It does not matter how: chopped down, burnt, or blown apart by a
 spell. The stump grows back in stages, and each stage takes one real week.

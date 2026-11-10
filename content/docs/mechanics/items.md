@@ -471,7 +471,10 @@ the very same recipe lands at negative Vitality (Poison territory). Same skill, 
 
 ## The Crafting Window
 
-The feature space is hidden math, so the crafting window shows it as pictures:
+How the window opens and lists recipes is on [Crafting Stations](/docs/mechanics/crafting-stations/#the-window). This
+section is about its discovery view.
+
+The feature space is hidden math, so the discovery view shows it as pictures:
 
 - **Material tooltips** name the axes a material pushes, for example _"fluid, restorative"_ for a healing herb. A player
   who wants a healing potion can reason that they need fluid and restorative materials.
@@ -493,8 +496,9 @@ The success chance uses two sources:
 - The **status values** (DEX and WIL) come from whoever crafts: the master, or the Bestia they control. A Bestia with
   high DEX is a good crafter.
 
-The materials come from the crafter's own inventory, and the item goes there too. On a failed production the materials
-are lost.
+By hand, the materials come from the crafter's own inventory, and the item goes there too. At a station, the materials
+are paid into the station when the craft is queued, see
+[Crafting Stations](/docs/mechanics/crafting-stations/#the-queue). On a failed production the materials are lost.
 
 ### Crafted By
 
