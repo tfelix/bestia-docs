@@ -174,7 +174,7 @@ variants.
 
 For the Craftsmanship domain specifically — workbenches, structures, traps and other non-magical devices built with
 [Carpentry](/docs/mechanics/master/craftsman-tree/#skill-carpentry) — the Production roll above is shaped by skill rank and status
-values, not material quality alone, much like [Item Customization](#item-customization)'s slot-cutting chance. A
+values, not material quality alone, much like [Item Customization](/docs/mechanics/items-crafting/items/#item-customization)'s slot-cutting chance. A
 **base chance** falls off with the item level being attempted, on top of which
 [Carpentry](/docs/mechanics/master/craftsman-tree/#skill-carpentry), [Master Craftsman](/docs/mechanics/master/craftsman-tree/#skill-master-craftsman),
 temporary buffs and the Craftsman's own status values are added. The DEX and WIL terms apply to every craft, not only
@@ -240,7 +240,7 @@ charge still rolls against a success chance, and a failed smelt turns the whole 
 fuel are lost.
 
 The roll is governed by the Blacksmith's [Ore Refinement](/docs/mechanics/master/craftsman-tree/#skill-ore-refinement) skill and, like
-[Item Customization](#item-customization) and [Construction Crafting](#construction-crafting-success-chance), starts
+[Item Customization](/docs/mechanics/items-crafting/items/#item-customization) and [Construction Crafting](#construction-crafting-success-chance), starts
 from a **base chance that falls with the level of the ore** being worked:
 
 ```kotlin

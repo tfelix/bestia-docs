@@ -449,8 +449,8 @@ away.
     description="Turns the rough gemstones a Miner digs up into cut gems, the vessels an Artificer binds Bestia essences into." >}}
 
 Level 1 allows you to place a Gem Cut Station. The cast only places the station or opens its recipes. The cutting itself
-takes the [craft duration](/docs/mechanics/items-crafting/items/#craft-duration) of the gem's item level. A failed cut shatters the gem.
-The five gems and what they hold are listed under [Sockets and Essences](/docs/mechanics/items-crafting/items/#sockets-and-essences).
+takes the [craft duration](/docs/mechanics/items-crafting/crafting/#craft-duration) of the gem's item level. A failed cut shatters the gem.
+The five gems and what they hold are listed under [Sockets and Essences](/docs/mechanics/items-crafting/crafting/#sockets-and-essences).
 
 | Lv. | Success Chance | Reliable Gem Level |
 | --- | -------------- | ------------------ |

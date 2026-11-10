@@ -58,7 +58,7 @@
   type: Etc
   value: 3
   description: |
-    Charred, brittle pieces of wood. Cheap furnace fuel and a base for potent alchemical mixtures. Burns cooler than [Coal](/docs/mechanics/items-crafting/item-list/#coal) and costs `-10%` on every [ore refinement](/docs/mechanics/items-crafting/items/#ore-refinement-success-chance) attempt.
+    Charred, brittle pieces of wood. Cheap furnace fuel and a base for potent alchemical mixtures. Burns cooler than [Coal](/docs/mechanics/items-crafting/item-list/#coal) and costs `-10%` on every [ore refinement](/docs/mechanics/items-crafting/crafting/#ore-refinement-success-chance) attempt.
 - id: furnace
   name: Furnace
   weight: 40

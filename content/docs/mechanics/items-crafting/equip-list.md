@@ -6,7 +6,7 @@ description: Every piece of equipment that Bestias and Bestia Masters can wear o
 
 Here you will find an overview of the available equipment items Bestias and Bestia Master can use.
 
-For a more detailed breakdown, the equipment list is provided here on this separate page. If you are interested in general information, check out the dedicated section about [equipment and crafting](/docs/mechanics/items-crafting/items).
+For a more detailed breakdown, the equipment list is provided here on this separate page. If you are interested in general information, check out the dedicated pages about [items](/docs/mechanics/items-crafting/items/) and [crafting](/docs/mechanics/items-crafting/crafting/).
 
 {{< alert context="info" text="The list here might not be always up to date, but feel free to add any missing items." />}}
 

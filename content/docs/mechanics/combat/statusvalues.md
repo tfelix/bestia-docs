@@ -44,8 +44,8 @@ statusValue = (baseValue + individualValue) * level / 100 + effortValue
 - Slightly increases the total amount of stamina
 - Slightly increases resistance against temperature
 - Increases the flee rate (dodge chance) against physical attacks
-- Increases [construction crafting success chance](/docs/mechanics/items-crafting/items/#construction-crafting-success-chance) by 1% every 10 WIL
-- Increases [ore refinement success chance](/docs/mechanics/items-crafting/items/#ore-refinement-success-chance) by 1% every 10 WIL - holding a furnace at temperature for hours is a matter of patience
+- Increases [construction crafting success chance](/docs/mechanics/items-crafting/crafting/#construction-crafting-success-chance) by 1% every 10 WIL
+- Increases [ore refinement success chance](/docs/mechanics/items-crafting/crafting/#ore-refinement-success-chance) by 1% every 10 WIL - holding a furnace at temperature for hours is a matter of patience
 
 ## Strength - STR
 
@@ -53,7 +53,7 @@ statusValue = (baseValue + individualValue) * level / 100 + effortValue
 - Increases carry capacity
 - Increases the maximum HP amount slightly
 - Increases the maximum stamina amount slightly
-- Increases [ore refinement success chance](/docs/mechanics/items-crafting/items/#ore-refinement-success-chance) by 2% every 10 STR - working the bellows and turning a heavy charge is physical labour
+- Increases [ore refinement success chance](/docs/mechanics/items-crafting/crafting/#ore-refinement-success-chance) by 2% every 10 STR - working the bellows and turning a heavy charge is physical labour
 - Helps to resist Stun, Bleeding, Slowed, Withered and Feared ([status effects](/docs/mechanics/combat/status-effects/#resist))
 
 ## Vitality - VIT
@@ -73,7 +73,7 @@ statusValue = (baseValue + individualValue) * level / 100 + effortValue
 - Increases the damage of ranged attacks
 - Increases upgrade chance of items and equipment by 1% every 10 DEX.
 - Increases the chance to successfully cut a rune slot into an item by 1% every 10 DEX, see [Item Customization](/docs/mechanics/items-crafting/items/#item-customization).
-- Increases [construction crafting success chance](/docs/mechanics/items-crafting/items/#construction-crafting-success-chance) by 2% every 10 DEX.
+- Increases [construction crafting success chance](/docs/mechanics/items-crafting/crafting/#construction-crafting-success-chance) by 2% every 10 DEX.
 - Helps to resist Burning, Blind and Confused ([status effects](/docs/mechanics/combat/status-effects/#resist))
 
 ## Agility - AGI
@@ -245,7 +245,7 @@ ATK = (BaseLevel ÷ 4) + DEX + (DEX ÷ 10)² + (STR ÷ 5) + (WIL ÷ 3)
 
 The squared term comes from Ragnarok Online. It lets attack grow faster than the flat soft defense at high levels.
 
-{{< alert context="warning" text="Bestia has no stat cap, and Ragnarok Online's squared terms rely on its cap of 99. A build that stacks one attribute with gear grows very fast: a full set of top-rolled STR items at Lv 100 deals about ten times the damage of a master without gear. See [Forging](/docs/mechanics/items-crafting/items/#what-the-numbers-mean)." />}}
+{{< alert context="warning" text="Bestia has no stat cap, and Ragnarok Online's squared terms rely on its cap of 99. A build that stacks one attribute with gear grows very fast: a full set of top-rolled STR items at Lv 100 deals about ten times the damage of a master without gear. See [Forging](/docs/mechanics/items-crafting/crafting/#what-the-numbers-mean)." />}}
 
 ### Weapon Attack - WATK
 

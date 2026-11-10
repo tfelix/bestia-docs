@@ -165,7 +165,7 @@ Every smelt burns fuel alongside the ore, and a failed batch loses both.
 
 On top of the base chance and the fuel come the smith's
 [Ore Refinement](/docs/mechanics/master/craftsman-tree/#skill-ore-refinement) rank (up to `+90%`) and their STR and WIL — see
-[Ore Refinement Success Chance](/docs/mechanics/items-crafting/items/#ore-refinement-success-chance) for the full formula and worked
+[Ore Refinement Success Chance](/docs/mechanics/items-crafting/crafting/#ore-refinement-success-chance) for the full formula and worked
 examples.
 
 # Item Recycling
