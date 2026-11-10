@@ -225,11 +225,16 @@ uses it for where its far end opens.
 Spells that no player cast have a fixed Potency. Against a Dispel, a fixed Potency is just the wanted chance turned
 around: `P target = P dispel ÷ chance`. So it can be far above what one caster reaches.
 
-| Spell                                                           | P    | Why                                                                         |
-| --------------------------------------------------------------- | ---- | --------------------------------------------------------------------------- |
-| [Postal Seal](/docs/mechanics/towns-trade/postal/#the-seal)     | 350  | A strong solo Sage breaks it about once in four tries (`23%`).              |
-| [Ward stone](/docs/mechanics/society/pvp/#protected-zones) aura | 3000 | The best circle, at the [ritual cap](#the-charge) of 150, has `5%` per try. |
-| Permanent enchantments of the Artificer                         | -    | They cannot be dispelled at all.                                            |
+| Spell                                                           | P    | Why                                                                                             |
+| --------------------------------------------------------------- | ---- | ----------------------------------------------------------------------------------------------- |
+| [Postal Seal](/docs/mechanics/towns-trade/postal/#the-seal)     | 350  | A strong solo Sage breaks it about once in four tries (`23%`).                                  |
+| [Ward stone](/docs/mechanics/society/pvp/#protected-zones) aura | 3000 | Out of reach of one caster. The best circle, at the [ritual cap](#the-charge) of 150, has `5%`. |
+| Permanent enchantments of the Artificer                         | -    | They cannot be dispelled at all.                                                                |
+
+A fixed spell can also have a **threshold**: a Dispel with less Potency has no chance at all, and no roll is made. The
+ward stone has a threshold of `120`, the start of the Overwhelming band. One caster tops out at about `110`, so only a
+[ritual](#rituals) reaches it. The threshold sits on the stone, not on Dispel. Every other Dispel stays as it is and can
+be cast again as soon as its cooldown allows.
 
 # Refresh
 
@@ -286,9 +291,10 @@ known chance and stops ever stronger circles from turning them into a routine.
 | Five helpers of level 60                                | 50    | 130           |
 | Five helpers of level 100                               | 80    | **150** (cap) |
 
-Against a ward stone (`P 3000`) the full circle of level 100 helpers has `5%` per try. A circle of level 60 helpers
-(`P 130`) has `4%`, and a lone Master Sage (`P 80`) `2.7%`. The ward settles for 5 minutes after every Dispel, as long as
-the Ritual Fatigue of the circle, so a group tries once per rest. The full circle needs about 20 tries, nearly two hours.
+Against a ward stone (`P 3000`, threshold `120`) only the circles with five helpers get through. Five helpers of level
+60 (`P 130`) have `4%` per try, five of level 100 (`P 150`) have `5%`. Nobody alone can try, not even the best caster
+(`P 110`). Everyone in the circle rests for 5 minutes after a ritual, so one group needs about 20 rituals, nearly two
+hours. A guild with several circles tries in parallel.
 
 ## How Every Skill Reacts to a Charge
 
@@ -311,9 +317,8 @@ says so before the leader wastes a ritual on it.
 
 ## What Rituals Are For
 
-- **Countering a ward stone.** A Dispel with a charge is the counter-magic of the
-  [Protected Zones](/docs/mechanics/society/pvp/#protected-zones). A full circle roughly doubles the chance of a lone
-  Sage, and the stone allows one try every five minutes.
+- **Countering a ward stone.** The magic of the [Protected Zones](/docs/mechanics/society/pvp/#protected-zones) is out of
+  reach of any single caster. Only a Dispel with the charge of a big circle gets through, at `5%` per try.
 - **Long or stormy jumps.** A charged Teleport or Warp Portal lands where it should, even through a mana storm.
 - **Lasting work.** A charged Spell Binding makes a trap or alarm that only another charged skill can find or lift. A
   settlement can guard its gate with it.
@@ -347,7 +352,8 @@ level. Potency changes that in a few places:
 - One calculator turns a cast into a Potency. It needs the skill rank, the caster's level and status values, the
   equipment bonus and the mana concentration at the caster.
 - `ActiveStatusEffect` and the item enchantment carry that Potency. The enchantment's `strength` is the same value.
-- `StatusEffectService.dispel` rolls the base chance times the Potency ratio per effect. `StatusResistance.of` takes Resolve and Potency in place of the
+- `StatusEffectService.dispel` rolls the base chance times the Potency ratio per effect, and skips a target whose
+  threshold is above the Dispel's Potency. `StatusResistance.of` takes Resolve and Potency in place of the
   level lead. The `Detecting` system compares the two Potencies per target.
 - Ritual Charge and Ritual Fatigue are status effects. The charge holds its bonus and participant count. The skill
   pipeline spends the charge on the next cast and hands its bonus to the calculator and to the skill script, which
