@@ -11,7 +11,7 @@ level 100 Sage must cast a stronger Dispel than a level 40 master who bought two
 Every cast skill therefore carries one number, its **Potency** (`P`). "Spell level" would be the natural word, but
 `Lv.` already means the rank of a skill, so this page says Potency.
 
-{{< alert context="warning" text="This is a concept. The pages listed under [Pages This Changes](#pages-this-changes) still show the old rules until it is accepted." />}}
+{{< alert context="info" text="Accepted, but not built. The server has no Potency or rituals yet, see [Server Notes](#server-notes). Ritual Charge and Ritual Fatigue join the [status list](/docs/mechanics/combat/status-effects/) with the server work." />}}
 
 # How Potency Is Built
 
@@ -246,7 +246,7 @@ buff could lower a friend's protection, and an enemy could cover a strong curse 
 
 One caster tops out at about `P 100`. A **ritual** is how a group pushes the next skill of one master further. It uses
 the [Mana Circle](/docs/mechanics/master/basics/#mana-circles), a ring of Mana Concentrate laid into the ground with a focus
-stone in its middle.
+stone in its middle. Crafting uses it the same way, see [Mana Circles](/docs/mechanics/master/basics/#mana-circles).
 
 ## How a Ritual Runs
 
@@ -305,7 +305,7 @@ more of four ways:
 | ------------- | ---------------------------------------------- | ----------------------------------------------------------------------------- |
 | Contest       | Dispel, debuffs, Detect, Magic Rod             | The higher Potency enters [Edge](#edge-one-curve-for-every-contest) or Resist |
 | Against world | Teleport, Warp Portal, Scry                    | The higher Potency enters Edge against the Disturbance                        |
-| Success roll  | Forging, Spell Inscription, Transmutation, ... | `+5% × participants × ManaFactor`, the Mana Circle bonus of today             |
+| Success roll  | Forging, Spell Inscription, Transmutation, ... | `+5% × participants × ManaFactor`, the Mana Circle bonus                      |
 | Surge         | Damage, healing, shields, buff duration        | `+1%` for every `4` points of bonus, at most `+25%`                           |
 
 A skill that has a contest and also deals damage, like a Stone Curse or a Fire Bolt with a burn, gets both. Surge is
@@ -324,7 +324,7 @@ says so before the leader wastes a ritual on it.
   settlement can guard its gate with it.
 - **The opening blow.** A charged curse on a strong foe cuts through its resist, and a charged spell hits a little
   harder. The group pays with five minutes of rest.
-- **Crafting.** A smith forging a masterpiece takes a charge into the next forge roll, as the Mana Circle does today.
+- **Crafting.** A smith forging a masterpiece takes a charge into the next forge roll.
 
 # Hooks for Later
 
@@ -334,15 +334,6 @@ These are not designed yet, but they fit the same rule:
   "Cheaper rituals" in a dominated region can be a better ManaFactor there.
 - **Doomsday.** A rift can carry a Potency that grows each day it stays open. A sealing ritual is a contest against it.
   The longer the world waits, the closer the rift comes to the cap, and the luckier the circle must be.
-
-# Pages This Changes
-
-When this concept is accepted, these pages change:
-
-- [Status Effects](/docs/mechanics/combat/status-effects/): Ritual Charge and Ritual Fatigue join the list. The list follows
-  the server, so they come with the server work.
-- [Master Skills](/docs/mechanics/master/basics/): [Mana Circles](/docs/mechanics/master/basics/#mana-circles) run as a
-  ritual with a charge, so a crafting rite and a spell ritual are the same thing. Bestias may now join.
 
 # Server Notes
 

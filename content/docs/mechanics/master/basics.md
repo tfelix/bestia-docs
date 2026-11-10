@@ -152,12 +152,16 @@ enchantment, transmuting matter, inscribing a spell. Skill rank, status values a
 lone master eventually hits the ceiling of what those three can buy.
 
 A **Mana Circle** is how a group pushes past it. It is a placeable prop - a ring of
-[Mana Concentrate](/docs/mechanics/items-crafting/item-list/#mana-concentrate) laid into the ground - that anyone standing inside
-contributes to, whatever their profession. The rite is started by the master who owns the skill; everyone else is simply
-present, and presence is the whole contribution.
+[Mana Concentrate](/docs/mechanics/items-crafting/item-list/#mana-concentrate) laid into the ground with a focus stone in
+its middle - where a group holds a **ritual**. The master who owns the skill leads it. Up to five helpers join,
+whatever their profession, and each player sends one helper: their master or one of their Bestias. After 30 seconds of
+channeling, the leader's next skill takes a charge. [How a Ritual Runs](/docs/mechanics/combat/spell-potency/#how-a-ritual-runs)
+has the steps, the costs and the rest every helper pays.
+
+For a skill that rolls a success chance, the charge adds:
 
 ```text
-Circle Bonus = 5 × Participants × ManaFactor   [Participants ≤ 6, caster included]
+Circle Bonus = 5 × Participants × ManaFactor   [Participants ≤ 6, leader included]
 ```
 
 `ManaFactor` comes from the local [mana concentration](/docs/mechanics/world/environment/#mana-concentration): `0.5` in a
@@ -165,13 +169,9 @@ drained region, `1.0` in an ordinary one, `1.5` where mana runs thick. A full ci
 therefore worth `+45%` on the roll - as much as most governing skills grant at max rank - while the same six people
 standing on drained ground get `+15%` and would have been better off scouting a different site first.
 
-Three rules keep it from becoming a formality:
-
-- The **mana cost of the rite is split evenly** across every participant, so a circle makes expensive rites affordable as
-  well as more likely to land. A participant who cannot pay their share drops out and the circle recalculates.
-- Every participant is **locked out of contributing again for 5 minutes**, and cannot act while the rite runs. Standing
-  in someone's circle is a real cost, not a favor that takes a second.
-- A circle only helps a **success roll**. It does nothing for damage, healing, movement or anything else a skill does.
+The same ritual also raises the Potency of a spell and makes damage and healing a little stronger, see
+[Spell Potency and Rituals](/docs/mechanics/combat/spell-potency/#rituals). Standing in a circle is a real cost, not a
+favor that takes a second: every helper pays a quarter of their maximum mana and rests for 5 minutes afterwards.
 
 {{< alert context="info" text="This is the intended answer to \"my crafting rolls have plateaued\": find other players, not better gear. It is also why the highest-level artifacts are expected to be group work - see the [Encourage Social Interaction](/docs/mechanics/overview/#encourage-social-interaction) principle." />}}
 
