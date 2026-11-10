@@ -59,7 +59,7 @@ Reveals the monster status values, element, HP and Mana.
     description="A pulse of second sight that peels back concealment - hidden traps, hiding Bestia and cloaked Assassins stand out for what they are. Useful to any Scholar, whether they're scrying old ruins or walking a party into an ambush." >}}
 
 While it is active, everything hidden within 10m of the caster is revealed. Detection resistance, such as that of
-[Hide](#skill-hide), does not help against it.
+[Hide](/docs/mechanics/master/warrior-tree/#skill-hide), does not help against it.
 
 {{< /skill >}}
 
@@ -68,12 +68,12 @@ While it is active, everything hidden within 10m of the caster is revealed. Dete
     description="The Scholar's ear to the ground - a sense for the direction and distance of world-changing events long before word of them travels." >}}
 
 Detects nearby world events like mana rifts which open, spawned bosses or other world changing events. It reads
-**events**, not things: a [Resource Sense](#skill-resource-sense) finds the ore vein, a [Scry](#skill-scry) looks at a
+**events**, not things: a [Resource Sense](/docs/mechanics/master/survival-tree/#skill-resource-sense) finds the ore vein, a [Scry](#skill-scry) looks at a
 place you are not standing in, and a [Magic Sense](#skill-magic-sense) picks apart a single spell. Observation is the
 only one that notices something is about to happen.
 
 It only works at an Observation Outpost, and the distance counts from the outpost. An outpost is built in the wild from
-an outpost kit, which is made with [Carpentry](#skill-carpentry). Level 1 is needed to build it. A Bestia can keep watch
+an outpost kit, which is made with [Carpentry](/docs/mechanics/master/craftsman-tree/#skill-carpentry). Level 1 is needed to build it. A Bestia can keep watch
 there while you are away.
 
 | Lv. | Detection Distance |
@@ -90,7 +90,7 @@ there while you are away.
 
 Priests channel mana into blessings that keep a party alive - restoring health, lifting curses, and bolstering the vitality of Bestia out in the field.
 
-{{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [scholar tree](#scholar-tree)" />}}
+{{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [scholar tree](/docs/mechanics/master/scholar-tree/)" />}}
 
 The Priest has two routes. The **Cleric** is the full support of a party: heals, blessings and wards. The **Exorcist** hunts Demons and the Undead with holy light and holy water.
 
@@ -215,7 +215,7 @@ On an Undead or Demon target it turns into a curse: it halves DEX and INT instea
     type="Active" manaCost="20" castTime="Instant" cooldown="None" duration="per Lv." range="9" target="Ally"
     description="Lightens a target's limbs with borrowed haste, quickening step and swing alike." >}}
 Grants a flat `+15%` Movement Speed at any level, plus the table below. The bonus only lasts while the buff holds, and
-it **stacks** with the permanent [Quick Travel](#skill-quick-travel), so a well-buffed traveller adds both.
+it **stacks** with the permanent [Quick Travel](/docs/mechanics/master/survival-tree/#skill-quick-travel), so a well-buffed traveller adds both.
 
 | Lv. | AGI | ASPD | Duration |
 | --- | --- | ---- | -------- |
@@ -377,7 +377,7 @@ enemies.
 
 Coin has its own kind of magic. Traders read markets instead of mana flows, linking auction houses together, minting the coin everyone else trades in, and looking out for goods that might otherwise walk off on their own.
 
-{{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [scholar tree](#scholar-tree)" />}}
+{{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [scholar tree](/docs/mechanics/master/scholar-tree/)" />}}
 
 The Trader has two routes. The **Merchant** buys cheap, sells dear and runs stalls and auction houses. The **Moneyer** recovers scrap and mints coin.
 
@@ -515,7 +515,7 @@ To be linked by other players, at least level 1 in this skill is required.
 
 Books, wards and long nights spent staring into scrying bowls. Sages study magic itself - discovering it, inscribing it, binding it, and eventually learning to fold distance in on itself with teleportation and portals.
 
-{{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [scholar tree](#scholar-tree)" />}}
+{{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [scholar tree](/docs/mechanics/master/scholar-tree/)" />}}
 
 The Sage has two routes. The **Scribe** trains, inscribes and binds spells and opens the way with Teleport and Warp Portal. The **Battle Sage** fights magic itself: dispels, wards, mana drain and endowed weapons.
 
@@ -589,7 +589,7 @@ table as [Spell Inscription](#skill-spell-inscription). Each level adds to it.
     type="Active" manaCost="30" castTime="5s" cooldown="60s" duration="20s" range="Any charted location" target="Location"
     description="Casts a Sage's sight far beyond their own eyes, scouting distant ground and the resources hiding on it before ever setting foot there." >}}
 
-The Sage sees the chosen spot for 20s. Only [charted](#skill-cartography) land can be scried.
+The Sage sees the chosen spot for 20s. Only [charted](/docs/mechanics/master/survival-tree/#skill-cartography) land can be scried.
 
 | Lv. | View Radius |
 | --- | ----------- |

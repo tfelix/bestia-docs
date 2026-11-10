@@ -85,7 +85,7 @@ When active, each hit costs 2% of the owner's current mana. When the mana drops 
 
 Fire, water, wind, earth, and the deeper currents of holy and dark magic - Wizards bend all of it into a weapon, at the cost of the armor most masters would rather keep.
 
-{{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [warrior tree](#warrior-tree)" />}}
+{{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [warrior tree](/docs/mechanics/master/warrior-tree/)" />}}
 
 The Wizard has two routes. The **Elementalist** casts the bolts and the great area spells of the elements they choose. The **Arcanist** controls the field with walls, curses and raw mana.
 
@@ -356,7 +356,7 @@ Regardless of level, the reduction is capped at `25%` against other Bestia Maste
 
 No fancy footwork, no elemental theatrics - just fists, a staff, and the kind of toughness that keeps going long after everyone else has called it quits.
 
-{{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [warrior tree](#warrior-tree)" />}}
+{{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [warrior tree](/docs/mechanics/master/warrior-tree/)" />}}
 
 ```mermaid
 graph TD
@@ -542,7 +542,7 @@ Dashes up to `6m` to the target.
 
 Neither predator nor prey, exactly. Hunters move through the wild like the terrain isn't there, see their quarry long before it sees them, and finish the job from further away than most can aim.
 
-{{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [warrior tree](#warrior-tree)" />}}
+{{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [warrior tree](/docs/mechanics/master/warrior-tree/)" />}}
 
 The Hunter has two routes. The **Archer** fights with the bow from as far away as the eye reaches. The **Tracker** marks the prey, hunts it down with spear and Bestias, and moves fast through the wild.
 
@@ -577,7 +577,7 @@ graph TD
     type="Passive"
     description="Teaches the Hunter to read the land well enough to disappear into it." >}}
 
-Wild Bestia notice the master later. Camouflage does not hide the master, so [Ruwach](#skill-ruwach) has nothing to
+Wild Bestia notice the master later. Camouflage does not hide the master, so [Ruwach](/docs/mechanics/master/scholar-tree/#skill-ruwach) has nothing to
 reveal.
 
 | Lv. | Notice Range of Wild Bestia |
@@ -724,7 +724,7 @@ Reed Stalks and a [Feather](/docs/mechanics/items-crafting/item-list/#feather) m
 
 Masters of hidden infiltration. They can deal high amount of single target damage and know a lot about poisons to coat their weapons.
 
-{{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [warrior tree](#warrior-tree)" />}}
+{{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [warrior tree](/docs/mechanics/master/warrior-tree/)" />}}
 
 The Assassin has two routes. The **Shadow** strikes from hiding with Hide, Cloak, Backstab and Shadow Step. The **Duelist** fights in the open with two blades and poison. Strip Equipment and Plagiarism serve both.
 
@@ -843,7 +843,7 @@ The damage is shared evenly between the eight hits.
     description="Drops the Assassin flat against whatever cover is at hand. Nothing hostile can see them while they stay put - but standing still is the whole price of admission." >}}
 
 Breaks the moment the Assassin moves or attacks. Detection resistance works against eyes, not against
-[Ruwach](#skill-ruwach), which always reveals.
+[Ruwach](/docs/mechanics/master/scholar-tree/#skill-ruwach), which always reveals.
 
 | Lv. | Mana Drain per Second | Detection Resistance |
 | --- | --------------------- | -------------------- |
@@ -859,7 +859,7 @@ Breaks the moment the Assassin moves or attacks. Detection resistance works agai
     type="Active" manaCost="30" castTime="Instant" cooldown="8s" duration="Until cancelled" range="0" target="Self"
     description="What Hide is for standing still, Cloak is for walking. The Assassin stays unseen while moving, at the cost of speed and a steady bleed of mana." >}}
 
-Still breaks on attacking. [Ruwach](#skill-ruwach) strips it outright.
+Still breaks on attacking. [Ruwach](/docs/mechanics/master/scholar-tree/#skill-ruwach) strips it outright.
 
 | Lv. | Movement Speed | Mana Drain per Second |
 | --- | -------------- | --------------------- |
@@ -902,7 +902,7 @@ Only works from [Hide](#skill-hide) or [Cloak](#skill-cloak), and only from behi
     description="A long, unhealthy familiarity with everything that should not be swallowed. Raises how hard the Assassin's own poisons bite and how well they shrug off somebody else's." >}}
 
 The poisons themselves are not made here - they are ordinary Alchemist goods, brewed with
-[Alchemy](#skill-alchemy) and bought like any other reagent. This skill only governs what an Assassin gets out of them.
+[Alchemy](/docs/mechanics/master/craftsman-tree/#skill-alchemy) and bought like any other reagent. This skill only governs what an Assassin gets out of them.
 
 | Lv. | Poison Damage | Poison Resistance |
 | --- | ------------- | ----------------- |
@@ -935,7 +935,7 @@ bites; this skill decides how often it lands.
     type="Passive"
     description="A passive knack for stealing more than just gold - whenever the Assassin is struck by an enemy spell, there's a chance they memorize it well enough to cast it back once. Casting the copied spell consumes it, and getting hit by a new spell overwrites whatever was memorized before." >}}
 
-Bestia attacks can be copied too. The cap is the attack level, as for [Spell Inscription](#skill-spell-inscription). A
+Bestia attacks can be copied too. The cap is the attack level, as for [Spell Inscription](/docs/mechanics/master/scholar-tree/#skill-spell-inscription). A
 master's spell counts 10 attack levels per skill level, so Plagiarism Lv. 2 copies a Fire Bolt up to Lv. 4.
 
 At Lv. 5 the Assassin keeps what they stole: a new spell no longer overwrites the copy, which is only lost when it is
@@ -955,7 +955,7 @@ cast.
 
 Where a Brawler trusts bare knuckles and a Wizard trusts raw mana, a Knight trusts steel - a lot of it, worn on the body and swung in the hand. This is the tree for masters who would rather stand at the front of a fight than avoid it.
 
-{{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [warrior tree](#warrior-tree)" />}}
+{{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [warrior tree](/docs/mechanics/master/warrior-tree/)" />}}
 
 The Knight has two routes. The **Vanguard** hits hard with heavy weapons and charges in. The **Guardian** holds the line with plate and shield and takes the blows meant for others.
 
@@ -1147,7 +1147,7 @@ Bards fight and perform with the same hands. Some lash out with whip and lute an
 stay at the back and play until everyone around them, Bestia included, hits harder, moves faster and walks further.
 Most do a bit of both.
 
-{{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [warrior tree](#warrior-tree)" />}}
+{{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [warrior tree](/docs/mechanics/master/warrior-tree/)" />}}
 
 The Bard has two routes. The **fighter** route fights with whip and instrument and weakens enemies. The **support**
 route plays songs.

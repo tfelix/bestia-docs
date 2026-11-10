@@ -18,7 +18,7 @@ incarnation that owns the NPC side of the money supply, and it exists to enforce
 > If an NPC pays out gold, some other NPC must have earned it first.
 
 There is exactly **one** faucet in the world — a player turning raw gold into coins with the
-[Minting](/docs/mechanics/master/basics/#skill-minting) skill — and everything else is a transfer or a sink. NPCs are not a
+[Minting](/docs/mechanics/master/scholar-tree/#skill-minting) skill — and everything else is a transfer or a sink. NPCs are not a
 faucet. They hold a share of the money supply, they move it around, and the Director makes sure the share only grows
 because players sold them something, never because a payout was invented.
 

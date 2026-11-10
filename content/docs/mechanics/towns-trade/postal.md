@@ -36,7 +36,7 @@ It follows the mana bond, like chat, so it only finds masters.
   difference to [chat](/docs/mechanics/companion-app/#keeping-in-touch): chat reaches only who is online right now and
   is gone afterwards.
 - **A letter costs `1` gold**, so nobody fills a mailbox with spam.
-- Writing letters needs [Basic Skill](/docs/mechanics/master/basics/#skill-basic-skill) Lv. 2, the same as whispers.
+- Writing letters needs [Basic Skill](/docs/mechanics/master/novice-tree/#skill-basic-skill) Lv. 2, the same as whispers.
 
 The game's own notices come by pigeon too: a sold auction, a commission reward, a parcel that has arrived, a parcel
 that was robbed.
@@ -206,7 +206,7 @@ and whoever holds it is now its courier, with the same deadline and the full pay
 ## Breaking a Seal
 
 The other way to use those 30 seconds is to rob the sack. A sealed sack on the ground can be hit with
-[Dispel](/docs/mechanics/master/basics/#skill-dispel). The seal has strength `70`:
+[Dispel](/docs/mechanics/master/scholar-tree/#skill-dispel). The seal has strength `70`:
 
 ```text
 chance = Dispel base chance - 70
@@ -234,7 +234,7 @@ during their working hours. Letters need no office.
 
 ## In Player Cities
 
-A [founded settlement](/docs/mechanics/master/basics/#skill-founder) gets a post office only when its players build one.
+A [founded settlement](/docs/mechanics/master/survival-tree/#skill-founder) gets a post office only when its players build one.
 
 - **It is a construction** like any other building. Whoever may build in the settlement can put it up. A settlement
   holds at most one.

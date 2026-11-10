@@ -157,7 +157,7 @@ specific ending.
 
 ## Minting yield is a recovery rate, not a bonus
 
-The [Minting](/docs/mechanics/master/basics/#skill-minting) skill sets how much of a bar's gold becomes coin: `60%` at Lv. 1
+The [Minting](/docs/mechanics/master/scholar-tree/#skill-minting) skill sets how much of a bar's gold becomes coin: `60%` at Lv. 1
 and `100%` at Lv. 5. A multiplier on the coins a bar produces **would create gold out of nothing** and break the
 invariant this page exists to state.
 

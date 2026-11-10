@@ -282,7 +282,7 @@ of the pot:
 - **Time held** — presence and survival inside the contested area while it mattered
 
 Scoring each axis separately is what keeps a world event from being a high-level damage party. A Scholar who located
-the rift with [Observation](/docs/mechanics/master/basics/#skill-observation), an Eternity player placing seals and a fighter
+the rift with [Observation](/docs/mechanics/master/scholar-tree/#skill-observation), an Eternity player placing seals and a fighter
 tanking the wave bosses all earn from the axis they actually contributed to, and none of them has to out-damage anyone
 to be paid.
 

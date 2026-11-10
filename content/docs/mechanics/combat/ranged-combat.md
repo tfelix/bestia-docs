@@ -55,7 +55,7 @@ The shot has the element of its ammunition. A regular arrow is Neutral.
 
 Ammunition can carry an effect of its own. It can change the damage roll, for example by piercing armor, and it can act
 on a hit, for example by stunning the target. Only regular arrows exist so far. Hunters make them with
-[Arrow Crafting](/docs/mechanics/master/basics/#skill-arrow-crafting).
+[Arrow Crafting](/docs/mechanics/master/warrior-tree/#skill-arrow-crafting).
 
 # Bestias With Bows
 

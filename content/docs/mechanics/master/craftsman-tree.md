@@ -114,7 +114,7 @@ The Success Chance below is added on top of a **base chance that drops as the it
 
 Steel remembers who beat it into shape. Blacksmiths turn raw ore into the finest weaponry and armor, which protects its wearer even in the midst of the harshest environments and hottest battles.
 
-{{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [craftsman tree](#craftsman-tree)" />}}
+{{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [craftsman tree](/docs/mechanics/master/craftsman-tree/)" />}}
 
 The Blacksmith has two routes. The **Forger** smelts ore and forges weapons and armor. The **Refiner** repairs and upgrades what already exists.
 
@@ -265,7 +265,7 @@ down as well, but burnt time is gone: no repair gives it back.
 
 Where Blacksmiths hammer steel, Artificers coax it into remembering spells. This path inscribes magic onto items, binds it to triggers, and crystallizes raw mana into shards other professions can build on.
 
-{{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [craftsman tree](#craftsman-tree)" />}}
+{{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [craftsman tree](/docs/mechanics/master/craftsman-tree/)" />}}
 
 ```mermaid
 graph TD
@@ -305,7 +305,7 @@ Level 1 enables you to place a Mana Harvester.
 
 {{< skill name="Manaflow Expert" maxLevel="5" requires="Mana Harvester Lv. 3"
     type="Active" manaCost="22" castTime="10s" cooldown="0s" range="2" target="Crystal Lathe"
-    description="Refine the raw and unstable mana crystals harvested by a Mana Harvester into the finest arcane raw materials used to build powerful magic artifacts. The Crystal Lathe is for mana crystals only - a Miner's [Gem Cutting](#skill-gem-cutting) handles ordinary gemstones." >}}
+    description="Refine the raw and unstable mana crystals harvested by a Mana Harvester into the finest arcane raw materials used to build powerful magic artifacts. The Crystal Lathe is for mana crystals only - a Miner's [Gem Cutting](/docs/mechanics/master/survival-tree/#skill-gem-cutting) handles ordinary gemstones." >}}
 Level 1 enables you to place a Crystal Lathe. The cast only places the lathe or opens its recipes. The refining itself
 takes the [craft duration](/docs/mechanics/items-crafting/items/#craft-duration) of the crystal's item level.
 
@@ -376,7 +376,7 @@ item level.
 
 Equal parts kitchen and laboratory. Alchemists turn raw ingredients - mundane or mana-soaked - into tonics and reagents nobody else can make. Some carry the first bandages they ever learned to wrap as a Novice all the way into a healer's toolkit.
 
-{{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [craftsman tree](#craftsman-tree)" />}}
+{{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [craftsman tree](/docs/mechanics/master/craftsman-tree/)" />}}
 
 The Alchemist has two routes. The **Brewer** gathers herbs, brews potions and cures and throws them to whoever needs them. The **Transmuter** turns ordinary matter into rare resources.
 

@@ -116,7 +116,7 @@ A tree whose ground was dug away is gone for good, stump and all. Nothing grows 
 
 Ore must be processed into metal bars before it is usable — steel, for example, is refined from iron ore together with
 fuel inside a [Furnace](/docs/mechanics/items-crafting/item-list/#furnace). Placing a furnace and smelting at all requires a Master
-with the [Ore Refinement](/docs/mechanics/master/basics/#skill-ore-refinement) skill; every further rank raises the odds that
+with the [Ore Refinement](/docs/mechanics/master/craftsman-tree/#skill-ore-refinement) skill; every further rank raises the odds that
 a batch survives the heat.
 
 ## Ore Levels
@@ -164,13 +164,13 @@ Every smelt burns fuel alongside the ore, and a failed batch loses both.
 {{< /table >}}
 
 On top of the base chance and the fuel come the smith's
-[Ore Refinement](/docs/mechanics/master/basics/#skill-ore-refinement) rank (up to `+90%`) and their STR and WIL — see
+[Ore Refinement](/docs/mechanics/master/craftsman-tree/#skill-ore-refinement) rank (up to `+90%`) and their STR and WIL — see
 [Ore Refinement Success Chance](/docs/mechanics/items-crafting/items/#ore-refinement-success-chance) for the full formula and worked
 examples.
 
 # Item Recycling
 
-For each item there is a list of base resources which the item is roughly based upon (this list is also used when forging or creating the item). When an attempt is made to recycle the item, there is a chance that the item is destroyed and the resources are lost. The skill [Scavenger](/docs/mechanics/master/basics/#skill-scavenger) can increase the success chance.
+For each item there is a list of base resources which the item is roughly based upon (this list is also used when forging or creating the item). When an attempt is made to recycle the item, there is a chance that the item is destroyed and the resources are lost. The skill [Scavenger](/docs/mechanics/master/scholar-tree/#skill-scavenger) can increase the success chance.
 
 The base chance for item recycling is:
 

@@ -28,11 +28,11 @@ one entry for each learned skill that has something to make without a station:
 | Entry                                                                | Makes without a station           |
 | -------------------------------------------------------------------- | --------------------------------- |
 | Basics (every master)                                                | Torch, stone knife, stone hatchet |
-| [Cooking](/docs/mechanics/master/basics/#skill-cooking) Lv. 1               | [Campfire kit](#campfires)        |
-| [Carpentry](/docs/mechanics/master/basics/#skill-carpentry) Lv. 1           | Workbench kit                     |
-| [Ore Refinement](/docs/mechanics/master/basics/#skill-ore-refinement) Lv. 1 | Furnace kit                       |
-| [Forge Weapon](/docs/mechanics/master/basics/#skill-forge-weapon) Lv. 1     | Forge kit                         |
-| [Arrow Crafting](/docs/mechanics/master/basics/#skill-arrow-crafting)       | Arrows                            |
+| [Cooking](/docs/mechanics/master/novice-tree/#skill-cooking) Lv. 1               | [Campfire kit](#campfires)        |
+| [Carpentry](/docs/mechanics/master/craftsman-tree/#skill-carpentry) Lv. 1           | Workbench kit                     |
+| [Ore Refinement](/docs/mechanics/master/craftsman-tree/#skill-ore-refinement) Lv. 1 | Furnace kit                       |
+| [Forge Weapon](/docs/mechanics/master/craftsman-tree/#skill-forge-weapon) Lv. 1     | Forge kit                         |
+| [Arrow Crafting](/docs/mechanics/master/warrior-tree/#skill-arrow-crafting)       | Arrows                            |
 
 ## Kits Place Stations
 
@@ -134,7 +134,7 @@ A destroyed station drops everything it holds on the ground as loot: ingredients
 
 # Campfires
 
-The campfire is the station of [Cooking](/docs/mechanics/master/basics/#skill-cooking). Every meal needs a burning campfire
+The campfire is the station of [Cooking](/docs/mechanics/master/novice-tree/#skill-cooking). Every meal needs a burning campfire
 within about 3 m.
 
 - **Kit.** Cooking Lv. 1 shows the campfire kit in Handiwork: 4 sticks, 3 loose stones and 1 resin.
