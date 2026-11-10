@@ -27,7 +27,7 @@ one entry for each learned skill that has something to make without a station:
 
 | Entry                                                                               | Makes without a station           |
 | ----------------------------------------------------------------------------------- | --------------------------------- |
-| Basics (every master)                                                               | Torch, stone knife, stone hatchet |
+| Basics (every master)                                                               | Torch, stone knife, stone hatchet, shovel |
 | [Cooking](/docs/mechanics/master/novice-tree/#skill-cooking) Lv. 1                  | [Campfire kit](#campfires)        |
 | [Carpentry](/docs/mechanics/master/craftsman-tree/#skill-carpentry) Lv. 1           | Workbench kit                     |
 | [Ore Refinement](/docs/mechanics/master/craftsman-tree/#skill-ore-refinement) Lv. 1 | Furnace kit                       |
