@@ -250,8 +250,8 @@ stone in its middle. Crafting uses it the same way, see [Mana Circles](/docs/mec
 
 ## How a Ritual Runs
 
-1. **Lay the circle.** A master places the Mana Circle. They are its **leader**. The circle stays after the ritual, and
-   other groups can use it too.
+1. **Lay the circle.** A master places the Mana Circle. They are its **leader**. The ring is used up
+   when the ritual ends, whether it worked or failed.
 2. **Gather.** Up to **5 helpers** step into the ring and use the focus stone to join. Each player sends one helper:
    their master **or** one of their Bestias, never both. So one player cannot fill a circle alone. A helper with
    Ritual Fatigue cannot join.
@@ -350,4 +350,4 @@ level. Potency changes that in a few places:
   pipeline spends the charge on the next cast and hands its bonus to the calculator and to the skill script, which
   applies its reactions.
 - The Mana Circle is a prop with a focus stone. Using it joins or starts the ritual, and the circle runs the 30-second
-  channel of all participants.
+  channel of all participants. The prop is removed when the ritual ends.
