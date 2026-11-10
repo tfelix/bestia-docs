@@ -13,7 +13,7 @@ The **status value** (e.g. INT or STR) is the fundamental number from which all 
 
 The status value is calculated from the **base value (BV)**, the **individual value (IV)** and the **effort value (EV)**, scaled by the bestia's level (see the formula below).
 The base value is a specialized value that is static for every bestia.
-The **IVs** are determined when a bestia is caught and range from 0-100. The effort value is determined by the player and can be freely chosen when a level up happens.
+The **IVs** are rolled evenly between 0 and 100 when a bestia is caught, or inherited when it hatches. The effort value is determined by the player and can be freely chosen when a level up happens.
 
 **Status Based Values (SBV)** are values which are important for damage calculation but are just derived from status values.
 
@@ -285,7 +285,13 @@ effGainNeeded = max(1, (nextEffValue / 3))
 
 # Individual Values
 
-The individual values **IVs** are generated when the Bestia spawns, which makes them somewhat random. It's possible to find better or worse Bestia. By [breeding Bestia](/docs/mechanics/bestias/bestia#breeding) these IVs are subject to manipulation by the player and it is possible to make stronger Bestia in a controlled way. A bestia master always has IVs of 50 for every stat.
+The individual values **IVs** are rolled when a Bestia is caught, evenly between 0 and 100, so it is possible to find
+better or worse Bestia. By [breeding Bestia](/docs/mechanics/bestias/bestia/#breeding) these IVs are subject to
+manipulation by the player and it is possible to make stronger Bestia in a controlled way. A bestia master always has
+IVs of 50 for every stat.
+
+An IV adds `IV * level / 100` to its value: to one of the six status values, or to the HP, Mana or Stamina pool. A
+perfect IV is worth `+100` at Lv. 100 and nearly nothing at Lv. 1.
 
 # Base Values
 

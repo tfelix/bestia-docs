@@ -66,7 +66,7 @@ The ledger's plain reading surface. Everything on it has an age.
 | Auction listings and when they expire     | A 1, 2 or 5 day listing that finds no buyer is posted back to you     |
 | Owner fees piling up in your trade post   | An unattended marketplace does not bank its own profits               |
 | The craft queue                           | `1.2 * itemLevel²` seconds — over three hours for a Legendary piece   |
-| Breeder and egg timers                    | `25 * (lv1 * lv2)^1.3` seconds to breed, then up to two days to hatch |
+| Breeding Farm and Incubator timers        | `25 * (lv1 * lv2)^1.3` seconds to breed, then up to two days to hatch |
 | Mana Harvester progress                   | Crystals grow out of ambient mana whether anybody is watching or not  |
 
 {{< /table >}}
@@ -219,8 +219,8 @@ you set that going from the app:
   otherwise return to the world reserve.
 - **Work a deposit.** Send a Bestia to gather from a resource node you have already charted.
 - **Change order of your Bestia.** You can send them to different locations or switch their orders e.g. stop working in the mine and deliver goods instead.
-- **Breed.** Pair two Bestia in a [breeder](/docs/mechanics/bestias/bestia/#breeding), prime it with up to three
-  scrolls, and collect the egg when it hatches.
+- **Breed.** Pair two Bestia in a [Breeding Farm](/docs/mechanics/bestias/bestia/#breeding), feed it a Nesting
+  Bundle, and move the egg to an Incubator when it is laid.
 
 This is deliberately the slow, safe half of the game. None of it makes you stronger in a fight. It makes you
 better supplied, which is what the [crafting economy](/docs/mechanics/overview/#advanced-crafting-system)

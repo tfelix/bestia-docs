@@ -243,13 +243,16 @@ skills.
 
 {{< skill name="Bloodline Study" maxLevel="5" requires="Beastfriend Lv. 3"
     type="Passive"
-    description="Knowing a Bestia well enough to tame it is one thing. Knowing which pair of them is worth putting in a Breeder, and why the last clutch came out the way it did, is another. The Forester's capstone." >}}
+    description="Knowing a Bestia well enough to tame it is one thing. Knowing which pair of them is worth putting in a Breeding Farm, and why the last clutch came out the way it did, is another. The Forester's capstone." >}}
 
-Applies to every [Breeder](/docs/mechanics/bestias/bestia/#breeding) the master owns.
+Applies to every [Breeding Farm and Incubator](/docs/mechanics/bestias/bestia/#breeding) the master owns.
 
-The time reduction stacks with breeder upgrades, feed and buffs, and counts against the same **50% floor** - it lets a
+The time reduction stacks with planned upgrades, feed and buffs, and counts against the same **50% floor** - it lets a
 modest setup reach the cap instead of raising it. The dominant-IV column is the part that cannot be bought: at Lv. 4 a
 clutch draws a fourth dominant individual value, so a bloodline improves on four stats per generation rather than three.
+
+From Lv. 1 the master reads a Bestia's or an egg's [individual values](/docs/mechanics/bestias/bestia/#individual-values)
+as exact numbers instead of grades.
 
 | Lv. | Breeding and Hatch Time Reduction | Dominant IVs per Clutch |
 | --- | --------------------------------- | ----------------------- |
