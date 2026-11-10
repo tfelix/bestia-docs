@@ -89,8 +89,8 @@ The amount is scaled by how full the reserve is. A full reserve gives the whole 
 
 ## Relics
 
-A relic is unique named gear. It keeps the name, material and forge year the chronicle gave it, and its tooltip
-tells its story. Its stats roll like random-stat gear of a splendid cache.
+A relic is unique named gear. It keeps the name the chronicle gave it, and its tooltip names who forged it and
+in which town. Its stats roll like random-stat gear of a splendid cache.
 
 | Relic kind | Slot        |
 | ---------- | ----------- |
