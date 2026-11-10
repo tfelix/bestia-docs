@@ -100,16 +100,17 @@ a spot 1 km away is off by at most 200 m.
     type="Passive"
     description="A patient hand with rod and net that pulls fish from any water worth casting into - as good on the plate as it is at the trade post." >}}
 
-Anyone with a [fishing rod](/docs/mechanics/items-crafting/items/#weapon-type) can fish, but an untrained angler only catches fish and
-loot up to level 10. Each rank raises the level of what a master can pull out of seas and lakes.
+Anyone with a [fishing rod](/docs/mechanics/items-crafting/fishing/#fishing-rods) can fish, but an untrained angler
+mostly catches fish and loot up to level 10. Each rank raises that catch level cap. Above the cap, a catch gets rarer
+the further over it is: its odds halve for every 5 levels. See [Fishing](/docs/mechanics/items-crafting/fishing/).
 
-| Lv. | Max Fish Level |
-| --- | -------------- |
-| 1   | 20             |
-| 2   | 40             |
-| 3   | 60             |
-| 4   | 80             |
-| 5   | 100+           |
+| Lv. | Catch Level Cap |
+| --- | --------------- |
+| 1   | 20              |
+| 2   | 40              |
+| 3   | 60              |
+| 4   | 80              |
+| 5   | 100             |
 
 {{< /skill >}}
 

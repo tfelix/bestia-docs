@@ -706,3 +706,111 @@
     A curved shell plate that shines like beaten gold, and weighs nearly as much.
 
     Drops from bestias.
+# Fishing: the catch table on the Fishing page.
+- id: raw_fish
+  name: Raw Fish
+  weight: 0.1
+  type: Etc
+  value: 3
+  description: |
+    A silver-scaled fish, caught this morning.
+
+    Worthless by tomorrow.
+- id: perch
+  name: Perch
+  weight: 0.2
+  type: Etc
+  value: 5
+  description: |
+    A striped little fish with a spiny back. Every pond seems to have one more.
+- id: bream
+  name: Bream
+  weight: 0.4
+  type: Etc
+  value: 8
+  description: |
+    A flat, bronze fish that feeds along the bottom. Bony, but filling.
+- id: pike
+  name: Pike
+  weight: 1.5
+  type: Etc
+  value: 14
+  description: |
+    A long green hunter with a mouth full of teeth. Mind your fingers when you take the hook out.
+- id: eel
+  name: Eel
+  weight: 0.8
+  type: Etc
+  value: 20
+  description: |
+    A slick, snake-like fish that keeps wriggling long after it should have stopped.
+- id: salmon
+  name: Salmon
+  weight: 2
+  type: Etc
+  value: 30
+  description: |
+    A strong silver fish with pink flesh. Cooks pay well for a fresh one.
+- id: sturgeon
+  name: Sturgeon
+  weight: 6
+  type: Etc
+  value: 55
+  description: |
+    An old, armoured fish from the deep channels. Some say they live a hundred years.
+- id: swordfish
+  name: Swordfish
+  weight: 12
+  type: Etc
+  value: 90
+  description: |
+    A fast fish with a long, flat bill. It fights the line like a duelist.
+- id: moonscale
+  name: Moonscale
+  weight: 3
+  type: Etc
+  value: 160
+  description: |
+    Its pale scales glow faintly at night. Alchemists grind them for their brews.
+- id: deepmaw
+  name: Deepmaw
+  weight: 9
+  type: Etc
+  value: 280
+  description: |
+    A dark fish that is mostly mouth. It rarely leaves the cold water at the bottom.
+- id: abyssal_lanternfish
+  name: Abyssal Lanternfish
+  weight: 4
+  type: Etc
+  value: 500
+  description: |
+    A fish with a little light hanging over its head. Nobody knows how deep it lives.
+- id: old_boot
+  name: Old Boot
+  weight: 0.6
+  type: Etc
+  value: 1
+  description: |
+    Soaked, rotten and missing its partner. Every angler catches one sooner or later.
+- id: driftwood
+  name: Driftwood
+  weight: 0.5
+  type: Etc
+  value: 1
+  description: |
+    A grey piece of wood, washed smooth by the water. It burns well once it dries.
+- id: tangled_net
+  name: Tangled Net
+  weight: 0.7
+  type: Etc
+  value: 2
+  description: |
+    Somebody else's net, knotted beyond use. The cord can still be picked apart.
+- id: sealed_bottle
+  name: Sealed Bottle
+  weight: 0.3
+  type: Etc
+  value: 150
+  description: |
+    A bottle with a wax seal and a rolled paper inside. Collectors pay well for one unopened.
