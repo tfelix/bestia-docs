@@ -368,9 +368,9 @@ camp while it stands.
     type="Active" manaCost="15" castTime="2s" cooldown="30s" range="per Lv." target="Self"
     description="A Prospector's nose for what someone buried and never came back for." >}}
 
-Senses treasure caches nearby. The world generator hides caches at ruins, old camps and cliff faces.
-
-{{< alert context="warning" text="The world generator does not place treasure caches yet." />}}
+Senses [treasure caches](/docs/mechanics/world/treasure-caches/) nearby. For 60 s you see a faint shimmer on the
+ground above each cache in range. A chat line says how many there are and the direction and distance to the nearest.
+Caches already dug up are not sensed.
 
 | Lv. | Radius | Also Reveals            |
 | --- | ------ | ----------------------- |
@@ -402,23 +402,29 @@ useful as the world generator digs more caves.
 {{< /skill >}}
 
 {{< skill name="Treasure Map" maxLevel="3" requires="Treasure Sense Lv. 3 and Cartography Lv. 1"
-    type="Active" manaCost="20" castTime="5s" cooldown="0s" range="2" target="Ground"
+    type="Active" manaCost="20" castTime="5s" cooldown="0s" range="0" target="Self"
     description="Not every Prospector wants to dig. Some would rather sell the map." >}}
 
-Charts a sensed treasure cache onto a sheet of empty paper. The map is an item that can be traded or sold, so whoever
-holds it can dig the cache up.
+Charts the nearest treasure cache you sensed in the last 10 minutes onto a sheet of empty paper. You can cast it
+anywhere, so you do not need to walk back to the spot. The map is an item that can be traded or sold. Its holder sees
+a circle on their map, and the cache lies somewhere inside it. The circle is rolled once when the map is drawn.
 
-| Lv. | Marked Spot |
-| --- | ----------- |
-| 1   | Within 50m  |
-| 2   | Within 25m  |
-| 3   | Exact       |
+When anyone digs the cache up, the map crumbles into a crumbled treasure map.
+
+| Lv. | Circle Radius |
+| --- | ------------- |
+| 1   | 50m           |
+| 2   | 25m           |
+| 3   | Exact spot    |
 
 {{< /skill >}}
 
 {{< skill name="Excavation" maxLevel="3" requires="Treasure Sense Lv. 1"
     type="Passive"
     description="Knowing where to dig and how not to break what lies below." >}}
+
+Digs [treasure caches](/docs/mechanics/world/treasure-caches/#digging) faster, and raises the chance for the cache's
+[top item](/docs/mechanics/world/treasure-caches/#the-top-item) above its base 25%.
 
 | Lv. | Dig Time | Chance for the Best Item |
 | --- | -------- | ------------------------ |
