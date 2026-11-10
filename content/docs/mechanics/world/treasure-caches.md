@@ -33,7 +33,8 @@ A history site buries one cache with a chance by its kind:
 | Fort, monastery         | 20%    |
 
 The wild scatter covers the rest of the land. It is four times denser at the foot of cliffs and at old camps, where
-travellers would hide what they could not carry.
+travellers would hide what they could not carry. Old camps are cold fire rings beside the roads in the wild, about
+one every 4 km of road and never closer than 2.5 km to a settlement.
 
 Every cache lies between **0.5 m and 4 m** deep. Cave hoards lie under the cave floor.
 
@@ -102,13 +103,15 @@ tells its story. Its stats roll like random-stat gear of a splendid cache.
 # Digging
 
 Digging needs a tool: a **shovel** for soil, sand and gravel, a **pickaxe** for rock. Both dig at the same speed.
-Every metre dug costs the tool durability. A shovel is sold by the blacksmith next to the pickaxe and the hatchet.
+Every metre dug costs the tool durability. Every master can make a shovel from 2 sticks and 1 log with Basic Skill
+Lv. 1, like the stone hatchet.
 
 Stand next to the spot and dig. Digging is a channel: moving or taking damage stops it. The base time is
 **20 s per metre** of depth, so a cache takes 10 s to 80 s. Excavation cuts this by 20% per level.
 
 The hole is real and it stays. Each metre you dig also cuts a step toward you, so the hole is a **stepped trench**
-that anyone can walk into and out of. A cache 3 m deep leaves a trench about 4 m long with 1 m steps.
+that anyone can walk into and out of. The trench is about 4 m wide, because the ground cannot show a narrower hole.
+A cache 3 m deep leaves a trench about 4 m long with 1 m steps.
 
 Digging that stops halfway leaves the hole as deep as it got. Anyone can come back and keep digging from there.
 
@@ -118,8 +121,8 @@ to the ground.
 # Treasure Sense and Treasure Maps
 
 [Treasure Sense](/docs/mechanics/master/survival-tree/#skill-treasure-sense) finds caches nearby. For 60 s the
-caster sees a faint shimmer on the ground above each cache in range. A chat line says how many there are and where
-the nearest lies. Higher levels also tell the depth and the richness.
+caster sees a faint shimmer on the ground above each cache in range. A popup, like the one of Track Reading, says
+how many there are and where the nearest lies. Higher levels also tell the depth and the richness.
 
 A Prospector who does not want to dig can sell the spot instead.
 [Treasure Map](/docs/mechanics/master/survival-tree/#skill-treasure-map) charts the nearest cache the caster sensed

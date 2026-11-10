@@ -369,7 +369,7 @@ camp while it stands.
     description="A Prospector's nose for what someone buried and never came back for." >}}
 
 Senses [treasure caches](/docs/mechanics/world/treasure-caches/) nearby. For 60 s you see a faint shimmer on the
-ground above each cache in range. A chat line says how many there are and the direction and distance to the nearest.
+ground above each cache in range. A popup says how many there are and the direction and distance to the nearest.
 Caches already dug up are not sensed.
 
 | Lv. | Radius | Also Reveals            |
