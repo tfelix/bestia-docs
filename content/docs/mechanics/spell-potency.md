@@ -311,9 +311,8 @@ These are not designed yet, but they fit the same rule:
 
 When this concept is accepted, these pages change:
 
-- [Status Effects](/docs/mechanics/status-effects/#resist): the level term of Resist becomes `(Resolve - P) / 100`.
-  Concealment takes the hider's Potency, and Detect works within `range × Edge`. Ritual Charge and Ritual Fatigue join
-  the list.
+- [Status Effects](/docs/mechanics/status-effects/): Ritual Charge and Ritual Fatigue join the list. The list follows
+  the server, so they come with the server work.
 - [Master Skills](/docs/mechanics/master/): Dispel loses its base chance table. Suppress Aura loses its suppression
   column. [Mana Circles](/docs/mechanics/master/#mana-circles) run as a ritual with a charge, so a crafting rite and a
   spell ritual are the same thing. Bestias may now join.

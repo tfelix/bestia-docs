@@ -15,12 +15,13 @@ attributes up:
 
 ```text
 S = attribute1 + attribute2
-R = S / (S + 150) + 0.01 × (target level − source level)
+R = S / (S + 150) + (Resolve − P) / 100
 R is clamped to 0 .. 0.8
 ```
 
-The level term counts only when the target is above the source. Each level adds 1%. R then lowers both the chance and
-the duration:
+`P` is the [Potency](/docs/mechanics/spell-potency/#how-potency-is-built) of the cast. `Resolve` is the target's own
+[defence against spells](/docs/mechanics/spell-potency/#resist). A target above the cast resists more, a target below it
+resists less. R then lowers both the chance and the duration:
 
 ```text
 chance   = chance × (1 − R)
@@ -35,8 +36,8 @@ duration = duration × (1 − R / 2)
 | 300 | 67%               |
 | 600 | 80% (the cap)     |
 
-**Example.** A bestia has VIT 50 and STR 30, so S = 80 and R = 80 / 230 = 35%. It is at the same level as the
-attacker. A skill with a 30% chance to STUN for 3 s now stuns it with a 19.6% chance, for 2.5 s.
+**Example.** A bestia has VIT 50 and STR 30, so S = 80 and R = 80 / 230 = 35%. Its Resolve equals the Potency of the
+cast. A skill with a 30% chance to STUN for 3 s now stuns it with a 19.6% chance, for 2.5 s.
 
 R never reaches 1, so attributes alone never make an entity immune. IMMOBILIZED cannot be resisted at all. An effect
 without a resist pair always lands when the skill rolls it.
@@ -78,8 +79,9 @@ and for a bestia also its master. When it hides, other players see it vanish. Wh
 - **CLOAKED:** the entity moves 30% slower. Area attacks still hit it, and a hit reveals it.
 - Both drain mana. Any attack, cast or item use ends them.
 
-The skill Detect is the counter. It shows concealed masters and bestias as dots on the minimap. It does not reveal
-them in the world.
+A concealed entity carries the Potency of the one who hid it. The skill Detect is the counter. It shows concealed
+masters and bestias as dots on the minimap, but only within `range × Edge(P detect − P conceal)` of them. It does not
+reveal them in the world. See [Concealment and Detection](/docs/mechanics/spell-potency/#concealment-and-detection).
 
 # All status effects
 
