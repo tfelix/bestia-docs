@@ -2029,3 +2029,17 @@
   cooldown: 30
   description: |
     Moves unseen and slower. Any blow, an area one too, gives it away. Staying hidden costs mana.
+
+- id: suppress_aura
+  name: Suppress Aura
+  level: 45
+  mana: 20
+  archetype: utility
+  script: ApplyStatus
+  target: FRIENDLY
+  status: AURA_SUPPRESSED
+  range: 2
+  castTime: 3
+  cooldown: 30
+  description: |
+    Mutes the mana that clings to itself or a friend. For five minutes, magic that searches for hidden things, like Detect, Ruwach and Magic Sense, finds them only from close by. Eyes still see them: with Burrow or Shadow Cloak they hide from both. A sharper mind hides better, and a Dispel can strip it.
