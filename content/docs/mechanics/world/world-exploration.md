@@ -33,34 +33,41 @@ To generate the visuals of the player map, **Bestia** uses the algorithm describ
 
 # Cartography
 
-To chart an area of the map, players play out a manual mini-game rather than watching a progress bar fill. They choose
-how wide an area to survey — bigger areas are harder to chart, and the further the target area is from already-explored
-land, the harder the attempt becomes. Players may also use devices that make surveying larger areas easier.
+New ground is charted at a **theodolite**, a sighting scope on a tripod. A master places a Theodolite Kit on open
+ground like a workbench. Each theodolite belongs to the master who placed it and runs one survey at a time.
 
-A failed attempt puts that vicinity on cooldown before it can be tried again; the cooldown is shorter when the next
-attempt targets an adjacent, still-unexplored area instead.
+1. Stand next to your own idle theodolite and use [Cartography](/docs/mechanics/master/survival-tree/#skill-cartography).
+   Pick how wide to survey. Each try spends one Empty Paper and one Ink.
+2. A needle game opens. The needle swings across a half circle, and you stop it inside a green arc, once in each of
+   three rounds. A miss in any round fails the survey; the paper and ink are gone, and you may try again at once.
+3. A won game starts **10 minutes of work** at the theodolite. The work only goes on while you, or one of your own
+   bestias, stand at it. Leave a bestia there and walk away if you like.
+4. When the work is done, use the theodolite to collect the chart: a disc of the chosen size around the theodolite.
 
-There are three difficulty tiers, describing both the range of the survey and its base difficulty:
+There are three sizes. Each one has a base difficulty and needs a Cartography level:
 
 {{< table >}}
 
-| Range | Difficulty |
-| ----- | ---------- |
-| 1km   | 30         |
-| 3km   | 50         |
-| 5km   | 80         |
+| Range | Difficulty | Cartography |
+| ----- | ---------- | ----------- |
+| 1km   | 30         | Lv. 1       |
+| 3km   | 50         | Lv. 3       |
+| 5km   | 80         | Lv. 5       |
 
 {{< /table >}}
 
-The following applies:
+The difficulty `d` then changes:
 
-- For every km from already-explored land, difficulty increases by `10`.
-- For every 1% of [mana concentration](/docs/mechanics/world/environment/#mana-concentration) in the area, difficulty increases by `0.5`.
+- For every km from land you have already charted, difficulty increases by `10`.
+- For every 1% of [mana concentration](/docs/mechanics/world/environment/#mana-concentration) at the theodolite,
+  difficulty increases by `0.5`.
 - Every level of [Cartography](/docs/mechanics/master/survival-tree/#skill-cartography) reduces difficulty by `10`.
 
-1. Using the skill determines a difficulty `d`, based on the distance to the nearest already-charted area and the size of the area being surveyed.
-2. Between 3 and 5 locations `l` spawn around the player, at a distance of 300 to 800 meters depending on `d`. Each must be reached within a time limit `t`.
-3. Getting within 5m of one of these locations brings up a moving compass minigame: the needle's speed and the size of the window that must be hit are both calculated from `d`.
+`d` sets the needle game. At `d = 0` the needle takes 2.4 s for a full swing and the arc is 40° wide. At `d = 120`
+and above it takes 0.7 s and the arc is 6° wide. Values in between scale evenly.
+
+The [companion app](/docs/mechanics/companion-app/#charting-from-the-app) can start a survey at your theodolites
+and play the needle game too.
 
 # Explored World Map
 

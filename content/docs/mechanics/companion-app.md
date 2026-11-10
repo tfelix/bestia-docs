@@ -139,7 +139,7 @@ A spirit can carry mana. It cannot carry matter. That one line decides the whole
 
 | While ranging you can                                                                  | Using                                                                                                       |
 | -------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| Chart unexplored ground                                                                | [Cartography](/docs/mechanics/master/survival-tree/#skill-cartography), as below                                          |
+| Chart unexplored ground                                                                | [Cartography](/docs/mechanics/master/survival-tree/#skill-cartography) at your own theodolite, as below                   |
 | Sense deposits nearby                                                                  | [Resource Sense](/docs/mechanics/master/survival-tree/#skill-resource-sense), whose 1–5 km reach is 0.3–1.7 km of walking |
 | Feel a rift or a doomsday brewing                                                      | [Observation](/docs/mechanics/master/scholar-tree/#skill-observation)                                                    |
 | Raise, lower or steady [mana density](/docs/mechanics/world/environment/#mana-concentration) | Your Order's rites, and mana carried as mana                                                                |
@@ -159,15 +159,15 @@ A spirit can carry mana. It cannot carry matter. That one line decides the whole
 
 Ranging is reconnaissance and mana work. It is never transport, and never a shortcut across the map.
 
-## Charting on Foot
+## Charting from the App
 
-[Charting an area](/docs/mechanics/world/world-exploration/#cartography) is already a walking minigame. Three to
-five points spawn 300 to 800 metres away, each has to be reached, and each ends in a moving-compass check.
-At `3×` that is 100 to 270 metres of real walking per point.
+A [survey](/docs/mechanics/world/world-exploration/#cartography) is played at a theodolite you placed in the world,
+and the app can play it there. It lists your theodolites, and for an idle one you pick the survey size and play the
+same needle game as in the game. The size limits and the difficulty are the same.
 
-None of it needs redesigning. The minigame was written for a player with legs, and the app simply supplies
-the legs. The difficulty tiers carry over, and so do the `10` per km from explored land, the `0.5` per
-percent of mana concentration, the `10` per level of Cartography, and the vicinity cooldown after a failure.
+The try spends one Empty Paper and one Ink from your master's bag, as in the game. It costs no mana, because the
+master may not be in the world at all. A won game starts the 10 minutes of work, which still needs you or one of
+your bestias standing at the theodolite. The chart is collected in the game.
 
 Ground charted this way is the same ground, on the same
 [collective map](/docs/mechanics/world/world-exploration/#explored-world-map), as anything charted at a keyboard.
@@ -339,8 +339,8 @@ The charthouse is that promise, in your pocket:
 
 - Your own charted ground, drawn over the collective map of everything the server's players have explored
   between them.
-- Somewhere to plan a route, mark what you want to look at next, and queue a survey target for when you log
-  in — or go and chart it on foot, by [ranging](#ranging).
+- Somewhere to plan a route, mark what you want to look at next, and start a survey at one of your
+  theodolites, [from the app](#charting-from-the-app).
 - Chart fragments traded with other players. Maps are items, [Cartography](/docs/mechanics/master/survival-tree/#skill-cartography)
   merges them and the post moves them — so the trade happens in the world, and the app only arranges it.
 
