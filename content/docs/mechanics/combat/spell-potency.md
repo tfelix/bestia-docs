@@ -175,16 +175,19 @@ resistance. [Immunities](/docs/mechanics/combat/status-effects/#immunities) stay
 
 ## Concealment and Detection
 
-HIDDEN, CLOAKED and [Suppress Aura](/docs/mechanics/master/basics/#skill-suppress-aura) take the Potency of the one who hid.
-A detecting skill finds a concealed target only within part of its range:
+HIDDEN, CLOAKED and [Suppress Aura](/docs/mechanics/combat/attack-list/#suppress-aura) take the Potency of the one who
+hid. A detecting skill finds a concealed target only within part of its range:
 
 ```text
 range against this target = range × Edge(P detect - P conceal)
 ```
 
-A level 80 Scholar with Magic Sense Lv. 5 (`50 m`, `P 70`) finds a dabbler's Suppress Aura (`P 33`) at the full 50 m.
-Against a level 100 Wizard's aura (`P 80`) the range shrinks to 15 m. The hider is not invisible, but the seeker must
-come close. Suppress Aura's own column "Mana Suppression" goes away: its rank now works through Potency.
+HIDDEN and CLOAKED hide from eyes, Suppress Aura from magic only. Together they hide from both. Suppress Aura is a
+Bestia attack, so its Potency is the Bestia's, like for every Bestia attack.
+
+A level 80 Scholar with Magic Sense Lv. 5 (`50 m`, `P 70`) finds the aura of a young Bestia (`P 38`) at the full 50 m.
+Against an old Bestia with a sharp mind (`P 66`) the range shrinks to 29 m. The hider is not invisible, but the seeker
+must come close.
 
 ## Counter-Magic
 
@@ -292,12 +295,12 @@ the Ritual Fatigue of the circle, so a group tries once per rest. The full circl
 Any skill can take a charge: a Dispel, a Fire Bolt, a Heal, a Teleport, a crafting skill. Each skill reacts in one or
 more of four ways:
 
-| Reaction      | Skills                                            | What the charge does                                                          |
-| ------------- | ------------------------------------------------- | ----------------------------------------------------------------------------- |
-| Contest       | Dispel, debuffs, Detect, Suppress Aura, Magic Rod | The higher Potency enters [Edge](#edge-one-curve-for-every-contest) or Resist |
-| Against world | Teleport, Warp Portal, Scry                       | The higher Potency enters Edge against the Disturbance                        |
-| Success roll  | Forging, Spell Inscription, Transmutation, ...    | `+5% × participants × ManaFactor`, the Mana Circle bonus of today             |
-| Surge         | Damage, healing, shields, buff duration           | `+1%` for every `4` points of bonus, at most `+25%`                           |
+| Reaction      | Skills                                         | What the charge does                                                          |
+| ------------- | ---------------------------------------------- | ----------------------------------------------------------------------------- |
+| Contest       | Dispel, debuffs, Detect, Magic Rod             | The higher Potency enters [Edge](#edge-one-curve-for-every-contest) or Resist |
+| Against world | Teleport, Warp Portal, Scry                    | The higher Potency enters Edge against the Disturbance                        |
+| Success roll  | Forging, Spell Inscription, Transmutation, ... | `+5% × participants × ManaFactor`, the Mana Circle bonus of today             |
+| Surge         | Damage, healing, shields, buff duration        | `+1%` for every `4` points of bonus, at most `+25%`                           |
 
 A skill that has a contest and also deals damage, like a Stone Curse or a Fire Bolt with a burn, gets both. Surge is
 small on purpose. Six players who channel for 30 seconds and rest for 5 minutes get one Meteor Storm that hits a quarter
@@ -314,7 +317,6 @@ says so before the leader wastes a ritual on it.
 - **Long or stormy jumps.** A charged Teleport or Warp Portal lands where it should, even through a mana storm.
 - **Lasting work.** A charged Spell Binding makes a trap or alarm that only another charged skill can find or lift. A
   settlement can guard its gate with it.
-- **Hiding something big.** A charged Suppress Aura on a camp or a stash is out of reach of any single seeker.
 - **The opening blow.** A charged curse on a strong foe cuts through its resist, and a charged spell hits a little
   harder. The group pays with five minutes of rest.
 - **Crafting.** A smith forging a masterpiece takes a charge into the next forge roll, as the Mana Circle does today.
@@ -334,9 +336,8 @@ When this concept is accepted, these pages change:
 
 - [Status Effects](/docs/mechanics/combat/status-effects/): Ritual Charge and Ritual Fatigue join the list. The list follows
   the server, so they come with the server work.
-- [Master Skills](/docs/mechanics/master/basics/): Suppress Aura loses its suppression
-  column. [Mana Circles](/docs/mechanics/master/basics/#mana-circles) run as a ritual with a charge, so a crafting rite and a
-  spell ritual are the same thing. Bestias may now join.
+- [Master Skills](/docs/mechanics/master/basics/): [Mana Circles](/docs/mechanics/master/basics/#mana-circles) run as a
+  ritual with a charge, so a crafting rite and a spell ritual are the same thing. Bestias may now join.
 
 # Server Notes
 
