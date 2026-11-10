@@ -437,7 +437,7 @@
   value: 1500
   description: |
     A coil of mana concentrate poured into a ring on the ground, with a focus stone in its middle. A group holds a ritual
-    inside it, and the leader's next skill takes the charge. The ring stays on the ground for other groups to use. See
+    inside it, and the leader's next skill takes the charge. The ring is used up when the ritual ends. See
     [Mana Circles](/docs/mechanics/master/basics/#mana-circles).
 - id: gem_cut_station
   name: Gem Cut Station
