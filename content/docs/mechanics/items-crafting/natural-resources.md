@@ -77,8 +77,12 @@ The **Type** column reuses the base resource types listed above, plus the refine
 | Charcoal            | Mineral | Wood burned down into fuel. Cheaper than coal, but never gets a furnace as hot.             |
 | Salt                | Mineral | Common mineral salt. Used for food preservation and various crafting recipes.               |
 | Clay                | Mineral | Smooth, earthy clay dug from riverbanks. Shaped into bricks, pottery and magical seals.     |
-| Medicinal Herb      | Herb    | A common healing herb gathered in the wild. A base ingredient for many potions.             |
+| Wild Herb           | Herb    | The everyday herb of open ground. Anyone can pick it.                                       |
+| Medicinal Herb      | Herb    | A healing herb of the forest floor. A base ingredient for many potions.                     |
 | Mana Herb           | Herb    | A mana-touched herb found in high-mana regions. Used in more potent alchemical brews.       |
+| Frost Herb          | Herb    | A tough herb of tundra, taiga and the high mountains.                                       |
+| Sun Herb            | Herb    | A sun-dried herb of the desert and the badlands.                                            |
+| Ghost Herb          | Herb    | A pale herb that only grows on blighted ground.                                             |
 | Wood                | Wood    | Standard building material.                                                                 |
 | Resin               | Wood    | Sticky and burnable. Lights torches and campfires.                                          |
 | Stone               | Stone   | Standard building material.                                                                 |
@@ -88,6 +92,28 @@ The **Type** column reuses the base resource types listed above, plus the refine
 {{< /table >}}
 
 In Bestia, Mana is considered a resource. It permeates the land, and there are regions with different concentration levels. As higher mana levels usually mean more unstable biomes, it is up to the player to "harvest" mana and specialize in the extraction of this resource. The raw material is a mana-bearing powder (the Mana Essences listed above); when fed into a Mana Harvester it slowly grows into a mana crystal as the device draws mana from the surrounding environment. Mana crystals can also be found directly in the world, for example while mining. These crystals have various powerful magical usages.
+
+## Herbs
+
+Herbs grow all over the world as small plants you can pick. Most of them are wild herbs. Where the land is special,
+part of the herbs there are a rarer kind:
+
+{{< table >}}
+
+| Herb           | Item Level | Grows                                    | Share of the herbs there |
+| -------------- | ---------- | ---------------------------------------- | ------------------------ |
+| Wild Herb      | 1          | Everywhere                               | The rest                 |
+| Medicinal Herb | 20         | Forest floors                            | 25%                      |
+| Mana Herb      | 40         | Where the mana concentration is over 60% | 30%                      |
+| Frost Herb     | 60         | Tundra, taiga, cold desert, alpine       | 35%                      |
+| Sun Herb       | 80         | Desert and badlands                      | 50%                      |
+| Ghost Herb     | 100        | Blighted ground                          | 30%                      |
+
+{{< /table >}}
+
+Where two of these meet, the rarer herb wins: a blighted forest grows ghost herbs, not medicinal herbs. A picked herb
+grows back after 10 minutes. [Herbalism](/docs/mechanics/master/craftsman-tree/#skill-herbalism) decides which herbs
+you can pick. Without it you can only pick herbs up to level 10, which is the wild herb.
 
 ## Felling Trees
 

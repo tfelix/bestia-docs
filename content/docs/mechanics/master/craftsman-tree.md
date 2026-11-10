@@ -408,7 +408,10 @@ graph TD
 | 5   | 100+           |
 
 The herb level is the herb's [item level](/docs/mechanics/items-crafting/items/#item-level). A herb above your max level cannot be
-gathered.
+gathered. Without Herbalism the max level is 10, so only the wild herb can be picked. See
+[Herbs](/docs/mechanics/items-crafting/natural-resources/#herbs) for where each herb grows.
+
+The skill is the master's. A bestia picks herbs with its master's Herbalism level.
 
 {{< /skill >}}
 
