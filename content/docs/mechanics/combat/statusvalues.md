@@ -290,8 +290,8 @@ better or worse Bestia. By [breeding Bestia](/docs/mechanics/bestias/bestia/#bre
 manipulation by the player and it is possible to make stronger Bestia in a controlled way. A bestia master always has
 IVs of 50 for every stat.
 
-An IV adds `IV * level / 100` to its value: to one of the six status values, or to the HP, Mana or Stamina pool. A
-perfect IV is worth `+100` at Lv. 100 and nearly nothing at Lv. 1.
+An IV adds `IV * level / 100` to one of the six status values, so a perfect IV is worth `+100` at Lv. 100 and nearly
+nothing at Lv. 1. The HP, Mana and Stamina IVs enter the pool formulas above as `ivHp`, `ivMana` and `ivSta`.
 
 # Base Values
 
