@@ -240,7 +240,7 @@ Costs stamina instead of mana. Ends early when the master attacks or casts a ski
     type="Active" castTime="Instant" cooldown="None"
     description="The Master and his Bestia can learn recipes and start to cook meals on fire places. Food helps a Bestia to keep its health and stamina up and usually apply buff effects when they are eaten." >}}
 
-Requires a cooking place. Lv 1 allows you to place a campfire which counts as cooking place.
+Needs a burning [campfire](/docs/mechanics/crafting-stations/#campfires) within about 3 m. Lv. 1 unlocks the campfire kit.
 
 The three ranks only govern how well the Master handles a cooking place. What a Master can actually cook grows through
 **recipes**, discovered the same way a Craftsman discovers a blueprint - by experimenting with ingredients. A Lv. 1 cook
@@ -274,7 +274,7 @@ The workbenches, forges and cauldrons of the tradesfolk turn raw ambition into t
 
 Crafting always runs in two phases: a Craftsman first **discovers a blueprint** by experimenting with raw materials, then **produces** that item from it as often as they like. The skills below govern how reliably a Craftsman discovers, produces and refines within their trade — see [Item Crafting](/docs/mechanics/items/#item-crafting) for the full system.
 
-{{< alert context="info" text="Some skills require a prop to interact with e.g. a cooking station and Lv. 1 of this skill allows you to place such a prop by using the item representation of it from within your inventory. If you have at least one level in such a skill you will be able to cast this spell on you and craft such a prop item (if you have the resources for it) for yourself." />}}
+{{< alert context="info" text="A skill that works at a station unlocks the kit for that station at Lv. 1. The kit is crafted in Handiwork and placed from the bag, see [Crafting Stations](/docs/mechanics/crafting-stations/#kits-place-stations)." />}}
 
 ```mermaid
 graph TD
