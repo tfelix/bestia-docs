@@ -323,10 +323,10 @@ parcel. Give an enchanted sword to a friend, and the enchantment goes with it.
   new endow replaces the old one.
 - **It has a strength.** The strength makes it harder to [dispel](#dispelling-an-enchantment).
 
-| Enchantment                                     | Bound by                                                            | What it does                                                                 | Lasts           | Dispellable                       |
-| ----------------------------------------------- | ------------------------------------------------------------------- | ---------------------------------------------------------------------------- | --------------- | --------------------------------- |
-| Endow Fire, Ice, Wind, Earth                    | The Sage's [Endow](/docs/mechanics/master/basics/#skill-endow-fire) skills | The weapon strikes with the element while somebody wields it                 | 60 to 180 s     | Only on the ground                |
-| [Postal Seal](/docs/mechanics/towns-trade/postal/#the-seal) | The post office                                                     | The parcel cannot be opened. When it falls to the ground, it sends itself on | Until delivered | Only on the ground, strength `70` |
+| Enchantment                                                 | Bound by                                                                   | What it does                                                                 | Lasts           | Dispellable                        |
+| ----------------------------------------------------------- | -------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | --------------- | ---------------------------------- |
+| Endow Fire, Ice, Wind, Earth                                | The Sage's [Endow](/docs/mechanics/master/basics/#skill-endow-fire) skills | The weapon strikes with the element while somebody wields it                 | 60 to 180 s     | Only on the ground                 |
+| [Postal Seal](/docs/mechanics/towns-trade/postal/#the-seal) | The post office                                                            | The parcel cannot be opened. When it falls to the ground, it sends itself on | Until delivered | Only on the ground, strength `350` |
 
 **Endow binds to the weapon.** A master's endow sits on the weapon in their hand, not on the master. Putting the
 weapon away keeps the element on the weapon, and drawing another weapon does not carry it over. A creature that
@@ -342,16 +342,17 @@ at an altar are enchantments without an end time. They cannot be dispelled.
 the ground. Cast at a creature, it lifts the creature's status effects and leaves every item alone, worn or carried.
 Otherwise one Dispel would strip a fighter's whole gear, and that would make it too strong.
 
-Against an enchantment, the target's SMDEF does not count. The strength does:
+Against an enchantment, the target's SMDEF does not count. The strength does. It is the
+[Potency](/docs/mechanics/combat/spell-potency/#enchantments-and-seals) of whoever bound the enchantment:
 
 ```text
-chance = Dispel base chance - strength
+chance = Dispel base chance × min(1, P dispel / strength)
 ```
 
-A Dispel Lv. 5 (`100%`) against a Postal Seal (`70`) succeeds `30%` of the time. Dispel Lv. 2 (`70%`) and below never
-break it.
-A dropped endowed weapon has strength `0`, so its endow falls at once. An endow on a Bestia's body is a status effect,
-so Dispel lifts it like any buff.
+A Dispel Lv. 5 (`100%`, `P 80`) against a Postal Seal (`350`) succeeds `23%` of the time. A Dispel Lv. 2 (`70%`,
+`P 33`) succeeds `7%` of the time. No enchantment is out of reach, but a strong one is a long shot.
+A dropped endowed weapon keeps the Potency of the one who endowed it as its strength, so a master's endow is hard to
+lift and a dabbler's falls easily. An endow on a Bestia's body is a status effect, so Dispel lifts it like any buff.
 
 # Damaging of Items
 

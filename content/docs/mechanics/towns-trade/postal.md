@@ -206,14 +206,16 @@ and whoever holds it is now its courier, with the same deadline and the full pay
 ## Breaking a Seal
 
 The other way to use those 30 seconds is to rob the sack. A sealed sack on the ground can be hit with
-[Dispel](/docs/mechanics/master/scholar-tree/#skill-dispel). The seal has strength `70`:
+[Dispel](/docs/mechanics/master/scholar-tree/#skill-dispel). The seal has a Potency of `350`, and Dispel's chance falls
+with the Potency of its target, see [Spell Potency](/docs/mechanics/combat/spell-potency/#dispel):
 
 ```text
-chance = Dispel base chance - 70
+chance = Dispel base chance × min(1, P dispel / 350)
 ```
 
-Only a Sage with Dispel Lv. 5 has a real chance, `30%` per try. Dispel's cooldown is 15 seconds, so one Sage gets two
-tries, about `51%` together. A gang with several Sages gets more.
+Only a strong Sage has a real chance. A Master Sage with Dispel Lv. 5 (`P 80`) has `23%` per try, a dabbler `7%`.
+Dispel's cooldown is 15 seconds, so one Sage gets two tries, about `40%` together. A gang with several Sages gets more.
+A gang that charges a [ritual](/docs/mechanics/combat/spell-potency/#rituals) first reaches `43%` on its first try.
 
 When a seal breaks, the sack opens and its parcels spill onto the ground. Taking them counts as
 [stealing](/docs/mechanics/society/pvp/#negative-honor) for every item, with the honor loss of its item level. The senders get a

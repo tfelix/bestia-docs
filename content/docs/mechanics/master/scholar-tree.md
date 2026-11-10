@@ -605,7 +605,7 @@ The Sage sees the chosen spot for 20s. Only [charted](/docs/mechanics/master/sur
     type="Active" manaCost="40" castTime="2s" cooldown="15s" range="9" target="Any"
     description="Unravels every magical effect clinging to a target in a single word, undoing buffs and curses alike." >}}
 
-Success chance is based on skill level and the target's SMDEF, with a base chance of `(50 + 10 * SkillLv)%`. Requires 1 [Yellow Mana Crystal](/docs/mechanics/items-crafting/item-list/#yellow-mana-crystal) per cast.
+Success chance starts at a base chance of `(50 + 10 * SkillLv)%`. A target with a higher Potency than the Dispel lowers it, see [Dispel](/docs/mechanics/combat/spell-potency/#dispel). Requires 1 [Yellow Mana Crystal](/docs/mechanics/items-crafting/item-list/#yellow-mana-crystal) per cast.
 
 {{< alert context="info" text="To do: decide whether Dispel is how a [ward stone](/docs/mechanics/society/pvp/#protected-zones) can be countered. The honor table already lists dispelling one." />}}
 
