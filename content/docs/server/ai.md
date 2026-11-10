@@ -193,8 +193,8 @@ of a goal _is_ the temperament — a creature cannot want what its profile does 
 
 # Player-owned creatures
 
-A player's own bestia carries a standing order alongside its archetype: an idle stance plus two
-clamped knobs. A stance **narrows** the archetype's goals and never widens them — it can switch off
+A player's own bestia carries a standing order alongside its archetype: an idle stance plus one
+clamped knob, its aggression. A stance **narrows** the archetype's goals and never widens them — it can switch off
 foraging, but it cannot teach a creature to hunt if its species never could. Player-controlled
 entities are skipped by the think system entirely.
 
@@ -205,6 +205,27 @@ patrolling bestia patrols where the player left it.
 
 **Hostility** is still not factions. Masters are everyone's enemy, and wild creatures also see owned bestias
 as enemies, so a bestia out on its own is found. Owned bestias do not hunt each other.
+
+## Orders (planned)
+
+[Bestia Orders]({{< ref "mechanics/bestias/bestia-orders" >}}) replace the stance with an **order sheet**: a main job,
+a fallback job, places, a courage step, care lines and up to eight rules. The sheet lives on the player bestia row and
+compiles into the agent the same way a stance does today:
+
+- **A job is a fixed goal set**, like a stance. It is intersected with the species' goals, so it still only narrows.
+  New bestia-domain goals carry the jobs: `GuardArea`, `Gather`, `HaulToChest`, `WorkStation`, `TendFire`, `Mine`,
+  `FollowMaster`. Care and Courage add `EatFromSupplies`, `Retreat` and `TakeShelter` to every job.
+- **Places and numbers are blackboard facts**, written when the agent is built, like profile numbers. Goals read the
+  area, the chest and the care lines from memory instead of from the profile.
+- **The fallback job** is a second goal set at a lower base priority. Its goals only become available when the main
+  job's goals are satisfied or unavailable.
+- **Rules re-weight, they never add.** Each rule maps to a clamped bonus on the base priority of a goal that is already
+  in the set, under a condition read from memory. The priority formulas stay in Kotlin.
+- **Guards widen hostility inside their area only.** For a guard, wild aggressive creatures inside the area count as
+  enemies too. Masters and their bestias count only where the damage rules allow a hit, never in a ward's field.
+
+The townsfolk domain is the closest model: its work shift, restocking and shelter goals solve the same problems for
+town inhabitants.
 
 An NPC travels far with the `TravelTo` leaf. It starts the same journey a player orders and renews its lease
 each time it is ticked; a plan that moves on lets the lease lapse.
