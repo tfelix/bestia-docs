@@ -125,7 +125,7 @@ Everything a player owns inside the field is warded: the master, their bestias a
 
 The ward on a player cannot be dispelled. The only way to end the protection is to deal with the stone itself, which takes a very strong player. The stone's own spell shields it, so nothing can harm the stone while its magic holds. Only once that magic is countered can the stone be attacked. A destroyed stone is gone for the rest of the world incarnation, and so is its Protected Zone.
 
-{{< alert context="warning" text="How a ward stone's magic is countered is not designed yet." />}}
+The stone's magic is countered with a **Dispel** cast at the stone. Its [Potency](/docs/mechanics/combat/spell-potency/#fixed-potency) is `3000`, so a Dispel gets its base chance times `P ÷ 3000`. A Master Sage alone has `2.7%` per try. The best a group can do is a [ritual](/docs/mechanics/combat/spell-potency/#rituals) that lifts the leader's Dispel to the cap of `150`, which gives `5%`. After every Dispel, hit or miss, the ward settles for 5 minutes and ignores the next one, so even many groups cannot stack tries. A full circle needs about 20 tries, nearly two hours. Every try already counts as an offence, see [Negative Honor](#negative-honor).
 
 Honor still applies inside the field. Killing an NPC there is only possible once the ward stone's magic is countered. It then costs a flat 10 honor (no level-based reduction), even if no observer is in sight. All honor loss inside a Protected Zone is doubled, so such a kill costs **20 honor** in total. Honor-increasing actions are multiplied by 1.5.
 

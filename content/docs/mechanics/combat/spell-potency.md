@@ -222,11 +222,11 @@ uses it for where its far end opens.
 Spells that no player cast have a fixed Potency. Against a Dispel, a fixed Potency is just the wanted chance turned
 around: `P target = P dispel ÷ chance`. So it can be far above what one caster reaches.
 
-| Spell                                                           | P   | Why                                                                  |
-| --------------------------------------------------------------- | --- | -------------------------------------------------------------------- |
-| [Postal Seal](/docs/mechanics/towns-trade/postal/#the-seal)     | 350 | A strong solo Sage breaks it about once in four tries (`23%`).       |
-| [Ward stone](/docs/mechanics/society/pvp/#protected-zones) aura | 174 | 24 above the [ritual cap](#the-charge), so the best circle has `2%`. |
-| Permanent enchantments of the Artificer                         | -   | They cannot be dispelled at all.                                     |
+| Spell                                                           | P    | Why                                                                         |
+| --------------------------------------------------------------- | ---- | --------------------------------------------------------------------------- |
+| [Postal Seal](/docs/mechanics/towns-trade/postal/#the-seal)     | 350  | A strong solo Sage breaks it about once in four tries (`23%`).              |
+| [Ward stone](/docs/mechanics/society/pvp/#protected-zones) aura | 3000 | The best circle, at the [ritual cap](#the-charge) of 150, has `5%` per try. |
+| Permanent enchantments of the Artificer                         | -    | They cannot be dispelled at all.                                            |
 
 # Refresh
 
@@ -283,9 +283,9 @@ known chance and stops ever stronger circles from turning them into a routine.
 | Five helpers of level 60                                | 50    | 130           |
 | Five helpers of level 100                               | 80    | **150** (cap) |
 
-Against a ward stone (`P 174`) the full circle of level 100 helpers has `2%` per try. With a 5-minute rest between
-tries, one circle needs four to five hours on average, and the village has all that time to drive it away. A circle of
-level 60 helpers has no chance at all.
+Against a ward stone (`P 3000`) the full circle of level 100 helpers has `5%` per try. A circle of level 60 helpers
+(`P 130`) has `4%`, and a lone Master Sage (`P 80`) `2.7%`. The ward settles for 5 minutes after every Dispel, as long as
+the Ritual Fatigue of the circle, so a group tries once per rest. The full circle needs about 20 tries, nearly two hours.
 
 ## How Every Skill Reacts to a Charge
 
@@ -308,9 +308,9 @@ says so before the leader wastes a ritual on it.
 
 ## What Rituals Are For
 
-- **Countering a ward stone.** A Dispel with a charge is the counter-magic the
-  [Protected Zones](/docs/mechanics/society/pvp/#protected-zones) wait for. It takes a full circle of strong players, many
-  tries and a village that does not drive them away.
+- **Countering a ward stone.** A Dispel with a charge is the counter-magic of the
+  [Protected Zones](/docs/mechanics/society/pvp/#protected-zones). A full circle roughly doubles the chance of a lone
+  Sage, and the stone allows one try every five minutes.
 - **Long or stormy jumps.** A charged Teleport or Warp Portal lands where it should, even through a mana storm.
 - **Lasting work.** A charged Spell Binding makes a trap or alarm that only another charged skill can find or lift. A
   settlement can guard its gate with it.
@@ -337,7 +337,6 @@ When this concept is accepted, these pages change:
 - [Master Skills](/docs/mechanics/master/basics/): Suppress Aura loses its suppression
   column. [Mana Circles](/docs/mechanics/master/basics/#mana-circles) run as a ritual with a charge, so a crafting rite and a
   spell ritual are the same thing. Bestias may now join.
-- [PvP](/docs/mechanics/society/pvp/#protected-zones): the ward stone gets `P 174` and the charged Dispel as its counter.
 
 # Server Notes
 
