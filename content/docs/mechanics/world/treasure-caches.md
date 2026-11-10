@@ -23,7 +23,8 @@ Cave hoards come from the world's history. When a town is sacked, somebody may c
 cave and never return. The [chronicle](/docs/server/world-generation/) records whose wealth it was and which sack
 it fled. If the town held a relic at the time, the relic lies in the hoard too.
 
-A history site buries one cache with a chance by its kind:
+A history site buries one cache with a chance by its kind. A site where the chronicle buried a relic always
+holds a cache:
 
 | Site kind               | Chance |
 | ----------------------- | ------ |
@@ -51,7 +52,7 @@ The region sets the base tier. A cache in remote, dangerous country is richer th
 same danger that sets the level of the bestias there sets the tier of the cache.
 
 History sites can lift a cache above its region. The ruin of a big town or a tomb is rich even next to a low-level
-zone. A cave hoard is always at least rich. A hoard with a relic is splendid.
+zone. A cave hoard is always at least rich. A cache with a relic is splendid.
 
 # Contents
 
@@ -62,7 +63,7 @@ The contents are rolled when the cache is dug, not when the world is generated.
 | Coins           | Gold coins. See [Coins](#coins).                                                    |
 | Raw valuables   | Rough gems, rough rubies, gold ore and similar stackable goods                      |
 | Gear            | Equipment with [random stats](/docs/server/item-stats/), at the level of the region |
-| Relic           | Only in a hoard whose town held one                                                 |
+| Relic           | Only at a site where the chronicle buried one                                       |
 
 ## The Top Item
 
@@ -70,7 +71,7 @@ Every cache has one **top slot**. It holds a piece of random-stat gear of the ca
 **25%**. The [Excavation](/docs/mechanics/master/survival-tree/#skill-excavation) skill adds 5% per level, so a
 Lv. 3 excavator gets the top item 40% of the time.
 
-A hoard with a relic always gives the relic. Its top slot is an extra roll on top.
+A cache with a relic always gives the relic. Its top slot is an extra roll on top.
 
 ## Coins
 
