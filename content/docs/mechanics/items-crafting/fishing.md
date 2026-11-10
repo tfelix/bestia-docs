@@ -13,11 +13,11 @@ how likely the better ones are.
 1. **Cast.** With a rod in hand, click on water up to `8 m` away. The master casts instead of walking there, and a
    bobber lands on the water. Each cast costs the rod `1` durability.
 2. **Wait.** After a random `3 - 15 s`, something bites and the bobber plunges under the surface.
-3. **Strike.** Click the bobber, or press the interact key, within `1.5 s` of the bite. In time, the catch lands in
-   the bag. Too late, it gets away.
+3. **Strike.** Click the bobber within `1.5 s` of the bite. In time, the catch lands in the bag. Too late, it gets
+   away.
 
-A strike before the bite only pulls the line in empty. Walking, attacking, using a skill or putting the rod away reels
-the line in, and the cast is lost.
+Only water too deep to wade holds fish. A strike before the bite only pulls the line in empty. Walking, attacking,
+using a skill, crafting or putting the rod away reels the line in, and the cast is lost.
 
 A catch gives the master gathering experience of `2 * catch level + 5`, the same as any other
 [gathering](/docs/mechanics/bestias/bestia/#environment-interaction). Junk counts too.
