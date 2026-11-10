@@ -330,11 +330,11 @@ Turns a campfire, such as the one [Cooking](/docs/mechanics/master/novice-tree/#
 `5m` bear the weather better: `±5 °C` [temperature tolerance](/docs/mechanics/world/environment/#temperature), in both
 directions. Only one camp per master can stand.
 
-| Lv. | Duration | Extra                                                                                                                 |
-| --- | -------- | --------------------------------------------------------------------------------------------------------------------- |
-| 1   | 30 min   |                                                                                                                       |
+| Lv. | Duration | Extra                                                                                                                       |
+| --- | -------- | --------------------------------------------------------------------------------------------------------------------------- |
+| 1   | 30 min   |                                                                                                                             |
 | 2   | 60 min   | +50% HP and stamina regeneration. Storms and [mana storms](/docs/mechanics/world/doomsday/#mana-storms) do not reach inside |
-| 3   | 90 min   | As Lv. 2. Party members who die respawn at the camp                                                                   |
+| 3   | 90 min   | As Lv. 2. Party members who die respawn at the camp                                                                         |
 
 {{< /skill >}}
 

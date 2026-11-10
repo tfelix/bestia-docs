@@ -29,14 +29,14 @@ and the rest is still in the ground waiting to be mined.
 
 {{< table >}}
 
-| Direction  | Flow                                                                                            |
-| ---------- | ----------------------------------------------------------------------------------------------- |
-| **Into**   | Players selling resources, items and services to NPCs                                           |
-| **Into**   | Broker cuts on player [commissions](/docs/mechanics/world/questing/#funding-and-escrow)               |
+| Direction  | Flow                                                                                                        |
+| ---------- | ----------------------------------------------------------------------------------------------------------- |
+| **Into**   | Players selling resources, items and services to NPCs                                                       |
+| **Into**   | Broker cuts on player [commissions](/docs/mechanics/world/questing/#funding-and-escrow)                     |
 | **Into**   | The NPC share of [auction owner fees](/docs/mechanics/towns-trade/economy-trade/#building-an-auction-house) |
-| **Out of** | Rewards on NPC-issued commissions                                                               |
-| **Out of** | World-event payouts from settlement, faction and world treasuries                               |
-| **Out of** | NPCs paying players for goods and labour                                                        |
+| **Out of** | Rewards on NPC-issued commissions                                                                           |
+| **Out of** | World-event payouts from settlement, faction and world treasuries                                           |
+| **Out of** | NPCs paying players for goods and labour                                                                    |
 
 {{< /table >}}
 

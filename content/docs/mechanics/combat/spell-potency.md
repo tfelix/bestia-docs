@@ -22,13 +22,13 @@ enchantment, a hiding aura, a trap. When the caster later changes gear, the spel
 P = Rank + Level + Mind + Focus + Place
 ```
 
-| Part  | What it is                                                                                                                    | Range       |
-| ----- | ----------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| Rank  | `30 × rank / max rank` of the skill, rounded down. Dispel Lv. 3 of 5 gives `18`. A Bestia attack of level 7 gives `21`.       | `0 .. 30`   |
-| Level | `level / 4` of the caster, master or Bestia.                                                                                  | `0 .. 30`   |
+| Part  | What it is                                                                                                                           | Range       |
+| ----- | ------------------------------------------------------------------------------------------------------------------------------------ | ----------- |
+| Rank  | `30 × rank / max rank` of the skill, rounded down. Dispel Lv. 3 of 5 gives `18`. A Bestia attack of level 7 gives `21`.              | `0 .. 30`   |
+| Level | `level / 4` of the caster, master or Bestia.                                                                                         | `0 .. 30`   |
 | Mind  | `30 × M / (M + 100)` with `M = INT + WIL / 2`. The same flattening curve as [Resist](/docs/mechanics/combat/status-effects/#resist). | `0 .. 30`   |
-| Focus | Equipment and buffs that add Potency, like a Sage's staff.                                                                    | `0 .. 10`   |
-| Place | Local [mana concentration](/docs/mechanics/world/environment/#mana-concentration): drained `-10`, ordinary `0`, thick `+10`.        | `-10 .. 10` |
+| Focus | Equipment and buffs that add Potency, like a Sage's staff.                                                                           | `0 .. 10`   |
+| Place | Local [mana concentration](/docs/mechanics/world/environment/#mana-concentration): drained `-10`, ordinary `0`, thick `+10`.         | `-10 .. 10` |
 
 The rank says how well the skill is known. Level and Mind say who knows it. Masters and Bestias use the same formula.
 
@@ -182,12 +182,12 @@ The same contest decides every spell that stops another spell:
 Some spells do not fight another caster but the place. The world gives them a **Disturbance** `D` instead of a
 defender's Potency.
 
-| Source of Disturbance                                               | D         |
-| ------------------------------------------------------------------- | --------- |
-| Any long-range spell                                                | 10        |
-| Distance                                                            | +5 per km |
+| Source of Disturbance                                                     | D         |
+| ------------------------------------------------------------------------- | --------- |
+| Any long-range spell                                                      | 10        |
+| Distance                                                                  | +5 per km |
 | A [Mana Storm](/docs/mechanics/world/doomsday/#mana-storms) at either end | +40       |
-| An open rift nearby                                                 | +60       |
+| An open rift nearby                                                       | +60       |
 
 A [Teleport](/docs/mechanics/master/scholar-tree/#skill-teleport) lands off target by up to `1.4 km × (1 - Edge(P - D))`. This is the
 story from the [Master Skills](/docs/mechanics/master/basics/#master-skills) page in numbers: Saferu (`P 80`) jumps 8 km
@@ -201,11 +201,11 @@ uses it for where its far end opens.
 
 Spells that no player cast have a fixed Potency.
 
-| Spell                                                   | P   | Why                                                                  |
-| ------------------------------------------------------- | --- | -------------------------------------------------------------------- |
-| [Postal Seal](/docs/mechanics/towns-trade/postal/#the-seal)         | 90  | A strong solo Sage has a real chance.                                |
+| Spell                                                           | P   | Why                                                                  |
+| --------------------------------------------------------------- | --- | -------------------------------------------------------------------- |
+| [Postal Seal](/docs/mechanics/towns-trade/postal/#the-seal)     | 90  | A strong solo Sage has a real chance.                                |
 | [Ward stone](/docs/mechanics/society/pvp/#protected-zones) aura | 174 | 24 above the [ritual cap](#the-charge), so the best circle has `2%`. |
-| Permanent enchantments of the Artificer                 | -   | They cannot be dispelled at all.                                     |
+| Permanent enchantments of the Artificer                         | -   | They cannot be dispelled at all.                                     |
 
 # Refresh
 
