@@ -35,7 +35,7 @@ Quests in Bestia are generated via two mechanics:
    pick them up. Players must follow a template for the rewards.
 
 Both end up as the same kind of **contract**, and the rare world events driven by the simulation use that machinery too.
-The player-facing rules for all three live on the [Questing](/docs/mechanics/questing/) page.
+The player-facing rules for all three live on the [Questing](/docs/mechanics/world/questing/) page.
 
 # Automatic Quest Generation
 
@@ -72,13 +72,13 @@ Players can define various tasks, such as collecting resources or defeating cert
 
 The awarding of quests must be worthwhile for both parties. When a quest is accepted, a contract is concluded between the player and the NPC. If all contract conditions are met, the reward will be handed out. Contracts may be limited in time, and an accepter who abandons a contract forfeits the collateral they staked when accepting it, which is delivered to the quest giver.
 
-Issuers can never mint experience. The server derives the whole experience reward from the difficulty of the objective and pays it from a capped world pool: the accepter earns the bulk of it, and the issuer earns a small flat amount for posting a funded quest plus a share of the accepter's reward once the quest settles successfully. See [Rewards, Experience and Settlement](/docs/mechanics/questing/#rewards-experience-and-settlement) for the player-facing rules and the anti-farming measures that go with them.
+Issuers can never mint experience. The server derives the whole experience reward from the difficulty of the objective and pays it from a capped world pool: the accepter earns the bulk of it, and the issuer earns a small flat amount for posting a funded quest plus a share of the accepter's reward once the quest settles successfully. See [Rewards, Experience and Settlement](/docs/mechanics/world/questing/#rewards-experience-and-settlement) for the player-facing rules and the anti-farming measures that go with them.
 
 ## Reward Calculation
 
 The player creating a quest must setup a reward. This reward is calculated in a fixed way and depends on the available money on the current server but will also factor in the wealth of the issuer. The reward can also be higher than the requested amount. 5% of the reward is issued to the NPC managing this quest contract, and a further 2% is taken out of circulation as a posting tax, returning to the world reserve — both always in gold, even when the reward itself consists of items. Payouts on NPC-issued quests are budgeted by the [World Treasury Director](/docs/server/economy/).
 
-The difficulty of a quest, and from it the level range of the players suitable to do it, must be automatically determined; see [Difficulty and Level Range](/docs/mechanics/questing/#difficulty-and-level-range). The lower bound of that range is enforced — a master below it cannot accept the contract.
+The difficulty of a quest, and from it the level range of the players suitable to do it, must be automatically determined; see [Difficulty and Level Range](/docs/mechanics/world/questing/#difficulty-and-level-range). The lower bound of that range is enforced — a master below it cannot accept the contract.
 
 The reward itself can be paid in items or in gold.
 

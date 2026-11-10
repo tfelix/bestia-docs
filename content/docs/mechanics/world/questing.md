@@ -7,7 +7,7 @@ description: "Bestia's player-driven questing system: funded contracts, gather a
 Questing in **Bestia** is primarily **player-driven**. Players post rewards for tasks they need done — gathering
 resources, transporting goods from A to B, hunting a troublesome Bestia — and other players pick those tasks up.
 Alongside those, NPCs hand out work of their own, and very rarely the world itself intervenes when the simulation
-produces a genuine emergency such as a [mana rift](/docs/mechanics/environment/#mana-concentration) tearing open next to
+produces a genuine emergency such as a [mana rift](/docs/mechanics/world/environment/#mana-concentration) tearing open next to
 a settlement.
 
 Whether a quest is written by a player, offered by an NPC or born from the world, it is always the same underlying
@@ -52,13 +52,13 @@ for.** Two charges are taken at the moment the contract is funded:
 {{< /table >}}
 
 Both are always paid in **gold**, even when the reward itself is items, and both follow the rounding rule from the
-[economy page](/docs/mechanics/economy-trade/): rounded up to the next whole gold, minimum `1`. The broker cut is the fee
+[economy page](/docs/mechanics/towns-trade/economy-trade/): rounded up to the next whole gold, minimum `1`. The broker cut is the fee
 for the service, consistent with the [reward calculation](/docs/server/quests/#reward-calculation). The posting tax is a
-sink in the same spirit as [auction listing fees](/docs/mechanics/economy-trade/#how-auctions-work) — small enough to
+sink in the same spirit as [auction listing fees](/docs/mechanics/towns-trade/economy-trade/#how-auctions-work) — small enough to
 ignore for a serious contract, large enough that papering the boards with dozens of trivial ones has a running cost.
 
 Rewards are bounded by the server-wide reward formula (which factors in available money and the issuer's wealth) so that
-commissions cannot be used to distort the [economy](/docs/mechanics/economy-trade/). A commission may offer _more_ than
+commissions cannot be used to distort the [economy](/docs/mechanics/towns-trade/economy-trade/). A commission may offer _more_ than
 the formula's baseline, but never a trivial amount for a hard task. The same
 [World Treasury Director](/docs/server/economy/) that keeps NPC payouts backed by NPC earnings supervises these bounds.
 
@@ -66,9 +66,9 @@ the formula's baseline, but never a trivial amount for a hard task. The same
 
 Every objective is verifiable from **physical world state** — never from self-reporting. The world simulation already
 emits the events needed to confirm completion (an item delivered, a Bestia deactivated, a location reached). Gather
-commissions ask for [natural resources](/docs/mechanics/natural-resources/) or crafted
-[items](/docs/mechanics/items/), and transport commissions are bounded by the carrier's
-[weight limit](/docs/mechanics/items/#weight-limit).
+commissions ask for [natural resources](/docs/mechanics/items-crafting/natural-resources/) or crafted
+[items](/docs/mechanics/items-crafting/items/), and transport commissions are bounded by the carrier's
+[weight limit](/docs/mechanics/items-crafting/items/#weight-limit).
 
 {{< table >}}
 
@@ -94,8 +94,8 @@ separate axes, because "dangerous" and "long" are not the same problem:
 
 Danger comes from the world, not from the wording of the contract. Every region carries a **threat level** — the average
 level of the hostile Bestia the simulation currently sustains there, which rises with the region's
-[mana concentration](/docs/mechanics/environment/#mana-concentration) because that is what
-[Bestia spawn from](/docs/mechanics/bestia/):
+[mana concentration](/docs/mechanics/world/environment/#mana-concentration) because that is what
+[Bestia spawn from](/docs/mechanics/bestias/bestia/):
 
 ```text
 CDL(bounty)    = target_level + 5 (if boss) + 2 per elemental level of the target
@@ -106,7 +106,7 @@ CDL(escort)    = highest threat_level along the route, +5 if the escortee is mor
 ```
 
 The `+5 / +2` terms on a bounty mirror the boss and elemental modifiers used in the
-[experience calculation](/docs/mechanics/bestia/#killing-enemies), so a contract's danger and the experience the fight
+[experience calculation](/docs/mechanics/bestias/bestia/#killing-enemies), so a contract's danger and the experience the fight
 actually yields cannot drift apart.
 
 Effort reuses formulas the game already has, so a commission's baseline reward stays anchored to what the same work
@@ -140,7 +140,7 @@ floor, and it is what lets escrow know who is owed what. The fulfilment model th
   split across several couriers, and time-critical deliveries must not be blocked by someone who signs and then stalls.
 
 **Bounty** commissions may be posted either way. An assigned bounty pays its single accepter. An **open bounty splits the
-pot in proportion to damage dealt** to the target, exactly as [kill experience](/docs/mechanics/bestia/#killing-enemies)
+pot in proportion to damage dealt** to the target, exactly as [kill experience](/docs/mechanics/bestias/bestia/#killing-enemies)
 is already distributed among damage dealers, and the kill itself is credited to whoever dealt the most damage. Because
 both the experience and the gold follow the same proportional rule, there is nothing for a last-hit thief to steal:
 sniping the killing blow off a Bestia somebody else ground down earns a proportional sliver and nothing more.
@@ -154,7 +154,7 @@ posts **collateral** in gold when they sign:
 collateral = max(20 * subject_level, 25% of the reward's value)
 ```
 
-where `subject_level` is the [item level](/docs/mechanics/items/#item-level) of the cargo for a **Transport**, the level
+where `subject_level` is the [item level](/docs/mechanics/items-crafting/items/#item-level) of the cargo for a **Transport**, the level
 of the escortee for an **Escort**, and the resource level for an assigned **Gather**. Hauling a Legendary crate is
 therefore a serious financial commitment, and the stake is meant to be felt: walking away from the job must be the
 expensive option, not the convenient one.
@@ -167,12 +167,12 @@ On settlement:
 - **Completed on time** — collateral is returned in full, on top of the reward.
 - **Failed after a genuine attempt** (the courier was killed en route, the escortee died to something that outmatched
   the team) — **half** the collateral goes to the issuer as compensation, half returns to the accepter. This mirrors the
-  [post's couriers](/docs/mechanics/postal/#the-deadline), where being killed on the road is a real outcome of the world
+  [post's couriers](/docs/mechanics/towns-trade/postal/#the-deadline), where being killed on the road is a real outcome of the world
   rather than cheating.
 - **Abandoned** — the accepter drops the contract, lets it expire without a serious attempt, or dumps the cargo — the
   **full** collateral goes to the issuer, **and the accepter loses honor**. Brokers keep a ledger and they talk: an
   abandoned contract costs `-5` global honor and `-20` local honor with the broker who held it, on the same scale as the
-  other breaches of trust in the [honor system](/docs/mechanics/pvp/#negative-honor). Repeat offenders find the boards
+  other breaches of trust in the [honor system](/docs/mechanics/society/pvp/#negative-honor). Repeat offenders find the boards
   of a whole town closed to them long before their gold runs out.
 
 ## Withdrawing a Commission
@@ -181,7 +181,7 @@ A **Draft** can be discarded freely and a **Funded** contract can be withdrawn b
 escrow minus the charges already taken. Once a commission is **Open**, escrow-as-trust would be worthless if the issuer
 could pull it out from under people mid-haul, so withdrawal follows a notice rule:
 
-- Withdrawal takes effect only after a **notice window of 3 [Bestia](/docs/mechanics/environment/#in-game-time) hours**
+- Withdrawal takes effect only after a **notice window of 3 [Bestia](/docs/mechanics/world/environment/#in-game-time) hours**
   (1 real-time hour).
 - During the window the commission is flagged as **closing** on every board, but **deliveries still settle normally**.
   The issuer must leave the escrow fully funded until the window closes, so work already in flight is always paid for.
@@ -193,7 +193,7 @@ full. Somebody is already on the road.
 
 ## Rewards, Experience and Settlement
 
-Rewards are delivered through the [postal system](/docs/mechanics/postal/) — gold by pigeon, items to your home post
+Rewards are delivered through the [postal system](/docs/mechanics/towns-trade/postal/) — gold by pigeon, items to your home post
 office. You do not report back to a magical quest-giver. On failure or expiry, escrow returns to the issuer minus fees, and any collateral forfeited by
 a failed accepter is paid to the issuer as compensation.
 
@@ -202,8 +202,8 @@ whole experience reward from the derived difficulty of the task, and it is drawn
 
 - The **accepter** earns experience scaled to the contract's CDL and effort, in the same order of magnitude as doing the
   equivalent work uncommissioned — a haul is worth roughly what
-  [gathering that resource](/docs/mechanics/bestia/#environment-interaction) is worth, a bounty roughly what
-  [the kill](/docs/mechanics/bestia/#killing-enemies) is worth.
+  [gathering that resource](/docs/mechanics/bestias/bestia/#environment-interaction) is worth, a bounty roughly what
+  [the kill](/docs/mechanics/bestias/bestia/#killing-enemies) is worth.
 - The **issuer** earns a flat `5` experience for posting a funded commission, plus `10%` of the experience paid to the
   accepter once the contract settles successfully. Writing good work into the world is worth rewarding — but a flat
   posting bonus is insignificant to anyone past the first few levels, and the completion share only ever arrives if a
@@ -220,7 +220,7 @@ rather than from a player's pocket. Three rules make a wall of tiny contracts st
 1. **Experience follows the objective, not the paperwork.** Splitting a 500-unit order into ten 50-unit orders yields
    the same total effort and therefore the same total experience, minus ten posting taxes instead of one.
 2. **Diminishing returns per role, per day.** For the `n`-th contract a player settles within a
-   [Bestia day](/docs/mechanics/environment/#in-game-time), counted separately as issuer and as accepter, the world-pool
+   [Bestia day](/docs/mechanics/world/environment/#in-game-time), counted separately as issuer and as accepter, the world-pool
    experience is multiplied by `1 / (1 + 0.5 * n)`. The first contract of the day pays full, the third about half, the
    tenth barely registers. Gold and items are untouched — a dedicated hauler can run all day for pay, they simply cannot
    grind levels off the contract board.
@@ -242,7 +242,7 @@ Finding commissions stays physical and range-limited:
 - **Classical NPC interaction**
 
 There is deliberately no global, world-spanning "quest finder." If you want to know what is needed far away, you travel,
-or you [write](/docs/mechanics/postal/#letters) to somebody who is there.
+or you [write](/docs/mechanics/towns-trade/postal/#letters) to somebody who is there.
 
 # NPC Commissions
 
@@ -256,7 +256,7 @@ something to do in it.
 # World Events
 
 Occasionally the world itself generates a quest. These are **rare and emergent** — never on a fixed timer. A lightweight
-regional **Director** watches aggregate simulation state ([mana density](/docs/mechanics/environment/#mana-concentration),
+regional **Director** watches aggregate simulation state ([mana density](/docs/mechanics/world/environment/#mana-concentration),
 threat level, unattended rift activity), and when a threshold is crossed it instantiates a **public contract** open to
 everyone and scored by contribution.
 
@@ -282,7 +282,7 @@ of the pot:
 - **Time held** — presence and survival inside the contested area while it mattered
 
 Scoring each axis separately is what keeps a world event from being a high-level damage party. A Scholar who located
-the rift with [Observation](/docs/mechanics/master/#skill-observation), an Eternity player placing seals and a fighter
+the rift with [Observation](/docs/mechanics/master/basics/#skill-observation), an Eternity player placing seals and a fighter
 tanking the wave bosses all earn from the axis they actually contributed to, and none of them has to out-damage anyone
 to be paid.
 
@@ -305,8 +305,8 @@ region that has just been through a crisis needs time before another one is wort
 
 ## Faction-Contested by Design
 
-World events are **not purely cooperative** — they hook directly into the [factions](/docs/mechanics/factions/) and their
-[spheres of influence](/docs/mechanics/factions/#sphere-of-influence):
+World events are **not purely cooperative** — they hook directly into the [factions](/docs/mechanics/society/factions/) and their
+[spheres of influence](/docs/mechanics/society/factions/#sphere-of-influence):
 
 - **The Order of Chaos** _wants_ rifts open and may have caused the mana build-up in the first place; they can defend or
   even widen a rift.

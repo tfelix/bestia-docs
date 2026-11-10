@@ -4,7 +4,7 @@ title: Status Effects
 description: Every buff and debuff of the game, and the rules they share - resist, immunity, channeling and concealment.
 ---
 
-A status effect is a temporary condition on top of an entity's [status values](/docs/mechanics/statusvalues/). Skills,
+A status effect is a temporary condition on top of an entity's [status values](/docs/mechanics/combat/statusvalues/). Skills,
 attacks, ground zones, traps and items apply them. The list at the end of this page shows every effect a player can
 meet. It is rendered from `data/status_effects.yaml`, which follows zone-server's `status_effects.yml`.
 
@@ -19,8 +19,8 @@ R = S / (S + 150) + (Resolve − P) / 100
 R is clamped to 0 .. 0.8
 ```
 
-`P` is the [Potency](/docs/mechanics/spell-potency/#how-potency-is-built) of the cast. `Resolve` is the target's own
-[defence against spells](/docs/mechanics/spell-potency/#resist). A target above the cast resists more, a target below it
+`P` is the [Potency](/docs/mechanics/combat/spell-potency/#how-potency-is-built) of the cast. `Resolve` is the target's own
+[defence against spells](/docs/mechanics/combat/spell-potency/#resist). A target above the cast resists more, a target below it
 resists less. R then lowers both the chance and the duration:
 
 ```text
@@ -53,7 +53,7 @@ status-immunities: [ STUN, FROZEN, POISON ]
 
 A boss-tier species is immune to STUN, FROZEN, STONING, FEARED, CONFUSED, CONTROLLED and instant kill by default.
 Without this a group could lock a boss down for the whole fight. See also
-[Designing a Bestia](/docs/mechanics/bestia-design/#7-element-size-and-defences).
+[Designing a Bestia](/docs/mechanics/bestias/bestia-design/#7-element-size-and-defences).
 
 # No stacking
 
@@ -81,7 +81,7 @@ and for a bestia also its master. When it hides, other players see it vanish. Wh
 
 A concealed entity carries the Potency of the one who hid it. The skill Detect is the counter. It shows concealed
 masters and bestias as dots on the minimap, but only within `range × Edge(P detect − P conceal)` of them. It does not
-reveal them in the world. See [Concealment and Detection](/docs/mechanics/spell-potency/#concealment-and-detection).
+reveal them in the world. See [Concealment and Detection](/docs/mechanics/combat/spell-potency/#concealment-and-detection).
 
 # All status effects
 

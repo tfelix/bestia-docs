@@ -73,7 +73,7 @@ left, so the light already burns through late dusk and early dawn, not only in f
   itself.
 
 How a torch can be stackable and still burn down is explained in
-[stackable gear](/docs/mechanics/items/#stackable-gear).
+[stackable gear](/docs/mechanics/items-crafting/items/#stackable-gear).
 
 ## Sky and Moon
 
@@ -86,7 +86,7 @@ and cannot be seen. How bright the night is depends on the phase and on how high
 moonless night, 40% of the full-moon light remains, so the terrain stays readable.
 
 The sky can also take on a mood that tints the sky and its light. This is meant for
-[doomsday](/docs/mechanics/doomsday) events, for example a red sky when the end of the world approaches.
+[doomsday](/docs/mechanics/world/doomsday) events, for example a red sky when the end of the world approaches.
 
 # Mana Concentration
 

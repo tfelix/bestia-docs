@@ -13,7 +13,7 @@ master's party and guild behind until they switch back.
 
 # Parties
 
-Founding a party, and inviting players into it, needs [Basic Skill](/docs/mechanics/master/#skill-basic-skill)
+Founding a party, and inviting players into it, needs [Basic Skill](/docs/mechanics/master/basics/#skill-basic-skill)
 Lv. 5. Joining one needs nothing. Whoever founds a party **owns** it:
 
 | Rule              | Value                                                                                  |
@@ -32,7 +32,7 @@ Party members talk with `/p`; only the party hears it.
 ## Sharing Experience
 
 The owner picks how the party shares what a kill is worth. Each attacker's part of a kill's experience - see
-[Killing Enemies](/docs/mechanics/bestia/#killing-enemies) - then goes:
+[Killing Enemies](/docs/mechanics/bestias/bestia/#killing-enemies) - then goes:
 
 | Mode           | Where an attacker's part goes                                                                                        |
 | :------------- | :------------------------------------------------------------------------------------------------------------------- |
@@ -286,7 +286,7 @@ Rally to the Banner, and whose rank may use guild skills, plants it within `5` t
 one takes the old one down.
 
 The banner stands for `300 s` and has `1,500` HP. Enemies can cut it down; the guild's own members and their Bestia
-cannot, and a [ward stone](/docs/mechanics/pvp/#protected-zones) protects it like anything else a player owns. Every
+cannot, and a [ward stone](/docs/mechanics/society/pvp/#protected-zones) protects it like anything else a player owns. Every
 member online hears when it is planted, cut down or fades.
 
 ### Auras

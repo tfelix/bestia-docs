@@ -6,7 +6,7 @@ description: How the zone server stores, rolls and applies item stats and item l
 
 # Item Stats
 
-The rules are on the [Forging](/docs/mechanics/items/#forging-and-random-stats) page. This page says where they live in `zone-server`.
+The rules are on the [Forging](/docs/mechanics/items-crafting/items/#forging-and-random-stats) page. This page says where they live in `zone-server`.
 
 | Part                       | Where                                                                                       |
 | -------------------------- | ------------------------------------------------------------------------------------------- |

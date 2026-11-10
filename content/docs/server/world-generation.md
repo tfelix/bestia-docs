@@ -273,7 +273,7 @@ rain per year. Edge, geological and water biomes are placed by a rule instead, i
 
 {{< biome-table >}}
 
-The table is read from `data/biomes.yaml`, and the [Bestia Blueprint Calculator](/docs/mechanics/bestia-design/#bestia-blueprint-calculator)
+The table is read from `data/biomes.yaml`, and the [Bestia Blueprint Calculator](/docs/mechanics/bestias/bestia-design/#bestia-blueprint-calculator)
 offers the same biomes as a habitat. When `Biome.kt` changes, change that file too.
 
 # Biome motivation

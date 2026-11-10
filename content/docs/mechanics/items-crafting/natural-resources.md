@@ -92,7 +92,7 @@ In Bestia, Mana is considered a resource. It permeates the land, and there are r
 ## Felling Trees
 
 Trees are where wood comes from. A grown tree drops four logs when it is felled, and some
-[resin](/docs/mechanics/crafting-stations/#resin).
+[resin](/docs/mechanics/items-crafting/crafting-stations/#resin).
 
 A tree that is removed leaves a stump. It does not matter how: chopped down, burnt, or blown apart by a
 spell. The stump grows back in stages, and each stage takes one real week.
@@ -115,13 +115,13 @@ A tree whose ground was dug away is gone for good, stump and all. Nothing grows 
 # Refining
 
 Ore must be processed into metal bars before it is usable — steel, for example, is refined from iron ore together with
-fuel inside a [Furnace](/docs/mechanics/item-list/#furnace). Placing a furnace and smelting at all requires a Master
-with the [Ore Refinement](/docs/mechanics/master/#skill-ore-refinement) skill; every further rank raises the odds that
+fuel inside a [Furnace](/docs/mechanics/items-crafting/item-list/#furnace). Placing a furnace and smelting at all requires a Master
+with the [Ore Refinement](/docs/mechanics/master/basics/#skill-ore-refinement) skill; every further rank raises the odds that
 a batch survives the heat.
 
 ## Ore Levels
 
-Every ore carries an **ore level** just like any other item (see [Item Level](/docs/mechanics/items/#item-level)), and
+Every ore carries an **ore level** just like any other item (see [Item Level](/docs/mechanics/items-crafting/items/#item-level)), and
 that level alone decides the base chance of a smelt succeeding:
 
 ```kotlin
@@ -158,19 +158,19 @@ Every smelt burns fuel alongside the ore, and a failed batch loses both.
 
 | Fuel                                            | Modifier | Notes                                                                        |
 | ----------------------------------------------- | -------- | ---------------------------------------------------------------------------- |
-| [Coal](/docs/mechanics/item-list/#coal)         | ±0%      | The reference fuel. Mined from seams in mountains and caves.                 |
-| [Charcoal](/docs/mechanics/item-list/#charcoal) | -10%     | Burned down from wood. Cheap and craftable, but never gets a furnace as hot. |
+| [Coal](/docs/mechanics/items-crafting/item-list/#coal)         | ±0%      | The reference fuel. Mined from seams in mountains and caves.                 |
+| [Charcoal](/docs/mechanics/items-crafting/item-list/#charcoal) | -10%     | Burned down from wood. Cheap and craftable, but never gets a furnace as hot. |
 
 {{< /table >}}
 
 On top of the base chance and the fuel come the smith's
-[Ore Refinement](/docs/mechanics/master/#skill-ore-refinement) rank (up to `+90%`) and their STR and WIL — see
-[Ore Refinement Success Chance](/docs/mechanics/items/#ore-refinement-success-chance) for the full formula and worked
+[Ore Refinement](/docs/mechanics/master/basics/#skill-ore-refinement) rank (up to `+90%`) and their STR and WIL — see
+[Ore Refinement Success Chance](/docs/mechanics/items-crafting/items/#ore-refinement-success-chance) for the full formula and worked
 examples.
 
 # Item Recycling
 
-For each item there is a list of base resources which the item is roughly based upon (this list is also used when forging or creating the item). When an attempt is made to recycle the item, there is a chance that the item is destroyed and the resources are lost. The skill [Scavenger](/docs/mechanics/master/#skill-scavenger) can increase the success chance.
+For each item there is a list of base resources which the item is roughly based upon (this list is also used when forging or creating the item). When an attempt is made to recycle the item, there is a chance that the item is destroyed and the resources are lost. The skill [Scavenger](/docs/mechanics/master/basics/#skill-scavenger) can increase the success chance.
 
 The base chance for item recycling is:
 

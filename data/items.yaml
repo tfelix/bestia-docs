@@ -51,22 +51,22 @@
   type: Etc
   value: 4
   description: |
-    Glossy black lumps hewn out of a mineral seam. The reference fuel of every [Furnace](/docs/mechanics/item-list/#furnace) and what any serious smelting run burns — see [Refining](/docs/mechanics/natural-resources/#refining).
+    Glossy black lumps hewn out of a mineral seam. The reference fuel of every [Furnace](/docs/mechanics/items-crafting/item-list/#furnace) and what any serious smelting run burns — see [Refining](/docs/mechanics/items-crafting/natural-resources/#refining).
 - id: charcoal
   name: Charcoal
   weight: 0.2
   type: Etc
   value: 3
   description: |
-    Charred, brittle pieces of wood. Cheap furnace fuel and a base for potent alchemical mixtures. Burns cooler than [Coal](/docs/mechanics/item-list/#coal) and costs `-10%` on every [ore refinement](/docs/mechanics/items/#ore-refinement-success-chance) attempt.
+    Charred, brittle pieces of wood. Cheap furnace fuel and a base for potent alchemical mixtures. Burns cooler than [Coal](/docs/mechanics/items-crafting/item-list/#coal) and costs `-10%` on every [ore refinement](/docs/mechanics/items-crafting/items/#ore-refinement-success-chance) attempt.
 - id: furnace
   name: Furnace
   weight: 40
   type: Etc
   value: 600
   description: |
-    Blacksmiths use furnaces to smelt raw ore down into metal bars. Every batch burns [Coal](/docs/mechanics/item-list/#coal) or [Charcoal](/docs/mechanics/item-list/#charcoal), and both the ore and the fuel are lost if the smelt fails.
-    Placing one requires [Ore Refinement](/docs/mechanics/master/#skill-ore-refinement) Lv. 1. Use it to construct it in the world.
+    Blacksmiths use furnaces to smelt raw ore down into metal bars. Every batch burns [Coal](/docs/mechanics/items-crafting/item-list/#coal) or [Charcoal](/docs/mechanics/items-crafting/item-list/#charcoal), and both the ore and the fuel are lost if the smelt fails.
+    Placing one requires [Ore Refinement](/docs/mechanics/master/basics/#skill-ore-refinement) Lv. 1. Use it to construct it in the world.
 - id: workbench_kit
   name: Workbench
   weight: "?"
@@ -421,7 +421,7 @@
   value: 40
   description: |
     The first poison an Alchemist learns to brew. Worked into a blade with
-    [Enchant Poison](/docs/mechanics/master/#skill-enchant-poison), every cut may leave it behind. Stronger poisons
+    [Enchant Poison](/docs/mechanics/master/basics/#skill-enchant-poison), every cut may leave it behind. Stronger poisons
     follow later.
 - id: engraving_set
   name: Engraving Set
@@ -438,7 +438,7 @@
   description: |
     A coil of mana concentrate poured into a ring on the ground. Everyone standing inside lends their presence to a rite
     performed there, raising its success chance and splitting its mana cost. Consumed when the rite resolves. See
-    [Mana Circles](/docs/mechanics/master/#mana-circles).
+    [Mana Circles](/docs/mechanics/master/basics/#mana-circles).
 - id: gem_cut_station
   name: Gem Cut Station
   weight: 35
@@ -446,7 +446,7 @@
   value: 2000
   description: |
     A bench of clamps, loupes and graded grit where a Miner turns rough gemstones into cut ones. Placing one requires
-    [Gem Cutting](/docs/mechanics/master/#skill-gem-cutting) Lv. 1.
+    [Gem Cutting](/docs/mechanics/master/basics/#skill-gem-cutting) Lv. 1.
 - id: breeder
   name: Breeder
   weight: 60
@@ -523,7 +523,7 @@
   description: |
     A heavy signet of gold and aetherite, its face still blank, waiting for a name.
 
-    Founds a guild with its bearer as the guild master, and is spent in the founding. See [Guilds](/docs/mechanics/party-guild/#guilds).
+    Founds a guild with its bearer as the guild master, and is spent in the founding. See [Guilds](/docs/mechanics/society/party-guild/#guilds).
 # Bestia materials (zone-server items 76-95). A value is about one loot budget, 4·lv + 5, of the
 # bestias that drop it, so a common drop at 30-80 % stays near par in the Blueprint Calculator.
 - id: feather

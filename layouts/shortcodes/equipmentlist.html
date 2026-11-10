@@ -26,7 +26,7 @@
     const input = document.getElementById('equipment-search');
     const clearBtn = document.getElementById('equipment-search-clear');
 
-    // Deep links such as /docs/mechanics/equip-list/#sigil-of-redemption narrow the list
+    // Deep links such as /docs/mechanics/items-crafting/equip-list/#sigil-of-redemption narrow the list
     // down to the linked equipment instead of only scrolling to it.
     function applyHashFilter() {
       const id = decodeURIComponent(location.hash.replace(/^#/, ''));

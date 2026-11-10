@@ -8,7 +8,7 @@ description: How zone-server could store and run enchantments bound to an item -
 
 # Item Enchantments
 
-The rules are on the [Items](/docs/mechanics/items/#enchantments) page. This page proposes how `zone-server` runs
+The rules are on the [Items](/docs/mechanics/items-crafting/items/#enchantments) page. This page proposes how `zone-server` runs
 them.
 
 A status effect lives in the ECS: it is a component on an entity, and a system counts it down every tick. An
@@ -85,4 +85,4 @@ makes it a normal entity for the rest of the server:
 1. Definitions, the table, the scripts interface, and the tooltip line that lists an item's enchantments.
 2. Endow on the weapon, through `Equipment` and the recalc. This is the smallest real use and tests the path.
 3. Enchantments on ground items, Dispel on a ground target, and `SealReturn`. This waits for the
-   [postal system](/docs/mechanics/postal/).
+   [postal system](/docs/mechanics/towns-trade/postal/).

@@ -4,7 +4,7 @@ title: Honor
 description: "How zone-server keeps a Master's honor: the offence catalog, three layers of local honor, lazy decay, the Aggressor flag, and how a grudge travels from a witness to a town and on to its neighbours."
 ---
 
-{{< alert context="warning" text="Design, being implemented. The player-facing rules are in [PvP & Honor](/docs/mechanics/pvp/). This page is about how the server keeps them." />}}
+{{< alert context="warning" text="Design, being implemented. The player-facing rules are in [PvP & Honor](/docs/mechanics/society/pvp/). This page is about how the server keeps them." />}}
 
 # Three layers
 
@@ -40,7 +40,7 @@ time a person re-materialises; the identity does not.
 # The catalog
 
 Every offence and every good deed is a row in `honor.yml`, with its global and local amount. The
-numbers come from the [offence table](/docs/mechanics/pvp/#negative-honor). Zone multipliers,
+numbers come from the [offence table](/docs/mechanics/society/pvp/#negative-honor). Zone multipliers,
 thresholds, decay and the cap live there too, so balancing never touches code.
 
 The catalog holds offences that nothing can commit yet: stealing, dispelling a ward stone,

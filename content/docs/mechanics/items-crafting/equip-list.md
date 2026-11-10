@@ -6,7 +6,7 @@ description: Every piece of equipment that Bestias and Bestia Masters can wear o
 
 Here you will find an overview of the available equipment items Bestias and Bestia Master can use.
 
-For a more detailed breakdown, the equipment list is provided here on this separate page. If you are interested in general information, check out the dedicated section about [equipment and crafting](/docs/mechanics/items).
+For a more detailed breakdown, the equipment list is provided here on this separate page. If you are interested in general information, check out the dedicated section about [equipment and crafting](/docs/mechanics/items-crafting/items).
 
 {{< alert context="info" text="The list here might not be always up to date, but feel free to add any missing items." />}}
 
@@ -26,7 +26,7 @@ Sturdy boots made of leather, ideal for movements through rough terrain.
   {{< /equipment >}}
 
   {{< equipment name="Sigil of Redemption" icon="sigil-of-redemption.png" minlv="10" itemlv="73" weight="1.0" type="Accessoir" >}}
-  A very expensive and rare sigil made from gold. It symbolizes your bond to your Order, but it also holds the power to undo those holy ties. It must be worn by the one performing the rite of [Banished From The Citadel](/docs/mechanics/attack-list/#banished-from-the-citadel), and is consumed by it.
+  A very expensive and rare sigil made from gold. It symbolizes your bond to your Order, but it also holds the power to undo those holy ties. It must be worn by the one performing the rite of [Banished From The Citadel](/docs/mechanics/combat/attack-list/#banished-from-the-citadel), and is consumed by it.
   {{< /equipment >}}
   {{< /equipmentlist >}}
 

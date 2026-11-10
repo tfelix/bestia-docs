@@ -4,7 +4,7 @@ weight: 1300
 description: Explains the Doomsday mechanic — world-ending threats, event types, and their impact on gameplay.
 ---
 
-Every world incarnation faces an inevitable existential threat. Both the _nature_ of that threat and the _point in the world's life_ at which it begins are decided when the world is generated — the same predetermined life span the factions are ultimately scored against (see [Earning Advantage Points](/docs/mechanics/factions/#earning-advantage-points)). This onset is never sooner than **six months** of real time into a world's life. These threats can take various forms—powerful, destructive Bestia, chaotic magical phenomena, or natural disasters like **meteorite impacts**. Once a threat sets in, its effects grow stronger and stronger, ideally unfolding over a span of **six months to a year** before the world is either saved or lost. If left unchecked, these forces can push the world toward **total annihilation**. However, if the world is destroyed by neglect — with no Order having met its [Seasonal Covenant](/docs/mechanics/factions/#seasonal-covenants) in the closing seasons — **none of them will benefit**, giving every Order a shared incentive to stay engaged through the endgame rather than letting a runaway event wipe the board. See [The Neglect Clause](/docs/mechanics/factions/#the-neglect-clause) for how this is scored.
+Every world incarnation faces an inevitable existential threat. Both the _nature_ of that threat and the _point in the world's life_ at which it begins are decided when the world is generated — the same predetermined life span the factions are ultimately scored against (see [Earning Advantage Points](/docs/mechanics/society/factions/#earning-advantage-points)). This onset is never sooner than **six months** of real time into a world's life. These threats can take various forms—powerful, destructive Bestia, chaotic magical phenomena, or natural disasters like **meteorite impacts**. Once a threat sets in, its effects grow stronger and stronger, ideally unfolding over a span of **six months to a year** before the world is either saved or lost. If left unchecked, these forces can push the world toward **total annihilation**. However, if the world is destroyed by neglect — with no Order having met its [Seasonal Covenant](/docs/mechanics/society/factions/#seasonal-covenants) in the closing seasons — **none of them will benefit**, giving every Order a shared incentive to stay engaged through the endgame rather than letting a runaway event wipe the board. See [The Neglect Clause](/docs/mechanics/society/factions/#the-neglect-clause) for how this is scored.
 
 This cycle of destruction is what makes the world dynamically generated. While the overarching goal is to either **prevent or accelerate the world’s end**, complete destruction remains a rare occurrence, happening no more than once every one to two years (real time). When a new world is born, it is procedurally generated to feature diverse biomes, unique landscapes, and a fresh history that integrates seamlessly with the game’s lore. This system ensures a rich, evolving world — especially in the early stages, when player populations may be lower.
 
@@ -16,12 +16,12 @@ A threat does not necessarily have to be perceived directly. A meteor, or severe
 
 No Doomsday strikes all at once. Whatever form it takes, a threat escalates through progressively more severe stages, giving the player community time to notice it, organise around it, and decide whether to fight it or feed it:
 
-1. **Omens** — subtle, easily-missed signs: strange weather, restless or fleeing Bestia, minor shifts in local [mana concentration](/docs/mechanics/environment/#mana-concentration). A Scholar with the [Observation](/docs/mechanics/master/#skill-observation) skill can pick up the direction and distance of the brewing event long before most players notice.
+1. **Omens** — subtle, easily-missed signs: strange weather, restless or fleeing Bestia, minor shifts in local [mana concentration](/docs/mechanics/world/environment/#mana-concentration). A Scholar with the [Observation](/docs/mechanics/master/basics/#skill-observation) skill can pick up the direction and distance of the brewing event long before most players notice.
 2. **Onset** — the threat manifests in a bounded area and begins to affect nearby regions. Damage is still local and reversible.
 3. **Escalation** — the effect intensifies and spreads, region by region, feeding on whatever fuels it (usually mana). This is the long middle phase where the outcome is genuinely in the players' hands.
 4. **Cataclysm** — if never contained, the threat reaches critical mass and the world is lost. A new world is then generated in its place.
 
-Each Order reads these stages differently. **The Order of Eternity** works to seal, delay, or avert the threat; **The Order of Chaos** works to feed and hasten it; **The Order of the Circle** wants it to arrive exactly on its predetermined schedule. How a world meets its end feeds directly into each Order's [Advantage Points](/docs/mechanics/factions/#earning-advantage-points).
+Each Order reads these stages differently. **The Order of Eternity** works to seal, delay, or avert the threat; **The Order of Chaos** works to feed and hasten it; **The Order of the Circle** wants it to arrive exactly on its predetermined schedule. How a world meets its end feeds directly into each Order's [Advantage Points](/docs/mechanics/society/factions/#earning-advantage-points).
 
 # Event Types
 
@@ -63,23 +63,23 @@ The freeze creeps outward region by region, and as the food chain collapses the 
 
 Rivers shrink, wells run low, and hot dry winds strip the moisture from the air. A region begins to desertify: water nodes dry up, farmland crumbles to dust, and plants and Bestia alike wither and die.
 
-The dead zone widens outward, choked by sandstorms, until only desert-adapted Bestia remain. Players can fight back with irrigation, [rain](/docs/mechanics/environment/#rain) and water magic, and by carefully protecting and rationing what water is left. If nothing breaks the drought, the world is reduced to a lifeless desert.
+The dead zone widens outward, choked by sandstorms, until only desert-adapted Bestia remain. Players can fight back with irrigation, [rain](/docs/mechanics/world/environment/#rain) and water magic, and by carefully protecting and rationing what water is left. If nothing breaks the drought, the world is reduced to a lifeless desert.
 
 ## Mana Burn
 
 In a region already thick with mana, the ambient energy begins to shimmer and smoulder — and then it ignites. Arcane fire sweeps the saturated land, burning creatures, structures, and the ground itself with a flame that ordinary water cannot quench.
 
-The burn chases [mana density](/docs/mechanics/environment/#mana-concentration), leaping from one high-concentration region to the next and leaving scorched dead zones — and worsening [Mana Storms](#mana-storms) — in its wake. The only reliable defence is to starve it: **draining or banishing mana** deprives the fire of fuel, and **Eternity**'s dampening rituals smother it, while **Chaos** may instead pour mana in to spread it faster. Left to feed, it sets the entire mana-rich world alight.
+The burn chases [mana density](/docs/mechanics/world/environment/#mana-concentration), leaping from one high-concentration region to the next and leaving scorched dead zones — and worsening [Mana Storms](#mana-storms) — in its wake. The only reliable defence is to starve it: **draining or banishing mana** deprives the fire of fuel, and **Eternity**'s dampening rituals smother it, while **Chaos** may instead pour mana in to spread it faster. Left to feed, it sets the entire mana-rich world alight.
 
 ## The Destroyer
 
-Old legends stir first — restless Bestia, an ominous reading on a Scholar's [Observation](/docs/mechanics/master/#skill-observation) — and then a colossal unique Bestia awakens and begins a slow, deliberate march toward the nearest player city.
+Old legends stir first — restless Bestia, an ominous reading on a Scholar's [Observation](/docs/mechanics/master/basics/#skill-observation) — and then a colossal unique Bestia awakens and begins a slow, deliberate march toward the nearest player city.
 
-Its path is predictable enough to plan around, but every settlement it razes heals and empowers it, so each city lost makes the next harder to save. Players meet it with server-wide raids at defensible chokepoints, environmental traps, and siege devices researched at an Order's [citadel](/docs/mechanics/factions/#citadels-and-temples) — while **Chaos** may try to lure or empower it toward its rivals. If The Destroyer reaches and levels the major cities, the world collapses with them.
+Its path is predictable enough to plan around, but every settlement it razes heals and empowers it, so each city lost makes the next harder to save. Players meet it with server-wide raids at defensible chokepoints, environmental traps, and siege devices researched at an Order's [citadel](/docs/mechanics/society/factions/#citadels-and-temples) — while **Chaos** may try to lure or empower it toward its rivals. If The Destroyer reaches and levels the major cities, the world collapses with them.
 
 ## The Long Night
 
-The days grow shorter until an eclipse falls and simply refuses to lift. With sunlight gone, crops stop growing, the world's [night](/docs/mechanics/environment/#night) effects become permanent, and nocturnal and shadow-aligned Bestia grow bolder and stronger in the endless dark.
+The days grow shorter until an eclipse falls and simply refuses to lift. With sunlight gone, crops stop growing, the world's [night](/docs/mechanics/world/environment/#night) effects become permanent, and nocturnal and shadow-aligned Bestia grow bolder and stronger in the endless dark.
 
 The longer the night holds, the more the food chain starves and the more dangerous the emboldened Bestia become, while poor visibility hampers travel and detection. Players hold the dark at bay with light magic and beacons around their settlements, and must ultimately complete a great ritual — or quest — to rekindle the sun. Fail, and the world freezes into eternal, lightless death.
 
@@ -99,7 +99,7 @@ As the herds charge they sweep up still more Bestia, and successive waves batter
 
 The skies over a mana-rich region begin to crackle and churn, and then break into violent arcane tempests that scour the surface — dealing area magic damage, disrupting spellcasting, and battering structures.
 
-The storms grow and roam with the [mana density](/docs/mechanics/environment/#mana-concentration), and where they linger they can ignite [Mana Burn](#mana-burn) or feed nearby rifts. Players shelter behind wards, weaken the storms by draining the mana that powers them, and can calm them outright with the right rituals. Left to rage, the tempests scour the surface bare.
+The storms grow and roam with the [mana density](/docs/mechanics/world/environment/#mana-concentration), and where they linger they can ignite [Mana Burn](#mana-burn) or feed nearby rifts. Players shelter behind wards, weaken the storms by draining the mana that powers them, and can calm them outright with the right rituals. Left to rage, the tempests scour the surface bare.
 
 ## The Sundering
 
@@ -109,9 +109,9 @@ As it worsens the continents themselves fracture — land routes sever, and whol
 
 ## The Void Tear
 
-Mana rifts are a normal, ongoing feature of every world: **Chaos** opens and feeds them while **Eternity** seals them, and their number is one of the ways the Orders bend a region's [mana density](/docs/mechanics/environment/#mana-concentration). The Void Tear is simply the worst-case version of this everyday mechanic — what happens when rifts in a high-mana region are left to grow and merge unchecked.
+Mana rifts are a normal, ongoing feature of every world: **Chaos** opens and feeds them while **Eternity** seals them, and their number is one of the ways the Orders bend a region's [mana density](/docs/mechanics/world/environment/#mana-concentration). The Void Tear is simply the worst-case version of this everyday mechanic — what happens when rifts in a high-mana region are left to grow and merge unchecked.
 
-It starts in an area with a strong mana presence, where a first rift opens up. Rifts are detectable with spells that reveal large mana concentrations, and can also be found using dedicated rift-detection spells or devices; a Scholar's [Observation](/docs/mechanics/master/#skill-observation) skill lets players approximately pinpoint a rift's origin.
+It starts in an area with a strong mana presence, where a first rift opens up. Rifts are detectable with spells that reveal large mana concentrations, and can also be found using dedicated rift-detection spells or devices; a Scholar's [Observation](/docs/mechanics/master/basics/#skill-observation) skill lets players approximately pinpoint a rift's origin.
 
 Left open, a rift **widens over time and periodically spawns waves of increasingly powerful Bestia** that roam out to attack nearby settlements. A widening rift also raises the local mana density, which makes further rifts more likely nearby — and once two grow into one another they merge. The Void Tear is what forms when enough of them merge: a persistent tear that anchors a raid-scale world boss and continuously floods the region with mana, which can in turn seed a [Mana Crystal Infestation](#mana-crystal-infestation).
 
@@ -123,4 +123,4 @@ In areas with a very high mana concentration, a Mana Infestation can manifest. I
 
 Each crystal is a **destructible object with its own health pool** that pulses damage into every creature or structure in its vicinity, turning the ground around it into a no-go zone. Worse, the crystals **self-replicate**: at intervals each node seeds child crystals nearby, so an ignored infestation grows geometrically, converting whole regions into lethal dead zones and eventually consuming the entire planet.
 
-The crystals themselves can be destroyed, and there is a strong incentive to do so: shattered nodes drop [Blue, Yellow, and Red Mana Crystals](/docs/mechanics/natural-resources/#list-of-resources), the raw material for [refining](/docs/mechanics/master/#skill-manaflow-expert) into powerful magic artifacts. Raid groups therefore have to clear nodes faster than they can replicate. Anything that **drains or banishes mana** slows the spread, and lowering a region's overall mana density removes the fuel the infestation feeds on. Left alone, the crystals win by sheer arithmetic.
+The crystals themselves can be destroyed, and there is a strong incentive to do so: shattered nodes drop [Blue, Yellow, and Red Mana Crystals](/docs/mechanics/items-crafting/natural-resources/#list-of-resources), the raw material for [refining](/docs/mechanics/master/basics/#skill-manaflow-expert) into powerful magic artifacts. Raid groups therefore have to clear nodes faster than they can replicate. Anything that **drains or banishes mana** slows the spread, and lowering a region's overall mana density removes the fuel the infestation feeds on. Left alone, the crystals win by sheer arithmetic.

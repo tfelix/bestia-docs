@@ -72,7 +72,7 @@
   mana: 150
   bestia: false
   description: |
-    A powerful ritual which severs your ties to your [Order](/docs/mechanics/factions/#switching-an-order) and leaves you unsworn. It can only be performed on yourself, and only while you wear a [Sigil of Redemption](/docs/mechanics/equip-list/#sigil-of-redemption), which the rite consumes. Gives a debuff which reduces your status values to `50%` for `Lv/2` (rounded up) days.
+    A powerful ritual which severs your ties to your [Order](/docs/mechanics/society/factions/#switching-an-order) and leaves you unsworn. It can only be performed on yourself, and only while you wear a [Sigil of Redemption](/docs/mechanics/items-crafting/equip-list/#sigil-of-redemption), which the rite consumes. Gives a debuff which reduces your status values to `50%` for `Lv/2` (rounded up) days.
 
 # Physical
 - id: headbutt
@@ -1322,7 +1322,7 @@
     Ages the target's body by years: less health, less vitality, slower healing.
 
 # Utility: what a caught bestia does outside a fight. A role never picks these; a species takes them in place of
-# an attack slot, see /docs/mechanics/bestia-design/#the-learnset. script names the zone-server script, and the
+# an attack slot, see /docs/mechanics/bestias/bestia-design/#the-learnset. script names the zone-server script, and the
 # keys after it are that script's settings: yields (chance in basis points), status, or lines.
 - id: frost_diver
   name: Frost Diver

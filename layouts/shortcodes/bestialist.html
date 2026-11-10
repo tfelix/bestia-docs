@@ -30,7 +30,7 @@
           {{- $skills := slice -}}
           {{- with .learnset }}{{ range .replace }}{{ $skills = $skills | append .skill }}{{ end }}{{ range .add }}{{ $skills = $skills | append .skill }}{{ end }}{{ end -}}
           {{- range $i, $skill := $skills -}}
-          {{- range where $attacks "id" $skill }}{{ if $i }}, {{ end }}<a href="/docs/mechanics/attack-list/#{{ replace (lower .name) " " "-" }}">{{ .name }}</a>{{ end -}}
+          {{- range where $attacks "id" $skill }}{{ if $i }}, {{ end }}<a href="/docs/mechanics/combat/attack-list/#{{ replace (lower .name) " " "-" }}">{{ .name }}</a>{{ end -}}
           {{- end -}}
         </small></td>
         <td><small>{{ range $i, $row := .loot }}{{ if $i }}, {{ end }}{{ $row.item | replaceRE "_" " " }} {{ $row.chance }}%{{ end }}</small></td>

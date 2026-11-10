@@ -32,11 +32,11 @@ statusValue = (baseValue + individualValue) * level / 100 + effortValue
 - Main influence value for magic domain related effects and power/damage of magic based attacks and skills.
 - Increases the duration of magical effects from the player (buffs, skills, etc)
 - Increases the total amount of available mana
-- Helps to resist Stoning, Blind, Sick, Confused, Controlled and Silenced ([status effects](/docs/mechanics/status-effects/#resist))
+- Helps to resist Stoning, Blind, Sick, Confused, Controlled and Silenced ([status effects](/docs/mechanics/combat/status-effects/#resist))
 
 ## Willpower - WIL
 
-- Helps to resist Frozen, Stoning, Withered, Feared, Controlled and Silenced ([status effects](/docs/mechanics/status-effects/#resist))
+- Helps to resist Frozen, Stoning, Withered, Feared, Controlled and Silenced ([status effects](/docs/mechanics/combat/status-effects/#resist))
 - Increases mana regeneration over time
 - Increases the duration of magic effects from the player
 - Reduces cast duration of spells
@@ -44,8 +44,8 @@ statusValue = (baseValue + individualValue) * level / 100 + effortValue
 - Slightly increases the total amount of stamina
 - Slightly increases resistance against temperature
 - Increases the flee rate (dodge chance) against physical attacks
-- Increases [construction crafting success chance](/docs/mechanics/items/#construction-crafting-success-chance) by 1% every 10 WIL
-- Increases [ore refinement success chance](/docs/mechanics/items/#ore-refinement-success-chance) by 1% every 10 WIL - holding a furnace at temperature for hours is a matter of patience
+- Increases [construction crafting success chance](/docs/mechanics/items-crafting/items/#construction-crafting-success-chance) by 1% every 10 WIL
+- Increases [ore refinement success chance](/docs/mechanics/items-crafting/items/#ore-refinement-success-chance) by 1% every 10 WIL - holding a furnace at temperature for hours is a matter of patience
 
 ## Strength - STR
 
@@ -53,8 +53,8 @@ statusValue = (baseValue + individualValue) * level / 100 + effortValue
 - Increases carry capacity
 - Increases the maximum HP amount slightly
 - Increases the maximum stamina amount slightly
-- Increases [ore refinement success chance](/docs/mechanics/items/#ore-refinement-success-chance) by 2% every 10 STR - working the bellows and turning a heavy charge is physical labour
-- Helps to resist Stun, Bleeding, Slowed, Withered and Feared ([status effects](/docs/mechanics/status-effects/#resist))
+- Increases [ore refinement success chance](/docs/mechanics/items-crafting/items/#ore-refinement-success-chance) by 2% every 10 STR - working the bellows and turning a heavy charge is physical labour
+- Helps to resist Stun, Bleeding, Slowed, Withered and Feared ([status effects](/docs/mechanics/combat/status-effects/#resist))
 
 ## Vitality - VIT
 
@@ -64,7 +64,7 @@ statusValue = (baseValue + individualValue) * level / 100 + effortValue
 - Increases the stamina regeneration
 - Increases the maximum amount of stamina
 - Increases resistance against temperature
-- Helps to resist Stun, Frozen, Poison and Sick ([status effects](/docs/mechanics/status-effects/#resist))
+- Helps to resist Stun, Frozen, Poison and Sick ([status effects](/docs/mechanics/combat/status-effects/#resist))
 
 ## Dexterity - DEX
 
@@ -72,16 +72,16 @@ statusValue = (baseValue + individualValue) * level / 100 + effortValue
 - Increases the probability of a critical hit
 - Increases the damage of ranged attacks
 - Increases upgrade chance of items and equipment by 1% every 10 DEX.
-- Increases the chance to successfully cut a rune slot into an item by 1% every 10 DEX, see [Item Customization](/docs/mechanics/items/#item-customization).
-- Increases [construction crafting success chance](/docs/mechanics/items/#construction-crafting-success-chance) by 2% every 10 DEX.
-- Helps to resist Burning, Blind and Confused ([status effects](/docs/mechanics/status-effects/#resist))
+- Increases the chance to successfully cut a rune slot into an item by 1% every 10 DEX, see [Item Customization](/docs/mechanics/items-crafting/items/#item-customization).
+- Increases [construction crafting success chance](/docs/mechanics/items-crafting/items/#construction-crafting-success-chance) by 2% every 10 DEX.
+- Helps to resist Burning, Blind and Confused ([status effects](/docs/mechanics/combat/status-effects/#resist))
 
 ## Agility - AGI
 
 - Increases the attack rate
 - Increases the walking speed
 - Increases the dodge chance (flee rate) for physical attacks (melee and ranged)
-- Helps to resist Poison, Bleeding, Burning and Slowed ([status effects](/docs/mechanics/status-effects/#resist))
+- Helps to resist Poison, Bleeding, Burning and Slowed ([status effects](/docs/mechanics/combat/status-effects/#resist))
 
 # Status Based Values
 
@@ -245,7 +245,7 @@ ATK = (BaseLevel ÷ 4) + DEX + (DEX ÷ 10)² + (STR ÷ 5) + (WIL ÷ 3)
 
 The squared term comes from Ragnarok Online. It lets attack grow faster than the flat soft defense at high levels.
 
-{{< alert context="warning" text="Bestia has no stat cap, and Ragnarok Online's squared terms rely on its cap of 99. A build that stacks one attribute with gear grows very fast: a full set of top-rolled STR items at Lv 100 deals about ten times the damage of a master without gear. See [Forging](/docs/mechanics/items/#what-the-numbers-mean)." />}}
+{{< alert context="warning" text="Bestia has no stat cap, and Ragnarok Online's squared terms rely on its cap of 99. A build that stacks one attribute with gear grows very fast: a full set of top-rolled STR items at Lv 100 deals about ten times the damage of a master without gear. See [Forging](/docs/mechanics/items-crafting/items/#what-the-numbers-mean)." />}}
 
 ### Weapon Attack - WATK
 
@@ -285,7 +285,7 @@ effGainNeeded = max(1, (nextEffValue / 3))
 
 # Individual Values
 
-The individual values **IVs** are generated when the Bestia spawns, which makes them somewhat random. It's possible to find better or worse Bestia. By [breeding Bestia](/docs/mechanics/bestia#breeding) these IVs are subject to manipulation by the player and it is possible to make stronger Bestia in a controlled way. A bestia master always has IVs of 50 for every stat.
+The individual values **IVs** are generated when the Bestia spawns, which makes them somewhat random. It's possible to find better or worse Bestia. By [breeding Bestia](/docs/mechanics/bestias/bestia#breeding) these IVs are subject to manipulation by the player and it is possible to make stronger Bestia in a controlled way. A bestia master always has IVs of 50 for every stat.
 
 # Base Values
 
@@ -296,7 +296,7 @@ For other non-Bestia based entities like items or buildings etc. base values are
 # Status Effects
 
 A status effect is a temporary condition on top of an entity's status values. Every effect, how it is resisted and
-the rules they share are on the [Status Effects](/docs/mechanics/status-effects/) page.
+the rules they share are on the [Status Effects](/docs/mechanics/combat/status-effects/) page.
 
 Each attribute helps to resist some effects, always together with a second attribute. No attribute alone makes an
 entity immune: resist is capped at 80%.
