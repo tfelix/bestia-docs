@@ -123,11 +123,24 @@ Everything a player owns inside the field is warded: the master, their bestias a
 - Monsters are not affected. A creature still attacks a warded player, and a warded player still fights back.
 - An attack or harmful skill aimed at a warded target does not start. Clicking a warded bestia only selects it, and if an attack is sent anyway, the attacker is told that a ward stone protects the target.
 
-The ward on a player cannot be dispelled. The only way to end the protection is to deal with the stone itself, which takes a ritual of strong players. The stone's own spell shields it, so nothing can harm the stone while its magic holds. Only once that magic is countered can the stone be attacked. A destroyed stone is gone for the rest of the world incarnation, and so is its Protected Zone.
-
-The stone's magic is countered with a **Dispel** cast at the stone. Its [Potency](/docs/mechanics/combat/spell-potency/#fixed-potency) is `3000`, so a Dispel gets its base chance times `P ÷ 3000`. A Dispel with less than `120` Potency does nothing at all, and no single caster reaches that. Only a [ritual](/docs/mechanics/combat/spell-potency/#rituals) does, and a full circle lifts the leader's Dispel to the cap of `150`, which gives `5%` per try. A group needs about 20 rituals, nearly two hours of trying and resting. Every try already counts as an offence, see [Negative Honor](#negative-honor).
+The ward on a player cannot be dispelled. The only way to end the protection is to deal with the stone itself, which takes a ritual of strong players. The stone's own spell shields it, so nothing can harm the stone while its magic holds. Only once that magic is countered can the stone be attacked. A destroyed stone is gone for the rest of the world incarnation, and so is its Protected Zone. How its magic is countered is described under [Countering the Ward Stone](#countering-the-ward-stone).
 
 Honor still applies inside the field. Killing an NPC there is only possible once the ward stone's magic is countered. It then costs a flat 10 honor (no level-based reduction), even if no observer is in sight. All honor loss inside a Protected Zone is doubled, so such a kill costs **20 honor** in total. Honor-increasing actions are multiplied by 1.5.
+
+## Countering the Ward Stone
+
+The stone's magic is countered with a **Dispel** cast at the stone, and it takes a ritual:
+
+- **Potency `3000`, threshold `120`.** A Dispel with less than `120` Potency has no chance at all. No single caster
+  reaches that, so a Dispel without the charge of a [ritual](/docs/mechanics/combat/spell-potency/#rituals) is wasted.
+- **A full circle has `5%` per try.** The charge lifts the leader's Dispel to the cap of `150`, and the chance is the
+  Dispel's base chance times `150 ÷ 3000`. A circle of five helpers of level 60 has `4%`.
+- **One group needs about 20 rituals**, nearly two hours of trying and resting. A guild with several circles tries in
+  parallel.
+- **Every try costs.** It counts as an offence, see [Negative Honor](#negative-honor), and it uses up a Mana Circle.
+
+The numbers come from [Fixed Potency](/docs/mechanics/combat/spell-potency/#fixed-potency) and the
+[ritual cap](/docs/mechanics/combat/spell-potency/#the-charge).
 
 # War Zone
 
