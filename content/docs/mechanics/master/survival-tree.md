@@ -138,6 +138,9 @@ graph TD
     type="Passive"
     description="An axeman's read of the forest - which trunks fell clean, which grain splits true, and how to bring both down efficiently." >}}
 
+A tree falls only to an axe, a greataxe or a felling tool such as a hatchet. Lumberjack makes each blow count for more
+of the trunk, and every stack of logs a felled tree drops may come twice.
+
 Level 1 lets you build a Lumberjack Cabin from a kit. Bestias can work the cabin while you are away.
 
 | Lv. | Gathering Time Reduction | Resource Drop Chance |
@@ -154,7 +157,8 @@ Level 1 lets you build a Lumberjack Cabin from a kit. Bestias can work the cabin
     type="Active" manaCost="5" castTime="3s" cooldown="0s" range="2" target="Tree Stump"
     description="A Forester takes from the forest and gives back." >}}
 
-Plants a sapling in a tree stump and consumes a log. The new tree grows back faster than one left to nature.
+Plants a sapling in a tree stump and consumes a log. The new tree grows back faster than one left to nature, and it
+does not wait for a grown tree nearby the way a stump left alone does.
 
 | Lv. | Regrowth Time | Extra                             |
 | --- | ------------- | --------------------------------- |
@@ -203,6 +207,10 @@ trail.
 {{< skill name="Expert Taming" maxLevel="5"
     type="Passive"
     description="A Forester's patient hand with wild Bestia rubs off on them, sharpening how fast they learn and how little they need to keep going out in the open." >}}
+
+Counts for the master's Bestias only: they learn faster, and lose less stamina both to the weather and to their own
+skills.
+
 
 | Lv. | EXP Gain | Stamina Loss Reduction |
 | --- | -------- | ---------------------- |
@@ -335,6 +343,11 @@ directions. Only one camp per master can stand.
 | 1   | 30 min   |                                                                                                                             |
 | 2   | 60 min   | +50% HP and stamina regeneration. Storms and [mana storms](/docs/mechanics/world/doomsday/#mana-storms) do not reach inside |
 | 3   | 90 min   | As Lv. 2. Party members who die respawn at the camp                                                                         |
+
+
+The campfire must be burning and must be the master's own or a party member's. "Storms do not reach inside" means
+the weather does no harm inside a camp of Lv. 2 or higher. At Lv. 3 a party master who dies anywhere respawns at the
+camp while it stands.
 
 {{< /skill >}}
 
