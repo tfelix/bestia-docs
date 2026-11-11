@@ -465,14 +465,21 @@ can stand inside a settlement, and none within 5km of another. See
 | 4   | -8%                    | +8%                   |
 | 5   | -10%                   | +10%                  |
 
+Haggling adds to the price your [honor](/docs/mechanics/society/pvp/) gets you. A merchant always keeps a small
+margin: you never pay less than 88% of the shop price or get more than 110% of what it pays.
+
 {{< /skill >}}
 
 {{< skill name="Street Stall" maxLevel="5" requires="Haggling Lv. 2"
     type="Active" manaCost="10" castTime="5s" cooldown="0s" duration="1h" range="1" target="Ground"
     description="A cloth on the ground and a few goods on it - every road is a market for a Trader." >}}
 
-Sets up a market stall where the Trader stands. Other players buy the listed items from it. The stall closes when the
-Trader walks away or after `1h`. Unlike an [auction house](#skill-trade-post-owner) it needs no settlement.
+Sets up a market stall where the Trader stands. The Trader puts goods from the bag on it, each lot at a price in coins.
+Other players click the stall and buy a whole lot; they need [Basic Skill](/docs/mechanics/master/novice-tree/#skill-basic-skill)
+Lv. 3, as for trade posts, and must stand at the stall. The Trader is paid into the bag at once.
+
+The stall closes when the Trader walks more than 5 m away, leaves the world, or after `1h`. Unsold goods go back into
+the bag. Unlike an [auction house](#skill-trade-post-owner) it needs no settlement, and it has no fee.
 
 | Lv. | Listings |
 | --- | -------- |
