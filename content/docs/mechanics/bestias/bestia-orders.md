@@ -65,10 +65,10 @@ _Camp chest_, _Mine camp_. Many Bestias can use the same place, and moving a pin
 
 | Place       | What it is                                                                                    |
 | ----------- | --------------------------------------------------------------------------------------------- |
-| **Home**    | Where a Bestia rests: where it stood when it got its orders, or the middle of its named area |
+| **Home**    | Where a Bestia rests: where it stood when it got its orders, or the middle of its named area  |
 | **Area**    | A named circle on the map, 4 to 64 tiles across the middle. Workers and guards stay inside it |
 | **Chest**   | A name for a [camp chest](#the-camp-chest) you own. Workers bring their haul here             |
-| **Station** | A crafting station or a Mining Shaft you own, picked in the Workshop                         |
+| **Station** | A crafting station or a Mining Shaft you own, picked in the Workshop                          |
 
 Orders without a named area use the area around the Bestia's home, as wide as its species roams. Orders without a
 named chest use your nearest chest. A master can have up to 30 places. Deleting one sends every Bestia that used it back
