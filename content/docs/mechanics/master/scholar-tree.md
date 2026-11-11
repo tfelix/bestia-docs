@@ -46,20 +46,28 @@ adds to the range in a mana-rich region and eats into it in a drained one.
 | 4   | 40m   | The exact spell bound to an item or place                                             |
 | 5   | 50m   | Who bound it, and what trigger a [Spell Binding](#skill-spell-binding) is waiting for |
 
+Mana sources are spell fields on the ground (walls, zones, songs, Mana Circles), anything under a buff or debuff
+(ward stones too), enchanted items lying on the ground, and mana crystals and aetherite. The marks show on the compass
+for 15 seconds, with a line in the chat. Strength reads as faint below Potency 50, strong below 150, and overwhelming
+above.
+
+{{< alert context="info" text="Level 5 waits for Spell Binding, which has no design yet." />}}
+
 {{< /skill >}}
 
 {{< skill name="Sense" maxLevel="1" requires="Magic Sense Lv. 1"
     type="Active" manaCost="6" castTime="1s" cooldown="3s" range="12" target="Enemy"
     description="Cast on a monster to read what mana and instinct alone can tell about it." >}}
-Reveals the monster status values, element, HP and Mana.
+Reveals the monster status values, element, kind, size, HP and Mana in a small popup next to it.
 {{< /skill >}}
 
 {{< skill name="Ruwach" maxLevel="1" requires="Magic Sense Lv. 2"
     type="Active" manaCost="14" castTime="Instant" cooldown="10s" duration="10s" range="10m" target="Self"
     description="A pulse of second sight that peels back concealment - hidden traps, hiding Bestia and cloaked Assassins stand out for what they are. Useful to any Scholar, whether they're scrying old ruins or walking a party into an ambush." >}}
 
-While it is active, everything hidden within 10m of the caster is revealed. Detection resistance, such as that of
-[Hide](/docs/mechanics/master/warrior-tree/#skill-hide), does not help against it.
+While it is active, every second it ends [Hide](/docs/mechanics/master/warrior-tree/#skill-hide) and Cloak on
+everyone within 10m of the caster, so they stand revealed for everybody. Detection resistance does not help against
+it.
 
 {{< /skill >}}
 
