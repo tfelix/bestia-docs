@@ -432,7 +432,7 @@ graph TD
 
 Anyone with a [pickaxe](/docs/mechanics/items-crafting/items/#weapon-type) can mine, but an untrained miner only gets resources up to
 level 10. Level 1 lets you craft a pickaxe and build a Mining Shaft from a kit. Bestias can work the shaft while you are
-away.
+away. A shaft reaches 40 m deeper per level, see [Mine](/docs/mechanics/bestias/bestia-orders/#mine).
 
 | Lv. | Mining Time Reduction | Max Resource Level |
 | --- | --------------------- | ------------------ |
