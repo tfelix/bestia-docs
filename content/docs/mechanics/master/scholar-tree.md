@@ -165,9 +165,10 @@ graph TD
     type="Active" manaCost="per Lv." castTime="1.5s" cooldown="None" range="9" target="Ally"
     description="Channels mana directly into a target's wounds, restoring HP in an instant. The Priest's bread and butter - simple, reliable, and the first rite every Priest learns." >}}
 
-Heals a target's HP for `[(BaseLV+INT)/8]*(4+8*SkillLV)`. When used against Undead property monsters, it is a holy attack that ignores SMDEF and INT, but deals only half damage - that is,
-`HealValue * ElementModifier / 2`. Targeting a monster with a healing spell has to be deliberate, so the client asks
-for a modifier key rather than a plain click.
+Heals a target's HP for `[(BaseLV+INT)/8]*(4+8*SkillLV)`. Against an Undead property foe, it is a holy attack that
+ignores SMDEF and INT, but deals only half damage - that is, `HealValue * ElementModifier / 2`. An Undead that is no
+foe, like an ally's Bestia, is neither healed nor hurt. Targeting a monster with a healing spell has to be deliberate,
+so the client asks for Shift rather than a plain click.
 
 | Lv. | Mana Cost |
 | --- | --------- |
@@ -187,14 +188,17 @@ for a modifier key rather than a plain click.
 {{< skill name="Suffragium" maxLevel="1" requires="Magic Sense Lv. 2"
     type="Active" manaCost="18" castTime="Instant" cooldown="20s" duration="30s" range="9" target="Ally"
     description="A murmured rite that lightens the burden of spellcasting for a short while - a Sage burning through scrolls, a Priest chaining blessings and a Trader rushing a linking ritual all feel the difference equally." >}}
-The next spell the target ally casts within `30s` has `30%` less cast time.
+The next cast bar the target starts within `30s` is `30%` shorter. An instant spell does not use it up.
 {{< /skill >}}
 
 {{< skill name="Gloria" maxLevel="1" requires="Magic Sense Lv. 2"
-    type="Active" manaCost="22" castTime="2s" cooldown="30s" duration="90s" range="9" target="Party"
+    type="Active" manaCost="22" castTime="2s" cooldown="30s" duration="90s" range="30m" target="Party"
     description="A quiet benediction that lets a crafter's hands find the better cut. Every item the party starts crafting while it holds rolls its random stats with better odds." >}}
 
-`+15%` to the chance of every [random stat](/docs/mechanics/items-crafting/crafting/#forging-and-random-stats) slot and socket of the item.
+`+15` percentage points to the chance of every [random stat](/docs/mechanics/items-crafting/crafting/#forging-and-random-stats) slot and socket of the item.
+It reaches the party members within 30m of the caster and their Bestias; without a party, the caster and its own
+Bestias. What counts is the moment a craft starts: a station's queue rolls each item with the worker's blessing at
+the time it is made.
 
 {{< /skill >}}
 
@@ -204,10 +208,11 @@ The next spell the target ally casts within `30s` has `30%` less cast time.
 {{< /skill >}}
 
 {{< skill name="Blessing" maxLevel="5" requires="Heal Lv. 3"
-    type="Active" manaCost="28" castTime="2s" cooldown="None" duration="per Lv." range="9" target="Party"
-    description="A benediction that steadies body and mind and lends striking power, raising a party's core stats for a short while." >}}
+    type="Active" manaCost="28" castTime="2s" cooldown="None" duration="per Lv." range="9" target="Ally"
+    description="A benediction that steadies body and mind and lends striking power, raising an ally's core stats for a short while." >}}
 
-On an Undead or Demon target it turns into a curse: it halves DEX and INT instead.
+On an Undead or Demon foe it turns into a curse: it halves DEX and INT instead. The curse is harm, so it only lands
+where a blow could: never on an ally's Undead Bestia or in a warded zone. Like Heal, Shift aims it at a monster.
 
 | Lv. | STR/INT/DEX | HIT | ATK and MATK | Duration |
 | --- | ----------- | --- | ------------ | -------- |
@@ -237,6 +242,9 @@ it **stacks** with the permanent [Quick Travel](/docs/mechanics/master/survival-
     type="Active" manaCost="30" castTime="1s" cooldown="15s" duration="60s" range="9" target="Ally"
     description="A shimmering ward of mana that stands between a target and harm, soaking up a number of hits before it gives out." >}}
 
+Each blow or spell that lands takes away up to the absorbed share of the target's max HP, and uses up one hit. A
+burn or a poison tick is no hit and passes through. Casting it again brings back all of its hits.
+
 | Lv. | Hits Absorbed | Damage Absorbed per Hit |
 | --- | ------------- | ----------------------- |
 | 1   | 1             | +10% of HP              |
@@ -256,6 +264,9 @@ The veil covers a radius of 3m.
 {{< skill name="Signum Crucis" maxLevel="3"
     type="Active" manaCost="16" castTime="1s" cooldown="8s" duration="per Lv." range="9" target="Enemy"
     description="The sign traced in the air before every holy rite. It burns a sigil onto a target that pries their guard open, and bites hardest into things that should not be walking around in the first place. Every other holy skill a Priest learns starts here." >}}
+
+The sigil cuts physical DEF, both the soft DEF from VIT and the hard DEF of armour. MDEF stays. On a Demon or an
+Undead the extra cut adds to it.
 
 | Lv. | DEF Reduction | Extra vs Demon/Undead | Duration |
 | --- | ------------- | --------------------- | -------- |
@@ -334,13 +345,19 @@ Damage = Holy Light damage of the same skill level
 {{< /skill >}}
 
 {{< skill name="Lex Aeterna" maxLevel="1" requires="Holy Light Lv. 3"
-    type="Active" manaCost="18" castTime="Instant" cooldown="15s" duration="20s" range="9" target="Any"
-    description="Marks a single target so that the very next hit it takes lands twice as hard. The mark breaks the instant it's used, on friend or foe alike." >}}
+    type="Active" manaCost="18" castTime="Instant" cooldown="15s" duration="20s" range="9" target="Enemy"
+    description="Marks a single foe so that the very next hit it takes lands twice as hard. The mark breaks the instant it's used, whoever lands that hit." >}}
+
+The next blow or spell that lands counts twice. A burn or a poison tick is no hit and leaves the mark alone.
+
 {{< /skill >}}
 
 {{< skill name="Magnificat" maxLevel="3" requires="Kyrie Eleison Lv. 3 and Blessing Lv. 3"
-    type="Active" manaCost="35" castTime="3s" cooldown="60s" duration="90s" range="9" target="Party"
+    type="Active" manaCost="35" castTime="3s" cooldown="60s" duration="90s" range="30m" target="Party"
     description="A hymn of thanksgiving that quickens the natural recovery of everyone within earshot." >}}
+
+It reaches the party members within 30m of the caster and their Bestias; without a party, the caster and its own
+Bestias.
 
 | Lv. | HP/Mana Regeneration |
 | --- | -------------------- |
