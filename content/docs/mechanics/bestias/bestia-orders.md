@@ -178,9 +178,19 @@ down.
 
 ## Mine
 
-A miner works a Mining Shaft built over a deposit. It works like a station: every few seconds of labour gives ore, which
-goes into the Bestia's bag and then into the chest. The terrain does not change. Digging real ore in the ground is
-planned for later.
+A miner works a Mining Shaft of yours that nobody else works. You need Mining Lv. 1 to build a shaft. It works like a
+station, but it digs real ore out of the ground below it, so the ore is gone for anyone who digs there later.
+
+- **Reach**: 8 m around the shaft, and 40 m down per level of your Mining. The 4 m right under the shaft stay, so it does
+  not undermine itself. Deep gems need a trained miner.
+- **Pace**: 5 minutes of labour per ore voxel (about two lumps), 10% less per level of Mining.
+- **Order**: it digs from the top down, like a miner following a vein.
+- **Haul**: the ore goes into the Bestia's bag. Before the bag is too full for the next dig, it carries the ore to your
+  nearest chest and comes back.
+- **Dug out**: a shaft with no ore left in reach lets its miner go. The miner looks for another shaft or rests at home.
+
+You can build a shaft anywhere. Where no ore is in reach, it digs nothing. Ore that is not an item yet (copper, tin,
+silver) stays in the ground.
 
 ## Follow and Rest
 
