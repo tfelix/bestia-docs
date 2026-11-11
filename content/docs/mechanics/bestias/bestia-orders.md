@@ -4,7 +4,7 @@ title: Bestia Orders
 description: "How you tell your Bestias what to do while you are away: a job, the places it needs, how careful they are and how they look after themselves."
 ---
 
-{{< alert context="warning" text="This page is a design document. Today a Bestia only has a **stance** (hold, patrol, forage or defend) and an **aggression** value. Everything else on this page is planned." />}}
+{{< alert context="warning" text="Most of this page is built. Still planned: the Follow job, storm shelter, named places on the map, which jobs a species may take, the allowed-items list, and the Workshop and Diary screens." />}}
 
 # Orders
 
@@ -41,7 +41,11 @@ earlier or haul sooner, but it cannot teach it a new trick.
 ## Main Job and Fallback
 
 Every Bestia has a **main job** and may have one **fallback job**. The fallback runs when the main job has nothing to do:
-the area is picked clean, the station queue is empty, or you are offline and the main job is Follow.
+the area is picked clean and the bag is hauled, no station or Mining Shaft waits for it, or you are offline and the main
+job is Follow. As soon as the main job has work again, the Bestia puts the fallback work down and goes back to it.
+
+Only jobs that can run out of work take a fallback: Gather, Craft and Mine (and Follow, once it exists). A guard is never
+out of work, and Rest is what a Bestia does anyway, so neither takes one, and Rest is never a fallback.
 
 A common pair is _Gather, else Craft_: the Bestia gathers until the field is bare, then helps at the workbench. Without a
 fallback, a Bestia with nothing to do goes home and rests.
@@ -110,30 +114,46 @@ You can change both lists in Fine-tune.
 
 Fine-tune is for experts. It has two parts.
 
-**Overrides.** It shows every number the slider and the job chose: retreat line, care lines, allowed items, how far the
-Bestia may stray from its area, when a gatherer hauls. You can change each one inside fixed limits. A changed number is
-marked, and resetting it brings back the slider's value.
+**Overrides.** Five numbers the slider and the job choose can be set by hand. Each stays inside fixed limits. An empty
+field keeps the slider's or the job's value.
+
+| Number      | Default                     | Limits                     |
+| ----------- | --------------------------- | -------------------------- |
+| Retreat     | From Courage (70% to never) | 0-90% HP, 0 never retreats |
+| Eat below   | 40% stamina                 | 10-90%                     |
+| Heal below  | 50% HP                      | 10-90%                     |
+| Haul at     | 80% of what it can carry    | 30-100%                    |
+| Area radius | The species' roaming range  | 4-64 tiles                 |
+
+Which items a Bestia may use for care is planned as a sixth setting.
 
 **Rules.** A short list of up to eight lines, read from the top. The first line that fits wins.
 
-| When …                        | … then                        |
-| ----------------------------- | ----------------------------- |
-| stamina below _x_%            | eat, or rest at home          |
-| HP below _x_%                 | heal, or retreat              |
-| bag fuller than _x_%          | haul to the chest now         |
-| it is night, or it is day     | rest at home, or keep working |
-| a storm or a mana storm comes | take shelter, or keep working |
-| a stronger foe is in sight    | retreat, or hold the ground   |
-| the station fire is low       | add wood from the chest       |
+| When …                     | … then                        |
+| -------------------------- | ----------------------------- |
+| stamina below _x_%         | eat, or rest at home          |
+| HP below _x_%              | heal, or retreat              |
+| bag fuller than _x_%       | haul to the chest now         |
+| it is night, or it is day  | rest at home, or keep working |
+| a stronger foe is in sight | retreat, or hold the ground   |
 
-Rules choose between things the job, Care and Courage already allow. "Keep working" can override storm shelter, but no
-rule can make a gatherer fight or a guard craft.
+Rules choose between things the job, Care and Courage already allow. "Rest at home" puts down a station or shaft and
+holds all work until the line no longer fits. "Keep working" skips sleep. "Hold the ground" keeps even a timid Bestia
+from fleeing; it still fights only what its job and Courage allow. No rule can make a gatherer fight or a guard craft.
+
+Storm rules come with storm shelter. A station's fire needs no rule: a crafter keeps it burning from the chest.
 
 # Presets
 
 You can save a Bestia's orders as a **preset** with a name, for example _Camp gatherer_, and give it to other Bestias.
-A preset stays linked: change it once, and every Bestia that uses it changes too. A Bestia can still override single
-values. Those values stay its own when the preset changes.
+A master has up to 20 presets, with names of up to 32 letters.
+
+A preset stays linked: change it once, and every Bestia that uses it changes too. A Bestia can still keep its own value
+for single Fine-tune numbers; those stay its own when the preset changes. Job, Courage, fallback and rules always come
+from the preset.
+
+Deleting a preset leaves its Bestias with the orders they had, as their own. Giving a linked Bestia orders of its own,
+in the game or in the app, takes it off the preset.
 
 # The Jobs in Detail
 
@@ -226,7 +246,7 @@ The app's **Bestia** tab has these screens:
 - **Pack**: every Bestia with its job and a live status line, for example _Crafting planks 4/20 at Workbench_ or
   _Paused: bag full_.
 - **Orders**: preset, main job, fallback job and the Courage slider. Tap a job to set its places and resources.
-- **Fine-tune**: overrides and rules.
+- **Fine-tune**: overrides and rules, and saving the orders as a preset. Today Orders and Fine-tune share one page.
 - **Workshop**: your stations, their queues and workers, and an **Add to queue** button for recipes the chest next to it
   can pay for.
 - **Diary**: what each Bestia did while you were away and why it stopped.
