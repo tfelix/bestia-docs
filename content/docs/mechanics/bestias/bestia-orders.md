@@ -243,6 +243,22 @@ They work until something stops them: a full chest, no food, an empty queue, or 
 **A Bestia that falls while you are away stays down until you log in.** Its bag drops as loot where it fell, unless
 something protects it, for example a seal spell. A guard that falls leaves its area unguarded.
 
+# In the Game
+
+Each Bestia in the party list has a flag icon. It opens the Bestia's **orders window**, with the same orders as the
+app: preset, job, the fallback job (_When idle_), Courage, work area and chest. **Fine-tune** folds out below them,
+with the numbers and the rules. A number you do not tick says _auto_: the job and Courage choose it.
+
+A Bestia on a preset shows the preset's choices greyed out, and only the numbers you tick are its own. From the window
+you can:
+
+- **Save as preset**: name the orders shown; the new preset is then picked, and _Give orders_ links the Bestia to it,
+- **Edit preset**: change the preset itself; saving changes it for every Bestia that follows it,
+- **Delete preset**, with a second click to confirm,
+- name a **work area** with the _+_ next to the area: a circle around where the Bestia stands now.
+
+Chests are named in the app. The window stays current: orders given in the app, or a changed preset, show at once.
+
 # In the Companion App
 
 The app's **Bestia** page shows every Bestia with a live status line, for example _Crafting Plank 4/20 at Workbench_ or
