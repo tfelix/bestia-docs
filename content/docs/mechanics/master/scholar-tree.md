@@ -540,6 +540,8 @@ Books, wards and long nights spent staring into scrying bowls. Sages study magic
 
 The Sage has two routes. The **Scribe** trains, inscribes and binds spells and opens the way with Teleport and Warp Portal. The **Battle Sage** fights magic itself: dispels, wards, mana drain and endowed weapons.
 
+{{< alert context="info" text="The runes, mana crystals and blank spell scrolls these skills burn are made by crafting, which is not built yet. Until then only a GM can hand them out." />}}
+
 ```mermaid
 graph TD
     MagicSense[/"Magic Sense (Scholar Tree)"/]
@@ -581,6 +583,10 @@ graph TD
 
 Consumes the scroll, also when the training fails. The base chance depends on the level of the spell and uses the same
 table as [Spell Inscription](#skill-spell-inscription). Each level adds to it.
+
+Any of your own bestias can learn any bestia attack from a scroll, as long as its level is at least the attack's level.
+An attack's level is the lowest level at which any species learns it.
+There is no limit to how many attacks a bestia knows.
 
 | Lv. | Success Chance |
 | --- | -------------- |
@@ -641,7 +647,8 @@ Success chance starts at a base chance of `(50 + 10 * SkillLv)%`. A target with 
 {{< skill name="Magic Rod" maxLevel="3" requires="Dispel Lv. 2"
     type="Active" manaCost="20" castTime="Instant" cooldown="20s" duration="per Lv." range="0" target="Self"
     description="A reactive ward raised at a gesture. The next single-target spell to strike the caster is caught and unravelled instead of landing, its energy siphoned back as mana. Area spells wash straight over it - only single-target magic is caught." >}}
-Catches a single incoming spell while the ward holds.
+Catches a single incoming spell while the ward holds: its damage and its curses do nothing, its caster still pays, and
+the ward is spent.
 
 | Lv. | Mana Recovered (of spell cost) | Ward Duration |
 | --- | ------------------------------ | ------------- |
@@ -655,7 +662,7 @@ Catches a single incoming spell while the ward holds.
     type="Active" manaCost="25" castTime="1s" cooldown="15s" duration="per Lv." range="per Lv." target="Self"
     description="Opens a slow siphon on the mana of everything hostile standing too close, pulling it steadily into the Sage's own reserves for a short while." >}}
 
-Each second drains a share of each target's max mana.
+Each second drains a share of each foe's max mana into the Sage.
 
 | Lv. | Range | Max Mana Drained per Second | Duration |
 | --- | ----- | --------------------------- | -------- |
@@ -675,6 +682,7 @@ Each second drains a share of each target's max mana.
 | 2   | 4m     | 25s      |
 | 3   | 5m     | 35s      |
 
+A ground spell with a higher [Potency](/docs/mechanics/combat/spell-potency/) than the protector can still take root.
 {{< /skill >}}
 
 {{< skill name="Spell Inscription" maxLevel="5" requires="Spell Training Lv. 3"
@@ -693,6 +701,14 @@ The base success chance depends on the level of the attack being inscribed and i
 | 101+         | -40%         |
 
 A negative base means the extraction is impossible on raw talent alone and only becomes viable with strong bonuses from intelligence, skill level and equipment.
+
+Each level of Spell Inscription adds `+10%`. It works on your own bestias only, and costs a blank spell scroll, also when
+it fails. The bestia keeps the attack: the scroll is a copy. When the extraction fails, the bestia's mind breaks with a
+50% chance, and the bestia is lost for good. Its bag goes to you. The picker shows both chances before you cast.
+
+A finished scroll can teach its attack to a bestia through [Spell Training](#skill-spell-training), or anyone can use it
+from the bag: it casts the attack once, at the inscribed level, with the user's own stats and no mana. The scroll is
+then gone.
 {{< /skill >}}
 
 {{< skill name="Spell Binding" maxLevel="5" requires="Spell Inscription Lv. 3"
@@ -707,7 +723,8 @@ A negative base means the extraction is impossible on raw talent alone and only 
     type="Active" manaCost="35" castTime="2s" cooldown="30s" range="0" target="Self"
     description="Moves the Sage and their Bestias close by in a single step." >}}
 
-Every cast consumes a Teleport Rune. A teleported entity cannot teleport again for 5 minutes.
+Every cast consumes a Teleport Rune. A teleported entity cannot teleport again for 5 minutes. The Sage's own bestias
+within 10 m come along and land beside the Sage. "Home" is the Sage's save point in the home settlement.
 
 | Lv. | Destination                  |
 | --- | ---------------------------- |
@@ -722,9 +739,12 @@ Every cast consumes a Teleport Rune. A teleported entity cannot teleport again f
 
 Every cast consumes a Portal Rune, which costs more than a Teleport Rune.
 
-{{< alert context="info" text="To do: decide where a portal leads. Runes are spent on the cast, so they cannot mark the far end." />}}
+A portal leads to the Sage's home or to a saved spot. Casting Warp Portal also offers "Mark this spot": it saves the
+spot the Sage stands on at once, with no rune, mana or cooldown. The Sage keeps one spot per level; a new mark replaces
+the oldest. The portal stands at the aimed spot and at its far end for 30 seconds, and its passages are shared by
+both ends.
 
-| Lv. | Simultaneous Users |
+| Lv. | Passages |
 | --- | ------------------ |
 | 1   | 2                  |
 | 2   | 4                  |
@@ -741,7 +761,7 @@ Every cast consumes a Portal Rune, which costs more than a Teleport Rune.
 The caster picks the element when casting: fire, water, wind or earth. The weapon takes on the element, so the
 [element table](/docs/mechanics/bestias/bestia-design/#7-element-size-and-defences) applies. The bonus damage comes on top.
 
-| Lv. | Duration | Bonus Damage of the Element |
+| Lv. | Duration | Bonus Attack |
 | --- | -------- | --------------------------- |
 | 1   | 60s      | +5%                         |
 | 2   | 120s     | +10%                        |
