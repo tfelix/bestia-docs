@@ -4,7 +4,7 @@ title: Bestia Orders
 description: "How you tell your Bestias what to do while you are away: a job, the places it needs, how careful they are and how they look after themselves."
 ---
 
-{{< alert context="warning" text="Most of this page is built. Still planned: the Follow job, storm shelter, named places on the map, which jobs a species may take, the allowed-items list, and the Workshop and Diary screens." />}}
+{{< alert context="warning" text="Most of this page is built. Still planned: the Follow job, storm shelter, which jobs a species may take, the allowed-items list, and a notice when a Bestia runs out of food." />}}
 
 # Orders
 
@@ -63,12 +63,16 @@ why.
 Places are pins you set on the map. They belong to the master, not to one Bestia, and have names: _North field_,
 _Camp chest_, _Mine camp_. Many Bestias can use the same place, and moving a pin moves it for all of them.
 
-| Place       | What it is                                                               |
-| ----------- | ------------------------------------------------------------------------ |
-| **Home**    | Where a Bestia rests. By default, where it stood when it got its orders  |
-| **Area**    | A circle on the map. Gatherers and guards stay inside it                 |
-| **Chest**   | A [camp chest](#the-camp-chest) you own. Gatherers bring their haul here |
-| **Station** | A crafting station or a Mining Shaft you own                             |
+| Place       | What it is                                                                                    |
+| ----------- | --------------------------------------------------------------------------------------------- |
+| **Home**    | Where a Bestia rests: where it stood when it got its orders, or the middle of its named area |
+| **Area**    | A named circle on the map, 4 to 64 tiles across the middle. Workers and guards stay inside it |
+| **Chest**   | A name for a [camp chest](#the-camp-chest) you own. Workers bring their haul here             |
+| **Station** | A crafting station or a Mining Shaft you own, picked in the Workshop                         |
+
+Orders without a named area use the area around the Bestia's home, as wide as its species roams. Orders without a
+named chest use your nearest chest. A master can have up to 30 places. Deleting one sends every Bestia that used it back
+to its home area and the nearest chest.
 
 # Courage
 
@@ -241,26 +245,33 @@ something protects it, for example a seal spell. A guard that falls leaves its a
 
 # In the Companion App
 
-The app's **Bestia** tab has these screens:
+The app's **Bestia** page shows every Bestia with a live status line, for example _Crafting Plank 4/20 at Workbench_ or
+_Paused: bag full_. Below it are the orders: preset, job, Courage, and **Fine-tune** with the fallback job, the named
+area and chest, the numbers and the rules. The page also lists your places and presets.
 
-- **Pack**: every Bestia with its job and a live status line, for example _Crafting planks 4/20 at Workbench_ or
-  _Paused: bag full_.
-- **Orders**: preset, main job, fallback job and the Courage slider. Tap a job to set its places and resources.
-- **Fine-tune**: overrides and rules, and saving the orders as a preset. Today Orders and Fine-tune share one page.
-- **Workshop**: your stations, their queues and workers, and an **Add to queue** button for recipes the chest next to it
-  can pay for.
-- **Diary**: what each Bestia did while you were away and why it stopped.
+Work areas are made on the **Map**: tap the ground, then _Make a work area here_. The map draws them as circles.
 
-Four events can send a notification, within the app's [limit of six per hour](/docs/mechanics/companion-app/#limits):
+The **Workshop** lists your crafting stations, their queues and workers. You can add recipes the chest next to a
+station can pay for, cancel and reorder entries, and pick the worker: a Bestia, any free crafter, or yourself. A
+cancelled entry's unused ingredients go into the chest next to the station, as far as it has room; nothing comes from or
+goes into your own bag while you are away.
+
+The **Diary** tells what each Bestia did, one line per event: new orders, a haul (its goods summed), work that stopped,
+a finished queue, a fight, a retreat, a death. Lines are kept for 7 days, at most 200 per Bestia.
+
+Four events can send a notification while you are away, within the app's
+[limit of six per hour](/docs/mechanics/companion-app/#limits):
 
 - a Bestia fell,
-- a Bestia stopped working (bag or chest full, no food, no fuel, no ingredients),
-- a Bestia is under attack or had to retreat,
+- a Bestia stopped working and will not go on by itself: its fire went out, it cannot make the next item, the chest is
+  full, or its shaft is dug out,
+- a Bestia is attacked after ten quiet minutes, or had to retreat,
 - a station finished its queue.
+
+Each has a setting, so you can turn it off. Nothing is pushed while you play.
 
 # Open Questions
 
-- How many slots a camp chest has, and whether bigger storage buildings come later.
-- Whether the Diary keeps every craft and every gathered stick, or one line per hour.
+- Whether bigger storage buildings come after the camp chest.
 - How Follow decides between staying close to you and fighting.
 - Whether a guard that cannot fight, such as a grazer, should call other guards or only alert the master.
