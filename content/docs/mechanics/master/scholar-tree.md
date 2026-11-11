@@ -205,6 +205,10 @@ the time it is made.
 {{< skill name="Aqua Benedicta" maxLevel="1" requires="Signum Crucis Lv. 1"
     type="Active" manaCost="12" castTime="3s" cooldown="5s" range="0" target="Self"
     description="The rite of blessing plain water into [Holy Water](/docs/mechanics/items-crafting/item-list/#holy-water). User must be standing in water, consuming an [Empty Bottle](/docs/mechanics/items-crafting/item-list/#empty-bottle) in the process. Holy Water is the reagent behind Aspersio and several higher rites." >}}
+
+Shallow water counts. Only the water the world was made with counts so far, not a dug pond or a flood. A Priest on dry
+land is told so before the cast bar starts.
+
 {{< /skill >}}
 
 {{< skill name="Blessing" maxLevel="5" requires="Heal Lv. 3"
@@ -257,7 +261,8 @@ burn or a poison tick is no hit and passes through. Casting it again brings back
     type="Active" manaCost="25" castTime="1s" cooldown="10s" duration="20s" range="6" target="Ground"
     description="Lays a veil of still air over a patch of ground; anything standing in it becomes untouchable by arrows, bolts and thrown weapons, though a blade still finds its mark." >}}
 
-The veil covers a radius of 3m.
+The veil covers the 3x3 tiles around the spot. It shelters everyone inside, friend or foe: every ranged physical hit
+at them misses, as inside a Wind Ward. Spells still land.
 
 {{< /skill >}}
 
@@ -280,6 +285,8 @@ Undead the extra cut adds to it.
     type="Active" manaCost="24" castTime="1.5s" cooldown="None" range="9" target="Enemy"
     description="Condenses raw holy mana into a single searing beam - the Priest's answer to needing to deal damage rather than mend it." >}}
 
+A holy bolt of `MATK * (100% + bonus)`, weighed by the element table, less MDEF.
+
 | Lv. | MATK |
 | --- | ---- |
 | 1   | +10% |
@@ -293,6 +300,9 @@ Undead the extra cut adds to it.
 {{< skill name="Demon Bane" maxLevel="5" requires="Signum Crucis Lv. 2"
     type="Passive"
     description="Years spent studying the weak points of the unholy pay off - every strike against a Demon or Undead lands harder, and what they strike back with lands softer." >}}
+
+A Demon or Undead is a Demon or Undead kind, or anything of the Undead element. Each column is one damage modifier
+category, so an Undead of the Undead element counts once.
 
 | Lv. | Damage vs Demon/Undead | Damage Taken from Demon/Undead |
 | --- | ---------------------- | ------------------------------ |
@@ -316,6 +326,8 @@ Undead the extra cut adds to it.
     type="Active" manaCost="22" castTime="2s" cooldown="10s" duration="per Lv." range="2" target="Ally"
     description="Anoints a weapon with Holy Water, temporarily imbuing its strikes with the holy element. Consumes one [Holy Water](/docs/mechanics/items-crafting/item-list/#holy-water) per cast." >}}
 
+Melee blows strike as Holy. A weapon holds one element: Aspersio replaces an Endow, and an Endow replaces it.
+
 | Lv. | Duration |
 | --- | -------- |
 | 1   | 60s      |
@@ -329,7 +341,8 @@ Undead the extra cut adds to it.
     description="A judgment of pure holy mana that punches through armor and unravels the unnatural knot holding an undead together." >}}
 Higher levels raise the chance of an instant kill against sufficiently weak undead.
 
-Inflicts single target Holy, armor piercing damage. If the target is an Undead property monster, this spell has a chance of immediately ending its existence.
+Inflicts single target Holy damage that ignores MDEF. If the target is Undead, by kind or by element, this spell has
+a chance of immediately ending its existence. A boss is never destroyed outright.
 
 | Lv. | Base Chance of Effect |
 | --- | --------------------- |
@@ -339,7 +352,7 @@ Inflicts single target Holy, armor piercing damage. If the target is an Undead p
 
 ```text
 Chance of Effect = [Base_Chance_of_Effect + (BaseLv ÷ 10) + (INT ÷ 10) + (WIL ÷ 10) + {1 − (Target_HP ÷ Target_MaxHP)} × 20]%
-Damage = Holy Light damage of the same skill level
+Damage = Holy Light damage of the same skill level, without MDEF
 ```
 
 {{< /skill >}}
@@ -371,6 +384,9 @@ Bestias.
     type="Active" manaCost="60" castTime="5s" cooldown="30s" duration="15s" range="12" target="Ground"
     description="The Priest's offensive capstone: a pillar of holy mana erupts around the target spot, searing everything caught in it and the undead and demonic worst of all." >}}
 
+The pillar covers 7x7 tiles. Every 3s a holy wave hits each foe inside, five waves over its 15s, weighed by the
+element table. Players and their Bestias are never hit.
+
 | Lv. | MATK | Bonus Damage vs Demon/Undead |
 | --- | ---- | ---------------------------- |
 | 1   | +15% | +10%                         |
@@ -382,8 +398,9 @@ Bestias.
 {{< skill name="Sanctuary" maxLevel="3" requires="Magnificat Lv. 3 and Pneuma Lv. 1"
     type="Active" manaCost="50" castTime="3s" cooldown="30s" duration="30s" range="6" target="Ground"
     description="Consecrates a patch of ground into holy ground: allies standing in it are steadily mended, while any undead or demon caught inside burns instead." >}}
-Every second it heals the allies standing within, and deals the same amount as holy damage to undead and demon-type
-enemies.
+It covers 5x5 tiles. Every second it heals each ally standing within the table's share of their own max HP. A Demon or
+Undead foe takes the same share of the Priest's max HP as holy damage instead, weighed by the element table. Other
+foes are left alone.
 
 | Lv. | Max HP Healed per Second |
 | --- | ------------------------ |
@@ -395,7 +412,11 @@ enemies.
 
 {{< skill name="Resurrection" maxLevel="1" requires="Heal Lv. 8 and Status Recovery Lv. 1"
     type="Active" manaCost="120" castTime="10s" cooldown="10 min" range="5" target="Ally"
-    description="The rite few Priests ever get to cast and fewer still get to cast twice in a row on the same ally - channels enough mana to call a fallen Bestia or Master back over the threshold, returning them to the world with a portion of their HP restored. Long cooldown; can not be used on the caster." >}}
+    description="The rite few Priests ever master - it channels enough mana to call a fallen Bestia or Master back over the threshold, returning them to the world with a portion of their HP restored. Long cooldown; can not be used on the caster." >}}
+
+The fallen stands up where it lies with `30%` of its HP. Nothing locks the body: two Priests may raise the same ally
+at once. Only the caster's own cooldown limits the rite.
+
 {{< /skill >}}
 
 # Trader
