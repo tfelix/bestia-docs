@@ -51,7 +51,8 @@ the same seed.
 
 The loop runs from year 1 to year 1000 in five-year ticks. Each tick, in order:
 
-1. Every civ grows its towns, founds daughter towns, and gains technology.
+1. Every civ grows its towns, founds daughter towns, and gains technology. New peoples may arrive over the sea,
+   migrate overland, or break away (see **New peoples** below).
 2. Hostility grows between neighbouring civs; wars are declared, fought (battle, siege, sack, raze) and ended.
 3. Disasters: plague, famine, flood. Then volcano eruptions, rolled per vent.
 4. The mana: the star falls once (the Wounds), the blight spreads, towns raise wards or are forsaken.
@@ -60,9 +61,34 @@ The loop runs from year 1 to year 1000 in five-year ticks. Each tick, in order:
 7. Monuments, mines, monasteries, forts, lighthouses, shrines and walls are built.
 8. Civs with no standing town end.
 
-**Civs.** Only CITY-tier sites seed civs. A city joins the nearest civ of its culture within reach, or founds a new
-one. Towns, villages and hamlets are only ever founded by a civ's expansion. There is one city per 26,000 km², so a
-world of 128 × 128 km has one city and therefore one civ, and no wars.
+**Civs.** CITY-tier sites seed civs. A city joins the nearest civ of its culture within reach, or founds a new one.
+There is one city per 26,000 km², so a world of 128 × 128 km has one city. When seeding gives fewer than two civs, a
+second civ is seeded at the empty site farthest from every capital, preferring a culture no civ holds and a bigger
+site. Towns, villages and hamlets are otherwise founded by a civ's expansion. A civ whose capital is conquered or
+emptied moves its capital to its largest standing town.
+
+**New peoples.** Every civ enters through one `addCiv` helper and carries a `CivOrigin` and, where it has one, a
+parent civ. Each path below is an independent keyed roll. Any of them can happen several times in a world, or never:
+
+| Origin      | Event                          | When and where                                                                                                   |
+| ----------- | ------------------------------ | ---------------------------------------------------------------------------------------------------------------- |
+| `ARRIVED`   | `CIV_ARRIVED`                  | Years 150-750. The empty coastal site farthest from every standing town, at least 15 km from any                 |
+| `MIGRATED`  | `CIV_MIGRATED`                 | Years 100-700. The same, inland                                                                                  |
+| `SECEDED`   | `CIV_REVOLT` → `CIV_SECEDED`   | A civ with 5 or more standing towns. Its most aggrieved town rises; a won revolt takes every town nearer to it than to the capital |
+| `REFOUNDED` | `CIV_REFOUNDED`                | When a town of 300 or more is razed, buried or forsaken. Survivors settle the best empty site within 90 km        |
+
+Newcomers bring a culture no civ holds yet, when one is left, and the average technology of the living civs. A
+grievance is half being beyond the capital's reach, and the rest sackings and blight. A lost revolt costs the town a
+fifth of its people. A seceded civ starts with hostility 0.8 toward its parent (war is at 1.0), and both hold a
+grudge that cites the secession.
+
+How often arrivals and migrations happen scales with the world's **number of settlement sites**, against
+`HistoryParams.referenceSites` (28, about a genesis world). Over 32 genesis seeds, every world has 2 to 7 civs and at
+least one war. Arrivals over the sea happen on 5 seeds, migrations on 4, secessions on 18, refugees on 7.
+
+The cost is more lost towns. Over 16 genesis seeds, about 16 of 28 sites still stand at the present day, against 21
+when every world had one people: wars raze about 4 towns, and towns settled earlier lose about 2 more to the blight.
+The tuning slice revisits this balance; until then the sweep's `ruins`, `standing` and per-cause columns track it.
 
 **Built sites** follow one rule: the terrain decides where a site *may* go (`SpecialSiteCandidates`: ore deposits for
 mines, remote high ground for monasteries, saddles between civs for forts, headlands for lighthouses, deep cave ends
@@ -126,6 +152,7 @@ The chronicle is **not stored**. The zone server runs the whole pipeline at ever
 ./gradlew :worldgen:chronicle -Pyear=430      # the world as it stood in one year
 ./gradlew :worldgen:chronicle -Pquests        # unresolved threads
 ./gradlew :worldgen:chronicle -Pgenesis       # the zone server's own world settings
+./gradlew :worldgen:chronicle -Psweep=16      # a census line per seed: civs by origin, wars, battles, sites
 ./gradlew :worldgen:town                      # one settlement: layout, economy, history
 ```
 
@@ -141,8 +168,8 @@ in the game, and every new feature shows in the tools.
 
 | Part                       | What changes                                                                                                         |
 | -------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| Groundwork                 | Civs can be added during the run; a seed-sweep census in the chronicle tool                                          |
-| Two or more civs           | At least two civs from the start. Later, optional paths: arrival over the sea, migration overland, secession, refugees |
+| Groundwork                 | **Built.** Civs can be added during the run; a seed-sweep census in the chronicle tool                              |
+| Two or more civs           | **Built.** At least two civs from the start. Later, optional paths: arrival over the sea, migration overland, secession, refugees |
 | Frontiers                  | Battles are spread along the shifting border; battles near an older field add to it; battlefields record battles and fallen |
 | Families                   | Parents, houses and spouses; succession and its crises; marriage alliances, feuds, betrayals, vengeance; exiled houses found civs |
 | Pantheon and cults         | A domain catalogue; 4-5 gods on a small world, about 10 on a large one; patron gods; cults; sanctuaries ([Pantheon](/docs/mechanics/world/pantheon/)) |
@@ -153,8 +180,9 @@ in the game, and every new feature shows in the tools.
 | Quest hooks                | Open threads recorded in the chronicle for a future quest system                                                     |
 | Tuning                     | Sweeps over many seeds and world sizes; target ranges pinned as invariants                                          |
 
-**Scaling with world size.** Counts such as the number of gods, world bosses and how likely each new-civ path is are
-functions of land area, with the genesis world (128 × 128 km) as the reference.
+**Scaling with world size.** Counts such as the number of gods, world bosses and how likely each new-civ path is
+scale with the number of settlement sites, with the genesis world (about 28 sites) as the reference. Sites stand for
+the land a history can use; open sea and empty waste do not count.
 
 **New records.** `DynastyRecord`, `RelationRecord`, `DeityRecord`, `CultRecord`, `MonsterRecord` and `ThreadRecord`
 join the chronicle, so every relation and cause is data that a tool, an NPC or a prose step can quote.

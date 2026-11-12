@@ -33,12 +33,16 @@ gods differ from world to world.
 A **people** (a civilisation in the chronicle) is a group of towns under one rule, with one culture. The culture
 decides how warlike, inventive and far-reaching it is.
 
-Today the largest settlements found the first peoples, and those peoples spread by founding daughter towns nearby.
-On a small world this gives only one people, and a world with one people has no wars.
+The largest settlements found the first peoples, and those peoples spread by founding daughter towns nearby. A
+world with one people would have no wars, so when the cities give only one, a second people settles the site
+farthest from the first capital.
+
+A people rules from its capital. When the capital is conquered or lost, the people rules from its largest town
+instead.
 
 ## How New Peoples Arise
 
-{{< alert context="warning" text="**Planned.**" />}}
+{{< alert context="warning" text="**Partly built.** Arrival over the sea, migration overland, secession and refugees run today. Exiled houses and cult realms come with families and cults." />}}
 
 Every world starts with **at least two peoples**. Over the centuries, more can arise. Each path below is possible in
 any world, and none has to happen. A large world sees more of them than a small one.
