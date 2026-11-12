@@ -78,6 +78,9 @@ and for a bestia also its master. When it hides, other players see it vanish. Wh
 - **HIDDEN:** the entity cannot move. Area attacks and ground zones skip it.
 - **CLOAKED:** the entity moves 30% slower. Area attacks still hit it, and a hit reveals it.
 - Both drain mana. Any attack, cast or item use ends them.
+- The Assassin's [Hide](/docs/mechanics/master/warrior-tree/#skill-hide) and
+  [Cloak](/docs/mechanics/master/warrior-tree/#skill-cloak) are effects of their own, HIDING and CLOAKING. They conceal
+  the same way and differ as their skills say.
 
 A concealed entity carries the Potency of the one who hid it. The skill Detect is the counter. It shows concealed
 masters and bestias as dots on the minimap, but only within `range × Edge(P detect − P conceal)` of them. It does not

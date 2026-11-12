@@ -397,7 +397,7 @@
   name: Armor Stripped
   polarity: DEBUFF
   resist: []
-  effect: Left by Strip Equipment for 5 s per level, or by a bestia's Strip Armor for 15 s. The armour slot stays empty; nothing can be equipped there until it ends.
+  effect: Left by Strip Equipment for 5 s per level, or by a bestia's Strip Armor for 15 s. The armour slot stays empty; nothing can be equipped there until it ends. Strip Equipment on a body with no gear cuts its DEF by 25% instead.
   dispellable: true
 
 - id: 60
@@ -405,7 +405,7 @@
   name: Disarmed
   polarity: DEBUFF
   resist: []
-  effect: Left by Strip Equipment for 5 s per level, or by a bestia's Disarm for 15 s. The weapon hand stays empty; no weapon can be equipped until it ends. A dual wielder loses both weapons.
+  effect: Left by Strip Equipment for 5 s per level, or by a bestia's Disarm for 15 s. The weapon hand stays empty; no weapon can be equipped until it ends. A dual wielder loses both weapons. Strip Equipment on a body with no gear cuts its ATK by 25% instead.
   dispellable: true
 
 - id: 62
@@ -446,4 +446,28 @@
   polarity: DEBUFF
   resist: []
   effect: Left by Strip Equipment for 5 s per level. The shield hand stays empty. On a dual wielder it takes both weapons instead; nothing can be equipped there until it ends.
+  dispellable: true
+
+- id: 221
+  identifier: HIDING
+  name: Hide
+  polarity: BUFF
+  resist: []
+  effect: The Assassin's Hide. Concealed until cancelled. Area attacks skip it. Mana drains by level; moving, attacking or casting ends it.
+  dispellable: true
+
+- id: 222
+  identifier: CLOAKING
+  name: Cloak
+  polarity: BUFF
+  resist: []
+  effect: The Assassin's Cloak. Concealed until cancelled, and slower by level. Area attacks still hit it, but a hit does not reveal it. Mana drains by level; attacking or casting ends it.
+  dispellable: true
+
+- id: 223
+  identifier: EQUIPMENT_COATING
+  name: Equipment Coating
+  polarity: BUFF
+  resist: []
+  effect: For 10 min, worn gear wears 20/60/100% less by level, and Strip Equipment fails against the bearer.
   dispellable: true
