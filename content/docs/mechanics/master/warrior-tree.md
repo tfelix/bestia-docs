@@ -452,19 +452,23 @@ graph TD
     type="Passive"
     description="A Brawler's conditioning - stamina holds out longer under strain and comes back quicker once it's spent." >}}
 
-| Lv. | Stamina Cost Reduction | Stamina Regeneration |
+The cut counts for all stamina the Brawler spends: a skill's stamina cost, like Sprint's, and what the weather drains.
+
+| Lv. | Stamina Cost and Drain | Stamina Regeneration |
 | --- | ---------------------- | -------------------- |
-| 1   | 10%                    | +10%                 |
-| 2   | 20%                    | +20%                 |
-| 3   | 30%                    | +30%                 |
-| 4   | 40%                    | +40%                 |
-| 5   | 50%                    | +50%                 |
+| 1   | -10%                   | +10%                 |
+| 2   | -20%                   | +20%                 |
+| 3   | -30%                   | +30%                 |
+| 4   | -40%                   | +40%                 |
+| 5   | -50%                   | +50%                 |
 
 {{< /skill >}}
 
 {{< skill name="Second Wind" maxLevel="3" requires="Tough Guy Lv. 3"
     type="Active" manaCost="0" castTime="Instant" cooldown="per Lv." range="0" target="Self"
     description="A Brawler's answer to running on empty: dig deep once, and get back up." >}}
+
+The HP comes back as a heal, so what changes heals received counts, and it closes a bleeding wound.
 
 | Lv. | Stamina Restored | HP Restored | Cooldown |
 | --- | ---------------- | ----------- | -------- |
@@ -478,13 +482,18 @@ graph TD
     type="Passive"
     description="The Brawler's capstone. Everyone else has a breaking point; this is the skill that argues otherwise." >}}
 
-Once per cooldown, an otherwise lethal hit leaves the master at 1 HP instead.
+Once per cooldown, an otherwise lethal hit leaves the master at 1 HP instead. A hit is anything that lands as damage: a
+blow, a spell, or damage over time like a burn. The cold or heat of the weather is not. The cooldown shows as the status
+[Unbreakable Spent](/docs/mechanics/combat/status-effects/#all-status-effects), and a relog does not reset it.
+
+From Lv. 2, while the master has more than half its HP, a stun lasts half as long and a knockback goes half as far,
+rounded down: a `1m` push does not move the master at all.
 
 | Lv. | Cooldown | Extra                                             |
 | --- | -------- | ------------------------------------------------- |
 | 1   | 10 min   |                                                   |
-| 2   | 10 min   | Stun and knockback last half as long above 50% HP |
-| 3   | 6 min    | Stun and knockback last half as long above 50% HP |
+| 2   | 10 min   | Stun and knockback at half strength above 50% HP  |
+| 3   | 6 min    | Stun and knockback at half strength above 50% HP  |
 
 {{< /skill >}}
 
@@ -549,6 +558,7 @@ Can only be used right after a [Triple Blow](#skill-triple-blow).
     description="Works the Brawler into a red haze: more strength behind every blow, less care for what comes back." >}}
 
 Applies [Berserk](/docs/mechanics/combat/status-effects/#all-status-effects): `+60%` ATK and `+30%` attack speed, but no DEF.
+No DEF means no physical defence at all, soft or hard. The hard MDEF of the armor goes too; the soft MDEF stays.
 
 | Lv. | Duration |
 | --- | -------- |
@@ -580,7 +590,10 @@ the Berserk ends and [Mana Sealed](/docs/mechanics/combat/status-effects/#all-st
     type="Active" manaCost="20" castTime="Instant" cooldown="6s" range="0" target="Self"
     description="A wide sweep of the staff that clears a circle around the Brawler." >}}
 
-Needs a staff. Hits every enemy within `2m` and knocks them back `1m`.
+Needs a staff; without one the skill is refused at the button. Every enemy within `2m`, the 5x5 tiles around the
+Brawler, takes a weapon blow, which can miss or be blocked. Each blow that lands knocks its enemy back `1m`, away from the
+Brawler. [Juggernaut](#skill-juggernaut) Lv. 2 stops the knockback, and so does [Unbreakable](#skill-unbreakable) Lv. 2
+above half HP.
 
 | Lv. | ATK  |
 | --- | ---- |
@@ -596,7 +609,8 @@ Needs a staff. Hits every enemy within `2m` and knocks them back `1m`.
     type="Active" manaCost="12" castTime="Instant" cooldown="10s" range="6" target="Enemy"
     description="Covers the ground to a target in a single burst of speed." >}}
 
-Dashes up to `6m` to the target.
+Dashes up to `6m` to a target in sight and lands one basic blow on arrival: a weapon blow at `100%` ATK. Ground the
+Brawler cannot step onto stops the dash short, and then nothing is struck.
 
 {{< /skill >}}
 
