@@ -29,6 +29,7 @@ stats:
   - { id: MAX_HP, label: "Max HP %", unitsPerPoint: 1, pool: DEFENSE }
   - { id: MAX_MANA, label: "Max mana %", unitsPerPoint: 1, pool: ARCANE }
   - { id: CAST_TIME, label: "Faster casting %", unitsPerPoint: 1, pool: ARCANE }
+  - { id: STUN_CHANCE, label: "Stun chance on hit %", unitsPerPoint: 1, pool: null }
   - { id: HP_REGEN, label: "HP recovery %", unitsPerPoint: 5, pool: ARCANE }
   - { id: MANA_REGEN, label: "Mana recovery %", unitsPerPoint: 5, pool: ARCANE }
   - { id: STAMINA_REGEN, label: "Stamina recovery %", unitsPerPoint: 5, pool: ARCANE }

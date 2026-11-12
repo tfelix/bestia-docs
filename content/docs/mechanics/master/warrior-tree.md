@@ -1085,6 +1085,7 @@ graph TD
     description="Years spent drilling with sword, axe, mace and spear until the weight stops mattering. Increases damage dealt with the Knight's melee weapons." >}}
 
 Counts for every weapon type the Knight may use: Sword, Greatsword, Axe, Greataxe, Mace, Hammer, Spear and Polearm.
+Only the weapon in the right hand counts.
 
 | Lv. | ATK |
 | --- | --- |
@@ -1105,18 +1106,21 @@ Counts for every weapon type the Knight may use: Sword, Greatsword, Axe, Greatax
     type="Passive"
     description="Plate and mail punish anyone who hasn't trained to wear them. This skill teaches the body to carry the weight, complementing the protection of Iron Skin." >}}
 
-| Lv. | Hard DEF (heavy armor) |
-| --- | ---------------------- |
-| 1   | +2                     |
-| 2   | +4                     |
-| 3   | +6                     |
-| 4   | +8                     |
-| 5   | +10                    |
-| 6   | +12                    |
-| 7   | +14                    |
-| 8   | +16                    |
-| 9   | +18                    |
-| 10  | +20                    |
+The bonus counts once for each worn piece of heavy armor: helmet, body armor, garment, boots and a heavy shield alike. A
+cuirass and a tower shield at Lv. 10 give `+40`.
+
+| Lv. | Hard DEF per Heavy Piece |
+| --- | ------------------------ |
+| 1   | +2                       |
+| 2   | +4                       |
+| 3   | +6                       |
+| 4   | +8                       |
+| 5   | +10                      |
+| 6   | +12                      |
+| 7   | +14                      |
+| 8   | +16                      |
+| 9   | +18                      |
+| 10  | +20                      |
 
 {{< /skill >}}
 
@@ -1124,7 +1128,10 @@ Counts for every weapon type the Knight may use: Sword, Greatsword, Axe, Greatax
     type="Active" manaCost="14" castTime="Instant" cooldown="10s" duration="per Lv." range="6" target="Enemy"
     description="A shout, a slammed shield, whatever gets the job done - forces a monster to attack the Knight instead of their allies for a short duration." >}}
 
-Works on monsters and wild Bestias only. A master cannot be forced to fight.
+Works on monsters and on Bestias, wild or owned. A master cannot be forced to fight; the Knight is told so at the button.
+The provoked creature fights the Knight even if nobody hit it and its kind never picks a fight. A newer Provoke, from
+this Knight or another, takes the creature over. A Bestia its owner is steering right now follows its owner; the
+provoke takes hold once it is left to its own orders.
 
 | Lv. | Duration |
 | --- | -------- |
@@ -1156,6 +1163,10 @@ Needs a shield. At Lv. 5 it also returns `10%` of the blocked damage to the atta
     type="Active" manaCost="18" castTime="Instant" cooldown="6s" range="2" target="Enemy"
     description="A single committed swing that trades finesse for raw impact, with a chance to [Stun](/docs/mechanics/combat/status-effects/#all-status-effects) whatever it lands on for `1s`." >}}
 
+The swing is a weapon blow at `100%` ATK plus the bonus, so it can miss and crit like any swing. Only a blow that lands
+can stun. The stun chance adds to the stun chance the Knight's gear gives every swing: gear with `5%` and Bash Lv. 5 stun
+`30%` of the time. The target's resistance then applies.
+
 | Lv. | Bonus Damage | Stun Chance |
 | --- | ------------ | ----------- |
 | 1   | +20%         | +5%         |
@@ -1170,7 +1181,17 @@ Needs a shield. At Lv. 5 it also returns `10%` of the blocked damage to the atta
     type="Active" manaCost="12" castTime="Instant" cooldown="4s" range="1" target="Area"
     description="A long weapon swung wide, clearing the ground in front of the Knight." >}}
 
-Needs a spear or a polearm. Hits every enemy in a 3×3 area in front of the Knight for `120% + 40%/Lv.` ATK.
+Needs a spear or a polearm; without one the skill is refused at the button. The Knight turns to the enemy it aims at,
+which has to stand next to it. The 3×3 area starts on the tiles next to the Knight and reaches two tiles further that
+way, straight or diagonal. Each enemy in it takes a weapon blow that can miss and crit on its own.
+
+| Lv. | ATK  |
+| --- | ---- |
+| 1   | 120% |
+| 2   | 160% |
+| 3   | 200% |
+| 4   | 240% |
+| 5   | 280% |
 
 {{< /skill >}}
 
@@ -1209,7 +1230,10 @@ away.
     type="Active" manaCost="22" castTime="Instant" cooldown="per Lv." range="12" target="Enemy"
     description="Closes the distance to a target in an instant, weapon first. The impact deals damage and briefly forces the target to focus the Knight, folding a gap closer and a taunt into a single swing." >}}
 
-Deals `150%` ATK and applies a `3s` [Provoke](#skill-provoke) effect on impact.
+The Knight dashes in a straight line to stand next to a target it can see, then strikes it with a weapon blow at `150%`
+ATK and applies a `3s` [Provoke](#skill-provoke) effect, even if the blow misses. A master is struck but not provoked.
+Ground the Knight cannot step onto, like a cliff, stops the dash short. Then nothing is struck, and the mana and the
+cooldown are spent all the same.
 
 | Lv. | Cooldown |
 | --- | -------- |
