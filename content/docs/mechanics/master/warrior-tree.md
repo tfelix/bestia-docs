@@ -43,6 +43,8 @@ HP and Mana regeneration is not stopped during combat.
     type="Passive"
     description="Hide toughened by nothing more than sheer stubbornness. Reduces incoming physical damage. Unlike Magic Armor this costs no mana, but the reduction is more modest." >}}
 
+It cuts every physical blow, melee and ranged, after defence. It adds up with other cuts to physical damage.
+
 | Lv. | Physical Damage Taken |
 | --- | --------------------- |
 | 1   | -3%                   |
@@ -57,7 +59,10 @@ HP and Mana regeneration is not stopped during combat.
     type="Active" manaCost="30" castTime="5s" cooldown="10s" duration="5 min" target="Self"
     description="A shimmering ward of raw mana wrapped around the caster, turning aside blade and spell alike at the cost of their own reserves." >}}
 
-When active, each hit costs 2% of the owner's current mana. When the mana drops below 20% the buff is cancelled.
+When active, each hit costs 2% of the owner's current mana, at least one point. A burn or a poison tick is no hit and
+costs nothing. When the mana drops below 20% the ward breaks. The reduction cuts blows and spells alike. It is its own
+damage modifier, so it multiplies with Iron Skin instead of adding to it: Iron Skin 5 and Magic Armor 3 let `0.85 x 0.7`
+of a blow through.
 
 | Lv. | Damage Reduction |
 | --- | ---------------- |
@@ -143,6 +148,9 @@ graph TD
     type="Active" manaCost="18" castTime="2.0s" cooldown="None" range="9" target="Enemy"
     description="A quick bolt of flame hurled at a single target. The first spell most Wizards ever learn, and the one they cast the most often." >}}
 
+A bolt of `MATK * (100% + bonus)` of its element, weighed by the element table and the target's resistance to the
+element, less MDEF. The cast time is 2.0s less the reduction.
+
 | Lv. | MATK  | Cast Time Reduction |
 | --- | ----- | ------------------- |
 | 1   | +20%  | 0.2s                |
@@ -156,6 +164,9 @@ graph TD
 {{< skill name="Ice Bolt" maxLevel="5"
     type="Active" manaCost="18" castTime="2.0s" cooldown="None" range="9" target="Enemy"
     description="A shard of hardened cold flung at a single target - the water-elemental counterpart to Fire Bolt." >}}
+
+A bolt of `MATK * (100% + bonus)` of its element, weighed by the element table and the target's resistance to the
+element, less MDEF. The cast time is 2.0s less the reduction.
 
 | Lv. | MATK  | Cast Time Reduction |
 | --- | ----- | ------------------- |
@@ -171,6 +182,9 @@ graph TD
     type="Active" manaCost="18" castTime="2.0s" cooldown="None" range="9" target="Enemy"
     description="A crack of lightning called down onto a single target - the wind-elemental counterpart to Fire Bolt." >}}
 
+A bolt of `MATK * (100% + bonus)` of its element, weighed by the element table and the target's resistance to the
+element, less MDEF. The cast time is 2.0s less the reduction.
+
 | Lv. | MATK  | Cast Time Reduction |
 | --- | ----- | ------------------- |
 | 1   | +20%  | 0.2s                |
@@ -184,6 +198,9 @@ graph TD
 {{< skill name="Earth Spike" maxLevel="5"
     type="Active" manaCost="18" castTime="2.0s" cooldown="None" range="9" target="Enemy"
     description="A jagged spar of stone erupts beneath a single target - the earth-elemental counterpart to Fire Bolt." >}}
+
+A bolt of `MATK * (100% + bonus)` of its element, weighed by the element table and the target's resistance to the
+element, less MDEF. The cast time is 2.0s less the reduction.
 
 | Lv. | MATK  | Cast Time Reduction |
 | --- | ----- | ------------------- |
@@ -199,6 +216,9 @@ graph TD
     type="Passive"
     description="A deeper communion with raw mana beyond the elements, sharpening the spells that draw on it: Soul Break and Mindbreak." >}}
 
+It raises Soul Break's damage and the MATK Mindbreak gives by the table's percent. Mindbreak 3 with Arcane Mastery 3
+gives `100% x 1.25 = 125%` more MATK.
+
 | Lv. | Raw-Mana Spell Damage |
 | --- | --------------------- |
 | 1   | +5%                   |
@@ -208,8 +228,12 @@ graph TD
 {{< /skill >}}
 
 {{< skill name="Safety Wall" maxLevel="3" requires="Magic Armor Lv. 3"
-    type="Active" manaCost="30" castTime="1s" cooldown="10s" duration="per Lv." range="6" target="Ally"
-    description="Conjures a shimmering barrier of solidified mana in front of a target. It blocks incoming physical projectiles and melee strikes until it has absorbed enough hits or its duration runs out." >}}
+    type="Active" manaCost="30" castTime="1s" cooldown="10s" duration="per Lv." range="6" target="Ground"
+    description="Conjures a shimmering barrier of solidified mana on one tile. It blocks incoming physical projectiles and melee strikes until it has absorbed enough hits or its duration runs out." >}}
+
+The wall covers one tile. Every ally standing on it is shielded: each melee blow or projectile at them is stopped whole
+and spends one of the wall's hits. Everyone on the tile shares the count, and the last hit breaks the wall. Spells
+pass through. Foes standing on it get nothing.
 
 | Lv. | Hits Absorbed | Duration |
 | --- | ------------- | -------- |
@@ -223,11 +247,14 @@ graph TD
     type="Active" manaCost="25" castTime="1s" cooldown="15s" duration="per Lv." range="6" target="Enemy"
     description="Encases a target in solid stone, applying [Stoning](/docs/mechanics/combat/status-effects/#all-status-effects) where they stand. Stoning turns into Stone unless it is cured first. Requires 1 [Red Mana Crystal](/docs/mechanics/items-crafting/item-list/#red-mana-crystal) per cast." >}}
 
-| Lv. | Stoning Chance | Duration |
-| --- | -------------- | -------- |
-| 1   | 20%            | 5s       |
-| 2   | 40%            | 11s      |
-| 3   | 60%            | 17s      |
+Stoning is a 10s warning; the Stone that follows lasts as long as the table says. The target's resistance cuts the
+chance, as for any status. The crystal is spent whether the roll wins or not.
+
+| Lv. | Stoning Chance | Stone Duration |
+| --- | -------------- | -------------- |
+| 1   | 20%            | 15s            |
+| 2   | 40%            | 30s            |
+| 3   | 60%            | 45s            |
 
 {{< /skill >}}
 
@@ -235,8 +262,11 @@ graph TD
     type="Active" manaCost="30" castTime="Instant" cooldown="20s" duration="per Lv." range="9" target="Enemy"
     description="A ward of counter-mana thrown over a target mid-incantation, interrupting whatever spell they were weaving and leaving them [Silenced](/docs/mechanics/combat/status-effects/#all-status-effects) for a short time after." >}}
 
-| Lv. | Interrupt Chance | Silence Duration |
-| --- | ---------------- | ---------------- |
+One roll decides it. On a win it breaks the running cast, if there is one, and silences the target. On a loss nothing
+happens. The target's resistance cuts the chance and the silence, as for any status.
+
+| Lv. | Chance | Silence Duration |
+| --- | ------ | ---------------- |
 | 1   | 20%              | 3s               |
 | 2   | 40%              | 5s               |
 | 3   | 60%              | 7s               |
@@ -332,6 +362,9 @@ Regardless of level, the reduction is capped at `25%` against other Bestia Maste
     type="Active" manaCost="45" castTime="2s" cooldown="15s" range="9" target="Enemy"
     description="Tears into a target with raw, undirected mana that ignores elemental resistance, ripping away a portion of their own mana in the process." >}}
 
+Raw mana of `MATK * (100% + bonus)`, raised by Arcane Mastery, less MDEF. It has no element, so neither the element
+table nor a resistance weighs it. The target loses the table's share of its current mana; the caster gains none of it.
+
 | Lv. | MATK  | Target Mana Drained |
 | --- | ----- | ------------------- |
 | 1   | +20%  | 5%                  |
@@ -343,6 +376,9 @@ Regardless of level, the reduction is capped at `25%` against other Bestia Maste
 {{< skill name="Mindbreak" maxLevel="3" requires="Soul Break Lv. 3"
     type="Active" manaCost="50" castTime="3s" cooldown="60s" duration="60s" range="5" target="Bestia"
     description="A buff channeling so much raw magic through one of the master's Bestias at once that its armor is the first thing to give. Once applied it reduces the magic defense but increases magical attack of the Bestia." >}}
+
+Only the caster's own Bestias; any other target is refused before the cast bar. Arcane Mastery raises the MATK it
+gives. The reduction takes the soft MDEF only.
 
 | Lv. | MATK  | SMDEF Reduction |
 | --- | ----- | --------------- |
