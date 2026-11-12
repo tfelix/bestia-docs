@@ -197,7 +197,7 @@
   name: Poison
   polarity: DEBUFF
   resist: [VIT, AGI]
-  effect: Lose 1% max HP every 2 s, but never the last HP. No natural HP regen, and hard DEF and MDEF −25 points. Lasts 30 s.
+  effect: Lose 1% max HP every 2 s, but never the last HP; a brewed poison from Enchant Poison sets its own drain. No natural HP regen, and hard DEF and MDEF −25 points. Lasts 30 s.
   dispellable: true
 
 - id: 35
@@ -470,4 +470,12 @@
   polarity: BUFF
   resist: []
   effect: For 10 min, worn gear wears 20/60/100% less by level, and Strip Equipment fails against the bearer.
+  dispellable: true
+
+- id: 224
+  identifier: ENCHANT_POISON
+  name: Enchant Poison
+  polarity: BUFF
+  resist: []
+  effect: For 5 min, every basic swing that lands may poison its target, 5% per level of Enchant Poison. The poison worked in sets the drain.
   dispellable: true
