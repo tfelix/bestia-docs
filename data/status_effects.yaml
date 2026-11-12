@@ -277,7 +277,7 @@
   name: Berserk
   polarity: BUFF
   resist: []
-  effect: Hard DEF and MDEF drop to 0. ATK +60% and ASPD +30%.
+  effect: Soft and hard DEF and hard MDEF drop to 0; soft MDEF stays. ATK +60% and ASPD +30%. 10-30 s from Battle Fury.
   dispellable: true
 
 - id: 45
@@ -511,3 +511,11 @@
   resist: []
   effect: +20% ATK and MATK and +20 hard DEF for 10 s, 15 s from Lv. 2. From Lv. 2 no new stun and no knockback; at Lv. 3 a blow Auto Guard blocks starts the clock again.
   dispellable: true
+
+- id: 229
+  identifier: UNBREAKABLE_SPENT
+  name: Unbreakable Spent
+  polarity: NEUTRAL
+  resist: []
+  effect: The Brawler's Unbreakable caught a lethal hit; the next one kills. Lasts the skill's cooldown, 10 min or 6 min at Lv. 3, and outlasts a relog.
+  dispellable: false
