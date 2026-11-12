@@ -487,3 +487,27 @@
   resist: []
   effect: Fights whoever provoked it, before anyone near or hitting it, even if it would never pick a fight. 4-8 s by the level of Provoke, 3 s from Charge. A master cannot be provoked.
   dispellable: true
+
+- id: 226
+  identifier: SHIELD_WALL
+  name: Shield Wall
+  polarity: BUFF
+  resist: []
+  effect: The Knight's toggle. While a shield is held, 15-35% less physical damage taken and 50-30% slower by level. At Lv. 5 the attacker takes 10% of what the wall stopped. Drops with the shield or a relog.
+  dispellable: true
+
+- id: 227
+  identifier: DEVOTED
+  name: Devotion
+  polarity: BUFF
+  resist: []
+  effect: Every blow and spell on the bearer hits the Knight who devoted it instead. 15-45 s by level; ends when the two are more than 7 m apart or the Knight falls.
+  dispellable: true
+
+- id: 228
+  identifier: JUGGERNAUT
+  name: Juggernaut
+  polarity: BUFF
+  resist: []
+  effect: +20% ATK and MATK and +20 hard DEF for 10 s, 15 s from Lv. 2. From Lv. 2 no new stun and no knockback; at Lv. 3 a blow Auto Guard blocks starts the clock again.
+  dispellable: true
