@@ -1147,7 +1147,12 @@ provoke takes hold once it is left to its own orders.
     type="Active" manaCost="25" castTime="Instant" cooldown="15s" duration="Until cancelled" range="0" target="Self"
     description="Plants the Knight's feet and raises their shield into a proper wall. While active, incoming physical damage is reduced but movement speed drops sharply." >}}
 
-Needs a shield. At Lv. 5 it also returns `10%` of the blocked damage to the attacker.
+Needs a shield; without one the skill is refused at the button, and the wall drops when the shield comes off. A toggle:
+cast it again to lower the wall at no cost. The cooldown starts when the wall goes up. The wall does not outlast a relog.
+
+The cut is a cut to physical damage, like [Iron Skin](#skill-iron-skin), so the two add up. It multiplies with
+[Magic Armor](#skill-magic-armor): Iron Skin 5, Shield Wall 5 and Magic Armor 3 let `(1 - 0.15 - 0.35) x 0.7` of a blow
+through. At Lv. 5 the attacker takes `10%` of what the wall stopped, as plain damage no modifier weighs.
 
 | Lv. | Physical Damage Taken | Movement Speed |
 | --- | --------------------- | -------------- |
@@ -1199,7 +1204,8 @@ way, straight or diagonal. Each enemy in it takes a weapon blow that can miss an
     type="Passive"
     description="A trained reflex that raises the shield on its own the instant a blow lands, sometimes fast enough to stop it cold." >}}
 
-Needs a shield.
+Needs a shield. A blocked blow does no damage and shows as "Block". Only weapon blows can be blocked, a basic swing or a
+skill's strike, melee or ranged; a spell cannot. A blocked swing or Bash cannot stun or poison either.
 
 | Lv. | Full Block Chance |
 | --- | ----------------- |
@@ -1215,8 +1221,11 @@ Needs a shield.
     type="Active" manaCost="25" castTime="Instant" cooldown="30s" duration="per Lv." range="7" target="Ally"
     description="The Knight steps between an ally and harm, and the harm goes to the Knight." >}}
 
-While it lasts, all damage the ally takes goes to the Knight instead. It ends early when the ally moves more than `7m`
-away.
+The ally can be a party member, a Bestia of the party or one of the Knight's own Bestias, but not the Knight; anyone else
+is refused at the button. While it lasts, every blow and spell on the ally hits the Knight instead, as hard as it would
+have hit the ally: the ally's defence and damage cuts count, the Knight's do not. Poison, burns and other damage over
+time stay with the ally. It ends early when the two are more than `7m` apart or the Knight falls. A newer Devotion, from
+this Knight or another, takes the ally over.
 
 | Lv. | Duration |
 | --- | -------- |
@@ -1249,7 +1258,9 @@ cooldown are spent all the same.
     type="Active" manaCost="60" castTime="Instant" cooldown="per Lv." duration="per Lv." range="0" target="Self"
     description="The Knight's capstone. For a short time the line between wall and weapon stops meaning anything." >}}
 
-Gains `+20%` DEF and `+20%` ATK while active.
+Gains `+20%` DEF and `+20%` ATK while active. The DEF is `+20` hard DEF, which takes `20%` more off every physical blow;
+magic defence stays. The ATK raises MATK alike. The Stun immunity keeps a new stun off; it does not end one already on
+the Knight.
 
 | Lv. | Duration | Cooldown | Extra                                                                         |
 | --- | -------- | -------- | ----------------------------------------------------------------------------- |
