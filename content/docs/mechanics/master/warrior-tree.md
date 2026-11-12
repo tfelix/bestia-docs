@@ -660,7 +660,8 @@ graph TD
     description="Teaches the Hunter to read the land well enough to disappear into it." >}}
 
 Wild Bestia notice the master later. Camouflage does not hide the master, so [Ruwach](/docs/mechanics/master/scholar-tree/#skill-ruwach) has nothing to
-reveal.
+reveal. Tamed Bestia, and creatures under someone's control, notice the master as usual. A creature the master attacks
+fights back wherever the master stands.
 
 | Lv. | Notice Range of Wild Bestia |
 | --- | --------------------------- |
@@ -674,7 +675,9 @@ reveal.
     type="Passive"
     description="A Hunter's sure footing, at home where the road ends." >}}
 
-The master walks faster on any ground that is not a made road or paving.
+The master walks faster on any ground that is not a made road or paving. Made ground is the tread of a road, the
+cobbles of a town, a bridge, and a floor or stair a player built. The speed changes within half a second of stepping
+onto or off such ground. The master's Bestias do not gain it.
 
 | Lv. | Walk Speed off Roads |
 | --- | -------------------- |
@@ -690,8 +693,10 @@ The master walks faster on any ground that is not a made road or paving.
     type="Active" manaCost="15" castTime="Instant" cooldown="10s" duration="30s" range="9" target="Enemy"
     description="Once the Hunter has picked their prey, it does not get away." >}}
 
-Marks one target. While the mark lasts, the target shows on the master's map, and its [Hide](#skill-hide) and
-[Cloak](#skill-cloak) do not work against the master. A new mark ends the old one.
+Marks one enemy. While the mark lasts, the target shows on the master's map wherever it goes, and its
+[Hide](#skill-hide) and [Cloak](#skill-cloak) do not work against the master: the master still sees it, and can attack
+it and cast on it. Area skills still pass over it as over anyone hidden. A new mark ends the old one. Several Hunters
+can each mark the same target. The mark is a debuff, so a dispel can lift it, and it does not outlast a relog.
 
 | Lv. | Critical Rate against the Target |
 | --- | -------------------------------- |
@@ -707,8 +712,11 @@ Marks one target. While the mark lasts, the target shows on the master's map, an
     type="Active" manaCost="14" castTime="Instant" cooldown="3s" range="7" target="Enemy"
     description="Not every hunt is won with a bow." >}}
 
-Needs a spear or a thrown weapon. Hurls it at a target up to `7` tiles away for `150% + 30%/Lv.` ATK. A spear comes back
-to hand; a thrown weapon is used up like ammunition.
+Needs a spear or a thrown weapon. Hurls it at an enemy up to `7` tiles away for `150% + 30%/Lv.` ATK. It hits as a
+ranged attack: DEX gives its power, as for a bow, and a [Pneuma](/docs/mechanics/master/scholar-tree/#skill-pneuma)
+stops it. A spear comes back to hand. A thrown weapon is used up like ammunition: each throw takes one more of the
+stack from the bag, and the last one stays in hand. Without a spear or a thrown weapon, or with none left to throw, the
+skill is refused at the button.
 
 {{< /skill >}}
 
@@ -716,7 +724,8 @@ to hand; a thrown weapon is used up like ammunition.
     type="Passive"
     description="The Hunter's Bestias learn whom to go for." >}}
 
-The master's Bestias deal more damage to the target of Hunter's Mark.
+The master's Bestias deal more damage to the target of the master's Hunter's Mark, wherever the master stands. The
+bonus is a damage modifier of its own, so it multiplies with the others. The master gains nothing.
 
 | Lv. | Bestia Damage vs Marked Target |
 | --- | ------------------------------ |

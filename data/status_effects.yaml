@@ -519,3 +519,11 @@
   resist: []
   effect: The Brawler's Unbreakable caught a lethal hit; the next one kills. Lasts the skill's cooldown, 10 min or 6 min at Lv. 3, and outlasts a relog.
   dispellable: false
+
+- id: 230
+  identifier: HUNTERS_MARK
+  name: Hunter's Mark
+  polarity: DEBUFF
+  resist: []
+  effect: The prey of a Hunter's Mark for 30 s. The Hunter crits it 3-15% more often by level, sees it on the map and through Hide and Cloak, and the Hunter's Bestias with Pack Hunt hit it harder. Several Hunters can each mark it. Ends on a relog.
+  dispellable: true
