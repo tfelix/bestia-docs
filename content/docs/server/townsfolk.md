@@ -7,9 +7,10 @@ description: "Design document for inhabited settlements — the three simulation
 {{< alert context="warning" text="Partly implemented. `zone-server` runs townsfolk with occupations, shifts and homes, the settlement ledger (stock, price and treasury) and NPC shops. Treasuries draw their income from the world reserve, see [Money Supply](/docs/server/money-supply/). Other parts of this page are still design." />}}
 
 Settlements are generated in full — streets, districts, buildings with door bearings, a roster of
-thirty-one trades per town derived from population and terrain — and then stand completely empty.
-The generator also produces a household graph and a population summary explicitly designed to be
-re-inflated into agents at runtime, and nothing has ever called it.
+thirty-one trades per town derived from population and terrain. The generator also produces a
+household graph and a population summary designed to be re-inflated into agents at runtime. The zone
+server now does that: `Households.one` turns a household back into its members for townsfolk, their
+conversation and what they know.
 
 This page describes filling them in: people with occupations and daily schedules, and behind those
 people an economy in which goods are genuinely produced, moved, sold and consumed.
@@ -20,9 +21,9 @@ The whole effort is measured against one sentence:
 > later, and the bread is more expensive.
 
 That is deliberate. This codebase has a habit of shipping subsystems that are complete, tested and
-never reached — the settlement lore service ("nothing calls this yet and nothing speaks"), the
-household expander, the whole offline economy tier. Anything that does not move that sentence closer
-to demonstrable is deferred.
+never reached. The settlement lore service and the household expander were such cases until
+townsfolk [conversation](/docs/server/dialog/) started using them. Anything that does not move that
+sentence closer to demonstrable is deferred.
 
 # Three tiers, not two
 

@@ -106,7 +106,7 @@ with `weather: { likes: [...], dislikes: [...] }`.
 **Every bestia likes a mana storm.** Bestia are born from mana, while a mana storm is a threat to masters. On top of
 the element defaults, this makes a mana storm a moment where the bestia carry the team.
 
-The defaults match the [rain modifiers](/docs/mechanics/environment/#rain) on damage: fire and earth are weaker in the
+The defaults match the [rain modifiers](/docs/mechanics/world/environment/#rain) on damage: fire and earth are weaker in the
 rain, wind and water are not.
 
 # Bestia in the Bag
