@@ -824,10 +824,15 @@ graph TD
     type="Active" manaCost="22" castTime="Instant" cooldown="12s" range="2" target="Enemy"
     description="A snap of the wrist at exactly the wrong moment for whoever is wearing it. Knocks a random piece of equipment off a target and leaves them unable to put it back on for a while." >}}
 
-The slot is chosen at random. Accessories cannot be stripped. Stripping the weapon takes the weapon hand, not a shield.
-Stripping the shield takes the shield hand. On a dual wielder both take the two weapons. Each slot stays empty while its
-[stripped status effect](/docs/mechanics/combat/status-effects/#all-status-effects) lasts. Fails outright against a piece
-protected by [Equipment Coating](#skill-equipment-coating).
+The piece is chosen at random among what the target wears. Accessories and the light source cannot be stripped.
+Stripping the weapon takes the weapon hand, not a shield. Stripping the shield takes the shield hand. On a dual wielder
+both take the two weapons. Each slot stays empty while its
+[stripped status effect](/docs/mechanics/combat/status-effects/#all-status-effects) lasts. Fails outright against
+[Equipment Coating](#skill-equipment-coating), and the Assassin is told so.
+
+A wild bestia or monster wears no gear. The same chance roll then weakens it for the slot time, as in Ragnarok Online:
+a weapon strip cuts its ATK by 25%, an armor strip its DEF by 25%. Which of the two is a coin toss. A master who wears
+nothing loses nothing.
 
 | Lv. | Strip Chance | Slot Blocked |
 | --- | ------------ | ------------ |
@@ -861,6 +866,8 @@ weapon always swings for less than the main hand. Rank buys that gap back.
     description="A thin, oiled coating worked into weapons and armor that slows their wear and shrugs off attempts to strip them away." >}}
 
 Coats every piece the Assassin wears. While it holds, [Strip Equipment](#skill-strip-equipment) cannot take any of them.
+The wear cut holds for every worn piece and every kind of wear: blows in a fight, a rod while fishing, a shovel while
+digging.
 
 | Lv. | Durability Wear |
 | --- | --------------- |
@@ -874,7 +881,8 @@ Coats every piece the Assassin wears. While it holds, [Strip Equipment](#skill-s
     type="Active" manaCost="20" castTime="Instant" cooldown="30s" range="1" target="Enemy"
     description="A short, vicious blow below the ribs that leaves the target doubled over, stunned and gasping for air." >}}
 
-Applies [Stun](/docs/mechanics/combat/status-effects/#all-status-effects). A boss recovers twice as fast.
+Applies [Stun](/docs/mechanics/combat/status-effects/#all-status-effects). The stun always lands; only a species
+immune to stun shrugs it off. A boss recovers twice as fast.
 
 | Lv. | Stun Duration |
 | --- | ------------- |
@@ -904,8 +912,10 @@ The damage is shared evenly between the eight hits.
     type="Active" manaCost="18" castTime="Instant" cooldown="5s" duration="Until cancelled" range="0" target="Self"
     description="Drops the Assassin flat against whatever cover is at hand. Nothing hostile can see them while they stay put - but standing still is the whole price of admission." >}}
 
-Breaks the moment the Assassin moves or attacks. Detection resistance works against eyes, not against
-[Ruwach](/docs/mechanics/master/scholar-tree/#skill-ruwach), which always reveals.
+Breaks the moment the Assassin moves, attacks or casts a skill. Drinking a potion is fine. Cast Hide again to come out.
+Area attacks pass over a hiding Assassin. Detection resistance shortens the reach of a detecting sense, like a bestia's
+Detect, by its percent. It does not work against [Ruwach](/docs/mechanics/master/scholar-tree/#skill-ruwach), which
+always reveals.
 
 | Lv. | Mana Drain per Second | Detection Resistance |
 | --- | --------------------- | -------------------- |
@@ -921,7 +931,8 @@ Breaks the moment the Assassin moves or attacks. Detection resistance works agai
     type="Active" manaCost="30" castTime="Instant" cooldown="8s" duration="Until cancelled" range="0" target="Self"
     description="What Hide is for standing still, Cloak is for walking. The Assassin stays unseen while moving, at the cost of speed and a steady bleed of mana." >}}
 
-Still breaks on attacking. [Ruwach](/docs/mechanics/master/scholar-tree/#skill-ruwach) strips it outright.
+Breaks on attacking or casting a skill, but not on being hit. Cast Cloak again to come out.
+[Ruwach](/docs/mechanics/master/scholar-tree/#skill-ruwach) strips it outright.
 
 | Lv. | Movement Speed | Mana Drain per Second |
 | --- | -------------- | --------------------- |
@@ -935,7 +946,8 @@ Still breaks on attacking. [Ruwach](/docs/mechanics/master/scholar-tree/#skill-r
     type="Active" manaCost="16" castTime="Instant" cooldown="8s" range="1" target="Enemy"
     description="A blade driven in from behind, by someone the target never saw coming." >}}
 
-Only works from [Hide](#skill-hide) or [Cloak](#skill-cloak), and only from behind the target. The strike ends the hiding.
+Only works from [Hide](#skill-hide) or [Cloak](#skill-cloak), and only from behind the target: in the half behind the
+way it faces. The strike is a weapon blow, so it can miss and crit like a swing. The strike ends the hiding.
 
 | Lv. | ATK  |
 | --- | ---- |
@@ -950,6 +962,9 @@ Only works from [Hide](#skill-hide) or [Cloak](#skill-cloak), and only from behi
 {{< skill name="Shadow Step" maxLevel="3" requires="Backstab Lv. 3 and Cloak Lv. 1"
     type="Active" manaCost="15" castTime="Instant" cooldown="20s" range="per Lv." target="Enemy"
     description="Slips through the shadows to stand right behind a target, still hidden, so that a Backstab can follow." >}}
+
+Only works from [Hide](#skill-hide) or [Cloak](#skill-cloak). The Assassin lands on the tile right behind the target and
+stays hidden: the step does not count as moving or casting.
 
 | Lv. | Range |
 | --- | ----- |
