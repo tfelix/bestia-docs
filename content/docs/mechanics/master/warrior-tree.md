@@ -848,8 +848,12 @@ nothing loses nothing.
     type="Passive"
     description="Learning to disarm someone teaches you exactly how a weapon wants to be held - and that there is no good reason to stop at one. Lets the Assassin carry a one-handed weapon in each hand at a shrinking penalty." >}}
 
-Without this skill no master can hold a weapon in the left hand, whatever their professions allow. The off-hand
-weapon always swings for less than the main hand. Rank buys that gap back.
+Without this skill no master can hold a weapon in the left hand, whatever their professions allow. The second weapon is
+a one-handed melee weapon or a wand. Slings, thrown weapons and tools stay in the right hand.
+
+The off-hand weapon strikes after every melee swing that lands, with its own ATK, at the share in the table. It rolls
+its own hit and crit. Its ATK does not add to the main hand's. Every swing comes slower by the penalty. Rank buys both
+back.
 
 | Lv. | Off-Hand Damage | Attack Speed Penalty |
 | --- | --------------- | -------------------- |
@@ -896,7 +900,9 @@ immune to stun shrugs it off. A boss recovers twice as fast.
     type="Active" manaCost="20" castTime="Instant" cooldown="5s" range="1" target="Enemy"
     description="Eight strikes in a single heartbeat, split across both blades. Too fast to parry, too many to count." >}}
 
-The damage is shared evenly between the eight hits.
+The damage is shared evenly between the eight hits. Each hit is a weapon blow that can miss and crit on its own, so no
+Magic Rod catches it. With a weapon in each hand every second hit comes from the left one, at its own ATK. Without a
+second weapon all eight come from the main hand.
 
 | Lv. | ATK over All Hits |
 | --- | ----------------- |
@@ -981,6 +987,9 @@ stays hidden: the step does not count as moving or casting.
 The poisons themselves are not made here - they are ordinary Alchemist goods, brewed with
 [Alchemy](/docs/mechanics/master/craftsman-tree/#skill-alchemy) and bought like any other reagent. This skill only governs what an Assassin gets out of them.
 
+The damage bonus is for the poison the Assassin's own blade leaves through [Enchant Poison](#skill-enchant-poison). The
+resistance adds to VIT and AGI against being poisoned.
+
 | Lv. | Poison Damage | Poison Resistance |
 | --- | ------------- | ----------------- |
 | 1   | +20%          | +10%              |
@@ -998,6 +1007,10 @@ The poisons themselves are not made here - they are ordinary Alchemist goods, br
 Applies the [Poison](/docs/mechanics/combat/statusvalues/#status-effects) status effect on hit. The poison item decides how hard it
 bites; this skill decides how often it lands.
 
+It goes on the Assassin's own weapon or an ally's, never a foe's. Only a basic swing that lands can poison, not a skill.
+Basic Poison drains 1% of the target's max HP every 2 s, as any poison does. The [Poison Research](#skill-poison-research)
+of whoever swings raises that.
+
 | Lv. | Poison Chance per Hit |
 | --- | --------------------- |
 | 1   | 5%                    |
@@ -1013,7 +1026,11 @@ bites; this skill decides how often it lands.
     description="A passive knack for stealing more than just gold - whenever the Assassin is struck by an enemy spell, there's a chance they memorize it well enough to cast it back once. Casting the copied spell consumes it, and getting hit by a new spell overwrites whatever was memorized before." >}}
 
 Bestia attacks can be copied too. The cap is the attack level, as for [Spell Inscription](/docs/mechanics/master/scholar-tree/#skill-spell-inscription). A
-master's spell counts 10 attack levels per skill level, so Plagiarism Lv. 2 copies a Fire Bolt up to Lv. 4.
+master's spell counts 10 attack levels per skill level, so Plagiarism Lv. 2 copies a Fire Bolt up to Lv. 4. A stronger
+Fire Bolt is copied at Lv. 4. A bestia attack above the cap is not copied at all.
+
+Only spells are copied: a skill that hits as magic. Weapon skills and basic attacks are not. The copy shows in the
+Skills window under Copied and can go on the hotbar. It is lost when the Assassin leaves the world.
 
 At Lv. 5 the Assassin keeps what they stole: a new spell no longer overwrites the copy, which is only lost when it is
 cast.

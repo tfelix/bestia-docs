@@ -77,7 +77,8 @@ its species.
 
 - A two-handed weapon leaves no room for anything in the left hand.
 - The left hand holds a shield or a tome. A second weapon in the left hand needs
-  [Dual Wield](/docs/mechanics/master/warrior-tree/#skill-dual-wield).
+  [Dual Wield](/docs/mechanics/master/warrior-tree/#skill-dual-wield). Only a one-handed melee weapon or a wand goes
+  there.
 - Bows, crossbows and slings shoot from the [quiver](/docs/mechanics/combat/ranged-combat/#the-quiver). A thrown weapon is its
   own ammunition: each throw uses up one piece of the stack in hand.
 - Tools hit weakly. Their real job is gathering, which is why every master can hold one.
