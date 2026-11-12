@@ -253,6 +253,11 @@ something to do in it.
 
 {{< alert context="warning" text="**Concept pending.** How far NPC-generated quests go — how many there are, whether they chain into longer stories, how much of the [automatic generation](/docs/server/quests/#automatic-quest-generation) the world leans on — is deliberately still open. What is settled: they are contracts like any other, their difficulty is derived the same way, and their rewards are paid from the NPC gold pool under the [World Treasury Director](/docs/server/economy/) rather than minted." />}}
 
+The world's history is meant to be one source of these quests: heirlooms that descendants want back, offerings and
+deeds for the gods, and once-per-world quests such as returning a unique artifact to its temple. See
+[Quests from History](/docs/mechanics/world/world-history/#quests-from-history) and
+[Quests for the Gods](/docs/mechanics/world/pantheon/#quests-for-the-gods).
+
 # World Events
 
 Occasionally the world itself generates a quest. These are **rare and emergent** — never on a fixed timer. A lightweight

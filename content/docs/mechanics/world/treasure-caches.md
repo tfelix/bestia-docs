@@ -20,7 +20,7 @@ The world generator places caches from three sources.
 | Wild scatter       | Anywhere on wild land, away from towns and water                         | About 16 per km²                  |
 
 Cave hoards come from the world's history. When a town is sacked, somebody may carry its treasury into the nearest
-cave and never return. The [chronicle](/docs/server/world-generation/) records whose wealth it was and which sack
+cave and never return. The [chronicle](/docs/mechanics/world/world-history/) records whose wealth it was and which sack
 it fled. If the town held a relic at the time, the relic lies in the hoard too.
 
 A history site buries one cache with a chance by its kind. A site where the chronicle buried a relic always
@@ -91,6 +91,8 @@ The amount is scaled by how full the reserve is. A full reserve gives the whole 
 
 A relic is unique named gear. It keeps the name the chronicle gave it, and its tooltip names who forged it and
 in which town. Its stats roll like random-stat gear of a splendid cache.
+
+{{< alert context="warning" text="**Planned:** relics will be of item level 80 to 100 and above, whatever the region, and battlefields will hold several shallow caches whose contents depend on the battlefield's age. See [World History](/docs/mechanics/world/world-history/#relics)." />}}
 
 | Relic kind | Slot        |
 | ---------- | ----------- |
