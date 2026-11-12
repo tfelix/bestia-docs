@@ -501,6 +501,8 @@ rounded down: a `1m` push does not move the master at all.
     type="Passive"
     description="Knuckles hardened on posts, walls and the occasional jaw." >}}
 
+The ATK counts with a fist weapon in the right hand, or with nothing in it. A tool in hand, like a fishing rod, is no fist.
+
 | Lv. | ATK with Fist Weapons |
 | --- | --------------------- |
 | 1   | +3                    |
@@ -520,7 +522,9 @@ rounded down: a `1m` push does not move the master at all.
     type="Passive"
     description="Every swing carries the chance to become three, faster than the eye can follow." >}}
 
-A basic attack that triggers strikes three times for `200%` ATK in all.
+A basic melee attack that lands may trigger it: then it strikes three times for `200%` of the blow in all, as three
+numbers. Only the main hand rolls, once per attack. The second weapon of a dual wielder follows the swing as usual and
+never triples. A blow on a tree does not trigger it.
 
 | Lv. | Chance per Basic Attack |
 | --- | ----------------------- |
@@ -541,7 +545,8 @@ A basic attack that triggers strikes three times for `200%` ATK in all.
     type="Active" manaCost="15" castTime="Instant" cooldown="None" range="1" target="Enemy"
     description="Follows a Triple Blow at once with four more hits, before the target has found its feet." >}}
 
-Can only be used right after a [Triple Blow](#skill-triple-blow).
+Can only be used within `1.5s` after a [Triple Blow](#skill-triple-blow), and only once for each; otherwise the skill is
+refused at the button. The four hits are weapon blows on one enemy in reach, and each can miss or be blocked.
 
 | Lv. | ATK over Four Hits |
 | --- | ------------------ |
@@ -572,9 +577,10 @@ No DEF means no physical defence at all, soft or hard. The hard MDEF of the armo
     type="Active" manaCost="10" castTime="Instant" cooldown="None" range="1" target="Enemy"
     description="The Brawler's finisher: every last drop of mana poured into a single blow." >}}
 
-Only while Berserk and with at least half the mana. Deals `ATK * (4 + mana spent / 10)` and spends all mana. Afterwards
-the Berserk ends and [Mana Sealed](/docs/mechanics/combat/status-effects/#all-status-effects) stops mana regeneration for
-`5 min`.
+Only while Berserk and with at least half the mana; otherwise the skill is refused at the button. It spends all mana on
+one weapon blow of `ATK * (4 + mana spent / 10)`, which can miss or be blocked like any blow. Mana spent counts what is
+left after the `10` mana cost. Afterwards the Berserk ends and
+[Mana Sealed](/docs/mechanics/combat/status-effects/#all-status-effects) stops mana regeneration for `5 min`.
 
 | Lv. | Damage Bonus |
 | --- | ------------ |

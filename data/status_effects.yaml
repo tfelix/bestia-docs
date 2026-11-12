@@ -251,9 +251,9 @@
 - id: 41
   identifier: MANA_SEALED
   name: Mana Sealed
-  polarity: DEBUFF
+  polarity: NEUTRAL
   resist: []
-  effect: No natural mana regen for 300 s.
+  effect: No natural mana regen for 300 s. The price of Ultima Fist, which the caster puts on itself.
   dispellable: false
 
 - id: 42
