@@ -277,6 +277,10 @@ happens. The target's resistance cuts the chance and the silence, as for any sta
     type="Active" manaCost="35" castTime="2s" cooldown="10s" duration="20s" range="6" target="Ground"
     description="Conjures a wall of roaring flame across the ground. Anything that tries to push through is burned and shoved back the way it came." >}}
 
+The wall is three tiles long and runs across the line from the caster to the target tile, diagonals included. Twice a
+second each tile burns the foe standing on it for `MATK * (100% + bonus)` of fire, weighed like a bolt, and throws it
+back against its facing. Allies walk through unharmed.
+
 | Lv. | MATK (per tick) | Knockback |
 | --- | --------------- | --------- |
 | 1   | +10%            | 1m        |
@@ -288,6 +292,10 @@ happens. The target's resistance cuts the chance and the silence, as for any sta
 {{< skill name="Meteor Storm" maxLevel="3" requires="Fire Bolt Lv. 5"
     type="Active" manaCost="70" castTime="6s" cooldown="30s" duration="10s" range="12" target="Ground"
     description="Calls down a rain of blazing meteors onto an area, scorching everything caught beneath it over and over as it falls." >}}
+
+The area is 7x7 tiles. The meteors fall one after another, evenly spread over the 10s, each on a random tile of the
+area. A meteor hits every foe within 3 tiles of where it lands (a 7x7 splash, as in Ragnarok Online) for
+`MATK * (100% + bonus)` of fire, weighed like a bolt.
 
 | Lv. | MATK (per meteor) | Meteor Count |
 | --- | ----------------- | ------------ |
@@ -301,7 +309,10 @@ happens. The target's resistance cuts the chance and the silence, as for any sta
     type="Active" manaCost="65" castTime="5s" cooldown="25s" duration="10s" range="12" target="Ground"
     description="A freezing gale that batters an area with repeated waves of ice, each one carrying a chance to freeze anything caught in the flurry solid." >}}
 
-| Lv. | MATK (per tick) | Freeze Chance (per tick) |
+The area is 9x9 tiles. A wave hits every foe in it each second, ten in all, for `MATK * (100% + bonus)` of water,
+weighed like a bolt, and rolls the freeze chance. The next wave breaks a freeze, as any blow does.
+
+| Lv. | MATK (per wave) | Freeze Chance (per wave) |
 | --- | --------------- | ------------------------ |
 | 1   | +8%             | 5%                       |
 | 2   | +24%            | 15%                      |
@@ -312,6 +323,10 @@ happens. The target's resistance cuts the chance and the silence, as for any sta
 {{< skill name="Frost Nova" maxLevel="3" requires="Ice Bolt Lv. 1"
     type="Active" manaCost="40" castTime="2s" cooldown="15s" range="per Lv." target="Self"
     description="A burst of subzero cold erupts outward from the caster, freezing anything caught too close." >}}
+
+One burst around where the caster stands, half a second after the cast. It deals no damage. Each foe in reach rolls
+the freeze chance, cut by its resistance as for any status. The radius counts tiles in every direction, so 2m covers
+5x5 tiles.
 
 | Lv. | Radius | Freeze Chance |
 | --- | ------ | ------------- |
@@ -324,7 +339,11 @@ happens. The target's resistance cuts the chance and the silence, as for any sta
 {{< skill name="Quagmire" maxLevel="3" requires="Thunder Bolt Lv. 2"
     type="Active" manaCost="30" castTime="2s" cooldown="20s" duration="30s" range="9" target="Ground"
     description="Turns the ground in an area into thick, clinging mud. Any AGI-increasing buff on someone caught in it is stripped away, and their own AGI and DEX are dragged down for as long as they remain inside." >}}
-Regardless of level, the reduction is capped at `25%` against other Bestia Masters and `50%` against wild Bestia and monsters.
+
+The mud covers 5x5 tiles and holds only foes. It strips Increase AGI when it takes hold and keeps stripping it, so a
+recast inside the mud does not last. Regardless of level, the reduction is capped at `25%` against Bestia Masters and
+their Bestias and `50%` against wild Bestias and monsters. It ends shortly after the target wades out, and it cannot be
+dispelled.
 
 | Lv. | AGI/DEX Reduction (uncapped) |
 | --- | ---------------------------- |
@@ -338,6 +357,9 @@ Regardless of level, the reduction is capped at `25%` against other Bestia Maste
     type="Active" manaCost="60" castTime="4s" cooldown="20s" duration="8s" range="12" target="Ground"
     description="Wind churns into a raging storm overhead, calling down lightning bolts across the whole area at random." >}}
 
+The area is 5x5 tiles. The strikes fall one after another, evenly spread over the 8s, each on a random tile of the
+area. A strike hits every foe within 1 tile of it (3x3) for `MATK * (100% + bonus)` of wind, weighed like a bolt.
+
 | Lv. | MATK (per strike) | Strike Count |
 | --- | ----------------- | ------------ |
 | 1   | +10%              | 3            |
@@ -349,6 +371,10 @@ Regardless of level, the reduction is capped at `25%` against other Bestia Maste
 {{< skill name="Earthquake" maxLevel="3" requires="Earth Spike Lv. 3"
     type="Active" manaCost="60" castTime="4s" cooldown="25s" duration="8s" range="per Lv." target="Self"
     description="Splits the ground in a wide radius around the caster, the shockwave dealing repeated damage to everything caught standing on it." >}}
+
+The split ground stays where the caster stood when the spell resolved. Each second it hits every foe on it for
+`MATK * (100% + bonus)` of earth, weighed like a bolt: eight shocks in all. Allies are not hurt. The radius counts
+tiles in every direction, so 2m covers 5x5 tiles.
 
 | Lv. | MATK (per tick) | Radius |
 | --- | --------------- | ------ |
