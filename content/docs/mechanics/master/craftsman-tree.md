@@ -489,14 +489,29 @@ resource's item level.
     description="Why walk over with a potion when you can throw it?" >}}
 
 Throws a potion from the bag onto an ally up to `7` tiles away. It works as if the ally had drunk it, and the
-Alchemist's hand makes it work better.
+Alchemist's hand makes it work better: the potion restores more health, mana and stamina.
 
-| Lv. | Potion Effect |
-| --- | ------------- |
-| 1   | +10%          |
-| 2   | +20%          |
-| 3   | +30%          |
-| 4   | +40%          |
-| 5   | +50%          |
+Pick the potion first, then the ally. An ally is anyone on the players' side: the Alchemist, other players and every
+player's Bestias, never a wild monster. The potion leaves the bag only when the throw lands and restores something, so
+a mana potion thrown at a body without mana stays in the bag.
+
+Only the drinkable restoratives count as potions. Food, the bandage and the novice kit do not.
+
+| Potion              | Restores          |
+| ------------------- | ----------------- |
+| Small Health Potion | 45 HP             |
+| Small Mana Potion   | 45 mana           |
+| Medicine            | 70 HP, 30 stamina |
+
+| Lv. | Potion Effect | Small Health Potion |
+| --- | ------------- | ------------------- |
+| 1   | +10%          | 49 HP               |
+| 2   | +20%          | 54 HP               |
+| 3   | +30%          | 58 HP               |
+| 4   | +40%          | 63 HP               |
+| 5   | +50%          | 67 HP               |
+
+Fractions are dropped. A heal from a thrown potion counts as a heal, so sickness halves it and it closes a bleeding
+wound, the same as a drunk one.
 
 {{< /skill >}}
