@@ -535,3 +535,11 @@
   resist: []
   effect: The Hunter's Improve Concentration, +2 AGI and +2 DEX a level for 60 s.
   dispellable: true
+
+- id: 232
+  identifier: DISSONANCE
+  name: Dissonance
+  polarity: DEBUFF
+  resist: []
+  effect: Rattled by a Bard's Dissonant Chord for 20 s, ASPD −5% and HIT −3% a level.
+  dispellable: true
