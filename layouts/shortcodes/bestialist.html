@@ -1,11 +1,12 @@
-<!-- bestialist.html: every species of data/bestias.yaml, one table per level band, bosses and event bestia apart -->
+<!-- bestialist.html: every species of data/bestias.yaml, one table per level band, bosses, world bosses and event bestia apart -->
 {{- $all := site.Data.bestias -}}
 {{- $attacks := site.Data.attacks -}}
 {{- $groups := slice
   (dict "title" "Low level" "rows" (where (where (where $all "eventOnly" "!=" true) "tier" "!=" "boss") "level" "le" 15))
   (dict "title" "Mid level" "rows" (where (where (where (where $all "eventOnly" "!=" true) "tier" "!=" "boss") "level" "gt" 15) "level" "le" 55))
   (dict "title" "High level" "rows" (where (where (where $all "eventOnly" "!=" true) "tier" "!=" "boss") "level" "gt" 55))
-  (dict "title" "Bosses" "rows" (where (where $all "eventOnly" "!=" true) "tier" "boss"))
+  (dict "title" "Bosses" "rows" (where (where (where $all "eventOnly" "!=" true) "tier" "boss") "worldBoss" "!=" true))
+  (dict "title" "World bosses" "rows" (where $all "worldBoss" true))
   (dict "title" "Event bestia" "rows" (where $all "eventOnly" true))
 -}}
 {{- range $groups }}

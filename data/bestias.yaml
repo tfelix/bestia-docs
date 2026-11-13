@@ -6,6 +6,7 @@
 # learnset changes the learnset the role builds: replace puts a utility skill in a slot (1 to 20), drop
 # removes a slot and add learns one more skill at a level. look is the placeholder body on the client.
 # handTuned keeps the stats of an existing mob YAML and only writes its learnset.
+# worldBoss marks one of the five world bosses: the history decides where and whether it lives, and no den spawns it.
 
 - id: 1
   identifier: blob
@@ -2704,6 +2705,7 @@
   name: Ossuary Wyrm
   level: 108
   tier: boss
+  worldBoss: true
   role: brute
   kind: DRAGON
   element: UNDEAD
@@ -2729,6 +2731,7 @@
   name: Leviathan
   level: 112
   tier: boss
+  worldBoss: true
   role: brute
   kind: DRAGON
   element: WATER
@@ -2756,6 +2759,7 @@
   name: Behemoth
   level: 120
   tier: boss
+  worldBoss: true
   role: brute
   kind: BEAST
   element: EARTH
@@ -2778,6 +2782,62 @@
     chance: 30
   look:
     colour: '#5a4632'
+- id: 104
+  identifier: ember_sovereign
+  name: Ember Sovereign
+  level: 110
+  tier: boss
+  worldBoss: true
+  role: tank
+  kind: ELEMENTAL
+  element: FIRE
+  size: BIG
+  habitat:
+  - VOLCANIC_FIELD
+  ai: aggressive_melee
+  description: A living mass of magma and slag that rules the deep vents. Where it has passed, the cave walls still glow
+    for years.
+  inspiredBy: RO Ifrit, Heatran
+  loot:
+  - item: ember_core
+    chance: 100
+  - item: gold_ore
+    chance: 50
+  - item: iron_ore
+    chance: 50
+  learnset:
+    replace:
+    - slot: 4
+      skill: flame_weapon
+  look:
+    colour: '#ff3300'
+    glow: 1.0
+- id: 105
+  identifier: mire_mother
+  name: Mire Mother
+  level: 104
+  tier: boss
+  worldBoss: true
+  role: caster
+  kind: PLANT
+  element: POISON
+  size: BIG
+  habitat:
+  - BOG
+  - SWAMP
+  ai: aggressive_melee
+  description: A vast, rotting bog-thing that buds lesser creatures from its flanks. The marsh around its lair is never
+    quiet.
+  inspiredBy: RO Mandragora queen, Shuma-Gorath
+  loot:
+  - item: spore_dust
+    chance: 100
+  - item: venom_sac
+    chance: 60
+  - item: medicine
+    chance: 40
+  look:
+    colour: '#4b5320'
 - id: 2
   identifier: doom_master_of_doom
   name: Doommaster of Doom
@@ -2806,7 +2866,7 @@
       skill: proclaim_doom
   look:
     colour: '#111111'
-- id: 104
+- id: 106
   identifier: grinlantern
   name: Grinlantern
   level: 31
@@ -2833,7 +2893,7 @@
     colour: '#ff8c1a'
     shape: SPHERE
     glow: 0.5
-- id: 105
+- id: 107
   identifier: giftbox_mimic
   name: Giftbox Mimic
   level: 40
@@ -2857,7 +2917,7 @@
   look:
     colour: '#c0392b'
     shape: BOX
-- id: 106
+- id: 108
   identifier: bloomhare
   name: Bloomhare
   level: 20
@@ -2888,7 +2948,7 @@
       level: 40
   look:
     colour: '#ffc0cb'
-- id: 107
+- id: 109
   identifier: not_a_blob
   name: Not-a-Blob
   level: 50
