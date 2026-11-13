@@ -146,11 +146,18 @@ festival whose meaning is forgotten, a few households that still keep the old fa
 
 # World Bosses
 
-{{< alert context="warning" text="**Partly built.** The stories run in the history, and sealed and slain bosses are on the map. Spawning a living boss at its lair and breaking a seal are planned, and the two new species are not designed yet." />}}
+{{< alert context="info" text="**Built.** The stories run in the history, a living boss waits in its lair, and a seal can be broken. The two new species have placeholder looks." />}}
 
-A few monsters are older and greater than any den. There are five **world bosses**: the Ossuary Wyrm, the
-Leviathan, the Behemoth, the Ember Sovereign and the Mire Mother; the last two are working names. They never
-spawn in a normal den. Each world gives its bosses names of their own: "Ysolde, the Bone Wyrm".
+A few monsters are older and greater than any den. There are five **world bosses**. They never spawn in a normal den.
+Each world gives its bosses names of their own: "Ysolde, the Bone Wyrm".
+
+| Id  | World boss      | Level | Lair                         | What it is                                               |
+| --- | --------------- | ----- | ---------------------------- | -------------------------------------------------------- |
+| 101 | Ossuary Wyrm    | 108   | Deep in a cave               | A dragon of fused bones from a robbed tomb or a field of the dead |
+| 102 | Leviathan       | 112   | Far out at sea               | A sea serpent woken by a Wound or a cult                 |
+| 103 | Behemoth        | 120   | The remotest dry land        | The oldest beast of the land, woken by fire or a Wound   |
+| 104 | Ember Sovereign | 110   | Deep in a cave               | A fire elemental of magma and slag that rules the deep vents |
+| 105 | Mire Mother     | 104   | The remotest dry land        | A rotting bog brood-mother that buds lesser creatures    |
 
 Each world's history includes some of them: at least two on a small world, up to all five on a large one. Each one
 has a story: what woke it (the blight near a Wound, a tomb that was robbed, an eruption, a cult that called it, the
@@ -159,12 +166,19 @@ dead of a battlefield), whom it terrorised, and who stood against it. The story 
 | Fate         | What it means today                                                                                     |
 | ------------ | ------------------------------------------------------------------------------------------------------- |
 | Slain        | A legendary hero killed it and kept a trophy. The field where it fell is on the map, and the hero takes the trophy to their tomb |
-| Sealed       | A prophet or scholar bound it into a crystal. Whoever breaks the crystal wakes it, for everyone         |
+| Sealed       | A prophet or scholar bound it into a crystal on a stone plinth. Whoever breaks the crystal wakes it, for everyone |
 | Withdrawn    | It went into hiding: deep in a cave, in the most remote place of the land, or far out at sea. A lair is never on the map |
-| Vanished     | Nobody knows where it went. It is alive, and only legends point the way                                  |
+| Vanished     | Nobody knows where it went. It is alive in its lair, and only legends point the way                     |
 
 While it raged, a world boss fell on the towns around it, and each one remembers. At least one world boss is alive
-in every world. A sealed one wakes only once per world.
+in every world.
+
+**In its lair** a living boss waits alone. It wakes when a player comes near, like any den. When **players** kill
+it, it stays dead for the rest of the world. If it dies any other way, it comes back.
+
+**A seal** is a ring of masonry with a plinth in its middle, and the crystal stands on the plinth. The crystal is
+hard to break. When it breaks, the boss rises where the crystal stood. This happens only once per world: the crystal
+never comes back, and the boss is not bound again.
 
 # Relics
 

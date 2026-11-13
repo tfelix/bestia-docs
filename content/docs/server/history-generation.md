@@ -148,7 +148,7 @@ nearest town within 40 km (`MONSTER_RAVAGED`, a quarter of the town's people eac
 | Fate        | Weight | Event               | Site                                                                       |
 | ----------- | ------ | ------------------- | -------------------------------------------------------------------------- |
 | `SLAIN`     | 0.4    | `MONSTER_SLAIN`     | a `BATTLEFIELD` where it fell; the hero keeps a trophy reliquary           |
-| `SEALED`    | 0.25   | `MONSTER_SEALED`    | a `SEAL`: a stone plinth in a ring, for the crystal prop the zone adds      |
+| `SEALED`    | 0.25   | `MONSTER_SEALED`    | a `SEAL`: a stone plinth in a ring, with a crystal on the plinth            |
 | `WITHDRAWN` | 0.25   | `MONSTER_WITHDREW`  | a `LAIR`: the deepest unused cave end, the remotest dry land, or deep sea   |
 | `VANISHED`  | 0.1    | `MONSTER_VANISHED`  | a `LAIR` as well, but no event names it                                    |
 
@@ -156,6 +156,20 @@ The last boss to meet its end is never slain when all before it were, so one alw
 place falls back to `SEALED`. Seal, lair and slaying field carry the boss as `SiteChannels.MONSTER`. Lairs and seals
 are named after their boss. Townsfolk lines name the boss through the `monster` slot; lairs are secret on the map.
 Over 16 genesis seeds a world wakes 2.4 bosses; all four fates occur.
+
+**World bosses in the zone.** The five species are mob ids 101 to 105 with `world-boss: true`. A
+`WildSpawnerService` den never admits one, and `MobCatalogueTest` checks each `WorldBoss` identifier against them.
+
+- *Lairs.* `WorldBossLairService` puts a dormant den holding the boss alone at every `LAIR` marker, on the cave floor
+  (the marker's `ELEVATION`) or on the ground. Its `DenIdentity` is the marker's. `WorldBossSlainSystem` sees a lair
+  boss die before `DeathSystem` does. When an account dealt damage, it destroys the den and writes a
+  `world_boss_slain` row, so later boots skip that lair. The row carries the world id and pipeline version, and
+  `WorldBossWipe` clears it with the world. A boss that dies without a player's damage comes back like any den's
+  pack.
+- *Seals.* `TownStructures.sealCrystals` stands a `FixtureKind.SEAL_CRYSTAL` on the plinth of every `SEAL`, on the
+  bare ground plus the plinth height (`ChunkMaterializer.VERSION` 16). In the zone it is `FIXTURE_SEAL_CRYSTAL`, a
+  terminal prop with 5000 HP. `WorldBossSealService` finds the sealed boss by the crystal's prop id, and
+  `WorldBossSealSystem` spawns it, persistent, where the crystal broke. Being terminal, the crystal stays broken.
 
 **Built sites** follow one rule: the terrain decides where a site *may* go (`SpecialSiteCandidates`: ore deposits for
 mines, remote high ground for monasteries, saddles between civs for forts, headlands for lighthouses, deep cave ends
@@ -244,7 +258,7 @@ in the game, and every new feature shows in the tools.
 | Frontiers                  | **Built.** Battles are spread along the shifting border; battles near an older field add to it; battlefields record battles and fallen |
 | Families                   | **Built**, except townsfolk claiming descent (moved to Hearsay and legends). Parents, houses and spouses; succession and its crises; marriage alliances, feuds, betrayals, vengeance; exiled houses found civs |
 | Pantheon and cults         | **Built.** A domain catalogue; 4-5 gods on a small world, about 10 on a large one; patron gods; cults; sanctuaries ([Pantheon](/docs/mechanics/world/pantheon/)) |
-| World bosses               | **Built** in the history; spawning and breaking seals come next. Five world-boss species, at least two per small world and at least one alive; slain, sealed, withdrawn to a lair, or vanished |
+| World bosses               | **Built.** Five world-boss species (ids 101-105), at least two per small world and at least one alive; slain, sealed, withdrawn to a lair, or vanished. A lair boss spawns in its lair and stays dead once players kill it; breaking a seal wakes its boss |
 | Surviving artifacts        | Artifacts kept in treasuries and temples, guarded tombs, relics of item level 80-100+                               |
 | Battlefields in the world  | Surface scatter, caches buried 0.5-1 m by battlefield age, undead and ghosts at night                                |
 | Hearsay and legends        | Old knowledge told as hearsay; legends about hidden places, true, distorted or myth                                 |
