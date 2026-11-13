@@ -44,14 +44,18 @@ adds to the range in a mana-rich region and eats into it in a drained one.
 | 2   | 20m   | Direction and rough strength of each source                                           |
 | 3   | 30m   | The element the mana belongs to                                                       |
 | 4   | 40m   | The exact spell bound to an item or place                                             |
-| 5   | 50m   | Who bound it, and what trigger a [Spell Binding](#skill-spell-binding) is waiting for |
+| 5   | 50m   | Who bound a [Spell Binding](#skill-spell-binding), what it waits for, and its glyph   |
 
 Mana sources are spell fields on the ground (walls, zones, songs, Mana Circles), anything under a buff or debuff
-(ward stones too), enchanted items lying on the ground, and mana crystals and aetherite. The marks show on the compass
-for 15 seconds, with a line in the chat. Strength reads as faint below Potency 50, strong below 150, and overwhelming
-above.
+(ward stones too), enchanted items lying on the ground, mana crystals and aetherite, and
+[Spell Bindings](#skill-spell-binding) on the ground. The marks show on the compass for 15 seconds, with a line in the
+chat. Strength reads as faint below Potency 50, strong below 150, and overwhelming above.
 
-{{< alert context="info" text="Level 5 waits for Spell Binding, which has no design yet." />}}
+A Spell Binding hides. The sweep finds it only within `range × Edge(P sense - P binding)`, the
+[concealment rule](/docs/mechanics/combat/spell-potency/#concealment-and-detection). Level 5 names its binder, its
+trigger and its filter, like "Fire Bolt, steps on it, foes, bound by Mira". A bound spot found at level 5 also shows
+as a glyph on the ground for 15 seconds, to the senser and their party. Dispel can target the glyph. A bound item in
+someone's hand or bag is not sensed at all, only one lying on the ground.
 
 {{< /skill >}}
 
@@ -63,11 +67,11 @@ Reveals the monster status values, element, kind, size, HP and Mana in a small p
 
 {{< skill name="Ruwach" maxLevel="1" requires="Magic Sense Lv. 2"
     type="Active" manaCost="14" castTime="Instant" cooldown="10s" duration="10s" range="10m" target="Self"
-    description="A pulse of second sight that peels back concealment - hidden traps, hiding Bestia and cloaked Assassins stand out for what they are. Useful to any Scholar, whether they're scrying old ruins or walking a party into an ambush." >}}
+    description="A pulse of second sight that peels back concealment - hiding Bestia and cloaked Assassins stand out for what they are. Useful to any Scholar, whether they're scrying old ruins or walking a party into an ambush." >}}
 
 While it is active, every second it ends [Hide](/docs/mechanics/master/warrior-tree/#skill-hide) and Cloak on
 everyone within 10m of the caster, so they stand revealed for everybody. Detection resistance does not help against
-it.
+it. It finds creatures only: a [Spell Binding](#skill-spell-binding) stays hidden from it.
 
 {{< /skill >}}
 
@@ -753,7 +757,85 @@ then gone.
     type="Active" manaCost="45" castTime="10s" cooldown="None" range="2" target="Item or Ground"
     description="Binds a spell to an object or place and ties it to a trigger, giving rise to enchanted artifacts, standing alarms and hidden traps alike." >}}
 
-{{< alert context="warning" text="To be designed: which spells can be bound, which triggers exist, and what each level adds." />}}
+Takes one [spell scroll](#skill-spell-inscription) from the bag and binds its attack to a spot on the ground or to an
+item, together with a **trigger**. When the trigger happens, the attack is cast once, at the scroll's level, and the
+binding is spent. Until then it waits: it has no timer. Only its firing, a [Dispel](#skill-dispel) or its binder ends
+it. Bindings are saved, so they outlast a restart and a binder who logged out.
+
+The binding always works. It costs the scroll and the mana. The level of the skill sets how many bindings the binder
+keeps at once, which triggers they can pick, and how strong a scroll they can bind. The attack's level is the bestia
+level that learns it, as for [Spell Inscription](#skill-spell-inscription).
+
+| Lv. | Bindings at Once | New Triggers                                      | Highest Attack Level |
+| --- | ---------------- | ------------------------------------------------- | -------------------- |
+| 1   | 1                | Steps on it                                       | 20                   |
+| 2   | 2                | Comes near                                        | 40                   |
+| 3   | 3                | After a delay                                     | 60                   |
+| 4   | 4                | Items: holder is struck, holder strikes           | 80                   |
+| 5   | 5                | Items: holder's HP gets low, stranger picks it up | any                  |
+
+Ground and item bindings count together. A new binding beyond the limit replaces the binder's oldest one.
+
+### Triggers
+
+| Trigger                 | On     | Fires when                                                                    | The attack goes at                     |
+| ----------------------- | ------ | ----------------------------------------------------------------------------- | -------------------------------------- |
+| Steps on it             | Ground | A creature enters the bound tile                                              | That creature                          |
+| Comes near              | Ground | A creature comes within 5 m of the spot                                       | That creature                          |
+| After a delay           | Ground | 5 s to 5 min after the binding, the binder picks the time                     | The nearest creature within 5 m        |
+| Holder is struck        | Item   | The one who wears the item takes a blow or a spell                            | The attacker                           |
+| Holder strikes          | Item   | The one who wears the item lands a blow or a spell                            | The struck target                      |
+| Holder's HP gets low    | Item   | The one who wears the item falls below 30% HP                                 | The holder, or the last attacker       |
+| Stranger picks it up    | Item   | The item lies on the ground and somebody who is not the binder or in the binder's party picks it up | That stranger |
+
+An attack that covers ground, like a Fire Wall, lands on the bound spot or on the creature it goes at. A helpful attack
+from "Holder's HP gets low", like a heal, goes at the holder; a harmful one goes at whoever hit the holder last. A
+delayed attack that finds no creature within 5 m fizzles and is spent.
+
+### Who Sets It Off
+
+The binder picks a **filter** with the trigger. Only a creature that passes the filter sets the binding off or is
+picked as its target.
+
+| Filter            | Who passes                                                                       |
+| ----------------- | -------------------------------------------------------------------------------- |
+| Foes              | Whoever the binder could attack: wild bestias, and players and their bestias where PvP allows |
+| Allies            | The binder, their party, and the bestias of all of them                          |
+| Anyone but me     | Every creature except the binder and the binder's own bestias                    |
+| Wild bestias only | Wild monsters                                                                    |
+
+The usual [damage rules](/docs/mechanics/society/pvp/) still apply when it fires: a harmful attack does nothing where
+no blow could land, as inside a [protected zone](/docs/mechanics/society/pvp/#protected-zones).
+
+### Stats and Potency
+
+A binding keeps the binder's stats and [Potency](/docs/mechanics/combat/spell-potency/) from the moment it was made.
+When it fires, it hits as hard as the binder did then, even if the binder changed gear, left or logged out since.
+A [ritual charge](/docs/mechanics/combat/spell-potency/#rituals) raises the Potency of the binding, up to the cap of
+`150`. A charged binding is found only by a charged sense and lifted only by a charged Dispel, most of the time.
+
+### Hidden Until Sensed
+
+Nobody but the binder sees a binding. [Ruwach](#skill-ruwach) does not reveal it, because Ruwach is for creatures that
+hide. Only [Magic Sense](#skill-magic-sense) finds it, and the Potency decides how close the senser must stand. A
+sweep of level 5 shows a bound spot as a glyph to the senser and their party for 15 s. While the glyph shows, it can
+be walked around or targeted by Dispel. A bound item lying on the ground can be dispelled like any
+[enchantment](/docs/mechanics/items-crafting/items/#enchantments). Worn or carried, it cannot.
+
+The binder sees their own glyphs at all times and can release a binding for free from the skill's cast menu.
+
+### Alarms
+
+Every binding reports when it fires. The binder gets a line in the chat and a mark on the compass: which binding, where,
+and who set it off. A standing alarm is a binding with a harmless attack. The report only reaches a binder who is
+online.
+
+### Items
+
+Only items with an identity hold a binding, like gear. An item holds one binding, and a new one replaces it. The item
+must be in the binder's own bag when the binding is made. Then it goes wherever the item goes: given, traded or
+dropped, it keeps its binding, and the binding still reports to its binder. The triggers "holder is struck", "holder
+strikes" and "holder's HP gets low" need the item worn. "Stranger picks it up" needs it on the ground.
 
 {{< /skill >}}
 
