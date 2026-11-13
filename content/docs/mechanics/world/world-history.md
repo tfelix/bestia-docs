@@ -125,7 +125,7 @@ Some townsfolk today will descend from these families, and say so. That is where
 
 # Gods and Cults
 
-{{< alert context="warning" text="**Planned.**" />}}
+{{< alert context="info" text="**Built** in the history: gods, patron gods, cults and sanctuaries. Customs, festivals and town temples that show their god are planned." />}}
 
 Every world has its own gods. Their domains are fixed (war, the sea, the harvest, death, and others) but their names
 are new in every world, and each people calls them by a name of its own. A small world knows four or five gods, a
@@ -134,8 +134,12 @@ large one about ten. The [Pantheon](/docs/mechanics/world/pantheon/) page lists 
 Each people and each town has a **patron god**, and its temple is dedicated to that god.
 
 **Cults** are smaller and stranger than the temples. A cult may worship a god, a kind of bestia, or the star that
-fell. A cult is founded by a prophet. It spreads along the roads, is persecuted, rises in revolt, or dies out. On a
-world where the [Orders](/docs/mechanics/society/factions/) are known, a cult may join one of them.
+fell. A prophet founds it and raises a **sanctuary** outside their town. The cult wins over nearby towns. The people
+that holds most of its towns may turn on it: the cult is then wiped out, or it rises up and rules its towns as a
+realm of its own, or it endures. On a world where the [Orders](/docs/mechanics/society/factions/) are known, a cult
+may join the Order its teaching leans toward.
+
+Townsfolk, priests above all, remember the gods and the cults of their region.
 
 A cult leaves traces that outlive it: an outdoor **sanctuary** with an idol, a bestia nobody in a town will hunt, a
 festival whose meaning is forgotten, a few households that still keep the old faith in secret.

@@ -120,6 +120,24 @@ An artifact passes to the holder's child, then spouse, then house, then anyone o
 Over 16 genesis seeds a world has about 29 successions and 8 crises; marriages happen on 10 of 16 worlds, oaths
 on 9, feuds on 6, betrayals on 4, and exiles on 2.
 
+**Gods and cults.** Before the first civ is seeded, the world draws its gods from the `Domain` catalogue without
+repeats: 4 plus 1.5 per doubling of settlement sites against the reference, plus a coin flip, at least 3 and at
+most 12. The land weights the draw (coast for the sea, soil for the harvest, mana and volcanism for death, healing
+and fate, the cities' bellicosity for war, ore for craft). The first plague or forsaken town can add a god of
+healing or death later (`DEITY_RISEN`), once per world. A god's name is a seed that each culture renders in its own
+style (`Names.deity`). Each civ draws a patron from the gods, weighted by its culture; a civ that broke away keeps
+its parent's. A town takes its founders' patron and keeps it when it changes hands (`HistoryChannels.PATRON`).
+
+A living prophet founds a cult (`CULT_FOUNDED`) of a god, a beast kind, or the fallen star, and raises a
+`SANCTUARY` 900 m outside their town: an idol on a paved floor. A cult spreads to the nearest town within 40 km of
+one that keeps it (`CULT_SPREAD`). The civ holding most of its towns may persecute it (`CULT_PERSECUTED`), and the
+cult is then wiped out (`CULT_WIPED_OUT`), rises as a civ of origin `CULT_REALM` (`CULT_REVOLT`), or endures. On a
+world with the Orders, a cult may join the Order its teaching leans toward (`CULT_ABSORBED`). Townsfolk lines name
+gods and cults through the `deity` and `cult` slots, and priests take an interest in these events.
+
+Over 16 genesis seeds a world has 4-5 gods; cults are founded on 12 worlds, persecuted on 12, wiped out on 10, and
+rise as realms on 5.
+
 **Built sites** follow one rule: the terrain decides where a site *may* go (`SpecialSiteCandidates`: ore deposits for
 mines, remote high ground for monasteries, saddles between civs for forts, headlands for lighthouses, deep cave ends
 for hoards), and the simulation decides *whether* a civ ever builds it.
@@ -184,6 +202,8 @@ The chronicle is **not stored**. The zone server runs the whole pipeline at ever
 ./gradlew :worldgen:chronicle -Pgenesis       # the zone server's own world settings
 ./gradlew :worldgen:chronicle -Psweep=16      # a census line per seed, then every event kind over all seeds
 ./gradlew :worldgen:chronicle -Pdynasties     # ruling houses, their rulers, and the ties between figures
+./gradlew :worldgen:chronicle -Pdeities       # the world's gods, named by every culture, and whose patron each is
+./gradlew :worldgen:chronicle -Pcults         # every cult, how far it spread and how it ended
 ./gradlew :worldgen:town                      # one settlement: layout, economy, history
 ```
 
@@ -203,7 +223,7 @@ in the game, and every new feature shows in the tools.
 | Two or more civs           | **Built.** At least two civs from the start. Later, optional paths: arrival over the sea, migration overland, secession, refugees |
 | Frontiers                  | **Built.** Battles are spread along the shifting border; battles near an older field add to it; battlefields record battles and fallen |
 | Families                   | **Built**, except townsfolk claiming descent (moved to Hearsay and legends). Parents, houses and spouses; succession and its crises; marriage alliances, feuds, betrayals, vengeance; exiled houses found civs |
-| Pantheon and cults         | A domain catalogue; 4-5 gods on a small world, about 10 on a large one; patron gods; cults; sanctuaries ([Pantheon](/docs/mechanics/world/pantheon/)) |
+| Pantheon and cults         | **Built.** A domain catalogue; 4-5 gods on a small world, about 10 on a large one; patron gods; cults; sanctuaries ([Pantheon](/docs/mechanics/world/pantheon/)) |
 | World bosses               | Five world-boss species, at least two per small world and at least one alive; slain, sealed, withdrawn to a lair, or vanished |
 | Surviving artifacts        | Artifacts kept in treasuries and temples, guarded tombs, relics of item level 80-100+                               |
 | Battlefields in the world  | Surface scatter, caches buried 0.5-1 m by battlefield age, undead and ghosts at night                                |
@@ -215,7 +235,7 @@ in the game, and every new feature shows in the tools.
 scale with the number of settlement sites, with the genesis world (about 28 sites) as the reference. Sites stand for
 the land a history can use; open sea and empty waste do not count.
 
-**New records.** `DynastyRecord` and `RelationRecord` are built. `DeityRecord`, `CultRecord`, `MonsterRecord` and `ThreadRecord`
+**New records.** `DynastyRecord`, `RelationRecord`, `DeityRecord` and `CultRecord` are built. `MonsterRecord` and `ThreadRecord`
 join the chronicle, so every relation and cause is data that a tool, an NPC or a prose step can quote.
 
 **Later: storing the chronicle.** Only a prose step needs the chronicle stored: the texts must point at stable

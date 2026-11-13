@@ -4,7 +4,7 @@ weight: 1060
 description: The catalogue of divine domains every world draws its gods from, how a world names its gods, what worship leaves in the world, and the quests the gods give.
 ---
 
-{{< alert context="warning" text="**Planned.** Nothing on this page is built yet. It is the design for the gods of the [world history](/docs/mechanics/world/world-history/)." />}}
+{{< alert context="warning" text="**Partly built.** The catalogue, a world's gods and their names, patron gods, cults and sanctuaries run in the [world history](/docs/mechanics/world/world-history/). The traces in towns and the quests are design." />}}
 
 The peoples of every world worship gods. The gods are part of the history: they are chosen when the world is made,
 they gain and lose followers over the centuries, and their temples and shrines are still standing when play begins.
@@ -25,9 +25,9 @@ A world does not know every domain:
 | Large                   | about 10 |
 
 The land picks most of them. A world with long coasts likely knows a god of the sea, a world of rich farmland a god
-of the harvest, a world of volcanoes and blight a god of death or of healing. A god can also come into worship later,
-when the history gives a reason: a people at war for a century turns to the god of war, a plague turns people to the
-god of healing.
+of the harvest, a world of volcanoes and blight a god of death or of healing. One more god can come into worship
+later, when the history gives a reason: the first plague turns people to the god of healing, the first town lost to
+the blight to the god of death.
 
 ## One God, Many Names
 
