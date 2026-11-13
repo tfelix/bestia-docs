@@ -323,6 +323,8 @@ def mob_yaml(species, bp, learned, active):
     lines.append(f"spawn-weight: {SPAWN_WEIGHT_BY_TIER[i['tier']]}")
     if i["tier"] == "boss":
         lines.append("boss: true")
+    if i.get("worldBoss"):
+        lines.append("world-boss: true")
     if immunities_of(i):
         lines.append(f"status-immunities: [{', '.join(immunities_of(i))}]")
     if i.get("eventOnly"):
