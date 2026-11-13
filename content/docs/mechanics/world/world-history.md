@@ -146,10 +146,11 @@ festival whose meaning is forgotten, a few households that still keep the old fa
 
 # World Bosses
 
-{{< alert context="warning" text="**Planned.**" />}}
+{{< alert context="warning" text="**Partly built.** The stories run in the history, and sealed and slain bosses are on the map. Spawning a living boss at its lair and breaking a seal are planned, and the two new species are not designed yet." />}}
 
 A few monsters are older and greater than any den. There are five **world bosses**: the Ossuary Wyrm, the
-Leviathan, the Behemoth, and two more still to be designed. They never spawn in a normal den.
+Leviathan, the Behemoth, the Ember Sovereign and the Mire Mother; the last two are working names. They never
+spawn in a normal den. Each world gives its bosses names of their own: "Ysolde, the Bone Wyrm".
 
 Each world's history includes some of them: at least two on a small world, up to all five on a large one. Each one
 has a story: what woke it (the blight near a Wound, a tomb that was robbed, an eruption, a cult that called it, the
@@ -157,12 +158,13 @@ dead of a battlefield), whom it terrorised, and who stood against it. The story 
 
 | Fate         | What it means today                                                                                     |
 | ------------ | ------------------------------------------------------------------------------------------------------- |
-| Slain        | A legendary hero killed it. Its remains lie where it fell, the hero has a tomb, and the story is told   |
+| Slain        | A legendary hero killed it and kept a trophy. The field where it fell is on the map, and the hero takes the trophy to their tomb |
 | Sealed       | A prophet or scholar bound it into a crystal. Whoever breaks the crystal wakes it, for everyone         |
-| Withdrawn    | It went into hiding: deep in a cave, or in the most remote place of its land, far from any town        |
+| Withdrawn    | It went into hiding: deep in a cave, in the most remote place of the land, or far out at sea. A lair is never on the map |
 | Vanished     | Nobody knows where it went. It is alive, and only legends point the way                                  |
 
-At least one world boss is alive in every world. A sealed one wakes only once per world.
+While it raged, a world boss fell on the towns around it, and each one remembers. At least one world boss is alive
+in every world. A sealed one wakes only once per world.
 
 # Relics
 

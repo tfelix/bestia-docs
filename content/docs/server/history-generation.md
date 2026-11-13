@@ -138,6 +138,25 @@ gods and cults through the `deity` and `cult` slots, and priests take an interes
 Over 16 genesis seeds a world has 4-5 gods; cults are founded on 12 worlds, persecuted on 12, wiped out on 10, and
 rise as realms on 5.
 
+**World bosses.** `WorldBoss` lists the five species with their mob identifier, level, kind of lair (`CAVE`,
+`REMOTE_LAND`, `OCEAN`) and the pasts that can wake them. A world wakes 2 plus 1 per doubling of settlement sites
+plus a coin flip, up to 5, skipping a species whose kind of lair the world lacks. Each wakes in a year between 150
+and 850 out of the most fitting past its history holds: a Wound, a robbed tomb, an eruption, a cult, or a battlefield
+with 500 dead or more (`MONSTER_AWOKE` cites it), or out of nowhere (`ANCIENT`). For 15 to 60 years it falls on the
+nearest town within 40 km (`MONSTER_RAVAGED`, a quarter of the town's people each time). Then its story ends:
+
+| Fate        | Weight | Event               | Site                                                                       |
+| ----------- | ------ | ------------------- | -------------------------------------------------------------------------- |
+| `SLAIN`     | 0.4    | `MONSTER_SLAIN`     | a `BATTLEFIELD` where it fell; the hero keeps a trophy reliquary           |
+| `SEALED`    | 0.25   | `MONSTER_SEALED`    | a `SEAL`: a stone plinth in a ring, for the crystal prop the zone adds      |
+| `WITHDRAWN` | 0.25   | `MONSTER_WITHDREW`  | a `LAIR`: the deepest unused cave end, the remotest dry land, or deep sea   |
+| `VANISHED`  | 0.1    | `MONSTER_VANISHED`  | a `LAIR` as well, but no event names it                                    |
+
+The last boss to meet its end is never slain when all before it were, so one always lives; a fate that finds no
+place falls back to `SEALED`. Seal, lair and slaying field carry the boss as `SiteChannels.MONSTER`. Lairs and seals
+are named after their boss. Townsfolk lines name the boss through the `monster` slot; lairs are secret on the map.
+Over 16 genesis seeds a world wakes 2.4 bosses; all four fates occur.
+
 **Built sites** follow one rule: the terrain decides where a site *may* go (`SpecialSiteCandidates`: ore deposits for
 mines, remote high ground for monasteries, saddles between civs for forts, headlands for lighthouses, deep cave ends
 for hoards), and the simulation decides *whether* a civ ever builds it.
@@ -204,6 +223,7 @@ The chronicle is **not stored**. The zone server runs the whole pipeline at ever
 ./gradlew :worldgen:chronicle -Pdynasties     # ruling houses, their rulers, and the ties between figures
 ./gradlew :worldgen:chronicle -Pdeities       # the world's gods, named by every culture, and whose patron each is
 ./gradlew :worldgen:chronicle -Pcults         # every cult, how far it spread and how it ended
+./gradlew :worldgen:chronicle -Pmonsters      # every world boss, what woke it and how its story ended
 ./gradlew :worldgen:town                      # one settlement: layout, economy, history
 ```
 
@@ -224,7 +244,7 @@ in the game, and every new feature shows in the tools.
 | Frontiers                  | **Built.** Battles are spread along the shifting border; battles near an older field add to it; battlefields record battles and fallen |
 | Families                   | **Built**, except townsfolk claiming descent (moved to Hearsay and legends). Parents, houses and spouses; succession and its crises; marriage alliances, feuds, betrayals, vengeance; exiled houses found civs |
 | Pantheon and cults         | **Built.** A domain catalogue; 4-5 gods on a small world, about 10 on a large one; patron gods; cults; sanctuaries ([Pantheon](/docs/mechanics/world/pantheon/)) |
-| World bosses               | Five world-boss species, at least two per small world and at least one alive; slain, sealed, withdrawn to a lair, or vanished |
+| World bosses               | **Built** in the history; spawning and breaking seals come next. Five world-boss species, at least two per small world and at least one alive; slain, sealed, withdrawn to a lair, or vanished |
 | Surviving artifacts        | Artifacts kept in treasuries and temples, guarded tombs, relics of item level 80-100+                               |
 | Battlefields in the world  | Surface scatter, caches buried 0.5-1 m by battlefield age, undead and ghosts at night                                |
 | Hearsay and legends        | Old knowledge told as hearsay; legends about hidden places, true, distorted or myth                                 |
@@ -235,8 +255,8 @@ in the game, and every new feature shows in the tools.
 scale with the number of settlement sites, with the genesis world (about 28 sites) as the reference. Sites stand for
 the land a history can use; open sea and empty waste do not count.
 
-**New records.** `DynastyRecord`, `RelationRecord`, `DeityRecord` and `CultRecord` are built. `MonsterRecord` and `ThreadRecord`
-join the chronicle, so every relation and cause is data that a tool, an NPC or a prose step can quote.
+**New records.** `DynastyRecord`, `RelationRecord`, `DeityRecord`, `CultRecord` and `MonsterRecord` are built. `ThreadRecord`
+joins them later. Every relation and cause is data that a tool, an NPC or a prose step can quote.
 
 **Later: storing the chronicle.** Only a prose step needs the chronicle stored: the texts must point at stable
 ids even after the code changes. It will be stored together with the texts, as a world-scoped blob that is wiped when
