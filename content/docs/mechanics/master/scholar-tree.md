@@ -658,7 +658,32 @@ There is no limit to how many attacks a bestia knows.
     type="Active" manaCost="30" castTime="5s" cooldown="60s" duration="20s" range="Any charted location" target="Location"
     description="Casts a Sage's sight far beyond their own eyes, scouting distant ground and the resources hiding on it before ever setting foot there." >}}
 
-The Sage sees the chosen spot for 20s. Only [charted](/docs/mechanics/master/survival-tree/#skill-cartography) land can be scried.
+The Sage sees the chosen spot for 20s. The camera moves there, and the Sage sees the land and everyone on it as if they
+stood there. Pick the spot in one of two ways:
+
+- **A spot on the world map.** Only [charted](/docs/mechanics/master/survival-tree/#skill-cartography) land can be
+  scried. A spot that is not charted fails, and the mana is spent.
+- **A party member.** The sight opens where the member stands when the cast ends, and stays there. Their spot does not
+  need to be charted. The member is not told.
+
+**Distance makes it harder.** Scry is a [spell against the world](/docs/mechanics/combat/spell-potency/#against-the-world).
+Its Edge against the Disturbance decides how close to the chosen spot the sight opens: up to `500 m × (1 - Edge)` off
+target, in a random direction. The Disturbance grows by `5` per km between the Sage and the spot, so a far spot drifts
+more. Close by, a strong Sage sees exactly the spot.
+
+**The body stays behind.** It stands in a trance and can be attacked. Moving, attacking, casting, using an item or
+taking damage ends the sight at once. "Return to body", or Escape, ends it early. The sight also ends when the Sage
+logs out.
+
+**What the Sage can do there.** Look around, turn and zoom the camera. Talk in public chat: the voice comes from the
+far spot, so players there hear it, and the Sage hears what is said there. A Sage who knows
+[Warp Portal](#skill-warp-portal) can mark the scried spot as a portal target. Nothing else: no skills, no items, no
+walking.
+
+**How others notice.** Everyone near the Sage sees the trance on the body. At the far spot a hidden eye floats while the
+sight lasts. [Ruwach](#skill-ruwach) uncovers it like a hidden creature, and [Magic Sense](#skill-magic-sense) lists it
+as a spell at work. A [Dispel](#skill-dispel) on the eye ends the sight. The eye carries the Potency of the cast, so a
+strong Scry is harder to break.
 
 | Lv. | View Radius |
 | --- | ----------- |
