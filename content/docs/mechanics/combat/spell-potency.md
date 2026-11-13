@@ -91,6 +91,7 @@ everything that is not stronger than itself, so it does not start at a coin flip
 | ---------------------- | --------------------------- | ------------------------------------- | --------------------------- |
 | Shake off a debuff     | The debuff                  | The target's [Resolve](#resist)       | Chance and duration         |
 | Find a hidden creature | Detect, Ruwach, Magic Sense | HIDDEN, CLOAKED, Suppress Aura        | How close you must stand    |
+| Find a Spell Binding   | Magic Sense                 | The binding                           | How close you must stand    |
 | Catch or block a spell | Magic Rod, Land Protector   | The incoming spell                    | Caught, blocked or not      |
 | Reach a far place      | Teleport, Warp Portal, Scry | The [Disturbance](#against-the-world) | How far off you land or see |
 

@@ -327,6 +327,7 @@ parcel. Give an enchanted sword to a friend, and the enchantment goes with it.
 | ----------------------------------------------------------- | -------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | --------------- | ---------------------------------- |
 | Endow Fire, Ice, Wind, Earth                                | The Sage's [Endow](/docs/mechanics/master/basics/#skill-endow-fire) skills | The weapon strikes with the element while somebody wields it                 | 60 to 180 s     | Only on the ground                 |
 | [Postal Seal](/docs/mechanics/towns-trade/postal/#the-seal) | The post office                                                            | The parcel cannot be opened. When it falls to the ground, it sends itself on | Until delivered | Only on the ground, strength `350` |
+| [Spell Binding](/docs/mechanics/master/scholar-tree/#skill-spell-binding) | The Sage's Spell Binding skill                          | Casts a bound attack once when its trigger happens, then it is spent         | Until it fires  | Only on the ground                 |
 
 **Endow binds to the weapon.** A master's endow sits on the weapon in their hand, not on the master. Putting the
 weapon away keeps the element on the weapon, and drawing another weapon does not carry it over. A creature that
