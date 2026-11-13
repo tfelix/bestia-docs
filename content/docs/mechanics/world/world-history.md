@@ -42,7 +42,7 @@ instead.
 
 ## How New Peoples Arise
 
-{{< alert context="warning" text="**Partly built.** Arrival over the sea, migration overland, secession and refugees run today. Exiled houses and cult realms come with families and cults." />}}
+{{< alert context="warning" text="**Partly built.** Arrival over the sea, migration overland, secession, refugees and exiled houses run today. Cult realms come with cults." />}}
 
 Every world starts with **at least two peoples**. Over the centuries, more can arise. Each path below is possible in
 any world, and none has to happen. A large world sees more of them than a small one.
@@ -108,15 +108,20 @@ Rulers, generals, prophets, smiths, explorers and scholars rise in every people.
 did, how they died, and where they are buried. A ruler or prophet gets a tomb. Others rest in their town's cemetery,
 where a player can read their name on the headstone.
 
-{{< alert context="warning" text="**Planned:** families and relations." />}}
+{{< alert context="info" text="**Built** in the history. Townsfolk who claim descent from a house are planned." />}}
 
-Notable people belong to **families**. A ruling house passes the throne from parent to child, and a house with no
-heir falls into a succession crisis, which can split a people. People marry across borders to make peace. They
-become rivals, swear vengeance, and betray their side. An heirloom passes from parent to child before it passes to
-anyone else.
+Notable people belong to **families**. A people's first ruler founds its **ruling house**, and the throne passes from
+parent to child. A house with no heir ends in a **succession crisis**: a new house takes the throne, and the
+quarrel can split the people, or send the old house into exile, where it founds a people of its own.
 
-Some townsfolk today descend from these families, and they say so. That is where heirloom quests will come from (see
-[Quests from History](#quests-from-history)).
+Some figures are the children of earlier ones, so a craft or a command can run in a family. Rulers of two peoples at
+peace may marry, and the marriage cools what was building between them. Generals who faced each other in battle can
+become sworn enemies. When a general falls, their child, spouse or parent may swear vengeance on the people who
+won, and keep the oath when their own people win a battle against them. A general can open the gates of a besieged
+town to the enemy. An heirloom passes to the holder's child first, then their spouse, then their house.
+
+Some townsfolk today will descend from these families, and say so. That is where heirloom quests will come from
+(see [Quests from History](#quests-from-history)).
 
 # Gods and Cults
 
