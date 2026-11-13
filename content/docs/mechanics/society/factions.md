@@ -207,7 +207,7 @@ Some of what an Order accomplishes should outlast the world it accomplished it i
 
 **Order Tree breadth** _(recommended)_ — a world victory permanently unlocks additional nodes on the [Order Skill Tree](#the-order-skill-tree). The _points_ available to spend reset with every world, so a long-established Order has more ways to build, not more power in absolute terms. Veterans get options; newcomers are not outgunned.
 
-**The Reliquary** _(recommended)_ — the victorious Order carries one artifact out of the dying world and into the next, housed in its new citadel. Relics accumulate as a visible hall, but only a small fixed number can be **attuned** at once, so the collection grows without the power ever doing so. Each relic grants a distinctive ritual or an otherwise-unobtainable recipe rather than a stat line.
+**The Reliquary** _(recommended)_ — the victorious Order carries one artifact out of the dying world and into the next, housed in its new citadel. Relics accumulate as a visible hall, but only a small fixed number can be **attuned** at once, so the collection grows without the power ever doing so. Each relic grants a distinctive ritual or an otherwise-unobtainable recipe rather than a stat line. These Order relics are not the [relics](/docs/mechanics/world/treasure-caches/#relics) players dig up from a world's history, which are gear.
 
 **Founding advantage** — the winning Order begins the next world with its citadel already partially raised at a site of its choosing, saving weeks of collective investment. Powerful, but it is a one-shot head start that does not stack.
 

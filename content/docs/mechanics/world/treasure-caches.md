@@ -32,6 +32,7 @@ holds a cache:
 | Ruin, ash ruin          | 50%    |
 | Battlefield             | 30%    |
 | Fort, monastery         | 20%    |
+| Monument                | Only with a relic sealed in it |
 
 The wild scatter covers the rest of the land. It is four times denser at the foot of cliffs and at old camps, where
 travellers would hide what they could not carry. Old camps are cold fire rings beside the roads in the wild, about
@@ -90,9 +91,10 @@ The amount is scaled by how full the reserve is. A full reserve gives the whole 
 ## Relics
 
 A relic is unique named gear. It keeps the name the chronicle gave it, and its tooltip names who forged it and
-in which town. Its stats roll like random-stat gear of a splendid cache.
+in which town. A relic is of item level **80 to 110**, whatever the region: base level 80, and its stats lift it
+higher the longer the artifact's history is. Undead guard a tomb or monument that holds a relic.
 
-{{< alert context="warning" text="**Planned:** relics will be of item level 80 to 100 and above, whatever the region, and battlefields will hold several shallow caches whose contents depend on the battlefield's age. See [World History](/docs/mechanics/world/world-history/#relics)." />}}
+{{< alert context="warning" text="**Planned:** battlefields will hold several shallow caches whose contents depend on the battlefield's age. See [World History](/docs/mechanics/world/world-history/#battlefields-along-a-frontier)." />}}
 
 | Relic kind | Slot        |
 | ---------- | ----------- |

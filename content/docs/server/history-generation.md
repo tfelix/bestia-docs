@@ -32,7 +32,7 @@ over facts.
    | `settlements` | one record per placed site, founded or not: years, population, wealth, owner, walls, names, sacks |
    | `civs`        | culture, capital, technology, grudges (each one an event id), sworn Order                          |
    | `figures`     | role, home, years, resting place, sworn Order                                                       |
-   | `artifacts`   | kind, maker, material, forge town, resting place, provenance (event ids in order)                  |
+   | `artifacts`   | kind, maker, material, forge town, provenance (event ids in order); today's keeper: a resting site, a living holder, or a town that keeps it; the town that first kept it |
    | `sites`       | kind, position, year, radius, decay, host settlement, artifact, figure                             |
 
    Ids are indices into these lists. An actor is typed (`Actor(type, index)`), so "who did this" cannot be answered
@@ -115,7 +115,15 @@ Ties between figures are `RelationRecord`s, each citing the event that made it:
 | `AVENGER`  | `VENGEANCE_SWORN` → `VENGEANCE_FULFILLED`      | Kin of a figure slain in battle, 50%; kept when their civ wins against the slayers |
 | `BETRAYED` | `BETRAYAL`                                     | A general of the besieged civ hands over the town unsacked, 6% per siege |
 
-An artifact passes to the holder's child, then spouse, then house, then anyone of their people.
+**Artifacts.** A dead holder's artifact goes into the grave with a chance of 0.5; a slain world boss's trophy always
+does. Otherwise it passes to the holder's child, then spouse, then house, then anyone of their people (0.55). If
+nobody takes it, the capital of the holder's civ keeps it (`ARTIFACT_ENSHRINED`, 0.5), or it is lost. A kept
+artifact records `keptAt` and its first keeper as `homeTemple`. When the town is conquered, the victors carry it to
+their capital (`ARTIFACT_PLUNDERED`, 0.6). A sack hides it in a hoard first. When the town is abandoned, it rests in
+the ruin. A capital that raises a monument seals a kept artifact into it (`ARTIFACT_SEALED`, 0.5), and the monument
+holds a cache for it. Over 16 genesis seeds a world forges about 46 artifacts and logs 26 entombings, 19 inheritances and
+7 enshrinings; plunder and sealing happen on some worlds. On the genesis seed 20 lie in the ground, 6 are kept in
+towns and 6 are carried today.
 
 Over 16 genesis seeds a world has about 29 successions and 8 crises; marriages happen on 10 of 16 worlds, oaths
 on 9, feuds on 6, betrayals on 4, and exiles on 2.
@@ -208,20 +216,21 @@ The chronicle is **not stored**. The zone server runs the whole pipeline at ever
 | -------------------------------------- | ----------------------------------------------------------------------------------------------- |
 | `towns`, `economy`                     | which towns stand, their population, wealth and walls                                           |
 | `corruption`, `spawners`, `nav_graph`  | standing towns hold back the blight, ring spawners, act as hubs; Wounds raise corruption       |
-| `treasure`                             | caches at history sites; a site with an artifact gets a splendid cache                          |
+| `treasure`                             | caches at history sites; a site with an artifact gets a splendid cache; a monument only with one |
 | `dressing`                             | cemetery headstones for figures who died at home                                               |
 | chunk materialiser (`TownStructures`)  | ruins, ash mounds, tombs, monuments, forts, monasteries, lighthouses, mines, Wounds, shrines    |
 | zone: map, places, regions             | site symbols and names, town names, region names                                               |
 | zone: [townsfolk](/docs/server/dialog/) | each town's events, turned into `HISTORY_<KIND>_<n>` lines; the English `detail` is not used |
 | zone: master creation                  | the home card's founded / walled / sacked lines                                                 |
-| zone: treasure                         | a dug artifact becomes a relic named from the chronicle                                         |
+| zone: treasure                         | a dug artifact becomes a relic named from the chronicle, item level 80-110 by its history; `RelicGuards` puts an undead den at each tomb and monument with an artifact, at the level of the nearest wild den |
 
 # Tests and Invariants
 
 - `worldgen/src/test/.../history/`: `HistoryStageTest`, `OrderHistoryTest`, `ManaHistoryTest`, `SpecialSitesTest`,
   `VolcanicHistoryTest`, `WasteTombTest`.
 - `pipeline/Invariants.kt` checks, over a seed sweep, that the history is self-consistent: years within the span, no
-  event about a town outside its lifetime, no cited event pruned, ordered artifact chains, one ruin per ruined town,
+  event about a town outside its lifetime, no cited event pruned, ordered artifact chains, one keeper per artifact,
+  one ruin per ruined town,
   sites within the chunk query margin.
 - `ParamsVersionTest` pins the params and catalogue digests.
 
@@ -259,7 +268,7 @@ in the game, and every new feature shows in the tools.
 | Families                   | **Built**, except townsfolk claiming descent (moved to Hearsay and legends). Parents, houses and spouses; succession and its crises; marriage alliances, feuds, betrayals, vengeance; exiled houses found civs |
 | Pantheon and cults         | **Built.** A domain catalogue; 4-5 gods on a small world, about 10 on a large one; patron gods; cults; sanctuaries ([Pantheon](/docs/mechanics/world/pantheon/)) |
 | World bosses               | **Built.** Five world-boss species (ids 101-105), at least two per small world and at least one alive; slain, sealed, withdrawn to a lair, or vanished. A lair boss spawns in its lair and stays dead once players kill it; breaking a seal wakes its boss |
-| Surviving artifacts        | Artifacts kept in treasuries and temples, guarded tombs, relics of item level 80-100+                               |
+| Surviving artifacts        | **Built.** Artifacts kept in temples, plundered or sealed in monuments; undead guard artifact tombs and monuments; relics of item level 80-110 |
 | Battlefields in the world  | Surface scatter, caches buried 0.5-1 m by battlefield age, undead and ghosts at night                                |
 | Hearsay and legends        | Old knowledge told as hearsay; legends about hidden places, true, distorted or myth                                 |
 | Quest hooks                | Open threads recorded in the chronicle for a future quest system                                                     |

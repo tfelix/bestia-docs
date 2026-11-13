@@ -182,16 +182,31 @@ never comes back, and the boss is not bound again.
 
 # Relics
 
+{{< alert context="info" text="**Built.**" />}}
+
 Smiths and rulers forge **artifacts**: blades, crowns, rings, reliquaries, tomes and banners, each with a name and a
-history. An artifact passes from hand to hand. When its last owner dies, it is buried with them, lost on a
-battlefield, or carried into a cave hoard. Players find buried artifacts as
-[relics](/docs/mechanics/world/treasure-caches/#relics) in treasure caches.
+history. An artifact passes from hand to hand. When its owner dies, half the time it goes into their grave. Otherwise
+it passes to their kin, or the temple of their capital takes it in, or it is lost on a battlefield or in a ruin.
 
-{{< alert context="warning" text="**Planned:** surviving artifacts and relic level." />}}
+Today an artifact is in one of three places:
 
-Some artifacts were never lost. They are still kept today in the treasury or temple of a great city, or sealed in a
-monument, and they are guarded. Relics are of [item level](/docs/mechanics/items-crafting/items/#item-level)
-**80 to 100 and above**: Legendary, and for the most famous artifacts Epic.
+| Where                 | What it means                                                                                  |
+| --------------------- | ---------------------------------------------------------------------------------------------- |
+| In the ground         | In a tomb, a ruin, a battlefield, a cave hoard or a monument. Players can dig it up as a relic  |
+| Kept in a town        | The temple or treasury of a standing town keeps it. Townsfolk know where it is                 |
+| Carried               | A living figure of the history carries it                                                       |
+
+A town keeps an artifact until something happens to the town. Conquerors may carry it off to their own capital, and
+the town it came from still wants it back. A sack may hide it in a cave hoard. When the town is lost, the artifact
+stays in its ruin. A capital that raises a monument may seal its most precious artifact into the stone.
+
+**Guards.** Undead guard every tomb and monument with an artifact in it. They are as strong as the wild around them:
+a boss alone, anything weaker as a band of three. Where no undead fits the level of the land, the site has no
+guard yet.
+
+**Relics.** Players find buried artifacts as [relics](/docs/mechanics/world/treasure-caches/#relics). A relic is
+of [item level](/docs/mechanics/items-crafting/items/#item-level) **80 to 110**. The longer the artifact's history,
+the stronger the relic.
 
 # Disasters and the Mana
 
