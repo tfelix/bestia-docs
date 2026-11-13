@@ -217,8 +217,8 @@ story from the [Master Skills](/docs/mechanics/master/basics/#master-skills) pag
 (`D 50`) into a mana storm (`D 90`). Edge is `30%`, and the group lands up to 980 m off target. Without the storm the
 group lands on the rune. A jump of 20 km (`D 110`) is a lottery for one caster and exact with a ritual charge.
 
-[Scry](/docs/mechanics/master/scholar-tree/#skill-scry) uses the same Edge for how clearly it shows the far place. A Warp Portal
-uses it for where its far end opens.
+[Scry](/docs/mechanics/master/scholar-tree/#skill-scry) uses the same Edge for how close to the chosen spot it opens: up to
+`500 m × (1 - Edge(P - D))` off target. A Warp Portal uses it for where its far end opens.
 
 # Fixed Potency
 
