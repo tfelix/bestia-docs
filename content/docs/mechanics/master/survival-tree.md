@@ -467,8 +467,18 @@ Anyone with a [pickaxe](/docs/mechanics/items-crafting/items/#weapon-type) can m
 level 10. Level 1 lets you craft a pickaxe and build a Mining Shaft from a kit. Bestias can work the shaft while you are
 away. A shaft reaches 40 m deeper per level, see [Mine](/docs/mechanics/bestias/bestia-orders/#mine).
 
+To mine by hand, hold a pickaxe and click the rock within `4m`. A channel starts, like
+[digging for treasure](/docs/mechanics/world/treasure-caches/#digging): moving or taking damage stops it. When it ends,
+a ball of rock `2m` wide around the spot breaks, and every ore and gem block in it goes into your bag. The ground cannot
+show a smaller hole, so every swing breaks a whole ball.
+
+The channel takes `10s` for the ball plus `20s` for every ore or gem block in it. Mining cuts that time by the table
+below. The resource level of an ore is the level of the item it gives. When the ball holds ore above your max resource
+level, the swing is refused and the ore stays in the rock, so nobody wastes what the world has.
+
 | Lv. | Mining Time Reduction | Max Resource Level |
 | --- | --------------------- | ------------------ |
+| 0   |                       | 10                 |
 | 1   | 10%                   | 20                 |
 | 2   | 20%                   | 40                 |
 | 3   | 30%                   | 60                 |
@@ -502,7 +512,11 @@ Same rule as [Forge Weapon](/docs/mechanics/master/craftsman-tree/#skill-forge-w
     type="Passive"
     description="A Miner learns to follow a vein instead of hacking at it, and the rock gives up more for every swing." >}}
 
-Each ore or gem block the master mines has a chance to drop a second piece.
+Each iron or gem block the master mines has a chance to drop one more piece. It counts for the pickaxe, for
+[Blasting](#skill-blasting), and for the ore the master's Bestias dig at their [Mining Shaft](/docs/mechanics/bestias/bestia-orders/#mine).
+
+Gold ore never drops more. The world's coin supply is sized by how much gold its rock holds, see
+[Money Supply](/docs/server/money-supply/), and a second piece would mint coins the world was not built for.
 
 | Lv. | Second Piece Chance |
 | --- | ------------------- |
@@ -517,7 +531,11 @@ Each ore or gem block the master mines has a chance to drop a second piece.
 {{< skill name="Resource Sonar" maxLevel="3" requires="Rich Veins Lv. 3"
     type="Passive"
     description="The Miner's capstone: a feel for what's underfoot precise enough to map a shaft before the first swing of the pick." >}}
-Can sense ore and gem deposits through solid rock.
+While you hold a pickaxe, every ore and gem block within range glows through the rock, in the colour of its kind.
+Nothing needs to be cast, and the glow follows you as you walk.
+
+[Resource Sense](#skill-resource-sense) points the way to the nearest deposit kilometres away. Resource Sonar shows the
+blocks of that deposit once you stand on it, so you know where to swing.
 
 | Lv. | Sense Range |
 | --- | ----------- |
@@ -531,16 +549,24 @@ Can sense ore and gem deposits through solid rock.
     type="Active" manaCost="10" castTime="2s" cooldown="10s" range="3" target="Ground"
     description="When the pick is too slow, a Miner reaches for something louder." >}}
 
-Sets a blasting charge that breaks every block around it `3s` later, and hurts whoever stands too close. Consumes a
-Blasting Charge, brewed with [Alchemy](/docs/mechanics/master/craftsman-tree/#skill-alchemy).
+Sets a blasting charge on the ground. `3s` later it breaks every block within its radius and hurts every foe inside,
+like any other area skill: the master, their party and Bestias are safe. Consumes a Blasting Charge, brewed with
+[Alchemy](/docs/mechanics/master/craftsman-tree/#skill-alchemy).
 
-| Lv. | Radius |
-| --- | ------ |
-| 1   | 1m     |
-| 2   | 2m     |
-| 3   | 3m     |
-| 4   | 4m     |
-| 5   | 5m     |
+The ore and gems the blast breaks scatter on the ground around it, and anyone can pick them up. When the blast would
+break ore above your [max resource level](#skill-mining), the cast is refused. A blast only breaks rock and earth:
+trees and buildings above stand or fall as they do when the ground under them is dug away, and a
+[treasure cache](/docs/mechanics/world/treasure-caches/) in the blast stays closed.
+
+The ground cannot show a hole smaller than `2m`, so the smallest blast is that wide.
+
+| Lv. | Radius | Damage   |
+| --- | ------ | -------- |
+| 1   | 2m     | 120% ATK |
+| 2   | 3m     | 140% ATK |
+| 3   | 4m     | 160% ATK |
+| 4   | 5m     | 180% ATK |
+| 5   | 6m     | 200% ATK |
 
 {{< /skill >}}
 
@@ -548,7 +574,20 @@ Blasting Charge, brewed with [Alchemy](/docs/mechanics/master/craftsman-tree/#sk
     type="Passive"
     description="A Miner who has cut enough stones sees what a rough gem holds before the first cut." >}}
 
-Shows which gem an unknown [Rough Gemstone](/docs/mechanics/items-crafting/item-list/#rough-gemstone) is, before the cut.
+A Rough Gemstone from a Bestia's digging, a monster or a [treasure cache](/docs/mechanics/world/treasure-caches/) is one
+of the five [gems](/docs/mechanics/items-crafting/crafting/#sockets-and-essences), and nobody can tell which. With Gem Lore,
+use a Rough Gemstone from your bag to appraise it: it becomes the rough gem it really is, ready for its own cut. Every
+level appraises every gem.
+
+| Gem      | Share of Rough Gemstones |
+| -------- | ------------------------ |
+| Amethyst | 50%                      |
+| Emerald  | 25%                      |
+| Ruby     | 15%                      |
+| Pyrelith | 8%                       |
+| Diamond  | 2%                       |
+
+Without Gem Lore a Rough Gemstone can only be cut blind: the cut decides which gem it was.
 
 | Lv. | Gem Cutting Success |
 | --- | ------------------- |
