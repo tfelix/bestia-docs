@@ -833,8 +833,8 @@ online.
 ### Items
 
 Only items with an identity hold a binding, like gear. An item holds one binding, and a new one replaces it. The item
-must be in the binder's own bag when the binding is made. Then it goes wherever the item goes: given, traded or
-dropped, it keeps its binding, and the binding still reports to its binder. The triggers "holder is struck", "holder
+must be in the binder's own bag or worn by the binder when the binding is made. Then it goes wherever the item goes:
+given, traded or dropped, it keeps its binding, and the binding still reports to its binder. The triggers "holder is struck", "holder
 strikes" and "holder's HP gets low" need the item worn. "Stranger picks it up" needs it on the ground.
 
 {{< /skill >}}
