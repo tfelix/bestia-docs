@@ -543,3 +543,67 @@
   resist: []
   effect: Rattled by a Bard's Dissonant Chord for 20 s, ASPD −5% and HIT −3% a level.
   dispellable: true
+
+- id: 233
+  identifier: SONG_BATTLE_HYMN
+  name: Battle Hymn (playing)
+  polarity: BUFF
+  resist: []
+  effect: The Bard plays Battle Hymn. Everyone on the Bard's side in the field gets BATTLE_HYMN.
+  dispellable: true
+
+- id: 234
+  identifier: BATTLE_HYMN
+  name: Battle Hymn
+  polarity: BUFF
+  resist: []
+  effect: Hears a Bard's Battle Hymn, +3% ATK and MATK a level. Lasts 5 s after leaving the field.
+  dispellable: true
+
+- id: 235
+  identifier: SONG_WAR_MARCH
+  name: War March (playing)
+  polarity: BUFF
+  resist: []
+  effect: The Bard plays War March. Everyone on the Bard's side in the field gets WAR_MARCH.
+  dispellable: true
+
+- id: 236
+  identifier: WAR_MARCH
+  name: War March
+  polarity: BUFF
+  resist: []
+  effect: Hears a Bard's War March, +2% move and attack speed a level. Lasts 5 s after leaving the field.
+  dispellable: true
+
+- id: 237
+  identifier: SONG_MIRAGE_DANCE
+  name: Mirage Dance (playing)
+  polarity: BUFF
+  resist: []
+  effect: The Bard plays Mirage Dance. Everyone on the Bard's side in the field gets MIRAGE_DANCE.
+  dispellable: true
+
+- id: 238
+  identifier: MIRAGE_DANCE
+  name: Mirage Dance
+  polarity: BUFF
+  resist: []
+  effect: Hears a Bard's Mirage Dance, +3 FLEE a level. Lasts 5 s after leaving the field.
+  dispellable: true
+
+- id: 239
+  identifier: SONG_WANDERERS_TUNE
+  name: Wanderer's Tune (playing)
+  polarity: BUFF
+  resist: []
+  effect: The Bard plays Wanderer's Tune. Everyone on the Bard's side in the field gets WANDERERS_TUNE.
+  dispellable: true
+
+- id: 240
+  identifier: WANDERERS_TUNE
+  name: Wanderer's Tune
+  polarity: BUFF
+  resist: []
+  effect: Hears a Bard's Wanderer's Tune, −10% stamina drain a level. Lasts 5 s after leaving the field.
+  dispellable: true
