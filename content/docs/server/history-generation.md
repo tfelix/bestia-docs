@@ -100,6 +100,26 @@ field. A battlefield site counts its `battles` and `fallen`, and both are on its
 
 Over 16 genesis seeds a world has about 10 battles on 7 fields.
 
+**Families.** Each civ has at most one living ruler. Its first ruler founds a `DynastyRecord`. When a ruler dies,
+an heir of their house takes the throne at once (`SUCCESSION`, 75%). Otherwise there is a `SUCCESSION_CRISIS`: a new
+ruler founds a new house, and the crisis may send the old house into exile, where it founds a civ of origin
+`EXILED` (`DYNASTY_EXILED`, 25%). It may instead split the civ through a certain revolt (25%), when the civ is large
+enough to split. Other figures are the child of an earlier figure of their civ a third of the time.
+
+Ties between figures are `RelationRecord`s, each citing the event that made it:
+
+| Relation   | Event                                          | When                                                                   |
+| ---------- | ---------------------------------------------- | ---------------------------------------------------------------------- |
+| `SPOUSE`   | `MARRIAGE_ALLIANCE`                            | Two civs at peace, both rulers unmarried; halves their hostility        |
+| `RIVAL`    | `FEUD_BEGAN`                                   | The two sides' generals of a battle, 30%                                |
+| `AVENGER`  | `VENGEANCE_SWORN` → `VENGEANCE_FULFILLED`      | Kin of a figure slain in battle, 50%; kept when their civ wins against the slayers |
+| `BETRAYED` | `BETRAYAL`                                     | A general of the besieged civ hands over the town unsacked, 6% per siege |
+
+An artifact passes to the holder's child, then spouse, then house, then anyone of their people.
+
+Over 16 genesis seeds a world has about 29 successions and 8 crises; marriages happen on 10 of 16 worlds, oaths
+on 9, feuds on 6, betrayals on 4, and exiles on 2.
+
 **Built sites** follow one rule: the terrain decides where a site *may* go (`SpecialSiteCandidates`: ore deposits for
 mines, remote high ground for monasteries, saddles between civs for forts, headlands for lighthouses, deep cave ends
 for hoards), and the simulation decides *whether* a civ ever builds it.
@@ -162,7 +182,8 @@ The chronicle is **not stored**. The zone server runs the whole pipeline at ever
 ./gradlew :worldgen:chronicle -Pyear=430      # the world as it stood in one year
 ./gradlew :worldgen:chronicle -Pquests        # unresolved threads
 ./gradlew :worldgen:chronicle -Pgenesis       # the zone server's own world settings
-./gradlew :worldgen:chronicle -Psweep=16      # a census line per seed: civs by origin, wars, battles, sites
+./gradlew :worldgen:chronicle -Psweep=16      # a census line per seed, then every event kind over all seeds
+./gradlew :worldgen:chronicle -Pdynasties     # ruling houses, their rulers, and the ties between figures
 ./gradlew :worldgen:town                      # one settlement: layout, economy, history
 ```
 
@@ -181,7 +202,7 @@ in the game, and every new feature shows in the tools.
 | Groundwork                 | **Built.** Civs can be added during the run; a seed-sweep census in the chronicle tool                              |
 | Two or more civs           | **Built.** At least two civs from the start. Later, optional paths: arrival over the sea, migration overland, secession, refugees |
 | Frontiers                  | **Built.** Battles are spread along the shifting border; battles near an older field add to it; battlefields record battles and fallen |
-| Families                   | Parents, houses and spouses; succession and its crises; marriage alliances, feuds, betrayals, vengeance; exiled houses found civs |
+| Families                   | **Built**, except townsfolk claiming descent (moved to Hearsay and legends). Parents, houses and spouses; succession and its crises; marriage alliances, feuds, betrayals, vengeance; exiled houses found civs |
 | Pantheon and cults         | A domain catalogue; 4-5 gods on a small world, about 10 on a large one; patron gods; cults; sanctuaries ([Pantheon](/docs/mechanics/world/pantheon/)) |
 | World bosses               | Five world-boss species, at least two per small world and at least one alive; slain, sealed, withdrawn to a lair, or vanished |
 | Surviving artifacts        | Artifacts kept in treasuries and temples, guarded tombs, relics of item level 80-100+                               |
@@ -194,7 +215,7 @@ in the game, and every new feature shows in the tools.
 scale with the number of settlement sites, with the genesis world (about 28 sites) as the reference. Sites stand for
 the land a history can use; open sea and empty waste do not count.
 
-**New records.** `DynastyRecord`, `RelationRecord`, `DeityRecord`, `CultRecord`, `MonsterRecord` and `ThreadRecord`
+**New records.** `DynastyRecord` and `RelationRecord` are built. `DeityRecord`, `CultRecord`, `MonsterRecord` and `ThreadRecord`
 join the chronicle, so every relation and cause is data that a tool, an NPC or a prose step can quote.
 
 **Later: storing the chronicle.** Only a prose step needs the chronicle stored: the texts must point at stable
