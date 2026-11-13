@@ -600,8 +600,8 @@ into a cut gem, and the result is an **Essence Gem**. Runic Etching is not part 
 
 Mining a gem voxel gives a rough gem of its kind, and [Gem Cutting](/docs/mechanics/master/survival-tree/#skill-gem-cutting) turns it
 into a cut gem. A failed cut and a failed etching both shatter the gem, so a strong essence costs a rare gem for every
-try. A [Rough Gemstone](/docs/mechanics/items-crafting/item-list/#rough-gemstone) from a Bestia's digging or a treasure cache is one of
-the five, unknown until it is cut.
+try. A Rough Gemstone from a Bestia's digging or a treasure cache is one of the five, unknown until it is cut or
+appraised with [Gem Lore](/docs/mechanics/master/survival-tree/#skill-gem-lore).
 
 ## Item Level Calculator
 

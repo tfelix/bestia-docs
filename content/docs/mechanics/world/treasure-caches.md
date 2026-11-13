@@ -104,7 +104,8 @@ in which town. Its stats roll like random-stat gear of a splendid cache.
 # Digging
 
 Digging needs a tool: a **shovel** for soil, sand and gravel, a **pickaxe** for rock. Both dig at the same speed.
-Every metre dug costs the tool durability. Every master can make a shovel from 2 sticks and 1 log with Basic Skill
+Every metre dug costs the tool durability. A pickaxe on rock where no cache lies [mines](/docs/mechanics/master/survival-tree/#skill-mining)
+instead of digging. Every master can make a shovel from 2 sticks and 1 log with Basic Skill
 Lv. 1, like the stone hatchet.
 
 Stand next to the spot and dig. Digging is a channel: moving or taking damage stops it. The base time is
