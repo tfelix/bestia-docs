@@ -74,3 +74,13 @@ already points at the arrows, so putting the bow on is all it takes to shoot.
 | ---------- | ------ | --- | -------- | ------------------------ |
 | Novice Bow | Weapon | 7   | 12 tiles | Two-handed, every master |
 | Arrow      | Ammo   | 3   | -        | Neutral, weighs 0.01 kg  |
+
+# Hunting Bow
+
+The Novice Bow stops working once a master puts a point into any tree but Novice. A Hunter shoots the
+[bow skills](/docs/mechanics/master/warrior-tree/#hunter) with the Hunting Bow. For now only a game master can hand it
+out.
+
+| Item        | Type   | ATK | Range    | Notes                         |
+| ----------- | ------ | --- | -------- | ----------------------------- |
+| Hunting Bow | Weapon | 22  | 12 tiles | Two-handed, from Lv. 10       |

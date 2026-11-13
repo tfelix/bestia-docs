@@ -527,3 +527,11 @@
   resist: []
   effect: The prey of a Hunter's Mark for 30 s. The Hunter crits it 3-15% more often by level, sees it on the map and through Hide and Cloak, and the Hunter's Bestias with Pack Hunt hit it harder. Several Hunters can each mark it. Ends on a relog.
   dispellable: true
+
+- id: 231
+  identifier: IMPROVE_CONCENTRATION
+  name: Improve Concentration
+  polarity: BUFF
+  resist: []
+  effect: The Hunter's Improve Concentration, +2 AGI and +2 DEX a level for 60 s.
+  dispellable: true

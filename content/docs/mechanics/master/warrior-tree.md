@@ -747,7 +747,9 @@ bonus is a damage modifier of its own, so it multiplies with the others. The mas
     type="Passive"
     description="Patience on the draw, until the shot lands where the eye already is." >}}
 
-Works with every ranged weapon: bow, crossbow and thrown weapons, so [Javelin](#skill-javelin) gains from it too.
+Works while a ranged weapon is in hand: a bow, a crossbow, a sling or a thrown weapon. The range of a bow, crossbow or
+sling grows, and with it the reach of a basic shot and of every bow skill. A thrown weapon has no range of its own, so
+its tiles go to [Javelin](#skill-javelin) instead. A spear is not a ranged weapon: a Javelin with a spear gains nothing.
 
 | Lv. | Range    | HIT |
 | --- | -------- | --- |
@@ -763,8 +765,10 @@ Works with every ranged weapon: bow, crossbow and thrown weapons, so [Javelin](#
     type="Active" manaCost="12" castTime="Instant" cooldown="0s" range="Bow" target="Enemy"
     description="Two arrows off the string before the first one lands." >}}
 
-Needs a bow. Shoots two arrows at the target for `100% + 10%/Lv.` ATK each, but takes only one arrow out of the
-quiver.
+Needs a bow, and reaches as far as the bow shoots. Shoots two arrows at an enemy for `100% + 10%/Lv.` ATK each, but
+takes only one arrow out of the quiver. Each arrow hits or misses on its own, and has the element of the arrow, as a
+basic shot does. Without a bow, or with no arrow for it in the quiver, the skill is refused at the button. The same is
+true for every bow skill below.
 
 {{< /skill >}}
 
@@ -772,8 +776,8 @@ quiver.
     type="Active" manaCost="15" castTime="Instant" cooldown="1s" range="Bow" target="Ground"
     description="A volley loosed high, coming down on everyone below it." >}}
 
-Needs a bow. Hits every enemy in a 3×3 area for `80% + 10%/Lv.` ATK and knocks them back `1m`. Takes one arrow out of
-the quiver.
+Needs a bow, and reaches as far as the bow shoots. Hits every enemy in the 3×3 tiles around the spot aimed at for
+`80% + 10%/Lv.` ATK. Each enemy it hits is knocked back `1m`, away from the master. Takes one arrow out of the quiver.
 
 {{< /skill >}}
 
@@ -781,7 +785,8 @@ the quiver.
     type="Active" manaCost="15" castTime="1.5s" cooldown="10s" range="Bow" target="Enemy"
     description="A shot drawn so far back it lifts the target off its feet." >}}
 
-Needs a bow. One shot for `150%` ATK that knocks the target back `6m`. Useful to keep a melee fighter at a distance.
+Needs a bow, and reaches as far as the bow shoots. One shot at an enemy for `150%` ATK. If it hits, it knocks the
+target back `6m`, away from the master. Takes one arrow out of the quiver. Useful to keep a melee fighter at a distance.
 
 {{< /skill >}}
 
@@ -789,7 +794,9 @@ Needs a bow. One shot for `150%` ATK that knocks the target back `6m`. Useful to
     type="Active" manaCost="25" castTime="Instant" cooldown="0s" duration="60s" range="0" target="Self"
     description="The Hunter's senses, sharpened to a point." >}}
 
-When cast, it reveals everything hidden within `3m` of the master.
+When cast, it ends [Hide](#skill-hide) and [Cloak](#skill-cloak), and a Bestia's own hiding, on everyone within `3m`
+of the master, once, like one pulse of [Ruwach](/docs/mechanics/master/scholar-tree/#skill-ruwach). The AGI and DEX
+last `60s`; casting it again starts the time over.
 
 | Lv. | AGI | DEX |
 | --- | --- | --- |
