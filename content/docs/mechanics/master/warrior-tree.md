@@ -1317,8 +1317,12 @@ Most do a bit of both.
 The Bard has two routes. The **fighter** route fights with whip and instrument and weakens enemies. The **support**
 route plays songs.
 
-A **song** needs an instrument in hand. It buffs every party member and their Bestias within `3` tiles for `60s`.
-Different songs stack, and playing the same song again refreshes it.
+A **song** needs an instrument in hand. It is a field around the Bard that moves with the Bard and plays for `60s`.
+Everyone on the Bard's side inside the field hears it: the Bard, other players and every player's Bestias, but never a
+wild monster. Who hears it keeps the song's effect `5s` after leaving the field. The field reaches `3` tiles, and
+Voice Training makes it wider and longer. Different songs play at once, and playing the same song again refreshes it.
+A song stops early when the Bard puts the instrument away, falls, or can no longer cast, for example when silenced or
+stunned. The Bard can also end it from its buff icon.
 
 ```mermaid
 graph TD
@@ -1411,18 +1415,21 @@ Dissonance is its own status, so it does not clash with a stronger ASPD Down fro
     type="Passive"
     description="A trained voice reaches further and holds a note longer than an untrained one ever could." >}}
 
-| Lv. | Song Radius | Song Duration |
-| --- | ----------- | ------------- |
-| 1   | +1 tile     | +10%          |
-| 2   | +2 tiles    | +20%          |
-| 3   | +3 tiles    | +30%          |
-| 4   | +4 tiles    | +40%          |
-| 5   | +5 tiles    | +50%          |
+Counts for every song the master plays: the field reaches further and the song plays longer.
+
+| Lv. | Song Radius | Song Duration | Battle Hymn | Wanderer's Tune |
+| --- | ----------- | ------------- | ----------- | --------------- |
+| 0   | 3 tiles     | +0%           | 60s         | 10 min          |
+| 1   | 4 tiles     | +10%          | 66s         | 11 min          |
+| 2   | 5 tiles     | +20%          | 72s         | 12 min          |
+| 3   | 6 tiles     | +30%          | 78s         | 13 min          |
+| 4   | 7 tiles     | +40%          | 84s         | 14 min          |
+| 5   | 8 tiles     | +50%          | 90s         | 15 min          |
 
 {{< /skill >}}
 
 {{< skill name="Battle Hymn" maxLevel="5"
-    type="Active" manaCost="30" castTime="2s" cooldown="5s" duration="60s" range="0" target="Party"
+    type="Active" manaCost="30" castTime="2s" cooldown="5s" duration="60s" range="0" target="Area"
     description="A driving hymn that steels the arm of everyone in earshot." >}}
 
 A song. `+3% ATK and MATK` per level.
@@ -1430,7 +1437,7 @@ A song. `+3% ATK and MATK` per level.
 {{< /skill >}}
 
 {{< skill name="War March" maxLevel="5" requires="Battle Hymn Lv. 2"
-    type="Active" manaCost="30" castTime="2s" cooldown="5s" duration="60s" range="0" target="Party"
+    type="Active" manaCost="30" castTime="2s" cooldown="5s" duration="60s" range="0" target="Area"
     description="A quickstep tune that puts a spring in the step and a snap in the swing." >}}
 
 A song. `+2% movement and attack speed` per level.
@@ -1438,7 +1445,7 @@ A song. `+2% movement and attack speed` per level.
 {{< /skill >}}
 
 {{< skill name="Mirage Dance" maxLevel="5" requires="Voice Training Lv. 3"
-    type="Active" manaCost="30" castTime="2s" cooldown="5s" duration="60s" range="0" target="Party"
+    type="Active" manaCost="30" castTime="2s" cooldown="5s" duration="60s" range="0" target="Area"
     description="A dance that shares the Bard's knack for not being where the hit lands." >}}
 
 A song. `+3 FLEE` per level.
@@ -1446,10 +1453,11 @@ A song. `+3 FLEE` per level.
 {{< /skill >}}
 
 {{< skill name="Wanderer's Tune" maxLevel="5"
-    type="Active" manaCost="20" castTime="2s" cooldown="5s" duration="10 min" range="0" target="Party"
+    type="Active" manaCost="20" castTime="2s" cooldown="5s" duration="10 min" range="0" target="Area"
     description="A steady, ground-eating rhythm that keeps a travelling party's legs fresh long after they should have given out." >}}
 
-A song that lasts `10 min` instead of `60s`. `-10%` stamina drain per level. Made for long journeys with a Bestia team.
+A song that plays `10 min` instead of `60s`. `-10%` stamina drain per level: the drain of the weather that
+[Tough Guy](/docs/mechanics/master/warrior-tree/#skill-tough-guy) also cuts. Made for long journeys with a Bestia team.
 
 {{< /skill >}}
 
@@ -1457,6 +1465,16 @@ A song that lasts `10 min` instead of `60s`. `-10%` stamina drain per level. Mad
     type="Passive"
     description="The Bard's capstone. Every song lands a little harder once the crowd knows who is playing." >}}
 
-`+10%` per level to the effect of every song the master plays.
+`+10%` per level to the effect of every song the master plays, rounded down.
+
+| Song at Lv. 5    | Without | Grand Performance Lv. 1 | Lv. 2 | Lv. 3 |
+| ---------------- | ------- | ----------------------- | ----- | ----- |
+| Battle Hymn      | +15%    | +16%                    | +18%  | +19%  |
+| War March        | +10%    | +11%                    | +12%  | +13%  |
+| Mirage Dance     | +15     | +16                     | +18   | +19   |
+| Wanderer's Tune  | -50%    | -55%                    | -60%  | -65%  |
+
+The same song from two Bards does not add up: it counts once, with the numbers of the Bard whose field reached the
+hearer last.
 
 {{< /skill >}}
