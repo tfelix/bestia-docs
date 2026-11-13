@@ -66,12 +66,12 @@ they end in conquest or peace.
 
 ## Battlefields Along a Frontier
 
-{{< alert context="warning" text="**Planned.** Today each battle of a war is placed between the same two towns, and a battlefield builds nothing in the world." />}}
+{{< alert context="info" text="**Built** in the history. A battlefield does not build anything in the world yet; see below." />}}
 
 Two peoples at war meet along their **frontier**: the line between their nearest towns. A long frontier sees battles
 in many places, and when towns change hands the frontier moves. Over the centuries a border leaves a trail of
-battlefields behind it. A battle near an older battlefield adds to it, so some fields were fought over again and
-again.
+battlefields behind it. A battle near an older battlefield adds to it, and armies often return to old ground on
+their way, so some fields were fought over again and again.
 
 Each battlefield remembers how many battles were fought there and how many fell.
 

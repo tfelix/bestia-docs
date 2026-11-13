@@ -90,6 +90,16 @@ The cost is more lost towns. Over 16 genesis seeds, about 16 of 28 sites still s
 when every world had one people: wars raze about 4 towns, and towns settled earlier lose about 2 more to the blight.
 The tuning slice revisits this balance; until then the sweep's `ruins`, `standing` and per-cause columns track it.
 
+**Battles** are fought along the frontier between two civs at war: every standing town of one civ paired with
+the nearest standing town of the other, kept when the pair is no more than 1.5 times as far apart as the closest pair.
+Each battle picks one pair, the closer ones more often, and is fought between the two towns: 30-70% of the way
+along, up to 1.5 km to the side. It is fought on an existing battlefield when one lies within 1.5 km. Otherwise, with
+a chance of one half, it returns to an old field near the line between the two towns. Only then does it open a new
+field. A battlefield site counts its `battles` and `fallen`, and both are on its marker as station channels. Each
+`BATTLE` event names its field as a `SITE` actor, and an invariant checks that the fields count every battle.
+
+Over 16 genesis seeds a world has about 10 battles on 7 fields.
+
 **Built sites** follow one rule: the terrain decides where a site *may* go (`SpecialSiteCandidates`: ore deposits for
 mines, remote high ground for monasteries, saddles between civs for forts, headlands for lighthouses, deep cave ends
 for hoards), and the simulation decides *whether* a civ ever builds it.
@@ -170,7 +180,7 @@ in the game, and every new feature shows in the tools.
 | -------------------------- | -------------------------------------------------------------------------------------------------------------------- |
 | Groundwork                 | **Built.** Civs can be added during the run; a seed-sweep census in the chronicle tool                              |
 | Two or more civs           | **Built.** At least two civs from the start. Later, optional paths: arrival over the sea, migration overland, secession, refugees |
-| Frontiers                  | Battles are spread along the shifting border; battles near an older field add to it; battlefields record battles and fallen |
+| Frontiers                  | **Built.** Battles are spread along the shifting border; battles near an older field add to it; battlefields record battles and fallen |
 | Families                   | Parents, houses and spouses; succession and its crises; marriage alliances, feuds, betrayals, vengeance; exiled houses found civs |
 | Pantheon and cults         | A domain catalogue; 4-5 gods on a small world, about 10 on a large one; patron gods; cults; sanctuaries ([Pantheon](/docs/mechanics/world/pantheon/)) |
 | World bosses               | Five world-boss species, at least two per small world and at least one alive; slain, sealed, withdrawn to a lair, or vanished |
