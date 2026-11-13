@@ -1349,7 +1349,7 @@ graph TD
     type="Passive"
     description="Training with lute, flute and whip until each one is as much a weapon as an instrument." >}}
 
-`+2 ATK` per level with an instrument or a whip.
+`+2 ATK` per level while an instrument or a whip is in hand. A bow is a Bard's weapon too, but it gains nothing.
 
 {{< /skill >}}
 
@@ -1357,7 +1357,7 @@ graph TD
     type="Passive"
     description="A Bard trusts footwork over plate and simply is not where the hit lands." >}}
 
-`+2 FLEE` per level in light armor, cloth or no armor.
+`+2 FLEE` per level while the body armor is light, cloth or none.
 
 {{< /skill >}}
 
@@ -1365,8 +1365,9 @@ graph TD
     type="Active" manaCost="15" castTime="Instant" cooldown="6s" range="4" target="Enemy"
     description="A whip strike aimed less at the flesh than at the footing." >}}
 
-Needs a whip. Hits for `120% + 20%/Lv.` ATK and leaves the target
-[Slowed](/docs/mechanics/combat/status-effects/#all-status-effects) (`-20%` move speed).
+Needs a whip. A weapon blow at an enemy for `120% + 20%/Lv.` ATK. If it hits, it leaves the target
+[Slowed](/docs/mechanics/combat/status-effects/#all-status-effects) (`-20%` move speed) for the time below. Without a
+whip in hand the skill is refused at the button.
 
 | Lv. | Slowed |
 | --- | ------ |
@@ -1382,7 +1383,9 @@ Needs a whip. Hits for `120% + 20%/Lv.` ATK and leaves the target
     type="Active" manaCost="18" castTime="1s" cooldown="2s" range="9" target="Enemy"
     description="One sharp, ugly note, played loud enough to hurt." >}}
 
-Needs an instrument. A sound wave that hits the target for `150% + 30%/Lv.` ATK.
+Needs an instrument. A sound wave that hits an enemy for `150% + 30%/Lv.` ATK. It flies like an arrow: DEX drives it,
+as for a bow, and a [Pneuma](/docs/mechanics/master/scholar-tree/#skill-pneuma) stops it. Without an instrument in hand
+the skill is refused at the button. The same is true for Dissonant Chord.
 
 {{< /skill >}}
 
@@ -1390,16 +1393,17 @@ Needs an instrument. A sound wave that hits the target for `150% + 30%/Lv.` ATK.
     type="Active" manaCost="30" castTime="2s" cooldown="20s" duration="20s" range="0" target="Area"
     description="Off-key on purpose. Rattles nearby enemies badly enough to throw off their aim and their swing." >}}
 
-Needs an instrument. Every enemy within `3` tiles gets [ASPD Down](/docs/mechanics/combat/status-effects/#all-status-effects)
-and loses HIT.
+Needs an instrument. Every enemy within `3` tiles of the master gets
+[Dissonance](/docs/mechanics/combat/status-effects/#all-status-effects) for `20s`: it swings slower and hits less often.
+Dissonance is its own status, so it does not clash with a stronger ASPD Down from another source.
 
-| Lv. | HIT  |
-| --- | ---- |
-| 1   | -3%  |
-| 2   | -6%  |
-| 3   | -9%  |
-| 4   | -12% |
-| 5   | -15% |
+| Lv. | ASPD | HIT  |
+| --- | ---- | ---- |
+| 1   | -5%  | -3%  |
+| 2   | -10% | -6%  |
+| 3   | -15% | -9%  |
+| 4   | -20% | -12% |
+| 5   | -25% | -15% |
 
 {{< /skill >}}
 
