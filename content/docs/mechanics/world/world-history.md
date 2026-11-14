@@ -123,7 +123,7 @@ Rulers, generals, prophets, smiths, explorers and scholars rise in every people.
 did, how they died, and where they are buried. A ruler or prophet gets a tomb. Others rest in their town's cemetery,
 where a player can read their name on the headstone.
 
-{{< alert context="info" text="**Built** in the history. Townsfolk who claim descent from a house are planned." />}}
+{{< alert context="info" text="**Built.**" />}}
 
 Notable people belong to **families**. A people's first ruler founds its **ruling house**, and the throne passes from
 parent to child. A house with no heir ends in a **succession crisis**: a new house takes the throne, and the
@@ -135,8 +135,14 @@ become sworn enemies. When a general falls, their child, spouse or parent may sw
 won, and keep the oath when their own people win a battle against them. A general can open the gates of a besieged
 town to the enemy. An heirloom passes to the holder's child first, then their spouse, then their house.
 
-Some townsfolk today will descend from these families, and say so. That is where heirloom quests will come from
-(see [Quests from History](#quests-from-history)).
+Some townsfolk today descend from these families, and say so. Half the houses that ruled from near a town have one
+family there that claims them, as a story handed down:
+
+> My father used to tell it by the fire. We come down from House Ashford. Talric founded it, long before anybody's
+> grandparents.
+
+Nobody can prove such a claim. That is where heirloom quests will come from (see
+[Quests from History](#quests-from-history)).
 
 # Gods and Cults
 
@@ -237,27 +243,34 @@ events are known by fewer people, often only by the oldest household in town. Se
 
 ## Hearsay and Legends
 
-{{< alert context="warning" text="**Planned.**" />}}
+{{< alert context="info" text="**Built.**" />}}
 
-People are not equally sure of what they know. What they saw themselves they tell plainly. What happened in their
-grandparents' time they tell as something they were told:
+People are not equally sure of what they know. What somebody alive saw, they tell plainly. What happened a few
+generations back, or what only one family remembers, they tell as something they were told:
 
-> My grandfather told me the walls went up after the second siege.
+> My grandfather told me this, and he had it from his. The walls of Erzvein went up a few generations back.
 
-What happened long ago, they tell as a legend:
+What happened longer ago than that, they tell as an old saying:
 
-> An old saying goes that the Ashen Wyrm sleeps under the hills east of Erzvein.
+> An old saying goes like this. The Ashen Wyrm is not dead. It crawled away long before anybody's grandparents and
+> lies somewhere east of Erzvein.
 
-**Legends** point at hidden things: cave hoards, lairs, seals, the place a world boss was slain, a sword lost on a
-battlefield. Not every legend is true:
+Each person keeps one way of saying it, so it reads as their habit of speech.
 
-| Kind of legend | Share  | What it says                                                    |
-| -------------- | ------ | --------------------------------------------------------------- |
-| True           | ~60%   | The right area                                                  |
-| Distorted      | ~30%   | The wrong direction or distance, or the wrong age               |
-| Myth           | ~10%   | Nothing is there                                                |
+**Legends** point at hidden things: cave hoards, the lair of a living world boss, a seal, the field a world boss
+was slain on, and a relic lost on a battlefield. A legend names the nearest standing town and a direction from it.
+A town tells the legends of the hidden places near it, at most four, nearest first. A world boss is talked about
+twice as far away as a hoard. In each town, a few of the oldest households keep a legend.
 
-A player who follows legends learns which tellers to trust.
+Each town tells each legend its own way, and not every telling is true:
+
+| Kind of telling | Share  | What it says                                                  |
+| --------------- | ------ | ------------------------------------------------------------- |
+| True            | ~60%   | The right direction                                           |
+| Distorted       | ~30%   | One point of the compass off, and the wrong age               |
+| Myth            | ~10%   | A direction where nothing is                                  |
+
+A player who asks in several towns can tell which telling to trust.
 
 # Quests from History
 
