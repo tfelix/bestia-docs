@@ -216,13 +216,15 @@ The chronicle is **not stored**. The zone server runs the whole pipeline at ever
 | -------------------------------------- | ----------------------------------------------------------------------------------------------- |
 | `towns`, `economy`                     | which towns stand, their population, wealth and walls                                           |
 | `corruption`, `spawners`, `nav_graph`  | standing towns hold back the blight, ring spawners, act as hubs; Wounds raise corruption       |
-| `treasure`                             | caches at history sites; a site with an artifact gets a splendid cache; a monument only with one |
+| `treasure`                             | caches at history sites; a site with an artifact gets a splendid cache; a monument only with one; a battlefield gets one per 125 dead (up to 12, thinned by age), 0.5-1 m deep, with its `battlefield_age` |
 | `dressing`                             | cemetery headstones for figures who died at home                                               |
 | chunk materialiser (`TownStructures`)  | ruins, ash mounds, tombs, monuments, forts, monasteries, lighthouses, mines, Wounds, shrines    |
+| chunk materialiser (`FixtureProps`)    | bones, blades, shields and young banners over a battlefield by its `fallen` and `decay`; a slain world boss's skeleton |
 | zone: map, places, regions             | site symbols and names, town names, region names                                               |
 | zone: [townsfolk](/docs/server/dialog/) | each town's events, turned into `HISTORY_<KIND>_<n>` lines; the English `detail` is not used |
 | zone: master creation                  | the home card's founded / walled / sacked lines                                                 |
 | zone: treasure                         | a dug artifact becomes a relic named from the chronicle, item level 80-110 by its history; `RelicGuards` puts an undead den at each tomb and monument with an artifact, at the level of the nearest wild den |
+| zone: spawn                            | `BattlefieldHaunts` puts a night-only den on each battlefield: a battlefield species or a wild undead, demon or ghost at the level of the nearest wild den; pack 2 + 1 per 500 dead, up to 6 |
 
 # Tests and Invariants
 
@@ -269,7 +271,7 @@ in the game, and every new feature shows in the tools.
 | Pantheon and cults         | **Built.** A domain catalogue; 4-5 gods on a small world, about 10 on a large one; patron gods; cults; sanctuaries ([Pantheon](/docs/mechanics/world/pantheon/)) |
 | World bosses               | **Built.** Five world-boss species (ids 101-105), at least two per small world and at least one alive; slain, sealed, withdrawn to a lair, or vanished. A lair boss spawns in its lair and stays dead once players kill it; breaking a seal wakes its boss |
 | Surviving artifacts        | **Built.** Artifacts kept in temples, plundered or sealed in monuments; undead guard artifact tombs and monuments; relics of item level 80-110 |
-| Battlefields in the world  | Surface scatter, caches buried 0.5-1 m by battlefield age, undead and ghosts at night                                |
+| Battlefields in the world  | **Built.** Bones and arms on the surface, a slain boss's skeleton, caches 0.5-1 m deep by the dead and the field's age, the dead rising at night; four battlefield species |
 | Hearsay and legends        | Old knowledge told as hearsay; legends about hidden places, true, distorted or myth                                 |
 | Quest hooks                | Open threads recorded in the chronicle for a future quest system                                                     |
 | Tuning                     | Sweeps over many seeds and world sizes; target ranges pinned as invariants                                          |

@@ -704,6 +704,15 @@
     A splinter of old bone, dry and brittle.
 
     Drops from bestias.
+- id: rusted_scrap
+  name: Rusted Scrap
+  weight: 0.5
+  type: Etc
+  value: 6
+  description: |
+    Bent, rusted iron from a battle long ago: a blade, a buckle, the rim of a shield.
+
+    Lies on old battlefields and drops from the dead that rise there.
 - id: old_bandage
   name: Old Bandage
   weight: 0.05

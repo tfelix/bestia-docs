@@ -325,6 +325,8 @@ def mob_yaml(species, bp, learned, active):
         lines.append("boss: true")
     if i.get("worldBoss"):
         lines.append("world-boss: true")
+    if i.get("battlefield"):
+        lines.append("battlefield: true")
     if immunities_of(i):
         lines.append(f"status-immunities: [{', '.join(immunities_of(i))}]")
     if i.get("eventOnly"):
