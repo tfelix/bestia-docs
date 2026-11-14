@@ -66,7 +66,7 @@ they end in conquest or peace.
 
 ## Battlefields Along a Frontier
 
-{{< alert context="info" text="**Built** in the history. A battlefield does not build anything in the world yet; see below." />}}
+{{< alert context="info" text="**Built.**" />}}
 
 Two peoples at war meet along their **frontier**: the line between their nearest towns. A long frontier sees battles
 in many places, and when towns change hands the frontier moves. Over the centuries a border leaves a trail of
@@ -77,30 +77,45 @@ Each battlefield remembers how many battles were fought there and how many fell.
 
 ## What a Battlefield Holds
 
-{{< alert context="warning" text="**Planned.**" />}}
+{{< alert context="info" text="**Built.** The pieces on the ground are placeholder boxes until they have models." />}}
 
-Some of what was left lies on the surface: bones, rusted blades, broken shields, rags of old banners. Players can
-collect it as scrap. Most of it lies **0.5 m to 1 m under the soil**. To find everything, a player first has to find
-the battlefield and then dig through it with the [treasure digging](/docs/mechanics/world/treasure-caches/) tools.
+Some of what was left lies on the surface: bones, rusted blades, broken shields and, on a young field, rags of old
+banners on broken poles. The more fell, the more lies there. Players pick up bones as **bone shards** and blades and
+shields as **rusted scrap**. Where a hero slew a [world boss](#world-bosses), its giant skeleton lies at the heart of
+the field.
+
+More lies **0.5 m to 1 m under the soil**, in one cache or more: about one for every 125 dead, up to 12. To find them,
+a player first has to find the battlefield and then dig with the [treasure digging](/docs/mechanics/world/treasure-caches/)
+tools.
 
 The age of the battlefield decides what is left:
 
-| Age                 | On the surface                         | Under the soil                                                   |
-| ------------------- | -------------------------------------- | ---------------------------------------------------------------- |
-| Under 200 years     | Bones, rusted gear, a lot of scrap     | Many caches: broken and mundane gear, some coin, a few valuables |
-| 200 to 600 years    | Some bones and iron                    | Fewer caches: coin and valuables, little gear                    |
-| Older               | Almost nothing; low mounds in the grass | A few caches with valuables only                                |
+| Age                 | On the surface                                       | Under the soil                                                              |
+| ------------------- | ---------------------------------------------------- | --------------------------------------------------------------------------- |
+| Under 450 years     | Bones, rusted blades, broken shields, banner rags    | Many caches: rusted scrap, bone and plain gear; one in five also hides a valuable |
+| 450 years and older | Fewer bones and arms the older it is; no banners     | Fewer caches, with valuables only: scavengers took the rest                 |
 
-A battlefield does not refill. What is dug up is gone until the next world.
+A battlefield does not refill. What is picked up or dug up is gone until the next world.
 
 ## The Restless Dead
 
-{{< alert context="warning" text="**Planned.**" />}}
+{{< alert context="info" text="**Built.** The four battlefield species have placeholder looks." />}}
 
-At night, ghosts, undead and demons are drawn to old battlefields. They rise after dusk and fade at dawn. Their level
+At night, from 22:00 to 4:00, the dead rise on every battlefield. When the day comes they fade out. Their level
 follows the region, so a battlefield in quiet farmland holds weak spirits, and one in the deep wild holds the
-[Fallen Knight](/docs/mechanics/bestias/bestia-list/) and worse. A few new undead and ghost species are planned for
-the low and middle levels.
+[Fallen Knight](/docs/mechanics/bestias/bestia-list/) and worse. A field where more fell sends a bigger pack: two,
+and one more for every 500 dead, up to six.
+
+Four species rise on battlefields and nowhere else:
+
+| Bestia             | Lv | Kind             | What it is                                                     |
+| ------------------ | -- | ---------------- | -------------------------------------------------------------- |
+| Restless Levy      | 16 | Undead           | A farmhand called up for a lost war, still swinging its tool   |
+| Grave Wisp         | 34 | Formless, ghost  | A cold flame over a grave nobody dug                           |
+| Oathbound Revenant | 56 | Undead, elite    | A captain still holding the line it swore to hold              |
+| War Wraith         | 85 | Undead, ghost, elite | The rage of a whole battle in one shape of smoke and banners |
+
+The undead, demons and ghosts of the wild join them, whichever fits the level best. Bosses keep to their own dens.
 
 # Notable People and Their Families
 

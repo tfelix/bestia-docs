@@ -30,15 +30,18 @@ holds a cache:
 | ----------------------- | ------ |
 | Tomb                    | 70%    |
 | Ruin, ash ruin          | 50%    |
-| Battlefield             | 30%    |
 | Fort, monastery         | 20%    |
 | Monument                | Only with a relic sealed in it |
+
+A battlefield holds one cache or more, by its dead, and they lie shallow. See
+[What a Battlefield Holds](/docs/mechanics/world/world-history/#what-a-battlefield-holds).
 
 The wild scatter covers the rest of the land. It is four times denser at the foot of cliffs and at old camps, where
 travellers would hide what they could not carry. Old camps are cold fire rings beside the roads in the wild, about
 one every 4 km of road and never closer than 2.5 km to a settlement.
 
-Every cache lies between **0.5 m and 4 m** deep. Cave hoards lie under the cave floor.
+Every cache lies between **0.5 m and 4 m** deep, a battlefield's no deeper than 1 m. Cave hoards lie under the cave
+floor.
 
 ## Caches Do Not Come Back
 
@@ -93,8 +96,6 @@ The amount is scaled by how full the reserve is. A full reserve gives the whole 
 A relic is unique named gear. It keeps the name the chronicle gave it, and its tooltip names who forged it and
 in which town. A relic is of item level **80 to 110**, whatever the region: base level 80, and its stats lift it
 higher the longer the artifact's history is. Undead guard a tomb or monument that holds a relic.
-
-{{< alert context="warning" text="**Planned:** battlefields will hold several shallow caches whose contents depend on the battlefield's age. See [World History](/docs/mechanics/world/world-history/#battlefields-along-a-frontier)." />}}
 
 | Relic kind | Slot        |
 | ---------- | ----------- |
