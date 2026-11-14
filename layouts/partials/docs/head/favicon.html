@@ -1,0 +1,12 @@
+{{- /*
+  Project override of the Lotus Docs favicon partial. The Bestia favicon is a
+  monochrome silhouette (dark for light browser chrome, white for dark), so the
+  theme's single-icon markup would be invisible in one of the two. Browsers pick
+  the PNG that matches prefers-color-scheme; favicon.ico is the fallback for
+  those that ignore `media`. Source art: assets/brand/ in bestia-behemoth.
+*/ -}}
+<link rel="icon" href="{{ "favicon.ico" | absURL }}" sizes="48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ "favicon-32.png" | absURL }}" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" sizes="48x48" href="{{ "favicon-48.png" | absURL }}" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ "favicon-dark-32.png" | absURL }}" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" sizes="48x48" href="{{ "favicon-dark-48.png" | absURL }}" media="(prefers-color-scheme: dark)">
