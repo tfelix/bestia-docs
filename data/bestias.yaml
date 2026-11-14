@@ -7,6 +7,7 @@
 # removes a slot and add learns one more skill at a level. look is the placeholder body on the client.
 # handTuned keeps the stats of an existing mob YAML and only writes its learnset.
 # worldBoss marks one of the five world bosses: the history decides where and whether it lives, and no den spawns it.
+# battlefield marks a species that only rises on old battlefields at night: no ordinary den spawns it.
 
 - id: 1
   identifier: blob
@@ -942,31 +943,30 @@
     colour: '#a0d8ef'
     glow: 0.2
 - id: 37
-  identifier: stardrift
-  name: Stardrift
-  level: 23
-  tier: normal
+  identifier: war_wraith
+  name: War Wraith
+  level: 85
+  tier: elite
+  battlefield: true
   role: caster
-  kind: AQUATIC
-  element: WATER
-  size: SMALL
-  habitat:
-  - BEACH
-  - OCEAN
-  ai: passive_wanderer
-  description: A starfish with a glowing core that spins across the sand at night. The core is a crafting gem, and it knows
-    it.
-  inspiredBy: Staryu
+  kind: UNDEAD
+  element: GHOST
+  size: BIG
+  habitat: []
+  ai: aggressive_melee
+  description: The rage of a whole battle gathered into one shape of smoke and torn banners. It walks the worst fields on
+    moonless nights, and the light in its chest is the last thing many soldiers saw.
+  inspiredBy: RO Dark Illusion, Nazgul
   loot:
-  - item: salt
-    chance: 20
-  - item: raw_fish
-    chance: 10
+  - item: ectoplasm
+    chance: 40
+  - item: shadow_shard
+    chance: 15
   - item: star_core
-    chance: 4
+    chance: 3
   look:
-    colour: '#ffcc66'
-    glow: 0.4
+    colour: '#3a3048'
+    glow: 0.5
 - id: 38
   identifier: mudjaw
   name: Mudjaw
@@ -2700,6 +2700,78 @@
   look:
     colour: '#ff4500'
     glow: 1.0
+- id: 110
+  identifier: restless_levy
+  name: Restless Levy
+  level: 16
+  tier: normal
+  battlefield: true
+  role: brute
+  kind: UNDEAD
+  element: UNDEAD
+  size: MEDIUM
+  habitat: []
+  ai: aggressive_melee
+  description: A farmhand called up for a war that was lost long ago, still in its rotten jerkin. It rises on old
+    battlefields when the moon is up and swings whatever it was given.
+  inspiredBy: RO Zombie, Soldier Skeleton
+  loot:
+  - item: bone_shard
+    chance: 25
+  - item: rusted_scrap
+    chance: 20
+  - item: old_bandage
+    chance: 10
+  look:
+    colour: '#8a7a5a'
+- id: 111
+  identifier: grave_wisp
+  name: Grave Wisp
+  level: 34
+  tier: normal
+  battlefield: true
+  role: caster
+  kind: FORMLESS
+  element: GHOST
+  size: SMALL
+  habitat: []
+  ai: aggressive_melee
+  description: A cold flame over a grave nobody dug. It drifts toward anyone who comes near and drinks their warmth.
+  inspiredBy: RO Whisper, Will-o'-the-wisp
+  loot:
+  - item: ectoplasm
+    chance: 30
+  - item: bone_shard
+    chance: 10
+  look:
+    colour: '#b8f0e0'
+    glow: 0.6
+- id: 112
+  identifier: oathbound_revenant
+  name: Oathbound Revenant
+  level: 56
+  tier: elite
+  battlefield: true
+  role: tank
+  kind: UNDEAD
+  element: UNDEAD
+  size: MEDIUM
+  habitat: []
+  ai: aggressive_melee
+  description: A captain who swore to hold a field and died holding it. The oath outlived the flesh, and it still
+    challenges anyone who crosses its line.
+  inspiredBy: RO Raydric, Dullahan
+  loot:
+  - item: rusted_scrap
+    chance: 30
+  - item: bone_shard
+    chance: 25
+  - item: iron_ingot
+    chance: 15
+  - item: iron_kite_shield
+    chance: 1
+  look:
+    colour: '#5a5a66'
 - id: 101
   identifier: ossuary_wyrm
   name: Ossuary Wyrm
