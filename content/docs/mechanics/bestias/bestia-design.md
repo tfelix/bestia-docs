@@ -35,6 +35,19 @@ flowchart LR
 species only fills dens close to its own level. A den spans its centre ±4 levels. A boss den spans its country's
 range plus up to 20 levels, so a boss fits from about Lv 42 in the wilds up to Lv 120 in deep corruption.
 
+**Then give it a level range**, `levelRange: [min, max]` in `data/bestias.yaml`. Every wild individual is rolled
+somewhere inside it, so a pack is not a row of clones: a Lv 2 critter might range over 1 to 4, a Lv 54 bestia over 50
+to 58. Keep the spread small at the bottom, where a level is a large share of a bestia, and let it widen higher up. A
+boss or event bestia has `min == max`. The numbers of every step below are fitted for the **middle of the range**,
+`(min + max) / 2` rounded down, which is also the level a den's band is matched against. That level is the one the
+calculator asks for.
+
+The server scales one individual to the level it rolled: its HP, mana, attributes and EXP are multiplied by
+`(level + 10) / (middle + 10)`. A 1 to 3 critter rolled at Lv 3 has about 8 % more of each than the authored numbers,
+and one rolled at Lv 1 has 8 % less. A Lv 54 bestia rolled at Lv 58 has about 6 % more. Attack power and attack speed
+are not scaled, and an individual knows the learnset up to the level it rolled. The offset 10 is `mob-level.scaling-offset`
+in the server's `application.yml`.
+
 {{< blueprint-table name="spawn" >}}
 
 **Then pick a tier.** A tier says how many players the bestia is built for. It scales the targets of
@@ -443,7 +456,7 @@ The `bestia/species-data-model` branch of bestia-behemoth gives the mob YAML wha
 - **`armor-types`** next to the older `equip-slots`, see [step 10](#10-equipment). Armor in `items.yml` has an
   `armor-type`.
 
-The same branch makes a wild mob fight at its own level instead of Lv 1, gives it its authored mana, so casting can
+The mob YAML has `level-min` and `level-max`, both required, in place of a single level. The same branch makes a wild mob fight at its own level instead of Lv 1, gives it its authored mana, so casting can
 run it dry, and switches the server's EXP curve to the one in [Bestias](/docs/mechanics/bestias/bestia/#experience).
 
 Still open:

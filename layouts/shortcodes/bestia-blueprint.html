@@ -17,9 +17,9 @@
   <section class="bp-step card shadow-sm mb-4" id="bp-step-level">
     <div class="card-body">
       <h5 class="card-title"><span class="bp-step-no">1</span>Level and tier <a class="bp-method" href="#1-level-and-tier">method</a></h5>
-      <p class="bp-hint">Where it lives sets the level. The tier says how many players it is built for.</p>
+      <p class="bp-hint">Where it lives sets the level: the middle of its level range. The tier says how many players it is built for.</p>
       <div class="bp-fields">
-        <div><label class="form-label small" for="bp-level">Level</label><input class="form-control form-control-sm" id="bp-level" data-field="level" type="number" min="1" max="100" value="2"></div>
+        <div><label class="form-label small" for="bp-level">Level (middle of range)</label><input class="form-control form-control-sm" id="bp-level" data-field="level" type="number" min="1" max="100" value="2"></div>
         <div><label class="form-label small" for="bp-tier">Tier</label><select class="form-select form-select-sm" id="bp-tier" data-field="tier">{{ range $d.tiers }}<option value="{{ .id }}"{{ if eq .id "normal" }} selected{{ end }}>{{ .label }} ({{ .party }})</option>{{ end }}</select></div>
       </div>
       <div class="bp-result"><div class="bp-result-label">Result</div><div class="small" id="bp-master"></div></div>

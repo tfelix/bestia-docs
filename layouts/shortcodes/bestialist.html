@@ -1,13 +1,36 @@
 <!-- bestialist.html: every species of data/bestias.yaml, one table per level band, bosses, world bosses and event bestia apart -->
 {{- $all := site.Data.bestias -}}
 {{- $attacks := site.Data.attacks -}}
+{{- /* A species sits in the band of the middle of its level range, the level its numbers are fitted for. */ -}}
+{{- $low := slice -}}
+{{- $mid := slice -}}
+{{- $high := slice -}}
+{{- $bosses := slice -}}
+{{- $worldBosses := slice -}}
+{{- $events := slice -}}
+{{- range $all -}}
+  {{- $row := dict "reference" (div (add (index .levelRange 0) (index .levelRange 1)) 2) "species" . -}}
+  {{- if .worldBoss -}}
+    {{- $worldBosses = $worldBosses | append $row -}}
+  {{- else if .eventOnly -}}
+    {{- $events = $events | append $row -}}
+  {{- else if eq .tier "boss" -}}
+    {{- $bosses = $bosses | append $row -}}
+  {{- else if le $row.reference 15 -}}
+    {{- $low = $low | append $row -}}
+  {{- else if le $row.reference 55 -}}
+    {{- $mid = $mid | append $row -}}
+  {{- else -}}
+    {{- $high = $high | append $row -}}
+  {{- end -}}
+{{- end -}}
 {{- $groups := slice
-  (dict "title" "Low level" "rows" (where (where (where $all "eventOnly" "!=" true) "tier" "!=" "boss") "level" "le" 15))
-  (dict "title" "Mid level" "rows" (where (where (where (where $all "eventOnly" "!=" true) "tier" "!=" "boss") "level" "gt" 15) "level" "le" 55))
-  (dict "title" "High level" "rows" (where (where (where $all "eventOnly" "!=" true) "tier" "!=" "boss") "level" "gt" 55))
-  (dict "title" "Bosses" "rows" (where (where (where $all "eventOnly" "!=" true) "tier" "boss") "worldBoss" "!=" true))
-  (dict "title" "World bosses" "rows" (where $all "worldBoss" true))
-  (dict "title" "Event bestia" "rows" (where $all "eventOnly" true))
+  (dict "title" "Low level" "rows" $low)
+  (dict "title" "Mid level" "rows" $mid)
+  (dict "title" "High level" "rows" $high)
+  (dict "title" "Bosses" "rows" $bosses)
+  (dict "title" "World bosses" "rows" $worldBosses)
+  (dict "title" "Event bestia" "rows" $events)
 -}}
 {{- range $groups }}
 <h2 id="{{ .title | urlize }}">{{ .title }} <small class="text-body-secondary">({{ len .rows }})</small></h2>
@@ -17,11 +40,11 @@
       <tr><th>#</th><th>Bestia</th><th>Lv</th><th>Tier</th><th>Kind</th><th>Element</th><th>Size</th><th>Habitat</th><th>Utility skills</th><th>Loot</th></tr>
     </thead>
     <tbody>
-      {{- range sort .rows "level" }}
+      {{- range sort .rows "reference" }}{{ with .species }}
       <tr id="{{ .identifier | replaceRE "_" "-" }}">
         <td>{{ .id }}</td>
         <td><strong>{{ .name }}</strong><br><small class="text-body-secondary">{{ .description }}</small></td>
-        <td>{{ .level }}</td>
+        <td>{{ index .levelRange 0 }}{{ if ne (index .levelRange 0) (index .levelRange 1) }}-{{ index .levelRange 1 }}{{ end }}</td>
         <td>{{ .tier | title }}</td>
         <td>{{ .kind | lower | title }}</td>
         <td>{{ .element | lower | title }}</td>
@@ -36,7 +59,7 @@
         </small></td>
         <td><small>{{ range $i, $row := .loot }}{{ if $i }}, {{ end }}{{ $row.item | replaceRE "_" " " }} {{ $row.chance }}%{{ end }}</small></td>
       </tr>
-      {{- end }}
+      {{- end }}{{ end }}
     </tbody>
   </table>
 </div>
