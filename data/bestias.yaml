@@ -2,7 +2,10 @@
 # tools/bestia_export.py runs the Bestia Blueprint Calculator on each row and writes the mob YAML.
 #
 # tier, role, element, kind and size are the calculator's inputs, see data/bestia_blueprint.yaml. element
-# is the base element; the level follows from level and tier. loot chances are in percent.
+# is the base element; the element level follows from the reference level and tier. loot chances are in percent.
+# levelRange is [min, max], the levels a wild individual is rolled between. The numbers are fitted for the middle of
+# the range, (min + max) / 2 rounded down, and the server scales an individual's HP, mana, attributes and EXP to the
+# level it rolled. A boss or event bestia has min == max.
 # learnset changes the learnset the role builds: replace puts a utility skill in a slot (1 to 20), drop
 # removes a slot and add learns one more skill at a level. look is the placeholder body on the client.
 # handTuned keeps the stats of an existing mob YAML and only writes its learnset.
@@ -11,7 +14,9 @@
 - id: 1
   identifier: blob
   name: Blob
-  level: 3
+  levelRange:
+  - 2
+  - 5
   tier: critter
   role: balanced
   kind: FORMLESS
@@ -42,7 +47,9 @@
 - id: 5
   identifier: fieldrat
   name: Fieldrat
-  level: 1
+  levelRange:
+  - 1
+  - 3
   tier: critter
   role: balanced
   kind: BEAST
@@ -71,7 +78,9 @@
 - id: 6
   identifier: burrow_boar
   name: Burrow Boar
-  level: 6
+  levelRange:
+  - 5
+  - 8
   tier: normal
   role: brute
   kind: BEAST
@@ -100,7 +109,9 @@
 - id: 7
   identifier: moonhop
   name: Moonhop
-  level: 4
+  levelRange:
+  - 3
+  - 6
   tier: normal
   role: skirmisher
   kind: BEAST
@@ -131,7 +142,9 @@
 - id: 8
   identifier: sproutling
   name: Sproutling
-  level: 5
+  levelRange:
+  - 4
+  - 7
   tier: normal
   role: caster
   kind: PLANT
@@ -159,7 +172,9 @@
 - id: 9
   identifier: leafcrawler
   name: Leafcrawler
-  level: 2
+  levelRange:
+  - 1
+  - 4
   tier: normal
   role: tank
   kind: INSECT
@@ -188,7 +203,9 @@
 - id: 10
   identifier: buzzlet
   name: Buzzlet
-  level: 7
+  levelRange:
+  - 6
+  - 9
   tier: normal
   role: skirmisher
   kind: INSECT
@@ -213,7 +230,9 @@
 - id: 11
   identifier: pecklet
   name: Pecklet
-  level: 3
+  levelRange:
+  - 2
+  - 5
   tier: normal
   role: skirmisher
   kind: BIRD
@@ -240,7 +259,9 @@
 - id: 12
   identifier: shellsnip
   name: Shellsnip
-  level: 5
+  levelRange:
+  - 4
+  - 7
   tier: normal
   role: tank
   kind: AQUATIC
@@ -269,7 +290,9 @@
 - id: 13
   identifier: puddlehop
   name: Puddlehop
-  level: 4
+  levelRange:
+  - 3
+  - 6
   tier: normal
   role: caster
   kind: AQUATIC
@@ -296,7 +319,9 @@
 - id: 14
   identifier: splashfin
   name: Splashfin
-  level: 2
+  levelRange:
+  - 1
+  - 4
   tier: critter
   role: balanced
   kind: AQUATIC
@@ -327,7 +352,9 @@
 - id: 15
   identifier: snowpup
   name: Snowpup
-  level: 9
+  levelRange:
+  - 8
+  - 11
   tier: normal
   role: skirmisher
   kind: BEAST
@@ -358,7 +385,9 @@
 - id: 16
   identifier: waddler
   name: Waddler
-  level: 11
+  levelRange:
+  - 10
+  - 13
   tier: normal
   role: tank
   kind: BIRD
@@ -385,7 +414,9 @@
 - id: 17
   identifier: stingtail
   name: Stingtail
-  level: 12
+  levelRange:
+  - 11
+  - 14
   tier: normal
   role: skirmisher
   kind: INSECT
@@ -407,7 +438,9 @@
 - id: 18
   identifier: monkling
   name: Monkling
-  level: 8
+  levelRange:
+  - 7
+  - 10
   tier: normal
   role: skirmisher
   kind: BEAST
@@ -437,7 +470,9 @@
 - id: 19
   identifier: bogsnail
   name: Bogsnail
-  level: 7
+  levelRange:
+  - 6
+  - 9
   tier: normal
   role: tank
   kind: AQUATIC
@@ -462,7 +497,9 @@
 - id: 20
   identifier: glimmerwing
   name: Glimmerwing
-  level: 9
+  levelRange:
+  - 8
+  - 11
   tier: normal
   role: support
   kind: INSECT
@@ -489,7 +526,9 @@
 - id: 21
   identifier: puffcap
   name: Puffcap
-  level: 10
+  levelRange:
+  - 9
+  - 12
   tier: normal
   role: caster
   kind: PLANT
@@ -515,7 +554,9 @@
 - id: 22
   identifier: pebblit
   name: Pebblit
-  level: 13
+  levelRange:
+  - 12
+  - 15
   tier: normal
   role: tank
   kind: ELEMENTAL
@@ -545,7 +586,9 @@
 - id: 23
   identifier: lanternwisp
   name: Lanternwisp
-  level: 14
+  levelRange:
+  - 13
+  - 16
   tier: normal
   role: caster
   kind: FORMLESS
@@ -576,7 +619,9 @@
 - id: 24
   identifier: bristlehog
   name: Bristlehog
-  level: 16
+  levelRange:
+  - 15
+  - 18
   tier: normal
   role: tank
   kind: BEAST
@@ -604,7 +649,9 @@
 - id: 25
   identifier: smokit
   name: Smokit
-  level: 18
+  levelRange:
+  - 17
+  - 20
   tier: normal
   role: skirmisher
   kind: BEAST
@@ -635,7 +682,9 @@
 - id: 26
   identifier: hookbeak
   name: Hookbeak
-  level: 22
+  levelRange:
+  - 20
+  - 24
   tier: normal
   role: skirmisher
   kind: BIRD
@@ -665,7 +714,9 @@
 - id: 27
   identifier: tallhorn
   name: Tallhorn
-  level: 20
+  levelRange:
+  - 18
+  - 22
   tier: normal
   role: tank
   kind: BEAST
@@ -693,7 +744,9 @@
 - id: 28
   identifier: ashpelt_wolf
   name: Ashpelt Wolf
-  level: 28
+  levelRange:
+  - 26
+  - 30
   tier: normal
   role: brute
   kind: BEAST
@@ -721,7 +774,9 @@
 - id: 29
   identifier: conehurler
   name: Conehurler
-  level: 24
+  levelRange:
+  - 22
+  - 26
   tier: normal
   role: skirmisher
   kind: PLANT
@@ -742,7 +797,9 @@
 - id: 30
   identifier: honeymaw
   name: Honeymaw
-  level: 34
+  levelRange:
+  - 31
+  - 37
   tier: normal
   role: brute
   kind: BEAST
@@ -771,7 +828,9 @@
 - id: 31
   identifier: crag_ram
   name: Crag Ram
-  level: 30
+  levelRange:
+  - 28
+  - 32
   tier: normal
   role: brute
   kind: BEAST
@@ -797,7 +856,9 @@
 - id: 32
   identifier: harpy
   name: Harpy
-  level: 44
+  levelRange:
+  - 41
+  - 47
   tier: normal
   role: skirmisher
   kind: BIRD
@@ -823,7 +884,9 @@
 - id: 33
   identifier: woolhorn_yak
   name: Woolhorn Yak
-  level: 26
+  levelRange:
+  - 24
+  - 28
   tier: normal
   role: tank
   kind: BEAST
@@ -854,7 +917,9 @@
 - id: 34
   identifier: snowcap
   name: Snowcap
-  level: 32
+  levelRange:
+  - 30
+  - 34
   tier: normal
   role: caster
   kind: ELEMENTAL
@@ -883,7 +948,9 @@
 - id: 35
   identifier: tuskseal
   name: Tuskseal
-  level: 36
+  levelRange:
+  - 33
+  - 39
   tier: normal
   role: tank
   kind: AQUATIC
@@ -914,7 +981,9 @@
 - id: 36
   identifier: jellyveil
   name: Jellyveil
-  level: 27
+  levelRange:
+  - 25
+  - 29
   tier: normal
   role: support
   kind: AQUATIC
@@ -944,7 +1013,9 @@
 - id: 37
   identifier: stardrift
   name: Stardrift
-  level: 23
+  levelRange:
+  - 21
+  - 25
   tier: normal
   role: caster
   kind: AQUATIC
@@ -970,7 +1041,9 @@
 - id: 38
   identifier: mudjaw
   name: Mudjaw
-  level: 38
+  levelRange:
+  - 35
+  - 41
   tier: normal
   role: brute
   kind: REPTILE
@@ -999,7 +1072,9 @@
 - id: 39
   identifier: bloatfrog
   name: Bloatfrog
-  level: 33
+  levelRange:
+  - 31
+  - 35
   tier: normal
   role: caster
   kind: AQUATIC
@@ -1021,7 +1096,9 @@
 - id: 40
   identifier: drowned_one
   name: Drowned One
-  level: 42
+  levelRange:
+  - 39
+  - 45
   tier: normal
   role: brute
   kind: UNDEAD
@@ -1046,7 +1123,9 @@
 - id: 41
   identifier: dune_scarab
   name: Dune Scarab
-  level: 25
+  levelRange:
+  - 23
+  - 27
   tier: normal
   role: tank
   kind: INSECT
@@ -1072,7 +1151,9 @@
 - id: 42
   identifier: mummy
   name: Mummy
-  level: 48
+  levelRange:
+  - 44
+  - 52
   tier: normal
   role: tank
   kind: UNDEAD
@@ -1096,7 +1177,9 @@
 - id: 43
   identifier: sidewinder
   name: Sidewinder
-  level: 37
+  levelRange:
+  - 34
+  - 40
   tier: normal
   role: skirmisher
   kind: REPTILE
@@ -1123,7 +1206,9 @@
 - id: 44
   identifier: cackler
   name: Cackler
-  level: 21
+  levelRange:
+  - 19
+  - 23
   tier: normal
   role: brute
   kind: BEAST
@@ -1154,7 +1239,9 @@
 - id: 45
   identifier: basker
   name: Basker
-  level: 29
+  levelRange:
+  - 27
+  - 31
   tier: normal
   role: balanced
   kind: REPTILE
@@ -1182,7 +1269,9 @@
 - id: 46
   identifier: boulderkin
   name: Boulderkin
-  level: 52
+  levelRange:
+  - 48
+  - 56
   tier: elite
   role: tank
   kind: ELEMENTAL
@@ -1210,7 +1299,9 @@
 - id: 47
   identifier: cinderpup
   name: Cinderpup
-  level: 35
+  levelRange:
+  - 32
+  - 38
   tier: normal
   role: brute
   kind: BEAST
@@ -1241,7 +1332,9 @@
 - id: 48
   identifier: magmaslug
   name: Magmaslug
-  level: 40
+  levelRange:
+  - 37
+  - 43
   tier: normal
   role: caster
   kind: FORMLESS
@@ -1269,7 +1362,9 @@
 - id: 49
   identifier: spoutle
   name: Spoutle
-  level: 31
+  levelRange:
+  - 29
+  - 33
   tier: normal
   role: tank
   kind: REPTILE
@@ -1296,7 +1391,9 @@
 - id: 50
   identifier: sulphur_imp
   name: Sulphur Imp
-  level: 46
+  levelRange:
+  - 43
+  - 49
   tier: normal
   role: caster
   kind: DEMON
@@ -1327,7 +1424,9 @@
 - id: 51
   identifier: sunmane
   name: Sunmane
-  level: 45
+  levelRange:
+  - 42
+  - 48
   tier: elite
   role: brute
   kind: BEAST
@@ -1357,7 +1456,9 @@
 - id: 52
   identifier: scythid
   name: Scythid
-  level: 39
+  levelRange:
+  - 36
+  - 42
   tier: normal
   role: skirmisher
   kind: INSECT
@@ -1382,7 +1483,9 @@
 - id: 53
   identifier: snapvine
   name: Snapvine
-  level: 26
+  levelRange:
+  - 24
+  - 28
   tier: normal
   role: brute
   kind: PLANT
@@ -1404,7 +1507,9 @@
 - id: 54
   identifier: mossback_stag
   name: Mossback Stag
-  level: 41
+  levelRange:
+  - 38
+  - 44
   tier: normal
   role: tank
   kind: BEAST
@@ -1433,7 +1538,9 @@
 - id: 55
   identifier: kobold_scrapper
   name: Kobold Scrapper
-  level: 24
+  levelRange:
+  - 22
+  - 26
   tier: normal
   role: balanced
   kind: HUMANOID
@@ -1464,7 +1571,9 @@
 - id: 56
   identifier: stormstrider
   name: Stormstrider
-  level: 56
+  levelRange:
+  - 52
+  - 60
   tier: normal
   role: skirmisher
   kind: BIRD
@@ -1491,7 +1600,9 @@
 - id: 57
   identifier: weeping_willow
   name: Weeping Willow
-  level: 57
+  levelRange:
+  - 53
+  - 61
   tier: normal
   role: caster
   kind: PLANT
@@ -1521,7 +1632,9 @@
 - id: 58
   identifier: needlewalker
   name: Needlewalker
-  level: 59
+  levelRange:
+  - 55
+  - 63
   tier: normal
   role: tank
   kind: PLANT
@@ -1550,7 +1663,9 @@
 - id: 59
   identifier: duskstalker
   name: Duskstalker
-  level: 60
+  levelRange:
+  - 55
+  - 65
   tier: normal
   role: skirmisher
   kind: BEAST
@@ -1581,7 +1696,9 @@
 - id: 60
   identifier: vine_constrictor
   name: Vine Constrictor
-  level: 61
+  levelRange:
+  - 56
+  - 66
   tier: normal
   role: brute
   kind: REPTILE
@@ -1604,7 +1721,9 @@
 - id: 61
   identifier: rimehulk_yeti
   name: Rimehulk Yeti
-  level: 62
+  levelRange:
+  - 57
+  - 67
   tier: normal
   role: brute
   kind: BEAST
@@ -1633,7 +1752,9 @@
 - id: 62
   identifier: geyser_drake
   name: Geyser Drake
-  level: 63
+  levelRange:
+  - 58
+  - 68
   tier: normal
   role: caster
   kind: DRAGON
@@ -1661,7 +1782,9 @@
 - id: 63
   identifier: merrow_raider
   name: Merrow Raider
-  level: 64
+  levelRange:
+  - 59
+  - 69
   tier: normal
   role: balanced
   kind: HUMANOID
@@ -1690,7 +1813,9 @@
 - id: 64
   identifier: dustwraith
   name: Dustwraith
-  level: 66
+  levelRange:
+  - 61
+  - 71
   tier: normal
   role: caster
   kind: FORMLESS
@@ -1714,7 +1839,9 @@
 - id: 65
   identifier: hill_ogre
   name: Hill Ogre
-  level: 67
+  levelRange:
+  - 62
+  - 72
   tier: normal
   role: brute
   kind: HUMANOID
@@ -1745,7 +1872,9 @@
 - id: 66
   identifier: kelpie
   name: Kelpie
-  level: 68
+  levelRange:
+  - 63
+  - 73
   tier: normal
   role: caster
   kind: BEAST
@@ -1773,7 +1902,9 @@
 - id: 67
   identifier: moonmare
   name: Moonmare
-  level: 69
+  levelRange:
+  - 64
+  - 74
   tier: normal
   role: support
   kind: BEAST
@@ -1805,7 +1936,9 @@
 - id: 68
   identifier: stormback_ape
   name: Stormback Ape
-  level: 71
+  levelRange:
+  - 66
+  - 76
   tier: normal
   role: brute
   kind: BEAST
@@ -1834,7 +1967,9 @@
 - id: 69
   identifier: brineserpent
   name: Brineserpent
-  level: 72
+  levelRange:
+  - 67
+  - 77
   tier: normal
   role: brute
   kind: AQUATIC
@@ -1862,7 +1997,9 @@
 - id: 70
   identifier: banshee
   name: Banshee
-  level: 74
+  levelRange:
+  - 68
+  - 80
   tier: normal
   role: caster
   kind: UNDEAD
@@ -1891,7 +2028,9 @@
 - id: 71
   identifier: hydra
   name: Hydra
-  level: 76
+  levelRange:
+  - 70
+  - 82
   tier: elite
   role: brute
   kind: REPTILE
@@ -1915,7 +2054,9 @@
 - id: 72
   identifier: frost_wyvern
   name: Frost Wyvern
-  level: 78
+  levelRange:
+  - 72
+  - 84
   tier: elite
   role: skirmisher
   kind: DRAGON
@@ -1938,7 +2079,9 @@
 - id: 73
   identifier: salamander
   name: Salamander
-  level: 79
+  levelRange:
+  - 73
+  - 85
   tier: normal
   role: caster
   kind: ELEMENTAL
@@ -1965,7 +2108,9 @@
 - id: 74
   identifier: dune_devourer
   name: Dune Devourer
-  level: 82
+  levelRange:
+  - 76
+  - 88
   tier: normal
   role: brute
   kind: REPTILE
@@ -1993,7 +2138,9 @@
 - id: 75
   identifier: canyon_wyvern
   name: Canyon Wyvern
-  level: 84
+  levelRange:
+  - 78
+  - 90
   tier: elite
   role: skirmisher
   kind: DRAGON
@@ -2019,7 +2166,9 @@
 - id: 76
   identifier: rift_crawler
   name: Rift Crawler
-  level: 90
+  levelRange:
+  - 83
+  - 97
   tier: normal
   role: caster
   kind: FORMLESS
@@ -2047,7 +2196,9 @@
 - id: 77
   identifier: fallen_knight
   name: Fallen Knight
-  level: 92
+  levelRange:
+  - 85
+  - 99
   tier: normal
   role: tank
   kind: UNDEAD
@@ -2071,7 +2222,9 @@
 - id: 78
   identifier: fallen_seraph
   name: Fallen Seraph
-  level: 96
+  levelRange:
+  - 92
+  - 100
   tier: elite
   role: caster
   kind: DEMON
@@ -2095,7 +2248,9 @@
 - id: 79
   identifier: blob_queen
   name: Blob Queen
-  level: 42
+  levelRange:
+  - 42
+  - 42
   tier: boss
   role: tank
   kind: FORMLESS
@@ -2126,7 +2281,9 @@
 - id: 80
   identifier: golden_scarab
   name: Golden Scarab
-  level: 48
+  levelRange:
+  - 48
+  - 48
   tier: boss
   role: tank
   kind: INSECT
@@ -2155,7 +2312,9 @@
 - id: 81
   identifier: flamestripe
   name: Flamestripe
-  level: 50
+  levelRange:
+  - 50
+  - 50
   tier: boss
   role: brute
   kind: BEAST
@@ -2183,7 +2342,9 @@
 - id: 82
   identifier: hive_queen
   name: Hive Queen
-  level: 54
+  levelRange:
+  - 54
+  - 54
   tier: boss
   role: support
   kind: INSECT
@@ -2211,7 +2372,9 @@
 - id: 83
   identifier: orc_overlord
   name: Orc Overlord
-  level: 58
+  levelRange:
+  - 58
+  - 58
   tier: boss
   role: brute
   kind: HUMANOID
@@ -2235,7 +2398,9 @@
 - id: 84
   identifier: lakesong_undine
   name: Lakesong Undine
-  level: 62
+  levelRange:
+  - 62
+  - 62
   tier: boss
   role: support
   kind: ELEMENTAL
@@ -2266,7 +2431,9 @@
 - id: 85
   identifier: drowned_captain
   name: Drowned Captain
-  level: 64
+  levelRange:
+  - 64
+  - 64
   tier: boss
   role: balanced
   kind: UNDEAD
@@ -2291,7 +2458,9 @@
 - id: 86
   identifier: ninefold_vixen
   name: Ninefold Vixen
-  level: 66
+  levelRange:
+  - 66
+  - 66
   tier: boss
   role: caster
   kind: BEAST
@@ -2319,7 +2488,9 @@
 - id: 87
   identifier: ancient_rootfather
   name: Ancient Rootfather
-  level: 68
+  levelRange:
+  - 68
+  - 68
   tier: boss
   role: tank
   kind: PLANT
@@ -2350,7 +2521,9 @@
 - id: 88
   identifier: lantern_mother
   name: Lantern Mother
-  level: 70
+  levelRange:
+  - 70
+  - 70
   tier: boss
   role: caster
   kind: FORMLESS
@@ -2376,7 +2549,9 @@
 - id: 89
   identifier: sand_pharaoh
   name: Sand Pharaoh
-  level: 72
+  levelRange:
+  - 72
+  - 72
   tier: boss
   role: caster
   kind: UNDEAD
@@ -2399,7 +2574,9 @@
 - id: 90
   identifier: rafflesia_queen
   name: Rafflesia Queen
-  level: 74
+  levelRange:
+  - 74
+  - 74
   tier: boss
   role: caster
   kind: PLANT
@@ -2427,7 +2604,9 @@
 - id: 91
   identifier: fumarole_dragon
   name: Fumarole Dragon
-  level: 78
+  levelRange:
+  - 78
+  - 78
   tier: boss
   role: caster
   kind: DRAGON
@@ -2450,7 +2629,9 @@
 - id: 92
   identifier: antlered_ancient
   name: Antlered Ancient
-  level: 80
+  levelRange:
+  - 80
+  - 80
   tier: boss
   role: support
   kind: BEAST
@@ -2481,7 +2662,9 @@
 - id: 93
   identifier: garm
   name: Garm
-  level: 82
+  levelRange:
+  - 82
+  - 82
   tier: boss
   role: brute
   kind: BEAST
@@ -2511,7 +2694,9 @@
 - id: 94
   identifier: stormcaller_roc
   name: Stormcaller Roc
-  level: 84
+  levelRange:
+  - 84
+  - 84
   tier: boss
   role: skirmisher
   kind: BIRD
@@ -2538,7 +2723,9 @@
 - id: 95
   identifier: rimetusk_ancient
   name: Rimetusk Ancient
-  level: 86
+  levelRange:
+  - 86
+  - 86
   tier: boss
   role: tank
   kind: BEAST
@@ -2565,7 +2752,9 @@
 - id: 96
   identifier: baphor
   name: Baphor, the Horned Abbot
-  level: 88
+  levelRange:
+  - 88
+  - 88
   tier: boss
   role: brute
   kind: DEMON
@@ -2589,7 +2778,9 @@
 - id: 97
   identifier: magma_titan
   name: Magma Titan
-  level: 94
+  levelRange:
+  - 94
+  - 94
   tier: boss
   role: tank
   kind: ELEMENTAL
@@ -2620,7 +2811,9 @@
 - id: 98
   identifier: jade_sky_serpent
   name: Jade Sky Serpent
-  level: 95
+  levelRange:
+  - 95
+  - 95
   tier: boss
   role: caster
   kind: DRAGON
@@ -2647,7 +2840,9 @@
 - id: 99
   identifier: hollow_king
   name: The Hollow King
-  level: 100
+  levelRange:
+  - 100
+  - 100
   tier: boss
   role: caster
   kind: UNDEAD
@@ -2671,7 +2866,9 @@
 - id: 100
   identifier: ember_phoenix
   name: Ember Phoenix
-  level: 105
+  levelRange:
+  - 105
+  - 105
   tier: boss
   role: caster
   kind: BIRD
@@ -2703,7 +2900,9 @@
 - id: 101
   identifier: ossuary_wyrm
   name: Ossuary Wyrm
-  level: 108
+  levelRange:
+  - 108
+  - 108
   tier: boss
   worldBoss: true
   role: brute
@@ -2729,7 +2928,9 @@
 - id: 102
   identifier: leviathan
   name: Leviathan
-  level: 112
+  levelRange:
+  - 112
+  - 112
   tier: boss
   worldBoss: true
   role: brute
@@ -2757,7 +2958,9 @@
 - id: 103
   identifier: behemoth
   name: Behemoth
-  level: 120
+  levelRange:
+  - 120
+  - 120
   tier: boss
   worldBoss: true
   role: brute
@@ -2785,7 +2988,9 @@
 - id: 104
   identifier: ember_sovereign
   name: Ember Sovereign
-  level: 110
+  levelRange:
+  - 110
+  - 110
   tier: boss
   worldBoss: true
   role: tank
@@ -2815,7 +3020,9 @@
 - id: 105
   identifier: mire_mother
   name: Mire Mother
-  level: 104
+  levelRange:
+  - 104
+  - 104
   tier: boss
   worldBoss: true
   role: caster
@@ -2841,7 +3048,9 @@
 - id: 2
   identifier: doom_master_of_doom
   name: Doommaster of Doom
-  level: 100
+  levelRange:
+  - 100
+  - 100
   tier: boss
   role: caster
   kind: DEMON
@@ -2869,7 +3078,9 @@
 - id: 106
   identifier: grinlantern
   name: Grinlantern
-  level: 31
+  levelRange:
+  - 31
+  - 31
   tier: normal
   role: caster
   kind: PLANT
@@ -2896,7 +3107,9 @@
 - id: 107
   identifier: giftbox_mimic
   name: Giftbox Mimic
-  level: 40
+  levelRange:
+  - 40
+  - 40
   tier: normal
   role: tank
   kind: FORMLESS
@@ -2920,7 +3133,9 @@
 - id: 108
   identifier: bloomhare
   name: Bloomhare
-  level: 20
+  levelRange:
+  - 20
+  - 20
   tier: normal
   role: support
   kind: BEAST
@@ -2951,7 +3166,9 @@
 - id: 109
   identifier: not_a_blob
   name: Not-a-Blob
-  level: 50
+  levelRange:
+  - 50
+  - 50
   tier: normal
   role: skirmisher
   kind: FORMLESS

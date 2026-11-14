@@ -215,12 +215,25 @@ def temperature_of(habitat):
     return min(lows), max(highs)
 
 
+def level_range(species):
+    low, high = species["levelRange"]
+    if not 1 <= low <= high:
+        sys.exit(f"{species['identifier']}: levelRange {low}..{high} is not 1 <= min <= max")
+    return low, high
+
+
+def reference_level(species):
+    """The level the numbers are fitted for: the middle of the range, rounded down like the server does."""
+    low, high = level_range(species)
+    return (low + high) // 2
+
+
 def calculator_input(species, presets, active_slots=None):
     preset = presets[species["kind"]]
     temperature = temperature_of(species["habitat"])
     return {
         "identifier": species["identifier"], "name": species["name"], "description": species["description"],
-        "kind": species["kind"], "level": species["level"], "tier": species["tier"], "role": species["role"],
+        "kind": species["kind"], "level": reference_level(species), "tier": species["tier"], "role": species["role"],
         "element": species["element"], "size": species["size"], "ai": species["ai"],
         "habitat": species["habitat"], "equipSlots": preset["slots"], "armorTypes": preset["armorTypes"],
         "temperatureMin": temperature[0] if temperature else None,
@@ -276,7 +289,7 @@ def active_slots(species, learned, tiers):
     """The docs rule (defaultActiveSlots): the newest known attack of each archetype, as many as the tier allows."""
     count = tiers[species["tier"]]["activeAttacks"]
     picked = []
-    for attack in reversed([a for a in learned if a["level"] <= species["level"] and a["archetype"] != "utility"]):
+    for attack in reversed([a for a in learned if a["level"] <= reference_level(species) and a["archetype"] != "utility"]):
         if len(picked) >= count:
             break
         if all(p["archetype"] != attack["archetype"] for p in picked):
@@ -292,12 +305,14 @@ def mob_yaml(species, bp, learned, active):
     i = species
     a = bp["attributes"]
     temperature = temperature_of(i["habitat"])
+    low, high = level_range(i)
     presets = {p["kind"]: p for p in load("bestia_blueprint.yaml")["equipment"]["presets"]}
     lines = [
         "# Generated from bestia-docs data/bestias.yaml by tools/bestia_export.py. Change it there.",
         f"id: {i['id']}",
         f"identifier: {i['identifier']}",
-        f"level: {bp['level']}",
+        f"level-min: {low}",
+        f"level-max: {high}",
         f"name: {json.dumps(i['name'])}",
         "description: >-",
         *("  " + line for line in wrap(i["description"])),
@@ -357,6 +372,16 @@ def wrap(text, width=110):
     return lines + ([line] if line else [])
 
 
+def replace_levels(path, species):
+    """A hand-tuned mob keeps its numbers; only its level range is written, in place of `level` or the old range."""
+    low, high = level_range(species)
+    content = path.read_text()
+    content = re.sub(
+        r"(?m)^(?:level|level-min): .*\n(?:level-max: .*\n)?", f"level-min: {low}\nlevel-max: {high}\n", content
+    )
+    path.write_text(content)
+
+
 def replace_learnset(path, learned):
     """A hand-tuned mob keeps its numbers; only its learnset block is written."""
     content = path.read_text()
@@ -414,6 +439,7 @@ def export_mobs(game):
         ident = s["identifier"]
         path = game / MOB_DIR / f"{ident.replace('_', '-')}.yml"
         if s.get("handTuned"):
+            replace_levels(path, s)
             replace_learnset(path, learned[ident])
         else:
             path.write_text(mob_yaml(s, final[ident], learned[ident], active[ident]))
