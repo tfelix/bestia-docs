@@ -300,6 +300,48 @@ One consequence to keep in view: events below the history stage's importance flo
 already sampled one in twenty-four by the pruner, so the log arrives thinned at the bottom. This
 table decides who holds what survived that, not how much survived.
 
+## Hearsay, legends and old houses
+
+A memory carries a **certainty**, which decides how it is framed. The frame is a line of its own,
+`TALK_HEARSAY_TOLD_n` or `TALK_HEARSAY_LEGEND_n`, and the memory goes into it as the `{tale}` token
+together with the memory's own arguments. The client fills the nested line from the same arguments.
+Each speaker draws one frame and keeps it.
+
+| Certainty   | When                                                                  | Frame                    |
+| ----------- | --------------------------------------------------------------------- | ------------------------ |
+| `FIRSTHAND` | Within living memory (80 years), and all recent news                  | none                     |
+| `TOLD`      | A few generations back, or held by exactly one household              | "My grandfather told me" |
+| `LEGEND`    | Older than that, and every legend                                     | "An old saying goes"     |
+
+**Legends** (`LegendKnowledge`) are memories about places the chronicle hid: hoards, the lairs and
+seals of living world bosses, the fields they were slain on, and relics lost on battlefields. They
+are not events, so they have their own kinds (`LegendKind`), their own `legends:` section in
+`dialogue.yml`, `LEGEND_<KIND>_ASK` and `LEGEND_<KIND>_n` rows, and topics from 30,000.
+
+A town tells the four hidden places nearest to it, within news range (twice that for a world boss).
+A legend names the nearest standing town to the place and a `DIRECTION_*` token from there. Each
+town rolls its own telling, keyed on the world seed, the place and the town:
+
+| Telling     | Share | Direction                   | Era            |
+| ----------- | ----- | --------------------------- | -------------- |
+| `TRUE`      | 0.6   | right                       | right          |
+| `DISTORTED` | 0.3   | one compass point off       | one band off   |
+| `MYTH`      | 0.1   | three to five points off    | right          |
+
+A legend is held like a lesser memory (share 0.04, at least one household), drawn by curiosity and
+by the age of the oldest member. Its importance is 65, just below famous, so a holder brings it up.
+
+**Old houses** (`LineageClaims`). Each house that ruled from within news range of a town has a 0.5
+chance that one household there claims descent from it. The claim names the house, its founder and
+the era, and is told as `TOLD`. Nothing checks it: it is a hook for heirloom quests.
+
+## Which memories a person offers
+
+The news menu shows four memories. A town shares some thirty famous ones (importance ≥ 70), so
+sorting by importance alone gave every person in town the same four, and nobody ever offered a
+memory only they held. So three slots go to what not everybody knows, biggest first, and one slot
+to the biggest famous memory. If a person holds fewer, the rest fill the gaps.
+
 ## What it costs
 
 Building the assignment is one pass of candidates × households — a few tens of thousands of hashes

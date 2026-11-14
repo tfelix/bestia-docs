@@ -267,12 +267,12 @@ in the game, and every new feature shows in the tools.
 | Groundwork                 | **Built.** Civs can be added during the run; a seed-sweep census in the chronicle tool                              |
 | Two or more civs           | **Built.** At least two civs from the start. Later, optional paths: arrival over the sea, migration overland, secession, refugees |
 | Frontiers                  | **Built.** Battles are spread along the shifting border; battles near an older field add to it; battlefields record battles and fallen |
-| Families                   | **Built**, except townsfolk claiming descent (moved to Hearsay and legends). Parents, houses and spouses; succession and its crises; marriage alliances, feuds, betrayals, vengeance; exiled houses found civs |
+| Families                   | **Built.** Parents, houses and spouses; succession and its crises; marriage alliances, feuds, betrayals, vengeance; exiled houses found civs |
 | Pantheon and cults         | **Built.** A domain catalogue; 4-5 gods on a small world, about 10 on a large one; patron gods; cults; sanctuaries ([Pantheon](/docs/mechanics/world/pantheon/)) |
 | World bosses               | **Built.** Five world-boss species (ids 101-105), at least two per small world and at least one alive; slain, sealed, withdrawn to a lair, or vanished. A lair boss spawns in its lair and stays dead once players kill it; breaking a seal wakes its boss |
 | Surviving artifacts        | **Built.** Artifacts kept in temples, plundered or sealed in monuments; undead guard artifact tombs and monuments; relics of item level 80-110 |
 | Battlefields in the world  | **Built.** Bones and arms on the surface, a slain boss's skeleton, caches 0.5-1 m deep by the dead and the field's age, the dead rising at night; four battlefield species |
-| Hearsay and legends        | Old knowledge told as hearsay; legends about hidden places, true, distorted or myth                                 |
+| Hearsay and legends        | **Built.** Old knowledge told as hearsay; legends about hidden places, true, distorted or myth per town; townsfolk claiming descent from a house ([Dialog](/docs/server/dialog/#hearsay-legends-and-old-houses)) |
 | Quest hooks                | Open threads recorded in the chronicle for a future quest system                                                     |
 | Tuning                     | Sweeps over many seeds and world sizes; target ranges pinned as invariants                                          |
 
