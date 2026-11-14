@@ -11,7 +11,10 @@ on each row, so health, attributes, EXP and the learnset follow the method on [D
 - **Level bands:** low level is up to Lv 15, mid level up to Lv 55, high level above. Bosses spawn alone in rare
   boss dens. [World bosses](/docs/mechanics/world/world-history/#world-bosses) (ids 101 to 105) live only where a
   world's history put them. Event bestia (ids 106 and up) only appear at events.
-- **Count:** ids 1 to 100 are the regular species. Three of these slots are free until the battlefield ghosts arrive.
+- **Count:** there are exactly 100 regular species. Most have ids 1 to 100. Ids 2 to 4 are an event boss, the GM
+  bestia and the townsfolk, so the last regular species have ids 110 and up. A new species replaces an old one.
+- **Battlefield species** rise only on old [battlefields](/docs/mechanics/world/world-history/#the-restless-dead)
+  at night.
 - **Utility skills:** what a caught bestia does for its master outside a fight. They take the place of an attack in its
   learnset; the rest of the learnset comes from its role and element, see the [Attack List](/docs/mechanics/combat/attack-list/).
 - **Loot:** the chance to drop on a kill.
