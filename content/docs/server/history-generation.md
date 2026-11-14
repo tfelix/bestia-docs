@@ -34,6 +34,7 @@ over facts.
    | `figures`     | role, home, years, resting place, sworn Order                                                       |
    | `artifacts`   | kind, maker, material, forge town, provenance (event ids in order); today's keeper: a resting site, a living holder, or a town that keeps it; the town that first kept it |
    | `sites`       | kind, position, year, radius, decay, host settlement, artifact, figure                             |
+   | `threads`     | stories left open, each with its actors and the event it stayed open since ([Open Threads](#open-threads)) |
 
    Ids are indices into these lists. An actor is typed (`Actor(type, index)`), so "who did this" cannot be answered
    with the wrong list.
@@ -187,6 +188,27 @@ for hoards), and the simulation decides *whether* a civ ever builds it.
 sampled one in 24. Every event a kept event cites is kept too, so the log never cites a dropped cause. A kind that
 leaves something on the ground must have importance 40 or more, or its site would exist with no event to explain it.
 
+## Open Threads
+
+`chronicle.threads` lists every story the history began and never ended, as `ThreadRecord(kind, actors, since)`.
+`since` is the event the story has stayed open since. `QuestThreads` finds them in `assemble()` from the whole log,
+before pruning: a dropped ending would make a settled story look open. Pruning then keeps every `since` event.
+
+| `ThreadKind`            | Open when                                                          | Actors                           |
+| ----------------------- | ------------------------------------------------------------------ | -------------------------------- |
+| `ARTIFACT_LOST`         | unclaimed, and never entombed or sealed in a monument              | artifact, its site if known      |
+| `ARTIFACT_AWAY`         | its home temple stands and does not keep it                        | artifact, home town              |
+| `VENGEANCE_UNFULFILLED` | no `VENGEANCE_FULFILLED` cites the oath                            | avenger, slain, civ sworn against |
+| `BOSS_SEALED`           | fate `SEALED`                                                      | monster, seal                    |
+| `BOSS_AT_LARGE`         | fate `WITHDRAWN` or `VANISHED`                                     | monster, lair                    |
+| `HOUSE_WITHOUT_HEIR`    | the house ended in a succession crisis, and no member lives        | last ruler, civ                  |
+| `CULT_PERSECUTED`       | the cult was persecuted and is still active                        | cult, persecuting civ            |
+| `FORGOTTEN_GOD`         | no standing town, existing civ or active cult worships the god     | god, its last ruined shrine      |
+
+`chronicle -Pquests` prints them, and `-Psweep` counts them per kind. On 16 genesis worlds, the means per world are:
+13.3 lost artifacts, 7.8 houses without heir, 0.9 artifacts away, 0.9 bosses at large, 0.8 open oaths, 0.6 sealed
+bosses, 0.4 forgotten gods and 0.1 persecuted cults. Nothing in the game reads the threads yet; a quest system will.
+
 # Determinism
 
 Every random decision is a **keyed roll**: a hash of the world seed, the stage, the year, the subject and a salt that
@@ -229,9 +251,9 @@ The chronicle is **not stored**. The zone server runs the whole pipeline at ever
 # Tests and Invariants
 
 - `worldgen/src/test/.../history/`: `HistoryStageTest`, `OrderHistoryTest`, `ManaHistoryTest`, `SpecialSitesTest`,
-  `VolcanicHistoryTest`, `WasteTombTest`.
+  `VolcanicHistoryTest`, `WasteTombTest`, `QuestThreadsTest`.
 - `pipeline/Invariants.kt` checks, over a seed sweep, that the history is self-consistent: years within the span, no
-  event about a town outside its lifetime, no cited event pruned, ordered artifact chains, one keeper per artifact,
+  event about a town outside its lifetime, no event cited by an event or a thread pruned, ordered artifact chains, one keeper per artifact,
   one ruin per ruined town,
   sites within the chunk query margin.
 - `ParamsVersionTest` pins the params and catalogue digests.
@@ -242,9 +264,9 @@ The chronicle is **not stored**. The zone server runs the whole pipeline at ever
 ./gradlew :worldgen:chronicle                 # the shape of this world's history
 ./gradlew :worldgen:chronicle -Ptop=60        # the most important events
 ./gradlew :worldgen:chronicle -Pyear=430      # the world as it stood in one year
-./gradlew :worldgen:chronicle -Pquests        # unresolved threads
+./gradlew :worldgen:chronicle -Pquests        # the open threads, then other open ends
 ./gradlew :worldgen:chronicle -Pgenesis       # the zone server's own world settings
-./gradlew :worldgen:chronicle -Psweep=16      # a census line per seed, then every event kind over all seeds
+./gradlew :worldgen:chronicle -Psweep=16      # a census line per seed, then every event and thread kind over all seeds
 ./gradlew :worldgen:chronicle -Pdynasties     # ruling houses, their rulers, and the ties between figures
 ./gradlew :worldgen:chronicle -Pdeities       # the world's gods, named by every culture, and whose patron each is
 ./gradlew :worldgen:chronicle -Pcults         # every cult, how far it spread and how it ended
@@ -273,15 +295,15 @@ in the game, and every new feature shows in the tools.
 | Surviving artifacts        | **Built.** Artifacts kept in temples, plundered or sealed in monuments; undead guard artifact tombs and monuments; relics of item level 80-110 |
 | Battlefields in the world  | **Built.** Bones and arms on the surface, a slain boss's skeleton, caches 0.5-1 m deep by the dead and the field's age, the dead rising at night; four battlefield species |
 | Hearsay and legends        | **Built.** Old knowledge told as hearsay; legends about hidden places, true, distorted or myth per town; townsfolk claiming descent from a house ([Dialog](/docs/server/dialog/#hearsay-legends-and-old-houses)) |
-| Quest hooks                | Open threads recorded in the chronicle for a future quest system                                                     |
+| Quest hooks                | **Built.** Open threads recorded in the chronicle for a future quest system (see [Open Threads](#open-threads))      |
 | Tuning                     | Sweeps over many seeds and world sizes; target ranges pinned as invariants                                          |
 
 **Scaling with world size.** Counts such as the number of gods, world bosses and how likely each new-civ path is
 scale with the number of settlement sites, with the genesis world (about 28 sites) as the reference. Sites stand for
 the land a history can use; open sea and empty waste do not count.
 
-**New records.** `DynastyRecord`, `RelationRecord`, `DeityRecord`, `CultRecord` and `MonsterRecord` are built. `ThreadRecord`
-joins them later. Every relation and cause is data that a tool, an NPC or a prose step can quote.
+**New records.** `DynastyRecord`, `RelationRecord`, `DeityRecord`, `CultRecord`, `MonsterRecord` and `ThreadRecord` are
+built. Every relation and cause is data that a tool, an NPC or a prose step can quote.
 
 **Later: storing the chronicle.** Only a prose step needs the chronicle stored: the texts must point at stable
 ids even after the code changes. It will be stored together with the texts, as a world-scoped blob that is wiped when

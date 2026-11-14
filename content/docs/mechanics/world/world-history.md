@@ -274,11 +274,24 @@ A player who asks in several towns can tell which telling to trust.
 
 # Quests from History
 
-{{< alert context="warning" text="**Design only.** There is no quest system yet (see [Questing](/docs/mechanics/world/questing/)). The history will record the open threads these quests need." />}}
+{{< alert context="warning" text="**Partly built.** The history records its open threads today. There is no quest system yet (see [Questing](/docs/mechanics/world/questing/)), so the quests below are design." />}}
 
-The chronicle leaves threads open: a relic far from its home temple, a vengeance never taken, a house without an
-heir, a sealed monster, a god whose shrine lies in ruins. These threads are where quests come from. There are three
-kinds:
+The chronicle leaves threads open, and it records each one with the event it has stayed open since:
+
+| Thread                | What is open                                                                  |
+| --------------------- | ----------------------------------------------------------------------------- |
+| A lost artifact       | Nobody holds it, nobody keeps it, and nobody laid it to rest                  |
+| An artifact away      | The town that first kept it still stands and wants it back                    |
+| A vengeance not taken | Somebody swore to avenge their kin, and never did                             |
+| A sealed boss         | A world boss lies bound, and the seal still holds                             |
+| A boss at large       | A world boss withdrew to its lair or vanished                                 |
+| A house without heir  | A ruling house ended, and nobody of its blood is alive                        |
+| A persecuted cult     | Its people turned on it, and it is still kept in secret                       |
+| A forgotten god       | No standing town, living people or cult worships it; its last shrine is a ruin |
+
+These threads are where quests come from. A world of the genesis size leaves about a dozen lost artifacts, eight
+houses without heirs and one or two living world bosses. The other threads are rarer, and many worlds have none of
+some kinds. There are three kinds of quest:
 
 | Kind     | Example                                                                                 | How many                | Who                     |
 | -------- | --------------------------------------------------------------------------------------- | ----------------------- | ----------------------- |
