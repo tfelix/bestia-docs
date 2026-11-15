@@ -1,10 +1,10 @@
 ---
 weight: 610
 title: History Generation
-description: How the worldgen history stage simulates a thousand years over the placed settlements - the chronicle it writes, the sites it leaves, how it stays deterministic and versioned, who reads it - and the planned rework.
+description: How the worldgen history stage simulates a thousand years over the placed settlements - the chronicle it writes, the sites it leaves, how it stays deterministic and versioned, who reads it - and the rework that made it richer.
 ---
 
-{{< alert context="warning" text="**Partly built.** The sections up to **Tools** describe running code. **Planned Rework** is design; the player-facing side is on [World History](/docs/mechanics/world/world-history/)." />}}
+{{< alert context="info" text="**Built.** The player-facing side is on [World History](/docs/mechanics/world/world-history/)." />}}
 
 The `history` stage of the [world generation pipeline](/docs/server/world-generation/) plays out a thousand years on
 the settlement sites that the `settlements` stage placed. It does not place settlements. It decides when each one was
@@ -63,9 +63,10 @@ The loop runs from year 1 to year 1000 in five-year ticks. Each tick, in order:
 8. Civs with no standing town end.
 
 **Civs.** CITY-tier sites seed civs. A city joins the nearest civ of its culture within reach, or founds a new one.
-There is one city per 26,000 km², so a world of 128 × 128 km has one city. When seeding gives fewer than two civs, a
-second civ is seeded at the empty site farthest from every capital, preferring a culture no civ holds and a bigger
-site. Towns, villages and hamlets are otherwise founded by a civ's expansion. A civ whose capital is conquered or
+There is one city per 26,000 km², so a world of 128 × 128 km has one city. A world starts with at least two civs,
+plus one per doubling of its settlement sites against the reference (see below). When the cities give fewer, the
+next civ is seeded at the empty site farthest from every capital, preferring a culture no civ holds and a bigger
+site, until there are enough. Towns, villages and hamlets are otherwise founded by a civ's expansion. A civ whose capital is conquered or
 emptied moves its capital to its largest standing town.
 
 **New peoples.** Every civ enters through one `addCiv` helper and carries a `CivOrigin` and, where it has one, a
@@ -84,12 +85,13 @@ fifth of its people. A seceded civ starts with hostility 0.8 toward its parent (
 grudge that cites the secession.
 
 How often arrivals and migrations happen scales with the world's **number of settlement sites**, against
-`HistoryParams.referenceSites` (28, about a genesis world). Over 32 genesis seeds, every world has 2 to 7 civs and at
-least one war. Arrivals over the sea happen on 5 seeds, migrations on 4, secessions on 18, refugees on 7.
+`HistoryParams.referenceSites` (28, about a genesis world). Over 32 genesis seeds, every world has 2 to 9 civs and at
+least one war. Arrivals over the sea happen on 5 seeds, migrations on 4, secessions on 28, refugees on 7.
 
 The cost is more lost towns. Over 16 genesis seeds, about 16 of 28 sites still stand at the present day, against 21
 when every world had one people: wars raze about 4 towns, and towns settled earlier lose about 2 more to the blight.
-The tuning slice revisits this balance; until then the sweep's `ruins`, `standing` and per-cause columns track it.
+The tuning left this balance as it is: about 12 of 28 sites lie in ruins, and a ruin is where a player meets the
+history. The sweep's `ruins`, `standing` and per-cause columns track it.
 
 **Battles** are fought along the frontier between two civs at war: every standing town of one civ paired with
 the nearest standing town of the other, kept when the pair is no more than 1.5 times as far apart as the closest pair.
@@ -99,7 +101,7 @@ a chance of one half, it returns to an old field near the line between the two t
 field. A battlefield site counts its `battles` and `fallen`, and both are on its marker as station channels. Each
 `BATTLE` event names its field as a `SITE` actor, and an invariant checks that the fields count every battle.
 
-Over 16 genesis seeds a world has about 10 battles on 7 fields.
+Over 32 genesis seeds a world has about 13 battles on 10 fields.
 
 **Families.** Each civ has at most one living ruler. Its first ruler founds a `DynastyRecord`. When a ruler dies,
 an heir of their house takes the throne at once (`SUCCESSION`, 75%). Otherwise there is a `SUCCESSION_CRISIS`: a new
@@ -112,9 +114,9 @@ Ties between figures are `RelationRecord`s, each citing the event that made it:
 | Relation   | Event                                          | When                                                                   |
 | ---------- | ---------------------------------------------- | ---------------------------------------------------------------------- |
 | `SPOUSE`   | `MARRIAGE_ALLIANCE`                            | Two civs at peace, both rulers unmarried; halves their hostility        |
-| `RIVAL`    | `FEUD_BEGAN`                                   | The two sides' generals of a battle, 30%                                |
-| `AVENGER`  | `VENGEANCE_SWORN` → `VENGEANCE_FULFILLED`      | Kin of a figure slain in battle, 50%; kept when their civ wins against the slayers |
-| `BETRAYED` | `BETRAYAL`                                     | A general of the besieged civ hands over the town unsacked, 6% per siege |
+| `RIVAL`    | `FEUD_BEGAN`                                   | The two sides' commanders of a battle, 30%. A commander is the civ's general, or its ruler when it has none |
+| `AVENGER`  | `VENGEANCE_SWORN` → `VENGEANCE_FULFILLED`      | Kin of a figure slain in battle, 80%; kept when their civ wins against the slayers |
+| `BETRAYED` | `BETRAYAL`                                     | A general of the besieged civ hands over the town unsacked, 12% per siege |
 
 **Artifacts.** A dead holder's artifact goes into the grave with a chance of 0.5; a slain world boss's trophy always
 does. Otherwise it passes to the holder's child, then spouse, then house, then anyone of their people (0.55). If
@@ -126,8 +128,8 @@ holds a cache for it. Over 16 genesis seeds a world forges about 46 artifacts an
 7 enshrinings; plunder and sealing happen on some worlds. On the genesis seed 20 lie in the ground, 6 are kept in
 towns and 6 are carried today.
 
-Over 16 genesis seeds a world has about 29 successions and 8 crises; marriages happen on 10 of 16 worlds, oaths
-on 9, feuds on 6, betrayals on 4, and exiles on 2.
+Over 32 genesis seeds a world has about 29 successions and 8 crises; feuds happen on 29 of 32 worlds, marriages
+on 25, oaths on 22, betrayals on 13, and exiles on 8.
 
 **Gods and cults.** Before the first civ is seeded, the world draws its gods from the `Domain` catalogue without
 repeats: 4 plus 1.5 per doubling of settlement sites against the reference, plus a coin flip, at least 3 and at
@@ -144,8 +146,11 @@ cult is then wiped out (`CULT_WIPED_OUT`), rises as a civ of origin `CULT_REALM`
 world with the Orders, a cult may join the Order its teaching leans toward (`CULT_ABSORBED`). Townsfolk lines name
 gods and cults through the `deity` and `cult` slots, and priests take an interest in these events.
 
-Over 16 genesis seeds a world has 4-5 gods; cults are founded on 12 worlds, persecuted on 12, wiped out on 10, and
-rise as realms on 5.
+A prophet founds a cult with a chance of 4.5% per tick, and the civ persecutes it with 1.5% per tick. Of the
+persecutions, 30% wipe the cult out, 30% make it a realm, and 40% leave it in hiding.
+
+Over 32 genesis seeds a world has 4-6 gods and about 3 cults; cults are founded on 30 worlds, persecuted on 30,
+wiped out on 22, and rise as realms on 17.
 
 **World bosses.** `WorldBoss` lists the five species with their mob identifier, level, kind of lair (`CAVE`,
 `REMOTE_LAND`, `OCEAN`) and the pasts that can wake them. A world wakes 2 plus 1 per doubling of settlement sites
@@ -205,9 +210,34 @@ before pruning: a dropped ending would make a settled story look open. Pruning t
 | `CULT_PERSECUTED`       | the cult was persecuted and is still active                        | cult, persecuting civ            |
 | `FORGOTTEN_GOD`         | no standing town, existing civ or active cult worships the god     | god, its last ruined shrine      |
 
-`chronicle -Pquests` prints them, and `-Psweep` counts them per kind. On 16 genesis worlds, the means per world are:
-13.3 lost artifacts, 7.8 houses without heir, 0.9 artifacts away, 0.9 bosses at large, 0.8 open oaths, 0.6 sealed
-bosses, 0.4 forgotten gods and 0.1 persecuted cults. Nothing in the game reads the threads yet; a quest system will.
+`chronicle -Pquests` prints them, and `-Psweep` counts them per kind. On 32 genesis worlds, the means per world are:
+13.6 lost artifacts, 7.3 houses without heir, 1.4 open oaths, 0.8 artifacts away, 0.8 bosses at large, 0.6 sealed
+bosses, 0.5 forgotten gods and 0.4 persecuted cults. Nothing in the game reads the threads yet; a quest system will.
+
+# History Mix
+
+The rates were tuned with `chronicle -Pgenesis -Psweep=32` and the same sweep at 256 cells, which is four times the
+land. Means per world:
+
+| Measure               | Genesis (128 km, 32 seeds) | Large (256 km, 16 seeds) |
+| --------------------- | -------------------------- | ------------------------ |
+| Civs                  | 5.2 (2-9)                  | 9.7 (6-19)               |
+| Wars / battles        | 6.9 / 13.2                 | 11.7 / 22.8              |
+| Gods                  | 5.3                        | 7.2                      |
+| Cults                 | 3.1, on 30 worlds          | 9.6, on all              |
+| World bosses / alive  | 2.4 / 1.4                  | 3.4 / 2.0                |
+| Houses                | 11.4                       | 18.3                     |
+| Feuds / oaths         | 2.3 / 1.6                  | 3.4 / 2.2                |
+| Open threads          | 25.4                       | 33.7                     |
+| Events kept           | 611                        | 1023                     |
+
+Eruptions, famines, plagues, floods and blight are about a fifth of the events. `HistoryMixTest` pins this mix on
+eight 128 km worlds and four 256 km ones:
+
+- every world has a war, at least 4 gods, at least 2 world bosses and one alive;
+- at least half of the worlds have a cult, a persecuted cult, a feud, an oath of vengeance and a marriage;
+- the land's events are at most 35% of a world's events;
+- a world with four times the land has at least 1.3 times the civs and wars.
 
 # Determinism
 
@@ -251,7 +281,7 @@ The chronicle is **not stored**. The zone server runs the whole pipeline at ever
 # Tests and Invariants
 
 - `worldgen/src/test/.../history/`: `HistoryStageTest`, `OrderHistoryTest`, `ManaHistoryTest`, `SpecialSitesTest`,
-  `VolcanicHistoryTest`, `WasteTombTest`, `QuestThreadsTest`.
+  `VolcanicHistoryTest`, `WasteTombTest`, `QuestThreadsTest`, `HistoryMixTest` (see [History Mix](#history-mix)).
 - `pipeline/Invariants.kt` checks, over a seed sweep, that the history is self-consistent: years within the span, no
   event about a town outside its lifetime, no event cited by an event or a thread pruned, ordered artifact chains, one keeper per artifact,
   one ruin per ruined town,
@@ -267,6 +297,7 @@ The chronicle is **not stored**. The zone server runs the whole pipeline at ever
 ./gradlew :worldgen:chronicle -Pquests        # the open threads, then other open ends
 ./gradlew :worldgen:chronicle -Pgenesis       # the zone server's own world settings
 ./gradlew :worldgen:chronicle -Psweep=16      # a census line per seed, then every event and thread kind over all seeds
+./gradlew :worldgen:chronicle -Pgenesis -Pcells=256 -Psweep=16  # the same on a world with four times the land
 ./gradlew :worldgen:chronicle -Pdynasties     # ruling houses, their rulers, and the ties between figures
 ./gradlew :worldgen:chronicle -Pdeities       # the world's gods, named by every culture, and whose patron each is
 ./gradlew :worldgen:chronicle -Pcults         # every cult, how far it spread and how it ended
@@ -276,9 +307,9 @@ The chronicle is **not stored**. The zone server runs the whole pipeline at ever
 
 The viewer draws every site kind on the map.
 
-# Planned Rework
+# History Rework
 
-{{< alert context="warning" text="**Planned.** Each part below lands as its own change. This page is updated as each part is built." />}}
+{{< alert context="info" text="**Built.** Every part below has landed. A spike on writing prose from the history comes next." />}}
 
 The goal is a history rich enough that every place a player finds has a story with causes, and that a later
 prose step (books, epitaphs, legends) has facts to work from instead of inventing them. Every new fact gets a reader
@@ -296,7 +327,7 @@ in the game, and every new feature shows in the tools.
 | Battlefields in the world  | **Built.** Bones and arms on the surface, a slain boss's skeleton, caches 0.5-1 m deep by the dead and the field's age, the dead rising at night; four battlefield species |
 | Hearsay and legends        | **Built.** Old knowledge told as hearsay; legends about hidden places, true, distorted or myth per town; townsfolk claiming descent from a house ([Dialog](/docs/server/dialog/#hearsay-legends-and-old-houses)) |
 | Quest hooks                | **Built.** Open threads recorded in the chronicle for a future quest system (see [Open Threads](#open-threads))      |
-| Tuning                     | Sweeps over many seeds and world sizes; target ranges pinned as invariants                                          |
+| Tuning                     | **Built.** Larger worlds start with more civs; rulers lead armies without a general; more cults and family strife; the mix pinned by a test (see [History Mix](#history-mix)) |
 
 **Scaling with world size.** Counts such as the number of gods, world bosses and how likely each new-civ path is
 scale with the number of settlement sites, with the genesis world (about 28 sites) as the reference. Sites stand for
