@@ -4,7 +4,7 @@ weight: 1050
 description: The thousand years before play begins - peoples, wars, families, gods, world bosses and relics - and what each of them leaves in the world for players to find.
 ---
 
-{{< alert context="warning" text="**Partly built.** The history simulation, wars, ruins, tombs, relics and what townsfolk remember run today. Every section marked **Planned** describes the history rework and is design. The server side is on [History Generation](/docs/server/history-generation/)." />}}
+{{< alert context="warning" text="**Partly built.** The history and what the world keeps of it run today. Quests from the history and books are design. The server side is on [History Generation](/docs/server/history-generation/)." />}}
 
 Every world gets a thousand years of history before the first player arrives. The world generator plays it out on the
 land it just made: peoples settle, grow, fight, pray, and fall. When play begins, the history is over, but everything
@@ -42,9 +42,9 @@ instead.
 
 ## How New Peoples Arise
 
-{{< alert context="warning" text="**Partly built.** Arrival over the sea, migration overland, secession, refugees and exiled houses run today. Cult realms come with cults." />}}
+{{< alert context="info" text="**Built.**" />}}
 
-Every world starts with **at least two peoples**. Over the centuries, more can arise. Each path below is possible in
+Every world starts with **at least two peoples**, and a larger world with more. Over the centuries, more can arise. Each path below is possible in
 any world, and none has to happen. A large world sees more of them than a small one.
 
 | Path                    | What happened                                                                          |
@@ -130,8 +130,8 @@ parent to child. A house with no heir ends in a **succession crisis**: a new hou
 quarrel can split the people, or send the old house into exile, where it founds a people of its own.
 
 Some figures are the children of earlier ones, so a craft or a command can run in a family. Rulers of two peoples at
-peace may marry, and the marriage cools what was building between them. Generals who faced each other in battle can
-become sworn enemies. When a general falls, their child, spouse or parent may swear vengeance on the people who
+peace may marry, and the marriage cools what was building between them. The commanders who faced each other in
+battle, a general or a ruler, can become sworn enemies. When a general falls, their child, spouse or parent may swear vengeance on the people who
 won, and keep the oath when their own people win a battle against them. A general can open the gates of a besieged
 town to the enemy. An heirloom passes to the holder's child first, then their spouse, then their house.
 
