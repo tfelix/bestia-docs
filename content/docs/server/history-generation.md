@@ -29,9 +29,9 @@ over facts.
    | List          | What it holds                                                                                      |
    | ------------- | -------------------------------------------------------------------------------------------------- |
    | `events`      | year, kind, actors, place, causes (event ids), importance, one rendered English sentence (`detail`) |
-   | `settlements` | one record per placed site, founded or not: years, population, wealth, owner, walls, names, sacks |
+   | `settlements` | one record per placed site, founded or not: years, population, wealth, owner, walls, sacks; its name, the culture it is rendered in, and every former name with its years |
    | `civs`        | culture, capital, technology, grudges (each one an event id), sworn Order                          |
-   | `figures`     | role, home, years, resting place, sworn Order                                                       |
+   | `figures`     | role, sex, home, years, resting place, sworn Order                                                  |
    | `artifacts`   | kind, maker, material, forge town, provenance (event ids in order); today's keeper: a resting site, a living holder, or a town that keeps it; the town that first kept it |
    | `sites`       | kind, position, year, radius, decay, host settlement, artifact, figure                             |
    | `threads`     | stories left open, each with its actors and the event it stayed open since ([Open Threads](#open-threads)) |
@@ -46,7 +46,8 @@ over facts.
 
 **Names are seeds.** A station channel holds a `Double`, so it cannot hold a string. It holds a 48-bit name seed
 instead, and `Names` turns the seed into a name in the culture's style. A town, its ruin and every event about it carry
-the same seed.
+the same seed. A conquest renames a town and keeps the old name on the record. See
+[Name Generation](/docs/server/name-generation/) for every kind of name, a figure's sex and the German forms.
 
 # The Simulation
 
@@ -256,7 +257,7 @@ The stage folds into the world's `pipelineVersion` like every other stage (see
 
 - `HistoryStage.version` is part of the roll base. Bumping it re-rolls the whole history.
 - `paramsVersion` hashes `HistoryParams` and the catalogues the stage depends on: `Culture`, `SettlementTier`,
-  `EventKind` (name and importance), `Names` (every word pool) and `Faction`. Adding an event kind or a name pool
+  `EventKind` (name and importance), `Names` (every word pool and the sex of each given name) and `Faction`. Adding an event kind or a name pool
   moves the version.
 
 # Who Reads It
