@@ -309,7 +309,7 @@ The viewer draws every site kind on the map.
 
 # History Rework
 
-{{< alert context="info" text="**Built.** Every part below has landed. A spike on writing prose from the history comes next." />}}
+{{< alert context="info" text="**Built.** Every part below has landed. The spike on writing prose from the history is on [History Prose](/docs/server/history-prose/)." />}}
 
 The goal is a history rich enough that every place a player finds has a story with causes, and that a later
 prose step (books, epitaphs, legends) has facts to work from instead of inventing them. Every new fact gets a reader
@@ -338,4 +338,4 @@ built. Every relation and cause is data that a tool, an NPC or a prose step can 
 
 **Later: storing the chronicle.** Only a prose step needs the chronicle stored: the texts must point at stable
 ids even after the code changes. It will be stored together with the texts, as a world-scoped blob that is wiped when
-the world is recreated.
+the world is recreated. [History Prose](/docs/server/history-prose/#storage-and-delivery) has the design.
