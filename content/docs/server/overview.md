@@ -86,7 +86,7 @@ The server code lives in the `bestia-behemoth` monorepo (Gradle multi-module,
 | [Metrics and Logs](/docs/server/observability)    | What the zone measures about itself, where to scrape it, and how to add a meter                        |
 | [Artificial Intelligence](/docs/server/ai)        | The live Utility AI → GOAP → Behavior Tree pipeline that drives NPCs                                   |
 | [Battle System](/docs/server/battle)              | Attack resolution, damage calculators, status effects, and the skill/status scripting hooks            |
-| [Questing](/docs/server/quests)                   | Design document for a quest system — **not implemented** in `zone-server` yet                          |
+| [Questing](/docs/server/quests)                   | Runtime quest records, kill tracking and the blackboard — **partly built**, generated quests are design   |
 | [Economy Simulation](/docs/server/economy)        | Design document for an NPC-side economy — **not implemented** yet                                      |
 | [Townsfolk & Settlement Simulation](/docs/server/townsfolk) | Design document for inhabited settlements: occupations, daily schedules and a damageable economy — **not implemented** yet |
 | [World Generation](/docs/server/world-generation) | The `worldgen` pipeline (tectonics through settlements) and chunk streaming to clients                 |
