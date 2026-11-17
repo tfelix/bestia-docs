@@ -1,10 +1,10 @@
 ---
 weight: 500
 title: Questing
-description: "Design document for Bestia's quest system — dynamic quest generation, player-created quests, templates and rewards. Not yet implemented in zone-server."
+description: "Bestia's quest system on the server — runtime quest records, objective kinds and scopes, event-driven tracking, updates to the clients, the blackboard source, and the design for generated quests."
 ---
 
-{{< alert context="warning" text="This page is a design document, not a description of running code. There is no quest, contract or commission implementation anywhere in zone-server today — no Quest entity, component, or handler exists. It's kept because the design work below is sound and should guide a future implementation, not because any of it currently runs." />}}
+{{< alert context="info" text="**Partly built.** The quest core and kill tracking are on the bestia-behemoth branches `quest/02-core` and `quest/02b-kill-tracking`; the blackboard source is being built on `quest/03..07`. [Automatic Quest Generation](#automatic-quest-generation) is still design." />}}
 
 The game will be more or less an Open World game. But the declared goal will be to try out new ways of storytelling in
 order to present a credible world with developing history to the players. You have to say goodbye to the idea that every
@@ -37,6 +37,143 @@ Quests in Bestia are generated via two mechanics:
 Both end up as the same kind of **contract**, and the rare world events driven by the simulation use that machinery too.
 The player-facing rules for all three live on the [Questing](/docs/mechanics/world/questing/) page.
 
+# The Quest Core
+
+The player-facing rules are on the [Questing](/docs/mechanics/world/questing/) and
+[City Blackboard](/docs/mechanics/towns-trade/blackboard/) pages. This section is about how the zone server keeps
+quests. The code lives in the `quest` slice of zone-server.
+
+## Quests are runtime records
+
+A quest is **data that a source makes at runtime**. There is no static list of quests, and no quest definition the
+client could cache by id. Today the only source is the blackboard. Later sources fill in the same records: the post,
+the [world history](/docs/mechanics/world/world-history/#quests-from-history), and generated world quests such as "kill
+5 wolves near town Y". A new source adds no code per quest.
+
+A `Quest` row holds:
+
+| Field                | Meaning                                                                                                                 |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `origin`             | Which source made it (`BLACKBOARD`)                                                                                     |
+| `titleKey`, `textArgs` | A text template key and typed arguments: item, species, number, place. The client translates them, like [dialog](/docs/server/dialog/) arguments |
+| `suggestedLevel`     | A hint for players, never enforced                                                                                      |
+| `deadline`           | When it expires                                                                                                         |
+| `status`             | `OPEN`, `CLOSING`, `COMPLETED`, `EXPIRED` or `WITHDRAWN`                                                                |
+| `objectives`         | The list of objectives, see below                                                                                       |
+| `rewards`            | What a player gets                                                                                                      |
+| `posterMasterId`     | The master who posted it; empty for a quest the world made                                                              |
+
+A source keeps only what is its own. The blackboard keeps the coins per unit, the pot that is left, the fee it took
+and the end of the notice hour in its own `BlackboardPosting` row.
+
+## Objectives and their scope
+
+An objective is one of a **small closed set of kinds**, with parameters. Adding a kind means one enum value and the
+check that matches it; a single quest never needs code of its own.
+
+| Kind            | Parameters                                   | Status                                   |
+| --------------- | -------------------------------------------- | ---------------------------------------- |
+| `DELIVER_ITEM`  | item, amount                                 | Built, used by the blackboard            |
+| `KILL`          | species, amount, optional area               | Built; no source makes one yet           |
+| obtain, bring to, reach | item or family and town, or an area  | Later, with their first source           |
+
+Each objective has a **scope**:
+
+- **Shared**: everybody who accepted works towards one counter, kept on the quest row. A blackboard Gather is shared.
+- **Personal**: each master counts on their own, in their own log entry. A kill quest is personal.
+
+An area is either a **place** (a named place such as a town) or a **spot and a radius** (a place with no name, such as a
+battlefield).
+
+## The quest log entry
+
+A `QuestLogEntry` links a master to a quest. It holds when the master accepted it and **one counter per objective**:
+the master's own progress for a personal objective, and "delivered by you" for a shared one.
+
+The entries **are** the list of a quest's subscribers. No source keeps its own list of signers.
+
+`QuestService` is the one way in for sources: create, accept, abandon, advance a shared counter, record a personal
+count, close, end. Accepting is refused at 25 entries (`quest.log-capacity`). Ended entries are deleted after 3 days
+(`quest.ended-kept-for`), so a player who was offline still sees how a quest ended. When a quest ends, its source can
+react: the blackboard mails the unspent pot back.
+
+# Tracking Personal Progress
+
+Personal progress is counted **on the tick, event by event**. The code that reports a fact knows nothing about quests.
+
+```mermaid
+graph LR
+    D[DeathSystem] -->|KillFact| O[KillObserver port]
+    O --> Q[QuestKillObserver]
+    Q -->|"1. species lookup"| A[ActiveQuests]
+    Q -->|"2. deadline, count"| A
+    Q -->|"3. area"| P[Place / position]
+    Q -->|"counted"| J[save off the tick]
+    J --> M[QuestUpdatedSMSG]
+```
+
+1. **The fact.** `DeathSystem` calls every `KillObserver` for each kill that pays experience, with a
+   `KillFact(speciesId, position, creditedMasters)`. The port lives in the low `entity/observe` package, so any slice
+   can implement it. Achievements or statistics can listen the same way later, without touching the monster code.
+2. **Only involved players.** `creditedMasters` are the masters who earned experience from the kill, party shares
+   included. Nobody else's state is touched.
+3. **Fail fast.** For each credited master, `QuestKillObserver` does one map lookup by species in the master's
+   `ActiveQuests`. No entry, nothing to do. A hit checks the deadline and whether the count is already full.
+4. **Area last.** Only then the area check, one compare each:
+   - a **place** is compared with the `Place` component the zone already keeps per entity. `PlaceSystem` updates it
+     only when the position changes, so no geometry runs at kill time;
+   - a **spot and radius** is one squared-distance compare with the position of the death.
+5. **Count and save.** The counter goes up in memory. A job per master saves it off the tick, and the save sends the
+   update to the client.
+
+`ActiveQuests` is a server-only component on the played master entity. It is **never synced**. It holds the personal
+objectives the master is counting, indexed by what triggers them. It is built from the objective data when the master
+spawns and when they accept a quest, not from code. It holds no text, levels or rewards; those are built when a view is
+sent. `LiveQuests` mirrors every committed change of the log into the `ActiveQuests` of masters being played.
+
+An "obtain" and a "talk to" observer will follow the same shape, with their first source.
+
+# Reaching the Clients
+
+Quest changes travel as **explicit messages**, not as a synced component:
+
+- **Log in or master select**: the full `QuestLogSMSG`.
+- **After every committed change**: a `QuestChangedEvent`. `QuestPushListener` reads the entries and the poster of that
+  quest, keeps the masters being played, and sends each a `QuestUpdatedSMSG` with one view, or "removed".
+- **Abandon**: `AbandonQuestCMSG`. It works from the log anywhere, for any source.
+
+There is no notice message. The client raises the "completed, expired, withdrawn" notice itself when a status changes.
+
+Why not a synced component? A shared change happens on the quest, not on any master, so no master component would get
+dirty by itself; the server would still need to find the subscribers and who of them is online. And since quests have
+no static definition, every view carries its full data anyway. Other MMOs send per-quest updates for the same reason.
+
+# The Blackboard Source
+
+The `blackboard` slice is the first quest source. It sits above `quest`, `item`, the economy, the post and the
+settlements.
+
+- **The board** is an ordinary entity drawn from the prop catalogue as a structure, like the town sign. Finished
+  structures normally travel in the static chunk batch, which carries no components, and the board needs one (below).
+  The start-town boards are spawned when the zone starts; a player builds one from a kit, one per town.
+- **Board actions** reuse `InteractEntityCMSG` with a `ScriptArgs` bag: `action` (`post`, `sign`, `handIn`,
+  `withdraw`; none means "open the window"), `questId`, `itemId`, `amount`, `coinsEach`, `days`. The bag is parsed into
+  a typed request or a refusal. The reach check runs on the tick; the request then runs off the tick, because it writes
+  the database. Withdrawing is therefore only possible at a board.
+- **Posting** checks the limits, takes the pot and the fee from the bag, charges the fee to the world reserve, and
+  creates a quest with one shared `DELIVER_ITEM` objective. The suggested level comes from the mob loot tables (lowest
+  minimum level of a species that drops the item), else from the item's base level.
+- **Hand-in** puts the copies into an instant parcel for the issuer, pays `amount × coins each` from the pot, advances
+  the shared counter, and ends the quest when it is full.
+- **Withdraw and expiry** run on a schedule. The unspent pot goes back by instant parcel.
+- **`BlackboardSMSG`** carries the global open list for the window.
+- **The marker** is a `BlackboardOffer` component on every board: a bitmask of the suggested levels of all open
+  quests, levels 1 to 128 in two `fixed64`. It is rewritten on every board when a blackboard quest opens or ends. A
+  min/max range would light up for a level-40 player when only level-5 and level-80 quests are open; the bitmask does
+  not. The component is the same for every viewer, so the marker cannot leave out the viewer's own quests.
+- **Settings** (`BlackboardConfig`): the fee per duration, the posting limit, the notice time and the band in which a
+  quest fits a level.
+
 # Automatic Quest Generation
 
 Quest generation is done with Templates similar to what the terrain auto-generation system uses. Alot of logic can be built into the Scripts to 'fit' locations and to vary the details of the Quest significantly. Can be made to 'fit' the Player, but its better for the Player to have to figure out how to come up with the needed resources or solutions. It is based manly on the paper [A prototype quest generator based on a structural analysis of quests from four MMORPGs](http://ianparberry.com/pubs/pcg2011.pdf) by Ian Parberry and Jonathon Doran and also on the Grail Framework desribed in [The Grail Framework: Making Stories Layable on Three Levels in CRPGS](https://escholarship.org/uc/item/004129jn). In order to keep the quest generation close to the world in a narrative perspective consider some ideas from the paper [Analysis of ReGEN as a Graph Rewriting System for Quest Generation](http://gram.cs.mcgill.ca/papers/kybartas-14-analysis.pdf).
@@ -68,19 +205,26 @@ Further resources to read:
 
 # Player Quests
 
-Players can define various tasks, such as collecting resources or defeating certain enemies, or transporting certain goods as a task and offer a reward. Also the deactivation of Bestias as guardians would be a conceivable task. This reward must then be given to the appropriate NPCs, who then hold it in trust (or simply negotiate among the players).
+Players post tasks with a reward, and other players take them. Today that is the
+[city blackboard](/docs/mechanics/towns-trade/blackboard/), described [above](#the-blackboard-source). The board holds
+the reward in trust: the issuer pays the pot and a posting fee up front, and the board pays each signer per unit
+handed in.
 
-The awarding of quests must be worthwhile for both parties. When a quest is accepted, a contract is concluded between the player and the NPC. If all contract conditions are met, the reward will be handed out. Contracts may be limited in time, and an accepter who abandons a contract forfeits the collateral they staked when accepting it, which is delivered to the quest giver.
-
-Issuers can never mint experience. The server derives the whole experience reward from the difficulty of the objective and pays it from a capped world pool: the accepter earns the bulk of it, and the issuer earns a small flat amount for posting a funded quest plus a share of the accepter's reward once the quest settles successfully. See [Rewards, Experience and Settlement](/docs/mechanics/world/questing/#rewards-experience-and-settlement) for the player-facing rules and the anti-farming measures that go with them.
+Issuers can never mint experience. When commissions pay experience, the server will derive the whole reward from the
+difficulty of the objective and pay it from a capped world pool. See
+[Rewards, Experience and Settlement](/docs/mechanics/world/questing/#rewards-experience-and-settlement) for the
+player-facing rules and the anti-farming measures that go with them. Commissions pay no experience yet.
 
 ## Reward Calculation
 
-The player creating a quest must setup a reward. This reward is calculated in a fixed way and depends on the available money on the current server but will also factor in the wealth of the issuer. The reward can also be higher than the requested amount. 5% of the reward is issued to the NPC managing this quest contract, and a further 2% is taken out of circulation as a posting tax, returning to the world reserve — both always in gold, even when the reward itself consists of items. Payouts on NPC-issued quests are budgeted by the [World Treasury Director](/docs/server/economy/).
+The issuer chooses the coins per unit. The posting fee depends on the duration: `3%` of the pot for 1 day, `5%` for 3
+days, `8%` for 7 days. It goes to the [world reserve](/docs/server/money-supply/#nothing-is-burned) and is never
+refunded. The rates are server settings. A server-wide bound on rewards, and payouts on NPC-issued quests budgeted by
+the [World Treasury Director](/docs/server/economy/), are not built.
 
-The difficulty of a quest, and from it the level range of the players suitable to do it, must be automatically determined; see [Difficulty and Level Range](/docs/mechanics/world/questing/#difficulty-and-level-range). The lower bound of that range is enforced — a master below it cannot accept the contract.
-
-The reward itself can be paid in items or in gold.
+The level of a quest is only a suggestion, see
+[Difficulty and Level Range](/docs/mechanics/world/questing/#difficulty-and-level-range). Any master may accept any
+quest.
 
 # References
 
