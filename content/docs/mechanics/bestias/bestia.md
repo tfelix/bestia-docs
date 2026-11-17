@@ -291,7 +291,7 @@ numbers exist would protect nothing. What a master has not seen yet stays blacke
 | State  | What the entry shows                                                                                                                                   |
 | :----- | :----------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Unseen | The number, a black silhouette and `???`                                                                                                               |
-| Seen   | Portrait, live model, name, kind, habitat, the [description](/docs/mechanics/bestias/bestia-design/#9-the-compendium-entry) and when it was first seen |
+| Seen   | Portrait, live model, name, kind, habitat, drops, the [description](/docs/mechanics/bestias/bestia-design/#9-the-compendium-entry) and when it was first seen |
 | Caught | Everything a seen entry shows, plus a caught mark                                                                                                      |
 
 Townsfolk and creatures made for game masters are not bestias a master would study. A mob YAML with
@@ -324,8 +324,14 @@ A master who owned bestias before the compendium existed finds those species alr
   [Where the text lives](/docs/mechanics/bestias/bestia-design/#where-the-text-lives).
 - **Habitat.** The [biomes](/docs/server/world-generation/#biomes) the species spawns in. An empty habitat means
   anywhere on land.
+- **Drops.** The items the species can drop, each with its chance per kill. Only a seen
+  species shows them.
 
 The list can be searched by name and number, and filtered to all, seen or caught species.
+
+The drop list also works the other way round. A [quest](/docs/mechanics/towns-trade/blackboard/#dropped-by) that asks
+for an item lists the seen species that drop it. The drops are built on the bestia-behemoth branch
+`quest/01-compendium-drops`, in the game client only.
 
 ## Habitat on the map
 
