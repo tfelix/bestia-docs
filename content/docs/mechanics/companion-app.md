@@ -268,8 +268,7 @@ was worth doing.
   a phone does not quietly become one.
 - **Sign** a contract from wherever you are.
 
-That last one deserves a warning rather than a footnote. Signing still enforces the
-[level floor](/docs/mechanics/world/questing/#difficulty-and-level-range), and it still posts
+That last one deserves a warning rather than a footnote. Signing an assigned contract still posts
 [collateral](/docs/mechanics/world/questing/#collateral) the moment you put your name to it. Sign something you
 cannot get to, and the deadline runs out while you sleep: you lose the stake, you lose honor, and the
 brokers talk. The app hands you rope. What you do with it is your business.

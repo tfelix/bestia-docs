@@ -4,7 +4,7 @@ title: Money Supply
 description: "How much gold exists in a Bestia world, where it comes from, and the three-tier purse that keeps the total constant. Derives the coin supply from a target player population and the generator's own ore tonnage."
 ---
 
-{{< alert context="warning" text="Partly implemented. Running today: the configured supply (`economy.coin-supply`, half of it in settlement treasuries at world creation), the world reserve, settlement income drawn from the reserve, minting out of the reserve, and auction listing fees paid back into it. Not built yet: the NPC float, the Minting skill's recovery rate, and the other sinks (posting tax, repairs, upkeep). The numbers are derived rather than invented, and the derivation is the part worth reviewing." />}}
+{{< alert context="warning" text="Partly implemented. Running today: the configured supply (`economy.coin-supply`, half of it in settlement treasuries at world creation), the world reserve, settlement income drawn from the reserve, minting out of the reserve, and auction listing fees paid back into it. Not built yet: the NPC float, the Minting skill's recovery rate, and the other sinks (repairs, upkeep). The commission posting fee is being built on the `quest` branches. The numbers are derived rather than invented, and the derivation is the part worth reviewing." />}}
 
 The [Economy Simulation](/docs/server/economy/) page states the rule: NPCs never conjure money. This page answers the
 question that rule implies but does not settle — **how much money is there in the first place?**
@@ -147,7 +147,7 @@ of twenty thousand does more trade in a day than a hamlet of forty does in a sea
 ## Nothing is burned
 
 This is a change from the earlier design, and it is the point of the whole structure. Auction listing fees, the
-commission posting tax, repair costs, the gold on a merchant who is killed — **all of it returns to the world reserve**.
+commission posting fee, repair costs, the gold on a merchant who is killed — **all of it returns to the world reserve**.
 Nothing is deleted from the world.
 
 The effect is the same as burning in the short run: the coin leaves circulation and stops pushing prices up. The

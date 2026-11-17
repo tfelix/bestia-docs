@@ -1,7 +1,7 @@
 ---
 weight: 1400
 title: Questing
-description: "Bestia's player-driven questing system: funded contracts, gather and transport commissions, escrow and reward settlement, and rare faction-contested world events like mana rifts."
+description: "Bestia's player-driven questing: commissions posted at the city blackboards, the fee schedule, signing and hand-in, and rare faction-contested world events like mana rifts."
 ---
 
 Questing in **Bestia** is primarily **player-driven**. Players post rewards for tasks they need done — gathering
@@ -11,91 +11,107 @@ produces a genuine emergency such as a [mana rift](/docs/mechanics/world/environ
 a settlement.
 
 Whether a quest is written by a player, offered by an NPC or born from the world, it is always the same underlying
-thing: a **contract**. There are no magical quest markers or interfaces that teleport you to your objective — a quest is
-an agreement in the world, and you complete it by acting in the world. This keeps questing aligned with the
+thing: a **contract**. Nothing marks your objective on the map and nothing teleports you to it. A quest is an agreement
+in the world, and you complete it by acting in the world. Your [quest log](/docs/mechanics/towns-trade/blackboard/#the-quest-log)
+only remembers what you agreed to. This keeps questing aligned with the
 [consistent fantasy simulation](/docs/mechanics/overview/#consistent-fantasy-simulation) principle.
 
-{{< alert context="info" text="This page describes the player-facing design. For the underlying generation techniques and NPC dialog templating, see the server-side [Questing](/docs/server/quests/) page." />}}
+{{< alert context="info" text="**Partly built.** Gather commissions at the [city blackboard](/docs/mechanics/towns-trade/blackboard/), the quest log and the tracker are being built on the bestia-behemoth branches `quest/01..07`. Not built yet: Transport, Bounty and Escort commissions, collateral, experience from commissions, NPC commissions and world events. Each section below says what is built. The server side is on the [Questing](/docs/server/quests/) server page." />}}
 
 # Player Commissions
 
-The vast majority of quests are **commissions** written by players. The loop is:
+The vast majority of quests are **commissions** written by players. A player posts one at a
+[city blackboard](/docs/mechanics/towns-trade/blackboard/), and other players sign it and do the work. Its life looks
+like this:
 
 ```mermaid
 graph LR
-    A[Draft] --> B[Funded]
-    B --> C[Open]
-    C -->|"signed by one accepter"| D[Assigned]
-    C -->|"signed by anyone"| E[In Progress]
-    D --> E
-    E --> F[Completed]
-    E --> G[Failed / Expired]
-    F --> H[Settled]
-    G --> H
+    A[Open] -->|"all N units handed in"| B[Completed]
+    A -->|"deadline passes"| C[Expired]
+    A -->|"issuer withdraws"| D[Closing]
+    D -->|"all N units handed in"| B
+    D -->|"1 h notice is over"| E[Withdrawn]
 ```
 
 ## Funding and Escrow
 
-Before a commission is ever visible to other players, the issuer must **fund it up front**. The reward — gold and/or
-items — is handed to a broker NPC (this can also be a blackboard in a town). No funded contract means no quest.
+The issuer pays **everything up front**, at the moment of posting:
 
-This single rule is the backbone of trust in the system: **every commission a player sees on a board is already paid
-for.** Two charges are taken at the moment the contract is funded:
+- the **pot**: the amount times the coins offered per unit, and
+- the **posting fee**: a share of the pot that depends on how long the commission runs.
 
-{{< table >}}
+The board holds the pot until it is paid out for hand-ins or sent back. This single rule is the backbone of trust in
+the system: **every commission a player sees on a board is already paid for.**
 
-| Charge          | Amount                     | Where it goes                                                         |
-| --------------- | -------------------------- | --------------------------------------------------------------------- |
-| **Broker cut**  | `5%` of the reward's value | Income for the broker NPC, and from there back into the NPC gold pool |
-| **Posting tax** | `2%` of the reward's value | **Burned** — removed from the economy entirely                        |
+| Duration | Posting fee   |
+| -------- | ------------- |
+| 1 day    | `3%` of the pot |
+| 3 days   | `5%` of the pot |
+| 7 days   | `8%` of the pot |
 
-{{< /table >}}
+The fee is paid in gold and rounded up to the next whole gold, like every fee on the
+[economy page](/docs/mechanics/towns-trade/economy-trade/). It goes to the
+[world reserve](/docs/server/money-supply/#nothing-is-burned), the same as
+[auction listing fees](/docs/mechanics/towns-trade/economy-trade/#how-auctions-work). **The fee is never refunded**: not
+when the issuer withdraws, not when the commission expires, and not when nobody delivers. The board did its work by
+showing the commission.
 
-Both are always paid in **gold**, even when the reward itself is items, and both follow the rounding rule from the
-[economy page](/docs/mechanics/towns-trade/economy-trade/): rounded up to the next whole gold, minimum `1`. The broker cut is the fee
-for the service, consistent with the [reward calculation](/docs/server/quests/#reward-calculation). The posting tax is a
-sink in the same spirit as [auction listing fees](/docs/mechanics/towns-trade/economy-trade/#how-auctions-work) — small enough to
-ignore for a serious contract, large enough that papering the boards with dozens of trivial ones has a running cost.
+A longer commission pays a higher fee because it holds its place on every board for longer. The fee is small for a
+serious order, but papering the boards with dozens of trivial ones has a running cost.
 
-Rewards are bounded by the server-wide reward formula (which factors in available money and the issuer's wealth) so that
-commissions cannot be used to distort the [economy](/docs/mechanics/towns-trade/economy-trade/). A commission may offer _more_ than
-the formula's baseline, but never a trivial amount for a hard task. The same
-[World Treasury Director](/docs/server/economy/) that keeps NPC payouts backed by NPC earnings supervises these bounds.
+{{< alert context="warning" text="The three durations and their fees are **server settings and first drafts for balancing**." />}}
+
+The issuer chooses the coins per unit freely. The reward is **gold only**; items as a reward are not built. A
+server-wide bound on rewards, watched by the [World Treasury Director](/docs/server/economy/), is not built either.
 
 ## Objective Types
 
-Every objective is verifiable from **physical world state** — never from self-reporting. The world simulation already
-emits the events needed to confirm completion (an item delivered, a Bestia deactivated, a location reached). Gather
-commissions ask for [natural resources](/docs/mechanics/items-crafting/natural-resources/) or crafted
-[items](/docs/mechanics/items-crafting/items/), and transport commissions are bounded by the carrier's
+Every objective is verifiable from **physical world state** — never from self-reporting. Gather commissions ask for
+[natural resources](/docs/mechanics/items-crafting/natural-resources/) or crafted
+[items](/docs/mechanics/items-crafting/items/).
+
+| Type          | Description                                                                                         | Status    |
+| ------------- | --------------------------------------------------------------------------------------------------- | --------- |
+| **Gather**    | Hand in _N_ units of one item at any blackboard. Any copy of the item counts.                       | Built     |
+| **Transport** | Move a sealed cargo item from A to B. Weight and the deadline make this a genuine logistics puzzle. | Not built |
+| **Bounty**    | Deactivate a specific Bestia guardian or clear a named threat.                                      | Not built |
+| **Escort**    | Accompany an NPC or player-Bestia safely to a destination.                                          | Not built |
+
+For a Gather commission, **any copy of the item** counts. Its stats, its sockets and its
+[level](/docs/mechanics/items-crafting/items/#item-level) are ignored. An issuer who wants a better copy buys it at the
+[auction house](/docs/mechanics/towns-trade/economy-trade/#how-auctions-work) instead.
+
+Transport commissions will be bounded by the carrier's
 [weight limit](/docs/mechanics/items-crafting/items/#weight-limit).
-
-{{< table >}}
-
-| Type          | Description                                                                                         |
-| ------------- | --------------------------------------------------------------------------------------------------- |
-| **Gather**    | Deliver _N_ units of a resource (optionally of a minimum quality) to a location or postbox.         |
-| **Transport** | Move a sealed cargo item from A to B. Weight and the deadline make this a genuine logistics puzzle. |
-| **Bounty**    | Deactivate a specific Bestia guardian or clear a named threat.                                      |
-| **Escort**    | Accompany an NPC or player-Bestia safely to a destination.                                          |
-
-{{< /table >}}
 
 ## Difficulty and Level Range
 
-The difficulty of a commission is **derived by the server** from the objective, never declared by the issuer. This keeps
-rewards honest and stops issuers from luring under-levelled players into lethal tasks. Difficulty is measured along two
-separate axes, because "dangerous" and "long" are not the same problem:
+Every commission shows a **suggested level**. The server works it out; the issuer cannot set it. It is **only a
+suggestion**: a master of any level may sign any commission. A Gather commission asks for an item, not for a fight,
+and buying the item at an auction house is fair play.
 
-- **Danger** is expressed as a **Contract Danger Level (CDL)**, on the same scale as player levels. It decides **who is
-  allowed to sign** the contract.
-- **Effort** measures how much work the task is. It decides **how large the reward and the experience** may be, and has
-  no influence on who may accept.
+For a Gather commission the suggested level is:
 
-Danger comes from the world, not from the wording of the contract. Every region carries a **threat level** — the average
-level of the hostile Bestia the simulation currently sustains there, which rises with the region's
-[mana concentration](/docs/mechanics/world/environment/#mana-concentration) because that is what
-[Bestia spawn from](/docs/mechanics/bestias/bestia/):
+1. the lowest **minimum level** of all Bestia species whose loot holds the item, or
+2. the item's [base level](/docs/mechanics/items-crafting/items/#item-level), when no species drops it (ores, herbs).
+
+The level is fixed when the commission is posted. The board and the quest log colour it against the reader's own level,
+from grey (far below you) to red (far above you), as in other MMOs. The board shows a
+["!" marker](/docs/mechanics/towns-trade/blackboard/#the-board-marker) when at least one open commission fits your level.
+
+### Danger and effort for later types
+
+{{< alert context="warning" text="**Not built.** This is the design for Transport, Bounty and Escort commissions." />}}
+
+The later types derive their level from the world, along two separate axes:
+
+- **Danger** is expressed as a **Contract Danger Level (CDL)**, on the same scale as player levels. It is the suggested
+  level of the commission.
+- **Effort** measures how much work the task is. It decides how large the experience may be.
+
+Every region carries a **threat level** — the average level of the hostile Bestia the simulation currently sustains
+there, which rises with the region's [mana concentration](/docs/mechanics/world/environment/#mana-concentration) because
+that is what [Bestia spawn from](/docs/mechanics/bestias/bestia/):
 
 ```text
 CDL(bounty)    = target_level + 5 (if boss) + 2 per elemental level of the target
@@ -109,9 +125,6 @@ The `+5 / +2` terms on a bounty mirror the boss and elemental modifiers used in 
 [experience calculation](/docs/mechanics/bestias/bestia/#killing-enemies), so a contract's danger and the experience the fight
 actually yields cannot drift apart.
 
-Effort reuses formulas the game already has, so a commission's baseline reward stays anchored to what the same work
-costs through other systems:
-
 ```text
 effort(gather)    = N * resource_level
 effort(transport) = distance_km * weight_kg   (the same term as the postal freight fee)
@@ -119,33 +132,35 @@ effort(escort)    = distance_km
 effort(bounty)    = 4 * target_level + 5      (the base experience of the kill)
 ```
 
-Every commission shows its derived CDL as a **level band** of `CDL - 5` to `CDL + 10`. The lower bound is **enforced**: a
-master below `CDL - 5` cannot sign the contract at all, on any board, no matter how the reward tempts them. A five-level
-reach upward is deliberately allowed — a well-prepared team punching slightly above its weight is good play, walking a
-Lv. 12 master into a Lv. 60 rift valley for someone else's ore is not.
-
-{{< alert context="warning" text="The `CDL - 5` floor and the `+10` top of the band are **placeholders pending balancing**. The floor must stay tight enough to be a real wall and loose enough that a prepared player can still stretch." />}}
+A commission never stops a master from signing. The post's
+[route boards](/docs/mechanics/towns-trade/postal/#taking-a-sack) reuse the same danger level, and they do keep masters
+below `CDL - 5` off a route.
 
 ## Open vs. Assigned
 
-Before your work counts, you **sign** the commission at the board or with the broker. Signing is what enforces the level
-floor, and it is what lets escrow know who is owed what. The fulfilment model then depends on the objective type:
+You **sign** a commission at a board before your work counts. A Gather commission is **open**:
 
-- **Open commissions** (used for **Gather**): any number of players may sign, and the reward is **paid out pro rata per
-  unit delivered** until _N_ units are reached, at which point the contract closes. Five players who each haul a fifth
-  of the order each earn a fifth of the pot. This is what makes "many hands help" true rather than a slogan — nobody
-  who did real work goes home with nothing because somebody else arrived first.
-- **Assigned commissions** (used for **Transport** and **Escort**): the contract **locks to a single accepter** on
-  signing, with a deadline, and the accepter posts [collateral](#collateral). Sealed cargo and a named escortee cannot be
-  split across several couriers, and time-critical deliveries must not be blocked by someone who signs and then stalls.
+- **Many players may sign it.** Each signer hands in units at any board and is **paid per unit at once**, from the pot,
+  at the price the issuer set.
+- You hand in what you carry, up to what is still missing. Five players who each haul a fifth of the order each earn a
+  fifth of the pot. Nobody who did real work goes home with nothing because somebody else arrived first.
+- When _N_ units are in, the commission is **completed for everybody** and leaves every board.
+- A signer may **abandon** it at any time, from the quest log. Nothing is at stake, and what was already paid stays paid.
+
+{{< alert context="warning" text="**Not built.** Assigned commissions and open bounties below are design." />}}
+
+**Assigned commissions** (used for **Transport** and **Escort**) **lock to a single accepter** on signing, with a
+deadline, and the accepter posts [collateral](#collateral). Sealed cargo and a named escortee cannot be split across
+several couriers, and time-critical deliveries must not be blocked by someone who signs and then stalls.
 
 **Bounty** commissions may be posted either way. An assigned bounty pays its single accepter. An **open bounty splits the
 pot in proportion to damage dealt** to the target, exactly as [kill experience](/docs/mechanics/bestias/bestia/#killing-enemies)
 is already distributed among damage dealers, and the kill itself is credited to whoever dealt the most damage. Because
-both the experience and the gold follow the same proportional rule, there is nothing for a last-hit thief to steal:
-sniping the killing blow off a Bestia somebody else ground down earns a proportional sliver and nothing more.
+both the experience and the gold follow the same proportional rule, there is nothing for a last-hit thief to steal.
 
 ## Collateral
+
+{{< alert context="warning" text="**Not built.** Collateral belongs to assigned commissions, which do not exist yet. An open Gather commission needs none." />}}
 
 An assigned contract is a promise to be somewhere with something. To make that promise cost something, the accepter
 posts **collateral** in gold when they sign:
@@ -177,25 +192,31 @@ On settlement:
 
 ## Withdrawing a Commission
 
-A **Draft** can be discarded freely and a **Funded** contract can be withdrawn before it goes on a board, refunding the
-escrow minus the charges already taken. Once a commission is **Open**, escrow-as-trust would be worthless if the issuer
-could pull it out from under people mid-haul, so withdrawal follows a notice rule:
+The issuer withdraws a commission **at a board**, in the *My postings* tab. Escrow-as-trust would be worthless if the
+issuer could pull a commission out from under people mid-haul, so a withdrawal gives notice:
 
-- Withdrawal takes effect only after a **notice window of 3 [Bestia](/docs/mechanics/world/environment/#in-game-time) hours**
-  (1 real-time hour).
-- During the window the commission is flagged as **closing** on every board, but **deliveries still settle normally**.
-  The issuer must leave the escrow fully funded until the window closes, so work already in flight is always paid for.
-- Whatever escrow is unspent when the window closes returns to the issuer. The broker cut and posting tax are **not**
-  refunded — the broker did the work of advertising the contract.
+- The commission is flagged as **closing** on every board for **1 real hour**.
+- During that hour **hand-ins are still paid** from the pot. Work already in flight is always paid for.
+- When the hour is over, the commission is **withdrawn**. The unspent pot is in the issuer's mailbox at once, like
+  [auction mail](/docs/mechanics/towns-trade/postal/#auction-mail).
+- The posting fee is **not** refunded.
 
-For an **Assigned** contract, the issuer may only cancel with the accepter's agreement, or by paying out the reward in
-full. Somebody is already on the road.
+A commission whose deadline passes **expires** the same way, without the notice hour: it leaves the boards, and the
+unspent pot goes back to the issuer's mailbox the same way.
+
+{{< alert context="warning" text="**Not built.** An **assigned** contract will only be cancelled with the accepter's agreement, or by paying out the reward in full. Somebody is already on the road." />}}
 
 ## Rewards, Experience and Settlement
 
-Rewards are delivered through the [postal system](/docs/mechanics/towns-trade/postal/) — gold by pigeon, items to your home post
-office. You do not report back to a magical quest-giver. On failure or expiry, escrow returns to the issuer minus fees, and any collateral forfeited by
-a failed accepter is paid to the issuer as compensation.
+You hand in a Gather commission at **any blackboard**. You do not report back to a magical quest-giver, and you do not
+travel back to the board where it was posted.
+
+- The **coins** for the units you hand in go straight into your bag.
+- The **goods** are in the issuer's mailbox **at once**, like
+  [auction mail](/docs/mechanics/towns-trade/postal/#auction-mail). They need no coach and no freight, the issuer
+  collects them at any post office, and the issuer does not need to be online.
+
+{{< alert context="warning" text="**Not built.** Commissions pay no experience yet. The rules below are the design for when they do." />}}
 
 Experience deserves special care. Player commissions **do not let issuers mint experience**. The server decides the
 whole experience reward from the derived difficulty of the task, and it is drawn from a **capped NPC/world pool**:
@@ -213,12 +234,12 @@ whole experience reward from the derived difficulty of the task, and it is drawn
 
 ### Why Big Contracts Beat Many Small Ones
 
-Gold and items only ever move between players, so trading favours back and forth costs both sides the broker cut and the
-posting tax and gains nobody anything. Experience is the part worth protecting, because it comes from the world pool
-rather than from a player's pocket. Three rules make a wall of tiny contracts strictly worse than one real one:
+Gold and items only ever move between players, so trading favours back and forth costs both sides the posting fee and
+gains nobody anything. Experience is the part worth protecting, because it comes from the world pool rather than from a
+player's pocket. Three rules make a wall of tiny contracts strictly worse than one real one:
 
 1. **Experience follows the objective, not the paperwork.** Splitting a 500-unit order into ten 50-unit orders yields
-   the same total effort and therefore the same total experience, minus ten posting taxes instead of one.
+   the same total effort and therefore the same total experience, minus ten posting fees instead of one.
 2. **Diminishing returns per role, per day.** For the `n`-th contract a player settles within a
    [Bestia day](/docs/mechanics/world/environment/#in-game-time), counted separately as issuer and as accepter, the world-pool
    experience is multiplied by `1 / (1 + 0.5 * n)`. The first contract of the day pays full, the third about half, the
@@ -233,21 +254,37 @@ only the gold its issuer chose to attach. Work has to be work.
 
 {{< alert context="warning" text="The `1 / (1 + 0.5n)` and `1 / (1 + n_pair)` curves, and the trivial floor, are **first drafts for balancing**. The design goal they encode is fixed: one substantial contract must always be worth more experience than the same work chopped into pieces, and a closed loop of two players must trend to zero." />}}
 
+## The Text of a Commission
+
+The issuer writes **no text of their own**. The board builds the text from a template and the commission's data: the
+item, the amount, the coins per unit and the deadline. So every commission reads the same way, in every language the
+game is played in, and the boards carry no spam and no insults.
+
+## Limits
+
+| Limit                                  | Value |
+| -------------------------------------- | ----- |
+| Open commissions one master has posted | `10`  |
+| Quests in one master's quest log       | `25`  |
+
+An ended quest stays in the log, and counts, until the player clears it or 3 days pass. Both limits are server settings.
+
 ## Discovery
 
-Finding commissions stays physical and range-limited:
+Commissions are found at the **[city blackboards](/docs/mechanics/towns-trade/blackboard/)**. All boards form **one
+network**: every board shows every open commission in the world, and every board takes signatures and hand-ins for any
+of them. A board in a small player town is as useful as the one in a start town.
 
-- **Bulletin boards** at settlements
-- **Town-crier NPCs** and tavern chatter announcing local needs
-- **Classical NPC interaction**
+Finding work still means going somewhere. You read the list only while you stand at a board; there is no
+world-spanning quest finder in a menu. A ["!" marker](/docs/mechanics/towns-trade/blackboard/#the-board-marker) above a board
+tells you from a distance that it holds work for your level.
 
-There is deliberately no global, world-spanning "quest finder." If you want to know what is needed far away, you travel,
-or you [write](/docs/mechanics/towns-trade/postal/#letters) to somebody who is there.
+{{< alert context="warning" text="**Not built.** Town-crier NPCs, tavern chatter and classic NPC conversations will announce local needs as well." />}}
 
 # NPC Commissions
 
 NPCs also generate work of their own: a farmer who cannot bring in a harvest before it spoils, a merchant who needs an
-escort, a village that wants a guardian Bestia dealt with. These use the same contract machinery as player commissions,
+escort, a village that wants a guardian Bestia dealt with. These will be quest records like player commissions,
 funded from the NPC side rather than from a player's purse, and they are the reason a quiet corner of the world still has
 something to do in it.
 
@@ -328,19 +365,18 @@ player behaviour rather than a hardcoded cooldown.
 
 # How Completion Is Verified
 
-Player commissions, NPC commissions and world events all run on the same top-level machinery, which fits the event-based
+Player commissions, NPC commissions and world events all run on the same machinery, which fits the event-based
 [server architecture](/docs/server/architecture/):
 
-1. A contract is a small **state machine**:
-   `Draft → Funded → Open/Assigned → In Progress → Completed | Failed | Expired → Settled`.
-2. Objectives are expressed as **composable predicates** over events the simulation already emits — for example
-   `ItemDelivered(to, type, qty)`, `EntityDeactivated(id)`, or `EntityReached(region)`. The contract subscribes to the
-   server's event messages and evaluates its predicates.
-3. Signatures and partial progress are part of the contract's state, so an open Gather knows how many of its _N_ units
-   each signer has delivered, and an open Bounty knows how much damage each signer dealt. Pro-rata settlement is
-   bookkeeping over events, not a separate system.
-4. World events reuse the identical predicate/state-machine system; only the **funding source** (a treasury pool) and
-   the **many-contributor scoring** differ from a single-accepter commission.
+1. A quest is a small **state machine**: `Open → Closing → Completed | Expired | Withdrawn`.
+2. Its objectives come from a small set of kinds with parameters — "hand in _N_ of an item", "kill _N_ of a species in
+   an area" — and each kind is checked against facts the world already reports: a hand-in at a board, a kill that pays
+   experience. A player never reports their own progress.
+3. A **shared** objective, such as an open Gather, keeps one counter on the quest, and the log of each signer shows what
+   they delivered themselves. A **personal** objective keeps a counter per master. Pro-rata pay is bookkeeping over
+   those counters, not a separate system.
+4. World events will reuse the same records; only the **funding source** (a treasury pool) and the **many-contributor
+   scoring** differ from a commission.
 
-This shared foundation also connects naturally to the server's [automatic quest generation and Petri-net / graph-based
-objective modelling](/docs/server/quests/#automatic-quest-generation).
+How the server stores and tracks quests, and how it tells the clients, is on the [Questing](/docs/server/quests/)
+server page.
