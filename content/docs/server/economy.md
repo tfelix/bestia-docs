@@ -32,7 +32,6 @@ and the rest is still in the ground waiting to be mined.
 | Direction  | Flow                                                                                                        |
 | ---------- | ----------------------------------------------------------------------------------------------------------- |
 | **Into**   | Players selling resources, items and services to NPCs                                                       |
-| **Into**   | Broker cuts on player [commissions](/docs/mechanics/world/questing/#funding-and-escrow)                     |
 | **Into**   | The NPC share of [auction owner fees](/docs/mechanics/towns-trade/economy-trade/#building-an-auction-house) |
 | **Out of** | Rewards on NPC-issued commissions                                                                           |
 | **Out of** | World-event payouts from settlement, faction and world treasuries                                           |
@@ -42,7 +41,7 @@ and the rest is still in the ground waiting to be mined.
 
 Sinks return to the reserve rather than deleting money: the
 [auction listing fees](/docs/mechanics/towns-trade/economy-trade/#how-auctions-work) and the commission
-[posting tax](/docs/mechanics/world/questing/#funding-and-escrow) take coin **out of circulation** and put it back in the
+[posting fee](/docs/mechanics/world/questing/#funding-and-escrow) take coin **out of circulation** and put it back in the
 world reserve, where it re-enters slowly through the settlements.
 
 In the short run that is indistinguishable from burning — the coin is gone from player hands and stops pushing prices
