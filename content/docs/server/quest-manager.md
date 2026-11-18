@@ -4,7 +4,7 @@ title: Quest Manager
 description: "Design of the QuestManager - how the zone plans quests from the world history and from real events in the live world, offers them through townsfolk, found things and the blackboard, runs chains with a choice, and writes their endings back into the world."
 ---
 
-{{< alert context="warning" text="**Design, not built.** The [quest core](/docs/server/quests/) and the blackboard exist. Built so far: the [fact store](#what-a-player-knows), and stages and the new objective kinds of the [quest core](#changes-to-the-quest-core). The build order is at the [end](#build-order)." />}}
+{{< alert context="warning" text="**Design, not built.** The [quest core](/docs/server/quests/) and the blackboard exist. Built so far: the [fact store](#what-a-player-knows), stages and the new objective kinds of the [quest core](#changes-to-the-quest-core), and the store and the questions of the [living chronicle](#the-living-chronicle). The build order is at the [end](#build-order)." />}}
 
 The [quest core](/docs/server/quests/) keeps quests, but only players make them, on the
 [blackboard](/docs/mechanics/towns-trade/blackboard/). The **QuestManager** is the part that lets the world make
@@ -191,6 +191,16 @@ There is no window for it yet. The quest log shows the open leads.
 The generated chronicle ends in year 1000 and is never stored. The **living chronicle** is the generated chronicle
 plus a table of **world facts**: events that happened in play. It answers questions like "who holds this artifact
 now" and "is this thread still open".
+
+A world fact uses the event kinds of the generated chronicle, so it reads like the history before it. It holds the
+actors, the place, the master who did it and the game day. Today the living chronicle understands two kinds:
+
+| World fact           | Meaning for the artifact                                        |
+| -------------------- | --------------------------------------------------------------- |
+| `ARTIFACT_TAKEN`     | A master holds it. It is no longer lost                         |
+| `ARTIFACT_ENSHRINED` | A town keeps it. It is away until its home temple is that town  |
+
+Nothing writes world facts yet. The endings do that.
 
 An ending runs a small closed set of effects:
 
