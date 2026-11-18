@@ -326,8 +326,28 @@ i {
 // image, where a white title stays readable on hover. Our cards use the
 // plain `--card-bg` (white in light mode), so that rule turned the title
 // invisible on hover. Restore the normal title color instead.
-.docs-content .main-content .card:hover .card-title {
+//
+// Not for the theme's section-index cards (`.feature-full-bg`, rendered by
+// docs/list.html): those fill with the primary color on hover, so they need
+// the white title the theme intends. Excluding them here keeps this rule
+// from fighting the theme's.
+.docs-content .main-content .card:not(.feature-full-bg):hover .card-title {
     color: var(--card-title-color);
+}
+
+// Section-index cards on hover: the theme leaves the description at 50%
+// opacity white on the primary fill, which is hard to read. Use a white
+// title and a mostly opaque white description, icon and badges.
+.docs-content .main-content .card.feature-full-bg:hover {
+    .card-title {
+        color: #fff;
+    }
+
+    .para,
+    .icon-color i,
+    .badge {
+        opacity: 0.9;
+    }
 }
 
 .docs-content .main-content {

@@ -157,8 +157,42 @@
 
 <style>
   /* The columns follow the width the page leaves for content, not the window: with the sidebar and the table of
-     contents open a wide window still has room for only two cards. */
-  #item-database .item-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: 1.5rem; }
+     contents open a wide window still has room for only two cards. However wide the page, there are at most four
+     columns: a column is never narrower than a quarter of the row (less the three gaps). */
+  #item-database .item-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(max(17rem, calc((100% - 4.5rem) / 4)), 1fr));
+    gap: 1.5rem;
+  }
+  /* The blocks under the header share one rhythm: about 12 px of visible space between any two of them, and on
+     either side of every rule. The fonts carry empty room above their capitals and below their baselines, so each
+     margin below is that 12 px minus the room the neighbours already bring, measured from the ink, not the boxes. */
+  /* Levels and weight: one quiet line under the header. Its baseline sits 4 px above its box. */
+  #item-database .item-meta { font-size: 0.8rem; opacity: 0.8; margin-bottom: 0.5rem; }
+  #item-database .item-meta .sep { margin: 0 0.4rem; opacity: 0.5; }
+  /* Combat values: small tiles, a label over a large value, left-aligned at a fixed width. Their edges are ink. */
+  #item-database .item-combat { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0 0 0.75rem; }
+  #item-database .item-combat > div {
+    min-width: 4.25rem; padding: 0.3rem 0.6rem; border-radius: 0.4rem; background: rgba(127, 127, 127, 0.1);
+  }
+  #item-database .item-combat dt {
+    font-size: 0.65rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; opacity: 0.65;
+  }
+  #item-database .item-combat dd { margin: 0; font-size: 1.1rem; font-weight: 700; line-height: 1.2; }
+  /* Bonuses: one per row, label left, value right, so all values sit in one column. A row holds 11 px of room above
+     its capitals and below its baseline, the same on both sides of each dashed rule. The negative top margin takes
+     the first row's 11 px back out of the gap to the block above (margins collapse, so it subtracts). */
+  #item-database .item-bonuses { list-style: none; margin: -0.7rem 0 0; padding: 0; font-size: 0.875rem; }
+  /* The theme draws a dot before every list item of the content, indents it and gives it a tall line. */
+  #item-database .item-bonuses li {
+    display: flex; justify-content: space-between; gap: 0.5rem; margin: 0; padding: 0.25rem 0 0.4rem; line-height: 1.5;
+  }
+  #item-database .item-bonuses li + li { border-top: 1px dashed rgba(127, 127, 127, 0.2); }
+  #item-database .item-bonuses li::before { content: none; }
+  #item-database .item-bonuses .is-bonus { color: var(--bs-success-text-emphasis, #198754); }
+  #item-database .item-bonuses .is-malus { color: var(--bs-danger-text-emphasis, #dc3545); }
+  /* The description's font brings 8 px above its lowercase letters, so 4 px of padding makes the 12 px. */
+  #item-database .card-text { padding-top: 0.25rem; border-top: 1px solid rgba(127, 127, 127, 0.2); opacity: 0.85; }
   /* Bootstrap's card colour ignores the theme's dark mode, so the card takes the page text colour. */
   #item-database .item-card { color: var(--text-default); }
   #item-database .item-icon { flex: none; object-fit: contain; }

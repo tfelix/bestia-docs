@@ -22,23 +22,42 @@
           </div>
         </div>
       </div>
-      <dl class="row small mb-2 g-0">
-        <dt class="col-6 fw-normal">Weight: <strong>{{ .weight }}</strong></dt>
-        {{- with .item_level }}<dt class="col-6 fw-normal">Item Lv.: <strong>{{ . }}</strong></dt>{{ end }}
-        {{- with .min_level }}<dt class="col-6 fw-normal">Req. Lv.: <strong>{{ . }}</strong></dt>{{ end }}
-        {{- with .attack }}<dt class="col-6 fw-normal">ATK: <strong>{{ . }}</strong></dt>{{ end }}
-        {{- with .magic_attack }}<dt class="col-6 fw-normal">MATK: <strong>{{ . }}</strong></dt>{{ end }}
-        {{- with .defense }}<dt class="col-6 fw-normal">DEF: <strong>{{ . }}</strong></dt>{{ end }}
-        {{- with .magic_defense }}<dt class="col-6 fw-normal">MDEF: <strong>{{ . }}</strong></dt>{{ end }}
-        {{- with .range }}<dt class="col-6 fw-normal">Range: <strong>{{ . }}</strong></dt>{{ end }}
-        {{- with .ammo_type }}<dt class="col-6 fw-normal">Ammo: <strong>{{ . }}</strong></dt>{{ end }}
-        {{- with .stats }}<dt class="col-12 fw-normal">
-          {{- range $stat, $bonus := . }}
-          {{- $label := (index (where site.Data.item_stats.stats "id" $stat) 0).label | default $stat }}
-          {{- $percent := strings.HasSuffix $label " %" }}
-          <span class="me-2 text-nowrap">{{ strings.TrimSuffix " %" $label }} <strong>{{ if gt $bonus 0 }}+{{ end }}{{ $bonus }}{{ if $percent }}%{{ end }}</strong></span>
-          {{- end }}</dt>{{ end }}
+      {{- /* Below the header, each in a fixed order: one muted line of levels and weight, the base combat values as
+             tiles, then the bonuses as a list whose values line up on the right. */}}
+      {{- $levels := where (slice
+        (dict "label" "Item Lv." "value" .item_level)
+        (dict "label" "Req. Lv." "value" .min_level)
+        (dict "label" "Weight" "value" .weight)) "value" "!=" nil }}
+      {{- $combat := where (slice
+        (dict "label" "ATK" "value" .attack)
+        (dict "label" "MATK" "value" .magic_attack)
+        (dict "label" "DEF" "value" .defense)
+        (dict "label" "MDEF" "value" .magic_defense)
+        (dict "label" "Range" "value" .range)
+        (dict "label" "Ammo" "value" .ammo_type)) "value" "!=" nil }}
+      {{- with $levels }}
+      <div class="item-meta">
+        {{- range $i, $f := . }}{{ if $i }}<span class="sep" aria-hidden="true">·</span>{{ end }}<span>{{ $f.label }} <strong>{{ $f.value }}</strong></span>{{ end }}
+      </div>
+      {{- end }}
+      {{- with $combat }}
+      <dl class="item-combat">
+        {{- range . }}<div><dt>{{ .label }}</dt><dd>{{ .value }}</dd></div>{{ end }}
       </dl>
+      {{- end }}
+      {{- with .stats }}
+      {{- $stats := . }}
+      {{- /* Bonuses follow the order of item_stats.yaml: attributes, offense, defense, then resistances. */}}
+      <ul class="item-bonuses">
+        {{- range site.Data.item_stats.stats }}
+        {{- $bonus := index $stats .id }}
+        {{- if $bonus }}
+        <li><span>{{ strings.TrimSuffix " %" .label }}</span><strong class="{{ if lt $bonus 0 }}is-malus{{ else }}is-bonus{{ end }}">
+          {{- if gt $bonus 0 }}+{{ end }}{{ $bonus }}{{ if strings.HasSuffix .label " %" }}%{{ end }}</strong></li>
+        {{- end }}
+        {{- end }}
+      </ul>
+      {{- end }}
       <div class="card-text small">
         {{ .description | strings.TrimSpace | markdownify }}
       </div>
