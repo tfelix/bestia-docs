@@ -199,7 +199,7 @@ foraging, but it cannot teach a creature to hunt if its species never could. Pla
 entities are skipped by the think system entirely.
 
 A bestia on a **journey its player ordered** is skipped the same way: it keeps walking, attacked or not, until
-it arrives (see [Long-Distance Travel]({{< ref "server/long-distance-travel" >}})). When the AI takes a bestia
+it arrives (see [Long-Distance Travel]({{< ref "docs/server/long-distance-travel" >}})). When the AI takes a bestia
 back - after a journey, a switch to another entity or a logout - its home becomes where it stands, so a
 patrolling bestia patrols where the player left it.
 
@@ -208,7 +208,7 @@ as enemies, so a bestia out on its own is found. Owned bestias do not hunt each 
 
 ## Orders (planned)
 
-[Bestia Orders]({{< ref "mechanics/bestias/bestia-orders" >}}) replace the stance with an **order sheet**: a main job,
+[Bestia Orders]({{< ref "docs/mechanics/bestias/bestia-orders" >}}) replace the stance with an **order sheet**: a main job,
 a fallback job, places, a courage step, care lines and up to eight rules. The sheet lives on the player bestia row and
 compiles into the agent the same way a stance does today:
 

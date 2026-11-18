@@ -172,7 +172,7 @@ node id where the account id goes, and it attaches to hooks that exist today.
 
 Which chunks are *simulated* is a separate question from which a client holds. `ChunkResidency` refcounts
 every holder: all clients together are one, and each simulation anchor - every master and player bestia - is
-another (see [Long-Distance Travel]({{< ref "server/long-distance-travel" >}})). Walk data and ground marks
+another (see [Long-Distance Travel]({{< ref "docs/server/long-distance-travel" >}})). Walk data and ground marks
 follow residency; props and what each client is owed follow the subscription.
 
 **Subscribe by chunk, not by entity.** An entity subscription has a discovery problem. A node must know an
