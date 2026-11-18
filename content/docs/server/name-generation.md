@@ -179,7 +179,7 @@ client's localisation files (`bestia-client/src/Localization/*.csv`, which has o
 | House Ashford                  | Haus Ashford                     |
 | the Karariders                 | die Karareiter                   |
 
-The zone sends a name as finished text (`DialogArg.Name`), and it does not know the player's language. So a German
+The zone sends a name as finished text (`TextArg.Name`), and it does not know the player's language. So a German
 client needs the zone to learn the player's locale before it can ask `Names` for German.
 
 `GermanNamesTest` fails if an English word has no German form, or a German entry has no English word.

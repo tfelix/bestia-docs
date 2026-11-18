@@ -37,8 +37,8 @@ text.**
 | `DialogService`              | `zone-server/.../dialog/`           | The only builder of a dialog message. Rejects a send whose argument keys do not match the catalog |
 | `dialogs.yml`                | `zone-server/src/main/resources/`   | The catalog: numeric id, identifier, type, declared argument names. No text                       |
 | `DialogCatalogBootValidator` | `zone-server/.../dialog/`           | Fails the boot on catalog ↔ `DialogId` drift, in **both** directions                              |
-| `DialogSMSG`                 | `bnet-messages/.../system/`         | `dialog_id`, type, `map<string, DialogArg>`, an informative `source_entity_id`                    |
-| `DialogArg`                  | both sides                          | A `oneof` — `text`, `number`, `entity_id`, `item_id`, `skill_id`                                  |
+| `DialogSMSG`                 | `bnet-messages/.../system/`         | `dialog_id`, type, `map<string, TextArg>`, an informative `source_entity_id`                    |
+| `TextArg`                  | both sides                          | A `oneof` — `text`, `number`, `entity_id`, `item_id`, `skill_id`                                  |
 | `DialogManager`              | `bestia-client/src/Manager/`        | Autoload queue, one dialog at a time, holds behind a loading screen                               |
 | `DialogText`                 | `bestia-client/src/Game/UI/Dialog/` | Resolves `DIALOG_<id>_TEXT` through `tr()`, then fills `{named}` placeholders                     |
 | `dialogs.csv`                | `bestia-client/src/Localization/`   | The text, per locale, compiled to a `.translation` at import                                      |
@@ -49,7 +49,7 @@ Two properties of that path are load-bearing here and are worth naming, because 
 page leans on both.
 
 **Arguments are typed, not rendered.** An item argument crosses the wire as an item id and the
-client resolves it through its own item database, so the item's name stays localised. `DialogArg.Text` exists for values that genuinely have no client-side representation — another
+client resolves it through its own item database, so the item's name stays localised. `TextArg.Text` exists for values that genuinely have no client-side representation — another
 player's chosen master name — and its KDoc calls it the last resort. That is the correct instinct and this design
 extends it rather than working around it.
 
@@ -129,7 +129,7 @@ open(player, npc)            -> Node
 choose(player, npc, topicId) -> Node
 
 Node  (speech: Line, options: List<Option>)
-Line  (key: String, args: Map<String, DialogArg>)
+TextRef (key: String, args: Map<String, TextArg>)
 Option(topicId: Int, line: Line, kind: TALK | ACTION | BACK | END)
 ```
 
@@ -543,7 +543,7 @@ rewrite every reference. There are also on the order of a hundred and fifty gene
 before any small talk, and a hand-maintained numeric catalog of those is a merge conflict per pull
 request.
 
-So conversation is its own message pair, **reusing `DialogArg` and nothing else**. `DialogSMSG`
+So conversation is its own message pair, **reusing `TextArg` and nothing else**. `DialogSMSG`
 stays exactly what it is: the one-shot catalogued popup.
 
 This absorbs the planned `CHOICE` dialog rather than building beside it. A second "ask the player
@@ -560,11 +560,11 @@ correct. One mechanism for a question, and it is this one.
 | `InteractCMSG`           | new                       | `entity_id`. "Talk to that" — the _server_ decides what interacting with an entity means                     |
 | `ConversationSMSG`       | new                       | The speaker, a speech `Line`, and a repeated option list of `(topicId, Line, kind)`                          |
 | `ConversationChoiceCMSG` | **126**, already reserved | `entity_id` and `topic_id`. The entity rather than a session id, so the server re-checks range on every step |
-| `DialogArg`              | extended                  | `token` and `name` added to the existing `oneof`                                                             |
+| `TextArg`              | extended                  | `token` and `name` added to the existing `oneof`                                                             |
 
 {{< /table >}}
 
-A `Line` is a translation key plus the same `map<string, DialogArg>` the existing dialog already
+A `TextRef` is a translation key plus the same `map<string, TextArg>` the existing dialog already
 carries, so the client's placeholder formatter is reused verbatim.
 
 On the client, two small additions to things that already exist. The right-click context menu — which
