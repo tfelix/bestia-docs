@@ -2757,7 +2757,9 @@
   material: Metal
   value: 120
   description: |
-    Iron ore refined with charcoal in a furnace. The staple metal for weapons and armor.
+    Iron worked with carbon until it rings.
+
+    It takes a keener edge than iron and holds it longer.
 - id: silver_ore
   name: Silver Ore
   game_id: 209
@@ -2779,7 +2781,9 @@
   material: Metal
   value: 4000
   description: |
-    A refined silver ingot with excellent conductivity. Used for crafting and magical purposes.
+    A bar of pale silver.
+
+    It carries a charge better than any other metal, and smiths say it is kind to the sick.
 - id: mercury_ore
   name: Mercury Ore
   game_id: 211

@@ -485,6 +485,12 @@ level, the swing is refused and the ore stays in the rock, so nobody wastes what
 | 4   | 40%                   | 80                 |
 | 5   | 50%                   | 100+               |
 
+The level of an ore is its level in the [resource table](/docs/mechanics/items-crafting/natural-resources/#ore-levels): tin (5) and
+copper (10) can be broken by anyone, iron (20) needs Mining 1, silver (35) Mining 2, gold (50) Mining 3, mercury (60)
+Mining 3, palladium (70) Mining 4 and mithril (85) and adamantium (100) Mining 5. A rarer lump that rides along with a
+host ore, see [Where Materials Come From](/docs/mechanics/items-crafting/crafting-chains/#where-materials-come-from), is held against
+the same limit.
+
 {{< /skill >}}
 
 {{< skill name="Gem Cutting" maxLevel="5" requires="Mining Lv. 3"

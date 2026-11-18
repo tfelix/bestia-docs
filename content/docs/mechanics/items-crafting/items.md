@@ -16,7 +16,9 @@ Each item has a level assigned. This level is important to determine how hard or
 it and so on. It also affects how spells interact with the item entity.
 
 The level of a forged item is not fixed. A copy starts at its item's base level, and its stats and sockets raise it -
-see [Forging](/docs/mechanics/items-crafting/crafting/#forging-and-random-stats). A character needs this level to wear the copy.
+see [Forging](/docs/mechanics/items-crafting/crafting/#forging-and-random-stats). Wearing it asks for the item's **min level** instead, which
+is set by hand per item and does not rise with a lucky roll - see
+[Equipment Design](/docs/mechanics/items-crafting/equipment-design/#min-level).
 
 {{< table >}}
 

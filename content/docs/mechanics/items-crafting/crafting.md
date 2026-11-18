@@ -484,8 +484,9 @@ level.
 | Iron sword, rolled       |         20 | fixed, +3 STR, socket |     13 |         44 |
 | Adamantium blade         |         95 | +20 STR               |     20 |        112 |
 
-The item level is the level a character needs to wear the copy. It also sets the item's
-[category](/docs/mechanics/items-crafting/items/#item-level), and with it the refinement bonus and chances, the chance to cut
+The item level is not what a character needs to wear the copy: that is the item's hand-set
+[min level](/docs/mechanics/items-crafting/equipment-design/#min-level), so a lucky roll never locks its maker out. The item level
+sets the item's [category](/docs/mechanics/items-crafting/items/#item-level), and with it the refinement bonus and chances, the chance to cut
 another socket with [Item Customization](/docs/mechanics/items-crafting/items/#item-customization), and which
 [Equipment Repair](/docs/mechanics/master/craftsman-tree/#skill-equipment-repair) rank can fix it. The upgrade level is not part of
 the item level.

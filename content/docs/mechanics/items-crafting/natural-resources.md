@@ -173,6 +173,10 @@ baseChance = 0.30 - max(0, oreLevel - 10) * 0.01
 
 {{< /table >}}
 
+A refined bar has the level of its ore, and an alloy has its own: bronze 15, steel 32 and blackiron 65 smelt at the same
+formula for their level, so 25%, 8% and -25%. A negative base chance is kept as it is in the recipe, not raised to zero:
+the smith's rank, STR and WIL bring it back, and no attempt is ever below 1%.
+
 The two entry ores sit at or below Lv. 10 and share the same `30%` base chance, so a smith who has just placed their
 first furnace can work tin and copper reliably from the very first rank of the skill. From there the chance erodes by
 1% per ore level, turning negative at level 40 — beyond that point smelting is only worth attempting with skill ranks,

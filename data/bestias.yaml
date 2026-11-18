@@ -490,6 +490,8 @@
     chance: 20
   - item: venom_sac
     chance: 8
+  - item: deathcap
+    chance: 12
   learnset:
     drop:
     - 19
@@ -518,6 +520,8 @@
     chance: 15
   - item: mana_dust
     chance: 10
+  - item: mana_essence
+    chance: 12
   learnset:
     replace:
     - slot: 4
@@ -546,6 +550,10 @@
     chance: 30
   - item: wild_herb
     chance: 15
+  - item: glowcap
+    chance: 15
+  - item: deathcap
+    chance: 10
   learnset:
     replace:
     - slot: 3
@@ -607,6 +615,8 @@
     chance: 20
   - item: mana_dust
     chance: 15
+  - item: mana_essence
+    chance: 10
   learnset:
     replace:
     - slot: 6
@@ -1502,6 +1512,8 @@
     chance: 25
   - item: log
     chance: 15
+  - item: thornvine
+    chance: 20
   look:
     colour: '#228b22'
 - id: 54
@@ -1623,6 +1635,10 @@
     chance: 20
   - item: spore_dust
     chance: 10
+  - item: yew_billet
+    chance: 15
+  - item: ironwood
+    chance: 4
   learnset:
     replace:
     - slot: 6
@@ -1716,6 +1732,8 @@
     chance: 35
   - item: raw_meat
     chance: 20
+  - item: thornvine
+    chance: 20
   look:
     colour: '#2f6f3f'
 - id: 61
@@ -1773,6 +1791,8 @@
     chance: 10
   - item: dragon_scale
     chance: 3
+  - item: drake_hide
+    chance: 12
   learnset:
     replace:
     - slot: 5
@@ -2157,6 +2177,8 @@
     chance: 20
   - item: dragon_scale
     chance: 10
+  - item: drake_hide
+    chance: 12
   learnset:
     replace:
     - slot: 6
@@ -2240,6 +2262,8 @@
   - item: shadow_shard
     chance: 20
   - item: void_essence
+    chance: 8
+  - item: mana_concentrate
     chance: 8
   corruptedOnly: true
   look:
@@ -2510,6 +2534,10 @@
     chance: 80
   - item: aetherite_shard
     chance: 10
+  - item: heartwood
+    chance: 4
+  - item: ironwood
+    chance: 15
   learnset:
     replace:
     - slot: 3
@@ -2539,6 +2567,8 @@
     chance: 80
   - item: mana_crystal
     chance: 30
+  - item: pure_mana_essence
+    chance: 10
   learnset:
     replace:
     - slot: 4
@@ -2624,6 +2654,10 @@
     chance: 40
   - item: coal
     chance: 40
+  - item: wyrm_bone
+    chance: 8
+  - item: drake_hide
+    chance: 10
   look:
     colour: '#c5c522'
 - id: 92
@@ -2712,6 +2746,8 @@
     chance: 100
   - item: mana_crystal
     chance: 30
+  - item: storm_feather
+    chance: 12
   learnset:
     replace:
     - slot: 4
@@ -2944,6 +2980,8 @@
     chance: 30
   - item: bone_shard
     chance: 10
+  - item: blue_mana_crystal
+    chance: 6
   look:
     colour: '#b8f0e0'
     glow: 0.6
@@ -3000,6 +3038,8 @@
     chance: 50
   - item: void_essence
     chance: 20
+  - item: wyrm_bone
+    chance: 15
   corruptedOnly: true
   look:
     colour: '#e8e0d0'
