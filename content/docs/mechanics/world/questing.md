@@ -288,7 +288,21 @@ escort, a village that wants a guardian Bestia dealt with. These will be quest r
 funded from the NPC side rather than from a player's purse, and they are the reason a quiet corner of the world still has
 something to do in it.
 
-{{< alert context="warning" text="**Concept pending.** How far NPC-generated quests go — how many there are, whether they chain into longer stories, how much of the [automatic generation](/docs/server/quests/#automatic-quest-generation) the world leans on — is deliberately still open. What is settled: they are contracts like any other, their difficulty is derived the same way, and their rewards are paid from the NPC gold pool under the [World Treasury Director](/docs/server/economy/) rather than minted." />}}
+{{< alert context="warning" text="**Designed, not built.** The server side is the [Quest Manager](/docs/server/quest-manager/). NPC quests are contracts like any other, and their coins are paid from money the town really has, never minted." />}}
+
+What is settled for quests the world makes:
+
+- **Real causes only.** A town asks for timber because a storm really damaged its temple, or for grain because its
+  stores are really low. When the cause is gone, the quest is gone.
+- **Local quests are shared.** Many players add to one goal, like a blackboard Gather.
+- **Global quests have one prize.** There is one lost book on one battlefield. Everybody who found the lead may
+  try. The first one takes it. For the others the quest does not just fail: it turns into a new lead, such as where
+  the book is now.
+- **Chains with a choice.** A quest is a few steps: ask somebody, read an old stone, dig at a spot, and then decide,
+  for example to keep a relic or to return it. Each ending changes the world in its own way.
+- **Who offers them.** Townsfolk in conversation, things you find and read, and the blackboard.
+- **What they pay.** Coins from the town, the thing you found, knowledge (a lead, a hint, a weakness) and
+  experience.
 
 The world's history is meant to be one source of these quests: heirlooms that descendants want back, offerings and
 deeds for the gods, and once-per-world quests such as returning a unique artifact to its temple. See

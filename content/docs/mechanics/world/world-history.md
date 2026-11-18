@@ -274,7 +274,7 @@ A player who asks in several towns can tell which telling to trust.
 
 # Quests from History
 
-{{< alert context="warning" text="**Partly built.** The history records its open threads today. There is no quest system yet (see [Questing](/docs/mechanics/world/questing/)), so the quests below are design." />}}
+{{< alert context="warning" text="**Partly built.** The history records its open threads today. Nothing turns them into quests yet. That is the job of the [Quest Manager](/docs/server/quest-manager/), so the quests below are design." />}}
 
 The chronicle leaves threads open, and it records each one with the event it has stayed open since:
 
@@ -304,6 +304,9 @@ heirloom item is created for the player who takes the quest, so many players can
 
 World quests happen once. A unique artifact can be returned only once, even when it is of little use to the player
 who carries it: the temple's reward and the line in the chronicle are the point.
+
+A quest for a unique prize is an **open race**. Everybody who found the lead may follow it. The first one takes the
+prize. The others get a new lead: who holds it now, or where it rests.
 
 Other quest ideas:
 
