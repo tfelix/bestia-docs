@@ -458,7 +458,7 @@
     return hp;
   }
 
-  // A loot row names an item from the Items List and a chance in percent. The value and the tier
+  // A loot row names an item from the Item Database and a chance in percent. The value and the tier
   // follow from those, so a designer cannot price a drop by hand.
   function lootRows(data, input) {
     return (input.loot || [])
@@ -558,7 +558,7 @@
       warnings: [
         ...warningsFor(data, tier, final, fitted.factor, attackPower),
         ...loot.jackpots.map((item) => `${item} is worth more than ${data.loot.jackpotFactor} loot budgets. Players will farm this bestia for it alone.`),
-        ...loot.unknown.map((item) => `${item} is not on the Items List, so it counts as worth nothing. Add it to data/items.yaml.`),
+        ...loot.unknown.map((item) => `${item} is not in the Item Database, so it counts as worth nothing. Add it to data/items.yaml.`),
       ],
       input,
       level,

@@ -245,7 +245,7 @@ pass through. Foes standing on it get nothing.
 
 {{< skill name="Stone Curse" maxLevel="3" requires="Safety Wall Lv. 3"
     type="Active" manaCost="25" castTime="1s" cooldown="15s" duration="per Lv." range="6" target="Enemy"
-    description="Encases a target in solid stone, applying [Stoning](/docs/mechanics/combat/status-effects/#all-status-effects) where they stand. Stoning turns into Stone unless it is cured first. Requires 1 [Red Mana Crystal](/docs/mechanics/items-crafting/item-list/#red-mana-crystal) per cast." >}}
+    description="Encases a target in solid stone, applying [Stoning](/docs/mechanics/combat/status-effects/#all-status-effects) where they stand. Stoning turns into Stone unless it is cured first. Requires 1 [Red Mana Crystal](/docs/mechanics/items-crafting/item-database/#red-mana-crystal) per cast." >}}
 
 Stoning is a 10s warning; the Stone that follows lasts as long as the table says. The target's resistance cuts the
 chance, as for any status. The crystal is spent whether the roll wins or not.
@@ -813,7 +813,7 @@ last `60s`; casting it again starts the time over.
     description="A Hunter who runs out of arrows in the wild does not have to walk back to town." >}}
 
 Opens the crafting window with the arrow recipes. It needs no station: two
-Reed Stalks and a [Feather](/docs/mechanics/items-crafting/item-list/#feather) make 20
+Reed Stalks and a [Feather](/docs/mechanics/items-crafting/item-database/#feather) make 20
 [regular arrows](/docs/mechanics/combat/ranged-combat/#novice-bow). Special arrows come later.
 
 {{< /skill >}}
@@ -1038,7 +1038,7 @@ resistance adds to VIT and AGI against being poisoned.
 
 {{< skill name="Enchant Poison" maxLevel="5" requires="Poison Research Lv. 3"
     type="Active" manaCost="24" castTime="2s" cooldown="None" duration="5 min" range="2" target="Ally"
-    description="Works a brewed poison into the edge of a weapon so every strike carries a chance to leave it behind. Consumes one Alchemist-brewed poison, such as [Basic Poison](/docs/mechanics/items-crafting/item-list/#basic-poison), per cast." >}}
+    description="Works a brewed poison into the edge of a weapon so every strike carries a chance to leave it behind. Consumes one Alchemist-brewed poison, such as [Basic Poison](/docs/mechanics/items-crafting/item-database/#basic-poison), per cast." >}}
 
 Applies the [Poison](/docs/mechanics/combat/statusvalues/#status-effects) status effect on hit. The poison item decides how hard it
 bites; this skill decides how often it lands.

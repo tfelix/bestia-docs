@@ -1,0 +1,147 @@
+<!-- itemdatabase.html: every item of data/items.yaml with a search and filters. Other pages link here with the filters
+     preset in the query string, e.g. ?category=fishing or ?category=armor&armor=Heavy. -->
+{{- $items := sort site.Data.items "name" -}}
+{{- $categories := slice
+  (dict "id" "weapon" "label" "Weapons")
+  (dict "id" "armor" "label" "Armor & shields")
+  (dict "id" "accessory" "label" "Accessories")
+  (dict "id" "light" "label" "Light sources")
+  (dict "id" "ammo" "label" "Ammunition")
+  (dict "id" "consumable" "label" "Consumables")
+  (dict "id" "station" "label" "Crafting stations")
+  (dict "id" "ore" "label" "Ores")
+  (dict "id" "metal" "label" "Metals")
+  (dict "id" "gem" "label" "Gems")
+  (dict "id" "herb" "label" "Herbs")
+  (dict "id" "wood" "label" "Wood")
+  (dict "id" "material" "label" "Other materials")
+  (dict "id" "fishing" "label" "Fishing catches")
+  (dict "id" "drop" "label" "Monster drops")
+  (dict "id" "planned" "label" "Not in game yet")
+-}}
+{{- $filters := slice
+  (dict "key" "slot" "label" "Slot" "field" "slot")
+  (dict "key" "weapon" "label" "Weapon type" "field" "weapon_type")
+  (dict "key" "armor" "label" "Armor type" "field" "armor_type")
+  (dict "key" "material" "label" "Material" "field" "material")
+-}}
+<div id="item-database">
+  <div class="row g-2 mb-2">
+    <div class="col-12 col-md-6">
+      <input type="search" class="form-control" data-filter="q" placeholder="Search by name" aria-label="Search by name">
+    </div>
+    <div class="col-6 col-md-3">
+      <select class="form-select" data-filter="category" aria-label="Category">
+        <option value="">All categories</option>
+        {{- range $categories }}<option value="{{ .id }}">{{ .label }}</option>{{ end }}
+      </select>
+    </div>
+    <div class="col-6 col-md-3">
+      <select class="form-select" data-filter="sort" aria-label="Sort">
+        <option value="">Sort by name</option>
+        <option value="item-level">Sort by item level</option>
+        <option value="min-level">Sort by required level</option>
+      </select>
+    </div>
+    {{- range $filters }}
+    {{- $field := .field }}
+    {{- $values := slice }}
+    {{- range $items }}{{ with index . $field }}{{ $values = $values | append . }}{{ end }}{{ end }}
+    <div class="col-6 col-md-3">
+      <select class="form-select" data-filter="{{ .key }}" aria-label="{{ .label }}">
+        <option value="">Any {{ lower .label }}</option>
+        {{- range sort (uniq $values) }}<option value="{{ . }}">{{ . }}</option>{{ end }}
+      </select>
+    </div>
+    {{- end }}
+  </div>
+  <div class="d-flex align-items-center mb-3">
+    <span class="small text-body-secondary me-auto" data-count></span>
+    <button class="btn btn-sm btn-outline-secondary" type="button" data-clear>Clear filters</button>
+  </div>
+
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mb-4" data-cards>
+    {{- range $items }}
+    {{ partial "item-card.html" . }}
+    {{- end }}
+  </div>
+</div>
+
+<script>
+  (function () {
+    const root = document.getElementById('item-database');
+    const container = root.querySelector('[data-cards]');
+    const cards = [...container.children];
+    const controls = [...root.querySelectorAll('[data-filter]')];
+    const control = (key) => root.querySelector(`[data-filter="${key}"]`);
+
+    const matches = {
+      q: (card, v) => card.dataset.name.includes(v.toLowerCase().trim()),
+      category: (card, v) => card.dataset.categories.split(' ').includes(v),
+      slot: (card, v) => card.dataset.slot === v,
+      weapon: (card, v) => card.dataset.weapon === v,
+      armor: (card, v) => card.dataset.armor === v,
+      material: (card, v) => card.dataset.material === v,
+    };
+    // Levels sort high to low, so the best gear of a filtered slot comes first.
+    const sorters = {
+      'item-level': (a, b) => b.dataset.itemLevel - a.dataset.itemLevel,
+      'min-level': (a, b) => b.dataset.minLevel - a.dataset.minLevel,
+    };
+
+    function apply() {
+      const active = controls.filter((c) => c.value && matches[c.dataset.filter]);
+      let shown = 0;
+      cards.forEach((card) => {
+        const visible = active.every((c) => matches[c.dataset.filter](card, c.value));
+        card.style.display = visible ? '' : 'none';
+        if (visible) shown++;
+      });
+      const sort = sorters[control('sort').value];
+      container.append(...(sort ? [...cards].sort(sort) : cards));
+      root.querySelector('[data-count]').textContent = `${shown} of ${cards.length} items`;
+    }
+
+    // The filters live in the query string, so a filtered view can be linked from any page.
+    function writeQuery() {
+      const params = new URLSearchParams();
+      controls.forEach((c) => c.value && params.set(c.dataset.filter, c.value));
+      const query = params.toString();
+      history.replaceState(null, '', location.pathname + (query ? `?${query}` : ''));
+    }
+
+    function readQuery() {
+      const params = new URLSearchParams(location.search);
+      controls.forEach((c) => (c.value = params.get(c.dataset.filter) || ''));
+    }
+
+    // Deep links such as #void-essence narrow the list down to the linked item instead of only scrolling to it.
+    function applyHash() {
+      const id = decodeURIComponent(location.hash.replace(/^#/, ''));
+      const card = id && document.getElementById(id);
+      if (!card || !container.contains(card)) return;
+      controls.forEach((c) => (c.value = ''));
+      control('q').value = card.querySelector('.card-title').textContent;
+      apply();
+      // The name search alone would also keep "Glass Furnace Kit" for #furnace-kit.
+      cards.forEach((other) => other !== card && (other.style.display = 'none'));
+      root.querySelector('[data-count]').textContent = `1 of ${cards.length} items`;
+      card.scrollIntoView({ block: 'center' });
+    }
+
+    controls.forEach((c) => c.addEventListener(c.tagName === 'SELECT' ? 'change' : 'input', () => {
+      apply();
+      writeQuery();
+    }));
+    root.querySelector('[data-clear]').addEventListener('click', () => {
+      controls.forEach((c) => (c.value = ''));
+      apply();
+      writeQuery();
+    });
+    window.addEventListener('hashchange', applyHash);
+
+    readQuery();
+    apply();
+    applyHash();
+  })();
+</script>

@@ -198,7 +198,7 @@
     const resolved = bp.loot.rows;
     [...body.querySelectorAll("[data-loot-info]")].forEach((cell, i) => {
       const row = resolved.find((r) => r.name === loot[i].item || r.item === String(loot[i].item).trim().toLowerCase());
-      cell.innerHTML = !loot[i].item ? "" : !row || !row.known ? '<span class="text-warning">not on the Items List</span>'
+      cell.innerHTML = !loot[i].item ? "" : !row || !row.known ? '<span class="text-warning">not in the Item Database</span>'
         : row.priced ? `${fmt(row.value)} coins, ${tierLabel(row.tier)}`
         : `<span class="text-warning">no price yet</span>, ${tierLabel(row.tier)}`;
     });
@@ -340,7 +340,7 @@
     // A stale or blocked store just means the defaults.
   }
 
-  // Items and attacks come from the same files the Items List and Attack List pages render.
+  // Items and attacks come from the same files the Item Database and Attack List pages render.
   const fetchJson = (url) => fetch(url).then((r) => (r.ok ? r.json() : Promise.reject(new Error(`${url}: ${r.status}`))));
   Promise.all([fetchJson(root.dataset.itemsUrl), fetchJson(root.dataset.attacksUrl)])
     .then(([items, attacks]) => {

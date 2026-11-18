@@ -152,7 +152,7 @@ enchantment, transmuting matter, inscribing a spell. Skill rank, status values a
 lone master eventually hits the ceiling of what those three can buy.
 
 A **Mana Circle** is how a group pushes past it. It is a placeable prop - a ring of
-[Mana Concentrate](/docs/mechanics/items-crafting/item-list/#mana-concentrate) laid into the ground with a focus stone in
+[Mana Concentrate](/docs/mechanics/items-crafting/item-database/#mana-concentrate) laid into the ground with a focus stone in
 its middle - where a group holds a **ritual**. The master who owns the skill leads it. Up to five helpers join,
 whatever their profession, and each player sends one helper: their master or one of their Bestias. After 30 seconds of
 channeling, the leader's next skill takes a charge. [How a Ritual Runs](/docs/mechanics/combat/spell-potency/#how-a-ritual-runs)

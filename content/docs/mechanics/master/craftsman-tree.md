@@ -37,7 +37,7 @@ graph TD
     type="Active" manaCost="20" cooldown="0s" range="2" target="Workbench"
     description="Turns raw timber and honest labor into the workbenches, furniture and structures every settlement needs to stand on its own." >}}
 
-Lv. 1 allows you to build a [workbench](/docs/mechanics/items-crafting/item-list/#workbench), which you can use for crafting. The time it needs to craft an item depends on the item level you want to craft.
+Lv. 1 allows you to build a [workbench](/docs/mechanics/items-crafting/item-database/#workbench-kit), which you can use for crafting. The time it needs to craft an item depends on the item level you want to craft.
 
 Carpentry also makes the kits for the buildings in the wild: the Observation Outpost, the Mining Shaft and the
 Lumberjack Cabin. To build one, the master needs level 1 of the skill that uses it.
@@ -94,7 +94,7 @@ See [Weapon Refinement](/docs/mechanics/items-crafting/items/#weapon-refinement)
     type="Active" manaCost="23" cooldown="0s"
     description="A meticulous rework that opens sockets in an item's frame, letting a Runic Etcher's runes be slotted into it later." >}}
 
-Requires an [Engraving Set](/docs/mechanics/items-crafting/item-list/#engraving-set) which will be consumed in the process. You can choose how many slots you want to put into an item. But every slot makes it harder to succeed. Every extra slot above 1 reduces the success chance by 40%.
+Requires an [Engraving Set](/docs/mechanics/items-crafting/item-database/#engraving-set) which will be consumed in the process. You can choose how many slots you want to put into an item. But every slot makes it harder to succeed. Every extra slot above 1 reduces the success chance by 40%.
 
 The Success Chance below is added on top of a **base chance that drops as the item's own level rises**. See [Item Customization](/docs/mechanics/items-crafting/items/#item-customization) for the full formula and worked examples.
 
@@ -148,8 +148,8 @@ graph TD
     type="Active" manaCost="18" castTime="10s" cooldown="0s"
     description="Feeds raw ore to the roar of the furnace, coaxing out the pure ingots every weapon and suit of armor is ultimately built from." >}}
 
-Lv. 1 allows you to place a [Furnace](/docs/mechanics/items-crafting/item-list/#furnace). Every batch burns fuel:
-[Coal](/docs/mechanics/items-crafting/item-list/#coal). A failed smelt loses both the ore and the fuel.
+Lv. 1 allows you to place a [Furnace](/docs/mechanics/items-crafting/item-database/#furnace-kit). Every batch burns fuel:
+[Coal](/docs/mechanics/items-crafting/item-database/#coal). A failed smelt loses both the ore and the fuel.
 
 | Lv. | Ore Refinement Success |
 | --- | ---------------------- |
@@ -158,9 +158,9 @@ Lv. 1 allows you to place a [Furnace](/docs/mechanics/items-crafting/item-list/#
 | 3   | +90%                   |
 
 There is **no ore level cap** - the bonus is added on top of an ore-level base chance that starts at `30%` for
-[Tin](/docs/mechanics/items-crafting/item-list/#tin-ore) and [Copper](/docs/mechanics/items-crafting/item-list/#copper-ore) and keeps falling by 1%
+[Tin](/docs/mechanics/items-crafting/item-database/#tin-ore) and [Copper](/docs/mechanics/items-crafting/item-database/#copper-ore) and keeps falling by 1%
 per ore level above 10, plus the smith's STR and WIL. Even a maxed smith loses roughly every second batch of
-[Adamantium Ore](/docs/mechanics/items-crafting/item-list/#adamantium-ore). See
+[Adamantium Ore](/docs/mechanics/items-crafting/item-database/#adamantium-ore). See
 [Ore Refinement Success Chance](/docs/mechanics/items-crafting/crafting/#ore-refinement-success-chance) for the full formula and
 [Refining](/docs/mechanics/items-crafting/natural-resources/#refining) for the level of every ore.
 

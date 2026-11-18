@@ -234,7 +234,7 @@ y: { title: { display: true, text: 'Success Chance' }, max: 1.0, min: 0 }
 
 ## Ore Refinement Success Chance
 
-Raw ore is dead weight until it has been through a [Furnace](/docs/mechanics/items-crafting/item-list/#furnace). Smelting is
+Raw ore is dead weight until it has been through a [Furnace](/docs/mechanics/items-crafting/item-database/#furnace-kit). Smelting is
 deliberately **not** blueprint-driven — there is nothing to discover, every ore has exactly one refined form — but each
 charge still rolls against a success chance, and a failed smelt turns the whole batch into slag: the ore **and** the
 fuel are lost.
@@ -248,15 +248,15 @@ baseChance = 0.30 - max(0, oreLevel - 10) * 0.01
 chance = clamp(baseChance + oreRefinementBonus + fuelBonus + circleBonus + floor(STR / 10) * 0.02 + floor(WIL / 10) * 0.01, 0.01, 1.0)
 ```
 
-The two simplest ores — [Tin](/docs/mechanics/items-crafting/item-list/#tin-ore) and [Copper](/docs/mechanics/items-crafting/item-list/#copper-ore) —
+The two simplest ores — [Tin](/docs/mechanics/items-crafting/item-database/#tin-ore) and [Copper](/docs/mechanics/items-crafting/item-database/#copper-ore) —
 sit at or below Lv. 10 and therefore share the same `30%` base chance, which a single rank of Ore Refinement already
 doubles. Every ore level above 10 removes another 1%, so the base reaches `0%` at ore level 40, `-30%` at level 70 and
-`-60%` at [Adamantium Ore](/docs/mechanics/items-crafting/item-list/#adamantium-ore)'s level 100. See
+`-60%` at [Adamantium Ore](/docs/mechanics/items-crafting/item-database/#adamantium-ore)'s level 100. See
 [Refining](/docs/mechanics/items-crafting/natural-resources/#refining) for the level and base chance of every ore. Bonus sources:
 
 - [Ore Refinement](/docs/mechanics/master/craftsman-tree/#skill-ore-refinement) rank — up to **+90%** at Lv. 3.
-- **Fuel** — [Coal](/docs/mechanics/items-crafting/item-list/#coal) is the reference fuel at `±0%`;
-  [Charcoal](/docs/mechanics/items-crafting/item-list/#charcoal) burns cooler and costs `-10%`.
+- **Fuel** — [Coal](/docs/mechanics/items-crafting/item-database/#coal) is the reference fuel at `±0%`;
+  [Charcoal](/docs/mechanics/items-crafting/item-database/#charcoal) burns cooler and costs `-10%`.
 - A [Mana Circle](/docs/mechanics/master/basics/#mana-circles) — up to **+45%** with six participants on mana-rich ground.
 - **STR** — `+2%` per 10 points; working the bellows and turning a heavy charge is physical labour
   (see [Status Values](/docs/mechanics/combat/statusvalues/#strength---str)).
@@ -264,7 +264,7 @@ doubles. Every ore level above 10 removes another 1%, so the base reaches `0%` a
   (see [Status Values](/docs/mechanics/combat/statusvalues/#willpower---wil)).
 
 **Example:** A Blacksmith with maxed [Ore Refinement](/docs/mechanics/master/craftsman-tree/#skill-ore-refinement) (Lv. 3, `+90%`)
-burning coal, at 60 STR (`+12%`) and 30 WIL (`+3%`), attempts [Adamantium Ore](/docs/mechanics/items-crafting/item-list/#adamantium-ore)
+burning coal, at 60 STR (`+12%`) and 30 WIL (`+3%`), attempts [Adamantium Ore](/docs/mechanics/items-crafting/item-database/#adamantium-ore)
 (Lv. 100): `baseChance = 0.30 - 90 * 0.01 = -0.60`, so `chance = -0.60 + 0.90 + 0.00 + 0.12 + 0.03 = 0.45` — a 45%
 success chance on the hardest ore in the world, meaning even a maxed smith loses roughly every second batch. The same
 smith at 80 STR / 40 WIL reaches `50%`; feeding the furnace charcoal instead of coal costs a flat 10 points off either
@@ -550,15 +550,15 @@ cap = min(reliableItemLevel, mainMaterialLevel + 20)
 
 | Main material                                           | Level | Cap | Points at most |
 | ------------------------------------------------------- | ----: | --: | -------------: |
-| [Tin](/docs/mechanics/items-crafting/item-list/#tin-ore)               |     5 |  25 |              8 |
-| [Copper](/docs/mechanics/items-crafting/item-list/#copper-ore)         |    10 |  30 |             10 |
+| [Tin](/docs/mechanics/items-crafting/item-database/#tin-ore)               |     5 |  25 |              8 |
+| [Copper](/docs/mechanics/items-crafting/item-database/#copper-ore)         |    10 |  30 |             10 |
 | Iron                                                    |    20 |  40 |             13 |
 | Silver                                                  |    35 |  55 |             18 |
 | Gold                                                    |    50 |  70 |             23 |
 | Mercury                                                 |    60 |  80 |             26 |
 | Palladium                                               |    70 |  90 |             30 |
 | Mithril                                                 |    85 | 105 |             35 |
-| [Adamantium](/docs/mechanics/items-crafting/item-list/#adamantium-ore) |   100 | 120 |             40 |
+| [Adamantium](/docs/mechanics/items-crafting/item-database/#adamantium-ore) |   100 | 120 |             40 |
 
 The material levels are the ore levels from [Refining](/docs/mechanics/items-crafting/natural-resources/#refining).
 

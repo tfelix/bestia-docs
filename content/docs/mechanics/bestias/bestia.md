@@ -17,16 +17,16 @@ A boss lives alone in a **boss den**. Boss dens appear only in wild country, whe
 
 # Catching Bestias
 
-To catch a Bestia you need a **Magic Bestia Trap**. These are manufactured with the Craftsman's [Carpentry](/docs/mechanics/master/craftsman-tree/#skill-carpentry) skill and empowered with [Mana Dust](/docs/mechanics/items-crafting/item-list/#mana-dust). Four tiers exist, each one better than the last at holding a high-level Bestia.
+To catch a Bestia you need a **Magic Bestia Trap**. These are manufactured with the Craftsman's [Carpentry](/docs/mechanics/master/craftsman-tree/#skill-carpentry) skill and empowered with [Mana Dust](/docs/mechanics/items-crafting/item-database/#mana-dust). Four tiers exist, each one better than the last at holding a high-level Bestia.
 
 The base catch chance depends only on the trap tier and the target's level:
 
 | Trap                                                                 | Lv. 1 - 20 | Lv. 21 - 40 | Lv. 41 - 60 | Lv. 61 - 100 |     Lv. 101+     |
 | :------------------------------------------------------------------- | :--------: | :---------: | :---------: | :----------: | :--------------: |
-| [Bestia Trap](/docs/mechanics/items-crafting/item-list/#bestia-trap) |    +60%    |    +20%     |    -20%     |     -60%     | -60% - 3(LV-100) |
-| [Super Trap](/docs/mechanics/items-crafting/item-list/#super-trap)   |   +100%    |    +60%     |    +20%     |     -20%     | -20% - 3(LV-100) |
-| [Mega Trap](/docs/mechanics/items-crafting/item-list/#mega-trap)     |   +140%    |    +100%    |    +60%     |     +20%     | +20% - 3(LV-100) |
-| [Master Trap](/docs/mechanics/items-crafting/item-list/#master-trap) |   +180%    |    +140%    |    +100%    |     +60%     | +60% - 3(LV-100) |
+| [Bestia Trap](/docs/mechanics/items-crafting/item-database/#bestia-trap) |    +60%    |    +20%     |    -20%     |     -60%     | -60% - 3(LV-100) |
+| [Super Trap](/docs/mechanics/items-crafting/item-database/#super-trap)   |   +100%    |    +60%     |    +20%     |     -20%     | -20% - 3(LV-100) |
+| [Mega Trap](/docs/mechanics/items-crafting/item-database/#mega-trap)     |   +140%    |    +100%    |    +60%     |     +20%     | +20% - 3(LV-100) |
+| [Master Trap](/docs/mechanics/items-crafting/item-database/#master-trap) |   +180%    |    +140%    |    +100%    |     +60%     | +60% - 3(LV-100) |
 
 The `Lv. 101+` column continues the `Lv. 61 - 100` column without a jump: at exactly Lv. 100 the penalty term is zero.
 
@@ -95,9 +95,9 @@ An overview of the attacks themselves lives on the [Attack List](/docs/mechanics
 Bestia can be bred in order to improve their [individual values](#individual-values) and to pass powerful attacks
 down a bloodline. Breeding takes two buildings, and each does one job at a time:
 
-1. A **[Breeding Farm](/docs/mechanics/items-crafting/item-list/#breeding-farm)** pairs two Bestia and lays an
+1. A **[Breeding Farm](/docs/mechanics/items-crafting/item-database/#breeding-farm-kit)** pairs two Bestia and lays an
    **egg**.
-2. An **[Incubator](/docs/mechanics/items-crafting/item-list/#incubator)** hatches the egg into a new Bestia.
+2. An **[Incubator](/docs/mechanics/items-crafting/item-database/#incubator-kit)** hatches the egg into a new Bestia.
 
 Both are put down from a kit, like a [crafting station](/docs/mechanics/items-crafting/crafting-stations/#kits-place-stations).
 The kits are made at a Workbench with [Carpentry](/docs/mechanics/master/craftsman-tree/#skill-carpentry):
@@ -123,7 +123,7 @@ changes. To breed a pair:
 ## Laying an Egg
 
 The owner opens the farm, picks the two parents and puts in one
-**[Nesting Bundle](/docs/mechanics/items-crafting/item-list/#nesting-bundle)**. The bundle is made at a Workbench with
+**[Nesting Bundle](/docs/mechanics/items-crafting/item-database/#nesting-bundle)**. The bundle is made at a Workbench with
 Carpentry Lv. 1 from a reed stalk, a soft fur and a feather.
 
 1. **Travel.** The parents walk to the farm on their own, from wherever they are, like a Bestia

@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>{{ .Permalink }}</title>
+    <link rel="canonical" href="{{ .Permalink }}" />
+    <meta charset="utf-8" />
+    <!-- A meta refresh drops the #anchor, so old deep links to a renamed page would only land on its top. -->
+    <script>
+      location.replace({{ .Permalink }} + location.hash);
+    </script>
+    <meta http-equiv="refresh" content="0; url={{ .Permalink }}" />
+  </head>
+</html>
