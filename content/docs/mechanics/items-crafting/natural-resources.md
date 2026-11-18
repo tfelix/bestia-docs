@@ -48,6 +48,9 @@ The following base types of resources exist in the game.
 
 The **Type** column reuses the base resource types listed above, plus the refined categories they become. `Metal` is not a raw type found in a biome: metal bars are the refined (tier 2) form of the corresponding ore — iron becomes steel, gold ore becomes gold bars, and so on.
 
+The [Item Database](/docs/mechanics/items-crafting/item-database/) has the in-game numbers of each: [ores](/docs/mechanics/items-crafting/item-database/?category=ore), [metals](/docs/mechanics/items-crafting/item-database/?category=metal),
+[gems](/docs/mechanics/items-crafting/item-database/?category=gem), [herbs](/docs/mechanics/items-crafting/item-database/?category=herb) and [wood](/docs/mechanics/items-crafting/item-database/?category=wood).
+
 {{< table >}}
 
 | Name                | Type    | Description                                                                                 |
