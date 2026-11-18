@@ -198,7 +198,9 @@
     const resolved = bp.loot.rows;
     [...body.querySelectorAll("[data-loot-info]")].forEach((cell, i) => {
       const row = resolved.find((r) => r.name === loot[i].item || r.item === String(loot[i].item).trim().toLowerCase());
-      cell.innerHTML = !loot[i].item ? "" : row && row.known ? `${fmt(row.value)} coins, ${tierLabel(row.tier)}` : '<span class="text-warning">not on the Items List</span>';
+      cell.innerHTML = !loot[i].item ? "" : !row || !row.known ? '<span class="text-warning">not on the Items List</span>'
+        : row.priced ? `${fmt(row.value)} coins, ${tierLabel(row.tier)}`
+        : `<span class="text-warning">no price yet</span>, ${tierLabel(row.tier)}`;
     });
 
     const l = bp.loot;
@@ -344,7 +346,7 @@
     .then(([items, attacks]) => {
       data.items = items;
       data.attacks = attacks;
-      $("bp-items").innerHTML = items.map((it) => `<option value="${escapeHtml(it.id)}">${escapeHtml(it.name)}, ${it.value} coins</option>`).join("");
+      $("bp-items").innerHTML = items.map((it) => `<option value="${escapeHtml(it.id)}">${escapeHtml(it.name)}${it.value != null ? `, ${it.value} coins` : ""}</option>`).join("");
     })
     .catch((err) => {
       data.items = [];

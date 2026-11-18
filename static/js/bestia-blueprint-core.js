@@ -476,7 +476,9 @@
           percent,
           // Mob YAML counts in basis points: 10000 is 100 %.
           basisPoints: Math.max(1, Math.round(percent * 100)),
-          value: item ? item.value : 0,
+          // An item without a reference price counts as worthless until someone prices it.
+          priced: Boolean(item && item.value != null),
+          value: (item && item.value) || 0,
           tier: tier.id,
         };
       });
