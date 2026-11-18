@@ -423,7 +423,8 @@ The skill is the master's. A bestia picks herbs with its master's Herbalism leve
     description="The core craft of the Alchemist: brewing reagents down into potions, tonics and other consumables. Builds directly on what Herbalism teaches about picking the right ingredient." >}}
 
 Lv. 1 allows you to place an Alchemy Laboratory from an {{< item "alchemy_laboratory_kit" >}}. Higher levels let you reliably discover and craft stronger potions
-and elixirs.
+and elixirs. The laboratory brews the {{< item "small_health_potion" >}} and {{< item "small_mana_potion" >}} (Lv. 1)
+and the {{< item "health_potion" >}} and {{< item "mana_potion" >}} (Lv. 3) from herbs and an {{< item "empty_bottle" >}}.
 
 | Lv. | Success Chance | Reliable Item Level |
 | --- | -------------- | ------------------- |
@@ -449,7 +450,9 @@ Same rule as [Forge Weapon](#skill-forge-weapon): no hard cap, but every item le
     type="Active" manaCost="34" castTime="10s" cooldown="0s" range="2" target="Transmutation Workbench"
     description="The Alchemist's capstone. Where Alchemy brews what nature already provides, Transmutation reshapes mundane matter itself into the rare magically-infused resources needed for strong artifact creation and weapon refinements." >}}
 
-Lv. 1 allows you to place a Transmutation Workbench from a {{< item "transmutation_workbench_kit" >}}. Higher levels unlock transmuting higher-grade infused resources.
+Lv. 1 allows you to place a Transmutation Workbench from a {{< item "transmutation_workbench_kit" >}}. Higher levels unlock transmuting higher-grade infused resources:
+{{< item "pure_mana_essence" >}} (Lv. 1), {{< item "mana_concentrate" >}} (Lv. 3), and from blue crystals the
+{{< item "yellow_mana_crystal" >}} (Lv. 5) and the {{< item "red_mana_crystal" >}} (Lv. 7).
 
 | Lv. | Success Chance | Reliable Item Level |
 | --- | -------------- | ------------------- |
@@ -501,15 +504,17 @@ Only the drinkable restoratives count as potions. Food, the bandage and the novi
 | ---------------------------------- | ----------------- |
 | {{< item "small_health_potion" >}} | 45 HP             |
 | {{< item "small_mana_potion" >}}   | 45 mana           |
+| {{< item "health_potion" >}}       | 170 HP            |
+| {{< item "mana_potion" >}}         | 170 mana          |
 | {{< item "medicine" >}}            | 70 HP, 30 stamina |
 
 | Lv. | Potion Effect | {{< item "small_health_potion" >}} |
-| --- | ------------- | ------------------- |
-| 1   | +10%          | 49 HP               |
-| 2   | +20%          | 54 HP               |
-| 3   | +30%          | 58 HP               |
-| 4   | +40%          | 63 HP               |
-| 5   | +50%          | 67 HP               |
+| --- | ------------- | ---------------------------------- |
+| 1   | +10%          | 49 HP                              |
+| 2   | +20%          | 54 HP                              |
+| 3   | +30%          | 58 HP                              |
+| 4   | +40%          | 63 HP                              |
+| 5   | +50%          | 67 HP                              |
 
 Fractions are dropped. A heal from a thrown potion counts as a heal, so sickness halves it and it closes a bleeding
 wound, the same as a drunk one.
