@@ -4,7 +4,7 @@ title: Quest Manager
 description: "Design of the QuestManager - how the zone plans quests from the world history and from real events in the live world, offers them through townsfolk, found things and the blackboard, runs chains with a choice, and writes their endings back into the world."
 ---
 
-{{< alert context="warning" text="**Design, not built.** The [quest core](/docs/server/quests/) and the blackboard exist. Built so far: the [fact store](#what-a-player-knows), stages and the new objective kinds of the [quest core](#changes-to-the-quest-core), the store and the questions of the [living chronicle](#the-living-chronicle), and the [planner](#the-planner) with its catalogues and the plan store. The build order is at the [end](#build-order)." />}}
+{{< alert context="warning" text="**Design, not built.** The [quest core](/docs/server/quests/) and the blackboard exist. Built so far: the [fact store](#what-a-player-knows), stages and the new objective kinds of the [quest core](#changes-to-the-quest-core), the store and the questions of the [living chronicle](#the-living-chronicle), the [planner](#the-planner) with its catalogues and the plan store, the [director](#plan-store-and-director) and the townsfolk [giver](#givers). The build order is at the [end](#build-order)." />}}
 
 The [quest core](/docs/server/quests/) keeps quests, but only players make them, on the
 [blackboard](/docs/mechanics/towns-trade/blackboard/). The **QuestManager** is the part that lets the world make
@@ -143,19 +143,25 @@ a restart changes nothing. Later it also plans, for each town, the live quests t
 this temple, feed this town. They stay `PLANNED` until their cause really happens, but their text can be written
 ahead.
 
-The **director** runs off the tick, every few minutes. It decides which plans are offered now:
+The **director** runs off the tick, every five minutes and once at start. It decides which plans are offered now:
 
-- A budget per town by its size, at most one offer per household, a cap per region.
-- A spread of levels, with easy quests near the start towns.
-- A live plan is offered only while its cause is real.
+- A budget per town by its size: one quest, and one more for every 400 people. The best plans go first.
+- A plan nobody took is withdrawn when its cause is gone.
+- Not built yet: a cap per region and a spread of levels around the start towns.
+
+A plan becomes a quest of the quest core when the first master accepts it. Later masters join the same quest, so a
+unique prize is one quest and a race.
 
 # Givers
 
 | Giver       | How it offers                                                                                                                                                 |
 | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Townsfolk   | A new topic in the [conversation](/docs/server/dialog/) with an action option to accept. Only shown when the household's regard for the player is good enough |
+| Townsfolk   | A new topic in the [conversation](/docs/server/dialog/) with an action option to accept. Built. A player the town gives the cold shoulder never sees it       |
 | Found thing | A **carrier**: a prop or an item with a text, such as an epitaph or a letter. Reading it teaches a fact and puts the lead into the quest log                  |
 | Blackboard  | A world posting in the same list as the player postings. Used for shared local quests                                                                         |
+
+When the first step of a plan is "hear the giver out", it is done as the master accepts: they stand before the
+giver. Found things and the blackboard do not offer generated quests yet.
 
 # Changes to the Quest Core
 
