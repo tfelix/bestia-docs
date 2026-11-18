@@ -129,7 +129,7 @@
   material: Wood
   value: 4
   description: |
-    Glossy black lumps hewn out of a mineral seam. The reference fuel of every [Furnace](/docs/mechanics/items-crafting/item-database/#furnace-kit) and what any serious smelting run burns — see [Refining](/docs/mechanics/items-crafting/natural-resources/#refining).
+    Glossy black lumps hewn out of a mineral seam. The reference fuel of every [Furnace](/docs/mechanics/items-crafting/item-database/?id=furnace_kit) and what any serious smelting run burns — see [Refining](/docs/mechanics/items-crafting/natural-resources/#refining).
 - id: clay
   name: Clay
   game_id: 11
@@ -439,7 +439,7 @@
   material: Stone
   value: 600
   description: |
-    Blacksmiths use furnaces to smelt raw ore down into metal bars. Every batch burns [Coal](/docs/mechanics/items-crafting/item-database/#coal) or [Charcoal](/docs/mechanics/items-crafting/item-database/#charcoal), and both the ore and the fuel are lost if the smelt fails.
+    Blacksmiths use furnaces to smelt raw ore down into metal bars. Every batch burns [Coal](/docs/mechanics/items-crafting/item-database/?id=coal) or [Charcoal](/docs/mechanics/items-crafting/item-database/?id=charcoal), and both the ore and the fuel are lost if the smelt fails.
     Placing one requires [Ore Refinement](/docs/mechanics/master/craftsman-tree/#skill-ore-refinement) Lv. 1. Use it to construct it in the world.
 - id: forge_kit
   name: Forge Kit
@@ -8928,148 +8928,147 @@
     A dark-stained board on two posts, with a pouch of chalk and a fistful of nails.
 
     Set it up inside a town without one, and anyone may post or take on quests there.
-- id: mobile_laboratory
-  name: Mobile Laboratory
-  weight: 15
-  type: Usable
+- id: alchemy_laboratory_kit
+  name: Alchemy Laboratory Kit
+  game_id: 614
+  type: Etc
+  categories: [station]
+  weight: 15.0
+  item_level: 1
+  material: Glass
   value: 2500
   description: |
-    Alchemists use those small and laboratories to work on new recipies or brew potions and elexiers in the wild. When it is packed up it fits into a big crate and is quite transportable. A must have equipment for every alchemist.
-    Use it to construct it in the world.
-  planned: true
-  categories: [station, planned]
+    A crate of flasks, retorts and a small burner, packed in straw.
+
+    Set it down and it becomes an Alchemy Laboratory, where potions are brewed in the wild.
+- id: gem_cut_station_kit
+  name: Gem Cut Station Kit
+  game_id: 615
+  type: Etc
+  categories: [station]
+  weight: 10.0
+  item_level: 1
+  material: Wood
+  value: 2000
+  description: |
+    A bench of clamps, loupes and graded grit where a Miner turns rough gemstones into cut ones. Placing one requires
+    [Gem Cutting](/docs/mechanics/master/survival-tree/#skill-gem-cutting) Lv. 1.
+- id: transmutation_workbench_kit
+  name: Transmutation Workbench Kit
+  game_id: 616
+  type: Etc
+  categories: [station]
+  weight: 15.0
+  item_level: 1
+  material: Stone
+  description: |
+    A slab of engraved stone and a bundle of copper rods, wrapped in oilcloth.
+
+    Set it down and it becomes a Transmutation Workbench, where mundane matter is reshaped.
+- id: super_trap
+  name: Super Trap
+  game_id: 617
+  type: Usable
+  categories: [consumable]
+  weight: 2.0
+  item_level: 20
+  material: Wood
+  value: 200
+  description: |
+    A reinforced Magic Bestia Trap with a second layer of binding wards. The workhorse of most Foresters.
+    Base catch chance `+100%` against Bestia up to Lv. 20.
+- id: mega_trap
+  name: Mega Trap
+  game_id: 618
+  type: Usable
+  categories: [consumable]
+  weight: 2.0
+  item_level: 40
+  material: Metal
+  value: 800
+  description: |
+    A Magic Bestia Trap built around a caged mana crystal. Expensive enough that most masters save them for something worth keeping.
+    Base catch chance `+140%` against Bestia up to Lv. 20.
+- id: master_trap
+  name: Master Trap
+  game_id: 619
+  type: Usable
+  categories: [consumable]
+  weight: 2.0
+  item_level: 60
+  material: Metal
+  value: 3000
+  description: |
+    The finest Magic Bestia Trap a Craftsman can produce. The only trap with any real hope against a Bestia past Lv. 100.
+    Base catch chance `+180%` against Bestia up to Lv. 20.
+- id: health_potion
+  name: Health Potion
+  game_id: 620
+  type: Usable
+  categories: [consumable]
+  weight: 0.4
+  item_level: 30
+  material: Glass
+  value: 80
+  description: |
+    A robust flask of vibrant crimson elixir. Favored by adventurers for its powerful restorative magic. Heals 170 HP.
+- id: mana_potion
+  name: Mana Potion
+  game_id: 621
+  type: Usable
+  categories: [consumable]
+  weight: 0.4
+  item_level: 30
+  material: Glass
+  value: 100
+  description: |
+    A swirling flask of deep azure liquid. Pulses with arcane power, ready to fuel the most demanding spells. Restores 170 Mana.
 - id: grape
   name: Grape
-  weight: 0.1
+  game_id: 622
   type: Usable
+  categories: [consumable]
+  weight: 0.1
+  item_level: 1
+  material: Food
   value: 1
   description: |
     A sweet, ripe purple grape. It is said that its sugar vitalizes the brain.
 
     Restores 10 Mana
-  planned: true
-  categories: [consumable, planned]
 - id: charcoal
   name: Charcoal
-  weight: 0.2
+  game_id: 623
   type: Etc
+  categories: [wood]
+  weight: 0.2
+  item_level: 1
+  material: Wood
   value: 3
   description: |
-    Charred, brittle pieces of wood. Cheap furnace fuel and a base for potent alchemical mixtures. Burns cooler than [Coal](/docs/mechanics/items-crafting/item-database/#coal) and costs `-10%` on every [ore refinement](/docs/mechanics/items-crafting/crafting/#ore-refinement-success-chance) attempt.
-  planned: true
-  categories: [material, planned]
-- id: health_potion
-  name: Health Potion
-  weight: 0.3
-  type: Usable
-  value: 80
-  description: |
-    A robust flask of vibrant crimson elixir. Favored by adventurers for its powerful restorative magic. Heals 170 HP.
-  planned: true
-  categories: [consumable, planned]
-- id: mana_potion
-  name: Mana Potion
-  weight: 0.3
-  type: Usable
-  value: 100
-  description: |
-    A swirling flask of deep azure liquid. Pulses with arcane power, ready to fuel the most demanding spells. Restores 170 Mana.
-  planned: true
-  categories: [consumable, planned]
-- id: platin_bar
-  name: Platin Bar
-  weight: 2.5
-  type: Etc
-  value: 30000
-  description: |
-    A precious refined platinum ingot. Used for premium crafting and magical applications.
-  planned: true
-  categories: [metal, planned]
-- id: stone
-  name: Stone
-  weight: 5
-  type: Etc
-  value: 1
-  description: |
-    Standard building stone. Essential material for construction projects.
-  planned: true
-  categories: [material, planned]
+    Charred, brittle pieces of wood. Cheap furnace fuel and a base for potent alchemical mixtures. Burns cooler than [Coal](/docs/mechanics/items-crafting/item-database/?id=coal) and costs `-10%` on every [ore refinement](/docs/mechanics/items-crafting/crafting/#ore-refinement-success-chance) attempt.
 - id: marble
   name: Marble
-  weight: 8
+  game_id: 624
   type: Etc
+  categories: [material]
+  weight: 6.0
+  item_level: 20
+  material: Stone
   value: 15
   description: |
     High quality building stone with elegant appearance. Premium building material.
-  planned: true
-  categories: [material, planned]
-- id: embercoal
-  name: Embercoal
-  weight: 0.5
-  type: Etc
-  value: 40
-  description: |
-    A lump of coal that never stops smouldering. Loaded into a blueprint to give a craft the fire element.
-  planned: true
-  categories: [material, planned]
-- id: frost_shard
-  name: Frost Shard
-  weight: 0.4
-  type: Etc
-  value: 40
-  description: |
-    A sliver of ice that never melts. Loaded into a blueprint to give a craft the frost element.
-  planned: true
-  categories: [material, planned]
-- id: gem_cut_station
-  name: Gem Cut Station
-  weight: 35
-  type: Etc
-  value: 2000
-  description: |
-    A bench of clamps, loupes and graded grit where a Miner turns rough gemstones into cut ones. Placing one requires
-    [Gem Cutting](/docs/mechanics/master/survival-tree/#skill-gem-cutting) Lv. 1.
-  planned: true
-  categories: [station, planned]
-- id: super_trap
-  name: Super Trap
-  weight: 1.5
-  type: Usable
-  value: 200
-  description: |
-    A reinforced Magic Bestia Trap with a second layer of binding wards. The workhorse of most Foresters.
-    Base catch chance `+100%` against Bestia up to Lv. 20.
-  planned: true
-  categories: [consumable, planned]
-- id: mega_trap
-  name: Mega Trap
-  weight: 2
-  type: Usable
-  value: 800
-  description: |
-    A Magic Bestia Trap built around a caged mana crystal. Expensive enough that most masters save them for something worth keeping.
-    Base catch chance `+140%` against Bestia up to Lv. 20.
-  planned: true
-  categories: [consumable, planned]
-- id: master_trap
-  name: Master Trap
-  weight: 2
-  type: Usable
-  value: 3000
-  description: |
-    The finest Magic Bestia Trap a Craftsman can produce. The only trap with any real hope against a Bestia past Lv. 100.
-    Base catch chance `+180%` against Bestia up to Lv. 20.
-  planned: true
-  categories: [consumable, planned]
 - id: sigil_of_redemption
   name: Sigil of Redemption
+  game_id: 625
   type: Equip
-  categories: [accessory, planned]
+  categories: [accessory]
   weight: 1.0
   item_level: 73
+  material: Metal
   min_level: 10
   slot: Accessory
+  durability: 200
   icon: sigil-of-redemption.png
   description: |
     A very expensive and rare sigil made from gold. It symbolizes your bond to your Order, but it also holds the power to undo those holy ties. It must be worn by the one performing the rite of [Banished From The Citadel](/docs/mechanics/combat/attack-list/#banished-from-the-citadel), and is consumed by it.
-  planned: true
