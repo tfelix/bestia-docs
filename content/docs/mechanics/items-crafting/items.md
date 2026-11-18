@@ -46,6 +46,9 @@ Each piece of armor has a weight class. A master wears the classes their
 Weapons have a [weapon type](#weapon-type) instead. Accessories have neither, so anyone with the free slot can wear
 them. The server sets the type with `armor-type` in `items.yml`.
 
+The [Item Database](/docs/mechanics/items-crafting/item-database/?category=armor) lists every piece of armor, and filters it by type:
+[Cloth](/docs/mechanics/items-crafting/item-database/?armor=Cloth), [Light](/docs/mechanics/items-crafting/item-database/?armor=Light), [Medium](/docs/mechanics/items-crafting/item-database/?armor=Medium) and [Heavy](/docs/mechanics/items-crafting/item-database/?armor=Heavy).
+
 # Weapon Type
 
 Each weapon has a weapon type. A master can only use the types their
@@ -83,6 +86,9 @@ its species.
   own ammunition: each throw uses up one piece of the stack in hand.
 - Tools hit weakly. Their real job is gathering, which is why every master can hold one.
 - There are no firearms in the world of Bestia.
+
+The [Item Database](/docs/mechanics/items-crafting/item-database/?category=weapon) lists every weapon. Its _Weapon type_ filter narrows it down to one type, for
+example [Bows](/docs/mechanics/items-crafting/item-database/?category=weapon&weapon=Bow).
 
 # Weapon Refinement
 

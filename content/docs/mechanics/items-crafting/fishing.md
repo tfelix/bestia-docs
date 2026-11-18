@@ -45,6 +45,8 @@ quarter of its usual weight. Forty levels over is `1/256` of it, which is as goo
 
 ## Catch Table
 
+Every catch is also in the [Item Database](/docs/mechanics/items-crafting/item-database/?category=fishing).
+
 | Catch               | Kind     | Catch Lv. | Weight |
 | ------------------- | -------- | --------- | ------ |
 | Old Boot            | Junk     | 1         | 40     |

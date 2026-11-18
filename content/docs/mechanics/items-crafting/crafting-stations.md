@@ -40,6 +40,8 @@ A station is always put down from a **kit**: an item that is crafted in Handiwor
 there. A kit can also be sold or given away like any other item. Casting a skill on bare ground never builds a station
 by itself any more. It opens Handiwork with that skill selected, where its kit is the first entry.
 
+The [Item Database](/docs/mechanics/items-crafting/item-database/?category=station) lists every kit.
+
 # The Window
 
 ```text
