@@ -32,65 +32,65 @@ The following base types of resources exist in the game.
 
 {{< table >}}
 
-| Type     | Biome Occurrence          | Usage                            |
-| -------- | ------------------------- | -------------------------------- |
-| Ores     | Mountains, Sea, Caves     | Alchemy, Blacksmiths             |
-| Minerals | Mountains, Sea, Caves     | Alchemy, Blacksmiths, Magic Uses |
-| Crystals | Mountains, Sea, Caves     | Magical Uses                     |
-| Mana     | World                     | Magical Uses                     |
-| Herbs    | World, especially Forests | Magical Uses & Alchemy           |
-| Wood     | Forests                   | Material                         |
-| Stone    | Mountains                 | Material                         |
+| Type                          | Biome Occurrence          | Usage                            |
+| ----------------------------- | ------------------------- | -------------------------------- |
+| Ores                          | Mountains, Sea, Caves     | Alchemy, Blacksmiths             |
+| Minerals                      | Mountains, Sea, Caves     | Alchemy, Blacksmiths, Magic Uses |
+| Crystals                      | Mountains, Sea, Caves     | Magical Uses                     |
+| Mana                          | World                     | Magical Uses                     |
+| Herbs                         | World, especially Forests | Magical Uses & Alchemy           |
+| {{< item "log" >}}            | Forests                   | Material                         |
+| {{< item "quarried_stone" >}} | Mountains                 | Material                         |
 
 {{< /table >}}
 
 ## List of Resources
 
-The **Type** column reuses the base resource types listed above, plus the refined categories they become. `Metal` is not a raw type found in a biome: metal bars are the refined (tier 2) form of the corresponding ore — iron becomes steel, gold ore becomes gold bars, and so on.
+The **Type** column reuses the base resource types listed above, plus the refined categories they become. `Metal` is not a raw type found in a biome: ingots are the refined (tier 2) form of the corresponding ore — iron ore becomes an iron ingot and then steel, gold ore becomes a gold bar, and so on.
 
 The [Item Database](/docs/mechanics/items-crafting/item-database/) has the in-game numbers of each: [ores](/docs/mechanics/items-crafting/item-database/?category=ore), [metals](/docs/mechanics/items-crafting/item-database/?category=metal),
 [gems](/docs/mechanics/items-crafting/item-database/?category=gem), [herbs](/docs/mechanics/items-crafting/item-database/?category=herb) and [wood](/docs/mechanics/items-crafting/item-database/?category=wood).
 
 {{< table >}}
 
-| Name                | Type    | Description                                                                                 |
-| ------------------- | ------- | ------------------------------------------------------------------------------------------- |
-| Tin Ore             | Ore     | A soft, low-melting ore. Alloyed with copper for bronze and basic crafting.                 |
-| Iron Ore            | Ore     | The workhorse ore of any smith. Smelted into steel for weapons, armor and tools.            |
-| Copper Ore          | Ore     | A reddish-brown ore that can be refined into copper. Used for forging and crafting.         |
-| Silver Ore          | Ore     | Used for crafting.                                                                          |
-| Gold Ore            | Ore     | Used for crafting and money creation.                                                       |
-| Palladium Ore       | Ore     | A precious metallic ore with excellent catalytic properties. Used for high-end equipment.   |
-| Mithril Ore         | Ore     | Used for magic artefacts.                                                                   |
-| Adamantium Ore      | Ore     | Hardest material known, used for various items.                                             |
-| Mercury Ore         | Ore     | A rare silvery ore containing mercury. Used for advanced alchemy and magical crafting.      |
-| Steel Bar           | Metal   | Refined from iron ore and charcoal in a furnace. The staple metal for weapons and armor.    |
-| Silver Bar          | Metal   | A refined silver ingot with excellent conductivity. Used for crafting and magical purposes. |
-| Gold Bar            | Metal   | A valuable refined gold ingot. Highly sought after for crafting and trade.                  |
-| Platin Bar          | Metal   | A precious refined platinum ingot. Used for premium crafting and magical applications.      |
-| Mana Essence        | Mana    | Raw mana-bearing powder. Fed into a Mana Harvester to grow mana crystals.                   |
-| Pure Mana Essence   | Mana    | A purer grade of mana powder. Yields higher-quality mana crystals.                          |
-| Mana Concentrate    | Mana    | Highly concentrated mana powder. Raw material for the finest mana crystals.                 |
-| Mana Dust           | Mana    | Fine, faintly glowing dust of condensed mana. Empowers Bestia traps and ritual crafting.    |
-| Blue Mana Crystal   | Mana    | Used for magic artefacts. Quite a common crystal.                                           |
-| Yellow Mana Crystal | Mana    | Used for magic artefacts. Quite rare.                                                       |
-| Red Mana Crystal    | Mana    | Used for magic artefacts. Very rare.                                                        |
-| Rough Gems          | Crystal | Amethyst, emerald, ruby, pyrelith and diamond. Cut into vessels for Bestia essences.        |
-| Coal                | Mineral | A black mineral fuel dug from seams. The reference fuel of every furnace.                   |
-| Charcoal            | Mineral | Wood burned down into fuel. Cheaper than coal, but never gets a furnace as hot.             |
-| Salt                | Mineral | Common mineral salt. Used for food preservation and various crafting recipes.               |
-| Clay                | Mineral | Smooth, earthy clay dug from riverbanks. Shaped into bricks, pottery and magical seals.     |
-| Wild Herb           | Herb    | The everyday herb of open ground. Anyone can pick it.                                       |
-| Medicinal Herb      | Herb    | A healing herb of the forest floor. A base ingredient for many potions.                     |
-| Mana Herb           | Herb    | A mana-touched herb found in high-mana regions. Used in more potent alchemical brews.       |
-| Frost Herb          | Herb    | A tough herb of tundra, taiga and the high mountains.                                       |
-| Sun Herb            | Herb    | A sun-dried herb of the desert and the badlands.                                            |
-| Ghost Herb          | Herb    | A pale herb that only grows on blighted ground.                                             |
-| Wood                | Wood    | Standard building material.                                                                 |
-| Resin               | Wood    | Sticky and burnable. Lights torches and campfires.                                          |
-| Stone               | Stone   | Standard building material.                                                                 |
-| Marble              | Stone   | High quality building material.                                                             |
-| Obsidian            | Stone   | A glass-like, very hard material.                                                           |
+| Name                                                                     | Type    | Description                                                                               |
+| ------------------------------------------------------------------------ | ------- | ----------------------------------------------------------------------------------------- |
+| {{< item "tin_ore" >}}                                                   | Ore     | A soft, low-melting ore. Alloyed with copper for bronze and basic crafting.               |
+| {{< item "iron_ore" >}}                                                  | Ore     | The workhorse ore of any smith. Smelted into steel for weapons, armor and tools.          |
+| {{< item "copper_ore" >}}                                                | Ore     | A reddish-brown ore that can be refined into copper. Used for forging and crafting.       |
+| {{< item "silver_ore" >}}                                                | Ore     | Used for crafting.                                                                        |
+| {{< item "gold_ore" >}}                                                  | Ore     | Used for crafting and money creation.                                                     |
+| {{< item "palladium_ore" >}}                                             | Ore     | A precious metallic ore with excellent catalytic properties. Used for high-end equipment. |
+| {{< item "mithril_ore" >}}                                               | Ore     | Used for magic artefacts.                                                                 |
+| {{< item "adamantium_ore" >}}                                            | Ore     | Hardest material known, used for various items.                                           |
+| {{< item "mercury_ore" >}}                                               | Ore     | A rare silvery ore containing mercury. Used for advanced alchemy and magical crafting.    |
+| {{< item "steel_ingot" >}}                                               | Metal   | Iron ingot worked with coal in a furnace. The staple metal for weapons and armor.         |
+| {{< item "silver_ingot" >}}                                              | Metal   | Refined from silver ore. Excellent conductivity, used for crafting and magical purposes.  |
+| {{< item "gold_bar" >}}                                                  | Metal   | A valuable refined gold ingot. Highly sought after for crafting and trade.                |
+| {{< item "palladium_ingot" >}}                                           | Metal   | Refined from palladium ore. A precious metal for delicate and costly work.                |
+| {{< item "mana_essence" >}}                                              | Mana    | Raw mana-bearing powder. Fed into a Mana Harvester to grow mana crystals.                 |
+| {{< item "pure_mana_essence" >}}                                         | Mana    | A purer grade of mana powder. Yields higher-quality mana crystals.                        |
+| {{< item "mana_concentrate" >}}                                          | Mana    | Highly concentrated mana powder. Raw material for the finest mana crystals.               |
+| {{< item "mana_dust" >}}                                                 | Mana    | Fine, faintly glowing dust of condensed mana. Empowers Bestia traps and ritual crafting.  |
+| {{< item "blue_mana_crystal" >}}                                         | Mana    | Used for magic artefacts. Quite a common crystal.                                         |
+| {{< item "yellow_mana_crystal" >}}                                       | Mana    | Used for magic artefacts. Quite rare.                                                     |
+| {{< item "red_mana_crystal" >}}                                          | Mana    | Used for magic artefacts. Very rare.                                                      |
+| [Rough Gems](/docs/mechanics/items-crafting/item-database/?category=gem) | Crystal | Amethyst, emerald, ruby, pyrelith and diamond. Cut into vessels for Bestia essences.      |
+| {{< item "coal" >}}                                                      | Mineral | A black mineral fuel dug from seams. The reference fuel of every furnace.                 |
+| {{< item "charcoal" >}}                                                  | Mineral | Wood burned down into fuel. Cheaper than coal, but never gets a furnace as hot.           |
+| {{< item "salt" >}}                                                      | Mineral | Common mineral salt. Used for food preservation and various crafting recipes.             |
+| {{< item "clay" >}}                                                      | Mineral | Smooth, earthy clay dug from riverbanks. Shaped into bricks, pottery and magical seals.   |
+| {{< item "wild_herb" >}}                                                 | Herb    | The everyday herb of open ground. Anyone can pick it.                                     |
+| {{< item "medicinal_herb" >}}                                            | Herb    | A healing herb of the forest floor. A base ingredient for many potions.                   |
+| {{< item "mana_herb" >}}                                                 | Herb    | A mana-touched herb found in high-mana regions. Used in more potent alchemical brews.     |
+| {{< item "frost_herb" >}}                                                | Herb    | A tough herb of tundra, taiga and the high mountains.                                     |
+| {{< item "sun_herb" >}}                                                  | Herb    | A sun-dried herb of the desert and the badlands.                                          |
+| {{< item "ghost_herb" >}}                                                | Herb    | A pale herb that only grows on blighted ground.                                           |
+| {{< item "log" >}}                                                       | Wood    | Standard building material.                                                               |
+| {{< item "resin" >}}                                                     | Wood    | Sticky and burnable. Lights torches and campfires.                                        |
+| {{< item "quarried_stone" >}}                                            | Stone   | Standard building material.                                                               |
+| {{< item "marble" >}}                                                    | Stone   | High quality building material.                                                           |
+| {{< item "obsidian" >}}                                                  | Stone   | A glass-like, very hard material.                                                         |
 
 {{< /table >}}
 
@@ -103,14 +103,14 @@ part of the herbs there are a rarer kind:
 
 {{< table >}}
 
-| Herb           | Item Level | Grows                                    | Share of the herbs there |
-| -------------- | ---------- | ---------------------------------------- | ------------------------ |
-| Wild Herb      | 1          | Everywhere                               | The rest                 |
-| Medicinal Herb | 20         | Forest floors                            | 25%                      |
-| Mana Herb      | 40         | Where the mana concentration is over 60% | 30%                      |
-| Frost Herb     | 60         | Tundra, taiga, cold desert, alpine       | 35%                      |
-| Sun Herb       | 80         | Desert and badlands                      | 50%                      |
-| Ghost Herb     | 100        | Blighted ground                          | 30%                      |
+| Herb                          | Item Level | Grows                                    | Share of the herbs there |
+| ----------------------------- | ---------- | ---------------------------------------- | ------------------------ |
+| {{< item "wild_herb" >}}      | 1          | Everywhere                               | The rest                 |
+| {{< item "medicinal_herb" >}} | 20         | Forest floors                            | 25%                      |
+| {{< item "mana_herb" >}}      | 40         | Where the mana concentration is over 60% | 30%                      |
+| {{< item "frost_herb" >}}     | 60         | Tundra, taiga, cold desert, alpine       | 35%                      |
+| {{< item "sun_herb" >}}       | 80         | Desert and badlands                      | 50%                      |
+| {{< item "ghost_herb" >}}     | 100        | Blighted ground                          | 30%                      |
 
 {{< /table >}}
 
@@ -144,7 +144,7 @@ A tree whose ground was dug away is gone for good, stump and all. Nothing grows 
 # Refining
 
 Ore must be processed into metal bars before it is usable — steel, for example, is refined from iron ore together with
-fuel inside a [Furnace](/docs/mechanics/items-crafting/item-database/#furnace-kit). Placing a furnace and smelting at all requires a Master
+fuel inside a {{< item "furnace_kit" "Furnace" >}}. Placing a furnace and smelting at all requires a Master
 with the [Ore Refinement](/docs/mechanics/master/craftsman-tree/#skill-ore-refinement) skill; every further rank raises the odds that
 a batch survives the heat.
 
@@ -159,17 +159,17 @@ baseChance = 0.30 - max(0, oreLevel - 10) * 0.01
 
 {{< table >}}
 
-| Ore            | Ore Lv. | Category  | Base Refine Chance |
-| -------------- | ------- | --------- | ------------------ |
-| Tin Ore        | 5       | Mundane   | 30%                |
-| Copper Ore     | 10      | Mundane   | 30%                |
-| Iron Ore       | 20      | Mundane   | 20%                |
-| Silver Ore     | 35      | Superior  | 5%                 |
-| Gold Ore       | 50      | Superior  | -10%               |
-| Mercury Ore    | 60      | Rare      | -20%               |
-| Palladium Ore  | 70      | Rare      | -30%               |
-| Mithril Ore    | 85      | Legendary | -45%               |
-| Adamantium Ore | 100     | Legendary | -60%               |
+| Ore                           | Ore Lv. | Category  | Base Refine Chance |
+| ----------------------------- | ------- | --------- | ------------------ |
+| {{< item "tin_ore" >}}        | 5       | Mundane   | 30%                |
+| {{< item "copper_ore" >}}     | 10      | Mundane   | 30%                |
+| {{< item "iron_ore" >}}       | 20      | Mundane   | 20%                |
+| {{< item "silver_ore" >}}     | 35      | Superior  | 5%                 |
+| {{< item "gold_ore" >}}       | 50      | Superior  | -10%               |
+| {{< item "mercury_ore" >}}    | 60      | Rare      | -20%               |
+| {{< item "palladium_ore" >}}  | 70      | Rare      | -30%               |
+| {{< item "mithril_ore" >}}    | 85      | Legendary | -45%               |
+| {{< item "adamantium_ore" >}} | 100     | Legendary | -60%               |
 
 {{< /table >}}
 
@@ -185,10 +185,10 @@ Every smelt burns fuel alongside the ore, and a failed batch loses both.
 
 {{< table >}}
 
-| Fuel                                                               | Modifier | Notes                                                                        |
-| ------------------------------------------------------------------ | -------- | ---------------------------------------------------------------------------- |
-| [Coal](/docs/mechanics/items-crafting/item-database/#coal)         | ±0%      | The reference fuel. Mined from seams in mountains and caves.                 |
-| [Charcoal](/docs/mechanics/items-crafting/item-database/#charcoal) | -10%     | Burned down from wood. Cheap and craftable, but never gets a furnace as hot. |
+| Fuel                    | Modifier | Notes                                                                        |
+| ----------------------- | -------- | ---------------------------------------------------------------------------- |
+| {{< item "coal" >}}     | ±0%      | The reference fuel. Mined from seams in mountains and caves.                 |
+| {{< item "charcoal" >}} | -10%     | Burned down from wood. Cheap and craftable, but never gets a furnace as hot. |
 
 {{< /table >}}
 

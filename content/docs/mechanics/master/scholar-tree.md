@@ -208,7 +208,7 @@ the time it is made.
 
 {{< skill name="Aqua Benedicta" maxLevel="1" requires="Signum Crucis Lv. 1"
     type="Active" manaCost="12" castTime="3s" cooldown="5s" range="0" target="Self"
-    description="The rite of blessing plain water into [Holy Water](/docs/mechanics/items-crafting/item-database/#holy-water). User must be standing in water, consuming an [Empty Bottle](/docs/mechanics/items-crafting/item-database/#empty-bottle) in the process. Holy Water is the reagent behind Aspersio and several higher rites." >}}
+    description="The rite of blessing plain water into [Holy Water](/docs/mechanics/items-crafting/item-database/?id=holy_water). User must be standing in water, consuming an [Empty Bottle](/docs/mechanics/items-crafting/item-database/?id=empty_bottle) in the process. [Holy Water](/docs/mechanics/items-crafting/item-database/?id=holy_water) is the reagent behind Aspersio and several higher rites." >}}
 
 Shallow water counts. Only the water the world was made with counts so far, not a dug pond or a flood. A Priest on dry
 land is told so before the cast bar starts.
@@ -328,7 +328,7 @@ category, so an Undead of the Undead element counts once.
 
 {{< skill name="Aspersio" maxLevel="3" requires="Aqua Benedicta Lv. 1"
     type="Active" manaCost="22" castTime="2s" cooldown="10s" duration="per Lv." range="2" target="Ally"
-    description="Anoints a weapon with Holy Water, temporarily imbuing its strikes with the holy element. Consumes one [Holy Water](/docs/mechanics/items-crafting/item-database/#holy-water) per cast." >}}
+    description="Anoints a weapon with Holy Water, temporarily imbuing its strikes with the holy element. Consumes one [Holy Water](/docs/mechanics/items-crafting/item-database/?id=holy_water) per cast." >}}
 
 Melee blows strike as Holy. A weapon holds one element: Aspersio replaces an Endow, and an Endow replaces it.
 
@@ -699,7 +699,7 @@ strong Scry is harder to break.
     type="Active" manaCost="40" castTime="2s" cooldown="15s" range="9" target="Any"
     description="Unravels every magical effect clinging to a target in a single word, undoing buffs and curses alike." >}}
 
-Success chance starts at a base chance of `(50 + 10 * SkillLv)%`. A target with a higher Potency than the Dispel lowers it, see [Dispel](/docs/mechanics/combat/spell-potency/#dispel). Requires 1 [Yellow Mana Crystal](/docs/mechanics/items-crafting/item-database/#yellow-mana-crystal) per cast.
+Success chance starts at a base chance of `(50 + 10 * SkillLv)%`. A target with a higher Potency than the Dispel lowers it, see [Dispel](/docs/mechanics/combat/spell-potency/#dispel). Requires 1 {{< item "yellow_mana_crystal" >}} per cast.
 
 | Lv. | Base Success Chance |
 | --- | ------------------- |
@@ -868,7 +868,7 @@ strikes" and "holder's HP gets low" need the item worn. "Stranger picks it up" n
     type="Active" manaCost="35" castTime="2s" cooldown="30s" range="0" target="Self"
     description="Moves the Sage and their Bestias close by in a single step." >}}
 
-Every cast consumes a Teleport Rune. A teleported entity cannot teleport again for 5 minutes. The Sage's own bestias
+Every cast consumes a {{< item "teleport_rune" >}}. A teleported entity cannot teleport again for 5 minutes. The Sage's own bestias
 within 10 m come along and land beside the Sage. "Home" is the Sage's save point in the home settlement.
 
 | Lv. | Destination                  |
@@ -882,7 +882,7 @@ within 10 m come along and land beside the Sage. "Home" is the Sage's save point
     type="Active" manaCost="70" castTime="5s" cooldown="120s" duration="30s" range="3" target="Ground"
     description="The Sage's capstone. Where Teleport moves only the Sage and their Bestias, a Portal tears a standing hole that anyone can walk through. As soon as a portal has opened it can be used in both directions for some time." >}}
 
-Every cast consumes a Portal Rune, which costs more than a Teleport Rune.
+Every cast consumes a {{< item "portal_rune" >}}, which costs more than a Teleport Rune.
 
 A portal leads to the Sage's home or to a saved spot. Casting Warp Portal also offers "Mark this spot": it saves the
 spot the Sage stands on at once, with no rune, mana or cooldown. The Sage keeps one spot per level; a new mark replaces
@@ -901,7 +901,7 @@ both ends.
 
 {{< skill name="Endow" maxLevel="3" requires="Free Cast Lv. 2"
     type="Active" manaCost="28" castTime="2s" cooldown="5s" duration="per Lv." range="5" target="Ally"
-    description="Temporarily infuses an ally's weapon with an element, so its strikes burn, freeze, crack or crush as well as bite. Consumes a [Blue Mana Crystal](/docs/mechanics/items-crafting/item-database/#blue-mana-crystal) to carry the charge." >}}
+    description="Temporarily infuses an ally's weapon with an element, so its strikes burn, freeze, crack or crush as well as bite. Consumes a [Blue Mana Crystal](/docs/mechanics/items-crafting/item-database/?id=blue_mana_crystal) to carry the charge." >}}
 
 The caster picks the element when casting: fire, water, wind or earth. The weapon takes on the element, so the
 [element table](/docs/mechanics/bestias/bestia-design/#7-element-size-and-defences) applies. The bonus damage comes on top.

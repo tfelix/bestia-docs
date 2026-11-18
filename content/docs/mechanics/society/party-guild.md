@@ -59,7 +59,7 @@ anybody may pick it up. Options under consideration:
 
 # Guilds
 
-A guild is founded with a **Founder's Seal**, a rare item of level 45, spent in the founding. The
+A guild is founded with a **{{< item "founders_seal" >}}**, a rare item of level 45, spent in the founding. The
 master who uses it names the guild and leads it. A guild name is unique, up to `24` plain letters, digits and single
 spaces; a name that is taken is refused and the seal is kept.
 
@@ -90,7 +90,7 @@ name, after the guild's, for everyone who points at the master or one of its Bes
 | **Invite**             | Inviting players into the guild.                                                                     |
 | **Kick**               | Removing members of a lower rank, and lifting expulsions.                                            |
 | **Manage ranks**       | Adding, editing and deleting the ranks below one's own, and moving members of lower ranks onto them. |
-| **Use guild skills**   | Casting the guild's active skills, and planting its War Banner. The leader always may.               |
+| **Use guild skills**   | Casting the guild's active skills, and planting its {{< item "war_banner" >}}. The leader always may.               |
 | **Message of the day** | Writing the guild's [message of the day](#message-of-the-day). The leader always may.                |
 
 The leader's rank holds every permission and only the leader may rename it or change its tax; nobody else can be put

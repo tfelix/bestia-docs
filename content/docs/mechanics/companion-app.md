@@ -165,7 +165,7 @@ A [survey](/docs/mechanics/world/world-exploration/#cartography) is played at a 
 and the app can play it there. It lists your theodolites, and for an idle one you pick the survey size and play the
 same needle game as in the game. The size limits and the difficulty are the same.
 
-The try spends one Empty Paper and one Ink from your master's bag, as in the game. It costs no mana, because the
+The try spends one {{< item "chart_blank" >}} and one Ink from your master's bag, as in the game. It costs no mana, because the
 master may not be in the world at all. A won game starts the 10 minutes of work, which still needs you or one of
 your bestias standing at the theodolite. The chart is collected in the game.
 

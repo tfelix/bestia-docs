@@ -99,16 +99,16 @@ Every new master starts with a novice set. It is weak, but it ignores profession
 level. A Novice can try out each way of fighting before spending a point outside the Novice tree, and a master who
 just left it is never unarmed while their first profession opens.
 
-| Item          | Weapon or armor type | Slot                   |
-| ------------- | -------------------- | ---------------------- |
-| Novice Knife  | Dagger               | Right hand             |
-| Novice Sword  | Sword                | Right hand             |
-| Novice Bow    | Bow                  | Right hand, two-handed |
-| Novice Rod    | Wand                 | Right hand             |
-| Novice Shield | Light shield         | Left hand              |
-| Novice Helmet | -                    | Head                   |
-| Novice Shirt  | Cloth                | Armor                  |
-| Novice Boots  | Light                | Footgear               |
+| Item                         | Weapon or armor type | Slot                   |
+| ---------------------------- | -------------------- | ---------------------- |
+| {{< item "novice_knife" >}}  | Dagger               | Right hand             |
+| {{< item "novice_sword" >}}  | Sword                | Right hand             |
+| {{< item "novice_bow" >}}    | Bow                  | Right hand, two-handed |
+| {{< item "novice_rod" >}}    | Wand                 | Right hand             |
+| {{< item "novice_shield" >}} | Light shield         | Left hand              |
+| {{< item "novice_helmet" >}} | -                    | Head                   |
+| {{< item "novice_shirt" >}}  | Cloth                | Armor                  |
+| {{< item "novice_boots" >}}  | Light                | Footgear               |
 
 The [Novice Bow](/docs/mechanics/combat/ranged-combat/#novice-bow) comes with 100 arrows. The novice health and mana potions
 are not equipment and stay for Novices only.
@@ -151,8 +151,8 @@ Almost every master skill that can fail rolls against a success chance: forging 
 enchantment, transmuting matter, inscribing a spell. Skill rank, status values and equipment all feed that roll, and a
 lone master eventually hits the ceiling of what those three can buy.
 
-A **Mana Circle** is how a group pushes past it. It is a placeable prop - a ring of
-[Mana Concentrate](/docs/mechanics/items-crafting/item-database/#mana-concentrate) laid into the ground with a focus stone in
+A **Mana Circle** is how a group pushes past it. It is a prop placed from a {{< item "mana_circle_kit" >}} - a ring of
+{{< item "mana_concentrate" >}} laid into the ground with a focus stone in
 its middle - where a group holds a **ritual**. The master who owns the skill leads it. Up to five helpers join,
 whatever their profession, and each player sends one helper: their master or one of their Bestias. After 30 seconds of
 channeling, the leader's next skill takes a charge. [How a Ritual Runs](/docs/mechanics/combat/spell-potency/#how-a-ritual-runs)

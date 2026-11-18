@@ -68,20 +68,20 @@ Wild Bestias never wear gear. A species whose default attack is ranged shoots wi
 
 # Novice Bow
 
-Every new master starts with a Novice Bow and 100 arrows in the bag. The novice knife stays in hand, and the quiver
+Every new master starts with a {{< item "novice_bow" >}} and 100 arrows in the bag. The novice knife stays in hand, and the quiver
 already points at the arrows, so putting the bow on is all it takes to shoot.
 
 | Item       | Type   | ATK | Range    | Notes                    |
 | ---------- | ------ | --- | -------- | ------------------------ |
-| Novice Bow | Weapon | 7   | 12 tiles | Two-handed, every master |
-| Arrow      | Ammo   | 3   | -        | Neutral, weighs 0.01 kg  |
+| {{< item "novice_bow" >}} | Weapon | 7   | 12 tiles | Two-handed, every master |
+| {{< item "arrow" >}} | Ammo   | 3   | -        | Neutral, weighs 0.01 kg  |
 
 # Hunting Bow
 
 The Novice Bow stops working once a master puts a point into any tree but Novice. A Hunter shoots the
-[bow skills](/docs/mechanics/master/warrior-tree/#hunter) with the Hunting Bow. For now only a game master can hand it
+[bow skills](/docs/mechanics/master/warrior-tree/#hunter) with the {{< item "hunting_bow" >}}. For now only a game master can hand it
 out.
 
 | Item        | Type   | ATK | Range    | Notes                         |
 | ----------- | ------ | --- | -------- | ----------------------------- |
-| Hunting Bow | Weapon | 22  | 12 tiles | Two-handed, from Lv. 10       |
+| {{< item "hunting_bow" >}} | Weapon | 22  | 12 tiles | Two-handed, from Lv. 10       |

@@ -300,7 +300,7 @@ graph TD
 {{< skill name="Cartography" maxLevel="5" requires="Resource Sense Lv. 1"
     type="Active" manaCost="50" castTime="3s" cooldown="None" range="0" target="Self"
     description="Enables the player to chart unexplored land, revealing terrain that can be shared, traded on, or built on. Used at your own theodolite; see [World Exploration](/docs/mechanics/world/world-exploration/#cartography) for the survey and its needle game." >}}
-Each try spends one Empty Paper and one Ink. Each level reduces the difficulty of a survey by `10`. Level 3 opens the
+Each try spends one {{< item "chart_blank" >}} and one Ink. Each level reduces the difficulty of a survey by `10`. Level 3 opens the
 3 km survey and level 5 the 5 km survey.
 {{< /skill >}}
 
@@ -464,7 +464,7 @@ graph TD
     description="A pickaxe, a steady lamp, and the nose for where the rock is worth breaking." >}}
 
 Anyone with a [pickaxe](/docs/mechanics/items-crafting/items/#weapon-type) can mine, but an untrained miner only gets resources up to
-level 10. Level 1 lets you craft a pickaxe and build a Mining Shaft from a kit. Bestias can work the shaft while you are
+level 10. Level 1 lets you craft a pickaxe and build a Mining Shaft from a {{< item "mining_shaft_kit" "kit" >}}. Bestias can work the shaft while you are
 away. A shaft reaches 40 m deeper per level, see [Mine](/docs/mechanics/bestias/bestia-orders/#mine).
 
 To mine by hand, hold a pickaxe and click the rock within `4m`. A channel starts, like
@@ -491,7 +491,7 @@ level, the swing is refused and the ore stays in the rock, so nobody wastes what
     type="Active" manaCost="20" castTime="10s" cooldown="0s" range="2" target="Gem Cut Station"
     description="Turns the rough gemstones a Miner digs up into cut gems, the vessels an Artificer binds Bestia essences into." >}}
 
-Level 1 allows you to place a Gem Cut Station. The cast only places the station or opens its recipes. The cutting itself
+Level 1 allows you to place a Gem Cut Station from a {{< item "gem_cut_station_kit" >}}. The cast only places the station or opens its recipes. The cutting itself
 takes the [craft duration](/docs/mechanics/items-crafting/crafting/#craft-duration) of the gem's item level. A failed cut shatters the gem.
 The five gems and what they hold are listed under [Sockets and Essences](/docs/mechanics/items-crafting/crafting/#sockets-and-essences).
 
@@ -550,7 +550,7 @@ blocks of that deposit once you stand on it, so you know where to swing.
     description="When the pick is too slow, a Miner reaches for something louder." >}}
 
 Sets a blasting charge on the ground. `3s` later it breaks every block within its radius and hurts every foe inside,
-like any other area skill: the master, their party and Bestias are safe. Consumes a Blasting Charge, brewed with
+like any other area skill: the master, their party and Bestias are safe. Consumes a {{< item "blasting_charge" >}}, brewed with
 [Alchemy](/docs/mechanics/master/craftsman-tree/#skill-alchemy).
 
 The ore and gems the blast breaks scatter on the ground around it, and anyone can pick them up. When the blast would

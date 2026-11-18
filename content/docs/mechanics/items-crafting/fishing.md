@@ -47,26 +47,26 @@ quarter of its usual weight. Forty levels over is `1/256` of it, which is as goo
 
 Every catch is also in the [Item Database](/docs/mechanics/items-crafting/item-database/?category=fishing).
 
-| Catch               | Kind     | Catch Lv. | Weight |
-| ------------------- | -------- | --------- | ------ |
-| Old Boot            | Junk     | 1         | 40     |
-| Driftwood           | Junk     | 3         | 40     |
-| Tangled Net         | Junk     | 6         | 40     |
-| Raw Fish            | Fish     | 1         | 100    |
-| Perch               | Fish     | 8         | 100    |
-| Bream               | Fish     | 15        | 100    |
-| Sealed Bottle       | Treasure | 18        | 4      |
-| Pike                | Fish     | 24        | 100    |
-| Sea Pearl           | Treasure | 30        | 4      |
-| Eel                 | Fish     | 32        | 100    |
-| Rough Emerald       | Treasure | 40        | 4      |
-| Salmon              | Fish     | 42        | 100    |
-| Sturgeon            | Fish     | 55        | 100    |
-| Rough Ruby          | Treasure | 60        | 4      |
-| Swordfish           | Fish     | 68        | 100    |
-| Moonscale           | Fish     | 82        | 100    |
-| Deepmaw             | Fish     | 98        | 100    |
-| Abyssal Lanternfish | Fish     | 115       | 100    |
+| Catch                              | Kind     | Catch Lv. | Weight |
+| ---------------------------------- | -------- | --------- | ------ |
+| {{< item "old_boot" >}}            | Junk     | 1         | 40     |
+| {{< item "driftwood" >}}           | Junk     | 3         | 40     |
+| {{< item "tangled_net" >}}         | Junk     | 6         | 40     |
+| {{< item "raw_fish" >}}            | Fish     | 1         | 100    |
+| {{< item "perch" >}}               | Fish     | 8         | 100    |
+| {{< item "bream" >}}               | Fish     | 15        | 100    |
+| {{< item "sealed_bottle" >}}       | Treasure | 18        | 4      |
+| {{< item "pike" >}}                | Fish     | 24        | 100    |
+| {{< item "sea_pearl" >}}           | Treasure | 30        | 4      |
+| {{< item "eel" >}}                 | Fish     | 32        | 100    |
+| {{< item "rough_emerald" >}}       | Treasure | 40        | 4      |
+| {{< item "salmon" >}}              | Fish     | 42        | 100    |
+| {{< item "sturgeon" >}}            | Fish     | 55        | 100    |
+| {{< item "rough_ruby" >}}          | Treasure | 60        | 4      |
+| {{< item "swordfish" >}}           | Fish     | 68        | 100    |
+| {{< item "moonscale" >}}           | Fish     | 82        | 100    |
+| {{< item "deepmaw" >}}             | Fish     | 98        | 100    |
+| {{< item "abyssal_lanternfish" >}} | Fish     | 115       | 100    |
 
 A fish's catch level is its item level. Treasure has a catch level of its own, because a pearl is no harder to hook
 than a fish, only rarer.
@@ -76,12 +76,12 @@ than a fish, only rarer.
 A rod is a one-handed [tool](/docs/mechanics/items-crafting/items/#weapon-type), so every master may hold one whatever
 their professions.
 
-| Rod        | Item Lv. | Max Catch Lv. | Durability | How to get it                                                  |
-| ---------- | -------- | ------------- | ---------- | -------------------------------------------------------------- |
-| Willow Rod | 1        | 25            | 60         | Starter blueprint: 2 sticks and 1 resin, by hand               |
-| Bamboo Rod | 20       | 50            | 120        | Discovered blueprint at a workbench, or bought from a merchant |
-| Ash Rod    | 40       | 75            | 180        | Discovered blueprint at a workbench, or bought from a merchant |
-| Steel Rod  | 60       | 120           | 260        | Discovered blueprint at a forge only                           |
+| Rod                       | Item Lv. | Max Catch Lv. | Durability | How to get it                                                  |
+| ------------------------- | -------- | ------------- | ---------- | -------------------------------------------------------------- |
+| {{< item "willow_rod" >}} | 1        | 25            | 60         | Starter blueprint: 2 sticks and 1 resin, by hand               |
+| {{< item "bamboo_rod" >}} | 20       | 50            | 120        | Discovered blueprint at a workbench, or bought from a merchant |
+| {{< item "ash_rod" >}}    | 40       | 75            | 180        | Discovered blueprint at a workbench, or bought from a merchant |
+| {{< item "steel_rod" >}}  | 60       | 120           | 260        | Discovered blueprint at a forge only                           |
 
 The willow rod is made from what lies on the ground, like the
 [first tools](/docs/mechanics/items-crafting/crafting/#starter-blueprints). A master's first rod therefore never waits

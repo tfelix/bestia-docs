@@ -265,7 +265,7 @@ min: 0
 
 An item can be reworked to cut rune slots into it, which [Runic Etching](/docs/mechanics/master/craftsman-tree/#skill-runic-etching) can later
 fill. This is governed by the Craftsman's [Item Customization](/docs/mechanics/master/craftsman-tree/#skill-item-customization) skill and
-consumes an [Engraving Set](/docs/mechanics/items-crafting/item-database/#engraving-set) per attempt, whether it succeeds or not. A failed
+consumes an {{< item "engraving_set" >}} per attempt, whether it succeeds or not. A failed
 attempt can destroy the item outright - see the skill's Destroy Chance column.
 
 The chance of successfully cutting a slot has a **base chance** that depends purely on the item's own

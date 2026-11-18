@@ -429,7 +429,7 @@ A starter-ring bestia that a new player should be able to fight alone. Lv 2, nor
 | Attacks    | default melee attack every 2.34 s (ASPD 80), plus Tackle (learned at Lv 1), attack power 0.98           |
 | HP, mana   | 181 HP, 29 mana                                                                                         |
 | Fight      | 6.0 swings, 33 % of the master's HP; 0.41 damage per second from melee, 0.62 from Tackle; threat 0.96   |
-| Loot       | Raw Hide 60 % (6 coins), Raw Meat 30 % (4 coins), Medicinal Herb 2 % (5 coins): 4.9 coins against 12    |
+| Loot       | {{< item "raw_hide" >}} 60 % (6 coins), {{< item "raw_meat" >}} 30 % (4 coins), {{< item "medicinal_herb" >}} 2 % (5 coins): 4.9 coins against 12    |
 | EXP        | `(4 · 2 + 5) · 0.96 · 1.06` = **13**, and 14 at kill time with the element bonus                        |
 | Equipment  | BEAST preset: upper head, armor, garment and both accessories; any armor type                           |
 
