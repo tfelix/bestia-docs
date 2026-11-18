@@ -141,7 +141,7 @@ A tree whose ground was dug away is gone for good, stump and all. Nothing grows 
 # Refining
 
 Ore must be processed into metal bars before it is usable — steel, for example, is refined from iron ore together with
-fuel inside a [Furnace](/docs/mechanics/items-crafting/item-list/#furnace). Placing a furnace and smelting at all requires a Master
+fuel inside a [Furnace](/docs/mechanics/items-crafting/item-database/#furnace-kit). Placing a furnace and smelting at all requires a Master
 with the [Ore Refinement](/docs/mechanics/master/craftsman-tree/#skill-ore-refinement) skill; every further rank raises the odds that
 a batch survives the heat.
 
@@ -182,10 +182,10 @@ Every smelt burns fuel alongside the ore, and a failed batch loses both.
 
 {{< table >}}
 
-| Fuel                                                           | Modifier | Notes                                                                        |
-| -------------------------------------------------------------- | -------- | ---------------------------------------------------------------------------- |
-| [Coal](/docs/mechanics/items-crafting/item-list/#coal)         | ±0%      | The reference fuel. Mined from seams in mountains and caves.                 |
-| [Charcoal](/docs/mechanics/items-crafting/item-list/#charcoal) | -10%     | Burned down from wood. Cheap and craftable, but never gets a furnace as hot. |
+| Fuel                                                               | Modifier | Notes                                                                        |
+| ------------------------------------------------------------------ | -------- | ---------------------------------------------------------------------------- |
+| [Coal](/docs/mechanics/items-crafting/item-database/#coal)         | ±0%      | The reference fuel. Mined from seams in mountains and caves.                 |
+| [Charcoal](/docs/mechanics/items-crafting/item-database/#charcoal) | -10%     | Burned down from wood. Cheap and craftable, but never gets a furnace as hot. |
 
 {{< /table >}}
 

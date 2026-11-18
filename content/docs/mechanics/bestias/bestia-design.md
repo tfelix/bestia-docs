@@ -337,7 +337,7 @@ $$budget_{loot} = 1\ coin \cdot (4 \cdot lv + 5) \cdot threat \cdot group$$
 
 A Lv 1 kill is worth about one loaf of bread (9 coins).
 
-A drop is an item from the [Items List](/docs/mechanics/items-crafting/item-list/) and a chance in percent. The item brings its
+A drop is an item from the [Item Database](/docs/mechanics/items-crafting/item-database/) and a chance in percent. The item brings its
 reference value, so nobody prices a drop by hand. The mob YAML stores the chance in basis points (60 % is 6000). The
 expected value of a drop table is `Σ chance × value`, and the **loot score** is that value divided by the budget: 1
 means the bestia drops what it should.

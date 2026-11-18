@@ -208,7 +208,7 @@ the time it is made.
 
 {{< skill name="Aqua Benedicta" maxLevel="1" requires="Signum Crucis Lv. 1"
     type="Active" manaCost="12" castTime="3s" cooldown="5s" range="0" target="Self"
-    description="The rite of blessing plain water into [Holy Water](/docs/mechanics/items-crafting/item-list/#holy-water). User must be standing in water, consuming an [Empty Bottle](/docs/mechanics/items-crafting/item-list/#empty-bottle) in the process. Holy Water is the reagent behind Aspersio and several higher rites." >}}
+    description="The rite of blessing plain water into [Holy Water](/docs/mechanics/items-crafting/item-database/#holy-water). User must be standing in water, consuming an [Empty Bottle](/docs/mechanics/items-crafting/item-database/#empty-bottle) in the process. Holy Water is the reagent behind Aspersio and several higher rites." >}}
 
 Shallow water counts. Only the water the world was made with counts so far, not a dug pond or a flood. A Priest on dry
 land is told so before the cast bar starts.
@@ -328,7 +328,7 @@ category, so an Undead of the Undead element counts once.
 
 {{< skill name="Aspersio" maxLevel="3" requires="Aqua Benedicta Lv. 1"
     type="Active" manaCost="22" castTime="2s" cooldown="10s" duration="per Lv." range="2" target="Ally"
-    description="Anoints a weapon with Holy Water, temporarily imbuing its strikes with the holy element. Consumes one [Holy Water](/docs/mechanics/items-crafting/item-list/#holy-water) per cast." >}}
+    description="Anoints a weapon with Holy Water, temporarily imbuing its strikes with the holy element. Consumes one [Holy Water](/docs/mechanics/items-crafting/item-database/#holy-water) per cast." >}}
 
 Melee blows strike as Holy. A weapon holds one element: Aspersio replaces an Endow, and an Endow replaces it.
 
@@ -699,7 +699,7 @@ strong Scry is harder to break.
     type="Active" manaCost="40" castTime="2s" cooldown="15s" range="9" target="Any"
     description="Unravels every magical effect clinging to a target in a single word, undoing buffs and curses alike." >}}
 
-Success chance starts at a base chance of `(50 + 10 * SkillLv)%`. A target with a higher Potency than the Dispel lowers it, see [Dispel](/docs/mechanics/combat/spell-potency/#dispel). Requires 1 [Yellow Mana Crystal](/docs/mechanics/items-crafting/item-list/#yellow-mana-crystal) per cast.
+Success chance starts at a base chance of `(50 + 10 * SkillLv)%`. A target with a higher Potency than the Dispel lowers it, see [Dispel](/docs/mechanics/combat/spell-potency/#dispel). Requires 1 [Yellow Mana Crystal](/docs/mechanics/items-crafting/item-database/#yellow-mana-crystal) per cast.
 
 | Lv. | Base Success Chance |
 | --- | ------------------- |
@@ -901,7 +901,7 @@ both ends.
 
 {{< skill name="Endow" maxLevel="3" requires="Free Cast Lv. 2"
     type="Active" manaCost="28" castTime="2s" cooldown="5s" duration="per Lv." range="5" target="Ally"
-    description="Temporarily infuses an ally's weapon with an element, so its strikes burn, freeze, crack or crush as well as bite. Consumes a [Blue Mana Crystal](/docs/mechanics/items-crafting/item-list/#blue-mana-crystal) to carry the charge." >}}
+    description="Temporarily infuses an ally's weapon with an element, so its strikes burn, freeze, crack or crush as well as bite. Consumes a [Blue Mana Crystal](/docs/mechanics/items-crafting/item-database/#blue-mana-crystal) to carry the charge." >}}
 
 The caster picks the element when casting: fire, water, wind or earth. The weapon takes on the element, so the
 [element table](/docs/mechanics/bestias/bestia-design/#7-element-size-and-defences) applies. The bonus damage comes on top.
