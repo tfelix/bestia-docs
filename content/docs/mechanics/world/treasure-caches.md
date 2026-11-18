@@ -99,11 +99,11 @@ higher the longer the artifact's history is. Undead guard a tomb or monument tha
 
 | Relic kind | Slot        |
 | ---------- | ----------- |
-| Blade      | Right hand  |
+| Blade      | Weapon      |
 | Crown      | Upper head  |
 | Ring       | Accessory   |
 | Reliquary  | Accessory   |
-| Tome       | Left hand   |
+| Tome       | Shield      |
 | Banner     | Garment     |
 
 # Digging

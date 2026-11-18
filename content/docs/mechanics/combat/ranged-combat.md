@@ -9,13 +9,13 @@ ammunition adds its own attack and decides the element of the shot.
 
 # Ranged Weapons
 
-A ranged weapon is worn in the right hand. It names two things:
+A ranged weapon goes in the weapon slot. It names two things:
 
 - **Its range**, in tiles. The player walks only this close to the target before shooting.
 - **The kind of ammunition it fires**, such as arrows. A bow never shoots anything else, even when the quiver holds it.
 
-Bows need both hands. While a bow is worn, nothing can be worn in the left hand, and a bow cannot be put on while the
-left hand holds something. Take the other item off first.
+Bows and crossbows are two-handed. While one is worn, nothing can be worn in the shield slot, and neither can be put on
+while the shield slot holds something. Take that item off first.
 
 # The Quiver
 
@@ -60,7 +60,7 @@ every kind of ammunition.
 
 # Bestias With Bows
 
-A player Bestia with a right hand can wear a ranged weapon. While its quiver has ammunition for it, the Bestia keeps its
+A player Bestia with a weapon slot can wear a ranged weapon. While its quiver has ammunition for it, the Bestia keeps its
 distance and shoots instead of using its own default attack. When the quiver runs dry, it closes in and fights with its
 own attack again. The owner is not told.
 

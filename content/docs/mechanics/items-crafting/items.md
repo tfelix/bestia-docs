@@ -72,7 +72,7 @@ its species.
 |        | Polearm     | Two      | Halberd, glaive, lance                        |
 | Magic  | Wand        | One      | Wand, rod                                     |
 |        | Staff       | Two      | Quarterstaff, mage staff                      |
-|        | Tome        | Off-hand | Grimoire, prayer book                         |
+|        | Tome        | Shield   | Grimoire, prayer book                         |
 | Ranged | Bow         | Two      | Short bow, long bow. Shoots arrows.           |
 |        | Crossbow    | Two      | Light and heavy crossbow. Shoots bolts.       |
 |        | Sling       | One      | Sling. Shoots stones.                         |
@@ -80,8 +80,8 @@ its species.
 | Song   | Instrument  | Two      | Lute, harp, flute                             |
 | Work   | Tool        | One      | Pickaxe, hatchet, shovel, fishing rod         |
 
-- A two-handed weapon leaves no room for anything in the left hand.
-- The left hand holds a shield or a tome. A second weapon in the left hand needs
+- A two-handed weapon leaves no room for anything in the shield slot.
+- The shield slot holds a shield or a tome. A second weapon in the shield slot needs
   [Dual Wield](/docs/mechanics/master/warrior-tree/#skill-dual-wield). Only a one-handed melee weapon or a wand goes
   there.
 - Bows, crossbows and slings shoot from the [quiver](/docs/mechanics/combat/ranged-combat/#the-quiver). A thrown weapon is its

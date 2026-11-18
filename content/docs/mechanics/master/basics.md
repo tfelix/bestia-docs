@@ -115,11 +115,11 @@ just left it is never unarmed while their first profession opens.
 
 | Item                         | Weapon or armor type | Slot                   |
 | ---------------------------- | -------------------- | ---------------------- |
-| {{< item "novice_knife" >}}  | Dagger               | Right hand             |
-| {{< item "novice_sword" >}}  | Sword                | Right hand             |
-| {{< item "novice_bow" >}}    | Bow                  | Right hand, two-handed |
-| {{< item "novice_rod" >}}    | Wand                 | Right hand             |
-| {{< item "novice_shield" >}} | Light shield         | Left hand              |
+| {{< item "novice_knife" >}}  | Dagger               | Weapon, one-handed     |
+| {{< item "novice_sword" >}}  | Sword                | Weapon, one-handed     |
+| {{< item "novice_bow" >}}    | Bow                  | Weapon, two-handed     |
+| {{< item "novice_rod" >}}    | Wand                 | Weapon, one-handed     |
+| {{< item "novice_shield" >}} | Light shield         | Shield                 |
 | {{< item "novice_helmet" >}} | -                    | Head                   |
 | {{< item "novice_shirt" >}}  | Cloth                | Armor                  |
 | {{< item "novice_boots" >}}  | Light                | Footgear               |

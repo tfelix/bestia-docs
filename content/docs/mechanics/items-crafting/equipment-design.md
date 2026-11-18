@@ -456,7 +456,7 @@ at its actual value. Resistances are written `R.FIRE` and so on.
 | Ley-Iron Scepter | Rare | 72 | 36 | 29 / 154 | INT 4, MAX_MANA 4 | Ar/Sa |
 | **Starfall Wand** | Epic | 102 | 85 | 41 / 214 | INT 9, WIL 6, CAST_TIME 8 | Sa/Wz |
 
-### Tome, left hand (Sa, Pt, Wz)
+### Tome, shield slot (Sa, Pt, Wz)
 
 | Item | Rarity | ilvl | Min Lv | ATK / MATK | Fixed stats | For |
 |---|---|---|---|---|---|---|
@@ -663,7 +663,7 @@ at its actual value. Resistances are written `R.FIRE` and so on.
 | Sabatons of the Bulwark | Heavy | Rare | 66 | 33 | 5 / 1 | VIT 3 | Kn |
 | **Treads of the Last Stand** | Heavy | Legendary | 91 | 62 | 6 / 1 | VIT 5, STR 3, MAX_HP 4 | Kn |
 
-### Shield, LEFT_HAND
+### Shield, shield slot
 
 | Item | Type | Rarity | ilvl | Min Lv | DEF / MDEF | Fixed stats | For |
 |---|---|---|---|---|---|---|---|

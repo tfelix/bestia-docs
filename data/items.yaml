@@ -224,7 +224,7 @@
   item_level: 20
   material: Metal
   min_level: 10
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Sword
   stats: {STR: 4, DEX: 1}
   durability: 200
@@ -300,7 +300,7 @@
   item_level: 80
   material: Metal
   min_level: 25
-  slot: Right Hand
+  slot: Weapon
   stats: {STR: 6, DEX: 3}
   durability: 400
   description: |
@@ -368,7 +368,7 @@
   item_level: 80
   material: Paper
   min_level: 25
-  slot: Left Hand
+  slot: Shield
   stats: {INT: 6}
   durability: 400
   description: |
@@ -945,7 +945,7 @@
   item_level: 10
   material: Metal
   min_level: 5
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Tool
   durability: 180
   description: |
@@ -962,7 +962,7 @@
   item_level: 5
   material: Metal
   min_level: 3
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Tool
   durability: 150
   description: |
@@ -1057,7 +1057,7 @@
   item_level: 1
   material: Metal
   min_level: 1
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Dagger
   attack: 10
   durability: 80
@@ -1502,7 +1502,7 @@
   item_level: 1
   material: Wood
   min_level: 1
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Bow
   ammo_type: Arrow
   two_handed: true
@@ -1544,7 +1544,7 @@
   item_level: 1
   material: Wood
   min_level: 1
-  slot: Left Hand
+  slot: Shield
   armor_type: Light
   defense: 5
   magic_defense: 5
@@ -1603,7 +1603,7 @@
   item_level: 1
   material: Stone
   min_level: 1
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Dagger
   attack: 7
   durability: 40
@@ -1621,7 +1621,7 @@
   item_level: 1
   material: Stone
   min_level: 1
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Tool
   durability: 60
   description: |
@@ -1638,7 +1638,7 @@
   item_level: 1
   material: Wood
   min_level: 1
-  slot: Right Hand
+  slot: Weapon
   durability: 120
   description: |
     A wooden spade on a long handle, its blade hardened in the fire.
@@ -1901,7 +1901,7 @@
   item_level: 1
   material: Metal
   min_level: 1
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Sword
   attack: 12
   durability: 80
@@ -1920,7 +1920,7 @@
   item_level: 1
   material: Wood
   min_level: 1
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Wand
   attack: 3
   magic_attack: 12
@@ -1940,7 +1940,7 @@
   item_level: 5
   material: Wood
   min_level: 3
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Mace
   attack: 18
   durability: 120
@@ -1955,7 +1955,7 @@
   item_level: 15
   material: Metal
   min_level: 8
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Hammer
   two_handed: true
   attack: 45
@@ -1971,7 +1971,7 @@
   item_level: 10
   material: Metal
   min_level: 5
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Axe
   attack: 28
   durability: 180
@@ -1986,7 +1986,7 @@
   item_level: 18
   material: Metal
   min_level: 9
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Greataxe
   two_handed: true
   attack: 52
@@ -2002,7 +2002,7 @@
   item_level: 18
   material: Metal
   min_level: 9
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Greatsword
   two_handed: true
   attack: 50
@@ -2018,7 +2018,7 @@
   item_level: 10
   material: Metal
   min_level: 5
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Spear
   attack: 26
   durability: 180
@@ -2033,7 +2033,7 @@
   item_level: 18
   material: Metal
   min_level: 9
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Polearm
   two_handed: true
   attack: 48
@@ -2049,7 +2049,7 @@
   item_level: 10
   material: Wood
   min_level: 5
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Staff
   two_handed: true
   attack: 15
@@ -2066,7 +2066,7 @@
   item_level: 5
   material: Paper
   min_level: 3
-  slot: Left Hand
+  slot: Shield
   weapon_type: Tome
   magic_attack: 15
   durability: 100
@@ -2081,7 +2081,7 @@
   item_level: 5
   material: Leather
   min_level: 3
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Fist
   attack: 16
   durability: 120
@@ -2096,7 +2096,7 @@
   item_level: 5
   material: Leather
   min_level: 3
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Whip
   attack: 15
   durability: 120
@@ -2111,7 +2111,7 @@
   item_level: 5
   material: Wood
   min_level: 3
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Instrument
   two_handed: true
   attack: 8
@@ -2128,7 +2128,7 @@
   item_level: 10
   material: Wood
   min_level: 5
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Crossbow
   ammo_type: Bolt
   two_handed: true
@@ -2158,7 +2158,7 @@
   item_level: 1
   material: Leather
   min_level: 1
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Sling
   ammo_type: Stone
   range: 8
@@ -2187,7 +2187,7 @@
   item_level: 10
   material: Wood
   min_level: 5
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Thrown
   attack: 24
   description: A light spear made to be thrown. Each throw spends one.
@@ -2201,7 +2201,7 @@
   item_level: 12
   material: Metal
   min_level: 6
-  slot: Left Hand
+  slot: Shield
   armor_type: Medium
   defense: 12
   magic_defense: 4
@@ -2217,7 +2217,7 @@
   item_level: 20
   material: Metal
   min_level: 10
-  slot: Left Hand
+  slot: Shield
   armor_type: Heavy
   defense: 20
   magic_defense: 6
@@ -2374,7 +2374,7 @@
   item_level: 1
   material: Wood
   min_level: 1
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Tool
   durability: 60
   description: |
@@ -2391,7 +2391,7 @@
   item_level: 20
   material: Wood
   min_level: 10
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Tool
   durability: 120
   description: |
@@ -2406,7 +2406,7 @@
   item_level: 40
   material: Wood
   min_level: 20
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Tool
   durability: 180
   description: |
@@ -2421,7 +2421,7 @@
   item_level: 60
   material: Metal
   min_level: 30
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Tool
   durability: 260
   description: |
@@ -2666,7 +2666,7 @@
   item_level: 10
   material: Wood
   min_level: 10
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Bow
   ammo_type: Arrow
   two_handed: true
@@ -3446,7 +3446,7 @@
   item_level: 4
   material: Metal
   min_level: 1
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Dagger
   attack: 13
   durability: 110
@@ -3462,7 +3462,7 @@
   item_level: 10
   material: Metal
   min_level: 5
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Dagger
   attack: 23
   durability: 130
@@ -3478,7 +3478,7 @@
   item_level: 18
   material: Metal
   min_level: 8
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Dagger
   attack: 37
   durability: 150
@@ -3494,7 +3494,7 @@
   item_level: 26
   material: Metal
   min_level: 13
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Dagger
   attack: 50
   stats: {STR: 1}
@@ -3511,7 +3511,7 @@
   item_level: 26
   material: Metal
   min_level: 15
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Dagger
   attack: 57
   stats: {AGI: 2, CRIT: 1}
@@ -3528,7 +3528,7 @@
   item_level: 31
   material: Metal
   min_level: 18
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Dagger
   attack: 55
   magic_attack: 20
@@ -3546,7 +3546,7 @@
   item_level: 37
   material: Metal
   min_level: 25
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Dagger
   attack: 84
   stats: {AGI: 3, CRIT: 2}
@@ -3563,7 +3563,7 @@
   item_level: 54
   material: Metal
   min_level: 28
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Dagger
   attack: 101
   stats: {DEX: 3, INT: 2}
@@ -3580,7 +3580,7 @@
   item_level: 61
   material: Metal
   min_level: 34
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Dagger
   attack: 122
   stats: {AGI: 4, CRIT: 2}
@@ -3597,7 +3597,7 @@
   item_level: 52
   material: Metal
   min_level: 68
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Dagger
   attack: 166
   stats: {AGI: 8, DEX: 6, CRIT: 4}
@@ -3614,7 +3614,7 @@
   item_level: 4
   material: Cloth
   min_level: 1
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Fist
   attack: 15
   durability: 110
@@ -3630,7 +3630,7 @@
   item_level: 10
   material: Leather
   min_level: 5
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Fist
   attack: 26
   durability: 130
@@ -3646,7 +3646,7 @@
   item_level: 18
   material: Metal
   min_level: 9
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Fist
   attack: 40
   durability: 150
@@ -3662,7 +3662,7 @@
   item_level: 26
   material: Metal
   min_level: 13
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Fist
   attack: 55
   stats: {STR: 1}
@@ -3679,7 +3679,7 @@
   item_level: 31
   material: Metal
   min_level: 17
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Fist
   attack: 69
   stats: {AGI: 2, CRIT: 1}
@@ -3696,7 +3696,7 @@
   item_level: 35
   material: Metal
   min_level: 22
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Fist
   attack: 87
   stats: {AGI: 3, CRIT: 2}
@@ -3713,7 +3713,7 @@
   item_level: 50
   material: Metal
   min_level: 26
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Fist
   attack: 102
   stats: {STR: 3, VIT: 2}
@@ -3730,7 +3730,7 @@
   item_level: 56
   material: Metal
   min_level: 30
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Fist
   attack: 116
   stats: {AGI: 3, FLEE: 4}
@@ -3747,7 +3747,7 @@
   item_level: 69
   material: Stone
   min_level: 36
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Fist
   attack: 138
   stats: {STR: 4, VIT: 3}
@@ -3764,7 +3764,7 @@
   item_level: 81
   material: Stone
   min_level: 64
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Fist
   attack: 174
   stats: {STR: 8, VIT: 6, HP_REGEN: 4}
@@ -3781,7 +3781,7 @@
   item_level: 5
   material: Cloth
   min_level: 2
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Whip
   attack: 18
   durability: 120
@@ -3797,7 +3797,7 @@
   item_level: 12
   material: Leather
   min_level: 6
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Whip
   attack: 32
   durability: 140
@@ -3813,7 +3813,7 @@
   item_level: 19
   material: Plant
   min_level: 10
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Whip
   attack: 48
   stats: {DEX: 2}
@@ -3830,7 +3830,7 @@
   item_level: 28
   material: Leather
   min_level: 14
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Whip
   attack: 64
   durability: 180
@@ -3846,7 +3846,7 @@
   item_level: 35
   material: Metal
   min_level: 18
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Whip
   attack: 80
   stats: {STR: 1, DEX: 1}
@@ -3863,7 +3863,7 @@
   item_level: 41
   material: Cloth
   min_level: 22
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Whip
   attack: 70
   magic_attack: 28
@@ -3881,7 +3881,7 @@
   item_level: 51
   material: Leather
   min_level: 27
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Whip
   attack: 116
   stats: {DEX: 3, CRIT: 1}
@@ -3898,7 +3898,7 @@
   item_level: 60
   material: Metal
   min_level: 33
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Whip
   attack: 140
   stats: {DEX: 4, AGI: 3, RESIST_POISON: 6}
@@ -3915,7 +3915,7 @@
   item_level: 70
   material: Cloth
   min_level: 37
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Whip
   attack: 120
   magic_attack: 50
@@ -3933,7 +3933,7 @@
   item_level: 80
   material: Leather
   min_level: 64
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Whip
   attack: 192
   stats: {DEX: 7, AGI: 5, RESIST_WIND: 9}
@@ -3950,7 +3950,7 @@
   item_level: 6
   material: Metal
   min_level: 3
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Sword
   attack: 20
   durability: 120
@@ -3966,7 +3966,7 @@
   item_level: 12
   material: Metal
   min_level: 6
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Sword
   attack: 32
   durability: 140
@@ -3982,7 +3982,7 @@
   item_level: 20
   material: Metal
   min_level: 10
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Sword
   attack: 48
   durability: 160
@@ -3998,7 +3998,7 @@
   item_level: 28
   material: Metal
   min_level: 14
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Sword
   attack: 64
   stats: {STR: 1}
@@ -4015,7 +4015,7 @@
   item_level: 31
   material: Metal
   min_level: 16
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Sword
   attack: 72
   stats: {DEX: 2, AGI: 1}
@@ -4032,7 +4032,7 @@
   item_level: 39
   material: Metal
   min_level: 20
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Sword
   attack: 88
   stats: {STR: 3}
@@ -4049,7 +4049,7 @@
   item_level: 42
   material: Metal
   min_level: 24
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Sword
   attack: 104
   stats: {VIT: 2, DEX: 2, HIT: 4}
@@ -4066,7 +4066,7 @@
   item_level: 49
   material: Metal
   min_level: 30
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Sword
   attack: 120
   stats: {DEX: 4, HIT: 5}
@@ -4083,7 +4083,7 @@
   item_level: 67
   material: Metal
   min_level: 35
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Sword
   attack: 148
   stats: {STR: 4, CRIT: 1}
@@ -4100,7 +4100,7 @@
   item_level: 73
   material: Metal
   min_level: 62
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Sword
   attack: 190
   stats: {DEX: 6, AGI: 6, CRIT: 2}
@@ -4117,7 +4117,7 @@
   item_level: 5
   material: Metal
   min_level: 2
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Axe
   attack: 18
   durability: 120
@@ -4133,7 +4133,7 @@
   item_level: 12
   material: Metal
   min_level: 6
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Axe
   attack: 32
   durability: 140
@@ -4149,7 +4149,7 @@
   item_level: 20
   material: Metal
   min_level: 10
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Axe
   attack: 48
   durability: 160
@@ -4165,7 +4165,7 @@
   item_level: 27
   material: Metal
   min_level: 14
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Axe
   attack: 64
   stats: {STR: 1, AGI: 1}
@@ -4182,7 +4182,7 @@
   item_level: 35
   material: Metal
   min_level: 18
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Axe
   attack: 80
   stats: {STR: 2, DEX: 1}
@@ -4199,7 +4199,7 @@
   item_level: 42
   material: Metal
   min_level: 23
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Axe
   attack: 100
   stats: {STR: 3, CRIT: 1}
@@ -4216,7 +4216,7 @@
   item_level: 52
   material: Metal
   min_level: 27
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Axe
   attack: 116
   stats: {STR: 3, AGI: 2}
@@ -4233,7 +4233,7 @@
   item_level: 61
   material: Metal
   min_level: 32
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Axe
   attack: 136
   stats: {AGI: 3, DEX: 3}
@@ -4250,7 +4250,7 @@
   item_level: 72
   material: Metal
   min_level: 37
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Axe
   attack: 156
   stats: {STR: 5}
@@ -4267,7 +4267,7 @@
   item_level: 86
   material: Metal
   min_level: 66
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Axe
   attack: 194
   stats: {STR: 6, AGI: 5, HP_REGEN: 4}
@@ -4284,7 +4284,7 @@
   item_level: 5
   material: Wood
   min_level: 2
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Mace
   attack: 18
   durability: 120
@@ -4300,7 +4300,7 @@
   item_level: 12
   material: Metal
   min_level: 6
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Mace
   attack: 32
   durability: 140
@@ -4316,7 +4316,7 @@
   item_level: 18
   material: Wood
   min_level: 9
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Mace
   attack: 44
   durability: 150
@@ -4332,7 +4332,7 @@
   item_level: 27
   material: Metal
   min_level: 14
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Mace
   attack: 64
   stats: {STR: 2}
@@ -4349,7 +4349,7 @@
   item_level: 33
   material: Metal
   min_level: 17
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Mace
   attack: 76
   stats: {STR: 1, VIT: 1}
@@ -4366,7 +4366,7 @@
   item_level: 41
   material: Metal
   min_level: 21
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Mace
   attack: 62
   magic_attack: 30
@@ -4384,7 +4384,7 @@
   item_level: 48
   material: Metal
   min_level: 25
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Mace
   attack: 84
   magic_attack: 30
@@ -4402,7 +4402,7 @@
   item_level: 58
   material: Metal
   min_level: 30
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Mace
   attack: 128
   stats: {STR: 3, VIT: 2}
@@ -4419,7 +4419,7 @@
   item_level: 67
   material: Metal
   min_level: 36
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Mace
   attack: 112
   magic_attack: 40
@@ -4437,7 +4437,7 @@
   item_level: 82
   material: Metal
   min_level: 70
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Mace
   attack: 160
   magic_attack: 80
@@ -4455,7 +4455,7 @@
   item_level: 4
   material: Wood
   min_level: 1
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Spear
   attack: 16
   durability: 110
@@ -4471,7 +4471,7 @@
   item_level: 10
   material: Wood
   min_level: 5
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Spear
   attack: 28
   durability: 130
@@ -4487,7 +4487,7 @@
   item_level: 18
   material: Metal
   min_level: 9
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Spear
   attack: 44
   durability: 150
@@ -4503,7 +4503,7 @@
   item_level: 24
   material: Metal
   min_level: 13
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Spear
   attack: 60
   stats: {STR: 1, DEX: 2}
@@ -4520,7 +4520,7 @@
   item_level: 33
   material: Metal
   min_level: 17
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Spear
   attack: 76
   stats: {STR: 2}
@@ -4537,7 +4537,7 @@
   item_level: 40
   material: Metal
   min_level: 21
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Spear
   attack: 92
   stats: {DEX: 2, RESIST_WATER: 6}
@@ -4554,7 +4554,7 @@
   item_level: 47
   material: Metal
   min_level: 25
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Spear
   attack: 108
   stats: {DEX: 2, HIT: 4}
@@ -4571,7 +4571,7 @@
   item_level: 56
   material: Metal
   min_level: 29
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Spear
   attack: 124
   stats: {VIT: 3, DEX: 2}
@@ -4588,7 +4588,7 @@
   item_level: 67
   material: Metal
   min_level: 35
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Spear
   attack: 148
   stats: {DEX: 4, AGI: 3}
@@ -4605,7 +4605,7 @@
   item_level: 72
   material: Metal
   min_level: 64
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Spear
   attack: 192
   stats: {DEX: 6, VIT: 5, HIT: 8}
@@ -4622,7 +4622,7 @@
   item_level: 14
   material: Metal
   min_level: 7
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Greatsword
   two_handed: true
   attack: 41
@@ -4639,7 +4639,7 @@
   item_level: 22
   material: Metal
   min_level: 11
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Greatsword
   two_handed: true
   attack: 62
@@ -4656,7 +4656,7 @@
   item_level: 30
   material: Metal
   min_level: 15
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Greatsword
   two_handed: true
   attack: 83
@@ -4673,7 +4673,7 @@
   item_level: 38
   material: Metal
   min_level: 19
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Greatsword
   two_handed: true
   attack: 104
@@ -4691,7 +4691,7 @@
   item_level: 42
   material: Metal
   min_level: 24
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Greatsword
   two_handed: true
   attack: 125
@@ -4709,7 +4709,7 @@
   item_level: 53
   material: Metal
   min_level: 27
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Greatsword
   two_handed: true
   attack: 145
@@ -4727,7 +4727,7 @@
   item_level: 60
   material: Metal
   min_level: 31
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Greatsword
   two_handed: true
   attack: 140
@@ -4746,7 +4746,7 @@
   item_level: 68
   material: Metal
   min_level: 35
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Greatsword
   two_handed: true
   attack: 187
@@ -4764,7 +4764,7 @@
   item_level: 74
   material: Metal
   min_level: 39
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Greatsword
   two_handed: true
   attack: 208
@@ -4782,7 +4782,7 @@
   item_level: 79
   material: Metal
   min_level: 72
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Greatsword
   two_handed: true
   attack: 255
@@ -4800,7 +4800,7 @@
   item_level: 12
   material: Metal
   min_level: 6
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Greataxe
   two_handed: true
   attack: 36
@@ -4817,7 +4817,7 @@
   item_level: 20
   material: Metal
   min_level: 10
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Greataxe
   two_handed: true
   attack: 57
@@ -4834,7 +4834,7 @@
   item_level: 28
   material: Metal
   min_level: 14
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Greataxe
   two_handed: true
   attack: 78
@@ -4852,7 +4852,7 @@
   item_level: 35
   material: Metal
   min_level: 18
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Greataxe
   two_handed: true
   attack: 99
@@ -4870,7 +4870,7 @@
   item_level: 43
   material: Metal
   min_level: 22
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Greataxe
   two_handed: true
   attack: 119
@@ -4888,7 +4888,7 @@
   item_level: 51
   material: Metal
   min_level: 26
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Greataxe
   two_handed: true
   attack: 140
@@ -4906,7 +4906,7 @@
   item_level: 57
   material: Metal
   min_level: 30
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Greataxe
   two_handed: true
   attack: 161
@@ -4924,7 +4924,7 @@
   item_level: 66
   material: Metal
   min_level: 34
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Greataxe
   two_handed: true
   attack: 182
@@ -4942,7 +4942,7 @@
   item_level: 73
   material: Metal
   min_level: 38
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Greataxe
   two_handed: true
   attack: 203
@@ -4960,7 +4960,7 @@
   item_level: 86
   material: Metal
   min_level: 66
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Greataxe
   two_handed: true
   attack: 247
@@ -4978,7 +4978,7 @@
   item_level: 6
   material: Wood
   min_level: 3
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Hammer
   two_handed: true
   attack: 21
@@ -4995,7 +4995,7 @@
   item_level: 14
   material: Stone
   min_level: 7
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Hammer
   two_handed: true
   attack: 41
@@ -5012,7 +5012,7 @@
   item_level: 22
   material: Metal
   min_level: 11
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Hammer
   two_handed: true
   attack: 62
@@ -5029,7 +5029,7 @@
   item_level: 30
   material: Metal
   min_level: 15
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Hammer
   two_handed: true
   attack: 83
@@ -5047,7 +5047,7 @@
   item_level: 36
   material: Metal
   min_level: 19
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Hammer
   two_handed: true
   attack: 104
@@ -5065,7 +5065,7 @@
   item_level: 45
   material: Metal
   min_level: 23
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Hammer
   two_handed: true
   attack: 125
@@ -5083,7 +5083,7 @@
   item_level: 51
   material: Metal
   min_level: 27
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Hammer
   two_handed: true
   attack: 145
@@ -5101,7 +5101,7 @@
   item_level: 61
   material: Metal
   min_level: 32
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Hammer
   two_handed: true
   attack: 171
@@ -5119,7 +5119,7 @@
   item_level: 71
   material: Metal
   min_level: 37
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Hammer
   two_handed: true
   attack: 197
@@ -5137,7 +5137,7 @@
   item_level: 79
   material: Metal
   min_level: 72
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Hammer
   two_handed: true
   attack: 255
@@ -5155,7 +5155,7 @@
   item_level: 14
   material: Metal
   min_level: 7
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Polearm
   two_handed: true
   attack: 41
@@ -5172,7 +5172,7 @@
   item_level: 22
   material: Metal
   min_level: 11
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Polearm
   two_handed: true
   attack: 62
@@ -5189,7 +5189,7 @@
   item_level: 30
   material: Metal
   min_level: 15
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Polearm
   two_handed: true
   attack: 83
@@ -5206,7 +5206,7 @@
   item_level: 36
   material: Metal
   min_level: 19
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Polearm
   two_handed: true
   attack: 104
@@ -5224,7 +5224,7 @@
   item_level: 45
   material: Metal
   min_level: 23
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Polearm
   two_handed: true
   attack: 125
@@ -5242,7 +5242,7 @@
   item_level: 53
   material: Metal
   min_level: 27
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Polearm
   two_handed: true
   attack: 145
@@ -5260,7 +5260,7 @@
   item_level: 58
   material: Metal
   min_level: 31
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Polearm
   two_handed: true
   attack: 166
@@ -5278,7 +5278,7 @@
   item_level: 68
   material: Metal
   min_level: 35
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Polearm
   two_handed: true
   attack: 187
@@ -5296,7 +5296,7 @@
   item_level: 74
   material: Metal
   min_level: 40
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Polearm
   two_handed: true
   attack: 208
@@ -5314,7 +5314,7 @@
   item_level: 75
   material: Metal
   min_level: 88
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Polearm
   two_handed: true
   attack: 275
@@ -5332,7 +5332,7 @@
   item_level: 4
   material: Wood
   min_level: 1
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Staff
   two_handed: true
   attack: 9
@@ -5350,7 +5350,7 @@
   item_level: 10
   material: Wood
   min_level: 5
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Staff
   two_handed: true
   attack: 25
@@ -5368,7 +5368,7 @@
   item_level: 16
   material: Wood
   min_level: 8
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Staff
   two_handed: true
   attack: 21
@@ -5387,7 +5387,7 @@
   item_level: 24
   material: Wood
   min_level: 12
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Staff
   two_handed: true
   attack: 52
@@ -5406,7 +5406,7 @@
   item_level: 31
   material: Wood
   min_level: 16
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Staff
   two_handed: true
   attack: 37
@@ -5425,7 +5425,7 @@
   item_level: 40
   material: Metal
   min_level: 21
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Staff
   two_handed: true
   attack: 47
@@ -5444,7 +5444,7 @@
   item_level: 48
   material: Wood
   min_level: 25
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Staff
   two_handed: true
   attack: 120
@@ -5463,7 +5463,7 @@
   item_level: 55
   material: Wood
   min_level: 29
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Staff
   two_handed: true
   attack: 63
@@ -5482,7 +5482,7 @@
   item_level: 68
   material: Wood
   min_level: 35
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Staff
   two_handed: true
   attack: 75
@@ -5501,7 +5501,7 @@
   item_level: 82
   material: Wood
   min_level: 70
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Staff
   two_handed: true
   attack: 100
@@ -5520,7 +5520,7 @@
   item_level: 4
   material: Wood
   min_level: 1
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Wand
   attack: 2
   magic_attack: 18
@@ -5537,7 +5537,7 @@
   item_level: 10
   material: Wood
   min_level: 5
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Wand
   attack: 4
   magic_attack: 30
@@ -5554,7 +5554,7 @@
   item_level: 18
   material: Wood
   min_level: 9
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Wand
   attack: 7
   magic_attack: 46
@@ -5571,7 +5571,7 @@
   item_level: 25
   material: Stone
   min_level: 13
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Wand
   attack: 10
   magic_attack: 62
@@ -5589,7 +5589,7 @@
   item_level: 33
   material: Crystal
   min_level: 17
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Wand
   attack: 14
   magic_attack: 78
@@ -5607,7 +5607,7 @@
   item_level: 40
   material: Metal
   min_level: 21
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Wand
   attack: 17
   magic_attack: 94
@@ -5625,7 +5625,7 @@
   item_level: 47
   material: Stone
   min_level: 25
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Wand
   attack: 20
   magic_attack: 110
@@ -5643,7 +5643,7 @@
   item_level: 57
   material: Glass
   min_level: 30
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Wand
   attack: 24
   magic_attack: 130
@@ -5661,7 +5661,7 @@
   item_level: 68
   material: Metal
   min_level: 36
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Wand
   attack: 29
   magic_attack: 154
@@ -5679,7 +5679,7 @@
   item_level: 75
   material: Crystal
   min_level: 85
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Wand
   attack: 41
   magic_attack: 214
@@ -5697,7 +5697,7 @@
   item_level: 6
   material: Paper
   min_level: 3
-  slot: Left Hand
+  slot: Shield
   weapon_type: Tome
   magic_attack: 17
   durability: 120
@@ -5713,7 +5713,7 @@
   item_level: 14
   material: Paper
   min_level: 7
-  slot: Left Hand
+  slot: Shield
   weapon_type: Tome
   magic_attack: 29
   durability: 140
@@ -5729,7 +5729,7 @@
   item_level: 20
   material: Paper
   min_level: 10
-  slot: Left Hand
+  slot: Shield
   weapon_type: Tome
   magic_attack: 38
   stats: {WIL: 1}
@@ -5746,7 +5746,7 @@
   item_level: 28
   material: Paper
   min_level: 14
-  slot: Left Hand
+  slot: Shield
   weapon_type: Tome
   magic_attack: 50
   stats: {INT: 1, HP_REGEN: 2}
@@ -5763,7 +5763,7 @@
   item_level: 35
   material: Paper
   min_level: 18
-  slot: Left Hand
+  slot: Shield
   weapon_type: Tome
   magic_attack: 62
   stats: {WIL: 2}
@@ -5780,7 +5780,7 @@
   item_level: 43
   material: Paper
   min_level: 22
-  slot: Left Hand
+  slot: Shield
   weapon_type: Tome
   magic_attack: 74
   stats: {INT: 3}
@@ -5797,7 +5797,7 @@
   item_level: 50
   material: Paper
   min_level: 26
-  slot: Left Hand
+  slot: Shield
   weapon_type: Tome
   magic_attack: 86
   stats: {INT: 2, HIT: 3}
@@ -5814,7 +5814,7 @@
   item_level: 56
   material: Paper
   min_level: 31
-  slot: Left Hand
+  slot: Shield
   weapon_type: Tome
   magic_attack: 101
   stats: {INT: 2, WIL: 3, MAX_MANA: 4}
@@ -5831,7 +5831,7 @@
   item_level: 70
   material: Paper
   min_level: 37
-  slot: Left Hand
+  slot: Shield
   weapon_type: Tome
   magic_attack: 119
   stats: {WIL: 5, RESIST_SHADOW: 9}
@@ -5848,7 +5848,7 @@
   item_level: 74
   material: Paper
   min_level: 68
-  slot: Left Hand
+  slot: Shield
   weapon_type: Tome
   magic_attack: 149
   stats: {INT: 6, WIL: 6, MANA_REGEN: 6, CAST_TIME: 6}
@@ -5865,7 +5865,7 @@
   item_level: 6
   material: Wood
   min_level: 3
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Bow
   ammo_type: Arrow
   two_handed: true
@@ -5884,7 +5884,7 @@
   item_level: 12
   material: Wood
   min_level: 6
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Bow
   ammo_type: Arrow
   two_handed: true
@@ -5903,7 +5903,7 @@
   item_level: 28
   material: Wood
   min_level: 14
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Bow
   ammo_type: Arrow
   two_handed: true
@@ -5922,7 +5922,7 @@
   item_level: 35
   material: Wood
   min_level: 18
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Bow
   ammo_type: Arrow
   two_handed: true
@@ -5942,7 +5942,7 @@
   item_level: 43
   material: Wood
   min_level: 22
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Bow
   ammo_type: Arrow
   two_handed: true
@@ -5962,7 +5962,7 @@
   item_level: 48
   material: Wood
   min_level: 26
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Bow
   ammo_type: Arrow
   two_handed: true
@@ -5982,7 +5982,7 @@
   item_level: 60
   material: Wood
   min_level: 31
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Bow
   ammo_type: Arrow
   two_handed: true
@@ -6002,7 +6002,7 @@
   item_level: 69
   material: Wood
   min_level: 36
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Bow
   ammo_type: Arrow
   two_handed: true
@@ -6022,7 +6022,7 @@
   item_level: 72
   material: Wood
   min_level: 68
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Bow
   ammo_type: Arrow
   two_handed: true
@@ -6042,7 +6042,7 @@
   item_level: 8
   material: Wood
   min_level: 4
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Crossbow
   ammo_type: Bolt
   two_handed: true
@@ -6061,7 +6061,7 @@
   item_level: 16
   material: Wood
   min_level: 8
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Crossbow
   ammo_type: Bolt
   two_handed: true
@@ -6080,7 +6080,7 @@
   item_level: 24
   material: Wood
   min_level: 12
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Crossbow
   ammo_type: Bolt
   two_handed: true
@@ -6099,7 +6099,7 @@
   item_level: 32
   material: Wood
   min_level: 16
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Crossbow
   ammo_type: Bolt
   two_handed: true
@@ -6118,7 +6118,7 @@
   item_level: 39
   material: Metal
   min_level: 20
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Crossbow
   ammo_type: Bolt
   two_handed: true
@@ -6138,7 +6138,7 @@
   item_level: 46
   material: Wood
   min_level: 24
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Crossbow
   ammo_type: Bolt
   two_handed: true
@@ -6158,7 +6158,7 @@
   item_level: 54
   material: Wood
   min_level: 28
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Crossbow
   ammo_type: Bolt
   two_handed: true
@@ -6178,7 +6178,7 @@
   item_level: 62
   material: Metal
   min_level: 34
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Crossbow
   ammo_type: Bolt
   two_handed: true
@@ -6198,7 +6198,7 @@
   item_level: 72
   material: Metal
   min_level: 37
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Crossbow
   ammo_type: Bolt
   two_handed: true
@@ -6218,7 +6218,7 @@
   item_level: 80
   material: Metal
   min_level: 70
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Crossbow
   ammo_type: Bolt
   two_handed: true
@@ -6238,7 +6238,7 @@
   item_level: 4
   material: Metal
   min_level: 1
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Instrument
   two_handed: true
   attack: 3
@@ -6256,7 +6256,7 @@
   item_level: 10
   material: Plant
   min_level: 5
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Instrument
   two_handed: true
   attack: 8
@@ -6274,7 +6274,7 @@
   item_level: 18
   material: Leather
   min_level: 9
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Instrument
   two_handed: true
   attack: 14
@@ -6292,7 +6292,7 @@
   item_level: 24
   material: Wood
   min_level: 13
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Instrument
   two_handed: true
   attack: 21
@@ -6311,7 +6311,7 @@
   item_level: 33
   material: Leather
   min_level: 17
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Instrument
   two_handed: true
   attack: 27
@@ -6330,7 +6330,7 @@
   item_level: 41
   material: Wood
   min_level: 21
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Instrument
   two_handed: true
   attack: 34
@@ -6349,7 +6349,7 @@
   item_level: 49
   material: Leather
   min_level: 25
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Instrument
   two_handed: true
   attack: 40
@@ -6368,7 +6368,7 @@
   item_level: 57
   material: Metal
   min_level: 30
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Instrument
   two_handed: true
   attack: 48
@@ -6387,7 +6387,7 @@
   item_level: 71
   material: Wood
   min_level: 36
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Instrument
   two_handed: true
   attack: 58
@@ -6406,7 +6406,7 @@
   item_level: 84
   material: Wood
   min_level: 66
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Instrument
   two_handed: true
   attack: 74
@@ -6425,7 +6425,7 @@
   item_level: 8
   material: Metal
   min_level: 4
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Thrown
   attack: 20
   description: |
@@ -6440,7 +6440,7 @@
   item_level: 14
   material: Metal
   min_level: 7
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Thrown
   attack: 31
   description: |
@@ -6455,7 +6455,7 @@
   item_level: 22
   material: Metal
   min_level: 11
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Thrown
   attack: 46
   description: |
@@ -6470,7 +6470,7 @@
   item_level: 28
   material: Leather
   min_level: 14
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Thrown
   attack: 56
   description: |
@@ -6485,7 +6485,7 @@
   item_level: 34
   material: Wood
   min_level: 17
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Thrown
   attack: 67
   description: |
@@ -6500,7 +6500,7 @@
   item_level: 42
   material: Metal
   min_level: 21
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Thrown
   attack: 82
   description: |
@@ -6515,7 +6515,7 @@
   item_level: 48
   material: Glass
   min_level: 24
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Thrown
   attack: 92
   description: |
@@ -6530,7 +6530,7 @@
   item_level: 58
   material: Metal
   min_level: 29
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Thrown
   attack: 110
   description: |
@@ -6545,7 +6545,7 @@
   item_level: 66
   material: Glass
   min_level: 33
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Thrown
   attack: 125
   description: |
@@ -6560,7 +6560,7 @@
   item_level: 86
   material: Crystal
   min_level: 64
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Thrown
   attack: 172
   stats: {DEX: 6, INT: 5}
@@ -6577,7 +6577,7 @@
   item_level: 6
   material: Leather
   min_level: 3
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Sling
   ammo_type: Stone
   range: 8
@@ -6595,7 +6595,7 @@
   item_level: 14
   material: Leather
   min_level: 7
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Sling
   ammo_type: Stone
   range: 9
@@ -6613,7 +6613,7 @@
   item_level: 22
   material: Leather
   min_level: 11
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Sling
   ammo_type: Stone
   range: 9
@@ -6631,7 +6631,7 @@
   item_level: 30
   material: Leather
   min_level: 15
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Sling
   ammo_type: Stone
   range: 10
@@ -6650,7 +6650,7 @@
   item_level: 38
   material: Wood
   min_level: 19
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Sling
   ammo_type: Stone
   range: 10
@@ -6669,7 +6669,7 @@
   item_level: 43
   material: Leather
   min_level: 23
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Sling
   ammo_type: Stone
   range: 11
@@ -6688,7 +6688,7 @@
   item_level: 53
   material: Cloth
   min_level: 27
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Sling
   ammo_type: Stone
   range: 11
@@ -6707,7 +6707,7 @@
   item_level: 62
   material: Leather
   min_level: 32
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Sling
   ammo_type: Stone
   range: 12
@@ -6726,7 +6726,7 @@
   item_level: 74
   material: Cloth
   min_level: 38
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Sling
   ammo_type: Stone
   range: 12
@@ -6745,7 +6745,7 @@
   item_level: 76
   material: Leather
   min_level: 60
-  slot: Right Hand
+  slot: Weapon
   weapon_type: Sling
   ammo_type: Stone
   range: 13
@@ -8498,7 +8498,7 @@
   item_level: 8
   material: Wood
   min_level: 4
-  slot: Left Hand
+  slot: Shield
   armor_type: Light
   defense: 3
   magic_defense: 3
@@ -8515,7 +8515,7 @@
   item_level: 20
   material: Leather
   min_level: 10
-  slot: Left Hand
+  slot: Shield
   armor_type: Light
   defense: 4
   magic_defense: 4
@@ -8533,7 +8533,7 @@
   item_level: 33
   material: Leather
   min_level: 17
-  slot: Left Hand
+  slot: Shield
   armor_type: Light
   defense: 5
   magic_defense: 5
@@ -8551,7 +8551,7 @@
   item_level: 47
   material: Metal
   min_level: 25
-  slot: Left Hand
+  slot: Shield
   armor_type: Light
   defense: 6
   magic_defense: 5
@@ -8569,7 +8569,7 @@
   item_level: 66
   material: Metal
   min_level: 34
-  slot: Left Hand
+  slot: Shield
   armor_type: Light
   defense: 8
   magic_defense: 7
@@ -8587,7 +8587,7 @@
   item_level: 18
   material: Wood
   min_level: 9
-  slot: Left Hand
+  slot: Shield
   armor_type: Medium
   defense: 5
   magic_defense: 2
@@ -8604,7 +8604,7 @@
   item_level: 26
   material: Metal
   min_level: 13
-  slot: Left Hand
+  slot: Shield
   armor_type: Medium
   defense: 6
   magic_defense: 3
@@ -8621,7 +8621,7 @@
   item_level: 48
   material: Metal
   min_level: 24
-  slot: Left Hand
+  slot: Shield
   armor_type: Medium
   defense: 8
   magic_defense: 4
@@ -8639,7 +8639,7 @@
   item_level: 58
   material: Metal
   min_level: 30
-  slot: Left Hand
+  slot: Shield
   armor_type: Medium
   defense: 10
   magic_defense: 5
@@ -8657,7 +8657,7 @@
   item_level: 71
   material: Metal
   min_level: 36
-  slot: Left Hand
+  slot: Shield
   armor_type: Medium
   defense: 11
   magic_defense: 5
@@ -8675,7 +8675,7 @@
   item_level: 30
   material: Metal
   min_level: 16
-  slot: Left Hand
+  slot: Shield
   armor_type: Heavy
   defense: 8
   magic_defense: 2
@@ -8692,7 +8692,7 @@
   item_level: 59
   material: Metal
   min_level: 30
-  slot: Left Hand
+  slot: Shield
   armor_type: Heavy
   defense: 12
   magic_defense: 3
@@ -8710,7 +8710,7 @@
   item_level: 76
   material: Metal
   min_level: 39
-  slot: Left Hand
+  slot: Shield
   armor_type: Heavy
   defense: 15
   magic_defense: 3
@@ -8728,7 +8728,7 @@
   item_level: 85
   material: Metal
   min_level: 70
-  slot: Left Hand
+  slot: Shield
   armor_type: Heavy
   defense: 17
   magic_defense: 4

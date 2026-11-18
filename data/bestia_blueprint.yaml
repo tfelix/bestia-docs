@@ -354,8 +354,8 @@ equipment:
     - { id: ARMOR, label: Armor, group: Body }
     - { id: GARMENT, label: Garment, group: Body }
     - { id: FOOTGEAR, label: Footgear, group: Body }
-    - { id: RIGHT_HAND, label: Right hand, group: Hands }
-    - { id: LEFT_HAND, label: Left hand, group: Hands }
+    - { id: RIGHT_HAND, label: Weapon, group: Hands }
+    - { id: LEFT_HAND, label: Shield, group: Hands }
     - { id: ACCESSORY_1, label: Accessory 1, group: Accessories }
     - { id: ACCESSORY_2, label: Accessory 2, group: Accessories }
   armorTypes:

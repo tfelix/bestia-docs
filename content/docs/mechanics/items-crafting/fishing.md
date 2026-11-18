@@ -4,7 +4,7 @@ title: Fishing
 description: Casting a line, striking in time, what bites, and how the rod and the Fishing skill decide the catch.
 ---
 
-Every master can fish. All it takes is a fishing rod in the right hand and some water within reach. The rod decides
+Every master can fish. All it takes is a fishing rod in hand and some water within reach. The rod decides
 which catches are possible at all. The [Fishing](/docs/mechanics/master/survival-tree/#skill-fishing) skill decides
 how likely the better ones are.
 

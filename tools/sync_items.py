@@ -35,6 +35,9 @@ HEADER = """\
 
 STATION_SUFFIX = "_kit"
 WEIGHT_UNITS_PER_KG = 100
+# The game's hand slots go by Ragnarok Online's names: the weapon slot and the shield slot. Which hand is which does not
+# matter to a player; a weapon is one-handed or two-handed, and a shield or a tome goes in the shield slot.
+SLOT_LABELS = {"RIGHT_HAND": "Weapon", "LEFT_HAND": "Shield"}
 
 
 def main():
@@ -147,7 +150,7 @@ def from_game(item, name, fish, drops):
     }
     optional = {
         "min_level": item.get("min-level"),
-        "slot": label(item.get("equip-slot", "").replace("_1", "")),
+        "slot": slot_label(item.get("equip-slot")),
         "weapon_type": label(item.get("weapon-type")),
         "armor_type": label(item.get("armor-type")),
         "ammo_type": label(item.get("ammo-type")),
@@ -205,6 +208,10 @@ def material_category(item):
     if item["material"] == "WOOD" and db_name != "coal":
         return "wood"
     return "material"
+
+
+def slot_label(slot):
+    return SLOT_LABELS.get(slot) or label((slot or "").replace("_1", ""))
 
 
 def label(enum_name):

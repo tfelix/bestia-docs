@@ -501,7 +501,7 @@ rounded down: a `1m` push does not move the master at all.
     type="Passive"
     description="Knuckles hardened on posts, walls and the occasional jaw." >}}
 
-The ATK counts with a fist weapon in the right hand, or with nothing in it. A tool in hand, like a fishing rod, is no fist.
+The ATK counts with a fist weapon in the weapon slot, or with nothing in it. A tool in hand, like a fishing rod, is no fist.
 
 | Lv. | ATK with Fist Weapons |
 | --- | --------------------- |
@@ -523,7 +523,7 @@ The ATK counts with a fist weapon in the right hand, or with nothing in it. A to
     description="Every swing carries the chance to become three, faster than the eye can follow." >}}
 
 A basic melee attack that lands may trigger it: then it strikes three times for `200%` of the blow in all, as three
-numbers. Only the main hand rolls, once per attack. The second weapon of a dual wielder follows the swing as usual and
+numbers. Only the main weapon rolls, once per attack. The second weapon of a dual wielder follows the swing as usual and
 never triples. A blow on a tree does not trigger it.
 
 | Lv. | Chance per Basic Attack |
@@ -861,7 +861,7 @@ graph TD
     description="A snap of the wrist at exactly the wrong moment for whoever is wearing it. Knocks a random piece of equipment off a target and leaves them unable to put it back on for a while." >}}
 
 The piece is chosen at random among what the target wears. Accessories and the light source cannot be stripped.
-Stripping the weapon takes the weapon hand, not a shield. Stripping the shield takes the shield hand. On a dual wielder
+Stripping the weapon empties the weapon slot, not the shield slot. Stripping the shield empties the shield slot. On a dual wielder
 both take the two weapons. Each slot stays empty while its
 [stripped status effect](/docs/mechanics/combat/status-effects/#all-status-effects) lasts. Fails outright against
 [Equipment Coating](#skill-equipment-coating), and the Assassin is told so.
@@ -884,20 +884,20 @@ nothing loses nothing.
     type="Passive"
     description="Learning to disarm someone teaches you exactly how a weapon wants to be held - and that there is no good reason to stop at one. Lets the Assassin carry a one-handed weapon in each hand at a shrinking penalty." >}}
 
-Without this skill no master can hold a weapon in the left hand, whatever their professions allow. The second weapon is
-a one-handed melee weapon or a wand. Slings, thrown weapons and tools stay in the right hand.
+Without this skill no master can wear a weapon in the shield slot, whatever their professions allow. The second weapon
+is a one-handed melee weapon or a wand. Slings, thrown weapons and tools only go in the weapon slot.
 
-The off-hand weapon strikes after every melee swing that lands, with its own ATK, at the share in the table. It rolls
-its own hit and crit. Its ATK does not add to the main hand's. Every swing comes slower by the penalty. Rank buys both
+The second weapon strikes after every melee swing that lands, with its own ATK, at the share in the table. It rolls
+its own hit and crit. Its ATK does not add to the main weapon's. Every swing comes slower by the penalty. Rank buys both
 back.
 
-| Lv. | Off-Hand Damage | Attack Speed Penalty |
-| --- | --------------- | -------------------- |
-| 1   | 30%             | 25%                  |
-| 2   | 40%             | 20%                  |
-| 3   | 50%             | 15%                  |
-| 4   | 60%             | 10%                  |
-| 5   | 70%             | 5%                   |
+| Lv. | Second Weapon Damage | Attack Speed Penalty |
+| --- | -------------------- | -------------------- |
+| 1   | 30%                  | 25%                  |
+| 2   | 40%                  | 20%                  |
+| 3   | 50%                  | 15%                  |
+| 4   | 60%                  | 10%                  |
+| 5   | 70%                  | 5%                   |
 
 {{< /skill >}}
 
@@ -937,8 +937,8 @@ immune to stun shrugs it off. A boss recovers twice as fast.
     description="Eight strikes in a single heartbeat, split across both blades. Too fast to parry, too many to count." >}}
 
 The damage is shared evenly between the eight hits. Each hit is a weapon blow that can miss and crit on its own, so no
-Magic Rod catches it. With a weapon in each hand every second hit comes from the left one, at its own ATK. Without a
-second weapon all eight come from the main hand.
+Magic Rod catches it. With two weapons every second hit comes from the second one, at its own ATK. Without a
+second weapon all eight come from the main weapon.
 
 | Lv. | ATK over All Hits |
 | --- | ----------------- |
@@ -1121,7 +1121,7 @@ graph TD
     description="Years spent drilling with sword, axe, mace and spear until the weight stops mattering. Increases damage dealt with the Knight's melee weapons." >}}
 
 Counts for every weapon type the Knight may use: Sword, Greatsword, Axe, Greataxe, Mace, Hammer, Spear and Polearm.
-Only the weapon in the right hand counts.
+Only the main weapon counts, not a second one.
 
 | Lv. | ATK |
 | --- | --- |
