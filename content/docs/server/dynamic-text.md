@@ -4,7 +4,7 @@ title: Dynamic Text
 description: "Design for text that is written per world - LLM prose for quests, books, epitaphs and NPC lines - how the zone refers to it, how the api-server delivers it in the player's language, and how the text job writes it at world creation."
 ---
 
-{{< alert context="warning" text="**Design, not built.** Today the server sends a translation key and typed arguments, and readable props send English chat lines." />}}
+{{< alert context="warning" text="**Partly built.** The text reference, the store, the endpoint, the client cache and readable things exist. The text job does not, so no world has written texts yet." />}}
 
 Most text in Bestia is a **template**: the server sends a key and typed arguments, and the client builds the
 sentence in its own language (see [Saying it in another language](/docs/server/dialog/#saying-it-in-another-language)).
@@ -57,7 +57,7 @@ The zone keeps the bodies in a table of the world. It is wiped with the world.
 
 | Column    | Meaning                      |
 | --------- | ---------------------------- |
-| `text_id` | A random id                  |
+| `text_id` | A random id, 32 hex digits   |
 | `locale`  | The language                 |
 | `body`    | The text                     |
 | `state`   | Waiting, written or rejected |
@@ -75,15 +75,16 @@ GET /v1/companion/texts/{textId}/{locale}
 The [api-server](/docs/server/api-server/) serves the body. It asks the zone over the bus, keeps the answer, and
 tells the caller to keep it too. This is the same pattern as guild emblems.
 
-- When the language is missing, the English body is sent.
+- When the language is missing, the English body is sent. The `Content-Language` header names the language of
+  the body. Nobody keeps such a fallback for long, because its language may be written later.
 - When there is no body at all, the answer is "not found" and the client keeps the template.
-- The game client keeps bodies on disk, like map tiles.
+- The game client keeps bodies on disk, like map tiles. It opens the route with its connection ticket.
 
 # Readable Things
 
-Signposts, milestones, graves and examined places send an English chat line today. They get their own message with
-a text reference. Books become items that hold a text reference. So every readable thing can be translated, with or
-without an LLM text.
+Signposts, milestones, graves and examined places send `ReadableSMSG`, a message with a text reference. The client
+shows it as a chat line. Books become items that hold a text reference. So every readable thing can be translated,
+with or without an LLM text.
 
 # The Text Job
 
