@@ -361,24 +361,35 @@ the player's own knowledge and not a lookup of the world.
 
 # Experience
 
-The primary way to gain experience is fighting enemy Bestia. More pacifistic players can earn experience through skill use and interaction with the world instead. To keep combat the fastest route without making the alternatives pointless, skill-based experience is deliberately pegged at roughly **half** of what defeating a Bestia of the same level yields, and it is additionally rate-limited by materials, resource node respawns and crafting times.
+The primary way to gain experience is fighting enemy Bestia. More pacifistic players can earn experience through skill use and interaction with the world instead. To keep combat the fastest route without making the alternatives pointless, skill-based experience is deliberately pegged at **75 %** of what a fighter earns in the same time at the very best, and it is additionally rate-limited by an effort bank, materials, resource node respawns and crafting times. See [Work Experience](#work-experience).
 
-The experience a Bestia needs for its next level grows cubically, so every route gets slower as the level rises:
+## The Level Curve
+
+Every level is designed around **how long it takes**, not around an EXP number. The time one level takes a player who does nothing but earn experience grows with the level and is anchored at **24 hours of constant play at Lv. 97**:
 
 <!-- prettier-ignore -->
 {{< katex display >}}
-exp_{req} = \frac{lv^3}{3} + 1.5 \cdot lv + 15
+t(lv) = \max\left(60\,\text{s},\; 24\,\text{h} \cdot \left(\frac{lv}{97}\right)^{2.5}\right)
 {{< /katex >}}
 
-| Bestia Lv. | EXP for next level | ≈ same-level kills |
-| ---------: | -----------------: | -----------------: |
-|         10 |                363 |                  8 |
-|         25 |              5,261 |                 50 |
-|         50 |             41,757 |                204 |
-|         75 |            140,753 |                462 |
-|        100 |            333,498 |                823 |
+The experience a level costs is that time at the rate an on-level fighter earns it. A kill of an enemy of the same level takes about `25` seconds, walking and recovering included, and is worth `4 * lv + 5` (see [Killing Enemies](#killing-enemies)):
 
-The kill counts are before any of the modifiers below, which in practice cut them down considerably.
+<!-- prettier-ignore -->
+{{< katex display >}}
+exp_{req}(lv) = t(lv) \cdot \frac{4 \cdot lv + 5}{25\,\text{s}}
+{{< /katex >}}
+
+| Bestia Lv. | EXP for next level | Time per level | ≈ same-level kills |
+| ---------: | -----------------: | -------------: | -----------------: |
+|          1 |                 22 |          1 min |                  2 |
+|         10 |                531 |          5 min |                 12 |
+|         25 |             12,237 |         49 min |                117 |
+|         50 |            135,152 |          4.6 h |                659 |
+|         75 |            554,112 |         12.6 h |              1,817 |
+|         97 |          1,358,208 |           24 h |              3,456 |
+|        100 |          1,510,426 |         25.9 h |              3,730 |
+
+The exponent is above `2` on purpose: gear takes `1.2 * lv^2` seconds to craft, so a craftsman needs ever more crafts per level, never fewer. About `650` hours of constant play lead to Lv. 97. The kill counts are before any of the modifiers below, which in practice cut them down considerably. The table applies to Masters and Bestias alike, and a Master gains one skill point per level, so skill points arrive on the same curve.
 
 ## Killing Enemies
 
@@ -412,16 +423,48 @@ After the killing blow is delivered, the resulting pool is distributed among the
 
 Experience is also earned by working with the world rather than fighting it:
 
-| Activity                                                         | EXP gained               |
-| :--------------------------------------------------------------- | :----------------------- |
-| Travelling                                                       | `3` per km travelled     |
-| Gathering a resource (mining, lumberjacking, herbalism, fishing) | `2 * resource_level + 5` |
-| Crafting an item (forging, brewing, transmuting, …)              | `2 * item_level + 5`     |
-| Constructing a structure                                         | `3 * item_level + 10`    |
+| Activity                                                         | EXP gained                                                          |
+| :--------------------------------------------------------------- | :------------------------------------------------------------------ |
+| Travelling                                                       | `3` per km travelled                                                |
+| Gathering a resource (mining, lumberjacking, herbalism, fishing) | `2 * resource_level + 5`                                            |
+| Crafting an item (forging, brewing, transmuting, …)              | by the time the craft took, see [Work Experience](#work-experience) |
+| Constructing a structure                                         | `3 * item_level + 10`                                               |
 
-Gathering and crafting sit at about half of `4 * lv + 5`, the base experience for defeating a Bestia of the same level. A Craftsman or Miner therefore progresses at roughly half the pace of a fighter — a genuine route, just a slower one.
+Gathering sits at about half of `4 * lv + 5`, the base experience for defeating a Bestia of the same level.
 
-Travel experience is deliberately tiny: at Lv. 50 a single level would take almost 14,000 km on foot. It is a top-up for players who are out exploring anyway, never a progression route of its own.
+Travel experience is deliberately tiny: at Lv. 50 a single level would take about 45,000 km on foot. It is a top-up for players who are out exploring anyway, never a progression route of its own.
+
+### Work Experience
+
+A Master who crafts earns experience for **successful** crafts, so a job-focused playstyle levels without fighting. What pays is not the cast of a skill but the _time the work took_, counted in effort seconds. The cast of a crafting skill only opens the crafting window, and a skill with no cooldown could be cast endlessly, so neither mana, nor skill rank, nor the number of casts count.
+
+An effort second is paid like a second of fighting, times a `pace` of `0.75`:
+
+<!-- prettier-ignore -->
+{{< katex display >}}
+exp_{work} = 0.75 \cdot effort \cdot \frac{4 \cdot lv + 5}{25\,\text{s}}
+{{< /katex >}}
+
+Equivalently, an action pays `0.75 * effort / t(lv)` of the level (see [The Level Curve](#the-level-curve)), so the **share of a level one action pays falls as the level rises**. Gear takes `1.2 * item_level^2` seconds to craft. Crafting an item of your own level pays:
+
+| Master Lv. | Craft time |     EXP | Share of the level | Crafts per level |
+| ---------: | ---------: | ------: | -----------------: | ---------------: |
+|         10 |      2 min |     162 |               31 % |                3 |
+|         40 |     32 min |   9,504 |               15 % |                7 |
+|         60 |     72 min |  31,752 |               12 % |                8 |
+|         80 |      2.1 h |  74,880 |               11 % |                9 |
+|         97 |      3.1 h | 133,119 |               10 % |               10 |
+
+Four rules keep it honest:
+
+- **Only the work counts.** A craft pays for its own time, capped at what an item five levels above the Master takes, so reaching far above your level does not pay as if it had been worked. A trivial craft at a high level is worth next to nothing. A single payout is never more than `35 %` of a level.
+- **Only success pays.** A failed craft has already cost its materials and pays nothing.
+- **One effort second per second.** Every Master has an _effort bank_ that fills one second per real second, up to one hour, online or off. Every payout draws from it, so no number of stations or skills can beat the curve, and logging out and in does not refill it. Even a Master who does nothing but work reaches `75 %` of a fighter at the very best; walking, gathering materials and trading make it less.
+- **The Master plays.** The work of a Bestia at a station counts for its Master, and only while that Master is in the world. Work finished while the Master is offline pays nothing.
+
+The guild tax applies to work experience as it does to kills; a party does not share it.
+
+{{< alert context="info" text="Crafting is the only source of work experience today. Support skills that land on a player who needed them (healing or curing someone else, buffing someone who lacked it) and Master gathering are meant to follow, on the same curve. Fighting skills, self-only buffs, movement and detection skills and the like never pay: they have no work product and are too cheap to repeat." />}}
 
 ## Death Penalty
 

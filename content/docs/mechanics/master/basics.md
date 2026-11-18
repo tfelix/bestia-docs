@@ -59,6 +59,20 @@ leaves about **85 points** for professions. Some builds that fit:
 A master who spreads over three sub-trees still has only two professions, see below: the third one gives its skills
 but not its equipment.
 
+# Skill Experience
+
+A master does not have to fight to level. A successful craft pays experience for the time it took, on the same curve that fighting levels on, at no more than `75 %` of a fighter's pace; the formulas, the effort bank and a table per level are under [Work Experience](/docs/mechanics/bestias/bestia/#work-experience). Not every skill is meant to pay, because what pays is a work product that took time, never a cast that can simply be repeated:
+
+| Skills                                                                                                           | Experience                                      |
+| :--------------------------------------------------------------------------------------------------------------- | :---------------------------------------------- |
+| Everything that crafts: Cooking, Carpentry, Ore Refinement, Forge Weapon and Armor, Alchemy, Equipment Repair, … | Pays on success, by the time the craft took     |
+| Healing, curing and buffing another player who needed it (Heal, First Aid, Blessing, …)                          | Planned, on the same curve                      |
+| Gathering with a master skill (Mining, Lumberjack, Herbalism)                                                    | Planned, on the same curve                      |
+| Attacks and debuffs                                                                                              | Never. Kills pay                                |
+| Self-only buffs, Hide, Cloak, Sprint, Teleport and the other movement skills                                     | Never. No work product, and too cheap to repeat |
+| Senses and detection such as Sense, Magic Sense, Ruwach and Observation                                          | Never                                           |
+| Passive skills                                                                                                   | Never. They are not cast                        |
+
 # Professions
 
 Skill points spent in a sub-tree (Blacksmith, Sage, Wizard, ...) do more than unlock its skills. They also make the
