@@ -4,7 +4,7 @@ title: Quest Manager
 description: "Design of the QuestManager - how the zone plans quests from the world history and from real events in the live world, offers them through townsfolk, found things and the blackboard, runs chains with a choice, and writes their endings back into the world."
 ---
 
-{{< alert context="warning" text="**Design, not built.** The [quest core](/docs/server/quests/) and the blackboard exist. Nothing on this page is built yet. The build order is at the [end](#build-order)." />}}
+{{< alert context="warning" text="**Design, not built.** The [quest core](/docs/server/quests/) and the blackboard exist. Of this page only the [fact store](#what-a-player-knows) is built. The build order is at the [end](#build-order)." />}}
 
 The [quest core](/docs/server/quests/) keeps quests, but only players make them, on the
 [blackboard](/docs/mechanics/towns-trade/blackboard/). The **QuestManager** is the part that lets the world make
@@ -167,8 +167,12 @@ Escort and guard steps come later. They need NPC travel and rules for failing.
 Steps like "speak the name" need to know what a player has learned. The **fact store** keeps one row per player and
 fact: the fact, where it came from, and when.
 
-- A fact is a chronicle record plus an aspect (its name, its place, its fate), or a clue.
-- Facts come from carriers, from history lines of townsfolk, and from quest rewards.
+- A fact is a chronicle record plus an aspect (its name, its place, its fate), or a clue. An event of the chronicle
+  is one fact as a whole.
+- Facts come from carriers, from history lines of townsfolk, and from quest rewards. Today only townsfolk teach:
+  a townsperson who tells a chronicle event teaches that event. A legend or a rumour teaches nothing, because a
+  legend may be wrong and a rumour is not in the chronicle.
+- A master learns a fact once. The rows are wiped with the world.
 - A played master holds its facts in memory, so a check on the tick is a set lookup.
 - A fact read before a quest started still counts for that quest.
 
