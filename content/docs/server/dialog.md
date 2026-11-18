@@ -128,9 +128,9 @@ reconnect or a server restart untouched.
 open(player, npc)            -> Node
 choose(player, npc, topicId) -> Node
 
-Node  (speech: Line, options: List<Option>)
+Node  (speech: TextRef, options: List<Option>)
 TextRef (key: String, args: Map<String, TextArg>)
-Option(topicId: Int, line: Line, kind: TALK | ACTION | BACK | END)
+Option(topicId: Int, line: TextRef, kind: TALK | ACTION | BACK | END)
 ```
 
 Depth comes from topics that offer sub-topics rather than from a stored cursor. Two levels covers
