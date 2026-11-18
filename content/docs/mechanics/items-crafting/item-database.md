@@ -22,6 +22,11 @@ game's item catalogue. Here you only set what the game does not know: a referenc
 [Bestia Blueprint Calculator](/docs/mechanics/bestias/bestia-design/#bestia-blueprint-calculator), an `icon`, a
 `description` that replaces the game's text, and items with `planned: true`.
 
+To link one item from another page, write `{{</* item "furnace_kit" */>}}` (shows the item's name) or
+`{{</* item "furnace_kit" "a furnace" */>}}` (shows your text). The id is the item's id in `data/items.yaml`, and an
+unknown id fails the build. Inside another shortcode's parameter, write a plain link to
+`/docs/mechanics/items-crafting/item-database/?id=furnace_kit` instead.
+
 If you want to generate item icons, try to mimic the current style. Please use the following prompt for
 [ChatGPT](https://chatgpt.com/):
 

@@ -1,0 +1,7 @@
+{{- /* item.html: a link to one item of the Item Database, by its game id. {{< item "furnace_kit" >}} shows the item's
+  name, {{< item "furnace_kit" "a furnace" >}} shows the given text. An unknown id fails the build, so a link cannot
+  outlive a renamed item. */ -}}
+{{- $id := .Get 0 -}}
+{{- $item := index (where site.Data.items "id" $id) 0 -}}
+{{- if not $item }}{{ errorf "%s: item %q is not in data/items.yaml" .Position $id }}{{ end -}}
+<a href="/docs/mechanics/items-crafting/item-database/?id={{ $id }}">{{ .Get 1 | default $item.name }}</a>

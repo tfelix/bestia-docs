@@ -1,6 +1,6 @@
 <!-- item-card.html: one item card, from an entry of data/items.yaml. The data-* attributes feed the filters of itemdatabase.html. -->
 {{ $id := replace (lower .name) " " "-" }}
-<div class="col" id="{{ $id }}" data-name="{{ lower .name }}" data-categories="{{ delimit (.categories | default slice) " " }}"
+<div class="col" id="{{ $id }}" data-id="{{ .id }}" data-name="{{ lower .name }}" data-categories="{{ delimit (.categories | default slice) " " }}"
   data-slot="{{ .slot }}" data-weapon="{{ .weapon_type }}" data-armor="{{ .armor_type }}" data-material="{{ .material }}"
   data-item-level="{{ .item_level | default 0 }}" data-min-level="{{ .min_level | default 0 }}">
   <div class="card text-light shadow h-100">
