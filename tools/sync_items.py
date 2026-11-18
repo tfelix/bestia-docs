@@ -29,7 +29,8 @@ HEADER = """\
 # the game's text.
 #
 # value is a reference price in coins, for pricing loot. Bread is 9 and a gold ore 10,000
-# (money-supply.md). An item without one has no price yet.
+# (money-supply.md). The sync estimates a missing value once, from the game's commodity price, the item's
+# cheapest recipe or its level (see estimate_values); after that it is the docs' own and may be edited.
 """
 
 STATION_SUFFIX = "_kit"
@@ -47,6 +48,9 @@ def main():
 
     docs_items = {i["id"]: i for i in yaml.safe_load(ITEMS_YAML.read_text())}
 
+    recipes = [r for name in ("recipes.yml", "gear_recipes.yml") for r in yaml.safe_load((resources / name).read_text())["recipes"]]
+    commodities = yaml.safe_load((resources / "economy" / "economy.yml").read_text())["commodities"]
+
     synced = []
     for item in game_items:
         db_name = item["item-db-name"]
@@ -55,6 +59,8 @@ def main():
         entry.update({k: docs[k] for k in DOCS_KEYS if k in docs})
         entry.setdefault("description", item["description"])
         synced.append(entry)
+
+    estimate_values(synced, recipes, {c["item"]: c["price"] for c in commodities})
 
     planned = []
     for docs in docs_items.values():
@@ -66,6 +72,53 @@ def main():
     ITEMS_YAML.write_text(HEADER + yaml.dump(synced + planned, Dumper=Dumper, sort_keys=False, allow_unicode=True,
                                              width=120))
     print(f"{len(synced)} game items, {len(planned)} planned", file=sys.stderr)
+
+
+# A crafter sells above cost; the margin is the work. A recipe's base chance is not priced in: it is before the
+# skill bonuses that a crafter who sells the item has.
+CRAFT_MARGIN = 1.2
+
+# What nothing makes and nobody prices: anchored on the docs' hand-set raw materials, about 3 coins at level 1 and
+# 2,500 at level 100.
+RAW_BASE = 3
+RAW_GROWTH = 1.07
+
+
+def estimate_values(entries, recipes, commodity_prices):
+    """Fills a missing `value`. A game commodity price wins, then the cheapest recipe, then the item level."""
+    by_id = {e["id"]: e for e in entries}
+    known = {e["id"]: e["value"] for e in entries if e.get("value") is not None}
+    known.update({k: v for k, v in commodity_prices.items() if k in by_id and k not in known})
+
+    makes = {}
+    for recipe in recipes:
+        output = recipe.get("output")
+        if output and output["item"] in by_id:
+            makes.setdefault(output["item"], []).append(recipe)
+
+    def crafted(item_id, visiting):
+        costs = []
+        for recipe in makes.get(item_id, []):
+            inputs = [(i["item"], i["amount"]) for i in recipe["inputs"]]
+            if any(i in visiting for i, _ in inputs):
+                continue
+            cost = sum(value_of(i, visiting | {item_id}) * amount for i, amount in inputs)
+            costs.append(cost / recipe["output"]["amount"] * CRAFT_MARGIN)
+        return min(costs) if costs else None
+
+    def value_of(item_id, visiting=frozenset()):
+        if item_id in known:
+            return known[item_id]
+        price = crafted(item_id, visiting)
+        if price is None:
+            price = RAW_BASE * RAW_GROWTH ** by_id[item_id]["item_level"]
+        if not visiting:
+            known[item_id] = price
+        return price
+
+    for entry in entries:
+        if entry.get("value") is None:
+            entry["value"] = max(1, round(value_of(entry["id"])))
 
 
 def read_names(csv_path):
