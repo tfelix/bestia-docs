@@ -18,9 +18,9 @@
   value: 2
   icon: apple.png
   description: |
-    A fresh and jucy red apple. Looks like it came right from a tree.
+    A crisp red apple, still cool from the branch.
 
-    Restores 20 HP
+    Restores 25 HP when eaten.
 - id: jelly
   name: Jelly
   game_id: 2
@@ -31,7 +31,9 @@
   material: Food
   value: 2
   description: |
-    A wobbly lump of jelly left behind by a blob. Cooks use it to thicken stews.
+    A quivering, see-through lump left behind by a blob.
+
+    Cooks stir it into hearty stew.
 - id: small_health_potion
   name: Small Health Potion
   game_id: 3
@@ -42,7 +44,9 @@
   material: Glass
   value: 25
   description: |
-    A tiny vial filled with shimmering red liquid. Instantly mends minor wounds and brings a gentle warmth to the soul. Heals 45 HP.
+    A small vial of thin red liquid that glints when it is tilted.
+
+    Heals 45 HP when drunk.
 - id: shoes
   name: Shoes
   game_id: 4
@@ -111,7 +115,9 @@
   material: Stone
   value: 20
   description: |
-    Heavy, rugged chunks of iron ore. Blacksmiths prize these for their strength and potential. Can be used for forging.
+    A lump of raw iron ore, streaked with rust-coloured veins.
+
+    Useless until a furnace has had it.
 - id: iron_ingot
   name: Iron Ingot
   game_id: 9
@@ -135,7 +141,9 @@
   material: Wood
   value: 4
   description: |
-    Glossy black lumps hewn out of a mineral seam. The reference fuel of every [Furnace](/docs/mechanics/items-crafting/item-database/?id=furnace_kit) and what any serious smelting run burns — see [Refining](/docs/mechanics/items-crafting/natural-resources/#refining).
+    A handful of glossy black coal that dirties everything it touches.
+
+    The reference fuel of every [Furnace](/docs/mechanics/items-crafting/item-database/?id=furnace_kit) and what any serious smelting run burns — see [Refining](/docs/mechanics/items-crafting/natural-resources/#refining).
 - id: clay
   name: Clay
   game_id: 11
@@ -146,7 +154,7 @@
   material: Stone
   value: 2
   description: |
-    Smooth, earthy clay. Malleable and perfect for shaping into bricks, pottery, or magical seals. Can be used for forging.
+    Wet river clay, kneaded into a ball. It takes a shape and keeps it.
 - id: void_essence
   name: Void Essence
   game_id: 12
@@ -168,7 +176,9 @@
   material: Crystal
   value: 20
   description: |
-    Fine, faintly glowing dust of condensed mana. Used to empower Bestia traps and ritual crafting.
+    Mana crystal ground to a fine, faintly glowing powder.
+
+    Used to empower Bestia traps and ritual crafting.
 - id: engraving_set
   name: Engraving Set
   game_id: 14
@@ -179,7 +189,9 @@
   material: Metal
   value: 250
   description: |
-    A roll of fine chisels, needles and etching stylae. Consumed when reworking an item to cut rune slots into it.
+    A roll of fine chisels and gravers.
+
+    Consumed a little at a time by the work of cutting slots into a finished item.
 - id: weapon_blueprint
   name: Weapon Blueprint
   game_id: 15
@@ -211,7 +223,7 @@
   item_level: 5
   material: Food
   description: |
-    A thick stew of whatever was to hand, cooked over an open fire.
+    A bowl of thick stew made from whatever was to hand, still steaming from the fire.
 
     Restores health and stamina both, which no potion does.
   value: 7
@@ -260,10 +272,9 @@
   item_level: 1
   material: Paper
   description: |
-    A chart of surveyed land, drawn by hand.
+    A hand-drawn chart of surveyed land, inked line by careful line.
 
-    Shows the ground whoever made it walked. Two charts can be joined into one, and any chart can be
-    copied onto empty paper.
+    Shows the ground its maker walked, and can be joined with another chart or copied onto empty paper.
   value: 3
 - id: chart_blank
   name: Empty Paper
@@ -287,9 +298,9 @@
   item_level: 1
   material: Paper
   description: |
-    A hand-drawn map with a circle inked on it.
+    A creased, hand-drawn map with a circle inked on it.
 
-    Something is buried somewhere inside the circle. Whoever digs it up first keeps it.
+    Something is buried inside the circle, and whoever digs it up first keeps it.
   value: 3
 - id: relic_blade
   name: Old Blade
@@ -304,9 +315,9 @@
   stats: {STR: 6, DEX: 3}
   durability: 400
   description: |
-    A blade from before the oldest town still standing, its edge still keen.
+    A long blade of dark, pitted steel, its edge still keen.
 
-    The chronicle knows who forged it and whose hands it passed through.
+    It is older than the oldest town still standing, and the chronicle knows whose hands it passed through.
   value: 673
 - id: relic_crown
   name: Old Crown
@@ -357,7 +368,7 @@
   description: |
     A small sealed casket on a chain, holding what someone thought holy.
 
-    Nobody has opened it. The chronicle says why it was made.
+    Nobody has opened it, and the chronicle says why it was made.
   value: 673
 - id: relic_tome
   name: Old Tome
@@ -453,7 +464,9 @@
   material: Wood
   value: 300
   description: |
-    _(placeholder)_ A basic crafting station used by Carpentry to build items. Use it to construct it in the world.
+    A bundle of planks, pegs and a folded vice, tied with cord.
+
+    Set it down somewhere flat and it becomes a workbench - once somebody puts the work in.
 - id: furnace_kit
   name: Furnace Kit
   game_id: 34
@@ -464,8 +477,9 @@
   material: Stone
   value: 600
   description: |
-    Blacksmiths use furnaces to smelt raw ore down into metal bars. Every batch burns [Coal](/docs/mechanics/items-crafting/item-database/?id=coal) or [Charcoal](/docs/mechanics/items-crafting/item-database/?id=charcoal), and both the ore and the fuel are lost if the smelt fails.
-    Placing one requires [Ore Refinement](/docs/mechanics/master/craftsman-tree/#skill-ore-refinement) Lv. 1. Use it to construct it in the world.
+    A sack of fitted stones and a clay flue, packed in straw.
+
+    Set it down and it becomes a furnace that smelts ore into bars, burning [Coal](/docs/mechanics/items-crafting/item-database/?id=coal) or [Charcoal](/docs/mechanics/items-crafting/item-database/?id=charcoal). Placing one requires [Ore Refinement](/docs/mechanics/master/craftsman-tree/#skill-ore-refinement) Lv. 1.
 - id: forge_kit
   name: Forge Kit
   game_id: 35
@@ -490,7 +504,7 @@
   description: |
     Planks, two iron bands and a hasp, waiting to be a chest.
 
-    Set it down and it becomes a chest only you can open. Whoever breaks it can take what spills.
+    Set it down and it becomes a chest only you can open, though whoever breaks it takes what spills.
   value: 84
 - id: mining_shaft_kit
   name: Mining Shaft Kit
@@ -503,7 +517,7 @@
   description: |
     Beams for a head frame, a windlass and a coil of rope.
 
-    Set it down and it becomes a mining shaft. Your bestias dig the ore below it while you are away.
+    Set it down and it becomes a mining shaft, where your bestias dig the ore below while you are away.
   value: 181
 - id: campfire_kit
   name: Campfire Kit
@@ -516,7 +530,7 @@
   description: |
     Kindling, a few stones and a lump of resin to get it going.
 
-    Set it down to light a campfire. It burns half an hour, longer with more wood.
+    Set it down to light a campfire that burns half an hour, longer with more wood.
   value: 31
 - id: breeding_farm_kit
   name: Breeding Farm Kit
@@ -528,9 +542,9 @@
   material: Wood
   value: 3000
   description: |
-    A fenced pen with a nesting hut, where a male and a female Bestia of the same kind lay an egg. Does one clutch at a
-    time and needs a Nesting Bundle for each. Made with Carpentry Lv. 2. Use it to construct it in the world.
-    See [Breeding](/docs/mechanics/bestias/bestia/#breeding).
+    Fence posts, planks and a folded nesting hut, tied with cord.
+
+    Set it down and it becomes a Breeding Farm, where a male and a female Bestia of the same kind lay an egg. See [Breeding](/docs/mechanics/bestias/bestia/#breeding).
 - id: nesting_bundle
   name: Nesting Bundle
   game_id: 40
@@ -541,8 +555,9 @@
   material: Plant
   value: 40
   description: |
-    Reeds, fur and feathers bound into a nest. A Breeding Farm uses up one for each clutch. Made at a Workbench with
-    Carpentry Lv. 1 from a reed stalk, a soft fur and a feather.
+    Reeds, fur and feathers bound into a nest.
+
+    A Breeding Farm uses up one for each clutch.
 - id: bestia_egg
   name: Bestia Egg
   game_id: 41
@@ -553,8 +568,9 @@
   material: Food
   value: 0
   description: |
-    A Bestia egg from a Breeding Farm. It knows its species, its sex and its individual values, and only hatches in an
-    Incubator. Not stackable: every egg is one Bestia.
+    A speckled egg the size of two fists, still warm from the nest.
+
+    It knows its species, its sex and its individual values, and only hatches in an Incubator.
 - id: incubator_kit
   name: Incubator Kit
   game_id: 42
@@ -565,8 +581,9 @@
   material: Stone
   value: 2500
   description: |
-    A warm clay oven over an ember core. Hatches one Bestia egg at a time. Made with Carpentry Lv. 3. Use it to
-    construct it in the world. See [Hatching the Egg](/docs/mechanics/bestias/bestia/#hatching-the-egg).
+    Fired bricks around an ember core, with a padded nest on top.
+
+    Set it down and it becomes an Incubator, which keeps one egg warm until it hatches. See [Hatching the Egg](/docs/mechanics/bestias/bestia/#hatching-the-egg).
 - id: gold_coin
   name: Gold Coin
   game_id: 43
@@ -623,7 +640,9 @@
   material: Stone
   value: 10000
   description: |
-    A heavy ore flecked with gold. Smelted into gold bars and, once minted, into the world's coinage.
+    A lump of quartz shot through with soft yellow metal.
+
+    Heavy for its size, and worth nothing at all until a furnace has separated the two.
 - id: gold_bar
   name: Gold Bar
   game_id: 48
@@ -634,7 +653,9 @@
   material: Metal
   value: 20000
   description: |
-    A valuable refined gold ingot. Highly sought after for crafting and trade.
+    A finger of refined gold, still dull from the mould.
+
+    Every coin in the world started as one of these.
 - id: small_mana_potion
   name: Small Mana Potion
   game_id: 49
@@ -645,7 +666,9 @@
   material: Glass
   value: 30
   description: |
-    A delicate bottle of sparkling blue essence. Recharges a mage’s spirit and restores a touch of magical energy. Restores 45 Mana.
+    A small vial of cold blue liquid.
+
+    Restores 45 Mana when drunk.
 - id: bandage
   name: Bandage
   game_id: 50
@@ -685,7 +708,9 @@
   material: Food
   value: 2
   description: |
-    Common mineral salt. Used for food preservation and various crafting recipes.
+    A sack of coarse grey salt.
+
+    Keeps meat from turning, which is why it is worth carrying a long way.
 - id: raw_meat
   name: Raw Meat
   game_id: 53
@@ -696,7 +721,9 @@
   material: Food
   value: 4
   description: |
-    A cut of fresh meat. It spoils within days unless it is salted or cooked.
+    A thick cut of meat on the bone, marbled with fat.
+
+    Spoils faster than anything but fish.
 - id: salted_meat
   name: Salted Meat
   game_id: 54
@@ -772,7 +799,9 @@
   material: Wood
   value: 6
   description: |
-    This is raw wood and it can be further processed into building material which is required for most buildings.
+    A felled trunk cut to length, bark still on.
+
+    The heaviest thing anybody carries by choice.
 - id: plank
   name: Plank
   game_id: 60
@@ -861,7 +890,9 @@
   material: Leather
   value: 6
   description: |
-    The untreated hide of an animal. A tanner turns it into leather.
+    A green hide, hair still on and heavy with fat.
+
+    Nobody who has carried one in summer carries a second.
 - id: leather
   name: Leather
   game_id: 67
@@ -883,7 +914,7 @@
   material: Cloth
   value: 5
   description: |
-    A tuft of soft wool. Weavers spin it into yarn for cloth.
+    A shorn fleece, greasy and full of burrs.
 - id: flax
   name: Flax
   game_id: 69
@@ -993,7 +1024,9 @@
   material: Crystal
   value: 400
   description: |
-    An uncut stone from a Bestia's digging or a treasure cache. It is one of the five gems, but only the cut tells which.
+    A dull, uncut stone still held in a crust of rock.
+
+    Only the cut tells which gem it is, unless a miner with Gem Lore appraises it from the bag.
 - id: gold_ring
   name: Gold Ring
   game_id: 77
@@ -1119,7 +1152,7 @@
   description: |
     A thimble-sized vial of pale red liquid, the cork stamped with a beginner's mark.
 
-    Heals a little health. Only a novice may drink it.
+    Heals a little health, and only a novice may drink it.
   value: 3
 - id: novice_mana_potion
   name: Novice Mana Potion
@@ -1133,7 +1166,7 @@
   description: |
     A thimble-sized vial of pale blue liquid, the cork stamped with a beginner's mark.
 
-    Restores a little mana. Only a novice may drink it.
+    Restores a little mana, and only a novice may drink it.
   value: 3
 - id: bestia_trap
   name: Bestia Trap
@@ -1145,8 +1178,9 @@
   material: Wood
   value: 50
   description: |
-    The entry-level Magic Bestia Trap, woven from mana dust and cheap wards. Reliable against young Bestia and hopeless against anything grown.
-    Base catch chance `+60%` against Bestia up to Lv. 20.
+    A cage of bent willow with a mana-dusted trigger plate.
+
+    Reliable against young Bestia and hopeless against anything grown: a base catch chance of `+60%` against Bestia up to Lv. 20.
 - id: iron_helmet
   name: Iron Helmet
   game_id: 87
@@ -1190,7 +1224,7 @@
   description: |
     A tall oak pole and a banner in the guild's colours, its hem weighted with iron.
 
-    Planted in the ground, it is where Rally to the Banner calls the guild. Enemies can cut it down.
+    Planted in the ground, it marks where Rally to the Banner calls the guild, until enemies cut it down.
   value: 112
 - id: fly_wing
   name: Fly Wing
@@ -1204,7 +1238,7 @@
   description: |
     A pale feather that never quite settles in the hand.
 
-    Crushed, it whisks its bearer to a random spot up to 150 m away, on ground already in sight, so the world never has to load. Only the bearer goes: a master's bestias stay where they are, and a bestia can carry and use a wing of its own. Wings of either kind cannot be used again for 3.5 seconds.
+    Crushed, it whisks its bearer alone to a random spot up to 150 m away, on ground already in sight, so the world never has to load.
 - id: butterfly_wing
   name: Butterfly Wing
   game_id: 91
@@ -1217,7 +1251,7 @@
   description: |
     A butterfly's wing, dusted in amber scales that glow like embers.
 
-    Crushed, it carries its bearer home to their save point. Only the bearer goes. The journey is long enough that the world has to load around them.
+    Crushed, it carries its bearer alone back to their save point, far enough that the world has to load around them.
 - id: feather
   name: Feather
   game_id: 92
@@ -1654,7 +1688,7 @@
   item_level: 1
   material: Cloth
   description: |
-    A canvas sack under the postal seal. Nobody may open it, the courier included.
+    A canvas sack closed with a postal seal that nobody may break, the courier included.
 
     Bring it to the post office it is addressed to before its deadline.
   value: 3
@@ -1733,7 +1767,9 @@
   material: Glass
   value: 3
   description: |
-    A plain, corked glass bottle. The vessel behind every potion, tonic and blessed draught - alchemists and priests alike never carry enough of them.
+    A small glass bottle with a cork stopper.
+
+    Empty, and waiting to be filled with something better.
 - id: holy_water
   name: Holy Water
   game_id: 129
@@ -1744,7 +1780,9 @@
   material: Glass
   value: 60
   description: |
-    Plain water blessed in the rite of Aqua Benedicta. The reagent behind Aspersio and several higher rites.
+    Plain water, blessed by a Priest and stoppered in a small bottle.
+
+    Blessed in the rite of Aqua Benedicta, it is the reagent behind Aspersio and several higher rites.
 - id: basic_poison
   name: Basic Poison
   game_id: 130
@@ -1755,9 +1793,9 @@
   material: Glass
   value: 40
   description: |
-    The first poison an Alchemist learns to brew. Worked into a blade with
-    [Enchant Poison](/docs/mechanics/master/warrior-tree/#skill-enchant-poison), every cut may leave it behind. Stronger poisons
-    follow later.
+    A small vial of murky green liquid that smells of bitter almonds.
+
+    Worked into a blade with [Enchant Poison](/docs/mechanics/master/warrior-tree/#skill-enchant-poison), every cut may leave it behind.
 - id: rough_amethyst
   name: Rough Amethyst
   game_id: 131
@@ -1768,7 +1806,9 @@
   material: Crystal
   value: 50
   description: |
-    A violet crystal from a shallow geode. The commonest gem in the world. It is still caught in rock. Gem Cutting turns it into a Cut Amethyst.
+    A violet crystal out of a shallow geode, still caught in rock.
+
+    The commonest gem in the world, and Gem Cutting turns it into a cut amethyst.
 - id: rough_emerald
   name: Rough Emerald
   game_id: 132
@@ -1779,7 +1819,9 @@
   material: Crystal
   value: 300
   description: |
-    A green crystal from deep granite. It is still caught in rock. Gem Cutting turns it into a Cut Emerald.
+    A green crystal out of deep granite, still caught in rock.
+
+    Gem Cutting turns it into a cut emerald.
 - id: rough_ruby
   name: Rough Ruby
   game_id: 133
@@ -1790,7 +1832,9 @@
   material: Crystal
   value: 600
   description: |
-    A deep red crystal from marble. It is still caught in rock. Gem Cutting turns it into a Cut Ruby.
+    A deep red crystal out of marble, still caught in rock.
+
+    Gem Cutting turns it into a cut ruby.
 - id: rough_pyrelith
   name: Rough Pyrelith
   game_id: 134
@@ -1801,7 +1845,9 @@
   material: Crystal
   value: 1000
   description: |
-    A gem that grew in the gas pockets of a cooled lava flow. It is warm to the touch. It is still caught in rock. Gem Cutting turns it into a Cut Pyrelith.
+    A gem grown in the gas pockets of a cooled lava flow, still caught in rock and warm to the touch.
+
+    Gem Cutting turns it into a cut pyrelith.
 - id: rough_diamond
   name: Rough Diamond
   game_id: 135
@@ -1812,7 +1858,9 @@
   material: Crystal
   value: 2000
   description: |
-    The hardest stone there is, from the roots of the oldest land. It is still caught in rock. Gem Cutting turns it into a Cut Diamond.
+    A clear, hard crystal from the roots of the oldest land, still caught in rock.
+
+    Gem Cutting turns the hardest stone there is into a cut diamond.
 - id: cut_amethyst
   name: Cut Amethyst
   game_id: 136
@@ -1823,7 +1871,9 @@
   material: Crystal
   value: 150
   description: |
-    A faceted amethyst. It has no power of its own. Runic Etching binds the essence of a Bestia up to level 20 into it.
+    A faceted violet amethyst, clear and empty of any power of its own.
+
+    Runic Etching binds an essence of a Bestia up to level 20 into it.
 - id: cut_emerald
   name: Cut Emerald
   game_id: 137
@@ -1834,7 +1884,9 @@
   material: Crystal
   value: 900
   description: |
-    A faceted emerald. It has no power of its own. Runic Etching binds the essence of a Bestia up to level 40 into it.
+    A faceted green emerald, clear and empty of any power of its own.
+
+    Runic Etching binds an essence of a Bestia up to level 40 into it.
 - id: cut_ruby
   name: Cut Ruby
   game_id: 138
@@ -1845,7 +1897,9 @@
   material: Crystal
   value: 1800
   description: |
-    A faceted ruby. It has no power of its own. Runic Etching binds the essence of a Bestia up to level 60 into it.
+    A faceted ruby, deep red and empty of any power of its own.
+
+    Runic Etching binds an essence of a Bestia up to level 60 into it.
 - id: cut_pyrelith
   name: Cut Pyrelith
   game_id: 139
@@ -1856,7 +1910,9 @@
   material: Crystal
   value: 3000
   description: |
-    A faceted Pyrelith. It has no power of its own. Runic Etching binds the essence of a Bestia up to level 80 into it.
+    A faceted pyrelith, faintly warm and empty of any power of its own.
+
+    Runic Etching binds an essence of a Bestia up to level 80 into it.
 - id: cut_diamond
   name: Cut Diamond
   game_id: 140
@@ -1867,7 +1923,9 @@
   material: Crystal
   value: 6000
   description: |
-    A faceted diamond. It has no power of its own. Runic Etching binds the essence of a Bestia of any level into it.
+    A faceted diamond, bright and empty of any power of its own.
+
+    Runic Etching binds the essence of a Bestia of any level into it.
 - id: essence_gem
   name: Essence Gem
   game_id: 141
@@ -1878,7 +1936,9 @@
   material: Crystal
   value: 1000
   description: |
-    A cut gem with the essence of a Bestia bound inside. It glows with the creature's power and fits into any socket.
+    A cut gem with the essence of a Bestia bound inside, glowing with the creature's power.
+
+    It fits into any socket.
 - id: resin
   name: Resin
   game_id: 142
@@ -2164,7 +2224,8 @@
   range: 8
   attack: 4
   durability: 80
-  description: A strap and a pouch. Every master can use one, and every child can.
+  description: |
+    A leather strap with a worn pouch at its middle. Every master can use one, and so can every child.
   value: 3
 - id: sling_stone
   name: Sling Stone
@@ -2266,7 +2327,9 @@
   material: Crystal
   value: 1500
   description: |
-    Highly concentrated mana powder, the raw material for the finest mana crystals.
+    Mana pressed into a heavy, glowing paste.
+
+    Laid into the ground in a ring, it holds a ritual.
 - id: focus_stone
   name: Focus Stone
   game_id: 167
@@ -2275,7 +2338,8 @@
   weight: 0.8
   item_level: 20
   material: Stone
-  description: A smooth, carved stone. Set in the middle of a Mana Circle, it gathers what the ring holds.
+  description: |
+    A smooth stone carved with a spiral. Set in the middle of a Mana Circle, it gathers what the ring holds.
   value: 12
 - id: mana_circle_kit
   name: Mana Circle Kit
@@ -2287,9 +2351,9 @@
   material: Crystal
   value: 1500
   description: |
-    A coil of mana concentrate poured into a ring on the ground, with a focus stone in its middle. A group holds a ritual
-    inside it, and the leader's next skill takes the charge. The ring is used up when the ritual ends. See
-    [Mana Circles](/docs/mechanics/master/basics/#mana-circles).
+    Five measures of Mana Concentrate and a focus stone, ready to be laid out.
+
+    Laid on the ground it becomes a Mana Circle, where a group holds a ritual that charges the leader's next skill. See [Mana Circles](/docs/mechanics/master/basics/#mana-circles).
 - id: theodolite_kit
   name: Theodolite Kit
   game_id: 169
@@ -2323,7 +2387,7 @@
   material: Plant
   value: 5
   description: |
-    A common healing herb. A staple ingredient for potions and tonics.
+    A sprig of broad green leaves from the forest floor. A base ingredient for many potions.
 - id: mana_herb
   name: Mana Herb
   game_id: 172
@@ -2334,7 +2398,7 @@
   material: Plant
   value: 8
   description: |
-    A faintly luminescent, mana-touched herb. Used in more potent alchemical brews.
+    A herb with faintly glowing blue veins in its leaves. It only grows where the mana runs strong.
 - id: frost_herb
   name: Frost Herb
   game_id: 173
@@ -2343,7 +2407,8 @@
   weight: 0.05
   item_level: 60
   material: Plant
-  description: A tough little herb of the tundra, the taiga and the high mountains.
+  description: |
+    A tough little herb with frost-silvered leaves. It grows in the tundra, the taiga and the high mountains.
   value: 174
 - id: sun_herb
   name: Sun Herb
@@ -2353,7 +2418,8 @@
   weight: 0.05
   item_level: 80
   material: Plant
-  description: A sun-dried herb of the desert and the badlands.
+  description: |
+    A brittle herb dried golden by the sun. It grows in the desert and the badlands.
   value: 673
 - id: ghost_herb
   name: Ghost Herb
@@ -2363,7 +2429,8 @@
   weight: 0.05
   item_level: 100
   material: Plant
-  description: A pale herb that only grows on blighted ground.
+  description: |
+    A pale, almost see-through herb. It only grows on blighted ground.
   value: 2603
 - id: willow_rod
   name: Willow Rod
@@ -2514,7 +2581,7 @@
   material: Food
   value: 160
   description: |
-    Its pale scales glow faintly at night. Alchemists grind them for their brews.
+    A slim fish whose pale scales glow faintly at night. Alchemists grind them for their brews.
 - id: deepmaw
   name: Deepmaw
   game_id: 188
@@ -2547,7 +2614,7 @@
   material: Cloth
   value: 1
   description: |
-    Soaked, rotten and missing its partner. Every angler catches one sooner or later.
+    A soaked, rotten boot, missing its partner. Every angler catches one sooner or later.
 - id: driftwood
   name: Driftwood
   game_id: 191
@@ -2569,7 +2636,7 @@
   material: Cloth
   value: 2
   description: |
-    Somebody else's net, knotted beyond use. The cord can still be picked apart.
+    A sodden fishing net, knotted beyond use. The cord can still be picked apart.
 - id: sealed_bottle
   name: Sealed Bottle
   game_id: 193
@@ -2591,7 +2658,7 @@
   material: Crystal
   value: 600
   description: |
-    A quite rare mana crystal with golden glow. Used for magic artefacts.
+    A rare mana crystal with a warm golden glow. Dispel burns one to unravel what clings to a target.
 - id: blue_mana_crystal
   name: Blue Mana Crystal
   game_id: 195
@@ -2602,7 +2669,7 @@
   material: Crystal
   value: 300
   description: |
-    A common mana crystal with blue luminescence. Used for magic artefacts.
+    A mana crystal with a cool blue glow, the commonest kind. Endow burns one to carry an element into a weapon.
 - id: teleport_rune
   name: Teleport Rune
   game_id: 196
@@ -2642,9 +2709,9 @@
   item_level: 40
   material: Paper
   description: |
-    A scroll with an attack written on it.
+    A rolled scroll with a spell written across it in a tight hand.
 
-    Read from the bag, it casts its attack once, with no mana. Spell Training teaches it to a bestia instead.
+    Read from the bag, it casts its attack once without mana, or Spell Training teaches it to a bestia instead.
   value: 45
 - id: red_mana_crystal
   name: Red Mana Crystal
@@ -2656,7 +2723,7 @@
   material: Crystal
   value: 1200
   description: |
-    A very rare mana crystal with crimson radiance. Used for magic artefacts.
+    A mana crystal with a deep crimson glow. Stone Curse burns one to turn flesh to stone.
 - id: hunting_bow
   name: Hunting Bow
   game_id: 201
@@ -2698,7 +2765,9 @@
   material: Stone
   value: 12
   description: |
-    A soft, dull-grey ore. Alloyed with copper to make bronze and used in basic crafting.
+    A grey, soft ore that stains the fingers.
+
+    It melts at the first hint of a hot fire.
 - id: tin_ingot
   name: Tin Ingot
   game_id: 204
@@ -2722,7 +2791,7 @@
   material: Stone
   value: 12
   description: |
-    A reddish-brown ore that can be refined into copper. Used for forging and crafting.
+    A lump of rock with green-blue streaks through it.
 - id: copper_ingot
   name: Copper Ingot
   game_id: 206
@@ -2757,7 +2826,7 @@
   material: Metal
   value: 120
   description: |
-    Iron worked with carbon until it rings.
+    A grey bar of steel that rings when it is struck.
 
     It takes a keener edge than iron and holds it longer.
 - id: silver_ore
@@ -2770,7 +2839,7 @@
   material: Stone
   value: 2000
   description: |
-    A lustrous ore streaked with silver. Smelted into silver bars for crafting and magical work.
+    Dark, tarnished rock with threads of bright metal in it.
 - id: silver_ingot
   name: Silver Ingot
   game_id: 210
@@ -2794,7 +2863,7 @@
   material: Stone
   value: 150
   description: |
-    A rare silvery ore containing mercury. Used for advanced alchemy and magical crafting.
+    A red rock that sweats beads of liquid metal when it is warmed.
 - id: quicksilver
   name: Quicksilver
   game_id: 212
@@ -2831,7 +2900,7 @@
   material: Stone
   value: 2000
   description: |
-    A precious metallic ore with excellent catalytic properties. Used for high-end equipment.
+    A dense, pale ore, unusually hard to crack.
 - id: palladium_ingot
   name: Palladium Ingot
   game_id: 215
@@ -2855,7 +2924,7 @@
   material: Stone
   value: 5000
   description: |
-    A legendary lightweight ore with magical properties. Used for magic artefacts.
+    A silvery ore, lighter than it looks and faintly warm.
 - id: mithril_ingot
   name: Mithril Ingot
   game_id: 217
@@ -2879,7 +2948,7 @@
   material: Stone
   value: 8000
   description: |
-    The hardest material known. Used for creating the most durable items and equipment.
+    A black ore so heavy it bends the shelf it sits on.
 - id: adamantium_ingot
   name: Adamantium Ingot
   game_id: 219
@@ -2889,7 +2958,7 @@
   item_level: 100
   material: Metal
   description: |
-    The hardest, heaviest bar anyone has made.
+    A dull black bar, the hardest and heaviest anyone has made.
 
     It shrugs off spells as well as steel.
   value: 19204
@@ -3087,7 +3156,7 @@
   item_level: 35
   material: Glass
   description: |
-    Ink with mana ground into it.
+    A small bottle of dark ink, shimmering with the mana ground into it.
 
     What is written with it glows faintly until it is read.
   value: 190
@@ -3162,7 +3231,7 @@
   material: Stone
   value: 60
   description: |
-    A glass-like volcanic stone, brittle yet razor-sharp. Prized for cutting edges and decorative work.
+    Black volcanic glass that breaks to an edge sharper than steel.
 - id: lodestone
   name: Lodestone
   game_id: 242
@@ -3228,7 +3297,9 @@
   material: Crystal
   value: 150
   description: |
-    Raw mana-bearing powder. Fed into a Mana Harvester to grow mana crystals.
+    A pinch of loose mana, grey and faintly warm.
+
+    Fed into a Mana Harvester to grow mana crystals.
 - id: pure_mana_essence
   name: Pure Mana Essence
   game_id: 248
@@ -3239,7 +3310,9 @@
   material: Crystal
   value: 600
   description: |
-    A purer grade of mana powder that yields higher-quality mana crystals.
+    A pinch of mana powder gone clear and bright, with none of the grit.
+
+    In a Mana Harvester it yields higher-quality mana crystals.
 - id: rough_garnet
   name: Rough Garnet
   game_id: 249
@@ -3552,7 +3625,7 @@
   stats: {AGI: 3, CRIT: 2}
   durability: 240
   description: |
-    Blackened so it does not catch the light, and balanced for the hand that never misses twice.
+    A blackened dagger that does not catch the light, balanced for a hand that never misses twice.
   value: 347
 - id: gearwork_dirk
   name: Gearwork Dirk
@@ -3603,7 +3676,7 @@
   stats: {AGI: 8, DEX: 6, CRIT: 4}
   durability: 380
   description: |
-    Nobody remembers the smith who made it. Nobody it was used on remembers it either.
+    A thin grey blade that seems to fade at the edges when it moves. Nobody remembers the smith who made it, and nobody it was used on remembers it either.
   value: 30252
 - id: hand_wraps
   name: Hand Wraps
@@ -3939,7 +4012,7 @@
   stats: {DEX: 7, AGI: 5, RESIST_WIND: 9}
   durability: 380
   description: |
-    The crack of this whip arrives a moment before the thunder does.
+    A long black lash that smells faintly of rain. Its crack arrives a moment before the thunder does.
   value: 4222
 - id: short_sword
   name: Short Sword
@@ -4171,7 +4244,7 @@
   stats: {STR: 1, AGI: 1}
   durability: 180
   description: |
-    The axe of the forest wardens, light enough to carry all day.
+    A slender axe with a green-painted haft, light enough to carry all day. Forest wardens wear one at the belt.
   value: 180
 - id: smiths_hewing_axe
   name: Smith's Hewing Axe
@@ -4188,7 +4261,7 @@
   stats: {STR: 2, DEX: 1}
   durability: 210
   description: |
-    A smith's test piece: if it holds an edge through oak, the steel is good.
+    A broad hewing axe with the smith's mark stamped on the cheek. It is a test piece: if it holds an edge through oak, the steel is good.
   value: 321
 - id: steel_war_axe
   name: Steel War Axe
@@ -4256,7 +4329,7 @@
   stats: {STR: 5}
   durability: 320
   description: |
-    Dark iron, folded and folded again until it rings like a bell.
+    A heavy cleaver of dark iron, folded and folded again until it rings like a bell.
   value: 2086
 - id: heartwood_cleaver
   name: Heartwood Cleaver
@@ -4273,7 +4346,7 @@
   stats: {STR: 6, AGI: 5, HP_REGEN: 4}
   durability: 380
   description: |
-    Its haft was cut from the heart of a living tree, and it has never quite stopped growing.
+    A broad cleaver on a haft of pale heartwood that still puts out the odd leaf. It was cut from the heart of a living tree.
   value: 1634
 - id: cudgel
   name: Cudgel
@@ -4408,7 +4481,7 @@
   stats: {STR: 3, VIT: 2}
   durability: 280
   description: |
-    Forged to crack ore that a pick will not, and it does not much care what else it cracks.
+    A squat mace with a blunt, hardened head. It was forged to crack ore that a pick will not, and does not much care what else it cracks.
   value: 11680
 - id: wardens_holy_mace
   name: Warden's Holy Mace
@@ -4444,7 +4517,7 @@
   stats: {WIL: 7, INT: 4, RESIST_UNDEAD: 15}
   durability: 390
   description: |
-    Its head glows faintly an hour before sunrise, every morning, wherever it is.
+    A golden mace with a sunburst head. It glows faintly an hour before sunrise, every morning, wherever it is.
   value: 43581
 - id: wooden_spear
   name: Wooden Spear
@@ -4611,7 +4684,7 @@
   stats: {DEX: 6, VIT: 5, HIT: 8}
   durability: 380
   description: |
-    Its iron head always turns a little toward the nearest vein of ore.
+    A long pike with a dark, magnetised iron head. It always turns a little toward the nearest vein of ore.
   value: 57628
 - id: two_handed_sword
   name: Two-Handed Sword
@@ -4698,7 +4771,7 @@
   stats: {STR: 3, CRIT: 1}
   durability: 240
   description: |
-    Square-tipped and perfectly balanced for one kind of stroke.
+    A broad, square-tipped blade with no point at all, balanced for one kind of stroke.
   value: 456
 - id: steel_greatblade
   name: Steel Greatblade
@@ -4735,7 +4808,7 @@
   stats: {STR: 3, INT: 2}
   durability: 290
   description: |
-    Runes run the length of the fuller and glow when the blade is drawn in anger.
+    A greatsword with runes cut the length of its fuller. They glow when the blade is drawn in anger.
   value: 23298
 - id: wyrmbone_greatsword
   name: Wyrmbone Greatsword
@@ -4753,7 +4826,7 @@
   stats: {STR: 4, RESIST_FIRE: 6}
   durability: 310
   description: |
-    Its core is a rib from something that breathed fire. It is still warm.
+    A pale greatsword built around a rib from something that breathed fire. It is still warm.
   value: 3466
 - id: sunderer
   name: Sunderer
@@ -4789,7 +4862,7 @@
   stats: {STR: 8, VIT: 6, MDEF: 4}
   durability: 390
   description: |
-    It cannot be drawn against anyone its bearer has sworn to protect, or so the knights say.
+    A plain knightly greatsword with an oath engraved down the blade. It cannot be drawn against anyone its bearer has sworn to protect, or so the knights say.
   value: 43369
 - id: woodsplitter
   name: Woodsplitter
@@ -4841,7 +4914,7 @@
   stats: {STR: 1}
   durability: 180
   description: |
-    The felling axe of a woodcutter who got tired of being robbed.
+    A long felling axe with a notched, well-used edge. It belonged to a woodcutter who got tired of being robbed.
   value: 456
 - id: double_bitted_axe
   name: Double-Bitted Axe
@@ -4859,7 +4932,7 @@
   stats: {STR: 2}
   durability: 210
   description: |
-    Two edges, so the backswing is not wasted.
+    A greataxe with a blade on either side of the haft, so the backswing is not wasted.
   value: 588
 - id: bearded_greataxe
   name: Bearded Greataxe
@@ -4931,7 +5004,7 @@
   stats: {STR: 4, AGI: 2}
   durability: 300
   description: |
-    Its haft is ironbark, which no blade has ever cut through.
+    A heavy reaving axe on a haft of dark ironbark. No blade has ever cut through that wood.
   value: 3136
 - id: forgemasters_labrys
   name: Forgemaster's Labrys
@@ -4949,7 +5022,7 @@
   stats: {STR: 4, DEX: 3}
   durability: 330
   description: |
-    A double axe a forgemaster makes once, to prove they can.
+    A polished double axe etched with its maker's mark. A forgemaster makes one once, to prove they can.
   value: 57989
 - id: veinsplitter
   name: Veinsplitter
@@ -4967,7 +5040,7 @@
   stats: {STR: 7, VIT: 5}
   durability: 380
   description: |
-    It follows the grain of the stone, and the stone opens.
+    A narrow-bladed greataxe with a vein of quartz running through the steel. It follows the grain of the stone, and the stone opens.
   value: 92191
 - id: mallet
   name: Mallet
@@ -5108,7 +5181,7 @@
   stats: {STR: 4, VIT: 2}
   durability: 290
   description: |
-    When it strikes the ground, the ground remembers.
+    A massive maul with a head of rough-cast iron the size of a keg. When it strikes the ground, the ground remembers.
   value: 23213
 - id: templars_warhammer
   name: Templar's Warhammer
@@ -5144,7 +5217,7 @@
   stats: {STR: 8, DEX: 6, RESIST_FIRE: 12}
   durability: 390
   description: |
-    Its head was the first anvil of a forge that has burned for three hundred years.
+    A hammer whose blackened head was once an anvil. It came from a forge that has burned for three hundred years.
   value: 69217
 - id: billhook
   name: Billhook
@@ -5303,7 +5376,7 @@
   stats: {STR: 4, VIT: 4}
   durability: 330
   description: |
-    The ceremonial polearm of a city's wardens, and not only ceremonial.
+    A broad partisan with a tassel in the city's colours below the head. It is the wardens' ceremonial polearm, and not only ceremonial.
   value: 43408
 - id: skyrender_halberd
   name: Skyrender Halberd
@@ -5321,7 +5394,7 @@
   stats: {STR: 9, VIT: 7, HIT: 8}
   durability: 410
   description: |
-    Legend says it was forged to cut a storm in half. The scar in the clouds over the forge has never healed.
+    A tall halberd whose blade shimmers like a storm cloud. Legend says it was forged to cut a storm in half, and the clouds over its forge never healed.
   value: 43541
 - id: walking_stick
   name: Walking Stick
@@ -5414,7 +5487,7 @@
   stats: {WIL: 3}
   durability: 200
   description: |
-    The staff of a pilgrim who has walked every holy road twice.
+    A tall staff hung with shrine tokens, worn thin at the grip. Its pilgrim walked every holy road twice.
   value: 1643
 - id: brass_conduit_staff
   name: Brass Conduit Staff
@@ -5509,7 +5582,7 @@
   stats: {INT: 8, WIL: 4, RESIST_FIRE: 12}
   durability: 390
   description: |
-    Six embers were lit from the first fire. This staff holds the seventh.
+    A charred black staff with a live ember caged at its tip. Six embers were lit from the first fire, and this staff holds the seventh.
   value: 3157
 - id: twig_wand
   name: Twig Wand
@@ -5560,7 +5633,7 @@
   magic_attack: 46
   durability: 150
   description: |
-    The wand every apprentice is handed on the first day, and keeps longer than they admit.
+    A plain wand of polished ash, scuffed at the tip. Every apprentice is handed one on the first day, and keeps it longer than they admit.
   value: 101
 - id: bone_wand
   name: Bone Wand
@@ -5668,7 +5741,7 @@
   stats: {INT: 4, MAX_MANA: 4}
   durability: 320
   description: |
-    Iron drawn from where the ley lines cross. Compasses spin near it.
+    A short scepter of dark, faintly glittering iron, drawn from where the ley lines cross. Compasses spin near it.
   value: 262
 - id: starfall_wand
   name: Starfall Wand
@@ -5686,7 +5759,7 @@
   stats: {INT: 9, WIL: 6, CAST_TIME: 8}
   durability: 410
   description: |
-    Carved from a fallen star. On clear nights it points to the place in the sky it came from.
+    A wand of pitted, silvery stone carved from a fallen star. On clear nights it points to the place in the sky it came from.
   value: 36028
 - id: primer
   name: Primer
@@ -5752,7 +5825,7 @@
   stats: {INT: 1, HP_REGEN: 2}
   durability: 180
   description: |
-    Pressed leaves and careful notes on what heals and what kills.
+    A fat notebook of pressed leaves and careful notes on what heals and what kills.
   value: 293
 - id: book_of_psalms
   name: Book of Psalms
@@ -5769,7 +5842,7 @@
   stats: {WIL: 2}
   durability: 210
   description: |
-    Bound in white leather, with a ribbon for every hour of prayer.
+    A book of psalms bound in white leather, with a ribbon for every hour of prayer.
   value: 1889
 - id: grimoire_of_ash
   name: Grimoire of Ash
@@ -5786,7 +5859,7 @@
   stats: {INT: 3}
   durability: 230
   description: |
-    Its pages are grey and powdery, and the writing only shows when it is warm.
+    A grimoire with grey, powdery pages. The writing only shows when it is warm.
   value: 293
 - id: annotated_bestiary
   name: Annotated Bestiary
@@ -5803,7 +5876,7 @@
   stats: {INT: 2, HIT: 3}
   durability: 260
   description: |
-    Drawings of every creature its author survived, and notes on the ones they did not expect to.
+    A thick, battered book of creature drawings crowded with margin notes. Its author survived every one of them, some only just.
   value: 8931
 - id: atlas_of_ley_lines
   name: Atlas of Ley Lines
@@ -5820,7 +5893,7 @@
   stats: {INT: 2, WIL: 3, MAX_MANA: 4}
   durability: 290
   description: |
-    A book of maps where the roads are rivers of power instead of stone.
+    A heavy atlas bound in blue leather, its maps traced in faintly glowing lines. The roads it shows are rivers of power instead of stone.
   value: 737
 - id: liturgy_of_the_lantern
   name: Liturgy of the Lantern
@@ -5837,7 +5910,7 @@
   stats: {WIL: 5, RESIST_SHADOW: 9}
   durability: 320
   description: |
-    The rites of the lamplighters, who keep the dark from the door.
+    A small, soot-stained book with a lantern stamped on its cover. It holds the rites of the lamplighters, who keep the dark from the door.
   value: 18531
 - id: codex_of_unwritten_pages
   name: Codex of Unwritten Pages
@@ -5854,7 +5927,7 @@
   stats: {INT: 6, WIL: 6, MANA_REGEN: 6, CAST_TIME: 6}
   durability: 380
   description: |
-    Every page is blank until its reader needs it, and then it is the right page.
+    A thick codex whose every page is blank. Each one fills in when its reader needs it, and it is always the right page.
   value: 6765
 - id: short_bow
   name: Short Bow
@@ -5931,7 +6004,7 @@
   stats: {DEX: 2}
   durability: 210
   description: |
-    Its tips curve away from the archer, storing more force than its length suggests.
+    A short bow whose tips curve away from the archer, storing more force than its length suggests.
   value: 318
 - id: horn_bow
   name: Horn Bow
@@ -5951,7 +6024,7 @@
   stats: {DEX: 2, STR: 1}
   durability: 230
   description: |
-    Horn, wood and sinew, glued in layers by a patient bowyer.
+    A bow of horn, wood and sinew, glued in layers by a patient bowyer.
   value: 263
 - id: composite_longbow
   name: Composite Longbow
@@ -5991,7 +6064,7 @@
   stats: {STR: 2, DEX: 3}
   durability: 290
   description: |
-    A heavy warbow. Few can draw it twice in a row.
+    A thick-limbed warbow of elm. Few can draw it twice in a row.
   value: 67
 - id: songstring_bow
   name: Songstring Bow
@@ -6011,7 +6084,7 @@
   stats: {DEX: 4, WIL: 3}
   durability: 320
   description: |
-    Its string hums a different note for every arrow.
+    A slender bow strung with fine silver wire. It hums a different note for every arrow.
   value: 2450
 - id: windrunners_longbow
   name: Windrunner's Longbow
@@ -6031,7 +6104,7 @@
   stats: {DEX: 7, AGI: 5, HIT: 8}
   durability: 380
   description: |
-    Arrows from this bow seem to ride the wind rather than fight it.
+    A pale longbow wrapped in grey feathers at the grip. Arrows from it seem to ride the wind rather than fight it.
   value: 3827
 - id: wooden_crossbow
   name: Wooden Crossbow
@@ -6187,7 +6260,7 @@
   stats: {DEX: 3, STR: 2}
   durability: 290
   description: |
-    Spanned with a windlass, and it punches through a door.
+    A heavy arbalest with a crank windlass at its butt. It punches through a door.
   value: 17895
 - id: gearwork_siege_crossbow
   name: Gearwork Siege Crossbow
@@ -6207,7 +6280,7 @@
   stats: {DEX: 4, INT: 2}
   durability: 320
   description: |
-    Brass gears span it in a heartbeat. The noise gives away the shooter.
+    A heavy crossbow wrapped in brass gears that span it in a heartbeat. The noise gives away the shooter.
   value: 59938
 - id: clockwork_arbalest
   name: Clockwork Arbalest
@@ -6227,7 +6300,7 @@
   stats: {DEX: 7, INT: 4, CRIT: 2}
   durability: 390
   description: |
-    Its mechanism ticks like a clock, and it always shoots on the stroke.
+    An arbalest with a clock face set into its stock. Its mechanism ticks, and it always shoots on the stroke.
   value: 92259
 - id: tin_whistle
   name: Tin Whistle
@@ -6319,7 +6392,7 @@
   stats: {VIT: 2}
   durability: 200
   description: |
-    Loud enough to be heard over a battle, which is what they were made for.
+    A leather bag sprouting three drones and a chanter. Loud enough to be heard over a battle, which is what they were made for.
   value: 55
 - id: fiddle
   name: Fiddle
@@ -6338,7 +6411,7 @@
   stats: {DEX: 3}
   durability: 230
   description: |
-    A fiddle that has played at more weddings than it can count.
+    A dark, scratched fiddle with a fraying bow. It has played at more weddings than it can count.
   value: 259
 - id: warband_drum
   name: Warband Drum
@@ -6395,7 +6468,7 @@
   stats: {WIL: 4, MANA_REGEN: 4}
   durability: 320
   description: |
-    Turn the crank and it plays a tune nobody wrote, slightly different every hour.
+    A painted hurdy-gurdy with a small clock face on its crank. It plays a tune nobody wrote, slightly different every hour.
   value: 5546
 - id: lyre_of_the_last_verse
   name: Lyre of the Last Verse
@@ -6414,7 +6487,7 @@
   stats: {WIL: 7, DEX: 5, MANA_REGEN: 6}
   durability: 380
   description: |
-    It knows one more verse than any song has. Nobody has yet heard it played to the end.
+    A lyre of pale wood with one string more than it should have. It knows one more verse than any song has, and nobody has heard it played to the end.
   value: 2455
 - id: throwing_knife
   name: Throwing Knife
@@ -6734,7 +6807,7 @@
   stats: {DEX: 4, RESIST_WIND: 6}
   durability: 330
   description: |
-    Its cords were braided during a storm and still crackle faintly.
+    A sling of grey, frayed cords that still crackle faintly. They were braided during a storm.
   value: 534
 - id: shepherd_kings_sling
   name: Shepherd King's Sling
@@ -6753,7 +6826,7 @@
   stats: {DEX: 6, AGI: 4, CRIT: 2}
   durability: 370
   description: |
-    The sling of a shepherd who became a king by bringing down a giant.
+    A plain, much-mended wool sling. Its shepherd became a king by bringing down a giant.
   value: 3622
 - id: plain_robe
   name: Plain Robe
@@ -6948,7 +7021,7 @@
   magic_defense: 5
   durability: 150
   description: |
-    A vest of tanned hide.
+    A sleeveless vest of tanned hide, laced at the sides.
   value: 281
 - id: hunters_leathers
   name: Hunter's Leathers
@@ -7056,7 +7129,7 @@
   stats: {DEX: 3, AGI: 3}
   durability: 300
   description: |
-    The leathers of the trailwardens, who walk the borders for a lifetime.
+    Weathered brown leathers, patched at knee and elbow. Trailwardens wear them for a lifetime of walking the borders.
   value: 9033
 - id: hide_of_the_nightstalker
   name: Hide of the Nightstalker
@@ -7074,7 +7147,7 @@
   stats: {AGI: 8, DEX: 5, FLEE: 10}
   durability: 380
   description: |
-    Tanned from a beast that hunted only in the dark. It still prefers the dark.
+    A coat of black, short-haired hide from a beast that hunted only in the dark. It still prefers the dark.
   value: 8649
 - id: ring_mail
   name: Ring Mail
@@ -7234,7 +7307,7 @@
   stats: {STR: 6, VIT: 6, RESIST_FIRE: 15}
   durability: 380
   description: |
-    A hauberk forged at the bottom of a mine, in a forge that runs on the heat of the earth.
+    A dark, heavy hauberk with a faint red glow between its rings. It was forged at the bottom of a mine, on the heat of the earth.
   value: 115378
 - id: iron_plate_coat
   name: Iron Plate Coat
@@ -7376,7 +7449,7 @@
   stats: {VIT: 10, STR: 4, MAX_HP: 10}
   durability: 450
   description: |
-    The armor of a knight who held a bridge alone for a day and a night. It bears every dent and none of the holes.
+    A full harness of battered steel, dented all over and pierced nowhere. Its knight held a bridge alone for a day and a night.
   value: 72046
 - id: felt_hood
   name: Felt Hood
@@ -7626,7 +7699,7 @@
   stats: {DEX: 4, AGI: 3}
   durability: 320
   description: |
-    A hood that muffles its wearer's breath.
+    A dark, close-fitting hood with a padded flap over the mouth. It muffles its wearer's breath.
   value: 3717
 - id: bronze_sallet
   name: Bronze Sallet
@@ -7840,7 +7913,7 @@
   stats: {STR: 5, VIT: 6, RESIST_FIRE: 9}
   durability: 440
   description: |
-    Worn by the captain who turned back the burning fleet. It still smells of smoke.
+    A sea-blackened steel helm with a crest like a breaking wave. Its captain turned back the burning fleet, and it still smells of smoke.
   value: 46265
 - id: travellers_cloak
   name: Traveller's Cloak
@@ -8145,7 +8218,7 @@
   magic_defense: 1
   durability: 120
   description: |
-    Sandals of plaited rope.
+    Flat sandals of plaited rope, tied at the ankle.
   value: 28
 - id: felt_slippers
   name: Felt Slippers
@@ -8325,7 +8398,7 @@
   stats: {AGI: 6, STAMINA_REGEN: 4}
   durability: 370
   description: |
-    Every step in them is a little longer than it should be.
+    Tall, travel-worn boots with seven notches cut into each heel. Every step in them is a little longer than it should be.
   value: 4194
 - id: hobnailed_boots
   name: Hobnailed Boots
@@ -8487,7 +8560,7 @@
   stats: {VIT: 5, STR: 3, MAX_HP: 4}
   durability: 430
   description: |
-    Whoever wears these does not take a step back. They have never been made to.
+    Heavy steel sabatons, scarred along the toes. Whoever wears them does not take a step back, and has never been made to.
   value: 28845
 - id: wicker_buckler
   name: Wicker Buckler
@@ -8735,7 +8808,7 @@
   stats: {VIT: 6, MAX_HP: 6, RESIST_NORMAL: 6}
   durability: 450
   description: |
-    Cut from the first stone wall ever built around a city, and bound in iron.
+    A slab of grey stone bound in iron straps. It was cut from the first wall ever built around a city.
   value: 92206
 - id: cracked_monocle
   name: Cracked Monocle
@@ -8959,7 +9032,7 @@
   stats: {STR: 1}
   durability: 130
   description: |
-    A heavy iron ring.
+    A heavy ring of black iron, plain and cold.
   value: 133
 - id: rabbits_foot_charm
   name: Rabbit's-Foot Charm
@@ -8974,7 +9047,7 @@
   stats: {AGI: 1, FLEE: 2}
   durability: 140
   description: |
-    Lucky for its owner, if not for the rabbit.
+    A rabbit's foot on a leather cord, worn bald in places. Lucky for its owner, if not for the rabbit.
   value: 19
 - id: brawlers_bracer
   name: Brawler's Bracer
@@ -9019,7 +9092,7 @@
   stats: {DEX: 1, AGI: 1}
   durability: 160
   description: |
-    A signet ring for sealing contracts.
+    A brass signet ring, its seal worn soft by years of wax. Merchants press it into their contracts.
   value: 44
 - id: alchemists_phylactery
   name: Alchemist's Phylactery
@@ -9213,7 +9286,7 @@
   stats: {VIT: 3, HP_REGEN: 4}
   durability: 230
   description: |
-    An emerald ring. Cuts heal faster under it.
+    A gold ring set with a bright green emerald. Cuts heal faster under it.
   value: 6844
 - id: opal_of_the_tides
   name: Opal of the Tides
@@ -9273,7 +9346,7 @@
   stats: {WIL: 4, VIT: 2, RESIST_HOLY: 9}
   durability: 260
   description: |
-    An amulet carried to every shrine in the world, and blessed at each.
+    A worn bronze amulet hung with tiny shrine tokens. It was carried to every shrine in the world, and blessed at each.
   value: 14476
 - id: band_of_a_thousand_bargains
   name: Band of a Thousand Bargains
@@ -9288,7 +9361,7 @@
   stats: {DEX: 4, AGI: 4}
   durability: 280
   description: |
-    Every merchant who wore it died rich. None of them died happy.
+    A thick gold band stamped with a ring of tiny scales. Every merchant who wore it died rich, and none of them died happy.
   value: 28989
 - id: eye_of_the_oracle
   name: Eye of the Oracle
@@ -9333,7 +9406,7 @@
   stats: {AGI: 5, DEX: 5, CRIT: 2, RESIST_SHADOW: 9}
   durability: 290
   description: |
-    The ring of a king who traded everything for it. It fits any finger, and none comfortably.
+    A band of tarnished gold with an empty setting. It fits any finger, and none comfortably.
   value: 15844
 - id: tin_lantern
   name: Tin Lantern
@@ -9422,7 +9495,7 @@
   stats: {WIL: 5, RESIST_UNDEAD: 15, RESIST_SHADOW: 9}
   durability: 10800
   description: |
-    The lantern a saint carried into the dark to find the lost. The dark still remembers it.
+    A plain iron lantern with a pale, steady flame. A saint carried it into the dark to find the lost, and the dark still remembers it.
   value: 28938
 - id: rusted_scrap
   name: Rusted Scrap
@@ -9473,8 +9546,9 @@
   material: Wood
   value: 2000
   description: |
-    A bench of clamps, loupes and graded grit where a Miner turns rough gemstones into cut ones. Placing one requires
-    [Gem Cutting](/docs/mechanics/master/survival-tree/#skill-gem-cutting) Lv. 1.
+    A folding bench of clamps, loupes and pots of graded grit.
+
+    Set it down and it becomes a station where a Miner cuts rough gems. Placing one requires [Gem Cutting](/docs/mechanics/master/survival-tree/#skill-gem-cutting) Lv. 1.
 - id: transmutation_workbench_kit
   name: Transmutation Workbench Kit
   game_id: 616
@@ -9498,8 +9572,9 @@
   material: Wood
   value: 200
   description: |
-    A reinforced Magic Bestia Trap with a second layer of binding wards. The workhorse of most Foresters.
-    Base catch chance `+100%` against Bestia up to Lv. 20.
+    A willow cage wrapped twice in binding wards.
+
+    The workhorse of most Foresters: a base catch chance of `+100%` against Bestia up to Lv. 20.
 - id: mega_trap
   name: Mega Trap
   game_id: 618
@@ -9510,8 +9585,9 @@
   material: Metal
   value: 800
   description: |
-    A Magic Bestia Trap built around a caged mana crystal. Expensive enough that most masters save them for something worth keeping.
-    Base catch chance `+140%` against Bestia up to Lv. 20.
+    A heavy iron-banded cage built around a glowing mana crystal.
+
+    Expensive enough to save for something worth keeping: a base catch chance of `+140%` against Bestia up to Lv. 20.
 - id: master_trap
   name: Master Trap
   game_id: 619
@@ -9522,8 +9598,9 @@
   material: Metal
   value: 3000
   description: |
-    The finest Magic Bestia Trap a Craftsman can produce. The only trap with any real hope against a Bestia past Lv. 100.
-    Base catch chance `+180%` against Bestia up to Lv. 20.
+    A gilded cage traced with fine silver wards.
+
+    The only trap with real hope against a Bestia past Lv. 100: a base catch chance of `+180%` against Bestia up to Lv. 20.
 - id: health_potion
   name: Health Potion
   game_id: 620
@@ -9534,7 +9611,9 @@
   material: Glass
   value: 80
   description: |
-    A robust flask of vibrant crimson elixir. Favored by adventurers for its powerful restorative magic. Heals 170 HP.
+    A stout flask of deep crimson elixir that warms the hand holding it.
+
+    Heals 170 HP.
 - id: mana_potion
   name: Mana Potion
   game_id: 621
@@ -9545,7 +9624,9 @@
   material: Glass
   value: 100
   description: |
-    A swirling flask of deep azure liquid. Pulses with arcane power, ready to fuel the most demanding spells. Restores 170 Mana.
+    A stout flask of swirling azure liquid that pulses faintly.
+
+    Restores 170 Mana.
 - id: grape
   name: Grape
   game_id: 622
@@ -9556,9 +9637,9 @@
   material: Food
   value: 1
   description: |
-    A sweet, ripe purple grape. It is said that its sugar vitalizes the brain.
+    A plump purple grape with a dusty bloom on its skin.
 
-    Restores 10 Mana
+    Restores 10 Mana.
 - id: charcoal
   name: Charcoal
   game_id: 623
@@ -9569,7 +9650,9 @@
   material: Wood
   value: 3
   description: |
-    Charred, brittle pieces of wood. Cheap furnace fuel and a base for potent alchemical mixtures. Burns cooler than [Coal](/docs/mechanics/items-crafting/item-database/?id=coal) and costs `-10%` on every [ore refinement](/docs/mechanics/items-crafting/crafting/#ore-refinement-success-chance) attempt.
+    Charred, brittle sticks of wood that blacken the fingers.
+
+    Cheap furnace fuel that burns cooler than [Coal](/docs/mechanics/items-crafting/item-database/?id=coal) and costs `-10%` on every [ore refinement](/docs/mechanics/items-crafting/crafting/#ore-refinement-success-chance) attempt.
 - id: marble
   name: Marble
   game_id: 624
@@ -9580,7 +9663,9 @@
   material: Stone
   value: 15
   description: |
-    High quality building stone with elegant appearance. Premium building material.
+    A pale block of marble veined in grey, cool and smooth.
+
+    A premium building stone.
 - id: sigil_of_redemption
   name: Sigil of Redemption
   game_id: 625
@@ -9594,5 +9679,7 @@
   durability: 200
   icon: sigil-of-redemption.png
   description: |
-    A very expensive and rare sigil made from gold. It symbolizes your bond to your Order, but it also holds the power to undo those holy ties. It must be worn by the one performing the rite of [Banished From The Citadel](/docs/mechanics/combat/attack-list/#banished-from-the-citadel), and is consumed by it.
+    A heavy gold sigil bearing the crest of an Order.
+
+    Worn by whoever performs the rite of [Banished From The Citadel](/docs/mechanics/combat/attack-list/#banished-from-the-citadel), it undoes their holy ties and is consumed.
   value: 14404
