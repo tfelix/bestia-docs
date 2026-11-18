@@ -246,7 +246,7 @@ buff could lower a friend's protection, and an enemy could cover a strong curse 
 # Rituals
 
 One caster tops out at about `P 100`. A **ritual** is how a group pushes the next skill of one master further. It uses
-the [Mana Circle](/docs/mechanics/master/basics/#mana-circles), a ring of Mana Concentrate laid into the ground with a focus
+the [Mana Circle](/docs/mechanics/master/basics/#mana-circles), a ring of {{< item "mana_concentrate" >}} laid into the ground with a focus
 stone in its middle. Crafting uses it the same way, see [Mana Circles](/docs/mechanics/master/basics/#mana-circles).
 
 ## How a Ritual Runs

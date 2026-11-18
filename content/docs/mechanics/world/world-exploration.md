@@ -33,11 +33,11 @@ To generate the visuals of the player map, **Bestia** uses the algorithm describ
 
 # Cartography
 
-New ground is charted at a **theodolite**, a sighting scope on a tripod. A master places a Theodolite Kit on open
+New ground is charted at a **theodolite**, a sighting scope on a tripod. A master places a {{< item "theodolite_kit" >}} on open
 ground like a workbench. Each theodolite belongs to the master who placed it and runs one survey at a time.
 
 1. Stand next to your own idle theodolite and use [Cartography](/docs/mechanics/master/survival-tree/#skill-cartography).
-   Pick how wide to survey. Each try spends one Empty Paper and one Ink.
+   Pick how wide to survey. Each try spends one {{< item "chart_blank" >}} and one Ink.
 2. A needle game opens. The needle swings across a half circle, and you stop it inside a green arc, once in each of
    three rounds. A miss in any round fails the survey; the paper and ink are gone, and you may try again at once.
 3. A won game starts **10 minutes of work** at the theodolite. The work only goes on while you, or one of your own

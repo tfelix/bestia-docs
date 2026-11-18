@@ -39,7 +39,7 @@ A world can be fated to suffer any of the following threats. Each maps onto the 
 - Mana Storms (raging arcane tempests that scour the surface)
 - The Sundering (violent earthquakes that split the continents apart)
 - The Void Tear (a dimensional rift disgorging hostile, otherworldly Bestia)
-- Mana Crystal Infestation (mana crystals start to spread uncontrollably)
+- {{< item "mana_crystal" >}} Infestation (mana crystals start to spread uncontrollably)
 
 ## Volcanic Activity
 

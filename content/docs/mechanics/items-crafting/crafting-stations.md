@@ -27,12 +27,12 @@ one entry for each learned skill that has something to make without a station:
 
 | Entry                                                                               | Makes without a station           |
 | ----------------------------------------------------------------------------------- | --------------------------------- |
-| Basics (every master)                                                               | Torch, stone knife, stone hatchet, shovel |
-| [Cooking](/docs/mechanics/master/novice-tree/#skill-cooking) Lv. 1                  | [Campfire kit](#campfires)        |
-| [Carpentry](/docs/mechanics/master/craftsman-tree/#skill-carpentry) Lv. 1           | Workbench kit                     |
-| [Ore Refinement](/docs/mechanics/master/craftsman-tree/#skill-ore-refinement) Lv. 1 | Furnace kit                       |
-| [Forge Weapon](/docs/mechanics/master/craftsman-tree/#skill-forge-weapon) Lv. 1     | Forge kit                         |
-| [Arrow Crafting](/docs/mechanics/master/warrior-tree/#skill-arrow-crafting)         | Arrows                            |
+| Basics (every master)                                                               | {{< item "torch" >}}, {{< item "stone_knife" "stone knife" >}}, {{< item "stone_hatchet" "stone hatchet" >}}, {{< item "shovel" >}} |
+| [Cooking](/docs/mechanics/master/novice-tree/#skill-cooking) Lv. 1                  | {{< item "campfire_kit" >}} |
+| [Carpentry](/docs/mechanics/master/craftsman-tree/#skill-carpentry) Lv. 1           | {{< item "workbench_kit" >}} |
+| [Ore Refinement](/docs/mechanics/master/craftsman-tree/#skill-ore-refinement) Lv. 1 | {{< item "furnace_kit" >}} |
+| [Forge Weapon](/docs/mechanics/master/craftsman-tree/#skill-forge-weapon) Lv. 1     | {{< item "forge_kit" >}} |
+| [Arrow Crafting](/docs/mechanics/master/warrior-tree/#skill-arrow-crafting)         | {{< item "arrow" "Arrows" >}} |
 
 ## Kits Place Stations
 

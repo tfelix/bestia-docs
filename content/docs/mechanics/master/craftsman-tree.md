@@ -37,9 +37,9 @@ graph TD
     type="Active" manaCost="20" cooldown="0s" range="2" target="Workbench"
     description="Turns raw timber and honest labor into the workbenches, furniture and structures every settlement needs to stand on its own." >}}
 
-Lv. 1 allows you to build a [workbench](/docs/mechanics/items-crafting/item-database/#workbench-kit), which you can use for crafting. The time it needs to craft an item depends on the item level you want to craft.
+Lv. 1 allows you to build a {{< item "workbench_kit" "workbench" >}}, which you can use for crafting. The time it needs to craft an item depends on the item level you want to craft.
 
-Carpentry also makes the kits for the buildings in the wild: the Observation Outpost, the Mining Shaft and the
+Carpentry also makes the kits for the buildings in the wild: the Observation Outpost, the {{< item "mining_shaft_kit" "Mining Shaft" >}} and the
 Lumberjack Cabin. To build one, the master needs level 1 of the skill that uses it.
 
 For [player settlements](/docs/mechanics/towns-trade/player-settlements/) it makes the post office kit (Lv. 3) and the
@@ -94,7 +94,7 @@ See [Weapon Refinement](/docs/mechanics/items-crafting/items/#weapon-refinement)
     type="Active" manaCost="23" cooldown="0s"
     description="A meticulous rework that opens sockets in an item's frame, letting a Runic Etcher's runes be slotted into it later." >}}
 
-Requires an [Engraving Set](/docs/mechanics/items-crafting/item-database/#engraving-set) which will be consumed in the process. You can choose how many slots you want to put into an item. But every slot makes it harder to succeed. Every extra slot above 1 reduces the success chance by 40%.
+Requires an {{< item "engraving_set" >}} which will be consumed in the process. You can choose how many slots you want to put into an item. But every slot makes it harder to succeed. Every extra slot above 1 reduces the success chance by 40%.
 
 The Success Chance below is added on top of a **base chance that drops as the item's own level rises**. See [Item Customization](/docs/mechanics/items-crafting/items/#item-customization) for the full formula and worked examples.
 
@@ -148,8 +148,8 @@ graph TD
     type="Active" manaCost="18" castTime="10s" cooldown="0s"
     description="Feeds raw ore to the roar of the furnace, coaxing out the pure ingots every weapon and suit of armor is ultimately built from." >}}
 
-Lv. 1 allows you to place a [Furnace](/docs/mechanics/items-crafting/item-database/#furnace-kit). Every batch burns fuel:
-[Coal](/docs/mechanics/items-crafting/item-database/#coal). A failed smelt loses both the ore and the fuel.
+Lv. 1 allows you to place a {{< item "furnace_kit" "Furnace" >}}. Every batch burns fuel:
+{{< item "coal" >}}. A failed smelt loses both the ore and the fuel.
 
 | Lv. | Ore Refinement Success |
 | --- | ---------------------- |
@@ -158,9 +158,9 @@ Lv. 1 allows you to place a [Furnace](/docs/mechanics/items-crafting/item-databa
 | 3   | +90%                   |
 
 There is **no ore level cap** - the bonus is added on top of an ore-level base chance that starts at `30%` for
-[Tin](/docs/mechanics/items-crafting/item-database/#tin-ore) and [Copper](/docs/mechanics/items-crafting/item-database/#copper-ore) and keeps falling by 1%
+{{< item "tin_ore" "Tin" >}} and {{< item "copper_ore" "Copper" >}} and keeps falling by 1%
 per ore level above 10, plus the smith's STR and WIL. Even a maxed smith loses roughly every second batch of
-[Adamantium Ore](/docs/mechanics/items-crafting/item-database/#adamantium-ore). See
+{{< item "adamantium_ore" >}}. See
 [Ore Refinement Success Chance](/docs/mechanics/items-crafting/crafting/#ore-refinement-success-chance) for the full formula and
 [Refining](/docs/mechanics/items-crafting/natural-resources/#refining) for the level of every ore.
 
@@ -326,7 +326,7 @@ A crystal above your max crystal level cannot be refined.
 
 {{< skill name="Runic Etching" maxLevel="10" requires="Item Customization Lv. 3"
     type="Active" manaCost="25" castTime="10s" cooldown="0s" range="2" target="Carving Table"
-    description="Binds the essence of a Bestia into a cut gem. The Essence Gem carries the power of the Bestia and fits into any socket of a weapon or piece of equipment. Converting a Bestia destroys it." >}}
+    description="Binds the essence of a Bestia into a cut gem. The [Essence Gem](/docs/mechanics/items-crafting/item-database/?id=essence_gem) carries the power of the Bestia and fits into any socket of a weapon or piece of equipment. Converting a Bestia destroys it." >}}
 
 Level 1 allows you to place a Carving Table. The Bestia to convert must stand next to the table, and the etching uses up
 a cut gem. The gem limits the Bestia level, see [Sockets and Essences](/docs/mechanics/items-crafting/crafting/#sockets-and-essences). A
@@ -422,7 +422,7 @@ The skill is the master's. A bestia picks herbs with its master's Herbalism leve
     type="Active" manaCost="24" castTime="10s" cooldown="0s" range="2" target="Alchemy Laboratory"
     description="The core craft of the Alchemist: brewing reagents down into potions, tonics and other consumables. Builds directly on what Herbalism teaches about picking the right ingredient." >}}
 
-Lv. 1 allows you to place an Alchemy Laboratory. Higher levels let you reliably discover and craft stronger potions
+Lv. 1 allows you to place an Alchemy Laboratory from an {{< item "alchemy_laboratory_kit" >}}. Higher levels let you reliably discover and craft stronger potions
 and elixirs.
 
 | Lv. | Success Chance | Reliable Item Level |
@@ -449,7 +449,7 @@ Same rule as [Forge Weapon](#skill-forge-weapon): no hard cap, but every item le
     type="Active" manaCost="34" castTime="10s" cooldown="0s" range="2" target="Transmutation Workbench"
     description="The Alchemist's capstone. Where Alchemy brews what nature already provides, Transmutation reshapes mundane matter itself into the rare magically-infused resources needed for strong artifact creation and weapon refinements." >}}
 
-Lv. 1 allows you to place a Transmutation Workbench. Higher levels unlock transmuting higher-grade infused resources.
+Lv. 1 allows you to place a Transmutation Workbench from a {{< item "transmutation_workbench_kit" >}}. Higher levels unlock transmuting higher-grade infused resources.
 
 | Lv. | Success Chance | Reliable Item Level |
 | --- | -------------- | ------------------- |
@@ -497,13 +497,13 @@ a mana potion thrown at a body without mana stays in the bag.
 
 Only the drinkable restoratives count as potions. Food, the bandage and the novice kit do not.
 
-| Potion              | Restores          |
-| ------------------- | ----------------- |
-| Small Health Potion | 45 HP             |
-| Small Mana Potion   | 45 mana           |
-| Medicine            | 70 HP, 30 stamina |
+| Potion                             | Restores          |
+| ---------------------------------- | ----------------- |
+| {{< item "small_health_potion" >}} | 45 HP             |
+| {{< item "small_mana_potion" >}}   | 45 mana           |
+| {{< item "medicine" >}}            | 70 HP, 30 stamina |
 
-| Lv. | Potion Effect | Small Health Potion |
+| Lv. | Potion Effect | {{< item "small_health_potion" >}} |
 | --- | ------------- | ------------------- |
 | 1   | +10%          | 49 HP               |
 | 2   | +20%          | 54 HP               |

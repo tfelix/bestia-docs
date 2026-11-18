@@ -229,7 +229,7 @@ Leaving an Order is possible, deliberate, and expensive. It is done through the 
 
 The ritual requires:
 
-- A [Sigil of Redemption](/docs/mechanics/items-crafting/item-database/#sigil-of-redemption), worn by the Master performing the rite and **consumed** by it. The Sigil is a very costly and rare item.
+- A {{< item "sigil_of_redemption" >}}, worn by the Master performing the rite and **consumed** by it. The Sigil is a very costly and rare item.
 - The scroll itself, which must be found as a drop. It cannot be memorized.
 
 On completion the Master's ties are severed and they become **unsworn**, carrying a debuff that reduces all status values to `50%` for `Lv/2` (rounded up) [Bestia days](/docs/mechanics/world/environment/#in-game-time), based on the Master's level. **A level 74 Master carries this debuff for 37 Bestia days.** While unsworn, a Master receives no Ascendancy, no Faction Advantage buff, and no access to any Order's temple services.
