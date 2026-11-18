@@ -4,7 +4,7 @@ title: Quest Manager
 description: "Design of the QuestManager - how the zone plans quests from the world history and from real events in the live world, offers them through townsfolk, found things and the blackboard, runs chains with a choice, and writes their endings back into the world."
 ---
 
-{{< alert context="warning" text="**Design, not built.** The [quest core](/docs/server/quests/) and the blackboard exist. Built so far: the [fact store](#what-a-player-knows), stages and the new objective kinds of the [quest core](#changes-to-the-quest-core), and the store and the questions of the [living chronicle](#the-living-chronicle). The build order is at the [end](#build-order)." />}}
+{{< alert context="warning" text="**Design, not built.** The [quest core](/docs/server/quests/) and the blackboard exist. Built so far: the [fact store](#what-a-player-knows), stages and the new objective kinds of the [quest core](#changes-to-the-quest-core), the store and the questions of the [living chronicle](#the-living-chronicle), and the [planner](#the-planner) with its catalogues and the plan store. The build order is at the [end](#build-order)." />}}
 
 The [quest core](/docs/server/quests/) keeps quests, but only players make them, on the
 [blackboard](/docs/mechanics/towns-trade/blackboard/). The **QuestManager** is the part that lets the world make
@@ -62,51 +62,67 @@ A seed from the live world is dropped when its cause is gone: the stock recovere
 
 # The Planner
 
-The planner turns one seed into one **plan**. It is a pure function of the seed, the world and the catalogues, with
-a random stream from the world seed. So it can be tested alone, and the same world always gets the same plans.
+The planner turns one seed into one **plan**, or into none. It is a pure function of the seed, the world and the
+catalogues. It uses no randomness. So it can be tested alone, and the same world always gets the same plans.
+
+The planner is built for the lost artifact. The thread source and the plan store are built too.
 
 ## Catalogues
 
 Two YAML files hold everything a designer can change:
 
-- **Step patterns** (`quest-steps.yml`). A step pattern is one thing a player does. It has a step kind, what must be
-  true before, what is true after, a tension value, the kind of giver or carrier, and a text template with slots.
+- **Step patterns** (`quest-steps.yml`). A step pattern is one thing a player does. It has an objective kind, the
+  kind of real thing it points at, what must be true before, what is true after, a tension value from 1 to 3, and a
+  text template.
 - **Motifs** (`quest-motifs.yml`). A motif belongs to a seed kind. It names the goal, the step patterns that fit,
-  and the possible endings. The motif keeps a chain about one thing, so a quest does not wander between unrelated
-  tasks.
+  and what the player may decide at the end. The motif keeps a chain about one thing, so a quest does not wander
+  between unrelated tasks.
 
-The conditions are simple typed facts:
+The conditions are short statements. A step may be used when the steps before it give what it needs:
 
 ```text
-knows(player, fact)      holds(player, thing)      at(thing, place)      regard(household, player)
+knows:legend      knows:site      holds:relic      at:relic:home
 ```
 
 ## Planning
 
-1. Take the goal of the motif, for example `holds(player, artifact)`.
-2. Chain **backwards**: which step makes this true, and what does that step need? Repeat until every need can be
-   met near a standing town.
-3. Bind each step to something real: a tomb with an epitaph, a household that tells the legend, the cache on the
-   battlefield.
-4. Add the decide point and the endings of the motif.
-5. Build a small, bounded set of candidates and score them. The best one is the plan.
+1. Take the goal of the motif, for example `holds:relic`.
+2. Chain **backwards**: which step gives this, and what does that step need? When two steps give the same thing,
+   both ways become a chain.
+3. Bind each step to something real. A chain with a step that points at nothing is dropped.
+4. Add the decide point of the motif, but only when the step after every choice can be bound too.
+5. Score the chains that are left. The best one is the plan.
 
-A chain has 2 to 5 steps and 1 or 2 decide points.
+A chain has 2 to 5 steps. A seed with no chain gets no plan, and the log says what the world was missing.
+
+For a lost artifact the planner binds these things:
+
+| Step                | Points at                                                           |
+| ------------------- | ------------------------------------------------------------------- |
+| Hear the legend     | A household that tells the **true** legend of the artifact          |
+| Ask about the loss  | A household that remembers the event the artifact was lost in       |
+| Read the epitaph    | The named grave of a figure who held the artifact                   |
+| Dig up the artifact | The treasure cache it lies in. This is the payoff                   |
+| Bring it home       | The standing town whose temple first kept it. Only after "return"   |
 
 ## Score
 
-| Part           | Favors                                                                        |
-| -------------- | ----------------------------------------------------------------------------- |
-| Tension arc    | A chain that rises and then resolves, measured from the step tension values   |
-| History weight | More chronicle facts taught along the way                                     |
-| Novelty        | A motif, a carrier and a giver that nearby plans do not use already           |
-| Fit            | Level of the places near the level of the region; a walk that is not too long |
+The parts are multiplied.
+
+| Part           | Favors                                                                      |
+| -------------- | --------------------------------------------------------------------------- |
+| Tension arc    | A chain that rises to one peak and then falls, from the step tension values |
+| History weight | More facts taught along the way                                             |
+| Novelty        | Things that no other plan points at                                         |
+| Walk           | A short way from step to step                                               |
+
+The level of a plan is the level of its prize. A fit of the level to the region is not part of the score yet.
 
 ## The plan
 
-A plan holds the stages, the decide points with their endings, the text slots, the reward plan and the uniqueness.
-Every target in a plan is a **stable world id**: a chronicle record, a townsperson's identity, a site, a position.
-It is never a live entity id.
+A plan holds the seed, the motif, the title, where the quest starts, the steps with their stage and text, and what
+each step teaches. The reward plan comes with the endings. Every target in a plan is a **stable world id**: a
+townsperson's identity, the figure of a grave, the id of a cache, a settlement. It is never a live entity id.
 
 | Uniqueness | Meaning                                                 | In the quest core                                    |
 | ---------- | ------------------------------------------------------- | ---------------------------------------------------- |
@@ -122,9 +138,10 @@ Plans are rows in `quest_plan`. The table belongs to the world and is wiped with
 PLANNED ──▶ OFFERED ──▶ RUNNING ──▶ ENDED(ending)
 ```
 
-At world creation the QuestManager plans every thread. It also plans, for each town, the live quests that are
-**possible** there: repair this temple, feed this town. They stay `PLANNED` until their cause really happens, but
-their text can be written ahead.
+When the zone starts, the QuestManager plans every seed that has no plan yet. So a new world is planned once, and
+a restart changes nothing. Later it also plans, for each town, the live quests that are **possible** there: repair
+this temple, feed this town. They stay `PLANNED` until their cause really happens, but their text can be written
+ahead.
 
 The **director** runs off the tick, every few minutes. It decides which plans are offered now:
 
