@@ -112,7 +112,7 @@ revolt, and take towns for itself. It can die out, or, on a world where the Orde
 
 # Quests for the Gods
 
-{{< alert context="warning" text="**Design only.** There is no quest system yet (see [Questing](/docs/mechanics/world/questing/))." />}}
+{{< alert context="warning" text="**Design only.** Nothing makes these quests yet (see the [Quest Manager](/docs/server/quest-manager/))." />}}
 
 The gods are a steady source of small quests. Any temple or shrine can ask for an **offering**, and each domain asks
 for **deeds** of its own. These quests are personal: every player can take them, and they come back, so they never run

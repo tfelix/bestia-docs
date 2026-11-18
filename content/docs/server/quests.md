@@ -4,7 +4,7 @@ title: Questing
 description: "Bestia's quest system on the server — runtime quest records, objective kinds and scopes, event-driven tracking, updates to the clients, the blackboard source, and the design for generated quests."
 ---
 
-{{< alert context="info" text="**Partly built.** The quest core and kill tracking are on the bestia-behemoth branches `quest/02-core` and `quest/02b-kill-tracking`; the blackboard source is being built on `quest/03..07`. [Automatic Quest Generation](#automatic-quest-generation) is still design." />}}
+{{< alert context="info" text="**Partly built.** The quest core, kill tracking and the blackboard source are built. [Automatic Quest Generation](#automatic-quest-generation) is still design, see the [Quest Manager](/docs/server/quest-manager/)." />}}
 
 The game will be more or less an Open World game. But the declared goal will be to try out new ways of storytelling in
 order to present a credible world with developing history to the players. You have to say goodbye to the idea that every
@@ -75,7 +75,7 @@ check that matches it; a single quest never needs code of its own.
 | --------------- | -------------------------------------------- | ---------------------------------------- |
 | `DELIVER_ITEM`  | item, amount                                 | Built, used by the blackboard            |
 | `KILL`          | species, amount, optional area               | Built; no source makes one yet           |
-| obtain, bring to, reach | item or family and town, or an area  | Later, with their first source           |
+| `EXAMINE`, `TALK`, `BRING`, `DECIDE` | see [Quest Manager](/docs/server/quest-manager/#changes-to-the-quest-core) | Planned |
 
 Each objective has a **scope**:
 
@@ -176,32 +176,19 @@ settlements.
 
 # Automatic Quest Generation
 
-Quest generation is done with Templates similar to what the terrain auto-generation system uses. Alot of logic can be built into the Scripts to 'fit' locations and to vary the details of the Quest significantly. Can be made to 'fit' the Player, but its better for the Player to have to figure out how to come up with the needed resources or solutions. It is based manly on the paper [A prototype quest generator based on a structural analysis of quests from four MMORPGs](http://ianparberry.com/pubs/pcg2011.pdf) by Ian Parberry and Jonathon Doran and also on the Grail Framework desribed in [The Grail Framework: Making Stories Layable on Three Levels in CRPGS](https://escholarship.org/uc/item/004129jn). In order to keep the quest generation close to the world in a narrative perspective consider some ideas from the paper [Analysis of ReGEN as a Graph Rewriting System for Quest Generation](http://gram.cs.mcgill.ca/papers/kybartas-14-analysis.pdf).
+The world makes quests of its own through the [Quest Manager](/docs/server/quest-manager/). It is a second source next
+to the blackboard:
 
-Discovery of these quests can be done in various ways:
+- **Sources** watch the open threads of the world history and real events of the live world: a town that lacks
+  food, a damaged building, a rumour.
+- A **planner** builds a short chain of steps with a choice, starting from the payoff. Quest shapes are data in a
+  catalogue, so no quest has code of its own.
+- A **director** offers the plans through townsfolk, found things and the blackboard.
+- **Endings** write back into the world: a new event in the chronicle, the thing itself, and how people see the
+  player.
 
-- Announcements by city majors
-- Bulletin Boards
-- NPCs in a tavern start talking to the players
-- Classical NPC interaction
-
-Try constantly challenge the player with various constraints imposed on quests:
-
-- Time limits
-- Puzzle solving mechanics
-- Escort quests
-- Resource or item gathering quests
-
-The auto generation allows creating such unique (semi-unique) situational experiences when there are lots of substitutions for the multiple details that make up a quest.
-Progressive Quests can be built with subsequent quests opening on completion of predecessors (the usual quest trees used on most MMORPGs).
-Sequential Multi-Quests are easily generated: Goto X, Pickup Y, Deliver to Z -or- Patrol A then Patrol B then Patrol C .. and the locations can be shifted to 'fit' the city areas (when the civilized part of city keeps expanding into the world).
-
-The automatic dialog generation can use a tree like structure with templates where placeholder like items, locations and names are replaced as needed from the auto generation of quests. Sets up NPC quest-giver with a dialog tree. Many situational details can be inserted as parameters (names/locations/item types/etc) into dialog. The typed-placeholder mechanism that makes those substitutions translatable rather than English-only already exists and is described under [Dialog & NPC Conversation](/docs/server/dialog/).
-Many quests/missions given by NPCs include directions to a specific place. The place can be changed (varied) and the terrain can actually be built/modified 'on-the-fly' to match the quest, so that you don't wind up going the same place other players have already done in the exact same mannor.
-
-Further resources to read:
-
-- [Dynamic_Quest_Plot_Generation_using Petri-Net Planning](http://www.academia.edu/4558587/Dynamic_Quest_Plot_Generation_using_Petri_Net_Planning)
+For this the quest core gets stages, the objective kinds `EXAMINE`, `TALK`, `BRING` and `DECIDE`, and rewards
+other than coins per unit. Generated text for quests is described under [Dynamic Text](/docs/server/dynamic-text/).
 
 # Player Quests
 
