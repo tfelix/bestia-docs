@@ -62,7 +62,7 @@
     <button class="btn btn-sm btn-outline-secondary" type="button" data-clear>Clear filters</button>
   </div>
 
-  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mb-4" data-cards>
+  <div class="item-cards mb-4" data-cards>
     {{- range $items }}
     {{ partial "item-card.html" . }}
     {{- end }}
@@ -154,3 +154,13 @@
     if (location.hash) applyHash();
   })();
 </script>
+
+<style>
+  /* The columns follow the width the page leaves for content, not the window: with the sidebar and the table of
+     contents open a wide window still has room for only two cards. */
+  #item-database .item-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: 1.5rem; }
+  /* Bootstrap's card colour ignores the theme's dark mode, so the card takes the page text colour. */
+  #item-database .item-card { color: var(--text-default); }
+  #item-database .item-icon { flex: none; object-fit: contain; }
+  #item-database .min-w-0 { min-width: 0; }
+</style>

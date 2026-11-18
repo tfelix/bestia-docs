@@ -1,17 +1,17 @@
-<!-- item-card.html: one item card, from an entry of data/items.yaml. The data-* attributes feed the filters of itemdatabase.html. -->
+<!-- item-card.html: one item card, from an entry of data/items.yaml. The data-* attributes feed the filters of itemdatabase.html,
+     which also styles the card (.item-card). -->
 {{ $id := replace (lower .name) " " "-" }}
-<div class="col" id="{{ $id }}" data-id="{{ .id }}" data-name="{{ lower .name }}" data-categories="{{ delimit (.categories | default slice) " " }}"
+<div id="{{ $id }}" data-id="{{ .id }}" data-name="{{ lower .name }}" data-categories="{{ delimit (.categories | default slice) " " }}"
   data-slot="{{ .slot }}" data-weapon="{{ .weapon_type }}" data-armor="{{ .armor_type }}" data-material="{{ .material }}"
   data-item-level="{{ .item_level | default 0 }}" data-min-level="{{ .min_level | default 0 }}">
-  <div class="card text-light shadow h-100">
-    <div class="row g-0">
-      <div class="col-3 d-flex align-items-center justify-content-center p-3">
-        <img src="/items/{{ .icon | default "128.svg" }}" class="img-fluid rounded" alt="Icon for {{ .name }}" loading="lazy" />
-      </div>
-      <div class="col-9">
-        <div class="card-body pb-2">
+  <div class="card item-card shadow h-100">
+    <div class="card-body">
+      {{- /* The icon keeps its size however narrow the card gets; the title and badges wrap beside it. */}}
+      <div class="d-flex gap-3 mb-2">
+        <img src="/items/{{ .icon | default "128.svg" }}" class="item-icon rounded" width="72" height="72" alt="Icon for {{ .name }}" loading="lazy" />
+        <div class="min-w-0">
           <h5 class="card-title mb-1">{{ .name }}</h5>
-          <div class="mb-2">
+          <div>
             {{- if .planned }}<span class="badge text-bg-warning me-1">Not in game yet</span>{{ end }}
             {{- /* A weapon says how many hands it takes, anything else the slot it goes in. */}}
             {{- if eq .slot "Weapon" }} <span class="badge text-bg-secondary">{{ if .two_handed }}Two-handed{{ else }}One-handed{{ end }}</span>
@@ -20,27 +20,25 @@
             {{- with .armor_type }} <span class="badge text-bg-secondary">{{ . }} armor</span>{{ end }}
             {{- if .novice_only }} <span class="badge text-bg-secondary">Novice only</span>{{ end }}
           </div>
-          <dl class="row small mb-0 g-0">
-            <dt class="col-6 fw-normal">Weight: <strong>{{ .weight }}</strong></dt>
-            {{- with .item_level }}<dt class="col-6 fw-normal">Item Lv.: <strong>{{ . }}</strong></dt>{{ end }}
-            {{- with .min_level }}<dt class="col-6 fw-normal">Req. Lv.: <strong>{{ . }}</strong></dt>{{ end }}
-            {{- with .attack }}<dt class="col-6 fw-normal">ATK: <strong>{{ . }}</strong></dt>{{ end }}
-            {{- with .magic_attack }}<dt class="col-6 fw-normal">MATK: <strong>{{ . }}</strong></dt>{{ end }}
-            {{- with .defense }}<dt class="col-6 fw-normal">DEF: <strong>{{ . }}</strong></dt>{{ end }}
-            {{- with .magic_defense }}<dt class="col-6 fw-normal">MDEF: <strong>{{ . }}</strong></dt>{{ end }}
-            {{- with .range }}<dt class="col-6 fw-normal">Range: <strong>{{ . }}</strong></dt>{{ end }}
-            {{- with .ammo_type }}<dt class="col-6 fw-normal">Ammo: <strong>{{ . }}</strong></dt>{{ end }}
-            {{- with .stats }}<dt class="col-12 fw-normal">
-              {{- range $stat, $bonus := . }}
-              {{- $label := (index (where site.Data.item_stats.stats "id" $stat) 0).label | default $stat }}
-              {{- $percent := strings.HasSuffix $label " %" }}
-              <span class="me-2 text-nowrap">{{ strings.TrimSuffix " %" $label }} <strong>{{ if gt $bonus 0 }}+{{ end }}{{ $bonus }}{{ if $percent }}%{{ end }}</strong></span>
-              {{- end }}</dt>{{ end }}
-          </dl>
         </div>
       </div>
-    </div>
-    <div class="card-body pt-0">
+      <dl class="row small mb-2 g-0">
+        <dt class="col-6 fw-normal">Weight: <strong>{{ .weight }}</strong></dt>
+        {{- with .item_level }}<dt class="col-6 fw-normal">Item Lv.: <strong>{{ . }}</strong></dt>{{ end }}
+        {{- with .min_level }}<dt class="col-6 fw-normal">Req. Lv.: <strong>{{ . }}</strong></dt>{{ end }}
+        {{- with .attack }}<dt class="col-6 fw-normal">ATK: <strong>{{ . }}</strong></dt>{{ end }}
+        {{- with .magic_attack }}<dt class="col-6 fw-normal">MATK: <strong>{{ . }}</strong></dt>{{ end }}
+        {{- with .defense }}<dt class="col-6 fw-normal">DEF: <strong>{{ . }}</strong></dt>{{ end }}
+        {{- with .magic_defense }}<dt class="col-6 fw-normal">MDEF: <strong>{{ . }}</strong></dt>{{ end }}
+        {{- with .range }}<dt class="col-6 fw-normal">Range: <strong>{{ . }}</strong></dt>{{ end }}
+        {{- with .ammo_type }}<dt class="col-6 fw-normal">Ammo: <strong>{{ . }}</strong></dt>{{ end }}
+        {{- with .stats }}<dt class="col-12 fw-normal">
+          {{- range $stat, $bonus := . }}
+          {{- $label := (index (where site.Data.item_stats.stats "id" $stat) 0).label | default $stat }}
+          {{- $percent := strings.HasSuffix $label " %" }}
+          <span class="me-2 text-nowrap">{{ strings.TrimSuffix " %" $label }} <strong>{{ if gt $bonus 0 }}+{{ end }}{{ $bonus }}{{ if $percent }}%{{ end }}</strong></span>
+          {{- end }}</dt>{{ end }}
+      </dl>
       <div class="card-text small">
         {{ .description | strings.TrimSpace | markdownify }}
       </div>
