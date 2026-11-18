@@ -1,5 +1,6 @@
 <!-- itemdatabase.html: every item of data/items.yaml with a search and filters. Other pages link here with the filters
-     preset in the query string, e.g. ?category=fishing or ?category=armor&armor=Heavy. -->
+     preset in the query string, e.g. ?category=fishing or ?category=armor&armor=Heavy, or to one item with ?id=furnace_kit
+     (the item shortcode writes those links). -->
 {{- $items := sort site.Data.items "name" -}}
 {{- $categories := slice
   (dict "id" "weapon" "label" "Weapons")
@@ -26,6 +27,7 @@
   (dict "key" "material" "label" "Material" "field" "material")
 -}}
 <div id="item-database">
+  <input type="hidden" data-filter="id">
   <div class="row g-2 mb-2">
     <div class="col-12 col-md-6">
       <input type="search" class="form-control" data-filter="q" placeholder="Search by name" aria-label="Search by name">
@@ -73,9 +75,12 @@
     const container = root.querySelector('[data-cards]');
     const cards = [...container.children];
     const controls = [...root.querySelectorAll('[data-filter]')];
+    // ?id= narrows the list down to one item. It has no visible control: the name fills the search box instead.
+    const idControl = root.querySelector('[data-filter="id"]');
     const control = (key) => root.querySelector(`[data-filter="${key}"]`);
 
     const matches = {
+      id: (card, v) => card.dataset.id === v,
       q: (card, v) => card.dataset.name.includes(v.toLowerCase().trim()),
       category: (card, v) => card.dataset.categories.split(' ').includes(v),
       slot: (card, v) => card.dataset.slot === v,
@@ -115,21 +120,23 @@
       controls.forEach((c) => (c.value = params.get(c.dataset.filter) || ''));
     }
 
-    // Deep links such as #void-essence narrow the list down to the linked item instead of only scrolling to it.
-    function applyHash() {
-      const id = decodeURIComponent(location.hash.replace(/^#/, ''));
-      const card = id && document.getElementById(id);
-      if (!card || !container.contains(card)) return;
+    // ?id=furnace_kit and the older #furnace-kit both show one item. The name goes into the search box, so a reader
+    // sees why the list is short; the id keeps "Glass Furnace Kit" out.
+    function showOnly(card) {
       controls.forEach((c) => (c.value = ''));
+      idControl.value = card.dataset.id;
       control('q').value = card.querySelector('.card-title').textContent;
       apply();
-      // The name search alone would also keep "Glass Furnace Kit" for #furnace-kit.
-      cards.forEach((other) => other !== card && (other.style.display = 'none'));
-      root.querySelector('[data-count]').textContent = `1 of ${cards.length} items`;
       card.scrollIntoView({ block: 'center' });
     }
 
+    function applyHash() {
+      const card = document.getElementById(decodeURIComponent(location.hash.replace(/^#/, '')));
+      if (card && container.contains(card)) showOnly(card);
+    }
+
     controls.forEach((c) => c.addEventListener(c.tagName === 'SELECT' ? 'change' : 'input', () => {
+      idControl.value = '';
       apply();
       writeQuery();
     }));
@@ -141,7 +148,9 @@
     window.addEventListener('hashchange', applyHash);
 
     readQuery();
-    apply();
-    applyHash();
+    const linked = cards.find((c) => c.dataset.id === idControl.value);
+    if (linked) showOnly(linked);
+    else apply();
+    if (location.hash) applyHash();
   })();
 </script>
