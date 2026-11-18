@@ -4,7 +4,7 @@ title: Quest Manager
 description: "Design of the QuestManager - how the zone plans quests from the world history and from real events in the live world, offers them through townsfolk, found things and the blackboard, runs chains with a choice, and writes their endings back into the world."
 ---
 
-{{< alert context="warning" text="**Design, not built.** The [quest core](/docs/server/quests/) and the blackboard exist. Of this page only the [fact store](#what-a-player-knows) is built. The build order is at the [end](#build-order)." />}}
+{{< alert context="warning" text="**Design, not built.** The [quest core](/docs/server/quests/) and the blackboard exist. Built so far: the [fact store](#what-a-player-knows), and stages and the new objective kinds of the [quest core](#changes-to-the-quest-core). The build order is at the [end](#build-order)." />}}
 
 The [quest core](/docs/server/quests/) keeps quests, but only players make them, on the
 [blackboard](/docs/mechanics/towns-trade/blackboard/). The **QuestManager** is the part that lets the world make
@@ -142,21 +142,29 @@ The **director** runs off the tick, every few minutes. It decides which plans ar
 
 # Changes to the Quest Core
 
-All changes are generic. None is about one quest.
+All changes are generic. None is about one quest. Stages, the four kinds and the observers are built. The new
+rewards and the superseded state are not.
 
-- **Stages.** A quest gets an ordered list of stages. A stage holds objectives and an optional decide point. A quest
-  of today is a quest with one stage.
+- **Stages.** An objective names its stage. A master works on one stage at a time, and its log entry holds where it
+  is. The log shows only the stages a master reached. A quest of today is a quest with one stage. A quest with more
+  than one stage has personal objectives only.
 - **Objective kinds.** Each new kind is one enum value and one check.
 
-  | Kind      | The player...                                        |
-  | --------- | ---------------------------------------------------- |
-  | `EXAMINE` | reads a carrier, examines a site, or digs at a spot  |
-  | `TALK`    | asks a named townsperson, or tells them a known fact |
-  | `BRING`   | brings an item to a person or a place                |
-  | `DECIDE`  | picks one of the endings                             |
+  | Kind      | The player...                                        | Counted by                                    |
+  | --------- | ---------------------------------------------------- | --------------------------------------------- |
+  | `EXAMINE` | reads a carrier, examines a site, or digs at a spot  | The quest core, on the tick                   |
+  | `TALK`    | asks a named townsperson, or tells them a known fact | The quest core, on the tick                   |
+  | `BRING`   | brings an item to a person or a place                | The source, which takes the goods             |
+  | `DECIDE`  | picks one of the choices. The pick is final          | The quest core, from the client's own message |
 
-- **Observers.** Examine and talk are reported through observer ports, like kills today. The lookup stays a hash
-  lookup on the master's active quests.
+- **Targets.** An examine, talk or bring objective points at a **world target**: a prop, a POI or a townsperson, by
+  an id that outlives the entity.
+- **Branches.** An objective of a later stage may follow one choice only. So "keep the blade" ends the chain and
+  "return it" goes on to the temple.
+- **Observers.** Examine and talk are reported through an observer port, like kills today. Readable props, POIs and
+  the talk service report. The lookup stays a hash lookup on the master's active quests.
+- **Stage event.** When a master meets a stage, the quest core tells the source, with the pick if there was one.
+  The source decides what the last stage is worth.
 - **Rewards.** Coins from a town treasury, an item, a fact, experience.
 - **Superseded.** A new end state for the losers of a race. The log entry says who won and gives the next lead.
 
