@@ -245,7 +245,7 @@ rebuilds the session's owned entities from the world.
 
 `MoveEntity` names one of the account's own entities - its master or any bestia - and its waypoints, and
 the server sends it on a journey; no waypoints stops it. `append` adds the waypoints after the destination.
-See [Long-Distance Travel]({{< ref "server/long-distance-travel" >}}).
+See [Long-Distance Travel]({{< ref "docs/server/long-distance-travel" >}}).
 
 The entity id grants nothing new: selecting another owned entity and moving it was always open to a client.
 The client still walks a click at once and sends the steps it walks as `first_leg`. `ClientLeg` walks them as

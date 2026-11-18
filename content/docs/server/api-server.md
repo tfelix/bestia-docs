@@ -107,7 +107,7 @@ moment.
 - **A Bestia's journey**, `PUT /v1/companion/masters/{id}/bestias/{bestiaId}/journey` with waypoints in
   metres, or a saved route's id and `reverse`, sends it off as a map click in the game does; `DELETE` stops it.
   A Bestia out of the world after a restart answers `404` until its Master is selected again. The roster lists
-  where each Bestia is travelling. See [Long-Distance Travel]({{< ref "server/long-distance-travel" >}}).
+  where each Bestia is travelling. See [Long-Distance Travel]({{< ref "docs/server/long-distance-travel" >}}).
 - **Saved routes**, `GET`/`POST /v1/companion/masters/{id}/routes` and `PATCH`/`DELETE .../routes/{routeId}`,
   keep a Master's routes by name. Every write answers with the whole list; `400 ROUTE_LIMIT` means it keeps
   as many as it may.
