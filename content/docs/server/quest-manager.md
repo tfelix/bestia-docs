@@ -188,9 +188,12 @@ further by itself. This quest moves it on.
   one thing at a time.
 - **Plan.** Two steps: hear the news from a townsperson who tells it, then talk to anybody in the other town.
   The first step is done as the master accepts.
-- **End.** The first master to arrive ends the quest; the others see who was faster. The town that was told now
-  holds the rumour itself, with the same last day as in the town it came from. Its people talk of it, and the next
-  town on the way can be asked for. The master gets experience and a little honor (5) in the town that was told.
+- **No race.** Up to 100 masters may take the quest, and each one finishes it for themself. Each gets experience
+  and a little honor (5) in the town that was told.
+- **Effect.** When the first master tells it, the town holds the rumour itself, with the same last day as in the
+  town it came from. Its people talk of it, and the next town on the way can be asked for.
+- **End.** 36 hours after the first master told it, the quest closes for all: the news counts as known. Masters
+  who made it keep their completed quest. Without any master it ends at the normal deadline.
 - **Gone cause.** When the other town hears of it another way, or the news is too old, an offer nobody took is
   withdrawn. News that got too old on the way arrives nowhere.
 
