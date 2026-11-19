@@ -88,7 +88,8 @@ tells the caller to keep it too. This is the same pattern as guild emblems.
 # Readable Things
 
 Signposts, milestones, graves and examined places send `ReadableSMSG`, a message with a text reference. The client
-shows it as a chat line. Books become items that hold a text reference. So every readable thing can be translated,
+shows it as a chat line. A grave stone, a signpost and a milestone also open as a sheet of paper on the screen, so
+they read as things of the world; a look at a place stays a chat line. Books become items that hold a text reference. So every readable thing can be translated,
 with or without an LLM text.
 
 # The Text Job
