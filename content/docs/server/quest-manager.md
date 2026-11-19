@@ -60,6 +60,24 @@ how urgent it is.
 
 A seed from the live world is dropped when its cause is gone: the stock recovered, somebody repaired the building.
 
+Built today: the thread source for lost artifacts, and the shortage source. Damage and rumours are not built.
+
+## A town that lacks a good
+
+This is the first quest from the live world, and the first shared one.
+
+- **Cause.** A town's stock of a good is far below what it should hold: by default at least half is missing, and
+  at least 20 units. That happens when players bought the town empty or its workplaces were destroyed. A town asks
+  for one good at a time, the one it lacks most.
+- **Plan.** One step: deliver the good. All comers fill one counter. The town asks for a part of what is missing,
+  60 percent by default; the rest comes back by its own trade.
+- **Offer.** The request goes on the blackboards, at a price a little above the town's own market price.
+- **Hand-in.** Every board lists the request. Only the board of the town that asked takes the goods. They go into
+  the town's stock, and the town pays from its own treasury. So a delivery really ends the shortage, and no coin is
+  minted. A town with an empty treasury pays what it has.
+- **End.** The quest is complete when the counter is full. When the town has enough again before that, the request
+  comes down. A request that ran out of time ends too, and the town is asked anew what it lacks.
+
 # The Planner
 
 The planner turns one seed into one **plan**, or into none. It is a pure function of the seed, the world and the
@@ -158,7 +176,7 @@ unique prize is one quest and a race.
 | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Townsfolk   | A new topic in the [conversation](/docs/server/dialog/) with an action option to accept. Built. A player the town gives the cold shoulder never sees it       |
 | Found thing | A **carrier**: a prop or an item with a text, such as an epitaph or a letter. Reading it teaches a fact and puts the lead into the quest log                  |
-| Blackboard  | A world posting in the same list as the player postings. Used for shared local quests                                                                         |
+| Blackboard  | A town's request in the same list as the player postings, shown first. Built for shortages                                                                    |
 
 When the first step of a plan is "hear the giver out", it is done as the master accepts: they stand before the
 giver. Found things and the blackboard do not offer generated quests yet.
