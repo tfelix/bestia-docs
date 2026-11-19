@@ -4,7 +4,7 @@ title: Dynamic Text
 description: "Design for text that is written per world - LLM prose for quests, books, epitaphs and NPC lines - how the zone refers to it, how the api-server delivers it in the player's language, and how the text job writes it at world creation."
 ---
 
-{{< alert context="warning" text="**Partly built.** The text reference, the store, the endpoint, the client cache and readable things exist. The text job does not, so no world has written texts yet." />}}
+{{< alert context="info" text="**Built** for quest texts and epitaphs, in English and German. The text job is off by default. Books and the other kinds of lore text are not built." />}}
 
 Most text in Bestia is a **template**: the server sends a key and typed arguments, and the client builds the
 sentence in its own language (see [Saying it in another language](/docs/server/dialog/#saying-it-in-another-language)).
@@ -94,31 +94,82 @@ with or without an LLM text.
 
 # The Text Job
 
-The job runs after world generation, next to the running world. It follows the prose spike:
+The job writes the texts of a new world with a small language model on the server CPU. It is built for quest texts
+and epitaphs, in English and German. It is off by default (`prose.enabled`).
 
-1. **Fact sheet.** For each text, plain code collects the facts, the allowed names, the voice and a length limit.
-   For a clue it also collects the **lead**: the place, person or thing the text must point at.
-2. **Write.** A small model on the server CPU writes the text. It runs in its own container next to the zone.
-3. **Validate.** Every name and number must come from the fact sheet. Every placeholder must still be there. The
-   lead must still be there. A text that fails is written again, up to three times, and then rejected.
-4. **Translate.** The same model translates the accepted English text. The translation is validated too.
+## What is written
 
-The table is the queue, so the job can stop and go on later.
+A part of the game that wants texts is a **text source**. It names its subjects and gives a **brief** for each one.
+
+| Source      | Texts                                                                    |
+| ----------- | ------------------------------------------------------------------------ |
+| Quest plans | What the giver says about the quest, and a journal line for each step    |
+| Epitaphs    | One for every named grave                                                |
+
+A brief holds the task, every name the text may use with what it is, the facts, and the **lead**: the names the text
+must contain. The giver's tale must name where the next step is. An epitaph must name its dead and both years.
+
+Each wanted text is a waiting row in the text table, under a **subject** that is stable in the world, such as
+`grave:7`. So the table is the queue: the job can stop at any time and go on later.
+
+## How a text is written
+
+1. **Write.** The model gets hard rules, the task, the allowed names, the facts, and the word to write last.
+2. **Validate.** Every proper name and every number must come from the brief, and the lead must be there. A text
+   that fails is asked for again with what was wrong, up to three times. The rejected text is never shown to the
+   model, because it would copy it. After three tries the text is rejected and the template stays.
+3. **Translate.** After all English texts, the same model translates each one. It gets the names in the form of
+   the other language. A translation is taken when the made-up words of the names and every number are still there.
+   Grammar may bend a name.
+
+## The model belongs to the zone
+
+The zone starts the model itself, in a container, over the Docker socket. Nobody starts it by hand and it never runs
+beside the game.
+
+- The container runs the llama.cpp server with Gemma 4 E4B. Image, model, threads and memory are settings
+  (`prose.llm.*`).
+- The server fetches the model on the first start, about 5 GB, and keeps it in a Docker volume.
+- When the job is done, or fails, the zone removes the container. A container that an earlier run left behind is
+  removed first.
+- A zone that runs in a container itself needs the Docker socket mounted, and the name of its Docker network.
+
+## A reduced boot phase
+
+The model needs most of the memory of a small machine. So the zone writes the texts while it is still small:
+
+```text
+world ─▶ catalogues ─▶ quest plans ─▶ TEXT JOB ─▶ entities ─▶ towns ─▶ tick ─▶ socket
+```
+
+The boot waits until the job is done. No entity is loaded, the tick does not run and no player can connect. A world
+that is already written boots straight through. Whatever goes wrong in the job, the zone boots: a text that was not
+written stays a template.
 
 ## Order and cap
 
-| Order | Texts                                                         |
-| ----- | ------------------------------------------------------------- |
-| 1     | Unique quests and the carriers on their clue chains           |
-| 2     | Quests and carriers near the start towns                      |
-| 3     | The rest of the history: epitaphs, legends, chronicles, books |
-| 4     | Possible live quests of each town                             |
+The job writes quest texts first, then epitaphs. English is written first, then the next language in the same order.
 
-English is written first, then the next language in the same order. The job stops when the time for a language is
-used up. What is left stays a template.
+The job has a time cap per language, three hours by default. The time spent is stored with the world. So a restart
+goes on where the job stopped, and it does not start the clock again. When the time is used up, what is left stays a
+template for good.
+
+## Measured
+
+On the test world (i7-1355U laptop): 17 English texts and 17 German ones in 8 minutes, about 14 seconds per text.
+All 34 passed at the first try. The container held 1.5 GB as Docker counts it; the model file is mapped on top.
+
+## Later: more than one node
+
+The job talks to a **model host**, not to a container. Today there are two hosts: the zone's own container, and a
+llama.cpp server at a URL. On a cluster, one node plans and stores the texts, and other nodes are started only to
+run the model. The planning node uses them through the URL host. When the texts are written, all boot as zones.
+Only one node may hold the job.
 
 # Limits
 
 - The client translation files hold English only today. German templates are a task of their own.
 - The validator cannot see a true name in the wrong place.
+- The translation has grammar slips: a name after "von" in the wrong case, a word left in English now and then.
+- A journal line does not always use the verb of its step: it may say "seek" where the step is "dig".
 - A body is public to everyone who has its id. Players can share texts, as they can share any other knowledge.
