@@ -188,7 +188,8 @@ rewards and the superseded state are not.
   the talk service report. The lookup stays a hash lookup on the master's active quests.
 - **Stage event.** When a master meets a stage, the quest core tells the source, with the pick if there was one.
   The source decides what the last stage is worth.
-- **Rewards.** Coins from a town treasury, an item, a fact, experience.
+- **Rewards.** The source pays them, not the quest core: coins from a town treasury, experience and honor are
+  built. An item or a fact as a reward is not.
 - **Superseded.** An end state for the losers of a race. It is built: the log entry says who was there first. The
   next lead is not built yet.
 
@@ -250,7 +251,18 @@ This part is built for the lost artifact:
 - **The last step.** The master who does the last step of the plan finishes the quest and the plan.
 - **The deadline.** A quest nobody finished in time ends. Its plan is offered anew while its cause is real.
 
-Not built yet: the rewards, the return of the artifact to its temple, and a follow-up quest for the losers.
+- **Bringing it home.** While the quest runs, the head of each household in the artifact's home town takes it from
+  the master who carries it. The artifact leaves the bag for good, and the world fact `ARTIFACT_ENSHRINED` says
+  where it rests.
+
+| Ending | The master gets                                                             | The home town                    |
+| ------ | --------------------------------------------------------------------------- | -------------------------------- |
+| Keep   | Experience. The artifact itself is the reward                               | Thinks a little less of them     |
+| Return | Experience, and coins: a small share of the town's treasury, with a cap     | Thinks more of them              |
+
+The numbers are settings of the zone (`questgen.*`).
+
+Not built yet: a rumour about the ending, a fact as a reward, and a follow-up quest for the losers.
 
 # Example: The Lost Artifact Race
 
