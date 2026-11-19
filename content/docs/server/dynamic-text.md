@@ -126,7 +126,12 @@ beside the game.
 - The server fetches the model on the first start, about 5 GB, and keeps it in a Docker volume.
 - When the job is done, or fails, the zone removes the container. A container that an earlier run left behind is
   removed first.
-- A zone that runs in a container itself needs the Docker socket mounted, and the name of its Docker network.
+- The image is pinned by its digest. The `server` tag of llama.cpp moves with every build.
+- A zone that runs in a container itself has no Docker socket. In the release bundle a small **socket proxy** gives
+  it only the calls about containers and images. The zone finds its own Docker network and puts the model beside
+  itself, so the model has no port on the host.
+
+In the release bundle, `PROSE_ENABLED=true` in `.env` is the only setting.
 
 ## A reduced boot phase
 
@@ -140,6 +145,15 @@ The boot waits until the job is done. No entity is loaded, the tick does not run
 that is already written boots straight through. Whatever goes wrong in the job, the zone boots: a text that was not
 written stays a template.
 
+## Written once
+
+The texts are rows in the database of the zone, like the world itself. When the zone starts again with the same
+world, it finds them, starts no container and boots straight through. This holds for a text that was rejected too:
+it is not tried again.
+
+The model starts again only when the world wants a text it does not have, for example for a new quest plan, and
+only while there is time left in the cap. A new world gets new texts.
+
 ## Order and cap
 
 The job writes quest texts first, then epitaphs. English is written first, then the next language in the same order.
@@ -152,6 +166,66 @@ template for good.
 
 On the test world (i7-1355U laptop): 17 English texts and 17 German ones in 8 minutes, about 14 seconds per text.
 All 34 passed at the first try. The container held 1.5 GB as Docker counts it; the model file is mapped on top.
+
+## Trying it out
+
+You need Docker, about 8 GB of free memory and 6 GB of disk for the model.
+
+1. Start the zone with the job switched on:
+
+   ```sh
+   PROSE_ENABLED=true ./gradlew :zone-server:bootRun
+   ```
+
+2. Read the log. The lines come in this order:
+
+   ```text
+   Queued 34 new texts; 34 wait to be written
+   Boot waits for the texts of the world, at most PT3H per language
+   Started the model container ... with unsloth/gemma-4-E4B-it-GGUF:Q4_K_M
+   The model is ready
+   grave:13 [en]: written after 1 tries
+   ...
+   Text job done: 34 written, 0 rejected, 0 left as templates for now
+   Removed the model container
+   ```
+
+   The first start fetches the image and the model, so "The model is ready" takes a few minutes. While the job
+   runs, `docker ps` shows the container `bestia-llm`. After it, the container is gone.
+
+3. Read the texts in the database:
+
+   ```sh
+   docker compose -f zone-server/compose.yaml exec mariadb mariadb -ubestia -pbestia bestia_zone \
+     -e "select subject, locale, state, attempts, body from world_text order by subject, locale"
+   ```
+
+4. Read them in the game. Click a named grave in a town cemetery: the epitaph comes as a chat line, first the
+   template and then the written text. Talk to a townsperson who offers a quest and take it: the giver's tale and
+   the lines in the quest log are written texts. Switch the client to German to see the translation.
+
+5. Stop the zone and start it again the same way. The log now says `Queued 0 new texts; 0 wait to be written`, and
+   no container starts.
+
+6. To have the texts written again, empty the two tables and start the zone:
+
+   ```sql
+   delete from world_text;
+   delete from text_job_budget;
+   ```
+
+Without a game, two tests run the real model. They are skipped in a normal test run.
+
+```sh
+# Starts the container, asks one question, removes the container. About a minute once the model is fetched.
+PROSE_REAL_HOST=true ./gradlew :zone-server:cleanTest :zone-server:test --tests '*DockerHostManualTest' -i
+
+# Writes and prints every text of the test world, in English and German. About ten minutes.
+PROSE_REAL=true ./gradlew :zone-server:cleanTest :zone-server:test --tests '*RealModelManualTest' -i
+```
+
+In a release, set `PROSE_ENABLED=true` in `.env` before the first start. The zone then shows as "starting" for as
+long as the texts take.
 
 ## Later: more than one node
 
