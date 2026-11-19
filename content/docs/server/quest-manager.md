@@ -55,12 +55,13 @@ how urgent it is.
 | -------- | ------------------------------------------------------------------------- | ------------------------------------------ | ---------------------------------- |
 | Threads  | The [open threads](/docs/server/history-generation/) of the chronicle     | At world creation, and when a thread opens | Unique and personal history quests |
 | Shortage | The settlement ledger of the [economy](/docs/server/economy/)             | Each director run                          | Local shared deliveries            |
-| Damage   | Destroyed workplaces and worn buildings of a town                         | Each director run                          | Local shared repairs               |
-| Rumours  | The [rumour ledger](/docs/server/dialog/#recent-events-the-rumour-ledger) | When a rumour is posted                    | Follow-ups: bring news, rebuild    |
+| Damage   | The destroyed buildings of a town                                         | Each director run                          | Local shared repairs               |
+| Rumours  | The [rumour ledger](/docs/server/dialog/#recent-events-the-rumour-ledger) | Each director run                          | Carry news to the next town        |
 
 A seed from the live world is dropped when its cause is gone: the stock recovered, somebody repaired the building.
 
-Built today: the thread source for lost artifacts, and the shortage source. Damage and rumours are not built.
+Built today: the thread source for lost artifacts, and the shortage, damage and rumour sources. Worn buildings are
+not a cause yet, only destroyed ones.
 
 ## A town that lacks a good
 
@@ -167,6 +168,32 @@ The **director** runs off the tick, every five minutes and once at start. It dec
 - A plan nobody took is withdrawn when its cause is gone.
 - Not built yet: a cap per region and a spread of levels around the start towns.
 
+## A town with destroyed buildings
+
+- **Cause.** A building of a town was destroyed. It does not come back by itself.
+- **Plan.** The same single step as for a shortage: deliver the repair material. By default that is 20 planks for
+  each destroyed building, at a fixed price of 15 coins each.
+- **Offer and hand-in.** As for a shortage: on every board, taken at the town's own board, paid from its treasury.
+- **End.** When the counter is full, every destroyed building of the town stands again. A request that ran out of
+  time ends, and the town counts anew.
+
+## News that stopped on the way
+
+A [rumour](/docs/server/dialog/#recent-events-the-rumour-ledger) reaches the towns inside its reach and goes no
+further by itself. This quest moves it on.
+
+- **Cause.** A town talks of big news, a slain boss or a fallen town, and a standing town within 40 km has not
+  heard it. Small news (strength below 0.5) and a misdeed somebody saw are not carried.
+- **Seed.** One per piece of news: the shortest way from a town that knows to a town that does not. A town is told
+  one thing at a time.
+- **Plan.** Two steps: hear the news from a townsperson who tells it, then talk to anybody in the other town.
+  The first step is done as the master accepts.
+- **End.** The first master to arrive ends the quest; the others see who was faster. The town that was told now
+  holds the rumour itself, with the same last day as in the town it came from. Its people talk of it, and the next
+  town on the way can be asked for. The master gets experience and a little honor (5) in the town that was told.
+- **Gone cause.** When the other town hears of it another way, or the news is too old, an offer nobody took is
+  withdrawn. News that got too old on the way arrives nowhere.
+
 A plan becomes a quest of the quest core when the first master accepts it. Later masters join the same quest, so a
 unique prize is one quest and a race.
 
@@ -176,7 +203,7 @@ unique prize is one quest and a race.
 | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Townsfolk   | A new topic in the [conversation](/docs/server/dialog/) with an action option to accept. Built. A player the town gives the cold shoulder never sees it       |
 | Found thing | A **carrier**: a prop or an item with a text, such as an epitaph or a letter. Reading it teaches a fact and puts the lead into the quest log                  |
-| Blackboard  | A town's request in the same list as the player postings, shown first. Built for shortages                                                                    |
+| Blackboard  | A town's request in the same list as the player postings, shown first. Built for shortages and repairs                                                        |
 
 When the first step of a plan is "hear the giver out", it is done as the master accepts: they stand before the
 giver. Found things and the blackboard do not offer generated quests yet.
@@ -194,7 +221,7 @@ rewards and the superseded state are not.
   | Kind      | The player...                                        | Counted by                                    |
   | --------- | ---------------------------------------------------- | --------------------------------------------- |
   | `EXAMINE` | reads a carrier, examines a site, or digs at a spot  | The quest core, on the tick                   |
-  | `TALK`    | asks a named townsperson, or tells them a known fact | The quest core, on the tick                   |
+  | `TALK`    | asks a named townsperson or anybody of a named town  | The quest core, on the tick                   |
   | `BRING`   | brings an item to a person or a place                | The source, which takes the goods             |
   | `DECIDE`  | picks one of the choices. The pick is final          | The quest core, from the client's own message |
 
