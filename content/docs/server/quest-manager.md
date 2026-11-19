@@ -189,7 +189,8 @@ rewards and the superseded state are not.
 - **Stage event.** When a master meets a stage, the quest core tells the source, with the pick if there was one.
   The source decides what the last stage is worth.
 - **Rewards.** Coins from a town treasury, an item, a fact, experience.
-- **Superseded.** A new end state for the losers of a race. The log entry says who won and gives the next lead.
+- **Superseded.** An end state for the losers of a race. It is built: the log entry says who was there first. The
+  next lead is not built yet.
 
 Escort and guard steps come later. They need NPC travel and rules for failing.
 
@@ -236,6 +237,20 @@ An ending runs a small closed set of effects:
 | Reward       | Pays coins, items, facts and experience                              |
 
 A new world fact is also a new seed. So the ending of one quest is the start of the next one.
+
+## How a quest ends
+
+This part is built for the lost artifact:
+
+- **The find is a fact.** Whoever opens the cache of an artifact took it, with or without a quest. That is written
+  as the world fact `ARTIFACT_TAKEN`. Everything else follows from the fact.
+- **The race.** When the fact names a master in the quest, the quest is over for every other master, and the
+  winner goes on. When somebody outside the quest took the artifact, the quest ends for all.
+- **The offer.** An artifact that was taken is no longer lost, so its offer is withdrawn.
+- **The last step.** The master who does the last step of the plan finishes the quest and the plan.
+- **The deadline.** A quest nobody finished in time ends. Its plan is offered anew while its cause is real.
+
+Not built yet: the rewards, the return of the artifact to its temple, and a follow-up quest for the losers.
 
 # Example: The Lost Artifact Race
 
