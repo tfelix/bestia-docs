@@ -196,8 +196,8 @@ further by itself. This quest moves it on.
   who made it keep their completed quest. Without any master it ends at the normal deadline.
 - **Text.** News happens in play, long after the [text job](/docs/server/dynamic-text/) has run. So the job
   writes the giver's words ahead: 10 texts per kind of news, each in another voice (an old farmer, a busy
-  innkeeper, ...). A text tells what happened and leaves the town open as `{to}`. A plan uses one of them, always
-  the same one, and the client fills in the town. The translation must keep `{to}` as it is. Without a written
+  innkeeper, ...). A text tells what happened and leaves the town open as `{town}`. A plan uses one of them, always
+  the same one, and the client fills in the town. The translation must keep `{town}` as it is. Without a written
   text the giver speaks a template line per kind of news.
 - **Gone cause.** When the other town hears of it another way, or the news is too old, an offer nobody took is
   withdrawn. News that got too old on the way arrives nowhere.

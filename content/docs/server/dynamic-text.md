@@ -42,6 +42,11 @@ The client shows the template at once. When the reference has a `text_id`, it lo
 
 A body is prose with the same `{placeholders}` as a template.
 
+A text can be written before the game knows a name in it. Then the brief lists the placeholder and says what it
+stands for: `{town}`, the name of the town the news must be carried to. The writer is told to put it where the
+name belongs in the sentence. A placeholder needs a name that is no common word: a small model read `{to}` as the
+word "to" and wrote "carry this swiftly {to}".
+
 - A value that changes at runtime, or that the client names itself, stays a placeholder: an amount, an item, a
   species, a player.
 - A name from the chronicle is written into the body. Each language has its own form of the name, see
