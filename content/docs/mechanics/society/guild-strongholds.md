@@ -48,7 +48,8 @@ guilds lose their Approval or disband.
 
 A sleeping seed is ordinary ground. Anybody may dig or build there. When it sprouts:
 
-- It **rises to the current surface** of its spot, however deep it was dug.
+- It **rises to the current surface** of its spot, however deep it was dug, as a small golden sprout that anybody
+  nearby can see.
 - If a player structure stands on its core, it moves to the nearest free ground within `30 m`.
 - It is **skipped**, and the next seed of the pool sprouts instead, if a
   [player settlement](/docs/mechanics/towns-trade/player-settlements/) or a sign site stands within `1 km`, or if no
@@ -108,9 +109,10 @@ member whose rank may use guild skills casts it to sense the awake seeds that no
 A guild may found a Stronghold only while it holds none. Every further Stronghold it holds, it has
 [captured](#capture).
 
-1. A member whose rank may use guild skills stands on the core of a discovered, awake seed that no guild holds.
-2. They plant an **Empyrite site**. The guild pays `1,000,000` coins, which go back to the
-   [world reserve](/docs/server/money-supply/).
+1. A member whose rank may use guild skills stands on the core of a discovered, awake seed that no guild holds and
+   clicks the sprout.
+2. They confirm, and plant an **Empyrite site**. They pay `10,000` coins from their own purse, which go back to the
+   [world reserve](/docs/server/money-supply/). The server sets the price; it may rise later.
 3. Members work on the site for **30 min** in total. Anybody of the guild may help.
 4. When the work is done, the Empyrite stands. The grounds are the guild's.
 
@@ -154,8 +156,8 @@ The Empyrite heals **1% of its HP per minute** once nobody has hit it for **5 mi
 
 The guild whose member strikes the **breaking blow** takes the Stronghold:
 
-- The Empyrite forms again at once with `50%` of its HP, in the new guild's colours. For **10 min** nothing can damage
-  it.
+- The Empyrite forms again at once with its **full HP**, in the new guild's colours. For **10 min** nothing can
+  damage it.
 - Buildings, stations and walls stay, and now belong to the new guild.
 - Every investment track loses **one level**.
 - The new guild takes every uncollected [treasure drop](#treasury).
