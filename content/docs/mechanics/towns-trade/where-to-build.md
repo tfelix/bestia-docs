@@ -26,22 +26,30 @@ settlement.
 
 A town structure needs a settlement, and inside it, it must stand within **30 m** of something that is already there.
 
-| Settlement                                                                 | The settlement is               | Within 30 m of                                                        |
-| -------------------------------------------------------------------------- | ------------------------------- | --------------------------------------------------------------------- |
-| [Player settlement](/docs/mechanics/towns-trade/player-settlements/)       | the sphere around the city sign | the city sign, or a finished building of the town                     |
-| Generated town or hamlet                                                   | the town's ground               | a generated building that still stands, or a finished player building |
-| [Guild Stronghold](/docs/mechanics/society/party-guild/#guild-strongholds) | not designed yet                | not designed yet                                                      |
+| Settlement                                                                 | The settlement is               | Within 30 m of                                                                         |
+| -------------------------------------------------------------------------- | ------------------------------- | -------------------------------------------------------------------------------------- |
+| [Player settlement](/docs/mechanics/towns-trade/player-settlements/)       | the sphere around the city sign | the city sign, or a finished building of the town                                      |
+| Generated town or hamlet                                                   | the town's ground               | the town centre, a generated building that still stands, or a finished player building |
+| [Guild Stronghold](/docs/mechanics/society/party-guild/#guild-strongholds) | not designed yet                | not designed yet                                                                       |
 
-A **building** here is a finished structure that earns
+A **building** here is a finished town structure that earns
 [building points](/docs/mechanics/towns-trade/player-settlements/#the-sphere-of-influence): a crafting station, a
-wall, floor or stairs piece, a post office or an auction house. A chest, a campfire or a construction site is not.
+wall, floor or stairs piece, a post office or an auction house. A wild structure is not, not even a workbench: a lone
+workbench in the open starts no town. Neither is a construction site.
 
 So a town grows outward, one building next to the last. A player building in a generated town anchors the next one too,
 so players can add a street to a hamlet. They cannot build past the town's own ground.
 
 A generated building that was destroyed anchors nothing.
 
+Whoever walks into a settlement sees its name, a player town's too. That is also how the game knows where a town ends.
+
 {{< alert context="info" text="A post office and an auction house also need a **player** settlement, and a town takes one of each. See [Player Settlements](/docs/mechanics/towns-trade/player-settlements/)." />}}
+
+# Before the Click
+
+While a kit is in hand, its ghost turns **red** where the kit may not go, and a line above it says why: no settlement,
+too far from the town, or too close to another master's structure. A click there does nothing.
 
 # Building in the Wild
 
