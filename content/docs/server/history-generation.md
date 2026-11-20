@@ -213,7 +213,7 @@ before pruning: a dropped ending would make a settled story look open. Pruning t
 
 `chronicle -Pquests` prints them, and `-Psweep` counts them per kind. On 32 genesis worlds, the means per world are:
 13.6 lost artifacts, 7.3 houses without heir, 1.4 open oaths, 0.8 artifacts away, 0.8 bosses at large, 0.6 sealed
-bosses, 0.5 forgotten gods and 0.4 persecuted cults. Nothing in the game reads the threads yet; a quest system will.
+bosses, 0.5 forgotten gods and 0.4 persecuted cults. The [Quest Manager](/docs/server/quest-manager/) reads the threads; today it plans quests for lost artifacts only.
 
 # History Mix
 
