@@ -42,6 +42,9 @@ by itself any more. It opens Handiwork with that skill selected, where its kit i
 
 The [Item Database](/docs/mechanics/items-crafting/item-database/?category=station) lists every kit.
 
+A campfire, a chest, a workbench, a mana circle, a mining shaft or a theodolite may be put down anywhere. Every other
+station only goes up in a settlement. See [Where to Build](/docs/mechanics/towns-trade/where-to-build/).
+
 # The Window
 
 ```text
