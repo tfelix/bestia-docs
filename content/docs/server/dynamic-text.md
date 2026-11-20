@@ -118,16 +118,17 @@ Each wanted text is a waiting row in the text table, under a **subject** that is
 2. **Validate.** Every proper name and every number must come from the brief, and the lead must be there. A text
    that fails is asked for again with what was wrong, up to three times. The rejected text is never shown to the
    model, because it would copy it. After three tries the text is rejected and the template stays.
-3. **Translate.** After all English texts, the same model translates each one. It gets the names in the form of
-   the other language. A translation is taken when the made-up words of the names and every number are still there.
-   Grammar may bend a name.
+3. **Other languages.** After all English texts, the model writes each text again in the next language, from
+   the same brief. It gets the names in the form of that language. It does not translate the English text: the
+   same model made grammar errors in most texts it translated and in almost none it wrote. So the German text
+   says the same facts, but not the same sentences.
 
 ## The model belongs to the zone
 
 The zone starts the model itself, in a container, over the Docker socket. Nobody starts it by hand and it never runs
 beside the game.
 
-- The container runs the llama.cpp server with Gemma 4 E4B. Image, model, threads and memory are settings
+- The container runs the llama.cpp server with Gemma 4 E4B (QAT). Image, model, threads and memory are settings
   (`prose.llm.*`).
 - The server fetches the model on the first start, about 5 GB, and keeps it in a Docker volume.
 - When the job is done, or fails, the zone removes the container. A container that an earlier run left behind is
@@ -244,6 +245,8 @@ Only one node may hold the job.
 
 - The client translation files hold English only today. German templates are a task of their own.
 - The validator cannot see a true name in the wrong place.
-- The translation has grammar slips: a name after "von" in the wrong case, a word left in English now and then.
+- The German texts have grammar slips: a name after "von" in the wrong case, a name bent out of shape now and then.
 - A journal line does not always use the verb of its step: it may say "seek" where the step is "dig".
+- In a language other than English the validator checks numbers, placeholders and the lead only. German writes
+  every noun with a capital, so it cannot tell a made-up name from a word.
 - A body is public to everyone who has its id. Players can share texts, as they can share any other knowledge.
