@@ -55,6 +55,8 @@ A structure counts if it stands inside the current radius. So a town grows outwa
 edge a little further.
 
 **Anybody may build in a player settlement.** The founder does not decide who builds, and nobody needs permission.
+Houses, crafting stations and town buildings only go up in a settlement, within 30 m of the sign or of a building that
+is already there. [Where to Build](/docs/mechanics/towns-trade/where-to-build/) has the rules.
 
 # The City Sign
 

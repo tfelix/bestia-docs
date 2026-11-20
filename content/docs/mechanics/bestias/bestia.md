@@ -429,6 +429,7 @@ Experience is also earned by working with the world rather than fighting it:
 | Gathering a resource (mining, lumberjacking, herbalism, fishing) | `2 * resource_level + 5`                                            |
 | Crafting an item (forging, brewing, transmuting, …)              | by the time the craft took, see [Work Experience](#work-experience) |
 | Constructing a structure                                         | `3 * item_level + 10`                                               |
+| Destroying another master's structure                            | by a quarter of its build time, see [Where to Build](/docs/mechanics/towns-trade/where-to-build/#clearing-away-structures) |
 
 Gathering sits at about half of `4 * lv + 5`, the base experience for defeating a Bestia of the same level.
 
@@ -464,7 +465,7 @@ Four rules keep it honest:
 
 The guild tax applies to work experience as it does to kills; a party does not share it.
 
-{{< alert context="info" text="Crafting is the only source of work experience today. Support skills that land on a player who needed them (healing or curing someone else, buffing someone who lacked it) and Master gathering are meant to follow, on the same curve. Fighting skills, self-only buffs, movement and detection skills and the like never pay: they have no work product and are too cheap to repeat." />}}
+{{< alert context="info" text="Crafting and [clearing away other masters' structures](/docs/mechanics/towns-trade/where-to-build/#clearing-away-structures) are the only sources of work experience today. Support skills that land on a player who needed them (healing or curing someone else, buffing someone who lacked it) and Master gathering are meant to follow, on the same curve. Fighting skills, self-only buffs, movement and detection skills and the like never pay: they have no work product and are too cheap to repeat." />}}
 
 ## Death Penalty
 
