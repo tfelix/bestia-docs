@@ -4,7 +4,7 @@ title: Quest Manager
 description: "Design of the QuestManager - how the zone plans quests from the world history and from real events in the live world, offers them through townsfolk, found things and the blackboard, runs chains with a choice, and writes their endings back into the world."
 ---
 
-{{< alert context="warning" text="**Design, not built.** The [quest core](/docs/server/quests/) and the blackboard exist. Built so far: the [fact store](#what-a-player-knows), stages and the new objective kinds of the [quest core](#changes-to-the-quest-core), the store and the questions of the [living chronicle](#the-living-chronicle), the [planner](#the-planner) with its catalogues and the plan store, the [director](#plan-store-and-director) and the townsfolk [giver](#givers). The build order is at the [end](#build-order)." />}}
+{{< alert context="info" text="**Built.** All steps of the [build order](#build-order) are built. What is still missing is listed on [From History to Quests](/docs/server/history-to-quests/#what-is-built)." />}}
 
 The [quest core](/docs/server/quests/) keeps quests, but only players make them, on the
 [blackboard](/docs/mechanics/towns-trade/blackboard/). The **QuestManager** is the part that lets the world make
@@ -214,7 +214,7 @@ unique prize is one quest and a race.
 | Blackboard  | A town's request in the same list as the player postings, shown first. Built for shortages and repairs                                                        |
 
 When the first step of a plan is "hear the giver out", it is done as the master accepts: they stand before the
-giver. Found things and the blackboard do not offer generated quests yet.
+giver. Found things do not offer generated quests yet.
 
 # Changes to the Quest Core
 
@@ -278,7 +278,7 @@ actors, the place, the master who did it and the game day. Today the living chro
 | `ARTIFACT_TAKEN`     | A master holds it. It is no longer lost                         |
 | `ARTIFACT_ENSHRINED` | A town keeps it. It is away until its home temple is that town  |
 
-Nothing writes world facts yet. The endings do that.
+The endings of quests write these facts.
 
 An ending runs a small closed set of effects:
 
