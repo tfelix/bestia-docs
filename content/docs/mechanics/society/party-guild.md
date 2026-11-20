@@ -159,8 +159,9 @@ and a guild reaches at most level `50`, so every guild has to choose.
 Some skills are **active**: a member whose rank may use guild skills casts them like any other skill, from the
 shortcut bar. Their cooldown belongs to the whole guild, so a cast by one member blocks the skill for all of them.
 
-The skills under [Recognition and the Stronghold](#recognition-and-the-stronghold), and Emergency Recall, work only
-once the guild holds a [Guild Stronghold](#guild-strongholds). A guild can learn them now, but they do nothing yet.
+The skills under [Recognition and the Stronghold](#recognition-and-the-stronghold), and Emergency Recall, belong to
+[Guild Strongholds](/docs/mechanics/society/guild-strongholds/). A guild can learn them now, but they do nothing until
+Strongholds are built.
 
 {{< alert context="info" text="Each part of the tree has its own diagram. A slanted box is a skill from another part that this one needs." />}}
 
@@ -196,29 +197,30 @@ graph TD
     description="The guild may carry an [emblem](#emblem), which its leader picks. It shows on its members, its Stronghold and its banners." >}}
 {{< /skill >}}
 
-{{< skill name="Official Guild Approval" maxLevel="1" requires="Guild Emblem Lv. 1" type="Passive"
-    description="The guild is recognised by the realm. It may found a Guild Stronghold and attack the installations of other guilds - and its own Stronghold may be attacked in turn." >}}
+{{< skill name="Official Guild Approval" maxLevel="1" requires="Guild Emblem Lv. 1" type="Active"
+    cooldown="60 s" range="30 km"
+    description="The guild is recognised by the realm. It may found a [Guild Stronghold](/docs/mechanics/society/guild-strongholds/) and attack the guild structures of other recognised guilds - and its own may be attacked in turn. Cast, it senses the nearest [Empyrite Seeds](/docs/mechanics/society/guild-strongholds/#finding-a-seed) that no guild holds." >}}
 {{< /skill >}}
 
 {{< skill name="Steward Contract" maxLevel="1" requires="Official Guild Approval Lv. 1" type="Passive"
-    description="Hires a steward for the Guild Stronghold. Members open the guild storage at the steward and return to the Stronghold when they fall. Bestia has no Kafra; the steward takes its place." >}}
+    description="The guild may hire a [steward](/docs/mechanics/society/guild-strongholds/#the-steward) at each of its Strongholds. Members open the guild storage at the steward and are reborn at the Stronghold when they fall." >}}
 {{< /skill >}}
 
 {{< skill name="Guild Storage" maxLevel="5"
     requires="Steward Contract Lv. 1, Guild Extension Lv. 5, Cold Heart Lv. 1, Sharp Gaze Lv. 1" type="Passive"
-    description="A storage that every member with the right rank can use, kept by the steward. Each level adds more space." >}}
+    description="A [storage](/docs/mechanics/society/guild-strongholds/#guild-storage) the whole guild shares, opened at any of its stewards. Ranks decide who may put in and who may take out. `100` slots per level." >}}
 {{< /skill >}}
 
 {{< skill name="Watcher Research" maxLevel="1" requires="Official Guild Approval Lv. 1" type="Passive"
-    description="The guild may call watchers, Bestia that guard its Stronghold." >}}
+    description="The guild may call [watchers](/docs/mechanics/society/guild-strongholds/#watchers), Bestia of brass and clockwork that guard its Strongholds." >}}
 {{< /skill >}}
 
 {{< skill name="Strengthen Watchers" maxLevel="3" requires="Watcher Research Lv. 1" type="Passive"
-    description="The watchers hit harder and attack faster." >}}
+    description="The watchers deal `+10%` damage and attack `10%` faster per level." >}}
 {{< /skill >}}
 
 {{< skill name="Permanent Development" maxLevel="1" requires="Official Guild Approval Lv. 1" type="Passive"
-    description="Investing in the Guild Stronghold has a `50%` chance to give one free extra point." >}}
+    description="Every step [invested](/docs/mechanics/society/guild-strongholds/#investment) in a Stronghold has a `50%` chance to count twice." >}}
 {{< /skill >}}
 
 ### Members, Commands and Summons
@@ -273,7 +275,7 @@ have separate cooldowns.
 
 {{< skill name="Emergency Recall" maxLevel="1" requires="Official Guild Approval Lv. 1, Regeneration Lv. 1"
     type="Active" cooldown="300 s"
-    description="Calls every member of the guild to the caster. Works only inside the guild's own Stronghold." >}}
+    description="Calls every member of the guild to the caster. Works only on the grounds of one of the guild's own Strongholds." >}}
 {{< /skill >}}
 
 {{< skill name="Rally to the Banner" maxLevel="1" requires="Emergency Recall Lv. 1" type="Active"
@@ -285,8 +287,8 @@ A **War Banner** is an item forged at a forge from planks, cloth, dye and an iro
 Rally to the Banner, and whose rank may use guild skills, plants it within `5` tiles. A guild has one banner: a new
 one takes the old one down.
 
-The banner stands for `300 s` and has `1,500` HP. Enemies can cut it down; the guild's own members and their Bestia
-cannot, and a [ward stone](/docs/mechanics/society/pvp/#protected-zones) protects it like anything else a player owns. Every
+The banner stands for `300 s` and has `1,500` HP. Members of other guilds with Official Guild Approval can cut it
+down, as any [guild structure](/docs/mechanics/society/guild-strongholds/#who-may-attack); nobody else can, and a [ward stone](/docs/mechanics/society/pvp/#protected-zones) protects it like anything else a player owns. Every
 member online hears when it is planted, cut down or fades.
 
 ### Auras
@@ -354,8 +356,6 @@ Emergency Move needs two auras, but it is a command: it lands on the members aro
 
 # Guild Strongholds
 
-{{< alert context="warning" text="Strongholds are not designed yet. This section only says what the guild skills above expect of them." />}}
-
-A **Guild Stronghold** is a guild's own place in the open world. Only a guild with Official Guild Approval can found
-one, and from then on the guild may attack other guilds' Strongholds - and its own may be attacked. The steward,
-the guild storage, the watchers and Emergency Recall all live in the Stronghold.
+A guild with Official Guild Approval can hold **Guild Strongholds**: places in the open world, each with a golden
+Empyrite at its heart, a steward, the guild storage and watchers. Other recognised guilds can capture them.
+[Guild Strongholds](/docs/mechanics/society/guild-strongholds/) describes them.
