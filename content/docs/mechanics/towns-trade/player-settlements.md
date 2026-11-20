@@ -32,6 +32,7 @@ A master can found one settlement at a time. While their sign or sign site stand
 - At least **5 km** from the centre of every other settlement: generated ones (hamlets too), player towns and sign
   sites.
 - Outside every [ward stone](/docs/mechanics/society/pvp/#protected-zones) field.
+- At least **1 km** from every awake [Empyrite Seed](/docs/mechanics/society/guild-strongholds/#empyrite-seeds).
 - Not within 5 km of a town that [fell](#when-the-sign-falls) less than 48 h ago.
 
 Because of the 5 km rule, every player town has room for an auction house of its own.
