@@ -257,10 +257,11 @@ Bestia of brass and clockwork that guard the grounds. They are not in the
 - A watcher's level is `50 + 5 × Defense`.
 - [Strengthen Watchers](/docs/mechanics/society/party-guild/#skill-strengthen-watchers) gives `+10%` damage and
   `+10%` attack speed per level.
-- Calling a watcher is free. A fallen watcher comes back after **30 min**, or at once for `50,000` coins.
+- Calling a watcher is free. A fallen watcher comes back after **30 min**, or at once when any member pays `50,000`
+  coins.
 
 Watchers fight only those who may fight them: members of other guilds with Approval and their Bestia, and only inside
-an [attack window](#attack-windows). They leave everybody else in peace, and stay within `60 m` of their post.
+an [attack window](#attack-windows). They leave everybody else in peace. They roam and fight within `120 m` of the Empyrite.
 
 # Orders and Cults
 
