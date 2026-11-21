@@ -261,7 +261,8 @@ Bestia of brass and clockwork that guard the grounds. They are not in the
   coins.
 
 Watchers fight only those who may fight them: members of other guilds with Approval and their Bestia, and only inside
-an [attack window](#attack-windows). They leave everybody else in peace. They roam and fight within `120 m` of the Empyrite.
+an [attack window](#attack-windows). They leave everybody else in peace. They roam and fight within `120 m` of the
+Empyrite.
 
 # Orders and Cults
 
