@@ -56,11 +56,15 @@ base64.
 | What                  | Valkey                                        | Written by  | Read by                       |
 | --------------------- | --------------------------------------------- | ----------- | ----------------------------- |
 | Who is in the world   | `dir:account:{id}`, a key with a 30 s TTL     | zone        | api-server                   |
+| Who has an app open   | `app:account:{id}`, a key with a 30 s TTL     | api-server  | zone                         |
 | Questions             | pub/sub channel `zone:{node}:requests`        | api-server | that zone node                |
 | Answers               | pub/sub channel `api:{instance}:replies`      | zone        | the asking api-server        |
 | Events                | stream `events`, the newest 10 000 kept       | zone        | api-server, twice (see below) |
 | Writes already done   | `bus:idem:{account}:{key}`, 10 minutes        | zone        | zone                          |
 | Kicks                 | stream `kicks`, the newest 10 000 kept        | login-server | every zone node, a group each |
+
+The app marks are the only keys the api-server writes. Its ACL user may `SET` them and nothing else, through a
+selector, so it cannot overwrite the directory or the event stream.
 
 **The tick never waits for Valkey.** The zone appends events from a bounded outbox on its own thread; a full
 outbox drops and counts. Requests are answered on virtual threads, at most 64 at a time per node; one more is
@@ -104,6 +108,10 @@ moment.
   plays it (`403`); a Master in no such party or guild is refused (`409`); a line is 1 to 200 characters, with
   control characters stripped. Local say has no app counterpart, because the Master is not in the world to be heard.
   The answer is empty, and the line itself comes back over the socket like everybody else's.
+- **A whisper**, `POST /v1/companion/masters/{id}/chat/whisper` with `{targetName, text}`, goes out through the same
+  code as `/w` in the game. It reaches a Master that is played or whose account has an app open, and both sides get a
+  `ChatLine` event. A name nobody has and a player who is away get the same `409`, so whispers cannot tell who
+  exists. Basic Skill Lv. 2 and the line length hold as for group chat.
 - **A Bestia's journey**, `PUT /v1/companion/masters/{id}/bestias/{bestiaId}/journey` with waypoints in
   metres, or a saved route's id and `reverse`, sends it off as a map click in the game does; `DELETE` stops it.
   A Bestia out of the world after a restart answers `404` until its Master is selected again. The roster lists
@@ -125,7 +133,7 @@ The zone appends to the `events` stream:
 | `Presence`       | An account entered or left the world (from the directory heartbeat)  |
 | `ChartsChanged`  | What a Master can see of the map may have changed                     |
 | `CompendiumChanged` | A Master saw or caught a species for the first time                |
-| `ChatLine`       | A line of party or guild chat, from the game or the app: one per member, played or not, the sender included |
+| `ChatLine`       | A line of party or guild chat, from the game or the app: one per member, played or not, the sender included. A whisper (`WHISPER`): one to its target, one to its writer, which names the target in `targetName` |
 | `JourneyEnded`   | A Bestia's journey ended: arrived, or stuck, without a known way, or dead, and where |
 
 The api-server reads the stream twice:
@@ -144,6 +152,10 @@ The api-server reads the stream twice:
 `{"type":"auth","token":...,"lastEventId":...}`. The app never names what it wants to hear; it hears its own
 account's events. A socket lives as long as its token and is then closed with code 4001, and the app reconnects
 with a fresh token.
+
+While an instance holds a socket of an account, it renews `app:account:{id}` every 10 seconds, and at once when the
+socket opens. The zone reads it to tell whether a whisper to a player away from the game has anywhere to go. A mark
+outlives its socket by up to 30 seconds; a whisper in that gap waits in the stream until the app reconnects.
 
 # Push notifications
 
@@ -235,8 +247,7 @@ See the [Redis licences](https://redis.io/legal/licenses/) and the [history of V
 
 # Next
 
-1. Whispers in the app, both ways. The zone has them; the bus and the game client's `/w` do not yet.
-2. A read model fed by the events, if questions to the zone ever grow heavy.
+1. A read model fed by the events, if questions to the zone ever grow heavy.
 
 # Open problems
 

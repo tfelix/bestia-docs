@@ -86,7 +86,7 @@ none of it hands an absent player anything a present one does not already have.
 - **Party and guild.** Read and written from the app. The `/p` and `/g` your guildmates are typing at a
   keyboard arrive on the phone, and what you write back lands in their chat log. A Master's page shows its guild
   too: the emblem, the message of the day, and every member, online or where and when they left.
-- **Whispers**, both directions, to anybody you could whisper to in person.
+- **Whispers**, both directions, to anybody in the game or with the app open. Tap a whisper to answer it.
 - **Letters**, read and written, by [pigeon](/docs/mechanics/towns-trade/postal/#letters). Unlike a whisper, a letter waits for
   a player who is offline.
 - **Local say**, does not work via the app as the master is gone.
@@ -377,7 +377,7 @@ Honest about where this stands:
 
 - **Most of it waits for the game.** Version 1 is a web app (`companion-app/`) on the
   [API Server](/docs/server/api-server/): sign-in, Masters, Bestia, bags, the map, live events, stance orders,
-  party and guild chat, each Master's guild, and the Bestia Compendium. Whispers do not reach the app yet.
+  party, guild and whisper chat, each Master's guild, and the Bestia Compendium.
   Most of what the rest of this page reads — post, auctions, quests, guilds, covenants, the whole economy — is
   designed but not implemented in the game.
 - **Notifications have a budget, and a small one.** Version 1 wakes you for three things only: your home town

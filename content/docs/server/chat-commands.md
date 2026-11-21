@@ -28,13 +28,14 @@ These never reach the server as commands. The client handles them in `Game/UI/Ch
 
 {{< table >}}
 
-| Prefix      | What it does                                      |
-| ----------- | ------------------------------------------------- |
-| `/s <text>` | Switches to public chat and sends the text there  |
-| `/p <text>` | Switches to party chat and sends the text there   |
-| `/g <text>` | Switches to guild chat and sends the text there   |
-| `/w <text>` | Whisper. Not implemented yet: the line is dropped |
-| `/clear`    | Clears the chat window                            |
+| Prefix             | What it does                                                                                                         |
+| ------------------ | -------------------------------------------------------------------------------------------------------------------- |
+| `/s <text>`        | Switches to public chat and sends the text there                                                                     |
+| `/p <text>`        | Switches to party chat and sends the text there                                                                      |
+| `/g <text>`        | Switches to guild chat and sends the text there                                                                      |
+| `/w <name> <text>` | Whispers to a master and switches to whisper mode for that name. Quote a name of two words: `/w "First Second" text` |
+| `/r <text>`        | Whispers to the last player who whispered to you                                                                     |
+| `/clear`           | Clears the chat window                                                                                               |
 
 {{< /table >}}
 
