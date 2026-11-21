@@ -60,6 +60,9 @@ Due to the presence of multiple factions with differing interests, defining univ
 
 The local loss falls on the witness first and reaches the settlement later, as described in the [Reputation System](#reputation-system). Killing or harming an [Aggressor](#self-defense) is never a malicious action, whoever the victim is.
 
+Guild structures, such as a Stronghold's Empyrite or a War Banner, can only be damaged by guilds with Official Guild
+Approval, and doing so costs no honor. See [Guild Strongholds](/docs/mechanics/society/guild-strongholds/#who-may-attack).
+
 Until the [Orders](/docs/mechanics/society/factions) are part of the game, every Master counts as unsworn, so every other player is in a non-opposing faction.
 
 Abandoning a commission means dropping an assigned contract, letting it expire without a serious attempt, or dumping the cargo — not merely failing at it. The local honor loss falls on the **broker NPC** who held the contract, and brokers talk to each other like every other witness, so a player who makes a habit of it finds the boards of a whole town closed to them. The forfeited [collateral](/docs/mechanics/world/questing/#collateral) is a separate, purely financial consequence on top.

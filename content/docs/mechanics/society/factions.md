@@ -46,6 +46,8 @@ A citadel is a major, expensive, collective build project, and erecting one gran
 
 Temples are cheap by comparison and contribute modest influence, which makes them the practical tool for contesting a region an Order does not yet hold.
 
+A [Guild Stronghold](/docs/mechanics/society/guild-strongholds/#orders-and-cults) can hold a shrine of each of its members' Orders, and a guild may attune its Empyrite to one Order, so that the whole Stronghold counts as a temple of it.
+
 # Sphere of Influence
 
 The world is divided into regions, and each region tracks a separate **influence** score for every Order. A region's dominant Order is the one with the highest score there, and the combined influence an Order holds across all regions is its **sphere of influence**.
