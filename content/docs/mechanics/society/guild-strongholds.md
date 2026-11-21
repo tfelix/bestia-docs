@@ -230,7 +230,7 @@ Two rank permissions decide who may use it:
 - **Deposit**: put items in.
 - **Take**: take items out.
 
-The leader may always do both. Every take is written in the guild [log](/docs/mechanics/society/party-guild/#members-the-map-and-the-log).
+A new rank may deposit but not take. The leader may always do both. Every take is written in the guild [log](/docs/mechanics/society/party-guild/#members-the-map-and-the-log).
 
 ## Losing the Last Stronghold
 
