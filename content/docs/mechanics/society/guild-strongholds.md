@@ -187,17 +187,22 @@ chance to count twice.
 
 Every **24 h** after the Empyrite was planted, the Stronghold makes a **treasure drop**. The size grows with Economy:
 
-| Economy |     Coins | Raw materials            |
-| ------: | --------: | ------------------------ |
-|       0 |  `10,000` | –                        |
-|       5 |  `60,000` | a few, from nearby lodes |
-|      10 | `110,000` | many, from nearby lodes  |
+| Economy |     Coins | Ore, per nearby kind | Crafting items |
+| ------: | --------: | -------------------: | -------------: |
+|       0 |  `10,000` |                    – |              – |
+|       5 |  `60,000` |                 `10` |            `2` |
+|      10 | `110,000` |                 `20` |            `5` |
 
-The coins come from the world reserve, not from nowhere. The raw materials are those of the deposits around the seed.
+- **Coins** come from the world reserve, not from nowhere. They leave it when the drop is collected; an empty reserve
+  pays less.
+- **Ore** is that of the `3` nearest deposit kinds within `3 km` of the seed: `2` pieces per Economy level of each.
+  Gold is never in a drop, since gold ore sizes the world's coin supply.
+- **Crafting items** are rare materials for high-level crafting: one per `2` Economy levels. Higher Economy levels
+  unlock rarer ones, from Shadow Shards and Drake Hide at Economy `2` to Adamantium Ingots at `10`.
 
 The drops are listed in the guild window's Stronghold tab. The **leader** collects them into the guild storage from
-anywhere. Up to `3` uncollected drops wait; a fourth replaces the oldest. A guild that [captures](#capture) the
-Stronghold takes the drops still waiting.
+anywhere, all at once; when the storage lacks room for all of them, nothing is collected. Up to `3` uncollected drops
+wait; a fourth replaces the oldest. A guild that [captures](#capture) the Stronghold takes the drops still waiting.
 
 # The Steward
 
@@ -238,7 +243,8 @@ When a guild holds **no Stronghold** any more, its storage is **sealed**. Nothin
 The leader can:
 
 - **wait**: the seal lifts when the guild holds a Stronghold with a steward again, or
-- **send it away**: pay `1,000` coins per used slot, and the contents go as parcels to the leader's
+- **send it away** in the guild window's Stronghold tab: pay `1,000` coins per used slot, and the contents go as one
+  parcel to the leader's
   [home post office](/docs/mechanics/towns-trade/postal/#your-home-post-office). They follow the rules for
   [uncollected parcels](/docs/mechanics/towns-trade/postal/#uncollected-parcels).
 
