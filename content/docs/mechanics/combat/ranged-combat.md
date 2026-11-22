@@ -53,9 +53,28 @@ The shot has the element of its ammunition. A regular arrow is Neutral.
 
 ## Special Ammunition
 
-Ammunition can carry an effect of its own. It can change the damage roll, for example by piercing armor, and it can act
-on a hit, for example by stunning the target. Only regular arrows exist so far. Hunters make them with
-[Arrow Crafting](/docs/mechanics/master/warrior-tree/#skill-arrow-crafting). The [Item Database](/docs/mechanics/items-crafting/item-database/?category=ammo) lists
+Ammunition can carry an effect of its own: it can change the damage roll, or act on a hit. Hunters make the special
+arrows with [Arrow Crafting](/docs/mechanics/master/warrior-tree/#skill-arrow-crafting), twenty at a time from twenty
+regular arrows and one material. The skill's level decides which they can make.
+
+| Arrow | Element | Attack | Effect | Material | Arrow Crafting |
+|---|---|---|---|---|---|
+| Arrow | Neutral | 3 | - | 2 Reed Stalks, 1 Feather | 1 |
+| Steel Arrow | Neutral | 7 | - | Steel Ingot | 2 |
+| Sharp Arrow | Neutral | 3 | +20 % critical chance | Sharp Fang | 2 |
+| Fire Arrow | Fire | 3 | - | Ember Core | 3 |
+| Crystal Arrow | Water | 3 | - | Frost Crystal | 3 |
+| Wind Arrow | Wind | 3 | - | Storm Feather | 3 |
+| Stone Arrow | Earth | 3 | - | Earth Crystal | 3 |
+| Silver Arrow | Holy | 3 | - | Silver Ingot | 4 |
+| Shadow Arrow | Shadow | 3 | - | Shadow Shard | 4 |
+| Poison Arrow | Poison | 3 | 20 % chance to poison | Venom Sac | 4 |
+| Stun Arrow | Neutral | 3 | 10 % chance to stun | Lodestone | 5 |
+
+The chance to poison or stun is rolled against the target's resistance like any other
+[status effect](/docs/mechanics/combat/status-effects/#resist). An element can heal what it cannot hurt: a poison or
+shadow arrow restores an undead target instead, see the [element table](/docs/server/battle/#element-heals).
+Boulderkin and Crag Rams drop the Earth Crystal. The [Item Database](/docs/mechanics/items-crafting/item-database/?category=ammo) lists
 every kind of ammunition.
 
 # Bestias With Bows

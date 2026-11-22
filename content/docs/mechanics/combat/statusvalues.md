@@ -39,7 +39,7 @@ statusValue = (baseValue + individualValue) * level / 100 + effortValue
 - Helps to resist Frozen, Stoning, Withered, Feared, Controlled and Silenced ([status effects](/docs/mechanics/combat/status-effects/#resist))
 - Increases mana regeneration over time
 - Increases the duration of magic effects from the player
-- Reduces cast duration of spells
+- Reduces cast duration of spells, see [Cast Time](#cast-time)
 - Slightly increases the stamina regeneration
 - Slightly increases the total amount of stamina
 - Slightly increases resistance against temperature
@@ -98,6 +98,8 @@ HP = floor(((15 + (baseValueHP * 2 + ivHp) * level / 100 + level) * (1 + VIT * 0
 ### HP Recovery
 
 HP regenerates automatically over time, ticking every 6 seconds. The regeneration rate is doubled while the Bestia is resting.
+
+HP and mana do not regenerate in combat: from a hit dealt or taken until 10 seconds after the last one. The warrior skill Endure lifts that.
 
 ```text
 BaseHPR = max(1, floor(MaxHP / 200))
@@ -184,7 +186,7 @@ FLEE = floor((100 + BaseLv + AGI + Floor(WIL ÷ 5) + FleeModSum) * FleeModPerc)
 
 ## Critical Hit - CRIT
 
-The Critical Hit rating, which increases damage by (40 + CRIT)%. Offensive attacks do not take CRIT into account except for a few exceptions. Critical Hit also ignores Flee rate but not [Hard Defense](/docs/server/battle#what-actually-deals-damage-today). Critical Hit Rate is doubled when wielding a Katar type weapon. Critical Hit rate is reduced based on the enemy's Critical Hit Shield.
+The Critical Hit rating, which increases damage by (40 + CRIT)%. Offensive attacks do not take CRIT into account except for a few exceptions. Critical Hit also ignores Flee rate and both kinds of defense, [hard](/docs/server/battle/#physical-attacks) and soft. Critical Hit Rate is doubled when wielding a Katar type weapon. Critical Hit rate is reduced based on the enemy's Critical Hit Shield.
 
 ```text
 CRIT = WIL ÷ 3 + Bonus
@@ -194,7 +196,7 @@ CRIT = WIL ÷ 3 + Bonus
 
 ## Soft Defense - SDEF
 
-Soft defense, also known as "VIT" defense, reduces incoming physical damage directly, on top of the [hard defense](/docs/server/battle#what-actually-deals-damage-today) granted by armor and other equipment. It uses the player formula of Ragnarok Online (pre-renewal): half of VIT, plus a random part that is rolled for every hit.
+Soft defense, also known as "VIT" defense, reduces incoming physical damage directly, on top of the [hard defense](/docs/server/battle/#physical-attacks) granted by armor and other equipment. It uses the player formula of Ragnarok Online (pre-renewal): half of VIT, plus a random part that is rolled for every hit.
 
 ```text
 SoftDEF = floor(VIT / 2) + rnd(0 … floor(VIT × (VIT − 15) / 150))
@@ -259,12 +261,42 @@ This is derived from a player's equipped weapon and STR or DEX depending on your
 WATK = (BaseWeaponDamage + Variance + StatBonus + RefinementBonus + OverUpgradeBonus) × SizePenalty
 ```
 
+### Size
+
+`SizePenalty` is Ragnarok Online's pre-renewal table: how well a weapon type fits the size of the body it hits. It
+weighs the weapon's attack only, never the attributes behind it. Bare hands, and so every wild bestia's own attack,
+hit every size alike, and spells ignore size.
+
+| Weapon | Small | Medium | Big |
+|---|---|---|---|
+| Bare hands, wand, staff | 100 % | 100 % | 100 % |
+| Dagger | 100 % | 75 % | 50 % |
+| Fist weapon | 100 % | 100 % | 75 % |
+| Whip | 75 % | 100 % | 50 % |
+| Sword, instrument | 75 % | 100 % | 75 % |
+| Greatsword, spear, polearm | 75 % | 75 % | 100 % |
+| Axe, great axe | 50 % | 75 % | 100 % |
+| Mace, hammer, tool | 75 % | 100 % | 100 % |
+| Tome | 100 % | 100 % | 50 % |
+| Bow, crossbow, sling, thrown | 100 % | 100 % | 75 % |
+
+A master counts as medium. Every species names its size in the [Bestia Database](/docs/mechanics/bestias/bestia-database/).
+
 ## Magic Attack - MATK
 
 This is derived from the player's Base Level, INT, and WIL. Just like ATK, this is always considered as Neutral property unless a spell defines otherwise.
 
 ```text
 MATK = (BaseLevel ÷ 4) + INT + (INT ÷ 7)² + (WIL ÷ 5)
+```
+
+## Cast Time
+
+Willpower shortens every cast bar, and gear and buffs (Suffragium, a cast-time stat) take their share off what is left.
+A fifth of the cast always remains.
+
+```text
+CastTime = BaseCastTime × (1 - WIL ÷ 150) × (1 - CastTimeReduction%)      at least BaseCastTime ÷ 5
 ```
 
 # Effort Values

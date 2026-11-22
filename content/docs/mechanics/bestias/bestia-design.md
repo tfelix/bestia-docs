@@ -284,15 +284,19 @@ The element changes the fight. A GHOST bestia takes 25 % from the master's NORMA
 after that. Only a few points get through, so the fit gives it about a tenth of the HP of a NORMAL one. A player
 without an elemental weapon still needs the same six swings, but a player with one wins much faster.
 
-**Size** is SMALL, MEDIUM or BIG. The server stores it but does not apply the Ragnarok Online size table yet: that
-table weighs a weapon type against a size, and weapons have no type yet.
+**Size** is SMALL, MEDIUM or BIG. A weapon's attack is weighed against it with Ragnarok Online's size table (see
+[Status Values](/docs/mechanics/combat/statusvalues/#size)): a dagger loses half on a big body, a great axe half on a
+small one. A bestia's own attack and every spell hit all sizes alike, so size changes how players arm themselves
+against a species, not how hard it hits back.
 
-**Defences beyond attributes** are design intent for now:
+**Defences beyond attributes:**
 
-- **Hard DEF and MDEF** come only from equipment, so every mob has 0. A shelled or armoured species should note a
-  hard DEF in its blueprint for the day mobs get one.
-- **Status immunities**: a boss should resist Stun, Freeze and Petrify, or a group can lock it down for the whole
-  fight.
+- **Hard DEF and MDEF** grow with the species' level as its natural armour, by kind, in percent per ten levels: beast
+  1 / 0, bird, aquatic, plant and humanoid 1 / 1, reptile and insect 2 / 0, formless 0 / 2, elemental 1 / 3, undead
+  2 / 1, demon 2 / 2, dragon 3 / 2. A boss is half again as hard, and nothing passes 60 %. The calculator weighs the
+  master's blows against it (`naturalArmor` in `bestia_blueprint.yaml`).
+- **Status immunities** (`status-immunities` in the mob YAML): a boss should resist Stun, Freeze and Petrify, or a
+  group can lock it down for the whole fight.
 
 # 8. Rewards: EXP and loot
 
@@ -480,8 +484,6 @@ run it dry, and switches the server's EXP curve to the one in [Bestias](/docs/me
 
 Still open:
 
-- **Size** is stored but not applied, see [step 7](#7-element-size-and-defences).
-- **Hard DEF, hard MDEF and status immunities** for mobs have no field. Note them in the blueprint's defence notes.
 - **Mob HP stays a number in the YAML** rather than the HP formula. That is on purpose: this method solves HP to the
   fight it wants.
 - **Activity and temperament are not shown in the compendium yet.** It shows name, kind, habitat and description.

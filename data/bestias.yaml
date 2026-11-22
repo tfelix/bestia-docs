@@ -886,6 +886,8 @@
     chance: 25
   - item: wool
     chance: 20
+  - item: earth_crystal
+    chance: 3
   learnset:
     replace:
     - slot: 6
@@ -1341,6 +1343,8 @@
     chance: 40
   - item: iron_ore
     chance: 20
+  - item: earth_crystal
+    chance: 8
   - item: rough_gem
     chance: 5
   learnset:
