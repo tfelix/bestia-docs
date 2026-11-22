@@ -143,7 +143,7 @@
     const normal = Math.max(s.minDamage, Math.floor(baseAtk * hardDef) - softDef);
     const crit = Math.max(s.minDamage, Math.floor(baseAtk * s.critDamage * Math.max(1, hardDef)));
 
-    const hitChance = clamp((s.hitWeight * attacker.hit) / defender.flee, s.hitChance.min, s.hitChance.max);
+    const hitChance = clamp((attacker.hit - defender.flee) / 100, s.hitChance.min, s.hitChance.max);
     const critChance = clamp(
       (attacker.crit - defender.crit / s.critShieldDivisor) / 100,
       s.critChance.min,
@@ -374,8 +374,24 @@
     return scaled;
   }
 
+  // NaturalArmor.kt: the hide a species grows with its level.
+  function naturalArmor(data, kind, level, boss) {
+    const table = data.server.naturalArmor;
+    const rate = table.perTenLevels[kind];
+    if (!rate) return { def: 0, mdef: 0 };
+    const share = boss ? table.bossPercent : 100;
+    const scaled = (perTen) => Math.min(table.cap, idiv(perTen * level * share, 1000));
+    return { def: scaled(rate.def), mdef: scaled(rate.mdef) };
+  }
+
   function makeBestia(data, input, attrs, hp, ctx) {
-    const b = combatant(input.level, attrs, { element: input.element, elementLevel: ctx.elementLevel });
+    const armor = naturalArmor(data, input.kind, input.level, input.tier === "boss");
+    const b = combatant(input.level, attrs, {
+      element: input.element,
+      elementLevel: ctx.elementLevel,
+      hardDefense: armor.def,
+      hardMagicDefense: armor.mdef,
+    });
     b.hp = hp;
     b.mana = ctx.manaFor(attrs);
     b.interval = attackInterval(data, speciesMotionMs(data, input.aspd), attrs);

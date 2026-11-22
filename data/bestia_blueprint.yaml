@@ -10,8 +10,7 @@ server:
   weaponVariance: 0.05
   critDamage: 1.4
   minDamage: 1
-  # PhysicalAttackStrategy
-  hitWeight: 0.5
+  # PhysicalAttackStrategy: the hit chance is (HIT - FLEE) %, clamped.
   hitChance: { min: 0.05, max: 1.0 }
   critChance: { min: 0.01, max: 0.95 }
   critShieldDivisor: 5
@@ -29,6 +28,23 @@ server:
   # Ember: 8 ticks of 1.2 s
   dotTicks: 8
   dotTickSeconds: 1.2
+  # NaturalArmor: a species' own hard DEF and MDEF, percent per ten levels by kind, half again for a boss.
+  naturalArmor:
+    bossPercent: 150
+    cap: 60
+    perTenLevels:
+      BEAST: { def: 1, mdef: 0 }
+      BIRD: { def: 1, mdef: 1 }
+      REPTILE: { def: 2, mdef: 0 }
+      AQUATIC: { def: 1, mdef: 1 }
+      INSECT: { def: 2, mdef: 0 }
+      PLANT: { def: 1, mdef: 1 }
+      FORMLESS: { def: 0, mdef: 2 }
+      ELEMENTAL: { def: 1, mdef: 3 }
+      HUMANOID: { def: 1, mdef: 1 }
+      UNDEAD: { def: 2, mdef: 1 }
+      DEMON: { def: 2, mdef: 2 }
+      DRAGON: { def: 3, mdef: 2 }
 
 # The same-level master every bestia is measured against.
 referenceMaster:

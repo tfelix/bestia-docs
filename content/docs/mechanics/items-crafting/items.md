@@ -169,7 +169,7 @@ The upgrade chances can be increased by leveling up the relevant [Master Skill](
 
 # Armor Refinement
 
-A refined armor grants increased **[hard defense](/docs/server/battle#what-actually-deals-damage-today)**. Each refinement level adds 10 defense points. All defense points from equipment, refinement, buffs and skills are summed up and then converted into a hard-defense percentage:
+A refined armor grants increased **[hard defense](/docs/server/battle/#physical-attacks)**. Each refinement level adds 10 defense points. All defense points from equipment, refinement, buffs and skills are summed up and then converted into a hard-defense percentage:
 
 ```kotlin
 val dp = defensePoints

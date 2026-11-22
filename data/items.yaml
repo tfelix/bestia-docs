@@ -9722,3 +9722,166 @@
 
     Open it to call a stored bestia or to swap one with your party.
   value: 3
+- id: earth_crystal
+  name: Earth Crystal
+  game_id: 629
+  type: Etc
+  categories: [material, drop]
+  weight: 0.25
+  item_level: 40
+  material: Crystal
+  value: 250
+  description: |
+    A brown crystal, rough as a river pebble and much heavier than it looks.
+
+    Drops from bestias.
+- id: steel_arrow
+  name: Steel Arrow
+  game_id: 630
+  type: Ammo
+  categories: [ammo]
+  weight: 0.01
+  item_level: 30
+  material: Metal
+  ammo_type: Arrow
+  attack: 7
+  description: |
+    A reed shaft with a narrow steel head, ground to a needle point.
+
+    It hits harder than a plain arrow.
+  value: 4
+- id: fire_arrow
+  name: Fire Arrow
+  game_id: 631
+  type: Ammo
+  categories: [ammo]
+  weight: 0.01
+  item_level: 45
+  material: Wood
+  ammo_type: Arrow
+  attack: 3
+  description: |
+    An arrow whose head glows dull red, a splinter of ember core bound behind it.
+
+    It strikes as Fire.
+  value: 15
+- id: crystal_arrow
+  name: Crystal Arrow
+  game_id: 632
+  type: Ammo
+  categories: [ammo]
+  weight: 0.01
+  item_level: 40
+  material: Wood
+  ammo_type: Arrow
+  attack: 3
+  description: |
+    An arrow tipped with a sliver of frost crystal, cold enough to fog in warm air.
+
+    It strikes as Water.
+  value: 15
+- id: wind_arrow
+  name: Wind Arrow
+  game_id: 633
+  type: Ammo
+  categories: [ammo]
+  weight: 0.01
+  item_level: 65
+  material: Wood
+  ammo_type: Arrow
+  attack: 3
+  description: |
+    An arrow fletched with a storm feather that will not lie flat.
+
+    It strikes as Wind.
+  value: 25
+- id: stone_arrow
+  name: Stone Arrow
+  game_id: 634
+  type: Ammo
+  categories: [ammo]
+  weight: 0.02
+  item_level: 40
+  material: Wood
+  ammo_type: Arrow
+  attack: 3
+  description: |
+    An arrow with a head of brown crystal, blunt and heavy.
+
+    It strikes as Earth.
+  value: 15
+- id: silver_arrow
+  name: Silver Arrow
+  game_id: 635
+  type: Ammo
+  categories: [ammo]
+  weight: 0.01
+  item_level: 38
+  material: Metal
+  ammo_type: Arrow
+  attack: 3
+  description: |
+    An arrow with a bright silver head, polished until it shows your face.
+
+    It strikes as Holy, and the undead fear it.
+  value: 10
+- id: shadow_arrow
+  name: Shadow Arrow
+  game_id: 636
+  type: Ammo
+  categories: [ammo]
+  weight: 0.01
+  item_level: 55
+  material: Wood
+  ammo_type: Arrow
+  attack: 3
+  description: |
+    An arrow with a black head that seems to swallow the light around it.
+
+    It strikes as Shadow.
+  value: 30
+- id: sharp_arrow
+  name: Sharp Arrow
+  game_id: 637
+  type: Ammo
+  categories: [ammo]
+  weight: 0.01
+  item_level: 10
+  material: Wood
+  ammo_type: Arrow
+  attack: 3
+  description: |
+    An arrow with a barbed fang for a head, filed thin along both edges.
+
+    It finds the gaps in a hide: far more of its shots are critical.
+  value: 2
+- id: poison_arrow
+  name: Poison Arrow
+  game_id: 638
+  type: Ammo
+  categories: [ammo]
+  weight: 0.01
+  item_level: 15
+  material: Wood
+  ammo_type: Arrow
+  attack: 3
+  description: |
+    An arrow whose head is stained green and smells of the venom it was dipped in.
+
+    It strikes as Poison, and may poison what it hits.
+  value: 3
+- id: stun_arrow
+  name: Stun Arrow
+  game_id: 639
+  type: Ammo
+  categories: [ammo]
+  weight: 0.02
+  item_level: 45
+  material: Stone
+  ammo_type: Arrow
+  attack: 3
+  description: |
+    An arrow with a dark, blunt head of lodestone that hums against the palm.
+
+    It may stun what it hits.
+  value: 20

@@ -639,7 +639,7 @@ graph TD
     ArrowShower["Arrow Shower (1-5)"]
     ChargeArrow["Charge Arrow (1)"]
     ImproveConcentration["Improve Concentration (1-5)"]
-    ArrowCrafting["Arrow Crafting (1)"]
+    ArrowCrafting["Arrow Crafting (1-5)"]
     Javelin["Javelin (1-5)"]
     PackHunt["Pack Hunt (1-3)"]
 
@@ -808,13 +808,16 @@ last `60s`; casting it again starts the time over.
 
 {{< /skill >}}
 
-{{< skill name="Arrow Crafting" maxLevel="1"
+{{< skill name="Arrow Crafting" maxLevel="5"
     type="Active" manaCost="0" castTime="Instant" cooldown="0s" range="2" target="Ground"
     description="A Hunter who runs out of arrows in the wild does not have to walk back to town." >}}
 
 Opens the crafting window with the arrow recipes. It needs no station: two
 Reed Stalks and a {{< item "feather" >}} make 20
-[regular arrows](/docs/mechanics/combat/ranged-combat/#novice-bow). Special arrows come later.
+[regular arrows](/docs/mechanics/combat/ranged-combat/#novice-bow). Each further level adds
+[special arrows](/docs/mechanics/combat/ranged-combat/#special-ammunition), twenty from twenty regular arrows and one
+material: steel and sharp at Lv.2, fire, crystal, wind and stone at Lv.3, silver, shadow and poison at Lv.4, stun at
+Lv.5.
 
 {{< /skill >}}
 
