@@ -18,7 +18,7 @@ for body heat or wetness. Three rules make up the whole system:
 The goal is that the player picks the bestia that fits the trip. A snow bestia is at home on the ice sheet, a fire
 bestia suffers there. The weather is a reason to go out with the right team, not a tax on every walk.
 
-{{< alert context="info" text="Not built yet. Today zone-server uses one window for every entity and ignores VIT and WIL, the weather kind and the bag. The low-stamina effects from the status values page are also still missing." />}}
+{{< alert context="info" text="Not built yet. Today zone-server uses one window for every entity and ignores VIT and WIL, the weather kind and the bag." />}}
 
 # Comfort Window
 
