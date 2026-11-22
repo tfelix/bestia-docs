@@ -19,7 +19,7 @@ grounds.
 
 {{< alert context="info" text="**Conventions used on this page.** Durations are in **real time**, distances in metres on the ground." />}}
 
-{{< alert context="warning" text="**Design only.** Nothing on this page is built yet. All numbers are placeholders." />}}
+{{< alert context="info" text="**Built**, except the Orders and cults layer at the end. The numbers are first values; the server can change them. The Empyrite, its sprout and site, and the watchers still look like simple shapes until they have models." />}}
 
 # Empyrite Seeds
 
@@ -86,8 +86,10 @@ Once an Empyrite is planted, the circle of **500 m** around it is the Stronghold
 
 - **Nobody digs** on the grounds, not even the guild that holds them. Nobody can undermine a wall or a building.
 - Only members of the holding guild may **build** on the grounds. Walls, gates, towers and stations stand here as
-  anywhere else, and they can be [repaired](/docs/mechanics/towns-trade/player-settlements/#repairing) as in a player
-  settlement.
+  anywhere else, and its members can [repair](/docs/mechanics/towns-trade/player-settlements/#repairing) them as in
+  a player settlement.
+- Every building on the grounds is a [guild structure](#who-may-attack) of the holding guild, also one that stood
+  there before the Empyrite was planted.
 - Anybody may **walk** onto the grounds. What the watchers do to them is under [Watchers](#watchers).
 
 The grounds of two Strongholds never touch, because seeds lie at least 5 km apart. A player settlement can never be
@@ -157,7 +159,7 @@ The Empyrite heals **1% of its HP per minute** once nobody has hit it for **5 mi
 The guild whose member strikes the **breaking blow** takes the Stronghold:
 
 - The Empyrite forms again at once with its **full HP**, in the new guild's colours. For **10 min** nothing can
-  damage it.
+  damage it, and whoever strikes it is told so.
 - Buildings, stations and walls stay, and now belong to the new guild.
 - Every investment track loses **one level**.
 - The new guild takes every uncollected [treasure drop](#treasury).
@@ -303,8 +305,7 @@ This shows in the [local honor](/docs/mechanics/society/pvp/#reputation-system) 
 # Open Questions
 
 - Whether a member of another Order gets a debuff on the grounds of an Empyrite attuned against them.
-- What happens to player structures that already stand in the 500 m when an Empyrite is planted. Player structures
-  outside settlements need rules of their own.
+- Player structures outside settlements need rules of their own.
 - Whether the steward's protection can be countered, as a [ward stone's](/docs/mechanics/society/pvp/#countering-the-ward-stone) can.
 - What happens to a guild's Strongholds and storage when the guild disbands.
 - The default attack windows.
