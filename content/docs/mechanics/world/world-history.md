@@ -258,9 +258,10 @@ What happened longer ago than that, they tell as an old saying:
 Each person keeps one way of saying it, so it reads as their habit of speech.
 
 **Legends** point at hidden things: cave hoards, the lair of a living world boss, a seal, the field a world boss
-was slain on, and a relic lost on a battlefield. A legend names the nearest standing town and a direction from it.
-A town tells the legends of the hidden places near it, at most four, nearest first. A world boss is talked about
-twice as far away as a hoard. In each town, a few of the oldest households keep a legend.
+was slain on, a relic lost on a battlefield, and an [Empyrite Seed](/docs/mechanics/society/guild-strongholds/#the-legend-of-the-golden-stone).
+A legend names the nearest standing town and a direction from it. A town tells the legends of the hidden places
+near it, at most four, nearest first. A world boss or a golden stone is talked about twice as far away as a hoard.
+In each town, a few of the oldest households keep a legend.
 
 Each town tells each legend its own way, and not every telling is true:
 

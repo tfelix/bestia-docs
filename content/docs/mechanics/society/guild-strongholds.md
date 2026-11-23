@@ -58,9 +58,21 @@ A sleeping seed is ordinary ground. Anybody may dig or build there. When it spro
 ## Names
 
 Every seed has a name of its own, as Ragnarok Online's castles do. The world's
-[name generator](/docs/server/name-generation/) makes it in the language of the people who live nearest. The name
-often recalls a god or a cult whose sanctuary lies close by, and the townsfolk nearby tell a legend about the
-golden stone. A Stronghold keeps its seed's name, whoever holds it.
+[name generator](/docs/server/name-generation/) makes it in the language of the people who live nearest. A
+Stronghold keeps its seed's name, whoever holds it.
+
+## The Legend of the Golden Stone
+
+The townsfolk near a seed tell a [legend](/docs/mechanics/world/world-history/#hearsay-and-legends) about it. The
+legend names the seed and says whose stone it is:
+
+1. the god or the [cult](/docs/mechanics/world/pantheon/#cults) whose sanctuary lies closest to it,
+2. else the god of a nearby town's temple,
+3. else the god of the people who named the seed.
+
+Like every legend, it points the way from the nearest standing town, and each town tells it its own way: most
+tell it true, some get the direction a little wrong, and some tell a myth. Every seed of the pool has a legend,
+asleep or awake, so a guild that follows one may find a seed that has not woken yet.
 
 ## Discovering a Seed
 
@@ -294,9 +306,6 @@ deeds count for their own Order's [Covenant](/docs/mechanics/society/factions/#s
 guild's.
 
 ## Cults and Towns
-
-A seed often lies near an old [sanctuary](/docs/mechanics/world/pantheon/#what-worship-leaves-behind). Its name and
-legend come from that god or [cult](/docs/mechanics/world/pantheon/#cults).
 
 The towns nearby care who holds it. A town whose [patron god](/docs/mechanics/world/pantheon/#what-worship-leaves-behind)
 leans toward the Order the Empyrite is attuned to likes the guild; a town whose god leans the other way does not.
