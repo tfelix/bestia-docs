@@ -73,6 +73,8 @@ spaces; a name that is taken is refused and the seal is kept.
 
 Handing the guild over makes the other member the leader, on the leader's rank; the old leader takes the rank the
 new one had. A master leading a guild cannot be deleted; the guild has to be handed over or disbanded first.
+A guild cannot disband while its storage holds anything, and its Strongholds
+[stand empty](/docs/mechanics/society/guild-strongholds/#an-empty-stronghold) afterwards.
 
 The guild keeps its newest `32` expelled masters, with their reasons, on the Members tab. A rank that may kick lifts
 an expulsion there.

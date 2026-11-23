@@ -180,6 +180,20 @@ The guild whose member strikes the **breaking blow** takes the Stronghold:
 A guild may hold any number of Strongholds. The seeds limit how many there are, and a guild that holds many has to
 defend them all.
 
+## An Empty Stronghold
+
+A guild that [disbands](/docs/mechanics/society/party-guild/) leaves its Strongholds **empty**:
+
+- The Empyrite keeps standing, but no guild holds it. Nobody can open the storage, hire a steward or invest.
+- The steward and the watchers leave.
+- Everyone online is told which Stronghold stands empty, in the chat and on a banner.
+- Its treasure keeps piling up.
+- Any guild with Official Guild Approval may break the Empyrite and take the Stronghold, as in any
+  [capture](#capture).
+
+A site that was not finished yet is simply gone, and its seed sprouts again. The leader cannot disband the guild
+while its [storage](#guild-storage) holds anything.
+
 # Investment
 
 Any member can invest **coins** at the Empyrite. Invested coins go back to the
@@ -316,5 +330,4 @@ This shows in the [local honor](/docs/mechanics/society/pvp/#reputation-system) 
 - Whether a member of another Order gets a debuff on the grounds of an Empyrite attuned against them.
 - Player structures outside settlements need rules of their own.
 - Whether the steward's protection can be countered, as a [ward stone's](/docs/mechanics/society/pvp/#countering-the-ward-stone) can.
-- What happens to a guild's Strongholds and storage when the guild disbands.
 - The default attack windows.
