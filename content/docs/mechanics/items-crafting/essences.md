@@ -47,6 +47,25 @@ So a Bestia is only used up when it really becomes an essence. The price of bad 
 The Artificer picks one of their own Bestias straight from their Bestia storage, or one that is called and stands near
 the table. Another master's Bestia needs a [commission](#etching-another-masters-bestia).
 
+## Etching Another Master's Bestia
+
+A master without Runic Etching can hire an Artificer. Both stand at the Artificer's Carving Table and open a
+**commission**. It looks like the trade window, with one extra slot for the Bestia:
+
+1. The owner puts one of their Bestias into the Bestia slot, straight from their storage. The Bestia does not change
+   hands: it is only locked for the etching.
+2. Either side puts in the cut gem. Either side can add coins as the fee, as in a trade.
+3. Both lock and confirm. Any change unlocks both sides again, as in a trade.
+4. The Artificer casts Runic Etching. The chance is the Artificer's own.
+
+| Result  | Owner gets                         | Artificer gets  |
+| ------- | ---------------------------------- | --------------- |
+| Success | The Essence Gem                    | The fee         |
+| Failure | Their Bestia back                  | The fee         |
+
+The gem is used up either way: as the essence, or as shards. The fee is paid for the work, not for the result, so
+the two agree on it before they confirm. If either side walks away or cancels before the cast, nothing happens.
+
 ## Gem Tiers
 
 The **species** decides what an essence does. The **gem** decides how strong it is. Nothing else counts: not the
