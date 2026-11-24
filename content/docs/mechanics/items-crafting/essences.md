@@ -150,7 +150,7 @@ which element, which status. The Ruby column shows what 8 points buy.
 | Shield    | **Arrow Ward:** damage taken from ranged attacks                         | −1%                        | −8%                       |
 | Shield    | **Steadfast:** cannot be knocked back (3 points), the rest is VIT        | +1 VIT                     | no knockback, +5 VIT      |
 | Armor     | **Element Skin:** resistance against one element                         | +3%                        | +24%                      |
-| Armor     | **Element Body:** the wearer takes the species' element                  | the whole essence          | element level 2           |
+| Armor     | **Element Body:** the wearer takes the species' element (3 points), the rest is max HP | +1% max HP | element level 1, +5% max HP |
 | Armor     | **Hardy:** max HP                                                        | +1%                        | +8%                       |
 | Armor     | **Coated:** this item cannot be stripped (2 points), the rest is DEF     | +1% DEF                    | cannot be stripped, +6%   |
 | Garment   | **Mist Veil:** magic damage taken                                        | −1%                        | −8%                       |
@@ -167,24 +167,33 @@ which element, which status. The Ruby column shows what 8 points buy.
 | Accessory | **Learned Trick:** one utility attack of the species as a skill          | the whole essence          | attack level up to 60     |
 | Accessory | **Quiet Step:** wild Bestias notice the wearer later                     | −2% notice range           | −16%                      |
 | Accessory | **Tamer:** [catch chance](/docs/mechanics/bestias/bestia/#catching-bestias) | +1 per 2 points          | +4                        |
-| Accessory | **Reflex:** when struck, chance to cast a self-buff of the species       | +1%                        | 8%                        |
+| Accessory | **Reflex:** when struck, chance to cast one self-buff                    | +1%                        | 8%                        |
 
 Some notes:
 
-- **Element Body** turns the wearer into the species' element. The element level follows the gem: 1 for Amethyst and
-  Emerald, 2 for Ruby, 3 for Pyrelith and 4 for Diamond. It changes what every attack element does to the wearer, see
-  [element](/docs/mechanics/bestias/bestia-design/#7-element-size-and-defences).
+- **Element Body** turns the wearer into the species' element at level 1, like the element cards of Ragnarok Online.
+  It changes what every attack element does to the wearer, see
+  [element](/docs/mechanics/bestias/bestia-design/#7-element-size-and-defences). A better gem adds max HP, not a higher
+  element level: a high element level would make the wearer almost immune to whole schools of magic.
 - **Learned Trick** gives the wearer one utility attack from the species' learnset, like a scroll that never runs out.
   The gem caps the attack level the same way as [Spell Inscription](/docs/mechanics/master/scholar-tree/#skill-spell-inscription):
-  20, 40, 60, 80 and any.
+  20, 40, 60, 80 and any. A Lanternwisp's Shadow Cloak is a level 40 attack, so it needs at least an Emerald.
+- **Reflex** casts the buff named in the species' row, at the gem's attack level cap.
 - **Clear Mind** at Diamond makes the wearer immune to that one status.
 - **Attribute Pair** splits the points over the two attributes the role leans on most: a brute gives STR and VIT, a
   caster INT and WIL.
 
 ## Drawbacks
 
-Some essences carry a drawback, like the darker cards of Ragnarok Online: less DEF, slower steps or less HIT. Such an
-essence gets **one and a half times** the points for its effect. A Ruby essence with a drawback brings 12 points.
+Some essences carry a drawback, like the darker cards of Ragnarok Online. Such an essence gets **one and a half
+times** the points for its effect. A Ruby essence with a drawback brings 12 points.
+
+| Drawback   | What it costs the wearer |
+| ---------- | ------------------------ |
+| Slow       | −10% move speed          |
+| Soft       | −10% DEF                 |
+| Clumsy     | −10 HIT                  |
+| Drained    | −10% max mana            |
 
 The drawback is part of the species, like the effect. It does not grow with the gem.
 
@@ -215,3 +224,9 @@ This is the same rule Ragnarok Online uses for its cards.
 An Essence Gem is fully described by its **species** and its **gem**. The tooltip says both, plus the effect:
 `Burrow Boar · Bane (Beast) · Ruby`. The [auction house](/docs/mechanics/towns-trade/economy-trade/#auction-house) can filter essences
 by species or by effect, and by gem.
+
+# The Essence of Every Species
+
+Each species has one essence, set in `data/bestias.yaml`. The list follows the [Bestia List](/docs/mechanics/bestias/bestia-list/).
+
+{{< essencelist >}}

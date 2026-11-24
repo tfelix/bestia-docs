@@ -27,6 +27,7 @@ flowchart LR
   F --> G[EXP and loot]
   G --> H[Compendium entry]
   H --> I[Equipment]
+  I --> J[Essence]
 ```
 
 # 1. Level and tier
@@ -416,6 +417,24 @@ The kind is the starting point. The calculator fills both lists from this table,
 ghost is UNDEAD, but wears nothing.
 
 {{< blueprint-table name="equipment" >}}
+
+# 11. Essence
+
+Every species gives one [essence](/docs/mechanics/items-crafting/essences/) when it is etched into a gem. The row in
+`data/bestias.yaml` names it:
+
+```yaml
+essence: {group: weapon, effect: bane, target: BEAST}
+```
+
+- **`group`** is the slot group the essence fits. Start from the role: a brute fits a weapon, a tank an armor or a
+  shield, a skirmisher footgear or a garment, a caster headgear, a support or balanced species an accessory.
+- **`effect`** comes from that group's list in [Effects](/docs/mechanics/items-crafting/essences/#effects).
+- **`target`** says what the effect works on, where it needs one: a kind, an element, a status or an attack.
+- **`drawback`** is optional and gives the essence one and a half times its points.
+
+Pick what fits the creature, not what is strongest. A turtle coats armor, a mole digs faster, a wolf makes wounds
+bleed. A boss gets a hand-made essence instead, see [Boss Essences](/docs/mechanics/items-crafting/essences/#boss-essences).
 
 # Worked example: a Lv 2 Burrow Boar
 

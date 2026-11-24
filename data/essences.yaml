@@ -1,0 +1,50 @@
+# Names of the essence effects and drawbacks that data/bestias.yaml refers to under `essence:`.
+# The rules and the numbers per point live on content/docs/mechanics/items-crafting/essences.md.
+#
+# A species row says  essence: {group, effect, target?, drawback?}
+#   target is a kind (bane, ward), an element (element_hunter, element_skin, element_body, element_veil),
+#   a status (rider, clear_mind) or an attack id from data/attacks.yaml (reflex, learned_trick).
+
+groups: [weapon, shield, armor, garment, footgear, headgear, accessory, tool]
+
+effects:
+  - { id: bane, group: weapon, name: Bane }
+  - { id: element_hunter, group: weapon, name: Element Hunter }
+  - { id: rider, group: weapon, name: Rider }
+  - { id: precision, group: weapon, name: Precision }
+  - { id: leech, group: weapon, name: Leech }
+  - { id: giant_slayer, group: weapon, name: Giant Slayer }
+  - { id: ward, group: shield, name: Ward }
+  - { id: arrow_ward, group: shield, name: Arrow Ward }
+  - { id: steadfast, group: shield, name: Steadfast }
+  - { id: element_skin, group: armor, name: Element Skin }
+  - { id: element_body, group: armor, name: Element Body }
+  - { id: hardy, group: armor, name: Hardy }
+  - { id: coated, group: armor, name: Coated }
+  - { id: mist_veil, group: garment, name: Mist Veil }
+  - { id: element_veil, group: garment, name: Element Veil }
+  - { id: whisper, group: garment, name: Whisper }
+  - { id: swift, group: footgear, name: Swift }
+  - { id: long_stride, group: footgear, name: Long Stride }
+  - { id: deep_pools, group: footgear, name: Deep Pools }
+  - { id: clear_mind, group: headgear, name: Clear Mind }
+  - { id: focus, group: headgear, name: Focus }
+  - { id: wisdom, group: headgear, name: Wisdom }
+  - { id: attribute_pair, group: accessory, name: Attribute Pair }
+  - { id: quick_hands, group: accessory, name: Quick Hands }
+  - { id: learned_trick, group: accessory, name: Learned Trick }
+  - { id: quiet_step, group: accessory, name: Quiet Step }
+  - { id: tamer, group: accessory, name: Tamer }
+  - { id: reflex, group: accessory, name: Reflex }
+  - { id: mining_speed, group: tool, name: Mining Speed }
+  - { id: felling_speed, group: tool, name: Felling Speed }
+  - { id: digging_speed, group: tool, name: Digging Speed }
+  - { id: faster_bite, group: tool, name: Faster Bite }
+  - { id: rich_seam, group: tool, name: Rich Seam }
+  - { id: tough_grip, group: tool, name: Tough Grip }
+
+drawbacks:
+  - { id: move_speed, text: "−10% move speed" }
+  - { id: def, text: "−10% DEF" }
+  - { id: hit, text: "−10 HIT" }
+  - { id: max_mana, text: "−10% max mana" }

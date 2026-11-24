@@ -1,0 +1,42 @@
+<!-- essencelist.html: the essence of every species of data/bestias.yaml that has one, grouped by slot group -->
+{{- $all := site.Data.bestias -}}
+{{- $catalogue := site.Data.essences -}}
+{{- $attacks := site.Data.attacks -}}
+{{- range $group := $catalogue.groups }}
+{{- $rows := slice -}}
+{{- range $species := $all }}{{ with $species.essence }}{{ if eq .group $group }}{{ $rows = $rows | append (dict "reference" (index $species.levelRange 0) "species" $species) }}{{ end }}{{ end }}{{ end -}}
+{{- if $rows }}
+<h3 id="essences-{{ $group }}">{{ $group | title }} <small class="text-body-secondary">({{ len $rows }})</small></h3>
+<div class="table-responsive mb-4">
+  <table class="table table-sm align-middle">
+    <thead>
+      <tr><th>Bestia</th><th>Lv</th><th>Effect</th><th>Drawback</th></tr>
+    </thead>
+    <tbody>
+      {{- range sort $rows "reference" }}{{ with .species }}
+      <tr>
+        <td><a href="/docs/mechanics/bestias/bestia-list/#{{ .identifier | replaceRE "_" "-" }}">{{ .name }}</a></td>
+        <td>{{ index .levelRange 0 }}{{ if ne (index .levelRange 0) (index .levelRange 1) }}-{{ index .levelRange 1 }}{{ end }}</td>
+        <td>
+          {{- with .essence -}}
+          {{- if .text -}}
+            <strong>{{ .name }}:</strong> {{ .text | markdownify }}
+          {{- else -}}
+            {{- $effect := index (where $catalogue.effects "id" .effect) 0 -}}
+            {{- $effect.name -}}
+            {{- with .target -}}
+              {{- $target := . -}}
+              {{- $attack := where $attacks "id" $target -}}
+              {{- if $attack }} ({{ (index $attack 0).name }}){{ else }} ({{ $target | lower | replaceRE "_" " " | title }}){{ end -}}
+            {{- end -}}
+          {{- end -}}
+          {{- end -}}
+        </td>
+        <td>{{ with .essence.drawback }}{{ (index (where $catalogue.drawbacks "id" .) 0).text }}{{ end }}</td>
+      </tr>
+      {{- end }}{{ end }}
+    </tbody>
+  </table>
+</div>
+{{- end }}
+{{- end }}
