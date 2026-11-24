@@ -59,7 +59,7 @@ There are three sizes. Each one has a base difficulty and needs a Cartography le
 The difficulty `d` then changes:
 
 - For every km from land you have already charted, difficulty increases by `10`.
-- For every 1% of [mana concentration](/docs/mechanics/world/environment/#mana-concentration) at the theodolite,
+- For every 1% of [mana density](/docs/mechanics/world/environment/#mana-concentration) at the theodolite,
   difficulty increases by `0.5`.
 - Every level of [Cartography](/docs/mechanics/master/survival-tree/#skill-cartography) reduces difficulty by `10`.
 

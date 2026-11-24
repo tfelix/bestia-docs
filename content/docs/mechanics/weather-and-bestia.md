@@ -51,7 +51,7 @@ These sources widen the window. They add up.
 - **Status effects.** `Warmed` (from the bestia skill Warm Fur) lowers the cold end by 15 °C. `Cooled` (from Cooling
   Mist) raises the hot end by 15 °C. Each one helps on one side only. See [status effects](/docs/mechanics/status-effects/).
 - **Shelter.** A roof does not widen the window, it makes the air under it milder. A
-  [mana storm](/docs/mechanics/environment/#mana-concentration) ignores shelter.
+  [mana storm](/docs/mechanics/world/doomsday/#mana-storms) ignores shelter.
 
 ```text
 low  = windowLow  - statTolerance - skillTolerance - warmed

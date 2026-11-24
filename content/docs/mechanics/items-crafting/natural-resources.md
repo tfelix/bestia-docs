@@ -94,7 +94,7 @@ The [Item Database](/docs/mechanics/items-crafting/item-database/) has the in-ga
 
 {{< /table >}}
 
-In Bestia, Mana is considered a resource. It permeates the land, and there are regions with different concentration levels. As higher mana levels usually mean more unstable biomes, it is up to the player to "harvest" mana and specialize in the extraction of this resource. The raw material is a mana-bearing powder (the Mana Essences listed above); when fed into a Mana Harvester it slowly grows into a mana crystal as the device draws mana from the surrounding environment. Mana crystals can also be found directly in the world, for example while mining. These crystals have various powerful magical usages.
+In Bestia, Mana is considered a resource. It permeates the land, and there are regions with different concentration levels. As higher mana levels usually mean more unstable biomes, it is up to the player to "harvest" mana and specialize in the extraction of this resource. The raw material is a mana-bearing powder (the Mana Essences listed above); when fed into a Mana Harvester it slowly grows into a mana crystal as the device draws mana from the surrounding environment. Harvesting lowers the [mana density](/docs/mechanics/world/environment/#mana-concentration) around the harvester, which is one of the ways players hold back [rifts](/docs/mechanics/world/world-events/#rifts). Mana crystals can also be found directly in the world, for example while mining. These crystals have various powerful magical usages.
 
 ## Herbs
 
@@ -107,7 +107,7 @@ part of the herbs there are a rarer kind:
 | ----------------------------- | ---------- | ---------------------------------------- | ------------------------ |
 | {{< item "wild_herb" >}}      | 1          | Everywhere                               | The rest                 |
 | {{< item "medicinal_herb" >}} | 20         | Forest floors                            | 25%                      |
-| {{< item "mana_herb" >}}      | 40         | Where the mana concentration is over 60% | 30%                      |
+| {{< item "mana_herb" >}}      | 40         | Where the mana potential is over 60%     | 30%                      |
 | {{< item "frost_herb" >}}     | 60         | Tundra, taiga, cold desert, alpine       | 35%                      |
 | {{< item "sun_herb" >}}       | 80         | Desert and badlands                      | 50%                      |
 | {{< item "ghost_herb" >}}     | 100        | Blighted ground                          | 30%                      |
