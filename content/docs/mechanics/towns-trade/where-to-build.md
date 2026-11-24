@@ -12,10 +12,10 @@ to what already stands there. So the open world does not fill up with forges and
 
 # Wild and Town Structures
 
-| Class    | Structures                                                                                                                                                                                                                           | Where           |
-| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------- |
-| **Wild** | Campfire, chest, workbench, mana circle, mining shaft, theodolite                                                                                                                                                                    | anywhere        |
-| **Town** | Wall, floor and stairs pieces, furnace, forge, tanning rack, loom, glass furnace, glassblowing bench, alchemy laboratory, gem cut station, transmutation workbench, breeding farm, incubator, blackboard, post office, auction house | in a settlement |
+| Class    | Structures                                                                                                                                                                                                                                           | Where           |
+| -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
+| **Wild** | Campfire, chest, workbench, mana circle, mining shaft, theodolite                                                                                                                                                                                    | anywhere        |
+| **Town** | Wall, floor and stairs pieces, furnace, forge, tanning rack, loom, glass furnace, glassblowing bench, alchemy laboratory, gem cut station, transmutation workbench, breeding farm, incubator, blackboard, post office, auction house, storage center | in a settlement |
 
 Every new kind of structure is a town structure unless it is added to the wild list.
 
@@ -34,7 +34,7 @@ A town structure needs a settlement, and inside it, it must stand within **30 m*
 
 A **building** here is a finished town structure that earns
 [building points](/docs/mechanics/towns-trade/player-settlements/#the-sphere-of-influence): a crafting station, a
-wall, floor or stairs piece, a post office or an auction house. A wild structure is not, not even a workbench: a lone
+wall, floor or stairs piece, a post office, an auction house or a storage center. A wild structure is not, not even a workbench: a lone
 workbench in the open starts no town. Neither is a construction site.
 
 So a town grows outward, one building next to the last. A player building in a generated town anchors the next one too,
@@ -44,7 +44,7 @@ A generated building that was destroyed anchors nothing.
 
 Whoever walks into a settlement sees its name, a player town's too. That is also how the game knows where a town ends.
 
-{{< alert context="info" text="A post office and an auction house also need a **player** settlement, and a town takes one of each. See [Player Settlements](/docs/mechanics/towns-trade/player-settlements/)." />}}
+{{< alert context="info" text="A post office, an auction house and a storage center also need a **player** settlement, and a town takes one of each. See [Player Settlements](/docs/mechanics/towns-trade/player-settlements/)." />}}
 
 # Before the Click
 

@@ -8,8 +8,9 @@ The world generates its towns. Players can found more. A [Prospector](/docs/mech
 with [Founder](/docs/mechanics/master/survival-tree/#skill-founder) plants a **city sign**, and a settlement grows around
 it. The skill only starts the town. It grows because players keep building inside it.
 
-A player settlement is what makes two buildings possible: a [post office](/docs/mechanics/towns-trade/postal/#in-player-cities)
-and an [auction house](/docs/mechanics/towns-trade/economy-trade/#building-an-auction-house). Neither works anywhere else.
+A player settlement is what makes three buildings possible: a [post office](/docs/mechanics/towns-trade/postal/#in-player-cities),
+an [auction house](/docs/mechanics/towns-trade/economy-trade/#building-an-auction-house) and a
+[storage center](/docs/mechanics/bestias/bestia-storage/#storage-centers). None of them works anywhere else.
 
 {{< alert context="info" text="**Conventions used on this page.** Durations are in **real time**, distances in metres on the ground." />}}
 
@@ -45,12 +46,12 @@ The sphere is a circle around the sign. Its size depends on what is built in it.
 
 Every finished player structure inside the sphere counts:
 
-| Structure                                 | Building points |
-| ----------------------------------------- | --------------- |
-| Post office, auction house                | 5               |
-| Crafting station (workbench, forge, ...)  | 1               |
-| Wall, floor or stairs piece               | 0.1             |
-| Campfire, war banner                      | 0               |
+| Structure                                  | Building points |
+| ------------------------------------------ | --------------- |
+| Post office, auction house, storage center | 5               |
+| Crafting station (workbench, forge, ...)   | 1               |
+| Wall, floor or stairs piece                | 0.1             |
+| Campfire, war banner                       | 0               |
 
 A structure counts if it stands inside the current radius. So a town grows outwards: a building on the edge pushes the
 edge a little further.
@@ -79,8 +80,8 @@ At the sign, the founder can:
 
 - **Hand the town over** to a master standing nearby who has Founder and no settlement of their own. They must accept.
   The old founder can found again after Founder's cooldown.
-- **Tear the sign down**, but only while no post office or auction house stands in the sphere. This ends the town
-  without the 48 h lock below.
+- **Tear the sign down**, but only while no post office, auction house or storage center stands in the sphere. This
+  ends the town without the 48 h lock below.
 
 ## When the Sign Falls
 
@@ -92,6 +93,7 @@ When the sign is destroyed, the town ends:
     nearest other office with their promise kept. Masters who had it as their home get the nearest office instead.
   - The **auction house** closes. Every listing is posted back to its seller, and every bid back to its bidder. The
     till is posted to the owner.
+  - The **storage center** closes. Stored Bestias stay safe in the storage; masters use another center or their ledger.
 - Those buildings **decay**. A building at full HP breaks after **96 h**; a damaged one sooner. They cannot be repaired
   outside a settlement.
 - For **48 h** nobody can found a town within 5 km of the fallen sign.
@@ -116,6 +118,6 @@ needs only work: up to 5 min.
 
 A player town appears on the [world map](/docs/mechanics/world/world-exploration/) for everyone who has charted the
 spot of its sign, in the game and in the [companion app](/docs/mechanics/companion-app/). The map shows its sign under
-its name, and its post office and auction house as services of the town.
+its name, and its post office, auction house and storage center as services of the town.
 
 {{< alert context="warning" text="All numbers on this page are placeholders. Not built yet: the sphere's outline on the map, and repairing wall, floor and stair pieces from the client, which cannot click them." />}}
