@@ -245,8 +245,30 @@ An Essence Gem is fully described by its **species** and its **gem**. The toolti
 `Burrow Boar · Bane (Beast) · Ruby`. The [auction house](/docs/mechanics/towns-trade/economy-trade/#auction-house) can filter essences
 by species or by effect, and by gem.
 
+# Boss Essences
+
+A boss gives a hand-made essence, like the MVP cards of Ragnarok Online. Each one does something no normal essence can
+do: turn magic away, strike every foe around the target, save a Bestia from death.
+
+A boss is [caught](/docs/mechanics/bestias/bestia/#catching-bestias) like any Bestia, world bosses included. At its level
+that takes the best trap, a master who has trained for it, and a group that brings the boss down to its last HP
+without killing it.
+
+Boss essences follow their own rules:
+
+- **The numbers are fixed.** They do not grow with the gem.
+- **The gem follows the boss level.** A boss up to Lv 60 fills a Ruby, up to Lv 80 a Pyrelith, and above that a
+  Diamond.
+- **The item must be at least the boss level − 20.** The Golden Scarab (Lv 48) needs an item of Lv 28 or more. The
+  game refuses to place it in a weaker item, so a boss essence never sits in an item where it would be wasted.
+- **Each boss essence counts once.** Two Royal Jelly essences give `+25%` max HP, not `+50%`.
+- **An autocast uses a real attack.** Sulphur Breath, Howl of Garm and Fresh Vent cast Miasma, Frost Nova and Burning
+  Ground, attacks Bestias already learn. They are cast at the level the boss would cast them.
+
+{{< essencelist bosses >}}
+
 # The Essence of Every Species
 
-Each species has one essence, set in `data/bestias.yaml`. The list follows the [Bestia List](/docs/mechanics/bestias/bestia-list/).
+Each normal species has one essence, set in `data/bestias.yaml`. The list follows the [Bestia List](/docs/mechanics/bestias/bestia-list/).
 
 {{< essencelist >}}
