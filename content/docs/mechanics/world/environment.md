@@ -72,8 +72,34 @@ The sky can also take on a mood that tints the sky and its light. This is meant 
 
 # Mana Concentration
 
-The system regularly evaluates mana emitters (bestia, spell usage, items) and sinks and calculates a mana density. Depending on the density of mana in a certain region, this increases the probability of rift events which spawn powerful bestia, or of other devastating events like mana storms.
-It can also have a negative effect on the health of Bestia Masters, while bestia are usually unaffected by high mana density, as they are born from it.
+{{< alert context="warning" text="**Partly built.** Today the game only has the fixed map from world generation, and it still reads it as the density. The start density, its changes and their effects are designed on [World Events](/docs/mechanics/world/world-events/)." />}}
+
+Mana has two sides:
+
+- **Mana potential** is where the rock holds mana. World generation sets it once, and it never changes. It decides
+  where mana herbs and crystals grow and where the Wounds are. It is a rank: `0.75` means "more than three quarters
+  of this world's land".
+- **Mana density** is how much mana is in the air right now. Magic, mana storms, omens and rifts follow the density.
+
+A new world starts with a **low density** almost everywhere. Only the land with the highest potential starts high:
+
+```text
+start density = 0.10 + 0.55 × potential⁴
+```
+
+| Potential | Start density | Share of the land           |
+| --------- | ------------- | --------------------------- |
+| 0.50      | 0.13          | half the land is below this |
+| 0.75      | 0.27          |                             |
+| 0.90      | 0.46          | the top tenth               |
+| 0.99      | 0.63          | the cores around the Wounds |
+
+From then on the density changes only when something changes it: the Wounds, spells, kills, rituals, harvesters,
+wards and rifts. Left alone, it stays where players left it and only sinks back to its start value over months. The
+land around the start towns slowly draws mana away. What a rising density does, step by step, and where mana comes
+from and goes is described on [World Events](/docs/mechanics/world/world-events/).
+
+High density makes Bestia Masters ill, while bestia are unaffected, as they are born from it.
 
 # In-Game Time
 
