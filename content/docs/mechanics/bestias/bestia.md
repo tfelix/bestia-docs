@@ -166,7 +166,8 @@ early **keeps its progress**. Another incubator continues where the first one st
 traded.
 
 When the timer ends, the Bestia hatches next to the incubator at **Lv. 1** and belongs to the incubator's owner. If the
-owner has no free Bestia slot, the egg waits in the incubator, ready, until a slot is free.
+owner has no free active slot, the Bestia goes into the [storage](/docs/mechanics/bestias/bestia-storage/). If that is
+full too, the egg waits in the incubator, ready, until a slot is free.
 
 The offspring is always of the **female's** species, so every generation has to be raised to Lv. 10 again before it can
 breed in turn.
@@ -311,7 +312,8 @@ Only living, wild bestias count. A body on the ground or somebody else's bestia 
 ## Catching a species
 
 A species counts as **caught** the first time a [trap](#catching-bestias) catches one. It stays
-caught when the master has no free slot and the creature is released again, or when the bestia is later given away.
+caught when the master has no free slot, not even in the
+[storage](/docs/mechanics/bestias/bestia-storage/), and the creature is released again, or when the bestia is later given away.
 
 A master who owned bestias before the compendium existed finds those species already marked as caught.
 
