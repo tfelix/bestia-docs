@@ -70,8 +70,9 @@ Each forged copy is an `item_instance` row. The roll adds:
 There are no migrations: `ddl-auto: update` adds the column and the table. Old rows keep a null `item_level`, and
 the server works it out from the template, the rolled stats and the sockets when it needs it.
 
-When essences can be put into sockets, a table `item_instance_socket` will follow, with `item_instance_id`,
-`ordinal` and the essence. The `slots` count is enough as long as nothing can fill a socket.
+When [essences](/docs/mechanics/items-crafting/essences/) can be put into sockets, a table `item_instance_socket` will
+follow, with `item_instance_id`, `ordinal`, the essence's species and its gem tier. Species and tier are the whole
+essence: there is nothing rolled to store. The `slots` count is enough as long as nothing can fill a socket.
 
 # Network
 

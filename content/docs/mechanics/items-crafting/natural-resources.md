@@ -75,7 +75,7 @@ The [Item Database](/docs/mechanics/items-crafting/item-database/) has the in-ga
 | {{< item "blue_mana_crystal" >}}                                         | Mana    | Used for magic artefacts. Quite a common crystal.                                         |
 | {{< item "yellow_mana_crystal" >}}                                       | Mana    | Used for magic artefacts. Quite rare.                                                     |
 | {{< item "red_mana_crystal" >}}                                          | Mana    | Used for magic artefacts. Very rare.                                                      |
-| [Rough Gems](/docs/mechanics/items-crafting/item-database/?category=gem) | Crystal | Amethyst, emerald, ruby, pyrelith and diamond. Cut into vessels for Bestia essences.      |
+| [Rough Gems](/docs/mechanics/items-crafting/item-database/?category=gem) | Crystal | Amethyst, emerald, ruby, pyrelith and diamond. Cut into vessels for [Bestia essences](/docs/mechanics/items-crafting/essences/). Amethyst also lies on the ground, mostly in the mountains. |
 | {{< item "coal" >}}                                                      | Mineral | A black mineral fuel dug from seams. The reference fuel of every furnace.                 |
 | {{< item "charcoal" >}}                                                  | Mineral | Wood burned down into fuel. Cheaper than coal, but never gets a furnace as hot.           |
 | {{< item "salt" >}}                                                      | Mineral | Common mineral salt. Used for food preservation and various crafting recipes.             |
