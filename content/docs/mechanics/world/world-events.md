@@ -4,7 +4,7 @@ weight: 1250
 description: "How mana builds up in the world and what it does, rifts and how the Orders fight over them, the other world events, and how players learn about them."
 ---
 
-{{< alert context="warning" text="**Designed, not built.** Today mana is a fixed map from world generation and no world event runs." />}}
+{{< alert context="warning" text="**Designed, not built.** Today mana is a fixed map from world generation and no world event runs. How the server will run them is on the [World Events](/docs/server/world-events/) server page." />}}
 
 The world is not quiet. Mana seeps out of the Wounds, it gathers where people fight and cast, and when too much of it
 sits in one place, the land starts to change. Strange plants grow, stones rise, bestia grow restless and stronger,
