@@ -173,10 +173,13 @@ Some notes:
   It changes what every attack element does to the wearer, see
   [element](/docs/mechanics/bestias/bestia-design/#7-element-size-and-defences). A better gem adds max HP, not a higher
   element level: a high element level would make the wearer almost immune to whole schools of magic.
-- **Learned Trick** gives the wearer one utility attack from the species' learnset, like a scroll that never runs out.
-  The gem caps the attack level the same way as [Spell Inscription](/docs/mechanics/master/scholar-tree/#skill-spell-inscription):
-  20, 40, 60, 80 and any. A Lanternwisp's Shadow Cloak is a level 40 attack, so it needs at least an Emerald.
-- **Reflex** casts the buff named in the species' row, at the gem's attack level cap.
+- **Learned Trick** gives the wearer one utility attack from the species' learnset at skill level 1, for as long as
+  they wear it. It costs mana and has its cooldown like any other cast, and the skills window lists it under
+  **Borrowed**. The gem caps the attack level the same way as
+  [Spell Inscription](/docs/mechanics/master/scholar-tree/#skill-spell-inscription): 20, 40, 60, 80 and any. An attack
+  above the cap is not granted, so a Lanternwisp's Shadow Cloak, learned at level 26, needs at least an Emerald.
+- **Reflex** casts the buff named in the species' row on the wearer when a blow or spell lands on them: free, at skill
+  level 1, and only when the gem's cap covers the buff's attack level, as for a Learned Trick.
 - **Clear Mind** at Diamond makes the wearer immune to that one status.
 - **Attribute Pair** splits the points over the two attributes the role leans on most: a brute gives STR and VIT, a
   caster INT and WIL.
