@@ -52,13 +52,12 @@ the finite gold in the ground, a world that burns has an ending it was never des
 
 A "treasury" is a named sub-account of the NPC gold pool, not a separate pot of magic money:
 
-- **Settlement treasuries** collect the NPC share of local trade and fund local work — defending the town, clearing the
-  roads, the [Defend the City!](/docs/mechanics/world/questing/#world-events) type of event. They are also what a settlement
+- **Settlement treasuries** collect the NPC share of local trade and fund local work — town commissions, clearing the
+  roads. [World events](/docs/mechanics/world/world-events/#rewards) pay no coin, so they draw on no treasury. Treasuries are also what a settlement
   pays its imports and its rebuilding with; see
   [Townsfolk & Settlement Simulation](/docs/server/townsfolk/#the-settlement-ledger).
 - **Faction treasuries** collect sacrifices and temple income and fund faction-aligned work.
-- The **world treasury** is the remainder, and it is what backs rare large-scale events when no single settlement could
-  pay for them.
+- The **world treasury** is the remainder.
 
 A treasury can run **low**, and when it does the world reacts honestly: a poor village genuinely cannot afford a big
 bounty. This is a feature. It gives regional wealth a visible consequence and it means players who have been trading
@@ -90,9 +89,9 @@ Two further throttles apply on top:
   into player hands instead of pooling wherever it happened to land. Weighting by population rather than splitting
   evenly is the one concession to realism: a city of twenty thousand does more trade in a day than a hamlet does in a
   season.
-- **Regional repeat decay.** Repeated world events in the same region pay a
-  [diminishing share](/docs/mechanics/world/questing/#funding-and-repeat-events), so a treasury cannot be farmed by players who
-  manufacture the emergency they then get paid to resolve.
+- **World events pay no coin.** They reward loot and honor and stay rare per province, see
+  [World Events](/docs/mechanics/world/world-events/#rewards). So no treasury can be farmed by players who manufacture
+  the emergency they then get paid to resolve.
 
 # Price and Wage Feedback
 
@@ -228,7 +227,7 @@ Because the whole economy hangs off one invariant, it has to be measurable at ru
 - Total money supply, and the amount minted, still unmined, and held by NPCs
 - Pool ratio and the current `payout_modifier`
 - World reserve balance, and its days of cover at the current payout rate
-- Flow rates per category (NPC purchases, broker cuts, quest payouts, world events, fees recovered)
+- Flow rates per category (NPC purchases, broker cuts, quest payouts, fees recovered)
 - Per-region treasury balances and event-decay counters
 - The metric named against each entry in [Dangers to watch](#dangers-to-watch)
 
