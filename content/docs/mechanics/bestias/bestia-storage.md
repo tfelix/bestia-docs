@@ -32,16 +32,17 @@ A master manages the storage at a **storage center**, or anywhere with the Besti
 - **In generated settlements.** Every generated village and town has one, run by a **Bestia Keeper**. A hamlet has
   none. The center is open while the keeper works.
 - **In player cities.** A [player settlement](/docs/mechanics/towns-trade/player-settlements/) gets one when its
-  players build it, from a **storage center kit** (a [Carpentry](/docs/mechanics/master/craftsman-tree/#skill-carpentry)
-  Lv. 3 recipe). It follows the rules of the [post office](/docs/mechanics/towns-trade/postal/#in-player-cities): one
-  per settlement, no owner and no fee, 5 building points, and it stops working when the city sign falls.
+  players build it, from a {{< item "bestia_center_kit" >}} (a
+  [Carpentry](/docs/mechanics/master/craftsman-tree/#skill-carpentry) Lv. 3 recipe). It follows the rules of the
+  [post office](/docs/mechanics/towns-trade/postal/#in-player-cities): one per settlement, no owner and no fee,
+  5 building points, and it stops working when the city sign falls.
 
 Using the storage is free.
 
 ## The Bestia Ledger
 
-The keeper gives every master a **Bestia Ledger** for free. It weighs 0.1 and is **bound**: it cannot be dropped,
-traded, sent or put into a chest. A master has only one.
+The keeper gives every master a {{< item "bestia_ledger" >}} for free. It weighs 0.1 and is **bound**: it cannot be
+dropped, traded, sent or put into a chest. A master has only one.
 
 Using the ledger opens the storage anywhere in the world. It does not work while the master is fighting.
 
@@ -68,7 +69,8 @@ A Bestia that went into the storage **rests for 30 min**. Only then can it be su
 ## Items of a Stored Bestia
 
 A Bestia does not take its items into the storage. Before the swap, the storage warns about every item the Bestia
-carries. When it goes in, **all** its items drop where it stood, the worn gear too, packed into one **Item Bundle**.
+carries. When it goes in, **all** its items drop where it stood, the worn gear too, packed into one
+{{< item "item_bundle" >}}.
 
 - The master has a short head start to pick the bundle up. After that, anybody may take it.
 - A bundle in the bag weighs as much as its contents.
