@@ -1744,6 +1744,19 @@
 
     Set it down inside a town without a post office, and the post will run it once it is built.
   value: 1023
+- id: bestia_center_kit
+  name: Storage Center Kit
+  game_id: 628
+  type: Usable
+  categories: [station]
+  weight: 15.0
+  item_level: 30
+  material: Wood
+  description: |
+    Gates, pens, a feed trough and a keeper's desk, lashed onto a sledge.
+
+    Set it down inside a town without a storage center. Masters keep their bestia there once it is built.
+  value: 1020
 - id: auction_house_kit
   name: Auction House Kit
   game_id: 127
@@ -9683,3 +9696,29 @@
 
     Worn by whoever performs the rite of [Banished From The Citadel](/docs/mechanics/combat/attack-list/#banished-from-the-citadel), it undoes their holy ties and is consumed.
   value: 14404
+- id: item_bundle
+  name: Item Bundle
+  game_id: 626
+  type: Usable
+  categories: [consumable]
+  weight: 0.1
+  item_level: 1
+  material: Cloth
+  description: |
+    A cloth tied around everything a bestia carried, its worn gear too.
+
+    Unpack it to put it all into your bag.
+  value: 3
+- id: bestia_ledger
+  name: Bestia Ledger
+  game_id: 627
+  type: Usable
+  categories: [consumable]
+  weight: 0.1
+  item_level: 1
+  material: Paper
+  description: |
+    A slim book with the name of every bestia you keep in storage, in the hand of a Bestia Keeper.
+
+    Open it to call a stored bestia or to swap one with your party.
+  value: 3
