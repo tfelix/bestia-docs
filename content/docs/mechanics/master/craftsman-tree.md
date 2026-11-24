@@ -236,8 +236,8 @@ Same rule as [Forge Weapon](#skill-forge-weapon): no hard cap, but every item le
     type="Active" manaCost="33" castTime="3s" cooldown="0s" range="2" target="Forge"
     description="Hammers dents from armor and sets a fresh edge to broken blades, coaxing worn-out equipment back into fighting shape." >}}
 
-Restores the [durability](/docs/mechanics/items-crafting/items/#damaging-of-items) of weapons and armor alike. Those are the only
-things in the world that wear out and can be repaired. A [light source](/docs/mechanics/world/environment/#light-sources) burns
+Restores the [durability](/docs/mechanics/items-crafting/items/#damaging-of-items) of weapons, armor and tools alike, broken
+ones too. Those are the only things in the world that wear out and can be repaired. A [light source](/docs/mechanics/world/environment/#light-sources) burns
 down as well, but burnt time is gone: no repair gives it back.
 
 | Lv. | Max Item Level |

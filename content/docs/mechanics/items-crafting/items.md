@@ -367,14 +367,19 @@ lift and a dabbler's falls easily. An endow on a Bestia's body is a status effec
 # Damaging of Items
 
 As with any item in Bestia, it can be damaged. There will be professions capable of repairing items. The durability of an item is given via a percentage. Items will function normally within a wide range of their condition. At a certain
-level, they slowly lose their properties (armor loses its defense value, weapons hit less often, magic staffs suffer a damage penalty, etc.), until the items become unusable. If you then inflict further damage on them, they can be completely and
-irretrievably destroyed.
+level, they slowly lose their properties (armor loses its defense value, weapons hit less often, magic staffs suffer a damage penalty, etc.), until the items become unusable.
 
-| Durability | State                     |
-| ---------- | ------------------------- |
-| 30 - 100%  | Normal Operation          |
-| 1 - 29%    | Increasing Damage Effects |
-| 0%         | Item breaks unrecoverably |
+| Durability | State                                       |
+| ---------- | ------------------------------------------- |
+| 30 - 100%  | Normal Operation                            |
+| 1 - 29%    | Increasing Damage Effects (not built yet)   |
+| 0%         | Broken: cannot be worn until it is repaired |
+
+**A broken item is not lost.** It drops from the hand or body into the bag and keeps everything it had: its rolled
+stats, its upgrade level, its sockets and the [essences](/docs/mechanics/items-crafting/essences/) in them.
+[Equipment Repair](/docs/mechanics/master/craftsman-tree/#skill-equipment-repair) makes it whole again. Only a failed
+[refine](#weapon-refinement) or a failed [socket cut](#item-customization) destroys an item for good, and its essences
+with it.
 
 ## Stackable Gear
 
