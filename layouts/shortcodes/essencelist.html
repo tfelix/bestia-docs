@@ -1,12 +1,37 @@
-<!-- essencelist.html: the essence of every species of data/bestias.yaml that has one, grouped by slot group -->
+<!-- essencelist.html: the essence of every species of data/bestias.yaml. Without a parameter it lists the normal
+     species by slot group; with the parameter "bosses" it lists the hand-made boss essences in one table. -->
 {{- $all := site.Data.bestias -}}
 {{- $catalogue := site.Data.essences -}}
 {{- $attacks := site.Data.attacks -}}
+{{- $bossMode := eq (.Get 0) "bosses" -}}
+{{- if $bossMode }}
+{{- $rows := slice -}}
+{{- range $species := $all }}{{ if and $species.essence (or (eq $species.tier "boss") $species.worldBoss) }}{{ $rows = $rows | append (dict "reference" (index $species.levelRange 0) "species" $species) }}{{ end }}{{ end }}
+<div class="table-responsive mb-4">
+  <table class="table table-sm align-middle">
+    <thead>
+      <tr><th>Boss</th><th>Lv</th><th>Gem</th><th>Group</th><th>Essence</th></tr>
+    </thead>
+    <tbody>
+      {{- range sort $rows "reference" }}{{ with .species }}
+      {{- $level := index .levelRange 0 -}}
+      <tr>
+        <td><a href="/docs/mechanics/bestias/bestia-list/#{{ .identifier | replaceRE "_" "-" }}">{{ .name }}</a>{{ if .worldBoss }} <small class="text-body-secondary">(world boss)</small>{{ end }}</td>
+        <td>{{ $level }}</td>
+        <td>{{ if ge $level 81 }}Diamond{{ else if ge $level 61 }}Pyrelith{{ else }}Ruby{{ end }}</td>
+        <td>{{ .essence.group | title }}</td>
+        <td><strong>{{ .essence.name }}:</strong> {{ .essence.text }}</td>
+      </tr>
+      {{- end }}{{ end }}
+    </tbody>
+  </table>
+</div>
+{{- else }}
 {{- range $group := $catalogue.groups }}
 {{- $rows := slice -}}
-{{- range $species := $all }}{{ with $species.essence }}{{ if eq .group $group }}{{ $rows = $rows | append (dict "reference" (index $species.levelRange 0) "species" $species) }}{{ end }}{{ end }}{{ end -}}
+{{- range $species := $all }}{{ with $species.essence }}{{ if and (eq .group $group) (ne $species.tier "boss") (not $species.worldBoss) }}{{ $rows = $rows | append (dict "reference" (index $species.levelRange 0) "species" $species) }}{{ end }}{{ end }}{{ end -}}
 {{- if $rows }}
-<h3 id="essences-{{ $group }}">{{ $group | title }} <small class="text-body-secondary">({{ len $rows }})</small></h3>
+<h2 id="essences-{{ $group }}">{{ $group | title }} <small class="text-body-secondary">({{ len $rows }})</small></h2>
 <div class="table-responsive mb-4">
   <table class="table table-sm align-middle">
     <thead>
@@ -19,9 +44,6 @@
         <td>{{ index .levelRange 0 }}{{ if ne (index .levelRange 0) (index .levelRange 1) }}-{{ index .levelRange 1 }}{{ end }}</td>
         <td>
           {{- with .essence -}}
-          {{- if .text -}}
-            <strong>{{ .name }}:</strong> {{ .text | markdownify }}
-          {{- else -}}
             {{- $effect := index (where $catalogue.effects "id" .effect) 0 -}}
             {{- $effect.name -}}
             {{- with .target -}}
@@ -30,7 +52,6 @@
               {{- if $attack }} ({{ (index $attack 0).name }}){{ else }} ({{ $target | lower | replaceRE "_" " " | title }}){{ end -}}
             {{- end -}}
           {{- end -}}
-          {{- end -}}
         </td>
         <td>{{ with .essence.drawback }}{{ (index (where $catalogue.drawbacks "id" .) 0).text }}{{ end }}</td>
       </tr>
@@ -38,5 +59,6 @@
     </tbody>
   </table>
 </div>
+{{- end }}
 {{- end }}
 {{- end }}

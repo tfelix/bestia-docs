@@ -2355,6 +2355,10 @@
   kind: FORMLESS
   element: NORMAL
   size: BIG
+  essence:
+    group: armor
+    name: "Royal Jelly"
+    text: "+25% max HP, −10% move speed."
   habitat:
   - GRASSLAND
   - RIPARIAN
@@ -2388,6 +2392,10 @@
   kind: INSECT
   element: FIRE
   size: MEDIUM
+  essence:
+    group: shield
+    name: "Gilded Shell"
+    text: "−30% magic damage taken, −10% move speed."
   habitat:
   - DESERT
   - BADLANDS
@@ -2419,6 +2427,10 @@
   kind: BEAST
   element: FIRE
   size: BIG
+  essence:
+    group: weapon
+    name: "Burning Stripes"
+    text: "8% chance on hit to inflict Burning."
   habitat:
   - TROPICAL_SEASONAL_FOREST
   - DRYLAND
@@ -2449,6 +2461,10 @@
   kind: INSECT
   element: WIND
   size: BIG
+  essence:
+    group: accessory
+    name: "Royal Swarm"
+    text: "The party and your own Bestias within 10 m get +10% attack speed."
   habitat:
   - TEMPERATE_FOREST
   - GRASSLAND
@@ -2479,6 +2495,10 @@
   kind: HUMANOID
   element: EARTH
   size: BIG
+  essence:
+    group: armor
+    name: "Trophy Plate"
+    text: "25% of the melee damage you take hits the attacker too."
   habitat:
   - TEMPERATE_RAINFOREST
   - TAIGA
@@ -2505,6 +2525,10 @@
   kind: ELEMENTAL
   element: WATER
   size: MEDIUM
+  essence:
+    group: garment
+    name: "Still Lake"
+    text: "HP and mana keep recovering in combat, and recover 30% faster."
   habitat:
   - LAKE
   - RIPARIAN
@@ -2538,6 +2562,10 @@
   kind: UNDEAD
   element: UNDEAD
   size: MEDIUM
+  essence:
+    group: headgear
+    name: "Captain's Orders"
+    text: "Your own Bestias within 15 m get +15% ATK and MATK."
   habitat:
   - OCEAN
   - BEACH
@@ -2565,6 +2593,10 @@
   kind: BEAST
   element: FIRE
   size: MEDIUM
+  essence:
+    group: headgear
+    name: "Nine Tails"
+    text: "Every ninth spell has no cast time and costs no mana."
   habitat:
   - TEMPERATE_FOREST
   - ALPINE
@@ -2595,6 +2627,10 @@
   kind: PLANT
   element: EARTH
   size: BIG
+  essence:
+    group: tool
+    name: "Grove Keeper"
+    text: "In a hatchet: +50% felling damage, and the trees you fell grow back twice as fast."
   habitat:
   - TEMPERATE_RAINFOREST
   - TEMPERATE_FOREST
@@ -2632,6 +2668,10 @@
   kind: FORMLESS
   element: GHOST
   size: MEDIUM
+  essence:
+    group: armor
+    name: "Wisp Flame"
+    text: "Your element becomes Ghost 1. Plain weapon blows barely touch you."
   habitat:
   - BOG
   ai: aggressive_melee
@@ -2662,6 +2702,10 @@
   kind: UNDEAD
   element: UNDEAD
   size: BIG
+  essence:
+    group: headgear
+    name: "Pharaoh's Crown"
+    text: "Skills cost 25% less mana."
   habitat:
   - DESERT
   ai: aggressive_melee
@@ -2687,6 +2731,10 @@
   kind: PLANT
   element: POISON
   size: BIG
+  essence:
+    group: garment
+    name: "Stench"
+    text: "Foes within 3 m may be poisoned every few seconds. Wild Bestias notice you from twice as far."
   habitat:
   - SWAMP
   - TROPICAL_RAINFOREST
@@ -2717,6 +2765,11 @@
   kind: DRAGON
   element: POISON
   size: BIG
+  essence:
+    group: weapon
+    name: "Sulphur Breath"
+    text: "4% chance on hit to cast Miasma at the target."
+    autocast: miasma
   habitat:
   - GEOTHERMAL_BASIN
   ai: aggressive_melee
@@ -2746,6 +2799,10 @@
   kind: BEAST
   element: HOLY
   size: BIG
+  essence:
+    group: accessory
+    name: "Crown of Light"
+    text: "Immune to Curse, Blind and Fear. −15% damage taken from Undead and Demons."
   habitat:
   - TAIGA
   - TEMPERATE_RAINFOREST
@@ -2779,6 +2836,11 @@
   kind: BEAST
   element: WATER
   size: BIG
+  essence:
+    group: weapon
+    name: "Howl of Garm"
+    text: "3% chance on a melee hit to cast Frost Nova around you."
+    autocast: frost_nova
   habitat:
   - TUNDRA
   - TAIGA
@@ -2811,6 +2873,10 @@
   kind: BIRD
   element: WIND
   size: BIG
+  essence:
+    group: footgear
+    name: "Storm Wings"
+    text: "+15% move speed, +10% attack speed."
   habitat:
   - ALPINE
   ai: aggressive_melee
@@ -2842,6 +2908,10 @@
   kind: BEAST
   element: WATER
   size: BIG
+  essence:
+    group: armor
+    name: "Frozen Ages"
+    text: "+100% max HP, −50% DEF."
   habitat:
   - ICE_SHEET
   ai: aggressive_melee
@@ -2871,6 +2941,10 @@
   kind: DEMON
   element: SHADOW
   size: BIG
+  essence:
+    group: weapon
+    name: "Reaping Scythe"
+    text: "Your melee hits strike every foe within 1.5 m of the target. −10 HIT."
   habitat:
   - BADLANDS
   ai: aggressive_melee
@@ -2897,6 +2971,11 @@
   kind: ELEMENTAL
   element: FIRE
   size: BIG
+  essence:
+    group: shield
+    name: "Fresh Vent"
+    text: "When a melee blow hits you, 10% chance to cast Burning Ground under the attacker."
+    autocast: burning_ground
   habitat:
   - VOLCANIC_FIELD
   - GEOTHERMAL_BASIN
@@ -2930,6 +3009,10 @@
   kind: DRAGON
   element: WIND
   size: BIG
+  essence:
+    group: garment
+    name: "Cloud Veil"
+    text: "25% chance to bounce a single-target spell back to its caster."
   habitat:
   - TROPICAL_RAINFOREST
   ai: passive_wanderer
@@ -2959,6 +3042,10 @@
   kind: UNDEAD
   element: UNDEAD
   size: BIG
+  essence:
+    group: headgear
+    name: "Dread Court"
+    text: "Wild Undead and Demons never attack you first."
   habitat: []
   ai: aggressive_melee
   description: The king who ruled before the Rift and refused to die with his kingdom. He holds the corrupted land with an
@@ -2985,6 +3072,10 @@
   kind: BIRD
   element: FIRE
   size: BIG
+  essence:
+    group: accessory
+    name: "Ashen Rebirth"
+    text: "A master is reborn without the death malus. A Bestia survives a blow that would kill it for good, once an hour."
   habitat:
   - VOLCANIC_FIELD
   ai: aggressive_melee
@@ -3103,6 +3194,10 @@
   kind: DRAGON
   element: UNDEAD
   size: BIG
+  essence:
+    group: armor
+    name: "Bone Lattice"
+    text: "Immune to every harmful status effect. +25% damage taken from Holy."
   habitat:
   - COLD_DESERT
   ai: aggressive_melee
@@ -3133,6 +3228,10 @@
   kind: DRAGON
   element: WATER
   size: BIG
+  essence:
+    group: shield
+    name: "Tidewall"
+    text: "The first hit you take every 10 s does no damage."
   habitat:
   - OCEAN
   ai: aggressive_melee
@@ -3163,6 +3262,10 @@
   kind: BEAST
   element: EARTH
   size: BIG
+  essence:
+    group: armor
+    name: "Titan's Stride"
+    text: "+30% max HP, +15% ATK. Immune to knockback, Slowed and Immobilized."
   habitat:
   - GRASSLAND
   - DRYLAND
@@ -3193,6 +3296,10 @@
   kind: ELEMENTAL
   element: FIRE
   size: BIG
+  essence:
+    group: shield
+    name: "Slag Shell"
+    text: "Magic does you no damage, and no spell can target you: not a foe's, and not a friend's heal or buff either."
   habitat:
   - VOLCANIC_FIELD
   ai: aggressive_melee
@@ -3225,6 +3332,10 @@
   kind: PLANT
   element: POISON
   size: BIG
+  essence:
+    group: accessory
+    name: "Budding Brood"
+    text: "Your own Bestias within 15 m heal 2% of their max HP every 3 s."
   habitat:
   - BOG
   - SWAMP
@@ -3252,6 +3363,10 @@
   kind: DEMON
   element: SHADOW
   size: BIG
+  essence:
+    group: weapon
+    name: "Doom"
+    text: "1% chance on hit to drop a target that is not a boss to 1 HP."
   habitat: []
   ai: aggressive_melee
   description: A towering figure in an oversized black cloak that hides its hands and feet. Its head is an orange skull with
