@@ -191,6 +191,9 @@ Affixes, by item kind. The first affix always rolls; the others roll with the ch
 
 Stackable thrown weapons roll nothing: copies in one pile must be identical.
 
+Tools (pickaxe, hatchet, shovel and fishing rod) roll sockets by the table above, but no affixes. Their sockets take
+[tool essences](/docs/mechanics/items-crafting/essences/#tool-essences).
+
 # Plain and Signature Items
 
 Every weapon type starts with **plain** items: Knife, Dagger, Gladius, Greataxe, Short Bow. They have no fixed
