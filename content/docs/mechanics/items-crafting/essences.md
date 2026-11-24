@@ -45,26 +45,24 @@ the one in the [skill table](/docs/mechanics/master/craftsman-tree/#skill-runic-
 So a Bestia is only used up when it really becomes an essence. The price of bad luck is the gem.
 
 The Artificer picks one of their own Bestias straight from their Bestia storage, or one that is called and stands near
-the table. Another master's Bestia needs a [commission](#etching-another-masters-bestia).
+the table. Another master's Bestia needs its owner to [offer it](#etching-another-masters-bestia).
 
 ## Etching Another Master's Bestia
 
-A master without Runic Etching can hire an Artificer. Both stand at the Artificer's Carving Table and open a
-**commission**. It looks like the trade window, with one extra slot for the Bestia:
+A master without Runic Etching can hire an Artificer. There is no special window for it:
 
-1. The owner puts one of their Bestias into the Bestia slot, straight from their storage. The Bestia does not change
-   hands: it is only locked for the etching.
-2. Either side puts in the cut gem. Either side can add coins as the fee, as in a trade.
-3. Both lock and confirm. Any change unlocks both sides again, as in a trade.
-4. The Artificer casts Runic Etching. The chance is the Artificer's own.
+1. The two agree on the fee. The fee and the cut gem change hands in an ordinary [trade](/docs/mechanics/towns-trade/economy-trade/).
+2. The owner calls their Bestia to a Carving Table, right-clicks it and chooses **Offer for etching**.
+3. Any Artificer at that table now sees the Bestia in their etching list, next to their own Bestias, with the owner's
+   name. They etch it like one of their own. The chance is the Artificer's own.
 
-| Result  | Owner gets                         | Artificer gets  |
-| ------- | ---------------------------------- | --------------- |
-| Success | The Essence Gem                    | The fee         |
-| Failure | Their Bestia back                  | The fee         |
+| Result  | Owner gets                   | Artificer gets               |
+| ------- | ---------------------------- | ---------------------------- |
+| Success | The Essence Gem, in the bag  | The fee, from the trade      |
+| Failure | Their Bestia, which stays    | The fee, from the trade      |
 
-The gem is used up either way: as the essence, or as shards. The fee is paid for the work, not for the result, so
-the two agree on it before they confirm. If either side walks away or cancels before the cast, nothing happens.
+The offer ends as soon as the Bestia leaves the table. An etching that is running then fails without using up the
+Bestia. The fee is paid in the trade, before the etching, so the two have to trust each other, as with any service.
 
 ## Gem Tiers
 

@@ -331,7 +331,7 @@ A crystal above your max crystal level cannot be refined.
 Level 1 allows you to place a Carving Table. The etching uses up a cut gem and one of your Bestias: pick it from your
 Bestia storage, or call it to the table. The Bestia must have reached the level of the gem's tier, see
 [Gem Tiers](/docs/mechanics/items-crafting/essences/#gem-tiers). A failed etching shatters the gem, and the Bestia stays.
-Another master's Bestia needs a [commission](/docs/mechanics/items-crafting/essences/#etching-another-masters-bestia). The cast only places
+Another master's Bestia can be etched when its owner [offers it](/docs/mechanics/items-crafting/essences/#etching-another-masters-bestia) at the table. The cast only places
 the table or opens its recipes. The etching itself takes the [craft duration](/docs/mechanics/items-crafting/crafting/#craft-duration) of
 the Bestia's level.
 
