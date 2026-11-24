@@ -183,6 +183,26 @@ Some notes:
 - **Attribute Pair** splits the points over the two attributes the role leans on most: a brute gives STR and VIT, a
   caster INT and WIL.
 
+## Tool Essences
+
+Six species give a tool essence. A tool essence makes work go better, not fights. It fits only the tool it names,
+except Tough Grip, which fits every tool.
+
+| Effect            | Tool        | Per point                                            | At Ruby (8 points) |
+| ----------------- | ----------- | ---------------------------------------------------- | ------------------ |
+| **Mining Speed**  | Pickaxe     | −3% time per swing                                   | −24%               |
+| **Rich Seam**     | Pickaxe     | +1% chance of a second piece, never for gold         | +8%                |
+| **Felling Speed** | Hatchet     | +3% felling damage, so a tree falls sooner           | +24%               |
+| **Digging Speed** | Shovel      | −3% time per metre                                   | −24%               |
+| **Faster Bite**   | Fishing rod | −3% waiting time for a bite                          | −24%               |
+| **Tough Grip**    | Any tool    | −3% wear                                             | −24%               |
+
+Rich Seam adds to the Miner's [Rich Veins](/docs/mechanics/master/survival-tree/#skill-rich-veins) and keeps its rule:
+gold never drops twice, because the world's coin supply is sized by its gold.
+
+Tools roll sockets at the forge like any other item, see [Sockets and Rolls](/docs/mechanics/items-crafting/equipment-design/#sockets-and-rolls),
+and [Item Customization](/docs/mechanics/items-crafting/items/#item-customization) can cut more.
+
 ## Drawbacks
 
 Some essences carry a drawback, like the darker cards of Ragnarok Online. Such an essence gets **one and a half
