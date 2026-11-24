@@ -92,7 +92,7 @@ See [Weapon Refinement](/docs/mechanics/items-crafting/items/#weapon-refinement)
 
 {{< skill name="Item Customization" maxLevel="10" requires="Carpentry Lv. 3"
     type="Active" manaCost="23" cooldown="0s"
-    description="A meticulous rework that opens sockets in an item's frame, letting a Runic Etcher's runes be slotted into it later." >}}
+    description="A meticulous rework that opens sockets in an item's frame, so that an Artificer's essence gems can be set into it later." >}}
 
 Requires an {{< item "engraving_set" >}} which will be consumed in the process. You can choose how many slots you want to put into an item. But every slot makes it harder to succeed. Every extra slot above 1 reduces the success chance by 40%.
 
@@ -326,11 +326,12 @@ A crystal above your max crystal level cannot be refined.
 
 {{< skill name="Runic Etching" maxLevel="10" requires="Item Customization Lv. 3"
     type="Active" manaCost="25" castTime="10s" cooldown="0s" range="2" target="Carving Table"
-    description="Binds the essence of a Bestia into a cut gem. The [Essence Gem](/docs/mechanics/items-crafting/item-database/?id=essence_gem) carries the power of the Bestia and fits into any socket of a weapon or piece of equipment. Converting a Bestia destroys it." >}}
+    description="Binds the essence of a Bestia into a cut gem. The Essence Gem carries the power of the Bestia and fits a socket of its slot group. Converting a Bestia destroys it." >}}
 
-Level 1 allows you to place a Carving Table. The Bestia to convert must stand next to the table, and the etching uses up
-a cut gem. The gem limits the Bestia level, see [Sockets and Essences](/docs/mechanics/items-crafting/crafting/#sockets-and-essences). A
-failed etching shatters the gem too. The cast only places
+Level 1 allows you to place a Carving Table. The etching uses up a cut gem and one of your Bestias: pick it from your
+Bestia storage, or call it to the table. The Bestia must have reached the level of the gem's tier, see
+[Gem Tiers](/docs/mechanics/items-crafting/essences/#gem-tiers). A failed etching shatters the gem, and the Bestia stays.
+Another master's Bestia needs a [commission](/docs/mechanics/items-crafting/essences/#etching-another-masters-bestia). The cast only places
 the table or opens its recipes. The etching itself takes the [craft duration](/docs/mechanics/items-crafting/crafting/#craft-duration) of
 the Bestia's level.
 
@@ -354,7 +355,7 @@ Same rule as [Forge Weapon](#skill-forge-weapon): no hard cap, but every Bestia 
 
 {{< skill name="Magic Artisan" maxLevel="10" requires="Runic Etching Lv. 5 and Manaflow Expert Lv. 3"
     type="Active" manaCost="38" castTime="10s" cooldown="0s" range="2" target="Enchantment Altar"
-    description="Can create magic artifacts by binding sustained enchantments to an item, going well beyond what a single etched rune can hold." >}}
+    description="Can create magic artifacts by binding sustained enchantments to an item, going well beyond what a single essence can hold." >}}
 
 Level 1 allows you to place an Enchantment Altar. Every binding needs refined mana crystals. The cast only places the
 altar or opens its recipes. The binding itself takes the [craft duration](/docs/mechanics/items-crafting/crafting/#craft-duration) of the
