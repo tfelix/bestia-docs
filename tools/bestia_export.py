@@ -3,6 +3,7 @@
 
     python3 tools/bestia_export.py skills <bestia-behemoth>
     python3 tools/bestia_export.py mobs <bestia-behemoth>
+    python3 tools/bestia_export.py essences <bestia-behemoth>
 
 `skills` turns every bestia attack of data/attacks.yaml into a row of zone-server's skills.yml, between the
 generated-block markers. The numbers come from the archetypes in data/bestia_blueprint.yaml, so the server
@@ -11,6 +12,9 @@ casts what the Bestia Blueprint calculator balanced against.
 `mobs` runs the calculator (static/js/bestia-blueprint-core.js, needs node) on every species of
 data/bestias.yaml and writes its mob YAML, the GM bestia's learnset, and the placeholder look into the client's
 bestia .tres. Run `./gradlew :zone-server:syncBestiaDb` before it, so every .tres exists.
+
+`essences` writes only the `essence:` line of every mob YAML, without the calculator. Boss essences are hand-made
+text in data/bestias.yaml and are not exported yet.
 """
 import json
 import re
@@ -319,6 +323,7 @@ def mob_yaml(species, bp, learned, active):
         f"kind: {i['kind']}",
         f"element: {element_name(i['element'], bp['elementLevel'])}",
         f"size: {i['size']}",
+        *([essence_line(i)] if essence_line(i) else []),
         f"default-attack: {bp['defaultAttack']['kind'].upper()}",
         f"aspd: {bp['defaultAttack']['aspd']}",
         f"ai: {i['ai']}",
@@ -353,6 +358,41 @@ def mob_yaml(species, bp, learned, active):
     lines.append("loot:")
     lines += [f"  - {{ item: {row['item']}, chance: {max(1, round(row['chance'] * 100))} }}" for row in i["loot"]]
     return "\n".join(lines) + "\n"
+
+
+ATTRIBUTE_NAMES = {"str": "STR", "vit": "VIT", "int": "INT", "agi": "AGI", "dex": "DEX", "wil": "WIL"}
+
+
+def essence_line(species):
+    """The species' essence for the zone, or None for a species without one and for a boss."""
+    essence = species.get("essence")
+    if not essence or "effect" not in essence:
+        return None
+    fields = [f"group: {essence['group'].upper()}", f"effect: {essence['effect'].upper()}"]
+    target = essence.get("target") or attribute_pair_of(species, essence)
+    if target:
+        fields.append(f"target: {target}")
+    if essence.get("drawback"):
+        fields.append(f"drawback: {essence['drawback'].upper()}")
+    return "essence: { " + ", ".join(fields) + " }"
+
+
+def attribute_pair_of(species, essence):
+    """Attribute Pair raises the two attributes the species' role weighs most, as STR_VIT."""
+    if essence["effect"] != "attribute_pair":
+        return None
+    weights = {r["id"]: r["weights"] for r in load("bestia_blueprint.yaml")["roles"]}[species["role"]]
+    first, second = sorted(weights, key=lambda a: -weights[a])[:2]
+    return f"{ATTRIBUTE_NAMES[first]}_{ATTRIBUTE_NAMES[second]}"
+
+
+def replace_essence(path, species):
+    """Writes the essence line after `size:`, in place of the old one."""
+    content = re.sub(r"(?m)^essence: .*\n", "", path.read_text())
+    line = essence_line(species)
+    if line:
+        content = re.sub(r"(?m)^(size: .*\n)", lambda m: m.group(1) + line + "\n", content, count=1)
+    path.write_text(content)
 
 
 def learnset_lines(learned, active):
@@ -443,6 +483,7 @@ def export_mobs(game):
         if s.get("handTuned"):
             replace_levels(path, s)
             replace_learnset(path, learned[ident])
+            replace_essence(path, s)
         else:
             path.write_text(mob_yaml(s, final[ident], learned[ident], active[ident]))
         for warning in final[ident]["warnings"]:
@@ -454,11 +495,20 @@ def export_mobs(game):
     print(f"wrote {len(species)} species")
 
 
+def export_essences(game):
+    species = load("bestias.yaml")
+    for s in species:
+        replace_essence(game / MOB_DIR / f"{s['identifier'].replace('_', '-')}.yml", s)
+    print(f"wrote {sum(1 for s in species if essence_line(s))} essences")
+
+
 def main():
-    if len(sys.argv) != 3 or sys.argv[1] not in ("skills", "mobs"):
+    if len(sys.argv) != 3 or sys.argv[1] not in ("skills", "mobs", "essences"):
         sys.exit(__doc__)
     game = Path(sys.argv[2])
-    if sys.argv[1] == "skills":
+    if sys.argv[1] == "essences":
+        export_essences(game)
+    elif sys.argv[1] == "skills":
         rows = skill_rows()
         write_block(game / SKILLS_YML, rows)
         print(f"wrote {len(rows)} skills")
