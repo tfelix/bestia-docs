@@ -23,6 +23,7 @@
   kind: FORMLESS
   element: NORMAL
   size: SMALL
+  essence: {group: accessory, effect: tamer}
   habitat:
   - GRASSLAND
   - DRYLAND
@@ -56,6 +57,7 @@
   kind: BEAST
   element: NORMAL
   size: SMALL
+  essence: {group: accessory, effect: quiet_step}
   habitat:
   - GRASSLAND
   - DRYLAND
@@ -87,6 +89,7 @@
   kind: BEAST
   element: EARTH
   size: MEDIUM
+  essence: {group: weapon, effect: bane, target: BEAST}
   habitat:
   - GRASSLAND
   - TEMPERATE_FOREST
@@ -118,6 +121,7 @@
   kind: BEAST
   element: NORMAL
   size: SMALL
+  essence: {group: footgear, effect: long_stride}
   habitat:
   - GRASSLAND
   - TEMPERATE_FOREST
@@ -151,6 +155,7 @@
   kind: PLANT
   element: EARTH
   size: SMALL
+  essence: {group: headgear, effect: clear_mind, target: STUN}
   habitat:
   - TEMPERATE_FOREST
   - GRASSLAND
@@ -181,6 +186,7 @@
   kind: INSECT
   element: EARTH
   size: SMALL
+  essence: {group: shield, effect: ward, target: INSECT}
   habitat:
   - TEMPERATE_FOREST
   - TEMPERATE_RAINFOREST
@@ -212,6 +218,7 @@
   kind: INSECT
   element: WIND
   size: SMALL
+  essence: {group: accessory, effect: quick_hands}
   habitat:
   - GRASSLAND
   - RIPARIAN
@@ -239,6 +246,7 @@
   kind: BIRD
   element: FIRE
   size: SMALL
+  essence: {group: accessory, effect: reflex, target: flame_coat}
   habitat:
   - DRYLAND
   - GRASSLAND
@@ -268,6 +276,7 @@
   kind: AQUATIC
   element: WATER
   size: SMALL
+  essence: {group: armor, effect: coated}
   habitat:
   - BEACH
   - OCEAN
@@ -299,6 +308,7 @@
   kind: AQUATIC
   element: WATER
   size: SMALL
+  essence: {group: headgear, effect: clear_mind, target: CONFUSED}
   habitat:
   - RIPARIAN
   - LAKE
@@ -328,6 +338,7 @@
   kind: AQUATIC
   element: WATER
   size: SMALL
+  essence: {group: tool, effect: faster_bite}
   habitat:
   - LAKE
   - RIPARIAN
@@ -361,6 +372,7 @@
   kind: BEAST
   element: WATER
   size: SMALL
+  essence: {group: footgear, effect: long_stride}
   habitat:
   - TUNDRA
   - TAIGA
@@ -394,6 +406,7 @@
   kind: BIRD
   element: WATER
   size: MEDIUM
+  essence: {group: shield, effect: ward, target: BIRD}
   habitat:
   - ICE_SHEET
   - TUNDRA
@@ -423,6 +436,7 @@
   kind: INSECT
   element: POISON
   size: SMALL
+  essence: {group: accessory, effect: reflex, target: acid_skin}
   habitat:
   - DESERT
   - BADLANDS
@@ -447,6 +461,7 @@
   kind: BEAST
   element: NORMAL
   size: SMALL
+  essence: {group: accessory, effect: quick_hands}
   habitat:
   - TROPICAL_SEASONAL_FOREST
   - TROPICAL_RAINFOREST
@@ -479,6 +494,7 @@
   kind: AQUATIC
   element: POISON
   size: SMALL
+  essence: {group: armor, effect: element_skin, target: POISON}
   habitat:
   - BOG
   - SWAMP
@@ -508,6 +524,7 @@
   kind: INSECT
   element: WIND
   size: SMALL
+  essence: {group: garment, effect: whisper}
   habitat:
   - TROPICAL_RAINFOREST
   - TROPICAL_SEASONAL_FOREST
@@ -539,6 +556,7 @@
   kind: PLANT
   element: POISON
   size: SMALL
+  essence: {group: headgear, effect: clear_mind, target: POISON}
   habitat:
   - TEMPERATE_RAINFOREST
   - BOG
@@ -571,6 +589,7 @@
   kind: ELEMENTAL
   element: EARTH
   size: SMALL
+  essence: {group: tool, effect: rich_seam}
   habitat:
   - ALPINE
   - COLD_DESERT
@@ -603,6 +622,7 @@
   kind: FORMLESS
   element: GHOST
   size: SMALL
+  essence: {group: accessory, effect: learned_trick, target: shadow_cloak}
   habitat:
   - BOG
   - SWAMP
@@ -638,6 +658,7 @@
   kind: BEAST
   element: EARTH
   size: SMALL
+  essence: {group: shield, effect: steadfast}
   habitat:
   - TEMPERATE_FOREST
   - GRASSLAND
@@ -668,6 +689,7 @@
   kind: BEAST
   element: NORMAL
   size: SMALL
+  essence: {group: accessory, effect: quiet_step}
   habitat:
   - TEMPERATE_FOREST
   - TEMPERATE_RAINFOREST
@@ -701,6 +723,7 @@
   kind: BIRD
   element: WIND
   size: MEDIUM
+  essence: {group: footgear, effect: swift}
   habitat:
   - GRASSLAND
   - DRYLAND
@@ -733,6 +756,7 @@
   kind: BEAST
   element: NORMAL
   size: BIG
+  essence: {group: shield, effect: ward, target: BEAST}
   habitat:
   - GRASSLAND
   - DRYLAND
@@ -763,6 +787,7 @@
   kind: BEAST
   element: NORMAL
   size: MEDIUM
+  essence: {group: weapon, effect: rider, target: BLEEDING}
   habitat:
   - TAIGA
   - TEMPERATE_FOREST
@@ -793,6 +818,7 @@
   kind: PLANT
   element: EARTH
   size: SMALL
+  essence: {group: shield, effect: arrow_ward}
   habitat:
   - TAIGA
   ai: aggressive_melee
@@ -816,6 +842,7 @@
   kind: BEAST
   element: EARTH
   size: BIG
+  essence: {group: weapon, effect: giant_slayer}
   habitat:
   - TEMPERATE_FOREST
   - TAIGA
@@ -847,6 +874,7 @@
   kind: BEAST
   element: EARTH
   size: MEDIUM
+  essence: {group: weapon, effect: rider, target: STUN}
   habitat:
   - ALPINE
   - BADLANDS
@@ -875,6 +903,7 @@
   kind: BIRD
   element: WIND
   size: MEDIUM
+  essence: {group: footgear, effect: swift}
   habitat:
   - ALPINE
   - BADLANDS
@@ -903,6 +932,7 @@
   kind: BEAST
   element: WATER
   size: BIG
+  essence: {group: footgear, effect: long_stride}
   habitat:
   - COLD_DESERT
   - TUNDRA
@@ -936,6 +966,7 @@
   kind: ELEMENTAL
   element: WATER
   size: MEDIUM
+  essence: {group: armor, effect: element_body, target: WATER}
   habitat:
   - TUNDRA
   - ICE_SHEET
@@ -967,6 +998,7 @@
   kind: AQUATIC
   element: WATER
   size: BIG
+  essence: {group: armor, effect: hardy}
   habitat:
   - ICE_SHEET
   - OCEAN
@@ -1000,6 +1032,7 @@
   kind: AQUATIC
   element: WATER
   size: MEDIUM
+  essence: {group: garment, effect: element_veil, target: WATER}
   habitat:
   - OCEAN
   - BEACH
@@ -1033,6 +1066,7 @@
   kind: UNDEAD
   element: GHOST
   size: BIG
+  essence: {group: garment, effect: element_veil, target: NORMAL, drawback: max_mana}
   habitat: []
   ai: aggressive_melee
   description: The rage of a whole battle gathered into one shape of smoke and torn banners. It walks the worst fields on
@@ -1059,6 +1093,7 @@
   kind: REPTILE
   element: WATER
   size: BIG
+  essence: {group: tool, effect: tough_grip}
   habitat:
   - RIPARIAN
   - SWAMP
@@ -1090,6 +1125,7 @@
   kind: AQUATIC
   element: POISON
   size: MEDIUM
+  essence: {group: headgear, effect: wisdom}
   habitat:
   - SWAMP
   - BOG
@@ -1114,6 +1150,7 @@
   kind: UNDEAD
   element: UNDEAD
   size: MEDIUM
+  essence: {group: accessory, effect: attribute_pair}
   habitat:
   - BOG
   - SWAMP
@@ -1141,6 +1178,7 @@
   kind: INSECT
   element: EARTH
   size: SMALL
+  essence: {group: tool, effect: digging_speed}
   habitat:
   - DESERT
   - DRYLAND
@@ -1169,6 +1207,7 @@
   kind: UNDEAD
   element: UNDEAD
   size: MEDIUM
+  essence: {group: armor, effect: element_body, target: UNDEAD}
   habitat:
   - DESERT
   - BADLANDS
@@ -1195,6 +1234,7 @@
   kind: REPTILE
   element: POISON
   size: MEDIUM
+  essence: {group: weapon, effect: rider, target: POISON}
   habitat:
   - DESERT
   - DRYLAND
@@ -1224,6 +1264,7 @@
   kind: BEAST
   element: NORMAL
   size: MEDIUM
+  essence: {group: weapon, effect: leech}
   habitat:
   - DRYLAND
   - BADLANDS
@@ -1257,6 +1298,7 @@
   kind: REPTILE
   element: FIRE
   size: MEDIUM
+  essence: {group: armor, effect: element_body, target: FIRE}
   habitat:
   - BADLANDS
   - DESERT
@@ -1287,6 +1329,7 @@
   kind: ELEMENTAL
   element: EARTH
   size: BIG
+  essence: {group: shield, effect: steadfast, drawback: move_speed}
   habitat:
   - BADLANDS
   - ALPINE
@@ -1317,6 +1360,7 @@
   kind: BEAST
   element: FIRE
   size: MEDIUM
+  essence: {group: weapon, effect: rider, target: BURNING}
   habitat:
   - VOLCANIC_FIELD
   - BADLANDS
@@ -1350,6 +1394,7 @@
   kind: FORMLESS
   element: FIRE
   size: SMALL
+  essence: {group: armor, effect: element_skin, target: FIRE}
   habitat:
   - VOLCANIC_FIELD
   - GEOTHERMAL_BASIN
@@ -1380,6 +1425,7 @@
   kind: REPTILE
   element: WATER
   size: MEDIUM
+  essence: {group: armor, effect: coated}
   habitat:
   - GEOTHERMAL_BASIN
   - LAKE
@@ -1409,6 +1455,7 @@
   kind: DEMON
   element: FIRE
   size: SMALL
+  essence: {group: headgear, effect: focus}
   habitat:
   - GEOTHERMAL_BASIN
   - VOLCANIC_FIELD
@@ -1442,6 +1489,7 @@
   kind: BEAST
   element: HOLY
   size: BIG
+  essence: {group: weapon, effect: element_hunter, target: SHADOW}
   habitat:
   - TROPICAL_SEASONAL_FOREST
   - DRYLAND
@@ -1474,6 +1522,7 @@
   kind: INSECT
   element: WIND
   size: MEDIUM
+  essence: {group: garment, effect: whisper}
   habitat:
   - TROPICAL_SEASONAL_FOREST
   - TROPICAL_RAINFOREST
@@ -1501,6 +1550,7 @@
   kind: PLANT
   element: EARTH
   size: MEDIUM
+  essence: {group: weapon, effect: bane, target: INSECT}
   habitat:
   - TROPICAL_RAINFOREST
   - SWAMP
@@ -1527,6 +1577,7 @@
   kind: BEAST
   element: EARTH
   size: BIG
+  essence: {group: armor, effect: hardy}
   habitat:
   - TEMPERATE_RAINFOREST
   - TAIGA
@@ -1558,6 +1609,7 @@
   kind: HUMANOID
   element: NORMAL
   size: SMALL
+  essence: {group: tool, effect: mining_speed}
   habitat:
   - COLD_DESERT
   - ALPINE
@@ -1591,6 +1643,7 @@
   kind: BIRD
   element: WIND
   size: BIG
+  essence: {group: footgear, effect: swift, drawback: def}
   habitat:
   - GRASSLAND
   - DRYLAND
@@ -1620,6 +1673,7 @@
   kind: PLANT
   element: EARTH
   size: BIG
+  essence: {group: headgear, effect: focus}
   habitat:
   - RIPARIAN
   - SWAMP
@@ -1656,6 +1710,7 @@
   kind: PLANT
   element: EARTH
   size: MEDIUM
+  essence: {group: shield, effect: arrow_ward}
   habitat:
   - DESERT
   - DRYLAND
@@ -1687,6 +1742,7 @@
   kind: BEAST
   element: SHADOW
   size: MEDIUM
+  essence: {group: weapon, effect: precision}
   habitat:
   - TAIGA
   - TEMPERATE_FOREST
@@ -1720,6 +1776,7 @@
   kind: REPTILE
   element: EARTH
   size: BIG
+  essence: {group: weapon, effect: rider, target: SLOWED}
   habitat:
   - TROPICAL_RAINFOREST
   - SWAMP
@@ -1747,6 +1804,7 @@
   kind: BEAST
   element: WATER
   size: BIG
+  essence: {group: weapon, effect: rider, target: FROZEN}
   habitat:
   - TUNDRA
   - ALPINE
@@ -1778,6 +1836,7 @@
   kind: DRAGON
   element: WATER
   size: MEDIUM
+  essence: {group: headgear, effect: focus}
   habitat:
   - GEOTHERMAL_BASIN
   - VOLCANIC_FIELD
@@ -1810,6 +1869,7 @@
   kind: HUMANOID
   element: WATER
   size: MEDIUM
+  essence: {group: accessory, effect: attribute_pair}
   habitat:
   - BEACH
   - OCEAN
@@ -1841,6 +1901,7 @@
   kind: FORMLESS
   element: GHOST
   size: MEDIUM
+  essence: {group: garment, effect: mist_veil}
   habitat:
   - COLD_DESERT
   - DESERT
@@ -1867,6 +1928,7 @@
   kind: HUMANOID
   element: EARTH
   size: BIG
+  essence: {group: weapon, effect: giant_slayer, drawback: hit}
   habitat:
   - GRASSLAND
   - BADLANDS
@@ -1900,6 +1962,7 @@
   kind: BEAST
   element: WATER
   size: BIG
+  essence: {group: footgear, effect: deep_pools}
   habitat:
   - LAKE
   - RIPARIAN
@@ -1930,6 +1993,7 @@
   kind: BEAST
   element: HOLY
   size: BIG
+  essence: {group: accessory, effect: learned_trick, target: benediction}
   habitat:
   - TEMPERATE_RAINFOREST
   - TEMPERATE_FOREST
@@ -1964,6 +2028,7 @@
   kind: BEAST
   element: WIND
   size: BIG
+  essence: {group: tool, effect: felling_speed}
   habitat:
   - TROPICAL_SEASONAL_FOREST
   - TROPICAL_RAINFOREST
@@ -1995,6 +2060,7 @@
   kind: AQUATIC
   element: WATER
   size: BIG
+  essence: {group: weapon, effect: element_hunter, target: FIRE}
   habitat:
   - OCEAN
   - BEACH
@@ -2025,6 +2091,7 @@
   kind: UNDEAD
   element: UNDEAD
   size: MEDIUM
+  essence: {group: headgear, effect: clear_mind, target: FEARED}
   habitat:
   - BOG
   - SWAMP
@@ -2056,6 +2123,7 @@
   kind: REPTILE
   element: POISON
   size: BIG
+  essence: {group: weapon, effect: leech}
   habitat:
   - SWAMP
   - BOG
@@ -2082,6 +2150,7 @@
   kind: DRAGON
   element: WATER
   size: BIG
+  essence: {group: garment, effect: element_veil, target: WATER}
   habitat:
   - ICE_SHEET
   - ALPINE
@@ -2107,6 +2176,7 @@
   kind: ELEMENTAL
   element: FIRE
   size: MEDIUM
+  essence: {group: headgear, effect: wisdom}
   habitat:
   - VOLCANIC_FIELD
   ai: aggressive_melee
@@ -2136,6 +2206,7 @@
   kind: REPTILE
   element: EARTH
   size: BIG
+  essence: {group: weapon, effect: element_hunter, target: EARTH}
   habitat:
   - DESERT
   - COLD_DESERT
@@ -2166,6 +2237,7 @@
   kind: DRAGON
   element: WIND
   size: BIG
+  essence: {group: footgear, effect: deep_pools}
   habitat:
   - BADLANDS
   - ALPINE
@@ -2196,6 +2268,7 @@
   kind: FORMLESS
   element: GHOST
   size: BIG
+  essence: {group: garment, effect: mist_veil, drawback: def}
   habitat: []
   ai: aggressive_melee
   description: A tangle of limbs from the other side of the Rift. It flickers between worlds; strike when it is solid.
@@ -2226,6 +2299,7 @@
   kind: UNDEAD
   element: UNDEAD
   size: MEDIUM
+  essence: {group: shield, effect: ward, target: UNDEAD}
   habitat: []
   ai: aggressive_melee
   description: Empty armour still holding the line it swore to hold before the Rift. It never retreats and never tires; holy
@@ -2252,6 +2326,7 @@
   kind: DEMON
   element: SHADOW
   size: BIG
+  essence: {group: headgear, effect: wisdom}
   habitat: []
   ai: aggressive_melee
   description: An angel the corruption twisted into a mockery of itself. Its halo has turned black, and it hates light.
@@ -2945,6 +3020,7 @@
   kind: UNDEAD
   element: UNDEAD
   size: MEDIUM
+  essence: {group: weapon, effect: precision}
   habitat: []
   ai: aggressive_melee
   description: A farmhand called up for a war that was lost long ago, still in its rotten jerkin. It rises on old
@@ -2971,6 +3047,7 @@
   kind: FORMLESS
   element: GHOST
   size: SMALL
+  essence: {group: garment, effect: mist_veil}
   habitat: []
   ai: aggressive_melee
   description: A cold flame over a grave nobody dug. It drifts toward anyone who comes near and drinks their warmth.
@@ -2997,6 +3074,7 @@
   kind: UNDEAD
   element: UNDEAD
   size: MEDIUM
+  essence: {group: shield, effect: ward, target: HUMANOID}
   habitat: []
   ai: aggressive_melee
   description: A captain who swore to hold a field and died holding it. The oath outlived the flesh, and it still
@@ -3204,6 +3282,7 @@
   kind: PLANT
   element: FIRE
   size: SMALL
+  essence: {group: headgear, effect: clear_mind, target: BLIND}
   habitat: []
   ai: passive_wanderer
   description: A pumpkin with a candle inside and a grin nobody carved. It only grows on the night the dead walk.
@@ -3233,6 +3312,7 @@
   kind: FORMLESS
   element: WATER
   size: SMALL
+  essence: {group: armor, effect: hardy}
   habitat: []
   ai: passive_wanderer
   description: A present with a bow that hops through the snow at midwinter. Open it gently; sometimes it bites.
@@ -3259,6 +3339,7 @@
   kind: BEAST
   element: HOLY
   size: SMALL
+  essence: {group: accessory, effect: tamer}
   habitat: []
   ai: passive_wanderer
   description: A hare with blossoms in its ears that hides painted eggs in spring meadows. Find its eggs and it may come to
@@ -3292,6 +3373,7 @@
   kind: FORMLESS
   element: GHOST
   size: SMALL
+  essence: {group: garment, effect: element_veil, target: NORMAL}
   habitat: []
   ai: passive_wanderer
   description: It looks exactly like a blob. It is not a blob. Your sword passes right through it, which a real blob would
