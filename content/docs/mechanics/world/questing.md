@@ -7,7 +7,7 @@ description: "Bestia's player-driven questing: commissions posted at the city bl
 Questing in **Bestia** is primarily **player-driven**. Players post rewards for tasks they need done — gathering
 resources, transporting goods from A to B, hunting a troublesome Bestia — and other players pick those tasks up.
 Alongside those, NPCs hand out work of their own, and very rarely the world itself intervenes when the simulation
-produces a genuine emergency such as a [mana rift](/docs/mechanics/world/environment/#mana-concentration) tearing open next to
+produces a genuine emergency such as a [mana rift](/docs/mechanics/world/world-events/#rifts) tearing open next to
 a settlement.
 
 Whether a quest is written by a player, offered by an NPC or born from the world, it is always the same underlying
@@ -311,71 +311,22 @@ deeds for the gods, and once-per-world quests such as returning a unique artifac
 
 # World Events
 
-Occasionally the world itself generates a quest. These are **rare and emergent** — never on a fixed timer. A lightweight
-regional **Director** watches aggregate simulation state ([mana density](/docs/mechanics/world/environment/#mana-concentration),
-threat level, unattended rift activity), and when a threshold is crossed it instantiates a **public contract** open to
-everyone and scored by contribution.
+Occasionally the world itself produces a quest. These are **rare and emergent**, never on a fixed timer. A regional
+**Director** watches the world, above all the [mana density](/docs/mechanics/world/environment/#mana-concentration),
+and when an event such as a [rift](/docs/mechanics/world/world-events/#rifts) becomes real, it posts a **public
+contract** on the blackboards nearby. Everyone may help, and nobody has to sign first.
 
-{{< tabs tabTotal="2" >}}
-{{< tab tabName="Close the Rift!" >}}
-Mana in a region has built up past a safe limit and a rift tears open, pouring hostile Bestias toward a nearby
-settlement. The whole area is called to close the rift — players are rewarded by their contribution (damage dealt,
-seals placed, time held), paid from a settlement, faction or world treasury rather than any single issuer.
-{{< /tab >}}
-{{< tab tabName="Defend the City!" >}}
-Sustained rift activity leaves the surroundings of a large city crawling with high-level Bestias. Players who help thin
-them out rise in the city's favor and gain access to better trade, experience and gold.
-{{< /tab >}}
-{{< /tabs >}}
+- **Rewards are loot and honor, never coin.** No treasury pays for a world event, so a poor and empty region can
+  still have one, and an event is a reason to go there.
+- **Contribution is scored on three lines:** fighting, work (rituals, crystal nodes, wards) and holding the area. A
+  Scholar, a ritualist and a fighter are each paid for what they did, and nobody has to out-damage anyone.
+- **Events cannot be farmed** because they are rare: each province can afford one only now and then and rests after
+  it. There is no shrinking payout.
+- **The Orders contest them:** Eternity seals, Chaos feeds, the Circle holds the rift in stasis, and the outcome moves
+  their [influence](/docs/mechanics/society/factions/#sphere-of-influence).
 
-## Contribution Scoring
-
-A world event is scored along **several independent axes**, not one summed number, and each axis pays from its own share
-of the pot:
-
-- **Damage dealt** to the event's Bestia and bosses
-- **Objective work** — seals placed, wards raised, rituals performed, cargo brought to the front
-- **Time held** — presence and survival inside the contested area while it mattered
-
-Scoring each axis separately is what keeps a world event from being a high-level damage party. A Scholar who located
-the rift with [Observation](/docs/mechanics/master/scholar-tree/#skill-observation), an Eternity player placing seals and a fighter
-tanking the wave bosses all earn from the axis they actually contributed to, and none of them has to out-damage anyone
-to be paid.
-
-## Funding and Repeat Events
-
-World-event rewards come from a **treasury pool** — a settlement's, a faction's or the world's — never from a single
-issuer. That pool is real gold that NPCs earned, tracked by the [World Treasury Director](/docs/server/economy/), so a
-world event **recirculates** money rather than minting it.
-
-Which also means a treasury can be farmed, if opening rifts and then being paid to close them is profitable enough to
-industrialise. So payouts in a region **decay with repetition**:
-
-```text
-payout_share = 1 / (1 + events_in_region_within_last_7_bestia_days)
-```
-
-A first rift in a quiet region pays in full. The fourth rift in the same valley inside a week pays a quarter. The
-intended rhythm — mana builds slowly, the response is a genuine event — survives contact with organised players, and a
-region that has just been through a crisis needs time before another one is worth the same effort.
-
-## Faction-Contested by Design
-
-World events are **not purely cooperative** — they hook directly into the [factions](/docs/mechanics/society/factions/) and their
-[spheres of influence](/docs/mechanics/society/factions/#sphere-of-influence):
-
-- **The Order of Chaos** _wants_ rifts open and may have caused the mana build-up in the first place; they can defend or
-  even widen a rift.
-- **The Order of Eternity** profits from sealing it.
-- **The Order of the Circle** seeks to stabilize the region without suppressing the mana flow entirely, holding the rift
-  in a controlled stasis instead of closing or feeding it.
-
-So the same rift is a defend-quest for one Order and a sabotage opportunity for another, and how it ends shifts the
-region's influence scores. This turns world events into emergent PvPvE flashpoints instead of scripted set-pieces.
-
-Crucially, the **frequency of these events is itself player-driven**: because Chaos players opening rifts is what raises
-the regional mana that trips the Director's threshold, world events stay rare _by design_ — gated behind accumulated
-player behaviour rather than a hardcoded cooldown.
+What world events there are, how a rift runs and how players learn of them is on
+[World Events](/docs/mechanics/world/world-events/).
 
 # How Completion Is Verified
 
@@ -389,8 +340,8 @@ Player commissions, NPC commissions and world events all run on the same machine
 3. A **shared** objective, such as an open Gather, keeps one counter on the quest, and the log of each signer shows what
    they delivered themselves. A **personal** objective keeps a counter per master. Pro-rata pay is bookkeeping over
    those counters, not a separate system.
-4. World events will reuse the same records; only the **funding source** (a treasury pool) and the **many-contributor
-   scoring** differ from a commission.
+4. World events will reuse the same records. They differ from a commission in two ways: anyone may contribute without
+   signing, and they pay loot and honor instead of coin.
 
 How the server stores and tracks quests, and how it tells the clients, is on the [Questing](/docs/server/quests/)
 server page.
