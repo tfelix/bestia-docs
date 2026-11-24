@@ -19,8 +19,8 @@ if necessary an item.
 {{< /tab >}}
 {{< tab "Defend the city!" >}}
 Due to high rift activity and mana flooding, many high-level Bestias make the surroundings of a large city unsafe.
-Players are encouraged to fight the Bestias, rise in the city's favor, and gain access to better items, experience
-and gold.
+Players are encouraged to fight the Bestias, rise in the city's favor and honor, and earn the loot the event drops.
+World events pay no coin, see [World Events](/docs/mechanics/world/world-events/#rewards).
 {{< /tab >}}
 {{< tab "Help me!" >}}
 A NPC has gotten lost in a dangerous area and is now hiding. If a player finds the NPC he can help him to find his
@@ -34,7 +34,7 @@ Quests in Bestia are generated via two mechanics:
 2. **Player generated quests**: these challenges are handed to an NPC who then announces them so that other players can
    pick them up. Players must follow a template for the rewards.
 
-Both end up as the same kind of **contract**, and the rare world events driven by the simulation use that machinery too.
+Both end up as the same kind of **contract**, and the rare world events driven by the simulation use that machinery too, see [World Events](/docs/server/world-events/).
 The player-facing rules for all three live on the [Questing](/docs/mechanics/world/questing/) page.
 
 # The Quest Core
