@@ -50,7 +50,7 @@ A [Guild Stronghold](/docs/mechanics/society/guild-strongholds/#orders-and-cults
 
 # Sphere of Influence
 
-The world is divided into regions, and each region tracks a separate **influence** score for every Order. A region's dominant Order is the one with the highest score there, and the combined influence an Order holds across all regions is its **sphere of influence**.
+The world is divided into **provinces**: the land around each town or city, and stretches of wild land between them, named after their town or a landmark. Province borders are fixed when the world is made and everyone can see them on the map. In this section a region means a province. Each province tracks a separate **influence** score for every Order. A region's dominant Order is the one with the highest score there, and the combined influence an Order holds across all regions is its **sphere of influence**.
 
 Members raise their Order's influence in a region by acting in line with its conviction:
 

@@ -12,6 +12,7 @@ graph TD
     Sense["Sense (1)"]
     Ruwach["Ruwach (1)"]
     Observation["Observation (1-5)"]
+    Augury["Augury (1-3)"]
     Gate["5+ pts in Scholar Tree"]
     Priest["Priest"]
     Trader["Trader"]
@@ -20,10 +21,12 @@ graph TD
     MagicSense -->|Lv.1| Sense
     MagicSense -->|Lv.2| Ruwach
     MagicSense -->|Lv.3| Observation
+    Observation -->|Lv.2| Augury
     MagicSense -.-> Gate
     Sense -.-> Gate
     Ruwach -.-> Gate
     Observation -.-> Gate
+    Augury -.-> Gate
     Gate -.->|unlocks| Priest
     Gate -.->|unlocks| Trader
     Gate -.->|unlocks| Sage
@@ -79,22 +82,57 @@ it. It finds creatures only: a [Spell Binding](#skill-spell-binding) stays hidde
     type="Active" manaCost="20" castTime="5s" cooldown="60s" range="0" target="Observation Outpost"
     description="The Scholar's ear to the ground - a sense for the direction and distance of world-changing events long before word of them travels." >}}
 
-Detects nearby world events like mana rifts which open, spawned bosses or other world changing events. It reads
-**events**, not things: a [Resource Sense](/docs/mechanics/master/survival-tree/#skill-resource-sense) finds the ore vein, a [Scry](#skill-scry) looks at a
-place you are not standing in, and a [Magic Sense](#skill-magic-sense) picks apart a single spell. Observation is the
-only one that notices something is about to happen.
+{{< alert context="warning" text="**Designed, not built.** The skill can be learned, but it has no effect yet, and outposts cannot be built yet." />}}
 
-It only works at an Observation Outpost, and the distance counts from the outpost. An outpost is built in the wild from
-an outpost kit, which is made with [Carpentry](/docs/mechanics/master/craftsman-tree/#skill-carpentry). Level 1 is needed to build it. A Bestia can keep watch
-there while you are away.
+Senses what is about to happen in the land around an outpost: a rift knot gathering, an alpha growing, an old seal
+cracking, raiders massing. It reads **events**, not things: a [Resource Sense](/docs/mechanics/master/survival-tree/#skill-resource-sense) finds the ore vein, a [Scry](#skill-scry) looks at a
+place you are not standing in, and [Weather Sense](/docs/mechanics/master/survival-tree/#skill-weather-sense) reads the
+mana where you stand. Observation is the only one that notices something is about to happen. See
+[How Players Learn of Events](/docs/mechanics/world/world-events/#how-players-learn-of-events).
 
-| Lv. | Detection Distance |
-| --- | ------------------ |
-| 1   | 1km                |
-| 2   | 2km                |
-| 3   | 3km                |
-| 4   | 4km                |
-| 5   | 5km                |
+It only works at an **Observation Outpost**, and the distance counts from the outpost. An outpost is built in the wild
+from an outpost kit, which is made with [Carpentry](/docs/mechanics/master/craftsman-tree/#skill-carpentry). Level 1 is
+needed to build it.
+
+Each cast lists every brewing event in range. What it tells about each one grows with the level:
+
+| Lv. | Base Range | What it shows                                                          |
+| --- | ---------- | ---------------------------------------------------------------------- |
+| 1   | 1km        | The direction: "something stirs to the north-east"                     |
+| 2   | 2km        | Also how far: near or far                                              |
+| 3   | 3km        | The distance within 500 m, and the kind: mana, beasts, earth, sky or people |
+| 4   | 4km        | Also how far along it is: stirring, gathering or about to break        |
+| 5   | 5km        | What exactly it is, like "a rift", and roughly when: "within a day"    |
+
+**Big events are felt from further away.** The base range counts for small events. A rift knot is sensed at three
+times the base range, a [doomsday](/docs/mechanics/world/doomsday/) stage or a growing Wound at ten times.
+
+What Observation finds goes on the Scholar's own map as a mark and travels with copies of that map.
+
+**A Bestia can keep watch** at the outpost while you are away. When a new event begins to stir in range, it sends word
+to its master, also through the [companion app](/docs/mechanics/companion-app/). This makes outposts worth building in a
+ring around a Wound, and worth burning down for those who want the events to come.
+
+{{< /skill >}}
+
+{{< skill name="Augury" maxLevel="3" requires="Observation Lv. 2"
+    type="Active" manaCost="10" castTime="2s" cooldown="30s" range="Self" target="Self"
+    description="A quick reading of the omens around you, cast anywhere: is this land calm, uneasy or ominous?" >}}
+
+{{< alert context="warning" text="**Designed, not built.**" />}}
+
+Reads how restless the land is where the Scholar stands, without an outpost. It never gives a direction or a distance,
+so it answers "is it safe to camp here tonight?", while [Observation](#skill-observation) watches a whole frontier.
+
+| Lv. | What it reads                                                                       |
+| --- | ----------------------------------------------------------------------------------- |
+| 1   | The region you stand in: calm, uneasy or ominous                                    |
+| 2   | Also whether any neighbouring region is worse than this one                         |
+| 3   | Every neighbouring region by name, each with its own reading                        |
+
+The reading follows the steps described under
+[Mana You Can Feel](/docs/mechanics/world/world-events/#mana-you-can-feel), and a brewing event in the region makes
+it read worse than the mana alone would.
 
 {{< /skill >}}
 

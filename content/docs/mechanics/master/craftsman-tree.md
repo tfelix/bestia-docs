@@ -287,7 +287,7 @@ graph TD
 <br>
 {{< skill name="Mana Harvester" maxLevel="10"
     type="Active" manaCost="19" castTime="10s" cooldown="30s" range="2" target="Ground"
-    description="Build and operate Mana Harvesters which channel mana from the environment into raw crystals - the source of magic for many use cases. Yield follows the local [mana concentration](/docs/mechanics/world/environment/#mana-concentration), so where a harvester stands matters as much as its rank." >}}
+    description="Build and operate Mana Harvesters which channel mana from the environment into raw crystals - the source of magic for many use cases. Yield follows the local [mana density](/docs/mechanics/world/environment/#mana-concentration), and harvesting lowers it, so where a harvester stands matters as much as its rank." >}}
 
 Level 1 enables you to place a Mana Harvester.
 

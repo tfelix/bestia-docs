@@ -22,13 +22,13 @@ enchantment, a hiding aura, a trap. When the caster later changes gear, the spel
 P = Rank + Level + Mind + Focus + Place
 ```
 
-| Part  | What it is                                                                                                                           | Range       |
-| ----- | ------------------------------------------------------------------------------------------------------------------------------------ | ----------- |
-| Rank  | `30 × rank / max rank` of the skill, rounded down. Dispel Lv. 3 of 5 gives `18`. A Bestia attack of level 7 gives `21`.              | `0 .. 30`   |
-| Level | `level / 4` of the caster, master or Bestia.                                                                                         | `0 .. 30`   |
-| Mind  | `30 × M / (M + 100)` with `M = INT + WIL / 2`. The same flattening curve as [Resist](/docs/mechanics/combat/status-effects/#resist). | `0 .. 30`   |
-| Focus | Equipment and buffs that add Potency, like a Sage's staff.                                                                           | `0 .. 10`   |
-| Place | Local [mana concentration](/docs/mechanics/world/environment/#mana-concentration): drained `-10`, ordinary `0`, thick `+10`.         | `-10 .. 10` |
+| Part  | What it is                                                                                                                                                                    | Range       |
+| ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| Rank  | `30 × rank / max rank` of the skill, rounded down. Dispel Lv. 3 of 5 gives `18`. A Bestia attack of level 7 gives `21`.                                                       | `0 .. 30`   |
+| Level | `level / 4` of the caster, master or Bestia.                                                                                                                                  | `0 .. 30`   |
+| Mind  | `30 × M / (M + 100)` with `M = INT + WIL / 2`. The same flattening curve as [Resist](/docs/mechanics/combat/status-effects/#resist).                                          | `0 .. 30`   |
+| Focus | Equipment and buffs that add Potency, like a Sage's staff.                                                                                                                    | `0 .. 10`   |
+| Place | Local [mana density](/docs/mechanics/world/environment/#mana-concentration): drained (below 0.08) down to `-10`, ordinary (0.08 to 0.45) `0`, thick (above 0.45) up to `+10`. | `-10 .. 10` |
 
 The rank says how well the skill is known. Level and Mind say who knows it. Masters and Bestias use the same formula.
 

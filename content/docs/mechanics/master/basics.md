@@ -178,7 +178,7 @@ For a skill that rolls a success chance, the charge adds:
 Circle Bonus = 5 × Participants × ManaFactor   [Participants ≤ 6, leader included]
 ```
 
-`ManaFactor` comes from the local [mana concentration](/docs/mechanics/world/environment/#mana-concentration): `0.5` in a
+`ManaFactor` comes from the local [mana density](/docs/mechanics/world/environment/#mana-concentration): `0.5` in a
 drained region, `1.0` in an ordinary one, `1.5` where mana runs thick. A full circle of six in a mana-rich place is
 therefore worth `+45%` on the roll - as much as most governing skills grant at max rank - while the same six people
 standing on drained ground get `+15%` and would have been better off scouting a different site first.
