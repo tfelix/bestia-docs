@@ -247,8 +247,8 @@ A later version replaces the stance with full [Bestia Orders](/docs/mechanics/be
 guard, gather, craft or mine, the places it needs, how careful the Bestia is and how it looks after itself. The app is
 where you set them while you are away, and its Workshop lets a Bestia craft from a station's queue.
 
-It is not free of risk either. A Bestia on the road can be killed, and whatever it was carrying is lost with
-it. Mail is the exception: the post's [seal](/docs/mechanics/towns-trade/postal/#the-seal) sends a sack on, unless somebody
+It is not free of risk either. A Bestia on the road can be killed, and its bag drops where it fell, as after
+[any defeat](/docs/mechanics/bestias/bestia/#the-bestias-bag). Mail is the exception: the post's [seal](/docs/mechanics/towns-trade/postal/#the-seal) sends a sack on, unless somebody
 breaks it in time.
 
 # The Broker's Wire

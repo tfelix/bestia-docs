@@ -248,6 +248,9 @@ down as well, but burnt time is gone: no repair gives it back.
 | 4   | 80             |
 | 5   | 100+           |
 
+At Lv. 2 the blacksmith can also make [repair kits](/docs/mechanics/items-crafting/items/#repair-kits) at the forge.
+A kit repairs one item anywhere, at any item level.
+
 {{< /skill >}}
 
 {{< skill name="Master Smith" maxLevel="5" requires="Forge Weapon Lv. 8 and Forge Armor Lv. 8"

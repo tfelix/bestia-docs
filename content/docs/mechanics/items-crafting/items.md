@@ -337,6 +337,7 @@ parcel. Give an enchanted sword to a friend, and the enchantment goes with it.
 | Endow Fire, Ice, Wind, Earth                                | The Sage's [Endow](/docs/mechanics/master/basics/#skill-endow-fire) skills | The weapon strikes with the element while somebody wields it                 | 60 to 180 s     | Only on the ground                 |
 | [Postal Seal](/docs/mechanics/towns-trade/postal/#the-seal) | The post office                                                            | The parcel cannot be opened. When it falls to the ground, it sends itself on | Until delivered | Only on the ground, strength `350` |
 | [Spell Binding](/docs/mechanics/master/scholar-tree/#skill-spell-binding) | The Sage's Spell Binding skill                          | Casts a bound attack once when its trigger happens, then it is spent         | Until it fires  | Only on the ground                 |
+| [Keepsake Ward](/docs/mechanics/bestias/bestia/#the-bestias-bag) | A fallen Bestia's ward | Only the Master may take the bag. After the time, it sends itself to the Master by post | 60 s | Only on the ground, strength `400`, threshold `60` |
 
 **Endow binds to the weapon.** A master's endow sits on the weapon in their hand, not on the master. Putting the
 weapon away keeps the element on the weapon, and drawing another weapon does not carry it over. A creature that
@@ -380,6 +381,22 @@ stats, its upgrade level, its sockets and the [essences](/docs/mechanics/items-c
 [Equipment Repair](/docs/mechanics/master/craftsman-tree/#skill-equipment-repair) makes it whole again. Only a failed
 [refine](#weapon-refinement) or a failed [socket cut](#item-customization) destroys an item for good, and its essences
 with it.
+
+Gear wears in a fight, in work, and when its wearer [is defeated](/docs/mechanics/bestias/bestia/#death-penalty): each
+defeat takes `10%` of the maximum off every worn piece.
+
+## Repair Kits
+
+A repair kit fixes gear where no forge is near. There are two: the **Weapon Repair Kit** for weapons and the
+**Armor Repair Kit** for armor.
+
+- **Use it on one item** in the bag or worn. The item is whole again at once. A kit never fails.
+- **A blacksmith makes it** at a forge with [Equipment Repair](/docs/mechanics/master/craftsman-tree/#skill-equipment-repair)
+  Lv. 2. Every general store sells it too.
+- **It costs more than the forge.** A forge repair costs about `70` gold in iron and coal. A kit costs about `180`.
+  The kit pays for itself only when the next forge is far away.
+- **It works on any item level.** The forge repair is limited by the rank of Equipment Repair. The kit is not.
+- **Burnt time still cannot be repaired.** A kit refuses a partly burnt torch.
 
 ## Stackable Gear
 
@@ -449,8 +466,8 @@ The inventory is an important system for interaction between the player and the 
 and logically built. Each Bestia has its own inventory. So the player must be careful to exchange items between the
 Bestias in time. Trading must be fast to do to reduce the annoyance.
 
-If a Bestia/Entity is killed and has had some items inside its inventory usually the items are dropped and can be looted.
-If a player killed a mob, the loot will be protected for 30 seconds so they can exclusively loot it.
+A killed mob drops its loot, and a killed Bestia of a player drops its bag. The killer may take either alone for the
+first `6 s`. A Master keeps its bag. See the [Death Penalty](/docs/mechanics/bestias/bestia/#death-penalty).
 
 ## Exchanging Items with Your Own Bestias
 

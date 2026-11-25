@@ -241,7 +241,7 @@ and stamina are the limits.
 They work until something stops them: a full chest, no food, an empty queue, or a fight they lose.
 
 **A Bestia that falls while you are away stays down until you log in.** Its bag drops as loot where it fell, unless
-something protects it, for example a seal spell. A guard that falls leaves its area unguarded.
+a [Keepsake Ward](/docs/mechanics/bestias/bestia/#the-bestias-bag) sends it home. A guard that falls leaves its area unguarded.
 
 # In the Game
 
