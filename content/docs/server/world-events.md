@@ -133,8 +133,9 @@ announced twice.
 
 A province groups the place regions (`PlaceRegions`, about 6 km, named) around a capital.
 
-- **Seeds:** every `SettlementSite` of tier TOWN or CITY. Where no town is within about 30 km, a wild seed, placed on
-  a landmark first: a Wound, a world-boss lair, deep corruption.
+- **Seeds:** every standing town and city, and every home settlement a new master may pick, even a village, so each
+  start town has a province of its own. Where no seed is within 30 km, a wild seed: a Wound or a lair first, then the
+  land farthest from any seed.
 - **Growth:** each place region joins the seed that is cheapest to reach over the region graph, with the same travel
   cost the place regions use. `PlaceRegions.neighboursOf` becomes public for this.
 - **Water** joins the land province it touches. Deep ocean belongs to none.
@@ -151,75 +152,76 @@ dropped at boot.
 
 # World Event Director
 
-`WorldEventDirector` runs like `QuestDirector`: `@Scheduled` every 5 minutes, `@Transactional`, off the tick. It never
-touches the ECS world directly. Anything that has to happen in the world goes through `WorldView.post`.
+`WorldEventDirector` runs like `QuestDirector`: `@Scheduled` every 5 minutes, `@Transactional`, off the tick. World
+actions go through `WorldView`.
 
-**1. Signals.** A `ProvinceSignals` snapshot per province:
+**1. Signals.** A `ProvinceSignals` snapshot per province: the peak mana cell and its density, the changed cells per
+tier, and the masters standing there. Still planned, for the events that need them: the 3-day trend, kill pressure,
+neglected dens, settlement damage, weather, moon and season.
 
-- density mean, peak and 3-day trend, cells per tier
-- players present (rolling over 3 Bestia days), kill pressure, hunted-out and neglected dens
-- settlement fates and damage
-- weather, moon, season, time of day
-- the province's recent events and its tension phase
-
-**2. Catalogue.** `world_events.yml`, checked by a boot validator. Each entry has:
-
-- preconditions over the signals, for example `density.peak >= 0.70 for 1 day` or
-  `moon == FULL and weather == MANA_STORM and night`
-- scale (place region, province, world), weight, budget cost, cooldown
-- the omen phase, a script for the behaviour, the contribution axes and the outcomes
+**2. Catalogue.** `world_events.yml`. Each entry names the `WorldEvent` bean that runs it (the boot fails on a gap),
+its cost, weight, minimum tier and how many cells must be at it, a cooldown and a duration in Bestia days, and the
+loot its contributors split.
 
 **3. Choice.**
 
-- **Budget:** each province gains 1 point per Bestia day, up to 5. A small event costs 1, a rift 3, a big event 5.
-- **Tension:** build-up → peak → relax. After an event the province rests for 3 Bestia days and only small events
-  can start there. This is the anti-farm rule.
-- A weighted random pick among the entries whose preconditions hold, from a seeded RNG so tests can repeat it.
-- A **world layer** on top caps concurrent big events, paces the doomsday and sends the rare world-wide text.
+- **Budget:** each province gains 1 point per Bestia day, up to 5. The apex costs 1, a rift 3.
+- **Quiet:** after an event ends the province rests for 3 Bestia days. Together with the budget this is the anti-farm
+  rule.
+- A ready province - no sanctuary, no running event, not resting - starts an event it can afford with a chance of a
+  quarter per run, weighted among those that fit. The roll is seeded by world, province and time window.
+- Planned: a world layer that caps concurrent big events, paces the doomsday and sends the rare world-wide text.
 
-**4. Instances.** A `WorldEventInstance` row is a state machine `OMEN → ACTIVE → RESOLVED`, like `StoredQuestPlan`.
-It owns its entities and writes the outcome back: mana, influence, damage, honor, loot, a
-[chronicle](/docs/server/history-to-quests/) fact, rumours. An `EventProvince` row holds the budget, the tension phase
-and the last events.
+**4. Instances.** A `WorldEventInstance` row holds the event, the province, where it started and its subject: an
+entity id (the apex) or a row id (a rift). It ends as `DEFEATED` when players ended it, `EXPIRED` when it ran its
+course or out of time, and `CANCELLED` by a GM. `OMEN` is reserved for events with a warning phase. An
+`EventProvince` row holds the budget and the quiet, with the partition version.
+
+**The apex roamer** is the strongest non-boss species of the province's own dens, born 5 levels above its highest roll
+and mana-touched. It spawns on the province's land farthest from the peak and has its home on the peak, so it roams
+toward the thickest mana. Killing it ends the event; otherwise it leaves after 2 Bestia days.
 
 # Rifts
 
-A `Rift` row holds position, phase, stage, reservoir, Potency and timestamps, so a rift survives a restart. A
-`RiftSystem` on the tick runs it:
+A `rift` row holds position, phase, stage, reservoir, the anchor and timestamps, so a rift survives a restart.
+`RiftSystem` moves every rift once a minute under the field's lock; `RiftLifecycle` and `RiftField` are the pure
+mechanics, so `RiftLifecycleTest` runs a whole rift on a test field.
 
-- **Knot** (2.5 to 4.5 Bestia days): pulls slowly from 300 m into the reservoir. Dissolves if the density around it
-  falls below 0.6. Its intake becomes the reservoir at stage 1.
-- **Open** (stages 1 to 5): the pull radius grows to 1.5 km. Waves every 20 to 30 minutes, level = den level + 5 ×
-  stage, scaled by players present. They are spawned with `homePosition` = the nearest settlement, which makes the
-  existing return-home goal walk them there. Long marches need `TravelTo` waypoints.
-- **Anchor** at stage 3: a species with the new `rift-only` mob flag, which works like `corrupted-only`. Its kill is
-  recorded like `WorldBossSlainSystem` does.
-- **Seal window** (30 minutes): a ritual of kind `SEAL` at the gate. `RitualService.complete` gets ritual kinds and a
-  result hook for this, and for `FEED` (Chaos) and `STASIS` (Circle).
-- **Collapse:** the reservoir spills into the field within about 300 m, a scar prop is placed, a new knot may form.
-- New `StaticEntityKind`s: `RIFT_GATE`, `RIFT_CRYSTAL_NODE`, `SEAL_STONE`. The gate is an entity drawn as a
-  structure, like an Empyrite. A seal stone holds motes and releases them when it breaks.
+- **Knot** (2.5 to 4.5 Bestia days): pulls slowly within 300 m into the reservoir and leaves an eerie calm. If the ring
+  around it falls below 0.6 it dissolves and lets its mana go: the players' win.
+- **Open** (stages 1 to 5 over a real day): the pull radius grows to 1.5 km and a `RIFT_GATE` entity stands at the
+  centre. Every 20 to 30 real minutes a wave of the province's own den species, 5 levels per stage above their kin
+  and mana-touched, walks toward the nearest town: five while masters stand within 1.5 km, two otherwise.
+- **Anchor** at stage 3: the Rift Warden, an `event-only` boss ten levels above the province's strongest den. The rift
+  remembers its fall for the seal.
+- **Collapse:** the reservoir spills within 300 m, heaviest at the centre, which leaves storms or worse.
+- **Merge:** touching rifts merge into the older one.
+- Towns hear `RIFT_OPENED` and `RIFT_COLLAPSED`.
 
-**Town damage** from waves that reach a town goes through what `SettlementDamage` already derives from: scorch and
-destroyed building props.
+Still planned: the seal window and the seal stone, feeding and stasis (step 11); crystal nodes (step 11, as part of the
+work axis); a scar where a rift collapsed; town damage from waves; chronicle facts for rifts.
 
 ## Contribution
 
-Contributors do not sign. An `EventContribution` ledger counts per event, master and axis:
+Contributors do not sign. A `ContributionLedger` counts per event, master and axis, keyed by the tag every event
+creature carries (`EventCreature`, which `KillFact` passes on). The director saves it every run.
 
-- **Fighting:** damage to event bestia. `KillFact` gets the event id of the mob.
-- **Work:** ritual channel time, crystal nodes harvested or shattered, wards raised.
-- **Holding:** time in the pull radius while a stage is active.
+- **Fighting:** a kill of an event creature credits everyone who earned it, by its level, a boss five times over.
+- **Holding:** each run, every master standing on a running event's ground: 300 m around the apex, or all a rift pulls
+  from. One run is worth a level-10 kill.
+- **Work** (step 11): ritual channel time, crystal nodes harvested or shattered.
 
-Loot rolls and the honor acts `SEAL_RIFT`, `DEFEND_SETTLEMENT` and `REINFORCE_SEAL` are shared out by it. No coin is
-paid. The contract itself is posted as a `WORLD` quest on the blackboards nearby so players can find it.
+When players end an event, its loot is split by share among everyone with at least a twentieth of the work. It lands at
+the feet of each contributor who is online, kept for them alone. They also earn the `DEFEND_SETTLEMENT` honor act,
+globally while online and with the town nearest the event either way. An event that ran out pays nothing. No coin is
+paid. Still planned: posting the event on the blackboards nearby.
 
 # GM Tools
 
 A new authority `WORLD_EVENTS`, granted to GMs.
 
 - `/mana get`, `/mana set <density> [radius]`, `/mana add <motes> [radius]`
-- `/event list`, `/event force <id> <place>`, `/event cancel <id>`
+- `/event` (running events and the budget where you stand), `/event force <id>` in your province, `/event cancel <id>`
 - `/mana layer on|off`: a GM-only map layer with the tiers, the densities and the director state per province. It is
   sent as its own message only to a connection whose authorities hold `WORLD_EVENTS`. It never goes over the bus or to
   the companion app.
