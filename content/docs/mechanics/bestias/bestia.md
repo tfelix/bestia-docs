@@ -67,6 +67,28 @@ Because the Lv. 101+ penalty is steep, the level at which catching becomes hopel
 
 Bestia above Lv. 100 are meant to be rare and Bestia above Lv. 120 close to legendary — but they always stay reachable for a master who has actually specialised in catching them.
 
+## Catching a Boss
+
+A boss or world boss holds the rarest essence in the game, so it is much harder to catch. Its chance is the chance
+above, multiplied by `0.03`:
+
+<!-- prettier-ignore -->
+{{< katex display >}}
+P_{boss} = 0.03 \cdot P_{catch}
+{{< /katex >}}
+
+So even the best setup ends at `0.03 × 95% ≈ 2.9%`. A Lv. 110 boss at 1% HP in a {{< item "master_trap" >}} with no
+other bonus gives `0.03 × 60% = 1.8%`. Every bonus still counts, because the factor scales the whole sum.
+
+A caught world boss is gone from its lair for the rest of the world, as if it was slain, see
+[World Bosses](/docs/mechanics/world/world-history/#world-bosses).
+
+## Breaking Free
+
+A Bestia that breaks out of a trap is **Wary** for 30 seconds. While it is wary, it steps over every trap, so no
+trap springs on it. The next try comes after the 30 seconds. Three traps in a row therefore do not give three rolls
+at once.
+
 # Attacks
 
 In Bestia, there are two main types of magical actions:
