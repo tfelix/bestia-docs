@@ -123,7 +123,7 @@ def skill_rows():
         if "skillId" not in attack:
             print(f"  {attack['id']}: no skillId yet, not exported")
             continue
-        row =utility_row(attack) if attack["archetype"] == "utility" else attack_row(attack, archetypes)
+        row = utility_row(attack) if attack["archetype"] == "utility" else attack_row(attack, archetypes)
         row["description"] = plain_text(attack["description"])
         rows.append(row)
     return sorted(rows, key=lambda r: r["id"])
