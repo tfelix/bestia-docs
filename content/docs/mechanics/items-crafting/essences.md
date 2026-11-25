@@ -255,9 +255,10 @@ by species or by effect, and by gem.
 A boss gives a hand-made essence, like the MVP cards of Ragnarok Online. Each one does something no normal essence can
 do: turn magic away, strike every foe around the target, save a Bestia from death.
 
-A boss is [caught](/docs/mechanics/bestias/bestia/#catching-bestias) like any Bestia, world bosses included. At its level
-that takes the best trap, a master who has trained for it, and a group that brings the boss down to its last HP
-without killing it.
+A boss is [caught](/docs/mechanics/bestias/bestia/#catching-a-boss) with a trap like any Bestia, world bosses
+included, but its chance is only 3% of the normal one: about 3% with the best trap, a master who has trained for
+it, and a group that brings the boss down to its last HP without killing it. After every failed try the boss is wary
+of traps for 30 seconds.
 
 Boss essences follow their own rules:
 

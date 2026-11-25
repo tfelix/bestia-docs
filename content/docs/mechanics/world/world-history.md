@@ -195,7 +195,11 @@ While it raged, a world boss fell on the towns around it, and each one remembers
 in every world.
 
 **In its lair** a living boss waits alone. It wakes when a player comes near, like any den. When **players** kill
-it, it stays dead for the rest of the world. If it dies any other way, it comes back.
+or [catch](/docs/mechanics/bestias/bestia/#catching-a-boss) it, it is gone for the rest of the world. If it dies any
+other way, it comes back after one to two hours.
+
+The Leviathan's lair lies far out at sea, but nobody can swim there. So the Leviathan has come ashore: it lives on
+the beach nearest to its lair, a gentle shore before a cliff or a marsh.
 
 **A seal** is a ring of masonry with a plinth in its middle, and the crystal stands on the plinth. The crystal is
 hard to break. When it breaks, the boss rises where the crystal stood. This happens only once per world: the crystal
