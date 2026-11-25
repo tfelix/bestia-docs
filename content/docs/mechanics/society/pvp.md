@@ -110,6 +110,8 @@ A positive honor level leads to very friendly NPCs, which might even give the pl
 - Defend an NPC or a low-level player from an [Aggressor](#self-defense).
 - Complete an NPC's quest, or fulfil a player [commission](/docs/mechanics/world/questing/) held by that NPC as broker.
 - Return a stolen item to its rightful owner (see the **Thief** mechanic below).
+- Help end a [world event](/docs/mechanics/world/world-events/) that threatens a town, such as an apex bestia or a rift.
+  You earn honor in the world and with the town nearest the event, without having to accept anything.
 - Trade fairly and repeatedly with the same NPC over time.
 
 Killing a player with negative honor pays at most what the victim's honor is below 0, and only once per victim per real-time day. A Master cannot farm honor from a second character of their own.
