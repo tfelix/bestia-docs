@@ -264,7 +264,8 @@ Boss essences follow their own rules:
   game refuses to place it in a weaker item, so a boss essence never sits in an item where it would be wasted.
 - **Each boss essence counts once.** Two Royal Jelly essences give `+25%` max HP, not `+50%`.
 - **An autocast uses a real attack.** Sulphur Breath, Howl of Garm and Fresh Vent cast Miasma, Frost Nova and Burning
-  Ground, attacks Bestias already learn. They are cast at the level the boss would cast them.
+  Ground, attacks Bestias already learn. They are cast for free at skill level 1, like a
+  [Reflex](#effects).
 
 {{< essencelist bosses >}}
 
