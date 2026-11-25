@@ -605,6 +605,8 @@
     chance: 10
   - item: coal
     chance: 10
+  - item: warm_stone
+    chance: 15
   learnset:
     replace:
     - slot: 4
@@ -1314,6 +1316,8 @@
     chance: 25
   - item: ember_core
     chance: 3
+  - item: warm_stone
+    chance: 20
   learnset:
     replace:
     - slot: 4

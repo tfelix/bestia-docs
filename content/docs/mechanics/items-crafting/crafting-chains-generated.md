@@ -376,8 +376,8 @@ graph LR
     plank -->|6| incubator_kit
     brick["Brick (Lv. 5)"]
     brick -->|4| incubator_kit
-    ember_core[/"Ember Core (Lv. 45)"/]
-    ember_core -->|2| incubator_kit
+    warm_stone[/"Warm Stone (Lv. 18)"/]
+    warm_stone -->|4| incubator_kit
     engraving_set["Engraving Set (Lv. 10)"]
     iron_ingot -->|1| engraving_set
     clay[/"Clay (Lv. 1)"/]
@@ -509,7 +509,7 @@ graph LR
 | `HUNTING_CROSSBOW` | 4 x Yew Billet (Lv. 20), 2 x Nails (Lv. 5), 1 x Rope (Lv. 3), 1 x Thornvine (Lv. 20), 1 x Cloth (Lv. 5) | 1 x Hunting Crossbow (Lv. 16) | forge weapon 2 | 81% | 307.2 | discover |
 | `HURDY_GURDY_OF_HOURS` | 4 x Heartwood (Lv. 80), 1 x Rope (Lv. 3), 1 x Plank (Lv. 5), 2 x Clockwork Core (Lv. 75) | 1 x Hurdy-Gurdy of Hours (Lv. 71) | forge weapon 8 | -3% | 6220.8 | discover |
 | `HYMNAL` | 5 x Parchment (Lv. 5), 1 x Mana Ink (Lv. 35), 2 x Silver Ingot (Lv. 38) | 1 x Hymnal (Lv. 20) | forge weapon 2 | 75% | 480.0 | discover |
-| `INCUBATOR_KIT` | 6 x Plank (Lv. 5), 4 x Brick (Lv. 5), 2 x Ember Core (Lv. 45) | 1 x Incubator Kit (Lv. 30) | carpentry 3 | 100% | 15.0 | yes |
+| `INCUBATOR_KIT` | 6 x Plank (Lv. 5), 4 x Brick (Lv. 5), 4 x Warm Stone (Lv. 18) | 1 x Incubator Kit (Lv. 30) | carpentry 3 | 100% | 15.0 | yes |
 | `INK` | 1 x Coal (Lv. 5), 1 x Empty Bottle (Lv. 1) | 1 x Ink (Lv. 1) | basic skill 1 | 100% | 5.0 | yes |
 | `IRONWOOD_BO` | 4 x Ironwood (Lv. 45), 2 x Stick (Lv. 1), 2 x Medicinal Herb (Lv. 20) | 1 x Ironwood Bo (Lv. 48) | forge weapon 5 | 30% | 3000.0 | discover |
 | `JADE_EARRING` | 2 x Lodestone (Lv. 45), 1 x Cut Jade (Lv. 33) | 1 x Jade Earring (Lv. 33) | forge armor 4 | 54% | 1387.2 | discover |
@@ -1098,6 +1098,7 @@ and the ore a pick breaks out for the item, so a `no` is a material nobody can o
 | Tin Ore | 5 | no | mining |
 | Venom Sac | 15 | yes | mobs |
 | Void Essence | 30 | yes | mobs |
+| Warm Stone | 18 | yes | mobs |
 | Wild Herb | 1 | no | mobs, props |
 | Wool | 1 | no | mobs |
 | Wyrm Bone | 75 | yes | mobs |

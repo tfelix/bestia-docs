@@ -9911,3 +9911,16 @@
 
     Set it down and it becomes a Mint, where Minting strikes gold bars into coin.
   value: 367
+- id: warm_stone
+  name: Warm Stone
+  game_id: 642
+  type: Etc
+  categories: [material, drop]
+  weight: 1.2
+  item_level: 18
+  material: Stone
+  description: |
+    A dark, dense pebble that drinks in heat and gives it back for hours.
+
+    It is still warm long after the fire around it has gone out.
+  value: 10
