@@ -33,6 +33,9 @@ one entry for each learned skill that has something to make without a station:
 | [Ore Refinement](/docs/mechanics/master/craftsman-tree/#skill-ore-refinement) Lv. 1 | {{< item "furnace_kit" >}} |
 | [Forge Weapon](/docs/mechanics/master/craftsman-tree/#skill-forge-weapon) Lv. 1     | {{< item "forge_kit" >}} |
 | [Arrow Crafting](/docs/mechanics/master/warrior-tree/#skill-arrow-crafting)         | {{< item "arrow" "Arrows" >}} |
+| [Runic Etching](/docs/mechanics/master/craftsman-tree/#skill-runic-etching) Lv. 1   | {{< item "carving_table_kit" >}} |
+| [Gem Cutting](/docs/mechanics/master/survival-tree/#skill-gem-cutting) Lv. 1        | {{< item "gem_cut_station_kit" >}} |
+| [Minting](/docs/mechanics/master/scholar-tree/#skill-minting) Lv. 1                 | {{< item "mint_kit" >}} |
 
 ## Kits Place Stations
 

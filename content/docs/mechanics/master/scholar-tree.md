@@ -506,7 +506,7 @@ graph TD
     type="Active" manaCost="15" castTime="10s" cooldown="0s" range="2" target="Mint"
     description="The final step between a fistful of raw gold and coin that actually spends. Allows the master to mint gold bars into gold coins. See [Currency](/docs/mechanics/towns-trade/economy-trade/#currency) for how the world's money supply is minted from mined gold." >}}
 
-Level 1 allows you to place a Mint. The cast only places the mint or opens its recipes. The minting itself takes the
+Level 1 allows you to place a Mint from a {{< item "mint_kit" >}}. The cast only places the mint or opens its recipes. The minting itself takes the
 [craft duration](/docs/mechanics/items-crafting/crafting/#craft-duration) of the bar.
 
 A mint never creates gold. It recovers a share of the gold in a bar as coin, and the rest goes back to the world

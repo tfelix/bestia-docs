@@ -9885,3 +9885,29 @@
 
     It may stun what it hits.
   value: 20
+- id: carving_table_kit
+  name: Carving Table Kit
+  game_id: 640
+  type: Usable
+  categories: [station]
+  weight: 10.0
+  item_level: 1
+  material: Wood
+  description: |
+    A heavy folding table with vices, fine gravers and a shaded lamp.
+
+    Set it down and it becomes a Carving Table, where Runic Etching binds a Bestia into a cut gem.
+  value: 179
+- id: mint_kit
+  name: Mint Kit
+  game_id: 641
+  type: Usable
+  categories: [station]
+  weight: 15.0
+  item_level: 1
+  material: Stone
+  description: |
+    A stone block, a screw press and a pair of bronze dies, packed in straw.
+
+    Set it down and it becomes a Mint, where Minting strikes gold bars into coin.
+  value: 367
