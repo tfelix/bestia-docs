@@ -2030,6 +2030,20 @@
   description: |
     Moves unseen and slower. Any blow, an area one too, gives it away. Staying hidden costs mana.
 
+- id: keepsake_ward
+  name: Keepsake Ward
+  level: 40
+  mana: 30
+  archetype: utility
+  skill: keepsake_ward
+  skillId: 2162
+  script: ApplyStatus
+  target: FRIENDLY
+  status: KEEPSAKE_WARD
+  cooldown: 60
+  description: |
+    Wards a bestia's bag until it falls. Then the bag drops as one bundle that only its master may take, and after a minute it goes home by post. A strong Dispel can break the ward first.
+
 - id: suppress_aura
   name: Suppress Aura
   level: 45

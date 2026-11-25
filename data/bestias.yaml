@@ -644,6 +644,8 @@
     add:
     - skill: flame_weapon
       level: 20
+    - skill: keepsake_ward
+      level: 40
   look:
     colour: '#b8f0ff'
     glow: 0.5
@@ -2553,6 +2555,9 @@
       skill: cooling_mist
     - slot: 8
       skill: benediction
+    add:
+    - skill: keepsake_ward
+      level: 40
   look:
     colour: '#40e0d0'
 - id: 85
@@ -3154,6 +3159,10 @@
     chance: 10
   - item: blue_mana_crystal
     chance: 6
+  learnset:
+    add:
+    - skill: keepsake_ward
+      level: 40
   look:
     colour: '#b8f0e0'
     glow: 0.6

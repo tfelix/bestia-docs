@@ -607,3 +607,11 @@
   resist: []
   effect: Hears a Bard's Wanderer's Tune, −10% stamina drain a level. Lasts 5 s after leaving the field.
   dispellable: true
+
+- id: 256
+  identifier: KEEPSAKE_WARD
+  name: Keepsake Ward
+  polarity: BUFF
+  resist: []
+  effect: Lasts until the Bestia falls. Its bag then drops as one warded bundle that goes home to its Master by post.
+  dispellable: false
