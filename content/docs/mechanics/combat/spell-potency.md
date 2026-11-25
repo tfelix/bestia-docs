@@ -226,11 +226,12 @@ group lands on the rune. A jump of 20 km (`D 110`) is a lottery for one caster a
 Spells that no player cast have a fixed Potency. Against a Dispel, a fixed Potency is just the wanted chance turned
 around: `P target = P dispel ÷ chance`. So it can be far above what one caster reaches.
 
-| Spell                                                           | P    | Why                                                                                             |
-| --------------------------------------------------------------- | ---- | ----------------------------------------------------------------------------------------------- |
-| [Postal Seal](/docs/mechanics/towns-trade/postal/#the-seal)     | 350  | A strong solo Sage breaks it about once in four tries (`23%`).                                  |
-| [Ward stone](/docs/mechanics/society/pvp/#protected-zones) aura | 3000 | Out of reach of one caster. The best circle, at the [ritual cap](#the-charge) of 150, has `5%`. |
-| Permanent enchantments of the Artificer                         | -    | They cannot be dispelled at all.                                                                |
+| Spell                                                            | P    | Why                                                                                                     |
+| ---------------------------------------------------------------- | ---- | ------------------------------------------------------------------------------------------------------- |
+| [Postal Seal](/docs/mechanics/towns-trade/postal/#the-seal)      | 350  | A strong solo Sage breaks it about once in four tries (`23%`).                                          |
+| [Keepsake Ward](/docs/mechanics/bestias/bestia/#the-bestias-bag) | 400  | A strong solo Sage breaks it in one try of five (`20%`). Its threshold of `60` keeps a weak Dispel out. |
+| [Ward stone](/docs/mechanics/society/pvp/#protected-zones) aura  | 3000 | Out of reach of one caster. The best circle, at the [ritual cap](#the-charge) of 150, has `5%`.         |
+| Permanent enchantments of the Artificer                          | -    | They cannot be dispelled at all.                                                                        |
 
 A fixed spell can also have a **threshold**: a Dispel with less Potency has no chance at all, and no roll is made. The
 ward stone has a threshold of `120`, the start of the Overwhelming band. One caster tops out at about `110`, so only a

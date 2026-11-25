@@ -8,9 +8,10 @@ The world generates its towns. Players can found more. A [Prospector](/docs/mech
 with [Founder](/docs/mechanics/master/survival-tree/#skill-founder) plants a **city sign**, and a settlement grows around
 it. The skill only starts the town. It grows because players keep building inside it.
 
-A player settlement is what makes three buildings possible: a [post office](/docs/mechanics/towns-trade/postal/#in-player-cities),
-an [auction house](/docs/mechanics/towns-trade/economy-trade/#building-an-auction-house) and a
-[storage center](/docs/mechanics/bestias/bestia-storage/#storage-centers). None of them works anywhere else.
+A player settlement is what makes four buildings possible: a [post office](/docs/mechanics/towns-trade/postal/#in-player-cities),
+an [auction house](/docs/mechanics/towns-trade/economy-trade/#building-an-auction-house), a
+[storage center](/docs/mechanics/bestias/bestia-storage/#storage-centers) and an [inn](#the-inn). None of them works
+anywhere else.
 
 {{< alert context="info" text="**Conventions used on this page.** Durations are in **real time**, distances in metres on the ground." />}}
 
@@ -48,7 +49,7 @@ Every finished player structure inside the sphere counts:
 
 | Structure                                  | Building points |
 | ------------------------------------------ | --------------- |
-| Post office, auction house, storage center | 5               |
+| Post office, auction house, storage center, inn | 5          |
 | Crafting station (workbench, forge, ...)   | 1               |
 | Wall, floor or stairs piece                | 0.1             |
 | Campfire, war banner                       | 0               |
@@ -80,7 +81,7 @@ At the sign, the founder can:
 
 - **Hand the town over** to a master standing nearby who has Founder and no settlement of their own. They must accept.
   The old founder can found again after Founder's cooldown.
-- **Tear the sign down**, but only while no post office, auction house or storage center stands in the sphere. This
+- **Tear the sign down**, but only while no post office, auction house, storage center or inn stands in the sphere. This
   ends the town without the 48 h lock below.
 
 ## When the Sign Falls
@@ -94,6 +95,7 @@ When the sign is destroyed, the town ends:
   - The **auction house** closes. Every listing is posted back to its seller, and every bid back to its bidder. The
     till is posted to the owner.
   - The **storage center** closes. Stored Bestias stay safe in the storage; masters use another center or their ledger.
+  - The **inn** closes. Masters who had it as their save point get the nearest start town instead.
 - Those buildings **decay**. A building at full HP breaks after **96 h**; a damaged one sooner. They cannot be repaired
   outside a settlement.
 - For **48 h** nobody can found a town within 5 km of the fallen sign.
@@ -101,6 +103,13 @@ When the sign is destroyed, the town ends:
 After 48 h anyone with Founder can **reclaim** the place. A new sign near the old buildings brings them back into a
 sphere: they stop decaying, start working again and can be repaired. The reclaimed post office starts with no sacks and
 no residents.
+
+# The Inn
+
+A player town gets an [inn](/docs/mechanics/towns-trade/settlements/#the-inn) when its players build one from an Inn Kit
+(a [Carpentry](/docs/mechanics/master/craftsman-tree/#skill-carpentry) Lv. 3 recipe). It follows the rules of the
+post office: one per settlement, no owner, 5 building points. It is always open: it sets the save point and tends
+Bestias like the innkeeper of a generated town, for the same fee. It stops working when the city sign falls.
 
 # Repairing
 
@@ -118,6 +127,6 @@ needs only work: up to 5 min.
 
 A player town appears on the [world map](/docs/mechanics/world/world-exploration/) for everyone who has charted the
 spot of its sign, in the game and in the [companion app](/docs/mechanics/companion-app/). The map shows its sign under
-its name, and its post office, auction house and storage center as services of the town.
+its name, and its post office, auction house, storage center and inn as services of the town.
 
 {{< alert context="warning" text="All numbers on this page are placeholders. Not built yet: the sphere's outline on the map, and repairing wall, floor and stair pieces from the client, which cannot click them." />}}

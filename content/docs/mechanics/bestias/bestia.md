@@ -471,16 +471,63 @@ The guild tax applies to work experience as it does to kills; a party does not s
 
 ## Death Penalty
 
-A Bestia **Master** cannot die. Instead they are reborn on the spot with a temporary malus that reduces all of their status values by `15%` for 15 minutes.
+A defeated Master or Bestia falls and lies where it fell. A Priest's
+[Resurrection](/docs/mechanics/master/scholar-tree/#skill-resurrection) can raise it there. Otherwise its player sends
+it back to its [save point](#where-you-get-up).
 
-A Bestia or Master that is defeated loses `1%` of its current experience points. Carried items are protected by a spell which tries to teleport them back to a secure storage shortly after death — but remember: spells can be [dispelled](/docs/mechanics/master/scholar-tree/#skill-dispel).
+Every defeat costs the same:
 
-In every case, carried items suffer a durability penalty.
+- **Experience.** It loses `1%` of the experience it holds in its current level. It never loses a level.
+- **Durability.** Every piece of worn gear loses `10%` of its maximum durability.
+  [Equipment Coating](/docs/mechanics/master/warrior-tree/#skill-equipment-coating) reduces the loss. A piece that
+  breaks comes off into the bag. A torch keeps its burn time. A [repair kit](/docs/mechanics/items-crafting/items/#repair-kits)
+  fixes gear far from a forge.
+- **The bag.** A Master keeps its bag. A Bestia drops its bag, see [below](#the-bestias-bag).
+
+There is no status malus. Getting up costs nothing more.
+
+### Where You Get Up
+
+A fallen Master gets up at the first of these that applies:
+
+1. The [Base Camp](/docs/mechanics/master/survival-tree/#skill-base-camp) of its party, at Lv. 3, while the camp stands.
+2. The nearest [Stronghold](/docs/mechanics/society/guild-strongholds/) of its guild that has a steward.
+3. Its **save point**.
+
+Every Master has a save point. At creation it is the start town the player picked. Any
+[inn](/docs/mechanics/towns-trade/settlements/#the-inn) can make itself the save point, in a generated town or in a
+[player town](/docs/mechanics/towns-trade/player-settlements/). When the save point is lost, for example because its
+inn was torn down, the nearest start town becomes the save point again.
+
+A Bestia gets up at its own save point: the place where it was caught or hatched. A Bestia without one uses its
+Master's. An inn can also tend all your Bestias at once, for a fee.
+
+### The Bestia's Bag
+
+A defeated Bestia drops everything in its bag where it fell. Worn gear stays on its body. The drop is kill loot: the
+killer may take it alone for the first `6 s`, then anybody may.
+
+The Bestia attack **Keepsake Ward** protects the bag. A few wild species learn it. A Master copies it onto a
+[spell scroll](/docs/mechanics/master/scholar-tree/#skill-spell-inscription) and uses the scroll on its own Bestia.
+
+- The ward stays on the Bestia until the Bestia falls. It has no end time and cannot be dispelled from the living Bestia.
+- When the Bestia falls, the ward is used up. The bag drops as one bundle that carries the ward as an
+  [enchantment](/docs/mechanics/items-crafting/items/#enchantments).
+- For `60 s`, only the Bestia's Master can pick the bundle up.
+- After `60 s`, the bundle sends itself to the Master's home post office as a parcel.
+- A [Dispel](/docs/mechanics/items-crafting/items/#dispelling-an-enchantment) cast at the bundle can break the ward in
+  time. The ward has a fixed Potency of `400` and a threshold of `60`. A strong Sage at Dispel Lv. 5 (`P 80`) breaks
+  it in `20%` of tries. A weaker Dispel cannot touch it. A broken ward leaves a plain bundle that anybody can loot.
 
 ### Permanent Death
 
 Bestia, unlike their Master, can be lost for good. A killing blow is fatal in the permanent sense when its **overkill damage** — the damage dealt in excess of the Bestia's remaining HP — is at least equal to the Bestia's maximum HP.
 
 This keeps the risk legible: a Bestia is only ever permanently lost to something that could have killed it twice over. Being badly outmatched by a boss, or ambushed at full HP by something far stronger, is genuinely dangerous, while ordinary attrition in a fair fight is not.
+
+- A Bestia that lives through the blow, for example by the last stand of the Ember Phoenix's essence, is not lost.
+- A lost Bestia leaves the world at once and cannot be raised.
+- Its bag drops as above. Its worn gear goes to its Master by post.
+- The [Bestia Diary](/docs/mechanics/bestias/bestia-orders/) records the loss. The companion app tells an offline Master.
 
 {{< alert context="warning" text="The overkill threshold is **temporary** and still subject to balancing. It should stay high enough that permanent loss reads as a consequence of being outmatched rather than as bad luck." />}}

@@ -143,6 +143,45 @@ two days, an isolated one takes ten.
 So the trade route that pays is the one nobody else is running, into somewhere the roads do not
 reach. That is a real thing to go and find, rather than a spreadsheet to solve.
 
+# The Inn
+
+Every settlement has at least one inn. Talk to the innkeeper while the inn is open. A
+[player town](/docs/mechanics/towns-trade/player-settlements/) can build an inn of its own with an Inn Kit; it is always
+open. The inn offers two services.
+
+**Make this my save point.** The inn becomes your save point, free of charge. A defeated Master gets up there, see the
+[Death Penalty](/docs/mechanics/bestias/bestia/#where-you-get-up). One save point at a time: the new inn replaces the
+old one. If the inn is torn down, the nearest start town becomes your save point again.
+
+**Tend my Bestias.** The inn restores every Bestia you have out in the world, wherever it is:
+
+- A Bestia that stands gets full HP and mana where it is.
+- A Bestia that fell gets up at the inn's door with full HP and mana.
+- Bestias in [storage](/docs/mechanics/bestias/bestia-storage/) are not tended. They rest there anyway.
+
+The innkeeper names the price before you pay. It depends on each Bestia's level `L` and on how much it lacks:
+
+```text
+missing = (missing HP share + missing mana share) / 2
+heal    = ceil(2 × L × missing)
+revive  = 5 × L + 2 × L          (a fallen Bestia: up and fully healed)
+```
+
+{{< table "table-sm" >}}
+
+| Bestia                  | Price    |
+| ----------------------- | -------- |
+| Lv. 10, half drained    | `10`     |
+| Lv. 10, fallen          | `70`     |
+| Lv. 50, a quarter drained | `25`   |
+| Lv. 50, fallen          | `350`    |
+| Lv. 99, fallen          | `693`    |
+
+{{< /table >}}
+
+A Bestia that lacks nothing costs nothing. Tending is cheaper than potions for a deep wound, but you have to walk to an
+inn. The fee goes to the world reserve.
+
 # What You Can Break
 
 The goods in a shop are grown, dug and cut somewhere specific, and that somewhere is a real place on
