@@ -364,10 +364,12 @@ ATTRIBUTE_NAMES = {"str": "STR", "vit": "VIT", "int": "INT", "agi": "AGI", "dex"
 
 
 def essence_line(species):
-    """The species' essence for the zone, or None for a species without one and for a boss."""
+    """The species' essence for the zone, or None for a species without one."""
     essence = species.get("essence")
-    if not essence or "effect" not in essence:
+    if not essence:
         return None
+    if "effect" not in essence:
+        return boss_essence_line(essence)
     fields = [f"group: {essence['group'].upper()}", f"effect: {essence['effect'].upper()}"]
     target = essence.get("target") or attribute_pair_of(species, essence)
     if target:
@@ -375,6 +377,12 @@ def essence_line(species):
     if essence.get("drawback"):
         fields.append(f"drawback: {essence['drawback'].upper()}")
     return "essence: { " + ", ".join(fields) + " }"
+
+
+def boss_essence_line(essence):
+    """A boss's hand-made essence: the zone's BossEssence named after it, "Titan's Stride" as TITANS_STRIDE."""
+    name = re.sub(r"[^A-Za-z ]", "", essence["name"]).strip().upper().replace(" ", "_")
+    return f"essence: {{ group: {essence['group'].upper()}, effect: BOSS, target: {name} }}"
 
 
 def attribute_pair_of(species, essence):
