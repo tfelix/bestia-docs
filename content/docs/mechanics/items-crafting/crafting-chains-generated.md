@@ -761,11 +761,11 @@ graph LR
 
 | Recipe | Needs | Makes | Skill | Success | Seconds | Known from the start |
 | --- | --- | --- | --- | --- | --- | --- |
-| `ETCH_AMETHYST` | 1 x Cut Amethyst (Lv. 20) | etch essence | runic etching 1 | 50% | 10.0 | discover |
-| `ETCH_DIAMOND` | 1 x Cut Diamond (Lv. 100) | etch essence | runic etching 1 | 50% | 50.0 | discover |
-| `ETCH_EMERALD` | 1 x Cut Emerald (Lv. 40) | etch essence | runic etching 1 | 50% | 20.0 | discover |
-| `ETCH_PYRELITH` | 1 x Cut Pyrelith (Lv. 80) | etch essence | runic etching 1 | 50% | 40.0 | discover |
-| `ETCH_RUBY` | 1 x Cut Ruby (Lv. 60) | etch essence | runic etching 1 | 50% | 30.0 | discover |
+| `ETCH_AMETHYST` | 1 x Cut Amethyst (Lv. 20) | etch essence | runic etching 1 | 50% | 1.2 · L² | discover |
+| `ETCH_DIAMOND` | 1 x Cut Diamond (Lv. 100) | etch essence | runic etching 1 | 50% | 1.2 · L² | discover |
+| `ETCH_EMERALD` | 1 x Cut Emerald (Lv. 40) | etch essence | runic etching 1 | 50% | 1.2 · L² | discover |
+| `ETCH_PYRELITH` | 1 x Cut Pyrelith (Lv. 80) | etch essence | runic etching 1 | 50% | 1.2 · L² | discover |
+| `ETCH_RUBY` | 1 x Cut Ruby (Lv. 60) | etch essence | runic etching 1 | 50% | 1.2 · L² | discover |
 
 ## Gem Cut Station
 
