@@ -15,6 +15,10 @@ A wild Bestia is not born at one fixed level. Each species has a **level range**
 
 A boss lives alone in a **boss den**. Boss dens appear only in wild country, where the ordinary dens are above level 40, and never near the home towns. They are rare in the open wilds (about one den in a hundred) and more common on corrupted land (about one in forty). A boss den covers the level of the country around it plus up to 20 levels more, so a boss is always harder than the packs nearby. The wilds hold the softer bosses (from about level 42), and only the deepest corruption holds bosses up to level 120. Which boss a den holds is decided by its biome, like any other Bestia; a boss that needs corruption never appears in clean wilds.
 
+When a boss is killed or caught, its den waits 30 to 60 minutes before the next boss appears. A boss that guards a
+tomb or a monument waits the same. A [world boss](/docs/mechanics/world/world-history/#world-bosses) is different:
+killed or caught by players, it is gone for good.
+
 # Catching Bestias
 
 To catch a Bestia you need a **Magic {{< item "bestia_trap" >}}**. These are manufactured with the Craftsman's [Carpentry](/docs/mechanics/master/craftsman-tree/#skill-carpentry) skill and empowered with {{< item "mana_dust" >}}. Four tiers exist, each one better than the last at holding a high-level Bestia.
