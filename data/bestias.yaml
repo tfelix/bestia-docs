@@ -2772,7 +2772,7 @@
   essence:
     group: weapon
     name: "Sulphur Breath"
-    text: "4% chance on hit to cast Miasma at the target."
+    text: "4% chance on a weapon blow to cast Miasma, a poison haze around you."
     autocast: miasma
   habitat:
   - GEOTHERMAL_BASIN
@@ -2806,7 +2806,7 @@
   essence:
     group: accessory
     name: "Crown of Light"
-    text: "Immune to Curse, Blind and Fear. −15% damage taken from Undead and Demons."
+    text: "Immune to Blind and Fear. −15% damage taken from Undead and Demons."
   habitat:
   - TAIGA
   - TEMPERATE_RAINFOREST
@@ -3079,7 +3079,7 @@
   essence:
     group: accessory
     name: "Ashen Rebirth"
-    text: "A master is reborn without the death malus. A Bestia survives a blow that would kill it for good, once an hour."
+    text: "A master who dies loses no EXP. A Bestia survives one blow that would kill it, once an hour."
   habitat:
   - VOLCANIC_FIELD
   ai: aggressive_melee
@@ -3303,7 +3303,7 @@
   essence:
     group: shield
     name: "Slag Shell"
-    text: "Magic does you no damage, and no spell can target you: not a foe's, and not a friend's heal or buff either."
+    text: "Magic does you no damage, and no spell can be aimed at you: not a foe's, and not a friend's heal or buff either. An area spell still reaches you, but its magic does no harm."
   habitat:
   - VOLCANIC_FIELD
   ai: aggressive_melee
