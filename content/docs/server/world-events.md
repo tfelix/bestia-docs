@@ -58,7 +58,8 @@ density = d0 + delta
 ## Field Rule
 
 `ManaFieldSystem` runs every 60 s on the tick and walks only active tiles. Like `ScorchRegrowthSystem` it declares no
-fake reads or writes.
+fake reads or writes. Instead all mana state shares one lock on the field: casts, kills, ground fire and item decay
+release mana from systems that run in parallel within one tick wave.
 
 - **Leak on delta.** The delta decays with a half-life of one real month. Because only the delta is stored, this one
   rule is also "natural sources hold the base": no separate hotspot emitter is needed.
@@ -70,13 +71,13 @@ fake reads or writes.
 
 ## Emitters and Sinks
 
-| Hook                              | Where                                                          | Effect                                                                |
-| --------------------------------- | -------------------------------------------------------------- | --------------------------------------------------------------------- |
-| Cast                              | `SkillExecutionService` after `payCasterCost`                  | `+ manaCost × k_cast` at the caster                                   |
-| Kill                              | a `KillObserver` on `DeathSystem` (`KillFact` needs the level) | `+ level × k_kill`, × 10 for a boss. A capture does not go through it |
-| Crystal                           | `mana-content` on crystal items                                | Break or destruction releases it. Crafting with it removes it         |
-| Wound                             | `SpecialSites` wounds                                          | Area source, grows with world age, later with the doomsday stage      |
-| Harvester, ward, seal stone, rift | their own entities                                             | Pull into their store; a broken store releases all of it              |
+| Hook                              | Where                                                          | Effect                                                                              |
+| --------------------------------- | -------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| Cast                              | `SkillExecutionService` after `payCasterCost`                  | `+ manaCost × k_cast` at the caster                                                 |
+| Kill                              | a `KillObserver` on `DeathSystem` (`KillFact` needs the level) | `+ level × k_kill`, × 10 for a boss. A capture does not go through it               |
+| Crystal                           | `mana.emission.stored-motes`, by item identifier               | A stack destroyed or decayed on the ground releases it. Crafting with it removes it |
+| Wound                             | `SpecialSites` wounds                                          | Area source, grows with world age, later with the doomsday stage                    |
+| Harvester, ward, seal stone, rift | their own entities                                             | Pull into their store; a broken store releases all of it                            |
 
 The constants are not picked. A calibration test replays the targets and solves for them:
 
@@ -93,32 +94,40 @@ The constants are not picked. A calibration test replays the targets and solves 
 
 Copied from the scorch and water overlays:
 
-- A `ManaTile` row per tile: tile key, the cells as a `@Lob` blob, `world_shape_version`, `pipeline_version`.
+- A `StoredManaTile` row per tile: tile key, the cells as a `@Lob` blob, `world_shape_version`, `pipeline_version`.
 - Loaded at boot (`ScorchRegistry.loadAll` pattern). Stale versions are deleted.
-- Dirty tiles are written in batches through `AsyncJobExecutor` (`WaterJournal.flush` pattern).
+- Changed tiles are written every five minutes and at shutdown through `AsyncJobExecutor` (`WaterJournal.flush`
+  pattern).
 - A `WorldScopedData` wipe for `WorldProvisioning.recreate`.
 
 ## Ladder
 
-The tier of a cell is computed on read from its density, with a hysteresis of 0.03 and a dwell of one Bestia hour.
+`ManaTiers` gives each cell a tier, with a hysteresis of 0.03 and a dwell of one Bestia hour. Only cells whose tier
+differs from their start density's remember it. After a restart the saved field takes its tiers at once, so nothing is
+announced twice.
 
-| Tier     | Density | Server effect                                                                  |
-| -------- | ------- | ------------------------------------------------------------------------------ |
-| Stirring | 0.35    | Client ambience                                                                |
-| Uneasy   | 0.45    | Rumours, aggro radius, omen plants                                             |
-| Ominous  | 0.55    | `Spawner.levelBonus` at restock, mana-touched visual, omen props, apex roamers |
-| Storms   | 0.60    | Mana storm odds                                                                |
-| Event    | 0.70    | Knots may form                                                                 |
-| Sickness | 0.80    | Status effect through `EnvironmentalExposureSystem`                            |
-| Burn     | 0.90    | Mana Burn may ignite                                                           |
+| Tier     | Density | Server effect                                                        |
+| -------- | ------- | -------------------------------------------------------------------- |
+| Stirring | 0.35    | Client ambience                                                      |
+| Uneasy   | 0.45    | Rumours, aggro radius, omen plants                                   |
+| Ominous  | 0.55    | Dens restock +3 levels with `MANA_TOUCHED`, omen props, apex roamers |
+| Storms   | 0.60    | Mana storm odds                                                      |
+| Event    | 0.70    | Knots may form                                                       |
+| Sickness | 0.80    | `MANA_SICKNESS` on masters through `EnvironmentalExposureSystem`     |
+| Burn     | 0.90    | Mana Burn may ignite                                                 |
 
-- **Weather.** `WeatherModel.manaFor(region)` reads a `ManaProvider`. The zone gives it each weather region's mean and
-  95th percentile of the density, **snapshotted once per Bestia hour**, so a forecast inside the hour stays true.
-  `manaThreshold` and `manaStormFloor` move to density units (0.45 and 0.60).
+- **Spawns.** The level bonus grows with the tier: +3 at Ominous and Storms, +5 at Event, +7 at Sickness, +10 at Burn.
+- **Sickness.** A fifth less health, a tenth less attack and no natural healing, lasting a minute after the master
+  leaves. Bestia do not fall ill, and no roof or camp helps.
+- **Weather.** `WeatherModel` reads a `ManaReading`. The zone gives it each weather region's 95th percentile of the
+  density, **frozen once per Bestia hour**, so a forecast inside the hour stays true. The start density curve lives in
+  worldgen, so a fresh world's weather regions summarise the same density. `manaThreshold` and `manaStormFloor` are in
+  density units (0.45 and 0.60).
 - **Client.** `WeatherSMSG` gets a `mana_tier` per player. The client never receives the density itself, except the
   number Weather Sense grants. Omen props are ordinary props from a `WorldObjectSource`.
-- **Rumours.** New kinds such as `STRANGE_LIGHTS`, `RESTLESS_BEASTS` and `STONES_RISEN`, posted through
-  `RumourService.post` when a cell rises a tier near a settlement.
+- **Rumours.** A rise to Uneasy posts `STRANGE_LIGHTS`, to Ominous `RESTLESS_BEASTS` and to Storms `STONES_RISEN`,
+  through `RumourService.post`. Each kind is posted once per 4 km tile while the news lives, so a whole Wound rising
+  makes one rumour.
 
 # Provinces
 
