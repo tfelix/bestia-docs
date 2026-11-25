@@ -105,7 +105,7 @@ The kits are made at a Workbench with [Carpentry](/docs/mechanics/master/craftsm
 | Kit           | Carpentry | Materials                          |
 | :------------ | :-------: | :--------------------------------- |
 | {{< item "breeding_farm_kit" >}} |   Lv. 2   | 12 plank, 6 reed stalk, 4 soft fur |
-| {{< item "incubator_kit" >}} |   Lv. 3   | 6 plank, 4 brick, 2 ember core     |
+| {{< item "incubator_kit" >}} |   Lv. 3   | 6 plank, 4 brick, 4 warm stone    |
 
 Any master can breed. A Forester's [Bloodline Study](/docs/mechanics/master/survival-tree/#skill-bloodline-study) makes it
 faster and better, but it is not needed.
