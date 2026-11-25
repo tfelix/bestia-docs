@@ -175,7 +175,7 @@ Some notes:
   element level: a high element level would make the wearer almost immune to whole schools of magic.
 - **Learned Trick** gives the wearer one utility attack from the species' learnset at skill level 1, for as long as
   they wear it. It costs mana and has its cooldown like any other cast, and the skills window lists it under
-  **Borrowed**. The gem caps the attack level the same way as
+  **Temporary**, for a master and for a Bestia that wears it. The gem caps the attack level the same way as
   [Spell Inscription](/docs/mechanics/master/scholar-tree/#skill-spell-inscription): 20, 40, 60, 80 and any. An attack
   above the cap is not granted, so a Lanternwisp's Shadow Cloak, learned at level 26, needs at least an Emerald.
 - **Reflex** casts the buff named in the species' row on the wearer when a blow or spell lands on them: free, at skill
