@@ -15,7 +15,7 @@ to what already stands there. So the open world does not fill up with forges and
 | Class    | Structures                                                                                                                                                                                                                                           | Where           |
 | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
 | **Wild** | Campfire, chest, workbench, mana circle, mining shaft, theodolite                                                                                                                                                                                    | anywhere        |
-| **Town** | Wall, floor and stairs pieces, furnace, forge, tanning rack, loom, glass furnace, glassblowing bench, alchemy laboratory, gem cut station, transmutation workbench, breeding farm, incubator, blackboard, post office, auction house, storage center | in a settlement |
+| **Town** | Wall, floor and stairs pieces, furnace, forge, tanning rack, loom, glass furnace, glassblowing bench, alchemy laboratory, gem cut station, transmutation workbench, carving table, mint, breeding farm, incubator, blackboard, post office, auction house, storage center | in a settlement |
 
 Every new kind of structure is a town structure unless it is added to the wild list.
 
