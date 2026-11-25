@@ -84,6 +84,9 @@ A stored Bestia does not change. Its HP, mana, stamina and status effects stay a
 
 **Release.** A stored Bestia can be released for good, after a confirmation. It does not come back.
 
+**Etching.** An Artificer with the Bestia Ledger can etch one of their stored Bestias at a Carving Table without
+calling it first, see [Runic Etching](/docs/mechanics/items-crafting/essences/#runic-etching).
+
 # Open Questions
 
 - How masters get storage add-ons.
