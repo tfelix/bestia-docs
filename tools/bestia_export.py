@@ -119,7 +119,11 @@ def skill_rows():
         # Ember keeps its own hand-written row and script.
         if attack.get("bestia") is False or attack["id"] == "ember":
             continue
-        row = utility_row(attack) if attack["archetype"] == "utility" else attack_row(attack, archetypes)
+        # Designed here before the game has it: there is no skills.yml row to write or to learn until it has an id.
+        if "skillId" not in attack:
+            print(f"  {attack['id']}: no skillId yet, not exported")
+            continue
+        row =utility_row(attack) if attack["archetype"] == "utility" else attack_row(attack, archetypes)
         row["description"] = plain_text(attack["description"])
         rows.append(row)
     return sorted(rows, key=lambda r: r["id"])
@@ -467,8 +471,13 @@ def write_look(game, species):
         "placeholder_scale": f"{scale:.4g}",
         "placeholder_glow": f"{glow:.4g}",
     }
-    content = re.sub(r"(?m)^placeholder_\w+ = .*\n", "", tres.read_text())
-    content = content.rstrip("\n") + "\n" + "".join(f"{k} = {v}\n" for k, v in fields.items())
+    # In place where syncBestiaDb put them, so an unchanged look leaves the file unchanged.
+    content = tres.read_text()
+    for key, value in fields.items():
+        line = f"{key} = {value}\n"
+        content, found = re.subn(rf"(?m)^{key} = .*\n", lambda _: line, content)
+        if not found:
+            content = content.rstrip("\n") + "\n" + line
     tres.write_text(content)
 
 
