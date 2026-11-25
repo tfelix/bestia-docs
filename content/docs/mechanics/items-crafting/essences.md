@@ -4,8 +4,6 @@ title: Bestia Essences
 description: How a Bestia becomes an essence gem, what each essence does in a socket, and how gem tiers set its strength.
 ---
 
-{{< alert context="warning" text="Design. Sockets exist in the game, but nothing can fill them yet: Runic Etching, essence gems and their effects are not built." />}}
-
 # Bestia Essences
 
 An **essence** is the power of one Bestia, bound into a cut gem. Put into a socket of a weapon, an armor piece, an
