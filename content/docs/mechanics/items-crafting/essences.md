@@ -34,37 +34,51 @@ Sockets come from the forge or from [Item Customization](/docs/mechanics/items-c
 
 The only source of an essence is a Bestia that a master owns. There is no essence drop from wild Bestias.
 
-The Artificer stands at a Carving Table, picks a cut gem and a Bestia, and casts Runic Etching. The success chance is
-the one in the [skill table](/docs/mechanics/master/craftsman-tree/#skill-runic-etching).
+Every etching starts with a Bestia [locked into a Carving Table](#locking-a-bestia-into-the-table). An Artificer at
+that table picks a cut gem and one of the locked Bestias, and casts Runic Etching. The success chance is the one in
+the [skill table](/docs/mechanics/master/craftsman-tree/#skill-runic-etching).
 
-- **Success:** the Bestia is gone. The gem becomes an **Essence Gem** of that species.
-- **Failure:** the gem shatters. The Bestia stays and can try again with a new gem.
+The etching takes the [craft duration](/docs/mechanics/items-crafting/crafting/#craft-duration) of the Bestia's level,
+`1.2 · L²` seconds: under a minute for a Lv 6 boar, about 34 minutes at Lv 41, two hours at Lv 81 and four hours for
+a Lv 110 boss. Master Craftsman shortens it like any craft. Once it starts, it runs on its own. The Artificer may
+leave, and the success chance is fixed at the start.
+
+- **Success:** the Bestia is gone. The **Essence Gem** of that species goes to the Bestia's owner by post.
+- **Failure:** the gem shatters. The owner gets a letter. The Bestia stays locked in and can try again with a new
+  gem.
 
 So a Bestia is only used up when it really becomes an essence. The price of bad luck is the gem.
 
-The Artificer picks one of their own Bestias straight from their Bestia storage, or one that is called and stands near
-the table. Another master's Bestia needs its owner to [offer it](#etching-another-masters-bestia).
+The Artificer can call their etching off at any time. The cut gem then comes back to them by post.
 
-Taking a Bestia from storage follows the rule for opening the storage: the Artificer needs the
-[Bestia Ledger](/docs/mechanics/bestias/bestia-storage/#the-bestia-ledger), and it does not work during a fight. If
-the Bestia is called out or released before the etching ends, the etching stops and the gem is given back.
+## Locking a Bestia into the Table
 
-## Etching Another Master's Bestia
+A Bestia that waits for hours cannot stand next to the table. So its owner locks it into the table first. This is the
+same for an Artificer's own Bestia and for anyone else's.
 
-A master without Runic Etching can hire an Artificer. There is no special window for it:
+1. The owner clicks the Carving Table and opens the tab **Lock in a Bestia**. Any master can do this; it needs no
+   skill.
+2. They pick one of their Bestias: one that is called out, or one from their storage. A called-out Bestia leaves the
+   world like one that goes into storage, and drops what it carries in a bundle. Taking one from storage follows the
+   rule for opening the storage: the owner needs the
+   [Bestia Ledger](/docs/mechanics/bestias/bestia-storage/#the-bestia-ledger), and it does not work during a fight.
+3. Any Artificer at that table now sees the Bestia in their etching list, with the owner's name. The chance and the
+   time are the Artificer's own.
 
-1. The two agree on the fee. The fee and the cut gem change hands in an ordinary [trade](/docs/mechanics/towns-trade/economy-trade/).
-2. The owner calls their Bestia to a Carving Table, right-clicks it and chooses **Offer for etching**.
-3. Any Artificer at that table now sees the Bestia in their etching list, next to their own Bestias, with the owner's
-   name. They etch it like one of their own. The chance is the Artificer's own.
+A locked Bestia takes no storage slot, and it cannot be summoned, swapped or traded. The owner takes it back from the
+same tab. It then goes into their storage, which needs a free slot there. Taking it back calls off an etching that
+is running, and the cut gem goes back to the Artificer by post. If the table is knocked down, every locked Bestia goes
+back to its owner's storage, and every gem back to its Artificer.
 
-| Result  | Owner gets                   | Artificer gets               |
-| ------- | ---------------------------- | ---------------------------- |
-| Success | The Essence Gem, in the bag  | The fee, from the trade      |
-| Failure | Their Bestia, which stays    | The fee, from the trade      |
+Hiring an Artificer needs no special window. The two agree on the fee, and the fee and the cut gem change hands in an
+ordinary [trade](/docs/mechanics/towns-trade/economy-trade/). The owner locks the Bestia into the Artificer's table.
 
-The offer ends as soon as the Bestia leaves the table. An etching that is running then fails without using up the
-Bestia. The fee is paid in the trade, before the etching, so the two have to trust each other, as with any service.
+| Result  | Owner gets                          | Artificer gets               |
+| ------- | ----------------------------------- | ---------------------------- |
+| Success | The Essence Gem, by post            | The fee, from the trade      |
+| Failure | A letter; the Bestia stays locked in | The fee, from the trade      |
+
+The fee is paid in the trade, before the etching, so the two have to trust each other, as with any service.
 
 ## Gem Tiers
 

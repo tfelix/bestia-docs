@@ -331,13 +331,13 @@ A crystal above your max crystal level cannot be refined.
     type="Active" manaCost="25" castTime="10s" cooldown="0s" range="2" target="Carving Table"
     description="Binds the essence of a Bestia into a cut gem. The Essence Gem carries the power of the Bestia and fits a socket of its slot group. Converting a Bestia destroys it." >}}
 
-Level 1 allows you to place a Carving Table. The etching uses up a cut gem and one of your Bestias: pick it from your
-Bestia storage (this needs the [Bestia Ledger](/docs/mechanics/bestias/bestia-storage/#the-bestia-ledger)), or call it
-to the table. The Bestia must have reached the level of the gem's tier, see
+Level 1 allows you to place a Carving Table. The etching uses up a cut gem and a Bestia that its owner
+[locked into the table](/docs/mechanics/items-crafting/essences/#locking-a-bestia-into-the-table), yours or another
+master's. The Bestia must have reached the level of the gem's tier, see
 [Gem Tiers](/docs/mechanics/items-crafting/essences/#gem-tiers). A failed etching shatters the gem, and the Bestia stays.
-Another master's Bestia can be etched when its owner [offers it](/docs/mechanics/items-crafting/essences/#etching-another-masters-bestia) at the table. The cast only places
-the table or opens its recipes. The etching itself takes the [craft duration](/docs/mechanics/items-crafting/crafting/#craft-duration) of
-the Bestia's level.
+The cast only places the table or opens its recipes. The etching itself takes the
+[craft duration](/docs/mechanics/items-crafting/crafting/#craft-duration) of the Bestia's level and runs on its own.
+The Essence Gem goes to the Bestia's owner by post.
 
 | Lv. | Success Chance | Reliable Bestia Level |
 | --- | -------------- | --------------------- |
