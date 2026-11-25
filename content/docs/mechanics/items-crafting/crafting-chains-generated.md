@@ -1,6 +1,6 @@
 ---
 title: Crafting Chains
-weight: 513
+weight: 611
 description: Every recipe that refines or assembles a material, drawn per station. Generated.
 ---
 
@@ -64,23 +64,57 @@ graph LR
     clay[/"Clay (Lv. 1)"/]
     clay -->|2| brick
     coal -->|1| brick
+    charcoal["Charcoal (Lv. 1)"]
+    log[/"Log (Lv. 1)"/]
+    log -->|1| charcoal
+    iron_ore -->|2| iron_ingot
+    charcoal -->|1| iron_ingot
+    gold_ore -->|2| gold_bar
+    charcoal -->|1| gold_bar
+    tin_ore -->|2| tin_ingot
+    charcoal -->|1| tin_ingot
+    copper_ore -->|2| copper_ingot
+    charcoal -->|1| copper_ingot
+    iron_ingot -->|1| steel_ingot
+    charcoal -->|1| steel_ingot
+    silver_ore -->|2| silver_ingot
+    charcoal -->|1| silver_ingot
+    palladium_ore -->|2| palladium_ingot
+    charcoal -->|1| palladium_ingot
+    mithril_ore -->|2| mithril_ingot
+    charcoal -->|1| mithril_ingot
+    adamantium_ore -->|2| adamantium_ingot
+    charcoal -->|1| adamantium_ingot
+    clay -->|2| brick
+    charcoal -->|1| brick
 ```
 
 | Recipe | Needs | Makes | Skill | Success | Seconds | Known from the start |
 | --- | --- | --- | --- | --- | --- | --- |
 | `ADAMANTIUM_INGOT` | 2 x Adamantium Ore (Lv. 100), 1 x Coal (Lv. 5) | 1 x Adamantium Ingot (Lv. 100) | ore refinement 3 | -60% | 24.0 | yes |
+| `ADAMANTIUM_INGOT_CHARCOAL` | 2 x Adamantium Ore (Lv. 100), 1 x Charcoal (Lv. 1) | 1 x Adamantium Ingot (Lv. 100) | ore refinement 3 | -70% | 24.0 | yes |
 | `BLACKIRON_INGOT` | 1 x Steel Ingot (Lv. 32), 1 x Shadow Shard (Lv. 55) | 1 x Blackiron Ingot (Lv. 65) | ore refinement 3 | -25% | 18.0 | yes |
 | `BRICK` | 2 x Clay (Lv. 1), 1 x Coal (Lv. 5) | 2 x Brick (Lv. 5) | ore refinement 1 | 60% | 8.0 | yes |
+| `BRICK_CHARCOAL` | 2 x Clay (Lv. 1), 1 x Charcoal (Lv. 1) | 2 x Brick (Lv. 5) | ore refinement 1 | 50% | 8.0 | yes |
 | `BRONZE_INGOT` | 1 x Copper Ingot (Lv. 10), 1 x Tin Ingot (Lv. 5) | 1 x Bronze Ingot (Lv. 15) | ore refinement 1 | 25% | 12.0 | yes |
+| `CHARCOAL` | 1 x Log (Lv. 1) | 3 x Charcoal (Lv. 1) | ore refinement 1 | 100% | 10.0 | yes |
 | `COPPER_INGOT` | 2 x Copper Ore (Lv. 10), 1 x Coal (Lv. 5) | 1 x Copper Ingot (Lv. 10) | ore refinement 1 | 30% | 10.0 | yes |
+| `COPPER_INGOT_CHARCOAL` | 2 x Copper Ore (Lv. 10), 1 x Charcoal (Lv. 1) | 1 x Copper Ingot (Lv. 10) | ore refinement 1 | 20% | 10.0 | yes |
 | `GOLD_BAR` | 2 x Gold Ore (Lv. 50), 1 x Coal (Lv. 5) | 1 x Gold Bar (Lv. 50) | ore refinement 1 | -10% | 14.0 | yes |
+| `GOLD_BAR_CHARCOAL` | 2 x Gold Ore (Lv. 50), 1 x Charcoal (Lv. 1) | 1 x Gold Bar (Lv. 50) | ore refinement 1 | -20% | 14.0 | yes |
 | `IRON_INGOT` | 2 x Iron Ore (Lv. 20), 1 x Coal (Lv. 5) | 1 x Iron Ingot (Lv. 20) | ore refinement 1 | 20% | 10.0 | yes |
+| `IRON_INGOT_CHARCOAL` | 2 x Iron Ore (Lv. 20), 1 x Charcoal (Lv. 1) | 1 x Iron Ingot (Lv. 20) | ore refinement 1 | 10% | 10.0 | yes |
 | `MITHRIL_INGOT` | 2 x Mithril Ore (Lv. 85), 1 x Coal (Lv. 5) | 1 x Mithril Ingot (Lv. 85) | ore refinement 3 | -45% | 20.0 | yes |
+| `MITHRIL_INGOT_CHARCOAL` | 2 x Mithril Ore (Lv. 85), 1 x Charcoal (Lv. 1) | 1 x Mithril Ingot (Lv. 85) | ore refinement 3 | -55% | 20.0 | yes |
 | `PALLADIUM_INGOT` | 2 x Palladium Ore (Lv. 70), 1 x Coal (Lv. 5) | 1 x Palladium Ingot (Lv. 70) | ore refinement 3 | -30% | 18.0 | yes |
+| `PALLADIUM_INGOT_CHARCOAL` | 2 x Palladium Ore (Lv. 70), 1 x Charcoal (Lv. 1) | 1 x Palladium Ingot (Lv. 70) | ore refinement 3 | -40% | 18.0 | yes |
 | `QUICKSILVER` | 2 x Mercury Ore (Lv. 60) | 1 x Quicksilver (Lv. 60) | ore refinement 3 | -20% | 16.0 | yes |
 | `SILVER_INGOT` | 2 x Silver Ore (Lv. 35), 1 x Coal (Lv. 5) | 1 x Silver Ingot (Lv. 38) | ore refinement 2 | 5% | 14.0 | yes |
+| `SILVER_INGOT_CHARCOAL` | 2 x Silver Ore (Lv. 35), 1 x Charcoal (Lv. 1) | 1 x Silver Ingot (Lv. 38) | ore refinement 2 | -5% | 14.0 | yes |
 | `STEEL_INGOT` | 1 x Iron Ingot (Lv. 20), 1 x Coal (Lv. 5) | 1 x Steel Ingot (Lv. 32) | ore refinement 2 | 8% | 14.0 | yes |
+| `STEEL_INGOT_CHARCOAL` | 1 x Iron Ingot (Lv. 20), 1 x Charcoal (Lv. 1) | 1 x Steel Ingot (Lv. 32) | ore refinement 2 | -2% | 14.0 | yes |
 | `TIN_INGOT` | 2 x Tin Ore (Lv. 5), 1 x Coal (Lv. 5) | 1 x Tin Ingot (Lv. 5) | ore refinement 1 | 30% | 10.0 | yes |
+| `TIN_INGOT_CHARCOAL` | 2 x Tin Ore (Lv. 5), 1 x Charcoal (Lv. 1) | 1 x Tin Ingot (Lv. 5) | ore refinement 1 | 20% | 10.0 | yes |
 
 ## Forge
 
@@ -120,7 +154,7 @@ graph LR
 | `ARTIFICERS_BRASS_HARNESS` | 5 x Blackiron Ingot (Lv. 65), 1 x Leather (Lv. 5), 1 x Nails (Lv. 5), 1 x Cog (Lv. 40), 1 x Bone Shard (Lv. 5) | 1 x Artificer's Brass Harness (Lv. 70) | forge armor 8 | -3% | 6220.8 | discover |
 | `ASSASSINS_DAGGER` | 2 x Steel Ingot (Lv. 32), 1 x Flint (Lv. 1), 2 x Void Essence (Lv. 30) | 1 x Assassin's Dagger (Lv. 37) | forge weapon 5 | 36% | 2539.2 | discover |
 | `BANDED_PLATE` | 5 x Iron Ingot (Lv. 20), 4 x Leather (Lv. 5), 4 x Nails (Lv. 5), 1 x Stick (Lv. 1), 1 x Reed Stalk (Lv. 1) | 1 x Banded Plate (Lv. 40) | forge armor 4 | 45% | 1920.0 | discover |
-| `BAND_OF_A_THOUSAND_BARGAINS` | 1 x Mithril Ingot (Lv. 85) | 1 x Band of a Thousand Bargains (Lv. 87) | forge armor 9 | -30% | 9720.0 | discover |
+| `BAND_OF_A_THOUSAND_BARGAINS` | 2 x Mithril Ingot (Lv. 85), 1 x Mana Essence (Lv. 5) | 1 x Band of a Thousand Bargains (Lv. 87) | forge armor 9 | -30% | 9720.0 | discover |
 | `BARDICHE` | 4 x Iron Ingot (Lv. 20), 3 x Stick (Lv. 1), 1 x Flint (Lv. 1), 1 x Clay (Lv. 1), 1 x Lamp Oil (Lv. 5) | 1 x Bardiche (Lv. 22) | forge weapon 3 | 72% | 580.8 | discover |
 | `BARDS_CHARM_BRACELET` | 1 x Silver Ingot (Lv. 38), 1 x Mana Essence (Lv. 5) | 1 x Bard's Charm Bracelet (Lv. 49) | forge armor 5 | 30% | 3000.0 | discover |
 | `BASCINET` | 2 x Steel Ingot (Lv. 32), 2 x Leather (Lv. 5), 2 x Nails (Lv. 5), 1 x Lamp Oil (Lv. 5), 1 x Mana Essence (Lv. 5) | 1 x Bascinet (Lv. 51) | forge armor 6 | 27% | 3244.8 | discover |
@@ -254,6 +288,7 @@ graph LR
 | `SHEPHERD_KINGS_SLING` | 2 x Dragon Scale (Lv. 75), 2 x Rope (Lv. 3), 1 x Reed Stalk (Lv. 1) | 1 x Shepherd King's Sling (Lv. 76) | forge weapon 9 | -30% | 9720.0 | discover |
 | `SHORT_SPEAR` | 2 x Bronze Ingot (Lv. 15), 2 x Stick (Lv. 1), 1 x Sharp Fang (Lv. 5), 1 x Feather (Lv. 1), 1 x Mana Essence (Lv. 5) | 1 x Short Spear (Lv. 18) | forge weapon 2 | 78% | 388.8 | discover |
 | `SHORT_SWORD` | 2 x Bronze Ingot (Lv. 15), 2 x Flint (Lv. 1), 1 x Mana Essence (Lv. 5) | 1 x Short Sword (Lv. 6) | forge weapon 1 | 90% | 43.2 | discover |
+| `SIGIL_OF_REDEMPTION` | 1 x Mithril Ingot (Lv. 85) | 1 x Sigil of Redemption (Lv. 73) | forge armor 8 | -4% | 6394.8 | discover |
 | `SILVER_DIADEM` | 3 x Silver Ingot (Lv. 38), 1 x Coal (Lv. 5) | 1 x Silver Diadem (Lv. 64) | forge armor 7 | 3% | 5548.8 | discover |
 | `SILVER_HARP` | 3 x Silver Ingot (Lv. 38), 1 x Rope (Lv. 3), 1 x Plank (Lv. 5), 1 x Salt (Lv. 1) | 1 x Silver Harp (Lv. 57) | forge weapon 6 | 15% | 4320.0 | discover |
 | `SILVER_HOLY_SYMBOL` | 1 x Silver Ingot (Lv. 38), 2 x Holy Water (Lv. 5) | 1 x Silver Holy Symbol (Lv. 35) | forge armor 4 | 48% | 1732.8 | discover |
@@ -317,23 +352,27 @@ graph LR
     loose_stone -->|30| post_office_kit
     iron_ingot["Iron Ingot (Lv. 20)"]
     iron_ingot -->|10| post_office_kit
+    bestia_center_kit["Storage Center Kit (Lv. 30)"]
+    log -->|40| bestia_center_kit
+    loose_stone -->|30| bestia_center_kit
+    iron_ingot -->|10| bestia_center_kit
     auction_house_kit["Auction House Kit (Lv. 50)"]
     log -->|80| auction_house_kit
     loose_stone -->|60| auction_house_kit
     iron_ingot -->|20| auction_house_kit
-    breeding_farm_kit["breeding farm kit (Lv. 20)"]
+    breeding_farm_kit["Breeding Farm Kit (Lv. 20)"]
     plank["Plank (Lv. 5)"]
     plank -->|12| breeding_farm_kit
     reed_stalk[/"Reed Stalk (Lv. 1)"/]
     reed_stalk -->|6| breeding_farm_kit
     soft_fur[/"Soft Fur (Lv. 3)"/]
     soft_fur -->|4| breeding_farm_kit
-    nesting_bundle["nesting bundle (Lv. 1)"]
+    nesting_bundle["Nesting Bundle (Lv. 1)"]
     reed_stalk -->|1| nesting_bundle
     soft_fur -->|1| nesting_bundle
     feather[/"Feather (Lv. 1)"/]
     feather -->|1| nesting_bundle
-    incubator_kit["incubator kit (Lv. 30)"]
+    incubator_kit["Incubator Kit (Lv. 30)"]
     plank -->|6| incubator_kit
     brick["Brick (Lv. 5)"]
     brick -->|4| incubator_kit
@@ -350,9 +389,6 @@ graph LR
     armor_blueprint["Armor Blueprint (Lv. 15)"]
     clay -->|3| armor_blueprint
     mana_dust -->|1| armor_blueprint
-    gold_coin["Gold Coin (Lv. 1)"]
-    gold_bar["Gold Bar (Lv. 50)"]
-    gold_bar -->|1| gold_coin
     log -->|1| plank
     cut_stone["Cut Stone (Lv. 10)"]
     quarried_stone[/"Quarried Stone (Lv. 5)"/]
@@ -369,7 +405,7 @@ graph LR
     mana_essence -->|1| mana_ink
     mana_paper["Mana Paper (Lv. 60)"]
     parchment -->|1| mana_paper
-    mana_concentrate[/"Mana Concentrate (Lv. 20)"/]
+    mana_concentrate["Mana Concentrate (Lv. 20)"]
     mana_concentrate -->|1| mana_paper
     coal[/"Coal (Lv. 5)"/]
     coal -->|1| ink
@@ -387,6 +423,10 @@ graph LR
     empty_bottle -->|1| holy_water
     salt[/"Salt (Lv. 1)"/]
     salt -->|1| holy_water
+    blackboard_kit["Blackboard Kit (Lv. 10)"]
+    log -->|4| blackboard_kit
+    plank -->|8| blackboard_kit
+    coal -->|2| blackboard_kit
 ```
 
 | Recipe | Needs | Makes | Skill | Success | Seconds | Known from the start |
@@ -408,7 +448,9 @@ graph LR
 | `BANDANA` | 2 x Cloth (Lv. 5), 1 x Leather (Lv. 5), 1 x Nails (Lv. 5), 1 x Coal (Lv. 5) | 1 x Bandana (Lv. 16) | forge armor 2 | 78% | 388.8 | discover |
 | `BARBED_LASH` | 2 x Drake Hide (Lv. 55), 2 x Rope (Lv. 3), 2 x Venom Sac (Lv. 15) | 1 x Barbed Lash (Lv. 51) | forge weapon 6 | 24% | 3499.2 | discover |
 | `BASIC_POISON` | 1 x Deathcap (Lv. 15), 1 x Empty Bottle (Lv. 1) | 1 x Basic Poison (Lv. 5) | basic skill 1 | 90% | 6.0 | yes |
+| `BESTIA_CENTER_KIT` | 40 x Log (Lv. 1), 30 x Loose Stone (Lv. 1), 10 x Iron Ingot (Lv. 20) | 1 x Storage Center Kit (Lv. 30) | carpentry 3 | 100% | 60.0 | yes |
 | `BIRCH_WAND` | 2 x Yew Billet (Lv. 20), 2 x Stick (Lv. 1), 2 x Mana Dust (Lv. 15), 1 x Mana Essence (Lv. 5) | 1 x Birch Wand (Lv. 10) | forge weapon 1 | 90% | 120.0 | discover |
+| `BLACKBOARD_KIT` | 4 x Log (Lv. 1), 8 x Plank (Lv. 5), 2 x Coal (Lv. 5) | 1 x Blackboard Kit (Lv. 10) | carpentry 2 | 100% | 30.0 | yes |
 | `BOILED_LEATHER_CUIRASS` | 5 x Fine Leather (Lv. 35), 1 x Leather (Lv. 5), 1 x Lamp Oil (Lv. 5), 1 x Mana Essence (Lv. 5) | 1 x Boiled Leather Cuirass (Lv. 32) | forge armor 4 | 56% | 1228.8 | discover |
 | `BOLAS` | 2 x Fine Leather (Lv. 35), 1 x Feather (Lv. 1), 1 x Salt (Lv. 1) | 1 x Bolas (Lv. 28) | forge weapon 3 | 63% | 940.8 | discover |
 | `BONE_CHARM` | 2 x Bone Shard (Lv. 5), 1 x Mana Essence (Lv. 5) | 1 x Bone Charm (Lv. 13) | forge armor 2 | 84% | 235.2 | discover |
@@ -417,7 +459,7 @@ graph LR
 | `BRAIDED_SLING` | 4 x Leather (Lv. 5), 4 x Rope (Lv. 3), 1 x Lamp Oil (Lv. 5) | 1 x Braided Sling (Lv. 14) | forge weapon 2 | 84% | 235.2 | discover |
 | `BRAIDED_WHIP` | 2 x Leather (Lv. 5), 2 x Rope (Lv. 3), 1 x Salt (Lv. 1), 1 x Coal (Lv. 5) | 1 x Braided Whip (Lv. 12) | forge weapon 2 | 87% | 172.8 | discover |
 | `BRAWLERS_BRACER` | 1 x Fine Leather (Lv. 35) | 1 x Brawler's Bracer (Lv. 23) | forge armor 3 | 69% | 691.2 | discover |
-| `BREEDING_FARM_KIT` | 12 x Plank (Lv. 5), 6 x Reed Stalk (Lv. 1), 4 x Soft Fur (Lv. 3) | 1 x breeding farm kit (Lv. 20) | carpentry 2 | 100% | 12.0 | yes |
+| `BREEDING_FARM_KIT` | 12 x Plank (Lv. 5), 6 x Reed Stalk (Lv. 1), 4 x Soft Fur (Lv. 3) | 1 x Breeding Farm Kit (Lv. 20) | carpentry 2 | 100% | 12.0 | yes |
 | `BULLWHIP` | 3 x Fine Leather (Lv. 35), 2 x Rope (Lv. 3), 1 x Cloth (Lv. 5) | 1 x Bullwhip (Lv. 28) | forge weapon 3 | 63% | 940.8 | discover |
 | `CARAVAN_GUARD_CROSSBOW` | 4 x Ironwood (Lv. 45), 2 x Nails (Lv. 5), 1 x Rope (Lv. 3), 1 x Bone Shard (Lv. 5), 1 x Coal (Lv. 5) | 1 x Caravan Guard Crossbow (Lv. 46) | forge weapon 5 | 33% | 2764.8 | discover |
 | `CAUSTIC_FLASK` | 2 x Glass (Lv. 8), 1 x Feather (Lv. 1), 2 x Basic Poison (Lv. 5) | 1 x Caustic Flask (Lv. 48) | forge weapon 5 | 33% | 2764.8 | discover |
@@ -449,7 +491,6 @@ graph LR
 | `FORGE_SOLED_BOOTS` | 3 x Fine Leather (Lv. 35), 1 x Leather (Lv. 5), 1 x Nails (Lv. 5), 2 x Ember Core (Lv. 45) | 1 x Forge-Soled Boots (Lv. 60) | forge armor 7 | 12% | 4612.8 | discover |
 | `FORKED_SLINGSHOT` | 3 x Yew Billet (Lv. 20), 4 x Rope (Lv. 3), 1 x Cloth (Lv. 5), 1 x Mana Essence (Lv. 5) | 1 x Forked Slingshot (Lv. 38) | forge weapon 4 | 48% | 1732.8 | discover |
 | `FUR_LINED_MANTLE` | 4 x Fine Leather (Lv. 35), 1 x Leather (Lv. 5), 1 x Nails (Lv. 5), 1 x Lamp Oil (Lv. 5) | 1 x Fur-Lined Mantle (Lv. 29) | forge armor 3 | 60% | 1080.0 | discover |
-| `GOLD_COIN` | 1 x Gold Bar (Lv. 50) | 10000 x Gold Coin (Lv. 1) | minting 1 | 100% | 20.0 | yes |
 | `GRIMOIRE_OF_ASH` | 4 x Fine Leather (Lv. 35), 2 x Parchment (Lv. 5), 1 x Mana Ink (Lv. 35) | 1 x Grimoire of Ash (Lv. 43) | forge weapon 5 | 39% | 2323.2 | discover |
 | `HAND_DRUM` | 3 x Hardened Leather (Lv. 22), 2 x Rope (Lv. 3), 2 x Plank (Lv. 5), 1 x Resin (Lv. 1), 1 x Lamp Oil (Lv. 5) | 1 x Hand Drum (Lv. 18) | forge weapon 2 | 78% | 388.8 | discover |
 | `HAND_WRAPS` | 3 x Cloth (Lv. 5), 2 x Leather (Lv. 5), 1 x Mana Essence (Lv. 5) | 1 x Hand Wraps (Lv. 4) | forge weapon 1 | 90% | 19.2 | discover |
@@ -468,7 +509,7 @@ graph LR
 | `HUNTING_CROSSBOW` | 4 x Yew Billet (Lv. 20), 2 x Nails (Lv. 5), 1 x Rope (Lv. 3), 1 x Thornvine (Lv. 20), 1 x Cloth (Lv. 5) | 1 x Hunting Crossbow (Lv. 16) | forge weapon 2 | 81% | 307.2 | discover |
 | `HURDY_GURDY_OF_HOURS` | 4 x Heartwood (Lv. 80), 1 x Rope (Lv. 3), 1 x Plank (Lv. 5), 2 x Clockwork Core (Lv. 75) | 1 x Hurdy-Gurdy of Hours (Lv. 71) | forge weapon 8 | -3% | 6220.8 | discover |
 | `HYMNAL` | 5 x Parchment (Lv. 5), 1 x Mana Ink (Lv. 35), 2 x Silver Ingot (Lv. 38) | 1 x Hymnal (Lv. 20) | forge weapon 2 | 75% | 480.0 | discover |
-| `INCUBATOR_KIT` | 6 x Plank (Lv. 5), 4 x Brick (Lv. 5), 2 x Ember Core (Lv. 45) | 1 x incubator kit (Lv. 30) | carpentry 3 | 100% | 15.0 | yes |
+| `INCUBATOR_KIT` | 6 x Plank (Lv. 5), 4 x Brick (Lv. 5), 2 x Ember Core (Lv. 45) | 1 x Incubator Kit (Lv. 30) | carpentry 3 | 100% | 15.0 | yes |
 | `INK` | 1 x Coal (Lv. 5), 1 x Empty Bottle (Lv. 1) | 1 x Ink (Lv. 1) | basic skill 1 | 100% | 5.0 | yes |
 | `IRONWOOD_BO` | 4 x Ironwood (Lv. 45), 2 x Stick (Lv. 1), 2 x Medicinal Herb (Lv. 20) | 1 x Ironwood Bo (Lv. 48) | forge weapon 5 | 30% | 3000.0 | discover |
 | `JADE_EARRING` | 2 x Lodestone (Lv. 45), 1 x Cut Jade (Lv. 33) | 1 x Jade Earring (Lv. 33) | forge armor 4 | 54% | 1387.2 | discover |
@@ -488,7 +529,7 @@ graph LR
 | `MASQUERADE_HALF_MASK` | 1 x Silk Cloth (Lv. 35), 1 x Salt (Lv. 1) | 1 x Masquerade Half-Mask (Lv. 38) | forge armor 4 | 45% | 1920.0 | discover |
 | `MINERS_LODESTONE` | 1 x Lodestone (Lv. 45), 2 x Star Core (Lv. 80) | 1 x Miner's Lodestone (Lv. 50) | forge armor 6 | 27% | 3244.8 | discover |
 | `MINSTRELS_DOUBLET` | 4 x Fine Leather (Lv. 35), 1 x Leather (Lv. 5), 1 x Horn (Lv. 10) | 1 x Minstrel's Doublet (Lv. 38) | forge armor 4 | 45% | 1920.0 | discover |
-| `NESTING_BUNDLE` | 1 x Reed Stalk (Lv. 1), 1 x Soft Fur (Lv. 3), 1 x Feather (Lv. 1) | 1 x nesting bundle (Lv. 1) | carpentry 1 | 90% | 4.0 | yes |
+| `NESTING_BUNDLE` | 1 x Reed Stalk (Lv. 1), 1 x Soft Fur (Lv. 3), 1 x Feather (Lv. 1) | 1 x Nesting Bundle (Lv. 1) | carpentry 1 | 90% | 4.0 | yes |
 | `OBSIDIAN_WAND` | 3 x Obsidian (Lv. 50), 1 x Stick (Lv. 1), 1 x Mana Dust (Lv. 15), 1 x Lamp Oil (Lv. 5) | 1 x Obsidian Wand (Lv. 57) | forge weapon 6 | 15% | 4320.0 | discover |
 | `OILSKIN_CAPE` | 4 x Silk Cloth (Lv. 35), 1 x Leather (Lv. 5) | 1 x Oilskin Cape (Lv. 25) | forge armor 3 | 66% | 811.2 | discover |
 | `OPAL_OF_THE_TIDES` | 1 x Star Core (Lv. 80), 1 x Cut Opal (Lv. 66) | 1 x Opal of the Tides (Lv. 66) | forge armor 7 | 3% | 5548.8 | discover |
@@ -566,7 +607,7 @@ graph LR
 | `WICKER_BUCKLER` | 4 x Reed Stalk (Lv. 1), 1 x Leather (Lv. 5), 1 x Coal (Lv. 5) | 1 x Wicker Buckler (Lv. 8) | forge armor 1 | 90% | 76.8 | discover |
 | `WILLOW_STAFF` | 3 x Yew Billet (Lv. 20), 4 x Stick (Lv. 1), 1 x Coal (Lv. 5) | 1 x Willow Staff (Lv. 16) | forge weapon 2 | 81% | 307.2 | discover |
 | `WINDRUNNERS_LONGBOW` | 4 x Heartwood (Lv. 80), 1 x Rope (Lv. 3), 1 x Feather (Lv. 1), 2 x Storm Feather (Lv. 65) | 1 x Windrunner's Longbow (Lv. 72) | forge weapon 10 | -36% | 10603.2 | discover |
-| `WINGS_OF_THE_WANDERING_WIND` | 4 x Starweave (Lv. 80), 2 x Leather (Lv. 5), 2 x Storm Feather (Lv. 65) | 1 x Wings of the Wandering Wind (Lv. 67) | forge armor 10 | -33% | 10156.8 | discover |
+| `WINGS_OF_THE_WANDERING_WIND` | 4 x Starweave (Lv. 80), 2 x Leather (Lv. 5), 1 x Storm Feather (Lv. 65) | 1 x Wings of the Wandering Wind (Lv. 67) | forge armor 10 | -33% | 10156.8 | discover |
 | `WIZARDS_CONE_HAT` | 2 x Silk Cloth (Lv. 35), 1 x Lamp Oil (Lv. 5) | 1 x Wizard's Cone Hat (Lv. 24) | forge armor 3 | 63% | 940.8 | discover |
 | `WOLF_TOOTH_NECKLACE` | 1 x Drake Hide (Lv. 55), 1 x Lamp Oil (Lv. 5) | 1 x Wolf-Tooth Necklace (Lv. 53) | forge armor 6 | 24% | 3499.2 | discover |
 | `WOODEN_CROSSBOW` | 3 x Yew Billet (Lv. 20), 2 x Nails (Lv. 5), 1 x Rope (Lv. 3), 2 x Medicinal Herb (Lv. 20) | 1 x Wooden Crossbow (Lv. 8) | forge weapon 1 | 90% | 76.8 | discover |
@@ -622,7 +663,7 @@ graph LR
     ectoplasm -->|1| shadowsilk
     starweave["Starweave (Lv. 80)"]
     silk_cloth -->|1| starweave
-    mana_concentrate[/"Mana Concentrate (Lv. 20)"/]
+    mana_concentrate["Mana Concentrate (Lv. 20)"]
     mana_concentrate -->|1| starweave
 ```
 
@@ -669,6 +710,38 @@ graph LR
 | `EMPTY_BOTTLE` | 1 x Glass (Lv. 8) | 2 x Empty Bottle (Lv. 1) | basic skill 1 | 100% | 5.0 | yes |
 | `LENS` | 2 x Glass (Lv. 8), 1 x Sand (Lv. 1) | 1 x Lens (Lv. 30) | basic skill 1 | 90% | 10.0 | yes |
 
+## Alchemy Laboratory
+
+```mermaid
+graph LR
+    small_health_potion["Small Health Potion (Lv. 3)"]
+    medicinal_herb[/"Medicinal Herb (Lv. 20)"/]
+    medicinal_herb -->|2| small_health_potion
+    empty_bottle["Empty Bottle (Lv. 1)"]
+    empty_bottle -->|1| small_health_potion
+    small_mana_potion["Small Mana Potion (Lv. 3)"]
+    mana_herb[/"Mana Herb (Lv. 40)"/]
+    mana_herb -->|2| small_mana_potion
+    empty_bottle -->|1| small_mana_potion
+    health_potion["Health Potion (Lv. 30)"]
+    medicinal_herb -->|4| health_potion
+    apple[/"Apple (Lv. 1)"/]
+    apple -->|2| health_potion
+    empty_bottle -->|1| health_potion
+    mana_potion["Mana Potion (Lv. 30)"]
+    mana_herb -->|4| mana_potion
+    grape[/"Grape (Lv. 1)"/]
+    grape -->|2| mana_potion
+    empty_bottle -->|1| mana_potion
+```
+
+| Recipe | Needs | Makes | Skill | Success | Seconds | Known from the start |
+| --- | --- | --- | --- | --- | --- | --- |
+| `HEALTH_POTION` | 4 x Medicinal Herb (Lv. 20), 2 x Apple (Lv. 1), 1 x Empty Bottle (Lv. 1) | 1 x Health Potion (Lv. 30) | alchemy 3 | 70% | 15.0 | discover |
+| `MANA_POTION` | 4 x Mana Herb (Lv. 40), 2 x Grape (Lv. 1), 1 x Empty Bottle (Lv. 1) | 1 x Mana Potion (Lv. 30) | alchemy 3 | 70% | 15.0 | discover |
+| `SMALL_HEALTH_POTION` | 2 x Medicinal Herb (Lv. 20), 1 x Empty Bottle (Lv. 1) | 1 x Small Health Potion (Lv. 3) | alchemy 1 | 90% | 8.0 | discover |
+| `SMALL_MANA_POTION` | 2 x Mana Herb (Lv. 40), 1 x Empty Bottle (Lv. 1) | 1 x Small Mana Potion (Lv. 3) | alchemy 1 | 90% | 8.0 | discover |
+
 ## Campfire
 
 ```mermaid
@@ -683,6 +756,109 @@ graph LR
 | Recipe | Needs | Makes | Skill | Success | Seconds | Known from the start |
 | --- | --- | --- | --- | --- | --- | --- |
 | `HEARTY_STEW` | 2 x Apple (Lv. 1), 1 x Jelly (Lv. 1) | 1 x Hearty Stew (Lv. 5) | cooking 1 | 50% | 6.0 | yes |
+
+## Carving Table
+
+| Recipe | Needs | Makes | Skill | Success | Seconds | Known from the start |
+| --- | --- | --- | --- | --- | --- | --- |
+| `ETCH_AMETHYST` | 1 x Cut Amethyst (Lv. 20) | etch essence | runic etching 1 | 50% | 10.0 | discover |
+| `ETCH_DIAMOND` | 1 x Cut Diamond (Lv. 100) | etch essence | runic etching 1 | 50% | 50.0 | discover |
+| `ETCH_EMERALD` | 1 x Cut Emerald (Lv. 40) | etch essence | runic etching 1 | 50% | 20.0 | discover |
+| `ETCH_PYRELITH` | 1 x Cut Pyrelith (Lv. 80) | etch essence | runic etching 1 | 50% | 40.0 | discover |
+| `ETCH_RUBY` | 1 x Cut Ruby (Lv. 60) | etch essence | runic etching 1 | 50% | 30.0 | discover |
+
+## Gem Cut Station
+
+```mermaid
+graph LR
+    cut_amethyst["Cut Amethyst (Lv. 20)"]
+    rough_amethyst[/"Rough Amethyst (Lv. 20)"/]
+    rough_amethyst -->|1| cut_amethyst
+    cut_emerald["Cut Emerald (Lv. 40)"]
+    rough_emerald[/"Rough Emerald (Lv. 40)"/]
+    rough_emerald -->|1| cut_emerald
+    cut_ruby["Cut Ruby (Lv. 60)"]
+    rough_ruby[/"Rough Ruby (Lv. 60)"/]
+    rough_ruby -->|1| cut_ruby
+    cut_pyrelith["Cut Pyrelith (Lv. 80)"]
+    rough_pyrelith[/"Rough Pyrelith (Lv. 80)"/]
+    rough_pyrelith -->|1| cut_pyrelith
+    cut_diamond["Cut Diamond (Lv. 100)"]
+    rough_diamond[/"Rough Diamond (Lv. 100)"/]
+    rough_diamond -->|1| cut_diamond
+    cut_garnet["Cut Garnet (Lv. 30)"]
+    rough_garnet[/"Rough Garnet (Lv. 30)"/]
+    rough_garnet -->|1| cut_garnet
+    cut_sapphire["Cut Sapphire (Lv. 45)"]
+    rough_sapphire[/"Rough Sapphire (Lv. 45)"/]
+    rough_sapphire -->|1| cut_sapphire
+    cut_onyx["Cut Onyx (Lv. 65)"]
+    rough_onyx[/"Rough Onyx (Lv. 65)"/]
+    rough_onyx -->|1| cut_onyx
+    cut_jade["Cut Jade (Lv. 33)"]
+    rough_jade[/"Rough Jade (Lv. 33)"/]
+    rough_jade -->|1| cut_jade
+    cut_tigers_eye["Cut Tiger's Eye (Lv. 37)"]
+    rough_tigers_eye[/"Rough Tiger's Eye (Lv. 37)"/]
+    rough_tigers_eye -->|1| cut_tigers_eye
+    cut_opal["Cut Opal (Lv. 66)"]
+    rough_opal[/"Rough Opal (Lv. 66)"/]
+    rough_opal -->|1| cut_opal
+```
+
+| Recipe | Needs | Makes | Skill | Success | Seconds | Known from the start |
+| --- | --- | --- | --- | --- | --- | --- |
+| `CUT_AMETHYST` | 1 x Rough Amethyst (Lv. 20) | 1 x Cut Amethyst (Lv. 20) | gem cutting 1 | 90% | 10.0 | yes |
+| `CUT_DIAMOND` | 1 x Rough Diamond (Lv. 100) | 1 x Cut Diamond (Lv. 100) | gem cutting 5 | 40% | 50.0 | yes |
+| `CUT_EMERALD` | 1 x Rough Emerald (Lv. 40) | 1 x Cut Emerald (Lv. 40) | gem cutting 2 | 75% | 20.0 | yes |
+| `CUT_GARNET` | 1 x Rough Garnet (Lv. 30) | 1 x Cut Garnet (Lv. 30) | gem cutting 1 | 90% | 15.0 | yes |
+| `CUT_JADE` | 1 x Rough Jade (Lv. 33) | 1 x Cut Jade (Lv. 33) | gem cutting 2 | 75% | 20.0 | yes |
+| `CUT_ONYX` | 1 x Rough Onyx (Lv. 65) | 1 x Cut Onyx (Lv. 65) | gem cutting 3 | 60% | 35.0 | yes |
+| `CUT_OPAL` | 1 x Rough Opal (Lv. 66) | 1 x Cut Opal (Lv. 66) | gem cutting 3 | 60% | 35.0 | yes |
+| `CUT_PYRELITH` | 1 x Rough Pyrelith (Lv. 80) | 1 x Cut Pyrelith (Lv. 80) | gem cutting 4 | 50% | 40.0 | yes |
+| `CUT_RUBY` | 1 x Rough Ruby (Lv. 60) | 1 x Cut Ruby (Lv. 60) | gem cutting 3 | 60% | 30.0 | yes |
+| `CUT_SAPPHIRE` | 1 x Rough Sapphire (Lv. 45) | 1 x Cut Sapphire (Lv. 45) | gem cutting 2 | 75% | 25.0 | yes |
+| `CUT_TIGERS_EYE` | 1 x Rough Tiger's Eye (Lv. 37) | 1 x Cut Tiger's Eye (Lv. 37) | gem cutting 2 | 70% | 22.0 | yes |
+
+## Mint
+
+```mermaid
+graph LR
+    gold_coin["Gold Coin (Lv. 1)"]
+    gold_bar["Gold Bar (Lv. 50)"]
+    gold_bar -->|1| gold_coin
+```
+
+| Recipe | Needs | Makes | Skill | Success | Seconds | Known from the start |
+| --- | --- | --- | --- | --- | --- | --- |
+| `GOLD_COIN` | 1 x Gold Bar (Lv. 50) | 10000 x Gold Coin (Lv. 1) | minting 1 | 100% | 20.0 | yes |
+
+## Transmutation Workbench
+
+```mermaid
+graph LR
+    pure_mana_essence["Pure Mana Essence (Lv. 30)"]
+    mana_essence[/"Mana Essence (Lv. 5)"/]
+    mana_essence -->|3| pure_mana_essence
+    mana_concentrate["Mana Concentrate (Lv. 20)"]
+    pure_mana_essence -->|2| mana_concentrate
+    mana_crystal[/"Mana Crystal (Lv. 5)"/]
+    mana_crystal -->|1| mana_concentrate
+    yellow_mana_crystal["Yellow Mana Crystal (Lv. 30)"]
+    blue_mana_crystal[/"Blue Mana Crystal (Lv. 15)"/]
+    blue_mana_crystal -->|3| yellow_mana_crystal
+    mana_concentrate -->|1| yellow_mana_crystal
+    red_mana_crystal["Red Mana Crystal (Lv. 30)"]
+    yellow_mana_crystal -->|3| red_mana_crystal
+    mana_concentrate -->|2| red_mana_crystal
+```
+
+| Recipe | Needs | Makes | Skill | Success | Seconds | Known from the start |
+| --- | --- | --- | --- | --- | --- | --- |
+| `MANA_CONCENTRATE` | 2 x Pure Mana Essence (Lv. 30), 1 x Mana Crystal (Lv. 5) | 1 x Mana Concentrate (Lv. 20) | transmutation 3 | 70% | 20.0 | discover |
+| `PURE_MANA_ESSENCE` | 3 x Mana Essence (Lv. 5) | 1 x Pure Mana Essence (Lv. 30) | transmutation 1 | 80% | 15.0 | discover |
+| `RED_MANA_CRYSTAL` | 3 x Yellow Mana Crystal (Lv. 30), 2 x Mana Concentrate (Lv. 20) | 1 x Red Mana Crystal (Lv. 30) | transmutation 7 | 50% | 30.0 | discover |
+| `YELLOW_MANA_CRYSTAL` | 3 x Blue Mana Crystal (Lv. 15), 1 x Mana Concentrate (Lv. 20) | 1 x Yellow Mana Crystal (Lv. 30) | transmutation 5 | 60% | 25.0 | discover |
 
 ## By hand
 
@@ -718,30 +894,6 @@ graph LR
     reed_stalk -->|2| arrow
     feather[/"Feather (Lv. 1)"/]
     feather -->|1| arrow
-    cut_amethyst["Cut Amethyst (Lv. 20)"]
-    rough_amethyst[/"Rough Amethyst (Lv. 20)"/]
-    rough_amethyst -->|1| cut_amethyst
-    cut_emerald["Cut Emerald (Lv. 40)"]
-    rough_emerald[/"Rough Emerald (Lv. 40)"/]
-    rough_emerald -->|1| cut_emerald
-    cut_ruby["Cut Ruby (Lv. 60)"]
-    rough_ruby[/"Rough Ruby (Lv. 60)"/]
-    rough_ruby -->|1| cut_ruby
-    cut_pyrelith["Cut Pyrelith (Lv. 80)"]
-    rough_pyrelith[/"Rough Pyrelith (Lv. 80)"/]
-    rough_pyrelith -->|1| cut_pyrelith
-    cut_diamond["Cut Diamond (Lv. 100)"]
-    rough_diamond[/"Rough Diamond (Lv. 100)"/]
-    rough_diamond -->|1| cut_diamond
-    cut_garnet["Cut Garnet (Lv. 30)"]
-    rough_garnet[/"Rough Garnet (Lv. 30)"/]
-    rough_garnet -->|1| cut_garnet
-    cut_sapphire["Cut Sapphire (Lv. 45)"]
-    rough_sapphire[/"Rough Sapphire (Lv. 45)"/]
-    rough_sapphire -->|1| cut_sapphire
-    cut_onyx["Cut Onyx (Lv. 65)"]
-    rough_onyx[/"Rough Onyx (Lv. 65)"/]
-    rough_onyx -->|1| cut_onyx
     tanning_rack_kit["Tanning Rack Kit (Lv. 1)"]
     plank["Plank (Lv. 5)"]
     plank -->|6| tanning_rack_kit
@@ -764,47 +916,111 @@ graph LR
     plank -->|6| glassblowing_bench_kit
     iron_ingot -->|2| glassblowing_bench_kit
     brick -->|2| glassblowing_bench_kit
-    cut_jade["Cut Jade (Lv. 33)"]
-    rough_jade[/"Rough Jade (Lv. 33)"/]
-    rough_jade -->|1| cut_jade
-    cut_tigers_eye["Cut Tiger's Eye (Lv. 37)"]
-    rough_tigers_eye[/"Rough Tiger's Eye (Lv. 37)"/]
-    rough_tigers_eye -->|1| cut_tigers_eye
-    cut_opal["Cut Opal (Lv. 66)"]
-    rough_opal[/"Rough Opal (Lv. 66)"/]
-    rough_opal -->|1| cut_opal
+    alchemy_laboratory_kit["Alchemy Laboratory Kit (Lv. 1)"]
+    plank -->|6| alchemy_laboratory_kit
+    glass["Glass (Lv. 8)"]
+    glass -->|4| alchemy_laboratory_kit
+    empty_bottle["Empty Bottle (Lv. 1)"]
+    empty_bottle -->|4| alchemy_laboratory_kit
+    iron_ingot -->|1| alchemy_laboratory_kit
+    gem_cut_station_kit["Gem Cut Station Kit (Lv. 1)"]
+    plank -->|8| gem_cut_station_kit
+    iron_ingot -->|2| gem_cut_station_kit
+    sand[/"Sand (Lv. 1)"/]
+    sand -->|4| gem_cut_station_kit
+    transmutation_workbench_kit["Transmutation Workbench Kit (Lv. 1)"]
+    cut_stone["Cut Stone (Lv. 10)"]
+    cut_stone -->|8| transmutation_workbench_kit
+    copper_ingot["Copper Ingot (Lv. 10)"]
+    copper_ingot -->|4| transmutation_workbench_kit
+    mana_crystal[/"Mana Crystal (Lv. 5)"/]
+    mana_crystal -->|2| transmutation_workbench_kit
+    steel_arrow["steel arrow (Lv. 30)"]
+    arrow -->|20| steel_arrow
+    steel_ingot["Steel Ingot (Lv. 32)"]
+    steel_ingot -->|1| steel_arrow
+    sharp_arrow["sharp arrow (Lv. 10)"]
+    arrow -->|20| sharp_arrow
+    sharp_fang[/"Sharp Fang (Lv. 5)"/]
+    sharp_fang -->|1| sharp_arrow
+    fire_arrow["fire arrow (Lv. 45)"]
+    arrow -->|20| fire_arrow
+    ember_core[/"Ember Core (Lv. 45)"/]
+    ember_core -->|1| fire_arrow
+    crystal_arrow["crystal arrow (Lv. 40)"]
+    arrow -->|20| crystal_arrow
+    frost_crystal[/"Frost Crystal (Lv. 40)"/]
+    frost_crystal -->|1| crystal_arrow
+    wind_arrow["wind arrow (Lv. 65)"]
+    arrow -->|20| wind_arrow
+    storm_feather[/"Storm Feather (Lv. 65)"/]
+    storm_feather -->|1| wind_arrow
+    stone_arrow["stone arrow (Lv. 40)"]
+    arrow -->|20| stone_arrow
+    earth_crystal[/"earth crystal (Lv. 40)"/]
+    earth_crystal -->|1| stone_arrow
+    silver_arrow["silver arrow (Lv. 38)"]
+    arrow -->|20| silver_arrow
+    silver_ingot["Silver Ingot (Lv. 38)"]
+    silver_ingot -->|1| silver_arrow
+    shadow_arrow["shadow arrow (Lv. 55)"]
+    arrow -->|20| shadow_arrow
+    shadow_shard[/"Shadow Shard (Lv. 55)"/]
+    shadow_shard -->|1| shadow_arrow
+    poison_arrow["poison arrow (Lv. 15)"]
+    arrow -->|20| poison_arrow
+    venom_sac[/"Venom Sac (Lv. 15)"/]
+    venom_sac -->|1| poison_arrow
+    stun_arrow["stun arrow (Lv. 45)"]
+    arrow -->|20| stun_arrow
+    lodestone[/"Lodestone (Lv. 45)"/]
+    lodestone -->|1| stun_arrow
+    carving_table_kit["Carving Table Kit (Lv. 1)"]
+    plank -->|8| carving_table_kit
+    iron_ingot -->|2| carving_table_kit
+    glass -->|1| carving_table_kit
+    mint_kit["Mint Kit (Lv. 1)"]
+    cut_stone -->|6| mint_kit
+    plank -->|4| mint_kit
+    iron_ingot -->|2| mint_kit
+    bronze_ingot["Bronze Ingot (Lv. 15)"]
+    bronze_ingot -->|2| mint_kit
 ```
 
 | Recipe | Needs | Makes | Skill | Success | Seconds | Known from the start |
 | --- | --- | --- | --- | --- | --- | --- |
+| `ALCHEMY_LABORATORY_KIT` | 6 x Plank (Lv. 5), 4 x Glass (Lv. 8), 4 x Empty Bottle (Lv. 1), 1 x Iron Ingot (Lv. 20) | 1 x Alchemy Laboratory Kit (Lv. 1) | carpentry 2 | 100% | 20.0 | yes |
 | `ARROW` | 2 x Reed Stalk (Lv. 1), 1 x Feather (Lv. 1) | 20 x Arrow (Lv. 1) | arrow crafting 1 | 100% | 5.0 | yes |
 | `CAMPFIRE_KIT` | 4 x Stick (Lv. 1), 3 x Loose Stone (Lv. 1), 1 x Resin (Lv. 1) | 1 x Campfire Kit (Lv. 1) | cooking 1 | 100% | 5.0 | yes |
+| `CARVING_TABLE_KIT` | 8 x Plank (Lv. 5), 2 x Iron Ingot (Lv. 20), 1 x Glass (Lv. 8) | 1 x Carving Table Kit (Lv. 1) | runic etching 1 | 100% | 20.0 | yes |
 | `CHEST_KIT` | 3 x Log (Lv. 1), 1 x Iron Ingot (Lv. 20) | 1 x Chest Kit (Lv. 1) | carpentry 1 | 100% | 10.0 | yes |
-| `CUT_AMETHYST` | 1 x Rough Amethyst (Lv. 20) | 1 x Cut Amethyst (Lv. 20) | gem cutting 1 | 90% | 10.0 | yes |
-| `CUT_DIAMOND` | 1 x Rough Diamond (Lv. 100) | 1 x Cut Diamond (Lv. 100) | gem cutting 5 | 40% | 50.0 | yes |
-| `CUT_EMERALD` | 1 x Rough Emerald (Lv. 40) | 1 x Cut Emerald (Lv. 40) | gem cutting 2 | 75% | 20.0 | yes |
-| `CUT_GARNET` | 1 x Rough Garnet (Lv. 30) | 1 x Cut Garnet (Lv. 30) | gem cutting 1 | 90% | 15.0 | yes |
-| `CUT_JADE` | 1 x Rough Jade (Lv. 33) | 1 x Cut Jade (Lv. 33) | gem cutting 2 | 75% | 20.0 | yes |
-| `CUT_ONYX` | 1 x Rough Onyx (Lv. 65) | 1 x Cut Onyx (Lv. 65) | gem cutting 3 | 60% | 35.0 | yes |
-| `CUT_OPAL` | 1 x Rough Opal (Lv. 66) | 1 x Cut Opal (Lv. 66) | gem cutting 3 | 60% | 35.0 | yes |
-| `CUT_PYRELITH` | 1 x Rough Pyrelith (Lv. 80) | 1 x Cut Pyrelith (Lv. 80) | gem cutting 4 | 50% | 40.0 | yes |
-| `CUT_RUBY` | 1 x Rough Ruby (Lv. 60) | 1 x Cut Ruby (Lv. 60) | gem cutting 3 | 60% | 30.0 | yes |
-| `CUT_SAPPHIRE` | 1 x Rough Sapphire (Lv. 45) | 1 x Cut Sapphire (Lv. 45) | gem cutting 2 | 75% | 25.0 | yes |
-| `CUT_TIGERS_EYE` | 1 x Rough Tiger's Eye (Lv. 37) | 1 x Cut Tiger's Eye (Lv. 37) | gem cutting 2 | 70% | 22.0 | yes |
+| `CRYSTAL_ARROW` | 20 x Arrow (Lv. 1), 1 x Frost Crystal (Lv. 40) | 20 x crystal arrow (Lv. 40) | arrow crafting 3 | 100% | 6.0 | yes |
+| `FIRE_ARROW` | 20 x Arrow (Lv. 1), 1 x Ember Core (Lv. 45) | 20 x fire arrow (Lv. 45) | arrow crafting 3 | 100% | 6.0 | yes |
 | `FORGE_KIT` | 10 x Loose Stone (Lv. 1), 2 x Iron Ingot (Lv. 20), 2 x Log (Lv. 1) | 1 x Forge Kit (Lv. 1) | carpentry 1 | 100% | 10.0 | yes |
 | `FURNACE_KIT` | 12 x Loose Stone (Lv. 1), 2 x Log (Lv. 1) | 1 x Furnace Kit (Lv. 1) | carpentry 1 | 100% | 10.0 | yes |
+| `GEM_CUT_STATION_KIT` | 8 x Plank (Lv. 5), 2 x Iron Ingot (Lv. 20), 4 x Sand (Lv. 1) | 1 x Gem Cut Station Kit (Lv. 1) | gem cutting 1 | 100% | 20.0 | yes |
 | `GLASSBLOWING_BENCH_KIT` | 6 x Plank (Lv. 5), 2 x Iron Ingot (Lv. 20), 2 x Brick (Lv. 5) | 1 x Glassblowing Bench Kit (Lv. 1) | carpentry 2 | 100% | 15.0 | yes |
 | `GLASS_FURNACE_KIT` | 12 x Brick (Lv. 5), 2 x Iron Ingot (Lv. 20), 4 x Clay (Lv. 1) | 1 x Glass Furnace Kit (Lv. 1) | carpentry 2 | 100% | 20.0 | yes |
 | `LOOM_KIT` | 8 x Plank (Lv. 5), 4 x Rope (Lv. 3), 10 x Nails (Lv. 5) | 1 x Loom Kit (Lv. 1) | carpentry 2 | 100% | 15.0 | yes |
 | `MINING_SHAFT_KIT` | 8 x Log (Lv. 1), 2 x Iron Ingot (Lv. 20) | 1 x Mining Shaft Kit (Lv. 1) | carpentry 1 | 100% | 20.0 | yes |
+| `MINT_KIT` | 6 x Cut Stone (Lv. 10), 4 x Plank (Lv. 5), 2 x Iron Ingot (Lv. 20), 2 x Bronze Ingot (Lv. 15) | 1 x Mint Kit (Lv. 1) | minting 1 | 100% | 20.0 | yes |
 | `PICKAXE` | 2 x Iron Ingot (Lv. 20), 1 x Log (Lv. 1) | 1 x Pickaxe (Lv. 10) | mining 1 | 100% | 10.0 | yes |
+| `POISON_ARROW` | 20 x Arrow (Lv. 1), 1 x Venom Sac (Lv. 15) | 20 x poison arrow (Lv. 15) | arrow crafting 4 | 100% | 6.0 | yes |
+| `SHADOW_ARROW` | 20 x Arrow (Lv. 1), 1 x Shadow Shard (Lv. 55) | 20 x shadow arrow (Lv. 55) | arrow crafting 4 | 100% | 6.0 | yes |
+| `SHARP_ARROW` | 20 x Arrow (Lv. 1), 1 x Sharp Fang (Lv. 5) | 20 x sharp arrow (Lv. 10) | arrow crafting 2 | 100% | 6.0 | yes |
 | `SHOVEL` | 2 x Stick (Lv. 1), 1 x Log (Lv. 1) | 1 x Shovel (Lv. 1) | basic skill 1 | 80% | 8.0 | yes |
+| `SILVER_ARROW` | 20 x Arrow (Lv. 1), 1 x Silver Ingot (Lv. 38) | 20 x silver arrow (Lv. 38) | arrow crafting 4 | 100% | 6.0 | yes |
+| `STEEL_ARROW` | 20 x Arrow (Lv. 1), 1 x Steel Ingot (Lv. 32) | 20 x steel arrow (Lv. 30) | arrow crafting 2 | 100% | 6.0 | yes |
+| `STONE_ARROW` | 20 x Arrow (Lv. 1), 1 x earth crystal (Lv. 40) | 20 x stone arrow (Lv. 40) | arrow crafting 3 | 100% | 6.0 | yes |
 | `STONE_HATCHET` | 2 x Loose Stone (Lv. 1), 1 x Stick (Lv. 1) | 1 x Stone Hatchet (Lv. 1) | basic skill 1 | 80% | 5.0 | yes |
 | `STONE_KNIFE` | 1 x Flint (Lv. 1), 1 x Stick (Lv. 1) | 1 x Stone Knife (Lv. 1) | basic skill 1 | 80% | 4.0 | yes |
+| `STUN_ARROW` | 20 x Arrow (Lv. 1), 1 x Lodestone (Lv. 45) | 20 x stun arrow (Lv. 45) | arrow crafting 5 | 100% | 6.0 | yes |
 | `TANNING_RACK_KIT` | 6 x Plank (Lv. 5), 4 x Rope (Lv. 3), 2 x Salt (Lv. 1) | 1 x Tanning Rack Kit (Lv. 1) | carpentry 2 | 100% | 12.0 | yes |
 | `TORCH` | 1 x Stick (Lv. 1), 1 x Resin (Lv. 1) | 1 x Torch (Lv. 1) | basic skill 1 | 90% | 3.0 | yes |
+| `TRANSMUTATION_WORKBENCH_KIT` | 8 x Cut Stone (Lv. 10), 4 x Copper Ingot (Lv. 10), 2 x Mana Crystal (Lv. 5) | 1 x Transmutation Workbench Kit (Lv. 1) | carpentry 3 | 100% | 20.0 | yes |
 | `UPGRADE_EQUIPMENT` | 2 x Iron Ingot (Lv. 20), 1 x Mana Dust (Lv. 15) | upgrade | upgrade equipment 1 | 30% | 8.0 | discover |
 | `WILLOW_ROD` | 2 x Stick (Lv. 1), 1 x Resin (Lv. 1) | 1 x Willow Rod (Lv. 1) | basic skill 1 | 80% | 4.0 | yes |
+| `WIND_ARROW` | 20 x Arrow (Lv. 1), 1 x Storm Feather (Lv. 65) | 20 x wind arrow (Lv. 65) | arrow crafting 3 | 100% | 6.0 | yes |
 | `WORKBENCH_KIT` | 4 x Log (Lv. 1), 4 x Stick (Lv. 1) | 1 x Workbench Kit (Lv. 1) | basic skill 1 | 100% | 10.0 | yes |
 
 ## Raw materials
@@ -817,7 +1033,7 @@ and the ore a pick breaks out for the item, so a `no` is a material nobody can o
 | Adamantium Ore | 100 | no | mining |
 | Apple | 1 | yes | mobs |
 | Blue Mana Crystal | 15 | yes | mobs |
-| Bone Shard | 5 | yes | mobs |
+| Bone Shard | 5 | yes | mobs, props |
 | Clay | 1 | yes | mobs |
 | Coal | 5 | yes | mobs |
 | Copper Ore | 10 | no | mining |
@@ -825,6 +1041,7 @@ and the ore a pick breaks out for the item, so a `no` is a material nobody can o
 | Deathcap | 15 | yes | mobs |
 | Dragon Scale | 75 | yes | mobs |
 | Drake Hide | 55 | yes | mobs |
+| earth crystal | 40 | yes | mobs |
 | Ectoplasm | 25 | yes | mobs |
 | Ember Core | 45 | yes | mobs |
 | Feather | 1 | yes | mobs |
@@ -833,6 +1050,7 @@ and the ore a pick breaks out for the item, so a `no` is a material nobody can o
 | Frost Crystal | 40 | yes | mobs |
 | Glowcap | 45 | yes | mobs |
 | Gold Ore | 50 | no | mobs, mining |
+| Grape | 1 | yes | mobs |
 | Heartwood | 80 | yes | mobs |
 | Horn | 10 | yes | mobs |
 | Iron Ore | 20 | no | mobs, mining |
@@ -841,20 +1059,20 @@ and the ore a pick breaks out for the item, so a `no` is a material nobody can o
 | Lodestone | 45 | yes | mining |
 | Log | 1 | no | mobs, props |
 | Loose Stone | 1 | yes | props |
-| Mana Concentrate | 20 | yes | mobs |
+| Mana Crystal | 5 | yes | mobs, props |
 | Mana Dust | 15 | yes | mobs |
 | Mana Essence | 5 | yes | mobs |
+| Mana Herb | 40 | yes | props |
 | Medicinal Herb | 20 | yes | props |
 | Mercury Ore | 60 | no | mining |
 | Mithril Ore | 85 | no | mining |
 | Obsidian | 50 | yes | mining |
 | Palladium Ore | 70 | no | mining |
-| Pure Mana Essence | 30 | yes | mobs |
 | Quarried Stone | 5 | yes | mobs, props |
 | Raw Hide | 1 | no | mobs |
 | Reed Stalk | 1 | yes | mobs, props |
 | Resin | 1 | yes | props |
-| Rough Amethyst | 20 | no | mining |
+| Rough Amethyst | 20 | no | props, mining |
 | Rough Diamond | 100 | no | mining |
 | Rough Emerald | 40 | no | fishing, mining |
 | Rough Garnet | 30 | no | mining |
