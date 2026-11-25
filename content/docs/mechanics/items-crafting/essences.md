@@ -47,6 +47,10 @@ So a Bestia is only used up when it really becomes an essence. The price of bad 
 The Artificer picks one of their own Bestias straight from their Bestia storage, or one that is called and stands near
 the table. Another master's Bestia needs its owner to [offer it](#etching-another-masters-bestia).
 
+Taking a Bestia from storage follows the rule for opening the storage: the Artificer needs the
+[Bestia Ledger](/docs/mechanics/bestias/bestia-storage/#the-bestia-ledger), and it does not work during a fight. If
+the Bestia is called out or released before the etching ends, the etching stops and the gem is given back.
+
 ## Etching Another Master's Bestia
 
 A master without Runic Etching can hire an Artificer. There is no special window for it:
