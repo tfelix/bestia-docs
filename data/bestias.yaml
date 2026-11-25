@@ -473,6 +473,8 @@
     chance: 25
   - item: bramble_berries
     chance: 20
+  - item: grape
+    chance: 20
   - item: gold_coin
     chance: 5
   learnset:
