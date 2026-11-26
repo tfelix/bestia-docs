@@ -1,7 +1,7 @@
 ---
 weight: 750
 title: Parties & Guilds
-description: "How masters band together: parties for hunting side by side and sharing what a fight earns, and guilds - founded with a Founder's Seal - with ranks, an experience tax, a level and a skill tree of their own."
+description: "How masters band together: parties for hunting side by side and sharing what a fight earns and drops, and guilds - founded with a Founder's Seal - with ranks, an experience tax, a level and a skill tree of their own."
 ---
 
 Masters band together in two ways. A **party** is a handful of players hunting side by side, and lasts as long as
@@ -47,15 +47,29 @@ no bonus. It also comes on top of the bonus several players already earn by figh
 
 {{< alert context="info" text="**Example.** A party of three in Even share, two of them within 100 m. One of them deals all the damage to a Bestia worth `100` experience. The pool is `130`, so the two near the kill get `65` each and the third gets nothing." />}}
 
-## Loot
+## Sharing Loot
 
-Loot is not shared yet: the account that dealt the most damage gets a few seconds' claim on every drop, and then
-anybody may pick it up. Options under consideration:
+The drops of a wild Bestia belong first to the side that dealt the most damage to it. A party is one side: its
+members' damage adds up. So a party that did more together keeps its loot, even when a stranger hit harder than any
+one member. Outside a party, the side is the master and its Bestia alone.
 
-1. **Party pickup** - the claim belongs to the whole party, so any member may pick up during it.
-2. **Round robin** - each drop is claimed for the next member near the kill, in turn.
-3. **Random** - each drop is claimed for a random member near the kill.
-4. **Need or greed** - members roll for drops above a rarity, the rest go by one of the above.
+The owner picks how the party holds its drops. A new party starts in Party share.
+
+| Mode            | Who may pick up a drop first                                                                                                 |
+| :-------------- | :--------------------------------------------------------------------------------------------------------------------------- |
+| **Party share** | Every member, for `6` s.                                                                                                     |
+| **Take turns**  | One member **within 100 m of the kill**, for `30` s, then every member for `6` s. Each drop goes to the next member in turn. |
+
+After that anybody may pick it up. A master and the Bestia it plays count as one: either may pick up what the other
+may. Near the kill means the same as for [experience](#sharing-experience).
+
+The turn passes on with every drop, in a fixed order, and skips the members who are not near the kill. The member who
+dealt the most damage is always near it.
+
+Luck that raises drop chances, such as [Fortune's Favor](#skill-fortune's-favor), counts for the member of the
+winning side who dealt the most damage.
+
+{{< alert context="info" text="**Example.** A party of three in Take turns, all near the kill. A Bestia drops two items. The first is held for the member whose turn it is, the second for the next one. Each of them has `30` s to pick their item up; after that the whole party may." />}}
 
 # Guilds
 
