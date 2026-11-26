@@ -331,6 +331,7 @@ parcel. Give an enchanted sword to a friend, and the enchantment goes with it.
 - **It does not stack.** The same enchantment again refreshes its time. An item holds one element at a time, so a
   new endow replaces the old one.
 - **It has a strength.** The strength makes it harder to [dispel](#dispelling-an-enchantment).
+- **The holder sees it.** An item's tooltip and detail list each enchantment and the time it has left.
 
 | Enchantment                                                 | Bound by                                                                   | What it does                                                                 | Lasts           | Dispellable                        |
 | ----------------------------------------------------------- | -------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | --------------- | ---------------------------------- |
