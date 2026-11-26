@@ -82,8 +82,6 @@ it. It finds creatures only: a [Spell Binding](#skill-spell-binding) stays hidde
     type="Active" manaCost="20" castTime="5s" cooldown="60s" range="0" target="Observation Outpost"
     description="The Scholar's ear to the ground - a sense for the direction and distance of world-changing events long before word of them travels." >}}
 
-{{< alert context="warning" text="**Designed, not built.** The skill can be learned, but it has no effect yet, and outposts cannot be built yet." />}}
-
 Senses what is about to happen in the land around an outpost: a rift knot gathering, an alpha growing, an old seal
 cracking, raiders massing. It reads **events**, not things: a [Resource Sense](/docs/mechanics/master/survival-tree/#skill-resource-sense) finds the ore vein, a [Scry](#skill-scry) looks at a
 place you are not standing in, and [Weather Sense](/docs/mechanics/master/survival-tree/#skill-weather-sense) reads the
@@ -102,24 +100,24 @@ Each cast lists every brewing event in range. What it tells about each one grows
 | 2   | 2km        | Also how far: near or far                                              |
 | 3   | 3km        | The distance within 500 m, and the kind: mana, beasts, earth, sky or people |
 | 4   | 4km        | Also how far along it is: stirring, gathering or about to break        |
-| 5   | 5km        | What exactly it is, like "a rift", and roughly when: "within a day"    |
+| 5   | 5km        | What exactly it is, like "a rift", and roughly when: "within 20 hours" |
 
-**Big events are felt from further away.** The base range counts for small events. A rift knot is sensed at three
-times the base range, a [doomsday](/docs/mechanics/world/doomsday/) stage or a growing Wound at ten times.
+**Big events are felt from further away.** The base range counts for small events. A rift is sensed at three times
+the base range, an old seal or a raid at twice. Still planned: a [doomsday](/docs/mechanics/world/doomsday/) stage or
+a growing Wound at ten times.
 
-What Observation finds goes on the Scholar's own map as a mark and travels with copies of that map.
+From level 3, what Observation finds goes on the Scholar's own map as a mark and travels with copies of that map.
+Each cast replaces the marks of the last one.
 
-**A Bestia can keep watch** at the outpost while you are away. When a new event begins to stir in range, it sends word
-to its master, also through the [companion app](/docs/mechanics/companion-app/). This makes outposts worth building in a
-ring around a Wound, and worth burning down for those who want the events to come.
+**A Bestia can keep watch** at the outpost while you are away. When a new event begins to stir within the range of
+level 3, it sends word to its master, also through the [companion app](/docs/mechanics/companion-app/). This makes
+outposts worth building in a ring around a Wound, and worth burning down for those who want the events to come.
 
 {{< /skill >}}
 
 {{< skill name="Augury" maxLevel="3" requires="Observation Lv. 2"
     type="Active" manaCost="10" castTime="2s" cooldown="30s" range="Self" target="Self"
     description="A quick reading of the omens around you, cast anywhere: is this land calm, uneasy or ominous?" >}}
-
-{{< alert context="warning" text="**Designed, not built.**" />}}
 
 Reads how restless the land is where the Scholar stands, without an outpost. It never gives a direction or a distance,
 so it answers "is it safe to camp here tonight?", while [Observation](#skill-observation) watches a whole frontier.
@@ -131,8 +129,8 @@ so it answers "is it safe to camp here tonight?", while [Observation](#skill-obs
 | 3   | Every neighbouring region by name, each with its own reading                        |
 
 The reading follows the steps described under
-[Mana You Can Feel](/docs/mechanics/world/world-events/#mana-you-can-feel), and a brewing event in the region makes
-it read worse than the mana alone would.
+[Mana You Can Feel](/docs/mechanics/world/world-events/#mana-you-can-feel), by the mana in most of the region. A
+brewing event in the region makes it read ominous, whatever the mana says.
 
 {{< /skill >}}
 
