@@ -4,7 +4,7 @@ weight: 1250
 description: "How mana builds up in the world and what it does, rifts and how the Orders fight over them, the other world events, and how players learn about them."
 ---
 
-{{< alert context="info" text="**Partly built.** Mana changes with play, and rifts, rare bestia, alphas, old seals and raids run. The Orders' part in rifts, crystal nodes, town damage, blackboard posts and world-wide news are still planned. How the server runs it all is on the [World Events](/docs/server/world-events/) server page." />}}
+{{< alert context="info" text="**Partly built.** Mana changes with play, and rifts, rare bestia, alphas, old seals and raids run. The Orders' part in rifts and broken buildings are still planned. How the server runs it all is on the [World Events](/docs/server/world-events/) server page." />}}
 
 The world is not quiet. Mana seeps out of the Wounds, it gathers where people fight and cast, and when too much of it
 sits in one place, the land starts to change. Strange plants grow, stones rise, bestia grow restless and stronger,
@@ -115,7 +115,9 @@ graph LR
    to the towns nearby.
 3. **Open.** The rift grows through five stages. With each stage it pulls from further away, up to 1.5 km. Every 20
    to 30 minutes a wave of bestia comes out and marches on the nearest town. The waves are local bestia, touched by
-   the mana, and they grow stronger with each stage. Still planned: crystal nodes that grow around the gate.
+   the mana, and they grow stronger with each stage. **Rift crystals** grow around the gate, one for each stage the
+   rift reached. A crystal does not fight back. Breaking one drops mana crystals and takes a twentieth of the rift's
+   gathered mana with it, so the rift spills less when it collapses.
 4. **Anchor.** At stage 3 an anchor boss, a creature from beyond the rift, takes its place at the gate. While it
    lives, the rift cannot be sealed. No weapon ever harms the gate.
 5. **Seal.** When the anchor falls, the gate can be sealed for 30 real minutes. A
@@ -126,13 +128,14 @@ graph LR
    rises again at the next stage.
 
 **Collapse.** A rift that is full, or that stays open for about a real day, collapses. All its mana spills out in a
-few hundred metres, which can start mana storms or a Mana Burn, and sometimes a new knot forms nearby. Still planned:
-a last burst of bestia and a scar in the ground. Two rifts that pull from the same land merge into one. In a world
+few hundred metres, which can start mana storms or a Mana Burn, and sometimes a new knot forms nearby. The ground
+where the gate stood always keeps a scar. Still planned: a last burst of bestia. Two rifts that pull from the same land merge into one. In a world
 whose doomsday is [The Void Tear](/docs/mechanics/world/doomsday/#the-void-tear), this is how it begins.
 
 **When nobody comes.** The waves still reach the town, but they are weaker than with players around. A town survives
-one rift. It does not fall. Still planned: the damage it takes, such as burnt fields, broken buildings and news that
-travels.
+one rift. It does not fall, but a wave that reaches a town with no master in its streets sets the fields alight,
+once per wave. Burnt ground means less work for the town's trades until it grows back. Still planned: broken
+buildings.
 
 At most one rift is open in a province at a time, and none ever forms in a start province.
 
@@ -219,7 +222,7 @@ These fit the same pattern and use systems the game already has. They come after
 World events pay **no coin**. They pay with:
 
 - **Loot.** Rift waves and the anchor boss drop their own loot, and every event shares a pile among those who ended
-  it. Still planned: crystal nodes with their own loot.
+  it. Rift crystals drop mana crystals.
 - **Honor.** Ending an event raises a master's honor everywhere and with the town nearest it, see
   [Positive Honor](/docs/mechanics/society/pvp/#positive-honor). Raiders caught in their camp count as outlaws.
 - **What did not happen.** A sealed rift does not spill, and a town that was defended does not burn.
@@ -227,8 +230,7 @@ World events pay **no coin**. They pay with:
 Who gets how much is decided by **contribution** along three lines, so nobody has to out-damage anyone:
 
 - **Fighting:** killing the event's creatures, such as the waves and the anchor
-- **Work:** each ritual held at a rift or a cracking seal. Still planned: crystal nodes harvested or shattered, wards
-  raised
+- **Work:** each ritual held at a rift or a cracking seal, and each rift crystal broken. Still planned: wards raised
 - **Holding:** being on the event's ground while it is active, such as the rift's reach
 
 Nobody needs to accept anything first. Being there and helping is enough.
@@ -257,8 +259,11 @@ Nothing announces an event before it is real. The world shows signs, and some pl
 
 An omen means danger, not a date. Players who act in time can stop an event before it starts.
 
-Once an event is real, the townsfolk nearby talk about it: a rift opened, a road was robbed, a seal cracks. Still
-planned: posting events on the blackboards of the towns nearby, and the Orders calling their members through the
-[companion app](/docs/mechanics/companion-app/). Only very large events, such as a doomsday stage or a world boss
-waking, will reach the whole world, and then only as something people feel: _the ground trembles far to the east_.
-That is planned too.
+Once an event is real, the townsfolk nearby talk about it: a rift opened, a road was robbed, a seal cracks. Every
+blackboard in the province posts it, with the place and how far along it is. Nobody signs a notice: helping is
+enough. The same notices show on the map wherever the player's charts show the ground. Rare bestia are never posted;
+hunters find them by the hints and the sky. Still planned: the Orders calling their members through the
+[companion app](/docs/mechanics/companion-app/).
+
+Only very large events reach the whole world, and then only as something people feel. When a world boss wakes, every
+player reads which way the ground trembled: _Far to the east, the ground trembles. Something old is awake._

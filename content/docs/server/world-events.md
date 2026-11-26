@@ -4,7 +4,7 @@ title: World Events
 description: "Server design for the living mana field, provinces, the World Event Director, rifts and the other world events: data model, persistence, threading, senses, GM tools and the build order."
 ---
 
-{{< alert context="info" text="**Partly built.** The player-facing rules are on [World Events](/docs/mechanics/world/world-events/). This page says how the zone runs them. Steps 01 to 17 of the [build order](#build-order) are built. Each section names what is still planned." />}}
+{{< alert context="info" text="**Partly built.** The player-facing rules are on [World Events](/docs/mechanics/world/world-events/). This page says how the zone runs them. Steps 01 to 23 of the [build order](#build-order) are built. Each section names what is still planned." />}}
 
 The zone has four parts: a **mana field** that changes with play, **provinces** to group the land, a **World Event
 Director** that decides when something happens, and the **events** themselves: rifts, and five events that the
@@ -174,7 +174,12 @@ people) and `felt-from`: how many times further than a small event it is felt.
   rule.
 - A ready province - no sanctuary, no running event, not resting - starts an event it can afford with a chance of a
   quarter per run, weighted among those that fit. The roll is seeded by world, province and time window.
-- Still planned: a world layer that caps concurrent big events, paces the doomsday and sends the rare world-wide text.
+- **World cap:** an event of cost 3 or more is big. The whole world runs at most two big events at once
+  (`max-big-events`). A province that cannot start a big one may still start a small one.
+- **World-wide text:** when a world boss wakes, by a broken crystal or an old seal that gave way, `WorldTremors` sends
+  every master online a `BROADCAST` line with the direction from them: _Far to the east, the ground trembles._ Within
+  2 km it heaves beneath them instead. The port lives in `worldboss`; the chat implements it.
+- Still planned: pacing the doomsday.
 
 **4. Instances.** A `WorldEventInstance` row holds the event, the province, where it started and its subject: an
 entity id (the apex, a rare bestia, an alpha, a raid's chief), a row id (a rift, a seal stone) or a prop id (a seal
@@ -203,8 +208,18 @@ mechanics, so `RiftLifecycleTest` runs a whole rift on a test field.
 - **Merge:** touching rifts merge into the older one.
 - Towns hear `RIFT_OPENED`, `RIFT_SEALED` and `RIFT_COLLAPSED`.
 
-Still planned: feeding and stasis, which wait for factions; crystal nodes; a scar where a rift collapsed; town damage
-from waves; chronicle facts for rifts.
+- **Scar:** a collapse always raises an omen scar on the gate's cell (`OmenRaiser.raiseAt`), besides the chance
+  scars the spill raises.
+- **Crystals:** `RiftCrystals` grows `rift_crystal` bestia (id 121, `event-only`, no AI) 30 to 90 m from the gate: as
+  many as the stage, a new one at most every 10 real minutes, at 10 levels per stage. They carry the rift's
+  `EventCreature` tag and crumble when the rift ends. Not persisted. `RiftCrystalHarvest`, a `KillObserver`, takes
+  `crystal-share` (5 %) of the reservoir under the field's lock and credits `10` work, split among the killers.
+- **Town fires:** `WaveFires` lets a wave member that stands inside a settlement site with no master within 150 m
+  ignite a ground fire of radius 2 under it, once per wave. The scorch lowers the town's capacity through
+  `SettlementDamage`.
+
+Still planned: feeding and stasis, which wait for factions; broken buildings from waves; chronicle facts for rifts.
+New `EventKind`s would change worldgen's importance fingerprint, and living facts have no reader for them yet.
 
 ## Sealing
 
@@ -238,14 +253,19 @@ creature carries (`EventCreature`, which `KillFact` passes on). The director sav
 - **Holding:** each run, every master standing on a running event's ground. Each event names its ground: 300 m around
   the apex, all a rift pulls from, or the ground the [other events](#other-events) name. One run is worth a level-10
   kill.
-- **Work:** `30` for each ritual that runs its full time on a rift's ground or beside a cracking seal. Still planned:
-  crystal nodes harvested or shattered.
+- **Work:** `30` for each ritual that runs its full time on a rift's ground or beside a cracking seal, and `10` for
+  each rift crystal broken.
 
 When players end an event, its loot is split by share among everyone with at least a twentieth of the work. It lands at
 the feet of each contributor who is online, kept for them alone. They also earn the honor act the event names in
 `WorldEvent.honorAct`, globally while online and with the town nearest the event either way. Most events pay
 `DEFEND_SETTLEMENT`. A raid ended in its camp pays `KILL_OUTLAW`. An event that ran out pays nothing. No coin is paid.
-Still planned: posting the event on the blackboards nearby.
+
+**Posting.** Each run the director hands the running events to `PostedEvents`, placed at their held ground and named
+by `PlaceNameService`. It implements the blackboard's `EventNotices` port: a board lists the events of its own
+province as notices above its quests (`BlackboardNotice` in `BlackboardSMSG`). Nobody signs a notice. The same events
+go into `MapPoiIndex` as `MapService.WORLD_EVENT` points, so the map shows them wherever a master's charts reach, in
+the game and in the companion app. An entry with `posted: false` stays off both: the rare bestia.
 
 # Other Events
 
@@ -404,11 +424,17 @@ Each step is one branch and one draft PR in bestia-behemoth, stacked on the one 
 | 07      | Omen props and scars                                                                |                                      |
 | 08      | Director, catalogue, `/event`, the apex roamer as the first event                   |                                      |
 | 09      | Rifts                                                                               |                                      |
-| 10      | Contribution ledger, loot, honor, blackboard post                                   | No blackboard post yet               |
+| 10      | Contribution ledger, loot, honor, blackboard post                                   | Blackboard post in 18                |
 | 11      | Ritual kinds: seal, feed, stasis                                                    | Seal only, rest waits for factions   |
 | 12      | Observation and Augury                                                              | 12a Augury, 12b Observation, 12c map |
 | 13      | GM map layer                                                                        |                                      |
 | 14 - 17 | Rare bestia under the right sky, alpha rises, old seal weakens, raid on a rich town | One step each                        |
+| 18      | Events posted on the blackboards of their province                                  |                                      |
+| 19      | A collapsed rift always scars its ground                                            |                                      |
+| 20      | Rift crystals                                                                       |                                      |
+| 21      | Waves burn the fields of an unguarded town                                          |                                      |
+| 22      | World layer: two big events at once, the world-wide tremor                          |                                      |
+| 23      | Posted events on the map                                                            |                                      |
 
 ## Numbers to Start From
 
