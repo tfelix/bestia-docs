@@ -254,28 +254,37 @@ After the disconnect the overlay stays and then hands over to the rebirth screen
 
 ## Boot After an End
 
-- `WorldService.resolve` sees `ended_at != null` and calls `WorldProvisioning.recreate()`, whatever `on-mismatch` says.
-- `WorldRecreatedEvent` gets a `cause`: `WORLD_ENDED` or `VERSION_MISMATCH`. The carry-over listeners act only on
+- `WorldService.load` sees `ended_at != null` and calls `WorldProvisioning.recreate(freshSeed = true)`, whatever
+  `on-mismatch` says.
+- The new world is the next `incarnation` and draws its own seed. The configured `worldgen.seed` names the first world
+  only, so it is no drift for a later one.
+- `WorldRecreatedEvent` has a `cause`: `WORLD_ENDED` or `MISMATCH`. The carry-over listeners act only on
   `WORLD_ENDED`, so a development regeneration keeps today's behaviour.
+- The new world stays `carry_over_pending` until every listener has run. A boot that fails midway does the carry-over
+  again.
 - `recreate()` already reads `winningFaction` off the discarded row. It stays null until factions exist.
 
 ## Carry-Over
 
-Each slice that owns the data adds a `WorldRecreatedEvent` listener, ordered before `MASTER_HOMES`:
+Each slice that owns the data has a `WorldRecreatedEvent` listener (`CARRY_OVER`). The item sweep runs after them
+(`CARRY_OVER_ITEMS`), so it also takes the items of every owner that is gone. Both run before `MASTER_HOMES`.
 
-| Data                                                             | On a world end                                         |
-| ---------------------------------------------------------------- | ------------------------------------------------------ |
-| Master level, skills, recipes, compendium, global honor          | Kept                                                   |
-| `player_bestia`, stored ones included                            | Kept, `stored_at` and `deposited_at_structure` cleared |
-| `item_container` MASTER and BESTIA                               | Every slot emptied except `equippedIn` slots           |
-| Guild level, exp, skills, members, ranks, emblem                 | Kept                                                   |
-| `guild_storage`                                                  | Emptied                                                |
-| `player_structure` with storage, farms, incubators, etching jobs | Deleted                                                |
-| `player_settlement`, `order_place`, `stronghold`, seeds          | Deleted                                                |
-| `letter`, `parcel`, auctions and pickups, street stalls          | Deleted, their items with them                         |
-| `quest`, quest log, blackboard postings                          | Deleted                                                |
-| Notebook marks and routes, warp marks, home post office          | Cleared                                                |
-| `status_effect`, `bestia_egg`, loot and mob entities             | Deleted                                                |
+| Data                                                             | On a world end                                        |
+| ---------------------------------------------------------------- | ----------------------------------------------------- |
+| Master level, skills, recipes, compendium, global honor          | Kept                                                  |
+| `player_bestia`, stored ones included                            | Kept; stored ones stay stored, `deposited_at` cleared |
+| `item_container` MASTER and BESTIA                               | Every slot emptied except `equippedIn` slots          |
+| Item instances that no slot holds any more                       | Deleted, with the rows keyed by them                  |
+| Guild level, exp, skills, members, ranks, emblem                 | Kept                                                  |
+| `guild_storage`                                                  | Emptied                                               |
+| `player_structure` with storage, farms, incubators, etching jobs | Deleted                                               |
+| `player_settlement`, `order_place`                               | Deleted                                               |
+| `stronghold`, seeds                                              | Dropped by their version check (the seed is new)      |
+| `letter`, `parcel`, auctions and pickups, street stalls          | Deleted, their items with them                        |
+| `quest`, quest log, blackboard postings                          | Deleted                                               |
+| Notebook marks and routes, warp marks, home post office          | Cleared                                               |
+| `status_effect`, loot and mob entities, spell bindings           | Deleted                                               |
+| Bestia journeys, quivers                                         | Cleared                                               |
 
 `MasterWorldResetListener` then re-homes masters and bestia as it does today.
 
