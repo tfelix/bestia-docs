@@ -290,11 +290,15 @@ Each slice that owns the data has a `WorldRecreatedEvent` listener (`CARRY_OVER`
 
 ## Login Gate
 
-- `bus` owns the key `world:state` (`REBIRTH` or absent). The zone clears it in `ZoneReadyBootRunner`.
-- The login server reads it on a game login and refuses with `GameLoginReason.WORLD_REBIRTH`.
-- The client shows a rebirth screen for that reason, for the zone's `SERVER_NOT_READY` and for `WORLD_ENDED`, instead
-  of "connection lost". It retries on its own.
-- The api server reads the same key, so the companion app shows the Interregnum page with the last `world_legacy` row.
+- `bus` owns the key `world:state` (`REBIRTH` or absent), behind the `WorldRebirth` port. The zone sets it when the
+  world ends and clears it in `ZoneReadyBootRunner`. The `login` Valkey user may only read it.
+- The login server checks it on `/start` and `/refresh`, before a browser opens or a refresh token is spent, and
+  answers `503` with `WORLD_REBIRTH`. A finished browser login (`/exchange`) is not refused.
+- When Valkey cannot say, the login server lets the player in. The zone refuses them itself while it is not ready.
+- The client shows a rebirth screen for `WORLD_REBIRTH`, for the zone's `SERVER_NOT_READY` and `WORLD_ENDED`, and
+  after the final sequence. It keeps the stored session and resumes it every 20 seconds.
+- The api server will read the same key, so the companion app shows the Interregnum page with the last
+  `world_legacy` row (step 13).
 
 # GM Tools
 
