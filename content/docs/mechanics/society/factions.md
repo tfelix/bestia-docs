@@ -125,7 +125,11 @@ The effect is that the underdog is always the mechanically attractive Order to j
 
 ## Earning Advantage Points
 
-When the world's fate is finally decided, a **world-end tally** is calculated. Let `T` be the percentage of the world's predetermined life span at which the world actually ended — or, where a doomsday was averted and the world outlived its estimate, the point it eventually reached. The life span is fixed when the world is generated (see [Doomsday](/docs/mechanics/world/doomsday)).
+When the world's fate is finally decided, a **world-end tally** is calculated. Let `T` be the percentage of the world's predetermined life span at which the world actually ended — or, where a doomsday was held off and the world outlived its estimate, the point it eventually reached. The life span is fixed when the world is generated (see [Doomsday](/docs/mechanics/world/doomsday)).
+
+`T` cannot go past `150`: a world that is still standing at one and a half times its life span is [saved](/docs/mechanics/world/doomsday/#saved-the-calling), and a new world begins.
+
+{{< alert context="info" text="**To be revisited with the faction implementation.** The Order goals and these curves may change then." />}}
 
 All three Orders are scored from that single number, on three different curves:
 
