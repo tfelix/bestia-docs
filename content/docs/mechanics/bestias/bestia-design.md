@@ -482,13 +482,19 @@ The `bestia/species-data-model` branch of bestia-behemoth gives the mob YAML wha
 The mob YAML has `level-min` and `level-max`, both required, in place of a single level. The same branch makes a wild mob fight at its own level instead of Lv 1, gives it its authored mana, so casting can
 run it dry, and switches the server's EXP curve to the one in [Bestias](/docs/mechanics/bestias/bestia/#experience).
 
+The compendium shows a species' temperament under its size and weight, read off its AI profile: _attacks on sight_
+(the profile lists `KillEnemy`), _fights back_ (only `KillAttacker`) or _never fights_. It adds the activity, _active
+by day_ or _active at night_, only for a species whose profile keeps hours (`activity_cycle`). The game client greys
+out armor a bestia cannot wear: its equipment slots refuse the drop, a double click does not try, and the bag dims
+the piece and says why. The server still refuses it on its own.
+
 Still open:
 
 - **Mob HP stays a number in the YAML** rather than the HP formula. That is on purpose: this method solves HP to the
   fight it wants.
-- **Activity and temperament are not shown in the compendium yet.** It shows name, kind, habitat and description.
-- **The client does not grey out armor a bestia cannot wear yet.** Both lists are in its bestia and item DBs, ready
-  for a bestia equip window. Until then the server refuses it with a message.
+- **No species keeps hours yet.** Every profile a mob uses is cathemeral, so the compendium shows no activity
+  anywhere until profiles get a `diurnal` or `nocturnal` cycle.
+- **The companion app does not show temperament.** Its compendium has size and weight, but not this.
 
 # Prior art
 
