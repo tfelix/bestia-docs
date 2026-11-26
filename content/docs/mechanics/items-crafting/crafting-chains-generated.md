@@ -1,6 +1,6 @@
 ---
 title: Crafting Chains
-weight: 611
+weight: 513
 description: Every recipe that refines or assembles a material, drawn per station. Generated.
 ---
 
@@ -67,25 +67,15 @@ graph LR
     charcoal["Charcoal (Lv. 1)"]
     log[/"Log (Lv. 1)"/]
     log -->|1| charcoal
-    iron_ore -->|2| iron_ingot
     charcoal -->|1| iron_ingot
-    gold_ore -->|2| gold_bar
     charcoal -->|1| gold_bar
-    tin_ore -->|2| tin_ingot
     charcoal -->|1| tin_ingot
-    copper_ore -->|2| copper_ingot
     charcoal -->|1| copper_ingot
-    iron_ingot -->|1| steel_ingot
     charcoal -->|1| steel_ingot
-    silver_ore -->|2| silver_ingot
     charcoal -->|1| silver_ingot
-    palladium_ore -->|2| palladium_ingot
     charcoal -->|1| palladium_ingot
-    mithril_ore -->|2| mithril_ingot
     charcoal -->|1| mithril_ingot
-    adamantium_ore -->|2| adamantium_ingot
     charcoal -->|1| adamantium_ingot
-    clay -->|2| brick
     charcoal -->|1| brick
 ```
 
@@ -120,6 +110,19 @@ graph LR
 
 ```mermaid
 graph LR
+    weapon_repair_kit["Weapon Repair Kit (Lv. 1)"]
+    iron_ingot["Iron Ingot (Lv. 20)"]
+    iron_ingot -->|2| weapon_repair_kit
+    coal[/"Coal (Lv. 5)"/]
+    coal -->|2| weapon_repair_kit
+    leather["Leather (Lv. 5)"]
+    leather -->|1| weapon_repair_kit
+    cut_stone["Cut Stone (Lv. 10)"]
+    cut_stone -->|1| weapon_repair_kit
+    armor_repair_kit["Armor Repair Kit (Lv. 1)"]
+    iron_ingot -->|2| armor_repair_kit
+    coal -->|2| armor_repair_kit
+    leather -->|1| armor_repair_kit
     war_banner["War Banner (Lv. 30)"]
     plank["Plank (Lv. 5)"]
     plank -->|2| war_banner
@@ -127,7 +130,6 @@ graph LR
     cloth -->|3| war_banner
     dye["Dye (Lv. 10)"]
     dye -->|1| war_banner
-    iron_ingot["Iron Ingot (Lv. 20)"]
     iron_ingot -->|1| war_banner
     nails["Nails (Lv. 5)"]
     iron_ingot -->|1| nails
@@ -151,6 +153,7 @@ graph LR
 | `ALEMBIC_MACE` | 3 x Iron Ingot (Lv. 20), 2 x Loose Stone (Lv. 1), 1 x Cloth (Lv. 5) | 1 x Alembic Mace (Lv. 48) | forge weapon 5 | 30% | 3000.0 | discover |
 | `ANVILHEART` | 3 x Adamantium Ingot (Lv. 100), 2 x Cut Stone (Lv. 10), 1 x Obsidian (Lv. 50) | 1 x Anvilheart (Lv. 79) | forge weapon 10 | -39% | 11059.2 | discover |
 | `ARMING_SWORD` | 3 x Steel Ingot (Lv. 32), 1 x Flint (Lv. 1) | 1 x Arming Sword (Lv. 20) | forge weapon 2 | 75% | 480.0 | discover |
+| `ARMOR_REPAIR_KIT` | 2 x Iron Ingot (Lv. 20), 2 x Coal (Lv. 5), 1 x Leather (Lv. 5) | 1 x Armor Repair Kit (Lv. 1) | equipment repair 2 | 70% | 12.0 | discover |
 | `ARTIFICERS_BRASS_HARNESS` | 5 x Blackiron Ingot (Lv. 65), 1 x Leather (Lv. 5), 1 x Nails (Lv. 5), 1 x Cog (Lv. 40), 1 x Bone Shard (Lv. 5) | 1 x Artificer's Brass Harness (Lv. 70) | forge armor 8 | -3% | 6220.8 | discover |
 | `ASSASSINS_DAGGER` | 2 x Steel Ingot (Lv. 32), 1 x Flint (Lv. 1), 2 x Void Essence (Lv. 30) | 1 x Assassin's Dagger (Lv. 37) | forge weapon 5 | 36% | 2539.2 | discover |
 | `BANDED_PLATE` | 5 x Iron Ingot (Lv. 20), 4 x Leather (Lv. 5), 4 x Nails (Lv. 5), 1 x Stick (Lv. 1), 1 x Reed Stalk (Lv. 1) | 1 x Banded Plate (Lv. 40) | forge armor 4 | 45% | 1920.0 | discover |
@@ -333,6 +336,7 @@ graph LR
 | `WARHELM_OF_THE_IRON_TIDE` | 2 x Adamantium Ingot (Lv. 100), 2 x Leather (Lv. 5), 2 x Nails (Lv. 5), 2 x Coral (Lv. 45) | 1 x Warhelm of the Iron Tide (Lv. 84) | forge armor 10 | -36% | 10603.2 | discover |
 | `WAR_BANNER` | 2 x Plank (Lv. 5), 3 x Cloth (Lv. 5), 1 x Dye (Lv. 10), 1 x Iron Ingot (Lv. 20) | 1 x War Banner (Lv. 30) | forge weapon 3 | 60% | 30.0 | discover |
 | `WAR_MAUL` | 4 x Iron Ingot (Lv. 20), 4 x Cut Stone (Lv. 10) | 1 x War Maul (Lv. 30) | forge weapon 3 | 60% | 1080.0 | discover |
+| `WEAPON_REPAIR_KIT` | 2 x Iron Ingot (Lv. 20), 2 x Coal (Lv. 5), 1 x Leather (Lv. 5), 1 x Cut Stone (Lv. 10) | 1 x Weapon Repair Kit (Lv. 1) | equipment repair 2 | 70% | 12.0 | discover |
 | `WHISPER_OF_THE_VEIL` | 2 x Mithril Ingot (Lv. 85), 1 x Flint (Lv. 1), 2 x Shadow Shard (Lv. 55) | 1 x Whisper of the Veil (Lv. 52) | forge weapon 10 | -36% | 10603.2 | discover |
 | `WINDLASS_ARBALEST` | 3 x Palladium Ingot (Lv. 70), 2 x Nails (Lv. 5), 1 x Rope (Lv. 3), 2 x Storm Feather (Lv. 65) | 1 x Windlass Arbalest (Lv. 62) | forge weapon 7 | 9% | 4915.2 | discover |
 | `WINGED_SPEAR` | 2 x Steel Ingot (Lv. 32), 2 x Stick (Lv. 1), 1 x Sharp Fang (Lv. 5), 1 x Reed Stalk (Lv. 1), 1 x Mana Essence (Lv. 5) | 1 x Winged Spear (Lv. 47) | forge weapon 5 | 30% | 3000.0 | discover |
@@ -356,6 +360,10 @@ graph LR
     log -->|40| bestia_center_kit
     loose_stone -->|30| bestia_center_kit
     iron_ingot -->|10| bestia_center_kit
+    inn_kit["Inn Kit (Lv. 30)"]
+    log -->|40| inn_kit
+    loose_stone -->|30| inn_kit
+    iron_ingot -->|10| inn_kit
     auction_house_kit["Auction House Kit (Lv. 50)"]
     log -->|80| auction_house_kit
     loose_stone -->|60| auction_house_kit
@@ -511,6 +519,7 @@ graph LR
 | `HYMNAL` | 5 x Parchment (Lv. 5), 1 x Mana Ink (Lv. 35), 2 x Silver Ingot (Lv. 38) | 1 x Hymnal (Lv. 20) | forge weapon 2 | 75% | 480.0 | discover |
 | `INCUBATOR_KIT` | 6 x Plank (Lv. 5), 4 x Brick (Lv. 5), 4 x Warm Stone (Lv. 18) | 1 x Incubator Kit (Lv. 30) | carpentry 3 | 100% | 15.0 | yes |
 | `INK` | 1 x Coal (Lv. 5), 1 x Empty Bottle (Lv. 1) | 1 x Ink (Lv. 1) | basic skill 1 | 100% | 5.0 | yes |
+| `INN_KIT` | 40 x Log (Lv. 1), 30 x Loose Stone (Lv. 1), 10 x Iron Ingot (Lv. 20) | 1 x Inn Kit (Lv. 30) | carpentry 3 | 100% | 60.0 | yes |
 | `IRONWOOD_BO` | 4 x Ironwood (Lv. 45), 2 x Stick (Lv. 1), 2 x Medicinal Herb (Lv. 20) | 1 x Ironwood Bo (Lv. 48) | forge weapon 5 | 30% | 3000.0 | discover |
 | `JADE_EARRING` | 2 x Lodestone (Lv. 45), 1 x Cut Jade (Lv. 33) | 1 x Jade Earring (Lv. 33) | forge armor 4 | 54% | 1387.2 | discover |
 | `JEWELLERS_LOUPE` | 2 x Lens (Lv. 30), 1 x Lamp Oil (Lv. 5) | 1 x Jeweller's Loupe (Lv. 24) | forge armor 4 | 56% | 1228.8 | discover |
@@ -658,7 +667,6 @@ graph LR
     silk_cloth -->|1| shadowsilk
     void_essence[/"Void Essence (Lv. 30)"/]
     void_essence -->|1| shadowsilk
-    silk_cloth -->|1| shadowsilk
     ectoplasm[/"Ectoplasm (Lv. 25)"/]
     ectoplasm -->|1| shadowsilk
     starweave["Starweave (Lv. 80)"]
@@ -869,13 +877,17 @@ graph LR
     log -->|4| workbench_kit
     stick[/"Stick (Lv. 1)"/]
     stick -->|4| workbench_kit
-    furnace_kit["Furnace Kit (Lv. 1)"]
+    observation_outpost_kit["Observation Outpost Kit (Lv. 10)"]
+    log -->|20| observation_outpost_kit
     loose_stone[/"Loose Stone (Lv. 1)"/]
+    loose_stone -->|10| observation_outpost_kit
+    iron_ingot["Iron Ingot (Lv. 20)"]
+    iron_ingot -->|2| observation_outpost_kit
+    furnace_kit["Furnace Kit (Lv. 1)"]
     loose_stone -->|12| furnace_kit
     log -->|2| furnace_kit
     forge_kit["Forge Kit (Lv. 1)"]
     loose_stone -->|10| forge_kit
-    iron_ingot["Iron Ingot (Lv. 20)"]
     iron_ingot -->|2| forge_kit
     log -->|2| forge_kit
     campfire_kit["Campfire Kit (Lv. 1)"]
@@ -1004,6 +1016,7 @@ graph LR
 | `LOOM_KIT` | 8 x Plank (Lv. 5), 4 x Rope (Lv. 3), 10 x Nails (Lv. 5) | 1 x Loom Kit (Lv. 1) | carpentry 2 | 100% | 15.0 | yes |
 | `MINING_SHAFT_KIT` | 8 x Log (Lv. 1), 2 x Iron Ingot (Lv. 20) | 1 x Mining Shaft Kit (Lv. 1) | carpentry 1 | 100% | 20.0 | yes |
 | `MINT_KIT` | 6 x Cut Stone (Lv. 10), 4 x Plank (Lv. 5), 2 x Iron Ingot (Lv. 20), 2 x Bronze Ingot (Lv. 15) | 1 x Mint Kit (Lv. 1) | minting 1 | 100% | 20.0 | yes |
+| `OBSERVATION_OUTPOST_KIT` | 20 x Log (Lv. 1), 10 x Loose Stone (Lv. 1), 2 x Iron Ingot (Lv. 20) | 1 x Observation Outpost Kit (Lv. 10) | carpentry 1 | 100% | 20.0 | yes |
 | `PICKAXE` | 2 x Iron Ingot (Lv. 20), 1 x Log (Lv. 1) | 1 x Pickaxe (Lv. 10) | mining 1 | 100% | 10.0 | yes |
 | `POISON_ARROW` | 20 x Arrow (Lv. 1), 1 x Venom Sac (Lv. 15) | 20 x poison arrow (Lv. 15) | arrow crafting 4 | 100% | 6.0 | yes |
 | `SHADOW_ARROW` | 20 x Arrow (Lv. 1), 1 x Shadow Shard (Lv. 55) | 20 x shadow arrow (Lv. 55) | arrow crafting 4 | 100% | 6.0 | yes |
