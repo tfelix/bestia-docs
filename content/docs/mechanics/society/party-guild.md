@@ -63,6 +63,9 @@ The owner picks how the party holds its drops. A new party starts in Party share
 After that anybody may pick it up. A master and the Bestia it plays count as one: either may pick up what the other
 may. Near the kill means the same as for [experience](#sharing-experience).
 
+A drop shows who may take it. A drop you may pick up glitters gold. A drop that only others may pick up looks faded,
+until anybody may take it. Nothing is said in the chat.
+
 The turn passes on with every drop, in a fixed order, and skips the members who are not near the kill. The member who
 dealt the most damage is always near it.
 
