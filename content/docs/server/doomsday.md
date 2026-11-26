@@ -210,22 +210,25 @@ So the world end is a controlled restart, not a live swap.
 
 `WorldEnd` runs the sequence:
 
-1. **Window.**
-   - Lost: the Last Stand opens for 24 real hours and spawns `threat.avatar()` at the core. If it falls, `D` is pushed
-     to 0.85 and the window closes.
-   - Saved: the Calling counts down 24 real hours.
-2. **Countdown.** `AnnouncementSMSG` `ANNOUNCEMENT_WORLD_ENDING` at 24 h, 1 h and 10 min.
+1. **Window.** It is stored in `world_end`, so a restart keeps the countdown.
+   - Lost: the Last Stand opens for 24 real hours. The threat raises its Avatar at the core (from the first threat on,
+     step 07). If the Avatar falls, `WorldEnd.beatBack()` pushes `D` to 0.85 and closes the window.
+   - Saved: the Calling counts down 24 real hours. It cannot be beaten back.
+2. **Countdown.** `AnnouncementSMSG` when the window opens, then at 1 h and 10 min: `LAST_STAND` and `CALLING` count
+   in hours, `LAST_STAND_SOON` and `CALLING_SOON` in minutes. `LAST_STAND_WON` tells everyone the doom was beaten back.
 3. **Final sequence.** 90 s before the kick, `WorldEndSMSG` goes to every connection, and to anyone who logs in during
    those 90 s. It holds:
    - the outcome
-   - the summary: world name, threat, days lived, `T`, towns lost, top deeds, the victorious Order (empty until
-     factions exist)
+   - the summary: world name, threat, days lived, `T` and towns lost
    - the seconds until the kick
-4. **Record.** `world.ended_at`, `world.outcome` and `world.t_percent` are set. A `world_legacy` row is written: name,
-   seed, threat, outcome, `T`, the summary, and the top contributors who opted in. `world_legacy` is never wiped.
-5. **State.** The zone sets the Valkey key `world:state` to `REBIRTH` through the `bus` module.
-6. **Kick.** `Disconnected{reason = "WORLD_ENDED"}` goes to every connection through `ChannelRegistry`.
-7. **Exit.** `PersistOnShutdown` flushes everything, then the zone exits with a dedicated code.
+
+   The top deeds come with the chronicle (step 06), the victorious Order with factions.
+
+4. **Record.** `world.ended_at` is set. A `world_legacy` row is written: name, seed, threat, outcome, days lived, `T`,
+   towns lost, birth and end. `world_legacy` is never wiped. Top contributors who opted in come later.
+5. **State.** The zone sets the Valkey key `world:state` to `REBIRTH` through the `bus` module (step 05).
+6. **Kick.** New logins are refused, and `Disconnected{reason = "WORLD_ENDED"}` goes to every connection.
+7. **Exit.** `PersistOnShutdown` flushes everything, then the zone exits with code 75 (`EX_TEMPFAIL`).
    `deploy/compose.yaml` restarts it (`restart: unless-stopped`). In development the zone has to be started again by
    hand.
 
@@ -291,7 +294,7 @@ All under `Authority.WORLD_EVENTS`, following the `/event` pattern:
 - `/doom`: kind, origin, stage, `D`, pace, pressure, containment, `T` now and the projected end day
 - `/doom set <D>`, `/doom push <delta>`, `/doom pace <x|auto>`
 - `/doom kind <kind>`, `/doom foreshadow <kind>`, `/doom foreshadow end contained|failed`
-- `/doom end lost|saved [minutes]`
+- `/doom end lost|saved [minutes]` (5 minutes by default), `/doom end cancel` (a Last Stand counts as won)
 - `/doom sequence lost|saved`: plays the client sequence for the GM only, without ending anything
 
 # Persistence
@@ -299,13 +302,14 @@ All under `Authority.WORLD_EVENTS`, following the `/event` pattern:
 | Table                | Holds                                                                                 | Wiped on recreate |
 | -------------------- | ------------------------------------------------------------------------------------- | ----------------- |
 | `doomsday`           | kind, origin, onset, `L`, `U`, `D`, stage, pace override, foreshadow state, last step | yes               |
-| `world`              | new `ended_at`, `outcome`, `t_percent`                                                | replaced          |
+| `world`              | new `ended_at`                                                                        | replaced          |
+| `world_end`          | the open Last Stand or Calling and its countdown                                      | yes               |
 | `world_legacy`       | one row per ended world                                                               | never             |
 | `tear`, `destroyer`  | threat state                                                                          | yes               |
 | `corruption_tile`    | the Withering field                                                                   | yes               |
 | `corruption_crystal` | crystals                                                                              | yes               |
 
-Nothing is released yet, so `V1__*.sql` is changed in place.
+The zone's schema comes from its entities (`ddl-auto: update`), so new columns and tables need no migration.
 
 # Build Order
 
