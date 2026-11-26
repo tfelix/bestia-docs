@@ -4,7 +4,7 @@ weight: 1250
 description: "How mana builds up in the world and what it does, rifts and how the Orders fight over them, the other world events, and how players learn about them."
 ---
 
-{{< alert context="warning" text="**Designed, not built.** Today mana is a fixed map from world generation and no world event runs. How the server will run them is on the [World Events](/docs/server/world-events/) server page." />}}
+{{< alert context="info" text="**Partly built.** Mana changes with play, and rifts, rare bestia, alphas, old seals and raids run. The Orders' part in rifts, crystal nodes, town damage, blackboard posts and world-wide news are still planned. How the server runs it all is on the [World Events](/docs/server/world-events/) server page." />}}
 
 The world is not quiet. Mana seeps out of the Wounds, it gathers where people fight and cast, and when too much of it
 sits in one place, the land starts to change. Strange plants grow, stones rise, bestia grow restless and stronger,
@@ -115,21 +115,24 @@ graph LR
    to the towns nearby.
 3. **Open.** The rift grows through five stages. With each stage it pulls from further away, up to 1.5 km. Every 20
    to 30 minutes a wave of bestia comes out and marches on the nearest town. The waves are local bestia, touched by
-   the mana, and they grow stronger with each stage. Crystal nodes grow around the gate.
+   the mana, and they grow stronger with each stage. Still planned: crystal nodes that grow around the gate.
 4. **Anchor.** At stage 3 an anchor boss, a creature from beyond the rift, takes its place at the gate. While it
-   lives, the gate cannot be harmed.
-5. **Seal.** When the anchor falls, the gate can be sealed for 30 minutes. A sealing ritual at the gate is a contest
-   against the rift's [Potency](/docs/mechanics/combat/spell-potency/), which grows every day the rift stays open.
-   If the ritual wins, the rift closes and leaves a **seal stone** that holds all the mana the rift gathered. If the
-   window passes, the rift moves on to its next stage, and a new anchor rises later.
+   lives, the rift cannot be sealed. No weapon ever harms the gate.
+5. **Seal.** When the anchor falls, the gate can be sealed for 30 real minutes. A
+   [Dispel](/docs/mechanics/master/scholar-tree/#skill-dispel) at the gate is a contest against the rift's
+   [Potency](/docs/mechanics/combat/spell-potency/), which grows with every stage. A weak Dispel has no chance, so in
+   practice it takes the charge of a [ritual](/docs/mechanics/combat/spell-potency/#rituals). If the Dispel wins, the
+   rift closes and leaves a **seal stone** that holds all the mana the rift gathered. If the window passes, the anchor
+   rises again at the next stage.
 
 **Collapse.** A rift that is full, or that stays open for about a real day, collapses. All its mana spills out in a
-few hundred metres, which can start mana storms or a Mana Burn. A last burst of bestia comes out, the ground keeps a
-scar, and sometimes a new knot forms nearby. Two rifts that pull from the same land merge into one. In a world whose
-doomsday is [The Void Tear](/docs/mechanics/world/doomsday/#the-void-tear), this is how it begins.
+few hundred metres, which can start mana storms or a Mana Burn, and sometimes a new knot forms nearby. Still planned:
+a last burst of bestia and a scar in the ground. Two rifts that pull from the same land merge into one. In a world
+whose doomsday is [The Void Tear](/docs/mechanics/world/doomsday/#the-void-tear), this is how it begins.
 
 **When nobody comes.** The waves still reach the town, but they are weaker than with players around. A town survives
-one rift with damage: burnt fields, broken buildings, news that travels. It does not fall.
+one rift. It does not fall. Still planned: the damage it takes, such as burnt fields, broken buildings and news that
+travels.
 
 At most one rift is open in a province at a time, and none ever forms in a start province.
 
@@ -143,6 +146,7 @@ The same rift means something different to each Order:
   keeps it up. When they stop, the clock runs again.
 
 How a rift ends moves the Orders' influence in its province, see [Factions](/docs/mechanics/society/factions/).
+Feeding, stasis and the influence wait for the factions. Today anyone can seal a rift.
 
 # Other World Events
 
@@ -153,26 +157,38 @@ after the rifts are these:
 ## Rare Bestia Under the Right Sky
 
 Some named bestia only show up when everything fits: a weather, a time of day, a moon phase, a season and a place.
-_The Storm Heron hunts the marsh in a mana storm at dusk._ Townsfolk drop hints about the conditions, and a hunter
-who reads the forecast can be there when it happens.
+_The Storm Heron hunts the marsh in a storm at dusk._ Three of them live in the world so far: the Storm Heron in
+wetlands, the Silver Hart in forests and the Whiteveil Lynx in the cold north. Townsfolk near their land drop hints
+about the sky each one waits for, and a hunter who reads the forecast can be there when it happens. A sighting is
+news in the next village.
+
+The bestia stays near where it came down and leaves when its sky moves on, after half a Bestia day at most. Killing it
+ends the event and pays everyone who helped.
 
 ## An Alpha Rises
 
-A den that nobody hunts for many days grows. Near a road or a town, its pack produces an **alpha**: a named, stronger
-leader that starts to attack travellers and livestock. First come torn sheep and tracks on the road. This is the
-other side of the hunting ground that fills with mana: too much hunting is a problem, and so is too little.
+A den that nobody hunts for a week of Bestia days, a little over two real days, grows. Near a road or a town, its pack
+produces an **alpha**: the pack's own kind, much stronger, that prowls the road or the fields near the town.
+Townsfolk talk of torn sheep and attacked travellers. Killing it ends the event. Otherwise it leaves after three
+Bestia days. Hunting the den's bestia starts the count again, and so does the rise of an alpha. This is the other
+side of the hunting ground that fills with mana: too much hunting is a problem, and so is too little.
 
 ## An Old Seal Weakens
 
 The world bosses of the history sleep in seal crystals, and every sealed rift leaves a seal stone. Strong mana and
-age wear them down. A weakening seal cracks, hums and is talked about. Eternity can reinforce it with a ritual. If
-nobody does, it breaks: the world boss wakes, or the stone spills the mana it held.
+age wear them down: the seal under the strongest mana of a region cracks, once that mana is Uneasy or worse. A seal
+stone must be a Bestia month old first. A cracking seal hums and is talked about. A ritual held beside it within two
+Bestia days reinforces it, and Eternity will want to be the one who holds it. If nobody does, it breaks: the world
+boss wakes, or the stone spills the mana it held.
 
 ## A Raid on a Rich Town
 
-A rich town with few defenders and old enemies in its history draws raiders. First travellers are robbed and a camp's
-tracks lead into the hills. Players who follow the tracks can clear the camp before the raid comes. Otherwise the
-raiders march on the town.
+A town or city with old enemies in its history draws raiders when it is the richest of its region, its purse is at
+least as full as usual and fewer than three masters stand in it. First travellers are robbed on the road, and the
+band's tracks lead to a camp on the high ground outside the town. Players who follow the tracks have a Bestia day to
+clear the camp before the raid comes. Otherwise the brigands march on the town, plunder it for three Bestia hours and
+leave. Killing the chief and the whole band ends the raid, in the camp or in the town. For now the raiders take no
+coin and break nothing.
 
 ## Ideas for Later
 
@@ -202,16 +218,18 @@ These fit the same pattern and use systems the game already has. They come after
 
 World events pay **no coin**. They pay with:
 
-- **Loot.** Rift waves, the anchor boss and the crystal nodes drop their own loot.
-- **Honor.** Sealing a rift raises a master's honor everywhere. Defending a town raises it most in that town, see
-  [Positive Honor](/docs/mechanics/society/pvp/#positive-honor).
+- **Loot.** Rift waves and the anchor boss drop their own loot, and every event shares a pile among those who ended
+  it. Still planned: crystal nodes with their own loot.
+- **Honor.** Ending an event raises a master's honor everywhere and with the town nearest it, see
+  [Positive Honor](/docs/mechanics/society/pvp/#positive-honor). Raiders caught in their camp count as outlaws.
 - **What did not happen.** A sealed rift does not spill, and a town that was defended does not burn.
 
 Who gets how much is decided by **contribution** along three lines, so nobody has to out-damage anyone:
 
-- **Fighting:** damage to the waves and the anchor
-- **Work:** time spent in the sealing ritual, crystal nodes harvested or shattered, wards raised
-- **Holding:** being in the rift's reach while it is active
+- **Fighting:** killing the event's creatures, such as the waves and the anchor
+- **Work:** each ritual held at a rift or a cracking seal. Still planned: crystal nodes harvested or shattered, wards
+  raised
+- **Holding:** being on the event's ground while it is active, such as the rift's reach
 
 Nobody needs to accept anything first. Being there and helping is enough.
 
@@ -228,17 +246,19 @@ Nothing announces an event before it is real. The world shows signs, and some pl
 - **Everyone** sees the omens and hears what the townsfolk say. Talk is vague, a day late and sometimes wrong.
 - **Weather Sense** (Survival) shows the mana where the player stands, which way it rises and falls, and mana storms
   in the forecast. See [Weather Sense](/docs/mechanics/master/survival-tree/#skill-weather-sense).
-- **Augury** (Scholar) tells whether the region the player stands in is calm, uneasy or ominous. See
-  [Augury](/docs/mechanics/master/scholar-tree/#skill-augury).
+- **Augury** (Scholar) tells whether the region the player stands in is calm, uneasy or ominous. A running event
+  makes its region read ominous. See [Augury](/docs/mechanics/master/scholar-tree/#skill-augury).
 - **Observation** (Scholar) at an outpost senses what is about to happen in the land around it: its direction, how
-  far, what kind and how soon. Bigger events are sensed from further away. A bestia can keep watch at the outpost and
-  send word when something new stirs. See [Observation](/docs/mechanics/master/scholar-tree/#skill-observation).
+  far, what kind and how soon. Bigger events are sensed from further away. From level 3 the findings go on the
+  player's own map. A bestia can keep watch at the outpost and send word when something new stirs, in its diary and
+  through the companion app. See [Observation](/docs/mechanics/master/scholar-tree/#skill-observation).
 - **The [Circle](/docs/mechanics/society/factions/#the-order-of-the-circle)'s instruments** measure the mana at one
   spot.
 
 An omen means danger, not a date. Players who act in time can stop an event before it starts.
 
-Once an event is real, it is posted on the blackboards of the towns nearby and on the maps players own, and the
-Orders call their members through the [companion app](/docs/mechanics/companion-app/). Only very large events, such
-as a doomsday stage or a world boss waking, reach the whole world, and then only as something people feel: _the
-ground trembles far to the east_.
+Once an event is real, the townsfolk nearby talk about it: a rift opened, a road was robbed, a seal cracks. Still
+planned: posting events on the blackboards of the towns nearby, and the Orders calling their members through the
+[companion app](/docs/mechanics/companion-app/). Only very large events, such as a doomsday stage or a world boss
+waking, will reach the whole world, and then only as something people feel: _the ground trembles far to the east_.
+That is planned too.
