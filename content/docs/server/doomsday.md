@@ -76,53 +76,69 @@ T        = worldAge / L * 100
 `DoomsdayDirector` runs like `WorldEventDirector`: `@Scheduled` every 5 minutes, `@Transactional`, off the tick.
 World actions go through `WorldView`.
 
-1. Ask the threat for `pressure()` and `containment()`.
-2. Step the clock and save the row.
-3. On a stage change: `threat.onStage(from, to)`, the felt text, rumours and a chronicle fact.
-4. Run the threat's `step(D, seconds)`.
-5. Publish the doomsday to `BrewingEvents`, so Observation feels it at `feltFrom = 10`.
-6. Check the endings.
+1. Ask the threat for `pressure()` and `containment()`, and step the clock.
+2. Run the Foreshadowing (`ForeshadowRunner`). Its outcome moves the onset.
+3. On a stage change: `threat.onStage(from, to)` and a `DoomStageChanged` event, which `DoomStageNotices` turns into
+   felt text and a rumour.
+4. Run `threat.step(fate, seconds)` after onset. It answers how far the players' deeds pushed the clock, and the
+   director applies the push.
+5. Save the row. `DoomsdaySigns` keeps a copy for the tick: the sky, and Observation at `feltFrom = 10`.
 
-The Foreshadowing has its own small state in the same row and is stepped by the same director.
+`WorldEnd` polls the director every 10 seconds for the endings.
 
 ## DoomThreat
 
 ```kotlin
 interface DoomThreat {
   val kind: DoomKind
-  val shape: Shape // ACTOR, FRONT, PULSE
-  fun fits(world: GeneratedWorld): Boolean
-  fun origin(world: GeneratedWorld, random: Random): Vec2d?
-  fun onStage(from: DoomStage, to: DoomStage)
-  fun step(d: Double, seconds: Double)
+  val shape: DoomShape // ACTOR, FRONT, PULSE
+  fun fits(): Boolean
+  fun origin(random: Random): Vec2d
   fun pressure(): Double    // 0..1
   fun containment(): Double // 0..1
-  fun look(at: Vec3L): Double // 0..1, how strongly a player there feels it
-  fun avatar(): Avatar?
+  fun onStage(from: DoomStage, to: DoomStage)
+  fun step(fate: DoomFate, realSeconds: Double): Double // the push of the players' deeds
+  fun onLastStand(fate: DoomFate)                        // raise the Avatar
 }
 ```
 
-A threat runs in **foreshadow mode** with a province, a fixed duration and its own small `D`. It has no Last Stand
-then.
+How strongly a place feels the doomsday comes from `DoomPresence`, the same for every threat: its reach grows with
+the clock, and in the Cataclysm it is felt everywhere.
 
-Front threats compute containment the same way: `1 - actualArea / targetArea(D)`.
+## Foreshadowing
+
+A `Foreshadowing` bean of its own, apart from the threats. `ForeshadowRunner` starts it on its day in a random
+province outside the sanctuaries, steps it until it runs out after 7 to 14 days, and then asks whether the players
+held more than they lost. Held back, the onset moves 14 days later; run its course, 14 days sooner. Its state is the
+`foreshadowing` row: province, heart, end day, and the counts of what was held and lost.
+
+- **Mana Storm Season:** floods its province with mana (400k motes a day over 5 km), so rifts rise there by
+  themselves. Sealed or dissolved rifts count as held, collapsed ones as lost. Not contained, it raises six omen scars
+  around its heart.
 
 # Threats of the First Wave
 
 ## Void Tear
 
-- `fits`: a Wound outside the sanctuary provinces. `origin`: the Wound with the highest potential.
-- **Omens:** `WorldEventDirector` gets a weight bonus for `rift` in provinces within reach of the origin.
-- **Onset:** a `tear` row (like `rift`, with a radius and a reservoir) and a gate entity at the origin.
-  - The tear pours mana scaled by `D` (`WoundSources` pattern).
-  - It seeds knots within `R(D)` through `Rifts.formKnot`.
-  - A rift that merges into it pushes +0.01.
-  - Hordes use `RiftHordes`.
-- **Escalation:** the Void Sovereign anchors at every 0.1 of `D`.
-  - Its fall pushes −0.03 and opens a seal window (`RiftSeals`, Dispel against the tear's potency).
-  - A seal pushes −0.15 and shrinks `R`.
-- **Pressure:** the density ring around the tear, and open rifts in reach.
-- **Containment:** rifts sealed in reach over 7 real days, and the reservoir drained.
+Built. A rift that never collapses, so the rift system brings the gate, the hordes on the nearest town, the anchor and
+the seal window.
+
+- `fits`: a Wound outside the sanctuary provinces. `origin`: the Wound where the mana is thickest.
+- **Onset:** a `rift` row at the origin, opened at once, with its collapse years away. The `void_tear` row holds its
+  id.
+- **Stage:** on each run the threat sets the rift's open time, so its rift stage follows the clock: 1 at onset, 5 in
+  the Cataclysm.
+- **Mana:** it pours 100k to 600k motes a day over 3 km (`WoundFootprint`).
+- **Knots:** 0.5 to 4 a day within 4 to 30 km. It skips sanctuaries, water and provinces with a rift, and lends the
+  ground the mana a knot needs to hold.
+- **The Void Sovereign** anchors it instead of the Rift Warden, from rift stage 3 on (`StoredRift.anchorSpecies`).
+  - Each one that falls pushes −0.03 and opens the seal window.
+  - When the window passes unused, the next one rises at once.
+- **Sealed:** −0.15. It tears open again after 3 days.
+- **Swallowed knots:** +0.01 each.
+- **Pressure:** open rifts within its reach. **Containment:** rifts sealed within its reach in the last 7 days.
+- **Avatar:** the Sovereign at level 99 at the Tear. Its fall wins the Last Stand. A Last Stand that outlives a
+  restart raises a new one.
 
 ## Withering
 
@@ -188,20 +204,17 @@ If the answer is go, Flood gets its own plan. The starting sketch:
 
 # Presentation
 
-- **`WeatherSMSG`** gets `doom_kind`, `doom_stage` and `doom_local` (quantised 0..1) per player.
-  - `WeatherPublisher` forces a send when they change, like `mana_tier`.
-  - `doom_local` comes from `threat.look(at)`.
-- **Client:**
-  - `DoomLook` maps kind, stage and local intensity to a mood strength.
-  - One mood resource per kind lives in `Sky/moods/`.
-  - `environment.gd` replaces `_follow_mana_mood` with `_follow_moods`, which takes the stronger of the mana mood and
-    the doom mood.
-- **Felt text:** `AnnouncementSMSG` gets `ANNOUNCEMENT_DOOM_STAGE` with args, sent per player.
-  - The args name the stage and the compass direction from the player to the origin.
-  - The text never says how far away it is.
-- **Rumours:** `DOOM_OMEN`, `DOOM_ONSET`, `DOOM_SPREADS` and `FORESHADOW_*` through `RumourService.post`, with lines
-  in `rumours.yml` and `dialogs.csv`.
-- **Chronicle:** `LivingChronicle.record` for stage changes, the Foreshadowing outcome and the end.
+- **`WeatherSMSG`** gets `doom_kind` and `doom_level` (0 to 4) per player. The weather asks the `DoomSkies` port,
+  which `DoomsdaySigns` answers from its copy, so the tick never reads the database. Nothing shows before onset.
+- **Client:** `DoomLook` maps the level to a mood strength. `environment.gd` takes the stronger of the mana mood and
+  the doom mood. Moods: `doom_void` (Void Tear), `doom_blight` (Withering), and the red `doomsday` for every other
+  kind.
+- **Felt text:** `ANNOUNCEMENT_DOOM_ONSET`, `_ESCALATION`, `_CATACLYSM` and `_RECEDES`, sent to every master online
+  with the compass direction from where they stand. The Foreshadowing has `ANNOUNCEMENT_FORESHADOW_BEGINS`, `_HELD`
+  and `_FAILED`.
+- **Rumours:** `DOOM_GROWS` around the origin on every stage that goes up.
+- **Observation:** feels the doomsday at `feltFrom = 10`, family `doom`.
+- **Chronicle:** not yet. A new fact kind lives in `worldgen` and changes the world version.
 
 # World End
 
@@ -306,7 +319,7 @@ All under `Authority.WORLD_EVENTS`, following the `/event` pattern:
 
 - `/doom`: kind, origin, stage, `D`, pace, pressure, containment, `T` now and the projected end day
 - `/doom set <D>`, `/doom push <delta>`, `/doom pace <x|auto>`
-- `/doom kind <kind>`, `/doom foreshadow <kind>`, `/doom foreshadow end contained|failed`
+- `/doom kind <kind>`, `/doom foreshadow <kind|now>`, `/doom foreshadow end contained|failed`
 - `/doom end lost|saved [minutes]` (5 minutes by default), `/doom end cancel` (a Last Stand counts as won)
 - `/doom sequence lost|saved`: plays the client sequence for the GM only, without ending anything
 
@@ -318,7 +331,9 @@ All under `Authority.WORLD_EVENTS`, following the `/event` pattern:
 | `world`              | new `ended_at`                                                                        | replaced          |
 | `world_end`          | the open Last Stand or Calling and its countdown                                      | yes               |
 | `world_legacy`       | one row per ended world                                                               | never             |
-| `tear`, `destroyer`  | threat state                                                                          | yes               |
+| `void_tear`          | the rift that is the Tear, when it re-forms, recent seals in its reach                | yes               |
+| `foreshadowing`      | the Foreshadowing once it struck                                                      | yes               |
+| `destroyer`          | threat state                                                                          | yes               |
 | `corruption_tile`    | the Withering field                                                                   | yes               |
 | `corruption_crystal` | crystals                                                                              | yes               |
 
