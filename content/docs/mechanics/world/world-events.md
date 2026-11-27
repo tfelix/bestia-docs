@@ -93,6 +93,11 @@ defend: if it burns, the mana is free again.
 
 # Rifts
 
+<figure class="figure d-block my-4">
+  <a href="/images/artwork/rift-warden.jpg"><img class="figure-img img-fluid rounded" src="/images/artwork/rift-warden.jpg" alt="Concept art: a Rift warden in the violet storm" loading="lazy"></a>
+  <figcaption class="figure-caption">A Rift warden in the violet storm</figcaption>
+</figure>
+
 A rift is what happens when the pressure has to go somewhere. It sucks in the mana around it, turns it into bestia,
 and either gets sealed or bursts.
 
@@ -158,6 +163,11 @@ and where, how rich and how well defended the towns are, and what the history re
 after the rifts are these:
 
 ## Rare Bestia Under the Right Sky
+
+<figure class="figure d-block my-4">
+  <a href="/images/artwork/silver-stag.jpg"><img class="figure-img img-fluid rounded" src="/images/artwork/silver-stag.jpg" alt="Concept art: the silver stag in moonlight" loading="lazy"></a>
+  <figcaption class="figure-caption">The silver stag in moonlight</figcaption>
+</figure>
 
 Some named bestia only show up when everything fits: a weather, a time of day, a moon phase, a season and a place.
 _The Storm Heron hunts the marsh in a storm at dusk._ Three of them live in the world so far: the Storm Heron in

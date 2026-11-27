@@ -71,6 +71,11 @@ and play the needle game too.
 
 # Explored World Map
 
+<figure class="figure d-block my-4">
+  <a href="/images/artwork/world-map.jpg"><img class="figure-img img-fluid rounded" src="/images/artwork/world-map.jpg" alt="Concept art: the world at dusk" loading="lazy"></a>
+  <figcaption class="figure-caption">The world at dusk</figcaption>
+</figure>
+
 A map is an item. Each **chart** records the ground it covers as a grid of 64 m cells, and what a player sees on their
 map is everything covered by all the charts they carry. Charts come from surveying with
 [Cartography](/docs/mechanics/master/survival-tree/#skill-cartography), and every new master starts with a chart of the 5 km around
