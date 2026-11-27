@@ -140,7 +140,7 @@ and which Order came out ahead. The last line says that **a new world is about t
 
 After the end, the server generates the next world. Nobody can play while it does, and the login screen says that a
 new world is being born. This takes as long as the generation needs, and the server uses all its power to make it
-quick.
+quick. Meanwhile the companion app shows the **Interregnum**: how the last world ended, and what crosses over.
 
 The strongest deeds of the old world can live on: the next world's history may remember the old one as a mythic age,
 with the heroes who opted in, the Order that won and how the world ended.

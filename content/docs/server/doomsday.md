@@ -4,7 +4,7 @@ title: Doomsday
 description: "Server design for the doomsday: the doom clock, threats as beans, the Foreshadowing, the world end, the rebirth with its carry-over, the login gate, GM tools and the build order."
 ---
 
-{{< alert context="warning" text="**Designed, not built.** The player-facing rules are on [Doomsday](/docs/mechanics/world/doomsday/). This page says how the zone runs them. The [build order](#build-order) is a stack of small slices." />}}
+{{< alert context="info" text="**Built, except Flood.** The player-facing rules are on [Doomsday](/docs/mechanics/world/doomsday/). This page says how the zone runs them. The [build order](#build-order) is a stack of small slices; the Flood study (step 12) is still open." />}}
 
 The doomsday sits on top of the [World Events](/docs/server/world-events/) work. The mana field, provinces, the
 director, rifts, seals, rumours and Observation all exist. The doomsday adds four things:
@@ -358,8 +358,21 @@ Each slice that owns the data has a `WorldRecreatedEvent` listener (`CARRY_OVER`
 - When Valkey cannot say, the login server lets the player in. The zone refuses them itself while it is not ready.
 - The client shows a rebirth screen for `WORLD_REBIRTH`, for the zone's `SERVER_NOT_READY` and `WORLD_ENDED`, and
   after the final sequence. It keeps the stored session and resumes it every 20 seconds.
-- The api server will read the same key, so the companion app shows the Interregnum page with the last
-  `world_legacy` row (step 13).
+
+## Companion App
+
+The zone is down while a new world is born, so the api server cannot ask it then. Valkey answers instead.
+
+- When the world ends, the zone writes the summary of its final sequence as JSON to `world:last` (`LastWorld`), then
+  sets `world:state`. `world:last` has no expiry and stays until the next world ends. The `api` Valkey user may only
+  read both keys.
+- `GET /v1/companion/world` answers `rebirth`, `current` and `last`. During a rebirth it reads only Valkey. Otherwise
+  it asks the zone (`ZoneQuery.World`): the world's name, its age in days, and the doomsday's kind and stage from
+  `DoomsdaySigns`. Both are null before the onset, as in the game.
+- In the app, a call that fails with `503` or `504` during a rebirth opens the **Interregnum** page. It shows the last
+  world's summary in the game's own words (`WORLD_END_*` from `general.csv`) and what crosses over. It asks again every
+  30 seconds and returns to the Masters once the world is back.
+- The Masters page shows a world card: name, day, and the stage with the threat.
 
 # GM Tools
 
@@ -373,17 +386,20 @@ All under `Authority.WORLD_EVENTS`, following the `/event` pattern:
 
 # Persistence
 
-| Table                | Holds                                                                                 | Wiped on recreate |
-| -------------------- | ------------------------------------------------------------------------------------- | ----------------- |
-| `doomsday`           | kind, origin, onset, `L`, `U`, `D`, stage, pace override, foreshadow state, last step | yes               |
-| `world`              | new `ended_at`                                                                        | replaced          |
-| `world_end`          | the open Last Stand or Calling and its countdown                                      | yes               |
-| `world_legacy`       | one row per ended world                                                               | never             |
-| `void_tear`          | the rift that is the Tear, when it re-forms, recent seals in its reach                | yes               |
-| `foreshadowing`      | the Foreshadowing once it struck                                                      | yes               |
-| `destroyer`          | threat state                                                                          | yes               |
-| `corruption_tile`    | the Withering field                                                                   | yes               |
-| `corruption_crystal` | the standing crystals                                                                 | yes               |
+| Table                 | Holds                                                                                 | Wiped on recreate |
+| --------------------- | ------------------------------------------------------------------------------------- | ----------------- |
+| `doomsday`            | kind, origin, onset, `L`, `U`, `D`, stage, pace override, foreshadow state, last step | yes               |
+| `world`               | new `ended_at`                                                                        | replaced          |
+| `world_end`           | the open Last Stand or Calling and its countdown                                      | yes               |
+| `world_legacy`        | one row per ended world                                                               | never             |
+| `world:last` (Valkey) | the last world's summary for the companion app                                        | never             |
+| `void_tear`           | the rift that is the Tear, when it re-forms, recent seals in its reach                | yes               |
+| `foreshadowing`       | the Foreshadowing once it struck                                                      | yes               |
+| `destroyer`           | the Destroyer's lair, position, stack, target and razed towns                         | yes               |
+| `corruption_tile`     | the Withering field                                                                   | yes               |
+| `corruption_crystal`  | the standing crystals                                                                 | yes               |
+| `withered_cell`       | cells whose plants are already gone                                                   | yes               |
+| `warded_cell`         | cells a cleansing ritual protects, and until when                                     | yes               |
 
 The zone's schema comes from its entities (`ddl-auto: update`), so new columns and tables need no migration.
 
@@ -421,5 +437,5 @@ All are configuration and are judged in play.
 | Last Stand win             | `D` back to 0.85                                                     |
 | Final sequence             | 90 s before the kick                                                 |
 | Void Tear                  | merge +0.01, Sovereign −0.03, seal −0.15                             |
-| Destroyer                  | town +0.08, defeat −0.10, return 3 days                              |
+| Destroyer                  | town +0.08, defeat −0.10, return 3 days, re-seal 14 days             |
 | Withering                  | plants die above 0.7, sickness above 0.5, ward 7 days, cleanse 300 m |
