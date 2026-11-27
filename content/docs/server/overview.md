@@ -31,15 +31,15 @@ graph LR
   C -- "HTTPS POST /api/v1/auth/..." --> LOGIN
   C <-- "TCP, length-prefixed Envelope frames" --> ZONE
   C -- "HTTP, the map" --> API
-  LOGIN -- "kick orders" --> V
-  API <-- "requests, events" --> V
+  LOGIN <-- "kick orders, GM commands" --> V
+  API <-- "requests, events, kicks, GM commands" --> V
   ZONE <-- "answers, events, kicks" --> V
 ```
 
 Trust between login and zone is carried in a signed JWT. There is no shared database and no service
 discovery between `login-server` and `zone-server`. The one message between them goes from login to zone,
-over the zone's Valkey, to kick an account. See [Authentication](/docs/server/authentication) for the full
-handoff and the kick.
+over the zone's Valkey, to kick an account. The API Server sends GM actions to the login server over the same
+Valkey. See [Authentication](/docs/server/authentication) for the full handoff, the GM actions and the kick.
 
 # Tech stack
 

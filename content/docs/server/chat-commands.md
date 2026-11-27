@@ -94,8 +94,8 @@ The emote list is `AnimationKind.EMOTES`; a new emote becomes a command by itsel
 
 {{< /table >}}
 
-Some authorities have no chat command. `KICK` and `BAN` are GM actions of the login server
-(`GmActionService`). `TEST_BESTIA` hands a GM a test bestia when a master is created. `KILL` and
+Some authorities have no chat command. `KICK` and `BAN` are GM actions of the companion app, carried out by the
+login server (`GmActionService`, see [GM actions](/docs/server/authentication#gm-actions)). `TEST_BESTIA` hands a GM a test bestia when a master is created. `KILL` and
 `DIALOG` are granted but nothing checks them yet.
 
 {{< alert context="info" text="The help text of `/item` says it can also give the item to another player by id. The command does not accept that argument today." />}}
