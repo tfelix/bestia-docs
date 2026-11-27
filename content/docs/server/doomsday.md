@@ -181,12 +181,21 @@ Part 2 is built: its effects.
 - **Blight Bloom:** a Foreshadowing. Five crystals (`bloom = true`) grow 2.5 km around its heart; each broken one counts
   as held, each standing one as lost. Contained, the land heals; otherwise the rot stays as a scar.
 
-Part 3 follows: the client look.
+Part 3 is built: the client look.
 
-- **Client:**
-  - A `CORRUPTED` ground layer through `GroundOverlayService`, the scorch path.
-  - The client gets a second ground-marks texture, because `GroundLayer.CHANNELS = 4` is full.
-  - Terrain slot 11 is the creep material with a flowing UV animation. Grass blades wither where the layer is high.
+- **Layer:** `CORRUPTED` (wire id 5, channel 4) is a ground layer like `SCORCHED`, sent through
+  `GroundOverlayService` as nibbles. `CorruptionLayerSource` turns the 128 m cells into one level per metre: it blends
+  the four nearest cells and adds fixed noise, so the edge is ragged and moves a few metres at a time. It shows from 0.2
+  and covers fully from 0.45, near where the `WITHERING` status catches.
+- **Changes:** `CorruptionField` keeps the cells changed since it was last asked. Every 30 s the layer source marks
+  the columns those cells reach as dirty, so the Withering and the Blight Bloom need no hook of their own.
+- **Client:** `GroundMarkTexture` holds two `RGBA8` pages, eight channels. Corrupted is red on the second page
+  (`ground_marks_2`); three channels stay free for later fronts.
+- **Creep:** terrain slot 12 (`corrupted`), grey slime made by `tools/client/generate_creep_slot.py`. It is drawn as
+  a fourth mark kind. Two noise layers slide against each other and a slow swell runs through it, wetter at its crest.
+- **Grass:** blades on rotten ground grey from the tip down, droop to a side and shrink, and are gone where the rot is
+  full. The wilted ring runs ahead of the creep's edge.
+- **Check:** GrassBench `--creep=metres` lays a ragged disc of rot around the meadow's centre.
 
 ## The Destroyer
 
