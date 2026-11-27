@@ -70,6 +70,11 @@ faithful say. On later worlds a cult of a god that leans toward an Order is more
 
 # What Worship Leaves Behind
 
+<figure class="figure d-block my-4">
+  <a href="/images/artwork/rune-monolith.jpg"><img class="figure-img img-fluid rounded" src="/images/artwork/rune-monolith.jpg" alt="Concept art: a ritual at the rune monolith" loading="lazy"></a>
+  <figcaption class="figure-caption">A ritual at the rune monolith</figcaption>
+</figure>
+
 Gods are worshipped in three ways, and each leaves something in the world:
 
 - **Temples.** Each people and each town has a **patron god**. The town's temple is dedicated to it, and its priests

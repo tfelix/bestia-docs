@@ -164,6 +164,11 @@ Each idea names what the player does, what they get, and what the history needs 
 
 ## Battlefields
 
+<figure class="figure d-block my-4">
+  <a href="/images/artwork/undead-warlord.jpg"><img class="figure-img img-fluid rounded" src="/images/artwork/undead-warlord.jpg" alt="Concept art: an undead warlord and his restless dead" loading="lazy"></a>
+  <figcaption class="figure-caption">An undead warlord and his restless dead</figcaption>
+</figure>
+
 - **Lay the dead to rest.** Bring bone shards from a field to the cemetery of the town the fallen came from. The field
   stays quiet for some nights, the town thanks the player, the god of death gives a blessing. The player must know
   which people fought there and where they came from. _Today:_ battle, sides, home towns.

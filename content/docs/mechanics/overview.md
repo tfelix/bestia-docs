@@ -10,6 +10,11 @@ This document details the **key game mechanics and design principles**, providin
 
 At the heart of the game is a **world torn apart** by a cataclysmic event, known as the **Rift**. During this time magic surged uncontrollably, merging two realities and warping their physical properties, leading to widespread devastation. The player, a survivor of this catastrophe, is thrust into a **harsh new world**, forced to adapt, explore and rebuild.
 
+<figure class="figure d-block my-4">
+  <a href="/images/artwork/behemoth.jpg"><img class="figure-img img-fluid rounded" src="/images/artwork/behemoth.jpg" alt="Concept art: adventurers before a wandering behemoth" loading="lazy"></a>
+  <figcaption class="figure-caption">Adventurers before a wandering behemoth</figcaption>
+</figure>
+
 But **survival is just the beginning**. Players will gather resources, forge alliances and rivalries, and ultimately shape the fate of the world. The theme of **destruction and rebirth** runs throughout the game, with players aligning themselves with different **factions**, each pursuing its own vision for the fate of the world (see [The Factions](/docs/mechanics/society/factions) for more details).
 
 This document will continue to evolve, expanding on these foundations and refining the game’s mechanics as development progresses.

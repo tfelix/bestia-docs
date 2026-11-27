@@ -7,6 +7,8 @@ toc: true
 description: "Explore vast lands in a procedurally generated world, fight tough monsters, gather ressources, or join guilds in your personal quest for honor and power."
 ---
 
+<img class="img-fluid rounded mb-4" src="/images/artwork/banner.jpg" alt="Concept art: adventurers before a wandering behemoth, a Rift warden in a violet storm, and a map of the world">
+
 **Welcome to the docs of the Bestia Game!** It's a hobbyist fantasy MMORPG set in a vast, persistent world where magic meets builders,
 gatherers and adventurers. Here you'll find everything from game design guidelines to engine architecture overviews, as well as the API documentation to access game data.
 

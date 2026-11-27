@@ -11,6 +11,11 @@ land it just made: peoples settle, grow, fight, pray, and fall. When play begins
 it did is still there. A ruin is a town that was razed. A tomb holds someone who lived. A buried sword was lost in a
 real battle.
 
+<figure class="figure d-block my-4">
+  <a href="/images/artwork/mist-moor.jpg"><img class="figure-img img-fluid rounded" src="/images/artwork/mist-moor.jpg" alt="Concept art: the ghost queen of the mist moor" loading="lazy"></a>
+  <figcaption class="figure-caption">The ghost queen of the mist moor</figcaption>
+</figure>
+
 Nothing in the history is placed for the player's sake. It is the reason things are where they are, and the players
 find it by walking, digging and asking.
 

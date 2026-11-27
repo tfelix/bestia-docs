@@ -7,6 +7,11 @@ description: "How a recognised guild finds an Empyrite Seed, plants a golden Emp
 A **Guild Stronghold** is a guild's own place in the open world. Its heart is the **Empyrite**, a golden crystal.
 Whoever breaks the Empyrite takes the Stronghold.
 
+<figure class="figure d-block my-4">
+  <a href="/images/artwork/crystal-courtyard.jpg"><img class="figure-img img-fluid rounded" src="/images/artwork/crystal-courtyard.jpg" alt="Concept art: the Empyrium in the middle of a stronghold" loading="lazy"></a>
+  <figcaption class="figure-caption">The Empyrium in the middle of a stronghold</figcaption>
+</figure>
+
 Strongholds stand only on **Empyrite Seeds**, a few fixed spots in every world. Each lies near rich ore, so a
 Stronghold is a home base worth holding and worth taking. Only a guild with
 [Official Guild Approval](/docs/mechanics/society/party-guild/#skill-official-guild-approval) can find a seed,

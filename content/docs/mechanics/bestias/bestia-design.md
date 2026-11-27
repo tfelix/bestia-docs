@@ -369,6 +369,11 @@ Three rules come before the numbers:
 
 # 9. The compendium entry
 
+<figure class="figure d-block my-4">
+  <a href="/images/artwork/compendium.jpg"><img class="figure-img img-fluid rounded" src="/images/artwork/compendium.jpg" alt="Concept art: pages from a bestia compendium" loading="lazy"></a>
+  <figcaption class="figure-caption">Pages from a bestia compendium</figcaption>
+</figure>
+
 Every bestia gets an entry in the [Bestia Compendium](/docs/mechanics/bestias/bestia/#bestia-compendium), the in-game book of known
 species. The [Sense](/docs/mechanics/master/scholar-tree/#skill-sense) skill already reveals status values, element, HP and mana.
 The compendium is where a player keeps what they have learned.
