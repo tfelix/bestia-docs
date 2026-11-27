@@ -142,18 +142,29 @@ the seal window.
 
 ## Withering
 
-- `fits`: land with blight history outside the sanctuaries.
-  `origin`: the cell with the highest `CORRUPTION` near a `BLIGHT_SPREAD` or `SETTLEMENT_FORSAKEN` place.
-- **CorruptionField:** 128 m cells in 4 km tiles, intensity 0..1, only changed tiles stored.
-  - It is the `ManaField` layout with its own lock.
-  - Persistence follows `ManaJournal`: `corruption_tile` rows stamped with the shape and pipeline version, flushed every
-    5 minutes and at shutdown.
+Part 1 is built: the field and the crystals.
+
+- `fits`: dry land with any `CORRUPTION` outside the sanctuaries. `origin`: the most corrupted dry cell there.
+- **CorruptionField:** 128 m cells in 4 km tiles, intensity 0..1, only touched tiles kept.
+  - It uses the `ManaField` layout and helpers, with its own lock.
+  - `CorruptionJournal` writes changed tiles after each run as `corruption_tile` rows, stamped with the shape and
+    pipeline version, and loads them at boot.
   - It is wiped by `WorldScopedData`.
-- **Corruption crystals:** a new breakable prop kind with health, served by a `WorldObjectSource` like `SealStones`.
-  - Rows: `corruption_crystal`.
-  - Each crystal raises the cells within its radius every step.
-  - New crystals sprout at the edge of cells above 0.6 while the corrupted area is below `A(D)`.
-  - A broken crystal stops and drops shards.
+- **Corruption crystals:** a mob species, `corruption_crystal`, like the rift crystals: no AI, breakable, loot. This
+  keeps a new prop kind out of the world generator.
+  - Rows: `corruption_crystal` (position). `CorruptionCrystals` keeps an entity standing for each row, and grows them
+    again after a restart.
+  - The first one grows at the origin at onset. New ones sprout 1.2 to 2 km from a random standing one, outside the
+    sanctuaries and on dry ground, until there are as many as the clock asks (up to 300, a curve that is slow at first)
+    and at most 6 a day.
+  - Each crystal corrupts the land within 2 km, strongest at its foot: 0.25 a day. Land with no crystal any more heals
+    at 0.05 a day.
+  - A broken crystal is deleted and drops `corrupted_shard`.
+- **Containment:** `1 − standing crystals / crystals the clock asks for`.
+- **GM layer:** `/mana layer on` shows the corruption of each cell as a grey-green wash.
+
+Part 2 and 3 follow:
+
 - **Plants die:** a batch job walks the columns of cells above 0.7 and removes vegetation props with `GONE_FOR_GOOD`.
   It covers resident and unseen props, like `SettlementFateService.raze`.
 - **Exposure:** `WITHERING` through `EnvironmentalExposureSystem`, the `MANA_SICKNESS` pattern.
@@ -335,7 +346,7 @@ All under `Authority.WORLD_EVENTS`, following the `/event` pattern:
 | `foreshadowing`      | the Foreshadowing once it struck                                                      | yes               |
 | `destroyer`          | threat state                                                                          | yes               |
 | `corruption_tile`    | the Withering field                                                                   | yes               |
-| `corruption_crystal` | crystals                                                                              | yes               |
+| `corruption_crystal` | the standing crystals                                                                 | yes               |
 
 The zone's schema comes from its entities (`ddl-auto: update`), so new columns and tables need no migration.
 
