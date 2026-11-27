@@ -265,14 +265,15 @@ The Destroyer is one of the world's sealed bosses, but changed: a power drawn fr
 than any other boss**, with enormous health and strength. It is meant to be very, very hard to defeat, and it
 **cannot be captured**.
 
-Its path is predictable enough to plan around. Every town it reaches is razed, and every town it razes heals it fully
-and makes it stronger, so each town lost makes the next harder to save. Players meet it with server-wide raids at
+Its path is predictable enough to plan around. It marches on the world's towns and on the towns players built, and
+every town it reaches is razed. Every town it razes heals it fully and makes it stronger, so each town lost makes the
+next harder to save. Only the start towns are spared, so new masters always have somewhere to begin. Players meet it with server-wide raids at
 defensible chokepoints, environmental traps, and siege devices researched at an Order's
 [citadel](/docs/mechanics/society/factions/#citadels-and-temples). **Chaos** may try to lure or empower it toward its
 rivals.
 
-When it falls, the world gains time, but the Destroyer is not gone. It returns after a few days, stronger than before
-— unless players renew the seal at its lair with a ritual while it is down. If The Destroyer levels the great towns,
+When it falls, the world gains time, but the Destroyer is not gone. It returns after a few days, stronger than before.
+Players who renew the seal at its lair with a ritual while it is down keep it there for two weeks instead. If The Destroyer levels the great towns,
 the world collapses with them.
 
 ## The Long Night

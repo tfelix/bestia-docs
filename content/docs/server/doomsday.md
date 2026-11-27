@@ -115,6 +115,11 @@ held more than they lost. Held back, the onset moves 14 days later; run its cour
 - **Mana Storm Season:** floods its province with mana (400k motes a day over 5 km), so rifts rise there by
   themselves. Sealed or dissolved rifts count as held, collapsed ones as lost. Not contained, it raises six omen scars
   around its heart.
+- **Blight Bloom:** see [Withering](#withering).
+- **Harbinger:** a lesser boss (a `boss` species, not a world boss) walks out 1.5 km from the province's heart with
+  `DESTROYER` at level 1 and marches once on the nearest town, like the [Destroyer](#destroyer). Brought down, it
+  counts as held. Razing the town, or still walking at the end, counts as lost: the Harbinger is gone, and the
+  Foreshadowing is not contained.
 
 # Threats of the First Wave
 
@@ -196,3 +201,26 @@ Part 3 is built: the client look.
 - **Grass:** blades on rotten ground grey from the tip down, droop to a side and shrink, and are gone where the rot is
   full. The wilted ring runs ahead of the creep's edge.
 - **Check:** GrassBench `--creep=metres` lays a ragged disc of rot around the meadow's centre.
+
+## Destroyer
+
+Built: `DestroyerThreat`, an actor.
+
+- `fits`: a sealed world boss outside the sanctuaries (`WorldBossSealService`). `origin`: one of their seals.
+- **Onset:** the seal nearest the origin breaks, resident or not, and its boss walks out. It is spawned by the threat,
+  not stored as a mob: the `destroyer` row keeps its species, lair, last position, stack, target and the towns it razed,
+  and after a restart it walks on from where it last stood.
+- **DESTROYER (263):** level = 1 + towns razed. +100% attack and defence, +25% for each town; +200% HP regeneration,
+  +50% for each town, also in combat. Its health is set by the threat, because a mob's maximum health does not come
+  from status values: 20× the boss's, +5× for each town. No trap holds it.
+- **March:** a `SimulationAnchor` at `TRAVELLER` keeps the world around it simulated with nobody near. It walks to the
+  nearest target (`HOME_POSITION`, 16 voxels of wander): a settlement still standing, or a standing player town. Towns
+  in a sanctuary province, so the start towns, are spared.
+- **Raze:** within 80 m of the centre, a settlement is razed (`SettlementFateService.raze`). A player town falls
+  through its broken city sign, or through `TownService.fall` when the sign is not resident. It heals fully, its stack
+  grows, and the clock is pushed by +0.08.
+- **Defeat:** the clock is pushed by −0.10, and it rises again at its lair 3 days later, one town stronger. A ritual
+  within 60 m of the lair while it is down (`DestroyerSeal`) keeps it down 14 days from then.
+- **Pressure:** towns razed against towns razed and left. **Containment:** full while it is down, then fading over the
+  14 days after its last defeat.
+- **Avatar:** the Destroyer itself, at its stack. A fallen one rises at once for the Last Stand.
