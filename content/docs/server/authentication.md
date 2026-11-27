@@ -5,9 +5,10 @@ description: How a player signs in with a passkey in the system browser, which t
 ---
 
 `login-server` and `zone-server` share no database and no service discovery. A login is trusted through a signed
-JWT that the client carries from one to the other, and the zone checks it without asking the login server. The one
-message between the servers goes from login to zone over the zone's Valkey, to kick an account: see
-[Kicking an account](#kicking-an-account).
+JWT that the client carries from one to the other, and the zone checks it without asking the login server. Two kinds
+of message cross the zone's Valkey to or from the login server: a GM action from the
+[API Server](/docs/server/api-server/) (see [GM actions](#gm-actions)), and a kick from the login server to the zones
+and the API Server (see [Kicking an account](#kicking-an-account)).
 
 ```mermaid
 sequenceDiagram
@@ -24,7 +25,7 @@ sequenceDiagram
   L-->>B: redirect to the loopback listener with a one-time code
   B->>C: code
   C->>L: POST /api/v1/auth/game/exchange (code, PKCE verifier)
-  L-->>C: zone token, refresh token, api token
+  L-->>C: zone token, refresh token
   C->>Z: TCP connect, Authentication(token, clientVersion, protocolVersion)
   Z->>Z: LoginTokenValidator (shared secret, no call to login)
   Z-->>C: AuthenticationSuccess (with an HTTP ticket)
@@ -76,20 +77,17 @@ address, which Tomcat takes from `X-Forwarded-For` only when the proxy sent it.
 
 # Tokens
 
-Four tokens, each with an audience that is matched exactly, so none stands in for another. All but the companion
+Three tokens, each with an audience that is matched exactly, so none stands in for another. All but the companion
 token are signed with `jwt.secret`, which the zone holds as `zone.jwt-auth-secret-key`.
 
 | Token           | Audience       | Lifetime                                | Used for                                                     |
 | --------------- | -------------- | --------------------------------------- | ------------------------------------------------------------ |
 | zone token      | `zone`         | `jwt.login-token-minutes` (2)           | the socket handshake, once (`jti`)                           |
 | refresh token   | none: opaque, stored as a digest | `game-login.refresh-token-days` (30), sliding | `/refresh`, rotated on every use            |
-| api token       | `login-api`    | `jwt.api-token-minutes` (15)            | the game client's calls to `/api/v1/admin/**`                |
 | companion token | `companion`    | `jwt.companion-token-minutes` (15)      | the companion app's calls to the [API Server](/docs/server/api-server/), signed with `jwt.companion-secret` |
 
 The zone token only has to survive the walk from the login server to the socket: the socket checks it once at the
-handshake, and the game's HTTP calls carry the session's own ticket (below). The api token names an account and
-nothing else; what the account may do is read from the database on every call, so a ban or a demotion applies at
-once.
+handshake, and the game's HTTP calls carry the session's own ticket (below).
 
 ## Refresh: rotation and replay
 
@@ -146,10 +144,34 @@ enrolment. It runs on
 
 and then kicks the account from the zones.
 
-A GM acts from the game client: `POST /api/v1/admin/accounts/{id}/kick` or `.../ban` with the api token (a ban
-takes a note and a duration in hours, none for good). `GmActionService` reads the actor from the database on every
-call, needs the action's `Authority`, needs the actor to outrank the target (`Role.outranks`), checks the actor
-before looking up the target so nobody without the authority can probe for ids, and writes a `gm_action` row.
+## GM actions
+
+A GM kicks or bans from the [Companion App](/docs/mechanics/companion-app/):
+`POST /v1/companion/gm/accounts/{id}/kick` or `.../ban` on the [API Server](/docs/server/api-server/), with the
+companion token. A kick takes a note; a ban takes a note and a duration in hours (none for good, at most ten years).
+
+The API Server knows no roles, so it does not judge the call. It sends a `LoginCommand` to the login server over the
+zone's Valkey, with the caller as the actor, and waits up to `bus.request-timeout-millis` (5 s) for the outcome. The
+login server owns the accounts, so it does all the checks: `GmActionService` checks the note and the duration, reads
+the actor from the database on every call, needs the action's `Authority`, needs the actor to outrank the target
+(`Role.outranks`), checks the actor before looking up the target so nobody without the authority can probe for ids,
+and writes a `gm_action` row. A GM who was demoted or banned a minute ago is refused at once.
+
+| Outcome           | HTTP | Meaning                                                                  |
+| ----------------- | ---- | ------------------------------------------------------------------------ |
+| `DONE`            | 204  | the sessions are ended and the kick is sent                              |
+| `INVALID`         | 400  | an empty or too long note, or a duration out of range                    |
+| `NOT_ALLOWED`     | 403  | the caller is unknown, banned, lacks the authority or does not outrank   |
+| `NO_SUCH_ACCOUNT` | 404  | the target does not exist                                                |
+| `FAILED`          | 502  | the login server failed while acting; the action may or may not have run |
+| no login server   | 503  | nobody listens on `login:commands`                                       |
+| no answer in time | 504  | the action may or may not have run; a kick or ban may be sent again      |
+
+The command travels on pub/sub: the API Server publishes to `login:commands`, the login server answers on
+`login:replies:<instance>`. Only the `api` Valkey user may publish commands, so the login server trusts the actor in
+them. The login server subscribes in the background and retries until Valkey answers, so it still starts and signs
+players in while Valkey is down. With several login servers, each receives every command and only the one that
+claims it (`login:claim:<id>`, a key set once) acts.
 
 # Kicking an account
 
@@ -171,6 +193,13 @@ appended meanwhile. `KickOrderListener` then:
 - closes the account's connection (`ConnectionTerminator`), with the reason. Only for a kick made after the node
   started: an older one is being read on catching up, and any connection here is younger, so it belongs to a player
   who signed in again.
+
+The [API Server](/docs/server/api-server/) follows the same stream, so a kick also locks the account out of the
+companion app at once, not when its companion token runs out. Every instance tails the whole stream as the Valkey
+user `api`, which may read it but not append to it. On start it replays the kicks of the last
+`companion.kick-memory-minutes` (20, longer than a companion token lives). Its own `KickedAccounts` makes
+`CompanionTokenVerifier` refuse a companion token issued before the kick, and the account's open sockets are closed
+with code 4000: the app tries a refresh, which fails, because the kick ended the account's sessions.
 
 # The companion app
 
@@ -204,7 +233,8 @@ committed one, shorter than 32 bytes or the same as `jwt.secret`. A server start
 
 - The zone token is signed with a secret both servers hold. It is meant to move to a key pair, the login server
   signing and the zones only verifying, before production.
-- Rate limits and `KickedAccounts` are kept per process, so a second login server or zone node keeps its own.
+- Rate limits and `KickedAccounts` are kept per process, so a second login server, zone node or API Server keeps its
+  own.
 - A kick that Valkey cannot take is lost rather than retried (see above).
 - `AuthenticationSuccess.permissions` is defined in the protobuf schema but never filled
   (`// TODO Send the available permissions to the client` in `ClientMessageHandler`).

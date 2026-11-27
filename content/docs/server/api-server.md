@@ -32,8 +32,8 @@ graph TB
   A["Companion app<br/>PWA · phone"] -->|"/api/v1/auth/companion"| L["<b>login-server</b><br/>passkeys · companion token"]
   A -->|"/v1/companion · REST + WebSocket"| API["<b>api-server</b><br/>auth · cache · push"]
   G["Game client"] -->|"map and emblems, with its socket's ticket"| API
-  L -->|"kick orders"| V
-  API <-->|"requests, replies,<br/>events, directory"| V[("Valkey<br/>owned by the zone")]
+  L <-->|"kick orders,<br/>GM commands"| V
+  API <-->|"requests, replies, events,<br/>directory, kicks, GM commands"| V[("Valkey<br/>owned by the zone")]
   Z["Zone nodes"] <-->|"answer, publish,<br/>register sessions"| V
   API --> DB[("bestia_api<br/>push subscriptions")]
   Z --> ZDB[("bestia_zone")]
@@ -61,7 +61,9 @@ base64.
 | Answers               | pub/sub channel `api:{instance}:replies`      | zone        | the asking api-server        |
 | Events                | stream `events`, the newest 10 000 kept       | zone        | api-server, twice (see below) |
 | Writes already done   | `bus:idem:{account}:{key}`, 10 minutes        | zone        | zone                          |
-| Kicks                 | stream `kicks`, the newest 10 000 kept        | login-server | every zone node, a group each |
+| Kicks                 | stream `kicks`, the newest 10 000 kept        | login-server | every zone node, a group each; every api-server, a tail each |
+| GM commands           | pub/sub channel `login:commands`              | api-server  | the login server that claims it (`login:claim:{id}`) |
+| GM outcomes           | pub/sub channel `login:replies:{instance}`    | login-server | the asking api-server       |
 
 The app marks are the only keys the api-server writes. Its ACL user may `SET` them and nothing else, through a
 selector, so it cannot overwrite the directory or the event stream.
@@ -221,13 +223,14 @@ hold. The api-server therefore cannot mint a zone token.
 
 | Service     | HTTP | Database                 | Valkey user |
 | ----------- | ---- | ------------------------ | ----------- |
-| login-server | 8080 | `bestia_login`, 3307    | `login`, which may only append kicks |
+| login-server | 8080 | `bestia_login`, 3307    | `login`, which may append kicks and answer GM commands |
 | zone-server | metrics only, 8092 on loopback (game socket 8090) | `bestia_zone`, 3306 | `zone` |
 | api-server | 8095 | `bestia_api`, 3308       | `api`       |
 | Valkey      | 6379 | from `zone-server/compose.yaml` | |
 
 The api-server and the login server need the zone's Valkey, so in development the zone starts first. The login
-server connects on its first kick, so it starts without Valkey; its kicks are lost until Valkey is up.
+server starts without Valkey: it connects on its first kick, and subscribes to GM commands in the background until
+Valkey answers. Its kicks are lost and GM actions answer 503 until Valkey is up.
 
 # Availability
 
