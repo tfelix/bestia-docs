@@ -4,7 +4,7 @@ title: Bestia Orders
 description: "How you tell your Bestias what to do while you are away: a job, the places it needs, how careful they are and how they look after themselves."
 ---
 
-{{< alert context="warning" text="Most of this page is built. Still planned: the Follow job, storm shelter, which jobs a species may take, the allowed-items list, and a notice when a Bestia runs out of food." />}}
+{{< alert context="warning" text="Built: Guard, Gather, Craft, Mine and Rest, Courage, Care from the bag and the chest, Fine-tune, presets, places, the Diary and the notifications. Still planned: the Build, Transport and Follow jobs, which jobs a species may take, work that costs stamina, the care item lists, the gather filter, helping in fights, storm shelter, and the report when you come back." />}}
 
 # Orders
 
@@ -16,35 +16,38 @@ behind every choice, or add a few rules. Both edit the same orders, from the gam
 
 Orders have five parts:
 
-| Part        | What you choose                                                    |
-| ----------- | ------------------------------------------------------------------ |
-| **Job**     | What the Bestia does: guard, gather, craft, mine, follow or rest   |
-| **Places**  | Where it does it: an area, a chest, a station, its home            |
-| **Courage** | One slider from careful to brave: when it retreats, what it fights |
-| **Care**    | When it eats or heals, and which items it may use                  |
-| **Rules**   | Optional, for experts: a short list of "when … then …" lines       |
+| Part        | What you choose                                                                    |
+| ----------- | ---------------------------------------------------------------------------------- |
+| **Job**     | What the Bestia does: guard, gather, craft, mine, build, transport, follow or rest |
+| **Places**  | Where it does it: an area, a chest, a station, its home, a route                   |
+| **Courage** | One slider from careful to brave: when it retreats, what it fights, if it helps    |
+| **Care**    | When it eats or heals, and which items it may use                                  |
+| **Rules**   | Optional, for experts: a short list of "when … then …" lines                       |
 
 Orders **narrow, they never widen.** A job can only use what the species can already do. A rule can make a Bestia eat
 earlier or haul sooner, but it cannot teach it a new trick.
 
 # Jobs
 
-| Job        | What it does                                                        | Places it needs       |
-| ---------- | ------------------------------------------------------------------- | --------------------- |
-| **Guard**  | Stays in an area and drives off intruders                           | Area                  |
-| **Gather** | Collects resources in an area and brings them to a chest            | Area, chest           |
-| **Craft**  | Works the queue of a station                                        | One station, or "any" |
-| **Mine**   | Works a [Mining Shaft](/docs/mechanics/master/survival-tree/#miner) | Mining Shaft, chest   |
-| **Follow** | Stays close to you while you play                                   | None                  |
-| **Rest**   | Stays at home, eats and recovers stamina                            | Home                  |
+| Job           | What it does                                                        | Places it needs       |
+| ------------- | ------------------------------------------------------------------- | --------------------- |
+| **Guard**     | Stays in an area and drives off intruders                           | Area                  |
+| **Gather**    | Collects resources in an area and brings them to a chest            | Area, chest           |
+| **Craft**     | Works the queue of a station                                        | One station, or "any" |
+| **Mine**      | Works a [Mining Shaft](/docs/mechanics/master/survival-tree/#miner) | Mining Shaft, chest   |
+| **Build**     | Builds your construction sites and repairs your structures          | Area, chest           |
+| **Transport** | Carries goods from one chest to another and brings food back        | Route: two chests     |
+| **Follow**    | Stays close to you while you play                                   | Home                  |
+| **Rest**      | Stays at home, eats and recovers stamina                            | Home                  |
 
 ## Main Job and Fallback
 
 Every Bestia has a **main job** and may have one **fallback job**. The fallback runs when the main job has nothing to do:
-the area is picked clean and the bag is hauled, no station or Mining Shaft waits for it, or you are offline and the main
-job is Follow. As soon as the main job has work again, the Bestia puts the fallback work down and goes back to it.
+the area is picked clean and the bag is hauled, no station, site or Mining Shaft waits for it, no load waits at the
+start of its route, or you are offline and the main job is Follow. As soon as the main job has work again, the Bestia
+puts the fallback work down and goes back to it.
 
-Only jobs that can run out of work take a fallback: Gather, Craft and Mine (and Follow, once it exists). A guard is never
+Only jobs that can run out of work take a fallback: Gather, Craft, Mine, Build, Transport and Follow. A guard is never
 out of work, and Rest is what a Bestia does anyway, so neither takes one, and Rest is never a fallback.
 
 A common pair is _Gather, else Craft_: the Bestia gathers until the field is bare, then helps at the workbench. Without a
@@ -54,9 +57,12 @@ Rules never switch jobs. Only the fallback does, so it is always clear what a Be
 
 ## Which Species Can Do What
 
-A species can only take the jobs its body allows. A bird can gather herbs but cannot carry stone or swing a pick. A
-grazer without attacks can guard only by raising the alarm. The job picker greys out what a species cannot do and says
-why.
+Every species has a fixed list of jobs it can take. A bird can gather herbs but cannot carry stone, swing a pick or
+build. A small creature cannot carry goods along a route. Only creatures with hands craft and build. Every species
+can follow and rest.
+
+The job picker greys out what a species cannot do and says why. Orders with a job the species cannot take are refused,
+in the game and in the app.
 
 # Places
 
@@ -69,6 +75,7 @@ _Camp chest_, _Mine camp_. Many Bestias can use the same place, and moving a pin
 | **Area**    | A named circle on the map, 4 to 64 tiles across the middle. Workers and guards stay inside it |
 | **Chest**   | A name for a [camp chest](#the-camp-chest) you own. Workers bring their haul here             |
 | **Station** | A crafting station or a Mining Shaft you own, picked in the Workshop                          |
+| **Route**   | Two chests: where a carrier loads and where it unloads. The second can be your guild storage  |
 
 Orders without a named area use the area around the Bestia's home, as wide as its species roams. Orders without a
 named chest use your nearest chest. A master can have up to 30 places. Deleting one sends every Bestia that used it back
@@ -89,7 +96,23 @@ Courage is one slider with five steps. It sets how a Bestia reacts to danger.
 "Stronger" compares levels: a foe 5 or more levels above the Bestia is stronger. The default is _Careful_ for workers and
 _Steady_ for guards.
 
+## Helping in a Fight
+
+When one of your Bestias, or you, is attacked, every Bestia of yours that sees it comes to help, whatever its job. Its
+Courage decides as for its own fights: a timid Bestia never comes, and a careful one does not take on a stronger foe.
+When the fight is over, each goes back to its work.
+
+A Bestia that should keep out of harm, for example a soft crafter, can be set to **Stays out of others' fights**. It
+still defends itself.
+
+A Bestia that cannot fight at all, such as a grazer, raises the alarm instead: you get the _under attack_ notice, and
+the others come.
+
 ## Retreat and Shelter
+
+A storm is a thunderstorm, heavy rain, a blizzard, a sandstorm or a tornado. In a storm, a Bestia whose Courage says so
+stops work and takes shelter. It counts as sheltered under a roof or a rock no higher than 4 m above it, or inside a
+[Base Camp](/docs/mechanics/master/survival-tree/#skill-base-camp) of level 2 or more.
 
 A Bestia that retreats, or hides from a storm, looks for a roof in this order:
 
@@ -97,26 +120,41 @@ A Bestia that retreats, or hides from a storm, looks for a roof in this order:
 2. If none is near, any **public** roof, for example a town building.
 3. If there is no roof at all, its **home**.
 
-It avoids buildings of other players. Once it is safe and its HP is back above the retreat line, it goes back to work.
+It avoids buildings of other players. Once it is safe, the storm is over and its HP is back above the retreat line, it
+goes back to work.
+
+A roof also protects you: under a roof, the cold and heat of the weather reach you more weakly.
 
 # Care
 
-Working costs [stamina](/docs/mechanics/combat/statusvalues/#stamina---sta). Stamina is the only need a Bestia has. There
-is no separate hunger bar.
+Working costs [stamina](/docs/mechanics/combat/statusvalues/#stamina---sta). Every unit of work costs a little: an
+item picked up, a swing at a tree, an item crafted, a piece of ore dug, a second of building, a stretch of road walked
+with a load. A night of steady work (8 hours) eats about eight common meals. Food is what keeps your Bestias working
+while you are away.
+
+Stamina is the only need a Bestia has. There is no separate hunger bar.
 
 When stamina or HP drops below the care line, a Bestia looks after itself:
 
 1. It uses an allowed item from **its own bag**, for example bread or a bandage.
 2. If it has none, it walks to its job's **chest** and takes some.
 3. A grazing species can also **graze** for a little stamina, as wild creatures do.
-4. If nothing is left, it **rests** at home and you get a notice.
+4. If nothing is left, it **rests** at home and you get a notice: _out of food_.
+
+About two hours before the food runs out, the Diary warns you: _food for about two hours left_. A Bestia that rests
+recovers stamina twice as fast.
 
 By default a Bestia eats below 40% stamina and heals below 50% HP. It may use common food and bandages, never potions.
-You can change both lists in Fine-tune.
+Two lists in Fine-tune change that:
+
+- **Never use**: items it must leave alone, for example the stew you keep for yourself.
+- **May also use**: items it may use on top of common food and bandages, for example a healing potion.
+
+Each list holds up to 8 items.
 
 # Fine-Tune
 
-Fine-tune is for experts. It has two parts.
+Fine-tune is for experts. It has three parts.
 
 **Overrides.** Five numbers the slider and the job choose can be set by hand. Each stays inside fixed limits. An empty
 field keeps the slider's or the job's value.
@@ -129,7 +167,7 @@ field keeps the slider's or the job's value.
 | Haul at     | 80% of what it can carry    | 30-100%                    |
 | Area radius | The species' roaming range  | 4-64 tiles                 |
 
-Which items a Bestia may use for care is planned as a sixth setting.
+**Care items.** The _Never use_ and _May also use_ lists from [Care](#care).
 
 **Rules.** A short list of up to eight lines, read from the top. The first line that fits wins.
 
@@ -140,12 +178,14 @@ Which items a Bestia may use for care is planned as a sixth setting.
 | bag fuller than _x_%       | haul to the chest now         |
 | it is night, or it is day  | rest at home, or keep working |
 | a stronger foe is in sight | retreat, or hold the ground   |
+| a storm is here            | take shelter, or keep working |
 
 Rules choose between things the job, Care and Courage already allow. "Rest at home" puts down a station or shaft and
-holds all work until the line no longer fits. "Keep working" skips sleep. "Hold the ground" keeps even a timid Bestia
-from fleeing; it still fights only what its job and Courage allow. No rule can make a gatherer fight or a guard craft.
+holds all work until the line no longer fits. "Keep working" skips sleep, or stays out in the storm. "Hold the ground"
+keeps even a timid Bestia from fleeing; it still fights only what its job and Courage allow. No rule can make a gatherer
+fight or a guard craft.
 
-Storm rules come with storm shelter. A station's fire needs no rule: a crafter keeps it burning from the chest.
+A station's fire needs no rule: a crafter keeps it burning from the chest.
 
 # Presets
 
@@ -170,7 +210,8 @@ A guard stays inside its area and attacks intruders:
   [ward stone's field](/docs/mechanics/society/pvp/#protected-zones).
 - **Never** members of your party or guild.
 
-A guard does not leave its area to chase. When a fight ends, it walks back to the middle of the area.
+A guard picks no fight outside its area. Whoever hits it from outside is chased, so an archer cannot shoot it from a
+safe spot. When a fight ends, it walks back to the middle of the area.
 
 ## Gather
 
@@ -182,8 +223,11 @@ A gatherer walks its area and collects what you ticked:
   [Natural Resources](/docs/mechanics/items-crafting/natural-resources/).
 - **Mana crystals**: mana and aetherite crystals.
 
+All four are ticked by default. You can also name up to 8 items, and it then takes only those, for example only
+reeds and resin.
+
 When its bag is 80% full, it carries everything to its chest. If the chest is full too, it stops, rests, and you get a
-notice.
+notice. When the area is picked clean, it says so in the Diary and turns to its fallback job.
 
 ## Craft
 
@@ -216,10 +260,46 @@ station, but it digs real ore out of the ground below it, so the ore is gone for
 You can build a shaft anywhere. Where no ore is in reach, it digs nothing. Ore that is not an item yet (copper, tin,
 silver) stays in the ground.
 
+## Build
+
+A builder works on your [construction sites](/docs/mechanics/towns-trade/where-to-build/) in its area, the nearest
+first. You pay a site's kit when you place it, as always, so a builder needs nothing but time. Two builders raise a site
+in half the time, as two players do.
+
+When no site is left, it repairs your damaged structures in the area, where repairs are allowed: in a town, or on a
+stronghold's grounds. It pays the repair from its bag, and fills its bag from its chest first. When a site is finished,
+you get the _construction done_ notice.
+
+## Transport
+
+A carrier moves goods along a **route** from one chest to another. A route is set up in four lines:
+
+| Line           | What you choose                                                                          |
+| -------------- | ---------------------------------------------------------------------------------------- |
+| **From**, **To** | Two of your chests. _To_ can also be your guild's storage                              |
+| **Carry**      | Everything except food, or only the items you name (up to 8)                             |
+| **Bring back** | Food for itself from _To_, and, if you like, enough of one item to keep _N_ of it at _From_ |
+| **Leave when** | A full load waits at _From_, or anything waits there                                     |
+
+A typical route runs from the mine to the base camp. The carrier waits at the mine chest until a full load of ore is
+there, carries it to the base camp, takes some bread for the way back, and returns. With _keep 10 Bread at From_, it
+also brings bread for the miner, so the miner never runs out.
+
+A route can be up to 512 tiles long. On long routes the carrier travels the roads like a traveller. The map shows each
+route as a line between its two chests.
+
+A carrier can only put goods into guild storage, never take them out, and only if your guild rank lets you deposit.
+If _To_ is full, or the guild storage refuses it, the carrier stops and you get a notice.
+
+A loaded carrier is worth robbing. If it falls on the way, its bag drops as loot like any other Bestia's.
+
 ## Follow and Rest
 
-**Follow** keeps a Bestia close to you while you play. It fights what attacks you, within its Courage. When you log out,
-it switches to its fallback job, or to Rest.
+**Follow** keeps a Bestia close to you while you play, within about 6 tiles. If you travel far ahead, it follows you
+along the roads. It helps when you or your Bestias are attacked, within its Courage.
+
+When you log out, a following Bestia walks to its home place, its named area or its home, and runs its fallback job
+there, or rests. If it has no named place, it stays where you left it, and the report when you come back warns you.
 
 **Rest** keeps a Bestia at home. It eats, sleeps and recovers stamina twice as fast. A Bestia whose job has nothing to do
 and has no fallback rests too.
@@ -243,11 +323,38 @@ They work until something stops them: a full chest, no food, an empty queue, or 
 **A Bestia that falls while you are away stays down until you log in.** Its bag drops as loot where it fell, unless
 a [Keepsake Ward](/docs/mechanics/bestias/bestia/#the-bestias-bag) sends it home. A guard that falls leaves its area unguarded.
 
+# Coming Back
+
+When you log in, a short **report** tells you what each Bestia did since you logged out, in a few plain sentences:
+
+> _Pip worked the North field all night. It brought 214 Log and 36 Resin to the Camp chest, drove off two wolves just
+> after midnight, and ran out of bread at 5 am. It has rested at home since. **To go on:** put food in the Camp chest._
+
+The report sums up the work (goods brought, items made, ore dug, sites built, loads carried), says how the time was
+spent (working, resting, sheltering, fighting), names what happened (fights, retreats, storms, a fall), and ends with
+what the Bestia does now. If it is stuck, the last line says what would get it going again.
+
+The game shows the report once, at login. The app shows it on the Master's page until you next log in.
+
 # In the Game
 
+## While You Play
+
+Under each Bestia's HP bar in the party list is a **status line**, for example _Gathering · North field_ or
+_Paused: chest full_. A Bestia that needs you gets a **!** next to its name.
+
+The chat window has a second tab, **Bestias**. It lists each Bestia with its status, and below that the news, newest
+first: hauls, finished queues, fights, storms, and work that stopped. None of this goes into the normal chat.
+
+When something needs you (a Bestia stopped, is attacked, ran out of food or fell), a short notice also shows at the top
+of the screen.
+
+## The Orders Window
+
 Each Bestia in the party list has a flag icon. It opens the Bestia's **orders window**, with the same orders as the
-app: preset, job, the fallback job (_When idle_), Courage, work area and chest. **Fine-tune** folds out below them,
-with the numbers and the rules. A number you do not tick says _auto_: the job and Courage choose it.
+app: preset, job, the fallback job (_When idle_), Courage, work area and chest, or the route for a carrier.
+**Fine-tune** folds out below them, with the numbers, the care items and the rules. A number you do not tick says
+_auto_: the job and Courage choose it.
 
 A Bestia on a preset shows the preset's choices greyed out, and only the numbers you tick are its own. From the window
 you can:
@@ -263,24 +370,26 @@ Chests are named in the app. The window stays current: orders given in the app, 
 
 The app's **Bestia** page shows every Bestia with a live status line, for example _Crafting Plank 4/20 at Workbench_ or
 _Paused: bag full_. Below it are the orders: preset, job, Courage, and **Fine-tune** with the fallback job, the named
-area and chest, the numbers and the rules. The page also lists your places and presets.
+area and chest, the numbers, the care items and the rules. The page also lists your places and presets.
 
-Work areas are made on the **Map**: tap the ground, then _Make a work area here_. The map draws them as circles.
+Work areas are made on the **Map**: tap the ground, then _Make a work area here_. The map draws them as circles, and
+routes as lines between two chests.
 
 The **Workshop** lists your crafting stations, their queues and workers. You can add recipes the chest next to a
 station can pay for, cancel and reorder entries, and pick the worker: a Bestia, any free crafter, or yourself. A
 cancelled entry's unused ingredients go into the chest next to the station, as far as it has room; nothing comes from or
 goes into your own bag while you are away.
 
-The **Diary** tells what each Bestia did, one line per event: new orders, a haul (its goods summed), work that stopped,
-a finished queue, a fight, a retreat, a death. Lines are kept for 7 days, at most 200 per Bestia.
+The **Diary** tells what each Bestia did, one line per event: new orders, a haul (its goods summed per hour), work that
+stopped, a finished queue, a fight, a retreat, a storm, low food, a death. Lines are kept for 7 days, at most 200 per
+Bestia.
 
 Four events can send a notification while you are away, within the app's
 [limit of six per hour](/docs/mechanics/companion-app/#limits):
 
 - a Bestia fell,
 - a Bestia stopped working and will not go on by itself: its fire went out, it cannot make the next item, the chest is
-  full, or its shaft is dug out,
+  full, its shaft is dug out, the end of its route takes nothing more, or it ran out of food,
 - a Bestia is attacked after ten quiet minutes, or had to retreat,
 - a station finished its queue.
 
@@ -289,5 +398,3 @@ Each has a setting, so you can turn it off. Nothing is pushed while you play.
 # Open Questions
 
 - Whether bigger storage buildings come after the camp chest.
-- How Follow decides between staying close to you and fighting.
-- Whether a guard that cannot fight, such as a grazer, should call other guards or only alert the master.
