@@ -163,14 +163,26 @@ Part 1 is built: the field and the crystals.
 - **Containment:** `1 − standing crystals / crystals the clock asks for`.
 - **GM layer:** `/mana layer on` shows the corruption of each cell as a grey-green wash.
 
-Part 2 and 3 follow:
+Part 2 is built: its effects.
 
-- **Plants die:** a batch job walks the columns of cells above 0.7 and removes vegetation props with `GONE_FOR_GOOD`.
-  It covers resident and unseen props, like `SettlementFateService.raze`.
-- **Exposure:** `WITHERING` through `EnvironmentalExposureSystem`, the `MANA_SICKNESS` pattern.
-- **Corrupted spawns:** event spawns in corrupted cells carry the `CORRUPTED` status. Capture refuses any target with
-  it.
-- **Cleansing:** a `RitualObserver` lowers the cells within 300 m and wards them for 7 real days.
+- **Plants die:** trees, shrubs, herbs and reeds on cells rotted past 0.7 are removed `GONE_FOR_GOOD`, resident or not,
+  like a razed town's buildings (`WitheringBlight`). Finding a cell's plants means generating its 16 columns, so that runs
+  off the tick, 20 cells per run; the removals run on the tick. Done cells are stored in `withered_cell`. Grass is
+  terrain, not props, so it withers in the client look (part 3).
+- **Exposure:** `WITHERING` (261) through `EnvironmentalExposureSystem`, read through the `CorruptionExposure` port.
+  Masters and their bestia past 0.5 catch it: a slow drain that stops at 1 HP, no natural healing, −10% attack; past 0.8
+  twice as much. Renewed while they stay, gone 20 s after.
+- **Corrupted spawns:** dens and ambient sites past 0.5 breed bestia with `CORRUPTED` (262): +20% attack and a grey
+  cast with an olive rim on the client. Traps ignore them, as they ignore a wary bestia. The wild spawns read the
+  corruption through the `SpawnCorruption` port.
+- **Cleansing:** a ritual completed on rotten land heals it by 0.6 within 300 m and wards those cells for 7 real days
+  (`warded_cell`). The observer runs on the tick, so the wards are stored by the next Withering run.
+- **Kills:** each bestia masters kill on rotten land eases its cell by 0.03.
+- **Blight Bloom:** a Foreshadowing. Five crystals (`bloom = true`) grow 2.5 km around its heart; each broken one counts
+  as held, each standing one as lost. Contained, the land heals; otherwise the rot stays as a scar.
+
+Part 3 follows: the client look.
+
 - **Client:**
   - A `CORRUPTED` ground layer through `GroundOverlayService`, the scorch path.
   - The client gets a second ground-marks texture, because `GroundLayer.CHANNELS = 4` is full.
