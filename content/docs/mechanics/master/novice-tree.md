@@ -65,7 +65,8 @@ Needs a burning [campfire](/docs/mechanics/items-crafting/crafting-stations/#cam
 
 The three ranks only govern how well the Master handles a cooking place. What a Master can actually cook grows through
 **recipes**, discovered the same way a Craftsman discovers a blueprint - by experimenting with ingredients. A Lv. 1 cook
-with a long recipe book outperforms a Lv. 3 cook who never left the campfire.
+with a long recipe book outperforms a Lv. 3 cook who never left the campfire. The forty meals, the Satisfied buff they
+leave and where their ingredients come from are on the [Cooking](/docs/mechanics/items-crafting/cooking/) page.
 
 | Lv. | Cooking Time Reduction | Success Chance | Stamina Cost |
 | --- | ---------------------- | -------------- | ------------ |
