@@ -4,7 +4,7 @@ title: Bestia Orders
 description: "How you tell your Bestias what to do while you are away: a job, the places it needs, how careful they are and how they look after themselves."
 ---
 
-{{< alert context="warning" text="Built: Guard, Gather, Craft, Mine and Rest, Courage, Care from the bag and the chest, Fine-tune, presets, places, the Diary and the notifications. Still planned: the Build, Transport and Follow jobs, which jobs a species may take, work that costs stamina, the care item lists, the gather filter, helping in fights, storm shelter, and the report when you come back." />}}
+{{< alert context="warning" text="Built: Guard, Gather, Craft, Mine and Rest, Courage, Care from the bag and the chest, Fine-tune, presets, places, the Diary and the notifications. Still planned: the Build, Transport and Follow jobs, which jobs a species may take, the care item lists, the gather filter, helping in fights, storm shelter, and the report when you come back." />}}
 
 # Orders
 
@@ -127,10 +127,10 @@ A roof also protects you: under a roof, the cold and heat of the weather reach y
 
 # Care
 
-Working costs [stamina](/docs/mechanics/combat/statusvalues/#stamina---sta). Every unit of work costs a little: an
-item picked up, a swing at a tree, an item crafted, a piece of ore dug, a second of building, a stretch of road walked
-with a load. A night of steady work (8 hours) eats about eight common meals. Food is what keeps your Bestias working
-while you are away.
+Working costs [stamina](/docs/mechanics/combat/statusvalues/#work). Every unit of work costs a little: an item picked
+up, a tree felled, an item crafted, a piece of ore dug, a second of building. A night of steady work (8 hours) eats
+about eight common meals. Work also leaves a Bestia _Worn out_ for 30 minutes, and then rest brings back nothing.
+Rest alone never brings stamina above 30%. Food is what keeps your Bestias working while you are away.
 
 Stamina is the only need a Bestia has. There is no separate hunger bar.
 
@@ -139,10 +139,10 @@ When stamina or HP drops below the care line, a Bestia looks after itself:
 1. It uses an allowed item from **its own bag**, for example bread or a bandage.
 2. If it has none, it walks to its job's **chest** and takes some.
 3. A grazing species can also **graze** for a little stamina, as wild creatures do.
-4. If nothing is left, it **rests** at home and you get a notice: _out of food_.
+4. If nothing is left, it **rests** at home and you get a notice: _out of food_. Rest alone does not bring it back
+   above its eat line, so it waits there until somebody brings food.
 
-About two hours before the food runs out, the Diary warns you: _food for about two hours left_. A Bestia that rests
-recovers stamina twice as fast.
+About two hours before the food runs out, the Diary warns you: _food for about two hours left_.
 
 By default a Bestia eats below 40% stamina and heals below 50% HP. It may use common food and bandages, never potions.
 Two lists in Fine-tune change that:
@@ -301,8 +301,8 @@ along the roads. It helps when you or your Bestias are attacked, within its Cour
 When you log out, a following Bestia walks to its home place, its named area or its home, and runs its fallback job
 there, or rests. If it has no named place, it stays where you left it, and the report when you come back warns you.
 
-**Rest** keeps a Bestia at home. It eats, sleeps and recovers stamina twice as fast. A Bestia whose job has nothing to do
-and has no fallback rests too.
+**Rest** keeps a Bestia at home. It eats, sleeps and recovers stamina as far as rest allows. A Bestia whose job has
+nothing to do and has no fallback rests too.
 
 # The Camp Chest
 
