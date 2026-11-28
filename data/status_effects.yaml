@@ -615,3 +615,51 @@
   resist: []
   effect: Lasts until the Bestia falls. Its bag then drops as one warded bundle that goes home to its Master by post.
   dispellable: false
+
+- id: 305
+  identifier: STRENGTH_ELIXIR
+  name: Elixir of Might
+  polarity: BUFF
+  resist: []
+  effect: STR +5 a level for 10 min, from an Alchemist's elixir. A stronger one replaces a weaker one.
+  dispellable: true
+
+- id: 306
+  identifier: VITALITY_ELIXIR
+  name: Elixir of Fortitude
+  polarity: BUFF
+  resist: []
+  effect: VIT +5 a level for 10 min, from an Alchemist's elixir. A stronger one replaces a weaker one.
+  dispellable: true
+
+- id: 307
+  identifier: INTELLIGENCE_ELIXIR
+  name: Elixir of Insight
+  polarity: BUFF
+  resist: []
+  effect: INT +5 a level for 10 min, from an Alchemist's elixir. A stronger one replaces a weaker one.
+  dispellable: true
+
+- id: 308
+  identifier: DEXTERITY_ELIXIR
+  name: Elixir of Precision
+  polarity: BUFF
+  resist: []
+  effect: DEX +5 a level for 10 min, from an Alchemist's elixir. A stronger one replaces a weaker one.
+  dispellable: true
+
+- id: 309
+  identifier: AGILITY_ELIXIR
+  name: Elixir of Grace
+  polarity: BUFF
+  resist: []
+  effect: AGI +5 a level for 10 min, from an Alchemist's elixir. A stronger one replaces a weaker one.
+  dispellable: true
+
+- id: 310
+  identifier: WILLPOWER_ELIXIR
+  name: Elixir of Resolve
+  polarity: BUFF
+  resist: []
+  effect: WIL +5 a level for 10 min, from an Alchemist's elixir. A stronger one replaces a weaker one.
+  dispellable: true
