@@ -429,7 +429,8 @@ The skill is the master's. A bestia picks herbs with its master's Herbalism leve
 
 Lv. 1 allows you to place an Alchemy Laboratory from an {{< item "alchemy_laboratory_kit" >}}. Higher levels let you reliably discover and craft stronger potions
 and elixirs. The laboratory brews the {{< item "small_health_potion" >}} and {{< item "small_mana_potion" >}} (Lv. 1)
-and the {{< item "health_potion" >}} and {{< item "mana_potion" >}} (Lv. 3) from herbs and an {{< item "empty_bottle" >}}.
+and the {{< item "health_potion" >}} and {{< item "mana_potion" >}} (Lv. 3) from herbs and an {{< item "empty_bottle" >}},
+and everything in the [brewing tables](#alchemy-recipes) below.
 
 | Lv. | Success Chance | Reliable Item Level |
 | --- | -------------- | ------------------- |
@@ -446,10 +447,98 @@ and the {{< item "health_potion" >}} and {{< item "mana_potion" >}} (Lv. 3) from
 
 Same rule as [Forge Weapon](#skill-forge-weapon): no hard cap, but every item level above the reliable one costs another
 `5%` success chance. Alchemy also brews the cures for body effects, such as an Antidote against
-[Poison](/docs/mechanics/combat/status-effects/#all-status-effects). Status Recovery only clears the mind. The cast only places the laboratory or opens its recipes. The brew itself takes the
-[craft duration](/docs/mechanics/items-crafting/crafting/#craft-duration) of the potion's item level.
+[Poison](/docs/mechanics/combat/status-effects/#all-status-effects). Status Recovery only clears the mind. The cast only places the laboratory or opens its recipes.
+
+A brew is quicker than forging: `4 + 0.3 × item level` seconds, about 35 s at item level 100.
 
 {{< /skill >}}
+
+### Alchemy recipes
+
+Every brew is [discovered](/docs/mechanics/items-crafting/crafting/), not given: each ingredient has a place in the
+crafting feature space. Its rank is the item level divided by ten, rounded up. Its base chance is the forging curve,
+`90% − 1.5% × (item level − 10)`, which goes below zero above item level 70: only Alchemy, Alchemy Mastery, DEX and
+WIL lift it. Stronger brews need a {{< item "crystal_vial" >}} instead of a bottle.
+
+#### Reagents
+
+| Item Lv. | Alchemy Lv. | Makes | From | Effect |
+| -------- | ----------- | ----- | ---- | ------ |
+| 10 | 1 | 2× {{< item "alchemical_salt" >}} | 2× {{< item "salt" >}}, 1× {{< item "charcoal" >}} | Reagent |
+| 15 | 2 | {{< item "herbal_extract" >}} | 3× {{< item "medicinal_herb" >}}, 1× {{< item "alchemical_salt" >}}, 1× {{< item "empty_bottle" >}} | Reagent |
+| 25 | 3 | {{< item "catalyst" >}} | 2× {{< item "alchemical_salt" >}}, 2× {{< item "mana_dust" >}}, 1× {{< item "spore_dust" >}} | Reagent |
+| 25 | 3 | 3× {{< item "smelting_flux" >}} | 2× {{< item "alchemical_salt" >}}, 2× {{< item "bone_shard" >}} | Reagent |
+| 30 | 3 | {{< item "blasting_charge" >}} | 2× {{< item "charcoal" >}}, 2× {{< item "alchemical_salt" >}}, 1× {{< item "lamp_oil" >}} | Blasting |
+| 35 | 4 | {{< item "mana_tincture" >}} | 2× {{< item "mana_herb" >}}, 1× {{< item "mana_essence" >}}, 1× {{< item "empty_bottle" >}} | Reagent |
+| 45 | 5 | 2× {{< item "crystal_vial" >}} | 3× {{< item "glass" >}}, 1× {{< item "aetherite_shard" >}} | Reagent |
+| 60 | 6 | {{< item "alkahest" >}} | 1× {{< item "quicksilver" >}}, 2× {{< item "alchemical_salt" >}}, 1× {{< item "catalyst" >}}, 1× {{< item "crystal_vial" >}} | Reagent |
+| 95 | 10 | {{< item "quintessence" >}} | 2× {{< item "pure_mana_essence" >}}, 1× {{< item "star_core" >}}, 1× {{< item "alkahest" >}}, 1× {{< item "crystal_vial" >}} | Reagent |
+
+#### Health and mana potions
+
+The potion ladder. The Slim Supreme potions are the light ones to carry: the same heal for a fifth of the weight.
+
+| Tier | Health | Mana | Item Lv. | Weight |
+| ---- | ------ | ---- | -------- | ------ |
+| Small | {{< item "small_health_potion" >}} 45 HP | {{< item "small_mana_potion" >}} 45 | 3 | 0.25 |
+| Standard | {{< item "health_potion" >}} 170 HP | {{< item "mana_potion" >}} 170 | 30 | 0.4 |
+| Greater | {{< item "greater_health_potion" >}} 300 HP | {{< item "greater_mana_potion" >}} 300 | 50 | 0.45 |
+| Superior | {{< item "superior_health_potion" >}} 480 HP | {{< item "superior_mana_potion" >}} 480 | 75 | 0.5 |
+| Supreme | {{< item "supreme_health_potion" >}} 650 HP | {{< item "supreme_mana_potion" >}} 650 | 95 | 0.55 |
+| Slim Supreme | {{< item "slim_supreme_health_potion" >}} 650 HP | {{< item "slim_supreme_mana_potion" >}} 650 | 100 | 0.12 |
+
+| Item Lv. | Alchemy Lv. | Makes | From | Effect |
+| -------- | ----------- | ----- | ---- | ------ |
+| 10 | 1 | {{< item "medicine" >}} | 2× {{< item "medicinal_herb" >}}, 1× {{< item "honeycomb" >}}, 1× {{< item "empty_bottle" >}} | 70 HP, 30 stamina |
+| 20 | 2 | {{< item "vigor_draught" >}} | 2× {{< item "thornvine" >}}, 2× {{< item "apple" >}}, 1× {{< item "empty_bottle" >}} | Restores 120 stamina. Throwable |
+| 40 | 4 | {{< item "regeneration_draught" >}} | 2× {{< item "herbal_extract" >}}, 2× {{< item "jelly" >}}, 1× {{< item "empty_bottle" >}} | Restores 100 HP, then Regeneration, 3% max HP every 2 s for 10 s. Throwable |
+| 50 | 5 | {{< item "greater_health_potion" >}} | 3× {{< item "herbal_extract" >}}, 1× {{< item "glowcap" >}}, 1× {{< item "crystal_vial" >}} | Restores 300 HP. Throwable |
+| 50 | 5 | {{< item "greater_mana_potion" >}} | 2× {{< item "mana_tincture" >}}, 2× {{< item "mana_herb" >}}, 1× {{< item "crystal_vial" >}} | Restores 300 mana. Throwable |
+| 60 | 6 | {{< item "endurance_tonic" >}} | 3× {{< item "thornvine" >}}, 1× {{< item "frost_herb" >}}, 1× {{< item "herbal_extract" >}}, 1× {{< item "crystal_vial" >}} | Restores 100 HP and 300 stamina. Throwable |
+| 65 | 7 | {{< item "rejuvenation_potion" >}} | 2× {{< item "herbal_extract" >}}, 2× {{< item "mana_tincture" >}}, 1× {{< item "coral" >}}, 1× {{< item "crystal_vial" >}} | Restores 300 HP and 300 mana. Throwable |
+| 75 | 8 | {{< item "superior_health_potion" >}} | 4× {{< item "herbal_extract" >}}, 2× {{< item "frost_herb" >}}, 1× {{< item "crystal_vial" >}} | Restores 480 HP. Throwable |
+| 75 | 8 | {{< item "superior_mana_potion" >}} | 3× {{< item "mana_tincture" >}}, 1× {{< item "frost_crystal" >}}, 1× {{< item "crystal_vial" >}} | Restores 480 mana. Throwable |
+| 95 | 10 | {{< item "supreme_health_potion" >}} | 4× {{< item "herbal_extract" >}}, 2× {{< item "sun_herb" >}}, 1× {{< item "quintessence" >}}, 1× {{< item "crystal_vial" >}} | Restores 650 HP. Throwable |
+| 95 | 10 | {{< item "supreme_mana_potion" >}} | 3× {{< item "mana_tincture" >}}, 1× {{< item "star_core" >}}, 1× {{< item "quintessence" >}}, 1× {{< item "crystal_vial" >}} | Restores 650 mana. Throwable |
+| 100 | 10 | 2× {{< item "slim_supreme_health_potion" >}} | 2× {{< item "supreme_health_potion" >}}, 1× {{< item "alkahest" >}} | Restores 650 HP. Throwable |
+| 100 | 10 | 2× {{< item "slim_supreme_mana_potion" >}} | 2× {{< item "supreme_mana_potion" >}}, 1× {{< item "alkahest" >}} | Restores 650 mana. Throwable |
+| 105 | 10 | {{< item "elixir_of_life" >}} | 2× {{< item "ghost_herb" >}}, 2× {{< item "sun_herb" >}}, 1× {{< item "quintessence" >}}, 1× {{< item "abyssal_lanternfish" >}}, 1× {{< item "crystal_vial" >}} | Cures Poison and Bleeding, restores 700 HP, 400 mana and 200 stamina. Throwable |
+
+#### Cures and draughts
+
+| Item Lv. | Alchemy Lv. | Makes | From | Effect |
+| -------- | ----------- | ----- | ---- | ------ |
+| 12 | 2 | {{< item "antidote" >}} | 1× {{< item "medicinal_herb" >}}, 1× {{< item "venom_sac" >}}, 1× {{< item "empty_bottle" >}} | Cures Poison, restores 30 HP. Throwable |
+| 22 | 3 | {{< item "warming_draught" >}} | 1× {{< item "warm_stone" >}}, 1× {{< item "herbal_extract" >}}, 1× {{< item "empty_bottle" >}} | Warmed: the cold bites later |
+| 25 | 3 | {{< item "burn_salve" >}} | 1× {{< item "herbal_extract" >}}, 2× {{< item "resin" >}}, 1× {{< item "jelly" >}} | Cures Burning, restores 60 HP. Throwable |
+| 35 | 4 | {{< item "swiftness_potion" >}} | 3× {{< item "feather" >}}, 1× {{< item "mana_tincture" >}}, 1× {{< item "empty_bottle" >}} | Swiftness Lv. 2: move speed +20% |
+| 40 | 4 | {{< item "clarity_draught" >}} | 1× {{< item "mana_herb" >}}, 1× {{< item "holy_water" >}}, 1× {{< item "spore_dust" >}}, 1× {{< item "empty_bottle" >}} | Cures Blind and Confusion. Throwable |
+| 55 | 6 | {{< item "thawing_tonic" >}} | 1× {{< item "ember_core" >}}, 1× {{< item "herbal_extract" >}}, 1× {{< item "crystal_vial" >}} | Cures Frozen and Slowed, then Warmed: the cold bites later. Throwable |
+| 60 | 6 | {{< item "cooling_draught" >}} | 2× {{< item "frost_herb" >}}, 1× {{< item "alchemical_salt" >}}, 1× {{< item "crystal_vial" >}} | Cooled: the heat bites later |
+| 65 | 7 | {{< item "stone_softener" >}} | 1× {{< item "quicksilver" >}}, 2× {{< item "holy_water" >}}, 1× {{< item "crystal_vial" >}} | Cures Stoning and Stone. Throwable |
+| 70 | 7 | {{< item "barrier_potion" >}} | 1× {{< item "earth_crystal" >}}, 1× {{< item "golden_carapace" >}}, 1× {{< item "alkahest" >}}, 1× {{< item "crystal_vial" >}} | Barrier Lv. 5: soaks the next blows |
+| 90 | 9 | {{< item "panacea" >}} | 1× {{< item "sun_herb" >}}, 1× {{< item "alkahest" >}}, 2× {{< item "holy_water" >}}, 1× {{< item "sea_pearl" >}}, 1× {{< item "crystal_vial" >}} | Cures Poison, Bleeding, Burning, Sickness, Blind, Confusion, Stoning, Frozen, Slowed, Cripple, Weakened, Withered, Silence, Mana Seal and Corrosion. Throwable |
+
+#### Elixirs
+
+Each attribute has its own elixir, so the six stack with each other. A greater elixir replaces a plain one of the same
+attribute, and a plain one leaves a greater one in place. They last 10 minutes.
+
+| Item Lv. | Alchemy Lv. | Makes | From | Effect |
+| -------- | ----------- | ----- | ---- | ------ |
+| 45 | 5 | {{< item "elixir_of_might" >}} | 2× {{< item "horn" >}}, 1× {{< item "herbal_extract" >}}, 1× {{< item "crystal_vial" >}} | STR +5 for 10 min |
+| 46 | 5 | {{< item "elixir_of_fortitude" >}} | 2× {{< item "reptile_scale" >}}, 1× {{< item "herbal_extract" >}}, 1× {{< item "crystal_vial" >}} | VIT +5 for 10 min |
+| 47 | 5 | {{< item "elixir_of_grace" >}} | 3× {{< item "feather" >}}, 1× {{< item "glowcap" >}}, 1× {{< item "crystal_vial" >}} | AGI +5 for 10 min |
+| 48 | 5 | {{< item "elixir_of_precision" >}} | 1× {{< item "lens" >}}, 2× {{< item "thornvine" >}}, 1× {{< item "crystal_vial" >}} | DEX +5 for 10 min |
+| 50 | 5 | {{< item "elixir_of_insight" >}} | 1× {{< item "mana_ink" >}}, 1× {{< item "mana_tincture" >}}, 1× {{< item "crystal_vial" >}} | INT +5 for 10 min |
+| 52 | 6 | {{< item "elixir_of_resolve" >}} | 1× {{< item "cut_amethyst" >}}, 1× {{< item "holy_water" >}}, 1× {{< item "crystal_vial" >}} | WIL +5 for 10 min |
+| 88 | 9 | {{< item "greater_elixir_of_precision" >}} | 2× {{< item "storm_feather" >}}, 1× {{< item "cut_opal" >}}, 1× {{< item "alkahest" >}}, 1× {{< item "crystal_vial" >}} | DEX +10 for 10 min |
+| 90 | 9 | {{< item "greater_elixir_of_might" >}} | 1× {{< item "wyrm_bone" >}}, 1× {{< item "dragon_scale" >}}, 1× {{< item "alkahest" >}}, 1× {{< item "crystal_vial" >}} | STR +10 for 10 min |
+| 92 | 10 | {{< item "greater_elixir_of_grace" >}} | 1× {{< item "moonscale" >}}, 2× {{< item "shadow_shard" >}}, 1× {{< item "alkahest" >}}, 1× {{< item "crystal_vial" >}} | AGI +10 for 10 min |
+| 95 | 10 | {{< item "greater_elixir_of_insight" >}} | 1× {{< item "star_core" >}}, 1× {{< item "quintessence" >}}, 1× {{< item "crystal_vial" >}} | INT +10 for 10 min |
+| 98 | 10 | {{< item "greater_elixir_of_fortitude" >}} | 1× {{< item "deepmaw" >}}, 2× {{< item "golden_carapace" >}}, 1× {{< item "alkahest" >}}, 1× {{< item "crystal_vial" >}} | VIT +10 for 10 min |
+| 100 | 10 | {{< item "greater_elixir_of_resolve" >}} | 2× {{< item "ghost_herb" >}}, 2× {{< item "holy_water" >}}, 1× {{< item "quintessence" >}}, 1× {{< item "crystal_vial" >}} | WIL +10 for 10 min |
+| 115 | 10 | {{< item "philosophers_draught" >}} | 1× {{< item "philosophers_stone" >}}, 1× {{< item "quintessence" >}}, 1× {{< item "abyssal_lanternfish" >}}, 1× {{< item "crystal_vial" >}} | Every attribute +15 for 10 min |
 
 {{< skill name="Transmutation" maxLevel="10" requires="Alchemy Lv. 5"
     type="Active" manaCost="34" castTime="10s" cooldown="0s" range="2" target="Transmutation Workbench"
@@ -457,7 +546,18 @@ Same rule as [Forge Weapon](#skill-forge-weapon): no hard cap, but every item le
 
 Lv. 1 allows you to place a Transmutation Workbench from a {{< item "transmutation_workbench_kit" >}}. Higher levels unlock transmuting higher-grade infused resources:
 {{< item "pure_mana_essence" >}} (Lv. 1), {{< item "mana_concentrate" >}} (Lv. 3), and from blue crystals the
-{{< item "yellow_mana_crystal" >}} (Lv. 5) and the {{< item "red_mana_crystal" >}} (Lv. 7).
+{{< item "yellow_mana_crystal" >}} (Lv. 5) and the {{< item "red_mana_crystal" >}} (Lv. 7). Past those:
+
+| Item Lv. | Transmutation Lv. | Makes | From |
+| -------- | ----------------- | ----- | ---- |
+| 60 | 6 | {{< item "quicksilver" >}} | 1× {{< item "silver_ingot" >}}, 1× {{< item "mana_concentrate" >}} |
+| 75 | 8 | 2× {{< item "arcane_flux" >}} | 2× {{< item "smelting_flux" >}}, 1× {{< item "pure_mana_essence" >}}, 1× {{< item "quicksilver" >}} |
+| 110 | 10 | {{< item "philosophers_stone" >}} | 2× {{< item "red_mana_crystal" >}}, 1× {{< item "quintessence" >}}, 1× {{< item "cut_diamond" >}} |
+
+The {{< item "smelting_flux" >}} an Alchemist brews and the {{< item "arcane_flux" >}} transmuted from it go into the
+furnace with the ore: a fluxed smelt has a base chance 25% higher than the plain one. Smelting flux works for iron,
+silver and gold, arcane flux for palladium, mithril and adamantium. Every master knows the fluxed smelts; only the
+fluxes need an Alchemist.
 
 | Lv. | Success Chance | Reliable Item Level |
 | --- | -------------- | ------------------- |
@@ -473,8 +573,7 @@ Lv. 1 allows you to place a Transmutation Workbench from a {{< item "transmutati
 | 10  | +50%           | 100+                |
 
 Same rule as [Alchemy](#skill-alchemy): no hard cap, but every item level above the reliable one costs another `5%`
-success chance. The transmutation itself takes the [craft duration](/docs/mechanics/items-crafting/crafting/#craft-duration) of the
-resource's item level.
+success chance. A transmutation takes `4 + 0.3 × item level` seconds, as a brew does.
 
 {{< /skill >}}
 
@@ -482,13 +581,16 @@ resource's item level.
     type="Passive"
     description="A deeper feel for the cauldron - reagents stretch further and brews take hold more reliably under this Alchemist's hand." >}}
 
-| Lv. | Success Chance | Crafting Speed |
-| --- | -------------- | -------------- |
-| 1   | +5%            | +10%           |
-| 2   | +10%           | +20%           |
-| 3   | +15%           | +30%           |
-| 4   | +20%           | +40%           |
-| 5   | +25%           | +50%           |
+| Lv. | Success Chance | Brewing Time |
+| --- | -------------- | ------------ |
+| 1   | +5%            | −10%         |
+| 2   | +10%           | −20%         |
+| 3   | +15%           | −30%         |
+| 4   | +20%           | −40%         |
+| 5   | +25%           | −50%         |
+
+Both apply to Alchemy only, not to Transmutation. On a brew the time cut replaces
+[Master Craftsman](#skill-master-craftsman)'s: the two do not stack.
 
 {{< /skill >}}
 
@@ -503,7 +605,8 @@ Pick the potion first, then the ally. An ally is anyone on the players' side: th
 player's Bestias, never a wild monster. The potion leaves the bag only when the throw lands and restores something, so
 a mana potion thrown at a body without mana stays in the bag.
 
-Only the drinkable restoratives count as potions. Food, the bandage and the novice kit do not.
+Only the drinkable restoratives and the cures count as potions. Food, the bandage, the novice kit, the buff draughts
+and the elixirs do not. A thrown cure cures whole whatever the level; only the health, mana and stamina scale.
 
 | Potion                             | Restores          |
 | ---------------------------------- | ----------------- |
@@ -512,6 +615,8 @@ Only the drinkable restoratives count as potions. Food, the bandage and the novi
 | {{< item "health_potion" >}}       | 170 HP            |
 | {{< item "mana_potion" >}}         | 170 mana          |
 | {{< item "medicine" >}}            | 70 HP, 30 stamina |
+| The rest of the [potion ladder](#health-and-mana-potions) | 300 to 650 HP or mana |
+| The [cures](#cures-and-draughts) | their ailments |
 
 | Lv. | Potion Effect | {{< item "small_health_potion" >}} |
 | --- | ------------- | ---------------------------------- |

@@ -9924,3 +9924,588 @@
 
     It is still warm long after the fire around it has gone out.
   value: 10
+- id: alchemical_salt
+  name: Alchemical Salt
+  game_id: 648
+  type: Etc
+  categories: [material]
+  weight: 0.05
+  item_level: 10
+  material: Stone
+  value: 20
+  description: |
+    Coarse white crystals, salt and charcoal boiled down together and dried in the pan.
+
+    The base of half the work in an Alchemy Laboratory.
+- id: herbal_extract
+  name: Herbal Extract
+  game_id: 649
+  type: Etc
+  categories: [material]
+  weight: 0.15
+  item_level: 15
+  material: Glass
+  value: 34
+  description: |
+    A bottle of green, bitter liquor drawn from medicinal herbs.
+
+    What every healing brew above the simplest starts from.
+- id: smelting_flux
+  name: Smelting Flux
+  game_id: 650
+  type: Etc
+  categories: [material]
+  weight: 0.1
+  item_level: 25
+  material: Stone
+  value: 66
+  description: |
+    A grey powder of salts and ground bone.
+
+    Thrown into a furnace with the ore, it draws the dross out of the melt, so iron, silver and gold smelt more surely.
+- id: mana_tincture
+  name: Mana Tincture
+  game_id: 651
+  type: Etc
+  categories: [material]
+  weight: 0.15
+  item_level: 35
+  material: Glass
+  value: 102
+  description: |
+    Mana herb steeped with a pinch of essence until the liquid glows a faint blue.
+
+    The base of every mana brew above the simplest.
+- id: crystal_vial
+  name: Crystal Vial
+  game_id: 652
+  type: Etc
+  categories: [material]
+  weight: 0.08
+  item_level: 45
+  material: Glass
+  value: 141
+  description: |
+    A slender vial of glass clouded with aetherite.
+
+    A plain bottle cannot hold the stronger brews; this can.
+- id: alkahest
+  name: Alkahest
+  game_id: 653
+  type: Etc
+  categories: [material]
+  weight: 0.2
+  item_level: 60
+  material: Glass
+  value: 205
+  description: |
+    The universal solvent: quicksilver and salts bound by a catalyst. It eats through cork, so it is kept in crystal.
+
+    What lets an Alchemist dissolve the hardest reagents into a brew.
+- id: arcane_flux
+  name: Arcane Flux
+  game_id: 654
+  type: Etc
+  categories: [material]
+  weight: 0.1
+  item_level: 75
+  material: Crystal
+  value: 274
+  description: |
+    Smelting flux transmuted with quicksilver and pure mana into a glittering violet sand.
+
+    The only flux that makes palladium, mithril and adamantium give up their dross.
+- id: quintessence
+  name: Quintessence
+  game_id: 655
+  type: Etc
+  categories: [material]
+  weight: 0.1
+  item_level: 95
+  material: Glass
+  value: 372
+  description: |
+    A vial of something that is neither liquid nor light, distilled from pure mana and a fallen star.
+
+    The fifth element, the heart of the greatest brews.
+- id: philosophers_stone
+  name: Philosopher's Stone
+  game_id: 656
+  type: Etc
+  categories: [material]
+  weight: 0.2
+  item_level: 110
+  material: Crystal
+  value: 451
+  description: |
+    A small red stone, heavier than it looks and warm to the touch.
+
+    The last work of Transmutation. Only the Philosopher's Draught is worthy of it.
+- id: antidote
+  name: Antidote
+  game_id: 657
+  type: Usable
+  categories: [consumable]
+  weight: 0.2
+  item_level: 12
+  material: Glass
+  value: 25
+  description: |
+    A bitter draught brewed against venom.
+
+    Cures Poison, restores 30 HP. A Potion Pitcher can throw it.
+- id: vigor_draught
+  name: Vigor Draught
+  game_id: 658
+  type: Usable
+  categories: [consumable]
+  weight: 0.25
+  item_level: 20
+  material: Glass
+  value: 49
+  description: |
+    Thornvine and apple, sharp enough to make the eyes water.
+
+    Restores 120 stamina. A Potion Pitcher can throw it.
+- id: warming_draught
+  name: Warming Draught
+  game_id: 659
+  type: Usable
+  categories: [consumable]
+  weight: 0.25
+  item_level: 22
+  material: Glass
+  value: 56
+  description: |
+    A draught steeped over a warm stone. It burns pleasantly all the way down.
+
+    Warmed: the cold bites later.
+- id: burn_salve
+  name: Burn Salve
+  game_id: 660
+  type: Usable
+  categories: [consumable]
+  weight: 0.15
+  item_level: 25
+  material: Plant
+  value: 66
+  description: |
+    A sticky, cooling salve of resin and herbal extract.
+
+    Cures Burning, restores 60 HP. A Potion Pitcher can throw it.
+- id: swiftness_potion
+  name: Swiftness Potion
+  game_id: 661
+  type: Usable
+  categories: [consumable]
+  weight: 0.3
+  item_level: 35
+  material: Glass
+  value: 102
+  description: |
+    A light, fizzing potion that smells of feathers and rain.
+
+    Swiftness Lv. 2: move speed +20%.
+- id: regeneration_draught
+  name: Regeneration Draught
+  game_id: 662
+  type: Usable
+  categories: [consumable]
+  weight: 0.3
+  item_level: 40
+  material: Glass
+  value: 121
+  description: |
+    A thick green draught that keeps working after it is swallowed.
+
+    Restores 100 HP, then Regeneration, 3% max HP every 2 s for 10 s. A Potion Pitcher can throw it.
+- id: clarity_draught
+  name: Clarity Draught
+  game_id: 663
+  type: Usable
+  categories: [consumable]
+  weight: 0.25
+  item_level: 40
+  material: Glass
+  value: 121
+  description: |
+    Holy water clouded with mana herb and spores.
+
+    Cures Blind and Confusion. A Potion Pitcher can throw it.
+- id: elixir_of_might
+  name: Elixir of Might
+  game_id: 664
+  type: Usable
+  categories: [consumable]
+  weight: 0.3
+  item_level: 45
+  material: Glass
+  value: 141
+  description: |
+    A dark red elixir with a horn ground into it.
+
+    STR +5 for 10 min.
+- id: elixir_of_fortitude
+  name: Elixir of Fortitude
+  game_id: 665
+  type: Usable
+  categories: [consumable]
+  weight: 0.3
+  item_level: 46
+  material: Glass
+  value: 145
+  description: |
+    A thick, earthy elixir in which scales were dissolved.
+
+    VIT +5 for 10 min.
+- id: elixir_of_grace
+  name: Elixir of Grace
+  game_id: 666
+  type: Usable
+  categories: [consumable]
+  weight: 0.3
+  item_level: 47
+  material: Glass
+  value: 149
+  description: |
+    A pale elixir, light as a feather and faintly glowing.
+
+    AGI +5 for 10 min.
+- id: elixir_of_precision
+  name: Elixir of Precision
+  game_id: 667
+  type: Usable
+  categories: [consumable]
+  weight: 0.3
+  item_level: 48
+  material: Glass
+  value: 153
+  description: |
+    A clear elixir brewed through a lens. Everything looks sharper after it.
+
+    DEX +5 for 10 min.
+- id: elixir_of_insight
+  name: Elixir of Insight
+  game_id: 668
+  type: Usable
+  categories: [consumable]
+  weight: 0.3
+  item_level: 50
+  material: Glass
+  value: 162
+  description: |
+    An inky blue elixir that tastes of old paper.
+
+    INT +5 for 10 min.
+- id: greater_health_potion
+  name: Greater Health Potion
+  game_id: 669
+  type: Usable
+  categories: [consumable]
+  weight: 0.45
+  item_level: 50
+  material: Glass
+  value: 162
+  description: |
+    A deep red potion in a crystal vial.
+
+    Restores 300 HP. A Potion Pitcher can throw it.
+- id: greater_mana_potion
+  name: Greater Mana Potion
+  game_id: 670
+  type: Usable
+  categories: [consumable]
+  weight: 0.45
+  item_level: 50
+  material: Glass
+  value: 162
+  description: |
+    A deep blue potion in a crystal vial.
+
+    Restores 300 mana. A Potion Pitcher can throw it.
+- id: elixir_of_resolve
+  name: Elixir of Resolve
+  game_id: 671
+  type: Usable
+  categories: [consumable]
+  weight: 0.3
+  item_level: 52
+  material: Glass
+  value: 170
+  description: |
+    Holy water stirred over amethyst until it turns violet.
+
+    WIL +5 for 10 min.
+- id: thawing_tonic
+  name: Thawing Tonic
+  game_id: 672
+  type: Usable
+  categories: [consumable]
+  weight: 0.3
+  item_level: 55
+  material: Glass
+  value: 183
+  description: |
+    A tonic with an ember core dissolved in it. It steams in the cold.
+
+    Cures Frozen and Slowed, then Warmed: the cold bites later. A Potion Pitcher can throw it.
+- id: endurance_tonic
+  name: Endurance Tonic
+  game_id: 673
+  type: Usable
+  categories: [consumable]
+  weight: 0.35
+  item_level: 60
+  material: Glass
+  value: 205
+  description: |
+    A bracing, icy tonic for long marches.
+
+    Restores 100 HP and 300 stamina. A Potion Pitcher can throw it.
+- id: cooling_draught
+  name: Cooling Draught
+  game_id: 674
+  type: Usable
+  categories: [consumable]
+  weight: 0.3
+  item_level: 60
+  material: Glass
+  value: 205
+  description: |
+    Frost herb and salt, cold enough to numb the lips.
+
+    Cooled: the heat bites later.
+- id: rejuvenation_potion
+  name: Rejuvenation Potion
+  game_id: 675
+  type: Usable
+  categories: [consumable]
+  weight: 0.45
+  item_level: 65
+  material: Glass
+  value: 227
+  description: |
+    A potion in two colours that do not quite mix.
+
+    Restores 300 HP and 300 mana. A Potion Pitcher can throw it.
+- id: stone_softener
+  name: Stone Softener
+  game_id: 676
+  type: Usable
+  categories: [consumable]
+  weight: 0.3
+  item_level: 65
+  material: Glass
+  value: 227
+  description: |
+    Quicksilver and holy water, heavy and restless in the vial.
+
+    Cures Stoning and Stone. A Potion Pitcher can throw it.
+- id: barrier_potion
+  name: Barrier Potion
+  game_id: 677
+  type: Usable
+  categories: [consumable]
+  weight: 0.35
+  item_level: 70
+  material: Glass
+  value: 250
+  description: |
+    A potion that leaves a shimmering film on the skin of whoever drinks it.
+
+    Barrier Lv. 5: soaks the next blows.
+- id: superior_health_potion
+  name: Superior Health Potion
+  game_id: 678
+  type: Usable
+  categories: [consumable]
+  weight: 0.5
+  item_level: 75
+  material: Glass
+  value: 274
+  description: |
+    A brilliant red potion, cold from the frost herb in it.
+
+    Restores 480 HP. A Potion Pitcher can throw it.
+- id: superior_mana_potion
+  name: Superior Mana Potion
+  game_id: 679
+  type: Usable
+  categories: [consumable]
+  weight: 0.5
+  item_level: 75
+  material: Glass
+  value: 274
+  description: |
+    A brilliant blue potion with a frost crystal dissolved in it.
+
+    Restores 480 mana. A Potion Pitcher can throw it.
+- id: greater_elixir_of_precision
+  name: Greater Elixir of Precision
+  game_id: 680
+  type: Usable
+  categories: [consumable]
+  weight: 0.3
+  item_level: 88
+  material: Glass
+  value: 337
+  description: |
+    A storm-grey elixir with an opal's fire in it.
+
+    DEX +10 for 10 min.
+- id: greater_elixir_of_might
+  name: Greater Elixir of Might
+  game_id: 681
+  type: Usable
+  categories: [consumable]
+  weight: 0.3
+  item_level: 90
+  material: Glass
+  value: 347
+  description: |
+    Wyrm bone and dragon scale, dissolved in alkahest.
+
+    STR +10 for 10 min.
+- id: panacea
+  name: Panacea
+  game_id: 682
+  type: Usable
+  categories: [consumable]
+  weight: 0.3
+  item_level: 90
+  material: Glass
+  value: 347
+  description: |
+    A golden potion said to cure everything but death.
+
+    Cures Poison, Bleeding, Burning, Sickness, Blind, Confusion, Stoning, Frozen, Slowed, Cripple, Weakened, Withered, Silence, Mana Seal and Corrosion. A Potion Pitcher can throw it.
+- id: greater_elixir_of_grace
+  name: Greater Elixir of Grace
+  game_id: 683
+  type: Usable
+  categories: [consumable]
+  weight: 0.3
+  item_level: 92
+  material: Glass
+  value: 357
+  description: |
+    An elixir as dark as a shadow, with a moonscale's shimmer in it.
+
+    AGI +10 for 10 min.
+- id: greater_elixir_of_insight
+  name: Greater Elixir of Insight
+  game_id: 684
+  type: Usable
+  categories: [consumable]
+  weight: 0.3
+  item_level: 95
+  material: Glass
+  value: 372
+  description: |
+    Starlight in a vial. Thoughts come quick and clear after it.
+
+    INT +10 for 10 min.
+- id: supreme_health_potion
+  name: Supreme Health Potion
+  game_id: 685
+  type: Usable
+  categories: [consumable]
+  weight: 0.55
+  item_level: 95
+  material: Glass
+  value: 372
+  description: |
+    A potion of liquid sunlight, red at the heart.
+
+    Restores 650 HP. A Potion Pitcher can throw it.
+- id: supreme_mana_potion
+  name: Supreme Mana Potion
+  game_id: 686
+  type: Usable
+  categories: [consumable]
+  weight: 0.55
+  item_level: 95
+  material: Glass
+  value: 372
+  description: |
+    A potion as blue as a night sky, with a star dissolved in it.
+
+    Restores 650 mana. A Potion Pitcher can throw it.
+- id: greater_elixir_of_fortitude
+  name: Greater Elixir of Fortitude
+  game_id: 687
+  type: Usable
+  categories: [consumable]
+  weight: 0.3
+  item_level: 98
+  material: Glass
+  value: 388
+  description: |
+    A heavy elixir brewed from a deepmaw and golden carapace.
+
+    VIT +10 for 10 min.
+- id: greater_elixir_of_resolve
+  name: Greater Elixir of Resolve
+  game_id: 688
+  type: Usable
+  categories: [consumable]
+  weight: 0.3
+  item_level: 100
+  material: Glass
+  value: 398
+  description: |
+    Ghost herb in holy water: it whispers when shaken.
+
+    WIL +10 for 10 min.
+- id: slim_supreme_health_potion
+  name: Slim Supreme Health Potion
+  game_id: 689
+  type: Usable
+  categories: [consumable]
+  weight: 0.12
+  item_level: 100
+  material: Glass
+  value: 597
+  description: |
+    A supreme health potion condensed with alkahest into a vial no bigger than a finger.
+
+    Restores 650 HP. A Potion Pitcher can throw it.
+- id: slim_supreme_mana_potion
+  name: Slim Supreme Mana Potion
+  game_id: 690
+  type: Usable
+  categories: [consumable]
+  weight: 0.12
+  item_level: 100
+  material: Glass
+  value: 597
+  description: |
+    A supreme mana potion condensed with alkahest into a vial no bigger than a finger.
+
+    Restores 650 mana. A Potion Pitcher can throw it.
+- id: elixir_of_life
+  name: Elixir of Life
+  game_id: 691
+  type: Usable
+  categories: [consumable]
+  weight: 0.4
+  item_level: 105
+  material: Glass
+  value: 424
+  description: |
+    The Alchemist's great work: ghost herb, sun herb and the light of the deep sea, bound by quintessence.
+
+    Cures Poison and Bleeding, restores 700 HP, 400 mana and 200 stamina. A Potion Pitcher can throw it.
+- id: philosophers_draught
+  name: Philosopher's Draught
+  game_id: 692
+  type: Usable
+  categories: [consumable]
+  weight: 0.3
+  item_level: 115
+  material: Glass
+  value: 477
+  description: |
+    A draught in which a philosopher's stone was dissolved. It tastes of nothing at all.
+
+    Every attribute +15 for 10 min.
