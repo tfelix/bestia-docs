@@ -29,6 +29,11 @@ A catch gives the master gathering experience of `2 * catch level + 5`, the same
 For now every lake, river and sea shares one catch table. Water kind, biome, time of day and weather may change it
 later.
 
+<figure class="figure d-block my-4">
+  <a href="/images/artwork/golden-catch.jpg"><img class="figure-img img-fluid rounded" src="/images/artwork/golden-catch.jpg" alt="Concept art: a golden catch at the pier" loading="lazy"></a>
+  <figcaption class="figure-caption">A golden catch at the pier</figcaption>
+</figure>
+
 A bite is drawn from the table in three steps:
 
 1. **The rod filters.** Entries above the rod's _max catch level_ never bite.

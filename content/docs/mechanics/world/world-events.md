@@ -54,6 +54,11 @@ The same step looks different in different land:
 Plants, lights and sounds fade when the mana falls. **Stones, glass and twisted trees stay.** They are scars, and
 later they are clues: "the stones on the ridge rose the year the rift opened".
 
+<figure class="figure d-block my-4">
+  <a href="/images/artwork/changed-land.jpg"><img class="figure-img img-fluid rounded" src="/images/artwork/changed-land.jpg" alt="Concept art: land changed by too much mana" loading="lazy"></a>
+  <figcaption class="figure-caption">Land changed by too much mana</figcaption>
+</figure>
+
 ## Drawn by Mana
 
 Mana is a poison that attracts what is dangerous:
@@ -180,6 +185,11 @@ ends the event and pays everyone who helped.
 
 ## An Alpha Rises
 
+<figure class="figure d-block my-4">
+  <a href="/images/artwork/alpha-pack.jpg"><img class="figure-img img-fluid rounded" src="/images/artwork/alpha-pack.jpg" alt="Concept art: an alpha and its pack under the moon" loading="lazy"></a>
+  <figcaption class="figure-caption">An alpha and its pack under the moon</figcaption>
+</figure>
+
 A den that nobody hunts for a week of Bestia days, a little over two real days, grows. Near a road or a town, its pack
 produces an **alpha**: the pack's own kind, much stronger, that prowls the road or the fields near the town.
 Townsfolk talk of torn sheep and attacked travellers. Killing it ends the event. Otherwise it leaves after three
@@ -202,6 +212,11 @@ band's tracks lead to a camp on the high ground outside the town. Players who fo
 clear the camp before the raid comes. Otherwise the brigands march on the town, plunder it for three Bestia hours and
 leave. Killing the chief and the whole band ends the raid, in the camp or in the town. For now the raiders take no
 coin and break nothing.
+
+<figure class="figure d-block my-4">
+  <a href="/images/artwork/town-siege.jpg"><img class="figure-img img-fluid rounded" src="/images/artwork/town-siege.jpg" alt="Concept art: brigands storm a rich town" loading="lazy"></a>
+  <figcaption class="figure-caption">Brigands storm a rich town</figcaption>
+</figure>
 
 ## Ideas for Later
 

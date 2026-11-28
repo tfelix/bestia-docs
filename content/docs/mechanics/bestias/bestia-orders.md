@@ -313,6 +313,11 @@ A camp chest is a new structure that holds items. Gatherers and miners fill it, 
 - Taking from a chest that is not yours is [stealing](/docs/mechanics/society/pvp/#negative-honor) and costs honor.
 - When it is destroyed, it drops what it holds on the ground as loot.
 
+<figure class="figure d-block my-4">
+  <a href="/images/artwork/bestia-camp.jpg"><img class="figure-img img-fluid rounded" src="/images/artwork/bestia-camp.jpg" alt="Concept art: bestias at work around the camp chest" loading="lazy"></a>
+  <figcaption class="figure-caption">Bestias at work around the camp chest</figcaption>
+</figure>
+
 # While You Are Away
 
 **Bestias work at the same pace whether you are there or not.** There is no daily cap. Materials, regrowth, craft times

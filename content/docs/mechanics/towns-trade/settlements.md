@@ -187,6 +187,11 @@ revive  = 5 × L + 2 × L          (a fallen Bestia: up and fully healed)
 A Bestia that lacks nothing costs nothing. Tending is cheaper than potions for a deep wound, but you have to walk to an
 inn. The fee goes to the world reserve.
 
+<figure class="figure d-block my-4">
+  <a href="/images/artwork/inn.jpg"><img class="figure-img img-fluid rounded" src="/images/artwork/inn.jpg" alt="Concept art: an evening at the inn" loading="lazy"></a>
+  <figcaption class="figure-caption">An evening at the inn</figcaption>
+</figure>
+
 # What You Can Break
 
 The goods in a shop are grown, dug and cut somewhere specific, and that somewhere is a real place on

@@ -27,6 +27,11 @@ The founder names the town and casts Founder on the ground. The cast plants a **
 - The settlement only exists once the sign is finished. Until then there is no sphere, no map entry and no post office.
 - A site that is destroyed, or that nobody works on for **24 h**, disappears.
 
+<figure class="figure d-block my-4">
+  <a href="/images/artwork/founding.jpg"><img class="figure-img img-fluid rounded" src="/images/artwork/founding.jpg" alt="Concept art: a town is founded" loading="lazy"></a>
+  <figcaption class="figure-caption">A town is founded</figcaption>
+</figure>
+
 A master can found one settlement at a time. While their sign or sign site stands, Founder refuses to cast.
 
 ## Where a Town May Stand

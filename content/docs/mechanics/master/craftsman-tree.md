@@ -384,6 +384,11 @@ item level.
 
 Equal parts kitchen and laboratory. Alchemists turn raw ingredients - mundane or mana-soaked - into tonics and reagents nobody else can make. Some carry the first bandages they ever learned to wrap as a Novice all the way into a healer's toolkit.
 
+<figure class="figure d-block my-4">
+  <a href="/images/artwork/alchemist-camp.jpg"><img class="figure-img img-fluid rounded" src="/images/artwork/alchemist-camp.jpg" alt="Concept art: an alchemist's camp at night" loading="lazy"></a>
+  <figcaption class="figure-caption">An alchemist's camp at night</figcaption>
+</figure>
+
 {{< alert context="info" text="This tree is enabled as soon as you have 5 Lv. or more into [craftsman tree](/docs/mechanics/master/craftsman-tree/)" />}}
 
 The Alchemist has two routes. The **Brewer** gathers herbs, brews potions and cures and throws them to whoever needs them. The **Transmuter** turns ordinary matter into rare resources.

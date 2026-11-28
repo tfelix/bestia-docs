@@ -19,9 +19,19 @@ When a boss is killed or caught, its den waits 30 to 60 minutes before the next 
 tomb or a monument waits the same. A [world boss](/docs/mechanics/world/world-history/#world-bosses) is different:
 killed or caught by players, it is gone for good.
 
+<figure class="figure d-block my-4">
+  <a href="/images/artwork/dragon-den.jpg"><img class="figure-img img-fluid rounded" src="/images/artwork/dragon-den.jpg" alt="Concept art: a boss in its den" loading="lazy"></a>
+  <figcaption class="figure-caption">A boss in its den</figcaption>
+</figure>
+
 # Catching Bestias
 
 To catch a Bestia you need a **Magic {{< item "bestia_trap" >}}**. These are manufactured with the Craftsman's [Carpentry](/docs/mechanics/master/craftsman-tree/#skill-carpentry) skill and empowered with {{< item "mana_dust" >}}. Four tiers exist, each one better than the last at holding a high-level Bestia.
+
+<figure class="figure d-block my-4">
+  <a href="/images/artwork/forest-encounter.jpg"><img class="figure-img img-fluid rounded" src="/images/artwork/forest-encounter.jpg" alt="Concept art: a wild bestia, fresh out of a mini rift" loading="lazy"></a>
+  <figcaption class="figure-caption">A wild bestia, fresh out of a mini rift</figcaption>
+</figure>
 
 The base catch chance depends only on the trap tier and the target's level:
 
