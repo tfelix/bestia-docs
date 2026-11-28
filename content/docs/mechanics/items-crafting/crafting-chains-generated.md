@@ -77,12 +77,21 @@ graph LR
     charcoal -->|1| mithril_ingot
     charcoal -->|1| adamantium_ingot
     charcoal -->|1| brick
+    smelting_flux["Smelting Flux (Lv. 25)"]
+    smelting_flux -->|1| iron_ingot
+    smelting_flux -->|1| silver_ingot
+    smelting_flux -->|1| gold_bar
+    arcane_flux["Arcane Flux (Lv. 75)"]
+    arcane_flux -->|1| palladium_ingot
+    arcane_flux -->|1| mithril_ingot
+    arcane_flux -->|1| adamantium_ingot
 ```
 
 | Recipe | Needs | Makes | Skill | Success | Seconds | Known from the start |
 | --- | --- | --- | --- | --- | --- | --- |
 | `ADAMANTIUM_INGOT` | 2 x Adamantium Ore (Lv. 100), 1 x Coal (Lv. 5) | 1 x Adamantium Ingot (Lv. 100) | ore refinement 3 | -60% | 24.0 | yes |
 | `ADAMANTIUM_INGOT_CHARCOAL` | 2 x Adamantium Ore (Lv. 100), 1 x Charcoal (Lv. 1) | 1 x Adamantium Ingot (Lv. 100) | ore refinement 3 | -70% | 24.0 | yes |
+| `ADAMANTIUM_INGOT_FLUXED` | 2 x Adamantium Ore (Lv. 100), 1 x Coal (Lv. 5), 1 x Arcane Flux (Lv. 75) | 1 x Adamantium Ingot (Lv. 100) | ore refinement 3 | -35% | 24.0 | yes |
 | `BLACKIRON_INGOT` | 1 x Steel Ingot (Lv. 32), 1 x Shadow Shard (Lv. 55) | 1 x Blackiron Ingot (Lv. 65) | ore refinement 3 | -25% | 18.0 | yes |
 | `BRICK` | 2 x Clay (Lv. 1), 1 x Coal (Lv. 5) | 2 x Brick (Lv. 5) | ore refinement 1 | 60% | 8.0 | yes |
 | `BRICK_CHARCOAL` | 2 x Clay (Lv. 1), 1 x Charcoal (Lv. 1) | 2 x Brick (Lv. 5) | ore refinement 1 | 50% | 8.0 | yes |
@@ -92,15 +101,20 @@ graph LR
 | `COPPER_INGOT_CHARCOAL` | 2 x Copper Ore (Lv. 10), 1 x Charcoal (Lv. 1) | 1 x Copper Ingot (Lv. 10) | ore refinement 1 | 20% | 10.0 | yes |
 | `GOLD_BAR` | 2 x Gold Ore (Lv. 50), 1 x Coal (Lv. 5) | 1 x Gold Bar (Lv. 50) | ore refinement 1 | -10% | 14.0 | yes |
 | `GOLD_BAR_CHARCOAL` | 2 x Gold Ore (Lv. 50), 1 x Charcoal (Lv. 1) | 1 x Gold Bar (Lv. 50) | ore refinement 1 | -20% | 14.0 | yes |
+| `GOLD_BAR_FLUXED` | 2 x Gold Ore (Lv. 50), 1 x Coal (Lv. 5), 1 x Smelting Flux (Lv. 25) | 1 x Gold Bar (Lv. 50) | ore refinement 1 | 15% | 14.0 | yes |
 | `IRON_INGOT` | 2 x Iron Ore (Lv. 20), 1 x Coal (Lv. 5) | 1 x Iron Ingot (Lv. 20) | ore refinement 1 | 20% | 10.0 | yes |
 | `IRON_INGOT_CHARCOAL` | 2 x Iron Ore (Lv. 20), 1 x Charcoal (Lv. 1) | 1 x Iron Ingot (Lv. 20) | ore refinement 1 | 10% | 10.0 | yes |
+| `IRON_INGOT_FLUXED` | 2 x Iron Ore (Lv. 20), 1 x Coal (Lv. 5), 1 x Smelting Flux (Lv. 25) | 1 x Iron Ingot (Lv. 20) | ore refinement 1 | 45% | 10.0 | yes |
 | `MITHRIL_INGOT` | 2 x Mithril Ore (Lv. 85), 1 x Coal (Lv. 5) | 1 x Mithril Ingot (Lv. 85) | ore refinement 3 | -45% | 20.0 | yes |
 | `MITHRIL_INGOT_CHARCOAL` | 2 x Mithril Ore (Lv. 85), 1 x Charcoal (Lv. 1) | 1 x Mithril Ingot (Lv. 85) | ore refinement 3 | -55% | 20.0 | yes |
+| `MITHRIL_INGOT_FLUXED` | 2 x Mithril Ore (Lv. 85), 1 x Coal (Lv. 5), 1 x Arcane Flux (Lv. 75) | 1 x Mithril Ingot (Lv. 85) | ore refinement 3 | -20% | 20.0 | yes |
 | `PALLADIUM_INGOT` | 2 x Palladium Ore (Lv. 70), 1 x Coal (Lv. 5) | 1 x Palladium Ingot (Lv. 70) | ore refinement 3 | -30% | 18.0 | yes |
 | `PALLADIUM_INGOT_CHARCOAL` | 2 x Palladium Ore (Lv. 70), 1 x Charcoal (Lv. 1) | 1 x Palladium Ingot (Lv. 70) | ore refinement 3 | -40% | 18.0 | yes |
+| `PALLADIUM_INGOT_FLUXED` | 2 x Palladium Ore (Lv. 70), 1 x Coal (Lv. 5), 1 x Arcane Flux (Lv. 75) | 1 x Palladium Ingot (Lv. 70) | ore refinement 3 | -5% | 18.0 | yes |
 | `QUICKSILVER` | 2 x Mercury Ore (Lv. 60) | 1 x Quicksilver (Lv. 60) | ore refinement 3 | -20% | 16.0 | yes |
 | `SILVER_INGOT` | 2 x Silver Ore (Lv. 35), 1 x Coal (Lv. 5) | 1 x Silver Ingot (Lv. 38) | ore refinement 2 | 5% | 14.0 | yes |
 | `SILVER_INGOT_CHARCOAL` | 2 x Silver Ore (Lv. 35), 1 x Charcoal (Lv. 1) | 1 x Silver Ingot (Lv. 38) | ore refinement 2 | -5% | 14.0 | yes |
+| `SILVER_INGOT_FLUXED` | 2 x Silver Ore (Lv. 35), 1 x Coal (Lv. 5), 1 x Smelting Flux (Lv. 25) | 1 x Silver Ingot (Lv. 38) | ore refinement 2 | 30% | 14.0 | yes |
 | `STEEL_INGOT` | 1 x Iron Ingot (Lv. 20), 1 x Coal (Lv. 5) | 1 x Steel Ingot (Lv. 32) | ore refinement 2 | 8% | 14.0 | yes |
 | `STEEL_INGOT_CHARCOAL` | 1 x Iron Ingot (Lv. 20), 1 x Charcoal (Lv. 1) | 1 x Steel Ingot (Lv. 32) | ore refinement 2 | -2% | 14.0 | yes |
 | `TIN_INGOT` | 2 x Tin Ore (Lv. 5), 1 x Coal (Lv. 5) | 1 x Tin Ingot (Lv. 5) | ore refinement 1 | 30% | 10.0 | yes |
@@ -741,14 +755,301 @@ graph LR
     grape[/"Grape (Lv. 1)"/]
     grape -->|2| mana_potion
     empty_bottle -->|1| mana_potion
+    alchemical_salt["Alchemical Salt (Lv. 10)"]
+    salt[/"Salt (Lv. 1)"/]
+    salt -->|2| alchemical_salt
+    charcoal["Charcoal (Lv. 1)"]
+    charcoal -->|1| alchemical_salt
+    medicine["Medicine (Lv. 10)"]
+    medicinal_herb -->|2| medicine
+    honeycomb[/"Honeycomb (Lv. 8)"/]
+    honeycomb -->|1| medicine
+    empty_bottle -->|1| medicine
+    antidote["Antidote (Lv. 12)"]
+    medicinal_herb -->|1| antidote
+    venom_sac[/"Venom Sac (Lv. 15)"/]
+    venom_sac -->|1| antidote
+    empty_bottle -->|1| antidote
+    herbal_extract["Herbal Extract (Lv. 15)"]
+    medicinal_herb -->|3| herbal_extract
+    alchemical_salt -->|1| herbal_extract
+    empty_bottle -->|1| herbal_extract
+    vigor_draught["Vigor Draught (Lv. 20)"]
+    thornvine[/"Thornvine (Lv. 20)"/]
+    thornvine -->|2| vigor_draught
+    apple -->|2| vigor_draught
+    empty_bottle -->|1| vigor_draught
+    warming_draught["Warming Draught (Lv. 22)"]
+    warm_stone[/"Warm Stone (Lv. 18)"/]
+    warm_stone -->|1| warming_draught
+    herbal_extract -->|1| warming_draught
+    empty_bottle -->|1| warming_draught
+    catalyst["Catalyst (Lv. 25)"]
+    alchemical_salt -->|2| catalyst
+    mana_dust[/"Mana Dust (Lv. 15)"/]
+    mana_dust -->|2| catalyst
+    spore_dust[/"Spore Dust (Lv. 10)"/]
+    spore_dust -->|1| catalyst
+    smelting_flux["Smelting Flux (Lv. 25)"]
+    alchemical_salt -->|2| smelting_flux
+    bone_shard[/"Bone Shard (Lv. 5)"/]
+    bone_shard -->|2| smelting_flux
+    burn_salve["Burn Salve (Lv. 25)"]
+    herbal_extract -->|1| burn_salve
+    resin[/"Resin (Lv. 1)"/]
+    resin -->|2| burn_salve
+    jelly[/"Jelly (Lv. 1)"/]
+    jelly -->|1| burn_salve
+    blasting_charge["Blasting Charge (Lv. 30)"]
+    charcoal -->|2| blasting_charge
+    alchemical_salt -->|2| blasting_charge
+    lamp_oil["Lamp Oil (Lv. 5)"]
+    lamp_oil -->|1| blasting_charge
+    mana_tincture["Mana Tincture (Lv. 35)"]
+    mana_herb -->|2| mana_tincture
+    mana_essence[/"Mana Essence (Lv. 5)"/]
+    mana_essence -->|1| mana_tincture
+    empty_bottle -->|1| mana_tincture
+    swiftness_potion["Swiftness Potion (Lv. 35)"]
+    feather[/"Feather (Lv. 1)"/]
+    feather -->|3| swiftness_potion
+    mana_tincture -->|1| swiftness_potion
+    empty_bottle -->|1| swiftness_potion
+    regeneration_draught["Regeneration Draught (Lv. 40)"]
+    herbal_extract -->|2| regeneration_draught
+    jelly -->|2| regeneration_draught
+    empty_bottle -->|1| regeneration_draught
+    clarity_draught["Clarity Draught (Lv. 40)"]
+    mana_herb -->|1| clarity_draught
+    holy_water["Holy Water (Lv. 5)"]
+    holy_water -->|1| clarity_draught
+    spore_dust -->|1| clarity_draught
+    empty_bottle -->|1| clarity_draught
+    crystal_vial["Crystal Vial (Lv. 45)"]
+    glass["Glass (Lv. 8)"]
+    glass -->|3| crystal_vial
+    aetherite_shard[/"Aetherite Shard (Lv. 10)"/]
+    aetherite_shard -->|1| crystal_vial
+    elixir_of_might["Elixir of Might (Lv. 45)"]
+    horn[/"Horn (Lv. 10)"/]
+    horn -->|2| elixir_of_might
+    herbal_extract -->|1| elixir_of_might
+    crystal_vial -->|1| elixir_of_might
+    elixir_of_fortitude["Elixir of Fortitude (Lv. 46)"]
+    reptile_scale[/"Reptile Scale (Lv. 15)"/]
+    reptile_scale -->|2| elixir_of_fortitude
+    herbal_extract -->|1| elixir_of_fortitude
+    crystal_vial -->|1| elixir_of_fortitude
+    elixir_of_grace["Elixir of Grace (Lv. 47)"]
+    feather -->|3| elixir_of_grace
+    glowcap[/"Glowcap (Lv. 45)"/]
+    glowcap -->|1| elixir_of_grace
+    crystal_vial -->|1| elixir_of_grace
+    elixir_of_precision["Elixir of Precision (Lv. 48)"]
+    lens["Lens (Lv. 30)"]
+    lens -->|1| elixir_of_precision
+    thornvine -->|2| elixir_of_precision
+    crystal_vial -->|1| elixir_of_precision
+    elixir_of_insight["Elixir of Insight (Lv. 50)"]
+    mana_ink["Mana Ink (Lv. 35)"]
+    mana_ink -->|1| elixir_of_insight
+    mana_tincture -->|1| elixir_of_insight
+    crystal_vial -->|1| elixir_of_insight
+    greater_health_potion["Greater Health Potion (Lv. 50)"]
+    herbal_extract -->|3| greater_health_potion
+    glowcap -->|1| greater_health_potion
+    crystal_vial -->|1| greater_health_potion
+    greater_mana_potion["Greater Mana Potion (Lv. 50)"]
+    mana_tincture -->|2| greater_mana_potion
+    mana_herb -->|2| greater_mana_potion
+    crystal_vial -->|1| greater_mana_potion
+    elixir_of_resolve["Elixir of Resolve (Lv. 52)"]
+    cut_amethyst["Cut Amethyst (Lv. 20)"]
+    cut_amethyst -->|1| elixir_of_resolve
+    holy_water -->|1| elixir_of_resolve
+    crystal_vial -->|1| elixir_of_resolve
+    thawing_tonic["Thawing Tonic (Lv. 55)"]
+    ember_core[/"Ember Core (Lv. 45)"/]
+    ember_core -->|1| thawing_tonic
+    herbal_extract -->|1| thawing_tonic
+    crystal_vial -->|1| thawing_tonic
+    alkahest["Alkahest (Lv. 60)"]
+    quicksilver["Quicksilver (Lv. 60)"]
+    quicksilver -->|1| alkahest
+    alchemical_salt -->|2| alkahest
+    catalyst -->|1| alkahest
+    crystal_vial -->|1| alkahest
+    endurance_tonic["Endurance Tonic (Lv. 60)"]
+    thornvine -->|3| endurance_tonic
+    frost_herb[/"Frost Herb (Lv. 60)"/]
+    frost_herb -->|1| endurance_tonic
+    herbal_extract -->|1| endurance_tonic
+    crystal_vial -->|1| endurance_tonic
+    cooling_draught["Cooling Draught (Lv. 60)"]
+    frost_herb -->|2| cooling_draught
+    alchemical_salt -->|1| cooling_draught
+    crystal_vial -->|1| cooling_draught
+    rejuvenation_potion["Rejuvenation Potion (Lv. 65)"]
+    herbal_extract -->|2| rejuvenation_potion
+    mana_tincture -->|2| rejuvenation_potion
+    coral[/"Coral (Lv. 45)"/]
+    coral -->|1| rejuvenation_potion
+    crystal_vial -->|1| rejuvenation_potion
+    stone_softener["Stone Softener (Lv. 65)"]
+    quicksilver -->|1| stone_softener
+    holy_water -->|2| stone_softener
+    crystal_vial -->|1| stone_softener
+    barrier_potion["Barrier Potion (Lv. 70)"]
+    earth_crystal[/"earth crystal (Lv. 40)"/]
+    earth_crystal -->|1| barrier_potion
+    golden_carapace[/"Golden Carapace (Lv. 65)"/]
+    golden_carapace -->|1| barrier_potion
+    alkahest -->|1| barrier_potion
+    crystal_vial -->|1| barrier_potion
+    superior_health_potion["Superior Health Potion (Lv. 75)"]
+    herbal_extract -->|4| superior_health_potion
+    frost_herb -->|2| superior_health_potion
+    crystal_vial -->|1| superior_health_potion
+    superior_mana_potion["Superior Mana Potion (Lv. 75)"]
+    mana_tincture -->|3| superior_mana_potion
+    frost_crystal[/"Frost Crystal (Lv. 40)"/]
+    frost_crystal -->|1| superior_mana_potion
+    crystal_vial -->|1| superior_mana_potion
+    greater_elixir_of_precision["Greater Elixir of Precision (Lv. 88)"]
+    storm_feather[/"Storm Feather (Lv. 65)"/]
+    storm_feather -->|2| greater_elixir_of_precision
+    cut_opal["Cut Opal (Lv. 66)"]
+    cut_opal -->|1| greater_elixir_of_precision
+    alkahest -->|1| greater_elixir_of_precision
+    crystal_vial -->|1| greater_elixir_of_precision
+    greater_elixir_of_might["Greater Elixir of Might (Lv. 90)"]
+    wyrm_bone[/"Wyrm Bone (Lv. 75)"/]
+    wyrm_bone -->|1| greater_elixir_of_might
+    dragon_scale[/"Dragon Scale (Lv. 75)"/]
+    dragon_scale -->|1| greater_elixir_of_might
+    alkahest -->|1| greater_elixir_of_might
+    crystal_vial -->|1| greater_elixir_of_might
+    panacea["Panacea (Lv. 90)"]
+    sun_herb[/"Sun Herb (Lv. 80)"/]
+    sun_herb -->|1| panacea
+    alkahest -->|1| panacea
+    holy_water -->|2| panacea
+    sea_pearl[/"Sea Pearl (Lv. 30)"/]
+    sea_pearl -->|1| panacea
+    crystal_vial -->|1| panacea
+    greater_elixir_of_grace["Greater Elixir of Grace (Lv. 92)"]
+    moonscale[/"Moonscale (Lv. 82)"/]
+    moonscale -->|1| greater_elixir_of_grace
+    shadow_shard[/"Shadow Shard (Lv. 55)"/]
+    shadow_shard -->|2| greater_elixir_of_grace
+    alkahest -->|1| greater_elixir_of_grace
+    crystal_vial -->|1| greater_elixir_of_grace
+    quintessence["Quintessence (Lv. 95)"]
+    pure_mana_essence["Pure Mana Essence (Lv. 30)"]
+    pure_mana_essence -->|2| quintessence
+    star_core[/"Star Core (Lv. 80)"/]
+    star_core -->|1| quintessence
+    alkahest -->|1| quintessence
+    crystal_vial -->|1| quintessence
+    supreme_health_potion["Supreme Health Potion (Lv. 95)"]
+    herbal_extract -->|4| supreme_health_potion
+    sun_herb -->|2| supreme_health_potion
+    quintessence -->|1| supreme_health_potion
+    crystal_vial -->|1| supreme_health_potion
+    supreme_mana_potion["Supreme Mana Potion (Lv. 95)"]
+    mana_tincture -->|3| supreme_mana_potion
+    star_core -->|1| supreme_mana_potion
+    quintessence -->|1| supreme_mana_potion
+    crystal_vial -->|1| supreme_mana_potion
+    greater_elixir_of_insight["Greater Elixir of Insight (Lv. 95)"]
+    star_core -->|1| greater_elixir_of_insight
+    quintessence -->|1| greater_elixir_of_insight
+    crystal_vial -->|1| greater_elixir_of_insight
+    greater_elixir_of_fortitude["Greater Elixir of Fortitude (Lv. 98)"]
+    deepmaw[/"Deepmaw (Lv. 98)"/]
+    deepmaw -->|1| greater_elixir_of_fortitude
+    golden_carapace -->|2| greater_elixir_of_fortitude
+    alkahest -->|1| greater_elixir_of_fortitude
+    crystal_vial -->|1| greater_elixir_of_fortitude
+    greater_elixir_of_resolve["Greater Elixir of Resolve (Lv. 100)"]
+    ghost_herb[/"Ghost Herb (Lv. 100)"/]
+    ghost_herb -->|2| greater_elixir_of_resolve
+    holy_water -->|2| greater_elixir_of_resolve
+    quintessence -->|1| greater_elixir_of_resolve
+    crystal_vial -->|1| greater_elixir_of_resolve
+    slim_supreme_health_potion["Slim Supreme Health Potion (Lv. 100)"]
+    supreme_health_potion -->|2| slim_supreme_health_potion
+    alkahest -->|1| slim_supreme_health_potion
+    slim_supreme_mana_potion["Slim Supreme Mana Potion (Lv. 100)"]
+    supreme_mana_potion -->|2| slim_supreme_mana_potion
+    alkahest -->|1| slim_supreme_mana_potion
+    elixir_of_life["Elixir of Life (Lv. 105)"]
+    ghost_herb -->|2| elixir_of_life
+    sun_herb -->|2| elixir_of_life
+    quintessence -->|1| elixir_of_life
+    abyssal_lanternfish[/"Abyssal Lanternfish (Lv. 115)"/]
+    abyssal_lanternfish -->|1| elixir_of_life
+    crystal_vial -->|1| elixir_of_life
+    philosophers_draught["Philosopher's Draught (Lv. 115)"]
+    philosophers_stone["Philosopher's Stone (Lv. 110)"]
+    philosophers_stone -->|1| philosophers_draught
+    quintessence -->|1| philosophers_draught
+    abyssal_lanternfish -->|1| philosophers_draught
+    crystal_vial -->|1| philosophers_draught
 ```
 
 | Recipe | Needs | Makes | Skill | Success | Seconds | Known from the start |
 | --- | --- | --- | --- | --- | --- | --- |
+| `ALCHEMICAL_SALT` | 2 x Salt (Lv. 1), 1 x Charcoal (Lv. 1) | 2 x Alchemical Salt (Lv. 10) | alchemy 1 | 90% | 7.0 | discover |
+| `ALKAHEST` | 1 x Quicksilver (Lv. 60), 2 x Alchemical Salt (Lv. 10), 1 x Catalyst (Lv. 25), 1 x Crystal Vial (Lv. 45) | 1 x Alkahest (Lv. 60) | alchemy 6 | 15% | 22.0 | discover |
+| `ANTIDOTE` | 1 x Medicinal Herb (Lv. 20), 1 x Venom Sac (Lv. 15), 1 x Empty Bottle (Lv. 1) | 1 x Antidote (Lv. 12) | alchemy 2 | 87% | 7.6 | discover |
+| `BARRIER_POTION` | 1 x earth crystal (Lv. 40), 1 x Golden Carapace (Lv. 65), 1 x Alkahest (Lv. 60), 1 x Crystal Vial (Lv. 45) | 1 x Barrier Potion (Lv. 70) | alchemy 7 | 0% | 25.0 | discover |
+| `BLASTING_CHARGE` | 2 x Charcoal (Lv. 1), 2 x Alchemical Salt (Lv. 10), 1 x Lamp Oil (Lv. 5) | 1 x Blasting Charge (Lv. 30) | alchemy 3 | 60% | 13.0 | discover |
+| `BURN_SALVE` | 1 x Herbal Extract (Lv. 15), 2 x Resin (Lv. 1), 1 x Jelly (Lv. 1) | 1 x Burn Salve (Lv. 25) | alchemy 3 | 67% | 11.5 | discover |
+| `CATALYST` | 2 x Alchemical Salt (Lv. 10), 2 x Mana Dust (Lv. 15), 1 x Spore Dust (Lv. 10) | 1 x Catalyst (Lv. 25) | alchemy 3 | 67% | 11.5 | discover |
+| `CLARITY_DRAUGHT` | 1 x Mana Herb (Lv. 40), 1 x Holy Water (Lv. 5), 1 x Spore Dust (Lv. 10), 1 x Empty Bottle (Lv. 1) | 1 x Clarity Draught (Lv. 40) | alchemy 4 | 45% | 16.0 | discover |
+| `COOLING_DRAUGHT` | 2 x Frost Herb (Lv. 60), 1 x Alchemical Salt (Lv. 10), 1 x Crystal Vial (Lv. 45) | 1 x Cooling Draught (Lv. 60) | alchemy 6 | 15% | 22.0 | discover |
+| `CRYSTAL_VIAL` | 3 x Glass (Lv. 8), 1 x Aetherite Shard (Lv. 10) | 2 x Crystal Vial (Lv. 45) | alchemy 5 | 37% | 17.5 | discover |
+| `ELIXIR_OF_FORTITUDE` | 2 x Reptile Scale (Lv. 15), 1 x Herbal Extract (Lv. 15), 1 x Crystal Vial (Lv. 45) | 1 x Elixir of Fortitude (Lv. 46) | alchemy 5 | 36% | 17.8 | discover |
+| `ELIXIR_OF_GRACE` | 3 x Feather (Lv. 1), 1 x Glowcap (Lv. 45), 1 x Crystal Vial (Lv. 45) | 1 x Elixir of Grace (Lv. 47) | alchemy 5 | 34% | 18.1 | discover |
+| `ELIXIR_OF_INSIGHT` | 1 x Mana Ink (Lv. 35), 1 x Mana Tincture (Lv. 35), 1 x Crystal Vial (Lv. 45) | 1 x Elixir of Insight (Lv. 50) | alchemy 5 | 30% | 19.0 | discover |
+| `ELIXIR_OF_LIFE` | 2 x Ghost Herb (Lv. 100), 2 x Sun Herb (Lv. 80), 1 x Quintessence (Lv. 95), 1 x Abyssal Lanternfish (Lv. 115), 1 x Crystal Vial (Lv. 45) | 1 x Elixir of Life (Lv. 105) | alchemy 10 | -52% | 35.5 | discover |
+| `ELIXIR_OF_MIGHT` | 2 x Horn (Lv. 10), 1 x Herbal Extract (Lv. 15), 1 x Crystal Vial (Lv. 45) | 1 x Elixir of Might (Lv. 45) | alchemy 5 | 37% | 17.5 | discover |
+| `ELIXIR_OF_PRECISION` | 1 x Lens (Lv. 30), 2 x Thornvine (Lv. 20), 1 x Crystal Vial (Lv. 45) | 1 x Elixir of Precision (Lv. 48) | alchemy 5 | 33% | 18.4 | discover |
+| `ELIXIR_OF_RESOLVE` | 1 x Cut Amethyst (Lv. 20), 1 x Holy Water (Lv. 5), 1 x Crystal Vial (Lv. 45) | 1 x Elixir of Resolve (Lv. 52) | alchemy 6 | 27% | 19.6 | discover |
+| `ENDURANCE_TONIC` | 3 x Thornvine (Lv. 20), 1 x Frost Herb (Lv. 60), 1 x Herbal Extract (Lv. 15), 1 x Crystal Vial (Lv. 45) | 1 x Endurance Tonic (Lv. 60) | alchemy 6 | 15% | 22.0 | discover |
+| `GREATER_ELIXIR_OF_FORTITUDE` | 1 x Deepmaw (Lv. 98), 2 x Golden Carapace (Lv. 65), 1 x Alkahest (Lv. 60), 1 x Crystal Vial (Lv. 45) | 1 x Greater Elixir of Fortitude (Lv. 98) | alchemy 10 | -42% | 33.4 | discover |
+| `GREATER_ELIXIR_OF_GRACE` | 1 x Moonscale (Lv. 82), 2 x Shadow Shard (Lv. 55), 1 x Alkahest (Lv. 60), 1 x Crystal Vial (Lv. 45) | 1 x Greater Elixir of Grace (Lv. 92) | alchemy 10 | -33% | 31.6 | discover |
+| `GREATER_ELIXIR_OF_INSIGHT` | 1 x Star Core (Lv. 80), 1 x Quintessence (Lv. 95), 1 x Crystal Vial (Lv. 45) | 1 x Greater Elixir of Insight (Lv. 95) | alchemy 10 | -37% | 32.5 | discover |
+| `GREATER_ELIXIR_OF_MIGHT` | 1 x Wyrm Bone (Lv. 75), 1 x Dragon Scale (Lv. 75), 1 x Alkahest (Lv. 60), 1 x Crystal Vial (Lv. 45) | 1 x Greater Elixir of Might (Lv. 90) | alchemy 9 | -30% | 31.0 | discover |
+| `GREATER_ELIXIR_OF_PRECISION` | 2 x Storm Feather (Lv. 65), 1 x Cut Opal (Lv. 66), 1 x Alkahest (Lv. 60), 1 x Crystal Vial (Lv. 45) | 1 x Greater Elixir of Precision (Lv. 88) | alchemy 9 | -27% | 30.4 | discover |
+| `GREATER_ELIXIR_OF_RESOLVE` | 2 x Ghost Herb (Lv. 100), 2 x Holy Water (Lv. 5), 1 x Quintessence (Lv. 95), 1 x Crystal Vial (Lv. 45) | 1 x Greater Elixir of Resolve (Lv. 100) | alchemy 10 | -45% | 34.0 | discover |
+| `GREATER_HEALTH_POTION` | 3 x Herbal Extract (Lv. 15), 1 x Glowcap (Lv. 45), 1 x Crystal Vial (Lv. 45) | 1 x Greater Health Potion (Lv. 50) | alchemy 5 | 30% | 19.0 | discover |
+| `GREATER_MANA_POTION` | 2 x Mana Tincture (Lv. 35), 2 x Mana Herb (Lv. 40), 1 x Crystal Vial (Lv. 45) | 1 x Greater Mana Potion (Lv. 50) | alchemy 5 | 30% | 19.0 | discover |
 | `HEALTH_POTION` | 4 x Medicinal Herb (Lv. 20), 2 x Apple (Lv. 1), 1 x Empty Bottle (Lv. 1) | 1 x Health Potion (Lv. 30) | alchemy 3 | 70% | 15.0 | discover |
+| `HERBAL_EXTRACT` | 3 x Medicinal Herb (Lv. 20), 1 x Alchemical Salt (Lv. 10), 1 x Empty Bottle (Lv. 1) | 1 x Herbal Extract (Lv. 15) | alchemy 2 | 82% | 8.5 | discover |
 | `MANA_POTION` | 4 x Mana Herb (Lv. 40), 2 x Grape (Lv. 1), 1 x Empty Bottle (Lv. 1) | 1 x Mana Potion (Lv. 30) | alchemy 3 | 70% | 15.0 | discover |
+| `MANA_TINCTURE` | 2 x Mana Herb (Lv. 40), 1 x Mana Essence (Lv. 5), 1 x Empty Bottle (Lv. 1) | 1 x Mana Tincture (Lv. 35) | alchemy 4 | 52% | 14.5 | discover |
+| `MEDICINE` | 2 x Medicinal Herb (Lv. 20), 1 x Honeycomb (Lv. 8), 1 x Empty Bottle (Lv. 1) | 1 x Medicine (Lv. 10) | alchemy 1 | 90% | 7.0 | discover |
+| `PANACEA` | 1 x Sun Herb (Lv. 80), 1 x Alkahest (Lv. 60), 2 x Holy Water (Lv. 5), 1 x Sea Pearl (Lv. 30), 1 x Crystal Vial (Lv. 45) | 1 x Panacea (Lv. 90) | alchemy 9 | -30% | 31.0 | discover |
+| `PHILOSOPHERS_DRAUGHT` | 1 x Philosopher's Stone (Lv. 110), 1 x Quintessence (Lv. 95), 1 x Abyssal Lanternfish (Lv. 115), 1 x Crystal Vial (Lv. 45) | 1 x Philosopher's Draught (Lv. 115) | alchemy 10 | -67% | 38.5 | discover |
+| `QUINTESSENCE` | 2 x Pure Mana Essence (Lv. 30), 1 x Star Core (Lv. 80), 1 x Alkahest (Lv. 60), 1 x Crystal Vial (Lv. 45) | 1 x Quintessence (Lv. 95) | alchemy 10 | -37% | 32.5 | discover |
+| `REGENERATION_DRAUGHT` | 2 x Herbal Extract (Lv. 15), 2 x Jelly (Lv. 1), 1 x Empty Bottle (Lv. 1) | 1 x Regeneration Draught (Lv. 40) | alchemy 4 | 45% | 16.0 | discover |
+| `REJUVENATION_POTION` | 2 x Herbal Extract (Lv. 15), 2 x Mana Tincture (Lv. 35), 1 x Coral (Lv. 45), 1 x Crystal Vial (Lv. 45) | 1 x Rejuvenation Potion (Lv. 65) | alchemy 7 | 7% | 23.5 | discover |
+| `SLIM_SUPREME_HEALTH_POTION` | 2 x Supreme Health Potion (Lv. 95), 1 x Alkahest (Lv. 60) | 2 x Slim Supreme Health Potion (Lv. 100) | alchemy 10 | -45% | 34.0 | discover |
+| `SLIM_SUPREME_MANA_POTION` | 2 x Supreme Mana Potion (Lv. 95), 1 x Alkahest (Lv. 60) | 2 x Slim Supreme Mana Potion (Lv. 100) | alchemy 10 | -45% | 34.0 | discover |
 | `SMALL_HEALTH_POTION` | 2 x Medicinal Herb (Lv. 20), 1 x Empty Bottle (Lv. 1) | 1 x Small Health Potion (Lv. 3) | alchemy 1 | 90% | 8.0 | discover |
 | `SMALL_MANA_POTION` | 2 x Mana Herb (Lv. 40), 1 x Empty Bottle (Lv. 1) | 1 x Small Mana Potion (Lv. 3) | alchemy 1 | 90% | 8.0 | discover |
+| `SMELTING_FLUX` | 2 x Alchemical Salt (Lv. 10), 2 x Bone Shard (Lv. 5) | 3 x Smelting Flux (Lv. 25) | alchemy 3 | 67% | 11.5 | discover |
+| `STONE_SOFTENER` | 1 x Quicksilver (Lv. 60), 2 x Holy Water (Lv. 5), 1 x Crystal Vial (Lv. 45) | 1 x Stone Softener (Lv. 65) | alchemy 7 | 7% | 23.5 | discover |
+| `SUPERIOR_HEALTH_POTION` | 4 x Herbal Extract (Lv. 15), 2 x Frost Herb (Lv. 60), 1 x Crystal Vial (Lv. 45) | 1 x Superior Health Potion (Lv. 75) | alchemy 8 | -7% | 26.5 | discover |
+| `SUPERIOR_MANA_POTION` | 3 x Mana Tincture (Lv. 35), 1 x Frost Crystal (Lv. 40), 1 x Crystal Vial (Lv. 45) | 1 x Superior Mana Potion (Lv. 75) | alchemy 8 | -7% | 26.5 | discover |
+| `SUPREME_HEALTH_POTION` | 4 x Herbal Extract (Lv. 15), 2 x Sun Herb (Lv. 80), 1 x Quintessence (Lv. 95), 1 x Crystal Vial (Lv. 45) | 1 x Supreme Health Potion (Lv. 95) | alchemy 10 | -37% | 32.5 | discover |
+| `SUPREME_MANA_POTION` | 3 x Mana Tincture (Lv. 35), 1 x Star Core (Lv. 80), 1 x Quintessence (Lv. 95), 1 x Crystal Vial (Lv. 45) | 1 x Supreme Mana Potion (Lv. 95) | alchemy 10 | -37% | 32.5 | discover |
+| `SWIFTNESS_POTION` | 3 x Feather (Lv. 1), 1 x Mana Tincture (Lv. 35), 1 x Empty Bottle (Lv. 1) | 1 x Swiftness Potion (Lv. 35) | alchemy 4 | 52% | 14.5 | discover |
+| `THAWING_TONIC` | 1 x Ember Core (Lv. 45), 1 x Herbal Extract (Lv. 15), 1 x Crystal Vial (Lv. 45) | 1 x Thawing Tonic (Lv. 55) | alchemy 6 | 22% | 20.5 | discover |
+| `VIGOR_DRAUGHT` | 2 x Thornvine (Lv. 20), 2 x Apple (Lv. 1), 1 x Empty Bottle (Lv. 1) | 1 x Vigor Draught (Lv. 20) | alchemy 2 | 75% | 10.0 | discover |
+| `WARMING_DRAUGHT` | 1 x Warm Stone (Lv. 18), 1 x Herbal Extract (Lv. 15), 1 x Empty Bottle (Lv. 1) | 1 x Warming Draught (Lv. 22) | alchemy 3 | 72% | 10.6 | discover |
 
 ## Campfire
 
@@ -859,12 +1160,30 @@ graph LR
     red_mana_crystal["Red Mana Crystal (Lv. 30)"]
     yellow_mana_crystal -->|3| red_mana_crystal
     mana_concentrate -->|2| red_mana_crystal
+    quicksilver["Quicksilver (Lv. 60)"]
+    silver_ingot["Silver Ingot (Lv. 38)"]
+    silver_ingot -->|1| quicksilver
+    mana_concentrate -->|1| quicksilver
+    arcane_flux["Arcane Flux (Lv. 75)"]
+    smelting_flux["Smelting Flux (Lv. 25)"]
+    smelting_flux -->|2| arcane_flux
+    pure_mana_essence -->|1| arcane_flux
+    quicksilver -->|1| arcane_flux
+    philosophers_stone["Philosopher's Stone (Lv. 110)"]
+    red_mana_crystal -->|2| philosophers_stone
+    quintessence["Quintessence (Lv. 95)"]
+    quintessence -->|1| philosophers_stone
+    cut_diamond["Cut Diamond (Lv. 100)"]
+    cut_diamond -->|1| philosophers_stone
 ```
 
 | Recipe | Needs | Makes | Skill | Success | Seconds | Known from the start |
 | --- | --- | --- | --- | --- | --- | --- |
+| `ARCANE_FLUX` | 2 x Smelting Flux (Lv. 25), 1 x Pure Mana Essence (Lv. 30), 1 x Quicksilver (Lv. 60) | 2 x Arcane Flux (Lv. 75) | transmutation 8 | -7% | 26.5 | discover |
 | `MANA_CONCENTRATE` | 2 x Pure Mana Essence (Lv. 30), 1 x Mana Crystal (Lv. 5) | 1 x Mana Concentrate (Lv. 20) | transmutation 3 | 70% | 20.0 | discover |
+| `PHILOSOPHERS_STONE` | 2 x Red Mana Crystal (Lv. 30), 1 x Quintessence (Lv. 95), 1 x Cut Diamond (Lv. 100) | 1 x Philosopher's Stone (Lv. 110) | transmutation 10 | -60% | 37.0 | discover |
 | `PURE_MANA_ESSENCE` | 3 x Mana Essence (Lv. 5) | 1 x Pure Mana Essence (Lv. 30) | transmutation 1 | 80% | 15.0 | discover |
+| `QUICKSILVER_TRANSMUTED` | 1 x Silver Ingot (Lv. 38), 1 x Mana Concentrate (Lv. 20) | 1 x Quicksilver (Lv. 60) | transmutation 6 | 15% | 22.0 | discover |
 | `RED_MANA_CRYSTAL` | 3 x Yellow Mana Crystal (Lv. 30), 2 x Mana Concentrate (Lv. 20) | 1 x Red Mana Crystal (Lv. 30) | transmutation 7 | 50% | 30.0 | discover |
 | `YELLOW_MANA_CRYSTAL` | 3 x Blue Mana Crystal (Lv. 15), 1 x Mana Concentrate (Lv. 20) | 1 x Yellow Mana Crystal (Lv. 30) | transmutation 5 | 60% | 25.0 | discover |
 
@@ -1043,7 +1362,9 @@ and the ore a pick breaks out for the item, so a `no` is a material nobody can o
 
 | Material | Level | Carries craft-axes | In the world |
 | --- | --- | --- | --- |
+| Abyssal Lanternfish | 115 | yes | fishing |
 | Adamantium Ore | 100 | no | mining |
+| Aetherite Shard | 10 | yes | mobs, props |
 | Apple | 1 | yes | mobs |
 | Blue Mana Crystal | 15 | yes | mobs |
 | Bone Shard | 5 | yes | mobs, props |
@@ -1052,6 +1373,7 @@ and the ore a pick breaks out for the item, so a `no` is a material nobody can o
 | Copper Ore | 10 | no | mining |
 | Coral | 45 | yes | fishing |
 | Deathcap | 15 | yes | mobs |
+| Deepmaw | 98 | yes | fishing |
 | Dragon Scale | 75 | yes | mobs |
 | Drake Hide | 55 | yes | mobs |
 | earth crystal | 40 | yes | mobs |
@@ -1061,10 +1383,14 @@ and the ore a pick breaks out for the item, so a `no` is a material nobody can o
 | Flax | 1 | no | mobs |
 | Flint | 1 | yes | props |
 | Frost Crystal | 40 | yes | mobs |
+| Frost Herb | 60 | yes | props |
+| Ghost Herb | 100 | yes | props |
 | Glowcap | 45 | yes | mobs |
 | Gold Ore | 50 | no | mobs, mining |
+| Golden Carapace | 65 | yes | mobs |
 | Grape | 1 | yes | mobs |
 | Heartwood | 80 | yes | mobs |
+| Honeycomb | 8 | yes | mobs |
 | Horn | 10 | yes | mobs |
 | Iron Ore | 20 | no | mobs, mining |
 | Ironwood | 45 | yes | mobs |
@@ -1079,11 +1405,13 @@ and the ore a pick breaks out for the item, so a `no` is a material nobody can o
 | Medicinal Herb | 20 | yes | props |
 | Mercury Ore | 60 | no | mining |
 | Mithril Ore | 85 | no | mining |
+| Moonscale | 82 | yes | fishing |
 | Obsidian | 50 | yes | mining |
 | Palladium Ore | 70 | no | mining |
 | Quarried Stone | 5 | yes | mobs, props |
 | Raw Hide | 1 | no | mobs |
 | Reed Stalk | 1 | yes | mobs, props |
+| Reptile Scale | 15 | yes | mobs |
 | Resin | 1 | yes | props |
 | Rough Amethyst | 20 | no | props, mining |
 | Rough Diamond | 100 | no | mining |
@@ -1098,11 +1426,13 @@ and the ore a pick breaks out for the item, so a `no` is a material nobody can o
 | Rough Tiger's Eye | 37 | no | mining |
 | Salt | 1 | yes | mobs |
 | Sand | 1 | no | props, mining |
+| Sea Pearl | 30 | yes | mobs, fishing |
 | Shadow Shard | 55 | yes | mobs |
 | Sharp Fang | 5 | yes | mobs |
 | Silk Thread | 8 | no | mobs |
 | Silver Ore | 35 | no | mining |
 | Soft Fur | 3 | yes | mobs |
+| Spore Dust | 10 | yes | mobs |
 | Star Core | 80 | yes | mobs |
 | Stick | 1 | yes | props |
 | Storm Feather | 65 | yes | mobs |
