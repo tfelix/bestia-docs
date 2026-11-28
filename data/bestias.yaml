@@ -132,7 +132,7 @@
   - item: soft_fur
     chance: 20
   - item: raw_meat
-    chance: 20
+    chance: 30
   - item: apple
     chance: 10
   learnset:
@@ -230,6 +230,8 @@
     chance: 15
   - item: apple
     chance: 15
+  - item: nectar_drop
+    chance: 20
   learnset:
     drop:
     - 20
@@ -259,6 +261,8 @@
     chance: 30
   - item: grain
     chance: 10
+  - item: speckled_egg
+    chance: 25
   learnset:
     replace:
     - slot: 2
@@ -291,6 +295,8 @@
     chance: 15
   - item: salt
     chance: 10
+  - item: crab_claw
+    chance: 25
   learnset:
     replace:
     - slot: 3
@@ -448,6 +454,8 @@
     chance: 15
   - item: chitin
     chance: 20
+  - item: scorpion_tail
+    chance: 20
   look:
     colour: '#b5651d'
 - id: 18
@@ -510,6 +518,8 @@
     chance: 8
   - item: deathcap
     chance: 12
+  - item: snail_meat
+    chance: 25
   learnset:
     drop:
     - 19
@@ -574,6 +584,8 @@
     chance: 15
   - item: deathcap
     chance: 10
+  - item: puffcap_cap
+    chance: 25
   learnset:
     replace:
     - slot: 3
@@ -777,6 +789,8 @@
     chance: 30
   - item: horn
     chance: 15
+  - item: venison
+    chance: 25
   learnset:
     drop:
     - 18
@@ -894,6 +908,8 @@
     chance: 20
   - item: earth_crystal
     chance: 3
+  - item: mountain_mutton
+    chance: 30
   learnset:
     replace:
     - slot: 6
@@ -955,6 +971,8 @@
     chance: 25
   - item: horn
     chance: 10
+  - item: yak_butter
+    chance: 20
   learnset:
     replace:
     - slot: 2
@@ -1021,6 +1039,8 @@
     chance: 20
   - item: horn
     chance: 15
+  - item: seal_blubber
+    chance: 25
   learnset:
     replace:
     - slot: 3
@@ -1055,6 +1075,8 @@
     chance: 8
   - item: sea_pearl
     chance: 2
+  - item: veil_jelly
+    chance: 25
   learnset:
     replace:
     - slot: 4
@@ -1116,6 +1138,8 @@
     chance: 25
   - item: sharp_fang
     chance: 10
+  - item: croc_tail
+    chance: 25
   learnset:
     replace:
     - slot: 6
@@ -1419,6 +1443,8 @@
     chance: 25
   - item: ember_core
     chance: 10
+  - item: magma_jelly
+    chance: 30
   learnset:
     replace:
     - slot: 3
@@ -1516,6 +1542,8 @@
     chance: 20
   - item: mana_crystal
     chance: 3
+  - item: sunmane_flank
+    chance: 25
   learnset:
     replace:
     - slot: 9
@@ -1604,6 +1632,8 @@
     chance: 25
   - item: wild_herb
     chance: 15
+  - item: venison
+    chance: 25
   learnset:
     replace:
     - slot: 4
@@ -1668,6 +1698,8 @@
     chance: 40
   - item: raw_meat
     chance: 25
+  - item: thunder_egg
+    chance: 15
   learnset:
     replace:
     - slot: 3
@@ -1831,6 +1863,8 @@
     chance: 25
   - item: frost_crystal
     chance: 12
+  - item: frost_marrow
+    chance: 20
   learnset:
     replace:
     - slot: 6
@@ -1864,6 +1898,8 @@
     chance: 3
   - item: drake_hide
     chance: 12
+  - item: drake_steak
+    chance: 25
   learnset:
     replace:
     - slot: 5
@@ -2086,6 +2122,8 @@
     chance: 25
   - item: sea_pearl
     chance: 5
+  - item: serpent_fillet
+    chance: 25
   learnset:
     replace:
     - slot: 7
@@ -2149,6 +2187,8 @@
     chance: 30
   - item: dragon_scale
     chance: 3
+  - item: hydra_heart
+    chance: 10
   look:
     colour: '#4c7a34'
 - id: 72
@@ -2175,6 +2215,8 @@
     chance: 20
   - item: dragon_scale
     chance: 8
+  - item: wyvern_tenderloin
+    chance: 20
   look:
     colour: '#dff6ff'
 - id: 73
@@ -2200,6 +2242,8 @@
     chance: 25
   - item: reptile_scale
     chance: 15
+  - item: ember_gland
+    chance: 20
   learnset:
     replace:
     - slot: 2
@@ -2263,6 +2307,8 @@
     chance: 10
   - item: drake_hide
     chance: 12
+  - item: wyvern_tenderloin
+    chance: 20
   learnset:
     replace:
     - slot: 6
@@ -2387,6 +2433,8 @@
     chance: 15
   - item: gold_ring
     chance: 10
+  - item: royal_jelly
+    chance: 100
   learnset:
     replace:
     - slot: 2
@@ -2490,6 +2538,8 @@
     chance: 60
   - item: venom_sac
     chance: 30
+  - item: queen_honey
+    chance: 100
   learnset:
     replace:
     - slot: 4
@@ -3104,6 +3154,8 @@
     chance: 80
   - item: aetherite_shard
     chance: 25
+  - item: phoenix_egg
+    chance: 100
   learnset:
     replace:
     - slot: 3
@@ -3263,6 +3315,8 @@
     chance: 80
   - item: sea_pearl
     chance: 60
+  - item: leviathan_steak
+    chance: 100
   learnset:
     replace:
     - slot: 5
@@ -3301,6 +3355,8 @@
     chance: 100
   - item: aetherite_shard
     chance: 30
+  - item: behemoth_rib
+    chance: 100
   look:
     colour: '#5a4632'
 - id: 104
