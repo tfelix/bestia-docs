@@ -29,7 +29,7 @@
   const slug = (name) => name.toLowerCase().trim().replace(/[^a-z0-9]+/g, "_").replace(/^_|_$/g, "") || "new_bestia";
 
   // Toggle chips that pick several values each, by input key.
-  const PICKS = ["habitat", "equipSlots", "armorTypes"];
+  const PICKS = ["habitat", "equipSlots", "armorTypes", "jobs"];
   const picksOf = (key) => root.querySelectorAll(`[data-pick="${key}"]`);
   const setPicks = (key, values) => picksOf(key).forEach((el) => (el.checked = values.includes(el.value)));
 

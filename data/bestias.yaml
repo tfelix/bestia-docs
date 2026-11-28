@@ -11,6 +11,8 @@
 # handTuned keeps the stats of an existing mob YAML and only writes its learnset.
 # worldBoss marks one of the five world bosses: the history decides where and whether it lives, and no den spawns it.
 # battlefield marks a species that only rises on old battlefields at night: no ordinary den spawns it.
+# jobs are the orders a tamed one can take, see Bestia Orders. Every species can FOLLOW and REST. Only bodies with
+# hands CRAFT and BUILD, only strong diggers MINE, and fliers, small and water-bound ones do not TRANSPORT.
 
 - id: 1
   identifier: blob
@@ -31,6 +33,7 @@
   - BEACH
   - TEMPERATE_FOREST
   ai: passive_wanderer
+  jobs: [GUARD, GATHER, FOLLOW, REST]
   description: A quivering lump of jelly that rolls through grass and dunes. It is harmless unless provoked, and leaves sticky
     jelly behind when it bursts.
   inspiredBy: RO Poring
@@ -62,6 +65,7 @@
   - GRASSLAND
   - DRYLAND
   ai: passive_wanderer
+  jobs: [GATHER, FOLLOW, REST]
   description: A plump brown rat that lives in the furrows at the edge of fields. It bolts at the first footstep, so approach
     it from downwind.
   inspiredBy: Rattata
@@ -94,6 +98,7 @@
   - GRASSLAND
   - TEMPERATE_FOREST
   ai: passive_wanderer
+  jobs: [GUARD, GATHER, MINE, TRANSPORT, FOLLOW, REST]
   description: Roots up fields with its broad snout and charges whoever bothers it. Its thick hide shrugs off stones, but
     a sharp gust makes it stumble.
   inspiredBy: RO Savage Babe, Swinub
@@ -126,6 +131,7 @@
   - GRASSLAND
   - TEMPERATE_FOREST
   ai: passive_wanderer
+  jobs: [GATHER, FOLLOW, REST]
   description: A long-eared hopper that comes out to graze at dusk. Tailors in every start town want its soft pelt.
   inspiredBy: RO Lunatic, Buneary
   loot:
@@ -160,6 +166,7 @@
   - TEMPERATE_FOREST
   - GRASSLAND
   ai: passive_wanderer
+  jobs: [GUARD, FOLLOW, REST]
   description: Buries itself so only its leaves show, then screams when stepped on. Watch for grass that grows in odd tufts.
   inspiredBy: RO Mandragora, Oddish
   loot:
@@ -191,6 +198,7 @@
   - TEMPERATE_FOREST
   - TEMPERATE_RAINFOREST
   ai: passive_wanderer
+  jobs: [GUARD, GATHER, FOLLOW, REST]
   description: A fat green caterpillar that chews leaves all day. It spits sticky silk that slows the legs of anyone who bothers
     it.
   inspiredBy: RO Fabre, Caterpie
@@ -223,6 +231,7 @@
   - GRASSLAND
   - RIPARIAN
   ai: aggressive_melee
+  jobs: [GUARD, GATHER, FOLLOW, REST]
   description: A fly that swarms around anything that smells of fruit. Alone it is a nuisance; in a cloud it is a problem.
   inspiredBy: RO Chonchon, Yanma
   loot:
@@ -251,6 +260,7 @@
   - DRYLAND
   - GRASSLAND
   ai: passive_wanderer
+  jobs: [GUARD, GATHER, FOLLOW, REST]
   description: A chick that hatches in sun-baked sand and still wears half its eggshell. Its pecks are warm, so it fears water
     more than swords.
   inspiredBy: RO Picky, Torchic
@@ -281,6 +291,7 @@
   - BEACH
   - OCEAN
   ai: passive_wanderer
+  jobs: [GUARD, GATHER, FOLLOW, REST]
   description: Scuttles sideways along the tideline and snaps at bare toes. Its shell turns blows from the front; strike it
     from the side.
   inspiredBy: RO Vadon, Krabby
@@ -314,6 +325,7 @@
   - LAKE
   - BOG
   ai: passive_wanderer
+  jobs: [GUARD, FOLLOW, REST]
   description: A round frog whose belly swirl hypnotises flies. It croaks loudest just before rain.
   inspiredBy: RO Roda Frog, Poliwag
   loot:
@@ -344,6 +356,7 @@
   - RIPARIAN
   - GEOTHERMAL_BASIN
   ai: passive_wanderer
+  jobs: [FOLLOW, REST]
   description: A golden fish that leaps out of the water for no reason anyone can name. On land it only splashes, and it is
     very proud of it.
   inspiredBy: Magikarp
@@ -377,6 +390,7 @@
   - TUNDRA
   - TAIGA
   ai: passive_wanderer
+  jobs: [GUARD, GATHER, FOLLOW, REST]
   description: A white fox cub that dives head-first into snowdrifts to catch mice. Its fur keeps it warm in deep frost, but
     it pants in summer sun.
   inspiredBy: Alolan Vulpix, RO Baby Desert Wolf
@@ -411,6 +425,7 @@
   - ICE_SHEET
   - TUNDRA
   ai: passive_wanderer
+  jobs: [GUARD, GATHER, TRANSPORT, FOLLOW, REST]
   description: A proud penguin that slides on its belly faster than most can run. It guards the colony's ice holes and pecks
     anyone who comes close.
   inspiredBy: Piplup
@@ -441,6 +456,7 @@
   - DESERT
   - BADLANDS
   ai: aggressive_melee
+  jobs: [GUARD, GATHER, FOLLOW, REST]
   description: Hides under hot stones and stings whatever steps near. Carry an antidote before you lift a rock in the desert.
   inspiredBy: RO Scorpion, Skorupi
   loot:
@@ -466,6 +482,7 @@
   - TROPICAL_SEASONAL_FOREST
   - TROPICAL_RAINFOREST
   ai: passive_wanderer
+  jobs: [GATHER, CRAFT, BUILD, FOLLOW, REST]
   description: A cheeky monkey that snatches shiny things and flees into the canopy. Keep a hand on your purse under the trees.
   inspiredBy: RO Yoyo, Aipom
   loot:
@@ -501,6 +518,7 @@
   - BOG
   - SWAMP
   ai: passive_wanderer
+  jobs: [GUARD, FOLLOW, REST]
   description: A slow snail that leaves a toxic slime trail across the peat. Do not walk where the moss glistens.
   inspiredBy: RO Ambernite, Shellos
   loot:
@@ -531,6 +549,7 @@
   - TROPICAL_RAINFOREST
   - TROPICAL_SEASONAL_FOREST
   ai: passive_wanderer
+  jobs: [GUARD, GATHER, FOLLOW, REST]
   description: A butterfly with wings like stained glass. The dust it sheds makes eyes heavy, so do not fight it in a clearing
     full of them.
   inspiredBy: RO Creamy, Butterfree
@@ -563,6 +582,7 @@
   - TEMPERATE_RAINFOREST
   - BOG
   ai: passive_wanderer
+  jobs: [GUARD, FOLLOW, REST]
   description: A walking mushroom that puffs out spores when hit. Fire makes short work of it, and of the spores too.
   inspiredBy: RO Spore, Foongus
   loot:
@@ -598,6 +618,7 @@
   - BADLANDS
   - VOLCANIC_FIELD
   ai: passive_wanderer
+  jobs: [GUARD, GATHER, MINE, BUILD, FOLLOW, REST]
   description: A rock with arms that rolls downhill on purpose. It looks like any other stone until it gets up.
   inspiredBy: Geodude
   loot:
@@ -631,6 +652,7 @@
   - BOG
   - SWAMP
   ai: aggressive_melee
+  jobs: [GUARD, FOLLOW, REST]
   description: A pale flame that bobs over the marsh at night and leads travellers astray. Plain blows pass through it; magic
     does not.
   inspiredBy: RO Whisper, Litwick
@@ -669,6 +691,7 @@
   - TEMPERATE_FOREST
   - GRASSLAND
   ai: passive_wanderer
+  jobs: [GUARD, GATHER, FOLLOW, REST]
   description: Curls into a spiky ball when threatened and rolls at its attacker. Hit it before it curls up.
   inspiredBy: Sandshrew
   loot:
@@ -700,6 +723,7 @@
   - TEMPERATE_FOREST
   - TEMPERATE_RAINFOREST
   ai: passive_wanderer
+  jobs: [GUARD, GATHER, CRAFT, FOLLOW, REST]
   description: A raccoon that balances a leaf on its head and swears it is a disguise. It hoards mushrooms and trinkets in
     hollow logs.
   inspiredBy: RO Smokie, Zigzagoon
@@ -735,6 +759,7 @@
   - DRYLAND
   - ALPINE
   ai: aggressive_melee
+  jobs: [GUARD, GATHER, FOLLOW, REST]
   description: A ragged hawk that dives on anything smaller than itself, and some things that are not. It strikes out of the
     sun, so look up on open ground.
   inspiredBy: Spearow, Fearow
@@ -768,6 +793,7 @@
   - DRYLAND
   - TROPICAL_SEASONAL_FOREST
   ai: passive_wanderer
+  jobs: [GUARD, GATHER, TRANSPORT, FOLLOW, REST]
   description: Grazes in great herds that stamp the plains flat. Harm one calf and the whole herd turns on you.
   inspiredBy: Tauros
   loot:
@@ -798,6 +824,7 @@
   - TAIGA
   - TEMPERATE_FOREST
   ai: aggressive_melee
+  jobs: [GUARD, GATHER, TRANSPORT, FOLLOW, REST]
   description: Grey wolves that hunt in packs under the pines. They circle before they bite; keep your back to a tree.
   inspiredBy: RO Wolf, Mightyena
   loot:
@@ -828,6 +855,7 @@
   habitat:
   - TAIGA
   ai: aggressive_melee
+  jobs: [GUARD, FOLLOW, REST]
   description: Looks like a pine cone on a branch until it drops on your head. It throws cones that burst into splinters.
   inspiredBy: Pineco
   loot:
@@ -853,6 +881,7 @@
   - TEMPERATE_FOREST
   - TAIGA
   ai: passive_wanderer
+  jobs: [GUARD, GATHER, MINE, TRANSPORT, FOLLOW, REST]
   description: A huge bear that raids bee nests and sleeps it off in the sun. Wake it at your own risk; it is far quicker
     than it looks.
   inspiredBy: RO Bigfoot, Ursaring
@@ -885,6 +914,7 @@
   - ALPINE
   - BADLANDS
   ai: aggressive_melee
+  jobs: [GUARD, GATHER, TRANSPORT, FOLLOW, REST]
   description: Leaps from ledge to ledge where no path exists. It charges from above and tries to knock climbers off the cliff.
   inspiredBy: Gogoat
   loot:
@@ -916,6 +946,7 @@
   - ALPINE
   - BADLANDS
   ai: aggressive_melee
+  jobs: [GUARD, GATHER, FOLLOW, REST]
   description: Half woman, half vulture, all temper. Harpies nest on cliff tops and shriek to call the flock.
   inspiredBy: RO Harpy, Braviary
   loot:
@@ -946,6 +977,7 @@
   - TUNDRA
   - ALPINE
   ai: passive_wanderer
+  jobs: [GATHER, TRANSPORT, FOLLOW, REST]
   description: A shaggy yak whose wool never freezes. Nomads follow its herds, and its wool sells well in the warm south.
   inspiredBy: Mamoswine, Bouffalant
   loot:
@@ -979,6 +1011,7 @@
   - TUNDRA
   - ICE_SHEET
   ai: aggressive_melee
+  jobs: [GUARD, FOLLOW, REST]
   description: A snowman that came alive in a blizzard and never thawed. Fire melts its grin off fast, and it knows to keep
     its distance.
   inspiredBy: RO Snowier, Snorunt
@@ -1012,6 +1045,7 @@
   - OCEAN
   - BEACH
   ai: passive_wanderer
+  jobs: [GUARD, FOLLOW, REST]
   description: A walrus that dozes on ice floes in big groups. Mothers with pups attack anything that comes near.
   inspiredBy: Walrein
   loot:
@@ -1045,6 +1079,7 @@
   - OCEAN
   - BEACH
   ai: passive_wanderer
+  jobs: [GUARD, FOLLOW, REST]
   description: A see-through jellyfish that washes up after storms. Its threads sting and numb the limbs, so do not wade in
     after a storm.
   inspiredBy: RO Marina, Tentacool
@@ -1077,6 +1112,7 @@
   essence: {group: garment, effect: element_veil, target: NORMAL, drawback: max_mana}
   habitat: []
   ai: aggressive_melee
+  jobs: [GUARD, FOLLOW, REST]
   description: The rage of a whole battle gathered into one shape of smoke and torn banners. It walks the worst fields on
     moonless nights, and the light in its chest is the last thing many soldiers saw.
   inspiredBy: RO Dark Illusion, Nazgul
@@ -1107,6 +1143,7 @@
   - SWAMP
   - LAKE
   ai: aggressive_melee
+  jobs: [GUARD, GATHER, MINE, TRANSPORT, FOLLOW, REST]
   description: 'Lies as still as a log in shallow water. River folk say: if a log has eyes, walk the other way.'
   inspiredBy: Feraligatr
   loot:
@@ -1138,6 +1175,7 @@
   - SWAMP
   - BOG
   ai: aggressive_melee
+  jobs: [GUARD, FOLLOW, REST]
   description: A swollen toad with poison sacs in its cheeks. It puffs up before it spits; that is your moment to move.
   inspiredBy: RO Toad, Toxicroak
   loot:
@@ -1164,6 +1202,7 @@
   - SWAMP
   - LAKE
   ai: aggressive_melee
+  jobs: [GUARD, FOLLOW, REST]
   description: A peat-soaked corpse that crawls out of the bog when the mist is thick. Holy light and fire send it back down.
   inspiredBy: RO Zombie
   loot:
@@ -1191,6 +1230,7 @@
   - DESERT
   - DRYLAND
   ai: passive_wanderer
+  jobs: [GUARD, GATHER, FOLLOW, REST]
   description: Rolls balls of dung across the dunes and buries them with lost coins inside. Dig where it digs.
   inspiredBy: RO Thief Bug, Dwebble
   loot:
@@ -1220,6 +1260,7 @@
   - DESERT
   - BADLANDS
   ai: aggressive_melee
+  jobs: [GUARD, GATHER, CRAFT, MINE, BUILD, TRANSPORT, FOLLOW, REST]
   description: A wrapped corpse that guards tombs long after its masters turned to dust. Its loose bandages burn well.
   inspiredBy: RO Mummy, Cofagrigus
   loot:
@@ -1247,6 +1288,7 @@
   - DESERT
   - DRYLAND
   ai: aggressive_melee
+  jobs: [GUARD, FOLLOW, REST]
   description: A sand viper that moves sideways and leaves strange tracks on the dunes. Its venom slows the heart, so a cure
     is worth its weight in water.
   inspiredBy: RO Side Winder, Seviper
@@ -1277,6 +1319,7 @@
   - DRYLAND
   - BADLANDS
   ai: aggressive_melee
+  jobs: [GUARD, GATHER, TRANSPORT, FOLLOW, REST]
   description: A spotted scavenger whose laugh carries far. Where the cackling starts, something weak is about to die; make
     sure it is not you.
   inspiredBy: RO Desert Wolf, Mightyena
@@ -1312,6 +1355,7 @@
   - DESERT
   - VOLCANIC_FIELD
   ai: passive_wanderer
+  jobs: [GUARD, GATHER, TRANSPORT, FOLLOW, REST]
   description: A lizard that soaks up sun on hot rocks until its scales glow. Hunt it in the cold morning, before it has warmed
     up.
   inspiredBy: Salandit, Charmander
@@ -1344,6 +1388,7 @@
   - BADLANDS
   - ALPINE
   ai: passive_wanderer
+  jobs: [GUARD, GATHER, MINE, TRANSPORT, FOLLOW, REST]
   description: A walking hill of stone, slow to anger and slower to stop. Wind cuts into its cracks; blades just ring.
   inspiredBy: RO Golem, Golem
   loot:
@@ -1377,6 +1422,7 @@
   - VOLCANIC_FIELD
   - BADLANDS
   ai: aggressive_melee
+  jobs: [GUARD, GATHER, TRANSPORT, FOLLOW, REST]
   description: A pup with an ember for a nose. Wild ones guard hot vents in packs; tamed ones make the best watchdogs alive.
   inspiredBy: Growlithe
   loot:
@@ -1411,6 +1457,7 @@
   - VOLCANIC_FIELD
   - GEOTHERMAL_BASIN
   ai: passive_wanderer
+  jobs: [GUARD, FOLLOW, REST]
   description: A blob of living lava that oozes over cooling rock. It leaves a burning trail, so never follow it in light
     boots.
   inspiredBy: Slugma
@@ -1442,6 +1489,7 @@
   - GEOTHERMAL_BASIN
   - LAKE
   ai: passive_wanderer
+  jobs: [GUARD, GATHER, TRANSPORT, FOLLOW, REST]
   description: A turtle that sleeps in hot springs with only its nose above water. Startle it and it shoots a jet of scalding
     water.
   inspiredBy: Squirtle, Torkoal
@@ -1472,6 +1520,7 @@
   - GEOTHERMAL_BASIN
   - VOLCANIC_FIELD
   ai: aggressive_melee
+  jobs: [GUARD, GATHER, CRAFT, BUILD, FOLLOW, REST]
   description: A little horned trickster that smells of rotten eggs. It plays pranks on travellers by the vents, and some
     pranks explode.
   inspiredBy: RO Deviruchi, Impidimp
@@ -1506,6 +1555,7 @@
   - TROPICAL_SEASONAL_FOREST
   - DRYLAND
   ai: aggressive_melee
+  jobs: [GUARD, GATHER, TRANSPORT, FOLLOW, REST]
   description: A lion with a mane that glows like dawn, leading its pride over the savanna. Shadow creatures avoid its land,
     and so should you.
   inspiredBy: Pyroar, Solgaleo
@@ -1539,6 +1589,7 @@
   - TROPICAL_SEASONAL_FOREST
   - TROPICAL_RAINFOREST
   ai: aggressive_melee
+  jobs: [GUARD, GATHER, FOLLOW, REST]
   description: A mantis with sickle arms that waits motionless in tall grass. It is fast but light; heavy blows knock it flat.
   inspiredBy: RO Mantis, Scyther
   loot:
@@ -1567,6 +1618,7 @@
   - TROPICAL_RAINFOREST
   - SWAMP
   ai: aggressive_melee
+  jobs: [GUARD, FOLLOW, REST]
   description: A rooted flytrap that bites anything in reach. It cannot move, so fight it from afar.
   inspiredBy: RO Flora, Victreebel
   loot:
@@ -1594,6 +1646,7 @@
   - TEMPERATE_RAINFOREST
   - TAIGA
   ai: passive_wanderer
+  jobs: [GUARD, GATHER, TRANSPORT, FOLLOW, REST]
   description: A stag with ferns growing in its antlers. It is gentle, but in rutting season it fights anything with horns,
     and anything without.
   inspiredBy: Sawsbuck
@@ -1627,6 +1680,7 @@
   - ALPINE
   - BADLANDS
   ai: aggressive_melee
+  jobs: [GUARD, GATHER, CRAFT, MINE, BUILD, FOLLOW, REST]
   description: Small dog-faced miners that dig for ore and fight over every scrap. Their camps are full of stolen tools.
   inspiredBy: RO Kobold
   loot:
@@ -1660,6 +1714,7 @@
   - GRASSLAND
   - DRYLAND
   ai: passive_wanderer
+  jobs: [GUARD, GATHER, TRANSPORT, FOLLOW, REST]
   description: A huge flightless bird that runs fastest in a thunderstorm. Riders dream of taming one; most only ever see
     its tail.
   inspiredBy: RO Grand Peco, Zebstrika
@@ -1691,6 +1746,7 @@
   - SWAMP
   - TEMPERATE_RAINFOREST
   ai: aggressive_melee
+  jobs: [GUARD, FOLLOW, REST]
   description: An old willow that drags its branches through the water and drowns what it catches. Fire is the only thing
     it fears.
   inspiredBy: RO Elder Willow, Trevenant
@@ -1727,6 +1783,7 @@
   - DESERT
   - DRYLAND
   ai: passive_wanderer
+  jobs: [GUARD, FOLLOW, REST]
   description: A cactus that walks to new water at night. It fires needles when touched, and its flesh holds water for thirsty
     travellers.
   inspiredBy: RO Muka, Cacturne
@@ -1759,6 +1816,7 @@
   - TAIGA
   - TEMPERATE_FOREST
   ai: aggressive_melee
+  jobs: [GUARD, GATHER, TRANSPORT, FOLLOW, REST]
   description: A black lynx that hunts only in darkness and vanishes into its own shadow. Carry a light; it will not attack
     inside one.
   inspiredBy: Absol
@@ -1793,6 +1851,7 @@
   - TROPICAL_RAINFOREST
   - SWAMP
   ai: aggressive_melee
+  jobs: [GUARD, FOLLOW, REST]
   description: A giant snake the colour of jungle vines. It drops from the canopy and squeezes; a friend nearby is the best
     cure.
   inspiredBy: RO Anacondaq, Arbok
@@ -1822,6 +1881,7 @@
   - ALPINE
   - ICE_SHEET
   ai: aggressive_melee
+  jobs: [GUARD, GATHER, CRAFT, MINE, BUILD, TRANSPORT, FOLLOW, REST]
   description: A shaggy giant whose roar starts avalanches. It hurls blocks of ice, so never let it take the high ground.
   inspiredBy: RO Sasquatch, Abomasnow
   loot:
@@ -1853,6 +1913,7 @@
   - GEOTHERMAL_BASIN
   - VOLCANIC_FIELD
   ai: aggressive_melee
+  jobs: [GUARD, GATHER, TRANSPORT, FOLLOW, REST]
   description: A slender drake that sleeps in boiling pools and breathes steam. Its scales stay warm long after it dies.
   inspiredBy: Dragonair
   loot:
@@ -1886,6 +1947,7 @@
   - BEACH
   - OCEAN
   ai: aggressive_melee
+  jobs: [GUARD, GATHER, CRAFT, BUILD, TRANSPORT, FOLLOW, REST]
   description: Fish-folk with tridents who raid the coast at high tide. They flee to the sea when hurt, so finish the fight
     on the sand.
   inspiredBy: RO Merman
@@ -1918,6 +1980,7 @@
   - COLD_DESERT
   - DESERT
   ai: aggressive_melee
+  jobs: [GUARD, FOLLOW, REST]
   description: A whirl of dust and an old grudge drifting over cold dunes. Ordinary weapons pass through it; enchanted ones
     do not.
   inspiredBy: RO Wraith, Dusclops
@@ -1946,6 +2009,7 @@
   - BADLANDS
   - ALPINE
   ai: aggressive_melee
+  jobs: [GUARD, GATHER, MINE, BUILD, TRANSPORT, FOLLOW, REST]
   description: A huge brute that clubs first and thinks never. Its swings are wide; stay close and keep moving.
   inspiredBy: RO High Orc, Machamp
   loot:
@@ -1979,6 +2043,7 @@
   - LAKE
   - RIPARIAN
   ai: passive_wanderer
+  jobs: [GUARD, GATHER, TRANSPORT, FOLLOW, REST]
   description: A water horse that waits by the shore, calm and saddled. Whoever climbs on is dragged into the lake.
   inspiredBy: Keldeo
   loot:
@@ -2010,6 +2075,7 @@
   - TEMPERATE_RAINFOREST
   - TEMPERATE_FOREST
   ai: passive_wanderer
+  jobs: [GATHER, TRANSPORT, FOLLOW, REST]
   description: A pale unicorn seen only on moonlit nights. It flees at the sight of drawn weapons; only a gentle master can
     tame it.
   inspiredBy: Galarian Rapidash
@@ -2045,6 +2111,7 @@
   - TROPICAL_SEASONAL_FOREST
   - TROPICAL_RAINFOREST
   ai: aggressive_melee
+  jobs: [GUARD, GATHER, CRAFT, MINE, BUILD, TRANSPORT, FOLLOW, REST]
   description: A silver-backed ape that beats its chest like thunder. It throws whole branches and fights harder when its
     troop is near.
   inspiredBy: Primeape, Passimian
@@ -2077,6 +2144,7 @@
   - OCEAN
   - BEACH
   ai: aggressive_melee
+  jobs: [GUARD, FOLLOW, REST]
   description: A sea serpent that rises from the surf during storms. Fishers wait for calm weather for a reason.
   inspiredBy: RO Strouf, Gyarados
   loot:
@@ -2108,6 +2176,7 @@
   - BOG
   - SWAMP
   ai: aggressive_melee
+  jobs: [GUARD, FOLLOW, REST]
   description: A weeping ghost whose wail freezes the blood. Cover your ears and close in fast.
   inspiredBy: RO Banshee, Mismagius
   loot:
@@ -2140,6 +2209,7 @@
   - SWAMP
   - BOG
   ai: aggressive_melee
+  jobs: [GUARD, GATHER, MINE, TRANSPORT, FOLLOW, REST]
   description: A many-headed swamp lizard that bites with each head in turn. Burn the stumps, or the heads grow back.
   inspiredBy: RO Hydra, Hydreigon
   loot:
@@ -2167,6 +2237,7 @@
   - ICE_SHEET
   - ALPINE
   ai: aggressive_melee
+  jobs: [GUARD, GATHER, FOLLOW, REST]
   description: A white wyvern that nests in glacier cracks and breathes freezing wind. It must land to breathe again; that
     is when you strike.
   inspiredBy: RO Acidus, Salamence
@@ -2192,6 +2263,7 @@
   habitat:
   - VOLCANIC_FIELD
   ai: aggressive_melee
+  jobs: [GUARD, FOLLOW, REST]
   description: A lizard of pure flame that swims through lava. Water hurts it badly; getting close enough to splash it is
     the hard part.
   inspiredBy: RO Salamander, Charmeleon
@@ -2223,6 +2295,7 @@
   - DESERT
   - COLD_DESERT
   ai: aggressive_melee
+  jobs: [GUARD, MINE, FOLLOW, REST]
   description: A sand serpent that hunts by feeling footsteps through the dunes. Stand still and it may pass you by.
   inspiredBy: Sandaconda, Steelix
   loot:
@@ -2254,6 +2327,7 @@
   - BADLANDS
   - ALPINE
   ai: aggressive_melee
+  jobs: [GUARD, GATHER, FOLLOW, REST]
   description: A wyvern that rides the hot winds out of the canyons. Its screech knocks climbers off the walls.
   inspiredBy: RO Ferus, Noivern
   loot:
@@ -2283,6 +2357,7 @@
   essence: {group: garment, effect: mist_veil, drawback: def}
   habitat: []
   ai: aggressive_melee
+  jobs: [GUARD, FOLLOW, REST]
   description: A tangle of limbs from the other side of the Rift. It flickers between worlds; strike when it is solid.
   inspiredBy: RO Dark Illusion, Nihilego
   loot:
@@ -2314,6 +2389,7 @@
   essence: {group: shield, effect: ward, target: UNDEAD}
   habitat: []
   ai: aggressive_melee
+  jobs: [GUARD, GATHER, CRAFT, MINE, BUILD, TRANSPORT, FOLLOW, REST]
   description: Empty armour still holding the line it swore to hold before the Rift. It never retreats and never tires; holy
     blades break its oath.
   inspiredBy: RO Raydric, Aegislash
@@ -2341,6 +2417,7 @@
   essence: {group: headgear, effect: wisdom}
   habitat: []
   ai: aggressive_melee
+  jobs: [GUARD, GATHER, CRAFT, BUILD, FOLLOW, REST]
   description: An angel the corruption twisted into a mockery of itself. Its halo has turned black, and it hates light.
   inspiredBy: RO Fallen Bishop, Archangeling
   loot:
@@ -2375,6 +2452,7 @@
   - GRASSLAND
   - RIPARIAN
   ai: aggressive_melee
+  jobs: [GUARD, GATHER, FOLLOW, REST]
   description: When enough blobs gather they merge into a quivering queen with a jelly crown. She splits off blobs when hurt,
     so clear the small ones fast.
   inspiredBy: RO Angeling and Deviling, Ditto
@@ -2412,6 +2490,7 @@
   - DESERT
   - BADLANDS
   ai: aggressive_melee
+  jobs: [GUARD, GATHER, FOLLOW, REST]
   description: A beetle with a shell of beaten gold that nests in buried treasure vaults. Magic slides off its shell; steel
     does not.
   inspiredBy: RO Golden Thief Bug
@@ -2447,6 +2526,7 @@
   - TROPICAL_SEASONAL_FOREST
   - DRYLAND
   ai: aggressive_melee
+  jobs: [GUARD, GATHER, TRANSPORT, FOLLOW, REST]
   description: A tiger whose stripes burn like coals. The savanna burns where it hunts, and it waits for prey in the smoke.
   inspiredBy: RO Eddga, Incineroar
   loot:
@@ -2481,6 +2561,7 @@
   - TEMPERATE_FOREST
   - GRASSLAND
   ai: aggressive_melee
+  jobs: [GUARD, GATHER, FOLLOW, REST]
   description: Queen of a hive the size of a house. She never fights alone; a cloud of guards follows her.
   inspiredBy: RO Mistress, Vespiquen
   loot:
@@ -2515,6 +2596,7 @@
   - TEMPERATE_RAINFOREST
   - TAIGA
   ai: aggressive_melee
+  jobs: [GUARD, GATHER, CRAFT, MINE, BUILD, TRANSPORT, FOLLOW, REST]
   description: Warlord of the forest clans, in armour made of trophies. His war horn calls every orc nearby.
   inspiredBy: RO Orc Lord, Orc Hero
   loot:
@@ -2545,6 +2627,7 @@
   - LAKE
   - RIPARIAN
   ai: passive_wanderer
+  jobs: [GUARD, FOLLOW, REST]
   description: A spirit of clear water who sings on still lakes at dawn. She is calm until the lake is fouled, then she floods
     the shore.
   inspiredBy: Suicune, Primarina
@@ -2585,6 +2668,7 @@
   - OCEAN
   - BEACH
   ai: aggressive_melee
+  jobs: [GUARD, FOLLOW, REST]
   description: The ghost captain of a wrecked ship, still giving orders to a dead crew. He comes with the fog, and his crew
     comes with him.
   inspiredBy: RO Drake, Dhelmise
@@ -2616,6 +2700,7 @@
   - TEMPERATE_FOREST
   - ALPINE
   ai: aggressive_melee
+  jobs: [GUARD, GATHER, TRANSPORT, FOLLOW, REST]
   description: A fox with nine flaming tails who jumps between old shrines. Each tail is a spell; count them as they go out.
   inspiredBy: RO Moonlight Flower, Ninetales
   loot:
@@ -2650,6 +2735,7 @@
   - TEMPERATE_RAINFOREST
   - TEMPERATE_FOREST
   ai: passive_wanderer
+  jobs: [GUARD, FOLLOW, REST]
   description: The oldest tree in the forest, which walks only once in many years. Whole groves grow on its back, and it wakes
     angry when they are cut.
   inspiredBy: Torterra
@@ -2690,6 +2776,7 @@
   habitat:
   - BOG
   ai: aggressive_melee
+  jobs: [GUARD, FOLLOW, REST]
   description: The great flame every lantern wisp comes from. Put out her wisps and she grows weak.
   inspiredBy: RO Whisper, Chandelure
   loot:
@@ -2724,6 +2811,7 @@
   habitat:
   - DESERT
   ai: aggressive_melee
+  jobs: [GUARD, GATHER, CRAFT, BUILD, TRANSPORT, FOLLOW, REST]
   description: A buried king who rises when his tomb is disturbed. His curse follows whoever takes his gold.
   inspiredBy: RO Pharaoh and Osiris, Cofagrigus
   loot:
@@ -2754,6 +2842,7 @@
   - SWAMP
   - TROPICAL_RAINFOREST
   ai: aggressive_melee
+  jobs: [GUARD, FOLLOW, REST]
   description: A giant flower whose stench carries for miles. Its pollen poisons the air around it; fight upwind.
   inspiredBy: RO Rafflesia, Vileplume
   loot:
@@ -2788,6 +2877,7 @@
   habitat:
   - GEOTHERMAL_BASIN
   ai: aggressive_melee
+  jobs: [GUARD, GATHER, TRANSPORT, FOLLOW, REST]
   description: A dragon that sleeps in sulphur vents and breathes poison gas. Where the hot springs turn yellow, it is near.
   inspiredBy: RO Detardeurus, Eternatus
   loot:
@@ -2822,6 +2912,7 @@
   - TAIGA
   - TEMPERATE_RAINFOREST
   ai: passive_wanderer
+  jobs: [GUARD, GATHER, TRANSPORT, FOLLOW, REST]
   description: A white stag with antlers of light, the old guardian of the forest. Shadow creatures cannot stand near it.
   inspiredBy: Xerneas
   loot:
@@ -2860,6 +2951,7 @@
   - TUNDRA
   - TAIGA
   ai: aggressive_melee
+  jobs: [GUARD, GATHER, TRANSPORT, FOLLOW, REST]
   description: A giant wolf of ice whose howl brings blizzards. The wolf packs of the north follow it.
   inspiredBy: RO Garm, Zacian
   loot:
@@ -2895,6 +2987,7 @@
   habitat:
   - ALPINE
   ai: aggressive_melee
+  jobs: [GUARD, GATHER, FOLLOW, REST]
   description: A huge bird that nests on peaks and calls lightning with its wings. Earth magic grounds it.
   inspiredBy: Zapdos
   loot:
@@ -2930,6 +3023,7 @@
   habitat:
   - ICE_SHEET
   ai: aggressive_melee
+  jobs: [GUARD, GATHER, MINE, TRANSPORT, FOLLOW, REST]
   description: A mammoth older than the ice it walks on. It sleeps frozen for years and wakes up hungry.
   inspiredBy: RO Ktullanux, Mamoswine
   loot:
@@ -2963,6 +3057,7 @@
   habitat:
   - BADLANDS
   ai: aggressive_melee
+  jobs: [GUARD, GATHER, CRAFT, MINE, BUILD, TRANSPORT, FOLLOW, REST]
   description: A goat-headed demon with a huge scythe who preaches to the corrupted. Its sermons summon lesser demons.
   inspiredBy: RO Baphomet
   loot:
@@ -2995,6 +3090,7 @@
   - VOLCANIC_FIELD
   - GEOTHERMAL_BASIN
   ai: aggressive_melee
+  jobs: [GUARD, MINE, FOLLOW, REST]
   description: A walking volcano that sleeps under the lava fields. When it wakes, the ground cracks and new vents open.
   inspiredBy: Groudon, Heatran
   loot:
@@ -3031,6 +3127,7 @@
   habitat:
   - TROPICAL_RAINFOREST
   ai: passive_wanderer
+  jobs: [GUARD, GATHER, FOLLOW, REST]
   description: A green dragon that circles above the rain clouds and rarely lands. It only comes down when the jungle burns.
   inspiredBy: Rayquaza
   loot:
@@ -3063,6 +3160,7 @@
     text: "Wild Undead and Demons never attack you first."
   habitat: []
   ai: aggressive_melee
+  jobs: [GUARD, GATHER, CRAFT, BUILD, TRANSPORT, FOLLOW, REST]
   description: The king who ruled before the Rift and refused to die with his kingdom. He holds the corrupted land with an
     army of the dead.
   inspiredBy: RO Lord of Death and Dark Lord, Giratina
@@ -3094,6 +3192,7 @@
   habitat:
   - VOLCANIC_FIELD
   ai: aggressive_melee
+  jobs: [GUARD, FOLLOW, REST]
   description: A bird of living flame that rises from fresh lava once in a long while. It is reborn from its ashes, so the
     fight is never quite over.
   inspiredBy: Ho-Oh, Moltres
@@ -3129,6 +3228,7 @@
   essence: {group: weapon, effect: precision}
   habitat: []
   ai: aggressive_melee
+  jobs: [GUARD, GATHER, CRAFT, MINE, BUILD, TRANSPORT, FOLLOW, REST]
   description: A farmhand called up for a war that was lost long ago, still in its rotten jerkin. It rises on old
     battlefields when the moon is up and swings whatever it was given.
   inspiredBy: RO Zombie, Soldier Skeleton
@@ -3156,6 +3256,7 @@
   essence: {group: garment, effect: mist_veil}
   habitat: []
   ai: aggressive_melee
+  jobs: [GUARD, FOLLOW, REST]
   description: A cold flame over a grave nobody dug. It drifts toward anyone who comes near and drinks their warmth.
   inspiredBy: RO Whisper, Will-o'-the-wisp
   loot:
@@ -3187,6 +3288,7 @@
   essence: {group: shield, effect: ward, target: HUMANOID}
   habitat: []
   ai: aggressive_melee
+  jobs: [GUARD, GATHER, CRAFT, MINE, BUILD, TRANSPORT, FOLLOW, REST]
   description: A captain who swore to hold a field and died holding it. The oath outlived the flesh, and it still
     challenges anyone who crosses its line.
   inspiredBy: RO Raydric, Dullahan
@@ -3220,6 +3322,7 @@
   habitat:
   - COLD_DESERT
   ai: aggressive_melee
+  jobs: [GUARD, GATHER, TRANSPORT, FOLLOW, REST]
   description: The bones of an ancient dragon, raised by the corruption. It cannot be poisoned or frightened, but it can be
     broken.
   inspiredBy: RO Detardeurus, fossil Pokémon
@@ -3254,6 +3357,7 @@
   habitat:
   - OCEAN
   ai: aggressive_melee
+  jobs: [GUARD, FOLLOW, REST]
   description: A sea dragon as long as an island that surfaces only far out at sea. The waves it makes reach every coast.
   inspiredBy: Kyogre
   loot:
@@ -3289,6 +3393,7 @@
   - GRASSLAND
   - DRYLAND
   ai: aggressive_melee
+  jobs: [GUARD, GATHER, MINE, TRANSPORT, FOLLOW, REST]
   description: A horned giant that walks the plains once in an age and leaves valleys in its tracks. The game is named after
     it; nobody has brought one down yet.
   inspiredBy: Groudon, Final Fantasy
@@ -3322,6 +3427,7 @@
   habitat:
   - VOLCANIC_FIELD
   ai: aggressive_melee
+  jobs: [GUARD, MINE, FOLLOW, REST]
   description: A living mass of magma and slag that rules the deep vents. Where it has passed, the cave walls still glow
     for years.
   inspiredBy: RO Ifrit, Heatran
@@ -3359,6 +3465,7 @@
   - BOG
   - SWAMP
   ai: aggressive_melee
+  jobs: [GUARD, FOLLOW, REST]
   description: A vast, rotting bog-thing that buds lesser creatures from its flanks. The marsh around its lair is never
     quiet.
   inspiredBy: RO Mandragora queen, Shuma-Gorath
@@ -3388,6 +3495,7 @@
     text: "1% chance on hit to drop a target that is not a boss to 1 HP."
   habitat: []
   ai: aggressive_melee
+  jobs: [GUARD, GATHER, CRAFT, BUILD, TRANSPORT, FOLLOW, REST]
   description: A towering figure in an oversized black cloak that hides its hands and feet. Its head is an orange skull with
     red glowing eyes and a mouth full of fangs. It is the master of doom, and also of more doom.
   inspiredBy: RO Lord of Death, Dusknoir
@@ -3419,6 +3527,7 @@
   essence: {group: headgear, effect: clear_mind, target: BLIND}
   habitat: []
   ai: passive_wanderer
+  jobs: [GUARD, FOLLOW, REST]
   description: A pumpkin with a candle inside and a grin nobody carved. It only grows on the night the dead walk.
   inspiredBy: RO Jakk, Pumpkaboo
   loot:
@@ -3449,6 +3558,7 @@
   essence: {group: armor, effect: hardy}
   habitat: []
   ai: passive_wanderer
+  jobs: [GUARD, GATHER, FOLLOW, REST]
   description: A present with a bow that hops through the snow at midwinter. Open it gently; sometimes it bites.
   inspiredBy: RO Antonio and Mimic, Delibird
   loot:
@@ -3476,6 +3586,7 @@
   essence: {group: accessory, effect: tamer}
   habitat: []
   ai: passive_wanderer
+  jobs: [GATHER, FOLLOW, REST]
   description: A hare with blossoms in its ears that hides painted eggs in spring meadows. Find its eggs and it may come to
     you.
   inspiredBy: Buneary, Togepi
@@ -3510,6 +3621,7 @@
   essence: {group: garment, effect: element_veil, target: NORMAL}
   habitat: []
   ai: passive_wanderer
+  jobs: [GUARD, FOLLOW, REST]
   description: It looks exactly like a blob. It is not a blob. Your sword passes right through it, which a real blob would
     never allow.
   inspiredBy: Ditto, RO Ghostring

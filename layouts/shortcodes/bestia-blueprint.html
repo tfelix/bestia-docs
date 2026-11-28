@@ -141,8 +141,8 @@
 
   <section class="bp-step card shadow-sm mb-4" id="bp-step-equipment">
     <div class="card-body">
-      <h5 class="card-title"><span class="bp-step-no">8</span>Equipment <a class="bp-method" href="#10-equipment">method</a></h5>
-      <p class="bp-hint">What it can wear once tamed. The kind fills in a preset. None of this changes the numbers.</p>
+      <h5 class="card-title"><span class="bp-step-no">8</span>Equipment and jobs <a class="bp-method" href="#10-equipment">method</a></h5>
+      <p class="bp-hint">What it can wear and which orders it can take once tamed. The kind fills in a preset for the equipment. None of this changes the numbers.</p>
       <div class="bp-fields">
         <div class="bp-wide">
           <div class="form-label small mb-1" id="bp-slots-label">Equipment slots</div>
@@ -171,6 +171,15 @@
         </div>
       </div>
       <p class="small text-body-secondary mt-2 mb-0"><button type="button" class="btn btn-link btn-sm p-0 align-baseline" id="bp-equipment-reset">Use the preset for <span data-out="kind"></span></button></p>
+      <div class="form-label small mt-3 mb-1" id="bp-jobs-label">Jobs <span class="text-body-secondary">(hover one to see what it needs, or read <a href="#12-jobs">Jobs</a>)</span></div>
+      <div class="bp-chips" role="group" aria-labelledby="bp-jobs-label">
+        <div class="bp-chip-group">
+          {{- range $d.jobs }}
+          <input type="checkbox" class="btn-check" id="bp-job-{{ .id }}" value="{{ .id }}" data-pick="jobs" autocomplete="off"{{ if in (slice "FOLLOW" "REST") .id }} checked{{ end }}>
+          <label class="btn btn-sm btn-outline-secondary" for="bp-job-{{ .id }}" data-bs-toggle="tooltip" data-bs-custom-class="bp-tooltip" data-bs-title="{{ .summary }}">{{ .label }}</label>
+          {{- end }}
+        </div>
+      </div>
     </div>
   </section>
 
