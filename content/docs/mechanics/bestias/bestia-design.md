@@ -445,6 +445,20 @@ essence: {group: weapon, effect: bane, target: BEAST}
 Pick what fits the creature, not what is strongest. A turtle coats armor, a mole digs faster, a wolf makes wounds
 bleed. A boss gets a hand-made essence instead, see [Boss Essences](/docs/mechanics/items-crafting/essences/#boss-essences).
 
+# 12. Jobs
+
+A tamed bestia takes [orders](/docs/mechanics/bestias/bestia-orders/) while its master is away. The row in
+`data/bestias.yaml` lists the jobs its body allows, and the server refuses any other:
+
+```yaml
+jobs: [GUARD, GATHER, MINE, TRANSPORT, FOLLOW, REST]
+```
+
+Every species can follow and rest. Go by the body, not the kind: a raccoon's paws craft, a snake carries nothing. A
+species without the key can only follow and rest.
+
+{{< blueprint-table name="jobs" >}}
+
 # Worked example: a Lv 2 Burrow Boar
 
 A starter-ring bestia that a new player should be able to fight alone. Lv 2, normal tier, brute, EARTH 1.

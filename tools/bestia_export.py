@@ -331,6 +331,7 @@ def mob_yaml(species, bp, learned, active):
         f"default-attack: {bp['defaultAttack']['kind'].upper()}",
         f"aspd: {bp['defaultAttack']['aspd']}",
         f"ai: {i['ai']}",
+        *([jobs_line(i)] if i.get("jobs") else []),
         f"attack-power: {bp['attackPower']}",
         f"weight: {weight_of(i)}",
         f"health: {bp['hp']}",
@@ -404,6 +405,18 @@ def replace_essence(path, species):
     line = essence_line(species)
     if line:
         content = re.sub(r"(?m)^(size: .*\n)", lambda m: m.group(1) + line + "\n", content, count=1)
+    path.write_text(content)
+
+
+def jobs_line(species):
+    return f"jobs: [{', '.join(species['jobs'])}]"
+
+
+def replace_jobs(path, species):
+    """Writes the jobs line after `ai:`, in place of the old one."""
+    content = re.sub(r"(?m)^jobs: .*\n", "", path.read_text())
+    if species.get("jobs"):
+        content = re.sub(r"(?m)^(ai: .*\n)", lambda m: m.group(1) + jobs_line(species) + "\n", content, count=1)
     path.write_text(content)
 
 
@@ -501,6 +514,7 @@ def export_mobs(game):
             replace_levels(path, s)
             replace_learnset(path, learned[ident])
             replace_essence(path, s)
+            replace_jobs(path, s)
         else:
             path.write_text(mob_yaml(s, final[ident], learned[ident], active[ident]))
         for warning in final[ident]["warnings"]:

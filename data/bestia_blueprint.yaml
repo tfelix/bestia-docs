@@ -431,6 +431,18 @@ equipment:
       armorTypes: [MEDIUM, HEAVY]
       note: Scale barding. Too big for anything light.
 
+# The orders a tamed bestia can take, see Bestia Orders. Mirrors BestiaJob in zone-server. Every species can
+# FOLLOW and REST, so the calculator starts with those two.
+jobs:
+  - { id: GUARD, label: Guard, summary: "Drives intruders out of an area. Needs attacks and the will to use them." }
+  - { id: GATHER, label: Gather, summary: "Picks up sticks, herbs, logs and crystals. Needs a mouth, claws or hands." }
+  - { id: CRAFT, label: Craft, summary: "Works a station's queue. Needs hands." }
+  - { id: MINE, label: Mine, summary: "Digs ore at a Mining Shaft. Needs a strong digger." }
+  - { id: BUILD, label: Build, summary: "Raises construction sites and repairs structures. Needs hands." }
+  - { id: TRANSPORT, label: Transport, summary: "Carries goods between chests. Needs a Medium or Big body that walks." }
+  - { id: FOLLOW, label: Follow, summary: "Stays close to its master." }
+  - { id: REST, label: Rest, summary: "Stays at home and recovers." }
+
 # AI profiles in zone-server/src/main/resources/ai/. The calculator also offers "custom": a
 # behaviour described in words, for a new profile written while the mob is implemented.
 aiProfiles:
