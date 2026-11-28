@@ -196,6 +196,11 @@ it. The seal is the guarantee:
 In those 30 seconds, anybody may pick the sack up. **Picking it up takes over the delivery.** The sack stays sealed,
 and whoever holds it is now its courier, with the same deadline and the full pay.
 
+<figure class="figure d-block my-4">
+  <a href="/images/artwork/mail-ambush.jpg"><img class="figure-img img-fluid rounded" src="/images/artwork/mail-ambush.jpg" alt="Concept art: an ambush on the mail coach" loading="lazy"></a>
+  <figcaption class="figure-caption">An ambush on the mail coach</figcaption>
+</figure>
+
 - A party member can save a fallen friend's run this way, and so can a stranger who passes by.
 - So can the one who killed the courier. Delivering the sack is honest work from then on. The kill already cost its
   [honor](/docs/mechanics/society/pvp/#negative-honor).

@@ -46,6 +46,11 @@ A citadel is a major, expensive, collective build project, and erecting one gran
 
 Temples are cheap by comparison and contribute modest influence, which makes them the practical tool for contesting a region an Order does not yet hold.
 
+<figure class="figure d-block my-4">
+  <a href="/images/artwork/three-orders.jpg"><img class="figure-img img-fluid rounded" src="/images/artwork/three-orders.jpg" alt="Concept art: the three Orders under the storming Rift" loading="lazy"></a>
+  <figcaption class="figure-caption">The three Orders under the storming Rift</figcaption>
+</figure>
+
 A [Guild Stronghold](/docs/mechanics/society/guild-strongholds/#orders-and-cults) can hold a shrine of each of its members' Orders, and a guild may attune its Empyrite to one Order, so that the whole Stronghold counts as a temple of it.
 
 # Sphere of Influence

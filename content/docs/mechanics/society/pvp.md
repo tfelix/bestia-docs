@@ -159,6 +159,11 @@ War Zones can never appear within a Protected Zone.
 
 # Shrines of Judgement
 
+<figure class="figure d-block my-4">
+  <a href="/images/artwork/judgement-shrine.jpg"><img class="figure-img img-fluid rounded" src="/images/artwork/judgement-shrine.jpg" alt="Concept art: a Shrine of Judgement above a warded valley" loading="lazy"></a>
+  <figcaption class="figure-caption">A Shrine of Judgement above a warded valley</figcaption>
+</figure>
+
 There are 5 shrines in each game world incarnation where a player can make a sacrifice to restore a reputation that has fallen below the **persecution threshold** — the point at which a player's global honor is so low that NPCs, and other players, actively hunt them.
 
 The sacrifice is costly and usually very painful, scaling with how far the reputation has fallen. Even once it has been made, the effect is not instant: it can take several days before news of the atonement spreads and the player's standing recovers across the world.

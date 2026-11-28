@@ -142,6 +142,11 @@ After the end, the server generates the next world. Nobody can play while it doe
 new world is being born. This takes as long as the generation needs, and the server uses all its power to make it
 quick. Meanwhile the companion app shows the **Interregnum**: how the last world ended, and what crosses over.
 
+<figure class="figure d-block my-4">
+  <a href="/images/artwork/new-world.jpg"><img class="figure-img img-fluid rounded" src="/images/artwork/new-world.jpg" alt="Concept art: between the old world and the new" loading="lazy"></a>
+  <figcaption class="figure-caption">Between the old world and the new</figcaption>
+</figure>
+
 The strongest deeds of the old world can live on: the next world's history may remember the old one as a mythic age,
 with the heroes who opted in, the Order that won and how the world ended.
 
@@ -261,6 +266,11 @@ It begins with old legends: restless Bestia, an ominous reading on a Scholar's
 the seal breaks. The boss inside wakes as **The Destroyer** and begins a slow, deliberate march toward the nearest
 town.
 
+<figure class="figure d-block my-4">
+  <a href="/images/artwork/destroyer.jpg"><img class="figure-img img-fluid rounded" src="/images/artwork/destroyer.jpg" alt="Concept art: the Destroyer marches on a town" loading="lazy"></a>
+  <figcaption class="figure-caption">The Destroyer marches on a town</figcaption>
+</figure>
+
 The Destroyer is one of the world's sealed bosses, but changed: a power drawn from the doom makes it **far stronger
 than any other boss**, with enormous health and strength. It is meant to be very, very hard to defeat, and it
 **cannot be captured**.
@@ -287,6 +297,11 @@ poor visibility hampers travel and detection. Players hold the dark at bay with 
 settlements, and must ultimately complete a great ritual — or quest — to rekindle the sun. Fail, and the world freezes
 into eternal, lightless death.
 
+<figure class="figure d-block my-4">
+  <a href="/images/artwork/long-night.jpg"><img class="figure-img img-fluid rounded" src="/images/artwork/long-night.jpg" alt="Concept art: a watchtower in the Long Night" loading="lazy"></a>
+  <figcaption class="figure-caption">A watchtower in the Long Night</figcaption>
+</figure>
+
 ## The Withering
 
 It begins with a few patches of greying vegetation and a handful of sickly Bestia. Then **strange crystals** push up
@@ -299,6 +314,11 @@ out of the ground, and the corruption spreads from them.
   cannot be captured.**
 - **It hurts to stand in it.** Masters in a strongly withered zone take steady damage and suffer debuffs.
 
+<figure class="figure d-block my-4">
+  <a href="/images/artwork/withered-land.jpg"><img class="figure-img img-fluid rounded" src="/images/artwork/withered-land.jpg" alt="Concept art: land lost to the Withering" loading="lazy"></a>
+  <figcaption class="figure-caption">Land lost to the Withering</figcaption>
+</figure>
+
 The crystals are what spreads it. Each crystal corrupts the land around it, and new crystals sprout at the edge of the
 corrupted land. Players fight back by **breaking the crystals**, which stops their growth and leaves corrupted crystal
 shards behind. Cleansing rituals clean the land around them and keep it clean for a week. Culling the corrupted Bestia
@@ -306,6 +326,11 @@ slows the spread where they roam. Every piece of land kept clean slows the doom 
 Withering rots the entire world.
 
 ## The Great Stampede
+
+<figure class="figure d-block my-4">
+  <a href="/images/artwork/stampede.jpg"><img class="figure-img img-fluid rounded" src="/images/artwork/stampede.jpg" alt="Concept art: the Great Stampede" loading="lazy"></a>
+  <figcaption class="figure-caption">The Great Stampede</figcaption>
+</figure>
 
 Something sends the wild Bestia into flight: herds gather and grow restless, then break into a full stampede that
 tramples everything — settlements, farmland, and players — unlucky enough to lie in their path.
@@ -356,6 +381,11 @@ The Void Tear begins at the strongest Wound of the world:
 - **Cataclysm.** The Tear floods whole provinces with mana. Mana storms rage around it, and it can seed a
   [Mana Crystal Infestation](#mana-crystal-infestation).
 
+<figure class="figure d-block my-4">
+  <a href="/images/artwork/void-tear.jpg"><img class="figure-img img-fluid rounded" src="/images/artwork/void-tear.jpg" alt="Concept art: the battle at the Void Tear" loading="lazy"></a>
+  <figcaption class="figure-caption">The battle at the Void Tear</figcaption>
+</figure>
+
 Players hold it back by sealing its rifts, killing its waves and the Sovereign, and draining mana from the region to
 starve its growth. Chaos, of course, can do the opposite and feed it. Its Avatar for the Last Stand is the Void
 Sovereign at full strength.
@@ -364,6 +394,11 @@ Sovereign at full strength.
 
 In areas with a very high mana concentration, a Mana Infestation can manifest. It increases mana generation in the
 area and, depending on the concentration, spawns crystal nodes around itself.
+
+<figure class="figure d-block my-4">
+  <a href="/images/artwork/crystal-valley.jpg"><img class="figure-img img-fluid rounded" src="/images/artwork/crystal-valley.jpg" alt="Concept art: a valley overgrown by mana crystals" loading="lazy"></a>
+  <figcaption class="figure-caption">A valley overgrown by mana crystals</figcaption>
+</figure>
 
 Each crystal is a **destructible object with its own health pool** that pulses damage into every creature or
 structure in its vicinity, turning the ground around it into a no-go zone. Worse, the crystals **self-replicate**: at

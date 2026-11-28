@@ -47,6 +47,11 @@ leave, and the success chance is fixed at the start.
 - **Failure:** the gem shatters. The owner gets a letter. The Bestia stays locked in and can try again with a new
   gem.
 
+<figure class="figure d-block my-4">
+  <a href="/images/artwork/rune-forge.jpg"><img class="figure-img img-fluid rounded" src="/images/artwork/rune-forge.jpg" alt="Concept art: runes etched into a blade" loading="lazy"></a>
+  <figcaption class="figure-caption">Runes etched into a blade</figcaption>
+</figure>
+
 So a Bestia is only used up when it really becomes an essence. The price of bad luck is the gem.
 
 The Artificer can call their etching off at any time. The cut gem then comes back to them by post.

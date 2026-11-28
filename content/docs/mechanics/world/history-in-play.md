@@ -187,6 +187,11 @@ Each idea names what the player does, what they get, and what the history needs 
 - **Blood-fed soil.** Old fields with many dead grow rare herbs for Alchemy. More dead, more herbs; older fields,
   rarer herbs. _Today:_ `fallen`, `decay`.
 
+<figure class="figure d-block my-4">
+  <a href="/images/artwork/laid-to-rest.jpg"><img class="figure-img img-fluid rounded" src="/images/artwork/laid-to-rest.jpg" alt="Concept art: the dead laid to rest" loading="lazy"></a>
+  <figcaption class="figure-caption">The dead laid to rest</figcaption>
+</figure>
+
 ## Ruins
 
 - **Refound a ruin.** A [player settlement](/docs/mechanics/towns-trade/player-settlements/) founded on a ruin can
@@ -637,6 +642,11 @@ Towns of one patron celebrate on the same day. Pilgrims and carts travel between
 - **A contest.** Prize, title for the year, a place on the town's feats board.
 - **A stronger blessing.** The patron's blessing is stronger and lasts longer on the feast day.
 - **Bards earn more.** Crowds pay for songs.
+
+<figure class="figure d-block my-4">
+  <a href="/images/artwork/lantern-feast.jpg"><img class="figure-img img-fluid rounded" src="/images/artwork/lantern-feast.jpg" alt="Concept art: a lantern feast in the village" loading="lazy"></a>
+  <figcaption class="figure-caption">A lantern feast in the village</figcaption>
+</figure>
 
 ## Feasts by domain
 
